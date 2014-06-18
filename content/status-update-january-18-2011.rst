@@ -2,6 +2,7 @@ Status Update - January 18, 2011
 ################################
 :date: 2011-01-19 03:17
 :author: Patrick Cloke
+:category: Mozilla
 :tags: Instantbird, IRC, Mozilla, programming
 :slug: status-update-january-18-2011
 

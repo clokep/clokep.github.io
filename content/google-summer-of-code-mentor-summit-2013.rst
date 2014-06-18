@@ -2,6 +2,7 @@ Google Summer of Code Mentor Summit 2013
 ########################################
 :date: 2013-10-21 02:18
 :author: Patrick Cloke
+:category: Mozilla
 :tags: Google, GSoC, Mozilla
 :slug: google-summer-of-code-mentor-summit-2013
 

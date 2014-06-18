@@ -2,6 +2,7 @@ JavaScript IRC in Instantbird
 #############################
 :date: 2010-12-04 21:24
 :author: Patrick Cloke
+:category: Mozilla
 :tags: Instantbird, IRC, Mozilla, programming
 :slug: javascript-irc-in-instantbird
 

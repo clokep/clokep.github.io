@@ -2,6 +2,7 @@ Yahoo Protocol Google Summer of Code Round-up
 #############################################
 :date: 2013-10-06 13:18
 :author: Patrick Cloke
+:category: Mozilla
 :tags: chat, GSoC, IM, instant messaging, Instantbird, Yahoo
 :slug: yahoo-protocol-google-summer-of-code-round-up
 

@@ -2,6 +2,7 @@ Instantbird 1.2 Released (with awesome new IRC features)!
 #########################################################
 :date: 2012-08-08 17:08
 :author: Patrick Cloke
+:category: Mozilla
 :tags: Instantbird, IRC
 :slug: instantbird-12-released-with-awesome-new-irc-features
 

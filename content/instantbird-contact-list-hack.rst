@@ -2,6 +2,7 @@ Instantbird Contact List Hack
 #############################
 :date: 2011-11-01 00:20
 :author: Patrick Cloke
+:category: Mozilla
 :tags: customizing, Instantbird, programming
 :slug: instantbird-contact-list-hack
 

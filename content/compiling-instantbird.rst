@@ -2,6 +2,7 @@ Compiling Instantbird
 #####################
 :date: 2011-05-17 01:30
 :author: Patrick Cloke
+:category: Mozilla
 :tags: Instantbird, Mozilla, programming
 :slug: compiling-instantbird
 

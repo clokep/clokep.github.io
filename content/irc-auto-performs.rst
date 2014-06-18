@@ -2,6 +2,7 @@ IRC Auto-Performs
 #################
 :date: 2012-06-11 02:25
 :author: Patrick Cloke
+:category: Mozilla
 :tags: Instantbird, IRC, Mozilla
 :slug: irc-auto-performs
 
