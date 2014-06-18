@@ -1,0 +1,5 @@
+# Filenames to ignore no matter where they are.
+\.pyc$
+
+# Specific directories.
+output
