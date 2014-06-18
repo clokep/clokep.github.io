@@ -131,15 +131,15 @@ extensions, etc.  This is summarized below:
 
 * [STRIKEOUT:RFC 1459]
 
-    * Extended with `[STRIKEOUT:DCC specification ("direct client-to-client")]`_
+  * Extended with `[STRIKEOUT:DCC specification ("direct client-to-client")]`_
 
-        * Replaced with [STRIKEOUT:`CTCP ("client-to-client protocol")`_]
+    * Replaced with [STRIKEOUT:`CTCP ("client-to-client protocol")`_]
 
-            * `Draft for a formalized CTCP`_
+      * `Draft for a formalized CTCP`_
 
-        * (Apparently some people are working on a `DCC2`_)
+    * (Apparently some people are working on a `DCC2`_)
 
-    * Officially replaced with RFCs 2810, 2811, 2812, 2813
+  * Officially replaced with RFCs 2810, 2811, 2812, 2813
 
 A lot of this is being done by reading the specifications and finding
 the proper responses, etc.  I've also used `Wireshark`_ a bit to see how

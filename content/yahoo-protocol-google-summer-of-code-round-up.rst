@@ -15,14 +15,18 @@ reached feature-parity with the libpurple plug-in.  Before `turning this
 on as default`_ there are a few minor bugs that still need to be fixed,
 but most of them have patches that just need another couple iterations.
 
-**Where do we go from here?**  Once the last few bugs are fixed we'll
-enable Yahoo by default in the nightly builds and, assuming we have no
-issues, it will be enabled by default in the upcoming Instantbird 1.5. 
-If there are no major issues in 1.5, we'll remove the libpurple Yahoo
-implementation for Instantbird 1.next.
+Where do we go from here?
+=========================
 
-**How do I try this now?!**  You can already easily enable JS-Yahoo in
-`Instantbird nightly builds`_:
+Once the last few bugs are fixed we'll enable Yahoo by default in the nightly
+builds and, assuming we have no issues, it will be enabled by default in the
+upcoming Instantbird 1.5. If there are no major issues in 1.5, we'll remove the
+libpurple Yahoo implementation for Instantbird 1.next.
+
+How do I try this now?!
+=======================
+
+You can already easily enable JS-Yahoo in `Instantbird nightly builds`_:
 
 #. Type /about config in a conversation tab's textbox
 #. Type "forcePurple" in the search box
@@ -36,9 +40,11 @@ You should now be using the JS-Yahoo protocol.  Hopefully you don't
 notice anything different, but `PLEASE file bugs`_ if you see any
 issues.
 
-**How come I can't use this in Thunderbird?!**  Because Instantbird
-and comm-central development don't happen in the same Mercurial
-repository.  I'm working on `syncing the chat/ folder of these
+How come I can't use this in Thunderbird?!
+==========================================
+
+Because Instantbird and comm-central development don't happen in the same
+Mercurial repository.  I'm working on `syncing the chat/ folder of these
 repositories`_ currently and JS-Yahoo should be in Daily soon to be
 included in the next Thunderbird release (i.e. Thunderbird 31).
 
