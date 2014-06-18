@@ -6,7 +6,7 @@ AUTHOR = u'Patrick Cloke'
 SITENAME = u'Like bricks in the sky'
 SITEURL = ''
 
-TIMEZONE = 'Europe/Madrid'
+TIMEZONE = 'America/New_York'
 DEFAULT_DATE_FORMAT = '%m/%d/%Y %I:%M %p'
 
 DEFAULT_LANG = u'en'
@@ -32,3 +32,8 @@ DEFAULT_PAGINATION = 10
 #RELATIVE_URLS = True
 
 STATIC_PATHS = ['images']
+
+PAGE_EXCLUDES = ["theme"]
+ARTICLE_EXCLUDES = ["theme"]
+
+THEME = "theme"
