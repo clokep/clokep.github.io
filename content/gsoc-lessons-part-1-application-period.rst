@@ -86,4 +86,4 @@ community one will be very not-GSoC focused and could apply to just
 trying to incorporate new contributors...but I'll include it in this
 series.
 
-.. _my experiences: {filename}/content/google-summer-of-code-mentor-summit-2013.rst
+.. _my experiences: {filename}/google-summer-of-code-mentor-summit-2013.rst

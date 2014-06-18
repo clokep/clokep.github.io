@@ -190,6 +190,6 @@ easier / better way to do this! (Or see a glaring way this will break!)
 .. _throw a warning: https://bugzilla.mozilla.org/show_bug.cgi?id=963519
 .. _\_\_noSuchMethod\_\_: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/noSuchMethod
 .. _#instantbird: irc://irc.mozilla.org/#instantbird
-.. _written before: {filename}/content/the-so-called-irc-specifications.rst
+.. _written before: {filename}/the-so-called-irc-specifications.rst
 .. _the characters of A-Z[]\\~ are considered the upper case of a-z{}\|^: https://tools.ietf.org/html/rfc2812#section-2.2
 .. _ISUPPORT response: http://tools.ietf.org/html/draft-brocklesby-irc-isupport-03#section-3.1

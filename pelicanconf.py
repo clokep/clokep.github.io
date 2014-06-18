@@ -4,7 +4,6 @@ from __future__ import unicode_literals
 
 AUTHOR = u'Patrick Cloke'
 SITENAME = u'Like bricks in the sky'
-SITEURL = ''
 
 TIMEZONE = 'America/New_York'
 DEFAULT_DATE_FORMAT = '%m/%d/%Y %I:%M %p'
@@ -26,14 +25,14 @@ LINKS =  (('Pelican', 'http://getpelican.com/'),
 SOCIAL = (('You can add links in your config file', '#'),
           ('Another social link', '#'),)
 
-DEFAULT_PAGINATION = 10
+DEFAULT_PAGINATION = 15
 
 # Uncomment following line if you want document-relative URLs when developing
 #RELATIVE_URLS = True
 
-STATIC_PATHS = ['images']
+#STATIC_PATHS = ['images']
 
-PAGE_EXCLUDES = ["theme"]
-ARTICLE_EXCLUDES = ["theme"]
+PAGE_EXCLUDES = ['theme']
+ARTICLE_EXCLUDES = ['theme']
 
-THEME = "theme"
+THEME = 'theme'

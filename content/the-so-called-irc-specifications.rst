@@ -120,7 +120,7 @@ there's an awful lot of `IRC servers`_ out there.  Anyway, if someone
 does know of another specification, etc. that I missed please let me
 know!
 
-.. _previous post: {filename}/content/why-rewrite-irc-into-javascript-vs-libpurples-vs-chatzillas.rst
+.. _previous post: {filename}/why-rewrite-irc-into-javascript-vs-libpurples-vs-chatzillas.rst
 .. _RFC 1459: http://tools.ietf.org/html/rfc1459
 .. _RFC 2810: http://tools.ietf.org/html/rfc2810
 .. _2811: http://tools.ietf.org/html/rfc2811

@@ -41,7 +41,7 @@ one and work on it.
 .. _Facebook Chat: http://lxr.instantbird.org/instantbird/source/chat/protocols/facebook/
 .. _GTalk: http://lxr.instantbird.org/instantbird/source/chat/protocols/gtalk/
 .. _IRC: http://lxr.instantbird.org/instantbird/source/chat/protocols/irc/
-.. _written: {filename}/content/irc-auto-performs.rst
+.. _written: {filename}/irc-auto-performs.rst
 .. _Mozilla bugs: https://bugzilla.mozilla.org/show_bug.cgi?id=14328
 .. _Thunderbird: http://www.mozilla.org/en-US/thunderbird/
 .. _chat feature: https://wiki.mozilla.org/Modules/Chat

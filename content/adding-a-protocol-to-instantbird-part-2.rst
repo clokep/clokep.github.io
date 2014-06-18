@@ -81,7 +81,7 @@ changes I made to the libpurple Sametime plugin and the external library
 control system) set up I'll look into getting these changes pushed back
 to libpurple to avoid diverging code bases.
 
-.. _previously talked about adding a protocol to Instantbird: {filename}/content/adding-a-new-protocol-sipeoffice-communicator-to-instantbird-part-1.rst
+.. _previously talked about adding a protocol to Instantbird: {filename}/adding-a-new-protocol-sipeoffice-communicator-to-instantbird-part-1.rst
 .. _bug 102: https://bugzilla.instantbird.org/show_bug.cgi?id=102
 .. _diff: https://bugzilla.instantbird.org/attachment.cgi?id=797&action=diff
 .. _Meanwhile: http://meanwhile.sourceforge.net/

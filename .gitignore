@@ -1,5 +1,5 @@
 # Filenames to ignore no matter where they are.
-\.pyc$
+*.py[cod]
 
 # Specific directories.
-output
+output/
