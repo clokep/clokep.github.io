@@ -1,11 +1,11 @@
 Mentoring Google Summer of Code 2013
 ####################################
-:date: 2013-10-07 01:33
-:author: noreply@blogger.com (Patrick Cloke)
+:date: 2013-06-28 22:05
+:author: Patrick Cloke
 :tags: chat, GSoC, IM, instant messaging, Instantbird, Yahoo
 :slug: mentoring-google-summer-of-code-2013
 
-| I'm officially a mentor this year for `2013's Google Summer of Code`_.
+I'm officially a mentor this year for `2013's Google Summer of Code`_.
 I'm a bit late on posting this, but oh well! My student this year is
 `Quentin Headen`_ who is `working on`_ a `Yahoo! Messenger protocol`_
 for the Instantbird chat/ backend (so it'll also be usable via
@@ -15,12 +15,14 @@ great progress so far and is able to connect, download all the buddies
 and start private conversations! Not too bad for a few weeks of work!
 We've been keeping a `TODO list`_ of things to be supported, please
 don't edit it without discussing it with us first.
-| Our hope is to get this checked into Instantbird by the end of summer
+
+Our hope is to get this checked into Instantbird by the end of summer
 and run it in parallel (behind an about:config preference) with the
 current libpurple Yahoo implementation. Once we're satisified that it
 has feature parity we'll remove the libpurple version and enable this by
 default!
-| Instantbird is also supporting two other projects:
+
+Instantbird is also supporting two other projects:
 
 -  The `"Awesometab"`_ is being done by `Nihanth Subramanya`_
    (`RSS <http://awesometab.blogspot.com/feeds/posts/default?alt=rss>`__)
@@ -31,16 +33,13 @@ default!
    `RSS <http://gsoc-mozilla.tumblr.com/rss>`__) and being mentored by
    Florian Quèze, check out the `repository`_.
 
-| You can find any of us in #instantbird on irc.mozilla.org, my nick is
+You can find any of us in #instantbird on irc.mozilla.org, my nick is
 clokep, Quentin's is qheaden, Nihanth's: nhnt11, Atul's: atuljangra,
 Benedikt goes by Mic and Florian goes by something starting with "flo".
-| Thanks also go out to Mozilla for letting us participate in Google
+
+Thanks also go out to Mozilla for letting us participate in Google
 Summer of Code with them again! You can see all of the accepted projects
 in `Gerv's blogpost`_.
-
-.. raw:: html
-
-   </p>
 
 .. _2013's Google Summer of Code: http://www.google-melange.com/gsoc/homepage/google/gsoc2013
 .. _Quentin Headen: http://phaseshiftsoftware.com/

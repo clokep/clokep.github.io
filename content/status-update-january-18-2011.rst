@@ -1,11 +1,11 @@
 Status Update - January 18, 2011
 ################################
-:date: 2011-01-19 04:20
-:author: noreply@blogger.com (Patrick Cloke)
+:date: 2011-01-19 03:17
+:author: Patrick Cloke
 :tags: Instantbird, IRC, Mozilla, programming
 :slug: status-update-january-18-2011
 
-| I haven't had an update in a few weeks (since early December)
+I haven't had an update in a few weeks (since early December)
 actually, so I thought I would post a bit about what I've worked on. 
 I've fixed a bunch of bugs in the backend of Instantbird that allow work
 on JavaScript IRC protocol to continue:
@@ -13,7 +13,7 @@ on JavaScript IRC protocol to continue:
 -  `Bug 519`_ - Extend jsProtoHelper to implement purpleIConvChat
    (`check-in`_)
 -  `Bug 495`_ - purpleIAccount cannot access preferences via JavaScript
-   protocol (`check-in)`_
+   protocol (`check-in <http://hg.instantbird.org/instantbird/rev/a188a5cc3ff1>`__)
 -  `Bug 648`_ -Provide a default JS implementation of
    purpleIChatRoomField
    (`check-in <http://hg.instantbird.org/instantbird/rev/61fc80a569d3>`__)
@@ -23,7 +23,7 @@ on JavaScript IRC protocol to continue:
    all the objects implemented in jsProtoHelper
    (`check-in <http://hg.instantbird.org/instantbird/rev/035f7d8d7f78>`__)
 
-| Also a few other random bugs I've worked on:
+Also a few other random bugs I've worked on:
 
 -  `Bug 625`_ - Findbar broken on Windows in Conversation window
    (`check-in <http://hg.instantbird.org/instantbird/rev/2e8af77af2f2>`__)
@@ -35,12 +35,13 @@ on JavaScript IRC protocol to continue:
    "onBeforeLinkTraversal"
    (`check-in <http://hg.instantbird.org/instantbird/rev/1b75f9fa4859>`__)
 
-| Although none of these are really things that weren't working a few
+Although none of these are really things that weren't working a few
 weeks ago, there are now real APIs for these for JavaScript protocols,
 allowing other protocols to use them and to *FULLY* implement them
 instead of hard coding values.  In addition, a lot of the purplexpcom
 layer is now hidden from JavaScript protocols.
-| There's a few things left to do for the JavaScript protocol layer:
+
+There's a few things left to do for the JavaScript protocol layer:
 
 -  `Bug 118`_ - Extensions should be able to register commands.
 -  `Bug 650`_ - JavaScript accounts must be notified of status changes
@@ -52,21 +53,24 @@ layer is now hidden from JavaScript protocols.
 -  `Bug 649`_ - Proxy should be available to JavaScript protocols
    (hopefully being handled by Florian)
 
-| A good summary of this is `the dependency graph of bug 507`_
+A good summary of this is `the dependency graph of bug 507`_
 (Implement IRC in JavaScript).  Note that the IRC JavaScript work blocks
 *a  lot* of UI work done for IRC.  In particular Mook has been working
 on implementing notifications (i.e. Invites, and perhaps a few other
 commands), see `Bug 628`_.  For other bugs, see the link above -- and if
 there's a strange UI feature that you think should be added, please file
 a bug and let us know about it!
-| I've also worked a bit on sending outgoing text with rich formatting
+
+I've also worked a bit on sending outgoing text with rich formatting
 (bold, italics, underline, text size, etc.), this work is being tracked
 in `Bug 634`_. There's a proof on concept, but a lot of work needs to be
 done for it, but it's sort of working right now. 
-| As I alluded to in my last blog post, the JavaScript protocols would
+
+As I alluded to in my last blog post, the JavaScript protocols would
 be used to implement Twitter. Work for this is occurring in `Bug 598`_,
 where Florian has implemented (very) basic Twitter support.
-| My plans for the next bit:
+
+My plans for the next bit:
 
 -  I'm hoping to finish up some of the work blocking JavaScript
    protocols so IRC can be put into a state that needs alpha/beta
@@ -76,14 +80,9 @@ where Florian has implemented (very) basic Twitter support.
 -  Start my new job
 -  Work on richtext messages a bit more
 
-.. raw:: html
-
-   </p>
-
 .. _Bug 519: https://bugzilla.instantbird.org/show_bug.cgi?id=519
 .. _check-in: http://hg.instantbird.org/instantbird/rev/0166084ce2ae
 .. _Bug 495: https://bugzilla.instantbird.org/show_bug.cgi?id=495
-.. _check-in): http://hg.instantbird.org/instantbird/rev/a188a5cc3ff1
 .. _Bug 648: https://bugzilla.instantbird.org/show_bug.cgi?id=648
 .. _Bug 647: https://bugzilla.instantbird.org/show_bug.cgi?id=647
 .. _Bug 625: https://bugzilla.instantbird.org/show_bug.cgi?id=625

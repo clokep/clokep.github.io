@@ -1,17 +1,13 @@
 Community and Volunteers
 ########################
 :date: 2014-04-16 16:34
-:author: noreply@blogger.com (Patrick Cloke)
+:author: Patrick Cloke
 :tags: community, crosspost, Mozilla, Thunderbird
 :slug: community-and-volunteers
 
-.. raw:: html
-
-   <p>
-
-| It was suggested that I cross-post this from mozilla.dev.planning onto
+It was suggested that I cross-post this from mozilla.dev.planning onto
 my blog. This is in reply to a thread entitled "`Proposal: Move
-Thunderbird and SeaMonkey to mozilla-central`_\ " about (essentially)
+Thunderbird and SeaMonkey to mozilla-central`_" about (essentially)
 merging comm-central back into mozilla-central. There have been many
 technical concerns raised in the thread (that I'm not going to rehash
 here). What I'm more interested in is the lack of community feeling
@@ -19,101 +15,30 @@ there. As Nicholas Nethercote said in that thread:
 
     "I am surprised [...] by how heartless the discussion has been."
 
-| I should note that I did have some help editing this down from my
+I should note that I did have some help editing this down from my
 original post. Turns out I tend to write inflammatory statements that
 don't help get me point across. Who knew? Anyway, thanks to all of you
 who helped me out there!
-| My full post is below (with a few links added and plaintext formatting
+
+My full post is below (with a few links added and plaintext formatting
 converted to HTML formatting):
 
     ﻿On Monday, April 14, 2014 4:52:53 PM UTC-4, Nicholas Nethercote
     wrote:
 
-    .. raw:: html
-
-       <div id="magicdomid26" class="ace-line">
-
-    > The technical aspects of this decision have been discussed to
-    death,
-
-    .. raw:: html
-
-       </div>
-
-    .. raw:: html
-
-       <div id="magicdomid27" class="ace-line">
-
-    > so I won't say anything about that. I am surprised, however, by
-    how
-
-    .. raw:: html
-
-       </div>
-
-    .. raw:: html
-
-       <div id="magicdomid44" class="ace-line">
-
+    > The technical aspects of this decision have been discussed to death,
+    > so I won't say anything about that. I am surprised, however, by how
     > heartless the discussion has been.
-
-    .. raw:: html
-
-       </div>
-
-    .. raw:: html
-
-       <div id="magicdomid29" class="ace-line">
-
-    .. raw:: html
-
-       </div>
-
-    .. raw:: html
-
-       <div id="magicdomid480" class="ace-line">
 
     I agree, the technical bitshere seem to have solutions suggested by
     Joshua and others, but the non-technical parts of this discussion
     have left mefeeling disheartened and confused with the Mozilla
     community.
 
-    .. raw:: html
-
-       </div>
-
-    .. raw:: html
-
-       <div id="magicdomid417" class="ace-line">
-
-    .. raw:: html
-
-       </div>
-
-    .. raw:: html
-
-       <div id="magicdomid419" class="ace-line">
-
     I find it ironic/amusing/sad/upsetting that a few threads above this
     is a thread entitled "`Contributor pathways, engagement points and
-    bug mentoring`_\ " while in this thread I see community contributors
+    bug mentoring`_" while in this thread I see community contributors
     being blocked at every turn!
-
-    .. raw:: html
-
-       </div>
-
-    .. raw:: html
-
-       <div id="magicdomid719" class="ace-line">
-
-    .. raw:: html
-
-       </div>
-
-    .. raw:: html
-
-       <div id="magicdomid761" class="ace-line">
 
     Here I don't see people attempting to foster a community by putting
     their best foot forward. I see people trying to get their **job**
@@ -122,22 +47,6 @@ converted to HTML formatting):
     don't think this is how Mozilla HAS grown it's community. I don't
     think it's in line with what Mozilla expects from it's community
     members (both employees and volunteers!)
-
-    .. raw:: html
-
-       </div>
-
-    .. raw:: html
-
-       <div id="magicdomid31" class="ace-line">
-
-    .. raw:: html
-
-       </div>
-
-    .. raw:: html
-
-       <div id="magicdomid992" class="ace-line">
 
     Personally, I dislike the amount of Mozilla **Corporation** goals
     focus in this thread. Can we have a discussion aspart ofa larger
@@ -149,22 +58,6 @@ converted to HTML formatting):
     Thunderbird. I understand that Mozilla's goals arecurrently Firefox
     and Firefox OS, but these are not my personal goals.
 
-    .. raw:: html
-
-       </div>
-
-    .. raw:: html
-
-       <div id="magicdomid33" class="ace-line">
-
-    .. raw:: html
-
-       </div>
-
-    .. raw:: html
-
-       <div id="magicdomid1150" class="ace-line">
-
     At the Summit I had a few conversations with people about
     "on-boarding" new employees and getting them to understand how the
     community works and that interacting with the community in a
@@ -174,22 +67,6 @@ converted to HTML formatting):
     that implies taking advtange of them, but "How can I work with the
     community?"
 
-    .. raw:: html
-
-       </div>
-
-    .. raw:: html
-
-       <div id="magicdomid37" class="ace-line">
-
-    .. raw:: html
-
-       </div>
-
-    .. raw:: html
-
-       <div id="magicdomid1344" class="ace-line">
-
     Please don't see this as an "employees vs. volunteers" argument. I
     believe that I'm expected to live up to these same goals. If I, as a
     volunteer, can help an employee achieve his goals; I'm
@@ -198,22 +75,6 @@ converted to HTML formatting):
     to me that over the past couple of years that I've been hanging
     around here there's been less and less focus on the community and
     more and more on the Corporation.
-
-    .. raw:: html
-
-       </div>
-
-    .. raw:: html
-
-       <div id="magicdomid130" class="ace-line">
-
-    .. raw:: html
-
-       </div>
-
-    .. raw:: html
-
-       <div id="magicdomid1372" class="ace-line">
 
     I understand Thunderbird and SeaMonkey may not be important to you,
     but it is important tome! (And otherswho contribute
@@ -227,16 +88,8 @@ converted to HTML formatting):
     keeping a dying one on life-support. (And prove to all that
     "Thunderbird is dead!" was just a sensational headline.)
 
-    .. raw:: html
-
-       </div>
-
 I don't have much else to say beyond that (besides thanks for reading
 this far!)
-
-.. raw:: html
-
-   </p>
 
 .. _`Proposal: Move Thunderbird and SeaMonkey to mozilla-central`: https://groups.google.com/forum/#%21topic/mozilla.dev.planning/P8oHKTCWSiQ
 .. _Contributor pathways, engagement points and bug mentoring: https://groups.google.com/forum/#!topic/mozilla.dev.planning/1kbZsYoQcng
