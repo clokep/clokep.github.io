@@ -18,7 +18,7 @@ the functionality. As background, there are two reasons we'd want this:
    `version from Object.prototype`_ in case the map has a conversation
    named hasOwnProperty. This is `super simple code`_, but annoying:
 
-   .. code-block:: javascript
+    .. code-block:: javascript
 
         // Similar to Object.hasOwnProperty, but doesn't fail if the object
         // has a hasOwnProperty property set.
