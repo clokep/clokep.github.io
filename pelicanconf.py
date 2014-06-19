@@ -22,8 +22,11 @@ LINKS =  (('Pelican', 'http://getpelican.com/'),
           ('You can modify those links in your config file', '#'),)
 
 # Social widget
-SOCIAL = (('You can add links in your config file', '#'),
-          ('@clokep', 'https://www.twitter.com/clokep'),)
+SOCIAL = ()
+
+GITHUB_URL = "https://www.github.com/clokep"
+TWITTER_URL = "https://www.twitter.com/clokep"
+BITBUCKET_URL = "https://bitbucket.org/clokep"
 
 DEFAULT_PAGINATION = 15
 

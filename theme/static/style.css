@@ -199,3 +199,54 @@ a:focus { color: #34495E; }
 @media only screen and (max-width: 600px) {
   #banner h1 a {font-size:22px!important; line-height:24px;}
 }
+
+
+
+/* Custom code
+--------------------------------------------------------- */
+
+a.fn-backref, a.fn-backref:hover {color: #3498DB;}
+a.fn-backref:focus { color: #34495E; }
+
+#banner { background: #eee; }
+
+.btn.bitbucket, .skiplink.bitbucket {
+  background: #2D5F9C;
+  border: 1px solid #4796E6;
+}
+.btn.bitbucket:hover, .skiplink.bitbucket:hover {
+  background: #2D5F9C;
+}
+.btn.bitbucket:active, .skiplink.bitbucket:active {
+  background: #3572B0;
+}
+
+.btn.pretty.bitbucket, .pretty .bitbucket.btn, .pretty .bitbucket.skiplink, .pretty .bitbucket.btn:hover, .pretty .bitbucket.skiplink:hover, .bitbucket.skiplink.pretty:hover, .pretty .bitbucket.btn:active, .pretty .bitbucket.skiplink:active, .bitbucket.skiplink.pretty:active, .skiplink.pretty.bitbucket {
+  background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #4796E6), color-stop(100%, #3773AF));
+  background-image: -webkit-linear-gradient(#4796E6, #3773AF);
+  background-image: -moz-linear-gradient(#4796E6, #3773AF);
+  background-image: -o-linear-gradient(#4796E6, #3773AF);
+  background-image: linear-gradient(#4796E6, #3773AF);
+  box-shadow: inset 0 0 3px rgba(255, 255, 255, 0.1);
+  border: 1px solid #0074a1;
+}
+.pretty .bitbucket.btn:hover, .pretty .bitbucket.skiplink:hover, .bitbucket.btn.pretty:hover, .bitbucket.skiplink.pretty:hover, .pretty .bitbucket.btn:hover:active, .pretty .bitbucket.skiplink:hover:active, .skiplink.pretty.bitbucket:hover {
+  background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #4796E6), color-stop(100%, #3773AF));
+  background-image: -webkit-linear-gradient(#4796E6, #3773AF);
+  background-image: -moz-linear-gradient(#4796E6, #3773AF);
+  background-image: -o-linear-gradient(#4796E6, #3773AF);
+  background-image: linear-gradient(#4796E6, #3773AF);
+  box-shadow: inset 0 0 3px rgba(255, 255, 255, 0.1);
+  border: 1px solid #0497d0;
+}
+.pretty .bitbucket.btn:active, .pretty .bitbucket.skiplink:active, .pretty .bitbucket.btn:active:hover, .pretty .bitbucket.skiplink:active:hover, .bitbucket.btn.pretty:active, .bitbucket.skiplink.pretty:active, .skiplink.pretty.bitbucket:active {
+  background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #4796E6), color-stop(100%, #3773AF));
+  background-image: -webkit-linear-gradient(#4796E6, #3773AF);
+  background-image: -moz-linear-gradient(#4796E6, #3773AF);
+  background-image: -o-linear-gradient(#4796E6, #3773AF);
+  background-image: linear-gradient(#4796E6, #3773AF);
+  box-shadow: inset 0 0 3px rgba(255, 255, 255, 0.1);
+}
+.btn.pretty.bitbucket a, .pretty .bitbucket.btn a, .pretty .bitbucket.skiplink a, .pretty .bitbucket.btn:hover a, .pretty .bitbucket.skiplink:hover a, .bitbucket.skiplink.pretty:hover a, .pretty .bitbucket.btn:active a, .pretty .bitbucket.skiplink:active a, .bitbucket.skiplink.pretty:active a, .btn.pretty.bitbucket input, .pretty .bitbucket.btn input, .pretty .bitbucket.skiplink input, .pretty .bitbucket.btn:hover input, .pretty .bitbucket.skiplink:hover input, .bitbucket.skiplink.pretty:hover input, .pretty .bitbucket.btn:active input, .pretty .bitbucket.skiplink:active input, .bitbucket.skiplink.pretty:active input, .btn.pretty.bitbucket button, .pretty .bitbucket.btn button, .pretty .bitbucket.skiplink button, .pretty .bitbucket.btn:hover button, .pretty .bitbucket.skiplink:hover button, .bitbucket.skiplink.pretty:hover button, .pretty .bitbucket.btn:active button, .pretty .bitbucket.skiplink:active button, .bitbucket.skiplink.pretty:active button, .skiplink.pretty.bitbucket a, .skiplink.pretty.bitbucket input, .skiplink.pretty.bitbucket button {
+  text-shadow: 0 1px 1px #295989;
+}
