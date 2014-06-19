@@ -220,7 +220,6 @@ a.fn-backref:focus { color: #34495E; }
 .btn.bitbucket:active, .skiplink.bitbucket:active {
   background: #3572B0;
 }
-
 .btn.pretty.bitbucket, .pretty .bitbucket.btn, .pretty .bitbucket.skiplink, .pretty .bitbucket.btn:hover, .pretty .bitbucket.skiplink:hover, .bitbucket.skiplink.pretty:hover, .pretty .bitbucket.btn:active, .pretty .bitbucket.skiplink:active, .bitbucket.skiplink.pretty:active, .skiplink.pretty.bitbucket {
   background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #4796E6), color-stop(100%, #3773AF));
   background-image: -webkit-linear-gradient(#4796E6, #3773AF);
@@ -249,4 +248,44 @@ a.fn-backref:focus { color: #34495E; }
 }
 .btn.pretty.bitbucket a, .pretty .bitbucket.btn a, .pretty .bitbucket.skiplink a, .pretty .bitbucket.btn:hover a, .pretty .bitbucket.skiplink:hover a, .bitbucket.skiplink.pretty:hover a, .pretty .bitbucket.btn:active a, .pretty .bitbucket.skiplink:active a, .bitbucket.skiplink.pretty:active a, .btn.pretty.bitbucket input, .pretty .bitbucket.btn input, .pretty .bitbucket.skiplink input, .pretty .bitbucket.btn:hover input, .pretty .bitbucket.skiplink:hover input, .bitbucket.skiplink.pretty:hover input, .pretty .bitbucket.btn:active input, .pretty .bitbucket.skiplink:active input, .bitbucket.skiplink.pretty:active input, .btn.pretty.bitbucket button, .pretty .bitbucket.btn button, .pretty .bitbucket.skiplink button, .pretty .bitbucket.btn:hover button, .pretty .bitbucket.skiplink:hover button, .bitbucket.skiplink.pretty:hover button, .pretty .bitbucket.btn:active button, .pretty .bitbucket.skiplink:active button, .bitbucket.skiplink.pretty:active button, .skiplink.pretty.bitbucket a, .skiplink.pretty.bitbucket input, .skiplink.pretty.bitbucket button {
   text-shadow: 0 1px 1px #295989;
+}
+
+.btn.mozillians, .skiplink.mozillians {
+  background: #277AC1;
+  border: 1px solid #4796E6;
+}
+.btn.mozillians:hover, .skiplink.mozillians:hover {
+  background: #277AC1;
+}
+.btn.mozillians:active, .skiplink.mozillians:active {
+  background: #277AC1;
+}
+.btn.pretty.mozillians, .pretty .mozillians.btn, .pretty .mozillians.skiplink, .pretty .mozillians.btn:hover, .pretty .mozillians.skiplink:hover, .mozillians.skiplink.pretty:hover, .pretty .mozillians.btn:active, .pretty .mozillians.skiplink:active, .mozillians.skiplink.pretty:active, .skiplink.pretty.mozillians {
+  background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #43A6E2), color-stop(100%, #277AC1));
+  background-image: -webkit-linear-gradient(#43A6E2, #277AC1);
+  background-image: -moz-linear-gradient(#43A6E2, #277AC1);
+  background-image: -o-linear-gradient(#43A6E2, #277AC1);
+  background-image: linear-gradient(#43A6E2, #277AC1);
+  box-shadow: inset 0 0 3px rgba(0, 0, 0, 0.2);
+  border: 1px solid #0074a1;
+}
+.pretty .mozillians.btn:hover, .pretty .mozillians.skiplink:hover, .mozillians.btn.pretty:hover, .mozillians.skiplink.pretty:hover, .pretty .mozillians.btn:hover:active, .pretty .mozillians.skiplink:hover:active, .skiplink.pretty.mozillians:hover {
+  background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #43A6E2), color-stop(100%, #277AC1));
+  background-image: -webkit-linear-gradient(#43A6E2, #277AC1);
+  background-image: -moz-linear-gradient(#43A6E2, #277AC1);
+  background-image: -o-linear-gradient(#43A6E2, #277AC1);
+  background-image: linear-gradient(#43A6E2, #277AC1);
+  box-shadow: inset 0 0 3px rgba(0, 0, 0, 0.2);
+  border: 1px solid #0497d0;
+}
+.pretty .mozillians.btn:active, .pretty .mozillians.skiplink:active, .pretty .mozillians.btn:active:hover, .pretty .mozillians.skiplink:active:hover, .mozillians.btn.pretty:active, .mozillians.skiplink.pretty:active, .skiplink.pretty.mozillians:active {
+  background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #43A6E2), color-stop(100%, #277AC1));
+  background-image: -webkit-linear-gradient(#43A6E2, #277AC1);
+  background-image: -moz-linear-gradient(#43A6E2, #277AC1);
+  background-image: -o-linear-gradient(#43A6E2, #277AC1);
+  background-image: linear-gradient(#43A6E2, #277AC1);
+  box-shadow: inset 0 0 3px rgba(0, 0, 0, 0.2);
+}
+.btn.pretty.mozillians a, .pretty .mozillians.btn a, .pretty .mozillians.skiplink a, .pretty .mozillians.btn:hover a, .pretty .mozillians.skiplink:hover a, .mozillians.skiplink.pretty:hover a, .pretty .mozillians.btn:active a, .pretty .mozillians.skiplink:active a, .mozillians.skiplink.pretty:active a, .btn.pretty.mozillians input, .pretty .mozillians.btn input, .pretty .mozillians.skiplink input, .pretty .mozillians.btn:hover input, .pretty .mozillians.skiplink:hover input, .mozillians.skiplink.pretty:hover input, .pretty .mozillians.btn:active input, .pretty .mozillians.skiplink:active input, .mozillians.skiplink.pretty:active input, .btn.pretty.mozillians button, .pretty .mozillians.btn button, .pretty .mozillians.skiplink button, .pretty .mozillians.btn:hover button, .pretty .mozillians.skiplink:hover button, .mozillians.skiplink.pretty:hover button, .pretty .mozillians.btn:active button, .pretty .mozillians.skiplink:active button, .mozillians.skiplink.pretty:active button, .skiplink.pretty.mozillians a, .skiplink.pretty.mozillians input, .skiplink.pretty.mozillians button {
+  text-shadow: 0 1px 1px rgba(0, 0, 0, 0.25);
 }
