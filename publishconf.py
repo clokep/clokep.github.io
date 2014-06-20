@@ -13,10 +13,14 @@ from pelicanconf import *
 SITEURL = 'http://clokep-blog.herokuapp.com'
 RELATIVE_URLS = False
 
+# Configure RSS and atom feeds.
+FEED_DOMAIN = SITEURL
 FEED_ALL_ATOM = 'feeds/all.atom.xml'
-CATEGORY_FEED_ATOM = 'feeds/%s.atom.xml'
 FEED_ALL_RSS = 'feeds/all.rss.xml'
+CATEGORY_FEED_ATOM = 'feeds/%s.atom.xml'
 CATEGORY_FEED_RSS = 'feeds/%s.rss.xml'
+TAG_FEED_ATOM = 'feeds/tag/%s.atom.xml'
+TAG_FEED_RSS = 'feeds/tag/%s.rss.xml'
 
 DELETE_OUTPUT_DIRECTORY = True
 

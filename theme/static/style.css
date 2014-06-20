@@ -289,3 +289,22 @@ a.fn-backref:focus { color: #34495E; }
 .btn.pretty.mozillians a, .pretty .mozillians.btn a, .pretty .mozillians.skiplink a, .pretty .mozillians.btn:hover a, .pretty .mozillians.skiplink:hover a, .mozillians.skiplink.pretty:hover a, .pretty .mozillians.btn:active a, .pretty .mozillians.skiplink:active a, .mozillians.skiplink.pretty:active a, .btn.pretty.mozillians input, .pretty .mozillians.btn input, .pretty .mozillians.skiplink input, .pretty .mozillians.btn:hover input, .pretty .mozillians.skiplink:hover input, .mozillians.skiplink.pretty:hover input, .pretty .mozillians.btn:active input, .pretty .mozillians.skiplink:active input, .mozillians.skiplink.pretty:active input, .btn.pretty.mozillians button, .pretty .mozillians.btn button, .pretty .mozillians.skiplink button, .pretty .mozillians.btn:hover button, .pretty .mozillians.skiplink:hover button, .mozillians.skiplink.pretty:hover button, .pretty .mozillians.btn:active button, .pretty .mozillians.skiplink:active button, .mozillians.skiplink.pretty:active button, .skiplink.pretty.mozillians a, .skiplink.pretty.mozillians input, .skiplink.pretty.mozillians button {
   text-shadow: 0 1px 1px rgba(0, 0, 0, 0.25);
 }
+
+.entry-content ul {
+  margin-left: 25px;
+  list-style: disc;
+}
+
+.entry-content tt {
+  font-family: monospace;
+  font-size: 85%;
+}
+
+.entry-content table {
+  border: 1px solid;
+}
+
+.entry-content th, .entry-content td {
+  border: 1px solid;
+  padding: 2px;
+}

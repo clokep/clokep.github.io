@@ -29,6 +29,8 @@ TWITTER_URL = "https://www.twitter.com/clokep"
 BITBUCKET_URL = "https://bitbucket.org/clokep"
 MOZILLIANS_URL = "https://mozillians.org/clokep"
 
+# Paginate, but have at least three items per page.
+DEFAULT_ORPHANS = 2
 DEFAULT_PAGINATION = 5
 
 # Uncomment following line if you want document-relative URLs when developing
