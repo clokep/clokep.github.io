@@ -41,12 +41,7 @@ def reserve():
 def preview():
     local('pelican -s publishconf.py content')
 
-#@hosts(production)
-#def publish():
-#    local('pelican -s publishconf.py content')
-#    project.rsync_project(
-#        remote_dir=dest_path,
-#        exclude=".DS_Store",
-#        local_dir=DEPLOY_PATH.rstrip('/') + '/',
-#        delete=True
-#    )
+@hosts(production)
+def publish():
+    preview()
+    local('ghp-import -p -r github content')
