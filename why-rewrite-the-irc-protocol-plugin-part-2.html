@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+        <title>Why rewrite the IRC protocol plugin? (Part 2)</title>
+        <meta charset="utf-8" />
+        <link href="https://clokep.github.io/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="Like bricks in the sky Full Atom Feed" />
+        <link href="https://clokep.github.io/feeds/all.rss.xml" type="application/rss+xml" rel="alternate" title="Like bricks in the sky Full RSS Feed" />
+        <link href="https://clokep.github.io/feeds/mozilla.atom.xml" type="application/atom+xml" rel="alternate" title="Like bricks in the sky Categories Atom Feed" />
+        <link href="https://clokep.github.io/feeds/mozilla.rss.xml" type="application/rss+xml" rel="alternate" title="Like bricks in the sky Categories RSS Feed" />
+
+
+        <!-- Mobile viewport optimized: j.mp/bplateviewport -->
+        <meta name="viewport" content="width=device-width,initial-scale=1, maximum-scale=1">
+
+        <link rel="stylesheet" type="text/css" href="https://clokep.github.io/theme/gumby.css" />
+        <link rel="stylesheet" type="text/css" href="https://clokep.github.io/theme/style.css" />
+        <link rel="stylesheet" type="text/css" href="https://clokep.github.io/theme/pygment.css" />
+
+        <script src="https://clokep.github.io/theme/js/libs/modernizr-2.6.2.min.js"></script>
+
+
+
+
+
+
+</head>
+
+<body id="index" class="home">
+
+
+    <div class="container">
+
+        <div class="row">
+
+          <header id="banner" class="body">
+                  <h1><a href="https://clokep.github.io">Like bricks in the sky <strong></strong></a></h1>
+          </header><!-- /#banner -->
+
+            <div id="navigation" class="navbar row">
+              <a href="#" gumby-trigger="#navigation &gt; ul" class="toggle"><i class="icon-menu"></i></a>
+             
+              <ul class="columns">
+                <li><a href="https://clokep.github.io">Home</a></li>
+
+                <li><a href="https://clokep.github.io/pages/about.html">About</a></li>
+                <li><a href="https://clokep.github.io/pages/contact.html">Contact</a></li>
+
+                <li><a href="https://clokep.github.io/archives.html">Archives</a></li>
+                <li><a href="https://clokep.github.io/tags.html">Tags</a></li>
+              </ul>
+            </div>
+
+<section id="content" class="body">
+
+   <div class="row">
+        <div class="eleven columns">
+
+
+            <header>
+              <h2 class="entry-title">
+                <a href="https://clokep.github.io/why-rewrite-the-irc-protocol-plugin-part-2.html" rel="bookmark"
+                   title="Permalink to Why rewrite the IRC protocol plugin? (Part 2)">Why rewrite the IRC protocol plugin? (Part 2)</a></h2>
+           
+            </header>
+            <footer class="post-info">
+              <abbr class="published" title="2011-04-30T17:01:00">
+                04/30/2011 05:01 PM UTC
+              </abbr>
+              <address class="vcard author">
+                By <a class="url fn" href="https://clokep.github.io/author/patrick-cloke.html">Patrick Cloke</a>
+              </address>
+            </footer><!-- /.post-info -->
+            <div class="entry-content">
+              <p>I <a class="reference external" href="https://clokep.github.io/why-rewrite-irc-into-javascript-vs-libpurples-vs-chatzillas.html">previously wrote about</a> why I'm rewriting the libpurple IRC
+implementation into a JavaScript implementation for Instantbird.&nbsp; This
+is kind of a follow up, but more focused on what I hope to accomplish
+feature wise for IRC in Instantbird.&nbsp; A good overview to look at is the
+<a class="reference external" href="https://bugzilla.instantbird.org/showdependencygraph.cgi?id=507&amp;display=web&amp;rankdir=LR">dependencies of bug 507</a> (implement IRC in JavaScript) -- you'll want
+to look to the left of bug 507, these are the bugs that depend on 507
+(as opposed to blocking 507).</p>
+<p>My overall hope is to make Instantbird the easiest and simplest IRC
+client to use.&nbsp; I've found that most IRC clients tend to depend a great
+deal on commands and essentially being a very thin GUI layer on top of
+the protocol.&nbsp; I don't really see the reason for this, we should attempt
+to hide the protocol as much as possible from the users.&nbsp; This means
+fitting the IRC command responses into the GUI wherever possible and
+possibly &quot;losing&quot; some features compared to other IRC clients, although
+I think that's a matter of perspective.&nbsp; (For example, there's often an
+IRC command to list all the channels available, I <em>do not</em> think this
+should be implemented as a text command, but it should be available via
+the join chat GUI).</p>
+<p>Now some more specific plans:</p>
+<ul class="simple">
+<li>Support for IRC services would be pretty awesome, I'm not sure
+whether this would be part of the main protocol or as an extension,
+but it should be able to handle NickServ mostly autonomously
+(possibly even automatically registering the nick, etc.).&nbsp; MemoServ
+could be implemented as a message service once there is UI for that
+in Instantbird.&nbsp; I'm not sure how ChanServ could be handled in the
+UI, but I'll think more about this.&nbsp; See <a class="reference external" href="https://bugzilla.instantbird.org/show_bug.cgi?id=720">bug 720</a> for more info.
+(And yes, there are multiple versions of IRC services, but we can
+attempt to support a subset and otherwise just leave it up to the
+user.&nbsp; Ideally servers would have supported this stuff...but that's
+not how IRC works.)</li>
+<li>The UI should be more responsive to the modes of the user and to the
+channel.&nbsp; For example, if the user does not have permission to edit
+the topic, it should not be editable in the UI (<a class="reference external" href="https://bugzilla.instantbird.org/show_bug.cgi?id=318">bug 318</a>).&nbsp; Also,
+if a user is a (half-)operator, there should be UI to have cause
+other users to be given (h)op (<a class="reference external" href="https://bugzilla.instantbird.org/show_bug.cgi?id=597">bug 597</a>).&nbsp; In terms of channel
+modes, there could be UI to show the channel is invite only or that
+it's a hidden channel.</li>
+</ul>
+<p>There's some not as user visible improvements I'd like to make:</p>
+<ul class="simple">
+<li>Supporting more authentication methods in IRC (<a class="reference external" href="https://bugzilla.instantbird.org/show_bug.cgi?id=719">bug 719</a>).</li>
+</ul>
+<p>There's also a few &quot;bugs&quot; in the libpurple implementation that this
+will fix:</p>
+<ul class="simple">
+<li>The /msg command doesn't show outgoing messages (<a class="reference external" href="https://bugzilla.instantbird.org/show_bug.cgi?id=188">bug 188</a>).&nbsp; I
+believe this is actually already fixed.</li>
+<li>IRC channels should automatically rejoin on reconnect (<a class="reference external" href="https://bugzilla.instantbird.org/show_bug.cgi?id=385">bug 385</a>).</li>
+<li>Chats with other users should show whether they are available or not
+(<a class="reference external" href="https://bugzilla.instantbird.org/show_bug.cgi?id=613">bug 613</a>).</li>
+</ul>
+<p>These are just some ideas and it's a long ways off for feature parity
+with libpurple even.&nbsp; (Although since Instantbird doesn't support all
+the features of Pidgin, feature-parity in this case doesn't include
+things like DCC transfer, etc. until Instantbird itself supports those.)</p>
+<p>Right now, the code is mostly usable (and I'm finally catching any
+exceptions that are thrown so the code shouldn't crash anymore), and
+works fine.&nbsp; The one issue I'm having is sometimes I'm unable to
+reconnect when the connection is lost, but I think I've finally fixed
+that issue and reconnection should happen automatically!</p>
+<p>One last quick note, if you happen to have the <a class="reference external" href="https://hg.instantbird.org/experiments">repository</a> checked
+out, you'll want to update on the default branch from now on as I've
+merged the separate branches together under subfolders.</p>
+
+            </div><!-- /.entry-content -->
+
+
+        </div><!-- /.eleven.columns -->
+        
+<div class="three columns">
+
+<h4>Pages</h4>
+
+ <ul>
+      <li><a href="https://clokep.github.io/pages/about.html">About</a></li>
+      <li><a href="https://clokep.github.io/pages/contact.html">Contact</a></li>
+  </ul>
+
+<h4>Categories</h4>
+<ul>
+		<li><a href="https://clokep.github.io/category/mozilla.html">Mozilla</a></li>
+</ul>
+
+
+<h4><i class="icon-tag"></i>Tags</h4>
+	<ul>
+	    <li class="tag-4"><a href="https://clokep.github.io/tag/crosspost.html">crosspost</a></li>
+	    <li class="tag-4"><a href="https://clokep.github.io/tag/imap.html">IMAP</a></li>
+	    <li class="tag-3"><a href="https://clokep.github.io/tag/specifications.html">specifications</a></li>
+	    <li class="tag-1"><a href="https://clokep.github.io/tag/instantbird.html">Instantbird</a></li>
+	    <li class="tag-4"><a href="https://clokep.github.io/tag/oscar.html">OSCAR</a></li>
+	    <li class="tag-2"><a href="https://clokep.github.io/tag/gsoc.html">GSoC</a></li>
+	    <li class="tag-3"><a href="https://clokep.github.io/tag/google.html">Google</a></li>
+	    <li class="tag-1"><a href="https://clokep.github.io/tag/irc.html">IRC</a></li>
+	    <li class="tag-4"><a href="https://clokep.github.io/tag/rss.html">RSS</a></li>
+	    <li class="tag-4"><a href="https://clokep.github.io/tag/lightning.html">Lightning</a></li>
+	    <li class="tag-3"><a href="https://clokep.github.io/tag/sipe.html">SIPE</a></li>
+	    <li class="tag-3"><a href="https://clokep.github.io/tag/bugs.html">bugs</a></li>
+	    <li class="tag-2"><a href="https://clokep.github.io/tag/yahoo.html">Yahoo</a></li>
+	    <li class="tag-1"><a href="https://clokep.github.io/tag/mozilla.html">Mozilla</a></li>
+	    <li class="tag-3"><a href="https://clokep.github.io/tag/wat.html">Wat</a></li>
+	    <li class="tag-4"><a href="https://clokep.github.io/tag/messaging.html">messaging</a></li>
+	    <li class="tag-4"><a href="https://clokep.github.io/tag/status.html">status</a></li>
+	    <li class="tag-1"><a href="https://clokep.github.io/tag/programming.html">programming</a></li>
+	    <li class="tag-3"><a href="https://clokep.github.io/tag/customizing.html">customizing</a></li>
+	    <li class="tag-2"><a href="https://clokep.github.io/tag/im.html">IM</a></li>
+	    <li class="tag-2"><a href="https://clokep.github.io/tag/community.html">community</a></li>
+	    <li class="tag-4"><a href="https://clokep.github.io/tag/email.html">email</a></li>
+	    <li class="tag-2"><a href="https://clokep.github.io/tag/thunderbird.html">Thunderbird</a></li>
+	    <li class="tag-4"><a href="https://clokep.github.io/tag/smtp.html">SMTP</a></li>
+	    <li class="tag-2"><a href="https://clokep.github.io/tag/instant-messaging.html">instant messaging</a></li>
+	    <li class="tag-2"><a href="https://clokep.github.io/tag/chat.html">chat</a></li>
+	    <li class="tag-4"><a href="https://clokep.github.io/tag/pop3.html">POP3</a></li>
+</ul>
+
+
+
+<h4><i class="icon-rss"></i>Subscribe</h4>
+<ul>
+  <li><a href="https://clokep.github.io/feeds/all.atom.xml">Full Atom Feed</a></li>
+  <li><a href="https://clokep.github.io/feeds/all.rss.xml">Full RSS Feed</a></li>
+</ul>
+
+</div> </div><!-- /.row -->
+
+
+</section>
+
+       </div><!-- /.row -->
+    </div><!-- /.container -->
+
+
+       <div class="container.nopad bg">
+
+    
+        <footer id="credits" class="row">
+          <div class="seven columns left-center">
+
+                   <address id="about" class="vcard body">
+                    Proudly powered by <a href="http://getpelican.com/">Pelican</a>,
+                    which takes great advantage of <a href="http://python.org">Python</a>.
+                    <br />
+                    Based on the <a target="_blank" href="http://gumbyframework.com">Gumby Framework</a>
+                    </address>
+          </div>
+
+
+          <div class="seven columns">
+            <div class="row">
+              <ul class="socbtns">
+
+                <li><div class="btn primary"><a href="https://www.github.com/clokep" target="_blank">Github</a></div></li>
+
+                <li><div class="btn bitbucket"><a href="https://bitbucket.org/clokep" target="_blank">BitBucket</a></div></li>
+
+                <li><div class="btn mozillians"><a href="https://mozillians.org/clokep" target="_blank">Mozillians</a></div></li>
+
+                <li><div class="btn twitter"><a href="https://www.twitter.com/clokep" target="_blank">Twitter</a></div></li>
+
+
+
+              </ul>
+            </div>
+          </div>
+        </footer>
+
+    </div>
+
+
+  <script src="https://clokep.github.io/theme/js/libs/jquery-1.9.1.min.js"></script>
+  <script src="https://clokep.github.io/theme/js/libs/gumby.min.js"></script>
+  <script src="https://clokep.github.io/theme/js/plugins.js"></script>
+</body>
+</html>

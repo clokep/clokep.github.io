@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+        <title>On Status</title>
+        <meta charset="utf-8" />
+        <link href="https://clokep.github.io/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="Like bricks in the sky Full Atom Feed" />
+        <link href="https://clokep.github.io/feeds/all.rss.xml" type="application/rss+xml" rel="alternate" title="Like bricks in the sky Full RSS Feed" />
+        <link href="https://clokep.github.io/feeds/mozilla.atom.xml" type="application/atom+xml" rel="alternate" title="Like bricks in the sky Categories Atom Feed" />
+        <link href="https://clokep.github.io/feeds/mozilla.rss.xml" type="application/rss+xml" rel="alternate" title="Like bricks in the sky Categories RSS Feed" />
+
+
+        <!-- Mobile viewport optimized: j.mp/bplateviewport -->
+        <meta name="viewport" content="width=device-width,initial-scale=1, maximum-scale=1">
+
+        <link rel="stylesheet" type="text/css" href="https://clokep.github.io/theme/gumby.css" />
+        <link rel="stylesheet" type="text/css" href="https://clokep.github.io/theme/style.css" />
+        <link rel="stylesheet" type="text/css" href="https://clokep.github.io/theme/pygment.css" />
+
+        <script src="https://clokep.github.io/theme/js/libs/modernizr-2.6.2.min.js"></script>
+
+
+
+
+
+
+</head>
+
+<body id="index" class="home">
+
+
+    <div class="container">
+
+        <div class="row">
+
+          <header id="banner" class="body">
+                  <h1><a href="https://clokep.github.io">Like bricks in the sky <strong></strong></a></h1>
+          </header><!-- /#banner -->
+
+            <div id="navigation" class="navbar row">
+              <a href="#" gumby-trigger="#navigation &gt; ul" class="toggle"><i class="icon-menu"></i></a>
+             
+              <ul class="columns">
+                <li><a href="https://clokep.github.io">Home</a></li>
+
+                <li><a href="https://clokep.github.io/pages/about.html">About</a></li>
+                <li><a href="https://clokep.github.io/pages/contact.html">Contact</a></li>
+
+                <li><a href="https://clokep.github.io/archives.html">Archives</a></li>
+                <li><a href="https://clokep.github.io/tags.html">Tags</a></li>
+              </ul>
+            </div>
+
+<section id="content" class="body">
+
+   <div class="row">
+        <div class="eleven columns">
+
+
+            <header>
+              <h2 class="entry-title">
+                <a href="https://clokep.github.io/on-status.html" rel="bookmark"
+                   title="Permalink to On Status">On Status</a></h2>
+           
+            </header>
+            <footer class="post-info">
+              <abbr class="published" title="2012-10-17T01:33:00">
+                10/17/2012 01:33 AM UTC
+              </abbr>
+              <address class="vcard author">
+                By <a class="url fn" href="https://clokep.github.io/author/patrick-cloke.html">Patrick Cloke</a>
+              </address>
+            </footer><!-- /.post-info -->
+            <div class="entry-content">
+              <p>Something that comes up often about Instantbird is why we only support
+three statuses: Available, Unavailable and Offline.&nbsp; (We do actually
+support a fourth one too, Idle, but that is set automatically, not
+chosen by the user.)&nbsp; Frequently this discussion is in the context of
+wanting an &quot;Invisible&quot; status, but I'll get to that later...</p>
+<p>Many users have talked to us on IRC, email or via bugs and complained
+about wanting an &quot;Away&quot; status or a &quot;Do Not Disturb&quot; status.&nbsp; There's a
+few issues with this:</p>
+<ol class="arabic simple">
+<li>What's really the difference between &quot;Unavailable&quot;, &quot;Away&quot; and &quot;Do
+Not Disturb&quot;?&nbsp; Do you really need to choose them individually?
+(Other things that fit into here: &quot;Not at my desk&quot;, &quot;on the phone&quot;,
+&quot;busy&quot;, &quot;stepped out&quot;.&nbsp; It is amazing how some protocols have so many
+ways to describe being unavailable!)</li>
+<li>A technical issue that we often run into is trying to shoehorn
+different protocol implementations into our abstract protocol
+interface.&nbsp; (We already have some fairly complicated interfaces
+around joining chat rooms, creating different account, etc. because
+of this.)</li>
+<li>Setting yourself as &quot;Away&quot; or &quot;Invisible&quot; is a lie.&nbsp; Perhaps this is
+me being overly idealistic, but why would you set yourself as
+&quot;Away&quot;?&nbsp; It seems that this is something that should be done
+automatically (when you lock your display, perhaps?).&nbsp; You can't be
+&quot;Away&quot; and using your computer at the same time!
+Again, perhaps being idealistic, but what is the point of the
+&quot;Invisible&quot; status?&nbsp; If you wish to be hidden from someone
+(everyone?) why not just block those users.&nbsp; Or ignore them when they
+send you a message.&nbsp; If you are busy, set yourself to &quot;Unavailable&quot;
+and people should understand that they should not talk to you...if
+they don't, well...do you really want them talking to you ever?&nbsp; (Are
+they really your friend?&nbsp; I guess you don't get to choose your
+co-workers, but still.)&nbsp; Now, perhaps this is just my opinion as
+being someone who never really hard an &quot;Invisible&quot; status (I actually
+remember it being added to the AIM client at some point).</li>
+</ol>
+<p>At this point you probably don't believe me that there's really <em>that</em>
+many different protocol statuses out there, so I figured I'd illustrate
+a few protocols in a matrix.&nbsp; Note that this isn't meant to be
+exhaustive, just to show how complicated of a situation this really is.
+All protocols can obviously be &quot;offline&quot; as well, but that's not shown
+in the table.</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="30%" />
+<col width="13%" />
+<col width="21%" />
+<col width="17%" />
+<col width="19%" />
+</colgroup>
+<thead valign="bottom">
+<tr><th class="head">&nbsp;</th>
+<th class="head">Available</th>
+<th class="head">Unavailable</th>
+<th class="head">Phone</th>
+<th class="head">Invisible</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr><td>Oscar (AIM/ICQ)</td>
+<td>Online</td>
+<td>Away</td>
+<td>&nbsp;</td>
+<td>Invisible</td>
+</tr>
+<tr><td>IRC</td>
+<td>Online</td>
+<td>Away</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+</tr>
+<tr><td>Microsoft Lync</td>
+<td>Online</td>
+<td><ul class="first last simple">
+<li>Busy</li>
+<li>Away</li>
+<li>In a meeting</li>
+</ul>
+</td>
+<td>In a call</td>
+<td>&nbsp;</td>
+</tr>
+<tr><td>Yahoo! Messenger</td>
+<td>Available</td>
+<td><ul class="first last simple">
+<li>Busy</li>
+<li>Stepped out</li>
+<li>Be right back</li>
+<li>Not at my desk</li>
+</ul>
+</td>
+<td>On the phone</td>
+<td>&nbsp;</td>
+</tr>
+<tr><td>Windows Live Messenger</td>
+<td>Online</td>
+<td><ul class="first last simple">
+<li>Busy</li>
+<li>Away</li>
+<li>Be Right Back</li>
+<li>Out to lunch</li>
+</ul>
+</td>
+<td>On the phone</td>
+<td>Appear offline</td>
+</tr>
+<tr><td>XMPP (e.g. Google Talk)</td>
+<td>Available</td>
+<td>Busy</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+</tr>
+</tbody>
+</table>
+
+            </div><!-- /.entry-content -->
+
+
+        </div><!-- /.eleven.columns -->
+        
+<div class="three columns">
+
+<h4>Pages</h4>
+
+ <ul>
+      <li><a href="https://clokep.github.io/pages/about.html">About</a></li>
+      <li><a href="https://clokep.github.io/pages/contact.html">Contact</a></li>
+  </ul>
+
+<h4>Categories</h4>
+<ul>
+		<li><a href="https://clokep.github.io/category/mozilla.html">Mozilla</a></li>
+</ul>
+
+
+<h4><i class="icon-tag"></i>Tags</h4>
+	<ul>
+	    <li class="tag-4"><a href="https://clokep.github.io/tag/crosspost.html">crosspost</a></li>
+	    <li class="tag-4"><a href="https://clokep.github.io/tag/imap.html">IMAP</a></li>
+	    <li class="tag-3"><a href="https://clokep.github.io/tag/specifications.html">specifications</a></li>
+	    <li class="tag-1"><a href="https://clokep.github.io/tag/instantbird.html">Instantbird</a></li>
+	    <li class="tag-4"><a href="https://clokep.github.io/tag/oscar.html">OSCAR</a></li>
+	    <li class="tag-2"><a href="https://clokep.github.io/tag/gsoc.html">GSoC</a></li>
+	    <li class="tag-3"><a href="https://clokep.github.io/tag/google.html">Google</a></li>
+	    <li class="tag-1"><a href="https://clokep.github.io/tag/irc.html">IRC</a></li>
+	    <li class="tag-4"><a href="https://clokep.github.io/tag/rss.html">RSS</a></li>
+	    <li class="tag-4"><a href="https://clokep.github.io/tag/lightning.html">Lightning</a></li>
+	    <li class="tag-3"><a href="https://clokep.github.io/tag/sipe.html">SIPE</a></li>
+	    <li class="tag-3"><a href="https://clokep.github.io/tag/bugs.html">bugs</a></li>
+	    <li class="tag-2"><a href="https://clokep.github.io/tag/yahoo.html">Yahoo</a></li>
+	    <li class="tag-1"><a href="https://clokep.github.io/tag/mozilla.html">Mozilla</a></li>
+	    <li class="tag-3"><a href="https://clokep.github.io/tag/wat.html">Wat</a></li>
+	    <li class="tag-4"><a href="https://clokep.github.io/tag/messaging.html">messaging</a></li>
+	    <li class="tag-4"><a href="https://clokep.github.io/tag/status.html">status</a></li>
+	    <li class="tag-1"><a href="https://clokep.github.io/tag/programming.html">programming</a></li>
+	    <li class="tag-3"><a href="https://clokep.github.io/tag/customizing.html">customizing</a></li>
+	    <li class="tag-2"><a href="https://clokep.github.io/tag/im.html">IM</a></li>
+	    <li class="tag-2"><a href="https://clokep.github.io/tag/community.html">community</a></li>
+	    <li class="tag-4"><a href="https://clokep.github.io/tag/email.html">email</a></li>
+	    <li class="tag-2"><a href="https://clokep.github.io/tag/thunderbird.html">Thunderbird</a></li>
+	    <li class="tag-4"><a href="https://clokep.github.io/tag/smtp.html">SMTP</a></li>
+	    <li class="tag-2"><a href="https://clokep.github.io/tag/instant-messaging.html">instant messaging</a></li>
+	    <li class="tag-2"><a href="https://clokep.github.io/tag/chat.html">chat</a></li>
+	    <li class="tag-4"><a href="https://clokep.github.io/tag/pop3.html">POP3</a></li>
+</ul>
+
+
+
+<h4><i class="icon-rss"></i>Subscribe</h4>
+<ul>
+  <li><a href="https://clokep.github.io/feeds/all.atom.xml">Full Atom Feed</a></li>
+  <li><a href="https://clokep.github.io/feeds/all.rss.xml">Full RSS Feed</a></li>
+</ul>
+
+</div> </div><!-- /.row -->
+
+
+</section>
+
+       </div><!-- /.row -->
+    </div><!-- /.container -->
+
+
+       <div class="container.nopad bg">
+
+    
+        <footer id="credits" class="row">
+          <div class="seven columns left-center">
+
+                   <address id="about" class="vcard body">
+                    Proudly powered by <a href="http://getpelican.com/">Pelican</a>,
+                    which takes great advantage of <a href="http://python.org">Python</a>.
+                    <br />
+                    Based on the <a target="_blank" href="http://gumbyframework.com">Gumby Framework</a>
+                    </address>
+          </div>
+
+
+          <div class="seven columns">
+            <div class="row">
+              <ul class="socbtns">
+
+                <li><div class="btn primary"><a href="https://www.github.com/clokep" target="_blank">Github</a></div></li>
+
+                <li><div class="btn bitbucket"><a href="https://bitbucket.org/clokep" target="_blank">BitBucket</a></div></li>
+
+                <li><div class="btn mozillians"><a href="https://mozillians.org/clokep" target="_blank">Mozillians</a></div></li>
+
+                <li><div class="btn twitter"><a href="https://www.twitter.com/clokep" target="_blank">Twitter</a></div></li>
+
+
+
+              </ul>
+            </div>
+          </div>
+        </footer>
+
+    </div>
+
+
+  <script src="https://clokep.github.io/theme/js/libs/jquery-1.9.1.min.js"></script>
+  <script src="https://clokep.github.io/theme/js/libs/gumby.min.js"></script>
+  <script src="https://clokep.github.io/theme/js/plugins.js"></script>
+</body>
+</html>

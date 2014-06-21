@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+        <title>Adding a new protocol (SIPE/Office Communicator) to Instantbird (part 1)</title>
+        <meta charset="utf-8" />
+        <link href="https://clokep.github.io/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="Like bricks in the sky Full Atom Feed" />
+        <link href="https://clokep.github.io/feeds/all.rss.xml" type="application/rss+xml" rel="alternate" title="Like bricks in the sky Full RSS Feed" />
+        <link href="https://clokep.github.io/feeds/mozilla.atom.xml" type="application/atom+xml" rel="alternate" title="Like bricks in the sky Categories Atom Feed" />
+        <link href="https://clokep.github.io/feeds/mozilla.rss.xml" type="application/rss+xml" rel="alternate" title="Like bricks in the sky Categories RSS Feed" />
+
+
+        <!-- Mobile viewport optimized: j.mp/bplateviewport -->
+        <meta name="viewport" content="width=device-width,initial-scale=1, maximum-scale=1">
+
+        <link rel="stylesheet" type="text/css" href="https://clokep.github.io/theme/gumby.css" />
+        <link rel="stylesheet" type="text/css" href="https://clokep.github.io/theme/style.css" />
+        <link rel="stylesheet" type="text/css" href="https://clokep.github.io/theme/pygment.css" />
+
+        <script src="https://clokep.github.io/theme/js/libs/modernizr-2.6.2.min.js"></script>
+
+
+
+
+
+
+</head>
+
+<body id="index" class="home">
+
+
+    <div class="container">
+
+        <div class="row">
+
+          <header id="banner" class="body">
+                  <h1><a href="https://clokep.github.io">Like bricks in the sky <strong></strong></a></h1>
+          </header><!-- /#banner -->
+
+            <div id="navigation" class="navbar row">
+              <a href="#" gumby-trigger="#navigation &gt; ul" class="toggle"><i class="icon-menu"></i></a>
+             
+              <ul class="columns">
+                <li><a href="https://clokep.github.io">Home</a></li>
+
+                <li><a href="https://clokep.github.io/pages/about.html">About</a></li>
+                <li><a href="https://clokep.github.io/pages/contact.html">Contact</a></li>
+
+                <li><a href="https://clokep.github.io/archives.html">Archives</a></li>
+                <li><a href="https://clokep.github.io/tags.html">Tags</a></li>
+              </ul>
+            </div>
+
+<section id="content" class="body">
+
+   <div class="row">
+        <div class="eleven columns">
+
+
+            <header>
+              <h2 class="entry-title">
+                <a href="https://clokep.github.io/adding-a-new-protocol-sipeoffice-communicator-to-instantbird-part-1.html" rel="bookmark"
+                   title="Permalink to Adding a new protocol (SIPE/Office Communicator) to Instantbird (part 1)">Adding a new protocol (SIPE/Office Communicator) to Instantbird (part 1)</a></h2>
+           
+            </header>
+            <footer class="post-info">
+              <abbr class="published" title="2011-06-19T01:53:00">
+                06/19/2011 01:53 AM UTC
+              </abbr>
+              <address class="vcard author">
+                By <a class="url fn" href="https://clokep.github.io/author/patrick-cloke.html">Patrick Cloke</a>
+              </address>
+            </footer><!-- /.post-info -->
+            <div class="entry-content">
+              <p><a class="reference external" href="http://en.wikipedia.org/wiki/Office_Communicator">Microsoft Office Communicator</a> is an instant messaging client that
+integrates into the <a class="reference external" href="http://en.wikipedia.org/wiki/Microsoft_Exchange_Server">Exchange Messaging Server</a> (the protocol behind it
+is an extended version of SIP/SIMPLE).&nbsp; Anyway, there's a <a class="reference external" href="http://developer.pidgin.im/wiki/WhatIsLibpurple">libpurple</a>
+(i.e. the backend of <a class="reference external" href="http://instantbird.com/">Instantbird</a> and <a class="reference external" href="http://pidgin.im/">Pidgin</a>) protocol plug-in for
+OCS (Office Communicator Server) called <a class="reference external" href="http://sipe.sourceforge.net/">SIPE</a>.&nbsp; (It's also striving
+for a generic library to connect to OCS, but that's not quite there
+yet.)</p>
+<p>I've been interested in getting this to compile in the Instantbird
+framework for a while now, adding a new protocol to Instantbird.&nbsp; First
+of course I need the SIPE source, I chose to grab a release <a class="reference external" href="http://sourceforge.net/projects/sipe/files/sipe/pidgin-sipe-1.11.2/">source
+bundle</a> instead of using the <a class="reference external" href="http://sourceforge.net/apps/mediawiki/sipe/index.php?title=Windows_Build">git repository</a>, just for ease moving
+files around, etc.&nbsp; There's a rather vague <a class="reference external" href="http://sourceforge.net/apps/mediawiki/sipe/index.php?title=Windows_Build">Windows build</a> page on the
+wiki that I started with, says I need:</p>
+<ul class="simple">
+<li>libpurple &gt;2.4.0 (we have 2.7.11)</li>
+<li>libglib &gt;2.12.0 (we have 2.28.6)</li>
+<li>libxml2 (we have this)</li>
+<li>gmime &gt;2.4 (not currently used)</li>
+</ul>
+<p>So great, <a class="reference external" href="https://wiki.instantbird.org/Instantbird:Third_party_code">we have most of the dependencies</a>! We just need one more.
+So I go grab, <a class="reference external" href="http://developer.gnome.org/gmime/">gmime</a>from the GNOME website (2.5.7, which is the
+newest stable, currently), again as a source bundle and put the
+necessary files in purple/libraries/gmime and edit the makefile so it
+will (attempt) to compile.&nbsp; But great -- it requires <a class="reference external" href="http://www.gnu.org/software/libiconv/">libiconv</a>, which
+apparently is very difficult to compile, especially on Windows.&nbsp; Luckily
+for me there's a Windows version (not a port, but one that uses the
+native Win32 APIs with the same interface): <a class="reference external" href="http://code.google.com/p/win-iconv/">win-iconv</a>.&nbsp; This compiled
+like a champ when added as purple/libraries/iconv.</p>
+<p>Unfortunately when I went back to compiling gmime, it attempts to
+access parts of glib we're not using (gio, in particular) and thus is
+not in our source code.&nbsp; I can grab the <a class="reference external" href="http://developer.gnome.org/glib/">glib</a> source (2.28.6 to match,
+of course) and add the gio subfolder, but first we should check if this
+part of gmime is even used by SIPE! (My guess is that it is <em>not</em>, but
+that's where I'm at now.&nbsp; I'll post back when I get further.</p>
+
+            </div><!-- /.entry-content -->
+
+
+        </div><!-- /.eleven.columns -->
+        
+<div class="three columns">
+
+<h4>Pages</h4>
+
+ <ul>
+      <li><a href="https://clokep.github.io/pages/about.html">About</a></li>
+      <li><a href="https://clokep.github.io/pages/contact.html">Contact</a></li>
+  </ul>
+
+<h4>Categories</h4>
+<ul>
+		<li><a href="https://clokep.github.io/category/mozilla.html">Mozilla</a></li>
+</ul>
+
+
+<h4><i class="icon-tag"></i>Tags</h4>
+	<ul>
+	    <li class="tag-4"><a href="https://clokep.github.io/tag/crosspost.html">crosspost</a></li>
+	    <li class="tag-4"><a href="https://clokep.github.io/tag/imap.html">IMAP</a></li>
+	    <li class="tag-3"><a href="https://clokep.github.io/tag/specifications.html">specifications</a></li>
+	    <li class="tag-1"><a href="https://clokep.github.io/tag/instantbird.html">Instantbird</a></li>
+	    <li class="tag-4"><a href="https://clokep.github.io/tag/oscar.html">OSCAR</a></li>
+	    <li class="tag-2"><a href="https://clokep.github.io/tag/gsoc.html">GSoC</a></li>
+	    <li class="tag-3"><a href="https://clokep.github.io/tag/google.html">Google</a></li>
+	    <li class="tag-1"><a href="https://clokep.github.io/tag/irc.html">IRC</a></li>
+	    <li class="tag-4"><a href="https://clokep.github.io/tag/rss.html">RSS</a></li>
+	    <li class="tag-4"><a href="https://clokep.github.io/tag/lightning.html">Lightning</a></li>
+	    <li class="tag-3"><a href="https://clokep.github.io/tag/sipe.html">SIPE</a></li>
+	    <li class="tag-3"><a href="https://clokep.github.io/tag/bugs.html">bugs</a></li>
+	    <li class="tag-2"><a href="https://clokep.github.io/tag/yahoo.html">Yahoo</a></li>
+	    <li class="tag-1"><a href="https://clokep.github.io/tag/mozilla.html">Mozilla</a></li>
+	    <li class="tag-3"><a href="https://clokep.github.io/tag/wat.html">Wat</a></li>
+	    <li class="tag-4"><a href="https://clokep.github.io/tag/messaging.html">messaging</a></li>
+	    <li class="tag-4"><a href="https://clokep.github.io/tag/status.html">status</a></li>
+	    <li class="tag-1"><a href="https://clokep.github.io/tag/programming.html">programming</a></li>
+	    <li class="tag-3"><a href="https://clokep.github.io/tag/customizing.html">customizing</a></li>
+	    <li class="tag-2"><a href="https://clokep.github.io/tag/im.html">IM</a></li>
+	    <li class="tag-2"><a href="https://clokep.github.io/tag/community.html">community</a></li>
+	    <li class="tag-4"><a href="https://clokep.github.io/tag/email.html">email</a></li>
+	    <li class="tag-2"><a href="https://clokep.github.io/tag/thunderbird.html">Thunderbird</a></li>
+	    <li class="tag-4"><a href="https://clokep.github.io/tag/smtp.html">SMTP</a></li>
+	    <li class="tag-2"><a href="https://clokep.github.io/tag/instant-messaging.html">instant messaging</a></li>
+	    <li class="tag-2"><a href="https://clokep.github.io/tag/chat.html">chat</a></li>
+	    <li class="tag-4"><a href="https://clokep.github.io/tag/pop3.html">POP3</a></li>
+</ul>
+
+
+
+<h4><i class="icon-rss"></i>Subscribe</h4>
+<ul>
+  <li><a href="https://clokep.github.io/feeds/all.atom.xml">Full Atom Feed</a></li>
+  <li><a href="https://clokep.github.io/feeds/all.rss.xml">Full RSS Feed</a></li>
+</ul>
+
+</div> </div><!-- /.row -->
+
+
+</section>
+
+       </div><!-- /.row -->
+    </div><!-- /.container -->
+
+
+       <div class="container.nopad bg">
+
+    
+        <footer id="credits" class="row">
+          <div class="seven columns left-center">
+
+                   <address id="about" class="vcard body">
+                    Proudly powered by <a href="http://getpelican.com/">Pelican</a>,
+                    which takes great advantage of <a href="http://python.org">Python</a>.
+                    <br />
+                    Based on the <a target="_blank" href="http://gumbyframework.com">Gumby Framework</a>
+                    </address>
+          </div>
+
+
+          <div class="seven columns">
+            <div class="row">
+              <ul class="socbtns">
+
+                <li><div class="btn primary"><a href="https://www.github.com/clokep" target="_blank">Github</a></div></li>
+
+                <li><div class="btn bitbucket"><a href="https://bitbucket.org/clokep" target="_blank">BitBucket</a></div></li>
+
+                <li><div class="btn mozillians"><a href="https://mozillians.org/clokep" target="_blank">Mozillians</a></div></li>
+
+                <li><div class="btn twitter"><a href="https://www.twitter.com/clokep" target="_blank">Twitter</a></div></li>
+
+
+
+              </ul>
+            </div>
+          </div>
+        </footer>
+
+    </div>
+
+
+  <script src="https://clokep.github.io/theme/js/libs/jquery-1.9.1.min.js"></script>
+  <script src="https://clokep.github.io/theme/js/libs/gumby.min.js"></script>
+  <script src="https://clokep.github.io/theme/js/plugins.js"></script>
+</body>
+</html>

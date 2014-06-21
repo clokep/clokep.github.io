@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Like bricks in the sky</title><link href="https://clokep.github.io/" rel="alternate"></link><link href="https://clokep.github.io/feeds/tag/oscar.atom.xml" rel="self"></link><id>https://clokep.github.io/</id><updated>2012-11-29T03:11:00-05:00</updated><entry><title>JavaScript typed arrays pain</title><link href="https://clokep.github.io/javascript-typed-arrays-pain.html" rel="alternate"></link><updated>2012-11-29T03:11:00-05:00</updated><author><name>Patrick Cloke</name></author><id>tag:https://clokep.github.io,2012-11-29:javascript-typed-arrays-pain.html</id><summary type="html">&lt;p&gt;If you've ever tried to deal with binary data in JavaScript you know
+it isn't much fun and you usually resort to using strings lots of
+charCodeAt and related functions.&amp;nbsp; &lt;a class="reference external" href="https://developer.mozilla.org/en-US/docs/JavaScript_typed_arrays"&gt;Typed arrays&lt;/a&gt; are supposed to solve
+this though!&amp;nbsp; The typed array API consists of creating a buffer of bytes
+(called an &lt;a class="reference external" href="https://developer.mozilla.org/en-US/docs/JavaScript_typed_arrays/ArrayBuffer"&gt;ArrayBuffer&lt;/a&gt;) and then manipulating those bytes via
+different views (&lt;a class="reference external" href="https://developer.mozilla.org/en-US/docs/JavaScript_typed_arrays/ArrayBufferView"&gt;ArrayBufferView&lt;/a&gt;s).&amp;nbsp; You can have multiple views of
+the same buffer, starting at different offsets, of different lengths and
+types...which is all neat from a technical point of view, but is it
+really useful?&amp;nbsp; It is kind of nice working with the views as if they
+were normal arrays though.&lt;/p&gt;
+&lt;p&gt;I've been playing with these ArrayBuffers quite a bit as I'm working
+on an implementation of the &lt;a class="reference external" href="http://en.wikipedia.org/wiki/OSCAR_protocol"&gt;OSCAR protocol&lt;/a&gt; (used for &lt;a class="reference external" href="http://en.wikipedia.org/wiki/AOL_Instant_Messenger"&gt;AOL Instant
+Messenger&lt;/a&gt; and &lt;a class="reference external" href="http://en.wikipedia.org/wiki/ICQ"&gt;ICQ&lt;/a&gt;) in the chat backend (for Instantbird /
+Thunderbird).&amp;nbsp; (As an aside, the OSCAR protocol Wikipedia page has
+surprisingly good documentation of some of the underlying data
+structures of the protocol...)&amp;nbsp; I started by writing some test code
+using ArrayBuffers and views, which have been around a while: since
+Gecko 2.0 in fact!&amp;nbsp; I quickly ran into some tedious issues with
+repetitive code such as:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="cm"&gt;/*&lt;/span&gt;
+&lt;span class="cm"&gt; * A TLV (Type, Length and Value) data structure:&lt;/span&gt;
+&lt;span class="cm"&gt; *  Unsigned Short  type    Describes what the value represents.&lt;/span&gt;
+&lt;span class="cm"&gt; *  Unsigned Short  length  The length of the data block.&lt;/span&gt;
+&lt;span class="cm"&gt; *  Bytes           value   The raw payload.&lt;/span&gt;
+&lt;span class="cm"&gt; *&lt;/span&gt;
+&lt;span class="cm"&gt; * The overall length of a TlvBlock is length + 4.&lt;/span&gt;
+&lt;span class="cm"&gt; *&lt;/span&gt;
+&lt;span class="cm"&gt; * The inputs to this are:&lt;/span&gt;
+&lt;span class="cm"&gt; *  aType    The type of the TLV Block.&lt;/span&gt;
+&lt;span class="cm"&gt; *  aValue   An ArrayBuffer containing the data.&lt;/span&gt;
+&lt;span class="cm"&gt; */&lt;/span&gt;
+&lt;span class="kd"&gt;function&lt;/span&gt; &lt;span class="nx"&gt;TlvBlock&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;aType&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="nx"&gt;aValue&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+  &lt;span class="kd"&gt;let&lt;/span&gt; &lt;span class="nx"&gt;data&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="k"&gt;new&lt;/span&gt; &lt;span class="nx"&gt;ArrayBuffer&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;aValue&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;byteLength&lt;/span&gt; &lt;span class="o"&gt;+&lt;/span&gt; &lt;span class="mi"&gt;4&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
+  &lt;span class="c1"&gt;// The first two bytes are unsigned shorts.&lt;/span&gt;
+  &lt;span class="kd"&gt;let&lt;/span&gt; &lt;span class="nx"&gt;view&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="k"&gt;new&lt;/span&gt; &lt;span class="nx"&gt;Uint16Array&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;data&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;2&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
+  &lt;span class="nx"&gt;view&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="nx"&gt;aType&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+  &lt;span class="nx"&gt;view&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="nx"&gt;aValue&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;byteLength&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+
+  &lt;span class="c1"&gt;// The rest just gets the data copied into it.&lt;/span&gt;
+  &lt;span class="nx"&gt;view&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="k"&gt;new&lt;/span&gt; &lt;span class="nx"&gt;Uint8Array&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;data&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;4&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
+  &lt;span class="nx"&gt;view&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;set&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="k"&gt;new&lt;/span&gt; &lt;span class="nx"&gt;Uint8Array&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;aValue&lt;/span&gt;&lt;span class="p"&gt;));&lt;/span&gt;
+
+  &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="nx"&gt;data&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;span class="p"&gt;}&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;This actually illustrates two annoying issues I have:&lt;/p&gt;
+&lt;ol class="arabic simple"&gt;
+&lt;li&gt;I end up with extra lines of code defining a new view every time I
+switch data types.&lt;/li&gt;
+&lt;li&gt;There's no simple way to copy an ArrayBuffer into a part of an
+ArrayBuffer. In the above example I create a Uint8Array view of the
+target location, a Uint8Array view of the source location and then
+set the source to the target. Seems simple once you figure it out,
+but it took a while to figure out.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;(As an aside, some of you might find the following function helpful,
+it is essentially a &lt;a class="reference external" href="http://en.cppreference.com/w/cpp/string/byte/memcpy"&gt;memcpy&lt;/a&gt; for ArrayBuffers...this isn't really
+tested heavily at all, however.)&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="cm"&gt;/*&lt;/span&gt;
+&lt;span class="cm"&gt; * aTarget / aSource are ArrayBuffers&lt;/span&gt;
+&lt;span class="cm"&gt; */&lt;/span&gt;
+&lt;span class="kd"&gt;function&lt;/span&gt; &lt;span class="nx"&gt;copyBytes&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;aTarget&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="nx"&gt;aSource&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="nx"&gt;aTargetOffset&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="nx"&gt;aSourceOffset&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="nx"&gt;aLength&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="nx"&gt;aSource&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;byteLength&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+  &lt;span class="c1"&gt;// The rest just gets the data copied into it.&lt;/span&gt;
+  &lt;span class="kd"&gt;let&lt;/span&gt; &lt;span class="nx"&gt;view&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="k"&gt;new&lt;/span&gt; &lt;span class="nx"&gt;Uint8Array&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;aTarget&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="nx"&gt;aTargetOffset&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
+  &lt;span class="nx"&gt;view&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;set&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="k"&gt;new&lt;/span&gt; &lt;span class="nx"&gt;Uint8Array&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;aSource&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="nx"&gt;aSourceOffset&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="nx"&gt;aLength&lt;/span&gt;&lt;span class="p"&gt;));&lt;/span&gt;
+&lt;span class="p"&gt;}&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;OK, so typed arrays seem good, but kind of annoying, right?
+Wrong...the OSCAR protocol is a &amp;quot;network order&amp;quot; protocol (aka it is big
+endian). At this point you're probably thinking &amp;quot;OK, so the ArrayBuffer
+constructor must take an endianess flag!&amp;quot;&amp;nbsp; Wrong, it does no such
+thing.&amp;nbsp; &amp;quot;Hmmm...Well do the ArrayBufferViews take an endianess flag?&amp;quot;
+Nope, wrong again.&amp;nbsp; The only way to specify the endianess of the data is
+to use a &lt;a class="reference external" href="https://developer.mozilla.org/en-US/docs/JavaScript_typed_arrays/DataView"&gt;DataView&lt;/a&gt;, a slightly different interface to the underlying
+bytes.&amp;nbsp; It offers an API to individually set different data elements via
+their offset and endianess.&amp;nbsp; (If you're too lazy to read the
+documentation all the way through, DataView assumes big endian: makes my
+life easier!)&lt;/p&gt;
+&lt;p&gt;For the curious, JavaScript typed arrays use the system endianess,
+which in my opinion is pretty much useless (at least if you plan on
+sharing data) since you can never guarantee the endianess to be either
+big or little endian.&amp;nbsp; (The fun part is that this isn't even documented,
+I found it on &lt;a class="reference external" href="http://stackoverflow.com/questions/7869752/javascript-typed-arrays-and-endianness"&gt;Stack Overflow&lt;/a&gt; and verified.)&lt;/p&gt;
+&lt;p&gt;So, in summary...if you plan on networking at all with ArrayBuffers,
+don't use ArrayBufferViews, use DataViews.&amp;nbsp; (Although Uint8Arrays and
+Int8Arrays should work fine!)&lt;/p&gt;
+&lt;p&gt;And to not rant the &lt;em&gt;entire&lt;/em&gt; time, working with typed arrays certainly
+does beat strings + charCodeAt!&lt;/p&gt;
+</summary><category term="IM"></category><category term="Instantbird"></category><category term="Mozilla"></category><category term="OSCAR"></category><category term="Thunderbird"></category><category term="Wat"></category></entry></feed>

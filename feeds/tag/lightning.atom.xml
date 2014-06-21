@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Like bricks in the sky</title><link href="https://clokep.github.io/" rel="alternate"></link><link href="https://clokep.github.io/feeds/tag/lightning.atom.xml" rel="self"></link><id>https://clokep.github.io/</id><updated>2011-07-08T00:46:00-04:00</updated><entry><title>Shared Lightning profile across Linux and Windows</title><link href="https://clokep.github.io/shared-lightning-profile-across-linux-and-windows.html" rel="alternate"></link><updated>2011-07-08T00:46:00-04:00</updated><author><name>Patrick Cloke</name></author><id>tag:https://clokep.github.io,2011-07-08:shared-lightning-profile-across-linux-and-windows.html</id><summary type="html">&lt;p&gt;In &lt;a class="reference external" href="irc://irc.mozilla.org/calendar"&gt;#calendar on Mozilla IRC&lt;/a&gt; the past few days a user has been
+asking about using a shared profile on Thunderbird between Linux and
+Windows (&amp;quot;shared&amp;quot; meaning a dual boot system of Linux/Windows, but not
+at the same time, obviously).&amp;nbsp; Generally this isn't a big deal UNLESS
+you have a binary extension, in which case you'd have to reinstall the
+extension every time! That's awfully lame.&lt;/p&gt;
+&lt;p&gt;BUT there should be a way to make a unified extension for all
+operating systems.&amp;nbsp; In fact &lt;a class="reference external" href="https://wiki.mozilla.org/User:Ssitter/UnifiedLightning"&gt;ssitter had written an article to do
+that&lt;/a&gt;.&amp;nbsp; It needs some updating to account for the Mozilla 2 XPCOM
+changes, however.&lt;/p&gt;
+&lt;p&gt;The steps are mostly the same, with some added.&lt;/p&gt;
+&lt;ol class="arabic simple"&gt;
+&lt;li&gt;Download whatever versions you want (&lt;a class="reference external" href="http://releases.mozilla.org/pub/mozilla.org/calendar/lightning/releases/1.0b4/"&gt;perhaps 1.0b4&lt;/a&gt;?).&lt;/li&gt;
+&lt;li&gt;Unzip them all and choose which one will be your &amp;quot;unified&amp;quot; version.&lt;/li&gt;
+&lt;li&gt;Find the &amp;lt;em:targetPlatform&amp;gt; section in the install.rdfs and include
+all the necessary ones.&lt;/li&gt;
+&lt;li&gt;Find the libcalbasecomps.* (where * is dll, dylib, so, etc. for
+your platform) inside the components directories.&lt;/li&gt;
+&lt;li&gt;Copy the libraries together into one directory.&lt;/li&gt;
+&lt;li&gt;Copy the lines from each components.manifest together into one
+manifest.&lt;/li&gt;
+&lt;li&gt;For some systems you'll need to specify the ABI (and possibly change
+the path), note that the ABI is just what was inside the
+&amp;lt;em:targetPlatform&amp;gt;.&lt;/li&gt;
+&lt;li&gt;Rezip this up into an XPI and you should be good to go!&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;In my test I ended up with an XPI that was approximately 10% bigger
+after combining Mac (x86 and x64), Linux (x86 and x64), Win32, Solaris
+Sparc and Solaris x86.&amp;nbsp; Why is this not done by default?&amp;nbsp; Probably just
+cause no one has done it...there is a &lt;a class="reference external" href="https://bugzilla.mozilla.org/show_bug.cgi?id=352543"&gt;bug about it&lt;/a&gt; though.&amp;nbsp; One issue
+that might be encountered using this method is pre-processing of some
+script files (as is discussed in that big) but hopefully it should
+&amp;quot;mostly&amp;quot; work.&amp;nbsp; (Note that this is mostly untested.)&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Edit:&lt;/strong&gt; I should also mention that you would need to do something
+similar with the themes folders if they differ dramatically (it seems
+there's &lt;a class="reference external" href="http://mxr.mozilla.org/comm-central/source/calendar/lightning/themes/"&gt;just two&lt;/a&gt;: winstripe and pinstripe: i.e. Windows &amp;amp; Mac; Linux
+and Solaris most likely also use winstripe).&lt;/p&gt;
+</summary><category term="Lightning"></category><category term="Mozilla"></category></entry></feed>

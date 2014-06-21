@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Like bricks in the sky</title><link>https://clokep.github.io/</link><description></description><atom:link href="https://clokep.github.io/feeds/tag/google.rss.xml" rel="self"></atom:link><lastBuildDate>Mon, 21 Oct 2013 02:18:00 -0400</lastBuildDate><item><title>Google Summer of Code Mentor Summit 2013</title><link>https://clokep.github.io/google-summer-of-code-mentor-summit-2013.html</link><description>&lt;p&gt;Not only was I lucky enough to mentor a great student for this year's
+Google Summer of Code, but Mozilla asked me to represent them at the
+Google Summer of Code Mentor Summit!&amp;nbsp; This was located at Google's
+offices in Mountain View, California this past weekend (Friday, Oct.
+18th - Sunday, Oct. 20th, 2013).&lt;/p&gt;
+&lt;p&gt;Before actually heading over to the Summit, &lt;a class="reference external" href="http://mykzilla.org/"&gt;Myk Melez&lt;/a&gt; and &lt;a class="reference external" href="http://nickdesaulniers.github.io/"&gt;Nick
+Desaulniers&lt;/a&gt; were kind enough to show me around the Mozilla Mountain
+View office!&amp;nbsp; (Thanks to Daniel Holbert for setting that up!)&lt;/p&gt;
+&lt;p&gt;The GSoC Mentor Summit is run as an &amp;quot;unconference&amp;quot;, the open sessions
+were chosen by conference attendees and run as discussions with no
+keynote speakers.&amp;nbsp; This was an interesting experience and how good each
+session was varied quite a bit by who was taking part in the discussion,
+but overall it was great to hear the experiences of other projects with
+their GSoC students, as well as to hear about lots of projects I had
+never heard of before!&amp;nbsp; In general the session I attended were about
+community building and managing GSoC students, I took lots of notes and
+will digest all of this in further detail at some point.&lt;/p&gt;
+&lt;p&gt;I was able to meet lots of great people from different projects, just
+a few of which were: &lt;a class="reference external" href="http://pidgin.im/"&gt;Pidgin&lt;/a&gt;, &lt;a class="reference external" href="http://www.debian.org/"&gt;Debian&lt;/a&gt;, &lt;a class="reference external" href="http://buildbot.net/"&gt;Buildbot&lt;/a&gt;, the &lt;a class="reference external" href="http://www.opendmx.net/"&gt;Open
+Lighting Project&lt;/a&gt;, the &lt;a class="reference external" href="https://www.torproject.org/"&gt;Tor Project&lt;/a&gt;, &lt;a class="reference external" href="https://www.phpbb.com/%E2%80%8E"&gt;phpBB&lt;/a&gt;, etc.&amp;nbsp; Unfortunately
+being from Mozilla, most people already know what you do...or they think
+you do at least!&amp;nbsp; Many people were surprised when I said I work on
+Thunderbird and Instantbird.&amp;nbsp; I heard &amp;quot;Thunderbird is dead&amp;quot; at least
+twenty times, which was quite disappointing that those in the open
+source community don't even understand the current status of
+Thunderbird.&amp;nbsp; Many were happy to hear that it is still being maintained
+and developed by the community, however.&amp;nbsp; I even had some people thank
+me (which I don't really deserve) for helping to continue maintain
+Thunderbird!&amp;nbsp; It was great to hear things like this at the Mozilla
+Summit, but it was really invigorating to hear people outside of the
+Mozilla community excited that their favorite email client was still
+being developed.&lt;/p&gt;
+&lt;p&gt;People were further surprised to hear that Thunderbird now includes
+instant messaging / chat (since Thunderbird 15 or 17) and that there is
+a Gecko based instant messaging client: Instantbird.&amp;nbsp; It seemed like
+some people were excited by this and hopefully they'll try it out!&lt;/p&gt;
+&lt;p&gt;Anyway, I've gone a little off-topic, but overall the Mentor Summit
+was great and I'd like to thank both Mozilla and Google for giving me
+this opportunity.&amp;nbsp; If I find any really great gems in my notes I'll
+write further blog posts about them.&lt;/p&gt;
+</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Patrick Cloke</dc:creator><pubDate>Mon, 21 Oct 2013 02:18:00 -0400</pubDate><guid>tag:https://clokep.github.io,2013-10-21:google-summer-of-code-mentor-summit-2013.html</guid><category>Google</category><category>GSoC</category><category>Mozilla</category></item><item><title>Blogger RSS Feeds for a Label</title><link>https://clokep.github.io/blogger-rss-feeds-for-a-label.html</link><description>&lt;p&gt;Blogger has crappy support for RSS apparently.&amp;nbsp; I figured if I clicked
+on a label, then found the RSS embedded in the page...it would give me
+the RSS feed for that label, right?&lt;/p&gt;
+&lt;p&gt;Wrong.&lt;/p&gt;
+&lt;p&gt;Of course there's an&amp;nbsp;&lt;a class="reference external" href="http://www.google.com/support/blogger/bin/answer.py?hl=en&amp;amp;answer=97933"&gt;FAQ&lt;/a&gt; page about this, but the syntax it gives
+is broken.&amp;nbsp; For a specific label (I'm using the label &amp;quot;Instantbird&amp;quot;):&lt;/p&gt;
+&lt;ul class="simple"&gt;
+&lt;li&gt;RSS:
+&lt;a class="reference external" href="http://clokep.blogspot.com/feeds/posts/default/-/Instantbird?alt=rss"&gt;http://clokep.blogspot.com/feeds/posts/default/-/Instantbird?alt=rss&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Atom: &lt;a class="reference external" href="http://clokep.blogspot.com/feeds/posts/default/-/Instantbird"&gt;http://clokep.blogspot.com/feeds/posts/default/-/Instantbird&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Who knows what versions of RSS/Atom these are.&amp;nbsp; But the feeds do exist.&lt;/p&gt;
+</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Patrick Cloke</dc:creator><pubDate>Wed, 08 Dec 2010 19:25:00 -0500</pubDate><guid>tag:https://clokep.github.io,2010-12-08:blogger-rss-feeds-for-a-label.html</guid><category>bugs</category><category>Google</category><category>RSS</category></item></channel></rss>

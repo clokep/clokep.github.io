@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+        <title>JavaScript IRC in Instantbird</title>
+        <meta charset="utf-8" />
+        <link href="https://clokep.github.io/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="Like bricks in the sky Full Atom Feed" />
+        <link href="https://clokep.github.io/feeds/all.rss.xml" type="application/rss+xml" rel="alternate" title="Like bricks in the sky Full RSS Feed" />
+        <link href="https://clokep.github.io/feeds/mozilla.atom.xml" type="application/atom+xml" rel="alternate" title="Like bricks in the sky Categories Atom Feed" />
+        <link href="https://clokep.github.io/feeds/mozilla.rss.xml" type="application/rss+xml" rel="alternate" title="Like bricks in the sky Categories RSS Feed" />
+
+
+        <!-- Mobile viewport optimized: j.mp/bplateviewport -->
+        <meta name="viewport" content="width=device-width,initial-scale=1, maximum-scale=1">
+
+        <link rel="stylesheet" type="text/css" href="https://clokep.github.io/theme/gumby.css" />
+        <link rel="stylesheet" type="text/css" href="https://clokep.github.io/theme/style.css" />
+        <link rel="stylesheet" type="text/css" href="https://clokep.github.io/theme/pygment.css" />
+
+        <script src="https://clokep.github.io/theme/js/libs/modernizr-2.6.2.min.js"></script>
+
+
+
+
+
+
+</head>
+
+<body id="index" class="home">
+
+
+    <div class="container">
+
+        <div class="row">
+
+          <header id="banner" class="body">
+                  <h1><a href="https://clokep.github.io">Like bricks in the sky <strong></strong></a></h1>
+          </header><!-- /#banner -->
+
+            <div id="navigation" class="navbar row">
+              <a href="#" gumby-trigger="#navigation &gt; ul" class="toggle"><i class="icon-menu"></i></a>
+             
+              <ul class="columns">
+                <li><a href="https://clokep.github.io">Home</a></li>
+
+                <li><a href="https://clokep.github.io/pages/about.html">About</a></li>
+                <li><a href="https://clokep.github.io/pages/contact.html">Contact</a></li>
+
+                <li><a href="https://clokep.github.io/archives.html">Archives</a></li>
+                <li><a href="https://clokep.github.io/tags.html">Tags</a></li>
+              </ul>
+            </div>
+
+<section id="content" class="body">
+
+   <div class="row">
+        <div class="eleven columns">
+
+
+            <header>
+              <h2 class="entry-title">
+                <a href="https://clokep.github.io/javascript-irc-in-instantbird.html" rel="bookmark"
+                   title="Permalink to JavaScript IRC in Instantbird">JavaScript IRC in Instantbird</a></h2>
+           
+            </header>
+            <footer class="post-info">
+              <abbr class="published" title="2010-12-04T21:24:00">
+                12/04/2010 09:24 PM UTC
+              </abbr>
+              <address class="vcard author">
+                By <a class="url fn" href="https://clokep.github.io/author/patrick-cloke.html">Patrick Cloke</a>
+              </address>
+            </footer><!-- /.post-info -->
+            <div class="entry-content">
+              <p>I've been working on rewriting the IRC plugin for <a class="reference external" href="http://www.instantbird.com/">Instantbird</a> since
+the summer (sometime in August, I can't seem to find the exact date --
+at least since Sept. 10th though).</p>
+<p>Since <a class="reference external" href="http://developer.pidgin.im/wiki/WhatIsLibpurple">libpurple</a> (used in Pidgin, Adium, etc.) provides the IRC
+protocol that we currently use, why do this?&nbsp; One reason is to iron out
+(and find) some of the bugs left in implementing protocols in JavaScript
+and part of it is so I can learn to code better.&nbsp; Unfortunately during
+this semester I was not able to get as much done as I had hoped and
+almost everything that had been done was finished in August/September</p>
+<p>Some big milestones I've completed (with dates if I have them):</p>
+<ol class="arabic simple">
+<li>Connected to server via sockets in JavaScript</li>
+<li>Generate a conversation that works as a raw connection to the server
+(i.e. as if you had opened a telnet connection to the server)</li>
+<li>Parsing messages and automatic ponging when the server pings</li>
+<li>Joining a channel (2010/12/04, i.e. today!)</li>
+</ol>
+<p>There had been a bunch of small bugs I had been having in getting this
+to work: one error, (which I found quickly) one of the other developers
+(<a class="reference external" href="http://queze.net/">Florian</a>) was able to help me out with, was that I was not initiating
+a <strong>new</strong> object.&nbsp; And after learning a bit above observers I was able
+to get the UI to respond.&nbsp; I even threw in support for op/half-op/voice
+After today's work I was able to generate the following screenshot:</p>
+<p><a class="reference external" href="https://clokep.github.io/images/IRCworking2.png"><img alt="IRCworking" src="https://clokep.github.io/images/IRCworking2.png" style="height: 297px;" /></a></p>
+<p>This build would be almost fully usable by those who do very little on
+IRC (i.e. if you just want to go and chat, it'd work well), but there's
+a lot more work to be done.&nbsp; The code can be viewed in the <a class="reference external" href="https://hg.instantbird.org/experiments/file/IRC-JavaScript/">Experiments
+repository</a>.&nbsp; (Check it out, there's a 600+ line switch statement.)</p>
+
+            </div><!-- /.entry-content -->
+
+
+        </div><!-- /.eleven.columns -->
+        
+<div class="three columns">
+
+<h4>Pages</h4>
+
+ <ul>
+      <li><a href="https://clokep.github.io/pages/about.html">About</a></li>
+      <li><a href="https://clokep.github.io/pages/contact.html">Contact</a></li>
+  </ul>
+
+<h4>Categories</h4>
+<ul>
+		<li><a href="https://clokep.github.io/category/mozilla.html">Mozilla</a></li>
+</ul>
+
+
+<h4><i class="icon-tag"></i>Tags</h4>
+	<ul>
+	    <li class="tag-4"><a href="https://clokep.github.io/tag/crosspost.html">crosspost</a></li>
+	    <li class="tag-4"><a href="https://clokep.github.io/tag/imap.html">IMAP</a></li>
+	    <li class="tag-3"><a href="https://clokep.github.io/tag/specifications.html">specifications</a></li>
+	    <li class="tag-1"><a href="https://clokep.github.io/tag/instantbird.html">Instantbird</a></li>
+	    <li class="tag-4"><a href="https://clokep.github.io/tag/oscar.html">OSCAR</a></li>
+	    <li class="tag-2"><a href="https://clokep.github.io/tag/gsoc.html">GSoC</a></li>
+	    <li class="tag-3"><a href="https://clokep.github.io/tag/google.html">Google</a></li>
+	    <li class="tag-1"><a href="https://clokep.github.io/tag/irc.html">IRC</a></li>
+	    <li class="tag-4"><a href="https://clokep.github.io/tag/rss.html">RSS</a></li>
+	    <li class="tag-4"><a href="https://clokep.github.io/tag/lightning.html">Lightning</a></li>
+	    <li class="tag-3"><a href="https://clokep.github.io/tag/sipe.html">SIPE</a></li>
+	    <li class="tag-3"><a href="https://clokep.github.io/tag/bugs.html">bugs</a></li>
+	    <li class="tag-2"><a href="https://clokep.github.io/tag/yahoo.html">Yahoo</a></li>
+	    <li class="tag-1"><a href="https://clokep.github.io/tag/mozilla.html">Mozilla</a></li>
+	    <li class="tag-3"><a href="https://clokep.github.io/tag/wat.html">Wat</a></li>
+	    <li class="tag-4"><a href="https://clokep.github.io/tag/messaging.html">messaging</a></li>
+	    <li class="tag-4"><a href="https://clokep.github.io/tag/status.html">status</a></li>
+	    <li class="tag-1"><a href="https://clokep.github.io/tag/programming.html">programming</a></li>
+	    <li class="tag-3"><a href="https://clokep.github.io/tag/customizing.html">customizing</a></li>
+	    <li class="tag-2"><a href="https://clokep.github.io/tag/im.html">IM</a></li>
+	    <li class="tag-2"><a href="https://clokep.github.io/tag/community.html">community</a></li>
+	    <li class="tag-4"><a href="https://clokep.github.io/tag/email.html">email</a></li>
+	    <li class="tag-2"><a href="https://clokep.github.io/tag/thunderbird.html">Thunderbird</a></li>
+	    <li class="tag-4"><a href="https://clokep.github.io/tag/smtp.html">SMTP</a></li>
+	    <li class="tag-2"><a href="https://clokep.github.io/tag/instant-messaging.html">instant messaging</a></li>
+	    <li class="tag-2"><a href="https://clokep.github.io/tag/chat.html">chat</a></li>
+	    <li class="tag-4"><a href="https://clokep.github.io/tag/pop3.html">POP3</a></li>
+</ul>
+
+
+
+<h4><i class="icon-rss"></i>Subscribe</h4>
+<ul>
+  <li><a href="https://clokep.github.io/feeds/all.atom.xml">Full Atom Feed</a></li>
+  <li><a href="https://clokep.github.io/feeds/all.rss.xml">Full RSS Feed</a></li>
+</ul>
+
+</div> </div><!-- /.row -->
+
+
+</section>
+
+       </div><!-- /.row -->
+    </div><!-- /.container -->
+
+
+       <div class="container.nopad bg">
+
+    
+        <footer id="credits" class="row">
+          <div class="seven columns left-center">
+
+                   <address id="about" class="vcard body">
+                    Proudly powered by <a href="http://getpelican.com/">Pelican</a>,
+                    which takes great advantage of <a href="http://python.org">Python</a>.
+                    <br />
+                    Based on the <a target="_blank" href="http://gumbyframework.com">Gumby Framework</a>
+                    </address>
+          </div>
+
+
+          <div class="seven columns">
+            <div class="row">
+              <ul class="socbtns">
+
+                <li><div class="btn primary"><a href="https://www.github.com/clokep" target="_blank">Github</a></div></li>
+
+                <li><div class="btn bitbucket"><a href="https://bitbucket.org/clokep" target="_blank">BitBucket</a></div></li>
+
+                <li><div class="btn mozillians"><a href="https://mozillians.org/clokep" target="_blank">Mozillians</a></div></li>
+
+                <li><div class="btn twitter"><a href="https://www.twitter.com/clokep" target="_blank">Twitter</a></div></li>
+
+
+
+              </ul>
+            </div>
+          </div>
+        </footer>
+
+    </div>
+
+
+  <script src="https://clokep.github.io/theme/js/libs/jquery-1.9.1.min.js"></script>
+  <script src="https://clokep.github.io/theme/js/libs/gumby.min.js"></script>
+  <script src="https://clokep.github.io/theme/js/plugins.js"></script>
+</body>
+</html>

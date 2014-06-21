@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+        <title>Compiling Instantbird</title>
+        <meta charset="utf-8" />
+        <link href="https://clokep.github.io/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="Like bricks in the sky Full Atom Feed" />
+        <link href="https://clokep.github.io/feeds/all.rss.xml" type="application/rss+xml" rel="alternate" title="Like bricks in the sky Full RSS Feed" />
+        <link href="https://clokep.github.io/feeds/mozilla.atom.xml" type="application/atom+xml" rel="alternate" title="Like bricks in the sky Categories Atom Feed" />
+        <link href="https://clokep.github.io/feeds/mozilla.rss.xml" type="application/rss+xml" rel="alternate" title="Like bricks in the sky Categories RSS Feed" />
+
+
+        <!-- Mobile viewport optimized: j.mp/bplateviewport -->
+        <meta name="viewport" content="width=device-width,initial-scale=1, maximum-scale=1">
+
+        <link rel="stylesheet" type="text/css" href="https://clokep.github.io/theme/gumby.css" />
+        <link rel="stylesheet" type="text/css" href="https://clokep.github.io/theme/style.css" />
+        <link rel="stylesheet" type="text/css" href="https://clokep.github.io/theme/pygment.css" />
+
+        <script src="https://clokep.github.io/theme/js/libs/modernizr-2.6.2.min.js"></script>
+
+
+
+
+
+
+</head>
+
+<body id="index" class="home">
+
+
+    <div class="container">
+
+        <div class="row">
+
+          <header id="banner" class="body">
+                  <h1><a href="https://clokep.github.io">Like bricks in the sky <strong></strong></a></h1>
+          </header><!-- /#banner -->
+
+            <div id="navigation" class="navbar row">
+              <a href="#" gumby-trigger="#navigation &gt; ul" class="toggle"><i class="icon-menu"></i></a>
+             
+              <ul class="columns">
+                <li><a href="https://clokep.github.io">Home</a></li>
+
+                <li><a href="https://clokep.github.io/pages/about.html">About</a></li>
+                <li><a href="https://clokep.github.io/pages/contact.html">Contact</a></li>
+
+                <li><a href="https://clokep.github.io/archives.html">Archives</a></li>
+                <li><a href="https://clokep.github.io/tags.html">Tags</a></li>
+              </ul>
+            </div>
+
+<section id="content" class="body">
+
+   <div class="row">
+        <div class="eleven columns">
+
+
+            <header>
+              <h2 class="entry-title">
+                <a href="https://clokep.github.io/compiling-instantbird.html" rel="bookmark"
+                   title="Permalink to Compiling Instantbird">Compiling Instantbird</a></h2>
+           
+            </header>
+            <footer class="post-info">
+              <abbr class="published" title="2011-05-17T01:30:00">
+                05/17/2011 01:30 AM UTC
+              </abbr>
+              <address class="vcard author">
+                By <a class="url fn" href="https://clokep.github.io/author/patrick-cloke.html">Patrick Cloke</a>
+              </address>
+            </footer><!-- /.post-info -->
+            <div class="entry-content">
+              <p>In the past I've tried to compile a few different programs that use
+the Mozilla toolkit to various levels of success.&nbsp; I've tried to compile
+Thunderbird, Songbird and Instantbird at various points.&nbsp; I got
+Thunderbird to compile, but it only worked sporadically (although I
+think that was Firefox moving so fast that Thunderbird couldn't keep
+up), Songbird I gave up on rather quickly and Instantbird I've tried a
+few times.</p>
+<p>Last summer I had Instantbird compiling on my old laptop (a Lenovo
+T60), which is &gt;5 years old at this point and has had the heatsink / fan
+replaced twice -- a known issue with that model laptop.&nbsp; Needless to
+say, that laptop didn't like compiling something on Windows that took
+approximately an hour with a large number of reads and writes to the
+hard drive.&nbsp; This mixed with it being an old dual core + a 5400 RPM
+meant I'd be waiting a LONG time for my code to compile.&nbsp; I got a
+Thinkpad X201 this past summer, so I finally got around to setting up a
+development environment on it and was able to get Instantbird to compile
+fully today.&nbsp; I've outlined the steps I've followed: kind of to mirror
+the <a class="reference external" href="https://developer.mozilla.org/En/Simple_Thunderbird_build">Simple Thunderbird Build</a> page on MDC.</p>
+<p>I've done this using Microsoft Windows 7 Professional (64-bit) with
+Service Pack 1. (4.00 GB of RAM, Intel Core i7 M620 2.67 GHz).
+Throughout these steps, the defaults locations and options are used in
+the installers.</p>
+<div class="section" id="build-requirements">
+<h2>Build Requirements:</h2>
+<div class="section" id="visual-studio-express">
+<h3>Visual Studio Express:</h3>
+<p>We need to install Visual Studio Express, specifically VC8 (2005) with
+Service Pack 1.&nbsp; (Mozilla compiles with VC9 and VC10 to various degrees,
+but it seems libpurple only compiles with VC8, also this is what's on
+the Instantbird buildbot, so I like having the same version.)&nbsp; I
+couldn't find this on Microsoft's website but I found it on <a class="reference external" href="http://www.softpedia.com/get/Programming/Other-Programming-Files/Microsoft-Visual-C-Toolkit.shtml">Softpedia</a>
+(which is a legitimate site).&nbsp; Anyway, download the installer and
+install it (which will download the actual compiler from Microsoft),
+ensure that you also install the IDE (which is checked by default).</p>
+<p>This will only install VC8, the initial release.&nbsp; We also need to
+install <a class="reference external" href="http://www.microsoft.com/downloads/en/details.aspx?FamilyID=7b0b0339-613a-46e6-ab4d-080d4d4a8c4e">Service Pack 1</a>.&nbsp; I personally did this using Windows Update,
+but one of the installers from there should also work.</p>
+</div>
+<div class="section" id="microsoft-windows-sdk">
+<h3>Microsoft Windows SDK:</h3>
+<p>Specifically we need the <a class="reference external" href="http://www.microsoft.com/downloads/en/details.aspx?FamilyID=c17ba869-9671-4330-a63e-1fd44e0e2505&amp;displaylang=en">Windows 7 SDK</a> (for Jumplist, Aero, etc.
+support).&nbsp; Download and install the SDK, this one took a while for me to
+install.&nbsp; I ate dinner while it was installing (pasta, if you're curious
+-- I already had sauce made).</p>
+<p>There's a linker error when using VC8 and the Windows 7 SDK, so we'll
+need to install a <a class="reference external" href="http://support.microsoft.com/kb/949009/">hotfix</a>for that (I tried without it and I ran into
+the issue).&nbsp; I had to download the &quot;VS80sp1-KB949009-IA64-INTL.exe&quot;
+version (there's also an X86 and an X64 version).&nbsp; Choose the one that
+works.</p>
+</div>
+<div class="section" id="microsoft-macro-assembler">
+<h3>Microsoft Macro Assembler:</h3>
+<p>In order to properly assemble the code we need to <a class="reference external" href="http://www.microsoft.com/downloads/en/details.aspx?familyid=7A1C9DA0-0510-44A2-B042-7EF370530C64&amp;displaylang=en">install MASM</a>
+(which I think will eventually be included in MozillaBuild, but it isn't
+currently).&nbsp; Again, just install it with the defaults.</p>
+</div>
+<div class="section" id="mozillabuild">
+<h3>MozillaBuild:</h3>
+<p>Almost there, I promise.&nbsp; In order to get a *nix type shell to run
+make, etc. in we'll use a package from Mozilla that includes MSYS, make,
+Mercurial, etc.&nbsp; Download and <a class="reference external" href="http://ftp.mozilla.org/pub/mozilla.org/mozilla/libraries/win32/MozillaBuildSetup-Latest.exe">install MozillaBuild</a>, the latest should
+work fine.</p>
+<p>Now, an unknown step: you might require the <a class="reference external" href="http://www.microsoft.com/downloads/en/details.aspx?FamilyID=a5c84275-3b97-4ab7-a40d-3802b2af5fc2&amp;displaylang=en">Microsoft Visual C++ 2008
+SP1 Redistributable Package</a>.&nbsp; I don't know if you need this or not
+since I <em>already</em> had it, most likely from a previous program I've
+installed.</p>
+<p>We should be ready to build now pretty much.&nbsp; For some more
+information for this stuff you can check out the Mozilla Developer
+Network pages I used to get this information: <a class="reference external" href="https://developer.mozilla.org/En/Developer_Guide/Build_Instructions">Build Instructions</a>,
+<a class="reference external" href="https://developer.mozilla.org/En/Developer_Guide/Build_Instructions/Windows_Prerequisites">Windows Build Prerequisites</a> and <a class="reference external" href="https://developer.mozilla.org/cn/VC8_Build_Instructions">MSVC8 Build Instructions</a>.</p>
+</div>
+</div>
+<div class="section" id="checkout-the-code">
+<h2>Checkout the Code:</h2>
+<p>We need to checkout the code.&nbsp; I originally checked out the code with
+TortoiseHg (which is what I normally use), but the version of Mercurial
+included is significantly greater than the one included in MozillaBuild
+and this caused me issues later on.&nbsp; Thus, we'll check out the code on
+the command line.&nbsp; Start by launching the bash shell, which is at
+C:\mozilla-build\start-msvc8.bat (don't use the x64 version).&nbsp; There's
+a version here which corresponds to each version of VS.</p>
+<p>Once this finishes loading you'll be in the home directory (which is
+in the root of your user's documents and settings folder, i.e. for me:
+C:\Users\clokep).&nbsp; You'll want to do the following:</p>
+<pre class="literal-block">
+hg clone https://hg.instantbird.org/instantbird
+</pre>
+<p>This might take a few minutes depending on how good your internet
+connection is.&nbsp; (The Instantbird source isn't THAT big though, it
+shouldn't take too long.)</p>
+<p>Then we'll need to change into the instantbird directory that was just
+created and download the Mozilla source code:</p>
+<pre class="literal-block">
+cd instantbird
+python client.py checkout
+</pre>
+<p>Now this step?&nbsp; This one is gonna take a while.&nbsp; It took me like a
+couple of hours.&nbsp; It pulls the Mozilla source code, which is large and
+has many changesets.&nbsp; Just let it go, it'll give you progress
+occasionally (changes, manifests, files, etc.)</p>
+</div>
+<div class="section" id="id1">
+<h2>Compiling Instantbird:</h2>
+<p>We need to set up the options we want to build with.&nbsp; These are
+read from a .mozconfig (don't miss the &quot;.&quot; in the front!).&nbsp; The contents
+of the .mozconfig that worked for me are:</p>
+<pre class="literal-block">
+ac_add_options --enable-application=instantbird
+mk_add_options MOZ_OBJDIR=&#64;TOPSRCDIR&#64;/objdir-ib-release
+ac_add_options --disable-accessibility
+</pre>
+<p>The first option says to build Instantbird, the second gives an output
+directory and the third <a class="reference external" href="https://developer.mozilla.org/en/atlbase.h">disables accessibility</a> (not really sure why
+we need to do this, but we'll get that error at that link otherwise).</p>
+<p>Finally (back in the bash shell) type:</p>
+<pre class="literal-block">
+make -f client.mk build
+</pre>
+<p>Now sit back and relax.&nbsp; My build took about an hour to finish, maybe
+a bit less -- I wasn't fully paying attention.&nbsp; Once it's done you
+should see something like:</p>
+<pre class="literal-block">
+Processed 1 file, writing output:
+
+Output:
+&quot;c:\\Users\\clokep\\instantbird\\objdir-ib-release\\instantbird\\installer\\windows\\instgen\\helper.exe&quot;
+Install: 2 pages (128 bytes), 1 section (16416 bytes), 2579
+instructions (72212 bytes), 369 strings (10198 bytes), 1 language table (230 bytes).
+Uninstall: 5 pages (320 bytes),
+1 section (16416 bytes), 2063 instructions (57764 bytes), 388 strings
+(10828 bytes), 1 language table (314 bytes).
+Datablock optimizer saved 123940 bytes (~17.6%).
+Using zlib compression.
+EXE header size:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 63488 / 39424 bytes
+Install code:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 99564 / 99560 bytes
+Install data:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 118002 / 241950 bytes
+Uninstall code+data:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 398654 / 398646 bytes
+CRC (0x062AF3F5):&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 4 / 4 bytes
+Total size:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 679712 / 779584 bytes (87.1%)
+c:/Users/clokep/instantbird/objdir-ib-release/mozilla/config/nsinstall.exe -D ../../../mozilla/dist/bin/uninstall
+cp instgen/helper.exe ../../../mozilla/dist/bin/uninstall
+make[5]: Leaving directory `/c/Users/clokep/instantbird/objdir-ib-release/instantbird/installer/windows'
+make[4]: Leaving directory `/c/Users/clokep/instantbird/objdir-ib-release/instantbird'
+make[3]: Leaving directory `/c/Users/clokep/instantbird/objdir-ib-release'
+make[2]: Leaving directory `/c/Users/clokep/instantbird/objdir-ib-release'
+make[1]: Leaving directory `/c/Users/clokep/instantbird/objdir-ib-release'
+</pre>
+<p>Now, to test that the build actually worked we can browse to the
+compiled executable and run it:</p>
+<pre class="literal-block">
+cd objdir-ib-release/mozilla/dist/bin/instantbird.exe -P dev -no-remote
+</pre>
+<p>The -P option specifies a profile name (dev), the second option
+(-no-remote) allows you to run a second Instantbird instance (since I
+assume you use Instantbird to IM...you probably want to be able to run a
+second one, if you don't use it...shame on you. Try not to close the
+wrong Instantbird when you're working on stuff).</p>
+<p>Hopefully this will help someone else get started on hacking
+Instantbird.&nbsp; There's other good ways you can hack too if your computer
+can't handle compiling, including unpacking omni.jar.</p>
+<p>One last tidbit is to possibly add the option to your .mozconfig:</p>
+<pre class="literal-block">
+--enable-chrome-format=flat
+</pre>
+<p>This will not package anything in JARs (which pretty much just get in
+the way while developing).&nbsp; See&nbsp;<a class="reference external" href="https://developer.mozilla.org/en/JAR_Packaging">here</a> for more info.</p>
+<p>Edit: Fixed the path to the executable thanks to Florian. And fixed a
+spelling error in the title.</p>
+</div>
+
+            </div><!-- /.entry-content -->
+
+
+        </div><!-- /.eleven.columns -->
+        
+<div class="three columns">
+
+<h4>Pages</h4>
+
+ <ul>
+      <li><a href="https://clokep.github.io/pages/about.html">About</a></li>
+      <li><a href="https://clokep.github.io/pages/contact.html">Contact</a></li>
+  </ul>
+
+<h4>Categories</h4>
+<ul>
+		<li><a href="https://clokep.github.io/category/mozilla.html">Mozilla</a></li>
+</ul>
+
+
+<h4><i class="icon-tag"></i>Tags</h4>
+	<ul>
+	    <li class="tag-4"><a href="https://clokep.github.io/tag/crosspost.html">crosspost</a></li>
+	    <li class="tag-4"><a href="https://clokep.github.io/tag/imap.html">IMAP</a></li>
+	    <li class="tag-3"><a href="https://clokep.github.io/tag/specifications.html">specifications</a></li>
+	    <li class="tag-1"><a href="https://clokep.github.io/tag/instantbird.html">Instantbird</a></li>
+	    <li class="tag-4"><a href="https://clokep.github.io/tag/oscar.html">OSCAR</a></li>
+	    <li class="tag-2"><a href="https://clokep.github.io/tag/gsoc.html">GSoC</a></li>
+	    <li class="tag-3"><a href="https://clokep.github.io/tag/google.html">Google</a></li>
+	    <li class="tag-1"><a href="https://clokep.github.io/tag/irc.html">IRC</a></li>
+	    <li class="tag-4"><a href="https://clokep.github.io/tag/rss.html">RSS</a></li>
+	    <li class="tag-4"><a href="https://clokep.github.io/tag/lightning.html">Lightning</a></li>
+	    <li class="tag-3"><a href="https://clokep.github.io/tag/sipe.html">SIPE</a></li>
+	    <li class="tag-3"><a href="https://clokep.github.io/tag/bugs.html">bugs</a></li>
+	    <li class="tag-2"><a href="https://clokep.github.io/tag/yahoo.html">Yahoo</a></li>
+	    <li class="tag-1"><a href="https://clokep.github.io/tag/mozilla.html">Mozilla</a></li>
+	    <li class="tag-3"><a href="https://clokep.github.io/tag/wat.html">Wat</a></li>
+	    <li class="tag-4"><a href="https://clokep.github.io/tag/messaging.html">messaging</a></li>
+	    <li class="tag-4"><a href="https://clokep.github.io/tag/status.html">status</a></li>
+	    <li class="tag-1"><a href="https://clokep.github.io/tag/programming.html">programming</a></li>
+	    <li class="tag-3"><a href="https://clokep.github.io/tag/customizing.html">customizing</a></li>
+	    <li class="tag-2"><a href="https://clokep.github.io/tag/im.html">IM</a></li>
+	    <li class="tag-2"><a href="https://clokep.github.io/tag/community.html">community</a></li>
+	    <li class="tag-4"><a href="https://clokep.github.io/tag/email.html">email</a></li>
+	    <li class="tag-2"><a href="https://clokep.github.io/tag/thunderbird.html">Thunderbird</a></li>
+	    <li class="tag-4"><a href="https://clokep.github.io/tag/smtp.html">SMTP</a></li>
+	    <li class="tag-2"><a href="https://clokep.github.io/tag/instant-messaging.html">instant messaging</a></li>
+	    <li class="tag-2"><a href="https://clokep.github.io/tag/chat.html">chat</a></li>
+	    <li class="tag-4"><a href="https://clokep.github.io/tag/pop3.html">POP3</a></li>
+</ul>
+
+
+
+<h4><i class="icon-rss"></i>Subscribe</h4>
+<ul>
+  <li><a href="https://clokep.github.io/feeds/all.atom.xml">Full Atom Feed</a></li>
+  <li><a href="https://clokep.github.io/feeds/all.rss.xml">Full RSS Feed</a></li>
+</ul>
+
+</div> </div><!-- /.row -->
+
+
+</section>
+
+       </div><!-- /.row -->
+    </div><!-- /.container -->
+
+
+       <div class="container.nopad bg">
+
+    
+        <footer id="credits" class="row">
+          <div class="seven columns left-center">
+
+                   <address id="about" class="vcard body">
+                    Proudly powered by <a href="http://getpelican.com/">Pelican</a>,
+                    which takes great advantage of <a href="http://python.org">Python</a>.
+                    <br />
+                    Based on the <a target="_blank" href="http://gumbyframework.com">Gumby Framework</a>
+                    </address>
+          </div>
+
+
+          <div class="seven columns">
+            <div class="row">
+              <ul class="socbtns">
+
+                <li><div class="btn primary"><a href="https://www.github.com/clokep" target="_blank">Github</a></div></li>
+
+                <li><div class="btn bitbucket"><a href="https://bitbucket.org/clokep" target="_blank">BitBucket</a></div></li>
+
+                <li><div class="btn mozillians"><a href="https://mozillians.org/clokep" target="_blank">Mozillians</a></div></li>
+
+                <li><div class="btn twitter"><a href="https://www.twitter.com/clokep" target="_blank">Twitter</a></div></li>
+
+
+
+              </ul>
+            </div>
+          </div>
+        </footer>
+
+    </div>
+
+
+  <script src="https://clokep.github.io/theme/js/libs/jquery-1.9.1.min.js"></script>
+  <script src="https://clokep.github.io/theme/js/libs/gumby.min.js"></script>
+  <script src="https://clokep.github.io/theme/js/plugins.js"></script>
+</body>
+</html>

@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+        <title>Status Update - January 18, 2011</title>
+        <meta charset="utf-8" />
+        <link href="https://clokep.github.io/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="Like bricks in the sky Full Atom Feed" />
+        <link href="https://clokep.github.io/feeds/all.rss.xml" type="application/rss+xml" rel="alternate" title="Like bricks in the sky Full RSS Feed" />
+        <link href="https://clokep.github.io/feeds/mozilla.atom.xml" type="application/atom+xml" rel="alternate" title="Like bricks in the sky Categories Atom Feed" />
+        <link href="https://clokep.github.io/feeds/mozilla.rss.xml" type="application/rss+xml" rel="alternate" title="Like bricks in the sky Categories RSS Feed" />
+
+
+        <!-- Mobile viewport optimized: j.mp/bplateviewport -->
+        <meta name="viewport" content="width=device-width,initial-scale=1, maximum-scale=1">
+
+        <link rel="stylesheet" type="text/css" href="https://clokep.github.io/theme/gumby.css" />
+        <link rel="stylesheet" type="text/css" href="https://clokep.github.io/theme/style.css" />
+        <link rel="stylesheet" type="text/css" href="https://clokep.github.io/theme/pygment.css" />
+
+        <script src="https://clokep.github.io/theme/js/libs/modernizr-2.6.2.min.js"></script>
+
+
+
+
+
+
+</head>
+
+<body id="index" class="home">
+
+
+    <div class="container">
+
+        <div class="row">
+
+          <header id="banner" class="body">
+                  <h1><a href="https://clokep.github.io">Like bricks in the sky <strong></strong></a></h1>
+          </header><!-- /#banner -->
+
+            <div id="navigation" class="navbar row">
+              <a href="#" gumby-trigger="#navigation &gt; ul" class="toggle"><i class="icon-menu"></i></a>
+             
+              <ul class="columns">
+                <li><a href="https://clokep.github.io">Home</a></li>
+
+                <li><a href="https://clokep.github.io/pages/about.html">About</a></li>
+                <li><a href="https://clokep.github.io/pages/contact.html">Contact</a></li>
+
+                <li><a href="https://clokep.github.io/archives.html">Archives</a></li>
+                <li><a href="https://clokep.github.io/tags.html">Tags</a></li>
+              </ul>
+            </div>
+
+<section id="content" class="body">
+
+   <div class="row">
+        <div class="eleven columns">
+
+
+            <header>
+              <h2 class="entry-title">
+                <a href="https://clokep.github.io/status-update-january-18-2011.html" rel="bookmark"
+                   title="Permalink to Status Update - January 18, 2011">Status Update - January 18, 2011</a></h2>
+           
+            </header>
+            <footer class="post-info">
+              <abbr class="published" title="2011-01-19T03:17:00">
+                01/19/2011 03:17 AM UTC
+              </abbr>
+              <address class="vcard author">
+                By <a class="url fn" href="https://clokep.github.io/author/patrick-cloke.html">Patrick Cloke</a>
+              </address>
+            </footer><!-- /.post-info -->
+            <div class="entry-content">
+              <p>I haven't had an update in a few weeks (since early December)
+actually, so I thought I would post a bit about what I've worked on.
+I've fixed a bunch of bugs in the backend of Instantbird that allow work
+on JavaScript IRC protocol to continue:</p>
+<ul class="simple">
+<li><a class="reference external" href="https://bugzilla.instantbird.org/show_bug.cgi?id=519">Bug 519</a> - Extend jsProtoHelper to implement purpleIConvChat
+(<a class="reference external" href="http://hg.instantbird.org/instantbird/rev/0166084ce2ae">check-in</a>)</li>
+<li><a class="reference external" href="https://bugzilla.instantbird.org/show_bug.cgi?id=495">Bug 495</a> - purpleIAccount cannot access preferences via JavaScript
+protocol (<a class="reference external" href="http://hg.instantbird.org/instantbird/rev/a188a5cc3ff1">check-in</a>)</li>
+<li><a class="reference external" href="https://bugzilla.instantbird.org/show_bug.cgi?id=648">Bug 648</a> -Provide a default JS implementation of
+purpleIChatRoomField
+(<a class="reference external" href="http://hg.instantbird.org/instantbird/rev/61fc80a569d3">check-in</a>)</li>
+<li>[Reviewed] <a class="reference external" href="https://bugzilla.instantbird.org/show_bug.cgi?id=647">Bug 647</a> - Username split for JavaScript protocols
+(<a class="reference external" href="http://hg.instantbird.org/instantbird/rev/a6c8fbf77e10">check-in</a>)</li>
+<li>[Reviewed] &lt;no bug&gt; -Share the nsIClassInfo implementation between
+all the objects implemented in jsProtoHelper
+(<a class="reference external" href="http://hg.instantbird.org/instantbird/rev/035f7d8d7f78">check-in</a>)</li>
+</ul>
+<p>Also a few other random bugs I've worked on:</p>
+<ul class="simple">
+<li><a class="reference external" href="https://bugzilla.instantbird.org/show_bug.cgi?id=625">Bug 625</a> - Findbar broken on Windows in Conversation window
+(<a class="reference external" href="http://hg.instantbird.org/instantbird/rev/2e8af77af2f2">check-in</a>)</li>
+<li><a class="reference external" href="https://bugzilla.instantbird.org/show_bug.cgi?id=629">Bug 629</a> - Remove workaround for bug 503048
+(<a class="reference external" href="http://hg.instantbird.org/instantbird/rev/ba4b9401791b">check-in</a>)</li>
+<li><a class="reference external" href="https://bugzilla.instantbird.org/show_bug.cgi?id=473">Bug 473</a> - JS Logger line breaks don't play well on Windows
+<a class="reference external" href="http://hg.instantbird.org/instantbird/rev/6a600b8a32c9">(check-in</a>)</li>
+<li><a class="reference external" href="https://bugzilla.instantbird.org/show_bug.cgi?id=593">Bug 593</a> - JavaScript component does not have a method named:
+&quot;onBeforeLinkTraversal&quot;
+(<a class="reference external" href="http://hg.instantbird.org/instantbird/rev/1b75f9fa4859">check-in</a>)</li>
+</ul>
+<p>Although none of these are really things that weren't working a few
+weeks ago, there are now real APIs for these for JavaScript protocols,
+allowing other protocols to use them and to <em>FULLY</em> implement them
+instead of hard coding values.&nbsp; In addition, a lot of the purplexpcom
+layer is now hidden from JavaScript protocols.</p>
+<p>There's a few things left to do for the JavaScript protocol layer:</p>
+<ul class="simple">
+<li><a class="reference external" href="https://bugzilla.instantbird.org/show_bug.cgi?id=118">Bug 118</a> - Extensions should be able to register commands.</li>
+<li><a class="reference external" href="https://bugzilla.instantbird.org/show_bug.cgi?id=650">Bug 650</a> - JavaScript accounts must be notified of status changes
+(a sketchy patch that exists that will work, but a better patch to
+core should be done)</li>
+<li><a class="reference external" href="https://bugzilla.instantbird.org/show_bug.cgi?id=623">Bug 623</a> - Auto-Join option field is hard coded for certain
+protocols (not <em>really</em> necessary, since it's still IRC, but it
+should be fixed)</li>
+<li><a class="reference external" href="https://bugzilla.instantbird.org/show_bug.cgi?id=649">Bug 649</a> - Proxy should be available to JavaScript protocols
+(hopefully being handled by Florian)</li>
+</ul>
+<p>A good summary of this is <a class="reference external" href="https://bugzilla.instantbird.org/showdependencygraph.cgi?id=507&amp;display=web&amp;rankdir=LR">the dependency graph of bug 507</a>
+(Implement IRC in JavaScript).&nbsp; Note that the IRC JavaScript work blocks
+<em>a&nbsp; lot</em> of UI work done for IRC.&nbsp; In particular Mook has been working
+on implementing notifications (i.e. Invites, and perhaps a few other
+commands), see <a class="reference external" href="https://bugzilla.instantbird.org/show_bug.cgi?id=628">Bug 628</a>.&nbsp; For other bugs, see the link above -- and if
+there's a strange UI feature that you think should be added, please file
+a bug and let us know about it!</p>
+<p>I've also worked a bit on sending outgoing text with rich formatting
+(bold, italics, underline, text size, etc.), this work is being tracked
+in <a class="reference external" href="https://bugzilla.instantbird.org/show_bug.cgi?id=634">Bug 634</a>. There's a proof on concept, but a lot of work needs to be
+done for it, but it's sort of working right now.</p>
+<p>As I alluded to in my last blog post, the JavaScript protocols would
+be used to implement Twitter. Work for this is occurring in <a class="reference external" href="https://bugzilla.instantbird.org/show_bug.cgi?id=598">Bug 598</a>,
+where Florian has implemented (very) basic Twitter support.</p>
+<p>My plans for the next bit:</p>
+<ul class="simple">
+<li>I'm hoping to finish up some of the work blocking JavaScript
+protocols so IRC can be put into a state that needs alpha/beta
+testers (if you're interested in testing/hacking please drop me a
+line here, on IRC or via email).</li>
+<li>Move into my new apartment</li>
+<li>Start my new job</li>
+<li>Work on richtext messages a bit more</li>
+</ul>
+
+            </div><!-- /.entry-content -->
+
+
+        </div><!-- /.eleven.columns -->
+        
+<div class="three columns">
+
+<h4>Pages</h4>
+
+ <ul>
+      <li><a href="https://clokep.github.io/pages/about.html">About</a></li>
+      <li><a href="https://clokep.github.io/pages/contact.html">Contact</a></li>
+  </ul>
+
+<h4>Categories</h4>
+<ul>
+		<li><a href="https://clokep.github.io/category/mozilla.html">Mozilla</a></li>
+</ul>
+
+
+<h4><i class="icon-tag"></i>Tags</h4>
+	<ul>
+	    <li class="tag-4"><a href="https://clokep.github.io/tag/crosspost.html">crosspost</a></li>
+	    <li class="tag-4"><a href="https://clokep.github.io/tag/imap.html">IMAP</a></li>
+	    <li class="tag-3"><a href="https://clokep.github.io/tag/specifications.html">specifications</a></li>
+	    <li class="tag-1"><a href="https://clokep.github.io/tag/instantbird.html">Instantbird</a></li>
+	    <li class="tag-4"><a href="https://clokep.github.io/tag/oscar.html">OSCAR</a></li>
+	    <li class="tag-2"><a href="https://clokep.github.io/tag/gsoc.html">GSoC</a></li>
+	    <li class="tag-3"><a href="https://clokep.github.io/tag/google.html">Google</a></li>
+	    <li class="tag-1"><a href="https://clokep.github.io/tag/irc.html">IRC</a></li>
+	    <li class="tag-4"><a href="https://clokep.github.io/tag/rss.html">RSS</a></li>
+	    <li class="tag-4"><a href="https://clokep.github.io/tag/lightning.html">Lightning</a></li>
+	    <li class="tag-3"><a href="https://clokep.github.io/tag/sipe.html">SIPE</a></li>
+	    <li class="tag-3"><a href="https://clokep.github.io/tag/bugs.html">bugs</a></li>
+	    <li class="tag-2"><a href="https://clokep.github.io/tag/yahoo.html">Yahoo</a></li>
+	    <li class="tag-1"><a href="https://clokep.github.io/tag/mozilla.html">Mozilla</a></li>
+	    <li class="tag-3"><a href="https://clokep.github.io/tag/wat.html">Wat</a></li>
+	    <li class="tag-4"><a href="https://clokep.github.io/tag/messaging.html">messaging</a></li>
+	    <li class="tag-4"><a href="https://clokep.github.io/tag/status.html">status</a></li>
+	    <li class="tag-1"><a href="https://clokep.github.io/tag/programming.html">programming</a></li>
+	    <li class="tag-3"><a href="https://clokep.github.io/tag/customizing.html">customizing</a></li>
+	    <li class="tag-2"><a href="https://clokep.github.io/tag/im.html">IM</a></li>
+	    <li class="tag-2"><a href="https://clokep.github.io/tag/community.html">community</a></li>
+	    <li class="tag-4"><a href="https://clokep.github.io/tag/email.html">email</a></li>
+	    <li class="tag-2"><a href="https://clokep.github.io/tag/thunderbird.html">Thunderbird</a></li>
+	    <li class="tag-4"><a href="https://clokep.github.io/tag/smtp.html">SMTP</a></li>
+	    <li class="tag-2"><a href="https://clokep.github.io/tag/instant-messaging.html">instant messaging</a></li>
+	    <li class="tag-2"><a href="https://clokep.github.io/tag/chat.html">chat</a></li>
+	    <li class="tag-4"><a href="https://clokep.github.io/tag/pop3.html">POP3</a></li>
+</ul>
+
+
+
+<h4><i class="icon-rss"></i>Subscribe</h4>
+<ul>
+  <li><a href="https://clokep.github.io/feeds/all.atom.xml">Full Atom Feed</a></li>
+  <li><a href="https://clokep.github.io/feeds/all.rss.xml">Full RSS Feed</a></li>
+</ul>
+
+</div> </div><!-- /.row -->
+
+
+</section>
+
+       </div><!-- /.row -->
+    </div><!-- /.container -->
+
+
+       <div class="container.nopad bg">
+
+    
+        <footer id="credits" class="row">
+          <div class="seven columns left-center">
+
+                   <address id="about" class="vcard body">
+                    Proudly powered by <a href="http://getpelican.com/">Pelican</a>,
+                    which takes great advantage of <a href="http://python.org">Python</a>.
+                    <br />
+                    Based on the <a target="_blank" href="http://gumbyframework.com">Gumby Framework</a>
+                    </address>
+          </div>
+
+
+          <div class="seven columns">
+            <div class="row">
+              <ul class="socbtns">
+
+                <li><div class="btn primary"><a href="https://www.github.com/clokep" target="_blank">Github</a></div></li>
+
+                <li><div class="btn bitbucket"><a href="https://bitbucket.org/clokep" target="_blank">BitBucket</a></div></li>
+
+                <li><div class="btn mozillians"><a href="https://mozillians.org/clokep" target="_blank">Mozillians</a></div></li>
+
+                <li><div class="btn twitter"><a href="https://www.twitter.com/clokep" target="_blank">Twitter</a></div></li>
+
+
+
+              </ul>
+            </div>
+          </div>
+        </footer>
+
+    </div>
+
+
+  <script src="https://clokep.github.io/theme/js/libs/jquery-1.9.1.min.js"></script>
+  <script src="https://clokep.github.io/theme/js/libs/gumby.min.js"></script>
+  <script src="https://clokep.github.io/theme/js/plugins.js"></script>
+</body>
+</html>

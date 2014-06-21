@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+        <title>JavaScript typed arrays pain</title>
+        <meta charset="utf-8" />
+        <link href="https://clokep.github.io/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="Like bricks in the sky Full Atom Feed" />
+        <link href="https://clokep.github.io/feeds/all.rss.xml" type="application/rss+xml" rel="alternate" title="Like bricks in the sky Full RSS Feed" />
+        <link href="https://clokep.github.io/feeds/mozilla.atom.xml" type="application/atom+xml" rel="alternate" title="Like bricks in the sky Categories Atom Feed" />
+        <link href="https://clokep.github.io/feeds/mozilla.rss.xml" type="application/rss+xml" rel="alternate" title="Like bricks in the sky Categories RSS Feed" />
+
+
+        <!-- Mobile viewport optimized: j.mp/bplateviewport -->
+        <meta name="viewport" content="width=device-width,initial-scale=1, maximum-scale=1">
+
+        <link rel="stylesheet" type="text/css" href="https://clokep.github.io/theme/gumby.css" />
+        <link rel="stylesheet" type="text/css" href="https://clokep.github.io/theme/style.css" />
+        <link rel="stylesheet" type="text/css" href="https://clokep.github.io/theme/pygment.css" />
+
+        <script src="https://clokep.github.io/theme/js/libs/modernizr-2.6.2.min.js"></script>
+
+
+
+
+
+
+</head>
+
+<body id="index" class="home">
+
+
+    <div class="container">
+
+        <div class="row">
+
+          <header id="banner" class="body">
+                  <h1><a href="https://clokep.github.io">Like bricks in the sky <strong></strong></a></h1>
+          </header><!-- /#banner -->
+
+            <div id="navigation" class="navbar row">
+              <a href="#" gumby-trigger="#navigation &gt; ul" class="toggle"><i class="icon-menu"></i></a>
+             
+              <ul class="columns">
+                <li><a href="https://clokep.github.io">Home</a></li>
+
+                <li><a href="https://clokep.github.io/pages/about.html">About</a></li>
+                <li><a href="https://clokep.github.io/pages/contact.html">Contact</a></li>
+
+                <li><a href="https://clokep.github.io/archives.html">Archives</a></li>
+                <li><a href="https://clokep.github.io/tags.html">Tags</a></li>
+              </ul>
+            </div>
+
+<section id="content" class="body">
+
+   <div class="row">
+        <div class="eleven columns">
+
+
+            <header>
+              <h2 class="entry-title">
+                <a href="https://clokep.github.io/javascript-typed-arrays-pain.html" rel="bookmark"
+                   title="Permalink to JavaScript typed arrays pain">JavaScript typed arrays pain</a></h2>
+           
+            </header>
+            <footer class="post-info">
+              <abbr class="published" title="2012-11-29T03:11:00">
+                11/29/2012 03:11 AM UTC
+              </abbr>
+              <address class="vcard author">
+                By <a class="url fn" href="https://clokep.github.io/author/patrick-cloke.html">Patrick Cloke</a>
+              </address>
+            </footer><!-- /.post-info -->
+            <div class="entry-content">
+              <p>If you've ever tried to deal with binary data in JavaScript you know
+it isn't much fun and you usually resort to using strings lots of
+charCodeAt and related functions.&nbsp; <a class="reference external" href="https://developer.mozilla.org/en-US/docs/JavaScript_typed_arrays">Typed arrays</a> are supposed to solve
+this though!&nbsp; The typed array API consists of creating a buffer of bytes
+(called an <a class="reference external" href="https://developer.mozilla.org/en-US/docs/JavaScript_typed_arrays/ArrayBuffer">ArrayBuffer</a>) and then manipulating those bytes via
+different views (<a class="reference external" href="https://developer.mozilla.org/en-US/docs/JavaScript_typed_arrays/ArrayBufferView">ArrayBufferView</a>s).&nbsp; You can have multiple views of
+the same buffer, starting at different offsets, of different lengths and
+types...which is all neat from a technical point of view, but is it
+really useful?&nbsp; It is kind of nice working with the views as if they
+were normal arrays though.</p>
+<p>I've been playing with these ArrayBuffers quite a bit as I'm working
+on an implementation of the <a class="reference external" href="http://en.wikipedia.org/wiki/OSCAR_protocol">OSCAR protocol</a> (used for <a class="reference external" href="http://en.wikipedia.org/wiki/AOL_Instant_Messenger">AOL Instant
+Messenger</a> and <a class="reference external" href="http://en.wikipedia.org/wiki/ICQ">ICQ</a>) in the chat backend (for Instantbird /
+Thunderbird).&nbsp; (As an aside, the OSCAR protocol Wikipedia page has
+surprisingly good documentation of some of the underlying data
+structures of the protocol...)&nbsp; I started by writing some test code
+using ArrayBuffers and views, which have been around a while: since
+Gecko 2.0 in fact!&nbsp; I quickly ran into some tedious issues with
+repetitive code such as:</p>
+<div class="highlight"><pre><span class="cm">/*</span>
+<span class="cm"> * A TLV (Type, Length and Value) data structure:</span>
+<span class="cm"> *  Unsigned Short  type    Describes what the value represents.</span>
+<span class="cm"> *  Unsigned Short  length  The length of the data block.</span>
+<span class="cm"> *  Bytes           value   The raw payload.</span>
+<span class="cm"> *</span>
+<span class="cm"> * The overall length of a TlvBlock is length + 4.</span>
+<span class="cm"> *</span>
+<span class="cm"> * The inputs to this are:</span>
+<span class="cm"> *  aType    The type of the TLV Block.</span>
+<span class="cm"> *  aValue   An ArrayBuffer containing the data.</span>
+<span class="cm"> */</span>
+<span class="kd">function</span> <span class="nx">TlvBlock</span><span class="p">(</span><span class="nx">aType</span><span class="p">,</span> <span class="nx">aValue</span><span class="p">)</span> <span class="p">{</span>
+  <span class="kd">let</span> <span class="nx">data</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">ArrayBuffer</span><span class="p">(</span><span class="nx">aValue</span><span class="p">.</span><span class="nx">byteLength</span> <span class="o">+</span> <span class="mi">4</span><span class="p">);</span>
+  <span class="c1">// The first two bytes are unsigned shorts.</span>
+  <span class="kd">let</span> <span class="nx">view</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Uint16Array</span><span class="p">(</span><span class="nx">data</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">);</span>
+  <span class="nx">view</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="nx">aType</span><span class="p">;</span>
+  <span class="nx">view</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="nx">aValue</span><span class="p">.</span><span class="nx">byteLength</span><span class="p">;</span>
+
+  <span class="c1">// The rest just gets the data copied into it.</span>
+  <span class="nx">view</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Uint8Array</span><span class="p">(</span><span class="nx">data</span><span class="p">,</span> <span class="mi">4</span><span class="p">);</span>
+  <span class="nx">view</span><span class="p">.</span><span class="nx">set</span><span class="p">(</span><span class="k">new</span> <span class="nx">Uint8Array</span><span class="p">(</span><span class="nx">aValue</span><span class="p">));</span>
+
+  <span class="k">return</span> <span class="nx">data</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+<p>This actually illustrates two annoying issues I have:</p>
+<ol class="arabic simple">
+<li>I end up with extra lines of code defining a new view every time I
+switch data types.</li>
+<li>There's no simple way to copy an ArrayBuffer into a part of an
+ArrayBuffer. In the above example I create a Uint8Array view of the
+target location, a Uint8Array view of the source location and then
+set the source to the target. Seems simple once you figure it out,
+but it took a while to figure out.</li>
+</ol>
+<p>(As an aside, some of you might find the following function helpful,
+it is essentially a <a class="reference external" href="http://en.cppreference.com/w/cpp/string/byte/memcpy">memcpy</a> for ArrayBuffers...this isn't really
+tested heavily at all, however.)</p>
+<div class="highlight"><pre><span class="cm">/*</span>
+<span class="cm"> * aTarget / aSource are ArrayBuffers</span>
+<span class="cm"> */</span>
+<span class="kd">function</span> <span class="nx">copyBytes</span><span class="p">(</span><span class="nx">aTarget</span><span class="p">,</span> <span class="nx">aSource</span><span class="p">,</span> <span class="nx">aTargetOffset</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="nx">aSourceOffset</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="nx">aLength</span> <span class="o">=</span> <span class="nx">aSource</span><span class="p">.</span><span class="nx">byteLength</span><span class="p">)</span> <span class="p">{</span>
+  <span class="c1">// The rest just gets the data copied into it.</span>
+  <span class="kd">let</span> <span class="nx">view</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Uint8Array</span><span class="p">(</span><span class="nx">aTarget</span><span class="p">,</span> <span class="nx">aTargetOffset</span><span class="p">);</span>
+  <span class="nx">view</span><span class="p">.</span><span class="nx">set</span><span class="p">(</span><span class="k">new</span> <span class="nx">Uint8Array</span><span class="p">(</span><span class="nx">aSource</span><span class="p">,</span> <span class="nx">aSourceOffset</span><span class="p">,</span> <span class="nx">aLength</span><span class="p">));</span>
+<span class="p">}</span>
+</pre></div>
+<p>OK, so typed arrays seem good, but kind of annoying, right?
+Wrong...the OSCAR protocol is a &quot;network order&quot; protocol (aka it is big
+endian). At this point you're probably thinking &quot;OK, so the ArrayBuffer
+constructor must take an endianess flag!&quot;&nbsp; Wrong, it does no such
+thing.&nbsp; &quot;Hmmm...Well do the ArrayBufferViews take an endianess flag?&quot;
+Nope, wrong again.&nbsp; The only way to specify the endianess of the data is
+to use a <a class="reference external" href="https://developer.mozilla.org/en-US/docs/JavaScript_typed_arrays/DataView">DataView</a>, a slightly different interface to the underlying
+bytes.&nbsp; It offers an API to individually set different data elements via
+their offset and endianess.&nbsp; (If you're too lazy to read the
+documentation all the way through, DataView assumes big endian: makes my
+life easier!)</p>
+<p>For the curious, JavaScript typed arrays use the system endianess,
+which in my opinion is pretty much useless (at least if you plan on
+sharing data) since you can never guarantee the endianess to be either
+big or little endian.&nbsp; (The fun part is that this isn't even documented,
+I found it on <a class="reference external" href="http://stackoverflow.com/questions/7869752/javascript-typed-arrays-and-endianness">Stack Overflow</a> and verified.)</p>
+<p>So, in summary...if you plan on networking at all with ArrayBuffers,
+don't use ArrayBufferViews, use DataViews.&nbsp; (Although Uint8Arrays and
+Int8Arrays should work fine!)</p>
+<p>And to not rant the <em>entire</em> time, working with typed arrays certainly
+does beat strings + charCodeAt!</p>
+
+            </div><!-- /.entry-content -->
+
+
+        </div><!-- /.eleven.columns -->
+        
+<div class="three columns">
+
+<h4>Pages</h4>
+
+ <ul>
+      <li><a href="https://clokep.github.io/pages/about.html">About</a></li>
+      <li><a href="https://clokep.github.io/pages/contact.html">Contact</a></li>
+  </ul>
+
+<h4>Categories</h4>
+<ul>
+		<li><a href="https://clokep.github.io/category/mozilla.html">Mozilla</a></li>
+</ul>
+
+
+<h4><i class="icon-tag"></i>Tags</h4>
+	<ul>
+	    <li class="tag-4"><a href="https://clokep.github.io/tag/crosspost.html">crosspost</a></li>
+	    <li class="tag-4"><a href="https://clokep.github.io/tag/imap.html">IMAP</a></li>
+	    <li class="tag-3"><a href="https://clokep.github.io/tag/specifications.html">specifications</a></li>
+	    <li class="tag-1"><a href="https://clokep.github.io/tag/instantbird.html">Instantbird</a></li>
+	    <li class="tag-4"><a href="https://clokep.github.io/tag/oscar.html">OSCAR</a></li>
+	    <li class="tag-2"><a href="https://clokep.github.io/tag/gsoc.html">GSoC</a></li>
+	    <li class="tag-3"><a href="https://clokep.github.io/tag/google.html">Google</a></li>
+	    <li class="tag-1"><a href="https://clokep.github.io/tag/irc.html">IRC</a></li>
+	    <li class="tag-4"><a href="https://clokep.github.io/tag/rss.html">RSS</a></li>
+	    <li class="tag-4"><a href="https://clokep.github.io/tag/lightning.html">Lightning</a></li>
+	    <li class="tag-3"><a href="https://clokep.github.io/tag/sipe.html">SIPE</a></li>
+	    <li class="tag-3"><a href="https://clokep.github.io/tag/bugs.html">bugs</a></li>
+	    <li class="tag-2"><a href="https://clokep.github.io/tag/yahoo.html">Yahoo</a></li>
+	    <li class="tag-1"><a href="https://clokep.github.io/tag/mozilla.html">Mozilla</a></li>
+	    <li class="tag-3"><a href="https://clokep.github.io/tag/wat.html">Wat</a></li>
+	    <li class="tag-4"><a href="https://clokep.github.io/tag/messaging.html">messaging</a></li>
+	    <li class="tag-4"><a href="https://clokep.github.io/tag/status.html">status</a></li>
+	    <li class="tag-1"><a href="https://clokep.github.io/tag/programming.html">programming</a></li>
+	    <li class="tag-3"><a href="https://clokep.github.io/tag/customizing.html">customizing</a></li>
+	    <li class="tag-2"><a href="https://clokep.github.io/tag/im.html">IM</a></li>
+	    <li class="tag-2"><a href="https://clokep.github.io/tag/community.html">community</a></li>
+	    <li class="tag-4"><a href="https://clokep.github.io/tag/email.html">email</a></li>
+	    <li class="tag-2"><a href="https://clokep.github.io/tag/thunderbird.html">Thunderbird</a></li>
+	    <li class="tag-4"><a href="https://clokep.github.io/tag/smtp.html">SMTP</a></li>
+	    <li class="tag-2"><a href="https://clokep.github.io/tag/instant-messaging.html">instant messaging</a></li>
+	    <li class="tag-2"><a href="https://clokep.github.io/tag/chat.html">chat</a></li>
+	    <li class="tag-4"><a href="https://clokep.github.io/tag/pop3.html">POP3</a></li>
+</ul>
+
+
+
+<h4><i class="icon-rss"></i>Subscribe</h4>
+<ul>
+  <li><a href="https://clokep.github.io/feeds/all.atom.xml">Full Atom Feed</a></li>
+  <li><a href="https://clokep.github.io/feeds/all.rss.xml">Full RSS Feed</a></li>
+</ul>
+
+</div> </div><!-- /.row -->
+
+
+</section>
+
+       </div><!-- /.row -->
+    </div><!-- /.container -->
+
+
+       <div class="container.nopad bg">
+
+    
+        <footer id="credits" class="row">
+          <div class="seven columns left-center">
+
+                   <address id="about" class="vcard body">
+                    Proudly powered by <a href="http://getpelican.com/">Pelican</a>,
+                    which takes great advantage of <a href="http://python.org">Python</a>.
+                    <br />
+                    Based on the <a target="_blank" href="http://gumbyframework.com">Gumby Framework</a>
+                    </address>
+          </div>
+
+
+          <div class="seven columns">
+            <div class="row">
+              <ul class="socbtns">
+
+                <li><div class="btn primary"><a href="https://www.github.com/clokep" target="_blank">Github</a></div></li>
+
+                <li><div class="btn bitbucket"><a href="https://bitbucket.org/clokep" target="_blank">BitBucket</a></div></li>
+
+                <li><div class="btn mozillians"><a href="https://mozillians.org/clokep" target="_blank">Mozillians</a></div></li>
+
+                <li><div class="btn twitter"><a href="https://www.twitter.com/clokep" target="_blank">Twitter</a></div></li>
+
+
+
+              </ul>
+            </div>
+          </div>
+        </footer>
+
+    </div>
+
+
+  <script src="https://clokep.github.io/theme/js/libs/jquery-1.9.1.min.js"></script>
+  <script src="https://clokep.github.io/theme/js/libs/gumby.min.js"></script>
+  <script src="https://clokep.github.io/theme/js/plugins.js"></script>
+</body>
+</html>

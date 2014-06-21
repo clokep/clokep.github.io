@@ -1,0 +1,514 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Like bricks in the sky</title><link href="https://clokep.github.io/" rel="alternate"></link><link href="https://clokep.github.io/feeds/tag/thunderbird.atom.xml" rel="self"></link><id>https://clokep.github.io/</id><updated>2014-04-27T17:46:00-04:00</updated><entry><title>Extending JavaScript Maps (or other built-in objects)</title><link href="https://clokep.github.io/extending-javascript-maps-or-other-built-in-objects.html" rel="alternate"></link><updated>2014-04-27T17:46:00-04:00</updated><author><name>Patrick Cloke</name></author><id>tag:https://clokep.github.io,2014-04-27:extending-javascript-maps-or-other-built-in-objects.html</id><summary type="html">&lt;p&gt;Finally another technical post, this one is about my adventures in
+attempting to extend the built-in &lt;a class="reference external" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Map"&gt;Map&lt;/a&gt; object in JavaScript to extend
+the functionality. As background, there are two reasons we'd want this:&lt;/p&gt;
+&lt;ol class="arabic"&gt;
+&lt;li&gt;&lt;p class="first"&gt;In the chat backend we currently use JavaScript &lt;a class="reference external" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object"&gt;objects&lt;/a&gt; (&lt;tt class="docutils literal"&gt;{}&lt;/tt&gt;) as
+hashes/maps to keep track of various things (i.e. there's a &lt;a class="reference external" href="https://mxr.mozilla.org/comm-central/source/chat/protocols/irc/irc.js#789"&gt;hash of
+conversations&lt;/a&gt; which map from conversation name to prplIConversation
+objects in the IRC code). Whenever checking to see if something is in
+this map we have to use &lt;a class="reference external" href="https://mxr.mozilla.org/comm-central/source/chat/protocols/irc/irc.js#1509"&gt;hasOwnProperty&lt;/a&gt;. This has to be the
+&lt;a class="reference external" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/hasOwnProperty"&gt;version from Object.prototype&lt;/a&gt; in case the map has a conversation
+named hasOwnProperty. This is &lt;a class="reference external" href="https://mxr.mozilla.org/comm-central/source/chat/modules/imXPCOMUtils.jsm#166"&gt;super simple code&lt;/a&gt;, but annoying:&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="c1"&gt;// Similar to Object.hasOwnProperty, but doesn&amp;#39;t fail if the object&lt;/span&gt;
+&lt;span class="c1"&gt;// has a hasOwnProperty property set.&lt;/span&gt;
+&lt;span class="kd"&gt;function&lt;/span&gt; &lt;span class="nx"&gt;hasOwnProperty&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;aObject&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="nx"&gt;aPropertyName&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+  &lt;span class="nb"&gt;Object&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;prototype&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;hasOwnProperty&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;call&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;aObject&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="nx"&gt;aPropertyName&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;&lt;a class="reference external" href="https://bugzilla.mozilla.org/show_bug.cgi?id=955366"&gt;Replacing these custom objects with a Map&lt;/a&gt; would alleviate this
+funky dance.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p class="first"&gt;Frequently in the chat backend we have to &amp;quot;normalize&amp;quot; &lt;a class="footnote-reference" href="#id4" id="id1"&gt;[1]&lt;/a&gt; strings
+(e.g. #INsTanTBIrd and #instantbird are the same on IRC &lt;a class="footnote-reference" href="#id5" id="id2"&gt;[2]&lt;/a&gt;). This is
+almost always done for sane storage of data received from the network
+(or from the user). I figured it'd be great if, instead of having to
+&lt;a class="reference external" href="https://mxr.mozilla.org/comm-central/source/chat/protocols/irc/irc.js#1510"&gt;manually&lt;/a&gt; &lt;a class="reference external" href="https://mxr.mozilla.org/comm-central/source/chat/protocols/irc/irc.js#1514"&gt;handle&lt;/a&gt; &lt;a class="reference external" href="https://mxr.mozilla.org/comm-central/source/chat/protocols/irc/irc.js#1528"&gt;this&lt;/a&gt; normalization each time we tried to
+access data, the keys were magically normalized when accessing the
+data.
+(Note that although normalization is generally more complicated, just
+consider to be &lt;a class="reference external" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/toLowerCase"&gt;String.prototype.toLowerCase()&lt;/a&gt; for the rest of this
+post!)&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;This has been explored before by &lt;a class="reference external" href="http://perfectionkills.com/how-ecmascript-5-still-does-not-allow-to-subclass-an-array/"&gt;others&lt;/a&gt;, but generally in the
+context of web sites / cross browser compatibility. Which are concerns
+that don't really limit us for backend code.&lt;/p&gt;
+&lt;div class="section" id="goals"&gt;
+&lt;h2&gt;Goals&lt;/h2&gt;
+&lt;ol class="arabic simple"&gt;
+&lt;li&gt;Replace objects with Maps for safe access. This is pretty easily
+fixed by switching all &lt;tt class="docutils literal"&gt;&lt;span class="pre"&gt;obj[&amp;quot;foo&amp;quot;]&lt;/span&gt;&lt;/tt&gt; calls to &lt;tt class="docutils literal"&gt;&lt;span class="pre"&gt;obj.get(&amp;quot;foo&amp;quot;)&lt;/span&gt;&lt;/tt&gt; (or the
+appropriate other method: set, delete, etc.)&lt;/li&gt;
+&lt;li&gt;Automatically &amp;quot;normalize&amp;quot; keys in the some user defined way, e.g.
+such that &lt;tt class="docutils literal"&gt;&lt;span class="pre"&gt;obj.get(&amp;quot;foo&amp;quot;)&lt;/span&gt;&lt;/tt&gt; and &lt;tt class="docutils literal"&gt;&lt;span class="pre"&gt;obj.get(&amp;quot;FoO&amp;quot;)&lt;/span&gt;&lt;/tt&gt; return the same value.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/div&gt;
+&lt;div class="section" id="first-approach-setting-proto-to-map-prototype"&gt;
+&lt;h2&gt;First Approach (setting __proto__ to Map.prototype)&lt;/h2&gt;
+&lt;p&gt;My first naive approach was to create an object with &lt;tt class="docutils literal"&gt;__proto__&lt;/tt&gt; set
+to Map.prototype and overwrite anything that uses keys to appropriately
+call a normalization function.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="kd"&gt;function&lt;/span&gt; &lt;span class="nx"&gt;NormalizedMap&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt; &lt;span class="p"&gt;}&lt;/span&gt;
+&lt;span class="nx"&gt;NormalizedMap&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;prototype&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+    &lt;span class="nx"&gt;__proto__&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="nx"&gt;Map&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;prototype&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+    &lt;span class="nx"&gt;_normalize&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="kd"&gt;function&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;aStr&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="nx"&gt;aStr&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;toLowerCase&lt;/span&gt;&lt;span class="p"&gt;(),&lt;/span&gt;
+
+    &lt;span class="nx"&gt;get&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="kd"&gt;function&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;aStr&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="nx"&gt;Map&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;prototype&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;get&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;call&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="k"&gt;this&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="k"&gt;this&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;_normalize&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;aStr&lt;/span&gt;&lt;span class="p"&gt;)),&lt;/span&gt;
+    &lt;span class="nx"&gt;set&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="kd"&gt;function&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;aStr&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="nx"&gt;aVal&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="nx"&gt;Map&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;prototype&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;set&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;call&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="k"&gt;this&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="k"&gt;this&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;_normalize&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;aStr&lt;/span&gt;&lt;span class="p"&gt;),&lt;/span&gt; &lt;span class="nx"&gt;aVal&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="p"&gt;};&lt;/span&gt;
+
+&lt;span class="kd"&gt;let&lt;/span&gt; &lt;span class="nx"&gt;m&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="k"&gt;new&lt;/span&gt; &lt;span class="nx"&gt;NormalizedMap&lt;/span&gt;&lt;span class="p"&gt;();&lt;/span&gt;
+&lt;span class="nx"&gt;m&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;set&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;foo&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="c1"&gt;// Throws TypeError: set method called on incompatible Object&lt;/span&gt;
+&lt;span class="nx"&gt;m&lt;/span&gt; &lt;span class="k"&gt;instanceof&lt;/span&gt; &lt;span class="nx"&gt;Map&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt; &lt;span class="c1"&gt;// true . . . wat . . .&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;This throws an error and does not work. Apparently there are plans to
+&lt;a class="reference external" href="https://bugzilla.mozilla.org/show_bug.cgi?id=838540"&gt;support something like this&lt;/a&gt;. The totally fun thing, in my opinion, is
+that m is an instance of a Map!&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="section" id="second-approach-modifying-proto-after-instance-creation"&gt;
+&lt;h2&gt;Second Approach (modifying __proto__ after instance creation)&lt;/h2&gt;
+&lt;p&gt;My second approach was to generate a real Map and then override the
+&lt;tt class="docutils literal"&gt;__proto__&lt;/tt&gt; to give it the properties I wanted:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="kd"&gt;function&lt;/span&gt; &lt;span class="nx"&gt;NormalizedMap&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+    &lt;span class="kd"&gt;let&lt;/span&gt; &lt;span class="nx"&gt;m&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="k"&gt;new&lt;/span&gt; &lt;span class="nx"&gt;Map&lt;/span&gt;&lt;span class="p"&gt;();&lt;/span&gt;  &lt;span class="nx"&gt;m&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;__proto__&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="nx"&gt;NormalizedMap&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;prototype&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+    &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="nx"&gt;m&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;span class="p"&gt;}&lt;/span&gt;
+&lt;span class="nx"&gt;NormalizedMap&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;prototype&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+    &lt;span class="nx"&gt;__proto__&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="nx"&gt;Map&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;prototype&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+    &lt;span class="nx"&gt;_normalize&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="kd"&gt;function&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;aStr&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="nx"&gt;aStr&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;toLowerCase&lt;/span&gt;&lt;span class="p"&gt;(),&lt;/span&gt;
+    &lt;span class="nx"&gt;get&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="kd"&gt;function&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;aStr&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="nx"&gt;Map&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;prototype&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;get&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;call&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="k"&gt;this&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="k"&gt;this&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;_normalize&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;aStr&lt;/span&gt;&lt;span class="p"&gt;)),&lt;/span&gt;
+    &lt;span class="nx"&gt;set&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="kd"&gt;function&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;aStr&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="nx"&gt;aVal&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="nx"&gt;Map&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;prototype&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;set&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;call&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="k"&gt;this&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="k"&gt;this&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;_normalize&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;aStr&lt;/span&gt;&lt;span class="p"&gt;),&lt;/span&gt; &lt;span class="nx"&gt;aVal&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="p"&gt;};&lt;/span&gt;
+&lt;span class="kd"&gt;let&lt;/span&gt; &lt;span class="nx"&gt;m&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="k"&gt;new&lt;/span&gt; &lt;span class="nx"&gt;NormalizedMap&lt;/span&gt;&lt;span class="p"&gt;();&lt;/span&gt;
+&lt;span class="nx"&gt;m&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;set&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;foo&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="nx"&gt;m&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;get&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;FOO&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt; &lt;span class="c1"&gt;// 1&lt;/span&gt;
+&lt;span class="nx"&gt;m&lt;/span&gt; &lt;span class="k"&gt;instanceof&lt;/span&gt; &lt;span class="nx"&gt;Map&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt; &lt;span class="c1"&gt;// true&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;This actually works! But will &lt;a class="reference external" href="https://bugzilla.mozilla.org/show_bug.cgi?id=963519"&gt;throw a warning&lt;/a&gt; each time it is
+created since changing an objects &lt;tt class="docutils literal"&gt;__proto__&lt;/tt&gt; is generally a bad idea.
+I also thought of overriding individual methods, but this seemed
+cumbersome and would increase the time in the constructor calls. (Which
+occur during the start up of each account and is generally a resource
+constrained time. No, I didn't profile this, it just seemed like bad
+design.)&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="section" id="solution-wrapping-a-map"&gt;
+&lt;h2&gt;Solution (wrapping a Map)&lt;/h2&gt;
+&lt;p&gt;Finally I settled on the simple solution of just wrapping the Map in a
+custom object. Initially I thought this would be frustrating to
+re-declare every function (and prone to breakage in the future if new
+methods are added), but there's a nice magic method
+&lt;a class="reference external" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/noSuchMethod"&gt;__noSuchMethod__&lt;/a&gt; that fixes this! (Note that this is a
+non-standard feature of SpiderMonkey.) &lt;tt class="docutils literal"&gt;__noSuchMethod__&lt;/tt&gt; allows an
+object to intercept a call to a non-existent method (and in this case
+call that same method on the internal Map object).&lt;/p&gt;
+&lt;p&gt;Below is the final version that seems to act magically like a Map when
+necessary (e.g. iterating the map works, all functions and properties
+exist, the constructor works &lt;a class="footnote-reference" href="#id6" id="id3"&gt;[3]&lt;/a&gt;). I need to thank aleth (another chat
+developer) who helped out quite a bit with this (and will ultimately be
+reviewing this code)!&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="c1"&gt;// A Map that automatically normalizes keys before accessing the values.&lt;/span&gt;
+&lt;span class="kd"&gt;function&lt;/span&gt; &lt;span class="nx"&gt;NormalizedMap&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;aNormalizeFunction&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="nx"&gt;aIt&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;[])&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+  &lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="k"&gt;typeof&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;aNormalizeFunction&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="o"&gt;!=&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;function&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+    &lt;span class="k"&gt;throw&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;NormalizedMap must have a normalize function!&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+  &lt;span class="k"&gt;this&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;_normalize&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="nx"&gt;aNormalizeFunction&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+  &lt;span class="k"&gt;this&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;_map&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="k"&gt;new&lt;/span&gt; &lt;span class="nx"&gt;Map&lt;/span&gt;&lt;span class="p"&gt;([[&lt;/span&gt;&lt;span class="k"&gt;this&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;_normalize&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;key&lt;/span&gt;&lt;span class="p"&gt;),&lt;/span&gt; &lt;span class="nx"&gt;val&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt; &lt;span class="k"&gt;for&lt;/span&gt; &lt;span class="p"&gt;([&lt;/span&gt;&lt;span class="nx"&gt;key&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="nx"&gt;val&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt; &lt;span class="nx"&gt;of&lt;/span&gt; &lt;span class="nx"&gt;aIt&lt;/span&gt;&lt;span class="p"&gt;)]);&lt;/span&gt;
+&lt;span class="p"&gt;}&lt;/span&gt;
+&lt;span class="nx"&gt;NormalizedMap&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;prototype&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+  &lt;span class="nx"&gt;_map&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="kc"&gt;null&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+  &lt;span class="c1"&gt;// The function to apply to all keys.&lt;/span&gt;
+  &lt;span class="nx"&gt;_normalize&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="kc"&gt;null&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+
+  &lt;span class="c1"&gt;// Anything that accepts a key as an input needs to be manually overridden.&lt;/span&gt;
+  &lt;span class="k"&gt;delete&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="kd"&gt;function&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;aKey&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="k"&gt;this&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;_map&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="k"&gt;delete&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="k"&gt;this&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;_normalize&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;aKey&lt;/span&gt;&lt;span class="p"&gt;)),&lt;/span&gt;
+  &lt;span class="nx"&gt;get&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="kd"&gt;function&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;aKey&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="k"&gt;this&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;_map&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;get&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="k"&gt;this&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;_normalize&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;aKey&lt;/span&gt;&lt;span class="p"&gt;)),&lt;/span&gt;
+  &lt;span class="nx"&gt;has&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="kd"&gt;function&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;aKey&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="k"&gt;this&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;_map&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;has&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="k"&gt;this&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;_normalize&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;aKey&lt;/span&gt;&lt;span class="p"&gt;)),&lt;/span&gt;
+  &lt;span class="nx"&gt;set&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="kd"&gt;function&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;aKey&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="nx"&gt;aValue&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="k"&gt;this&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;_map&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;set&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="k"&gt;this&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;_normalize&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;aKey&lt;/span&gt;&lt;span class="p"&gt;),&lt;/span&gt; &lt;span class="nx"&gt;aValue&lt;/span&gt;&lt;span class="p"&gt;),&lt;/span&gt;
+
+  &lt;span class="c1"&gt;// Properties must be manually forwarded.&lt;/span&gt;
+  &lt;span class="nx"&gt;get&lt;/span&gt; &lt;span class="nx"&gt;size&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt; &lt;span class="k"&gt;this&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;_map&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;size&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+
+  &lt;span class="c1"&gt;// Here&amp;#39;s where the magic happens. If a method is called that isn&amp;#39;t defined&lt;/span&gt;
+  &lt;span class="c1"&gt;// here, just pass it to the internal _map object.&lt;/span&gt;
+  &lt;span class="nx"&gt;__noSuchMethod__&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="kd"&gt;function&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;aId&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="nx"&gt;aArgs&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="k"&gt;this&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;_map&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="nx"&gt;aId&lt;/span&gt;&lt;span class="p"&gt;].&lt;/span&gt;&lt;span class="nx"&gt;apply&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="k"&gt;this&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;_map&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="nx"&gt;aArgs&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="p"&gt;}&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;The one downside of see of this is that properties must be declared
+manually to forward to the internal &lt;tt class="docutils literal"&gt;_map&lt;/tt&gt; object. Maybe there is a
+matching &lt;tt class="docutils literal"&gt;__noSuchProperty__&lt;/tt&gt; method I'm missing? Overall, I'm happy
+with this solution, but please leave a comment if you can think of an
+easier / better way to do this! (Or see a glaring way this will break!)&lt;/p&gt;
+&lt;table class="docutils footnote" frame="void" id="id4" rules="none"&gt;
+&lt;colgroup&gt;&lt;col class="label" /&gt;&lt;col /&gt;&lt;/colgroup&gt;
+&lt;tbody valign="top"&gt;
+&lt;tr&gt;&lt;td class="label"&gt;&lt;a class="fn-backref" href="#id1"&gt;[1]&lt;/a&gt;&lt;/td&gt;&lt;td&gt;This is always a little bit of a sore subject in &lt;a class="reference external" href="irc://irc.mozilla.org/#instantbird"&gt;#instantbird&lt;/a&gt;
+since we've had a variety of issues with this over the years. I think
+we've fixed most of them at this point though!&lt;/td&gt;&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;table class="docutils footnote" frame="void" id="id5" rules="none"&gt;
+&lt;colgroup&gt;&lt;col class="label" /&gt;&lt;col /&gt;&lt;/colgroup&gt;
+&lt;tbody valign="top"&gt;
+&lt;tr&gt;&lt;td class="label"&gt;&lt;a class="fn-backref" href="#id2"&gt;[2]&lt;/a&gt;&lt;/td&gt;&lt;td&gt;As I've &lt;a class="reference external" href="https://clokep.github.io/the-so-called-irc-specifications.html"&gt;written before&lt;/a&gt;, IRC tends to have crazy specifications.
+In IRC, &lt;a class="reference external" href="https://tools.ietf.org/html/rfc2812#section-2.2"&gt;the characters of A-Z[]\~ are considered the upper case of a-z{}|^&lt;/a&gt;
+(&amp;quot;because of IRC's Scandinavian origin&amp;quot;). Oh, also this can
+change based on an &lt;a class="reference external" href="http://tools.ietf.org/html/draft-brocklesby-irc-isupport-03#section-3.1"&gt;ISUPPORT response&lt;/a&gt; from the server to pure ASCII or
+RFC 1459 casemapping (A-Z[]\ map to a-z{}|). It seems like this could
+theoretically change at any point on a live server too, although that
+would be INSANE and I hope no one ever does that.&lt;/td&gt;&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;table class="docutils footnote" frame="void" id="id6" rules="none"&gt;
+&lt;colgroup&gt;&lt;col class="label" /&gt;&lt;col /&gt;&lt;/colgroup&gt;
+&lt;tbody valign="top"&gt;
+&lt;tr&gt;&lt;td class="label"&gt;&lt;a class="fn-backref" href="#id3"&gt;[3]&lt;/a&gt;&lt;/td&gt;&lt;td&gt;I wrote some xpcshell tests to ensure these properties work as
+expected, but they're uhh...not up anywhere yet though. Oops.&lt;/td&gt;&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;/div&gt;
+</summary><category term="IM"></category><category term="Instantbird"></category><category term="programming"></category><category term="specifications"></category><category term="Thunderbird"></category><category term="Wat"></category></entry><entry><title>Community and Volunteers</title><link href="https://clokep.github.io/community-and-volunteers.html" rel="alternate"></link><updated>2014-04-16T16:34:00-04:00</updated><author><name>Patrick Cloke</name></author><id>tag:https://clokep.github.io,2014-04-16:community-and-volunteers.html</id><summary type="html">&lt;p&gt;It was suggested that I cross-post this from mozilla.dev.planning onto
+my blog. This is in reply to a thread entitled &amp;quot;&lt;a class="reference external" href="https://groups.google.com/forum/#%21topic/mozilla.dev.planning/P8oHKTCWSiQ"&gt;Proposal: Move
+Thunderbird and SeaMonkey to mozilla-central&lt;/a&gt;&amp;quot; about (essentially)
+merging comm-central back into mozilla-central. There have been many
+technical concerns raised in the thread (that I'm not going to rehash
+here). What I'm more interested in is the lack of community feeling
+there. As Nicholas Nethercote said in that thread:&lt;/p&gt;
+&lt;blockquote&gt;
+&amp;quot;I am surprised [...] by how heartless the discussion has been.&amp;quot;&lt;/blockquote&gt;
+&lt;p&gt;I should note that I did have some help editing this down from my
+original post. Turns out I tend to write inflammatory statements that
+don't help get me point across. Who knew? Anyway, thanks to all of you
+who helped me out there!&lt;/p&gt;
+&lt;p&gt;My full post is below (with a few links added and plaintext formatting
+converted to HTML formatting):&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;On Monday, April 14, 2014 4:52:53 PM UTC-4, Nicholas Nethercote
+wrote:&lt;/p&gt;
+&lt;p&gt;&amp;gt; The technical aspects of this decision have been discussed to death,
+&amp;gt; so I won't say anything about that. I am surprised, however, by how
+&amp;gt; heartless the discussion has been.&lt;/p&gt;
+&lt;p&gt;I agree, the technical bitshere seem to have solutions suggested by
+Joshua and others, but the non-technical parts of this discussion
+have left mefeeling disheartened and confused with the Mozilla
+community.&lt;/p&gt;
+&lt;p&gt;I find it ironic/amusing/sad/upsetting that a few threads above this
+is a thread entitled &amp;quot;&lt;a class="reference external" href="https://groups.google.com/forum/#!topic/mozilla.dev.planning/1kbZsYoQcng"&gt;Contributor pathways, engagement points and
+bug mentoring&lt;/a&gt;&amp;quot; while in this thread I see community contributors
+being blocked at every turn!&lt;/p&gt;
+&lt;p&gt;Here I don't see people attempting to foster a community by putting
+their best foot forward. I see people trying to get their &lt;strong&gt;job&lt;/strong&gt;
+done; with an attitude of &amp;quot;if this doesn't help me, get it outta my
+way!&amp;quot; I don't think this is the right way to grow a community. I
+don't think this is how Mozilla HAS grown it's community. I don't
+think it's in line with what Mozilla expects from it's community
+members (both employees and volunteers!)&lt;/p&gt;
+&lt;p&gt;Personally, I dislike the amount of Mozilla &lt;strong&gt;Corporation&lt;/strong&gt; goals
+focus in this thread. Can we have a discussion aspart ofa larger
+community? Why must it focus on Corporate goals? I'm not part of the
+corporation, I don't really care what its goals are or are not. I
+care about Mozilla, I care about providing high-quality, free, open
+source softwareto improve the experience of the Internet for
+everyone. And no, I'm not talking about Firefox. I'm talking about
+Thunderbird. I understand that Mozilla's goals arecurrently Firefox
+and Firefox OS, but these are not my personal goals.&lt;/p&gt;
+&lt;p&gt;At the Summit I had a few conversations with people about
+&amp;quot;on-boarding&amp;quot; new employees and getting them to understand how the
+community works and that interacting with the community in a
+positive manner is an important part of Mozilla. I don't remember
+the exact context, but part of it wasthat it is important that new
+employees don't think of it as &amp;quot;How can I &lt;em&gt;use&lt;/em&gt; the community?&amp;quot;, for
+that implies taking advtange of them, but &amp;quot;How can I work with the
+community?&amp;quot;&lt;/p&gt;
+&lt;p&gt;Please don't see this as an &amp;quot;employees vs. volunteers&amp;quot; argument. I
+believe that I'm expected to live up to these same goals. If I, as a
+volunteer, can help an employee achieve his goals; I'm
+[STRIKEOUT:more than willing], no...I'm EXPECTED to do that. I think
+this is a two-way relationship that must be fostered. It has seemed
+to me that over the past couple of years that I've been hanging
+around here there's been less and less focus on the community and
+more and more on the Corporation.&lt;/p&gt;
+&lt;p&gt;I understand Thunderbird and SeaMonkey may not be important to you,
+but it is important tome! (And otherswho contribute
+totheThunderbird/SeaMonkey community, including employees who
+contribute on their spare time.) When Mozilla stopped directly
+supporting development of Thunderbird it was widely announced that
+&amp;quot;Thunderbird is dead!&amp;quot;. We, as part of the Mozilla community, have
+been fighting to prove this wrong.Could you please respect our
+efforts? Merging c-c into m-c will help us focus our efforts on
+building a great product instead of spending significant effort on
+keeping a dying one on life-support. (And prove to all that
+&amp;quot;Thunderbird is dead!&amp;quot; was just a sensational headline.)&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;I don't have much else to say beyond that (besides thanks for reading
+this far!)&lt;/p&gt;
+</summary><category term="community"></category><category term="crosspost"></category><category term="Mozilla"></category><category term="Thunderbird"></category></entry><entry><title>JavaScript typed arrays pain</title><link href="https://clokep.github.io/javascript-typed-arrays-pain.html" rel="alternate"></link><updated>2012-11-29T03:11:00-05:00</updated><author><name>Patrick Cloke</name></author><id>tag:https://clokep.github.io,2012-11-29:javascript-typed-arrays-pain.html</id><summary type="html">&lt;p&gt;If you've ever tried to deal with binary data in JavaScript you know
+it isn't much fun and you usually resort to using strings lots of
+charCodeAt and related functions.&amp;nbsp; &lt;a class="reference external" href="https://developer.mozilla.org/en-US/docs/JavaScript_typed_arrays"&gt;Typed arrays&lt;/a&gt; are supposed to solve
+this though!&amp;nbsp; The typed array API consists of creating a buffer of bytes
+(called an &lt;a class="reference external" href="https://developer.mozilla.org/en-US/docs/JavaScript_typed_arrays/ArrayBuffer"&gt;ArrayBuffer&lt;/a&gt;) and then manipulating those bytes via
+different views (&lt;a class="reference external" href="https://developer.mozilla.org/en-US/docs/JavaScript_typed_arrays/ArrayBufferView"&gt;ArrayBufferView&lt;/a&gt;s).&amp;nbsp; You can have multiple views of
+the same buffer, starting at different offsets, of different lengths and
+types...which is all neat from a technical point of view, but is it
+really useful?&amp;nbsp; It is kind of nice working with the views as if they
+were normal arrays though.&lt;/p&gt;
+&lt;p&gt;I've been playing with these ArrayBuffers quite a bit as I'm working
+on an implementation of the &lt;a class="reference external" href="http://en.wikipedia.org/wiki/OSCAR_protocol"&gt;OSCAR protocol&lt;/a&gt; (used for &lt;a class="reference external" href="http://en.wikipedia.org/wiki/AOL_Instant_Messenger"&gt;AOL Instant
+Messenger&lt;/a&gt; and &lt;a class="reference external" href="http://en.wikipedia.org/wiki/ICQ"&gt;ICQ&lt;/a&gt;) in the chat backend (for Instantbird /
+Thunderbird).&amp;nbsp; (As an aside, the OSCAR protocol Wikipedia page has
+surprisingly good documentation of some of the underlying data
+structures of the protocol...)&amp;nbsp; I started by writing some test code
+using ArrayBuffers and views, which have been around a while: since
+Gecko 2.0 in fact!&amp;nbsp; I quickly ran into some tedious issues with
+repetitive code such as:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="cm"&gt;/*&lt;/span&gt;
+&lt;span class="cm"&gt; * A TLV (Type, Length and Value) data structure:&lt;/span&gt;
+&lt;span class="cm"&gt; *  Unsigned Short  type    Describes what the value represents.&lt;/span&gt;
+&lt;span class="cm"&gt; *  Unsigned Short  length  The length of the data block.&lt;/span&gt;
+&lt;span class="cm"&gt; *  Bytes           value   The raw payload.&lt;/span&gt;
+&lt;span class="cm"&gt; *&lt;/span&gt;
+&lt;span class="cm"&gt; * The overall length of a TlvBlock is length + 4.&lt;/span&gt;
+&lt;span class="cm"&gt; *&lt;/span&gt;
+&lt;span class="cm"&gt; * The inputs to this are:&lt;/span&gt;
+&lt;span class="cm"&gt; *  aType    The type of the TLV Block.&lt;/span&gt;
+&lt;span class="cm"&gt; *  aValue   An ArrayBuffer containing the data.&lt;/span&gt;
+&lt;span class="cm"&gt; */&lt;/span&gt;
+&lt;span class="kd"&gt;function&lt;/span&gt; &lt;span class="nx"&gt;TlvBlock&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;aType&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="nx"&gt;aValue&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+  &lt;span class="kd"&gt;let&lt;/span&gt; &lt;span class="nx"&gt;data&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="k"&gt;new&lt;/span&gt; &lt;span class="nx"&gt;ArrayBuffer&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;aValue&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;byteLength&lt;/span&gt; &lt;span class="o"&gt;+&lt;/span&gt; &lt;span class="mi"&gt;4&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
+  &lt;span class="c1"&gt;// The first two bytes are unsigned shorts.&lt;/span&gt;
+  &lt;span class="kd"&gt;let&lt;/span&gt; &lt;span class="nx"&gt;view&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="k"&gt;new&lt;/span&gt; &lt;span class="nx"&gt;Uint16Array&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;data&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;2&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
+  &lt;span class="nx"&gt;view&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="nx"&gt;aType&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+  &lt;span class="nx"&gt;view&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="nx"&gt;aValue&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;byteLength&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+
+  &lt;span class="c1"&gt;// The rest just gets the data copied into it.&lt;/span&gt;
+  &lt;span class="nx"&gt;view&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="k"&gt;new&lt;/span&gt; &lt;span class="nx"&gt;Uint8Array&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;data&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;4&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
+  &lt;span class="nx"&gt;view&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;set&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="k"&gt;new&lt;/span&gt; &lt;span class="nx"&gt;Uint8Array&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;aValue&lt;/span&gt;&lt;span class="p"&gt;));&lt;/span&gt;
+
+  &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="nx"&gt;data&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;span class="p"&gt;}&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;This actually illustrates two annoying issues I have:&lt;/p&gt;
+&lt;ol class="arabic simple"&gt;
+&lt;li&gt;I end up with extra lines of code defining a new view every time I
+switch data types.&lt;/li&gt;
+&lt;li&gt;There's no simple way to copy an ArrayBuffer into a part of an
+ArrayBuffer. In the above example I create a Uint8Array view of the
+target location, a Uint8Array view of the source location and then
+set the source to the target. Seems simple once you figure it out,
+but it took a while to figure out.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;(As an aside, some of you might find the following function helpful,
+it is essentially a &lt;a class="reference external" href="http://en.cppreference.com/w/cpp/string/byte/memcpy"&gt;memcpy&lt;/a&gt; for ArrayBuffers...this isn't really
+tested heavily at all, however.)&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="cm"&gt;/*&lt;/span&gt;
+&lt;span class="cm"&gt; * aTarget / aSource are ArrayBuffers&lt;/span&gt;
+&lt;span class="cm"&gt; */&lt;/span&gt;
+&lt;span class="kd"&gt;function&lt;/span&gt; &lt;span class="nx"&gt;copyBytes&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;aTarget&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="nx"&gt;aSource&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="nx"&gt;aTargetOffset&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="nx"&gt;aSourceOffset&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="nx"&gt;aLength&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="nx"&gt;aSource&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;byteLength&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+  &lt;span class="c1"&gt;// The rest just gets the data copied into it.&lt;/span&gt;
+  &lt;span class="kd"&gt;let&lt;/span&gt; &lt;span class="nx"&gt;view&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="k"&gt;new&lt;/span&gt; &lt;span class="nx"&gt;Uint8Array&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;aTarget&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="nx"&gt;aTargetOffset&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
+  &lt;span class="nx"&gt;view&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;set&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="k"&gt;new&lt;/span&gt; &lt;span class="nx"&gt;Uint8Array&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;aSource&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="nx"&gt;aSourceOffset&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="nx"&gt;aLength&lt;/span&gt;&lt;span class="p"&gt;));&lt;/span&gt;
+&lt;span class="p"&gt;}&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;OK, so typed arrays seem good, but kind of annoying, right?
+Wrong...the OSCAR protocol is a &amp;quot;network order&amp;quot; protocol (aka it is big
+endian). At this point you're probably thinking &amp;quot;OK, so the ArrayBuffer
+constructor must take an endianess flag!&amp;quot;&amp;nbsp; Wrong, it does no such
+thing.&amp;nbsp; &amp;quot;Hmmm...Well do the ArrayBufferViews take an endianess flag?&amp;quot;
+Nope, wrong again.&amp;nbsp; The only way to specify the endianess of the data is
+to use a &lt;a class="reference external" href="https://developer.mozilla.org/en-US/docs/JavaScript_typed_arrays/DataView"&gt;DataView&lt;/a&gt;, a slightly different interface to the underlying
+bytes.&amp;nbsp; It offers an API to individually set different data elements via
+their offset and endianess.&amp;nbsp; (If you're too lazy to read the
+documentation all the way through, DataView assumes big endian: makes my
+life easier!)&lt;/p&gt;
+&lt;p&gt;For the curious, JavaScript typed arrays use the system endianess,
+which in my opinion is pretty much useless (at least if you plan on
+sharing data) since you can never guarantee the endianess to be either
+big or little endian.&amp;nbsp; (The fun part is that this isn't even documented,
+I found it on &lt;a class="reference external" href="http://stackoverflow.com/questions/7869752/javascript-typed-arrays-and-endianness"&gt;Stack Overflow&lt;/a&gt; and verified.)&lt;/p&gt;
+&lt;p&gt;So, in summary...if you plan on networking at all with ArrayBuffers,
+don't use ArrayBufferViews, use DataViews.&amp;nbsp; (Although Uint8Arrays and
+Int8Arrays should work fine!)&lt;/p&gt;
+&lt;p&gt;And to not rant the &lt;em&gt;entire&lt;/em&gt; time, working with typed arrays certainly
+does beat strings + charCodeAt!&lt;/p&gt;
+</summary><category term="IM"></category><category term="Instantbird"></category><category term="Mozilla"></category><category term="OSCAR"></category><category term="Thunderbird"></category><category term="Wat"></category></entry><entry><title>On Status</title><link href="https://clokep.github.io/on-status.html" rel="alternate"></link><updated>2012-10-17T01:33:00-04:00</updated><author><name>Patrick Cloke</name></author><id>tag:https://clokep.github.io,2012-10-17:on-status.html</id><summary type="html">&lt;p&gt;Something that comes up often about Instantbird is why we only support
+three statuses: Available, Unavailable and Offline.&amp;nbsp; (We do actually
+support a fourth one too, Idle, but that is set automatically, not
+chosen by the user.)&amp;nbsp; Frequently this discussion is in the context of
+wanting an &amp;quot;Invisible&amp;quot; status, but I'll get to that later...&lt;/p&gt;
+&lt;p&gt;Many users have talked to us on IRC, email or via bugs and complained
+about wanting an &amp;quot;Away&amp;quot; status or a &amp;quot;Do Not Disturb&amp;quot; status.&amp;nbsp; There's a
+few issues with this:&lt;/p&gt;
+&lt;ol class="arabic simple"&gt;
+&lt;li&gt;What's really the difference between &amp;quot;Unavailable&amp;quot;, &amp;quot;Away&amp;quot; and &amp;quot;Do
+Not Disturb&amp;quot;?&amp;nbsp; Do you really need to choose them individually?
+(Other things that fit into here: &amp;quot;Not at my desk&amp;quot;, &amp;quot;on the phone&amp;quot;,
+&amp;quot;busy&amp;quot;, &amp;quot;stepped out&amp;quot;.&amp;nbsp; It is amazing how some protocols have so many
+ways to describe being unavailable!)&lt;/li&gt;
+&lt;li&gt;A technical issue that we often run into is trying to shoehorn
+different protocol implementations into our abstract protocol
+interface.&amp;nbsp; (We already have some fairly complicated interfaces
+around joining chat rooms, creating different account, etc. because
+of this.)&lt;/li&gt;
+&lt;li&gt;Setting yourself as &amp;quot;Away&amp;quot; or &amp;quot;Invisible&amp;quot; is a lie.&amp;nbsp; Perhaps this is
+me being overly idealistic, but why would you set yourself as
+&amp;quot;Away&amp;quot;?&amp;nbsp; It seems that this is something that should be done
+automatically (when you lock your display, perhaps?).&amp;nbsp; You can't be
+&amp;quot;Away&amp;quot; and using your computer at the same time!
+Again, perhaps being idealistic, but what is the point of the
+&amp;quot;Invisible&amp;quot; status?&amp;nbsp; If you wish to be hidden from someone
+(everyone?) why not just block those users.&amp;nbsp; Or ignore them when they
+send you a message.&amp;nbsp; If you are busy, set yourself to &amp;quot;Unavailable&amp;quot;
+and people should understand that they should not talk to you...if
+they don't, well...do you really want them talking to you ever?&amp;nbsp; (Are
+they really your friend?&amp;nbsp; I guess you don't get to choose your
+co-workers, but still.)&amp;nbsp; Now, perhaps this is just my opinion as
+being someone who never really hard an &amp;quot;Invisible&amp;quot; status (I actually
+remember it being added to the AIM client at some point).&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;At this point you probably don't believe me that there's really &lt;em&gt;that&lt;/em&gt;
+many different protocol statuses out there, so I figured I'd illustrate
+a few protocols in a matrix.&amp;nbsp; Note that this isn't meant to be
+exhaustive, just to show how complicated of a situation this really is.
+All protocols can obviously be &amp;quot;offline&amp;quot; as well, but that's not shown
+in the table.&lt;/p&gt;
+&lt;table border="1" class="docutils"&gt;
+&lt;colgroup&gt;
+&lt;col width="30%" /&gt;
+&lt;col width="13%" /&gt;
+&lt;col width="21%" /&gt;
+&lt;col width="17%" /&gt;
+&lt;col width="19%" /&gt;
+&lt;/colgroup&gt;
+&lt;thead valign="bottom"&gt;
+&lt;tr&gt;&lt;th class="head"&gt;&amp;nbsp;&lt;/th&gt;
+&lt;th class="head"&gt;Available&lt;/th&gt;
+&lt;th class="head"&gt;Unavailable&lt;/th&gt;
+&lt;th class="head"&gt;Phone&lt;/th&gt;
+&lt;th class="head"&gt;Invisible&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody valign="top"&gt;
+&lt;tr&gt;&lt;td&gt;Oscar (AIM/ICQ)&lt;/td&gt;
+&lt;td&gt;Online&lt;/td&gt;
+&lt;td&gt;Away&lt;/td&gt;
+&lt;td&gt;&amp;nbsp;&lt;/td&gt;
+&lt;td&gt;Invisible&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;IRC&lt;/td&gt;
+&lt;td&gt;Online&lt;/td&gt;
+&lt;td&gt;Away&lt;/td&gt;
+&lt;td&gt;&amp;nbsp;&lt;/td&gt;
+&lt;td&gt;&amp;nbsp;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Microsoft Lync&lt;/td&gt;
+&lt;td&gt;Online&lt;/td&gt;
+&lt;td&gt;&lt;ul class="first last simple"&gt;
+&lt;li&gt;Busy&lt;/li&gt;
+&lt;li&gt;Away&lt;/li&gt;
+&lt;li&gt;In a meeting&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/td&gt;
+&lt;td&gt;In a call&lt;/td&gt;
+&lt;td&gt;&amp;nbsp;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Yahoo! Messenger&lt;/td&gt;
+&lt;td&gt;Available&lt;/td&gt;
+&lt;td&gt;&lt;ul class="first last simple"&gt;
+&lt;li&gt;Busy&lt;/li&gt;
+&lt;li&gt;Stepped out&lt;/li&gt;
+&lt;li&gt;Be right back&lt;/li&gt;
+&lt;li&gt;Not at my desk&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/td&gt;
+&lt;td&gt;On the phone&lt;/td&gt;
+&lt;td&gt;&amp;nbsp;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Windows Live Messenger&lt;/td&gt;
+&lt;td&gt;Online&lt;/td&gt;
+&lt;td&gt;&lt;ul class="first last simple"&gt;
+&lt;li&gt;Busy&lt;/li&gt;
+&lt;li&gt;Away&lt;/li&gt;
+&lt;li&gt;Be Right Back&lt;/li&gt;
+&lt;li&gt;Out to lunch&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/td&gt;
+&lt;td&gt;On the phone&lt;/td&gt;
+&lt;td&gt;Appear offline&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;XMPP (e.g. Google Talk)&lt;/td&gt;
+&lt;td&gt;Available&lt;/td&gt;
+&lt;td&gt;Busy&lt;/td&gt;
+&lt;td&gt;&amp;nbsp;&lt;/td&gt;
+&lt;td&gt;&amp;nbsp;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+</summary><category term="chat"></category><category term="IM"></category><category term="instant messaging"></category><category term="Instantbird"></category><category term="messaging"></category><category term="status"></category><category term="Thunderbird"></category></entry><entry><title>Yahoo &amp; Thunderbird Can Finally Play Nice?</title><link href="https://clokep.github.io/yahoo-thunderbird-can-finally-play-nice.html" rel="alternate"></link><updated>2010-11-23T03:03:00-05:00</updated><author><name>Patrick Cloke</name></author><id>tag:https://clokep.github.io,2010-11-23:yahoo-thunderbird-can-finally-play-nice.html</id><summary type="html">&lt;p&gt;For years I've been dealing with Yahoo's lack of support for any sort
+of decent (free) POP3/IMAP/SMTP protocol support.&amp;nbsp; Why do I need this?
+So I can check my &lt;a class="reference external" href="http://mail.yahoo.com/"&gt;Yahoo mail&lt;/a&gt; in &lt;a class="reference external" href="http://www.mozillamessaging.com/en-US/thunderbird/"&gt;Mozilla Thunderbird&lt;/a&gt; of course!&lt;/p&gt;
+&lt;p&gt;At first I used &lt;a class="reference external" href="http://ypopsemail.com/"&gt;YPOPS!&lt;/a&gt;, a program that read the HTML pages provided
+by the Yahoo webmail client and served the emails on a local POP
+server.&amp;nbsp; Cool, right?&amp;nbsp; Except it always broke whenever Yahoo changed
+their pages around.&lt;/p&gt;
+&lt;p&gt;After a bit I moved onto using the &lt;a class="reference external" href="http://www.blogger.com/"&gt;WebMail extension&lt;/a&gt; for
+Thunderbird.&amp;nbsp; It essentially works the same way, but runs in the
+Thunderbird process as an extension instead of as a separate service.
+It's a little complicated to set up and requires two extensions.&amp;nbsp; The
+general WebMail extension and a Yahoo specific one (there's also ones
+available for Hotmail, Gmail, Libero and AOL).&amp;nbsp; You might wonder why
+this exists for some services that have always had POP/IMAP access
+(Gmail)?&amp;nbsp; I was too, apparently some people cannot check those ports
+because of firewall issues so this essentially allows them to check it
+via port 80, over an HTTP connection.&lt;/p&gt;
+&lt;p&gt;A few months ago I came across &lt;a class="reference external" href="http://www.emaildiscussions.com/showthread.php?t=59575"&gt;post&lt;/a&gt; describing how a &lt;a class="reference external" href="http://en.wikipedia.org/w/index.php?title=Yahoo%21_Mail&amp;amp;oldid=396914770#Free_IMAP_and_SMTPs_access"&gt;simple
+(nonstandard) command&lt;/a&gt; could allow access to the Yahoo IMAP server, but
+it required &lt;a class="reference external" href="http://www.crasseux.com/linux/"&gt;patching the Thunderbird source&lt;/a&gt; -- not an option for me
+since I've been running nightlies of either Thunderbird 3.1 or 3.2/3.3
+for a while now. (I mean sure, I could do it...but WebMail extension was
+working fine.)&amp;nbsp; There was &lt;a class="reference external" href="http://groups.google.com/group/mozilla.dev.apps.thunderbird/browse_thread/thread/546356554c73f8ca"&gt;some discussion&lt;/a&gt; about it and a &lt;a class="reference external" href="https://bugzilla.mozilla.org/show_bug.cgi?id=493064"&gt;bug&lt;/a&gt; was
+filed for Thunderbird.&lt;/p&gt;
+&lt;p&gt;So how did this lead to free IMAP support?&amp;nbsp; I noticed in the &lt;a class="reference external" href="https://wiki.mozilla.org/Thunderbird/StatusMeetings/2010-11-16#Web_Update"&gt;Weekly
+Status Meeting Notes (2010-11-16)&lt;/a&gt; for Thunderbird a mention of &lt;a class="reference external" href="http://trunk.mozillamessaging.com/en-US/thunderbird/features/email_providers.html"&gt;Free
+Email Providers&lt;/a&gt; page.&amp;nbsp; Checking it out it said &amp;quot;Y! Mail is a free
+email service provided by Yahoo! It offers webmail supported by targeted
+advertising as well as IMAP access.&amp;quot;&amp;nbsp; Hmm...but I just said they don't
+have support this for free! A quick Bing search brought up a &lt;a class="reference external" href="http://www.theanimail.com/imap_server_settings.html"&gt;page with
+IMAP server settings&lt;/a&gt;.&amp;nbsp; I figured I'd check if they work, and sure
+enough they did!&amp;nbsp; The settings are copied below:&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;table class="docutils field-list" frame="void" rules="none"&gt;
+&lt;col class="field-name" /&gt;
+&lt;col class="field-body" /&gt;
+&lt;tbody valign="top"&gt;
+&lt;tr class="field"&gt;&lt;th class="field-name"&gt;User name:&lt;/th&gt;&lt;td class="field-body"&gt;[STRIKEOUT:user&amp;#64;yahoo.com] user&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr class="field"&gt;&lt;th class="field-name"&gt;IMAP server:&lt;/th&gt;&lt;td class="field-body"&gt;[STRIKEOUT:imap-ssl.mail.yahoo.com] imap.mail.yahoo.com&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr class="field"&gt;&lt;th class="field-name"&gt;Port:&lt;/th&gt;&lt;td class="field-body"&gt;993&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr class="field"&gt;&lt;th class="field-name"&gt;Password:&lt;/th&gt;&lt;td class="field-body"&gt;Cleartext/Normal&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr class="field"&gt;&lt;th class="field-name"&gt;SSL:&lt;/th&gt;&lt;td class="field-body"&gt;yes&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr class="field"&gt;&lt;th class="field-name"&gt;SMTP server:&lt;/th&gt;&lt;td class="field-body"&gt;smtp.mail.yahoo.com&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr class="field"&gt;&lt;th class="field-name"&gt;Port:&lt;/th&gt;&lt;td class="field-body"&gt;465&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr class="field"&gt;&lt;th class="field-name"&gt;Password:&lt;/th&gt;&lt;td class="field-body"&gt;Cleartext/Normal&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr class="field"&gt;&lt;th class="field-name"&gt;SSL:&lt;/th&gt;&lt;td class="field-body"&gt;yes&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;Awesome!&amp;nbsp; Anyway, I replied with this info in the aforementioned bug
+and &lt;a class="reference external" href="https://bugzilla.mozilla.org/attachment.cgi?id=492550&amp;amp;action=diff"&gt;a patch&lt;/a&gt; was quickly added by Mozilla's &lt;a class="reference external" href="http://www.bucksch.org/1/projects/mozilla/"&gt;Ben Bucksch&lt;/a&gt; to support
+this in Thunderbird, hopefully it'll make it into the next version!&amp;nbsp; It
+was also brought to my attention that imap-ssl.mail.yahoo.com provides
+an SSL certificate that is valid for imap.mail.yahoo.com only, I'd
+suggest using that former.&lt;/p&gt;
+&lt;p&gt;Note that I'm currently suffering from &lt;a class="reference external" href="https://bugzilla.mozilla.org/show_bug.cgi?id=610264"&gt;another bug&lt;/a&gt; while using
+Yahoo IMAP.&amp;nbsp; Everything works, there's just an annoying pop-up
+occasionally about the error.&amp;nbsp; Hopefully it will be fixed soon.&lt;/p&gt;
+</summary><category term="bugs"></category><category term="email"></category><category term="IMAP"></category><category term="Mozilla"></category><category term="POP3"></category><category term="programming"></category><category term="SMTP"></category><category term="Thunderbird"></category><category term="Yahoo"></category></entry></feed>

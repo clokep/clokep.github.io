@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+        <title>IRC Auto-Performs</title>
+        <meta charset="utf-8" />
+        <link href="https://clokep.github.io/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="Like bricks in the sky Full Atom Feed" />
+        <link href="https://clokep.github.io/feeds/all.rss.xml" type="application/rss+xml" rel="alternate" title="Like bricks in the sky Full RSS Feed" />
+        <link href="https://clokep.github.io/feeds/mozilla.atom.xml" type="application/atom+xml" rel="alternate" title="Like bricks in the sky Categories Atom Feed" />
+        <link href="https://clokep.github.io/feeds/mozilla.rss.xml" type="application/rss+xml" rel="alternate" title="Like bricks in the sky Categories RSS Feed" />
+
+
+        <!-- Mobile viewport optimized: j.mp/bplateviewport -->
+        <meta name="viewport" content="width=device-width,initial-scale=1, maximum-scale=1">
+
+        <link rel="stylesheet" type="text/css" href="https://clokep.github.io/theme/gumby.css" />
+        <link rel="stylesheet" type="text/css" href="https://clokep.github.io/theme/style.css" />
+        <link rel="stylesheet" type="text/css" href="https://clokep.github.io/theme/pygment.css" />
+
+        <script src="https://clokep.github.io/theme/js/libs/modernizr-2.6.2.min.js"></script>
+
+
+
+
+
+
+</head>
+
+<body id="index" class="home">
+
+
+    <div class="container">
+
+        <div class="row">
+
+          <header id="banner" class="body">
+                  <h1><a href="https://clokep.github.io">Like bricks in the sky <strong></strong></a></h1>
+          </header><!-- /#banner -->
+
+            <div id="navigation" class="navbar row">
+              <a href="#" gumby-trigger="#navigation &gt; ul" class="toggle"><i class="icon-menu"></i></a>
+             
+              <ul class="columns">
+                <li><a href="https://clokep.github.io">Home</a></li>
+
+                <li><a href="https://clokep.github.io/pages/about.html">About</a></li>
+                <li><a href="https://clokep.github.io/pages/contact.html">Contact</a></li>
+
+                <li><a href="https://clokep.github.io/archives.html">Archives</a></li>
+                <li><a href="https://clokep.github.io/tags.html">Tags</a></li>
+              </ul>
+            </div>
+
+<section id="content" class="body">
+
+   <div class="row">
+        <div class="eleven columns">
+
+
+            <header>
+              <h2 class="entry-title">
+                <a href="https://clokep.github.io/irc-auto-performs.html" rel="bookmark"
+                   title="Permalink to IRC Auto-Performs">IRC Auto-Performs</a></h2>
+           
+            </header>
+            <footer class="post-info">
+              <abbr class="published" title="2012-06-11T02:25:00">
+                06/11/2012 02:25 AM UTC
+              </abbr>
+              <address class="vcard author">
+                By <a class="url fn" href="https://clokep.github.io/author/patrick-cloke.html">Patrick Cloke</a>
+              </address>
+            </footer><!-- /.post-info -->
+            <div class="entry-content">
+              <p>There have been a <a class="reference external" href="https://bugzilla.mozilla.org/show_bug.cgi?id=742675">few</a> <a class="reference external" href="https://bugzilla.instantbird.org/show_bug.cgi?id=1101">requests</a> to support &quot;auto-performs&quot;
+(sending commands to the IRC server after connection that the user types
+into a box or whatever). Personally I find this to be:</p>
+<ol class="arabic simple">
+<li>A fairly awful user experience.</li>
+<li>Confusing to new users.</li>
+<li>Unnecessary.</li>
+</ol>
+<p>I additionally don't like this idea since it requires us to have
+commands for all the common tasks you'd want to do in an auto-perform
+(or support sending absolutely raw messages to the server, which we
+actually do already in the /quote command). Essentially what I just
+described is writing our own scripting language...that seems pointless
+(and frankly, I have better things to do). I'm hoping to convince you
+with this post (and maybe a series of posts) that auto-performs aren't
+necessary and a trivial restartless extension can replace them.</p>
+<div class="section" id="design">
+<h2>Design</h2>
+<p>Part of the desire to <a class="reference external" href="https://clokep.github.io/why-rewrite-the-irc-protocol-plugin-part-2.html">replace the libpurple IRC protocol plugin</a>
+with a new JavaScript one built specifically for Instantbird (which is
+also now used in Thunderbird!) was to make the protocol fully
+extensible. There are <a class="reference external" href="https://clokep.github.io/the-so-called-irc-specifications.html">many revisions and unofficial extensions to IRC</a>
+and we might not necessarily want to support them all (especially if
+they only apply to a single network). Allowing all parts of the protocol
+implementation to be touched and extended seemed like a great way to
+handle this.</p>
+<p>Initially I tried to do this by making the IRC account into an XPCOM
+component (well it is one already, it's an prplIAccount, but I meant an
+IRC specific one: implementing ircIAccount, if you will). Unfortunately,
+this seemed to have a lot of overhead and got complicated extremely
+quickly. Anything I'd want to touch from a message handler (wait,
+wait...what's a handler?! I'll get back to that) would need to have
+methods written and exposed to access internal data of the
+account...does that sound very extensible to you? Well, it doesn't to
+me...</p>
+<p>Onto design two! (Well actually my first design...) Lots of JavaScript
+objects! The entire protocol is implemented as a set of JavaScript
+objects and the handlers directly touch and modify the account's data
+(of course there's methods for abstraction, etc.). This means that an
+extension has absolutely FULL access to every about an account...this
+also means an extension could seriously mess with and cause the protocol
+to stop working or do really crazy things, etc. Unfortunately there
+isn't really a way to avoid that. Hopefully people write good code.</p>
+</div>
+<div class="section" id="messages">
+<h2>Messages</h2>
+<p>I'm going to go into an aside about messages right now, even though it
+doesn't quite seem relevent yet. It will. IRC has a bunch of
+sub-protocols embedded within the IRC protocol (see the link above about
+unofficial extensions). We attempt to parse all the string messages and
+make pretty JavaScript objects out of them. I've actually identified
+five (yes, count that: five) different sub-&quot;protocols&quot; within IRC that
+we deal:</p>
+<ol class="arabic simple">
+<li>IRC itself (i.e. <a class="reference external" href="http://tools.ietf.org/html/rfc1459">RFC 1459</a> / <a class="reference external" href="http://tools.ietf.org/html/rfc2812">RFC 2812</a> / various numeric
+extensions)</li>
+<li><a class="reference external" href="http://www.irchelp.org/irchelp/rfc/ctcpspec.html">CTCP (the Client-to-Client Protocol)</a>,embedded in PRIVMSG commands
+of IRC</li>
+<li>DCC (Direct Client-to-Client), a subprotocol of CTCP</li>
+<li><a class="reference external" href="http://tools.ietf.org/html/draft-brocklesby-irc-isupport-03">ISUPPORT</a> (also known as Numeric 005), a method of negotiating
+capabilities between a client and server</li>
+<li>And finally, handling of IRC Services (there's a lot of them and no
+specification, but we treat them specially)</li>
+</ol>
+<p>Briefly what happens when we receive a raw message over the wire, we
+create an <a class="reference external" href="http://hg.instantbird.org/instantbird/file/b8d8b6e60aef/chat/protocols/irc/irc.js#l14">ircMessage object out of it using a variety of regular
+expressions</a>. This object has a variety of fields (see the link for
+details), including the command, who sent the message and the
+parameters.</p>
+<p>If the message is identified as a CTCP message, we then morph the
+ircMessage into a <a class="reference external" href="http://hg.instantbird.org/instantbird/file/b8d8b6e60aef/chat/protocols/irc/ircCTCP.jsm#l44">CTCPMessage</a>, which can be morphed into a
+<a class="reference external" href="http://hg.instantbird.org/instantbird/file/b8d8b6e60aef/chat/protocols/irc/ircDCC.jsm#l20">DCCMessage</a>. Additionally, a 005 reply can be parsed into a
+<a class="reference external" href="http://hg.instantbird.org/instantbird/file/b8d8b6e60aef/chat/protocols/irc/ircISUPPORT.jsm#l22">isupportMessage</a>. And last, but not least, a received PRIVMSG can also
+be parsed into a <a class="reference external" href="http://hg.instantbird.org/instantbird/file/b8d8b6e60aef/chat/protocols/irc/ircServices.jsm#l19">ServiceMessage</a>. Each of these extends the IRC
+message without destroying information. (Yes, I'm realizing now that my
+choice of whether to use capitals is all messed up...)</p>
+<p>Well, why do we care...? By preparsing the strings into objects (as
+defined by any &quot;specifications&quot; that exist), we keep extensions from
+having to parse messages over and over again from strings.</p>
+</div>
+<div class="section" id="handlers">
+<h2>Handlers</h2>
+<p>A handler is simply what I call the object that contains the methods
+to deal with an incoming message. Pretty much, you get to say &quot;Only send
+me ISUPPORT messages!&quot; or &quot;Only send me CTCP messages!&quot; and voila, you
+only get that type of message. Each message type has a field that is
+used to choose the method to run (for the IRC messages, the &quot;command&quot;,
+for CTCP the &quot;CTCP command&quot;, ISUPPORT the &quot;parameter&quot;, etc.) This sounds
+a lot more complicated than it is, I think a brief <a class="reference external" href="https://bitbucket.org/clokep/irc-extras/src/6f778f17172a/example/bootstrap.js">example</a> is in
+order:</p>
+<div class="highlight"><pre><span class="kd">var</span> <span class="nx">ircSimpleExample</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="c1">// The name here is really only used in error messages.</span>
+  <span class="nx">name</span><span class="o">:</span> <span class="s2">&quot;IRC Simple Example&quot;</span><span class="p">,</span>
+  <span class="c1">// Slightly above the default priority so we run before the main IRC handler.</span>
+  <span class="nx">priority</span><span class="o">:</span> <span class="nx">ircHandlers</span><span class="p">.</span><span class="nx">DEFAULT_PRIORITY</span> <span class="o">+</span> <span class="mi">10</span><span class="p">,</span>
+  <span class="c1">// Run this for all accounts (note that the &#39;this&#39; object in this method is</span>
+  <span class="c1">// the JavaScript account object.</span>
+  <span class="nx">isEnabled</span><span class="o">:</span> <span class="kd">function</span><span class="p">()</span> <span class="kc">true</span><span class="p">,</span>
+
+  <span class="c1">// The commands we want to handle. For each of these, the account object is</span>
+  <span class="c1">// bound to &#39;this&#39; and the single parameter is of the type that you&#39;ve</span>
+  <span class="c1">// registered your handle.</span>
+  <span class="nx">commands</span><span class="o">:</span> <span class="p">{</span>
+    <span class="s2">&quot;001&quot;</span><span class="o">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">aMessage</span><span class="p">)</span> <span class="p">{</span>
+      <span class="c1">// At the 001 response we&#39;ve successfully connected to the server.</span>
+      <span class="c1">// Send an IDENTIFY command to NickServ.</span>
+      <span class="k">this</span><span class="p">.</span><span class="nx">sendMessage</span><span class="p">(</span><span class="s2">&quot;PRIVMSG&quot;</span><span class="p">,</span> <span class="p">[</span><span class="s2">&quot;NickServ&quot;</span><span class="p">,</span> <span class="s2">&quot;IDENTIFY &lt;your password&gt;&quot;</span><span class="p">]);</span>
+
+      <span class="c1">// Return false so the default handler still runs.</span>
+      <span class="k">return</span> <span class="kc">false</span><span class="p">;</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+<p>Just like that we've designed a handler! Whenever the 001 method is
+received from the server, this function will run and attempt to identify
+with the NickServ (of course this could use a bit more security on it,
+but it's to demonstrate the possibilities). (The sendMessage function
+takes the command to send and an array of parameters to send.)</p>
+<p>As this is already a long post, I think I'll cut this off now and
+continue this at another time, but I hope I'm beginning to convince you
+that allowing directy access to the account and protocol implementation
+is a more powerful (and even simpler in many ways, in my opinion)
+alternative to &quot;auto-performs&quot;. The one major downside I see to this, is
+that it requires a bit more understanding of the actual protocol level
+implementation, I don't feel that knowing you need to use &quot;PRIVMSG&quot; as a
+command instead of /msg is a huge issue, however.</p>
+</div>
+
+            </div><!-- /.entry-content -->
+
+
+        </div><!-- /.eleven.columns -->
+        
+<div class="three columns">
+
+<h4>Pages</h4>
+
+ <ul>
+      <li><a href="https://clokep.github.io/pages/about.html">About</a></li>
+      <li><a href="https://clokep.github.io/pages/contact.html">Contact</a></li>
+  </ul>
+
+<h4>Categories</h4>
+<ul>
+		<li><a href="https://clokep.github.io/category/mozilla.html">Mozilla</a></li>
+</ul>
+
+
+<h4><i class="icon-tag"></i>Tags</h4>
+	<ul>
+	    <li class="tag-4"><a href="https://clokep.github.io/tag/crosspost.html">crosspost</a></li>
+	    <li class="tag-4"><a href="https://clokep.github.io/tag/imap.html">IMAP</a></li>
+	    <li class="tag-3"><a href="https://clokep.github.io/tag/specifications.html">specifications</a></li>
+	    <li class="tag-1"><a href="https://clokep.github.io/tag/instantbird.html">Instantbird</a></li>
+	    <li class="tag-4"><a href="https://clokep.github.io/tag/oscar.html">OSCAR</a></li>
+	    <li class="tag-2"><a href="https://clokep.github.io/tag/gsoc.html">GSoC</a></li>
+	    <li class="tag-3"><a href="https://clokep.github.io/tag/google.html">Google</a></li>
+	    <li class="tag-1"><a href="https://clokep.github.io/tag/irc.html">IRC</a></li>
+	    <li class="tag-4"><a href="https://clokep.github.io/tag/rss.html">RSS</a></li>
+	    <li class="tag-4"><a href="https://clokep.github.io/tag/lightning.html">Lightning</a></li>
+	    <li class="tag-3"><a href="https://clokep.github.io/tag/sipe.html">SIPE</a></li>
+	    <li class="tag-3"><a href="https://clokep.github.io/tag/bugs.html">bugs</a></li>
+	    <li class="tag-2"><a href="https://clokep.github.io/tag/yahoo.html">Yahoo</a></li>
+	    <li class="tag-1"><a href="https://clokep.github.io/tag/mozilla.html">Mozilla</a></li>
+	    <li class="tag-3"><a href="https://clokep.github.io/tag/wat.html">Wat</a></li>
+	    <li class="tag-4"><a href="https://clokep.github.io/tag/messaging.html">messaging</a></li>
+	    <li class="tag-4"><a href="https://clokep.github.io/tag/status.html">status</a></li>
+	    <li class="tag-1"><a href="https://clokep.github.io/tag/programming.html">programming</a></li>
+	    <li class="tag-3"><a href="https://clokep.github.io/tag/customizing.html">customizing</a></li>
+	    <li class="tag-2"><a href="https://clokep.github.io/tag/im.html">IM</a></li>
+	    <li class="tag-2"><a href="https://clokep.github.io/tag/community.html">community</a></li>
+	    <li class="tag-4"><a href="https://clokep.github.io/tag/email.html">email</a></li>
+	    <li class="tag-2"><a href="https://clokep.github.io/tag/thunderbird.html">Thunderbird</a></li>
+	    <li class="tag-4"><a href="https://clokep.github.io/tag/smtp.html">SMTP</a></li>
+	    <li class="tag-2"><a href="https://clokep.github.io/tag/instant-messaging.html">instant messaging</a></li>
+	    <li class="tag-2"><a href="https://clokep.github.io/tag/chat.html">chat</a></li>
+	    <li class="tag-4"><a href="https://clokep.github.io/tag/pop3.html">POP3</a></li>
+</ul>
+
+
+
+<h4><i class="icon-rss"></i>Subscribe</h4>
+<ul>
+  <li><a href="https://clokep.github.io/feeds/all.atom.xml">Full Atom Feed</a></li>
+  <li><a href="https://clokep.github.io/feeds/all.rss.xml">Full RSS Feed</a></li>
+</ul>
+
+</div> </div><!-- /.row -->
+
+
+</section>
+
+       </div><!-- /.row -->
+    </div><!-- /.container -->
+
+
+       <div class="container.nopad bg">
+
+    
+        <footer id="credits" class="row">
+          <div class="seven columns left-center">
+
+                   <address id="about" class="vcard body">
+                    Proudly powered by <a href="http://getpelican.com/">Pelican</a>,
+                    which takes great advantage of <a href="http://python.org">Python</a>.
+                    <br />
+                    Based on the <a target="_blank" href="http://gumbyframework.com">Gumby Framework</a>
+                    </address>
+          </div>
+
+
+          <div class="seven columns">
+            <div class="row">
+              <ul class="socbtns">
+
+                <li><div class="btn primary"><a href="https://www.github.com/clokep" target="_blank">Github</a></div></li>
+
+                <li><div class="btn bitbucket"><a href="https://bitbucket.org/clokep" target="_blank">BitBucket</a></div></li>
+
+                <li><div class="btn mozillians"><a href="https://mozillians.org/clokep" target="_blank">Mozillians</a></div></li>
+
+                <li><div class="btn twitter"><a href="https://www.twitter.com/clokep" target="_blank">Twitter</a></div></li>
+
+
+
+              </ul>
+            </div>
+          </div>
+        </footer>
+
+    </div>
+
+
+  <script src="https://clokep.github.io/theme/js/libs/jquery-1.9.1.min.js"></script>
+  <script src="https://clokep.github.io/theme/js/libs/gumby.min.js"></script>
+  <script src="https://clokep.github.io/theme/js/plugins.js"></script>
+</body>
+</html>

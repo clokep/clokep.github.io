@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Like bricks in the sky</title><link>https://clokep.github.io/</link><description></description><atom:link href="https://clokep.github.io/feeds/tag/status.rss.xml" rel="self"></atom:link><lastBuildDate>Wed, 17 Oct 2012 01:33:00 -0400</lastBuildDate><item><title>On Status</title><link>https://clokep.github.io/on-status.html</link><description>&lt;p&gt;Something that comes up often about Instantbird is why we only support
+three statuses: Available, Unavailable and Offline.&amp;nbsp; (We do actually
+support a fourth one too, Idle, but that is set automatically, not
+chosen by the user.)&amp;nbsp; Frequently this discussion is in the context of
+wanting an &amp;quot;Invisible&amp;quot; status, but I'll get to that later...&lt;/p&gt;
+&lt;p&gt;Many users have talked to us on IRC, email or via bugs and complained
+about wanting an &amp;quot;Away&amp;quot; status or a &amp;quot;Do Not Disturb&amp;quot; status.&amp;nbsp; There's a
+few issues with this:&lt;/p&gt;
+&lt;ol class="arabic simple"&gt;
+&lt;li&gt;What's really the difference between &amp;quot;Unavailable&amp;quot;, &amp;quot;Away&amp;quot; and &amp;quot;Do
+Not Disturb&amp;quot;?&amp;nbsp; Do you really need to choose them individually?
+(Other things that fit into here: &amp;quot;Not at my desk&amp;quot;, &amp;quot;on the phone&amp;quot;,
+&amp;quot;busy&amp;quot;, &amp;quot;stepped out&amp;quot;.&amp;nbsp; It is amazing how some protocols have so many
+ways to describe being unavailable!)&lt;/li&gt;
+&lt;li&gt;A technical issue that we often run into is trying to shoehorn
+different protocol implementations into our abstract protocol
+interface.&amp;nbsp; (We already have some fairly complicated interfaces
+around joining chat rooms, creating different account, etc. because
+of this.)&lt;/li&gt;
+&lt;li&gt;Setting yourself as &amp;quot;Away&amp;quot; or &amp;quot;Invisible&amp;quot; is a lie.&amp;nbsp; Perhaps this is
+me being overly idealistic, but why would you set yourself as
+&amp;quot;Away&amp;quot;?&amp;nbsp; It seems that this is something that should be done
+automatically (when you lock your display, perhaps?).&amp;nbsp; You can't be
+&amp;quot;Away&amp;quot; and using your computer at the same time!
+Again, perhaps being idealistic, but what is the point of the
+&amp;quot;Invisible&amp;quot; status?&amp;nbsp; If you wish to be hidden from someone
+(everyone?) why not just block those users.&amp;nbsp; Or ignore them when they
+send you a message.&amp;nbsp; If you are busy, set yourself to &amp;quot;Unavailable&amp;quot;
+and people should understand that they should not talk to you...if
+they don't, well...do you really want them talking to you ever?&amp;nbsp; (Are
+they really your friend?&amp;nbsp; I guess you don't get to choose your
+co-workers, but still.)&amp;nbsp; Now, perhaps this is just my opinion as
+being someone who never really hard an &amp;quot;Invisible&amp;quot; status (I actually
+remember it being added to the AIM client at some point).&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;At this point you probably don't believe me that there's really &lt;em&gt;that&lt;/em&gt;
+many different protocol statuses out there, so I figured I'd illustrate
+a few protocols in a matrix.&amp;nbsp; Note that this isn't meant to be
+exhaustive, just to show how complicated of a situation this really is.
+All protocols can obviously be &amp;quot;offline&amp;quot; as well, but that's not shown
+in the table.&lt;/p&gt;
+&lt;table border="1" class="docutils"&gt;
+&lt;colgroup&gt;
+&lt;col width="30%" /&gt;
+&lt;col width="13%" /&gt;
+&lt;col width="21%" /&gt;
+&lt;col width="17%" /&gt;
+&lt;col width="19%" /&gt;
+&lt;/colgroup&gt;
+&lt;thead valign="bottom"&gt;
+&lt;tr&gt;&lt;th class="head"&gt;&amp;nbsp;&lt;/th&gt;
+&lt;th class="head"&gt;Available&lt;/th&gt;
+&lt;th class="head"&gt;Unavailable&lt;/th&gt;
+&lt;th class="head"&gt;Phone&lt;/th&gt;
+&lt;th class="head"&gt;Invisible&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody valign="top"&gt;
+&lt;tr&gt;&lt;td&gt;Oscar (AIM/ICQ)&lt;/td&gt;
+&lt;td&gt;Online&lt;/td&gt;
+&lt;td&gt;Away&lt;/td&gt;
+&lt;td&gt;&amp;nbsp;&lt;/td&gt;
+&lt;td&gt;Invisible&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;IRC&lt;/td&gt;
+&lt;td&gt;Online&lt;/td&gt;
+&lt;td&gt;Away&lt;/td&gt;
+&lt;td&gt;&amp;nbsp;&lt;/td&gt;
+&lt;td&gt;&amp;nbsp;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Microsoft Lync&lt;/td&gt;
+&lt;td&gt;Online&lt;/td&gt;
+&lt;td&gt;&lt;ul class="first last simple"&gt;
+&lt;li&gt;Busy&lt;/li&gt;
+&lt;li&gt;Away&lt;/li&gt;
+&lt;li&gt;In a meeting&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/td&gt;
+&lt;td&gt;In a call&lt;/td&gt;
+&lt;td&gt;&amp;nbsp;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Yahoo! Messenger&lt;/td&gt;
+&lt;td&gt;Available&lt;/td&gt;
+&lt;td&gt;&lt;ul class="first last simple"&gt;
+&lt;li&gt;Busy&lt;/li&gt;
+&lt;li&gt;Stepped out&lt;/li&gt;
+&lt;li&gt;Be right back&lt;/li&gt;
+&lt;li&gt;Not at my desk&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/td&gt;
+&lt;td&gt;On the phone&lt;/td&gt;
+&lt;td&gt;&amp;nbsp;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Windows Live Messenger&lt;/td&gt;
+&lt;td&gt;Online&lt;/td&gt;
+&lt;td&gt;&lt;ul class="first last simple"&gt;
+&lt;li&gt;Busy&lt;/li&gt;
+&lt;li&gt;Away&lt;/li&gt;
+&lt;li&gt;Be Right Back&lt;/li&gt;
+&lt;li&gt;Out to lunch&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/td&gt;
+&lt;td&gt;On the phone&lt;/td&gt;
+&lt;td&gt;Appear offline&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;XMPP (e.g. Google Talk)&lt;/td&gt;
+&lt;td&gt;Available&lt;/td&gt;
+&lt;td&gt;Busy&lt;/td&gt;
+&lt;td&gt;&amp;nbsp;&lt;/td&gt;
+&lt;td&gt;&amp;nbsp;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Patrick Cloke</dc:creator><pubDate>Wed, 17 Oct 2012 01:33:00 -0400</pubDate><guid>tag:https://clokep.github.io,2012-10-17:on-status.html</guid><category>chat</category><category>IM</category><category>instant messaging</category><category>Instantbird</category><category>messaging</category><category>status</category><category>Thunderbird</category></item></channel></rss>

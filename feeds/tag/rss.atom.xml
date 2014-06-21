@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Like bricks in the sky</title><link href="https://clokep.github.io/" rel="alternate"></link><link href="https://clokep.github.io/feeds/tag/rss.atom.xml" rel="self"></link><id>https://clokep.github.io/</id><updated>2010-12-08T19:25:00-05:00</updated><entry><title>Blogger RSS Feeds for a Label</title><link href="https://clokep.github.io/blogger-rss-feeds-for-a-label.html" rel="alternate"></link><updated>2010-12-08T19:25:00-05:00</updated><author><name>Patrick Cloke</name></author><id>tag:https://clokep.github.io,2010-12-08:blogger-rss-feeds-for-a-label.html</id><summary type="html">&lt;p&gt;Blogger has crappy support for RSS apparently.&amp;nbsp; I figured if I clicked
+on a label, then found the RSS embedded in the page...it would give me
+the RSS feed for that label, right?&lt;/p&gt;
+&lt;p&gt;Wrong.&lt;/p&gt;
+&lt;p&gt;Of course there's an&amp;nbsp;&lt;a class="reference external" href="http://www.google.com/support/blogger/bin/answer.py?hl=en&amp;amp;answer=97933"&gt;FAQ&lt;/a&gt; page about this, but the syntax it gives
+is broken.&amp;nbsp; For a specific label (I'm using the label &amp;quot;Instantbird&amp;quot;):&lt;/p&gt;
+&lt;ul class="simple"&gt;
+&lt;li&gt;RSS:
+&lt;a class="reference external" href="http://clokep.blogspot.com/feeds/posts/default/-/Instantbird?alt=rss"&gt;http://clokep.blogspot.com/feeds/posts/default/-/Instantbird?alt=rss&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Atom: &lt;a class="reference external" href="http://clokep.blogspot.com/feeds/posts/default/-/Instantbird"&gt;http://clokep.blogspot.com/feeds/posts/default/-/Instantbird&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Who knows what versions of RSS/Atom these are.&amp;nbsp; But the feeds do exist.&lt;/p&gt;
+</summary><category term="bugs"></category><category term="Google"></category><category term="RSS"></category></entry></feed>

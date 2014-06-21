@@ -1,0 +1,188 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Like bricks in the sky</title><link>https://clokep.github.io/</link><description></description><atom:link href="https://clokep.github.io/feeds/tag/chat.rss.xml" rel="self"></atom:link><lastBuildDate>Sun, 06 Oct 2013 13:18:00 -0400</lastBuildDate><item><title>Yahoo Protocol Google Summer of Code Round-up</title><link>https://clokep.github.io/yahoo-protocol-google-summer-of-code-round-up.html</link><description>&lt;p&gt;I have to apologize to my student, &lt;a class="reference external" href="http://phaseshiftsoftware.com/blog/"&gt;Quentin&lt;/a&gt; (aka qheaden on IRC),
+for taking so long to write this...but anyway: Google Summer of Code
+2013 is over!&amp;nbsp; Quentin has done a great job working at implementing the
+Yahoo Protocol for Instantbird (and Thunderbird) in JavaScript
+(henceforth called &amp;quot;JS-Yahoo&amp;quot;).&amp;nbsp; It's at the point where it has mostly
+reached feature-parity with the libpurple plug-in.&amp;nbsp; Before &lt;a class="reference external" href="https://bugzilla.instantbird.org/show_bug.cgi?id=2135"&gt;turning this
+on as default&lt;/a&gt; there are a few minor bugs that still need to be fixed,
+but most of them have patches that just need another couple iterations.&lt;/p&gt;
+&lt;div class="section" id="where-do-we-go-from-here"&gt;
+&lt;h2&gt;Where do we go from here?&lt;/h2&gt;
+&lt;p&gt;Once the last few bugs are fixed we'll enable Yahoo by default in the nightly
+builds and, assuming we have no issues, it will be enabled by default in the
+upcoming Instantbird 1.5. If there are no major issues in 1.5, we'll remove the
+libpurple Yahoo implementation for Instantbird 1.next.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="section" id="how-do-i-try-this-now"&gt;
+&lt;h2&gt;How do I try this now?!&lt;/h2&gt;
+&lt;p&gt;You can already easily enable JS-Yahoo in &lt;a class="reference external" href="http://nightly.instantbird.im/"&gt;Instantbird nightly builds&lt;/a&gt;:&lt;/p&gt;
+&lt;ol class="arabic simple"&gt;
+&lt;li&gt;Type /about config in a conversation tab's textbox&lt;/li&gt;
+&lt;li&gt;Type &amp;quot;forcePurple&amp;quot; in the search box&lt;/li&gt;
+&lt;li&gt;Remove &amp;quot;prpl-yahoo&amp;quot; and &amp;quot;prpl-yahoojp&amp;quot; from this comma separated list
+of values (you can also remove prpl-jabber if you want to always use
+the JS-XMPP implementation from GSoC 2011! Note that this doesn't
+support &lt;a class="reference external" href="https://bugzilla.mozilla.org/show_bug.cgi?id=14328"&gt;DNS SRV&lt;/a&gt;, however.)&lt;/li&gt;
+&lt;li&gt;Restart Instantbird!&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;You should now be using the JS-Yahoo protocol.&amp;nbsp; Hopefully you don't
+notice anything different, but &lt;a class="reference external" href="https://bugzilla.instantbird.org/"&gt;PLEASE file bugs&lt;/a&gt; if you see any
+issues.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="section" id="how-come-i-can-t-use-this-in-thunderbird"&gt;
+&lt;h2&gt;How come I can't use this in Thunderbird?!&lt;/h2&gt;
+&lt;p&gt;Because Instantbird and comm-central development don't happen in the same
+Mercurial repository.&amp;nbsp; I'm working on &lt;a class="reference external" href="https://bugzilla.mozilla.org/show_bug.cgi?id=920801"&gt;syncing the chat/ folder of these
+repositories&lt;/a&gt; currently and JS-Yahoo should be in Daily soon to be
+included in the next Thunderbird release (i.e. Thunderbird 31).&lt;/p&gt;
+&lt;p&gt;The whole Instantbird community has been super happy with the progress
+Quentin made and we hope that Quentin has learned a lot! Thanks for a
+great summer qheaden and hopefully we'll see you around still!&lt;/p&gt;
+&lt;/div&gt;
+</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Patrick Cloke</dc:creator><pubDate>Sun, 06 Oct 2013 13:18:00 -0400</pubDate><guid>tag:https://clokep.github.io,2013-10-06:yahoo-protocol-google-summer-of-code-round-up.html</guid><category>chat</category><category>GSoC</category><category>IM</category><category>instant messaging</category><category>Instantbird</category><category>Yahoo</category></item><item><title>Mentoring Google Summer of Code 2013</title><link>https://clokep.github.io/mentoring-google-summer-of-code-2013.html</link><description>&lt;p&gt;I'm officially a mentor this year for &lt;a class="reference external" href="http://www.google-melange.com/gsoc/homepage/google/gsoc2013"&gt;2013's Google Summer of Code&lt;/a&gt;.
+I'm a bit late on posting this, but oh well! My student this year is
+&lt;a class="reference external" href="http://phaseshiftsoftware.com/"&gt;Quentin Headen&lt;/a&gt; who is &lt;a class="reference external" href="http://www.google-melange.com/gsoc/project/google/gsoc2013/qheaden/26001"&gt;working on&lt;/a&gt; a &lt;a class="reference external" href="http://en.wikipedia.org/wiki/Yahoo!_Messenger_Protocol"&gt;Yahoo! Messenger protocol&lt;/a&gt;
+for the Instantbird chat/ backend (so it'll also be usable via
+Thunderbird). You can see &lt;a class="reference external" href="http://phaseshiftsoftware.com/blog/category/gsoc-2013-logs/"&gt;an account of his trials, successes and
+trepidations&lt;/a&gt; (&lt;a class="reference external" href="http://phaseshiftsoftware.com/blog/category/gsoc-2013-logs/feed/"&gt;RSS&lt;/a&gt;) or follow his &lt;a class="reference external" href="https://bitbucket.org/qheaden/instantbird-gsoc-2013"&gt;code repository&lt;/a&gt;. He's made
+great progress so far and is able to connect, download all the buddies
+and start private conversations! Not too bad for a few weeks of work!
+We've been keeping a &lt;a class="reference external" href="https://etherpad.mozilla.org/ELTNA6O44F"&gt;TODO list&lt;/a&gt; of things to be supported, please
+don't edit it without discussing it with us first.&lt;/p&gt;
+&lt;p&gt;Our hope is to get this checked into Instantbird by the end of summer
+and run it in parallel (behind an &lt;a class="reference external" href="about:config"&gt;about:config&lt;/a&gt; preference) with the
+current libpurple Yahoo implementation. Once we're satisified that it
+has feature parity we'll remove the libpurple version and enable this by
+default!&lt;/p&gt;
+&lt;p&gt;Instantbird is also supporting two other projects:&lt;/p&gt;
+&lt;ul class="simple"&gt;
+&lt;li&gt;The &lt;a class="reference external" href="http://www.google-melange.com/gsoc/project/google/gsoc2013/nhnt11/7001"&gt;&amp;quot;Awesometab&amp;quot;&lt;/a&gt; is being done by &lt;a class="reference external" href="http://awesometab.blogspot.com/"&gt;Nihanth Subramanya&lt;/a&gt;
+(&lt;a class="reference external" href="http://awesometab.blogspot.com/feeds/posts/default?alt=rss"&gt;RSS&lt;/a&gt;)
+and being mentored by Benedikt Pfeifer, his code is &lt;a class="reference external" href="https://bitbucket.org/nhnt11/instantbird-addons"&gt;available&lt;/a&gt; and
+some has already been &lt;a class="reference external" href="http://hg.instantbird.org/instantbird/rev/55009d68c4ec"&gt;checked&lt;/a&gt; &lt;a class="reference external" href="http://hg.instantbird.org/instantbird/rev/46ee5c836e48"&gt;into&lt;/a&gt; &lt;a class="reference external" href="http://hg.instantbird.org/instantbird/rev/52401d522970"&gt;Instantbird&lt;/a&gt; &lt;a class="reference external" href="http://hg.instantbird.org/instantbird/rev/ea36babac4be"&gt;nightlies&lt;/a&gt;!&lt;/li&gt;
+&lt;li&gt;&lt;a class="reference external" href="http://www.google-melange.com/gsoc/project/google/gsoc2013/atuljangra/68001"&gt;FileLinks in IM&lt;/a&gt; is being worked on by &lt;a class="reference external" href="http://atuljangra.tumblr.com/"&gt;Atul Jangra&lt;/a&gt; (or &lt;a class="reference external" href="http://gsoc-mozilla.tumblr.com/"&gt;maybe&lt;/a&gt;)
+(&lt;a class="reference external" href="http://atuljangra.tumblr.com/rss"&gt;RSS&lt;/a&gt; /
+&lt;a class="reference external" href="http://gsoc-mozilla.tumblr.com/rss"&gt;RSS&lt;/a&gt;) and being mentored by
+Florian Quèze, check out the &lt;a class="reference external" href="https://bitbucket.org/atuljangra/instantbird-gsoc-2013"&gt;repository&lt;/a&gt;.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;You can find any of us in #instantbird on irc.mozilla.org, my nick is
+clokep, Quentin's is qheaden, Nihanth's: nhnt11, Atul's: atuljangra,
+Benedikt goes by Mic and Florian goes by something starting with &amp;quot;flo&amp;quot;.&lt;/p&gt;
+&lt;p&gt;Thanks also go out to Mozilla for letting us participate in Google
+Summer of Code with them again! You can see all of the accepted projects
+in &lt;a class="reference external" href="http://blog.gerv.net/2013/06/gsoc-2013-project-list/"&gt;Gerv's blogpost&lt;/a&gt;.&lt;/p&gt;
+</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Patrick Cloke</dc:creator><pubDate>Fri, 28 Jun 2013 22:05:00 -0400</pubDate><guid>tag:https://clokep.github.io,2013-06-28:mentoring-google-summer-of-code-2013.html</guid><category>chat</category><category>GSoC</category><category>IM</category><category>instant messaging</category><category>Instantbird</category><category>Yahoo</category></item><item><title>On Status</title><link>https://clokep.github.io/on-status.html</link><description>&lt;p&gt;Something that comes up often about Instantbird is why we only support
+three statuses: Available, Unavailable and Offline.&amp;nbsp; (We do actually
+support a fourth one too, Idle, but that is set automatically, not
+chosen by the user.)&amp;nbsp; Frequently this discussion is in the context of
+wanting an &amp;quot;Invisible&amp;quot; status, but I'll get to that later...&lt;/p&gt;
+&lt;p&gt;Many users have talked to us on IRC, email or via bugs and complained
+about wanting an &amp;quot;Away&amp;quot; status or a &amp;quot;Do Not Disturb&amp;quot; status.&amp;nbsp; There's a
+few issues with this:&lt;/p&gt;
+&lt;ol class="arabic simple"&gt;
+&lt;li&gt;What's really the difference between &amp;quot;Unavailable&amp;quot;, &amp;quot;Away&amp;quot; and &amp;quot;Do
+Not Disturb&amp;quot;?&amp;nbsp; Do you really need to choose them individually?
+(Other things that fit into here: &amp;quot;Not at my desk&amp;quot;, &amp;quot;on the phone&amp;quot;,
+&amp;quot;busy&amp;quot;, &amp;quot;stepped out&amp;quot;.&amp;nbsp; It is amazing how some protocols have so many
+ways to describe being unavailable!)&lt;/li&gt;
+&lt;li&gt;A technical issue that we often run into is trying to shoehorn
+different protocol implementations into our abstract protocol
+interface.&amp;nbsp; (We already have some fairly complicated interfaces
+around joining chat rooms, creating different account, etc. because
+of this.)&lt;/li&gt;
+&lt;li&gt;Setting yourself as &amp;quot;Away&amp;quot; or &amp;quot;Invisible&amp;quot; is a lie.&amp;nbsp; Perhaps this is
+me being overly idealistic, but why would you set yourself as
+&amp;quot;Away&amp;quot;?&amp;nbsp; It seems that this is something that should be done
+automatically (when you lock your display, perhaps?).&amp;nbsp; You can't be
+&amp;quot;Away&amp;quot; and using your computer at the same time!
+Again, perhaps being idealistic, but what is the point of the
+&amp;quot;Invisible&amp;quot; status?&amp;nbsp; If you wish to be hidden from someone
+(everyone?) why not just block those users.&amp;nbsp; Or ignore them when they
+send you a message.&amp;nbsp; If you are busy, set yourself to &amp;quot;Unavailable&amp;quot;
+and people should understand that they should not talk to you...if
+they don't, well...do you really want them talking to you ever?&amp;nbsp; (Are
+they really your friend?&amp;nbsp; I guess you don't get to choose your
+co-workers, but still.)&amp;nbsp; Now, perhaps this is just my opinion as
+being someone who never really hard an &amp;quot;Invisible&amp;quot; status (I actually
+remember it being added to the AIM client at some point).&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;At this point you probably don't believe me that there's really &lt;em&gt;that&lt;/em&gt;
+many different protocol statuses out there, so I figured I'd illustrate
+a few protocols in a matrix.&amp;nbsp; Note that this isn't meant to be
+exhaustive, just to show how complicated of a situation this really is.
+All protocols can obviously be &amp;quot;offline&amp;quot; as well, but that's not shown
+in the table.&lt;/p&gt;
+&lt;table border="1" class="docutils"&gt;
+&lt;colgroup&gt;
+&lt;col width="30%" /&gt;
+&lt;col width="13%" /&gt;
+&lt;col width="21%" /&gt;
+&lt;col width="17%" /&gt;
+&lt;col width="19%" /&gt;
+&lt;/colgroup&gt;
+&lt;thead valign="bottom"&gt;
+&lt;tr&gt;&lt;th class="head"&gt;&amp;nbsp;&lt;/th&gt;
+&lt;th class="head"&gt;Available&lt;/th&gt;
+&lt;th class="head"&gt;Unavailable&lt;/th&gt;
+&lt;th class="head"&gt;Phone&lt;/th&gt;
+&lt;th class="head"&gt;Invisible&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody valign="top"&gt;
+&lt;tr&gt;&lt;td&gt;Oscar (AIM/ICQ)&lt;/td&gt;
+&lt;td&gt;Online&lt;/td&gt;
+&lt;td&gt;Away&lt;/td&gt;
+&lt;td&gt;&amp;nbsp;&lt;/td&gt;
+&lt;td&gt;Invisible&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;IRC&lt;/td&gt;
+&lt;td&gt;Online&lt;/td&gt;
+&lt;td&gt;Away&lt;/td&gt;
+&lt;td&gt;&amp;nbsp;&lt;/td&gt;
+&lt;td&gt;&amp;nbsp;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Microsoft Lync&lt;/td&gt;
+&lt;td&gt;Online&lt;/td&gt;
+&lt;td&gt;&lt;ul class="first last simple"&gt;
+&lt;li&gt;Busy&lt;/li&gt;
+&lt;li&gt;Away&lt;/li&gt;
+&lt;li&gt;In a meeting&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/td&gt;
+&lt;td&gt;In a call&lt;/td&gt;
+&lt;td&gt;&amp;nbsp;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Yahoo! Messenger&lt;/td&gt;
+&lt;td&gt;Available&lt;/td&gt;
+&lt;td&gt;&lt;ul class="first last simple"&gt;
+&lt;li&gt;Busy&lt;/li&gt;
+&lt;li&gt;Stepped out&lt;/li&gt;
+&lt;li&gt;Be right back&lt;/li&gt;
+&lt;li&gt;Not at my desk&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/td&gt;
+&lt;td&gt;On the phone&lt;/td&gt;
+&lt;td&gt;&amp;nbsp;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Windows Live Messenger&lt;/td&gt;
+&lt;td&gt;Online&lt;/td&gt;
+&lt;td&gt;&lt;ul class="first last simple"&gt;
+&lt;li&gt;Busy&lt;/li&gt;
+&lt;li&gt;Away&lt;/li&gt;
+&lt;li&gt;Be Right Back&lt;/li&gt;
+&lt;li&gt;Out to lunch&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/td&gt;
+&lt;td&gt;On the phone&lt;/td&gt;
+&lt;td&gt;Appear offline&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;XMPP (e.g. Google Talk)&lt;/td&gt;
+&lt;td&gt;Available&lt;/td&gt;
+&lt;td&gt;Busy&lt;/td&gt;
+&lt;td&gt;&amp;nbsp;&lt;/td&gt;
+&lt;td&gt;&amp;nbsp;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Patrick Cloke</dc:creator><pubDate>Wed, 17 Oct 2012 01:33:00 -0400</pubDate><guid>tag:https://clokep.github.io,2012-10-17:on-status.html</guid><category>chat</category><category>IM</category><category>instant messaging</category><category>Instantbird</category><category>messaging</category><category>status</category><category>Thunderbird</category></item></channel></rss>
