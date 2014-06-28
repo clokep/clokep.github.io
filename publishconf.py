@@ -10,7 +10,7 @@ import sys
 sys.path.append(os.curdir)
 from pelicanconf import *
 
-SITEURL = 'https://clokep.github.io'
+SITEURL = 'http://patrick.cloke.us'
 RELATIVE_URLS = False
 
 # Configure RSS and atom feeds.
