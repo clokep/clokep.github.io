@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Like bricks in the sky</title><link>https://clokep.github.io/</link><description></description><atom:link href="https://clokep.github.io/feeds/tag/google.rss.xml" rel="self"></atom:link><lastBuildDate>Mon, 21 Oct 2013 02:18:00 -0400</lastBuildDate><item><title>Google Summer of Code Mentor Summit 2013</title><link>https://clokep.github.io/google-summer-of-code-mentor-summit-2013.html</link><description>&lt;p&gt;Not only was I lucky enough to mentor a great student for this year's
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Like bricks in the sky</title><link>http://patrick.cloke.us/</link><description></description><atom:link href="http://patrick.cloke.us/feeds/tag/google.rss.xml" rel="self"></atom:link><lastBuildDate>Mon, 21 Oct 2013 02:18:00 -0400</lastBuildDate><item><title>Google Summer of Code Mentor Summit 2013</title><link>http://patrick.cloke.us/google-summer-of-code-mentor-summit-2013.html</link><description>&lt;p&gt;Not only was I lucky enough to mentor a great student for this year's
 Google Summer of Code, but Mozilla asked me to represent them at the
 Google Summer of Code Mentor Summit!&amp;nbsp; This was located at Google's
 offices in Mountain View, California this past weekend (Friday, Oct.
@@ -39,7 +39,7 @@ some people were excited by this and hopefully they'll try it out!&lt;/p&gt;
 was great and I'd like to thank both Mozilla and Google for giving me
 this opportunity.&amp;nbsp; If I find any really great gems in my notes I'll
 write further blog posts about them.&lt;/p&gt;
-</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Patrick Cloke</dc:creator><pubDate>Mon, 21 Oct 2013 02:18:00 -0400</pubDate><guid>tag:https://clokep.github.io,2013-10-21:google-summer-of-code-mentor-summit-2013.html</guid><category>Google</category><category>GSoC</category><category>Mozilla</category></item><item><title>Blogger RSS Feeds for a Label</title><link>https://clokep.github.io/blogger-rss-feeds-for-a-label.html</link><description>&lt;p&gt;Blogger has crappy support for RSS apparently.&amp;nbsp; I figured if I clicked
+</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Patrick Cloke</dc:creator><pubDate>Mon, 21 Oct 2013 02:18:00 -0400</pubDate><guid>tag:patrick.cloke.us,2013-10-21:google-summer-of-code-mentor-summit-2013.html</guid><category>Google</category><category>GSoC</category><category>Mozilla</category></item><item><title>Blogger RSS Feeds for a Label</title><link>http://patrick.cloke.us/blogger-rss-feeds-for-a-label.html</link><description>&lt;p&gt;Blogger has crappy support for RSS apparently.&amp;nbsp; I figured if I clicked
 on a label, then found the RSS embedded in the page...it would give me
 the RSS feed for that label, right?&lt;/p&gt;
 &lt;p&gt;Wrong.&lt;/p&gt;
@@ -51,4 +51,4 @@ is broken.&amp;nbsp; For a specific label (I'm using the label &amp;quot;Instant
 &lt;li&gt;Atom: &lt;a class="reference external" href="http://clokep.blogspot.com/feeds/posts/default/-/Instantbird"&gt;http://clokep.blogspot.com/feeds/posts/default/-/Instantbird&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 &lt;p&gt;Who knows what versions of RSS/Atom these are.&amp;nbsp; But the feeds do exist.&lt;/p&gt;
-</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Patrick Cloke</dc:creator><pubDate>Wed, 08 Dec 2010 19:25:00 -0500</pubDate><guid>tag:https://clokep.github.io,2010-12-08:blogger-rss-feeds-for-a-label.html</guid><category>bugs</category><category>Google</category><category>RSS</category></item></channel></rss>
+</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Patrick Cloke</dc:creator><pubDate>Wed, 08 Dec 2010 19:25:00 -0500</pubDate><guid>tag:patrick.cloke.us,2010-12-08:blogger-rss-feeds-for-a-label.html</guid><category>bugs</category><category>Google</category><category>RSS</category></item></channel></rss>

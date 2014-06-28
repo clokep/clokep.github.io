@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Like bricks in the sky</title><link>https://clokep.github.io/</link><description></description><atom:link href="https://clokep.github.io/feeds/tag/oscar.rss.xml" rel="self"></atom:link><lastBuildDate>Thu, 29 Nov 2012 03:11:00 -0500</lastBuildDate><item><title>JavaScript typed arrays pain</title><link>https://clokep.github.io/javascript-typed-arrays-pain.html</link><description>&lt;p&gt;If you've ever tried to deal with binary data in JavaScript you know
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Like bricks in the sky</title><link>http://patrick.cloke.us/</link><description></description><atom:link href="http://patrick.cloke.us/feeds/tag/oscar.rss.xml" rel="self"></atom:link><lastBuildDate>Thu, 29 Nov 2012 03:11:00 -0500</lastBuildDate><item><title>JavaScript typed arrays pain</title><link>http://patrick.cloke.us/javascript-typed-arrays-pain.html</link><description>&lt;p&gt;If you've ever tried to deal with binary data in JavaScript you know
 it isn't much fun and you usually resort to using strings lots of
 charCodeAt and related functions.&amp;nbsp; &lt;a class="reference external" href="https://developer.mozilla.org/en-US/docs/JavaScript_typed_arrays"&gt;Typed arrays&lt;/a&gt; are supposed to solve
 this though!&amp;nbsp; The typed array API consists of creating a buffer of bytes
@@ -87,4 +87,4 @@ don't use ArrayBufferViews, use DataViews.&amp;nbsp; (Although Uint8Arrays and
 Int8Arrays should work fine!)&lt;/p&gt;
 &lt;p&gt;And to not rant the &lt;em&gt;entire&lt;/em&gt; time, working with typed arrays certainly
 does beat strings + charCodeAt!&lt;/p&gt;
-</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Patrick Cloke</dc:creator><pubDate>Thu, 29 Nov 2012 03:11:00 -0500</pubDate><guid>tag:https://clokep.github.io,2012-11-29:javascript-typed-arrays-pain.html</guid><category>IM</category><category>Instantbird</category><category>Mozilla</category><category>OSCAR</category><category>Thunderbird</category><category>Wat</category></item></channel></rss>
+</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Patrick Cloke</dc:creator><pubDate>Thu, 29 Nov 2012 03:11:00 -0500</pubDate><guid>tag:patrick.cloke.us,2012-11-29:javascript-typed-arrays-pain.html</guid><category>IM</category><category>Instantbird</category><category>Mozilla</category><category>OSCAR</category><category>Thunderbird</category><category>Wat</category></item></channel></rss>

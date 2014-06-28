@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Like bricks in the sky</title><link>https://clokep.github.io/</link><description></description><atom:link href="https://clokep.github.io/feeds/tag/irc.rss.xml" rel="self"></atom:link><lastBuildDate>Wed, 08 Aug 2012 17:08:00 -0400</lastBuildDate><item><title>Instantbird 1.2 Released (with awesome new IRC features)!</title><link>https://clokep.github.io/instantbird-12-released-with-awesome-new-irc-features.html</link><description>&lt;p&gt;If you haven't seen the announcement...&lt;a class="reference external" href="http://blog.instantbird.org/2012/08/instantbird-1-2-released/"&gt;Instantbird 1.2 has been
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Like bricks in the sky</title><link>http://patrick.cloke.us/</link><description></description><atom:link href="http://patrick.cloke.us/feeds/tag/irc.rss.xml" rel="self"></atom:link><lastBuildDate>Wed, 08 Aug 2012 17:08:00 -0400</lastBuildDate><item><title>Instantbird 1.2 Released (with awesome new IRC features)!</title><link>http://patrick.cloke.us/instantbird-12-released-with-awesome-new-irc-features.html</link><description>&lt;p&gt;If you haven't seen the announcement...&lt;a class="reference external" href="http://blog.instantbird.org/2012/08/instantbird-1-2-released/"&gt;Instantbird 1.2 has been
 released&lt;/a&gt;!&amp;nbsp; It's got a ton of great new features that I'm excited for:
 &lt;a class="reference external" href="http://blog.instantbird.org/2012/08/tab-completion-in-instantbird-1-2/"&gt;better tab complete&lt;/a&gt;, a marker showing the last viewed messages,
 support for Bonjour and more.&amp;nbsp; But the most exciting bits to me are our
@@ -7,7 +7,7 @@ JavaScript implementations of &lt;a class="reference external" href="http://lxr.
 &lt;a class="reference external" href="http://lxr.instantbird.org/instantbird/source/chat/protocols/gtalk/"&gt;GTalk&lt;/a&gt;, so far) and &lt;a class="reference external" href="http://lxr.instantbird.org/instantbird/source/chat/protocols/irc/"&gt;IRC&lt;/a&gt;!&lt;/p&gt;
 &lt;p&gt;Why am I so excited for them? Mostly because they're extendable!
 (Well...and I guess because I wrote most of the IRC code.) I've
-&lt;a class="reference external" href="https://clokep.github.io/irc-auto-performs.html"&gt;written&lt;/a&gt; a bit about this before for IRC...but it will let add-ons do
+&lt;a class="reference external" href="http://patrick.cloke.us/irc-auto-performs.html"&gt;written&lt;/a&gt; a bit about this before for IRC...but it will let add-ons do
 whatever they want to the IRC protocol.&amp;nbsp; You should check out the
 implementations (links above), they're very hackable.&amp;nbsp; Hopefully we can
 remove libpurple XMPP and fully switch to Instantbird's XMPP for the
@@ -24,7 +24,7 @@ been in nightly builds...forever), so we started making a list of some
 of the stuff we'd like to implement in future Instantbirds, you can
 check it out &lt;a class="reference external" href="https://etherpad.mozilla.org/ib-1-3"&gt;here&lt;/a&gt;. Some of them are very exciting, feel free to grab
 one and work on it.&lt;/p&gt;
-</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Patrick Cloke</dc:creator><pubDate>Wed, 08 Aug 2012 17:08:00 -0400</pubDate><guid>tag:https://clokep.github.io,2012-08-08:instantbird-12-released-with-awesome-new-irc-features.html</guid><category>Instantbird</category><category>IRC</category></item><item><title>IRC Auto-Performs</title><link>https://clokep.github.io/irc-auto-performs.html</link><description>&lt;p&gt;There have been a &lt;a class="reference external" href="https://bugzilla.mozilla.org/show_bug.cgi?id=742675"&gt;few&lt;/a&gt; &lt;a class="reference external" href="https://bugzilla.instantbird.org/show_bug.cgi?id=1101"&gt;requests&lt;/a&gt; to support &amp;quot;auto-performs&amp;quot;
+</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Patrick Cloke</dc:creator><pubDate>Wed, 08 Aug 2012 17:08:00 -0400</pubDate><guid>tag:patrick.cloke.us,2012-08-08:instantbird-12-released-with-awesome-new-irc-features.html</guid><category>Instantbird</category><category>IRC</category></item><item><title>IRC Auto-Performs</title><link>http://patrick.cloke.us/irc-auto-performs.html</link><description>&lt;p&gt;There have been a &lt;a class="reference external" href="https://bugzilla.mozilla.org/show_bug.cgi?id=742675"&gt;few&lt;/a&gt; &lt;a class="reference external" href="https://bugzilla.instantbird.org/show_bug.cgi?id=1101"&gt;requests&lt;/a&gt; to support &amp;quot;auto-performs&amp;quot;
 (sending commands to the IRC server after connection that the user types
 into a box or whatever). Personally I find this to be:&lt;/p&gt;
 &lt;ol class="arabic simple"&gt;
@@ -42,10 +42,10 @@ with this post (and maybe a series of posts) that auto-performs aren't
 necessary and a trivial restartless extension can replace them.&lt;/p&gt;
 &lt;div class="section" id="design"&gt;
 &lt;h2&gt;Design&lt;/h2&gt;
-&lt;p&gt;Part of the desire to &lt;a class="reference external" href="https://clokep.github.io/why-rewrite-the-irc-protocol-plugin-part-2.html"&gt;replace the libpurple IRC protocol plugin&lt;/a&gt;
+&lt;p&gt;Part of the desire to &lt;a class="reference external" href="http://patrick.cloke.us/why-rewrite-the-irc-protocol-plugin-part-2.html"&gt;replace the libpurple IRC protocol plugin&lt;/a&gt;
 with a new JavaScript one built specifically for Instantbird (which is
 also now used in Thunderbird!) was to make the protocol fully
-extensible. There are &lt;a class="reference external" href="https://clokep.github.io/the-so-called-irc-specifications.html"&gt;many revisions and unofficial extensions to IRC&lt;/a&gt;
+extensible. There are &lt;a class="reference external" href="http://patrick.cloke.us/the-so-called-irc-specifications.html"&gt;many revisions and unofficial extensions to IRC&lt;/a&gt;
 and we might not necessarily want to support them all (especially if
 they only apply to a single network). Allowing all parts of the protocol
 implementation to be touched and extended seemed like a great way to
@@ -152,7 +152,7 @@ that it requires a bit more understanding of the actual protocol level
 implementation, I don't feel that knowing you need to use &amp;quot;PRIVMSG&amp;quot; as a
 command instead of /msg is a huge issue, however.&lt;/p&gt;
 &lt;/div&gt;
-</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Patrick Cloke</dc:creator><pubDate>Mon, 11 Jun 2012 02:25:00 -0400</pubDate><guid>tag:https://clokep.github.io,2012-06-11:irc-auto-performs.html</guid><category>Instantbird</category><category>IRC</category><category>Mozilla</category></item><item><title>Why rewrite the IRC protocol plugin? (Part 2)</title><link>https://clokep.github.io/why-rewrite-the-irc-protocol-plugin-part-2.html</link><description>&lt;p&gt;I &lt;a class="reference external" href="https://clokep.github.io/why-rewrite-irc-into-javascript-vs-libpurples-vs-chatzillas.html"&gt;previously wrote about&lt;/a&gt; why I'm rewriting the libpurple IRC
+</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Patrick Cloke</dc:creator><pubDate>Mon, 11 Jun 2012 02:25:00 -0400</pubDate><guid>tag:patrick.cloke.us,2012-06-11:irc-auto-performs.html</guid><category>Instantbird</category><category>IRC</category><category>Mozilla</category></item><item><title>Why rewrite the IRC protocol plugin? (Part 2)</title><link>http://patrick.cloke.us/why-rewrite-the-irc-protocol-plugin-part-2.html</link><description>&lt;p&gt;I &lt;a class="reference external" href="http://patrick.cloke.us/why-rewrite-irc-into-javascript-vs-libpurples-vs-chatzillas.html"&gt;previously wrote about&lt;/a&gt; why I'm rewriting the libpurple IRC
 implementation into a JavaScript implementation for Instantbird.&amp;nbsp; This
 is kind of a follow up, but more focused on what I hope to accomplish
 feature wise for IRC in Instantbird.&amp;nbsp; A good overview to look at is the
@@ -216,7 +216,7 @@ that issue and reconnection should happen automatically!&lt;/p&gt;
 &lt;p&gt;One last quick note, if you happen to have the &lt;a class="reference external" href="https://hg.instantbird.org/experiments"&gt;repository&lt;/a&gt; checked
 out, you'll want to update on the default branch from now on as I've
 merged the separate branches together under subfolders.&lt;/p&gt;
-</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Patrick Cloke</dc:creator><pubDate>Sat, 30 Apr 2011 17:01:00 -0400</pubDate><guid>tag:https://clokep.github.io,2011-04-30:why-rewrite-the-irc-protocol-plugin-part-2.html</guid><category>Instantbird</category><category>IRC</category></item><item><title>The so-called IRC "specifications"</title><link>https://clokep.github.io/the-so-called-irc-specifications.html</link><description>&lt;p&gt;In a &lt;a class="reference external" href="https://clokep.github.io/why-rewrite-irc-into-javascript-vs-libpurples-vs-chatzillas.html"&gt;previous post&lt;/a&gt; I had briefly gone over the &amp;quot;history of IRC&amp;quot; as
+</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Patrick Cloke</dc:creator><pubDate>Sat, 30 Apr 2011 17:01:00 -0400</pubDate><guid>tag:patrick.cloke.us,2011-04-30:why-rewrite-the-irc-protocol-plugin-part-2.html</guid><category>Instantbird</category><category>IRC</category></item><item><title>The so-called IRC "specifications"</title><link>http://patrick.cloke.us/the-so-called-irc-specifications.html</link><description>&lt;p&gt;In a &lt;a class="reference external" href="http://patrick.cloke.us/why-rewrite-irc-into-javascript-vs-libpurples-vs-chatzillas.html"&gt;previous post&lt;/a&gt; I had briefly gone over the &amp;quot;history of IRC&amp;quot; as
 I know it.&amp;nbsp; I'm going to expand on this a bit as I've come to understand
 it a bit more while reading through documentation.&amp;nbsp; (Hopefully it won't
 sound too much like a rant, as it is all driving me crazy!)&lt;/p&gt;
@@ -316,7 +316,7 @@ there's an awful lot of &lt;a class="reference external" href="http://en.wikiped
 does know of another specification, etc. that I missed please let me
 know!&lt;/p&gt;
 &lt;/div&gt;
-</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Patrick Cloke</dc:creator><pubDate>Wed, 09 Mar 2011 01:20:00 -0500</pubDate><guid>tag:https://clokep.github.io,2011-03-09:the-so-called-irc-specifications.html</guid><category>Instantbird</category><category>IRC</category><category>programming</category><category>specifications</category></item><item><title>Status Update - February 17, 2011</title><link>https://clokep.github.io/status-update-february-17-2011.html</link><description>&lt;p&gt;Another month has gone by so it's time for another status update.
+</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Patrick Cloke</dc:creator><pubDate>Wed, 09 Mar 2011 01:20:00 -0500</pubDate><guid>tag:patrick.cloke.us,2011-03-09:the-so-called-irc-specifications.html</guid><category>Instantbird</category><category>IRC</category><category>programming</category><category>specifications</category></item><item><title>Status Update - February 17, 2011</title><link>http://patrick.cloke.us/status-update-february-17-2011.html</link><description>&lt;p&gt;Another month has gone by so it's time for another status update.
 Unfortunately not as much got done this month as I was hoping, but
 here's a quick update of what I've worked on:&lt;/p&gt;
 &lt;ul class="simple"&gt;
@@ -339,7 +339,7 @@ JavaScript protocol (&lt;a class="reference external" href="https://bugzilla.ins
 next week) at which point I'll release a sample extension (which will
 overwrite the libpurple IRC implementation), allowing people to test
 without needing to make a new account, etc.&lt;/p&gt;
-</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Patrick Cloke</dc:creator><pubDate>Thu, 17 Feb 2011 23:21:00 -0500</pubDate><guid>tag:https://clokep.github.io,2011-02-17:status-update-february-17-2011.html</guid><category>Instantbird</category><category>IRC</category><category>programming</category></item><item><title>Status Update - January 18, 2011</title><link>https://clokep.github.io/status-update-january-18-2011.html</link><description>&lt;p&gt;I haven't had an update in a few weeks (since early December)
+</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Patrick Cloke</dc:creator><pubDate>Thu, 17 Feb 2011 23:21:00 -0500</pubDate><guid>tag:patrick.cloke.us,2011-02-17:status-update-february-17-2011.html</guid><category>Instantbird</category><category>IRC</category><category>programming</category></item><item><title>Status Update - January 18, 2011</title><link>http://patrick.cloke.us/status-update-january-18-2011.html</link><description>&lt;p&gt;I haven't had an update in a few weeks (since early December)
 actually, so I thought I would post a bit about what I've worked on.
 I've fixed a bunch of bugs in the backend of Instantbird that allow work
 on JavaScript IRC protocol to continue:&lt;/p&gt;
@@ -410,7 +410,7 @@ line here, on IRC or via email).&lt;/li&gt;
 &lt;li&gt;Start my new job&lt;/li&gt;
 &lt;li&gt;Work on richtext messages a bit more&lt;/li&gt;
 &lt;/ul&gt;
-</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Patrick Cloke</dc:creator><pubDate>Wed, 19 Jan 2011 03:17:00 -0500</pubDate><guid>tag:https://clokep.github.io,2011-01-19:status-update-january-18-2011.html</guid><category>Instantbird</category><category>IRC</category><category>Mozilla</category><category>programming</category></item><item><title>Why Rewrite IRC into JavaScript? (vs. libpurple's vs. ChatZilla's)</title><link>https://clokep.github.io/why-rewrite-irc-into-javascript-vs-libpurples-vs-chatzillas.html</link><description>&lt;p&gt;I had a request on IRC (from Mic) to write an in-depth blog post
+</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Patrick Cloke</dc:creator><pubDate>Wed, 19 Jan 2011 03:17:00 -0500</pubDate><guid>tag:patrick.cloke.us,2011-01-19:status-update-january-18-2011.html</guid><category>Instantbird</category><category>IRC</category><category>Mozilla</category><category>programming</category></item><item><title>Why Rewrite IRC into JavaScript? (vs. libpurple's vs. ChatZilla's)</title><link>http://patrick.cloke.us/why-rewrite-irc-into-javascript-vs-libpurples-vs-chatzillas.html</link><description>&lt;p&gt;I had a request on IRC (from Mic) to write an in-depth blog post
 about &lt;a class="reference external" href="https://bugzilla.instantbird.org/show_bug.cgi?id=507"&gt;IRC in JavaScript&lt;/a&gt;:&lt;/p&gt;
 &lt;blockquote&gt;
 &amp;quot;Maybe we could ask clokep if he'd like to write something about
@@ -434,7 +434,7 @@ open-source software I use (I'm almost always in &lt;a class="reference external
 &lt;/div&gt;
 &lt;div class="section" id="why-it-is-done-what-advantages-are-there-once-this-is-done"&gt;
 &lt;h2&gt;Why it is done?&amp;nbsp; What advantages are there once this is done?&lt;/h2&gt;
-&lt;p&gt;I touched upon this a little in my &lt;a class="reference external" href="https://clokep.github.io/javascript-irc-in-instantbird.html"&gt;last post&lt;/a&gt;.&amp;nbsp; In terms of
+&lt;p&gt;I touched upon this a little in my &lt;a class="reference external" href="http://patrick.cloke.us/javascript-irc-in-instantbird.html"&gt;last post&lt;/a&gt;.&amp;nbsp; In terms of
 Instantbird: there's an idea of switching some / all of the protocols
 (eventually) to be JavaScript protocols instead of the libpurple
 versions (libpurple is written mostly in C and is cross-platform, but
@@ -596,7 +596,7 @@ time to rewrite the IRC protocol implementation into JavaScript -- we
 definitely think it's worth it and can lead to a bunch of new unique
 protocol plug-ins for Instantbird.&lt;/p&gt;
 &lt;/div&gt;
-</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Patrick Cloke</dc:creator><pubDate>Wed, 08 Dec 2010 18:29:00 -0500</pubDate><guid>tag:https://clokep.github.io,2010-12-08:why-rewrite-irc-into-javascript-vs-libpurples-vs-chatzillas.html</guid><category>Instantbird</category><category>IRC</category><category>Mozilla</category><category>programming</category></item><item><title>JavaScript IRC in Instantbird</title><link>https://clokep.github.io/javascript-irc-in-instantbird.html</link><description>&lt;p&gt;I've been working on rewriting the IRC plugin for &lt;a class="reference external" href="http://www.instantbird.com/"&gt;Instantbird&lt;/a&gt; since
+</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Patrick Cloke</dc:creator><pubDate>Wed, 08 Dec 2010 18:29:00 -0500</pubDate><guid>tag:patrick.cloke.us,2010-12-08:why-rewrite-irc-into-javascript-vs-libpurples-vs-chatzillas.html</guid><category>Instantbird</category><category>IRC</category><category>Mozilla</category><category>programming</category></item><item><title>JavaScript IRC in Instantbird</title><link>http://patrick.cloke.us/javascript-irc-in-instantbird.html</link><description>&lt;p&gt;I've been working on rewriting the IRC plugin for &lt;a class="reference external" href="http://www.instantbird.com/"&gt;Instantbird&lt;/a&gt; since
 the summer (sometime in August, I can't seem to find the exact date --
 at least since Sept. 10th though).&lt;/p&gt;
 &lt;p&gt;Since &lt;a class="reference external" href="http://developer.pidgin.im/wiki/WhatIsLibpurple"&gt;libpurple&lt;/a&gt; (used in Pidgin, Adium, etc.) provides the IRC
@@ -619,9 +619,9 @@ to work: one error, (which I found quickly) one of the other developers
 a &lt;strong&gt;new&lt;/strong&gt; object.&amp;nbsp; And after learning a bit above observers I was able
 to get the UI to respond.&amp;nbsp; I even threw in support for op/half-op/voice
 After today's work I was able to generate the following screenshot:&lt;/p&gt;
-&lt;p&gt;&lt;a class="reference external" href="https://clokep.github.io/images/IRCworking2.png"&gt;&lt;img alt="IRCworking" src="https://clokep.github.io/images/IRCworking2.png" style="height: 297px;" /&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a class="reference external" href="http://patrick.cloke.us/images/IRCworking2.png"&gt;&lt;img alt="IRCworking" src="http://patrick.cloke.us/images/IRCworking2.png" style="height: 297px;" /&gt;&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;This build would be almost fully usable by those who do very little on
 IRC (i.e. if you just want to go and chat, it'd work well), but there's
 a lot more work to be done.&amp;nbsp; The code can be viewed in the &lt;a class="reference external" href="https://hg.instantbird.org/experiments/file/IRC-JavaScript/"&gt;Experiments
 repository&lt;/a&gt;.&amp;nbsp; (Check it out, there's a 600+ line switch statement.)&lt;/p&gt;
-</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Patrick Cloke</dc:creator><pubDate>Sat, 04 Dec 2010 21:24:00 -0500</pubDate><guid>tag:https://clokep.github.io,2010-12-04:javascript-irc-in-instantbird.html</guid><category>Instantbird</category><category>IRC</category><category>Mozilla</category><category>programming</category></item></channel></rss>
+</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Patrick Cloke</dc:creator><pubDate>Sat, 04 Dec 2010 21:24:00 -0500</pubDate><guid>tag:patrick.cloke.us,2010-12-04:javascript-irc-in-instantbird.html</guid><category>Instantbird</category><category>IRC</category><category>Mozilla</category><category>programming</category></item></channel></rss>

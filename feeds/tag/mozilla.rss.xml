@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Like bricks in the sky</title><link>https://clokep.github.io/</link><description></description><atom:link href="https://clokep.github.io/feeds/tag/mozilla.rss.xml" rel="self"></atom:link><lastBuildDate>Wed, 16 Apr 2014 16:34:00 -0400</lastBuildDate><item><title>Community and Volunteers</title><link>https://clokep.github.io/community-and-volunteers.html</link><description>&lt;p&gt;It was suggested that I cross-post this from mozilla.dev.planning onto
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Like bricks in the sky</title><link>http://patrick.cloke.us/</link><description></description><atom:link href="http://patrick.cloke.us/feeds/tag/mozilla.rss.xml" rel="self"></atom:link><lastBuildDate>Wed, 16 Apr 2014 16:34:00 -0400</lastBuildDate><item><title>Community and Volunteers</title><link>http://patrick.cloke.us/community-and-volunteers.html</link><description>&lt;p&gt;It was suggested that I cross-post this from mozilla.dev.planning onto
 my blog. This is in reply to a thread entitled &amp;quot;&lt;a class="reference external" href="https://groups.google.com/forum/#%21topic/mozilla.dev.planning/P8oHKTCWSiQ"&gt;Proposal: Move
 Thunderbird and SeaMonkey to mozilla-central&lt;/a&gt;&amp;quot; about (essentially)
 merging comm-central back into mozilla-central. There have been many
@@ -74,10 +74,10 @@ keeping a dying one on life-support. (And prove to all that
 &lt;/blockquote&gt;
 &lt;p&gt;I don't have much else to say beyond that (besides thanks for reading
 this far!)&lt;/p&gt;
-</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Patrick Cloke</dc:creator><pubDate>Wed, 16 Apr 2014 16:34:00 -0400</pubDate><guid>tag:https://clokep.github.io,2014-04-16:community-and-volunteers.html</guid><category>community</category><category>crosspost</category><category>Mozilla</category><category>Thunderbird</category></item><item><title>GSoc Lessons: Part Deux: The Arms Race</title><link>https://clokep.github.io/gsoc-lessons-part-deux-the-arms-race.html</link><description>&lt;p&gt;This post title might be a little excessive, but I'll blame &lt;a class="reference external" href="http://en.wikipedia.org/wiki/The_Sum_of_All_Fears_%28film%29"&gt;The Sum
+</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Patrick Cloke</dc:creator><pubDate>Wed, 16 Apr 2014 16:34:00 -0400</pubDate><guid>tag:patrick.cloke.us,2014-04-16:community-and-volunteers.html</guid><category>community</category><category>crosspost</category><category>Mozilla</category><category>Thunderbird</category></item><item><title>GSoc Lessons: Part Deux: The Arms Race</title><link>http://patrick.cloke.us/gsoc-lessons-part-deux-the-arms-race.html</link><description>&lt;p&gt;This post title might be a little excessive, but I'll blame &lt;a class="reference external" href="http://en.wikipedia.org/wiki/The_Sum_of_All_Fears_%28film%29"&gt;The Sum
 of All Fears&lt;/a&gt; that I was watching last night. This is the second part
 of a set of posts about ideas I heard at the Google Summer of Code 2013
-Mentor Summit (you can read &lt;a class="reference external" href="https://clokep.github.io/gsoc-lessons-part-1-application-period.html"&gt;the first part about the application
+Mentor Summit (you can read &lt;a class="reference external" href="http://patrick.cloke.us/gsoc-lessons-part-1-application-period.html"&gt;the first part about the application
 process&lt;/a&gt;).&lt;/p&gt;
 &lt;p&gt;This will explore an interesting anecdote I heard about the
 interaction between applicants from another organization that, on
@@ -126,7 +126,7 @@ anyone in &lt;a class="reference external" href="irc://irc.mozilla.org/#instantb
 Upon letting it sink in and reflecting on it...I realized I had actually
 seen similar situations during the application periods I've been
 involved with. This year, we found a bug in Instantbird's IRC code (CTCP
-quoting and dequoting); after referencing some &lt;a class="reference external" href="https://clokep.github.io/the-so-called-irc-specifications.html"&gt;specifications&lt;/a&gt;, I was
+quoting and dequoting); after referencing some &lt;a class="reference external" href="http://patrick.cloke.us/the-so-called-irc-specifications.html"&gt;specifications&lt;/a&gt;, I was
 pretty quickly able to figure out the vague areas where people should
 look for a fix. A couple of GSoC students in the room started looking
 into it and exhibited a greatly reduced form of the behavior I discussed
@@ -150,7 +150,7 @@ accepted. (And that they're used to competing, e.g. homework and exams,
 not collaborating!) I don't really know whether I feel the above
 situation is good or bad, but it's certainly an interesting effect from
 the way the GSoC process works.&lt;/p&gt;
-</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Patrick Cloke</dc:creator><pubDate>Wed, 04 Dec 2013 13:17:00 -0500</pubDate><guid>tag:https://clokep.github.io,2013-12-04:gsoc-lessons-part-deux-the-arms-race.html</guid><category>community</category><category>GSoC</category><category>Mozilla</category></item><item><title>GSoC Lessons: Part 1: Application Period</title><link>https://clokep.github.io/gsoc-lessons-part-1-application-period.html</link><description>&lt;p&gt;I briefly talked about &lt;a class="reference external" href="https://clokep.github.io/google-summer-of-code-mentor-summit-2013.html"&gt;my experiences&lt;/a&gt; at the Google Summer of Code
+</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Patrick Cloke</dc:creator><pubDate>Wed, 04 Dec 2013 13:17:00 -0500</pubDate><guid>tag:patrick.cloke.us,2013-12-04:gsoc-lessons-part-deux-the-arms-race.html</guid><category>community</category><category>GSoC</category><category>Mozilla</category></item><item><title>GSoC Lessons: Part 1: Application Period</title><link>http://patrick.cloke.us/gsoc-lessons-part-1-application-period.html</link><description>&lt;p&gt;I briefly talked about &lt;a class="reference external" href="http://patrick.cloke.us/google-summer-of-code-mentor-summit-2013.html"&gt;my experiences&lt;/a&gt; at the Google Summer of Code
 2013 Mentor Summit. I've been pretty remiss in sharing what was actually
 discussed there and for that I must apologize! This will hopefully be
 one of a few posts about what I learned and discussed at the Summit.&lt;/p&gt;
@@ -220,7 +220,7 @@ include: community lessons, and handling a failing student. The
 community one will be very not-GSoC focused and could apply to just
 trying to incorporate new contributors...but I'll include it in this
 series.&lt;/p&gt;
-</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Patrick Cloke</dc:creator><pubDate>Mon, 02 Dec 2013 00:55:00 -0500</pubDate><guid>tag:https://clokep.github.io,2013-12-02:gsoc-lessons-part-1-application-period.html</guid><category>community</category><category>GSoC</category><category>Mozilla</category></item><item><title>Google Summer of Code Mentor Summit 2013</title><link>https://clokep.github.io/google-summer-of-code-mentor-summit-2013.html</link><description>&lt;p&gt;Not only was I lucky enough to mentor a great student for this year's
+</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Patrick Cloke</dc:creator><pubDate>Mon, 02 Dec 2013 00:55:00 -0500</pubDate><guid>tag:patrick.cloke.us,2013-12-02:gsoc-lessons-part-1-application-period.html</guid><category>community</category><category>GSoC</category><category>Mozilla</category></item><item><title>Google Summer of Code Mentor Summit 2013</title><link>http://patrick.cloke.us/google-summer-of-code-mentor-summit-2013.html</link><description>&lt;p&gt;Not only was I lucky enough to mentor a great student for this year's
 Google Summer of Code, but Mozilla asked me to represent them at the
 Google Summer of Code Mentor Summit!&amp;nbsp; This was located at Google's
 offices in Mountain View, California this past weekend (Friday, Oct.
@@ -260,7 +260,7 @@ some people were excited by this and hopefully they'll try it out!&lt;/p&gt;
 was great and I'd like to thank both Mozilla and Google for giving me
 this opportunity.&amp;nbsp; If I find any really great gems in my notes I'll
 write further blog posts about them.&lt;/p&gt;
-</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Patrick Cloke</dc:creator><pubDate>Mon, 21 Oct 2013 02:18:00 -0400</pubDate><guid>tag:https://clokep.github.io,2013-10-21:google-summer-of-code-mentor-summit-2013.html</guid><category>Google</category><category>GSoC</category><category>Mozilla</category></item><item><title>JavaScript typed arrays pain</title><link>https://clokep.github.io/javascript-typed-arrays-pain.html</link><description>&lt;p&gt;If you've ever tried to deal with binary data in JavaScript you know
+</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Patrick Cloke</dc:creator><pubDate>Mon, 21 Oct 2013 02:18:00 -0400</pubDate><guid>tag:patrick.cloke.us,2013-10-21:google-summer-of-code-mentor-summit-2013.html</guid><category>Google</category><category>GSoC</category><category>Mozilla</category></item><item><title>JavaScript typed arrays pain</title><link>http://patrick.cloke.us/javascript-typed-arrays-pain.html</link><description>&lt;p&gt;If you've ever tried to deal with binary data in JavaScript you know
 it isn't much fun and you usually resort to using strings lots of
 charCodeAt and related functions.&amp;nbsp; &lt;a class="reference external" href="https://developer.mozilla.org/en-US/docs/JavaScript_typed_arrays"&gt;Typed arrays&lt;/a&gt; are supposed to solve
 this though!&amp;nbsp; The typed array API consists of creating a buffer of bytes
@@ -348,7 +348,7 @@ don't use ArrayBufferViews, use DataViews.&amp;nbsp; (Although Uint8Arrays and
 Int8Arrays should work fine!)&lt;/p&gt;
 &lt;p&gt;And to not rant the &lt;em&gt;entire&lt;/em&gt; time, working with typed arrays certainly
 does beat strings + charCodeAt!&lt;/p&gt;
-</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Patrick Cloke</dc:creator><pubDate>Thu, 29 Nov 2012 03:11:00 -0500</pubDate><guid>tag:https://clokep.github.io,2012-11-29:javascript-typed-arrays-pain.html</guid><category>IM</category><category>Instantbird</category><category>Mozilla</category><category>OSCAR</category><category>Thunderbird</category><category>Wat</category></item><item><title>IRC Auto-Performs</title><link>https://clokep.github.io/irc-auto-performs.html</link><description>&lt;p&gt;There have been a &lt;a class="reference external" href="https://bugzilla.mozilla.org/show_bug.cgi?id=742675"&gt;few&lt;/a&gt; &lt;a class="reference external" href="https://bugzilla.instantbird.org/show_bug.cgi?id=1101"&gt;requests&lt;/a&gt; to support &amp;quot;auto-performs&amp;quot;
+</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Patrick Cloke</dc:creator><pubDate>Thu, 29 Nov 2012 03:11:00 -0500</pubDate><guid>tag:patrick.cloke.us,2012-11-29:javascript-typed-arrays-pain.html</guid><category>IM</category><category>Instantbird</category><category>Mozilla</category><category>OSCAR</category><category>Thunderbird</category><category>Wat</category></item><item><title>IRC Auto-Performs</title><link>http://patrick.cloke.us/irc-auto-performs.html</link><description>&lt;p&gt;There have been a &lt;a class="reference external" href="https://bugzilla.mozilla.org/show_bug.cgi?id=742675"&gt;few&lt;/a&gt; &lt;a class="reference external" href="https://bugzilla.instantbird.org/show_bug.cgi?id=1101"&gt;requests&lt;/a&gt; to support &amp;quot;auto-performs&amp;quot;
 (sending commands to the IRC server after connection that the user types
 into a box or whatever). Personally I find this to be:&lt;/p&gt;
 &lt;ol class="arabic simple"&gt;
@@ -366,10 +366,10 @@ with this post (and maybe a series of posts) that auto-performs aren't
 necessary and a trivial restartless extension can replace them.&lt;/p&gt;
 &lt;div class="section" id="design"&gt;
 &lt;h2&gt;Design&lt;/h2&gt;
-&lt;p&gt;Part of the desire to &lt;a class="reference external" href="https://clokep.github.io/why-rewrite-the-irc-protocol-plugin-part-2.html"&gt;replace the libpurple IRC protocol plugin&lt;/a&gt;
+&lt;p&gt;Part of the desire to &lt;a class="reference external" href="http://patrick.cloke.us/why-rewrite-the-irc-protocol-plugin-part-2.html"&gt;replace the libpurple IRC protocol plugin&lt;/a&gt;
 with a new JavaScript one built specifically for Instantbird (which is
 also now used in Thunderbird!) was to make the protocol fully
-extensible. There are &lt;a class="reference external" href="https://clokep.github.io/the-so-called-irc-specifications.html"&gt;many revisions and unofficial extensions to IRC&lt;/a&gt;
+extensible. There are &lt;a class="reference external" href="http://patrick.cloke.us/the-so-called-irc-specifications.html"&gt;many revisions and unofficial extensions to IRC&lt;/a&gt;
 and we might not necessarily want to support them all (especially if
 they only apply to a single network). Allowing all parts of the protocol
 implementation to be touched and extended seemed like a great way to
@@ -476,7 +476,7 @@ that it requires a bit more understanding of the actual protocol level
 implementation, I don't feel that knowing you need to use &amp;quot;PRIVMSG&amp;quot; as a
 command instead of /msg is a huge issue, however.&lt;/p&gt;
 &lt;/div&gt;
-</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Patrick Cloke</dc:creator><pubDate>Mon, 11 Jun 2012 02:25:00 -0400</pubDate><guid>tag:https://clokep.github.io,2012-06-11:irc-auto-performs.html</guid><category>Instantbird</category><category>IRC</category><category>Mozilla</category></item><item><title>Shared Lightning profile across Linux and Windows</title><link>https://clokep.github.io/shared-lightning-profile-across-linux-and-windows.html</link><description>&lt;p&gt;In &lt;a class="reference external" href="irc://irc.mozilla.org/calendar"&gt;#calendar on Mozilla IRC&lt;/a&gt; the past few days a user has been
+</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Patrick Cloke</dc:creator><pubDate>Mon, 11 Jun 2012 02:25:00 -0400</pubDate><guid>tag:patrick.cloke.us,2012-06-11:irc-auto-performs.html</guid><category>Instantbird</category><category>IRC</category><category>Mozilla</category></item><item><title>Shared Lightning profile across Linux and Windows</title><link>http://patrick.cloke.us/shared-lightning-profile-across-linux-and-windows.html</link><description>&lt;p&gt;In &lt;a class="reference external" href="irc://irc.mozilla.org/calendar"&gt;#calendar on Mozilla IRC&lt;/a&gt; the past few days a user has been
 asking about using a shared profile on Thunderbird between Linux and
 Windows (&amp;quot;shared&amp;quot; meaning a dual boot system of Linux/Windows, but not
 at the same time, obviously).&amp;nbsp; Generally this isn't a big deal UNLESS
@@ -513,7 +513,7 @@ script files (as is discussed in that big) but hopefully it should
 similar with the themes folders if they differ dramatically (it seems
 there's &lt;a class="reference external" href="http://mxr.mozilla.org/comm-central/source/calendar/lightning/themes/"&gt;just two&lt;/a&gt;: winstripe and pinstripe: i.e. Windows &amp;amp; Mac; Linux
 and Solaris most likely also use winstripe).&lt;/p&gt;
-</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Patrick Cloke</dc:creator><pubDate>Fri, 08 Jul 2011 00:46:00 -0400</pubDate><guid>tag:https://clokep.github.io,2011-07-08:shared-lightning-profile-across-linux-and-windows.html</guid><category>Lightning</category><category>Mozilla</category></item><item><title>Compiling Instantbird</title><link>https://clokep.github.io/compiling-instantbird.html</link><description>&lt;p&gt;In the past I've tried to compile a few different programs that use
+</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Patrick Cloke</dc:creator><pubDate>Fri, 08 Jul 2011 00:46:00 -0400</pubDate><guid>tag:patrick.cloke.us,2011-07-08:shared-lightning-profile-across-linux-and-windows.html</guid><category>Lightning</category><category>Mozilla</category></item><item><title>Compiling Instantbird</title><link>http://patrick.cloke.us/compiling-instantbird.html</link><description>&lt;p&gt;In the past I've tried to compile a few different programs that use
 the Mozilla toolkit to various levels of success.&amp;nbsp; I've tried to compile
 Thunderbird, Songbird and Instantbird at various points.&amp;nbsp; I got
 Thunderbird to compile, but it only worked sporadically (although I
@@ -682,7 +682,7 @@ the way while developing).&amp;nbsp; See&amp;nbsp;&lt;a class="reference externa
 &lt;p&gt;Edit: Fixed the path to the executable thanks to Florian. And fixed a
 spelling error in the title.&lt;/p&gt;
 &lt;/div&gt;
-</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Patrick Cloke</dc:creator><pubDate>Tue, 17 May 2011 01:30:00 -0400</pubDate><guid>tag:https://clokep.github.io,2011-05-17:compiling-instantbird.html</guid><category>Instantbird</category><category>Mozilla</category><category>programming</category></item><item><title>Status Update - January 18, 2011</title><link>https://clokep.github.io/status-update-january-18-2011.html</link><description>&lt;p&gt;I haven't had an update in a few weeks (since early December)
+</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Patrick Cloke</dc:creator><pubDate>Tue, 17 May 2011 01:30:00 -0400</pubDate><guid>tag:patrick.cloke.us,2011-05-17:compiling-instantbird.html</guid><category>Instantbird</category><category>Mozilla</category><category>programming</category></item><item><title>Status Update - January 18, 2011</title><link>http://patrick.cloke.us/status-update-january-18-2011.html</link><description>&lt;p&gt;I haven't had an update in a few weeks (since early December)
 actually, so I thought I would post a bit about what I've worked on.
 I've fixed a bunch of bugs in the backend of Instantbird that allow work
 on JavaScript IRC protocol to continue:&lt;/p&gt;
@@ -753,7 +753,7 @@ line here, on IRC or via email).&lt;/li&gt;
 &lt;li&gt;Start my new job&lt;/li&gt;
 &lt;li&gt;Work on richtext messages a bit more&lt;/li&gt;
 &lt;/ul&gt;
-</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Patrick Cloke</dc:creator><pubDate>Wed, 19 Jan 2011 03:17:00 -0500</pubDate><guid>tag:https://clokep.github.io,2011-01-19:status-update-january-18-2011.html</guid><category>Instantbird</category><category>IRC</category><category>Mozilla</category><category>programming</category></item><item><title>Why Rewrite IRC into JavaScript? (vs. libpurple's vs. ChatZilla's)</title><link>https://clokep.github.io/why-rewrite-irc-into-javascript-vs-libpurples-vs-chatzillas.html</link><description>&lt;p&gt;I had a request on IRC (from Mic) to write an in-depth blog post
+</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Patrick Cloke</dc:creator><pubDate>Wed, 19 Jan 2011 03:17:00 -0500</pubDate><guid>tag:patrick.cloke.us,2011-01-19:status-update-january-18-2011.html</guid><category>Instantbird</category><category>IRC</category><category>Mozilla</category><category>programming</category></item><item><title>Why Rewrite IRC into JavaScript? (vs. libpurple's vs. ChatZilla's)</title><link>http://patrick.cloke.us/why-rewrite-irc-into-javascript-vs-libpurples-vs-chatzillas.html</link><description>&lt;p&gt;I had a request on IRC (from Mic) to write an in-depth blog post
 about &lt;a class="reference external" href="https://bugzilla.instantbird.org/show_bug.cgi?id=507"&gt;IRC in JavaScript&lt;/a&gt;:&lt;/p&gt;
 &lt;blockquote&gt;
 &amp;quot;Maybe we could ask clokep if he'd like to write something about
@@ -777,7 +777,7 @@ open-source software I use (I'm almost always in &lt;a class="reference external
 &lt;/div&gt;
 &lt;div class="section" id="why-it-is-done-what-advantages-are-there-once-this-is-done"&gt;
 &lt;h2&gt;Why it is done?&amp;nbsp; What advantages are there once this is done?&lt;/h2&gt;
-&lt;p&gt;I touched upon this a little in my &lt;a class="reference external" href="https://clokep.github.io/javascript-irc-in-instantbird.html"&gt;last post&lt;/a&gt;.&amp;nbsp; In terms of
+&lt;p&gt;I touched upon this a little in my &lt;a class="reference external" href="http://patrick.cloke.us/javascript-irc-in-instantbird.html"&gt;last post&lt;/a&gt;.&amp;nbsp; In terms of
 Instantbird: there's an idea of switching some / all of the protocols
 (eventually) to be JavaScript protocols instead of the libpurple
 versions (libpurple is written mostly in C and is cross-platform, but
@@ -939,7 +939,7 @@ time to rewrite the IRC protocol implementation into JavaScript -- we
 definitely think it's worth it and can lead to a bunch of new unique
 protocol plug-ins for Instantbird.&lt;/p&gt;
 &lt;/div&gt;
-</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Patrick Cloke</dc:creator><pubDate>Wed, 08 Dec 2010 18:29:00 -0500</pubDate><guid>tag:https://clokep.github.io,2010-12-08:why-rewrite-irc-into-javascript-vs-libpurples-vs-chatzillas.html</guid><category>Instantbird</category><category>IRC</category><category>Mozilla</category><category>programming</category></item><item><title>JavaScript IRC in Instantbird</title><link>https://clokep.github.io/javascript-irc-in-instantbird.html</link><description>&lt;p&gt;I've been working on rewriting the IRC plugin for &lt;a class="reference external" href="http://www.instantbird.com/"&gt;Instantbird&lt;/a&gt; since
+</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Patrick Cloke</dc:creator><pubDate>Wed, 08 Dec 2010 18:29:00 -0500</pubDate><guid>tag:patrick.cloke.us,2010-12-08:why-rewrite-irc-into-javascript-vs-libpurples-vs-chatzillas.html</guid><category>Instantbird</category><category>IRC</category><category>Mozilla</category><category>programming</category></item><item><title>JavaScript IRC in Instantbird</title><link>http://patrick.cloke.us/javascript-irc-in-instantbird.html</link><description>&lt;p&gt;I've been working on rewriting the IRC plugin for &lt;a class="reference external" href="http://www.instantbird.com/"&gt;Instantbird&lt;/a&gt; since
 the summer (sometime in August, I can't seem to find the exact date --
 at least since Sept. 10th though).&lt;/p&gt;
 &lt;p&gt;Since &lt;a class="reference external" href="http://developer.pidgin.im/wiki/WhatIsLibpurple"&gt;libpurple&lt;/a&gt; (used in Pidgin, Adium, etc.) provides the IRC
@@ -962,12 +962,12 @@ to work: one error, (which I found quickly) one of the other developers
 a &lt;strong&gt;new&lt;/strong&gt; object.&amp;nbsp; And after learning a bit above observers I was able
 to get the UI to respond.&amp;nbsp; I even threw in support for op/half-op/voice
 After today's work I was able to generate the following screenshot:&lt;/p&gt;
-&lt;p&gt;&lt;a class="reference external" href="https://clokep.github.io/images/IRCworking2.png"&gt;&lt;img alt="IRCworking" src="https://clokep.github.io/images/IRCworking2.png" style="height: 297px;" /&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a class="reference external" href="http://patrick.cloke.us/images/IRCworking2.png"&gt;&lt;img alt="IRCworking" src="http://patrick.cloke.us/images/IRCworking2.png" style="height: 297px;" /&gt;&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;This build would be almost fully usable by those who do very little on
 IRC (i.e. if you just want to go and chat, it'd work well), but there's
 a lot more work to be done.&amp;nbsp; The code can be viewed in the &lt;a class="reference external" href="https://hg.instantbird.org/experiments/file/IRC-JavaScript/"&gt;Experiments
 repository&lt;/a&gt;.&amp;nbsp; (Check it out, there's a 600+ line switch statement.)&lt;/p&gt;
-</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Patrick Cloke</dc:creator><pubDate>Sat, 04 Dec 2010 21:24:00 -0500</pubDate><guid>tag:https://clokep.github.io,2010-12-04:javascript-irc-in-instantbird.html</guid><category>Instantbird</category><category>IRC</category><category>Mozilla</category><category>programming</category></item><item><title>Yahoo &amp; Thunderbird Can Finally Play Nice?</title><link>https://clokep.github.io/yahoo-thunderbird-can-finally-play-nice.html</link><description>&lt;p&gt;For years I've been dealing with Yahoo's lack of support for any sort
+</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Patrick Cloke</dc:creator><pubDate>Sat, 04 Dec 2010 21:24:00 -0500</pubDate><guid>tag:patrick.cloke.us,2010-12-04:javascript-irc-in-instantbird.html</guid><category>Instantbird</category><category>IRC</category><category>Mozilla</category><category>programming</category></item><item><title>Yahoo &amp; Thunderbird Can Finally Play Nice?</title><link>http://patrick.cloke.us/yahoo-thunderbird-can-finally-play-nice.html</link><description>&lt;p&gt;For years I've been dealing with Yahoo's lack of support for any sort
 of decent (free) POP3/IMAP/SMTP protocol support.&amp;nbsp; Why do I need this?
 So I can check my &lt;a class="reference external" href="http://mail.yahoo.com/"&gt;Yahoo mail&lt;/a&gt; in &lt;a class="reference external" href="http://www.mozillamessaging.com/en-US/thunderbird/"&gt;Mozilla Thunderbird&lt;/a&gt; of course!&lt;/p&gt;
 &lt;p&gt;At first I used &lt;a class="reference external" href="http://ypopsemail.com/"&gt;YPOPS!&lt;/a&gt;, a program that read the HTML pages provided
@@ -1034,4 +1034,4 @@ suggest using that former.&lt;/p&gt;
 &lt;p&gt;Note that I'm currently suffering from &lt;a class="reference external" href="https://bugzilla.mozilla.org/show_bug.cgi?id=610264"&gt;another bug&lt;/a&gt; while using
 Yahoo IMAP.&amp;nbsp; Everything works, there's just an annoying pop-up
 occasionally about the error.&amp;nbsp; Hopefully it will be fixed soon.&lt;/p&gt;
-</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Patrick Cloke</dc:creator><pubDate>Tue, 23 Nov 2010 03:03:00 -0500</pubDate><guid>tag:https://clokep.github.io,2010-11-23:yahoo-thunderbird-can-finally-play-nice.html</guid><category>bugs</category><category>email</category><category>IMAP</category><category>Mozilla</category><category>POP3</category><category>programming</category><category>SMTP</category><category>Thunderbird</category><category>Yahoo</category></item></channel></rss>
+</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Patrick Cloke</dc:creator><pubDate>Tue, 23 Nov 2010 03:03:00 -0500</pubDate><guid>tag:patrick.cloke.us,2010-11-23:yahoo-thunderbird-can-finally-play-nice.html</guid><category>bugs</category><category>email</category><category>IMAP</category><category>Mozilla</category><category>POP3</category><category>programming</category><category>SMTP</category><category>Thunderbird</category><category>Yahoo</category></item></channel></rss>
