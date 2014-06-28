@@ -40,7 +40,15 @@ RELATIVE_URLS = True
 PATH = 'content'
 PAGE_DIR = '../pages'
 
-STATIC_PATHS = ['images']
+STATIC_PATHS = [
+    'images',
+    'static/CNAME'
+]
+
+# path-specific metadata
+EXTRA_PATH_METADATA = {
+    'static/CNAME': {'path': 'CNAME'},
+}
 
 PAGE_EXCLUDES = ['theme']
 ARTICLE_EXCLUDES = ['theme']
