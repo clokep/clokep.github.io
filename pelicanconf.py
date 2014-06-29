@@ -21,7 +21,7 @@ TYPOGRIFY = True
 RELATIVE_URLS = True
 
 # Disable categories.
-DISPLAY_PAGES_ON_MENU = True
+DISPLAY_PAGES_ON_MENU = False
 DISPLAY_CATEGORIES_ON_MENU = False
 CATEGORY_FEED_ATOM = None
 CATEGORY_SAVE_AS = ''
@@ -50,6 +50,10 @@ STATIC_PATHS = [
 EXTRA_PATH_METADATA = {
     'static/CNAME': {'path': 'CNAME'},
 }
+
+# Plugin setup.
+PLUGIN_PATH = '../pelican-plugins/'
+PLUGINS = ['extract_toc']
 
 # Change the default URLs.
 ARTICLE_URL = 'posts/{date:%Y}/{date:%b}/{date:%d}/{slug}/'

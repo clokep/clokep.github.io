@@ -1,7 +1,14 @@
 <div class="three columns">
 
-<h4>Pages</h4>
+{% if article.toc %}
+    <nav class="affix">
+    {{ article.toc }}
+    </nav>
+{% endif %}
 
+{% if DISPLAY_PAGES_ON_MENU %}
+ <h4>Pages</h4>
+{% endif %}
  <ul>
   {% for title, link in MENUITEMS %}
       <li><a href="{{ link }}">{{ title }}</a></li>
