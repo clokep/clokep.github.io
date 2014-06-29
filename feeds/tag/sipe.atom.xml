@@ -1,104 +1,101 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>Like bricks in the sky</title><link href="http://patrick.cloke.us/" rel="alternate"></link><link href="http://patrick.cloke.us/feeds/tag/sipe.atom.xml" rel="self"></link><id>http://patrick.cloke.us/</id><updated>2011-09-03T14:31:00-04:00</updated><entry><title>Adding a protocol to Instantbird (Part 2)</title><link href="http://patrick.cloke.us/adding-a-protocol-to-instantbird-part-2.html" rel="alternate"></link><updated>2011-09-03T14:31:00-04:00</updated><author><name>Patrick Cloke</name></author><id>tag:patrick.cloke.us,2011-09-03:adding-a-protocol-to-instantbird-part-2.html</id><summary type="html">&lt;p&gt;I had &lt;a class="reference external" href="http://patrick.cloke.us/adding-a-new-protocol-sipeoffice-communicator-to-instantbird-part-1.html"&gt;previously talked about adding a protocol to Instantbird&lt;/a&gt;,
-that focused on adding SIPE (Microsoft Office Communicator support).
-Since then I've been slowly working on defeating SIPE.&amp;nbsp; Fortunately I
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Like bricks in the sky</title><link href="http://patrick.cloke.us/" rel="alternate"></link><link href="http://patrick.cloke.us/feeds/tag/sipe.atom.xml" rel="self"></link><id>http://patrick.cloke.us/</id><updated>2011-09-03T14:31:00-04:00</updated><entry><title>Adding a protocol to Instantbird (Part 2)</title><link href="http://patrick.cloke.us/posts/2011/Sep/03/adding-a-protocol-to-instantbird-part-2/" rel="alternate"></link><updated>2011-09-03T14:31:00-04:00</updated><author><name>Patrick Cloke</name></author><id>tag:patrick.cloke.us,2011-09-03:posts/2011/Sep/03/adding-a-protocol-to-instantbird-part-2/</id><summary type="html">&lt;p&gt;I had &lt;a class="reference external" href="http://patrick.cloke.us/posts/2011/Jun/19/adding-a-new-protocol-sipeoffice-communicator-to-instantbird-part-1/"&gt;previously talked about adding a protocol to Instantbird&lt;/a&gt;,
+that focused on adding &lt;span class="caps"&gt;SIPE&lt;/span&gt; (Microsoft Office Communicator support).
+Since then I&amp;#8217;ve been slowly working on defeating &lt;span class="caps"&gt;SIPE&lt;/span&gt;.&amp;nbsp; Fortunately I
 found a few flags that help us compile it easily in Instantbird: we can
-declare that we do &lt;em&gt;not&lt;/em&gt; have gmime and the standard libpurple MIME
+declare that we do &lt;em&gt;not&lt;/em&gt; have gmime and the standard libpurple &lt;span class="caps"&gt;MIME&lt;/span&gt;
 functions will be used (they might not be as good, but it keeps from
-adding &amp;gt;10 MB of source to Instantbird).&lt;/p&gt;
-&lt;p&gt;Some modifications to the SIPE source were made to compile it in
+adding &amp;gt;10 &lt;span class="caps"&gt;MB&lt;/span&gt; of source to&amp;nbsp;Instantbird).&lt;/p&gt;
+&lt;p&gt;Some modifications to the &lt;span class="caps"&gt;SIPE&lt;/span&gt; source were made to compile it in
 Instantbird (note that most of the changes were probably more based on
-using MSVC, than having to do with Instantbird).&amp;nbsp; The code is also
+using &lt;span class="caps"&gt;MSVC&lt;/span&gt;, than having to do with Instantbird).&amp;nbsp; The code is also
 broken up into a few different sections the core, api, and purple are
-ones we care about (they're working on making a general Office
+ones we care about (they&amp;#8217;re working on making a general Office
 Communicator protocol library, so the purple folder contains the
-libpurple bindings that use the api, while the core is private).&lt;/p&gt;
+libpurple bindings that use the api, while the core is&amp;nbsp;private).&lt;/p&gt;
 &lt;div class="section" id="purple"&gt;
 &lt;h2&gt;Purple&lt;/h2&gt;
 &lt;p&gt;Changes to purple consisted mostly of ifdefs that remove some header
-files not supported on Windows.&amp;nbsp; For example, I encountered a few of:&lt;/p&gt;
+files not supported on Windows.&amp;nbsp; For example, I encountered a few&amp;nbsp;of:&lt;/p&gt;
 &lt;pre class="literal-block"&gt;
 #include &amp;lt;unistd.h&amp;gt;
 &lt;/pre&gt;
 &lt;p&gt;Luckily there was already a define &lt;tt class="docutils literal"&gt;HAVE_UNISTD_H&lt;/tt&gt;, so I just needed
-to add:&lt;/p&gt;
+to&amp;nbsp;add:&lt;/p&gt;
 &lt;pre class="literal-block"&gt;
 #ifdef HAVE_UNISTD_H
 #include &amp;lt;unistd.h&amp;gt;
 #endif
 &lt;/pre&gt;
-&lt;p&gt;Easy!&amp;nbsp; There were also a couple other issues, but those were rather
-trivial.&lt;/p&gt;
+&lt;p&gt;Easy!&amp;nbsp; There were also a couple other issues, but those were rather&amp;nbsp;trivial.&lt;/p&gt;
 &lt;/div&gt;
 &lt;div class="section" id="core"&gt;
 &lt;h2&gt;Core&lt;/h2&gt;
-&lt;p&gt;There isn't a specific issue in the core I'd like to highlight, it did
-use a few glib functions which we didn't have (we removed the files, as
+&lt;p&gt;There isn&amp;#8217;t a specific issue in the core I&amp;#8217;d like to highlight, it did
+use a few glib functions which we didn&amp;#8217;t have (we removed the files, as
 they were unused), they were all reimplemented in libpurple though, so
-we were able to just define the function calls to the libpurple
-variants.&lt;/p&gt;
+we were able to just define the function calls to the libpurple&amp;nbsp;variants.&lt;/p&gt;
 &lt;/div&gt;
 &lt;div class="section" id="api"&gt;
-&lt;h2&gt;API&lt;/h2&gt;
+&lt;h2&gt;&lt;span class="caps"&gt;API&lt;/span&gt;&lt;/h2&gt;
 &lt;p&gt;This had similar issues the core (in particular, there was a function
 which used &lt;tt class="docutils literal"&gt;g_usleep&lt;/tt&gt;, which is blocking and a definite no-no for a
-protocol plug-in, I've removed that...hopefully it doesn't break
+protocol plug-in, I&amp;#8217;ve removed that&amp;#8230;hopefully it doesn&amp;#8217;t break
 anything!)&amp;nbsp; In addition to that, we needed to use the libpurple l10n
-system instead of glib's gi18n.h, this was easily copied from
-libpurple's internal API though.&lt;/p&gt;
-&lt;p&gt;So at this point...I have a copy of SIPE compiled!&amp;nbsp; Unfortunately
-since I'm using Visual Studio Express I cannot compile on my computer
+system instead of glib&amp;#8217;s gi18n.h, this was easily copied from
+libpurple&amp;#8217;s internal &lt;span class="caps"&gt;API&lt;/span&gt;&amp;nbsp;though.&lt;/p&gt;
+&lt;p&gt;So at this point&amp;#8230;I have a copy of &lt;span class="caps"&gt;SIPE&lt;/span&gt; compiled!&amp;nbsp; Unfortunately
+since I&amp;#8217;m using Visual Studio Express I cannot compile on my computer
 and deploy to other computers for testing (a Mozilla issue with how it
-uses some of the header files, etc., I believe).&amp;nbsp; I'm looking into
+uses some of the header files, etc., I believe).&amp;nbsp; I&amp;#8217;m looking into
 trying to get this to work though, apparently using the exact same copy
-of MSVC Redistributable might help.&amp;nbsp; Once this is tested, hopefully
-it'll land in Instantbird for use!&lt;/p&gt;
+of &lt;span class="caps"&gt;MSVC&lt;/span&gt; Redistributable might help.&amp;nbsp; Once this is tested, hopefully
+it&amp;#8217;ll land in Instantbird for&amp;nbsp;use!&lt;/p&gt;
 &lt;/div&gt;
 &lt;div class="section" id="sametime-support"&gt;
-&lt;h2&gt;Sametime support&lt;/h2&gt;
-&lt;p&gt;Unrelated to SIPE, but recently I landed a patch in Instantbird to add
-back Sametime support (Sametime is Lotus Notes' equivalent to Office
+&lt;h2&gt;Sametime&amp;nbsp;support&lt;/h2&gt;
+&lt;p&gt;Unrelated to &lt;span class="caps"&gt;SIPE&lt;/span&gt;, but recently I landed a patch in Instantbird to add
+back Sametime support (Sametime is Lotus Notes&amp;#8217; equivalent to Office
 Communicator).&amp;nbsp; You can see the gory details in &lt;a class="reference external" href="https://bugzilla.instantbird.org/show_bug.cgi?id=102"&gt;bug 102&lt;/a&gt;, but in
-general it's similar to what I've (not gone into great detail about)
+general it&amp;#8217;s similar to what I&amp;#8217;ve (not gone into great detail about)
 here. Most of getting Sametime to work was rewriting some C code
-that doesn't compile in MSVC.&amp;nbsp; There's also a &lt;a class="reference external" href="https://bugzilla.instantbird.org/attachment.cgi?id=797&amp;amp;action=diff"&gt;diff&lt;/a&gt; of all the
+that doesn&amp;#8217;t compile in &lt;span class="caps"&gt;MSVC&lt;/span&gt;.&amp;nbsp; There&amp;#8217;s also a &lt;a class="reference external" href="https://bugzilla.instantbird.org/attachment.cgi?id=797&amp;amp;action=diff"&gt;diff&lt;/a&gt; of all the
 changes I made to the libpurple Sametime plugin and the external library
 (called &lt;a class="reference external" href="http://meanwhile.sourceforge.net/"&gt;Meanwhile&lt;/a&gt;) to get it to work.&amp;nbsp; Once I get Monotone (a version
-control system) set up I'll look into getting these changes pushed back
-to libpurple to avoid diverging code bases.&lt;/p&gt;
+control system) set up I&amp;#8217;ll look into getting these changes pushed back
+to libpurple to avoid diverging code&amp;nbsp;bases.&lt;/p&gt;
 &lt;/div&gt;
-</summary><category term="Instantbird"></category><category term="programming"></category><category term="SIPE"></category></entry><entry><title>Adding a new protocol (SIPE/Office Communicator) to Instantbird (part 1)</title><link href="http://patrick.cloke.us/adding-a-new-protocol-sipeoffice-communicator-to-instantbird-part-1.html" rel="alternate"></link><updated>2011-06-19T01:53:00-04:00</updated><author><name>Patrick Cloke</name></author><id>tag:patrick.cloke.us,2011-06-19:adding-a-new-protocol-sipeoffice-communicator-to-instantbird-part-1.html</id><summary type="html">&lt;p&gt;&lt;a class="reference external" href="http://en.wikipedia.org/wiki/Office_Communicator"&gt;Microsoft Office Communicator&lt;/a&gt; is an instant messaging client that
+</summary><category term="Instantbird"></category><category term="programming"></category><category term="SIPE"></category></entry><entry><title>Adding a new protocol (SIPE/Office Communicator) to Instantbird (part 1)</title><link href="http://patrick.cloke.us/posts/2011/Jun/19/adding-a-new-protocol-sipeoffice-communicator-to-instantbird-part-1/" rel="alternate"></link><updated>2011-06-19T01:53:00-04:00</updated><author><name>Patrick Cloke</name></author><id>tag:patrick.cloke.us,2011-06-19:posts/2011/Jun/19/adding-a-new-protocol-sipeoffice-communicator-to-instantbird-part-1/</id><summary type="html">&lt;p&gt;&lt;a class="reference external" href="http://en.wikipedia.org/wiki/Office_Communicator"&gt;Microsoft Office Communicator&lt;/a&gt; is an instant messaging client that
 integrates into the &lt;a class="reference external" href="http://en.wikipedia.org/wiki/Microsoft_Exchange_Server"&gt;Exchange Messaging Server&lt;/a&gt; (the protocol behind it
-is an extended version of SIP/SIMPLE).&amp;nbsp; Anyway, there's a &lt;a class="reference external" href="http://developer.pidgin.im/wiki/WhatIsLibpurple"&gt;libpurple&lt;/a&gt;
+is an extended version of &lt;span class="caps"&gt;SIP&lt;/span&gt;/&lt;span class="caps"&gt;SIMPLE&lt;/span&gt;).&amp;nbsp; Anyway, there&amp;#8217;s a &lt;a class="reference external" href="http://developer.pidgin.im/wiki/WhatIsLibpurple"&gt;libpurple&lt;/a&gt;
 (i.e. the backend of &lt;a class="reference external" href="http://instantbird.com/"&gt;Instantbird&lt;/a&gt; and &lt;a class="reference external" href="http://pidgin.im/"&gt;Pidgin&lt;/a&gt;) protocol plug-in for
-OCS (Office Communicator Server) called &lt;a class="reference external" href="http://sipe.sourceforge.net/"&gt;SIPE&lt;/a&gt;.&amp;nbsp; (It's also striving
-for a generic library to connect to OCS, but that's not quite there
-yet.)&lt;/p&gt;
-&lt;p&gt;I've been interested in getting this to compile in the Instantbird
+&lt;span class="caps"&gt;OCS&lt;/span&gt; (Office Communicator Server) called &lt;a class="reference external" href="http://sipe.sourceforge.net/"&gt;&lt;span class="caps"&gt;SIPE&lt;/span&gt;&lt;/a&gt;.&amp;nbsp; (It&amp;#8217;s also striving
+for a generic library to connect to &lt;span class="caps"&gt;OCS&lt;/span&gt;, but that&amp;#8217;s not quite there&amp;nbsp;yet.)&lt;/p&gt;
+&lt;p&gt;I&amp;#8217;ve been interested in getting this to compile in the Instantbird
 framework for a while now, adding a new protocol to Instantbird.&amp;nbsp; First
-of course I need the SIPE source, I chose to grab a release &lt;a class="reference external" href="http://sourceforge.net/projects/sipe/files/sipe/pidgin-sipe-1.11.2/"&gt;source
+of course I need the &lt;span class="caps"&gt;SIPE&lt;/span&gt; source, I chose to grab a release &lt;a class="reference external" href="http://sourceforge.net/projects/sipe/files/sipe/pidgin-sipe-1.11.2/"&gt;source
 bundle&lt;/a&gt; instead of using the &lt;a class="reference external" href="http://sourceforge.net/apps/mediawiki/sipe/index.php?title=Windows_Build"&gt;git repository&lt;/a&gt;, just for ease moving
-files around, etc.&amp;nbsp; There's a rather vague &lt;a class="reference external" href="http://sourceforge.net/apps/mediawiki/sipe/index.php?title=Windows_Build"&gt;Windows build&lt;/a&gt; page on the
-wiki that I started with, says I need:&lt;/p&gt;
+files around, etc.&amp;nbsp; There&amp;#8217;s a rather vague &lt;a class="reference external" href="http://sourceforge.net/apps/mediawiki/sipe/index.php?title=Windows_Build"&gt;Windows build&lt;/a&gt; page on the
+wiki that I started with, says I&amp;nbsp;need:&lt;/p&gt;
 &lt;ul class="simple"&gt;
-&lt;li&gt;libpurple &amp;gt;2.4.0 (we have 2.7.11)&lt;/li&gt;
-&lt;li&gt;libglib &amp;gt;2.12.0 (we have 2.28.6)&lt;/li&gt;
-&lt;li&gt;libxml2 (we have this)&lt;/li&gt;
-&lt;li&gt;gmime &amp;gt;2.4 (not currently used)&lt;/li&gt;
+&lt;li&gt;libpurple &amp;gt;2.4.0 (we have&amp;nbsp;2.7.11)&lt;/li&gt;
+&lt;li&gt;libglib &amp;gt;2.12.0 (we have&amp;nbsp;2.28.6)&lt;/li&gt;
+&lt;li&gt;libxml2 (we have&amp;nbsp;this)&lt;/li&gt;
+&lt;li&gt;gmime &amp;gt;2.4 (not currently&amp;nbsp;used)&lt;/li&gt;
 &lt;/ul&gt;
 &lt;p&gt;So great, &lt;a class="reference external" href="https://wiki.instantbird.org/Instantbird:Third_party_code"&gt;we have most of the dependencies&lt;/a&gt;! We just need one more.
-So I go grab, &lt;a class="reference external" href="http://developer.gnome.org/gmime/"&gt;gmime&lt;/a&gt;from the GNOME website (2.5.7, which is the
+So I go grab, &lt;a class="reference external" href="http://developer.gnome.org/gmime/"&gt;gmime&lt;/a&gt;from the &lt;span class="caps"&gt;GNOME&lt;/span&gt; website (2.5.7, which is the
 newest stable, currently), again as a source bundle and put the
 necessary files in purple/libraries/gmime and edit the makefile so it
-will (attempt) to compile.&amp;nbsp; But great -- it requires &lt;a class="reference external" href="http://www.gnu.org/software/libiconv/"&gt;libiconv&lt;/a&gt;, which
+will (attempt) to compile.&amp;nbsp; But great &amp;#8212; it requires &lt;a class="reference external" href="http://www.gnu.org/software/libiconv/"&gt;libiconv&lt;/a&gt;, which
 apparently is very difficult to compile, especially on Windows.&amp;nbsp; Luckily
-for me there's a Windows version (not a port, but one that uses the
+for me there&amp;#8217;s a Windows version (not a port, but one that uses the
 native Win32 APIs with the same interface): &lt;a class="reference external" href="http://code.google.com/p/win-iconv/"&gt;win-iconv&lt;/a&gt;.&amp;nbsp; This compiled
-like a champ when added as purple/libraries/iconv.&lt;/p&gt;
+like a champ when added as&amp;nbsp;purple/libraries/iconv.&lt;/p&gt;
 &lt;p&gt;Unfortunately when I went back to compiling gmime, it attempts to
-access parts of glib we're not using (gio, in particular) and thus is
+access parts of glib we&amp;#8217;re not using (gio, in particular) and thus is
 not in our source code.&amp;nbsp; I can grab the &lt;a class="reference external" href="http://developer.gnome.org/glib/"&gt;glib&lt;/a&gt; source (2.28.6 to match,
 of course) and add the gio subfolder, but first we should check if this
-part of gmime is even used by SIPE! (My guess is that it is &lt;em&gt;not&lt;/em&gt;, but
-that's where I'm at now.&amp;nbsp; I'll post back when I get further.&lt;/p&gt;
+part of gmime is even used by &lt;span class="caps"&gt;SIPE&lt;/span&gt;! (My guess is that it is &lt;em&gt;not&lt;/em&gt;, but
+that&amp;#8217;s where I&amp;#8217;m at now.&amp;nbsp; I&amp;#8217;ll post back when I get&amp;nbsp;further.&lt;/p&gt;
 </summary><category term="Instantbird"></category><category term="programming"></category><category term="SIPE"></category></entry></feed>

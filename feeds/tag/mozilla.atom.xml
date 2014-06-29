@@ -1,65 +1,62 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>Like bricks in the sky</title><link href="http://patrick.cloke.us/" rel="alternate"></link><link href="http://patrick.cloke.us/feeds/tag/mozilla.atom.xml" rel="self"></link><id>http://patrick.cloke.us/</id><updated>2014-04-16T16:34:00-04:00</updated><entry><title>Community and Volunteers</title><link href="http://patrick.cloke.us/community-and-volunteers.html" rel="alternate"></link><updated>2014-04-16T16:34:00-04:00</updated><author><name>Patrick Cloke</name></author><id>tag:patrick.cloke.us,2014-04-16:community-and-volunteers.html</id><summary type="html">&lt;p&gt;It was suggested that I cross-post this from mozilla.dev.planning onto
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Like bricks in the sky</title><link href="http://patrick.cloke.us/" rel="alternate"></link><link href="http://patrick.cloke.us/feeds/tag/mozilla.atom.xml" rel="self"></link><id>http://patrick.cloke.us/</id><updated>2014-04-16T16:34:00-04:00</updated><entry><title>Community and Volunteers</title><link href="http://patrick.cloke.us/posts/2014/Apr/16/community-and-volunteers/" rel="alternate"></link><updated>2014-04-16T16:34:00-04:00</updated><author><name>Patrick Cloke</name></author><id>tag:patrick.cloke.us,2014-04-16:posts/2014/Apr/16/community-and-volunteers/</id><summary type="html">&lt;p&gt;It was suggested that I cross-post this from mozilla.dev.planning onto
 my blog. This is in reply to a thread entitled &amp;quot;&lt;a class="reference external" href="https://groups.google.com/forum/#%21topic/mozilla.dev.planning/P8oHKTCWSiQ"&gt;Proposal: Move
 Thunderbird and SeaMonkey to mozilla-central&lt;/a&gt;&amp;quot; about (essentially)
 merging comm-central back into mozilla-central. There have been many
-technical concerns raised in the thread (that I'm not going to rehash
-here). What I'm more interested in is the lack of community feeling
-there. As Nicholas Nethercote said in that thread:&lt;/p&gt;
+technical concerns raised in the thread (that I&amp;#8217;m not going to rehash
+here). What I&amp;#8217;m more interested in is the lack of community feeling
+there. As Nicholas Nethercote said in that&amp;nbsp;thread:&lt;/p&gt;
 &lt;blockquote&gt;
-&amp;quot;I am surprised [...] by how heartless the discussion has been.&amp;quot;&lt;/blockquote&gt;
+&amp;quot;I am surprised [&amp;#8230;] by how heartless the discussion has been.&amp;quot;&lt;/blockquote&gt;
 &lt;p&gt;I should note that I did have some help editing this down from my
 original post. Turns out I tend to write inflammatory statements that
-don't help get me point across. Who knew? Anyway, thanks to all of you
-who helped me out there!&lt;/p&gt;
+don&amp;#8217;t help get me point across. Who knew? Anyway, thanks to all of you
+who helped me out&amp;nbsp;there!&lt;/p&gt;
 &lt;p&gt;My full post is below (with a few links added and plaintext formatting
-converted to HTML formatting):&lt;/p&gt;
+converted to &lt;span class="caps"&gt;HTML&lt;/span&gt;&amp;nbsp;formatting):&lt;/p&gt;
 &lt;blockquote&gt;
-&lt;p&gt;On Monday, April 14, 2014 4:52:53 PM UTC-4, Nicholas Nethercote
-wrote:&lt;/p&gt;
+&lt;p&gt;On Monday, April 14, 2014 4:52:53 &lt;span class="caps"&gt;PM&lt;/span&gt; &lt;span class="caps"&gt;UTC&lt;/span&gt;-4, Nicholas Nethercote&amp;nbsp;wrote:&lt;/p&gt;
 &lt;p&gt;&amp;gt; The technical aspects of this decision have been discussed to death,
-&amp;gt; so I won't say anything about that. I am surprised, however, by how
-&amp;gt; heartless the discussion has been.&lt;/p&gt;
+&amp;gt; so I won&amp;#8217;t say anything about that. I am surprised, however, by how
+&amp;gt; heartless the discussion has&amp;nbsp;been.&lt;/p&gt;
 &lt;p&gt;I agree, the technical bitshere seem to have solutions suggested by
 Joshua and others, but the non-technical parts of this discussion
-have left mefeeling disheartened and confused with the Mozilla
-community.&lt;/p&gt;
+have left mefeeling disheartened and confused with the Mozilla&amp;nbsp;community.&lt;/p&gt;
 &lt;p&gt;I find it ironic/amusing/sad/upsetting that a few threads above this
 is a thread entitled &amp;quot;&lt;a class="reference external" href="https://groups.google.com/forum/#!topic/mozilla.dev.planning/1kbZsYoQcng"&gt;Contributor pathways, engagement points and
 bug mentoring&lt;/a&gt;&amp;quot; while in this thread I see community contributors
-being blocked at every turn!&lt;/p&gt;
-&lt;p&gt;Here I don't see people attempting to foster a community by putting
+being blocked at every&amp;nbsp;turn!&lt;/p&gt;
+&lt;p&gt;Here I don&amp;#8217;t see people attempting to foster a community by putting
 their best foot forward. I see people trying to get their &lt;strong&gt;job&lt;/strong&gt;
-done; with an attitude of &amp;quot;if this doesn't help me, get it outta my
-way!&amp;quot; I don't think this is the right way to grow a community. I
-don't think this is how Mozilla HAS grown it's community. I don't
-think it's in line with what Mozilla expects from it's community
-members (both employees and volunteers!)&lt;/p&gt;
+done; with an attitude of &amp;quot;if this doesn&amp;#8217;t help me, get it outta my
+way!&amp;quot; I don&amp;#8217;t think this is the right way to grow a community. I
+don&amp;#8217;t think this is how Mozilla &lt;span class="caps"&gt;HAS&lt;/span&gt; grown it&amp;#8217;s community. I don&amp;#8217;t
+think it&amp;#8217;s in line with what Mozilla expects from it&amp;#8217;s community
+members (both employees and&amp;nbsp;volunteers!)&lt;/p&gt;
 &lt;p&gt;Personally, I dislike the amount of Mozilla &lt;strong&gt;Corporation&lt;/strong&gt; goals
 focus in this thread. Can we have a discussion aspart ofa larger
-community? Why must it focus on Corporate goals? I'm not part of the
-corporation, I don't really care what its goals are or are not. I
+community? Why must it focus on Corporate goals? I&amp;#8217;m not part of the
+corporation, I don&amp;#8217;t really care what its goals are or are not. I
 care about Mozilla, I care about providing high-quality, free, open
 source softwareto improve the experience of the Internet for
-everyone. And no, I'm not talking about Firefox. I'm talking about
-Thunderbird. I understand that Mozilla's goals arecurrently Firefox
-and Firefox OS, but these are not my personal goals.&lt;/p&gt;
+everyone. And no, I&amp;#8217;m not talking about Firefox. I&amp;#8217;m talking about
+Thunderbird. I understand that Mozilla&amp;#8217;s goals arecurrently Firefox
+and Firefox &lt;span class="caps"&gt;OS&lt;/span&gt;, but these are not my personal&amp;nbsp;goals.&lt;/p&gt;
 &lt;p&gt;At the Summit I had a few conversations with people about
 &amp;quot;on-boarding&amp;quot; new employees and getting them to understand how the
 community works and that interacting with the community in a
-positive manner is an important part of Mozilla. I don't remember
+positive manner is an important part of Mozilla. I don&amp;#8217;t remember
 the exact context, but part of it wasthat it is important that new
-employees don't think of it as &amp;quot;How can I &lt;em&gt;use&lt;/em&gt; the community?&amp;quot;, for
-that implies taking advtange of them, but &amp;quot;How can I work with the
-community?&amp;quot;&lt;/p&gt;
-&lt;p&gt;Please don't see this as an &amp;quot;employees vs. volunteers&amp;quot; argument. I
-believe that I'm expected to live up to these same goals. If I, as a
-volunteer, can help an employee achieve his goals; I'm
-[STRIKEOUT:more than willing], no...I'm EXPECTED to do that. I think
+employees don&amp;#8217;t think of it as &amp;quot;How can I &lt;em&gt;use&lt;/em&gt; the community?&amp;quot;, for
+that implies taking advtange of them, but &amp;quot;How can I work with the&amp;nbsp;community?&amp;quot;&lt;/p&gt;
+&lt;p&gt;Please don&amp;#8217;t see this as an &amp;quot;employees vs. volunteers&amp;quot; argument. I
+believe that I&amp;#8217;m expected to live up to these same goals. If I, as a
+volunteer, can help an employee achieve his goals; I&amp;#8217;m
+[&lt;span class="caps"&gt;STRIKEOUT&lt;/span&gt;:more than willing], no&amp;#8230;I&amp;#8217;m &lt;span class="caps"&gt;EXPECTED&lt;/span&gt; to do that. I think
 this is a two-way relationship that must be fostered. It has seemed
-to me that over the past couple of years that I've been hanging
-around here there's been less and less focus on the community and
-more and more on the Corporation.&lt;/p&gt;
+to me that over the past couple of years that I&amp;#8217;ve been hanging
+around here there&amp;#8217;s been less and less focus on the community and
+more and more on the&amp;nbsp;Corporation.&lt;/p&gt;
 &lt;p&gt;I understand Thunderbird and SeaMonkey may not be important to you,
 but it is important tome! (And otherswho contribute
 totheThunderbird/SeaMonkey community, including employees who
@@ -70,119 +67,119 @@ been fighting to prove this wrong.Could you please respect our
 efforts? Merging c-c into m-c will help us focus our efforts on
 building a great product instead of spending significant effort on
 keeping a dying one on life-support. (And prove to all that
-&amp;quot;Thunderbird is dead!&amp;quot; was just a sensational headline.)&lt;/p&gt;
+&amp;quot;Thunderbird is dead!&amp;quot; was just a sensational&amp;nbsp;headline.)&lt;/p&gt;
 &lt;/blockquote&gt;
-&lt;p&gt;I don't have much else to say beyond that (besides thanks for reading
-this far!)&lt;/p&gt;
-</summary><category term="community"></category><category term="crosspost"></category><category term="Mozilla"></category><category term="Thunderbird"></category></entry><entry><title>GSoc Lessons: Part Deux: The Arms Race</title><link href="http://patrick.cloke.us/gsoc-lessons-part-deux-the-arms-race.html" rel="alternate"></link><updated>2013-12-04T13:17:00-05:00</updated><author><name>Patrick Cloke</name></author><id>tag:patrick.cloke.us,2013-12-04:gsoc-lessons-part-deux-the-arms-race.html</id><summary type="html">&lt;p&gt;This post title might be a little excessive, but I'll blame &lt;a class="reference external" href="http://en.wikipedia.org/wiki/The_Sum_of_All_Fears_%28film%29"&gt;The Sum
+&lt;p&gt;I don&amp;#8217;t have much else to say beyond that (besides thanks for reading
+this&amp;nbsp;far!)&lt;/p&gt;
+</summary><category term="community"></category><category term="crosspost"></category><category term="Mozilla"></category><category term="Thunderbird"></category></entry><entry><title>GSoc Lessons: Part Deux: The Arms Race</title><link href="http://patrick.cloke.us/posts/2013/Dec/04/gsoc-lessons-part-deux-the-arms-race/" rel="alternate"></link><updated>2013-12-04T13:17:00-05:00</updated><author><name>Patrick Cloke</name></author><id>tag:patrick.cloke.us,2013-12-04:posts/2013/Dec/04/gsoc-lessons-part-deux-the-arms-race/</id><summary type="html">&lt;p&gt;This post title might be a little excessive, but I&amp;#8217;ll blame &lt;a class="reference external" href="http://en.wikipedia.org/wiki/The_Sum_of_All_Fears_%28film%29"&gt;The Sum
 of All Fears&lt;/a&gt; that I was watching last night. This is the second part
 of a set of posts about ideas I heard at the Google Summer of Code 2013
-Mentor Summit (you can read &lt;a class="reference external" href="http://patrick.cloke.us/gsoc-lessons-part-1-application-period.html"&gt;the first part about the application
+Mentor Summit (you can read &lt;a class="reference external" href="http://patrick.cloke.us/posts/2013/Dec/02/gsoc-lessons-part-1-application-period/"&gt;the first part about the application
 process&lt;/a&gt;).&lt;/p&gt;
 &lt;p&gt;This will explore an interesting anecdote I heard about the
 interaction between applicants from another organization that, on
 reflection, seemed to resonate somewhat with what I had seen in my
-corner of the Mozilla community.&lt;/p&gt;
+corner of the Mozilla&amp;nbsp;community.&lt;/p&gt;
 &lt;p&gt;The organization these students were applying to required patches to
-be fixed for a student's application to be accepted (as discussed in my
+be fixed for a student&amp;#8217;s application to be accepted (as discussed in my
 previous post). For a particular project there existed multiple highly
 motivated and skilled students, but only one slot. Thus, a &amp;quot;patch race&amp;quot;
 of sorts occurred where the students competed by continually providing
-more patches that were increasingly complex. (Note that this wasn't a in
+more patches that were increasingly complex. (Note that this wasn&amp;#8217;t a in
 response to a challenge from community members, it was a spontaneous
 situation.) Once a single student started to submit extra patches the
 other students felt they must also submit more patches to be considered
 equal/superior (hence my allusion to an &amp;quot;&lt;a class="reference external" href="http://en.wikipedia.org/wiki/Arms_race#Nuclear_arms_race"&gt;arms race&lt;/a&gt;&amp;quot;).
 Interestingly, they would also sometimes work on the same bug in a sort
-of race to see who could fix it first.&lt;/p&gt;
-&lt;p&gt;There's a couple things I took away from this:&lt;/p&gt;
+of race to see who could fix it&amp;nbsp;first.&lt;/p&gt;
+&lt;p&gt;There&amp;#8217;s a couple things I took away from&amp;nbsp;this:&lt;/p&gt;
 &lt;ol class="arabic simple"&gt;
-&lt;li&gt;Great, the project just had a lot of things fixed!&lt;/li&gt;
+&lt;li&gt;Great, the project just had a lot of things&amp;nbsp;fixed!&lt;/li&gt;
 &lt;li&gt;The students were investing escalating amounts of time &lt;em&gt;during the
 application phase&lt;/em&gt;.&lt;/li&gt;
-&lt;li&gt;The students were not working in an open manner.&lt;/li&gt;
+&lt;li&gt;The students were not working in an open&amp;nbsp;manner.&lt;/li&gt;
 &lt;/ol&gt;
-&lt;p&gt;I won't really expand much more about the first point, it's always
-good to fix things.&lt;/p&gt;
-&lt;p&gt;Although submitting patches might showcase a student's skill, it also
+&lt;p&gt;I won&amp;#8217;t really expand much more about the first point, it&amp;#8217;s always
+good to fix&amp;nbsp;things.&lt;/p&gt;
+&lt;p&gt;Although submitting patches might showcase a student&amp;#8217;s skill, it also
 relates to how much time the student is willing and able to put into the
 application period. This, in particular, matters since different areas
 of the world end their school year at different times. A student that
 has already finished his semester during the application period may have
 a lot of free time to attempt to get a GSoC slot (but will most likely
 not have as much time during the actual summer!) This something that
-mentors should keep in mind while reviewing applications.&lt;/p&gt;
+mentors should keep in mind while reviewing&amp;nbsp;applications.&lt;/p&gt;
 &lt;p&gt;A downside of increasing amounts of time invested is that the
 rejection is that much harder for both the mentor (especially if the
 student is now part of the community!), as well as for the student who
-has now vested a large amount of time in the project.&lt;/p&gt;
+has now vested a large amount of time in the&amp;nbsp;project.&lt;/p&gt;
 &lt;p&gt;The realization that actually upset me, however, is that these
 students were not working in an open manner! Instead of collaborating,
 they were competing! To me, this would set off a very poor tone for the
-rest of GSoC. In fact, one of the biggest challenges I've had with GSoC
+rest of GSoC. In fact, one of the biggest challenges I&amp;#8217;ve had with GSoC
 students is getting them to work in the open (i.e. &amp;quot;show me the code&amp;quot;,
-anyone in &lt;a class="reference external" href="irc://irc.mozilla.org/#instantbird"&gt;#instantbird&lt;/a&gt; is probably tired of hearing me say that).&lt;/p&gt;
+anyone in &lt;a class="reference external" href="irc://irc.mozilla.org/#instantbird"&gt;#instantbird&lt;/a&gt; is probably tired of hearing me say&amp;nbsp;that).&lt;/p&gt;
 &lt;p&gt;At this point you &lt;em&gt;might&lt;/em&gt; think this is a hypothetical case I made up!
-Upon letting it sink in and reflecting on it...I realized I had actually
-seen similar situations during the application periods I've been
-involved with. This year, we found a bug in Instantbird's IRC code (CTCP
-quoting and dequoting); after referencing some &lt;a class="reference external" href="http://patrick.cloke.us/the-so-called-irc-specifications.html"&gt;specifications&lt;/a&gt;, I was
+Upon letting it sink in and reflecting on it&amp;#8230;I realized I had actually
+seen similar situations during the application periods I&amp;#8217;ve been
+involved with. This year, we found a bug in Instantbird&amp;#8217;s &lt;span class="caps"&gt;IRC&lt;/span&gt; code (&lt;span class="caps"&gt;CTCP&lt;/span&gt;
+quoting and dequoting); after referencing some &lt;a class="reference external" href="http://patrick.cloke.us/posts/2011/Mar/09/the-so-called-irc-specifications/"&gt;specifications&lt;/a&gt;, I was
 pretty quickly able to figure out the vague areas where people should
 look for a fix. A couple of GSoC students in the room started looking
 into it and exhibited a greatly reduced form of the behavior I discussed
 above. The students were sharing information, but were not comfortable
 sharing code. Unfortunately, this led to some very vague questions which
 I was unable to answer (or answered incorrectly) and led to me coining
-my catchphrase from above.&lt;/p&gt;
+my catchphrase from&amp;nbsp;above.&lt;/p&gt;
 &lt;p&gt;I by no means think this reflects poorly on our students! I think this
 is some what natural and expected for most students unfamiliar with open
-development. (Extrapolating from my experiences in school...) Students
+development. (Extrapolating from my experiences in school&amp;#8230;) Students
 generally work individually (or in small groups) on projects and are
 directly competing for grades (at least if the course is graded on a
 curve). This would foster a sense of competition as opposed to
 cooperation! Luckily the students working with us understood (with very
-little prompting, I might add!) that we'd prefer they work together and
+little prompting, I might add!) that we&amp;#8217;d prefer they work together and
 help each other. We were able to successfully fix the dequoting bug
-(which then caused a bug in the quoting code to be visible...sigh...).&lt;/p&gt;
+(which then caused a bug in the quoting code to be&amp;nbsp;visible&amp;#8230;sigh&amp;#8230;).&lt;/p&gt;
 &lt;p&gt;My &lt;strong&gt;short take away&lt;/strong&gt; from all this: remember that students are not
-yet a community and they're competing with each other until they've been
-accepted. (And that they're used to competing, e.g. homework and exams,
-not collaborating!) I don't really know whether I feel the above
-situation is good or bad, but it's certainly an interesting effect from
-the way the GSoC process works.&lt;/p&gt;
-</summary><category term="community"></category><category term="GSoC"></category><category term="Mozilla"></category></entry><entry><title>GSoC Lessons: Part 1: Application Period</title><link href="http://patrick.cloke.us/gsoc-lessons-part-1-application-period.html" rel="alternate"></link><updated>2013-12-02T00:55:00-05:00</updated><author><name>Patrick Cloke</name></author><id>tag:patrick.cloke.us,2013-12-02:gsoc-lessons-part-1-application-period.html</id><summary type="html">&lt;p&gt;I briefly talked about &lt;a class="reference external" href="http://patrick.cloke.us/google-summer-of-code-mentor-summit-2013.html"&gt;my experiences&lt;/a&gt; at the Google Summer of Code
-2013 Mentor Summit. I've been pretty remiss in sharing what was actually
+yet a community and they&amp;#8217;re competing with each other until they&amp;#8217;ve been
+accepted. (And that they&amp;#8217;re used to competing, e.g. homework and exams,
+not collaborating!) I don&amp;#8217;t really know whether I feel the above
+situation is good or bad, but it&amp;#8217;s certainly an interesting effect from
+the way the GSoC process&amp;nbsp;works.&lt;/p&gt;
+</summary><category term="community"></category><category term="GSoC"></category><category term="Mozilla"></category></entry><entry><title>GSoC Lessons: Part 1: Application Period</title><link href="http://patrick.cloke.us/posts/2013/Dec/02/gsoc-lessons-part-1-application-period/" rel="alternate"></link><updated>2013-12-02T00:55:00-05:00</updated><author><name>Patrick Cloke</name></author><id>tag:patrick.cloke.us,2013-12-02:posts/2013/Dec/02/gsoc-lessons-part-1-application-period/</id><summary type="html">&lt;p&gt;I briefly talked about &lt;a class="reference external" href="http://patrick.cloke.us/posts/2013/Oct/21/google-summer-of-code-mentor-summit-2013/"&gt;my experiences&lt;/a&gt; at the Google Summer of Code
+2013 Mentor Summit. I&amp;#8217;ve been pretty remiss in sharing what was actually
 discussed there and for that I must apologize! This will hopefully be
-one of a few posts about what I learned and discussed at the Summit.&lt;/p&gt;
-&lt;p&gt;The first part I'd like to talk about is the application period:
+one of a few posts about what I learned and discussed at the&amp;nbsp;Summit.&lt;/p&gt;
+&lt;p&gt;The first part I&amp;#8217;d like to talk about is the application period:
 welcoming students, requirements for student applications, etc. Much of
-what I say on here is just ideas I've heard other organizations
-implement (with my personal opinion on them, please don't think this
-represents what Mozilla is suggesting students do, or even what I'm
-suggesting Mozilla should ask students to do!)&lt;/p&gt;
+what I say on here is just ideas I&amp;#8217;ve heard other organizations
+implement (with my personal opinion on them, please don&amp;#8217;t think this
+represents what Mozilla is suggesting students do, or even what I&amp;#8217;m
+suggesting Mozilla should ask students to&amp;nbsp;do!)&lt;/p&gt;
 &lt;p&gt;I had many separate conversations about what is required for an
 application to be accepted. It seems that Mozilla is actually on the
-side of one of the easier organizations to apply to. We don't (to my
+side of one of the easier organizations to apply to. We don&amp;#8217;t (to my
 knowledge) require that students have contributed at all to the
 community beforehand. It is possible that some smaller communities
 inside of Mozilla require more than just an application, but there does
-not seem to be any rule across Mozilla. I said I wouldn't offer my
-opinion above...but I lied: I think Mozilla should make it clearer to
-applicants what is expected of them before the application.&lt;/p&gt;
+not seem to be any rule across Mozilla. I said I wouldn&amp;#8217;t offer my
+opinion above&amp;#8230;but I lied: I think Mozilla should make it clearer to
+applicants what is expected of them before the&amp;nbsp;application.&lt;/p&gt;
 &lt;p&gt;There seem to be a variety of things different organizations &amp;quot;require&amp;quot;
-before accepting a student application, for example:&lt;/p&gt;
+before accepting a student application, for&amp;nbsp;example:&lt;/p&gt;
 &lt;ul class="simple"&gt;
-&lt;li&gt;A patch / pull request&lt;/li&gt;
-&lt;li&gt;IRC / email involvement / idling&lt;/li&gt;
+&lt;li&gt;A patch / pull&amp;nbsp;request&lt;/li&gt;
+&lt;li&gt;&lt;span class="caps"&gt;IRC&lt;/span&gt; / email involvement /&amp;nbsp;idling&lt;/li&gt;
 &lt;li&gt;File a bug (I mean this in the &amp;quot;Mozilla&amp;quot; sense: an actual bug, a
-feature request, etc.)&lt;/li&gt;
-&lt;li&gt;Fix a bug / make a commit&lt;/li&gt;
+feature request,&amp;nbsp;etc.)&lt;/li&gt;
+&lt;li&gt;Fix a bug / make a&amp;nbsp;commit&lt;/li&gt;
 &lt;/ul&gt;
 &lt;p&gt;I think all of these have pros and cons and making any a hard and fast
 rule would probably be a bad idea. Personally for Instantbird, we
-greatly encourage students to idle on IRC and get to know us; and to fix
-a minor bug or two or three. What I'm always looking for is: use,
-passion, and skill.&lt;/p&gt;
+greatly encourage students to idle on &lt;span class="caps"&gt;IRC&lt;/span&gt; and get to know us; and to fix
+a minor bug or two or three. What I&amp;#8217;m always looking for is: use,
+passion, and&amp;nbsp;skill.&lt;/p&gt;
 &lt;p&gt;Asking for a &lt;strong&gt;patch / pull request&lt;/strong&gt; (I include these together since
 they really just depend on how an organization accepts changes) can be a
 bit intimidating for a new user. I think this can be a pretty rough
@@ -190,44 +187,43 @@ thing to ask for new contributors that might not want to share their
 work publicly with a large group of people (on a mailing list, public
 bug tracker, etc.) where they might be wrong. Even after being part of
 the community, I find that GSoC students are often very unwilling to
-publicly share code unless it's &amp;quot;perfect&amp;quot;, but I digress. Anyway, if
-you're considering &amp;quot;requiring&amp;quot; this, I think it should be pretty clear
-that this changeset doesn't need to be &lt;em&gt;perfect&lt;/em&gt;, it just needs to show
+publicly share code unless it&amp;#8217;s &amp;quot;perfect&amp;quot;, but I digress. Anyway, if
+you&amp;#8217;re considering &amp;quot;requiring&amp;quot; this, I think it should be pretty clear
+that this changeset doesn&amp;#8217;t need to be &lt;em&gt;perfect&lt;/em&gt;, it just needs to show
 that the student is able to read code, understand a bug report, provide
-a fix and test it.&lt;/p&gt;
-&lt;p&gt;I think it's perfect reasonable to ask students to &lt;strong&gt;idle on IRC and
+a fix and test&amp;nbsp;it.&lt;/p&gt;
+&lt;p&gt;I think it&amp;#8217;s perfect reasonable to ask students to &lt;strong&gt;idle on &lt;span class="caps"&gt;IRC&lt;/span&gt; and
 join mailing lists&lt;/strong&gt;. They should definitely be trying to understand the
-community before attempting to join it. It isn't just a matter of if the
+community before attempting to join it. It isn&amp;#8217;t just a matter of if the
 community thinks the student would be a good fit, but also the student
-must ensure they can fit into the community.&lt;/p&gt;
+must ensure they can fit into the&amp;nbsp;community.&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;Filing a bug&lt;/strong&gt; is a great way for a student to show a few different
-things: they've used your software; they've used your software enough to
-find a bug in it (and there most likely is one!); they're able to
-express themselves in a clear and concise matter. If you're lucky
-they'll find something that actually annoys them and fix it themselves!&lt;/p&gt;
+things: they&amp;#8217;ve used your software; they&amp;#8217;ve used your software enough to
+find a bug in it (and there most likely is one!); they&amp;#8217;re able to
+express themselves in a clear and concise matter. If you&amp;#8217;re lucky
+they&amp;#8217;ll find something that actually annoys them and fix it&amp;nbsp;themselves!&lt;/p&gt;
 &lt;p&gt;I have &lt;strong&gt;fix a bug&lt;/strong&gt; listed last. You might ask how this differs from
-submitting a patch...and it does! Fixing a bug requires a patch to go
+submitting a patch&amp;#8230;and it does! Fixing a bug requires a patch to go
 through whatever review process your project uses, but builds upon just
 submitting a patch. My thoughts on this are pretty similar to just
-submitting a patch, but it depends on how large the bug is.&lt;/p&gt;
+submitting a patch, but it depends on how large the bug&amp;nbsp;is.&lt;/p&gt;
 &lt;p&gt;Something I found interesting is that almost everyone I talked to
-didn't treat their GSoC students any differently than they would treat a
+didn&amp;#8217;t treat their GSoC students any differently than they would treat a
 new contributor to their project. They still had to prove they were
 worthy of commit access, etc. Is there anything else you ask of your
-students before they apply to GSoC? I'd love to hear it!&lt;/p&gt;
-&lt;p&gt;Some other topics I'll hopefully find some time to write about
+students before they apply to GSoC? I&amp;#8217;d love to hear&amp;nbsp;it!&lt;/p&gt;
+&lt;p&gt;Some other topics I&amp;#8217;ll hopefully find some time to write about
 include: community lessons, and handling a failing student. The
 community one will be very not-GSoC focused and could apply to just
-trying to incorporate new contributors...but I'll include it in this
-series.&lt;/p&gt;
-</summary><category term="community"></category><category term="GSoC"></category><category term="Mozilla"></category></entry><entry><title>Google Summer of Code Mentor Summit 2013</title><link href="http://patrick.cloke.us/google-summer-of-code-mentor-summit-2013.html" rel="alternate"></link><updated>2013-10-21T02:18:00-04:00</updated><author><name>Patrick Cloke</name></author><id>tag:patrick.cloke.us,2013-10-21:google-summer-of-code-mentor-summit-2013.html</id><summary type="html">&lt;p&gt;Not only was I lucky enough to mentor a great student for this year's
+trying to incorporate new contributors&amp;#8230;but I&amp;#8217;ll include it in this&amp;nbsp;series.&lt;/p&gt;
+</summary><category term="community"></category><category term="GSoC"></category><category term="Mozilla"></category></entry><entry><title>Google Summer of Code Mentor Summit 2013</title><link href="http://patrick.cloke.us/posts/2013/Oct/21/google-summer-of-code-mentor-summit-2013/" rel="alternate"></link><updated>2013-10-21T02:18:00-04:00</updated><author><name>Patrick Cloke</name></author><id>tag:patrick.cloke.us,2013-10-21:posts/2013/Oct/21/google-summer-of-code-mentor-summit-2013/</id><summary type="html">&lt;p&gt;Not only was I lucky enough to mentor a great student for this year&amp;#8217;s
 Google Summer of Code, but Mozilla asked me to represent them at the
-Google Summer of Code Mentor Summit!&amp;nbsp; This was located at Google's
+Google Summer of Code Mentor Summit!&amp;nbsp; This was located at Google&amp;#8217;s
 offices in Mountain View, California this past weekend (Friday, Oct.
-18th - Sunday, Oct. 20th, 2013).&lt;/p&gt;
+18th - Sunday, Oct. 20th,&amp;nbsp;2013).&lt;/p&gt;
 &lt;p&gt;Before actually heading over to the Summit, &lt;a class="reference external" href="http://mykzilla.org/"&gt;Myk Melez&lt;/a&gt; and &lt;a class="reference external" href="http://nickdesaulniers.github.io/"&gt;Nick
 Desaulniers&lt;/a&gt; were kind enough to show me around the Mozilla Mountain
-View office!&amp;nbsp; (Thanks to Daniel Holbert for setting that up!)&lt;/p&gt;
+View office!&amp;nbsp; (Thanks to Daniel Holbert for setting that&amp;nbsp;up!)&lt;/p&gt;
 &lt;p&gt;The GSoC Mentor Summit is run as an &amp;quot;unconference&amp;quot;, the open sessions
 were chosen by conference attendees and run as discussions with no
 keynote speakers.&amp;nbsp; This was an interesting experience and how good each
@@ -236,49 +232,49 @@ but overall it was great to hear the experiences of other projects with
 their GSoC students, as well as to hear about lots of projects I had
 never heard of before!&amp;nbsp; In general the session I attended were about
 community building and managing GSoC students, I took lots of notes and
-will digest all of this in further detail at some point.&lt;/p&gt;
+will digest all of this in further detail at some&amp;nbsp;point.&lt;/p&gt;
 &lt;p&gt;I was able to meet lots of great people from different projects, just
 a few of which were: &lt;a class="reference external" href="http://pidgin.im/"&gt;Pidgin&lt;/a&gt;, &lt;a class="reference external" href="http://www.debian.org/"&gt;Debian&lt;/a&gt;, &lt;a class="reference external" href="http://buildbot.net/"&gt;Buildbot&lt;/a&gt;, the &lt;a class="reference external" href="http://www.opendmx.net/"&gt;Open
 Lighting Project&lt;/a&gt;, the &lt;a class="reference external" href="https://www.torproject.org/"&gt;Tor Project&lt;/a&gt;, &lt;a class="reference external" href="https://www.phpbb.com/%E2%80%8E"&gt;phpBB&lt;/a&gt;, etc.&amp;nbsp; Unfortunately
-being from Mozilla, most people already know what you do...or they think
+being from Mozilla, most people already know what you do&amp;#8230;or they think
 you do at least!&amp;nbsp; Many people were surprised when I said I work on
 Thunderbird and Instantbird.&amp;nbsp; I heard &amp;quot;Thunderbird is dead&amp;quot; at least
 twenty times, which was quite disappointing that those in the open
-source community don't even understand the current status of
+source community don&amp;#8217;t even understand the current status of
 Thunderbird.&amp;nbsp; Many were happy to hear that it is still being maintained
 and developed by the community, however.&amp;nbsp; I even had some people thank
-me (which I don't really deserve) for helping to continue maintain
+me (which I don&amp;#8217;t really deserve) for helping to continue maintain
 Thunderbird!&amp;nbsp; It was great to hear things like this at the Mozilla
 Summit, but it was really invigorating to hear people outside of the
 Mozilla community excited that their favorite email client was still
-being developed.&lt;/p&gt;
+being&amp;nbsp;developed.&lt;/p&gt;
 &lt;p&gt;People were further surprised to hear that Thunderbird now includes
 instant messaging / chat (since Thunderbird 15 or 17) and that there is
 a Gecko based instant messaging client: Instantbird.&amp;nbsp; It seemed like
-some people were excited by this and hopefully they'll try it out!&lt;/p&gt;
-&lt;p&gt;Anyway, I've gone a little off-topic, but overall the Mentor Summit
-was great and I'd like to thank both Mozilla and Google for giving me
-this opportunity.&amp;nbsp; If I find any really great gems in my notes I'll
-write further blog posts about them.&lt;/p&gt;
-</summary><category term="Google"></category><category term="GSoC"></category><category term="Mozilla"></category></entry><entry><title>JavaScript typed arrays pain</title><link href="http://patrick.cloke.us/javascript-typed-arrays-pain.html" rel="alternate"></link><updated>2012-11-29T03:11:00-05:00</updated><author><name>Patrick Cloke</name></author><id>tag:patrick.cloke.us,2012-11-29:javascript-typed-arrays-pain.html</id><summary type="html">&lt;p&gt;If you've ever tried to deal with binary data in JavaScript you know
-it isn't much fun and you usually resort to using strings lots of
+some people were excited by this and hopefully they&amp;#8217;ll try it&amp;nbsp;out!&lt;/p&gt;
+&lt;p&gt;Anyway, I&amp;#8217;ve gone a little off-topic, but overall the Mentor Summit
+was great and I&amp;#8217;d like to thank both Mozilla and Google for giving me
+this opportunity.&amp;nbsp; If I find any really great gems in my notes I&amp;#8217;ll
+write further blog posts about&amp;nbsp;them.&lt;/p&gt;
+</summary><category term="Google"></category><category term="GSoC"></category><category term="Mozilla"></category></entry><entry><title>JavaScript typed arrays pain</title><link href="http://patrick.cloke.us/posts/2012/Nov/29/javascript-typed-arrays-pain/" rel="alternate"></link><updated>2012-11-29T03:11:00-05:00</updated><author><name>Patrick Cloke</name></author><id>tag:patrick.cloke.us,2012-11-29:posts/2012/Nov/29/javascript-typed-arrays-pain/</id><summary type="html">&lt;p&gt;If you&amp;#8217;ve ever tried to deal with binary data in JavaScript you know
+it isn&amp;#8217;t much fun and you usually resort to using strings lots of
 charCodeAt and related functions.&amp;nbsp; &lt;a class="reference external" href="https://developer.mozilla.org/en-US/docs/JavaScript_typed_arrays"&gt;Typed arrays&lt;/a&gt; are supposed to solve
-this though!&amp;nbsp; The typed array API consists of creating a buffer of bytes
+this though!&amp;nbsp; The typed array &lt;span class="caps"&gt;API&lt;/span&gt; consists of creating a buffer of bytes
 (called an &lt;a class="reference external" href="https://developer.mozilla.org/en-US/docs/JavaScript_typed_arrays/ArrayBuffer"&gt;ArrayBuffer&lt;/a&gt;) and then manipulating those bytes via
 different views (&lt;a class="reference external" href="https://developer.mozilla.org/en-US/docs/JavaScript_typed_arrays/ArrayBufferView"&gt;ArrayBufferView&lt;/a&gt;s).&amp;nbsp; You can have multiple views of
 the same buffer, starting at different offsets, of different lengths and
-types...which is all neat from a technical point of view, but is it
+types&amp;#8230;which is all neat from a technical point of view, but is it
 really useful?&amp;nbsp; It is kind of nice working with the views as if they
-were normal arrays though.&lt;/p&gt;
-&lt;p&gt;I've been playing with these ArrayBuffers quite a bit as I'm working
-on an implementation of the &lt;a class="reference external" href="http://en.wikipedia.org/wiki/OSCAR_protocol"&gt;OSCAR protocol&lt;/a&gt; (used for &lt;a class="reference external" href="http://en.wikipedia.org/wiki/AOL_Instant_Messenger"&gt;AOL Instant
-Messenger&lt;/a&gt; and &lt;a class="reference external" href="http://en.wikipedia.org/wiki/ICQ"&gt;ICQ&lt;/a&gt;) in the chat backend (for Instantbird /
-Thunderbird).&amp;nbsp; (As an aside, the OSCAR protocol Wikipedia page has
+were normal arrays&amp;nbsp;though.&lt;/p&gt;
+&lt;p&gt;I&amp;#8217;ve been playing with these ArrayBuffers quite a bit as I&amp;#8217;m working
+on an implementation of the &lt;a class="reference external" href="http://en.wikipedia.org/wiki/OSCAR_protocol"&gt;&lt;span class="caps"&gt;OSCAR&lt;/span&gt; protocol&lt;/a&gt; (used for &lt;a class="reference external" href="http://en.wikipedia.org/wiki/AOL_Instant_Messenger"&gt;&lt;span class="caps"&gt;AOL&lt;/span&gt; Instant
+Messenger&lt;/a&gt; and &lt;a class="reference external" href="http://en.wikipedia.org/wiki/ICQ"&gt;&lt;span class="caps"&gt;ICQ&lt;/span&gt;&lt;/a&gt;) in the chat backend (for Instantbird /
+Thunderbird).&amp;nbsp; (As an aside, the &lt;span class="caps"&gt;OSCAR&lt;/span&gt; protocol Wikipedia page has
 surprisingly good documentation of some of the underlying data
-structures of the protocol...)&amp;nbsp; I started by writing some test code
+structures of the protocol&amp;#8230;)&amp;nbsp; I started by writing some test code
 using ArrayBuffers and views, which have been around a while: since
 Gecko 2.0 in fact!&amp;nbsp; I quickly ran into some tedious issues with
-repetitive code such as:&lt;/p&gt;
+repetitive code such&amp;nbsp;as:&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="cm"&gt;/*&lt;/span&gt;
 &lt;span class="cm"&gt; * A TLV (Type, Length and Value) data structure:&lt;/span&gt;
 &lt;span class="cm"&gt; *  Unsigned Short  type    Describes what the value represents.&lt;/span&gt;
@@ -305,19 +301,19 @@ repetitive code such as:&lt;/p&gt;
   &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="nx"&gt;data&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
 &lt;span class="p"&gt;}&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
-&lt;p&gt;This actually illustrates two annoying issues I have:&lt;/p&gt;
+&lt;p&gt;This actually illustrates two annoying issues I&amp;nbsp;have:&lt;/p&gt;
 &lt;ol class="arabic simple"&gt;
 &lt;li&gt;I end up with extra lines of code defining a new view every time I
-switch data types.&lt;/li&gt;
-&lt;li&gt;There's no simple way to copy an ArrayBuffer into a part of an
+switch data&amp;nbsp;types.&lt;/li&gt;
+&lt;li&gt;There&amp;#8217;s no simple way to copy an ArrayBuffer into a part of an
 ArrayBuffer. In the above example I create a Uint8Array view of the
 target location, a Uint8Array view of the source location and then
 set the source to the target. Seems simple once you figure it out,
-but it took a while to figure out.&lt;/li&gt;
+but it took a while to figure&amp;nbsp;out.&lt;/li&gt;
 &lt;/ol&gt;
 &lt;p&gt;(As an aside, some of you might find the following function helpful,
-it is essentially a &lt;a class="reference external" href="http://en.cppreference.com/w/cpp/string/byte/memcpy"&gt;memcpy&lt;/a&gt; for ArrayBuffers...this isn't really
-tested heavily at all, however.)&lt;/p&gt;
+it is essentially a &lt;a class="reference external" href="http://en.cppreference.com/w/cpp/string/byte/memcpy"&gt;memcpy&lt;/a&gt; for ArrayBuffers&amp;#8230;this isn&amp;#8217;t really
+tested heavily at all,&amp;nbsp;however.)&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="cm"&gt;/*&lt;/span&gt;
 &lt;span class="cm"&gt; * aTarget / aSource are ArrayBuffers&lt;/span&gt;
 &lt;span class="cm"&gt; */&lt;/span&gt;
@@ -327,117 +323,113 @@ tested heavily at all, however.)&lt;/p&gt;
   &lt;span class="nx"&gt;view&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;set&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="k"&gt;new&lt;/span&gt; &lt;span class="nx"&gt;Uint8Array&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;aSource&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="nx"&gt;aSourceOffset&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="nx"&gt;aLength&lt;/span&gt;&lt;span class="p"&gt;));&lt;/span&gt;
 &lt;span class="p"&gt;}&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
-&lt;p&gt;OK, so typed arrays seem good, but kind of annoying, right?
-Wrong...the OSCAR protocol is a &amp;quot;network order&amp;quot; protocol (aka it is big
-endian). At this point you're probably thinking &amp;quot;OK, so the ArrayBuffer
+&lt;p&gt;&lt;span class="caps"&gt;OK&lt;/span&gt;, so typed arrays seem good, but kind of annoying, right?
+Wrong&amp;#8230;the &lt;span class="caps"&gt;OSCAR&lt;/span&gt; protocol is a &amp;quot;network order&amp;quot; protocol (aka it is big
+endian). At this point you&amp;#8217;re probably thinking &amp;quot;&lt;span class="caps"&gt;OK&lt;/span&gt;, so the ArrayBuffer
 constructor must take an endianess flag!&amp;quot;&amp;nbsp; Wrong, it does no such
-thing.&amp;nbsp; &amp;quot;Hmmm...Well do the ArrayBufferViews take an endianess flag?&amp;quot;
+thing.&amp;nbsp; &amp;quot;Hmmm&amp;#8230;Well do the ArrayBufferViews take an endianess flag?&amp;quot;
 Nope, wrong again.&amp;nbsp; The only way to specify the endianess of the data is
 to use a &lt;a class="reference external" href="https://developer.mozilla.org/en-US/docs/JavaScript_typed_arrays/DataView"&gt;DataView&lt;/a&gt;, a slightly different interface to the underlying
-bytes.&amp;nbsp; It offers an API to individually set different data elements via
-their offset and endianess.&amp;nbsp; (If you're too lazy to read the
+bytes.&amp;nbsp; It offers an &lt;span class="caps"&gt;API&lt;/span&gt; to individually set different data elements via
+their offset and endianess.&amp;nbsp; (If you&amp;#8217;re too lazy to read the
 documentation all the way through, DataView assumes big endian: makes my
-life easier!)&lt;/p&gt;
+life&amp;nbsp;easier!)&lt;/p&gt;
 &lt;p&gt;For the curious, JavaScript typed arrays use the system endianess,
 which in my opinion is pretty much useless (at least if you plan on
 sharing data) since you can never guarantee the endianess to be either
-big or little endian.&amp;nbsp; (The fun part is that this isn't even documented,
-I found it on &lt;a class="reference external" href="http://stackoverflow.com/questions/7869752/javascript-typed-arrays-and-endianness"&gt;Stack Overflow&lt;/a&gt; and verified.)&lt;/p&gt;
-&lt;p&gt;So, in summary...if you plan on networking at all with ArrayBuffers,
-don't use ArrayBufferViews, use DataViews.&amp;nbsp; (Although Uint8Arrays and
-Int8Arrays should work fine!)&lt;/p&gt;
+big or little endian.&amp;nbsp; (The fun part is that this isn&amp;#8217;t even documented,
+I found it on &lt;a class="reference external" href="http://stackoverflow.com/questions/7869752/javascript-typed-arrays-and-endianness"&gt;Stack Overflow&lt;/a&gt; and&amp;nbsp;verified.)&lt;/p&gt;
+&lt;p&gt;So, in summary&amp;#8230;if you plan on networking at all with ArrayBuffers,
+don&amp;#8217;t use ArrayBufferViews, use DataViews.&amp;nbsp; (Although Uint8Arrays and
+Int8Arrays should work&amp;nbsp;fine!)&lt;/p&gt;
 &lt;p&gt;And to not rant the &lt;em&gt;entire&lt;/em&gt; time, working with typed arrays certainly
-does beat strings + charCodeAt!&lt;/p&gt;
-</summary><category term="IM"></category><category term="Instantbird"></category><category term="Mozilla"></category><category term="OSCAR"></category><category term="Thunderbird"></category><category term="Wat"></category></entry><entry><title>IRC Auto-Performs</title><link href="http://patrick.cloke.us/irc-auto-performs.html" rel="alternate"></link><updated>2012-06-11T02:25:00-04:00</updated><author><name>Patrick Cloke</name></author><id>tag:patrick.cloke.us,2012-06-11:irc-auto-performs.html</id><summary type="html">&lt;p&gt;There have been a &lt;a class="reference external" href="https://bugzilla.mozilla.org/show_bug.cgi?id=742675"&gt;few&lt;/a&gt; &lt;a class="reference external" href="https://bugzilla.instantbird.org/show_bug.cgi?id=1101"&gt;requests&lt;/a&gt; to support &amp;quot;auto-performs&amp;quot;
-(sending commands to the IRC server after connection that the user types
-into a box or whatever). Personally I find this to be:&lt;/p&gt;
+does beat strings +&amp;nbsp;charCodeAt!&lt;/p&gt;
+</summary><category term="IM"></category><category term="Instantbird"></category><category term="Mozilla"></category><category term="OSCAR"></category><category term="Thunderbird"></category><category term="Wat"></category></entry><entry><title>IRC Auto-Performs</title><link href="http://patrick.cloke.us/posts/2012/Jun/11/irc-auto-performs/" rel="alternate"></link><updated>2012-06-11T02:25:00-04:00</updated><author><name>Patrick Cloke</name></author><id>tag:patrick.cloke.us,2012-06-11:posts/2012/Jun/11/irc-auto-performs/</id><summary type="html">&lt;p&gt;There have been a &lt;a class="reference external" href="https://bugzilla.mozilla.org/show_bug.cgi?id=742675"&gt;few&lt;/a&gt; &lt;a class="reference external" href="https://bugzilla.instantbird.org/show_bug.cgi?id=1101"&gt;requests&lt;/a&gt; to support &amp;quot;auto-performs&amp;quot;
+(sending commands to the &lt;span class="caps"&gt;IRC&lt;/span&gt; server after connection that the user types
+into a box or whatever). Personally I find this to&amp;nbsp;be:&lt;/p&gt;
 &lt;ol class="arabic simple"&gt;
-&lt;li&gt;A fairly awful user experience.&lt;/li&gt;
-&lt;li&gt;Confusing to new users.&lt;/li&gt;
+&lt;li&gt;A fairly awful user&amp;nbsp;experience.&lt;/li&gt;
+&lt;li&gt;Confusing to new&amp;nbsp;users.&lt;/li&gt;
 &lt;li&gt;Unnecessary.&lt;/li&gt;
 &lt;/ol&gt;
-&lt;p&gt;I additionally don't like this idea since it requires us to have
-commands for all the common tasks you'd want to do in an auto-perform
+&lt;p&gt;I additionally don&amp;#8217;t like this idea since it requires us to have
+commands for all the common tasks you&amp;#8217;d want to do in an auto-perform
 (or support sending absolutely raw messages to the server, which we
 actually do already in the /quote command). Essentially what I just
-described is writing our own scripting language...that seems pointless
-(and frankly, I have better things to do). I'm hoping to convince you
-with this post (and maybe a series of posts) that auto-performs aren't
-necessary and a trivial restartless extension can replace them.&lt;/p&gt;
+described is writing our own scripting language&amp;#8230;that seems pointless
+(and frankly, I have better things to do). I&amp;#8217;m hoping to convince you
+with this post (and maybe a series of posts) that auto-performs aren&amp;#8217;t
+necessary and a trivial restartless extension can replace&amp;nbsp;them.&lt;/p&gt;
 &lt;div class="section" id="design"&gt;
 &lt;h2&gt;Design&lt;/h2&gt;
-&lt;p&gt;Part of the desire to &lt;a class="reference external" href="http://patrick.cloke.us/why-rewrite-the-irc-protocol-plugin-part-2.html"&gt;replace the libpurple IRC protocol plugin&lt;/a&gt;
+&lt;p&gt;Part of the desire to &lt;a class="reference external" href="http://patrick.cloke.us/posts/2011/Apr/30/why-rewrite-the-irc-protocol-plugin-part-2/"&gt;replace the libpurple &lt;span class="caps"&gt;IRC&lt;/span&gt; protocol plugin&lt;/a&gt;
 with a new JavaScript one built specifically for Instantbird (which is
 also now used in Thunderbird!) was to make the protocol fully
-extensible. There are &lt;a class="reference external" href="http://patrick.cloke.us/the-so-called-irc-specifications.html"&gt;many revisions and unofficial extensions to IRC&lt;/a&gt;
+extensible. There are &lt;a class="reference external" href="http://patrick.cloke.us/posts/2011/Mar/09/the-so-called-irc-specifications/"&gt;many revisions and unofficial extensions to &lt;span class="caps"&gt;IRC&lt;/span&gt;&lt;/a&gt;
 and we might not necessarily want to support them all (especially if
 they only apply to a single network). Allowing all parts of the protocol
 implementation to be touched and extended seemed like a great way to
-handle this.&lt;/p&gt;
-&lt;p&gt;Initially I tried to do this by making the IRC account into an XPCOM
-component (well it is one already, it's an prplIAccount, but I meant an
-IRC specific one: implementing ircIAccount, if you will). Unfortunately,
+handle&amp;nbsp;this.&lt;/p&gt;
+&lt;p&gt;Initially I tried to do this by making the &lt;span class="caps"&gt;IRC&lt;/span&gt; account into an &lt;span class="caps"&gt;XPCOM&lt;/span&gt;
+component (well it is one already, it&amp;#8217;s an prplIAccount, but I meant an
+&lt;span class="caps"&gt;IRC&lt;/span&gt; specific one: implementing ircIAccount, if you will). Unfortunately,
 this seemed to have a lot of overhead and got complicated extremely
-quickly. Anything I'd want to touch from a message handler (wait,
-wait...what's a handler?! I'll get back to that) would need to have
+quickly. Anything I&amp;#8217;d want to touch from a message handler (wait,
+wait&amp;#8230;what&amp;#8217;s a handler?! I&amp;#8217;ll get back to that) would need to have
 methods written and exposed to access internal data of the
-account...does that sound very extensible to you? Well, it doesn't to
-me...&lt;/p&gt;
-&lt;p&gt;Onto design two! (Well actually my first design...) Lots of JavaScript
+account&amp;#8230;does that sound very extensible to you? Well, it doesn&amp;#8217;t to&amp;nbsp;me&amp;#8230;&lt;/p&gt;
+&lt;p&gt;Onto design two! (Well actually my first design&amp;#8230;) Lots of JavaScript
 objects! The entire protocol is implemented as a set of JavaScript
-objects and the handlers directly touch and modify the account's data
-(of course there's methods for abstraction, etc.). This means that an
-extension has absolutely FULL access to every about an account...this
+objects and the handlers directly touch and modify the account&amp;#8217;s data
+(of course there&amp;#8217;s methods for abstraction, etc.). This means that an
+extension has absolutely &lt;span class="caps"&gt;FULL&lt;/span&gt; access to every about an account&amp;#8230;this
 also means an extension could seriously mess with and cause the protocol
 to stop working or do really crazy things, etc. Unfortunately there
-isn't really a way to avoid that. Hopefully people write good code.&lt;/p&gt;
+isn&amp;#8217;t really a way to avoid that. Hopefully people write good&amp;nbsp;code.&lt;/p&gt;
 &lt;/div&gt;
 &lt;div class="section" id="messages"&gt;
 &lt;h2&gt;Messages&lt;/h2&gt;
-&lt;p&gt;I'm going to go into an aside about messages right now, even though it
-doesn't quite seem relevent yet. It will. IRC has a bunch of
-sub-protocols embedded within the IRC protocol (see the link above about
+&lt;p&gt;I&amp;#8217;m going to go into an aside about messages right now, even though it
+doesn&amp;#8217;t quite seem relevent yet. It will. &lt;span class="caps"&gt;IRC&lt;/span&gt; has a bunch of
+sub-protocols embedded within the &lt;span class="caps"&gt;IRC&lt;/span&gt; protocol (see the link above about
 unofficial extensions). We attempt to parse all the string messages and
-make pretty JavaScript objects out of them. I've actually identified
-five (yes, count that: five) different sub-&amp;quot;protocols&amp;quot; within IRC that
-we deal:&lt;/p&gt;
+make pretty JavaScript objects out of them. I&amp;#8217;ve actually identified
+five (yes, count that: five) different sub-&amp;quot;protocols&amp;quot; within &lt;span class="caps"&gt;IRC&lt;/span&gt; that
+we&amp;nbsp;deal:&lt;/p&gt;
 &lt;ol class="arabic simple"&gt;
-&lt;li&gt;IRC itself (i.e. &lt;a class="reference external" href="http://tools.ietf.org/html/rfc1459"&gt;RFC 1459&lt;/a&gt; / &lt;a class="reference external" href="http://tools.ietf.org/html/rfc2812"&gt;RFC 2812&lt;/a&gt; / various numeric
-extensions)&lt;/li&gt;
-&lt;li&gt;&lt;a class="reference external" href="http://www.irchelp.org/irchelp/rfc/ctcpspec.html"&gt;CTCP (the Client-to-Client Protocol)&lt;/a&gt;,embedded in PRIVMSG commands
-of IRC&lt;/li&gt;
-&lt;li&gt;DCC (Direct Client-to-Client), a subprotocol of CTCP&lt;/li&gt;
-&lt;li&gt;&lt;a class="reference external" href="http://tools.ietf.org/html/draft-brocklesby-irc-isupport-03"&gt;ISUPPORT&lt;/a&gt; (also known as Numeric 005), a method of negotiating
-capabilities between a client and server&lt;/li&gt;
-&lt;li&gt;And finally, handling of IRC Services (there's a lot of them and no
-specification, but we treat them specially)&lt;/li&gt;
+&lt;li&gt;&lt;span class="caps"&gt;IRC&lt;/span&gt; itself (i.e. &lt;a class="reference external" href="http://tools.ietf.org/html/rfc1459"&gt;&lt;span class="caps"&gt;RFC&lt;/span&gt; 1459&lt;/a&gt; / &lt;a class="reference external" href="http://tools.ietf.org/html/rfc2812"&gt;&lt;span class="caps"&gt;RFC&lt;/span&gt; 2812&lt;/a&gt; / various numeric&amp;nbsp;extensions)&lt;/li&gt;
+&lt;li&gt;&lt;a class="reference external" href="http://www.irchelp.org/irchelp/rfc/ctcpspec.html"&gt;&lt;span class="caps"&gt;CTCP&lt;/span&gt; (the Client-to-Client Protocol)&lt;/a&gt;,embedded in &lt;span class="caps"&gt;PRIVMSG&lt;/span&gt; commands
+of &lt;span class="caps"&gt;IRC&lt;/span&gt;&lt;/li&gt;
+&lt;li&gt;&lt;span class="caps"&gt;DCC&lt;/span&gt; (Direct Client-to-Client), a subprotocol of &lt;span class="caps"&gt;CTCP&lt;/span&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a class="reference external" href="http://tools.ietf.org/html/draft-brocklesby-irc-isupport-03"&gt;&lt;span class="caps"&gt;ISUPPORT&lt;/span&gt;&lt;/a&gt; (also known as Numeric 005), a method of negotiating
+capabilities between a client and&amp;nbsp;server&lt;/li&gt;
+&lt;li&gt;And finally, handling of &lt;span class="caps"&gt;IRC&lt;/span&gt; Services (there&amp;#8217;s a lot of them and no
+specification, but we treat them&amp;nbsp;specially)&lt;/li&gt;
 &lt;/ol&gt;
 &lt;p&gt;Briefly what happens when we receive a raw message over the wire, we
 create an &lt;a class="reference external" href="http://hg.instantbird.org/instantbird/file/b8d8b6e60aef/chat/protocols/irc/irc.js#l14"&gt;ircMessage object out of it using a variety of regular
 expressions&lt;/a&gt;. This object has a variety of fields (see the link for
-details), including the command, who sent the message and the
-parameters.&lt;/p&gt;
-&lt;p&gt;If the message is identified as a CTCP message, we then morph the
+details), including the command, who sent the message and the&amp;nbsp;parameters.&lt;/p&gt;
+&lt;p&gt;If the message is identified as a &lt;span class="caps"&gt;CTCP&lt;/span&gt; message, we then morph the
 ircMessage into a &lt;a class="reference external" href="http://hg.instantbird.org/instantbird/file/b8d8b6e60aef/chat/protocols/irc/ircCTCP.jsm#l44"&gt;CTCPMessage&lt;/a&gt;, which can be morphed into a
 &lt;a class="reference external" href="http://hg.instantbird.org/instantbird/file/b8d8b6e60aef/chat/protocols/irc/ircDCC.jsm#l20"&gt;DCCMessage&lt;/a&gt;. Additionally, a 005 reply can be parsed into a
-&lt;a class="reference external" href="http://hg.instantbird.org/instantbird/file/b8d8b6e60aef/chat/protocols/irc/ircISUPPORT.jsm#l22"&gt;isupportMessage&lt;/a&gt;. And last, but not least, a received PRIVMSG can also
-be parsed into a &lt;a class="reference external" href="http://hg.instantbird.org/instantbird/file/b8d8b6e60aef/chat/protocols/irc/ircServices.jsm#l19"&gt;ServiceMessage&lt;/a&gt;. Each of these extends the IRC
-message without destroying information. (Yes, I'm realizing now that my
-choice of whether to use capitals is all messed up...)&lt;/p&gt;
-&lt;p&gt;Well, why do we care...? By preparsing the strings into objects (as
+&lt;a class="reference external" href="http://hg.instantbird.org/instantbird/file/b8d8b6e60aef/chat/protocols/irc/ircISUPPORT.jsm#l22"&gt;isupportMessage&lt;/a&gt;. And last, but not least, a received &lt;span class="caps"&gt;PRIVMSG&lt;/span&gt; can also
+be parsed into a &lt;a class="reference external" href="http://hg.instantbird.org/instantbird/file/b8d8b6e60aef/chat/protocols/irc/ircServices.jsm#l19"&gt;ServiceMessage&lt;/a&gt;. Each of these extends the &lt;span class="caps"&gt;IRC&lt;/span&gt;
+message without destroying information. (Yes, I&amp;#8217;m realizing now that my
+choice of whether to use capitals is all messed&amp;nbsp;up&amp;#8230;)&lt;/p&gt;
+&lt;p&gt;Well, why do we care&amp;#8230;? By preparsing the strings into objects (as
 defined by any &amp;quot;specifications&amp;quot; that exist), we keep extensions from
-having to parse messages over and over again from strings.&lt;/p&gt;
+having to parse messages over and over again from&amp;nbsp;strings.&lt;/p&gt;
 &lt;/div&gt;
 &lt;div class="section" id="handlers"&gt;
 &lt;h2&gt;Handlers&lt;/h2&gt;
 &lt;p&gt;A handler is simply what I call the object that contains the methods
 to deal with an incoming message. Pretty much, you get to say &amp;quot;Only send
-me ISUPPORT messages!&amp;quot; or &amp;quot;Only send me CTCP messages!&amp;quot; and voila, you
+me &lt;span class="caps"&gt;ISUPPORT&lt;/span&gt; messages!&amp;quot; or &amp;quot;Only send me &lt;span class="caps"&gt;CTCP&lt;/span&gt; messages!&amp;quot; and voila, you
 only get that type of message. Each message type has a field that is
-used to choose the method to run (for the IRC messages, the &amp;quot;command&amp;quot;,
-for CTCP the &amp;quot;CTCP command&amp;quot;, ISUPPORT the &amp;quot;parameter&amp;quot;, etc.) This sounds
-a lot more complicated than it is, I think a brief &lt;a class="reference external" href="https://bitbucket.org/clokep/irc-extras/src/6f778f17172a/example/bootstrap.js"&gt;example&lt;/a&gt; is in
-order:&lt;/p&gt;
+used to choose the method to run (for the &lt;span class="caps"&gt;IRC&lt;/span&gt; messages, the &amp;quot;command&amp;quot;,
+for &lt;span class="caps"&gt;CTCP&lt;/span&gt; the &amp;quot;&lt;span class="caps"&gt;CTCP&lt;/span&gt; command&amp;quot;, &lt;span class="caps"&gt;ISUPPORT&lt;/span&gt; the &amp;quot;parameter&amp;quot;, etc.) This sounds
+a lot more complicated than it is, I think a brief &lt;a class="reference external" href="https://bitbucket.org/clokep/irc-extras/src/6f778f17172a/example/bootstrap.js"&gt;example&lt;/a&gt; is in&amp;nbsp;order:&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="kd"&gt;var&lt;/span&gt; &lt;span class="nx"&gt;ircSimpleExample&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
   &lt;span class="c1"&gt;// The name here is really only used in error messages.&lt;/span&gt;
   &lt;span class="nx"&gt;name&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;IRC Simple Example&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
@@ -462,163 +454,159 @@ order:&lt;/p&gt;
   &lt;span class="p"&gt;}&lt;/span&gt;
 &lt;span class="p"&gt;}&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
-&lt;p&gt;Just like that we've designed a handler! Whenever the 001 method is
+&lt;p&gt;Just like that we&amp;#8217;ve designed a handler! Whenever the 001 method is
 received from the server, this function will run and attempt to identify
 with the NickServ (of course this could use a bit more security on it,
-but it's to demonstrate the possibilities). (The sendMessage function
-takes the command to send and an array of parameters to send.)&lt;/p&gt;
-&lt;p&gt;As this is already a long post, I think I'll cut this off now and
-continue this at another time, but I hope I'm beginning to convince you
+but it&amp;#8217;s to demonstrate the possibilities). (The sendMessage function
+takes the command to send and an array of parameters to&amp;nbsp;send.)&lt;/p&gt;
+&lt;p&gt;As this is already a long post, I think I&amp;#8217;ll cut this off now and
+continue this at another time, but I hope I&amp;#8217;m beginning to convince you
 that allowing directy access to the account and protocol implementation
 is a more powerful (and even simpler in many ways, in my opinion)
 alternative to &amp;quot;auto-performs&amp;quot;. The one major downside I see to this, is
 that it requires a bit more understanding of the actual protocol level
-implementation, I don't feel that knowing you need to use &amp;quot;PRIVMSG&amp;quot; as a
-command instead of /msg is a huge issue, however.&lt;/p&gt;
+implementation, I don&amp;#8217;t feel that knowing you need to use &amp;quot;&lt;span class="caps"&gt;PRIVMSG&lt;/span&gt;&amp;quot; as a
+command instead of /msg is a huge issue,&amp;nbsp;however.&lt;/p&gt;
 &lt;/div&gt;
-</summary><category term="Instantbird"></category><category term="IRC"></category><category term="Mozilla"></category></entry><entry><title>Shared Lightning profile across Linux and Windows</title><link href="http://patrick.cloke.us/shared-lightning-profile-across-linux-and-windows.html" rel="alternate"></link><updated>2011-07-08T00:46:00-04:00</updated><author><name>Patrick Cloke</name></author><id>tag:patrick.cloke.us,2011-07-08:shared-lightning-profile-across-linux-and-windows.html</id><summary type="html">&lt;p&gt;In &lt;a class="reference external" href="irc://irc.mozilla.org/calendar"&gt;#calendar on Mozilla IRC&lt;/a&gt; the past few days a user has been
+</summary><category term="Instantbird"></category><category term="IRC"></category><category term="Mozilla"></category></entry><entry><title>Shared Lightning profile across Linux and Windows</title><link href="http://patrick.cloke.us/posts/2011/Jul/08/shared-lightning-profile-across-linux-and-windows/" rel="alternate"></link><updated>2011-07-08T00:46:00-04:00</updated><author><name>Patrick Cloke</name></author><id>tag:patrick.cloke.us,2011-07-08:posts/2011/Jul/08/shared-lightning-profile-across-linux-and-windows/</id><summary type="html">&lt;p&gt;In &lt;a class="reference external" href="irc://irc.mozilla.org/calendar"&gt;#calendar on Mozilla &lt;span class="caps"&gt;IRC&lt;/span&gt;&lt;/a&gt; the past few days a user has been
 asking about using a shared profile on Thunderbird between Linux and
 Windows (&amp;quot;shared&amp;quot; meaning a dual boot system of Linux/Windows, but not
-at the same time, obviously).&amp;nbsp; Generally this isn't a big deal UNLESS
-you have a binary extension, in which case you'd have to reinstall the
-extension every time! That's awfully lame.&lt;/p&gt;
-&lt;p&gt;BUT there should be a way to make a unified extension for all
+at the same time, obviously).&amp;nbsp; Generally this isn&amp;#8217;t a big deal &lt;span class="caps"&gt;UNLESS&lt;/span&gt;
+you have a binary extension, in which case you&amp;#8217;d have to reinstall the
+extension every time! That&amp;#8217;s awfully&amp;nbsp;lame.&lt;/p&gt;
+&lt;p&gt;&lt;span class="caps"&gt;BUT&lt;/span&gt; there should be a way to make a unified extension for all
 operating systems.&amp;nbsp; In fact &lt;a class="reference external" href="https://wiki.mozilla.org/User:Ssitter/UnifiedLightning"&gt;ssitter had written an article to do
-that&lt;/a&gt;.&amp;nbsp; It needs some updating to account for the Mozilla 2 XPCOM
-changes, however.&lt;/p&gt;
-&lt;p&gt;The steps are mostly the same, with some added.&lt;/p&gt;
+that&lt;/a&gt;.&amp;nbsp; It needs some updating to account for the Mozilla 2 &lt;span class="caps"&gt;XPCOM&lt;/span&gt;
+changes,&amp;nbsp;however.&lt;/p&gt;
+&lt;p&gt;The steps are mostly the same, with some&amp;nbsp;added.&lt;/p&gt;
 &lt;ol class="arabic simple"&gt;
 &lt;li&gt;Download whatever versions you want (&lt;a class="reference external" href="http://releases.mozilla.org/pub/mozilla.org/calendar/lightning/releases/1.0b4/"&gt;perhaps 1.0b4&lt;/a&gt;?).&lt;/li&gt;
-&lt;li&gt;Unzip them all and choose which one will be your &amp;quot;unified&amp;quot; version.&lt;/li&gt;
+&lt;li&gt;Unzip them all and choose which one will be your &amp;quot;unified&amp;quot;&amp;nbsp;version.&lt;/li&gt;
 &lt;li&gt;Find the &amp;lt;em:targetPlatform&amp;gt; section in the install.rdfs and include
-all the necessary ones.&lt;/li&gt;
+all the necessary&amp;nbsp;ones.&lt;/li&gt;
 &lt;li&gt;Find the libcalbasecomps.* (where * is dll, dylib, so, etc. for
-your platform) inside the components directories.&lt;/li&gt;
-&lt;li&gt;Copy the libraries together into one directory.&lt;/li&gt;
-&lt;li&gt;Copy the lines from each components.manifest together into one
-manifest.&lt;/li&gt;
-&lt;li&gt;For some systems you'll need to specify the ABI (and possibly change
-the path), note that the ABI is just what was inside the
-&amp;lt;em:targetPlatform&amp;gt;.&lt;/li&gt;
-&lt;li&gt;Rezip this up into an XPI and you should be good to go!&lt;/li&gt;
+your platform) inside the components&amp;nbsp;directories.&lt;/li&gt;
+&lt;li&gt;Copy the libraries together into one&amp;nbsp;directory.&lt;/li&gt;
+&lt;li&gt;Copy the lines from each components.manifest together into one&amp;nbsp;manifest.&lt;/li&gt;
+&lt;li&gt;For some systems you&amp;#8217;ll need to specify the &lt;span class="caps"&gt;ABI&lt;/span&gt; (and possibly change
+the path), note that the &lt;span class="caps"&gt;ABI&lt;/span&gt; is just what was inside the&amp;nbsp;&amp;lt;em:targetPlatform&amp;gt;.&lt;/li&gt;
+&lt;li&gt;Rezip this up into an &lt;span class="caps"&gt;XPI&lt;/span&gt; and you should be good to&amp;nbsp;go!&lt;/li&gt;
 &lt;/ol&gt;
-&lt;p&gt;In my test I ended up with an XPI that was approximately 10% bigger
+&lt;p&gt;In my test I ended up with an &lt;span class="caps"&gt;XPI&lt;/span&gt; that was approximately 10% bigger
 after combining Mac (x86 and x64), Linux (x86 and x64), Win32, Solaris
 Sparc and Solaris x86.&amp;nbsp; Why is this not done by default?&amp;nbsp; Probably just
-cause no one has done it...there is a &lt;a class="reference external" href="https://bugzilla.mozilla.org/show_bug.cgi?id=352543"&gt;bug about it&lt;/a&gt; though.&amp;nbsp; One issue
+cause no one has done it&amp;#8230;there is a &lt;a class="reference external" href="https://bugzilla.mozilla.org/show_bug.cgi?id=352543"&gt;bug about it&lt;/a&gt; though.&amp;nbsp; One issue
 that might be encountered using this method is pre-processing of some
 script files (as is discussed in that big) but hopefully it should
-&amp;quot;mostly&amp;quot; work.&amp;nbsp; (Note that this is mostly untested.)&lt;/p&gt;
+&amp;quot;mostly&amp;quot; work.&amp;nbsp; (Note that this is mostly&amp;nbsp;untested.)&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;Edit:&lt;/strong&gt; I should also mention that you would need to do something
 similar with the themes folders if they differ dramatically (it seems
-there's &lt;a class="reference external" href="http://mxr.mozilla.org/comm-central/source/calendar/lightning/themes/"&gt;just two&lt;/a&gt;: winstripe and pinstripe: i.e. Windows &amp;amp; Mac; Linux
-and Solaris most likely also use winstripe).&lt;/p&gt;
-</summary><category term="Lightning"></category><category term="Mozilla"></category></entry><entry><title>Compiling Instantbird</title><link href="http://patrick.cloke.us/compiling-instantbird.html" rel="alternate"></link><updated>2011-05-17T01:30:00-04:00</updated><author><name>Patrick Cloke</name></author><id>tag:patrick.cloke.us,2011-05-17:compiling-instantbird.html</id><summary type="html">&lt;p&gt;In the past I've tried to compile a few different programs that use
-the Mozilla toolkit to various levels of success.&amp;nbsp; I've tried to compile
+there&amp;#8217;s &lt;a class="reference external" href="http://mxr.mozilla.org/comm-central/source/calendar/lightning/themes/"&gt;just two&lt;/a&gt;: winstripe and pinstripe: i.e. Windows &lt;span class="amp"&gt;&amp;amp;&lt;/span&gt; Mac; Linux
+and Solaris most likely also use&amp;nbsp;winstripe).&lt;/p&gt;
+</summary><category term="Lightning"></category><category term="Mozilla"></category></entry><entry><title>Compiling Instantbird</title><link href="http://patrick.cloke.us/posts/2011/May/17/compiling-instantbird/" rel="alternate"></link><updated>2011-05-17T01:30:00-04:00</updated><author><name>Patrick Cloke</name></author><id>tag:patrick.cloke.us,2011-05-17:posts/2011/May/17/compiling-instantbird/</id><summary type="html">&lt;p&gt;In the past I&amp;#8217;ve tried to compile a few different programs that use
+the Mozilla toolkit to various levels of success.&amp;nbsp; I&amp;#8217;ve tried to compile
 Thunderbird, Songbird and Instantbird at various points.&amp;nbsp; I got
 Thunderbird to compile, but it only worked sporadically (although I
-think that was Firefox moving so fast that Thunderbird couldn't keep
-up), Songbird I gave up on rather quickly and Instantbird I've tried a
-few times.&lt;/p&gt;
+think that was Firefox moving so fast that Thunderbird couldn&amp;#8217;t keep
+up), Songbird I gave up on rather quickly and Instantbird I&amp;#8217;ve tried a
+few&amp;nbsp;times.&lt;/p&gt;
 &lt;p&gt;Last summer I had Instantbird compiling on my old laptop (a Lenovo
 T60), which is &amp;gt;5 years old at this point and has had the heatsink / fan
-replaced twice -- a known issue with that model laptop.&amp;nbsp; Needless to
-say, that laptop didn't like compiling something on Windows that took
+replaced twice &amp;#8212; a known issue with that model laptop.&amp;nbsp; Needless to
+say, that laptop didn&amp;#8217;t like compiling something on Windows that took
 approximately an hour with a large number of reads and writes to the
-hard drive.&amp;nbsp; This mixed with it being an old dual core + a 5400 RPM
-meant I'd be waiting a LONG time for my code to compile.&amp;nbsp; I got a
+hard drive.&amp;nbsp; This mixed with it being an old dual core + a 5400 &lt;span class="caps"&gt;RPM&lt;/span&gt;
+meant I&amp;#8217;d be waiting a &lt;span class="caps"&gt;LONG&lt;/span&gt; time for my code to compile.&amp;nbsp; I got a
 Thinkpad X201 this past summer, so I finally got around to setting up a
 development environment on it and was able to get Instantbird to compile
-fully today.&amp;nbsp; I've outlined the steps I've followed: kind of to mirror
-the &lt;a class="reference external" href="https://developer.mozilla.org/En/Simple_Thunderbird_build"&gt;Simple Thunderbird Build&lt;/a&gt; page on MDC.&lt;/p&gt;
-&lt;p&gt;I've done this using Microsoft Windows 7 Professional (64-bit) with
-Service Pack 1. (4.00 GB of RAM, Intel Core i7 M620 2.67 GHz).
+fully today.&amp;nbsp; I&amp;#8217;ve outlined the steps I&amp;#8217;ve followed: kind of to mirror
+the &lt;a class="reference external" href="https://developer.mozilla.org/En/Simple_Thunderbird_build"&gt;Simple Thunderbird Build&lt;/a&gt; page on &lt;span class="caps"&gt;MDC&lt;/span&gt;.&lt;/p&gt;
+&lt;p&gt;I&amp;#8217;ve done this using Microsoft Windows 7 Professional (64-bit) with
+Service Pack 1. (4.00 &lt;span class="caps"&gt;GB&lt;/span&gt; of &lt;span class="caps"&gt;RAM&lt;/span&gt;, Intel Core i7 M620 2.67 GHz).
 Throughout these steps, the defaults locations and options are used in
-the installers.&lt;/p&gt;
+the&amp;nbsp;installers.&lt;/p&gt;
 &lt;div class="section" id="build-requirements"&gt;
-&lt;h2&gt;Build Requirements:&lt;/h2&gt;
+&lt;h2&gt;Build&amp;nbsp;Requirements:&lt;/h2&gt;
 &lt;div class="section" id="visual-studio-express"&gt;
-&lt;h3&gt;Visual Studio Express:&lt;/h3&gt;
-&lt;p&gt;We need to install Visual Studio Express, specifically VC8 (2005) with
-Service Pack 1.&amp;nbsp; (Mozilla compiles with VC9 and VC10 to various degrees,
-but it seems libpurple only compiles with VC8, also this is what's on
+&lt;h3&gt;Visual Studio&amp;nbsp;Express:&lt;/h3&gt;
+&lt;p&gt;We need to install Visual Studio Express, specifically &lt;span class="caps"&gt;VC8&lt;/span&gt; (2005) with
+Service Pack 1.&amp;nbsp; (Mozilla compiles with &lt;span class="caps"&gt;VC9&lt;/span&gt; and &lt;span class="caps"&gt;VC10&lt;/span&gt; to various degrees,
+but it seems libpurple only compiles with &lt;span class="caps"&gt;VC8&lt;/span&gt;, also this is what&amp;#8217;s on
 the Instantbird buildbot, so I like having the same version.)&amp;nbsp; I
-couldn't find this on Microsoft's website but I found it on &lt;a class="reference external" href="http://www.softpedia.com/get/Programming/Other-Programming-Files/Microsoft-Visual-C-Toolkit.shtml"&gt;Softpedia&lt;/a&gt;
+couldn&amp;#8217;t find this on Microsoft&amp;#8217;s website but I found it on &lt;a class="reference external" href="http://www.softpedia.com/get/Programming/Other-Programming-Files/Microsoft-Visual-C-Toolkit.shtml"&gt;Softpedia&lt;/a&gt;
 (which is a legitimate site).&amp;nbsp; Anyway, download the installer and
 install it (which will download the actual compiler from Microsoft),
-ensure that you also install the IDE (which is checked by default).&lt;/p&gt;
-&lt;p&gt;This will only install VC8, the initial release.&amp;nbsp; We also need to
+ensure that you also install the &lt;span class="caps"&gt;IDE&lt;/span&gt; (which is checked by&amp;nbsp;default).&lt;/p&gt;
+&lt;p&gt;This will only install &lt;span class="caps"&gt;VC8&lt;/span&gt;, the initial release.&amp;nbsp; We also need to
 install &lt;a class="reference external" href="http://www.microsoft.com/downloads/en/details.aspx?FamilyID=7b0b0339-613a-46e6-ab4d-080d4d4a8c4e"&gt;Service Pack 1&lt;/a&gt;.&amp;nbsp; I personally did this using Windows Update,
-but one of the installers from there should also work.&lt;/p&gt;
+but one of the installers from there should also&amp;nbsp;work.&lt;/p&gt;
 &lt;/div&gt;
 &lt;div class="section" id="microsoft-windows-sdk"&gt;
-&lt;h3&gt;Microsoft Windows SDK:&lt;/h3&gt;
-&lt;p&gt;Specifically we need the &lt;a class="reference external" href="http://www.microsoft.com/downloads/en/details.aspx?FamilyID=c17ba869-9671-4330-a63e-1fd44e0e2505&amp;amp;displaylang=en"&gt;Windows 7 SDK&lt;/a&gt; (for Jumplist, Aero, etc.
-support).&amp;nbsp; Download and install the SDK, this one took a while for me to
-install.&amp;nbsp; I ate dinner while it was installing (pasta, if you're curious
--- I already had sauce made).&lt;/p&gt;
-&lt;p&gt;There's a linker error when using VC8 and the Windows 7 SDK, so we'll
+&lt;h3&gt;Microsoft Windows &lt;span class="caps"&gt;SDK&lt;/span&gt;:&lt;/h3&gt;
+&lt;p&gt;Specifically we need the &lt;a class="reference external" href="http://www.microsoft.com/downloads/en/details.aspx?FamilyID=c17ba869-9671-4330-a63e-1fd44e0e2505&amp;amp;displaylang=en"&gt;Windows 7 &lt;span class="caps"&gt;SDK&lt;/span&gt;&lt;/a&gt; (for Jumplist, Aero, etc.
+support).&amp;nbsp; Download and install the &lt;span class="caps"&gt;SDK&lt;/span&gt;, this one took a while for me to
+install.&amp;nbsp; I ate dinner while it was installing (pasta, if you&amp;#8217;re curious
+&amp;#8212; I already had sauce&amp;nbsp;made).&lt;/p&gt;
+&lt;p&gt;There&amp;#8217;s a linker error when using &lt;span class="caps"&gt;VC8&lt;/span&gt; and the Windows 7 &lt;span class="caps"&gt;SDK&lt;/span&gt;, so we&amp;#8217;ll
 need to install a &lt;a class="reference external" href="http://support.microsoft.com/kb/949009/"&gt;hotfix&lt;/a&gt;for that (I tried without it and I ran into
-the issue).&amp;nbsp; I had to download the &amp;quot;VS80sp1-KB949009-IA64-INTL.exe&amp;quot;
-version (there's also an X86 and an X64 version).&amp;nbsp; Choose the one that
-works.&lt;/p&gt;
+the issue).&amp;nbsp; I had to download the &amp;quot;VS80sp1-&lt;span class="caps"&gt;KB949009&lt;/span&gt;-&lt;span class="caps"&gt;IA64&lt;/span&gt;-&lt;span class="caps"&gt;INTL&lt;/span&gt;.exe&amp;quot;
+version (there&amp;#8217;s also an X86 and an X64 version).&amp;nbsp; Choose the one that&amp;nbsp;works.&lt;/p&gt;
 &lt;/div&gt;
 &lt;div class="section" id="microsoft-macro-assembler"&gt;
-&lt;h3&gt;Microsoft Macro Assembler:&lt;/h3&gt;
-&lt;p&gt;In order to properly assemble the code we need to &lt;a class="reference external" href="http://www.microsoft.com/downloads/en/details.aspx?familyid=7A1C9DA0-0510-44A2-B042-7EF370530C64&amp;amp;displaylang=en"&gt;install MASM&lt;/a&gt;
-(which I think will eventually be included in MozillaBuild, but it isn't
-currently).&amp;nbsp; Again, just install it with the defaults.&lt;/p&gt;
+&lt;h3&gt;Microsoft Macro&amp;nbsp;Assembler:&lt;/h3&gt;
+&lt;p&gt;In order to properly assemble the code we need to &lt;a class="reference external" href="http://www.microsoft.com/downloads/en/details.aspx?familyid=7A1C9DA0-0510-44A2-B042-7EF370530C64&amp;amp;displaylang=en"&gt;install &lt;span class="caps"&gt;MASM&lt;/span&gt;&lt;/a&gt;
+(which I think will eventually be included in MozillaBuild, but it isn&amp;#8217;t
+currently).&amp;nbsp; Again, just install it with the&amp;nbsp;defaults.&lt;/p&gt;
 &lt;/div&gt;
 &lt;div class="section" id="mozillabuild"&gt;
 &lt;h3&gt;MozillaBuild:&lt;/h3&gt;
 &lt;p&gt;Almost there, I promise.&amp;nbsp; In order to get a *nix type shell to run
-make, etc. in we'll use a package from Mozilla that includes MSYS, make,
+make, etc. in we&amp;#8217;ll use a package from Mozilla that includes &lt;span class="caps"&gt;MSYS&lt;/span&gt;, make,
 Mercurial, etc.&amp;nbsp; Download and &lt;a class="reference external" href="http://ftp.mozilla.org/pub/mozilla.org/mozilla/libraries/win32/MozillaBuildSetup-Latest.exe"&gt;install MozillaBuild&lt;/a&gt;, the latest should
-work fine.&lt;/p&gt;
+work&amp;nbsp;fine.&lt;/p&gt;
 &lt;p&gt;Now, an unknown step: you might require the &lt;a class="reference external" href="http://www.microsoft.com/downloads/en/details.aspx?FamilyID=a5c84275-3b97-4ab7-a40d-3802b2af5fc2&amp;amp;displaylang=en"&gt;Microsoft Visual C++ 2008
-SP1 Redistributable Package&lt;/a&gt;.&amp;nbsp; I don't know if you need this or not
-since I &lt;em&gt;already&lt;/em&gt; had it, most likely from a previous program I've
-installed.&lt;/p&gt;
+&lt;span class="caps"&gt;SP1&lt;/span&gt; Redistributable Package&lt;/a&gt;.&amp;nbsp; I don&amp;#8217;t know if you need this or not
+since I &lt;em&gt;already&lt;/em&gt; had it, most likely from a previous program I&amp;#8217;ve&amp;nbsp;installed.&lt;/p&gt;
 &lt;p&gt;We should be ready to build now pretty much.&amp;nbsp; For some more
 information for this stuff you can check out the Mozilla Developer
 Network pages I used to get this information: &lt;a class="reference external" href="https://developer.mozilla.org/En/Developer_Guide/Build_Instructions"&gt;Build Instructions&lt;/a&gt;,
-&lt;a class="reference external" href="https://developer.mozilla.org/En/Developer_Guide/Build_Instructions/Windows_Prerequisites"&gt;Windows Build Prerequisites&lt;/a&gt; and &lt;a class="reference external" href="https://developer.mozilla.org/cn/VC8_Build_Instructions"&gt;MSVC8 Build Instructions&lt;/a&gt;.&lt;/p&gt;
+&lt;a class="reference external" href="https://developer.mozilla.org/En/Developer_Guide/Build_Instructions/Windows_Prerequisites"&gt;Windows Build Prerequisites&lt;/a&gt; and &lt;a class="reference external" href="https://developer.mozilla.org/cn/VC8_Build_Instructions"&gt;&lt;span class="caps"&gt;MSVC8&lt;/span&gt; Build Instructions&lt;/a&gt;.&lt;/p&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;div class="section" id="checkout-the-code"&gt;
-&lt;h2&gt;Checkout the Code:&lt;/h2&gt;
+&lt;h2&gt;Checkout the&amp;nbsp;Code:&lt;/h2&gt;
 &lt;p&gt;We need to checkout the code.&amp;nbsp; I originally checked out the code with
 TortoiseHg (which is what I normally use), but the version of Mercurial
 included is significantly greater than the one included in MozillaBuild
-and this caused me issues later on.&amp;nbsp; Thus, we'll check out the code on
+and this caused me issues later on.&amp;nbsp; Thus, we&amp;#8217;ll check out the code on
 the command line.&amp;nbsp; Start by launching the bash shell, which is at
-C:\mozilla-build\start-msvc8.bat (don't use the x64 version).&amp;nbsp; There's
-a version here which corresponds to each version of VS.&lt;/p&gt;
-&lt;p&gt;Once this finishes loading you'll be in the home directory (which is
-in the root of your user's documents and settings folder, i.e. for me:
-C:\Users\clokep).&amp;nbsp; You'll want to do the following:&lt;/p&gt;
+C:\mozilla-build\start-msvc8.bat (don&amp;#8217;t use the x64 version).&amp;nbsp; There&amp;#8217;s
+a version here which corresponds to each version of &lt;span class="caps"&gt;VS&lt;/span&gt;.&lt;/p&gt;
+&lt;p&gt;Once this finishes loading you&amp;#8217;ll be in the home directory (which is
+in the root of your user&amp;#8217;s documents and settings folder, i.e. for me:
+C:\Users\clokep).&amp;nbsp; You&amp;#8217;ll want to do the&amp;nbsp;following:&lt;/p&gt;
 &lt;pre class="literal-block"&gt;
 hg clone https://hg.instantbird.org/instantbird
 &lt;/pre&gt;
 &lt;p&gt;This might take a few minutes depending on how good your internet
-connection is.&amp;nbsp; (The Instantbird source isn't THAT big though, it
-shouldn't take too long.)&lt;/p&gt;
-&lt;p&gt;Then we'll need to change into the instantbird directory that was just
-created and download the Mozilla source code:&lt;/p&gt;
+connection is.&amp;nbsp; (The Instantbird source isn&amp;#8217;t &lt;span class="caps"&gt;THAT&lt;/span&gt; big though, it
+shouldn&amp;#8217;t take too&amp;nbsp;long.)&lt;/p&gt;
+&lt;p&gt;Then we&amp;#8217;ll need to change into the instantbird directory that was just
+created and download the Mozilla source&amp;nbsp;code:&lt;/p&gt;
 &lt;pre class="literal-block"&gt;
 cd instantbird
 python client.py checkout
 &lt;/pre&gt;
 &lt;p&gt;Now this step?&amp;nbsp; This one is gonna take a while.&amp;nbsp; It took me like a
 couple of hours.&amp;nbsp; It pulls the Mozilla source code, which is large and
-has many changesets.&amp;nbsp; Just let it go, it'll give you progress
-occasionally (changes, manifests, files, etc.)&lt;/p&gt;
+has many changesets.&amp;nbsp; Just let it go, it&amp;#8217;ll give you progress
+occasionally (changes, manifests, files,&amp;nbsp;etc.)&lt;/p&gt;
 &lt;/div&gt;
 &lt;div class="section" id="id1"&gt;
-&lt;h2&gt;Compiling Instantbird:&lt;/h2&gt;
+&lt;h2&gt;Compiling&amp;nbsp;Instantbird:&lt;/h2&gt;
 &lt;p&gt;We need to set up the options we want to build with.&amp;nbsp; These are
-read from a .mozconfig (don't miss the &amp;quot;.&amp;quot; in the front!).&amp;nbsp; The contents
-of the .mozconfig that worked for me are:&lt;/p&gt;
+read from a .mozconfig (don&amp;#8217;t miss the &amp;quot;.&amp;quot; in the front!).&amp;nbsp; The contents
+of the .mozconfig that worked for me&amp;nbsp;are:&lt;/p&gt;
 &lt;pre class="literal-block"&gt;
 ac_add_options --enable-application=instantbird
 mk_add_options MOZ_OBJDIR=&amp;#64;TOPSRCDIR&amp;#64;/objdir-ib-release
@@ -626,14 +614,14 @@ ac_add_options --disable-accessibility
 &lt;/pre&gt;
 &lt;p&gt;The first option says to build Instantbird, the second gives an output
 directory and the third &lt;a class="reference external" href="https://developer.mozilla.org/en/atlbase.h"&gt;disables accessibility&lt;/a&gt; (not really sure why
-we need to do this, but we'll get that error at that link otherwise).&lt;/p&gt;
-&lt;p&gt;Finally (back in the bash shell) type:&lt;/p&gt;
+we need to do this, but we&amp;#8217;ll get that error at that link&amp;nbsp;otherwise).&lt;/p&gt;
+&lt;p&gt;Finally (back in the bash shell)&amp;nbsp;type:&lt;/p&gt;
 &lt;pre class="literal-block"&gt;
 make -f client.mk build
 &lt;/pre&gt;
 &lt;p&gt;Now sit back and relax.&amp;nbsp; My build took about an hour to finish, maybe
-a bit less -- I wasn't fully paying attention.&amp;nbsp; Once it's done you
-should see something like:&lt;/p&gt;
+a bit less &amp;#8212; I wasn&amp;#8217;t fully paying attention.&amp;nbsp; Once it&amp;#8217;s done you
+should see something&amp;nbsp;like:&lt;/p&gt;
 &lt;pre class="literal-block"&gt;
 Processed 1 file, writing output:
 
@@ -661,37 +649,37 @@ make[2]: Leaving directory `/c/Users/clokep/instantbird/objdir-ib-release'
 make[1]: Leaving directory `/c/Users/clokep/instantbird/objdir-ib-release'
 &lt;/pre&gt;
 &lt;p&gt;Now, to test that the build actually worked we can browse to the
-compiled executable and run it:&lt;/p&gt;
+compiled executable and run&amp;nbsp;it:&lt;/p&gt;
 &lt;pre class="literal-block"&gt;
 cd objdir-ib-release/mozilla/dist/bin/instantbird.exe -P dev -no-remote
 &lt;/pre&gt;
 &lt;p&gt;The -P option specifies a profile name (dev), the second option
 (-no-remote) allows you to run a second Instantbird instance (since I
-assume you use Instantbird to IM...you probably want to be able to run a
-second one, if you don't use it...shame on you. Try not to close the
-wrong Instantbird when you're working on stuff).&lt;/p&gt;
+assume you use Instantbird to &lt;span class="caps"&gt;IM&lt;/span&gt;&amp;#8230;you probably want to be able to run a
+second one, if you don&amp;#8217;t use it&amp;#8230;shame on you. Try not to close the
+wrong Instantbird when you&amp;#8217;re working on&amp;nbsp;stuff).&lt;/p&gt;
 &lt;p&gt;Hopefully this will help someone else get started on hacking
-Instantbird.&amp;nbsp; There's other good ways you can hack too if your computer
-can't handle compiling, including unpacking omni.jar.&lt;/p&gt;
-&lt;p&gt;One last tidbit is to possibly add the option to your .mozconfig:&lt;/p&gt;
+Instantbird.&amp;nbsp; There&amp;#8217;s other good ways you can hack too if your computer
+can&amp;#8217;t handle compiling, including unpacking&amp;nbsp;omni.jar.&lt;/p&gt;
+&lt;p&gt;One last tidbit is to possibly add the option to your&amp;nbsp;.mozconfig:&lt;/p&gt;
 &lt;pre class="literal-block"&gt;
 --enable-chrome-format=flat
 &lt;/pre&gt;
 &lt;p&gt;This will not package anything in JARs (which pretty much just get in
-the way while developing).&amp;nbsp; See&amp;nbsp;&lt;a class="reference external" href="https://developer.mozilla.org/en/JAR_Packaging"&gt;here&lt;/a&gt; for more info.&lt;/p&gt;
+the way while developing).&amp;nbsp; See&amp;nbsp;&lt;a class="reference external" href="https://developer.mozilla.org/en/JAR_Packaging"&gt;here&lt;/a&gt; for more&amp;nbsp;info.&lt;/p&gt;
 &lt;p&gt;Edit: Fixed the path to the executable thanks to Florian. And fixed a
-spelling error in the title.&lt;/p&gt;
+spelling error in the&amp;nbsp;title.&lt;/p&gt;
 &lt;/div&gt;
-</summary><category term="Instantbird"></category><category term="Mozilla"></category><category term="programming"></category></entry><entry><title>Status Update - January 18, 2011</title><link href="http://patrick.cloke.us/status-update-january-18-2011.html" rel="alternate"></link><updated>2011-01-19T03:17:00-05:00</updated><author><name>Patrick Cloke</name></author><id>tag:patrick.cloke.us,2011-01-19:status-update-january-18-2011.html</id><summary type="html">&lt;p&gt;I haven't had an update in a few weeks (since early December)
-actually, so I thought I would post a bit about what I've worked on.
-I've fixed a bunch of bugs in the backend of Instantbird that allow work
-on JavaScript IRC protocol to continue:&lt;/p&gt;
+</summary><category term="Instantbird"></category><category term="Mozilla"></category><category term="programming"></category></entry><entry><title>Status Update - January 18, 2011</title><link href="http://patrick.cloke.us/posts/2011/Jan/19/status-update-january-18-2011/" rel="alternate"></link><updated>2011-01-19T03:17:00-05:00</updated><author><name>Patrick Cloke</name></author><id>tag:patrick.cloke.us,2011-01-19:posts/2011/Jan/19/status-update-january-18-2011/</id><summary type="html">&lt;p&gt;I haven&amp;#8217;t had an update in a few weeks (since early December)
+actually, so I thought I would post a bit about what I&amp;#8217;ve worked on.
+I&amp;#8217;ve fixed a bunch of bugs in the backend of Instantbird that allow work
+on JavaScript &lt;span class="caps"&gt;IRC&lt;/span&gt; protocol to&amp;nbsp;continue:&lt;/p&gt;
 &lt;ul class="simple"&gt;
 &lt;li&gt;&lt;a class="reference external" href="https://bugzilla.instantbird.org/show_bug.cgi?id=519"&gt;Bug 519&lt;/a&gt; - Extend jsProtoHelper to implement purpleIConvChat
 (&lt;a class="reference external" href="http://hg.instantbird.org/instantbird/rev/0166084ce2ae"&gt;check-in&lt;/a&gt;)&lt;/li&gt;
 &lt;li&gt;&lt;a class="reference external" href="https://bugzilla.instantbird.org/show_bug.cgi?id=495"&gt;Bug 495&lt;/a&gt; - purpleIAccount cannot access preferences via JavaScript
 protocol (&lt;a class="reference external" href="http://hg.instantbird.org/instantbird/rev/a188a5cc3ff1"&gt;check-in&lt;/a&gt;)&lt;/li&gt;
-&lt;li&gt;&lt;a class="reference external" href="https://bugzilla.instantbird.org/show_bug.cgi?id=648"&gt;Bug 648&lt;/a&gt; -Provide a default JS implementation of
+&lt;li&gt;&lt;a class="reference external" href="https://bugzilla.instantbird.org/show_bug.cgi?id=648"&gt;Bug 648&lt;/a&gt; -Provide a default &lt;span class="caps"&gt;JS&lt;/span&gt; implementation of
 purpleIChatRoomField
 (&lt;a class="reference external" href="http://hg.instantbird.org/instantbird/rev/61fc80a569d3"&gt;check-in&lt;/a&gt;)&lt;/li&gt;
 &lt;li&gt;[Reviewed] &lt;a class="reference external" href="https://bugzilla.instantbird.org/show_bug.cgi?id=647"&gt;Bug 647&lt;/a&gt; - Username split for JavaScript protocols
@@ -700,338 +688,337 @@ purpleIChatRoomField
 all the objects implemented in jsProtoHelper
 (&lt;a class="reference external" href="http://hg.instantbird.org/instantbird/rev/035f7d8d7f78"&gt;check-in&lt;/a&gt;)&lt;/li&gt;
 &lt;/ul&gt;
-&lt;p&gt;Also a few other random bugs I've worked on:&lt;/p&gt;
+&lt;p&gt;Also a few other random bugs I&amp;#8217;ve worked&amp;nbsp;on:&lt;/p&gt;
 &lt;ul class="simple"&gt;
 &lt;li&gt;&lt;a class="reference external" href="https://bugzilla.instantbird.org/show_bug.cgi?id=625"&gt;Bug 625&lt;/a&gt; - Findbar broken on Windows in Conversation window
 (&lt;a class="reference external" href="http://hg.instantbird.org/instantbird/rev/2e8af77af2f2"&gt;check-in&lt;/a&gt;)&lt;/li&gt;
 &lt;li&gt;&lt;a class="reference external" href="https://bugzilla.instantbird.org/show_bug.cgi?id=629"&gt;Bug 629&lt;/a&gt; - Remove workaround for bug 503048
 (&lt;a class="reference external" href="http://hg.instantbird.org/instantbird/rev/ba4b9401791b"&gt;check-in&lt;/a&gt;)&lt;/li&gt;
-&lt;li&gt;&lt;a class="reference external" href="https://bugzilla.instantbird.org/show_bug.cgi?id=473"&gt;Bug 473&lt;/a&gt; - JS Logger line breaks don't play well on Windows
+&lt;li&gt;&lt;a class="reference external" href="https://bugzilla.instantbird.org/show_bug.cgi?id=473"&gt;Bug 473&lt;/a&gt; - &lt;span class="caps"&gt;JS&lt;/span&gt; Logger line breaks don&amp;#8217;t play well on Windows
 &lt;a class="reference external" href="http://hg.instantbird.org/instantbird/rev/6a600b8a32c9"&gt;(check-in&lt;/a&gt;)&lt;/li&gt;
 &lt;li&gt;&lt;a class="reference external" href="https://bugzilla.instantbird.org/show_bug.cgi?id=593"&gt;Bug 593&lt;/a&gt; - JavaScript component does not have a method named:
 &amp;quot;onBeforeLinkTraversal&amp;quot;
 (&lt;a class="reference external" href="http://hg.instantbird.org/instantbird/rev/1b75f9fa4859"&gt;check-in&lt;/a&gt;)&lt;/li&gt;
 &lt;/ul&gt;
-&lt;p&gt;Although none of these are really things that weren't working a few
+&lt;p&gt;Although none of these are really things that weren&amp;#8217;t working a few
 weeks ago, there are now real APIs for these for JavaScript protocols,
-allowing other protocols to use them and to &lt;em&gt;FULLY&lt;/em&gt; implement them
+allowing other protocols to use them and to &lt;em&gt;&lt;span class="caps"&gt;FULLY&lt;/span&gt;&lt;/em&gt; implement them
 instead of hard coding values.&amp;nbsp; In addition, a lot of the purplexpcom
-layer is now hidden from JavaScript protocols.&lt;/p&gt;
-&lt;p&gt;There's a few things left to do for the JavaScript protocol layer:&lt;/p&gt;
+layer is now hidden from JavaScript&amp;nbsp;protocols.&lt;/p&gt;
+&lt;p&gt;There&amp;#8217;s a few things left to do for the JavaScript protocol&amp;nbsp;layer:&lt;/p&gt;
 &lt;ul class="simple"&gt;
-&lt;li&gt;&lt;a class="reference external" href="https://bugzilla.instantbird.org/show_bug.cgi?id=118"&gt;Bug 118&lt;/a&gt; - Extensions should be able to register commands.&lt;/li&gt;
+&lt;li&gt;&lt;a class="reference external" href="https://bugzilla.instantbird.org/show_bug.cgi?id=118"&gt;Bug 118&lt;/a&gt; - Extensions should be able to register&amp;nbsp;commands.&lt;/li&gt;
 &lt;li&gt;&lt;a class="reference external" href="https://bugzilla.instantbird.org/show_bug.cgi?id=650"&gt;Bug 650&lt;/a&gt; - JavaScript accounts must be notified of status changes
 (a sketchy patch that exists that will work, but a better patch to
-core should be done)&lt;/li&gt;
+core should be&amp;nbsp;done)&lt;/li&gt;
 &lt;li&gt;&lt;a class="reference external" href="https://bugzilla.instantbird.org/show_bug.cgi?id=623"&gt;Bug 623&lt;/a&gt; - Auto-Join option field is hard coded for certain
-protocols (not &lt;em&gt;really&lt;/em&gt; necessary, since it's still IRC, but it
-should be fixed)&lt;/li&gt;
+protocols (not &lt;em&gt;really&lt;/em&gt; necessary, since it&amp;#8217;s still &lt;span class="caps"&gt;IRC&lt;/span&gt;, but it
+should be&amp;nbsp;fixed)&lt;/li&gt;
 &lt;li&gt;&lt;a class="reference external" href="https://bugzilla.instantbird.org/show_bug.cgi?id=649"&gt;Bug 649&lt;/a&gt; - Proxy should be available to JavaScript protocols
-(hopefully being handled by Florian)&lt;/li&gt;
+(hopefully being handled by&amp;nbsp;Florian)&lt;/li&gt;
 &lt;/ul&gt;
 &lt;p&gt;A good summary of this is &lt;a class="reference external" href="https://bugzilla.instantbird.org/showdependencygraph.cgi?id=507&amp;amp;display=web&amp;amp;rankdir=LR"&gt;the dependency graph of bug 507&lt;/a&gt;
-(Implement IRC in JavaScript).&amp;nbsp; Note that the IRC JavaScript work blocks
-&lt;em&gt;a&amp;nbsp; lot&lt;/em&gt; of UI work done for IRC.&amp;nbsp; In particular Mook has been working
+(Implement &lt;span class="caps"&gt;IRC&lt;/span&gt; in JavaScript).&amp;nbsp; Note that the &lt;span class="caps"&gt;IRC&lt;/span&gt; JavaScript work blocks
+&lt;em&gt;a&amp;nbsp; lot&lt;/em&gt; of &lt;span class="caps"&gt;UI&lt;/span&gt; work done for &lt;span class="caps"&gt;IRC&lt;/span&gt;.&amp;nbsp; In particular Mook has been working
 on implementing notifications (i.e. Invites, and perhaps a few other
-commands), see &lt;a class="reference external" href="https://bugzilla.instantbird.org/show_bug.cgi?id=628"&gt;Bug 628&lt;/a&gt;.&amp;nbsp; For other bugs, see the link above -- and if
-there's a strange UI feature that you think should be added, please file
-a bug and let us know about it!&lt;/p&gt;
-&lt;p&gt;I've also worked a bit on sending outgoing text with rich formatting
+commands), see &lt;a class="reference external" href="https://bugzilla.instantbird.org/show_bug.cgi?id=628"&gt;Bug 628&lt;/a&gt;.&amp;nbsp; For other bugs, see the link above &amp;#8212; and if
+there&amp;#8217;s a strange &lt;span class="caps"&gt;UI&lt;/span&gt; feature that you think should be added, please file
+a bug and let us know about&amp;nbsp;it!&lt;/p&gt;
+&lt;p&gt;I&amp;#8217;ve also worked a bit on sending outgoing text with rich formatting
 (bold, italics, underline, text size, etc.), this work is being tracked
-in &lt;a class="reference external" href="https://bugzilla.instantbird.org/show_bug.cgi?id=634"&gt;Bug 634&lt;/a&gt;. There's a proof on concept, but a lot of work needs to be
-done for it, but it's sort of working right now.&lt;/p&gt;
+in &lt;a class="reference external" href="https://bugzilla.instantbird.org/show_bug.cgi?id=634"&gt;Bug 634&lt;/a&gt;. There&amp;#8217;s a proof on concept, but a lot of work needs to be
+done for it, but it&amp;#8217;s sort of working right&amp;nbsp;now.&lt;/p&gt;
 &lt;p&gt;As I alluded to in my last blog post, the JavaScript protocols would
 be used to implement Twitter. Work for this is occurring in &lt;a class="reference external" href="https://bugzilla.instantbird.org/show_bug.cgi?id=598"&gt;Bug 598&lt;/a&gt;,
-where Florian has implemented (very) basic Twitter support.&lt;/p&gt;
-&lt;p&gt;My plans for the next bit:&lt;/p&gt;
+where Florian has implemented (very) basic Twitter&amp;nbsp;support.&lt;/p&gt;
+&lt;p&gt;My plans for the next&amp;nbsp;bit:&lt;/p&gt;
 &lt;ul class="simple"&gt;
-&lt;li&gt;I'm hoping to finish up some of the work blocking JavaScript
-protocols so IRC can be put into a state that needs alpha/beta
-testers (if you're interested in testing/hacking please drop me a
-line here, on IRC or via email).&lt;/li&gt;
-&lt;li&gt;Move into my new apartment&lt;/li&gt;
-&lt;li&gt;Start my new job&lt;/li&gt;
-&lt;li&gt;Work on richtext messages a bit more&lt;/li&gt;
+&lt;li&gt;I&amp;#8217;m hoping to finish up some of the work blocking JavaScript
+protocols so &lt;span class="caps"&gt;IRC&lt;/span&gt; can be put into a state that needs alpha/beta
+testers (if you&amp;#8217;re interested in testing/hacking please drop me a
+line here, on &lt;span class="caps"&gt;IRC&lt;/span&gt; or via&amp;nbsp;email).&lt;/li&gt;
+&lt;li&gt;Move into my new&amp;nbsp;apartment&lt;/li&gt;
+&lt;li&gt;Start my new&amp;nbsp;job&lt;/li&gt;
+&lt;li&gt;Work on richtext messages a bit&amp;nbsp;more&lt;/li&gt;
 &lt;/ul&gt;
-</summary><category term="Instantbird"></category><category term="IRC"></category><category term="Mozilla"></category><category term="programming"></category></entry><entry><title>Why Rewrite IRC into JavaScript? (vs. libpurple's vs. ChatZilla's)</title><link href="http://patrick.cloke.us/why-rewrite-irc-into-javascript-vs-libpurples-vs-chatzillas.html" rel="alternate"></link><updated>2010-12-08T18:29:00-05:00</updated><author><name>Patrick Cloke</name></author><id>tag:patrick.cloke.us,2010-12-08:why-rewrite-irc-into-javascript-vs-libpurples-vs-chatzillas.html</id><summary type="html">&lt;p&gt;I had a request on IRC (from Mic) to write an in-depth blog post
-about &lt;a class="reference external" href="https://bugzilla.instantbird.org/show_bug.cgi?id=507"&gt;IRC in JavaScript&lt;/a&gt;:&lt;/p&gt;
+</summary><category term="Instantbird"></category><category term="IRC"></category><category term="Mozilla"></category><category term="programming"></category></entry><entry><title>Why Rewrite IRC into JavaScript? (vs. libpurple’s vs. ChatZilla’s)</title><link href="http://patrick.cloke.us/posts/2010/Dec/08/why-rewrite-irc-into-javascript-vs-libpurples-vs-chatzillas/" rel="alternate"></link><updated>2010-12-08T18:29:00-05:00</updated><author><name>Patrick Cloke</name></author><id>tag:patrick.cloke.us,2010-12-08:posts/2010/Dec/08/why-rewrite-irc-into-javascript-vs-libpurples-vs-chatzillas/</id><summary type="html">&lt;p&gt;I had a request on &lt;span class="caps"&gt;IRC&lt;/span&gt; (from Mic) to write an in-depth blog post
+about &lt;a class="reference external" href="https://bugzilla.instantbird.org/show_bug.cgi?id=507"&gt;&lt;span class="caps"&gt;IRC&lt;/span&gt; in JavaScript&lt;/a&gt;:&lt;/p&gt;
 &lt;blockquote&gt;
-&amp;quot;Maybe we could ask clokep if he'd like to write something about
-js-irc? Why it is done, what the advantages are once it's done, how
+&amp;quot;Maybe we could ask clokep if he&amp;#8217;d like to write something about
+js-irc? Why it is done, what the advantages are once it&amp;#8217;s done, how
 he is working on it (going through the specs), putting the
-jsProtocol code to test and adding missing pieces?&amp;quot; -- &lt;a class="reference external" href="http://log.bezut.info/instantbird/101208/#m54"&gt;Mic&lt;/a&gt;&lt;/blockquote&gt;
+jsProtocol code to test and adding missing pieces?&amp;quot; &amp;#8212; &lt;a class="reference external" href="http://log.bezut.info/instantbird/101208/#m54"&gt;Mic&lt;/a&gt;&lt;/blockquote&gt;
 &lt;div class="section" id="wait-a-second-what-is-irc"&gt;
-&lt;h2&gt;Wait a second, what is IRC?&lt;/h2&gt;
-&lt;p&gt;I guess this is a good first question, I'll steal from &lt;a class="reference external" href="http://en.wikipedia.org/wiki/IRC"&gt;Wikipedia&lt;/a&gt;:&lt;/p&gt;
+&lt;h2&gt;Wait a second, what is &lt;span class="caps"&gt;IRC&lt;/span&gt;?&lt;/h2&gt;
+&lt;p&gt;I guess this is a good first question, I&amp;#8217;ll steal from &lt;a class="reference external" href="http://en.wikipedia.org/wiki/IRC"&gt;Wikipedia&lt;/a&gt;:&lt;/p&gt;
 &lt;blockquote&gt;
-Internet Relay Chat (IRC) is a form of real-time [...] chat [...] It
-is mainly designed for group communication [...] but also allows
-[...for...] private message as well as chat and data transfers.&lt;/blockquote&gt;
-&lt;p&gt;Awesome, what's that really mean?&amp;nbsp; It's an instant messaging protocol
-with an actual specification (i.e. it's not owned by some large, unnamed
-company), with open-source libraries for clients and servers.&amp;nbsp; It's
+Internet Relay Chat (&lt;span class="caps"&gt;IRC&lt;/span&gt;) is a form of real-time [&amp;#8230;] chat [&amp;#8230;] It
+is mainly designed for group communication [&amp;#8230;] but also allows
+[&amp;#8230;for&amp;#8230;] private message as well as chat and data transfers.&lt;/blockquote&gt;
+&lt;p&gt;Awesome, what&amp;#8217;s that really mean?&amp;nbsp; It&amp;#8217;s an instant messaging protocol
+with an actual specification (i.e. it&amp;#8217;s not owned by some large, unnamed
+company), with open-source libraries for clients and servers.&amp;nbsp; It&amp;#8217;s
 usually used by more computer-oriented types of people and centers
 around group conversation.&amp;nbsp; Personally most of what I use it for is
-open-source software I use (I'm almost always in &lt;a class="reference external" href="irc://irc.mozilla.org/#instantbird"&gt;#instantbird&lt;/a&gt;,
-&lt;a class="reference external" href="irc://irc.mozilla.org/#maildev"&gt;#maildev&lt;/a&gt;, and &lt;a class="reference external" href="irc://irc.mozilla.org/#songbird"&gt;#songbird&lt;/a&gt; on &lt;a class="reference external" href="http://irc.mozilla.org/"&gt;Mozilla's IRC servers&lt;/a&gt;.)&lt;/p&gt;
+open-source software I use (I&amp;#8217;m almost always in &lt;a class="reference external" href="irc://irc.mozilla.org/#instantbird"&gt;#instantbird&lt;/a&gt;,
+&lt;a class="reference external" href="irc://irc.mozilla.org/#maildev"&gt;#maildev&lt;/a&gt;, and &lt;a class="reference external" href="irc://irc.mozilla.org/#songbird"&gt;#songbird&lt;/a&gt; on &lt;a class="reference external" href="http://irc.mozilla.org/"&gt;Mozilla&amp;#8217;s &lt;span class="caps"&gt;IRC&lt;/span&gt; servers&lt;/a&gt;.)&lt;/p&gt;
 &lt;/div&gt;
 &lt;div class="section" id="why-it-is-done-what-advantages-are-there-once-this-is-done"&gt;
-&lt;h2&gt;Why it is done?&amp;nbsp; What advantages are there once this is done?&lt;/h2&gt;
-&lt;p&gt;I touched upon this a little in my &lt;a class="reference external" href="http://patrick.cloke.us/javascript-irc-in-instantbird.html"&gt;last post&lt;/a&gt;.&amp;nbsp; In terms of
-Instantbird: there's an idea of switching some / all of the protocols
+&lt;h2&gt;Why it is done?&amp;nbsp; What advantages are there once this is&amp;nbsp;done?&lt;/h2&gt;
+&lt;p&gt;I touched upon this a little in my &lt;a class="reference external" href="http://patrick.cloke.us/posts/2010/Dec/04/javascript-irc-in-instantbird/"&gt;last post&lt;/a&gt;.&amp;nbsp; In terms of
+Instantbird: there&amp;#8217;s an idea of switching some / all of the protocols
 (eventually) to be JavaScript protocols instead of the libpurple
 versions (libpurple is written mostly in C and is cross-platform, but
 recent gains in speed in JavaScript allow this advantage of libpurple to
 not matter as much).&amp;nbsp; This would unfortunately mean we need to maintain
 a lot more code, but it would allow us to integrate protocols in any way
 that we see fit, instead of only using APIs / methods provided by
-libpurple.&amp;nbsp; Hopefully this would allow us to &lt;a class="reference external" href="https://bugzilla.instantbird.org/showdependencytree.cgi?id=507&amp;amp;maxdepth=2&amp;amp;hide_resolved=1"&gt;enhance our IRC
-implementation&lt;/a&gt; a bit.&lt;/p&gt;
+libpurple.&amp;nbsp; Hopefully this would allow us to &lt;a class="reference external" href="https://bugzilla.instantbird.org/showdependencytree.cgi?id=507&amp;amp;maxdepth=2&amp;amp;hide_resolved=1"&gt;enhance our &lt;span class="caps"&gt;IRC&lt;/span&gt;
+implementation&lt;/a&gt; a&amp;nbsp;bit.&lt;/p&gt;
 &lt;p&gt;Also, Instantbird (nightlies) currently have limited support for
 generating a protocol plug-in in JavaScript.&amp;nbsp; A couple of &amp;quot;test&amp;quot;
 protocols have be done, but nothing in &amp;quot;real&amp;quot; (in particular, none that
 used a multi-user chat).&amp;nbsp; This would allow us to iron out &lt;a class="reference external" href="https://bugzilla.instantbird.org/show_bug.cgi?id=519"&gt;some&lt;/a&gt;
-&lt;a class="reference external" href="https://bugzilla.instantbird.org/show_bug.cgi?id=118"&gt;bugs&lt;/a&gt; in the implementation of JavaScript protocols.&lt;/p&gt;
-&lt;p&gt;&lt;em&gt;[Edit: Florian suggested another question that wasn't originally
-covered, which some people more familiar with Mozilla code might be
-wondering.]&lt;/em&gt;&lt;/p&gt;
+&lt;a class="reference external" href="https://bugzilla.instantbird.org/show_bug.cgi?id=118"&gt;bugs&lt;/a&gt; in the implementation of JavaScript&amp;nbsp;protocols.&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;[Edit: Florian suggested another question that wasn&amp;#8217;t originally
+covered, which some people more familiar with Mozilla code might be&amp;nbsp;wondering.]&lt;/em&gt;&lt;/p&gt;
 &lt;/div&gt;
 &lt;div class="section" id="why-aren-t-you-using-the-code-from-chatzilla"&gt;
-&lt;h2&gt;Why aren't you using the code from ChatZilla?&lt;/h2&gt;
+&lt;h2&gt;Why aren&amp;#8217;t you using the code from&amp;nbsp;ChatZilla?&lt;/h2&gt;
 &lt;p&gt;This was a tough one.&amp;nbsp; Honestly when I first wanted a parsing
 algorithm, I looked at the ChatZilla code, I used it.&amp;nbsp; Then rewrote it
 in a fourth as many lines (&lt;a class="reference external" href="http://hg.mozilla.org/chatzilla/file/tip/js/lib/irc.js#l1250"&gt;93&lt;/a&gt; vs. &lt;a class="reference external" href="https://hg.instantbird.org/experiments/file/IRC-JavaScript/components/ircProtocol.js#l208"&gt;20&lt;/a&gt;).&amp;nbsp; Simply said, the code in
-ChatZilla is &lt;em&gt;old&lt;/em&gt;, it doesn't use many of the features available only
+ChatZilla is &lt;em&gt;old&lt;/em&gt;, it doesn&amp;#8217;t use many of the features available only
 in newer versions of JavaScript.&amp;nbsp; To that point, the ChatZilla code
-hasn't been updated in over a year!&amp;nbsp; The last check-in was: 2009-10-03,
-below is a &lt;a class="reference external" href="http://hg.mozilla.org/chatzilla/log/tip/js/lib/irc.js"&gt;quick summary&lt;/a&gt; of the number of check-ins per year:&lt;/p&gt;
+hasn&amp;#8217;t been updated in over a year!&amp;nbsp; The last check-in was: 2009-10-03,
+below is a &lt;a class="reference external" href="http://hg.mozilla.org/chatzilla/log/tip/js/lib/irc.js"&gt;quick summary&lt;/a&gt; of the number of check-ins per&amp;nbsp;year:&lt;/p&gt;
 &lt;ul class="simple"&gt;
-&lt;li&gt;2010: 0&lt;/li&gt;
-&lt;li&gt;2009: 5&lt;/li&gt;
-&lt;li&gt;2008: 15&lt;/li&gt;
-&lt;li&gt;2007: 11&lt;/li&gt;
-&lt;li&gt;2006: 18&lt;/li&gt;
+&lt;li&gt;2010:&amp;nbsp;0&lt;/li&gt;
+&lt;li&gt;2009:&amp;nbsp;5&lt;/li&gt;
+&lt;li&gt;2008:&amp;nbsp;15&lt;/li&gt;
+&lt;li&gt;2007:&amp;nbsp;11&lt;/li&gt;
+&lt;li&gt;2006:&amp;nbsp;18&lt;/li&gt;
 &lt;/ul&gt;
-&lt;p&gt;There's been a pretty steady decline in check-ins.&amp;nbsp; I could take this
+&lt;p&gt;There&amp;#8217;s been a pretty steady decline in check-ins.&amp;nbsp; I could take this
 code and attempt to whip it into shape and make huge sweeping changes
 and commit them back to ChatZilla, but honestly it was easier to start
-over for me.&amp;nbsp; Regardless of ease, I'm not sure it would work any:
+over for me.&amp;nbsp; Regardless of ease, I&amp;#8217;m not sure it would work any:
 especially since the ChatZilla code seems overly complicated and overly
-specific (since it wasn't really built as a library as far as I can
-see), especially since all the code is meant to deal only with IRC.&amp;nbsp; The
+specific (since it wasn&amp;#8217;t really built as a library as far as I can
+see), especially since all the code is meant to deal only with &lt;span class="caps"&gt;IRC&lt;/span&gt;.&amp;nbsp; The
 Instantbird code needs to be protocol agnostic to a degree, while is why
-it interfaces to purplexpcom.&lt;/p&gt;
+it interfaces to&amp;nbsp;purplexpcom.&lt;/p&gt;
 &lt;p&gt;A quick example of this is: ChatZilla uses a CIRCUser object, but for
 Instantbird I need to create either an imIContact or a
-purpleIAccountBuddy (depending on the situation).&amp;nbsp; It's possible that's
-can be abstracted and code shared -- but I'm not sure it would be worth
+purpleIAccountBuddy (depending on the situation).&amp;nbsp; It&amp;#8217;s possible that&amp;#8217;s
+can be abstracted and code shared &amp;#8212; but I&amp;#8217;m not sure it would be worth
 the effort.&amp;nbsp; After all this, I should probably look more into the
-ChatZilla code, perhaps more of it could be used.&lt;/p&gt;
-&lt;p&gt;(If someone familiar with the ChatZilla code base -- I don't know
-who/if there's a maintainer -- is interested in talking with me, please
-get in contact here or on #instantbird.&amp;nbsp; It's possible we could align
-some of what I've been working on, but I'm not sure how much could be
-shared besides the parsing algorithm).&lt;/p&gt;
-&lt;p&gt;&lt;em&gt;[End edit]&lt;/em&gt;&lt;/p&gt;
+ChatZilla code, perhaps more of it could be&amp;nbsp;used.&lt;/p&gt;
+&lt;p&gt;(If someone familiar with the ChatZilla code base &amp;#8212; I don&amp;#8217;t know
+who/if there&amp;#8217;s a maintainer &amp;#8212; is interested in talking with me, please
+get in contact here or on #instantbird.&amp;nbsp; It&amp;#8217;s possible we could align
+some of what I&amp;#8217;ve been working on, but I&amp;#8217;m not sure how much could be
+shared besides the parsing&amp;nbsp;algorithm).&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;[End&amp;nbsp;edit]&lt;/em&gt;&lt;/p&gt;
 &lt;/div&gt;
 &lt;div class="section" id="what-are-the-specific-advantages-for-an-end-user"&gt;
-&lt;h2&gt;What are the specific advantages for an end-user?&lt;/h2&gt;
-&lt;p&gt;In terms of the IRC protocol itself, there shouldn't be any, my goal
+&lt;h2&gt;What are the specific advantages for an&amp;nbsp;end-user?&lt;/h2&gt;
+&lt;p&gt;In terms of the &lt;span class="caps"&gt;IRC&lt;/span&gt; protocol itself, there shouldn&amp;#8217;t be any, my goal
 is for it to be a drop in replacement for the libpurple implementation
 with automatic account migration, etc. For end-users we can hopefully
-solve &lt;a class="reference external" href="https://bugzilla.instantbird.org/showdependencytree.cgi?id=574&amp;amp;maxdepth=1&amp;amp;hide_resolved=1"&gt;a few annoying IRC UI issues&lt;/a&gt;.&lt;/p&gt;
+solve &lt;a class="reference external" href="https://bugzilla.instantbird.org/showdependencytree.cgi?id=574&amp;amp;maxdepth=1&amp;amp;hide_resolved=1"&gt;a few annoying &lt;span class="caps"&gt;IRC&lt;/span&gt; &lt;span class="caps"&gt;UI&lt;/span&gt; issues&lt;/a&gt;.&lt;/p&gt;
 &lt;/div&gt;
 &lt;div class="section" id="what-about-for-developers-anything-cool-there"&gt;
-&lt;h2&gt;What about for developers?&amp;nbsp; Anything cool there?&lt;/h2&gt;
-&lt;p&gt;Well, I'm hoping to be able to test this replacement via an extension
-that replaces the libpurple IRC to dogfood it before eventual inclusion
-in Instantbird.&amp;nbsp; I'm not sure if that counts as &amp;quot;cool.&amp;quot; though.&amp;nbsp; If
+&lt;h2&gt;What about for developers?&amp;nbsp; Anything cool&amp;nbsp;there?&lt;/h2&gt;
+&lt;p&gt;Well, I&amp;#8217;m hoping to be able to test this replacement via an extension
+that replaces the libpurple &lt;span class="caps"&gt;IRC&lt;/span&gt; to dogfood it before eventual inclusion
+in Instantbird.&amp;nbsp; I&amp;#8217;m not sure if that counts as &amp;quot;cool.&amp;quot; though.&amp;nbsp; If
 nothing else there will be an example of how to write a protocol in
 JavaScript (using sockets).&amp;nbsp; So hopefully other people can make some
 other cool protocols off of that example.&amp;nbsp; You might wonder what else we
 have planned for JavaScript protocols; there are plans to make at least
-a Twitter protocol.&lt;/p&gt;
+a Twitter&amp;nbsp;protocol.&lt;/p&gt;
 &lt;/div&gt;
 &lt;div class="section" id="how-is-this-being-done"&gt;
-&lt;h2&gt;How is this being done?&lt;/h2&gt;
-&lt;p&gt;Well I said up above IRC has a specification, right?&amp;nbsp; Well, yes.
-There's the &lt;a class="reference external" href="http://tools.ietf.org/html/rfc1459"&gt;original specification&lt;/a&gt;, this was superseded by &lt;a class="reference external" href="http://tools.ietf.org/html/rfc2810"&gt;four&lt;/a&gt;
+&lt;h2&gt;How is this being&amp;nbsp;done?&lt;/h2&gt;
+&lt;p&gt;Well I said up above &lt;span class="caps"&gt;IRC&lt;/span&gt; has a specification, right?&amp;nbsp; Well, yes.
+There&amp;#8217;s the &lt;a class="reference external" href="http://tools.ietf.org/html/rfc1459"&gt;original specification&lt;/a&gt;, this was superseded by &lt;a class="reference external" href="http://tools.ietf.org/html/rfc2810"&gt;four&lt;/a&gt;
 &lt;a class="reference external" href="http://tools.ietf.org/html/rfc2811"&gt;different&lt;/a&gt; &lt;a class="reference external" href="http://tools.ietf.org/html/rfc2812"&gt;specification&lt;/a&gt; &lt;a class="reference external" href="http://tools.ietf.org/html/rfc2813"&gt;documents&lt;/a&gt;.&amp;nbsp; Of which we only really
 care about one: &lt;a class="reference external" href="http://tools.ietf.org/html/rfc2812"&gt;the client protocol&lt;/a&gt;.&amp;nbsp; So we have this updated
-specification (try reading it, it's rather painful), which is good.
-It's relatively straightforward set of commands and responses/errors.
-It's a bit more confusing than that though since there are a couple of
-extensions, etc.&amp;nbsp; This is summarized below:&lt;/p&gt;
+specification (try reading it, it&amp;#8217;s rather painful), which is good.
+It&amp;#8217;s relatively straightforward set of commands and responses/errors.
+It&amp;#8217;s a bit more confusing than that though since there are a couple of
+extensions, etc.&amp;nbsp; This is summarized&amp;nbsp;below:&lt;/p&gt;
 &lt;ul class="simple"&gt;
-&lt;li&gt;[STRIKEOUT:RFC 1459]&lt;ul&gt;
-&lt;li&gt;Extended with &lt;a class="reference external" href="http://www.irchelp.org/irchelp/rfc/dccspec.html"&gt;[STRIKEOUT:DCC specification (&amp;quot;direct client-to-client&amp;quot;)]&lt;/a&gt;&lt;ul&gt;
-&lt;li&gt;Replaced with [STRIKEOUT:&lt;a class="reference external" href="http://www.irchelp.org/irchelp/rfc/dccspec.html"&gt;CTCP (&amp;quot;client-to-client protocol&amp;quot;)&lt;/a&gt;]&lt;ul&gt;
-&lt;li&gt;&lt;a class="reference external" href="http://www.invlogic.com/irc/ctcp.html"&gt;Draft for a formalized CTCP&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;[&lt;span class="caps"&gt;STRIKEOUT&lt;/span&gt;:&lt;span class="caps"&gt;RFC&lt;/span&gt; 1459]&lt;ul&gt;
+&lt;li&gt;Extended with &lt;a class="reference external" href="http://www.irchelp.org/irchelp/rfc/dccspec.html"&gt;[&lt;span class="caps"&gt;STRIKEOUT&lt;/span&gt;:&lt;span class="caps"&gt;DCC&lt;/span&gt; specification (&amp;quot;direct client-to-client&amp;quot;)]&lt;/a&gt;&lt;ul&gt;
+&lt;li&gt;Replaced with [&lt;span class="caps"&gt;STRIKEOUT&lt;/span&gt;:&lt;a class="reference external" href="http://www.irchelp.org/irchelp/rfc/dccspec.html"&gt;&lt;span class="caps"&gt;CTCP&lt;/span&gt; (&amp;quot;client-to-client protocol&amp;quot;)&lt;/a&gt;]&lt;ul&gt;
+&lt;li&gt;&lt;a class="reference external" href="http://www.invlogic.com/irc/ctcp.html"&gt;Draft for a formalized &lt;span class="caps"&gt;CTCP&lt;/span&gt;&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 &lt;/li&gt;
-&lt;li&gt;(Apparently some people are working on a &lt;a class="reference external" href="http://www.dcc2.org/"&gt;DCC2&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;(Apparently some people are working on a &lt;a class="reference external" href="http://www.dcc2.org/"&gt;&lt;span class="caps"&gt;DCC2&lt;/span&gt;&lt;/a&gt;)&lt;/li&gt;
 &lt;/ul&gt;
 &lt;/li&gt;
-&lt;li&gt;Officially replaced with RFCs 2810, 2811, 2812, 2813&lt;/li&gt;
+&lt;li&gt;Officially replaced with RFCs 2810, 2811, 2812,&amp;nbsp;2813&lt;/li&gt;
 &lt;/ul&gt;
 &lt;/li&gt;
 &lt;/ul&gt;
 &lt;p&gt;A lot of this is being done by reading the specifications and finding
-the proper responses, etc.&amp;nbsp; I've also used &lt;a class="reference external" href="http://www.wireshark.org/download.html"&gt;Wireshark&lt;/a&gt; a bit to see how
-libpurple sends IRC commands (in particular, in what order it sends them
-in).&amp;nbsp; A lot of my development is happening on live IRC servers, which
-isn't really best practice, but I'm mostly sending commands by hand to
+the proper responses, etc.&amp;nbsp; I&amp;#8217;ve also used &lt;a class="reference external" href="http://www.wireshark.org/download.html"&gt;Wireshark&lt;/a&gt; a bit to see how
+libpurple sends &lt;span class="caps"&gt;IRC&lt;/span&gt; commands (in particular, in what order it sends them
+in).&amp;nbsp; A lot of my development is happening on live &lt;span class="caps"&gt;IRC&lt;/span&gt; servers, which
+isn&amp;#8217;t really best practice, but I&amp;#8217;m mostly sending commands by hand to
 see the responses since a bunch of non-standard responses and extensions
 have developed beyond the above.&amp;nbsp; I have been using &lt;a class="reference external" href="http://ircd.bircd.org/"&gt;beware irc&lt;/a&gt; to run
-a daemon on my own machine, however.&lt;/p&gt;
+a daemon on my own machine,&amp;nbsp;however.&lt;/p&gt;
 &lt;/div&gt;
 &lt;div class="section" id="so-how-far-along-are-you"&gt;
-&lt;h2&gt;So how far along are you?&lt;/h2&gt;
-&lt;p&gt;I've started implementing RFC 2812 and have a variety of commands done
+&lt;h2&gt;So how far along are&amp;nbsp;you?&lt;/h2&gt;
+&lt;p&gt;I&amp;#8217;ve started implementing &lt;span class="caps"&gt;RFC&lt;/span&gt; 2812 and have a variety of commands done
 (the login sequence occurs automatically, the server connection is kept
 alive, messages can be sent to a channel and are parsed when received, a
 lot of the initial server information is displayed but unparsed).&amp;nbsp; But
-there's a lot more to do!&amp;nbsp; As my last post outlined, I recently was able
+there&amp;#8217;s a lot more to do!&amp;nbsp; As my last post outlined, I recently was able
 to successfully get a chat to work in Instantbird from a silly bug I had
-been having.&lt;/p&gt;
-&lt;p&gt;It's rather slow going since I'll start to implement something from
-the IRC side, and then realize the &lt;a class="reference external" href="http://hg.instantbird.org/instantbird/file/tip/purple/purplexpcom/src/jsProtoHelper.jsm"&gt;Instantbird layer&lt;/a&gt; (the jsProtocol
+been&amp;nbsp;having.&lt;/p&gt;
+&lt;p&gt;It&amp;#8217;s rather slow going since I&amp;#8217;ll start to implement something from
+the &lt;span class="caps"&gt;IRC&lt;/span&gt; side, and then realize the &lt;a class="reference external" href="http://hg.instantbird.org/instantbird/file/tip/purple/purplexpcom/src/jsProtoHelper.jsm"&gt;Instantbird layer&lt;/a&gt; (the jsProtocol
 module) is missing a component I need.&amp;nbsp; One of the major parts of
 working on this is extending the Instantbird layer to contain the proper
 functions and objects needed to implement chats via JavaScript.&amp;nbsp; This is
 usually the slowest going part of my code, since it involves interfacing
 with Instantbird / &lt;a class="reference external" href="http://hg.instantbird.org/instantbird/file/tip/purple/purplexpcom/public/"&gt;purplexpcom&lt;/a&gt;.&amp;nbsp; Luckily Florian, the main developer
 of Instantbird, has been a big help with this (as have other
-participants of #instantbird -- in particular I know Mic helped track
-down a few syntax type bugs).&lt;/p&gt;
+participants of #instantbird &amp;#8212; in particular I know Mic helped track
+down a few syntax type&amp;nbsp;bugs).&lt;/p&gt;
 &lt;/div&gt;
 &lt;div class="section" id="what-s-next"&gt;
-&lt;h2&gt;What's next?&lt;/h2&gt;
+&lt;h2&gt;What&amp;#8217;s&amp;nbsp;next?&lt;/h2&gt;
 &lt;p&gt;Now that have the basics of chat working, I need to start handling the
-QUIT, PART and JOIN commands for when other users enter &amp;amp; leave chat
+&lt;span class="caps"&gt;QUIT&lt;/span&gt;, &lt;span class="caps"&gt;PART&lt;/span&gt; and &lt;span class="caps"&gt;JOIN&lt;/span&gt; commands for when other users enter &lt;span class="amp"&gt;&amp;amp;&lt;/span&gt; leave chat
 rooms.&amp;nbsp; Once these are complete it should be quite usable, although the
-entire preference system still doesn't exist, including notifying the UI
+entire preference system still doesn&amp;#8217;t exist, including notifying the &lt;span class="caps"&gt;UI&lt;/span&gt;
 of what options are available.&amp;nbsp; In addition, I need to look into doing
-SSL sockets.&lt;/p&gt;
+&lt;span class="caps"&gt;SSL&lt;/span&gt;&amp;nbsp;sockets.&lt;/p&gt;
 &lt;p&gt;Once the protocol plug-in is done, we plan to abstract sections of it
 that will be useful for other protocols (in particular the socket
-connection aspects).&lt;/p&gt;
+connection&amp;nbsp;aspects).&lt;/p&gt;
 &lt;/div&gt;
 &lt;div class="section" id="where-can-i-see-this-stuff"&gt;
-&lt;h2&gt;Where can I see this stuff...?&lt;/h2&gt;
-&lt;p&gt;My work is kept in the &amp;quot;&lt;a class="reference external" href="https://hg.instantbird.org/experiments/file/IRC-JavaScript/"&gt;experiments&lt;/a&gt;&amp;quot; repository on Instantbird's
-&lt;a class="reference external" href="http://mercurial.selenic.com/"&gt;Mercurial&lt;/a&gt; repository.&amp;nbsp; There's also a variety of bugs open (they're
-listed above, I'm not going to re-list them), although not a ton is
-happening in them.&lt;/p&gt;
+&lt;h2&gt;Where can I see this&amp;nbsp;stuff&amp;#8230;?&lt;/h2&gt;
+&lt;p&gt;My work is kept in the &amp;quot;&lt;a class="reference external" href="https://hg.instantbird.org/experiments/file/IRC-JavaScript/"&gt;experiments&lt;/a&gt;&amp;quot; repository on Instantbird&amp;#8217;s
+&lt;a class="reference external" href="http://mercurial.selenic.com/"&gt;Mercurial&lt;/a&gt; repository.&amp;nbsp; There&amp;#8217;s also a variety of bugs open (they&amp;#8217;re
+listed above, I&amp;#8217;m not going to re-list them), although not a ton is
+happening in&amp;nbsp;them.&lt;/p&gt;
 &lt;/div&gt;
 &lt;div class="section" id="how-can-i-help"&gt;
-&lt;h2&gt;How can I help?!&lt;/h2&gt;
+&lt;h2&gt;How can I&amp;nbsp;help?!&lt;/h2&gt;
 &lt;p&gt;Well you can of course feel free to download the code and hack on it,
-let me know (via IRC or any of the bugs most likely) if you have a patch
-you'd like me to apply.&amp;nbsp; Or if you just found something that doesn't
-work you can feel free to let me know, although I probably just haven't
-gotten around to fixing it yet.&lt;/p&gt;
-&lt;p&gt;Also, if you've ever found something annoying / broken in the IRC
+let me know (via &lt;span class="caps"&gt;IRC&lt;/span&gt; or any of the bugs most likely) if you have a patch
+you&amp;#8217;d like me to apply.&amp;nbsp; Or if you just found something that doesn&amp;#8217;t
+work you can feel free to let me know, although I probably just haven&amp;#8217;t
+gotten around to fixing it&amp;nbsp;yet.&lt;/p&gt;
+&lt;p&gt;Also, if you&amp;#8217;ve ever found something annoying / broken in the &lt;span class="caps"&gt;IRC&lt;/span&gt;
 implementation in Instantbird / libpurple please let us know (through
-any of the above contact sources).&lt;/p&gt;
-&lt;p&gt;Hopefully that's a bit of a better explanation of why we're spending
-time to rewrite the IRC protocol implementation into JavaScript -- we
-definitely think it's worth it and can lead to a bunch of new unique
-protocol plug-ins for Instantbird.&lt;/p&gt;
+any of the above contact&amp;nbsp;sources).&lt;/p&gt;
+&lt;p&gt;Hopefully that&amp;#8217;s a bit of a better explanation of why we&amp;#8217;re spending
+time to rewrite the &lt;span class="caps"&gt;IRC&lt;/span&gt; protocol implementation into JavaScript &amp;#8212; we
+definitely think it&amp;#8217;s worth it and can lead to a bunch of new unique
+protocol plug-ins for&amp;nbsp;Instantbird.&lt;/p&gt;
 &lt;/div&gt;
-</summary><category term="Instantbird"></category><category term="IRC"></category><category term="Mozilla"></category><category term="programming"></category></entry><entry><title>JavaScript IRC in Instantbird</title><link href="http://patrick.cloke.us/javascript-irc-in-instantbird.html" rel="alternate"></link><updated>2010-12-04T21:24:00-05:00</updated><author><name>Patrick Cloke</name></author><id>tag:patrick.cloke.us,2010-12-04:javascript-irc-in-instantbird.html</id><summary type="html">&lt;p&gt;I've been working on rewriting the IRC plugin for &lt;a class="reference external" href="http://www.instantbird.com/"&gt;Instantbird&lt;/a&gt; since
-the summer (sometime in August, I can't seem to find the exact date --
-at least since Sept. 10th though).&lt;/p&gt;
-&lt;p&gt;Since &lt;a class="reference external" href="http://developer.pidgin.im/wiki/WhatIsLibpurple"&gt;libpurple&lt;/a&gt; (used in Pidgin, Adium, etc.) provides the IRC
+</summary><category term="Instantbird"></category><category term="IRC"></category><category term="Mozilla"></category><category term="programming"></category></entry><entry><title>JavaScript IRC in Instantbird</title><link href="http://patrick.cloke.us/posts/2010/Dec/04/javascript-irc-in-instantbird/" rel="alternate"></link><updated>2010-12-04T21:24:00-05:00</updated><author><name>Patrick Cloke</name></author><id>tag:patrick.cloke.us,2010-12-04:posts/2010/Dec/04/javascript-irc-in-instantbird/</id><summary type="html">&lt;p&gt;I&amp;#8217;ve been working on rewriting the &lt;span class="caps"&gt;IRC&lt;/span&gt; plugin for &lt;a class="reference external" href="http://www.instantbird.com/"&gt;Instantbird&lt;/a&gt; since
+the summer (sometime in August, I can&amp;#8217;t seem to find the exact date &amp;#8212;
+at least since Sept. 10th&amp;nbsp;though).&lt;/p&gt;
+&lt;p&gt;Since &lt;a class="reference external" href="http://developer.pidgin.im/wiki/WhatIsLibpurple"&gt;libpurple&lt;/a&gt; (used in Pidgin, Adium, etc.) provides the &lt;span class="caps"&gt;IRC&lt;/span&gt;
 protocol that we currently use, why do this?&amp;nbsp; One reason is to iron out
 (and find) some of the bugs left in implementing protocols in JavaScript
 and part of it is so I can learn to code better.&amp;nbsp; Unfortunately during
 this semester I was not able to get as much done as I had hoped and
-almost everything that had been done was finished in August/September&lt;/p&gt;
-&lt;p&gt;Some big milestones I've completed (with dates if I have them):&lt;/p&gt;
+almost everything that had been done was finished in&amp;nbsp;August/September&lt;/p&gt;
+&lt;p&gt;Some big milestones I&amp;#8217;ve completed (with dates if I have&amp;nbsp;them):&lt;/p&gt;
 &lt;ol class="arabic simple"&gt;
-&lt;li&gt;Connected to server via sockets in JavaScript&lt;/li&gt;
+&lt;li&gt;Connected to server via sockets in&amp;nbsp;JavaScript&lt;/li&gt;
 &lt;li&gt;Generate a conversation that works as a raw connection to the server
-(i.e. as if you had opened a telnet connection to the server)&lt;/li&gt;
-&lt;li&gt;Parsing messages and automatic ponging when the server pings&lt;/li&gt;
-&lt;li&gt;Joining a channel (2010/12/04, i.e. today!)&lt;/li&gt;
+(i.e. as if you had opened a telnet connection to the&amp;nbsp;server)&lt;/li&gt;
+&lt;li&gt;Parsing messages and automatic ponging when the server&amp;nbsp;pings&lt;/li&gt;
+&lt;li&gt;Joining a channel (2010/12/04, i.e.&amp;nbsp;today!)&lt;/li&gt;
 &lt;/ol&gt;
 &lt;p&gt;There had been a bunch of small bugs I had been having in getting this
 to work: one error, (which I found quickly) one of the other developers
 (&lt;a class="reference external" href="http://queze.net/"&gt;Florian&lt;/a&gt;) was able to help me out with, was that I was not initiating
 a &lt;strong&gt;new&lt;/strong&gt; object.&amp;nbsp; And after learning a bit above observers I was able
-to get the UI to respond.&amp;nbsp; I even threw in support for op/half-op/voice
-After today's work I was able to generate the following screenshot:&lt;/p&gt;
+to get the &lt;span class="caps"&gt;UI&lt;/span&gt; to respond.&amp;nbsp; I even threw in support for op/half-op/voice
+After today&amp;#8217;s work I was able to generate the following&amp;nbsp;screenshot:&lt;/p&gt;
 &lt;p&gt;&lt;a class="reference external" href="http://patrick.cloke.us/images/IRCworking2.png"&gt;&lt;img alt="IRCworking" src="http://patrick.cloke.us/images/IRCworking2.png" style="height: 297px;" /&gt;&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;This build would be almost fully usable by those who do very little on
-IRC (i.e. if you just want to go and chat, it'd work well), but there's
+&lt;span class="caps"&gt;IRC&lt;/span&gt; (i.e. if you just want to go and chat, it&amp;#8217;d work well), but there&amp;#8217;s
 a lot more work to be done.&amp;nbsp; The code can be viewed in the &lt;a class="reference external" href="https://hg.instantbird.org/experiments/file/IRC-JavaScript/"&gt;Experiments
-repository&lt;/a&gt;.&amp;nbsp; (Check it out, there's a 600+ line switch statement.)&lt;/p&gt;
-</summary><category term="Instantbird"></category><category term="IRC"></category><category term="Mozilla"></category><category term="programming"></category></entry><entry><title>Yahoo &amp; Thunderbird Can Finally Play Nice?</title><link href="http://patrick.cloke.us/yahoo-thunderbird-can-finally-play-nice.html" rel="alternate"></link><updated>2010-11-23T03:03:00-05:00</updated><author><name>Patrick Cloke</name></author><id>tag:patrick.cloke.us,2010-11-23:yahoo-thunderbird-can-finally-play-nice.html</id><summary type="html">&lt;p&gt;For years I've been dealing with Yahoo's lack of support for any sort
-of decent (free) POP3/IMAP/SMTP protocol support.&amp;nbsp; Why do I need this?
-So I can check my &lt;a class="reference external" href="http://mail.yahoo.com/"&gt;Yahoo mail&lt;/a&gt; in &lt;a class="reference external" href="http://www.mozillamessaging.com/en-US/thunderbird/"&gt;Mozilla Thunderbird&lt;/a&gt; of course!&lt;/p&gt;
-&lt;p&gt;At first I used &lt;a class="reference external" href="http://ypopsemail.com/"&gt;YPOPS!&lt;/a&gt;, a program that read the HTML pages provided
-by the Yahoo webmail client and served the emails on a local POP
+repository&lt;/a&gt;.&amp;nbsp; (Check it out, there&amp;#8217;s a 600+ line switch&amp;nbsp;statement.)&lt;/p&gt;
+</summary><category term="Instantbird"></category><category term="IRC"></category><category term="Mozilla"></category><category term="programming"></category></entry><entry><title>Yahoo &amp; Thunderbird Can Finally Play Nice?</title><link href="http://patrick.cloke.us/posts/2010/Nov/23/yahoo-thunderbird-can-finally-play-nice/" rel="alternate"></link><updated>2010-11-23T03:03:00-05:00</updated><author><name>Patrick Cloke</name></author><id>tag:patrick.cloke.us,2010-11-23:posts/2010/Nov/23/yahoo-thunderbird-can-finally-play-nice/</id><summary type="html">&lt;p&gt;For years I&amp;#8217;ve been dealing with Yahoo&amp;#8217;s lack of support for any sort
+of decent (free) &lt;span class="caps"&gt;POP3&lt;/span&gt;/&lt;span class="caps"&gt;IMAP&lt;/span&gt;/&lt;span class="caps"&gt;SMTP&lt;/span&gt; protocol support.&amp;nbsp; Why do I need this?
+So I can check my &lt;a class="reference external" href="http://mail.yahoo.com/"&gt;Yahoo mail&lt;/a&gt; in &lt;a class="reference external" href="http://www.mozillamessaging.com/en-US/thunderbird/"&gt;Mozilla Thunderbird&lt;/a&gt; of&amp;nbsp;course!&lt;/p&gt;
+&lt;p&gt;At first I used &lt;a class="reference external" href="http://ypopsemail.com/"&gt;&lt;span class="caps"&gt;YPOPS&lt;/span&gt;!&lt;/a&gt;, a program that read the &lt;span class="caps"&gt;HTML&lt;/span&gt; pages provided
+by the Yahoo webmail client and served the emails on a local &lt;span class="caps"&gt;POP&lt;/span&gt;
 server.&amp;nbsp; Cool, right?&amp;nbsp; Except it always broke whenever Yahoo changed
-their pages around.&lt;/p&gt;
+their pages&amp;nbsp;around.&lt;/p&gt;
 &lt;p&gt;After a bit I moved onto using the &lt;a class="reference external" href="http://www.blogger.com/"&gt;WebMail extension&lt;/a&gt; for
 Thunderbird.&amp;nbsp; It essentially works the same way, but runs in the
 Thunderbird process as an extension instead of as a separate service.
-It's a little complicated to set up and requires two extensions.&amp;nbsp; The
-general WebMail extension and a Yahoo specific one (there's also ones
-available for Hotmail, Gmail, Libero and AOL).&amp;nbsp; You might wonder why
-this exists for some services that have always had POP/IMAP access
+It&amp;#8217;s a little complicated to set up and requires two extensions.&amp;nbsp; The
+general WebMail extension and a Yahoo specific one (there&amp;#8217;s also ones
+available for Hotmail, Gmail, Libero and &lt;span class="caps"&gt;AOL&lt;/span&gt;).&amp;nbsp; You might wonder why
+this exists for some services that have always had &lt;span class="caps"&gt;POP&lt;/span&gt;/&lt;span class="caps"&gt;IMAP&lt;/span&gt; access
 (Gmail)?&amp;nbsp; I was too, apparently some people cannot check those ports
 because of firewall issues so this essentially allows them to check it
-via port 80, over an HTTP connection.&lt;/p&gt;
+via port 80, over an &lt;span class="caps"&gt;HTTP&lt;/span&gt;&amp;nbsp;connection.&lt;/p&gt;
 &lt;p&gt;A few months ago I came across &lt;a class="reference external" href="http://www.emaildiscussions.com/showthread.php?t=59575"&gt;post&lt;/a&gt; describing how a &lt;a class="reference external" href="http://en.wikipedia.org/w/index.php?title=Yahoo%21_Mail&amp;amp;oldid=396914770#Free_IMAP_and_SMTPs_access"&gt;simple
-(nonstandard) command&lt;/a&gt; could allow access to the Yahoo IMAP server, but
-it required &lt;a class="reference external" href="http://www.crasseux.com/linux/"&gt;patching the Thunderbird source&lt;/a&gt; -- not an option for me
-since I've been running nightlies of either Thunderbird 3.1 or 3.2/3.3
-for a while now. (I mean sure, I could do it...but WebMail extension was
+(nonstandard) command&lt;/a&gt; could allow access to the Yahoo &lt;span class="caps"&gt;IMAP&lt;/span&gt; server, but
+it required &lt;a class="reference external" href="http://www.crasseux.com/linux/"&gt;patching the Thunderbird source&lt;/a&gt; &amp;#8212; not an option for me
+since I&amp;#8217;ve been running nightlies of either Thunderbird 3.1 or 3.2/3.3
+for a while now. (I mean sure, I could do it&amp;#8230;but WebMail extension was
 working fine.)&amp;nbsp; There was &lt;a class="reference external" href="http://groups.google.com/group/mozilla.dev.apps.thunderbird/browse_thread/thread/546356554c73f8ca"&gt;some discussion&lt;/a&gt; about it and a &lt;a class="reference external" href="https://bugzilla.mozilla.org/show_bug.cgi?id=493064"&gt;bug&lt;/a&gt; was
-filed for Thunderbird.&lt;/p&gt;
-&lt;p&gt;So how did this lead to free IMAP support?&amp;nbsp; I noticed in the &lt;a class="reference external" href="https://wiki.mozilla.org/Thunderbird/StatusMeetings/2010-11-16#Web_Update"&gt;Weekly
+filed for&amp;nbsp;Thunderbird.&lt;/p&gt;
+&lt;p&gt;So how did this lead to free &lt;span class="caps"&gt;IMAP&lt;/span&gt; support?&amp;nbsp; I noticed in the &lt;a class="reference external" href="https://wiki.mozilla.org/Thunderbird/StatusMeetings/2010-11-16#Web_Update"&gt;Weekly
 Status Meeting Notes (2010-11-16)&lt;/a&gt; for Thunderbird a mention of &lt;a class="reference external" href="http://trunk.mozillamessaging.com/en-US/thunderbird/features/email_providers.html"&gt;Free
 Email Providers&lt;/a&gt; page.&amp;nbsp; Checking it out it said &amp;quot;Y! Mail is a free
 email service provided by Yahoo! It offers webmail supported by targeted
-advertising as well as IMAP access.&amp;quot;&amp;nbsp; Hmm...but I just said they don't
+advertising as well as &lt;span class="caps"&gt;IMAP&lt;/span&gt; access.&amp;quot;&amp;nbsp; Hmm&amp;#8230;but I just said they don&amp;#8217;t
 have support this for free! A quick Bing search brought up a &lt;a class="reference external" href="http://www.theanimail.com/imap_server_settings.html"&gt;page with
-IMAP server settings&lt;/a&gt;.&amp;nbsp; I figured I'd check if they work, and sure
-enough they did!&amp;nbsp; The settings are copied below:&lt;/p&gt;
+&lt;span class="caps"&gt;IMAP&lt;/span&gt; server settings&lt;/a&gt;.&amp;nbsp; I figured I&amp;#8217;d check if they work, and sure
+enough they did!&amp;nbsp; The settings are copied&amp;nbsp;below:&lt;/p&gt;
 &lt;blockquote&gt;
 &lt;table class="docutils field-list" frame="void" rules="none"&gt;
 &lt;col class="field-name" /&gt;
 &lt;col class="field-body" /&gt;
 &lt;tbody valign="top"&gt;
-&lt;tr class="field"&gt;&lt;th class="field-name"&gt;User name:&lt;/th&gt;&lt;td class="field-body"&gt;[STRIKEOUT:user&amp;#64;yahoo.com] user&lt;/td&gt;
+&lt;tr class="field"&gt;&lt;th class="field-name"&gt;User name:&lt;/th&gt;&lt;td class="field-body"&gt;[&lt;span class="caps"&gt;STRIKEOUT&lt;/span&gt;:user&amp;#64;yahoo.com] user&lt;/td&gt;
 &lt;/tr&gt;
-&lt;tr class="field"&gt;&lt;th class="field-name"&gt;IMAP server:&lt;/th&gt;&lt;td class="field-body"&gt;[STRIKEOUT:imap-ssl.mail.yahoo.com] imap.mail.yahoo.com&lt;/td&gt;
+&lt;tr class="field"&gt;&lt;th class="field-name"&gt;&lt;span class="caps"&gt;IMAP&lt;/span&gt; server:&lt;/th&gt;&lt;td class="field-body"&gt;[&lt;span class="caps"&gt;STRIKEOUT&lt;/span&gt;:imap-ssl.mail.yahoo.com] imap.mail.yahoo.com&lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr class="field"&gt;&lt;th class="field-name"&gt;Port:&lt;/th&gt;&lt;td class="field-body"&gt;993&lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr class="field"&gt;&lt;th class="field-name"&gt;Password:&lt;/th&gt;&lt;td class="field-body"&gt;Cleartext/Normal&lt;/td&gt;
 &lt;/tr&gt;
-&lt;tr class="field"&gt;&lt;th class="field-name"&gt;SSL:&lt;/th&gt;&lt;td class="field-body"&gt;yes&lt;/td&gt;
+&lt;tr class="field"&gt;&lt;th class="field-name"&gt;&lt;span class="caps"&gt;SSL&lt;/span&gt;:&lt;/th&gt;&lt;td class="field-body"&gt;yes&lt;/td&gt;
 &lt;/tr&gt;
-&lt;tr class="field"&gt;&lt;th class="field-name"&gt;SMTP server:&lt;/th&gt;&lt;td class="field-body"&gt;smtp.mail.yahoo.com&lt;/td&gt;
+&lt;tr class="field"&gt;&lt;th class="field-name"&gt;&lt;span class="caps"&gt;SMTP&lt;/span&gt; server:&lt;/th&gt;&lt;td class="field-body"&gt;smtp.mail.yahoo.com&lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr class="field"&gt;&lt;th class="field-name"&gt;Port:&lt;/th&gt;&lt;td class="field-body"&gt;465&lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr class="field"&gt;&lt;th class="field-name"&gt;Password:&lt;/th&gt;&lt;td class="field-body"&gt;Cleartext/Normal&lt;/td&gt;
 &lt;/tr&gt;
-&lt;tr class="field"&gt;&lt;th class="field-name"&gt;SSL:&lt;/th&gt;&lt;td class="field-body"&gt;yes&lt;/td&gt;
+&lt;tr class="field"&gt;&lt;th class="field-name"&gt;&lt;span class="caps"&gt;SSL&lt;/span&gt;:&lt;/th&gt;&lt;td class="field-body"&gt;yes&lt;/td&gt;
 &lt;/tr&gt;
 &lt;/tbody&gt;
 &lt;/table&gt;
 &lt;/blockquote&gt;
 &lt;p&gt;Awesome!&amp;nbsp; Anyway, I replied with this info in the aforementioned bug
-and &lt;a class="reference external" href="https://bugzilla.mozilla.org/attachment.cgi?id=492550&amp;amp;action=diff"&gt;a patch&lt;/a&gt; was quickly added by Mozilla's &lt;a class="reference external" href="http://www.bucksch.org/1/projects/mozilla/"&gt;Ben Bucksch&lt;/a&gt; to support
-this in Thunderbird, hopefully it'll make it into the next version!&amp;nbsp; It
+and &lt;a class="reference external" href="https://bugzilla.mozilla.org/attachment.cgi?id=492550&amp;amp;action=diff"&gt;a patch&lt;/a&gt; was quickly added by Mozilla&amp;#8217;s &lt;a class="reference external" href="http://www.bucksch.org/1/projects/mozilla/"&gt;Ben Bucksch&lt;/a&gt; to support
+this in Thunderbird, hopefully it&amp;#8217;ll make it into the next version!&amp;nbsp; It
 was also brought to my attention that imap-ssl.mail.yahoo.com provides
-an SSL certificate that is valid for imap.mail.yahoo.com only, I'd
-suggest using that former.&lt;/p&gt;
-&lt;p&gt;Note that I'm currently suffering from &lt;a class="reference external" href="https://bugzilla.mozilla.org/show_bug.cgi?id=610264"&gt;another bug&lt;/a&gt; while using
-Yahoo IMAP.&amp;nbsp; Everything works, there's just an annoying pop-up
-occasionally about the error.&amp;nbsp; Hopefully it will be fixed soon.&lt;/p&gt;
+an &lt;span class="caps"&gt;SSL&lt;/span&gt; certificate that is valid for imap.mail.yahoo.com only, I&amp;#8217;d
+suggest using that&amp;nbsp;former.&lt;/p&gt;
+&lt;p&gt;Note that I&amp;#8217;m currently suffering from &lt;a class="reference external" href="https://bugzilla.mozilla.org/show_bug.cgi?id=610264"&gt;another bug&lt;/a&gt; while using
+Yahoo &lt;span class="caps"&gt;IMAP&lt;/span&gt;.&amp;nbsp; Everything works, there&amp;#8217;s just an annoying pop-up
+occasionally about the error.&amp;nbsp; Hopefully it will be fixed&amp;nbsp;soon.&lt;/p&gt;
 </summary><category term="bugs"></category><category term="email"></category><category term="IMAP"></category><category term="Mozilla"></category><category term="POP3"></category><category term="programming"></category><category term="SMTP"></category><category term="Thunderbird"></category><category term="Yahoo"></category></entry></feed>

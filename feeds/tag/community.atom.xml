@@ -1,127 +1,124 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>Like bricks in the sky</title><link href="http://patrick.cloke.us/" rel="alternate"></link><link href="http://patrick.cloke.us/feeds/tag/community.atom.xml" rel="self"></link><id>http://patrick.cloke.us/</id><updated>2014-06-18T23:46:00-04:00</updated><entry><title>Mentoring and Time</title><link href="http://patrick.cloke.us/mentoring-and-time.html" rel="alternate"></link><updated>2014-06-18T23:46:00-04:00</updated><author><name>Patrick Cloke</name></author><id>tag:patrick.cloke.us,2014-06-18:mentoring-and-time.html</id><summary type="html">&lt;div class="section" id="google-summer-of-code-2014"&gt;
-&lt;h2&gt;Google Summer of Code 2014&lt;/h2&gt;
-&lt;p&gt;I'm again mentoring for &lt;a class="reference external" href="https://www.google-melange.com/gsoc/homepage/google/gsoc2014"&gt;Google Summer of Code&lt;/a&gt; 2014, this year my student is
-&lt;a class="reference external" href="http://sawrubh.tumblr.com/"&gt;Saurabh Anand&lt;/a&gt; (sawrubh), who has been working on a full related things:&lt;/p&gt;
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Like bricks in the sky</title><link href="http://patrick.cloke.us/" rel="alternate"></link><link href="http://patrick.cloke.us/feeds/tag/community.atom.xml" rel="self"></link><id>http://patrick.cloke.us/</id><updated>2014-06-18T23:46:00-04:00</updated><entry><title>Mentoring and Time</title><link href="http://patrick.cloke.us/posts/2014/Jun/18/mentoring-and-time/" rel="alternate"></link><updated>2014-06-18T23:46:00-04:00</updated><author><name>Patrick Cloke</name></author><id>tag:patrick.cloke.us,2014-06-18:posts/2014/Jun/18/mentoring-and-time/</id><summary type="html">
+&lt;div class="section" id="google-summer-of-code-2014"&gt;
+&lt;h2&gt;&lt;a class="toc-backref" href="#id1"&gt;Google Summer of Code 2014&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;I’m again mentoring for &lt;a class="reference external" href="https://www.google-melange.com/gsoc/homepage/google/gsoc2014"&gt;Google Summer of Code&lt;/a&gt; 2014, this year my student is
+&lt;a class="reference external" href="http://sawrubh.tumblr.com/"&gt;Saurabh Anand&lt;/a&gt; (sawrubh), who has been working on a full related things:&lt;/p&gt;
 &lt;ul class="simple"&gt;
-&lt;li&gt;Adding a &lt;a class="reference external" href="https://bugzilla.mozilla.org/show_bug.cgi?id=1024023"&gt;file transfer mechanism for XMPP&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;Hooking up libpurple's file transfer code to Instantbird&lt;/li&gt;
-&lt;li&gt;Integrating &lt;a class="reference external" href="https://support.mozilla.org/en-US/kb/filelink-large-attachments"&gt;FileLink&lt;/a&gt; as a fallback to in-protocol file transfers&lt;/li&gt;
+&lt;li&gt;Adding a &lt;a class="reference external" href="https://bugzilla.mozilla.org/show_bug.cgi?id=1024023"&gt;file transfer mechanism for &lt;span class="caps"&gt;XMPP&lt;/span&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Hooking up libpurple’s file transfer code to Instantbird&lt;/li&gt;
+&lt;li&gt;Integrating &lt;a class="reference external" href="https://support.mozilla.org/en-US/kb/filelink-large-attachments"&gt;FileLink&lt;/a&gt; as a fallback to in-protocol file transfers&lt;/li&gt;
 &lt;/ul&gt;
 &lt;/div&gt;
 &lt;div class="section" id="on-time"&gt;
-&lt;h2&gt;On Time&lt;/h2&gt;
-&lt;p&gt;No, this is not about being late places, it's about respecting people's time. I
-won't go super into this as, Michael Haggerty wrote an awesome &lt;a class="reference external" href="http://softwareswirl.blogspot.fr/2014/03/my-secret-tip-for-gsoc-success.html"&gt;article&lt;/a&gt; on this.
+&lt;h2&gt;&lt;a class="toc-backref" href="#id2"&gt;On Time&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;No, this is not about being late places, it’s about respecting people’s time. I
+won’t go super into this as, Michael Haggerty wrote an awesome &lt;a class="reference external" href="http://softwareswirl.blogspot.fr/2014/03/my-secret-tip-for-gsoc-success.html"&gt;article&lt;/a&gt; on this.
 His thoughts boild down to a single line of advice:
-&amp;quot;&lt;strong&gt;DON'T WASTE OTHER PEOPLE'S TIME&lt;/strong&gt;&amp;quot;.&lt;/p&gt;
+"&lt;strong&gt;&lt;span class="caps"&gt;DON&lt;/span&gt;’T &lt;span class="caps"&gt;WASTE&lt;/span&gt; &lt;span class="caps"&gt;OTHER&lt;/span&gt; &lt;span class="caps"&gt;PEOPLE&lt;/span&gt;’S &lt;span class="caps"&gt;TIME&lt;/span&gt;&lt;/strong&gt;".&lt;/p&gt;
 &lt;p&gt;I think this applies to more than just Google Summer of Code mentoring, and not
 only open source work, but anything where someone is mentoring and helping you!
-This advice isn't meant just for GSoC students, interns or new employees, but
-also things I'd like to remind myself to do.&lt;/p&gt;
-&lt;p&gt;To make this sound a little more positive, I'd reword his advice as &lt;strong&gt;Respect
-people's time!&lt;/strong&gt;. Someone is willing to help you, so assume some good faith,
-but help them help you. Some actions to focus on:&lt;/p&gt;
+This advice isn’t meant just for GSoC students, interns or new employees, but
+also things I’d like to remind myself to do.&lt;/p&gt;
+&lt;p&gt;To make this sound a little more positive, I’d reword his advice as &lt;strong&gt;Respect
+people’s time!&lt;/strong&gt;. Someone is willing to help you, so assume some good faith,
+but help them help you. Some actions to focus on:&lt;/p&gt;
 &lt;ul class="simple"&gt;
 &lt;li&gt;Ask &lt;em&gt;focused&lt;/em&gt; questions! If you do not understand an answer, do not &lt;em&gt;re-ask&lt;/em&gt;
-the same question, but ask &lt;em&gt;followup&lt;/em&gt; question. Show you've researched the
+the same question, but ask &lt;em&gt;followup&lt;/em&gt; question. Show you’ve researched the
 original answer and attempted to understand it. Write sample code, play with
-it, etc. If you think the answer given doesn't apply to your question,
-&lt;em&gt;reword&lt;/em&gt; your question: your mentor probably did not understand.&lt;/li&gt;
-&lt;li&gt;Be cognizant of &lt;em&gt;timezones&lt;/em&gt;: if you'd like a question asked (in realtime), ask
+it, etc. If you think the answer given doesn’t apply to your question,
+&lt;em&gt;reword&lt;/em&gt; your question: your mentor probably did not understand.&lt;/li&gt;
+&lt;li&gt;Be cognizant of &lt;em&gt;timezones&lt;/em&gt;: if you’d like a question asked (in realtime), ask
 it when the person is awake! (And this includes realizing if they have just
-woken up or are going to bed.)&lt;/li&gt;
-&lt;li&gt;They will not have the &lt;em&gt;context&lt;/em&gt; you do: your &amp;quot;mentor&amp;quot; might be helping many
+woken up or are going to bed.)&lt;/li&gt;
+&lt;li&gt;They will not have the &lt;em&gt;context&lt;/em&gt; you do: your "mentor" might be helping many
 people at once, try not to get frustrated if you have to explain your context
 to them multiple times or have to clarify your question. You are living and
-breathing the code you're working in; they are not.&lt;/li&gt;
-&lt;li&gt;Don't be afraid to &lt;em&gt;post code&lt;/em&gt;. It's much easier to ask a question when
-there's an example in front of you. Be specific and don't talk theoretically.&lt;/li&gt;
-&lt;li&gt;Don't be upset about an &lt;em&gt;r-&lt;/em&gt; (a rejected change)! Part of helping you to grow
-is telling you what you're doing wrong.&lt;/li&gt;
+breathing the code you’re working in; they are not.&lt;/li&gt;
+&lt;li&gt;Don’t be afraid to &lt;em&gt;post code&lt;/em&gt;. It’s much easier to ask a question when
+there’s an example in front of you. Be specific and don’t talk theoretically.&lt;/li&gt;
+&lt;li&gt;Don’t be upset about an &lt;em&gt;r-&lt;/em&gt; (a rejected change)! Part of helping you to grow
+is telling you what you’re doing wrong.&lt;/li&gt;
 &lt;li&gt;Working &lt;em&gt;remotely&lt;/em&gt; is hard. It requires effort to build a level of trust
-between people. Don't just assume it will come in time, but work at it and try
-to get to know and understand your mentor.&lt;/li&gt;
+between people. Don’t just assume it will come in time, but work at it and try
+to get to know and understand your mentor.&lt;/li&gt;
 &lt;li&gt;&lt;em&gt;Quickly&lt;/em&gt; respond to both feedback and questions. Your mentor is taking the
-time out of whatever they're doing to help you. If they ask you a question or
-ask something of you, do it now (well...*soon*).&lt;/li&gt;
+time out of whatever they’re doing to help you. If they ask you a question or
+ask something of you, do it now (well…*soon*).&lt;/li&gt;
 &lt;/ul&gt;
-&lt;p&gt;All of the above is a lot to handle, but it can make it a join to work with a
-mentor.&lt;/p&gt;
-&lt;p&gt;Mentoring is also hard and a skill to practice. Although I've talked a lot
+&lt;p&gt;All of the above is a lot to handle, but it can make it a join to work with a mentor.&lt;/p&gt;
+&lt;p&gt;Mentoring is also hard and a skill to practice. Although I’ve talked a lot
 about what a mentee needs to do, it is also important that a mentor leaves
-h(im|er)self open. A few thoughts on interacting as a mentor:&lt;/p&gt;
+h(im|er)self open. A few thoughts on interacting as a mentor:&lt;/p&gt;
 &lt;ul class="simple"&gt;
 &lt;li&gt;Be cognizant of &lt;em&gt;culture&lt;/em&gt; and &lt;em&gt;language&lt;/em&gt; (as in how well a mentor and mentee
 share their common language). In particular, colloquialisms should be avoided
-whenever possible. At least until a level of trust is reached.&lt;/li&gt;
+whenever possible. At least until a level of trust is reached.&lt;/li&gt;
 &lt;li&gt;Be tactful when &lt;em&gt;giving feedback&lt;/em&gt;. Thank people for submitting a patch, give
 good, &lt;em&gt;actionable&lt;/em&gt; feedback quickly. Concentrate more on overall code design
 and algorithms than nits. (Maybe even point out nits, but fix them yourself
-for an initial patch.)&lt;/li&gt;
+for an initial patch.)&lt;/li&gt;
 &lt;/ul&gt;
 &lt;/div&gt;
-</summary><category term="community"></category><category term="GSoC"></category></entry><entry><title>Community and Volunteers</title><link href="http://patrick.cloke.us/community-and-volunteers.html" rel="alternate"></link><updated>2014-04-16T16:34:00-04:00</updated><author><name>Patrick Cloke</name></author><id>tag:patrick.cloke.us,2014-04-16:community-and-volunteers.html</id><summary type="html">&lt;p&gt;It was suggested that I cross-post this from mozilla.dev.planning onto
+</summary><category term="community"></category><category term="GSoC"></category></entry><entry><title>Community and Volunteers</title><link href="http://patrick.cloke.us/posts/2014/Apr/16/community-and-volunteers/" rel="alternate"></link><updated>2014-04-16T16:34:00-04:00</updated><author><name>Patrick Cloke</name></author><id>tag:patrick.cloke.us,2014-04-16:posts/2014/Apr/16/community-and-volunteers/</id><summary type="html">&lt;p&gt;It was suggested that I cross-post this from mozilla.dev.planning onto
 my blog. This is in reply to a thread entitled &amp;quot;&lt;a class="reference external" href="https://groups.google.com/forum/#%21topic/mozilla.dev.planning/P8oHKTCWSiQ"&gt;Proposal: Move
 Thunderbird and SeaMonkey to mozilla-central&lt;/a&gt;&amp;quot; about (essentially)
 merging comm-central back into mozilla-central. There have been many
-technical concerns raised in the thread (that I'm not going to rehash
-here). What I'm more interested in is the lack of community feeling
-there. As Nicholas Nethercote said in that thread:&lt;/p&gt;
+technical concerns raised in the thread (that I&amp;#8217;m not going to rehash
+here). What I&amp;#8217;m more interested in is the lack of community feeling
+there. As Nicholas Nethercote said in that&amp;nbsp;thread:&lt;/p&gt;
 &lt;blockquote&gt;
-&amp;quot;I am surprised [...] by how heartless the discussion has been.&amp;quot;&lt;/blockquote&gt;
+&amp;quot;I am surprised [&amp;#8230;] by how heartless the discussion has been.&amp;quot;&lt;/blockquote&gt;
 &lt;p&gt;I should note that I did have some help editing this down from my
 original post. Turns out I tend to write inflammatory statements that
-don't help get me point across. Who knew? Anyway, thanks to all of you
-who helped me out there!&lt;/p&gt;
+don&amp;#8217;t help get me point across. Who knew? Anyway, thanks to all of you
+who helped me out&amp;nbsp;there!&lt;/p&gt;
 &lt;p&gt;My full post is below (with a few links added and plaintext formatting
-converted to HTML formatting):&lt;/p&gt;
+converted to &lt;span class="caps"&gt;HTML&lt;/span&gt;&amp;nbsp;formatting):&lt;/p&gt;
 &lt;blockquote&gt;
-&lt;p&gt;On Monday, April 14, 2014 4:52:53 PM UTC-4, Nicholas Nethercote
-wrote:&lt;/p&gt;
+&lt;p&gt;On Monday, April 14, 2014 4:52:53 &lt;span class="caps"&gt;PM&lt;/span&gt; &lt;span class="caps"&gt;UTC&lt;/span&gt;-4, Nicholas Nethercote&amp;nbsp;wrote:&lt;/p&gt;
 &lt;p&gt;&amp;gt; The technical aspects of this decision have been discussed to death,
-&amp;gt; so I won't say anything about that. I am surprised, however, by how
-&amp;gt; heartless the discussion has been.&lt;/p&gt;
+&amp;gt; so I won&amp;#8217;t say anything about that. I am surprised, however, by how
+&amp;gt; heartless the discussion has&amp;nbsp;been.&lt;/p&gt;
 &lt;p&gt;I agree, the technical bitshere seem to have solutions suggested by
 Joshua and others, but the non-technical parts of this discussion
-have left mefeeling disheartened and confused with the Mozilla
-community.&lt;/p&gt;
+have left mefeeling disheartened and confused with the Mozilla&amp;nbsp;community.&lt;/p&gt;
 &lt;p&gt;I find it ironic/amusing/sad/upsetting that a few threads above this
 is a thread entitled &amp;quot;&lt;a class="reference external" href="https://groups.google.com/forum/#!topic/mozilla.dev.planning/1kbZsYoQcng"&gt;Contributor pathways, engagement points and
 bug mentoring&lt;/a&gt;&amp;quot; while in this thread I see community contributors
-being blocked at every turn!&lt;/p&gt;
-&lt;p&gt;Here I don't see people attempting to foster a community by putting
+being blocked at every&amp;nbsp;turn!&lt;/p&gt;
+&lt;p&gt;Here I don&amp;#8217;t see people attempting to foster a community by putting
 their best foot forward. I see people trying to get their &lt;strong&gt;job&lt;/strong&gt;
-done; with an attitude of &amp;quot;if this doesn't help me, get it outta my
-way!&amp;quot; I don't think this is the right way to grow a community. I
-don't think this is how Mozilla HAS grown it's community. I don't
-think it's in line with what Mozilla expects from it's community
-members (both employees and volunteers!)&lt;/p&gt;
+done; with an attitude of &amp;quot;if this doesn&amp;#8217;t help me, get it outta my
+way!&amp;quot; I don&amp;#8217;t think this is the right way to grow a community. I
+don&amp;#8217;t think this is how Mozilla &lt;span class="caps"&gt;HAS&lt;/span&gt; grown it&amp;#8217;s community. I don&amp;#8217;t
+think it&amp;#8217;s in line with what Mozilla expects from it&amp;#8217;s community
+members (both employees and&amp;nbsp;volunteers!)&lt;/p&gt;
 &lt;p&gt;Personally, I dislike the amount of Mozilla &lt;strong&gt;Corporation&lt;/strong&gt; goals
 focus in this thread. Can we have a discussion aspart ofa larger
-community? Why must it focus on Corporate goals? I'm not part of the
-corporation, I don't really care what its goals are or are not. I
+community? Why must it focus on Corporate goals? I&amp;#8217;m not part of the
+corporation, I don&amp;#8217;t really care what its goals are or are not. I
 care about Mozilla, I care about providing high-quality, free, open
 source softwareto improve the experience of the Internet for
-everyone. And no, I'm not talking about Firefox. I'm talking about
-Thunderbird. I understand that Mozilla's goals arecurrently Firefox
-and Firefox OS, but these are not my personal goals.&lt;/p&gt;
+everyone. And no, I&amp;#8217;m not talking about Firefox. I&amp;#8217;m talking about
+Thunderbird. I understand that Mozilla&amp;#8217;s goals arecurrently Firefox
+and Firefox &lt;span class="caps"&gt;OS&lt;/span&gt;, but these are not my personal&amp;nbsp;goals.&lt;/p&gt;
 &lt;p&gt;At the Summit I had a few conversations with people about
 &amp;quot;on-boarding&amp;quot; new employees and getting them to understand how the
 community works and that interacting with the community in a
-positive manner is an important part of Mozilla. I don't remember
+positive manner is an important part of Mozilla. I don&amp;#8217;t remember
 the exact context, but part of it wasthat it is important that new
-employees don't think of it as &amp;quot;How can I &lt;em&gt;use&lt;/em&gt; the community?&amp;quot;, for
-that implies taking advtange of them, but &amp;quot;How can I work with the
-community?&amp;quot;&lt;/p&gt;
-&lt;p&gt;Please don't see this as an &amp;quot;employees vs. volunteers&amp;quot; argument. I
-believe that I'm expected to live up to these same goals. If I, as a
-volunteer, can help an employee achieve his goals; I'm
-[STRIKEOUT:more than willing], no...I'm EXPECTED to do that. I think
+employees don&amp;#8217;t think of it as &amp;quot;How can I &lt;em&gt;use&lt;/em&gt; the community?&amp;quot;, for
+that implies taking advtange of them, but &amp;quot;How can I work with the&amp;nbsp;community?&amp;quot;&lt;/p&gt;
+&lt;p&gt;Please don&amp;#8217;t see this as an &amp;quot;employees vs. volunteers&amp;quot; argument. I
+believe that I&amp;#8217;m expected to live up to these same goals. If I, as a
+volunteer, can help an employee achieve his goals; I&amp;#8217;m
+[&lt;span class="caps"&gt;STRIKEOUT&lt;/span&gt;:more than willing], no&amp;#8230;I&amp;#8217;m &lt;span class="caps"&gt;EXPECTED&lt;/span&gt; to do that. I think
 this is a two-way relationship that must be fostered. It has seemed
-to me that over the past couple of years that I've been hanging
-around here there's been less and less focus on the community and
-more and more on the Corporation.&lt;/p&gt;
+to me that over the past couple of years that I&amp;#8217;ve been hanging
+around here there&amp;#8217;s been less and less focus on the community and
+more and more on the&amp;nbsp;Corporation.&lt;/p&gt;
 &lt;p&gt;I understand Thunderbird and SeaMonkey may not be important to you,
 but it is important tome! (And otherswho contribute
 totheThunderbird/SeaMonkey community, including employees who
@@ -132,119 +129,119 @@ been fighting to prove this wrong.Could you please respect our
 efforts? Merging c-c into m-c will help us focus our efforts on
 building a great product instead of spending significant effort on
 keeping a dying one on life-support. (And prove to all that
-&amp;quot;Thunderbird is dead!&amp;quot; was just a sensational headline.)&lt;/p&gt;
+&amp;quot;Thunderbird is dead!&amp;quot; was just a sensational&amp;nbsp;headline.)&lt;/p&gt;
 &lt;/blockquote&gt;
-&lt;p&gt;I don't have much else to say beyond that (besides thanks for reading
-this far!)&lt;/p&gt;
-</summary><category term="community"></category><category term="crosspost"></category><category term="Mozilla"></category><category term="Thunderbird"></category></entry><entry><title>GSoc Lessons: Part Deux: The Arms Race</title><link href="http://patrick.cloke.us/gsoc-lessons-part-deux-the-arms-race.html" rel="alternate"></link><updated>2013-12-04T13:17:00-05:00</updated><author><name>Patrick Cloke</name></author><id>tag:patrick.cloke.us,2013-12-04:gsoc-lessons-part-deux-the-arms-race.html</id><summary type="html">&lt;p&gt;This post title might be a little excessive, but I'll blame &lt;a class="reference external" href="http://en.wikipedia.org/wiki/The_Sum_of_All_Fears_%28film%29"&gt;The Sum
+&lt;p&gt;I don&amp;#8217;t have much else to say beyond that (besides thanks for reading
+this&amp;nbsp;far!)&lt;/p&gt;
+</summary><category term="community"></category><category term="crosspost"></category><category term="Mozilla"></category><category term="Thunderbird"></category></entry><entry><title>GSoc Lessons: Part Deux: The Arms Race</title><link href="http://patrick.cloke.us/posts/2013/Dec/04/gsoc-lessons-part-deux-the-arms-race/" rel="alternate"></link><updated>2013-12-04T13:17:00-05:00</updated><author><name>Patrick Cloke</name></author><id>tag:patrick.cloke.us,2013-12-04:posts/2013/Dec/04/gsoc-lessons-part-deux-the-arms-race/</id><summary type="html">&lt;p&gt;This post title might be a little excessive, but I&amp;#8217;ll blame &lt;a class="reference external" href="http://en.wikipedia.org/wiki/The_Sum_of_All_Fears_%28film%29"&gt;The Sum
 of All Fears&lt;/a&gt; that I was watching last night. This is the second part
 of a set of posts about ideas I heard at the Google Summer of Code 2013
-Mentor Summit (you can read &lt;a class="reference external" href="http://patrick.cloke.us/gsoc-lessons-part-1-application-period.html"&gt;the first part about the application
+Mentor Summit (you can read &lt;a class="reference external" href="http://patrick.cloke.us/posts/2013/Dec/02/gsoc-lessons-part-1-application-period/"&gt;the first part about the application
 process&lt;/a&gt;).&lt;/p&gt;
 &lt;p&gt;This will explore an interesting anecdote I heard about the
 interaction between applicants from another organization that, on
 reflection, seemed to resonate somewhat with what I had seen in my
-corner of the Mozilla community.&lt;/p&gt;
+corner of the Mozilla&amp;nbsp;community.&lt;/p&gt;
 &lt;p&gt;The organization these students were applying to required patches to
-be fixed for a student's application to be accepted (as discussed in my
+be fixed for a student&amp;#8217;s application to be accepted (as discussed in my
 previous post). For a particular project there existed multiple highly
 motivated and skilled students, but only one slot. Thus, a &amp;quot;patch race&amp;quot;
 of sorts occurred where the students competed by continually providing
-more patches that were increasingly complex. (Note that this wasn't a in
+more patches that were increasingly complex. (Note that this wasn&amp;#8217;t a in
 response to a challenge from community members, it was a spontaneous
 situation.) Once a single student started to submit extra patches the
 other students felt they must also submit more patches to be considered
 equal/superior (hence my allusion to an &amp;quot;&lt;a class="reference external" href="http://en.wikipedia.org/wiki/Arms_race#Nuclear_arms_race"&gt;arms race&lt;/a&gt;&amp;quot;).
 Interestingly, they would also sometimes work on the same bug in a sort
-of race to see who could fix it first.&lt;/p&gt;
-&lt;p&gt;There's a couple things I took away from this:&lt;/p&gt;
+of race to see who could fix it&amp;nbsp;first.&lt;/p&gt;
+&lt;p&gt;There&amp;#8217;s a couple things I took away from&amp;nbsp;this:&lt;/p&gt;
 &lt;ol class="arabic simple"&gt;
-&lt;li&gt;Great, the project just had a lot of things fixed!&lt;/li&gt;
+&lt;li&gt;Great, the project just had a lot of things&amp;nbsp;fixed!&lt;/li&gt;
 &lt;li&gt;The students were investing escalating amounts of time &lt;em&gt;during the
 application phase&lt;/em&gt;.&lt;/li&gt;
-&lt;li&gt;The students were not working in an open manner.&lt;/li&gt;
+&lt;li&gt;The students were not working in an open&amp;nbsp;manner.&lt;/li&gt;
 &lt;/ol&gt;
-&lt;p&gt;I won't really expand much more about the first point, it's always
-good to fix things.&lt;/p&gt;
-&lt;p&gt;Although submitting patches might showcase a student's skill, it also
+&lt;p&gt;I won&amp;#8217;t really expand much more about the first point, it&amp;#8217;s always
+good to fix&amp;nbsp;things.&lt;/p&gt;
+&lt;p&gt;Although submitting patches might showcase a student&amp;#8217;s skill, it also
 relates to how much time the student is willing and able to put into the
 application period. This, in particular, matters since different areas
 of the world end their school year at different times. A student that
 has already finished his semester during the application period may have
 a lot of free time to attempt to get a GSoC slot (but will most likely
 not have as much time during the actual summer!) This something that
-mentors should keep in mind while reviewing applications.&lt;/p&gt;
+mentors should keep in mind while reviewing&amp;nbsp;applications.&lt;/p&gt;
 &lt;p&gt;A downside of increasing amounts of time invested is that the
 rejection is that much harder for both the mentor (especially if the
 student is now part of the community!), as well as for the student who
-has now vested a large amount of time in the project.&lt;/p&gt;
+has now vested a large amount of time in the&amp;nbsp;project.&lt;/p&gt;
 &lt;p&gt;The realization that actually upset me, however, is that these
 students were not working in an open manner! Instead of collaborating,
 they were competing! To me, this would set off a very poor tone for the
-rest of GSoC. In fact, one of the biggest challenges I've had with GSoC
+rest of GSoC. In fact, one of the biggest challenges I&amp;#8217;ve had with GSoC
 students is getting them to work in the open (i.e. &amp;quot;show me the code&amp;quot;,
-anyone in &lt;a class="reference external" href="irc://irc.mozilla.org/#instantbird"&gt;#instantbird&lt;/a&gt; is probably tired of hearing me say that).&lt;/p&gt;
+anyone in &lt;a class="reference external" href="irc://irc.mozilla.org/#instantbird"&gt;#instantbird&lt;/a&gt; is probably tired of hearing me say&amp;nbsp;that).&lt;/p&gt;
 &lt;p&gt;At this point you &lt;em&gt;might&lt;/em&gt; think this is a hypothetical case I made up!
-Upon letting it sink in and reflecting on it...I realized I had actually
-seen similar situations during the application periods I've been
-involved with. This year, we found a bug in Instantbird's IRC code (CTCP
-quoting and dequoting); after referencing some &lt;a class="reference external" href="http://patrick.cloke.us/the-so-called-irc-specifications.html"&gt;specifications&lt;/a&gt;, I was
+Upon letting it sink in and reflecting on it&amp;#8230;I realized I had actually
+seen similar situations during the application periods I&amp;#8217;ve been
+involved with. This year, we found a bug in Instantbird&amp;#8217;s &lt;span class="caps"&gt;IRC&lt;/span&gt; code (&lt;span class="caps"&gt;CTCP&lt;/span&gt;
+quoting and dequoting); after referencing some &lt;a class="reference external" href="http://patrick.cloke.us/posts/2011/Mar/09/the-so-called-irc-specifications/"&gt;specifications&lt;/a&gt;, I was
 pretty quickly able to figure out the vague areas where people should
 look for a fix. A couple of GSoC students in the room started looking
 into it and exhibited a greatly reduced form of the behavior I discussed
 above. The students were sharing information, but were not comfortable
 sharing code. Unfortunately, this led to some very vague questions which
 I was unable to answer (or answered incorrectly) and led to me coining
-my catchphrase from above.&lt;/p&gt;
+my catchphrase from&amp;nbsp;above.&lt;/p&gt;
 &lt;p&gt;I by no means think this reflects poorly on our students! I think this
 is some what natural and expected for most students unfamiliar with open
-development. (Extrapolating from my experiences in school...) Students
+development. (Extrapolating from my experiences in school&amp;#8230;) Students
 generally work individually (or in small groups) on projects and are
 directly competing for grades (at least if the course is graded on a
 curve). This would foster a sense of competition as opposed to
 cooperation! Luckily the students working with us understood (with very
-little prompting, I might add!) that we'd prefer they work together and
+little prompting, I might add!) that we&amp;#8217;d prefer they work together and
 help each other. We were able to successfully fix the dequoting bug
-(which then caused a bug in the quoting code to be visible...sigh...).&lt;/p&gt;
+(which then caused a bug in the quoting code to be&amp;nbsp;visible&amp;#8230;sigh&amp;#8230;).&lt;/p&gt;
 &lt;p&gt;My &lt;strong&gt;short take away&lt;/strong&gt; from all this: remember that students are not
-yet a community and they're competing with each other until they've been
-accepted. (And that they're used to competing, e.g. homework and exams,
-not collaborating!) I don't really know whether I feel the above
-situation is good or bad, but it's certainly an interesting effect from
-the way the GSoC process works.&lt;/p&gt;
-</summary><category term="community"></category><category term="GSoC"></category><category term="Mozilla"></category></entry><entry><title>GSoC Lessons: Part 1: Application Period</title><link href="http://patrick.cloke.us/gsoc-lessons-part-1-application-period.html" rel="alternate"></link><updated>2013-12-02T00:55:00-05:00</updated><author><name>Patrick Cloke</name></author><id>tag:patrick.cloke.us,2013-12-02:gsoc-lessons-part-1-application-period.html</id><summary type="html">&lt;p&gt;I briefly talked about &lt;a class="reference external" href="http://patrick.cloke.us/google-summer-of-code-mentor-summit-2013.html"&gt;my experiences&lt;/a&gt; at the Google Summer of Code
-2013 Mentor Summit. I've been pretty remiss in sharing what was actually
+yet a community and they&amp;#8217;re competing with each other until they&amp;#8217;ve been
+accepted. (And that they&amp;#8217;re used to competing, e.g. homework and exams,
+not collaborating!) I don&amp;#8217;t really know whether I feel the above
+situation is good or bad, but it&amp;#8217;s certainly an interesting effect from
+the way the GSoC process&amp;nbsp;works.&lt;/p&gt;
+</summary><category term="community"></category><category term="GSoC"></category><category term="Mozilla"></category></entry><entry><title>GSoC Lessons: Part 1: Application Period</title><link href="http://patrick.cloke.us/posts/2013/Dec/02/gsoc-lessons-part-1-application-period/" rel="alternate"></link><updated>2013-12-02T00:55:00-05:00</updated><author><name>Patrick Cloke</name></author><id>tag:patrick.cloke.us,2013-12-02:posts/2013/Dec/02/gsoc-lessons-part-1-application-period/</id><summary type="html">&lt;p&gt;I briefly talked about &lt;a class="reference external" href="http://patrick.cloke.us/posts/2013/Oct/21/google-summer-of-code-mentor-summit-2013/"&gt;my experiences&lt;/a&gt; at the Google Summer of Code
+2013 Mentor Summit. I&amp;#8217;ve been pretty remiss in sharing what was actually
 discussed there and for that I must apologize! This will hopefully be
-one of a few posts about what I learned and discussed at the Summit.&lt;/p&gt;
-&lt;p&gt;The first part I'd like to talk about is the application period:
+one of a few posts about what I learned and discussed at the&amp;nbsp;Summit.&lt;/p&gt;
+&lt;p&gt;The first part I&amp;#8217;d like to talk about is the application period:
 welcoming students, requirements for student applications, etc. Much of
-what I say on here is just ideas I've heard other organizations
-implement (with my personal opinion on them, please don't think this
-represents what Mozilla is suggesting students do, or even what I'm
-suggesting Mozilla should ask students to do!)&lt;/p&gt;
+what I say on here is just ideas I&amp;#8217;ve heard other organizations
+implement (with my personal opinion on them, please don&amp;#8217;t think this
+represents what Mozilla is suggesting students do, or even what I&amp;#8217;m
+suggesting Mozilla should ask students to&amp;nbsp;do!)&lt;/p&gt;
 &lt;p&gt;I had many separate conversations about what is required for an
 application to be accepted. It seems that Mozilla is actually on the
-side of one of the easier organizations to apply to. We don't (to my
+side of one of the easier organizations to apply to. We don&amp;#8217;t (to my
 knowledge) require that students have contributed at all to the
 community beforehand. It is possible that some smaller communities
 inside of Mozilla require more than just an application, but there does
-not seem to be any rule across Mozilla. I said I wouldn't offer my
-opinion above...but I lied: I think Mozilla should make it clearer to
-applicants what is expected of them before the application.&lt;/p&gt;
+not seem to be any rule across Mozilla. I said I wouldn&amp;#8217;t offer my
+opinion above&amp;#8230;but I lied: I think Mozilla should make it clearer to
+applicants what is expected of them before the&amp;nbsp;application.&lt;/p&gt;
 &lt;p&gt;There seem to be a variety of things different organizations &amp;quot;require&amp;quot;
-before accepting a student application, for example:&lt;/p&gt;
+before accepting a student application, for&amp;nbsp;example:&lt;/p&gt;
 &lt;ul class="simple"&gt;
-&lt;li&gt;A patch / pull request&lt;/li&gt;
-&lt;li&gt;IRC / email involvement / idling&lt;/li&gt;
+&lt;li&gt;A patch / pull&amp;nbsp;request&lt;/li&gt;
+&lt;li&gt;&lt;span class="caps"&gt;IRC&lt;/span&gt; / email involvement /&amp;nbsp;idling&lt;/li&gt;
 &lt;li&gt;File a bug (I mean this in the &amp;quot;Mozilla&amp;quot; sense: an actual bug, a
-feature request, etc.)&lt;/li&gt;
-&lt;li&gt;Fix a bug / make a commit&lt;/li&gt;
+feature request,&amp;nbsp;etc.)&lt;/li&gt;
+&lt;li&gt;Fix a bug / make a&amp;nbsp;commit&lt;/li&gt;
 &lt;/ul&gt;
 &lt;p&gt;I think all of these have pros and cons and making any a hard and fast
 rule would probably be a bad idea. Personally for Instantbird, we
-greatly encourage students to idle on IRC and get to know us; and to fix
-a minor bug or two or three. What I'm always looking for is: use,
-passion, and skill.&lt;/p&gt;
+greatly encourage students to idle on &lt;span class="caps"&gt;IRC&lt;/span&gt; and get to know us; and to fix
+a minor bug or two or three. What I&amp;#8217;m always looking for is: use,
+passion, and&amp;nbsp;skill.&lt;/p&gt;
 &lt;p&gt;Asking for a &lt;strong&gt;patch / pull request&lt;/strong&gt; (I include these together since
 they really just depend on how an organization accepts changes) can be a
 bit intimidating for a new user. I think this can be a pretty rough
@@ -252,34 +249,33 @@ thing to ask for new contributors that might not want to share their
 work publicly with a large group of people (on a mailing list, public
 bug tracker, etc.) where they might be wrong. Even after being part of
 the community, I find that GSoC students are often very unwilling to
-publicly share code unless it's &amp;quot;perfect&amp;quot;, but I digress. Anyway, if
-you're considering &amp;quot;requiring&amp;quot; this, I think it should be pretty clear
-that this changeset doesn't need to be &lt;em&gt;perfect&lt;/em&gt;, it just needs to show
+publicly share code unless it&amp;#8217;s &amp;quot;perfect&amp;quot;, but I digress. Anyway, if
+you&amp;#8217;re considering &amp;quot;requiring&amp;quot; this, I think it should be pretty clear
+that this changeset doesn&amp;#8217;t need to be &lt;em&gt;perfect&lt;/em&gt;, it just needs to show
 that the student is able to read code, understand a bug report, provide
-a fix and test it.&lt;/p&gt;
-&lt;p&gt;I think it's perfect reasonable to ask students to &lt;strong&gt;idle on IRC and
+a fix and test&amp;nbsp;it.&lt;/p&gt;
+&lt;p&gt;I think it&amp;#8217;s perfect reasonable to ask students to &lt;strong&gt;idle on &lt;span class="caps"&gt;IRC&lt;/span&gt; and
 join mailing lists&lt;/strong&gt;. They should definitely be trying to understand the
-community before attempting to join it. It isn't just a matter of if the
+community before attempting to join it. It isn&amp;#8217;t just a matter of if the
 community thinks the student would be a good fit, but also the student
-must ensure they can fit into the community.&lt;/p&gt;
+must ensure they can fit into the&amp;nbsp;community.&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;Filing a bug&lt;/strong&gt; is a great way for a student to show a few different
-things: they've used your software; they've used your software enough to
-find a bug in it (and there most likely is one!); they're able to
-express themselves in a clear and concise matter. If you're lucky
-they'll find something that actually annoys them and fix it themselves!&lt;/p&gt;
+things: they&amp;#8217;ve used your software; they&amp;#8217;ve used your software enough to
+find a bug in it (and there most likely is one!); they&amp;#8217;re able to
+express themselves in a clear and concise matter. If you&amp;#8217;re lucky
+they&amp;#8217;ll find something that actually annoys them and fix it&amp;nbsp;themselves!&lt;/p&gt;
 &lt;p&gt;I have &lt;strong&gt;fix a bug&lt;/strong&gt; listed last. You might ask how this differs from
-submitting a patch...and it does! Fixing a bug requires a patch to go
+submitting a patch&amp;#8230;and it does! Fixing a bug requires a patch to go
 through whatever review process your project uses, but builds upon just
 submitting a patch. My thoughts on this are pretty similar to just
-submitting a patch, but it depends on how large the bug is.&lt;/p&gt;
+submitting a patch, but it depends on how large the bug&amp;nbsp;is.&lt;/p&gt;
 &lt;p&gt;Something I found interesting is that almost everyone I talked to
-didn't treat their GSoC students any differently than they would treat a
+didn&amp;#8217;t treat their GSoC students any differently than they would treat a
 new contributor to their project. They still had to prove they were
 worthy of commit access, etc. Is there anything else you ask of your
-students before they apply to GSoC? I'd love to hear it!&lt;/p&gt;
-&lt;p&gt;Some other topics I'll hopefully find some time to write about
+students before they apply to GSoC? I&amp;#8217;d love to hear&amp;nbsp;it!&lt;/p&gt;
+&lt;p&gt;Some other topics I&amp;#8217;ll hopefully find some time to write about
 include: community lessons, and handling a failing student. The
 community one will be very not-GSoC focused and could apply to just
-trying to incorporate new contributors...but I'll include it in this
-series.&lt;/p&gt;
+trying to incorporate new contributors&amp;#8230;but I&amp;#8217;ll include it in this&amp;nbsp;series.&lt;/p&gt;
 </summary><category term="community"></category><category term="GSoC"></category><category term="Mozilla"></category></entry></feed>

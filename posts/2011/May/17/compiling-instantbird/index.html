@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+        <title>Compiling Instantbird</title>
+        <meta charset="utf-8" />
+        <link rel="stylesheet" href="http://patrick.cloke.us/theme/css/main.css" type="text/css" />
+        <link href="http://patrick.cloke.us/" type="application/atom+xml" rel="alternate" title="Like bricks in the sky ATOM Feed" />
+
+
+        <!--[if IE]>
+                <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+
+        <!--[if lte IE 7]>
+                <link rel="stylesheet" type="text/css" media="all" href="http://patrick.cloke.us/css/ie.css"/>
+                <script src="http://patrick.cloke.us/js/IE8.js" type="text/javascript"></script><![endif]-->
+
+        <!--[if lt IE 7]>
+                <link rel="stylesheet" type="text/css" media="all" href="http://patrick.cloke.us/css/ie6.css"/><![endif]-->
+
+</head>
+
+<body id="index" class="home">
+<a href="https://www.github.com/clokep">
+<img style="position: absolute; top: 0; right: 0; border: 0;" src="http://s3.amazonaws.com/github/ribbons/forkme_right_red_aa0000.png" alt="Fork me on GitHub" />
+</a>
+        <header id="banner" class="body">
+                <h1><a href="http://patrick.cloke.us/index.html">Like bricks in the sky </a></h1>
+                <nav><ul>
+                <li><a href="http://patrick.cloke.us/">Archives</a></li>
+                </ul></nav>
+        </header><!-- /#banner -->
+
+<section id="content" class="body">
+<article>
+        <header> <h1 class="entry-title"><a href="posts/2011/May/17/compiling-instantbird/"
+        rel="bookmark" title="Permalink to Compiling Instantbird">Compiling&nbsp;Instantbird</a></h1>  </header>
+        <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2011-05-17T01:30:00">
+                05/17/2011 01:30 AM UTC
+        </abbr>
+
+        <address class="vcard author">
+                By <a class="url fn" href="http://patrick.cloke.us/author/patrick-cloke.html">Patrick Cloke</a>
+        </address>
+<p>In <a href="http://patrick.cloke.us/category/misc.html">misc</a>. </p>
+<p>tags: <a href="http://patrick.cloke.us/tag/instantbird.html">Instantbird</a><a href="http://patrick.cloke.us/tag/mozilla.html">Mozilla</a><a href="http://patrick.cloke.us/tag/programming.html">programming</a></p></p></footer><!-- /.post-info --><!-- /.post-info -->
+        <p>In the past I&#8217;ve tried to compile a few different programs that use
+the Mozilla toolkit to various levels of success.&nbsp; I&#8217;ve tried to compile
+Thunderbird, Songbird and Instantbird at various points.&nbsp; I got
+Thunderbird to compile, but it only worked sporadically (although I
+think that was Firefox moving so fast that Thunderbird couldn&#8217;t keep
+up), Songbird I gave up on rather quickly and Instantbird I&#8217;ve tried a
+few&nbsp;times.</p>
+<p>Last summer I had Instantbird compiling on my old laptop (a Lenovo
+T60), which is &gt;5 years old at this point and has had the heatsink / fan
+replaced twice &#8212; a known issue with that model laptop.&nbsp; Needless to
+say, that laptop didn&#8217;t like compiling something on Windows that took
+approximately an hour with a large number of reads and writes to the
+hard drive.&nbsp; This mixed with it being an old dual core + a 5400 <span class="caps">RPM</span>
+meant I&#8217;d be waiting a <span class="caps">LONG</span> time for my code to compile.&nbsp; I got a
+Thinkpad X201 this past summer, so I finally got around to setting up a
+development environment on it and was able to get Instantbird to compile
+fully today.&nbsp; I&#8217;ve outlined the steps I&#8217;ve followed: kind of to mirror
+the <a class="reference external" href="https://developer.mozilla.org/En/Simple_Thunderbird_build">Simple Thunderbird Build</a> page on <span class="caps">MDC</span>.</p>
+<p>I&#8217;ve done this using Microsoft Windows 7 Professional (64-bit) with
+Service Pack 1. (4.00 <span class="caps">GB</span> of <span class="caps">RAM</span>, Intel Core i7 M620 2.67 GHz).
+Throughout these steps, the defaults locations and options are used in
+the&nbsp;installers.</p>
+<div class="section" id="build-requirements">
+<h2>Build&nbsp;Requirements:</h2>
+<div class="section" id="visual-studio-express">
+<h3>Visual Studio&nbsp;Express:</h3>
+<p>We need to install Visual Studio Express, specifically <span class="caps">VC8</span> (2005) with
+Service Pack 1.&nbsp; (Mozilla compiles with <span class="caps">VC9</span> and <span class="caps">VC10</span> to various degrees,
+but it seems libpurple only compiles with <span class="caps">VC8</span>, also this is what&#8217;s on
+the Instantbird buildbot, so I like having the same version.)&nbsp; I
+couldn&#8217;t find this on Microsoft&#8217;s website but I found it on <a class="reference external" href="http://www.softpedia.com/get/Programming/Other-Programming-Files/Microsoft-Visual-C-Toolkit.shtml">Softpedia</a>
+(which is a legitimate site).&nbsp; Anyway, download the installer and
+install it (which will download the actual compiler from Microsoft),
+ensure that you also install the <span class="caps">IDE</span> (which is checked by&nbsp;default).</p>
+<p>This will only install <span class="caps">VC8</span>, the initial release.&nbsp; We also need to
+install <a class="reference external" href="http://www.microsoft.com/downloads/en/details.aspx?FamilyID=7b0b0339-613a-46e6-ab4d-080d4d4a8c4e">Service Pack 1</a>.&nbsp; I personally did this using Windows Update,
+but one of the installers from there should also&nbsp;work.</p>
+</div>
+<div class="section" id="microsoft-windows-sdk">
+<h3>Microsoft Windows <span class="caps">SDK</span>:</h3>
+<p>Specifically we need the <a class="reference external" href="http://www.microsoft.com/downloads/en/details.aspx?FamilyID=c17ba869-9671-4330-a63e-1fd44e0e2505&amp;displaylang=en">Windows 7 <span class="caps">SDK</span></a> (for Jumplist, Aero, etc.
+support).&nbsp; Download and install the <span class="caps">SDK</span>, this one took a while for me to
+install.&nbsp; I ate dinner while it was installing (pasta, if you&#8217;re curious
+&#8212; I already had sauce&nbsp;made).</p>
+<p>There&#8217;s a linker error when using <span class="caps">VC8</span> and the Windows 7 <span class="caps">SDK</span>, so we&#8217;ll
+need to install a <a class="reference external" href="http://support.microsoft.com/kb/949009/">hotfix</a>for that (I tried without it and I ran into
+the issue).&nbsp; I had to download the &quot;VS80sp1-<span class="caps">KB949009</span>-<span class="caps">IA64</span>-<span class="caps">INTL</span>.exe&quot;
+version (there&#8217;s also an X86 and an X64 version).&nbsp; Choose the one that&nbsp;works.</p>
+</div>
+<div class="section" id="microsoft-macro-assembler">
+<h3>Microsoft Macro&nbsp;Assembler:</h3>
+<p>In order to properly assemble the code we need to <a class="reference external" href="http://www.microsoft.com/downloads/en/details.aspx?familyid=7A1C9DA0-0510-44A2-B042-7EF370530C64&amp;displaylang=en">install <span class="caps">MASM</span></a>
+(which I think will eventually be included in MozillaBuild, but it isn&#8217;t
+currently).&nbsp; Again, just install it with the&nbsp;defaults.</p>
+</div>
+<div class="section" id="mozillabuild">
+<h3>MozillaBuild:</h3>
+<p>Almost there, I promise.&nbsp; In order to get a *nix type shell to run
+make, etc. in we&#8217;ll use a package from Mozilla that includes <span class="caps">MSYS</span>, make,
+Mercurial, etc.&nbsp; Download and <a class="reference external" href="http://ftp.mozilla.org/pub/mozilla.org/mozilla/libraries/win32/MozillaBuildSetup-Latest.exe">install MozillaBuild</a>, the latest should
+work&nbsp;fine.</p>
+<p>Now, an unknown step: you might require the <a class="reference external" href="http://www.microsoft.com/downloads/en/details.aspx?FamilyID=a5c84275-3b97-4ab7-a40d-3802b2af5fc2&amp;displaylang=en">Microsoft Visual C++ 2008
+<span class="caps">SP1</span> Redistributable Package</a>.&nbsp; I don&#8217;t know if you need this or not
+since I <em>already</em> had it, most likely from a previous program I&#8217;ve&nbsp;installed.</p>
+<p>We should be ready to build now pretty much.&nbsp; For some more
+information for this stuff you can check out the Mozilla Developer
+Network pages I used to get this information: <a class="reference external" href="https://developer.mozilla.org/En/Developer_Guide/Build_Instructions">Build Instructions</a>,
+<a class="reference external" href="https://developer.mozilla.org/En/Developer_Guide/Build_Instructions/Windows_Prerequisites">Windows Build Prerequisites</a> and <a class="reference external" href="https://developer.mozilla.org/cn/VC8_Build_Instructions"><span class="caps">MSVC8</span> Build Instructions</a>.</p>
+</div>
+</div>
+<div class="section" id="checkout-the-code">
+<h2>Checkout the&nbsp;Code:</h2>
+<p>We need to checkout the code.&nbsp; I originally checked out the code with
+TortoiseHg (which is what I normally use), but the version of Mercurial
+included is significantly greater than the one included in MozillaBuild
+and this caused me issues later on.&nbsp; Thus, we&#8217;ll check out the code on
+the command line.&nbsp; Start by launching the bash shell, which is at
+C:\mozilla-build\start-msvc8.bat (don&#8217;t use the x64 version).&nbsp; There&#8217;s
+a version here which corresponds to each version of <span class="caps">VS</span>.</p>
+<p>Once this finishes loading you&#8217;ll be in the home directory (which is
+in the root of your user&#8217;s documents and settings folder, i.e. for me:
+C:\Users\clokep).&nbsp; You&#8217;ll want to do the&nbsp;following:</p>
+<pre class="literal-block">
+hg clone https://hg.instantbird.org/instantbird
+</pre>
+<p>This might take a few minutes depending on how good your internet
+connection is.&nbsp; (The Instantbird source isn&#8217;t <span class="caps">THAT</span> big though, it
+shouldn&#8217;t take too&nbsp;long.)</p>
+<p>Then we&#8217;ll need to change into the instantbird directory that was just
+created and download the Mozilla source&nbsp;code:</p>
+<pre class="literal-block">
+cd instantbird
+python client.py checkout
+</pre>
+<p>Now this step?&nbsp; This one is gonna take a while.&nbsp; It took me like a
+couple of hours.&nbsp; It pulls the Mozilla source code, which is large and
+has many changesets.&nbsp; Just let it go, it&#8217;ll give you progress
+occasionally (changes, manifests, files,&nbsp;etc.)</p>
+</div>
+<div class="section" id="id1">
+<h2>Compiling&nbsp;Instantbird:</h2>
+<p>We need to set up the options we want to build with.&nbsp; These are
+read from a .mozconfig (don&#8217;t miss the &quot;.&quot; in the front!).&nbsp; The contents
+of the .mozconfig that worked for me&nbsp;are:</p>
+<pre class="literal-block">
+ac_add_options --enable-application=instantbird
+mk_add_options MOZ_OBJDIR=&#64;TOPSRCDIR&#64;/objdir-ib-release
+ac_add_options --disable-accessibility
+</pre>
+<p>The first option says to build Instantbird, the second gives an output
+directory and the third <a class="reference external" href="https://developer.mozilla.org/en/atlbase.h">disables accessibility</a> (not really sure why
+we need to do this, but we&#8217;ll get that error at that link&nbsp;otherwise).</p>
+<p>Finally (back in the bash shell)&nbsp;type:</p>
+<pre class="literal-block">
+make -f client.mk build
+</pre>
+<p>Now sit back and relax.&nbsp; My build took about an hour to finish, maybe
+a bit less &#8212; I wasn&#8217;t fully paying attention.&nbsp; Once it&#8217;s done you
+should see something&nbsp;like:</p>
+<pre class="literal-block">
+Processed 1 file, writing output:
+
+Output:
+&quot;c:\\Users\\clokep\\instantbird\\objdir-ib-release\\instantbird\\installer\\windows\\instgen\\helper.exe&quot;
+Install: 2 pages (128 bytes), 1 section (16416 bytes), 2579
+instructions (72212 bytes), 369 strings (10198 bytes), 1 language table (230 bytes).
+Uninstall: 5 pages (320 bytes),
+1 section (16416 bytes), 2063 instructions (57764 bytes), 388 strings
+(10828 bytes), 1 language table (314 bytes).
+Datablock optimizer saved 123940 bytes (~17.6%).
+Using zlib compression.
+EXE header size:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 63488 / 39424 bytes
+Install code:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 99564 / 99560 bytes
+Install data:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 118002 / 241950 bytes
+Uninstall code+data:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 398654 / 398646 bytes
+CRC (0x062AF3F5):&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 4 / 4 bytes
+Total size:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 679712 / 779584 bytes (87.1%)
+c:/Users/clokep/instantbird/objdir-ib-release/mozilla/config/nsinstall.exe -D ../../../mozilla/dist/bin/uninstall
+cp instgen/helper.exe ../../../mozilla/dist/bin/uninstall
+make[5]: Leaving directory `/c/Users/clokep/instantbird/objdir-ib-release/instantbird/installer/windows'
+make[4]: Leaving directory `/c/Users/clokep/instantbird/objdir-ib-release/instantbird'
+make[3]: Leaving directory `/c/Users/clokep/instantbird/objdir-ib-release'
+make[2]: Leaving directory `/c/Users/clokep/instantbird/objdir-ib-release'
+make[1]: Leaving directory `/c/Users/clokep/instantbird/objdir-ib-release'
+</pre>
+<p>Now, to test that the build actually worked we can browse to the
+compiled executable and run&nbsp;it:</p>
+<pre class="literal-block">
+cd objdir-ib-release/mozilla/dist/bin/instantbird.exe -P dev -no-remote
+</pre>
+<p>The -P option specifies a profile name (dev), the second option
+(-no-remote) allows you to run a second Instantbird instance (since I
+assume you use Instantbird to <span class="caps">IM</span>&#8230;you probably want to be able to run a
+second one, if you don&#8217;t use it&#8230;shame on you. Try not to close the
+wrong Instantbird when you&#8217;re working on&nbsp;stuff).</p>
+<p>Hopefully this will help someone else get started on hacking
+Instantbird.&nbsp; There&#8217;s other good ways you can hack too if your computer
+can&#8217;t handle compiling, including unpacking&nbsp;omni.jar.</p>
+<p>One last tidbit is to possibly add the option to your&nbsp;.mozconfig:</p>
+<pre class="literal-block">
+--enable-chrome-format=flat
+</pre>
+<p>This will not package anything in JARs (which pretty much just get in
+the way while developing).&nbsp; See&nbsp;<a class="reference external" href="https://developer.mozilla.org/en/JAR_Packaging">here</a> for more&nbsp;info.</p>
+<p>Edit: Fixed the path to the executable thanks to Florian. And fixed a
+spelling error in the&nbsp;title.</p>
+</div>
+
+        </div><!-- /.entry-content -->
+
+</article>
+</section>
+
+        <aside id="sidebar">
+                <div class="widget">
+                        <h2>Categories</h2>
+                        <ul>
+                           <li class="active"><a href="http://patrick.cloke.us/category/misc.html">misc</a></li>
+                        </ul>
+                </div>
+        </aside><!-- /#sidebar -->
+
+        <footer id="footer" class="body">
+                <address id="about" class="vcard body">
+                Proudly powered by <a href="http://alexis.notmyidea.org/pelican/">pelican</a>, which takes great advantages of <a href="http://python.org">python</a>.
+                </address><!-- /#about -->
+
+                <p>The theme is «notmyidea-cms», a modified version of «notmyidea», the default theme.</p>
+        </footer><!-- /#footer -->
+
+    <script type="text/javascript">
+    var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+    document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+    </script>
+    <script type="text/javascript">
+    try {
+        var pageTracker = _gat._getTracker("UA-52389517-1");
+    pageTracker._trackPageview();
+    } catch(err) {}</script>
+</body>
+</html>

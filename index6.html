@@ -1,255 +1,793 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-
         <title>Like bricks in the sky</title>
         <meta charset="utf-8" />
-        <link href="http://patrick.cloke.us/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="Like bricks in the sky Full Atom Feed" />
-        <link href="http://patrick.cloke.us/feeds/all.rss.xml" type="application/rss+xml" rel="alternate" title="Like bricks in the sky Full RSS Feed" />
+        <link rel="stylesheet" href="http://patrick.cloke.us/theme/css/main.css" type="text/css" />
+        <link href="http://patrick.cloke.us/" type="application/atom+xml" rel="alternate" title="Like bricks in the sky ATOM Feed" />
 
 
-        <!-- Mobile viewport optimized: j.mp/bplateviewport -->
-        <meta name="viewport" content="width=device-width,initial-scale=1, maximum-scale=1">
+        <!--[if IE]>
+                <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
 
-        <link rel="stylesheet" type="text/css" href="http://patrick.cloke.us/theme/gumby.css" />
-        <link rel="stylesheet" type="text/css" href="http://patrick.cloke.us/theme/style.css" />
-        <link rel="stylesheet" type="text/css" href="http://patrick.cloke.us/theme/pygment.css" />
+        <!--[if lte IE 7]>
+                <link rel="stylesheet" type="text/css" media="all" href="http://patrick.cloke.us/css/ie.css"/>
+                <script src="http://patrick.cloke.us/js/IE8.js" type="text/javascript"></script><![endif]-->
 
-        <script src="http://patrick.cloke.us/theme/js/libs/modernizr-2.6.2.min.js"></script>
-
-
-
-
-
+        <!--[if lt IE 7]>
+                <link rel="stylesheet" type="text/css" media="all" href="http://patrick.cloke.us/css/ie6.css"/><![endif]-->
 
 </head>
 
 <body id="index" class="home">
+<a href="https://www.github.com/clokep">
+<img style="position: absolute; top: 0; right: 0; border: 0;" src="http://s3.amazonaws.com/github/ribbons/forkme_right_red_aa0000.png" alt="Fork me on GitHub" />
+</a>
+        <header id="banner" class="body">
+                <h1><a href="http://patrick.cloke.us/index.html">Like bricks in the sky </a></h1>
+                <nav><ul>
+                <li><a href="http://patrick.cloke.us/">Archives</a></li>
+                </ul></nav>
+        </header><!-- /#banner -->
 
+     <section id="content" class="body">
+        <aside id="featured"><article>
+                <h1 class="entry-title"><a href="http://patrick.cloke.us/posts/2014/Jun/18/mentoring-and-time/">Mentoring and&nbsp;Time</a></h1>
+<footer class="post-info">
+        <abbr class="published" title="2014-06-18T23:46:00">
+                06/18/2014 11:46 PM UTC
+        </abbr>
 
-    <div class="container">
+        <address class="vcard author">
+                By <a class="url fn" href="http://patrick.cloke.us/author/patrick-cloke.html">Patrick Cloke</a>
+        </address>
+<p>In <a href="http://patrick.cloke.us/category/misc.html">misc</a>. </p>
+<p>tags: <a href="http://patrick.cloke.us/tag/community.html">community</a><a href="http://patrick.cloke.us/tag/gsoc.html">GSoC</a></p></p></footer><!-- /.post-info --><!-- /.post-info -->
+                
+<div class="section" id="google-summer-of-code-2014">
+<h2><a class="toc-backref" href="#id1">Google Summer of Code 2014</a></h2>
+<p>I’m again mentoring for <a class="reference external" href="https://www.google-melange.com/gsoc/homepage/google/gsoc2014">Google Summer of Code</a> 2014, this year my student is
+<a class="reference external" href="http://sawrubh.tumblr.com/">Saurabh Anand</a> (sawrubh), who has been working on a full related things:</p>
+<ul class="simple">
+<li>Adding a <a class="reference external" href="https://bugzilla.mozilla.org/show_bug.cgi?id=1024023">file transfer mechanism for <span class="caps">XMPP</span></a></li>
+<li>Hooking up libpurple’s file transfer code to Instantbird</li>
+<li>Integrating <a class="reference external" href="https://support.mozilla.org/en-US/kb/filelink-large-attachments">FileLink</a> as a fallback to in-protocol file transfers</li>
+</ul>
+</div>
+<div class="section" id="on-time">
+<h2><a class="toc-backref" href="#id2">On Time</a></h2>
+<p>No, this is not about being late places, it’s about respecting people’s time. I
+won’t go super into this as, Michael Haggerty wrote an awesome <a class="reference external" href="http://softwareswirl.blogspot.fr/2014/03/my-secret-tip-for-gsoc-success.html">article</a> on this.
+His thoughts boild down to a single line of advice:
+"<strong><span class="caps">DON</span>’T <span class="caps">WASTE</span> <span class="caps">OTHER</span> <span class="caps">PEOPLE</span>’S <span class="caps">TIME</span></strong>".</p>
+<p>I think this applies to more than just Google Summer of Code mentoring, and not
+only open source work, but anything where someone is mentoring and helping you!
+This advice isn’t meant just for GSoC students, interns or new employees, but
+also things I’d like to remind myself to do.</p>
+<p>To make this sound a little more positive, I’d reword his advice as <strong>Respect
+people’s time!</strong>. Someone is willing to help you, so assume some good faith,
+but help them help you. Some actions to focus on:</p>
+<ul class="simple">
+<li>Ask <em>focused</em> questions! If you do not understand an answer, do not <em>re-ask</em>
+the same question, but ask <em>followup</em> question. Show you’ve researched the
+original answer and attempted to understand it. Write sample code, play with
+it, etc. If you think the answer given doesn’t apply to your question,
+<em>reword</em> your question: your mentor probably did not understand.</li>
+<li>Be cognizant of <em>timezones</em>: if you’d like a question asked (in realtime), ask
+it when the person is awake! (And this includes realizing if they have just
+woken up or are going to bed.)</li>
+<li>They will not have the <em>context</em> you do: your "mentor" might be helping many
+people at once, try not to get frustrated if you have to explain your context
+to them multiple times or have to clarify your question. You are living and
+breathing the code you’re working in; they are not.</li>
+<li>Don’t be afraid to <em>post code</em>. It’s much easier to ask a question when
+there’s an example in front of you. Be specific and don’t talk theoretically.</li>
+<li>Don’t be upset about an <em>r-</em> (a rejected change)! Part of helping you to grow
+is telling you what you’re doing wrong.</li>
+<li>Working <em>remotely</em> is hard. It requires effort to build a level of trust
+between people. Don’t just assume it will come in time, but work at it and try
+to get to know and understand your mentor.</li>
+<li><em>Quickly</em> respond to both feedback and questions. Your mentor is taking the
+time out of whatever they’re doing to help you. If they ask you a question or
+ask something of you, do it now (well…*soon*).</li>
+</ul>
+<p>All of the above is a lot to handle, but it can make it a join to work with a mentor.</p>
+<p>Mentoring is also hard and a skill to practice. Although I’ve talked a lot
+about what a mentee needs to do, it is also important that a mentor leaves
+h(im|er)self open. A few thoughts on interacting as a mentor:</p>
+<ul class="simple">
+<li>Be cognizant of <em>culture</em> and <em>language</em> (as in how well a mentor and mentee
+share their common language). In particular, colloquialisms should be avoided
+whenever possible. At least until a level of trust is reached.</li>
+<li>Be tactful when <em>giving feedback</em>. Thank people for submitting a patch, give
+good, <em>actionable</em> feedback quickly. Concentrate more on overall code design
+and algorithms than nits. (Maybe even point out nits, but fix them yourself
+for an initial patch.)</li>
+</ul>
+</div>
 
-        <div class="row">
+        </article></aside><!-- /#featured -->
+                <h1>Other articles</h1>
+                <hr />
+                    <ol id="posts-list" class="hfeed">
+        <li><article class="hentry">
+                <header>
+                        <h1><a href="http://patrick.cloke.us/posts/2014/Apr/27/extending-javascript-maps-or-other-built-in-objects/" rel="bookmark" title="Permalink to Extending JavaScript Maps (or other built-in objects)">Extending JavaScript Maps (or other built-in&nbsp;objects)</a></h1>
+                </header>
 
-          <header id="banner" class="body">
-                  <h1><a href="http://patrick.cloke.us">Like bricks in the sky <strong></strong></a></h1>
-          </header><!-- /#banner -->
+                <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2014-04-27T17:46:00">
+                04/27/2014 05:46 PM UTC
+        </abbr>
 
-            <div id="navigation" class="navbar row">
-              <a href="#" gumby-trigger="#navigation &gt; ul" class="toggle"><i class="icon-menu"></i></a>
-             
-              <ul class="columns">
-                <li><a href="http://patrick.cloke.us">Home</a></li>
+        <address class="vcard author">
+                By <a class="url fn" href="http://patrick.cloke.us/author/patrick-cloke.html">Patrick Cloke</a>
+        </address>
+<p>In <a href="http://patrick.cloke.us/category/misc.html">misc</a>. </p>
+<p>tags: <a href="http://patrick.cloke.us/tag/im.html">IM</a><a href="http://patrick.cloke.us/tag/instantbird.html">Instantbird</a><a href="http://patrick.cloke.us/tag/programming.html">programming</a><a href="http://patrick.cloke.us/tag/specifications.html">specifications</a><a href="http://patrick.cloke.us/tag/thunderbird.html">Thunderbird</a><a href="http://patrick.cloke.us/tag/wat.html">Wat</a></p></p></footer><!-- /.post-info --><!-- /.post-info -->
+                <p>Finally another technical post, this one is about my adventures in
+attempting to extend the built-in <a class="reference external" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Map">Map</a> object in JavaScript to extend
+the functionality. As background, there are two reasons we&#8217;d want&nbsp;this:</p>
+<ol class="arabic">
+<li><p class="first">In the chat backend we currently use JavaScript <a class="reference external" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object">objects</a> (<tt class="docutils literal">{}</tt>) as
+hashes/maps to keep track of ...</p></li></ol>
+                <a class="readmore" href="http://patrick.cloke.us/posts/2014/Apr/27/extending-javascript-maps-or-other-built-in-objects/">read more</a>
+                </div><!-- /.entry-content -->
+        </article></li>
+        <li><article class="hentry">
+                <header>
+                        <h1><a href="http://patrick.cloke.us/posts/2014/Apr/16/community-and-volunteers/" rel="bookmark" title="Permalink to Community and Volunteers">Community and&nbsp;Volunteers</a></h1>
+                </header>
 
-                <li><a href="http://patrick.cloke.us/pages/about.html">About</a></li>
-                <li><a href="http://patrick.cloke.us/pages/contact.html">Contact</a></li>
+                <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2014-04-16T16:34:00">
+                04/16/2014 04:34 PM UTC
+        </abbr>
 
-                <li><a href="http://patrick.cloke.us/archives.html">Archives</a></li>
-                <li><a href="http://patrick.cloke.us/tags.html">Tags</a></li>
-              </ul>
-            </div>
+        <address class="vcard author">
+                By <a class="url fn" href="http://patrick.cloke.us/author/patrick-cloke.html">Patrick Cloke</a>
+        </address>
+<p>In <a href="http://patrick.cloke.us/category/misc.html">misc</a>. </p>
+<p>tags: <a href="http://patrick.cloke.us/tag/community.html">community</a><a href="http://patrick.cloke.us/tag/crosspost.html">crosspost</a><a href="http://patrick.cloke.us/tag/mozilla.html">Mozilla</a><a href="http://patrick.cloke.us/tag/thunderbird.html">Thunderbird</a></p></p></footer><!-- /.post-info --><!-- /.post-info -->
+                <p>It was suggested that I cross-post this from mozilla.dev.planning onto
+my blog. This is in reply to a thread entitled &quot;<a class="reference external" href="https://groups.google.com/forum/#%21topic/mozilla.dev.planning/P8oHKTCWSiQ">Proposal: Move
+Thunderbird and SeaMonkey to mozilla-central</a>&quot; about (essentially)
+merging comm-central back into mozilla-central. There have been many
+technical concerns raised in the thread (that I&#8217;m not ...</p>
+                <a class="readmore" href="http://patrick.cloke.us/posts/2014/Apr/16/community-and-volunteers/">read more</a>
+                </div><!-- /.entry-content -->
+        </article></li>
+        <li><article class="hentry">
+                <header>
+                        <h1><a href="http://patrick.cloke.us/posts/2013/Dec/04/gsoc-lessons-part-deux-the-arms-race/" rel="bookmark" title="Permalink to GSoc Lessons: Part Deux: The Arms Race">GSoc Lessons: Part Deux: The Arms&nbsp;Race</a></h1>
+                </header>
 
-<section id="content">
+                <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2013-12-04T13:17:00">
+                12/04/2013 01:17 PM UTC
+        </abbr>
 
+        <address class="vcard author">
+                By <a class="url fn" href="http://patrick.cloke.us/author/patrick-cloke.html">Patrick Cloke</a>
+        </address>
+<p>In <a href="http://patrick.cloke.us/category/misc.html">misc</a>. </p>
+<p>tags: <a href="http://patrick.cloke.us/tag/community.html">community</a><a href="http://patrick.cloke.us/tag/gsoc.html">GSoC</a><a href="http://patrick.cloke.us/tag/mozilla.html">Mozilla</a></p></p></footer><!-- /.post-info --><!-- /.post-info -->
+                <p>This post title might be a little excessive, but I&#8217;ll blame <a class="reference external" href="http://en.wikipedia.org/wiki/The_Sum_of_All_Fears_%28film%29">The Sum
+of All Fears</a> that I was watching last night. This is the second part
+of a set of posts about ideas I heard at the Google Summer of Code 2013
+Mentor Summit (you can read <a class="reference external" href="http://patrick.cloke.us/posts/2013/Dec/02/gsoc-lessons-part-1-application-period/">the ...</a></p>
+                <a class="readmore" href="http://patrick.cloke.us/posts/2013/Dec/04/gsoc-lessons-part-deux-the-arms-race/">read more</a>
+                </div><!-- /.entry-content -->
+        </article></li>
+        <li><article class="hentry">
+                <header>
+                        <h1><a href="http://patrick.cloke.us/posts/2013/Dec/02/gsoc-lessons-part-1-application-period/" rel="bookmark" title="Permalink to GSoC Lessons: Part 1: Application Period">GSoC Lessons: Part 1: Application&nbsp;Period</a></h1>
+                </header>
 
+                <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2013-12-02T00:55:00">
+                12/02/2013 12:55 AM UTC
+        </abbr>
 
-   <div class="row">
+        <address class="vcard author">
+                By <a class="url fn" href="http://patrick.cloke.us/author/patrick-cloke.html">Patrick Cloke</a>
+        </address>
+<p>In <a href="http://patrick.cloke.us/category/misc.html">misc</a>. </p>
+<p>tags: <a href="http://patrick.cloke.us/tag/community.html">community</a><a href="http://patrick.cloke.us/tag/gsoc.html">GSoC</a><a href="http://patrick.cloke.us/tag/mozilla.html">Mozilla</a></p></p></footer><!-- /.post-info --><!-- /.post-info -->
+                <p>I briefly talked about <a class="reference external" href="http://patrick.cloke.us/posts/2013/Oct/21/google-summer-of-code-mentor-summit-2013/">my experiences</a> at the Google Summer of Code
+2013 Mentor Summit. I&#8217;ve been pretty remiss in sharing what was actually
+discussed there and for that I must apologize! This will hopefully be
+one of a few posts about what I learned and discussed at the ...</p>
+                <a class="readmore" href="http://patrick.cloke.us/posts/2013/Dec/02/gsoc-lessons-part-1-application-period/">read more</a>
+                </div><!-- /.entry-content -->
+        </article></li>
+        <li><article class="hentry">
+                <header>
+                        <h1><a href="http://patrick.cloke.us/posts/2013/Oct/21/google-summer-of-code-mentor-summit-2013/" rel="bookmark" title="Permalink to Google Summer of Code Mentor Summit 2013">Google Summer of Code Mentor Summit&nbsp;2013</a></h1>
+                </header>
 
+                <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2013-10-21T02:18:00">
+                10/21/2013 02:18 AM UTC
+        </abbr>
 
-        <div class="eleven columns">
-		         <ol id="post-list">
-				        <li><article class="hentry">
-				                <header> <h2 class="entry-title"><a href="http://patrick.cloke.us/why-rewrite-irc-into-javascript-vs-libpurples-vs-chatzillas.html" rel="bookmark" title="Permalink to Why Rewrite IRC into JavaScript? (vs. libpurple's vs. ChatZilla's)">Why Rewrite IRC into JavaScript? (vs. libpurple's vs. ChatZilla's)</a></h2> </header>
-				                <footer class="post-info">
-				                    <abbr class="published" title="2010-12-08T18:29:00"> 12/08/2010 06:29 PM UTC </abbr>
-<address class="vcard author">By <a class="url fn" href="http://patrick.cloke.us/author/patrick-cloke.html">Patrick Cloke</a></address>				                </footer><!-- /.post-info -->
-				                <div class="entry-content"> <p>I had a request on IRC (from Mic) to write an in-depth blog post
-about <a class="reference external" href="https://bugzilla.instantbird.org/show_bug.cgi?id=507">IRC in JavaScript</a>:</p>
+        <address class="vcard author">
+                By <a class="url fn" href="http://patrick.cloke.us/author/patrick-cloke.html">Patrick Cloke</a>
+        </address>
+<p>In <a href="http://patrick.cloke.us/category/misc.html">misc</a>. </p>
+<p>tags: <a href="http://patrick.cloke.us/tag/google.html">Google</a><a href="http://patrick.cloke.us/tag/gsoc.html">GSoC</a><a href="http://patrick.cloke.us/tag/mozilla.html">Mozilla</a></p></p></footer><!-- /.post-info --><!-- /.post-info -->
+                <p>Not only was I lucky enough to mentor a great student for this year&#8217;s
+Google Summer of Code, but Mozilla asked me to represent them at the
+Google Summer of Code Mentor Summit!&nbsp; This was located at Google&#8217;s
+offices in Mountain View, California this past weekend (Friday, Oct ...</p>
+                <a class="readmore" href="http://patrick.cloke.us/posts/2013/Oct/21/google-summer-of-code-mentor-summit-2013/">read more</a>
+                </div><!-- /.entry-content -->
+        </article></li>
+        <li><article class="hentry">
+                <header>
+                        <h1><a href="http://patrick.cloke.us/posts/2013/Oct/06/yahoo-protocol-google-summer-of-code-round-up/" rel="bookmark" title="Permalink to Yahoo Protocol Google Summer of Code Round-up">Yahoo Protocol Google Summer of Code&nbsp;Round-up</a></h1>
+                </header>
+
+                <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2013-10-06T13:18:00">
+                10/06/2013 01:18 PM UTC
+        </abbr>
+
+        <address class="vcard author">
+                By <a class="url fn" href="http://patrick.cloke.us/author/patrick-cloke.html">Patrick Cloke</a>
+        </address>
+<p>In <a href="http://patrick.cloke.us/category/misc.html">misc</a>. </p>
+<p>tags: <a href="http://patrick.cloke.us/tag/chat.html">chat</a><a href="http://patrick.cloke.us/tag/gsoc.html">GSoC</a><a href="http://patrick.cloke.us/tag/im.html">IM</a><a href="http://patrick.cloke.us/tag/instant-messaging.html">instant messaging</a><a href="http://patrick.cloke.us/tag/instantbird.html">Instantbird</a><a href="http://patrick.cloke.us/tag/yahoo.html">Yahoo</a></p></p></footer><!-- /.post-info --><!-- /.post-info -->
+                <p>I have to apologize to my student, <a class="reference external" href="http://phaseshiftsoftware.com/blog/">Quentin</a> (aka qheaden on <span class="caps">IRC</span>),
+for taking so long to write this&#8230;but anyway: Google Summer of Code
+2013 is over!&nbsp; Quentin has done a great job working at implementing the
+Yahoo Protocol for Instantbird (and Thunderbird) in JavaScript
+(henceforth called &quot;<span class="caps">JS</span>-Yahoo ...</p>
+                <a class="readmore" href="http://patrick.cloke.us/posts/2013/Oct/06/yahoo-protocol-google-summer-of-code-round-up/">read more</a>
+                </div><!-- /.entry-content -->
+        </article></li>
+        <li><article class="hentry">
+                <header>
+                        <h1><a href="http://patrick.cloke.us/posts/2013/Jun/28/mentoring-google-summer-of-code-2013/" rel="bookmark" title="Permalink to Mentoring Google Summer of Code 2013">Mentoring Google Summer of Code&nbsp;2013</a></h1>
+                </header>
+
+                <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2013-06-28T22:05:00">
+                06/28/2013 10:05 PM UTC
+        </abbr>
+
+        <address class="vcard author">
+                By <a class="url fn" href="http://patrick.cloke.us/author/patrick-cloke.html">Patrick Cloke</a>
+        </address>
+<p>In <a href="http://patrick.cloke.us/category/misc.html">misc</a>. </p>
+<p>tags: <a href="http://patrick.cloke.us/tag/chat.html">chat</a><a href="http://patrick.cloke.us/tag/gsoc.html">GSoC</a><a href="http://patrick.cloke.us/tag/im.html">IM</a><a href="http://patrick.cloke.us/tag/instant-messaging.html">instant messaging</a><a href="http://patrick.cloke.us/tag/instantbird.html">Instantbird</a><a href="http://patrick.cloke.us/tag/yahoo.html">Yahoo</a></p></p></footer><!-- /.post-info --><!-- /.post-info -->
+                <p>I&#8217;m officially a mentor this year for <a class="reference external" href="http://www.google-melange.com/gsoc/homepage/google/gsoc2013">2013&#8217;s Google Summer of Code</a>.
+I&#8217;m a bit late on posting this, but oh well! My student this year is
+<a class="reference external" href="http://phaseshiftsoftware.com/">Quentin Headen</a> who is <a class="reference external" href="http://www.google-melange.com/gsoc/project/google/gsoc2013/qheaden/26001">working on</a> a <a class="reference external" href="http://en.wikipedia.org/wiki/Yahoo!_Messenger_Protocol">Yahoo! Messenger protocol</a>
+for the Instantbird chat/ backend (so it&#8217;ll also be ...</p>
+                <a class="readmore" href="http://patrick.cloke.us/posts/2013/Jun/28/mentoring-google-summer-of-code-2013/">read more</a>
+                </div><!-- /.entry-content -->
+        </article></li>
+        <li><article class="hentry">
+                <header>
+                        <h1><a href="http://patrick.cloke.us/posts/2013/May/20/instantbird-14-released/" rel="bookmark" title="Permalink to Instantbird 1.4 Released!">Instantbird 1.4&nbsp;Released!</a></h1>
+                </header>
+
+                <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2013-05-20T20:45:00">
+                05/20/2013 08:45 PM UTC
+        </abbr>
+
+        <address class="vcard author">
+                By <a class="url fn" href="http://patrick.cloke.us/author/patrick-cloke.html">Patrick Cloke</a>
+        </address>
+<p>In <a href="http://patrick.cloke.us/category/misc.html">misc</a>. </p>
+<p>tags: <a href="http://patrick.cloke.us/tag/instantbird.html">Instantbird</a></p></p></footer><!-- /.post-info --><!-- /.post-info -->
+                <p>After a bunch of l10n build problems, we&#8217;ve finally released
+Instantbird 1.4, which includes updates to libpurple 2.10.7 and Mozilla
+20.&nbsp; In particular this&nbsp;includes:</p>
+<ul class="simple">
+<li>Updated Twitter code that uses v1.1 of their <span class="caps">API</span> (v1.0 will be
+disabled on June 11th,&nbsp;2013).</li>
+<li>Better character ...</li></ul>
+                <a class="readmore" href="http://patrick.cloke.us/posts/2013/May/20/instantbird-14-released/">read more</a>
+                </div><!-- /.entry-content -->
+        </article></li>
+        <li><article class="hentry">
+                <header>
+                        <h1><a href="http://patrick.cloke.us/posts/2012/Nov/29/javascript-typed-arrays-pain/" rel="bookmark" title="Permalink to JavaScript typed arrays pain">JavaScript typed arrays&nbsp;pain</a></h1>
+                </header>
+
+                <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2012-11-29T03:11:00">
+                11/29/2012 03:11 AM UTC
+        </abbr>
+
+        <address class="vcard author">
+                By <a class="url fn" href="http://patrick.cloke.us/author/patrick-cloke.html">Patrick Cloke</a>
+        </address>
+<p>In <a href="http://patrick.cloke.us/category/misc.html">misc</a>. </p>
+<p>tags: <a href="http://patrick.cloke.us/tag/im.html">IM</a><a href="http://patrick.cloke.us/tag/instantbird.html">Instantbird</a><a href="http://patrick.cloke.us/tag/mozilla.html">Mozilla</a><a href="http://patrick.cloke.us/tag/oscar.html">OSCAR</a><a href="http://patrick.cloke.us/tag/thunderbird.html">Thunderbird</a><a href="http://patrick.cloke.us/tag/wat.html">Wat</a></p></p></footer><!-- /.post-info --><!-- /.post-info -->
+                <p>If you&#8217;ve ever tried to deal with binary data in JavaScript you know
+it isn&#8217;t much fun and you usually resort to using strings lots of
+charCodeAt and related functions.&nbsp; <a class="reference external" href="https://developer.mozilla.org/en-US/docs/JavaScript_typed_arrays">Typed arrays</a> are supposed to solve
+this though!&nbsp; The typed array <span class="caps">API</span> consists of creating a buffer of ...</p>
+                <a class="readmore" href="http://patrick.cloke.us/posts/2012/Nov/29/javascript-typed-arrays-pain/">read more</a>
+                </div><!-- /.entry-content -->
+        </article></li>
+        <li><article class="hentry">
+                <header>
+                        <h1><a href="http://patrick.cloke.us/posts/2012/Nov/16/instantbird-13-released/" rel="bookmark" title="Permalink to Instantbird 1.3 Released!!!">Instantbird 1.3&nbsp;Released!!!</a></h1>
+                </header>
+
+                <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2012-11-16T10:42:00">
+                11/16/2012 10:42 AM UTC
+        </abbr>
+
+        <address class="vcard author">
+                By <a class="url fn" href="http://patrick.cloke.us/author/patrick-cloke.html">Patrick Cloke</a>
+        </address>
+<p>In <a href="http://patrick.cloke.us/category/misc.html">misc</a>. </p>
+<p>tags: <a href="http://patrick.cloke.us/tag/instantbird.html">Instantbird</a></p></p></footer><!-- /.post-info --><!-- /.post-info -->
+                <p>Well we finally got our release process down a bit better and were
+able to do a quicker release (from 1.2 to 1.3, compared to our previous
+few releases). This is great news, as it gives incremental changes to
+our users faster!&nbsp; There&#8217;s some new features available ...</p>
+                <a class="readmore" href="http://patrick.cloke.us/posts/2012/Nov/16/instantbird-13-released/">read more</a>
+                </div><!-- /.entry-content -->
+        </article></li>
+        <li><article class="hentry">
+                <header>
+                        <h1><a href="http://patrick.cloke.us/posts/2012/Oct/17/on-status/" rel="bookmark" title="Permalink to On Status">On&nbsp;Status</a></h1>
+                </header>
+
+                <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2012-10-17T01:33:00">
+                10/17/2012 01:33 AM UTC
+        </abbr>
+
+        <address class="vcard author">
+                By <a class="url fn" href="http://patrick.cloke.us/author/patrick-cloke.html">Patrick Cloke</a>
+        </address>
+<p>In <a href="http://patrick.cloke.us/category/misc.html">misc</a>. </p>
+<p>tags: <a href="http://patrick.cloke.us/tag/chat.html">chat</a><a href="http://patrick.cloke.us/tag/im.html">IM</a><a href="http://patrick.cloke.us/tag/instant-messaging.html">instant messaging</a><a href="http://patrick.cloke.us/tag/instantbird.html">Instantbird</a><a href="http://patrick.cloke.us/tag/messaging.html">messaging</a><a href="http://patrick.cloke.us/tag/status.html">status</a><a href="http://patrick.cloke.us/tag/thunderbird.html">Thunderbird</a></p></p></footer><!-- /.post-info --><!-- /.post-info -->
+                <p>Something that comes up often about Instantbird is why we only support
+three statuses: Available, Unavailable and Offline.&nbsp; (We do actually
+support a fourth one too, Idle, but that is set automatically, not
+chosen by the user.)&nbsp; Frequently this discussion is in the context of
+wanting an &quot;Invisible&quot; status, but ...</p>
+                <a class="readmore" href="http://patrick.cloke.us/posts/2012/Oct/17/on-status/">read more</a>
+                </div><!-- /.entry-content -->
+        </article></li>
+        <li><article class="hentry">
+                <header>
+                        <h1><a href="http://patrick.cloke.us/posts/2012/Aug/08/instantbird-12-released-with-awesome-new-irc-features/" rel="bookmark" title="Permalink to Instantbird 1.2 Released (with awesome new IRC features)!">Instantbird 1.2 Released (with awesome new <span class="caps">IRC</span>&nbsp;features)!</a></h1>
+                </header>
+
+                <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2012-08-08T17:08:00">
+                08/08/2012 05:08 PM UTC
+        </abbr>
+
+        <address class="vcard author">
+                By <a class="url fn" href="http://patrick.cloke.us/author/patrick-cloke.html">Patrick Cloke</a>
+        </address>
+<p>In <a href="http://patrick.cloke.us/category/misc.html">misc</a>. </p>
+<p>tags: <a href="http://patrick.cloke.us/tag/instantbird.html">Instantbird</a><a href="http://patrick.cloke.us/tag/irc.html">IRC</a></p></p></footer><!-- /.post-info --><!-- /.post-info -->
+                <p>If you haven&#8217;t seen the announcement&#8230;<a class="reference external" href="http://blog.instantbird.org/2012/08/instantbird-1-2-released/">Instantbird 1.2 has been
+released</a>!&nbsp; It&#8217;s got a ton of great new features that I&#8217;m excited for:
+<a class="reference external" href="http://blog.instantbird.org/2012/08/tab-completion-in-instantbird-1-2/">better tab complete</a>, a marker showing the last viewed messages,
+support for Bonjour and more.&nbsp; But the most exciting bits to me are ...</p>
+                <a class="readmore" href="http://patrick.cloke.us/posts/2012/Aug/08/instantbird-12-released-with-awesome-new-irc-features/">read more</a>
+                </div><!-- /.entry-content -->
+        </article></li>
+        <li><article class="hentry">
+                <header>
+                        <h1><a href="http://patrick.cloke.us/posts/2012/Jun/11/irc-auto-performs/" rel="bookmark" title="Permalink to IRC Auto-Performs"><span class="caps">IRC</span>&nbsp;Auto-Performs</a></h1>
+                </header>
+
+                <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2012-06-11T02:25:00">
+                06/11/2012 02:25 AM UTC
+        </abbr>
+
+        <address class="vcard author">
+                By <a class="url fn" href="http://patrick.cloke.us/author/patrick-cloke.html">Patrick Cloke</a>
+        </address>
+<p>In <a href="http://patrick.cloke.us/category/misc.html">misc</a>. </p>
+<p>tags: <a href="http://patrick.cloke.us/tag/instantbird.html">Instantbird</a><a href="http://patrick.cloke.us/tag/irc.html">IRC</a><a href="http://patrick.cloke.us/tag/mozilla.html">Mozilla</a></p></p></footer><!-- /.post-info --><!-- /.post-info -->
+                <p>There have been a <a class="reference external" href="https://bugzilla.mozilla.org/show_bug.cgi?id=742675">few</a> <a class="reference external" href="https://bugzilla.instantbird.org/show_bug.cgi?id=1101">requests</a> to support &quot;auto-performs&quot;
+(sending commands to the <span class="caps">IRC</span> server after connection that the user types
+into a box or whatever). Personally I find this to&nbsp;be:</p>
+<ol class="arabic simple">
+<li>A fairly awful user&nbsp;experience.</li>
+<li>Confusing to new&nbsp;users.</li>
+<li>Unnecessary.</li>
+</ol>
+<p>I additionally don&#8217;t like this idea since ...</p>
+                <a class="readmore" href="http://patrick.cloke.us/posts/2012/Jun/11/irc-auto-performs/">read more</a>
+                </div><!-- /.entry-content -->
+        </article></li>
+        <li><article class="hentry">
+                <header>
+                        <h1><a href="http://patrick.cloke.us/posts/2012/Jan/15/instantbird-contact-list-hack-2/" rel="bookmark" title="Permalink to Instantbird Contact List Hack #2">Instantbird Contact List Hack&nbsp;#2</a></h1>
+                </header>
+
+                <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2012-01-15T14:00:00">
+                01/15/2012 02:00 PM UTC
+        </abbr>
+
+        <address class="vcard author">
+                By <a class="url fn" href="http://patrick.cloke.us/author/patrick-cloke.html">Patrick Cloke</a>
+        </address>
+<p>In <a href="http://patrick.cloke.us/category/misc.html">misc</a>. </p>
+<p>tags: <a href="http://patrick.cloke.us/tag/customizing.html">customizing</a><a href="http://patrick.cloke.us/tag/instantbird.html">Instantbird</a><a href="http://patrick.cloke.us/tag/programming.html">programming</a></p></p></footer><!-- /.post-info --><!-- /.post-info -->
+                <p>There was a <a class="reference external" href="https://bugzilla.instantbird.org/show_bug.cgi?id=987">request</a> on the Instantbird Bugzilla to always show
+contacts in the contact list as the &quot;big&quot; contact (as shown when a
+contact is selected).&nbsp; Similarly to my <a class="reference external" href="http://patrick.cloke.us/posts/2011/Nov/01/instantbird-contact-list-hack/">last post</a>, this can easily be
+done with userChrome.css.&nbsp; See the post if you don&#8217;t know what
+userChrome ...</p>
+                <a class="readmore" href="http://patrick.cloke.us/posts/2012/Jan/15/instantbird-contact-list-hack-2/">read more</a>
+                </div><!-- /.entry-content -->
+        </article></li>
+        <li><article class="hentry">
+                <header>
+                        <h1><a href="http://patrick.cloke.us/posts/2011/Nov/01/instantbird-contact-list-hack/" rel="bookmark" title="Permalink to Instantbird Contact List Hack">Instantbird Contact List&nbsp;Hack</a></h1>
+                </header>
+
+                <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2011-11-01T00:20:00">
+                11/01/2011 12:20 AM UTC
+        </abbr>
+
+        <address class="vcard author">
+                By <a class="url fn" href="http://patrick.cloke.us/author/patrick-cloke.html">Patrick Cloke</a>
+        </address>
+<p>In <a href="http://patrick.cloke.us/category/misc.html">misc</a>. </p>
+<p>tags: <a href="http://patrick.cloke.us/tag/customizing.html">customizing</a><a href="http://patrick.cloke.us/tag/instantbird.html">Instantbird</a><a href="http://patrick.cloke.us/tag/programming.html">programming</a></p></p></footer><!-- /.post-info --><!-- /.post-info -->
+                <p>A friend of mine asked me if there was a way to have selected contacts
+in the contact list <span class="caps">NOT</span> expand to two lines (where the status goes onto
+the second line) in&nbsp;Instantbird.</p>
+<p>There&#8217;s actually no option to do this in Instantbird, but with a
+little <a class="reference external" href="http://www-archive.mozilla.org/unix/customizing.html">userChrome</a> tweak ...</p>
+                <a class="readmore" href="http://patrick.cloke.us/posts/2011/Nov/01/instantbird-contact-list-hack/">read more</a>
+                </div><!-- /.entry-content -->
+        </article></li>
+        <li><article class="hentry">
+                <header>
+                        <h1><a href="http://patrick.cloke.us/posts/2011/Sep/03/adding-a-protocol-to-instantbird-part-2/" rel="bookmark" title="Permalink to Adding a protocol to Instantbird (Part 2)">Adding a protocol to Instantbird (Part&nbsp;2)</a></h1>
+                </header>
+
+                <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2011-09-03T14:31:00">
+                09/03/2011 02:31 PM UTC
+        </abbr>
+
+        <address class="vcard author">
+                By <a class="url fn" href="http://patrick.cloke.us/author/patrick-cloke.html">Patrick Cloke</a>
+        </address>
+<p>In <a href="http://patrick.cloke.us/category/misc.html">misc</a>. </p>
+<p>tags: <a href="http://patrick.cloke.us/tag/instantbird.html">Instantbird</a><a href="http://patrick.cloke.us/tag/programming.html">programming</a><a href="http://patrick.cloke.us/tag/sipe.html">SIPE</a></p></p></footer><!-- /.post-info --><!-- /.post-info -->
+                <p>I had <a class="reference external" href="http://patrick.cloke.us/posts/2011/Jun/19/adding-a-new-protocol-sipeoffice-communicator-to-instantbird-part-1/">previously talked about adding a protocol to Instantbird</a>,
+that focused on adding <span class="caps">SIPE</span> (Microsoft Office Communicator support).
+Since then I&#8217;ve been slowly working on defeating <span class="caps">SIPE</span>.&nbsp; Fortunately I
+found a few flags that help us compile it easily in Instantbird: we can
+declare that we do <em>not ...</em></p>
+                <a class="readmore" href="http://patrick.cloke.us/posts/2011/Sep/03/adding-a-protocol-to-instantbird-part-2/">read more</a>
+                </div><!-- /.entry-content -->
+        </article></li>
+        <li><article class="hentry">
+                <header>
+                        <h1><a href="http://patrick.cloke.us/posts/2011/Jul/08/shared-lightning-profile-across-linux-and-windows/" rel="bookmark" title="Permalink to Shared Lightning profile across Linux and Windows">Shared Lightning profile across Linux and&nbsp;Windows</a></h1>
+                </header>
+
+                <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2011-07-08T00:46:00">
+                07/08/2011 12:46 AM UTC
+        </abbr>
+
+        <address class="vcard author">
+                By <a class="url fn" href="http://patrick.cloke.us/author/patrick-cloke.html">Patrick Cloke</a>
+        </address>
+<p>In <a href="http://patrick.cloke.us/category/misc.html">misc</a>. </p>
+<p>tags: <a href="http://patrick.cloke.us/tag/lightning.html">Lightning</a><a href="http://patrick.cloke.us/tag/mozilla.html">Mozilla</a></p></p></footer><!-- /.post-info --><!-- /.post-info -->
+                <p>In <a class="reference external" href="irc://irc.mozilla.org/calendar">#calendar on Mozilla <span class="caps">IRC</span></a> the past few days a user has been
+asking about using a shared profile on Thunderbird between Linux and
+Windows (&quot;shared&quot; meaning a dual boot system of Linux/Windows, but not
+at the same time, obviously).&nbsp; Generally this isn&#8217;t a big deal <span class="caps">UNLESS</span>
+you ...</p>
+                <a class="readmore" href="http://patrick.cloke.us/posts/2011/Jul/08/shared-lightning-profile-across-linux-and-windows/">read more</a>
+                </div><!-- /.entry-content -->
+        </article></li>
+        <li><article class="hentry">
+                <header>
+                        <h1><a href="http://patrick.cloke.us/posts/2011/Jun/19/adding-a-new-protocol-sipeoffice-communicator-to-instantbird-part-1/" rel="bookmark" title="Permalink to Adding a new protocol (SIPE/Office Communicator) to Instantbird (part 1)">Adding a new protocol (<span class="caps">SIPE</span>/Office Communicator) to Instantbird (part&nbsp;1)</a></h1>
+                </header>
+
+                <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2011-06-19T01:53:00">
+                06/19/2011 01:53 AM UTC
+        </abbr>
+
+        <address class="vcard author">
+                By <a class="url fn" href="http://patrick.cloke.us/author/patrick-cloke.html">Patrick Cloke</a>
+        </address>
+<p>In <a href="http://patrick.cloke.us/category/misc.html">misc</a>. </p>
+<p>tags: <a href="http://patrick.cloke.us/tag/instantbird.html">Instantbird</a><a href="http://patrick.cloke.us/tag/programming.html">programming</a><a href="http://patrick.cloke.us/tag/sipe.html">SIPE</a></p></p></footer><!-- /.post-info --><!-- /.post-info -->
+                <p><a class="reference external" href="http://en.wikipedia.org/wiki/Office_Communicator">Microsoft Office Communicator</a> is an instant messaging client that
+integrates into the <a class="reference external" href="http://en.wikipedia.org/wiki/Microsoft_Exchange_Server">Exchange Messaging Server</a> (the protocol behind it
+is an extended version of <span class="caps">SIP</span>/<span class="caps">SIMPLE</span>).&nbsp; Anyway, there&#8217;s a <a class="reference external" href="http://developer.pidgin.im/wiki/WhatIsLibpurple">libpurple</a>
+(i.e. the backend of <a class="reference external" href="http://instantbird.com/">Instantbird</a> and <a class="reference external" href="http://pidgin.im/">Pidgin</a>) protocol plug-in for
+<span class="caps">OCS</span> (Office Communicator Server) called <a class="reference external" href="http://sipe.sourceforge.net/"><span class="caps">SIPE</span></a>.&nbsp; (It&#8217;s ...</p>
+                <a class="readmore" href="http://patrick.cloke.us/posts/2011/Jun/19/adding-a-new-protocol-sipeoffice-communicator-to-instantbird-part-1/">read more</a>
+                </div><!-- /.entry-content -->
+        </article></li>
+        <li><article class="hentry">
+                <header>
+                        <h1><a href="http://patrick.cloke.us/posts/2011/May/17/compiling-instantbird/" rel="bookmark" title="Permalink to Compiling Instantbird">Compiling&nbsp;Instantbird</a></h1>
+                </header>
+
+                <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2011-05-17T01:30:00">
+                05/17/2011 01:30 AM UTC
+        </abbr>
+
+        <address class="vcard author">
+                By <a class="url fn" href="http://patrick.cloke.us/author/patrick-cloke.html">Patrick Cloke</a>
+        </address>
+<p>In <a href="http://patrick.cloke.us/category/misc.html">misc</a>. </p>
+<p>tags: <a href="http://patrick.cloke.us/tag/instantbird.html">Instantbird</a><a href="http://patrick.cloke.us/tag/mozilla.html">Mozilla</a><a href="http://patrick.cloke.us/tag/programming.html">programming</a></p></p></footer><!-- /.post-info --><!-- /.post-info -->
+                <p>In the past I&#8217;ve tried to compile a few different programs that use
+the Mozilla toolkit to various levels of success.&nbsp; I&#8217;ve tried to compile
+Thunderbird, Songbird and Instantbird at various points.&nbsp; I got
+Thunderbird to compile, but it only worked sporadically (although I
+think that was Firefox ...</p>
+                <a class="readmore" href="http://patrick.cloke.us/posts/2011/May/17/compiling-instantbird/">read more</a>
+                </div><!-- /.entry-content -->
+        </article></li>
+        <li><article class="hentry">
+                <header>
+                        <h1><a href="http://patrick.cloke.us/posts/2011/Apr/30/why-rewrite-the-irc-protocol-plugin-part-2/" rel="bookmark" title="Permalink to Why rewrite the IRC protocol plugin? (Part 2)">Why rewrite the <span class="caps">IRC</span> protocol plugin? (Part&nbsp;2)</a></h1>
+                </header>
+
+                <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2011-04-30T17:01:00">
+                04/30/2011 05:01 PM UTC
+        </abbr>
+
+        <address class="vcard author">
+                By <a class="url fn" href="http://patrick.cloke.us/author/patrick-cloke.html">Patrick Cloke</a>
+        </address>
+<p>In <a href="http://patrick.cloke.us/category/misc.html">misc</a>. </p>
+<p>tags: <a href="http://patrick.cloke.us/tag/instantbird.html">Instantbird</a><a href="http://patrick.cloke.us/tag/irc.html">IRC</a></p></p></footer><!-- /.post-info --><!-- /.post-info -->
+                <p>I <a class="reference external" href="http://patrick.cloke.us/posts/2010/Dec/08/why-rewrite-irc-into-javascript-vs-libpurples-vs-chatzillas/">previously wrote about</a> why I&#8217;m rewriting the libpurple <span class="caps">IRC</span>
+implementation into a JavaScript implementation for Instantbird.&nbsp; This
+is kind of a follow up, but more focused on what I hope to accomplish
+feature wise for <span class="caps">IRC</span> in Instantbird.&nbsp; A good overview to look at is the
+<a class="reference external" href="https://bugzilla.instantbird.org/showdependencygraph.cgi?id=507&amp;display=web&amp;rankdir=LR">dependencies of ...</a></p>
+                <a class="readmore" href="http://patrick.cloke.us/posts/2011/Apr/30/why-rewrite-the-irc-protocol-plugin-part-2/">read more</a>
+                </div><!-- /.entry-content -->
+        </article></li>
+        <li><article class="hentry">
+                <header>
+                        <h1><a href="http://patrick.cloke.us/posts/2011/Mar/09/the-so-called-irc-specifications/" rel="bookmark" title="Permalink to The so-called IRC "specifications"">The so-called <span class="caps">IRC</span>&nbsp;&quot;specifications&quot;</a></h1>
+                </header>
+
+                <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2011-03-09T01:20:00">
+                03/09/2011 01:20 AM UTC
+        </abbr>
+
+        <address class="vcard author">
+                By <a class="url fn" href="http://patrick.cloke.us/author/patrick-cloke.html">Patrick Cloke</a>
+        </address>
+<p>In <a href="http://patrick.cloke.us/category/misc.html">misc</a>. </p>
+<p>tags: <a href="http://patrick.cloke.us/tag/instantbird.html">Instantbird</a><a href="http://patrick.cloke.us/tag/irc.html">IRC</a><a href="http://patrick.cloke.us/tag/programming.html">programming</a><a href="http://patrick.cloke.us/tag/specifications.html">specifications</a></p></p></footer><!-- /.post-info --><!-- /.post-info -->
+                <p>In a <a class="reference external" href="http://patrick.cloke.us/posts/2010/Dec/08/why-rewrite-irc-into-javascript-vs-libpurples-vs-chatzillas/">previous post</a> I had briefly gone over the &quot;history of <span class="caps">IRC</span>&quot; as
+I know it.&nbsp; I&#8217;m going to expand on this a bit as I&#8217;ve come to understand
+it a bit more while reading through documentation.&nbsp; (Hopefully it won&#8217;t
+sound too much like a rant ...</p>
+                <a class="readmore" href="http://patrick.cloke.us/posts/2011/Mar/09/the-so-called-irc-specifications/">read more</a>
+                </div><!-- /.entry-content -->
+        </article></li>
+        <li><article class="hentry">
+                <header>
+                        <h1><a href="http://patrick.cloke.us/posts/2011/Feb/17/status-update-february-17-2011/" rel="bookmark" title="Permalink to Status Update - February 17, 2011">Status Update - February 17,&nbsp;2011</a></h1>
+                </header>
+
+                <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2011-02-17T23:21:00">
+                02/17/2011 11:21 PM UTC
+        </abbr>
+
+        <address class="vcard author">
+                By <a class="url fn" href="http://patrick.cloke.us/author/patrick-cloke.html">Patrick Cloke</a>
+        </address>
+<p>In <a href="http://patrick.cloke.us/category/misc.html">misc</a>. </p>
+<p>tags: <a href="http://patrick.cloke.us/tag/instantbird.html">Instantbird</a><a href="http://patrick.cloke.us/tag/irc.html">IRC</a><a href="http://patrick.cloke.us/tag/programming.html">programming</a></p></p></footer><!-- /.post-info --><!-- /.post-info -->
+                <p>Another month has gone by so it&#8217;s time for another status update.
+Unfortunately not as much got done this month as I was hoping, but
+here&#8217;s a quick update of what I&#8217;ve worked&nbsp;on:</p>
+<ul class="simple">
+<li><a class="reference external" href="https://bugzilla.instantbird.org/show_bug.cgi?id=690">Bug 690</a> - jsProtoHelper could help registering&nbsp;commands</li>
+<li><a class="reference external" href="https://bugzilla.instantbird.org/show_bug.cgi?id=661">Bug 661</a> - JavaScript accounts do not ...</li></ul>
+                <a class="readmore" href="http://patrick.cloke.us/posts/2011/Feb/17/status-update-february-17-2011/">read more</a>
+                </div><!-- /.entry-content -->
+        </article></li>
+        <li><article class="hentry">
+                <header>
+                        <h1><a href="http://patrick.cloke.us/posts/2011/Jan/19/status-update-january-18-2011/" rel="bookmark" title="Permalink to Status Update - January 18, 2011">Status Update - January 18,&nbsp;2011</a></h1>
+                </header>
+
+                <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2011-01-19T03:17:00">
+                01/19/2011 03:17 AM UTC
+        </abbr>
+
+        <address class="vcard author">
+                By <a class="url fn" href="http://patrick.cloke.us/author/patrick-cloke.html">Patrick Cloke</a>
+        </address>
+<p>In <a href="http://patrick.cloke.us/category/misc.html">misc</a>. </p>
+<p>tags: <a href="http://patrick.cloke.us/tag/instantbird.html">Instantbird</a><a href="http://patrick.cloke.us/tag/irc.html">IRC</a><a href="http://patrick.cloke.us/tag/mozilla.html">Mozilla</a><a href="http://patrick.cloke.us/tag/programming.html">programming</a></p></p></footer><!-- /.post-info --><!-- /.post-info -->
+                <p>I haven&#8217;t had an update in a few weeks (since early December)
+actually, so I thought I would post a bit about what I&#8217;ve worked on.
+I&#8217;ve fixed a bunch of bugs in the backend of Instantbird that allow work
+on JavaScript <span class="caps">IRC</span> protocol to&nbsp;continue:</p>
+<ul class="simple">
+<li><a class="reference external" href="https://bugzilla.instantbird.org/show_bug.cgi?id=519">Bug ...</a></li></ul>
+                <a class="readmore" href="http://patrick.cloke.us/posts/2011/Jan/19/status-update-january-18-2011/">read more</a>
+                </div><!-- /.entry-content -->
+        </article></li>
+        <li><article class="hentry">
+                <header>
+                        <h1><a href="http://patrick.cloke.us/posts/2010/Dec/08/blogger-rss-feeds-for-a-label/" rel="bookmark" title="Permalink to Blogger RSS Feeds for a Label">Blogger <span class="caps">RSS</span> Feeds for a&nbsp;Label</a></h1>
+                </header>
+
+                <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2010-12-08T19:25:00">
+                12/08/2010 07:25 PM UTC
+        </abbr>
+
+        <address class="vcard author">
+                By <a class="url fn" href="http://patrick.cloke.us/author/patrick-cloke.html">Patrick Cloke</a>
+        </address>
+<p>In <a href="http://patrick.cloke.us/category/misc.html">misc</a>. </p>
+<p>tags: <a href="http://patrick.cloke.us/tag/bugs.html">bugs</a><a href="http://patrick.cloke.us/tag/google.html">Google</a><a href="http://patrick.cloke.us/tag/rss.html">RSS</a></p></p></footer><!-- /.post-info --><!-- /.post-info -->
+                <p>Blogger has crappy support for <span class="caps">RSS</span> apparently.&nbsp; I figured if I clicked
+on a label, then found the <span class="caps">RSS</span> embedded in the page&#8230;it would give me
+the <span class="caps">RSS</span> feed for that label,&nbsp;right?</p>
+<p>Wrong.</p>
+<p>Of course there&#8217;s an&nbsp;<a class="reference external" href="http://www.google.com/support/blogger/bin/answer.py?hl=en&amp;answer=97933"><span class="caps">FAQ</span></a> page about this, but the syntax it gives
+is ...</p>
+                <a class="readmore" href="http://patrick.cloke.us/posts/2010/Dec/08/blogger-rss-feeds-for-a-label/">read more</a>
+                </div><!-- /.entry-content -->
+        </article></li>
+        <li><article class="hentry">
+                <header>
+                        <h1><a href="http://patrick.cloke.us/posts/2010/Dec/08/why-rewrite-irc-into-javascript-vs-libpurples-vs-chatzillas/" rel="bookmark" title="Permalink to Why Rewrite IRC into JavaScript? (vs. libpurple’s vs. ChatZilla’s)">Why Rewrite <span class="caps">IRC</span> into JavaScript? (vs. libpurple&#8217;s vs.&nbsp;ChatZilla&#8217;s)</a></h1>
+                </header>
+
+                <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2010-12-08T18:29:00">
+                12/08/2010 06:29 PM UTC
+        </abbr>
+
+        <address class="vcard author">
+                By <a class="url fn" href="http://patrick.cloke.us/author/patrick-cloke.html">Patrick Cloke</a>
+        </address>
+<p>In <a href="http://patrick.cloke.us/category/misc.html">misc</a>. </p>
+<p>tags: <a href="http://patrick.cloke.us/tag/instantbird.html">Instantbird</a><a href="http://patrick.cloke.us/tag/irc.html">IRC</a><a href="http://patrick.cloke.us/tag/mozilla.html">Mozilla</a><a href="http://patrick.cloke.us/tag/programming.html">programming</a></p></p></footer><!-- /.post-info --><!-- /.post-info -->
+                <p>I had a request on <span class="caps">IRC</span> (from Mic) to write an in-depth blog post
+about <a class="reference external" href="https://bugzilla.instantbird.org/show_bug.cgi?id=507"><span class="caps">IRC</span> in JavaScript</a>:</p>
 <blockquote>
-&quot;Maybe we could ask clokep if he'd like to write something about
-js-irc? Why it is done, what the advantages are once it's done, how
-he is working on it ...</blockquote> </div><!-- /.entry-content -->
+&quot;Maybe we could ask clokep if he&#8217;d like to write something about
+js-irc? Why it is done, what the advantages are once it&#8217;s done, how
+he is working on it ...</blockquote>
+                <a class="readmore" href="http://patrick.cloke.us/posts/2010/Dec/08/why-rewrite-irc-into-javascript-vs-libpurples-vs-chatzillas/">read more</a>
+                </div><!-- /.entry-content -->
+        </article></li>
+        <li><article class="hentry">
+                <header>
+                        <h1><a href="http://patrick.cloke.us/posts/2010/Dec/04/javascript-irc-in-instantbird/" rel="bookmark" title="Permalink to JavaScript IRC in Instantbird">JavaScript <span class="caps">IRC</span> in&nbsp;Instantbird</a></h1>
+                </header>
 
-								<div class="medium primary btn"><a href="http://patrick.cloke.us/why-rewrite-irc-into-javascript-vs-libpurples-vs-chatzillas.html" rel="bookmark" title="Permalink to Why Rewrite IRC into JavaScript? (vs. libpurple's vs. ChatZilla's)">Read more <i class="icon-arrow-right"></i></a></div>
+                <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2010-12-04T21:24:00">
+                12/04/2010 09:24 PM UTC
+        </abbr>
 
+        <address class="vcard author">
+                By <a class="url fn" href="http://patrick.cloke.us/author/patrick-cloke.html">Patrick Cloke</a>
+        </address>
+<p>In <a href="http://patrick.cloke.us/category/misc.html">misc</a>. </p>
+<p>tags: <a href="http://patrick.cloke.us/tag/instantbird.html">Instantbird</a><a href="http://patrick.cloke.us/tag/irc.html">IRC</a><a href="http://patrick.cloke.us/tag/mozilla.html">Mozilla</a><a href="http://patrick.cloke.us/tag/programming.html">programming</a></p></p></footer><!-- /.post-info --><!-- /.post-info -->
+                <p>I&#8217;ve been working on rewriting the <span class="caps">IRC</span> plugin for <a class="reference external" href="http://www.instantbird.com/">Instantbird</a> since
+the summer (sometime in August, I can&#8217;t seem to find the exact date &#8212;
+at least since Sept. 10th&nbsp;though).</p>
+<p>Since <a class="reference external" href="http://developer.pidgin.im/wiki/WhatIsLibpurple">libpurple</a> (used in Pidgin, Adium, etc.) provides the <span class="caps">IRC</span>
+protocol that we currently use, why do this ...</p>
+                <a class="readmore" href="http://patrick.cloke.us/posts/2010/Dec/04/javascript-irc-in-instantbird/">read more</a>
+                </div><!-- /.entry-content -->
+        </article></li>
+        <li><article class="hentry">
+                <header>
+                        <h1><a href="http://patrick.cloke.us/posts/2010/Nov/23/yahoo-thunderbird-can-finally-play-nice/" rel="bookmark" title="Permalink to Yahoo & Thunderbird Can Finally Play Nice?">Yahoo <span class="amp">&amp;</span> Thunderbird Can Finally Play&nbsp;Nice?</a></h1>
+                </header>
 
+                <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2010-11-23T03:03:00">
+                11/23/2010 03:03 AM UTC
+        </abbr>
 
-								<div class="row tag-row">
-										<span>Tagged as : </span>
-											<a class="danger label" href="http://patrick.cloke.us/tag/instantbird.html">Instantbird</a>
-											<a class="danger label" href="http://patrick.cloke.us/tag/irc.html">IRC</a>
-											<a class="danger label" href="http://patrick.cloke.us/tag/mozilla.html">Mozilla</a>
-											<a class="danger label" href="http://patrick.cloke.us/tag/programming.html">programming</a>
-								</div>
-
-
-
-				        </article></li>
-				        <li><article class="hentry">
-				                <header> <h2 class="entry-title"><a href="http://patrick.cloke.us/javascript-irc-in-instantbird.html" rel="bookmark" title="Permalink to JavaScript IRC in Instantbird">JavaScript IRC in Instantbird</a></h2> </header>
-				                <footer class="post-info">
-				                    <abbr class="published" title="2010-12-04T21:24:00"> 12/04/2010 09:24 PM UTC </abbr>
-<address class="vcard author">By <a class="url fn" href="http://patrick.cloke.us/author/patrick-cloke.html">Patrick Cloke</a></address>				                </footer><!-- /.post-info -->
-				                <div class="entry-content"> <p>I've been working on rewriting the IRC plugin for <a class="reference external" href="http://www.instantbird.com/">Instantbird</a> since
-the summer (sometime in August, I can't seem to find the exact date --
-at least since Sept. 10th though).</p>
-<p>Since <a class="reference external" href="http://developer.pidgin.im/wiki/WhatIsLibpurple">libpurple</a> (used in Pidgin, Adium, etc.) provides the IRC
-protocol that we currently use, why do this ...</p> </div><!-- /.entry-content -->
-
-								<div class="medium primary btn"><a href="http://patrick.cloke.us/javascript-irc-in-instantbird.html" rel="bookmark" title="Permalink to JavaScript IRC in Instantbird">Read more <i class="icon-arrow-right"></i></a></div>
-
-
-
-								<div class="row tag-row">
-										<span>Tagged as : </span>
-											<a class="danger label" href="http://patrick.cloke.us/tag/instantbird.html">Instantbird</a>
-											<a class="danger label" href="http://patrick.cloke.us/tag/irc.html">IRC</a>
-											<a class="danger label" href="http://patrick.cloke.us/tag/mozilla.html">Mozilla</a>
-											<a class="danger label" href="http://patrick.cloke.us/tag/programming.html">programming</a>
-								</div>
-
-
-
-				        </article></li>
-				        <li><article class="hentry">
-				                <header> <h2 class="entry-title"><a href="http://patrick.cloke.us/yahoo-thunderbird-can-finally-play-nice.html" rel="bookmark" title="Permalink to Yahoo & Thunderbird Can Finally Play Nice?">Yahoo &amp; Thunderbird Can Finally Play Nice?</a></h2> </header>
-				                <footer class="post-info">
-				                    <abbr class="published" title="2010-11-23T03:03:00"> 11/23/2010 03:03 AM UTC </abbr>
-<address class="vcard author">By <a class="url fn" href="http://patrick.cloke.us/author/patrick-cloke.html">Patrick Cloke</a></address>				                </footer><!-- /.post-info -->
-				                <div class="entry-content"> <p>For years I've been dealing with Yahoo's lack of support for any sort
-of decent (free) POP3/IMAP/SMTP protocol support.&nbsp; Why do I need this?
-So I can check my <a class="reference external" href="http://mail.yahoo.com/">Yahoo mail</a> in <a class="reference external" href="http://www.mozillamessaging.com/en-US/thunderbird/">Mozilla Thunderbird</a> of course!</p>
-<p>At first I used <a class="reference external" href="http://ypopsemail.com/">YPOPS!</a>, a program that read the ...</p> </div><!-- /.entry-content -->
-
-								<div class="medium primary btn"><a href="http://patrick.cloke.us/yahoo-thunderbird-can-finally-play-nice.html" rel="bookmark" title="Permalink to Yahoo & Thunderbird Can Finally Play Nice?">Read more <i class="icon-arrow-right"></i></a></div>
-
-
-
-								<div class="row tag-row">
-										<span>Tagged as : </span>
-											<a class="danger label" href="http://patrick.cloke.us/tag/bugs.html">bugs</a>
-											<a class="danger label" href="http://patrick.cloke.us/tag/email.html">email</a>
-											<a class="danger label" href="http://patrick.cloke.us/tag/imap.html">IMAP</a>
-											<a class="danger label" href="http://patrick.cloke.us/tag/mozilla.html">Mozilla</a>
-											<a class="danger label" href="http://patrick.cloke.us/tag/pop3.html">POP3</a>
-											<a class="danger label" href="http://patrick.cloke.us/tag/programming.html">programming</a>
-											<a class="danger label" href="http://patrick.cloke.us/tag/smtp.html">SMTP</a>
-											<a class="danger label" href="http://patrick.cloke.us/tag/thunderbird.html">Thunderbird</a>
-											<a class="danger label" href="http://patrick.cloke.us/tag/yahoo.html">Yahoo</a>
-								</div>
-
-
-
-				        </article></li>
-				</ol><!-- /#posts-list -->
-
-        </div><!-- /.eleven.columns -->
-        
-<div class="three columns">
-
-<h4>Pages</h4>
-
- <ul>
-      <li><a href="http://patrick.cloke.us/pages/about.html">About</a></li>
-      <li><a href="http://patrick.cloke.us/pages/contact.html">Contact</a></li>
-  </ul>
-
-<h4>Categories</h4>
-<ul>
-		<li><a href="http://patrick.cloke.us/category/mozilla.html">Mozilla</a></li>
-</ul>
-
-
-<h4><i class="icon-tag"></i>Tags</h4>
-	<ul>
-	    <li class="tag-4"><a href="http://patrick.cloke.us/tag/email.html">email</a></li>
-	    <li class="tag-1"><a href="http://patrick.cloke.us/tag/irc.html">IRC</a></li>
-	    <li class="tag-1"><a href="http://patrick.cloke.us/tag/programming.html">programming</a></li>
-	    <li class="tag-4"><a href="http://patrick.cloke.us/tag/messaging.html">messaging</a></li>
-	    <li class="tag-3"><a href="http://patrick.cloke.us/tag/google.html">Google</a></li>
-	    <li class="tag-1"><a href="http://patrick.cloke.us/tag/mozilla.html">Mozilla</a></li>
-	    <li class="tag-3"><a href="http://patrick.cloke.us/tag/customizing.html">customizing</a></li>
-	    <li class="tag-4"><a href="http://patrick.cloke.us/tag/smtp.html">SMTP</a></li>
-	    <li class="tag-3"><a href="http://patrick.cloke.us/tag/bugs.html">bugs</a></li>
-	    <li class="tag-3"><a href="http://patrick.cloke.us/tag/sipe.html">SIPE</a></li>
-	    <li class="tag-4"><a href="http://patrick.cloke.us/tag/pop3.html">POP3</a></li>
-	    <li class="tag-4"><a href="http://patrick.cloke.us/tag/status.html">status</a></li>
-	    <li class="tag-2"><a href="http://patrick.cloke.us/tag/im.html">IM</a></li>
-	    <li class="tag-1"><a href="http://patrick.cloke.us/tag/instantbird.html">Instantbird</a></li>
-	    <li class="tag-2"><a href="http://patrick.cloke.us/tag/thunderbird.html">Thunderbird</a></li>
-	    <li class="tag-2"><a href="http://patrick.cloke.us/tag/chat.html">chat</a></li>
-	    <li class="tag-4"><a href="http://patrick.cloke.us/tag/rss.html">RSS</a></li>
-	    <li class="tag-4"><a href="http://patrick.cloke.us/tag/lightning.html">Lightning</a></li>
-	    <li class="tag-3"><a href="http://patrick.cloke.us/tag/specifications.html">specifications</a></li>
-	    <li class="tag-4"><a href="http://patrick.cloke.us/tag/imap.html">IMAP</a></li>
-	    <li class="tag-2"><a href="http://patrick.cloke.us/tag/gsoc.html">GSoC</a></li>
-	    <li class="tag-4"><a href="http://patrick.cloke.us/tag/crosspost.html">crosspost</a></li>
-	    <li class="tag-3"><a href="http://patrick.cloke.us/tag/wat.html">Wat</a></li>
-	    <li class="tag-4"><a href="http://patrick.cloke.us/tag/oscar.html">OSCAR</a></li>
-	    <li class="tag-2"><a href="http://patrick.cloke.us/tag/instant-messaging.html">instant messaging</a></li>
-	    <li class="tag-2"><a href="http://patrick.cloke.us/tag/yahoo.html">Yahoo</a></li>
-	    <li class="tag-2"><a href="http://patrick.cloke.us/tag/community.html">community</a></li>
-</ul>
-
-
-
-<h4><i class="icon-rss"></i>Subscribe</h4>
-<ul>
-  <li><a href="http://patrick.cloke.us/feeds/all.atom.xml">Full Atom Feed</a></li>
-  <li><a href="http://patrick.cloke.us/feeds/all.rss.xml">Full RSS Feed</a></li>
-</ul>
-
-</div> </div><!-- /.row -->
-
-<p class="paginator">
-            <a href="http://patrick.cloke.us/index5.html"><i class="icon-arrow-left"></i></a>
-    Page 6 / 6
-</p>
+        <address class="vcard author">
+                By <a class="url fn" href="http://patrick.cloke.us/author/patrick-cloke.html">Patrick Cloke</a>
+        </address>
+<p>In <a href="http://patrick.cloke.us/category/misc.html">misc</a>. </p>
+<p>tags: <a href="http://patrick.cloke.us/tag/bugs.html">bugs</a><a href="http://patrick.cloke.us/tag/email.html">email</a><a href="http://patrick.cloke.us/tag/imap.html">IMAP</a><a href="http://patrick.cloke.us/tag/mozilla.html">Mozilla</a><a href="http://patrick.cloke.us/tag/pop3.html">POP3</a><a href="http://patrick.cloke.us/tag/programming.html">programming</a><a href="http://patrick.cloke.us/tag/smtp.html">SMTP</a><a href="http://patrick.cloke.us/tag/thunderbird.html">Thunderbird</a><a href="http://patrick.cloke.us/tag/yahoo.html">Yahoo</a></p></p></footer><!-- /.post-info --><!-- /.post-info -->
+                <p>For years I&#8217;ve been dealing with Yahoo&#8217;s lack of support for any sort
+of decent (free) <span class="caps">POP3</span>/<span class="caps">IMAP</span>/<span class="caps">SMTP</span> protocol support.&nbsp; Why do I need this?
+So I can check my <a class="reference external" href="http://mail.yahoo.com/">Yahoo mail</a> in <a class="reference external" href="http://www.mozillamessaging.com/en-US/thunderbird/">Mozilla Thunderbird</a> of&nbsp;course!</p>
+<p>At first I used <a class="reference external" href="http://ypopsemail.com/"><span class="caps">YPOPS</span>!</a>, a program that read the ...</p>
+                <a class="readmore" href="http://patrick.cloke.us/posts/2010/Nov/23/yahoo-thunderbird-can-finally-play-nice/">read more</a>
+                </div><!-- /.entry-content -->
+        </article></li>
+</ol><!-- /#posts-list -->
 </section><!-- /#content -->
 
-       </div><!-- /.row -->
-    </div><!-- /.container -->
+        <aside id="sidebar">
+                <div class="widget">
+                        <h2>Categories</h2>
+                        <ul>
+                           <li ><a href="http://patrick.cloke.us/category/misc.html">misc</a></li>
+                        </ul>
+                </div>
+        </aside><!-- /#sidebar -->
 
+        <footer id="footer" class="body">
+                <address id="about" class="vcard body">
+                Proudly powered by <a href="http://alexis.notmyidea.org/pelican/">pelican</a>, which takes great advantages of <a href="http://python.org">python</a>.
+                </address><!-- /#about -->
 
-       <div class="container.nopad bg">
+                <p>The theme is «notmyidea-cms», a modified version of «notmyidea», the default theme.</p>
+        </footer><!-- /#footer -->
 
-    
-        <footer id="credits" class="row">
-          <div class="seven columns left-center">
-
-                   <address id="about" class="vcard body">
-                    Proudly powered by <a href="http://getpelican.com/">Pelican</a>,
-                    which takes great advantage of <a href="http://python.org">Python</a>.
-                    <br />
-                    Based on the <a target="_blank" href="http://gumbyframework.com">Gumby Framework</a>
-                    </address>
-          </div>
-
-
-          <div class="seven columns">
-            <div class="row">
-              <ul class="socbtns">
-
-                <li><div class="btn primary"><a href="https://www.github.com/clokep" target="_blank">Github</a></div></li>
-
-                <li><div class="btn bitbucket"><a href="https://bitbucket.org/clokep" target="_blank">BitBucket</a></div></li>
-
-                <li><div class="btn mozillians"><a href="https://mozillians.org/clokep" target="_blank">Mozillians</a></div></li>
-
-                <li><div class="btn twitter"><a href="https://www.twitter.com/clokep" target="_blank">Twitter</a></div></li>
-
-
-
-              </ul>
-            </div>
-          </div>
-        </footer>
-
-    </div>
-
-
-  <script src="http://patrick.cloke.us/theme/js/libs/jquery-1.9.1.min.js"></script>
-  <script src="http://patrick.cloke.us/theme/js/libs/gumby.min.js"></script>
-  <script src="http://patrick.cloke.us/theme/js/plugins.js"></script>
+    <script type="text/javascript">
+    var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+    document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+    </script>
+    <script type="text/javascript">
+    try {
+        var pageTracker = _gat._getTracker("UA-52389517-1");
+    pageTracker._trackPageview();
+    } catch(err) {}</script>
 </body>
 </html>
