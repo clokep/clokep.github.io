@@ -19,26 +19,6 @@
   {% endif %}
   </ul>
 
-<h4>Categories</h4>
-{% if categories %}
-<ul>
-	{% for cat, null in categories %}
-		<li><a href="{{ SITEURL }}/{{ cat.url|e }}">{{ cat }}</a></li>
-	{% endfor %}
-</ul>
-{% endif %}
-
-
-<h4><i class="icon-tag"></i>Tags</h4>
-{% if tags %}
-	<ul>
-	{% for tag in tag_cloud %}
-	    <li class="tag-{{ tag.1 }}"><a href="{{ SITEURL }}/{{ tag.0.url }}">{{ tag.0|e }}</a></li>
-	{% endfor %}
-</ul>
-{% endif %}
-
-
 {% if SOCIAL %}
 <nav class="widget">
   <h4>Social</h4>
