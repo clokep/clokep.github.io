@@ -42,9 +42,6 @@
                 </ul></nav>
         </header><!-- /#banner -->
 
-        {% block content %}
-        {% endblock %}
-
         <aside id="sidebar">
                 <div class="widget">
                         <h2>Categories</h2>
@@ -68,7 +65,15 @@
                 <div class="widget social">
                         <h2>Social</h2>
                         <ul>
-                            <li><a href="{{ SITEURL }}/{{ FEED_ALL_ATOM }}" rel="alternate">atom feed</a></li>
+                            {% if FEED_ALL_ATOM %}
+                            <li><a href="{{ SITEURL }}/{{ FEED_ALL_ATOM }}" rel="alternate">full atom feed</a></li>
+                            {% endif %}
+                            {% if FEED_ALL_RSS %}
+                            <li><a href="{{ SITEURL }}/{{ FEED_ALL_RSS }}" rel="alternate">full rss feed</a></li>
+                            {% endif %}
+                            {% if FEED_ATOM %}
+                            <li><a href="{{ SITEURL }}/{{ FEED_ATOM }}" rel="alternate">atom feed</a></li>
+                            {% endif %}
                             {% if FEED_RSS %}
                             <li><a href="{{ SITEURL }}/{{ FEED_RSS }}" rel="alternate">rss feed</a></li>
                             {% endif %}
@@ -80,6 +85,9 @@
                 </div><!-- /.social -->
         {% endif %}
         </aside><!-- /#sidebar -->
+
+        {% block content %}
+        {% endblock %}
 
         <footer id="footer" class="body">
                 <address id="about" class="vcard body">
