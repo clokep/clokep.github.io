@@ -1,380 +1,106 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-        <title>Like bricks in the sky - programming</title>
         <meta charset="utf-8" />
-        <link rel="stylesheet" href="http://patrick.cloke.us/theme/css/main.css" type="text/css" />
-        <link href="http://patrick.cloke.us/" type="application/atom+xml" rel="alternate" title="Like bricks in the sky ATOM Feed" />
-
+        <title>Like bricks in the sky - programming</title>
+        <link rel="stylesheet" href="http://patrick.cloke.us/theme/css/main.css" />
+        <link href="http://patrick.cloke.us/feeds/atom.xml" type="application/atom+xml" rel="alternate" title="Like bricks in the sky Atom Feed" />
+        <link href="http://patrick.cloke.us/feeds/rss.xml" type="application/rss+xml" rel="alternate" title="Like bricks in the sky RSS Feed" />
 
         <!--[if IE]>
-                <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
-
-        <!--[if lte IE 7]>
-                <link rel="stylesheet" type="text/css" media="all" href="http://patrick.cloke.us/css/ie.css"/>
-                <script src="http://patrick.cloke.us/js/IE8.js" type="text/javascript"></script><![endif]-->
-
-        <!--[if lt IE 7]>
-                <link rel="stylesheet" type="text/css" media="all" href="http://patrick.cloke.us/css/ie6.css"/><![endif]-->
-
+            <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+        <![endif]-->
 </head>
 
 <body id="index" class="home">
-<a href="https://www.github.com/clokep">
-<img style="position: absolute; top: 0; right: 0; border: 0;" src="http://s3.amazonaws.com/github/ribbons/forkme_right_red_aa0000.png" alt="Fork me on GitHub" />
-</a>
         <header id="banner" class="body">
-                <h1><a href="http://patrick.cloke.us/index.html">Like bricks in the sky </a></h1>
+                <h1><a href="http://patrick.cloke.us/">Like bricks in the sky </a></h1>
                 <nav><ul>
-                <li><a href="http://patrick.cloke.us/">Archives</a></li>
+                    <li><a href="http://patrick.cloke.us/pages/about.html">About</a></li>
+                    <li><a href="http://patrick.cloke.us/pages/contact.html">Contact</a></li>
+                    <li><a href="http://patrick.cloke.us/category/misc.html">misc</a></li>
                 </ul></nav>
         </header><!-- /#banner -->
 
-     <section id="content" class="body">
-        <aside id="featured"><article>
-                <h1 class="entry-title"><a href="http://patrick.cloke.us/posts/2014/Apr/27/extending-javascript-maps-or-other-built-in-objects/">Extending JavaScript Maps (or other built-in&nbsp;objects)</a></h1>
-<footer class="post-info">
-        <abbr class="published" title="2014-04-27T17:46:00">
-                04/27/2014 05:46 PM UTC
-        </abbr>
+        <div id="container" class="body">
+        <section id="extras">
+                <div class="social">
+                        <h2>social</h2>
+                        <ul>
+                            <li><a href="http://patrick.cloke.us/feeds/atom.xml" type="application/atom+xml" rel="alternate">atom feed</a></li>
+                            <li><a href="http://patrick.cloke.us/feeds/rss.xml" type="application/rss+xml" rel="alternate">rss feed</a></li>
 
-        <address class="vcard author">
-                By <a class="url fn" href="http://patrick.cloke.us/author/patrick-cloke.html">Patrick Cloke</a>
-        </address>
-<p>In <a href="http://patrick.cloke.us/category/misc.html">misc</a>. </p>
-<p>tags: <a href="http://patrick.cloke.us/tag/im.html">IM</a><a href="http://patrick.cloke.us/tag/instantbird.html">Instantbird</a><a href="http://patrick.cloke.us/tag/programming.html">programming</a><a href="http://patrick.cloke.us/tag/specifications.html">specifications</a><a href="http://patrick.cloke.us/tag/thunderbird.html">Thunderbird</a><a href="http://patrick.cloke.us/tag/wat.html">Wat</a></p></p></footer><!-- /.post-info --><!-- /.post-info -->
-                <p>Finally another technical post, this one is about my adventures in
-attempting to extend the built-in <a class="reference external" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Map">Map</a> object in JavaScript to extend
-the functionality. As background, there are two reasons we&#8217;d want&nbsp;this:</p>
-<ol class="arabic">
-<li><p class="first">In the chat backend we currently use JavaScript <a class="reference external" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object">objects</a> (<tt class="docutils literal">{}</tt>) as
-hashes/maps to keep track of various things (i.e. there&#8217;s a <a class="reference external" href="https://mxr.mozilla.org/comm-central/source/chat/protocols/irc/irc.js#789">hash of
-conversations</a> which map from conversation name to prplIConversation
-objects in the <span class="caps">IRC</span> code). Whenever checking to see if something is in
-this map we have to use <a class="reference external" href="https://mxr.mozilla.org/comm-central/source/chat/protocols/irc/irc.js#1509">hasOwnProperty</a>. This has to be the
-<a class="reference external" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/hasOwnProperty">version from Object.prototype</a> in case the map has a conversation
-named hasOwnProperty. This is <a class="reference external" href="https://mxr.mozilla.org/comm-central/source/chat/modules/imXPCOMUtils.jsm#166">super simple code</a>, but&nbsp;annoying:</p>
-<blockquote>
-<div class="highlight"><pre><span class="c1">// Similar to Object.hasOwnProperty, but doesn&#39;t fail if the object</span>
-<span class="c1">// has a hasOwnProperty property set.</span>
-<span class="kd">function</span> <span class="nx">hasOwnProperty</span><span class="p">(</span><span class="nx">aObject</span><span class="p">,</span> <span class="nx">aPropertyName</span><span class="p">)</span>
-  <span class="nb">Object</span><span class="p">.</span><span class="nx">prototype</span><span class="p">.</span><span class="nx">hasOwnProperty</span><span class="p">.</span><span class="nx">call</span><span class="p">(</span><span class="nx">aObject</span><span class="p">,</span> <span class="nx">aPropertyName</span><span class="p">)</span>
-</pre></div>
-</blockquote>
-<p><a class="reference external" href="https://bugzilla.mozilla.org/show_bug.cgi?id=955366">Replacing these custom objects with a Map</a> would alleviate this
-funky&nbsp;dance.</p>
-</li>
-<li><p class="first">Frequently in the chat backend we have to &quot;normalize&quot; <a class="footnote-reference" href="#id4" id="id1">[1]</a> strings
-(e.g. #INsTanTBIrd and #instantbird are the same on <span class="caps">IRC</span> <a class="footnote-reference" href="#id5" id="id2">[2]</a>). This is
-almost always done for sane storage of data received from the network
-(or from the user). I figured it&#8217;d be great if, instead of having to
-<a class="reference external" href="https://mxr.mozilla.org/comm-central/source/chat/protocols/irc/irc.js#1510">manually</a> <a class="reference external" href="https://mxr.mozilla.org/comm-central/source/chat/protocols/irc/irc.js#1514">handle</a> <a class="reference external" href="https://mxr.mozilla.org/comm-central/source/chat/protocols/irc/irc.js#1528">this</a> normalization each time we tried to
-access data, the keys were magically normalized when accessing the
-data.
-(Note that although normalization is generally more complicated, just
-consider to be <a class="reference external" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/toLowerCase">String.prototype.toLowerCase()</a> for the rest of this&nbsp;post!)</p>
-</li>
-</ol>
-<p>This has been explored before by <a class="reference external" href="http://perfectionkills.com/how-ecmascript-5-still-does-not-allow-to-subclass-an-array/">others</a>, but generally in the
-context of web sites / cross browser compatibility. Which are concerns
-that don&#8217;t really limit us for backend&nbsp;code.</p>
-<div class="section" id="goals">
-<h2>Goals</h2>
-<ol class="arabic simple">
-<li>Replace objects with Maps for safe access. This is pretty easily
-fixed by switching all <tt class="docutils literal"><span class="pre">obj[&quot;foo&quot;]</span></tt> calls to <tt class="docutils literal"><span class="pre">obj.get(&quot;foo&quot;)</span></tt> (or the
-appropriate other method: set, delete,&nbsp;etc.)</li>
-<li>Automatically &quot;normalize&quot; keys in the some user defined way, e.g.
-such that <tt class="docutils literal"><span class="pre">obj.get(&quot;foo&quot;)</span></tt> and <tt class="docutils literal"><span class="pre">obj.get(&quot;FoO&quot;)</span></tt> return the same&nbsp;value.</li>
-</ol>
-</div>
-<div class="section" id="first-approach-setting-proto-to-map-prototype">
-<h2>First Approach (setting __proto__ to&nbsp;Map.prototype)</h2>
-<p>My first naive approach was to create an object with <tt class="docutils literal">__proto__</tt> set
-to Map.prototype and overwrite anything that uses keys to appropriately
-call a normalization&nbsp;function.</p>
-<div class="highlight"><pre><span class="kd">function</span> <span class="nx">NormalizedMap</span><span class="p">()</span> <span class="p">{</span> <span class="p">}</span>
-<span class="nx">NormalizedMap</span><span class="p">.</span><span class="nx">prototype</span> <span class="o">=</span> <span class="p">{</span>
-    <span class="nx">__proto__</span><span class="o">:</span> <span class="nx">Map</span><span class="p">.</span><span class="nx">prototype</span><span class="p">,</span>
-    <span class="nx">_normalize</span><span class="o">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">aStr</span><span class="p">)</span> <span class="nx">aStr</span><span class="p">.</span><span class="nx">toLowerCase</span><span class="p">(),</span>
+                            <li><a href="https://www.twitter.com/clokep">twitter</a></li>
+                            <li><a href="https://bitbucket.org/clokep">bitbucket</a></li>
+                            <li><a href="https://www.github.com/clokep">github</a></li>
+                            <li><a href="https://mozillians.org/clokep">mozillians</a></li>
+                        </ul>
+                </div><!-- /.social -->
+        </section><!-- /#extras -->
 
-    <span class="nx">get</span><span class="o">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">aStr</span><span class="p">)</span> <span class="nx">Map</span><span class="p">.</span><span class="nx">prototype</span><span class="p">.</span><span class="nx">get</span><span class="p">.</span><span class="nx">call</span><span class="p">(</span><span class="k">this</span><span class="p">,</span> <span class="k">this</span><span class="p">.</span><span class="nx">_normalize</span><span class="p">(</span><span class="nx">aStr</span><span class="p">)),</span>
-    <span class="nx">set</span><span class="o">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">aStr</span><span class="p">,</span> <span class="nx">aVal</span><span class="p">)</span> <span class="nx">Map</span><span class="p">.</span><span class="nx">prototype</span><span class="p">.</span><span class="nx">set</span><span class="p">.</span><span class="nx">call</span><span class="p">(</span><span class="k">this</span><span class="p">,</span> <span class="k">this</span><span class="p">.</span><span class="nx">_normalize</span><span class="p">(</span><span class="nx">aStr</span><span class="p">),</span> <span class="nx">aVal</span><span class="p">)</span>
-<span class="p">};</span>
 
-<span class="kd">let</span> <span class="nx">m</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">NormalizedMap</span><span class="p">();</span>
-<span class="nx">m</span><span class="p">.</span><span class="nx">set</span><span class="p">(</span><span class="s2">&quot;foo&quot;</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span> <span class="c1">// Throws TypeError: set method called on incompatible Object</span>
-<span class="nx">m</span> <span class="k">instanceof</span> <span class="nx">Map</span><span class="p">;</span> <span class="c1">// true . . . wat . . .</span>
-</pre></div>
-<p>This throws an error and does not work. Apparently there are plans to
-<a class="reference external" href="https://bugzilla.mozilla.org/show_bug.cgi?id=838540">support something like this</a>. The totally fun thing, in my opinion, is
-that m is an instance of a&nbsp;Map!</p>
-</div>
-<div class="section" id="second-approach-modifying-proto-after-instance-creation">
-<h2>Second Approach (modifying __proto__ after instance&nbsp;creation)</h2>
-<p>My second approach was to generate a real Map and then override the
-<tt class="docutils literal">__proto__</tt> to give it the properties I&nbsp;wanted:</p>
-<div class="highlight"><pre><span class="kd">function</span> <span class="nx">NormalizedMap</span><span class="p">()</span> <span class="p">{</span>
-    <span class="kd">let</span> <span class="nx">m</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Map</span><span class="p">();</span>  <span class="nx">m</span><span class="p">.</span><span class="nx">__proto__</span> <span class="o">=</span> <span class="nx">NormalizedMap</span><span class="p">.</span><span class="nx">prototype</span><span class="p">;</span>
-    <span class="k">return</span> <span class="nx">m</span><span class="p">;</span>
-<span class="p">}</span>
-<span class="nx">NormalizedMap</span><span class="p">.</span><span class="nx">prototype</span> <span class="o">=</span> <span class="p">{</span>
-    <span class="nx">__proto__</span><span class="o">:</span> <span class="nx">Map</span><span class="p">.</span><span class="nx">prototype</span><span class="p">,</span>
-    <span class="nx">_normalize</span><span class="o">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">aStr</span><span class="p">)</span> <span class="nx">aStr</span><span class="p">.</span><span class="nx">toLowerCase</span><span class="p">(),</span>
-    <span class="nx">get</span><span class="o">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">aStr</span><span class="p">)</span> <span class="nx">Map</span><span class="p">.</span><span class="nx">prototype</span><span class="p">.</span><span class="nx">get</span><span class="p">.</span><span class="nx">call</span><span class="p">(</span><span class="k">this</span><span class="p">,</span> <span class="k">this</span><span class="p">.</span><span class="nx">_normalize</span><span class="p">(</span><span class="nx">aStr</span><span class="p">)),</span>
-    <span class="nx">set</span><span class="o">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">aStr</span><span class="p">,</span> <span class="nx">aVal</span><span class="p">)</span> <span class="nx">Map</span><span class="p">.</span><span class="nx">prototype</span><span class="p">.</span><span class="nx">set</span><span class="p">.</span><span class="nx">call</span><span class="p">(</span><span class="k">this</span><span class="p">,</span> <span class="k">this</span><span class="p">.</span><span class="nx">_normalize</span><span class="p">(</span><span class="nx">aStr</span><span class="p">),</span> <span class="nx">aVal</span><span class="p">)</span>
-<span class="p">};</span>
-<span class="kd">let</span> <span class="nx">m</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">NormalizedMap</span><span class="p">();</span>
-<span class="nx">m</span><span class="p">.</span><span class="nx">set</span><span class="p">(</span><span class="s2">&quot;foo&quot;</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
-<span class="nx">m</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s2">&quot;FOO&quot;</span><span class="p">);</span> <span class="c1">// 1</span>
-<span class="nx">m</span> <span class="k">instanceof</span> <span class="nx">Map</span><span class="p">;</span> <span class="c1">// true</span>
-</pre></div>
-<p>This actually works! But will <a class="reference external" href="https://bugzilla.mozilla.org/show_bug.cgi?id=963519">throw a warning</a> each time it is
-created since changing an objects <tt class="docutils literal">__proto__</tt> is generally a bad idea.
-I also thought of overriding individual methods, but this seemed
-cumbersome and would increase the time in the constructor calls. (Which
-occur during the start up of each account and is generally a resource
-constrained time. No, I didn&#8217;t profile this, it just seemed like bad&nbsp;design.)</p>
-</div>
-<div class="section" id="solution-wrapping-a-map">
-<h2>Solution (wrapping a&nbsp;Map)</h2>
-<p>Finally I settled on the simple solution of just wrapping the Map in a
-custom object. Initially I thought this would be frustrating to
-re-declare every function (and prone to breakage in the future if new
-methods are added), but there&#8217;s a nice magic method
-<a class="reference external" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/noSuchMethod">__noSuchMethod__</a> that fixes this! (Note that this is a
-non-standard feature of SpiderMonkey.) <tt class="docutils literal">__noSuchMethod__</tt> allows an
-object to intercept a call to a non-existent method (and in this case
-call that same method on the internal Map&nbsp;object).</p>
-<p>Below is the final version that seems to act magically like a Map when
-necessary (e.g. iterating the map works, all functions and properties
-exist, the constructor works <a class="footnote-reference" href="#id6" id="id3">[3]</a>). I need to thank aleth (another chat
-developer) who helped out quite a bit with this (and will ultimately be
-reviewing this&nbsp;code)!</p>
-<div class="highlight"><pre><span class="c1">// A Map that automatically normalizes keys before accessing the values.</span>
-<span class="kd">function</span> <span class="nx">NormalizedMap</span><span class="p">(</span><span class="nx">aNormalizeFunction</span><span class="p">,</span> <span class="nx">aIt</span> <span class="o">=</span> <span class="p">[])</span> <span class="p">{</span>
-  <span class="k">if</span> <span class="p">(</span><span class="k">typeof</span><span class="p">(</span><span class="nx">aNormalizeFunction</span><span class="p">)</span> <span class="o">!=</span> <span class="s2">&quot;function&quot;</span><span class="p">)</span>
-    <span class="k">throw</span> <span class="s2">&quot;NormalizedMap must have a normalize function!&quot;</span><span class="p">;</span>
-  <span class="k">this</span><span class="p">.</span><span class="nx">_normalize</span> <span class="o">=</span> <span class="nx">aNormalizeFunction</span><span class="p">;</span>
-  <span class="k">this</span><span class="p">.</span><span class="nx">_map</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Map</span><span class="p">([[</span><span class="k">this</span><span class="p">.</span><span class="nx">_normalize</span><span class="p">(</span><span class="nx">key</span><span class="p">),</span> <span class="nx">val</span><span class="p">]</span> <span class="k">for</span> <span class="p">([</span><span class="nx">key</span><span class="p">,</span> <span class="nx">val</span><span class="p">]</span> <span class="nx">of</span> <span class="nx">aIt</span><span class="p">)]);</span>
-<span class="p">}</span>
-<span class="nx">NormalizedMap</span><span class="p">.</span><span class="nx">prototype</span> <span class="o">=</span> <span class="p">{</span>
-  <span class="nx">_map</span><span class="o">:</span> <span class="kc">null</span><span class="p">,</span>
-  <span class="c1">// The function to apply to all keys.</span>
-  <span class="nx">_normalize</span><span class="o">:</span> <span class="kc">null</span><span class="p">,</span>
-
-  <span class="c1">// Anything that accepts a key as an input needs to be manually overridden.</span>
-  <span class="k">delete</span><span class="o">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">aKey</span><span class="p">)</span> <span class="k">this</span><span class="p">.</span><span class="nx">_map</span><span class="p">.</span><span class="k">delete</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">_normalize</span><span class="p">(</span><span class="nx">aKey</span><span class="p">)),</span>
-  <span class="nx">get</span><span class="o">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">aKey</span><span class="p">)</span> <span class="k">this</span><span class="p">.</span><span class="nx">_map</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">_normalize</span><span class="p">(</span><span class="nx">aKey</span><span class="p">)),</span>
-  <span class="nx">has</span><span class="o">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">aKey</span><span class="p">)</span> <span class="k">this</span><span class="p">.</span><span class="nx">_map</span><span class="p">.</span><span class="nx">has</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">_normalize</span><span class="p">(</span><span class="nx">aKey</span><span class="p">)),</span>
-  <span class="nx">set</span><span class="o">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">aKey</span><span class="p">,</span> <span class="nx">aValue</span><span class="p">)</span> <span class="k">this</span><span class="p">.</span><span class="nx">_map</span><span class="p">.</span><span class="nx">set</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">_normalize</span><span class="p">(</span><span class="nx">aKey</span><span class="p">),</span> <span class="nx">aValue</span><span class="p">),</span>
-
-  <span class="c1">// Properties must be manually forwarded.</span>
-  <span class="nx">get</span> <span class="nx">size</span><span class="p">()</span> <span class="k">this</span><span class="p">.</span><span class="nx">_map</span><span class="p">.</span><span class="nx">size</span><span class="p">,</span>
-
-  <span class="c1">// Here&#39;s where the magic happens. If a method is called that isn&#39;t defined</span>
-  <span class="c1">// here, just pass it to the internal _map object.</span>
-  <span class="nx">__noSuchMethod__</span><span class="o">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">aId</span><span class="p">,</span> <span class="nx">aArgs</span><span class="p">)</span> <span class="k">this</span><span class="p">.</span><span class="nx">_map</span><span class="p">[</span><span class="nx">aId</span><span class="p">].</span><span class="nx">apply</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">_map</span><span class="p">,</span> <span class="nx">aArgs</span><span class="p">)</span>
-<span class="p">}</span>
-</pre></div>
-<p>The one downside of see of this is that properties must be declared
-manually to forward to the internal <tt class="docutils literal">_map</tt> object. Maybe there is a
-matching <tt class="docutils literal">__noSuchProperty__</tt> method I&#8217;m missing? Overall, I&#8217;m happy
-with this solution, but please leave a comment if you can think of an
-easier / better way to do this! (Or see a glaring way this will&nbsp;break!)</p>
-<table class="docutils footnote" frame="void" id="id4" rules="none">
-<colgroup><col class="label" /><col /></colgroup>
-<tbody valign="top">
-<tr><td class="label"><a class="fn-backref" href="#id1">[1]</a></td><td>This is always a little bit of a sore subject in <a class="reference external" href="irc://irc.mozilla.org/#instantbird">#instantbird</a>
-since we&#8217;ve had a variety of issues with this over the years. I think
-we&#8217;ve fixed most of them at this point though!</td></tr>
-</tbody>
-</table>
-<table class="docutils footnote" frame="void" id="id5" rules="none">
-<colgroup><col class="label" /><col /></colgroup>
-<tbody valign="top">
-<tr><td class="label"><a class="fn-backref" href="#id2">[2]</a></td><td>As I&#8217;ve <a class="reference external" href="http://patrick.cloke.us/posts/2011/Mar/09/the-so-called-irc-specifications/">written before</a>, <span class="caps">IRC</span> tends to have crazy specifications.
-In <span class="caps">IRC</span>, <a class="reference external" href="https://tools.ietf.org/html/rfc2812#section-2.2">the characters of A-Z[]\~ are considered the upper case of a-z{}|^</a>
-(&quot;because of <span class="caps">IRC</span>&#8217;s Scandinavian origin&quot;). Oh, also this can
-change based on an <a class="reference external" href="http://tools.ietf.org/html/draft-brocklesby-irc-isupport-03#section-3.1"><span class="caps">ISUPPORT</span> response</a> from the server to pure <span class="caps">ASCII</span> or
-<span class="caps">RFC</span> 1459 casemapping (A-Z[]\ map to a-z{}|). It seems like this could
-theoretically change at any point on a live server too, although that
-would be <span class="caps">INSANE</span> and I hope no one ever does that.</td></tr>
-</tbody>
-</table>
-<table class="docutils footnote" frame="void" id="id6" rules="none">
-<colgroup><col class="label" /><col /></colgroup>
-<tbody valign="top">
-<tr><td class="label"><a class="fn-backref" href="#id3">[3]</a></td><td>I wrote some xpcshell tests to ensure these properties work as
-expected, but they&#8217;re uhh&#8230;not up anywhere yet though. Oops.</td></tr>
-</tbody>
-</table>
-</div>
-
-        </article></aside><!-- /#featured -->
-                <h1>Other articles</h1>
-                <hr />
-                    <ol id="posts-list" class="hfeed">
-        <li><article class="hentry">
+                <section id="content" class="body">
+                    <ol id="posts-list" class="hfeed" start="4">
+            <li><article class="hentry">
                 <header>
-                        <h1><a href="http://patrick.cloke.us/posts/2012/Jan/15/instantbird-contact-list-hack-2/" rel="bookmark" title="Permalink to Instantbird Contact List Hack #2">Instantbird Contact List Hack&nbsp;#2</a></h1>
-                </header>
-
-                <div class="entry-content">
-<footer class="post-info">
-        <abbr class="published" title="2012-01-15T14:00:00">
-                01/15/2012 02:00 PM UTC
-        </abbr>
-
-        <address class="vcard author">
-                By <a class="url fn" href="http://patrick.cloke.us/author/patrick-cloke.html">Patrick Cloke</a>
-        </address>
-<p>In <a href="http://patrick.cloke.us/category/misc.html">misc</a>. </p>
-<p>tags: <a href="http://patrick.cloke.us/tag/customizing.html">customizing</a><a href="http://patrick.cloke.us/tag/instantbird.html">Instantbird</a><a href="http://patrick.cloke.us/tag/programming.html">programming</a></p></p></footer><!-- /.post-info --><!-- /.post-info -->
-                <p>There was a <a class="reference external" href="https://bugzilla.instantbird.org/show_bug.cgi?id=987">request</a> on the Instantbird Bugzilla to always show
-contacts in the contact list as the &quot;big&quot; contact (as shown when a
-contact is selected).&nbsp; Similarly to my <a class="reference external" href="http://patrick.cloke.us/posts/2011/Nov/01/instantbird-contact-list-hack/">last post</a>, this can easily be
-done with userChrome.css.&nbsp; See the post if you don&#8217;t know what
-userChrome ...</p>
-                <a class="readmore" href="http://patrick.cloke.us/posts/2012/Jan/15/instantbird-contact-list-hack-2/">read more</a>
-                </div><!-- /.entry-content -->
-        </article></li>
-        <li><article class="hentry">
-                <header>
-                        <h1><a href="http://patrick.cloke.us/posts/2011/Nov/01/instantbird-contact-list-hack/" rel="bookmark" title="Permalink to Instantbird Contact List Hack">Instantbird Contact List&nbsp;Hack</a></h1>
-                </header>
-
-                <div class="entry-content">
-<footer class="post-info">
-        <abbr class="published" title="2011-11-01T00:20:00">
-                11/01/2011 12:20 AM UTC
-        </abbr>
-
-        <address class="vcard author">
-                By <a class="url fn" href="http://patrick.cloke.us/author/patrick-cloke.html">Patrick Cloke</a>
-        </address>
-<p>In <a href="http://patrick.cloke.us/category/misc.html">misc</a>. </p>
-<p>tags: <a href="http://patrick.cloke.us/tag/customizing.html">customizing</a><a href="http://patrick.cloke.us/tag/instantbird.html">Instantbird</a><a href="http://patrick.cloke.us/tag/programming.html">programming</a></p></p></footer><!-- /.post-info --><!-- /.post-info -->
-                <p>A friend of mine asked me if there was a way to have selected contacts
-in the contact list <span class="caps">NOT</span> expand to two lines (where the status goes onto
-the second line) in&nbsp;Instantbird.</p>
-<p>There&#8217;s actually no option to do this in Instantbird, but with a
-little <a class="reference external" href="http://www-archive.mozilla.org/unix/customizing.html">userChrome</a> tweak ...</p>
-                <a class="readmore" href="http://patrick.cloke.us/posts/2011/Nov/01/instantbird-contact-list-hack/">read more</a>
-                </div><!-- /.entry-content -->
-        </article></li>
-        <li><article class="hentry">
-                <header>
-                        <h1><a href="http://patrick.cloke.us/posts/2011/Sep/03/adding-a-protocol-to-instantbird-part-2/" rel="bookmark" title="Permalink to Adding a protocol to Instantbird (Part 2)">Adding a protocol to Instantbird (Part&nbsp;2)</a></h1>
-                </header>
-
-                <div class="entry-content">
-<footer class="post-info">
-        <abbr class="published" title="2011-09-03T14:31:00">
-                09/03/2011 02:31 PM UTC
-        </abbr>
-
-        <address class="vcard author">
-                By <a class="url fn" href="http://patrick.cloke.us/author/patrick-cloke.html">Patrick Cloke</a>
-        </address>
-<p>In <a href="http://patrick.cloke.us/category/misc.html">misc</a>. </p>
-<p>tags: <a href="http://patrick.cloke.us/tag/instantbird.html">Instantbird</a><a href="http://patrick.cloke.us/tag/programming.html">programming</a><a href="http://patrick.cloke.us/tag/sipe.html">SIPE</a></p></p></footer><!-- /.post-info --><!-- /.post-info -->
-                <p>I had <a class="reference external" href="http://patrick.cloke.us/posts/2011/Jun/19/adding-a-new-protocol-sipeoffice-communicator-to-instantbird-part-1/">previously talked about adding a protocol to Instantbird</a>,
-that focused on adding <span class="caps">SIPE</span> (Microsoft Office Communicator support).
-Since then I&#8217;ve been slowly working on defeating <span class="caps">SIPE</span>.&nbsp; Fortunately I
-found a few flags that help us compile it easily in Instantbird: we can
-declare that we do <em>not ...</em></p>
-                <a class="readmore" href="http://patrick.cloke.us/posts/2011/Sep/03/adding-a-protocol-to-instantbird-part-2/">read more</a>
-                </div><!-- /.entry-content -->
-        </article></li>
-        <li><article class="hentry">
-                <header>
-                        <h1><a href="http://patrick.cloke.us/posts/2011/Jun/19/adding-a-new-protocol-sipeoffice-communicator-to-instantbird-part-1/" rel="bookmark" title="Permalink to Adding a new protocol (SIPE/Office Communicator) to Instantbird (part 1)">Adding a new protocol (<span class="caps">SIPE</span>/Office Communicator) to Instantbird (part&nbsp;1)</a></h1>
-                </header>
-
-                <div class="entry-content">
-<footer class="post-info">
-        <abbr class="published" title="2011-06-19T01:53:00">
-                06/19/2011 01:53 AM UTC
-        </abbr>
-
-        <address class="vcard author">
-                By <a class="url fn" href="http://patrick.cloke.us/author/patrick-cloke.html">Patrick Cloke</a>
-        </address>
-<p>In <a href="http://patrick.cloke.us/category/misc.html">misc</a>. </p>
-<p>tags: <a href="http://patrick.cloke.us/tag/instantbird.html">Instantbird</a><a href="http://patrick.cloke.us/tag/programming.html">programming</a><a href="http://patrick.cloke.us/tag/sipe.html">SIPE</a></p></p></footer><!-- /.post-info --><!-- /.post-info -->
-                <p><a class="reference external" href="http://en.wikipedia.org/wiki/Office_Communicator">Microsoft Office Communicator</a> is an instant messaging client that
-integrates into the <a class="reference external" href="http://en.wikipedia.org/wiki/Microsoft_Exchange_Server">Exchange Messaging Server</a> (the protocol behind it
-is an extended version of <span class="caps">SIP</span>/<span class="caps">SIMPLE</span>).&nbsp; Anyway, there&#8217;s a <a class="reference external" href="http://developer.pidgin.im/wiki/WhatIsLibpurple">libpurple</a>
-(i.e. the backend of <a class="reference external" href="http://instantbird.com/">Instantbird</a> and <a class="reference external" href="http://pidgin.im/">Pidgin</a>) protocol plug-in for
-<span class="caps">OCS</span> (Office Communicator Server) called <a class="reference external" href="http://sipe.sourceforge.net/"><span class="caps">SIPE</span></a>.&nbsp; (It&#8217;s ...</p>
-                <a class="readmore" href="http://patrick.cloke.us/posts/2011/Jun/19/adding-a-new-protocol-sipeoffice-communicator-to-instantbird-part-1/">read more</a>
-                </div><!-- /.entry-content -->
-        </article></li>
-        <li><article class="hentry">
-                <header>
-                        <h1><a href="http://patrick.cloke.us/posts/2011/May/17/compiling-instantbird/" rel="bookmark" title="Permalink to Compiling Instantbird">Compiling&nbsp;Instantbird</a></h1>
+                    <h1><a href="http://patrick.cloke.us/posts/2011/May/17/compiling-instantbird/" rel="bookmark"
+                           title="Permalink to Compiling Instantbird">Compiling&nbsp;Instantbird</a></h1>
                 </header>
 
                 <div class="entry-content">
 <footer class="post-info">
         <abbr class="published" title="2011-05-17T01:30:00">
-                05/17/2011 01:30 AM UTC
+                Published: 05/17/2011 01:30 AM UTC
         </abbr>
 
-        <address class="vcard author">
-                By <a class="url fn" href="http://patrick.cloke.us/author/patrick-cloke.html">Patrick Cloke</a>
-        </address>
 <p>In <a href="http://patrick.cloke.us/category/misc.html">misc</a>. </p>
-<p>tags: <a href="http://patrick.cloke.us/tag/instantbird.html">Instantbird</a><a href="http://patrick.cloke.us/tag/mozilla.html">Mozilla</a><a href="http://patrick.cloke.us/tag/programming.html">programming</a></p></p></footer><!-- /.post-info --><!-- /.post-info -->
-                <p>In the past I&#8217;ve tried to compile a few different programs that use
+<p>tags: <a href="http://patrick.cloke.us/tag/instantbird.html">Instantbird</a> <a href="http://patrick.cloke.us/tag/mozilla.html">Mozilla</a> <a href="http://patrick.cloke.us/tag/programming.html">programming</a> </p>
+</footer><!-- /.post-info -->                <p>In the past I&#8217;ve tried to compile a few different programs that use
 the Mozilla toolkit to various levels of success.&nbsp; I&#8217;ve tried to compile
 Thunderbird, Songbird and Instantbird at various points.&nbsp; I got
 Thunderbird to compile, but it only worked sporadically (although I
 think that was Firefox ...</p>
                 <a class="readmore" href="http://patrick.cloke.us/posts/2011/May/17/compiling-instantbird/">read more</a>
                 </div><!-- /.entry-content -->
-        </article></li>
-        <li><article class="hentry">
+            </article></li>
+
+            <li><article class="hentry">
                 <header>
-                        <h1><a href="http://patrick.cloke.us/posts/2011/Mar/09/the-so-called-irc-specifications/" rel="bookmark" title="Permalink to The so-called IRC "specifications"">The so-called <span class="caps">IRC</span>&nbsp;&quot;specifications&quot;</a></h1>
+                    <h1><a href="http://patrick.cloke.us/posts/2011/Mar/09/the-so-called-irc-specifications/" rel="bookmark"
+                           title="Permalink to The so-called IRC "specifications"">The so-called <span class="caps">IRC</span>&nbsp;&quot;specifications&quot;</a></h1>
                 </header>
 
                 <div class="entry-content">
 <footer class="post-info">
         <abbr class="published" title="2011-03-09T01:20:00">
-                03/09/2011 01:20 AM UTC
+                Published: 03/09/2011 01:20 AM UTC
         </abbr>
 
-        <address class="vcard author">
-                By <a class="url fn" href="http://patrick.cloke.us/author/patrick-cloke.html">Patrick Cloke</a>
-        </address>
 <p>In <a href="http://patrick.cloke.us/category/misc.html">misc</a>. </p>
-<p>tags: <a href="http://patrick.cloke.us/tag/instantbird.html">Instantbird</a><a href="http://patrick.cloke.us/tag/irc.html">IRC</a><a href="http://patrick.cloke.us/tag/programming.html">programming</a><a href="http://patrick.cloke.us/tag/specifications.html">specifications</a></p></p></footer><!-- /.post-info --><!-- /.post-info -->
-                <p>In a <a class="reference external" href="http://patrick.cloke.us/posts/2010/Dec/08/why-rewrite-irc-into-javascript-vs-libpurples-vs-chatzillas/">previous post</a> I had briefly gone over the &quot;history of <span class="caps">IRC</span>&quot; as
+<p>tags: <a href="http://patrick.cloke.us/tag/instantbird.html">Instantbird</a> <a href="http://patrick.cloke.us/tag/irc.html">IRC</a> <a href="http://patrick.cloke.us/tag/programming.html">programming</a> <a href="http://patrick.cloke.us/tag/specifications.html">specifications</a> </p>
+</footer><!-- /.post-info -->                <p>In a <a class="reference external" href="http://patrick.cloke.us/posts/2010/Dec/08/why-rewrite-irc-into-javascript-vs-libpurples-vs-chatzillas/">previous post</a> I had briefly gone over the &quot;history of <span class="caps">IRC</span>&quot; as
 I know it.&nbsp; I&#8217;m going to expand on this a bit as I&#8217;ve come to understand
 it a bit more while reading through documentation.&nbsp; (Hopefully it won&#8217;t
 sound too much like a rant ...</p>
                 <a class="readmore" href="http://patrick.cloke.us/posts/2011/Mar/09/the-so-called-irc-specifications/">read more</a>
                 </div><!-- /.entry-content -->
-        </article></li>
-        <li><article class="hentry">
+            </article></li>
+
+            <li><article class="hentry">
                 <header>
-                        <h1><a href="http://patrick.cloke.us/posts/2011/Feb/17/status-update-february-17-2011/" rel="bookmark" title="Permalink to Status Update - February 17, 2011">Status Update - February 17,&nbsp;2011</a></h1>
+                    <h1><a href="http://patrick.cloke.us/posts/2011/Feb/17/status-update-february-17-2011/" rel="bookmark"
+                           title="Permalink to Status Update - February 17, 2011">Status Update - February 17,&nbsp;2011</a></h1>
                 </header>
 
                 <div class="entry-content">
 <footer class="post-info">
         <abbr class="published" title="2011-02-17T23:21:00">
-                02/17/2011 11:21 PM UTC
+                Published: 02/17/2011 11:21 PM UTC
         </abbr>
 
-        <address class="vcard author">
-                By <a class="url fn" href="http://patrick.cloke.us/author/patrick-cloke.html">Patrick Cloke</a>
-        </address>
 <p>In <a href="http://patrick.cloke.us/category/misc.html">misc</a>. </p>
-<p>tags: <a href="http://patrick.cloke.us/tag/instantbird.html">Instantbird</a><a href="http://patrick.cloke.us/tag/irc.html">IRC</a><a href="http://patrick.cloke.us/tag/programming.html">programming</a></p></p></footer><!-- /.post-info --><!-- /.post-info -->
-                <p>Another month has gone by so it&#8217;s time for another status update.
+<p>tags: <a href="http://patrick.cloke.us/tag/instantbird.html">Instantbird</a> <a href="http://patrick.cloke.us/tag/irc.html">IRC</a> <a href="http://patrick.cloke.us/tag/programming.html">programming</a> </p>
+</footer><!-- /.post-info -->                <p>Another month has gone by so it&#8217;s time for another status update.
 Unfortunately not as much got done this month as I was hoping, but
 here&#8217;s a quick update of what I&#8217;ve worked&nbsp;on:</p>
 <ul class="simple">
@@ -382,24 +108,23 @@ here&#8217;s a quick update of what I&#8217;ve worked&nbsp;on:</p>
 <li><a class="reference external" href="https://bugzilla.instantbird.org/show_bug.cgi?id=661">Bug 661</a> - JavaScript accounts do not ...</li></ul>
                 <a class="readmore" href="http://patrick.cloke.us/posts/2011/Feb/17/status-update-february-17-2011/">read more</a>
                 </div><!-- /.entry-content -->
-        </article></li>
-        <li><article class="hentry">
+            </article></li>
+
+            <li><article class="hentry">
                 <header>
-                        <h1><a href="http://patrick.cloke.us/posts/2011/Jan/19/status-update-january-18-2011/" rel="bookmark" title="Permalink to Status Update - January 18, 2011">Status Update - January 18,&nbsp;2011</a></h1>
+                    <h1><a href="http://patrick.cloke.us/posts/2011/Jan/19/status-update-january-18-2011/" rel="bookmark"
+                           title="Permalink to Status Update - January 18, 2011">Status Update - January 18,&nbsp;2011</a></h1>
                 </header>
 
                 <div class="entry-content">
 <footer class="post-info">
         <abbr class="published" title="2011-01-19T03:17:00">
-                01/19/2011 03:17 AM UTC
+                Published: 01/19/2011 03:17 AM UTC
         </abbr>
 
-        <address class="vcard author">
-                By <a class="url fn" href="http://patrick.cloke.us/author/patrick-cloke.html">Patrick Cloke</a>
-        </address>
 <p>In <a href="http://patrick.cloke.us/category/misc.html">misc</a>. </p>
-<p>tags: <a href="http://patrick.cloke.us/tag/instantbird.html">Instantbird</a><a href="http://patrick.cloke.us/tag/irc.html">IRC</a><a href="http://patrick.cloke.us/tag/mozilla.html">Mozilla</a><a href="http://patrick.cloke.us/tag/programming.html">programming</a></p></p></footer><!-- /.post-info --><!-- /.post-info -->
-                <p>I haven&#8217;t had an update in a few weeks (since early December)
+<p>tags: <a href="http://patrick.cloke.us/tag/instantbird.html">Instantbird</a> <a href="http://patrick.cloke.us/tag/irc.html">IRC</a> <a href="http://patrick.cloke.us/tag/mozilla.html">Mozilla</a> <a href="http://patrick.cloke.us/tag/programming.html">programming</a> </p>
+</footer><!-- /.post-info -->                <p>I haven&#8217;t had an update in a few weeks (since early December)
 actually, so I thought I would post a bit about what I&#8217;ve worked on.
 I&#8217;ve fixed a bunch of bugs in the backend of Instantbird that allow work
 on JavaScript <span class="caps">IRC</span> protocol to&nbsp;continue:</p>
@@ -407,24 +132,23 @@ on JavaScript <span class="caps">IRC</span> protocol to&nbsp;continue:</p>
 <li><a class="reference external" href="https://bugzilla.instantbird.org/show_bug.cgi?id=519">Bug ...</a></li></ul>
                 <a class="readmore" href="http://patrick.cloke.us/posts/2011/Jan/19/status-update-january-18-2011/">read more</a>
                 </div><!-- /.entry-content -->
-        </article></li>
-        <li><article class="hentry">
+            </article></li>
+
+            <li><article class="hentry">
                 <header>
-                        <h1><a href="http://patrick.cloke.us/posts/2010/Dec/08/why-rewrite-irc-into-javascript-vs-libpurples-vs-chatzillas/" rel="bookmark" title="Permalink to Why Rewrite IRC into JavaScript? (vs. libpurple’s vs. ChatZilla’s)">Why Rewrite <span class="caps">IRC</span> into JavaScript? (vs. libpurple&#8217;s vs.&nbsp;ChatZilla&#8217;s)</a></h1>
+                    <h1><a href="http://patrick.cloke.us/posts/2010/Dec/08/why-rewrite-irc-into-javascript-vs-libpurples-vs-chatzillas/" rel="bookmark"
+                           title="Permalink to Why Rewrite IRC into JavaScript? (vs. libpurple’s vs. ChatZilla’s)">Why Rewrite <span class="caps">IRC</span> into JavaScript? (vs. libpurple&#8217;s vs.&nbsp;ChatZilla&#8217;s)</a></h1>
                 </header>
 
                 <div class="entry-content">
 <footer class="post-info">
         <abbr class="published" title="2010-12-08T18:29:00">
-                12/08/2010 06:29 PM UTC
+                Published: 12/08/2010 06:29 PM UTC
         </abbr>
 
-        <address class="vcard author">
-                By <a class="url fn" href="http://patrick.cloke.us/author/patrick-cloke.html">Patrick Cloke</a>
-        </address>
 <p>In <a href="http://patrick.cloke.us/category/misc.html">misc</a>. </p>
-<p>tags: <a href="http://patrick.cloke.us/tag/instantbird.html">Instantbird</a><a href="http://patrick.cloke.us/tag/irc.html">IRC</a><a href="http://patrick.cloke.us/tag/mozilla.html">Mozilla</a><a href="http://patrick.cloke.us/tag/programming.html">programming</a></p></p></footer><!-- /.post-info --><!-- /.post-info -->
-                <p>I had a request on <span class="caps">IRC</span> (from Mic) to write an in-depth blog post
+<p>tags: <a href="http://patrick.cloke.us/tag/instantbird.html">Instantbird</a> <a href="http://patrick.cloke.us/tag/irc.html">IRC</a> <a href="http://patrick.cloke.us/tag/mozilla.html">Mozilla</a> <a href="http://patrick.cloke.us/tag/programming.html">programming</a> </p>
+</footer><!-- /.post-info -->                <p>I had a request on <span class="caps">IRC</span> (from Mic) to write an in-depth blog post
 about <a class="reference external" href="https://bugzilla.instantbird.org/show_bug.cgi?id=507"><span class="caps">IRC</span> in JavaScript</a>:</p>
 <blockquote>
 &quot;Maybe we could ask clokep if he&#8217;d like to write something about
@@ -432,82 +156,77 @@ js-irc? Why it is done, what the advantages are once it&#8217;s done, how
 he is working on it ...</blockquote>
                 <a class="readmore" href="http://patrick.cloke.us/posts/2010/Dec/08/why-rewrite-irc-into-javascript-vs-libpurples-vs-chatzillas/">read more</a>
                 </div><!-- /.entry-content -->
-        </article></li>
-        <li><article class="hentry">
+            </article></li>
+
+            <li><article class="hentry">
                 <header>
-                        <h1><a href="http://patrick.cloke.us/posts/2010/Dec/04/javascript-irc-in-instantbird/" rel="bookmark" title="Permalink to JavaScript IRC in Instantbird">JavaScript <span class="caps">IRC</span> in&nbsp;Instantbird</a></h1>
+                    <h1><a href="http://patrick.cloke.us/posts/2010/Dec/04/javascript-irc-in-instantbird/" rel="bookmark"
+                           title="Permalink to JavaScript IRC in Instantbird">JavaScript <span class="caps">IRC</span> in&nbsp;Instantbird</a></h1>
                 </header>
 
                 <div class="entry-content">
 <footer class="post-info">
         <abbr class="published" title="2010-12-04T21:24:00">
-                12/04/2010 09:24 PM UTC
+                Published: 12/04/2010 09:24 PM UTC
         </abbr>
 
-        <address class="vcard author">
-                By <a class="url fn" href="http://patrick.cloke.us/author/patrick-cloke.html">Patrick Cloke</a>
-        </address>
 <p>In <a href="http://patrick.cloke.us/category/misc.html">misc</a>. </p>
-<p>tags: <a href="http://patrick.cloke.us/tag/instantbird.html">Instantbird</a><a href="http://patrick.cloke.us/tag/irc.html">IRC</a><a href="http://patrick.cloke.us/tag/mozilla.html">Mozilla</a><a href="http://patrick.cloke.us/tag/programming.html">programming</a></p></p></footer><!-- /.post-info --><!-- /.post-info -->
-                <p>I&#8217;ve been working on rewriting the <span class="caps">IRC</span> plugin for <a class="reference external" href="http://www.instantbird.com/">Instantbird</a> since
+<p>tags: <a href="http://patrick.cloke.us/tag/instantbird.html">Instantbird</a> <a href="http://patrick.cloke.us/tag/irc.html">IRC</a> <a href="http://patrick.cloke.us/tag/mozilla.html">Mozilla</a> <a href="http://patrick.cloke.us/tag/programming.html">programming</a> </p>
+</footer><!-- /.post-info -->                <p>I&#8217;ve been working on rewriting the <span class="caps">IRC</span> plugin for <a class="reference external" href="http://www.instantbird.com/">Instantbird</a> since
 the summer (sometime in August, I can&#8217;t seem to find the exact date &#8212;
 at least since Sept. 10th&nbsp;though).</p>
 <p>Since <a class="reference external" href="http://developer.pidgin.im/wiki/WhatIsLibpurple">libpurple</a> (used in Pidgin, Adium, etc.) provides the <span class="caps">IRC</span>
 protocol that we currently use, why do this ...</p>
                 <a class="readmore" href="http://patrick.cloke.us/posts/2010/Dec/04/javascript-irc-in-instantbird/">read more</a>
                 </div><!-- /.entry-content -->
-        </article></li>
-        <li><article class="hentry">
+            </article></li>
+
+            <li><article class="hentry">
                 <header>
-                        <h1><a href="http://patrick.cloke.us/posts/2010/Nov/23/yahoo-thunderbird-can-finally-play-nice/" rel="bookmark" title="Permalink to Yahoo & Thunderbird Can Finally Play Nice?">Yahoo <span class="amp">&amp;</span> Thunderbird Can Finally Play&nbsp;Nice?</a></h1>
+                    <h1><a href="http://patrick.cloke.us/posts/2010/Nov/23/yahoo-thunderbird-can-finally-play-nice/" rel="bookmark"
+                           title="Permalink to Yahoo & Thunderbird Can Finally Play Nice?">Yahoo <span class="amp">&amp;</span> Thunderbird Can Finally Play&nbsp;Nice?</a></h1>
                 </header>
 
                 <div class="entry-content">
 <footer class="post-info">
         <abbr class="published" title="2010-11-23T03:03:00">
-                11/23/2010 03:03 AM UTC
+                Published: 11/23/2010 03:03 AM UTC
         </abbr>
 
-        <address class="vcard author">
-                By <a class="url fn" href="http://patrick.cloke.us/author/patrick-cloke.html">Patrick Cloke</a>
-        </address>
 <p>In <a href="http://patrick.cloke.us/category/misc.html">misc</a>. </p>
-<p>tags: <a href="http://patrick.cloke.us/tag/bugs.html">bugs</a><a href="http://patrick.cloke.us/tag/email.html">email</a><a href="http://patrick.cloke.us/tag/imap.html">IMAP</a><a href="http://patrick.cloke.us/tag/mozilla.html">Mozilla</a><a href="http://patrick.cloke.us/tag/pop3.html">POP3</a><a href="http://patrick.cloke.us/tag/programming.html">programming</a><a href="http://patrick.cloke.us/tag/smtp.html">SMTP</a><a href="http://patrick.cloke.us/tag/thunderbird.html">Thunderbird</a><a href="http://patrick.cloke.us/tag/yahoo.html">Yahoo</a></p></p></footer><!-- /.post-info --><!-- /.post-info -->
-                <p>For years I&#8217;ve been dealing with Yahoo&#8217;s lack of support for any sort
+<p>tags: <a href="http://patrick.cloke.us/tag/bugs.html">bugs</a> <a href="http://patrick.cloke.us/tag/email.html">email</a> <a href="http://patrick.cloke.us/tag/imap.html">IMAP</a> <a href="http://patrick.cloke.us/tag/mozilla.html">Mozilla</a> <a href="http://patrick.cloke.us/tag/pop3.html">POP3</a> <a href="http://patrick.cloke.us/tag/programming.html">programming</a> <a href="http://patrick.cloke.us/tag/smtp.html">SMTP</a> <a href="http://patrick.cloke.us/tag/thunderbird.html">Thunderbird</a> <a href="http://patrick.cloke.us/tag/yahoo.html">Yahoo</a> </p>
+</footer><!-- /.post-info -->                <p>For years I&#8217;ve been dealing with Yahoo&#8217;s lack of support for any sort
 of decent (free) <span class="caps">POP3</span>/<span class="caps">IMAP</span>/<span class="caps">SMTP</span> protocol support.&nbsp; Why do I need this?
 So I can check my <a class="reference external" href="http://mail.yahoo.com/">Yahoo mail</a> in <a class="reference external" href="http://www.mozillamessaging.com/en-US/thunderbird/">Mozilla Thunderbird</a> of&nbsp;course!</p>
 <p>At first I used <a class="reference external" href="http://ypopsemail.com/"><span class="caps">YPOPS</span>!</a>, a program that read the ...</p>
                 <a class="readmore" href="http://patrick.cloke.us/posts/2010/Nov/23/yahoo-thunderbird-can-finally-play-nice/">read more</a>
                 </div><!-- /.entry-content -->
-        </article></li>
-</ol><!-- /#posts-list -->
-</section><!-- /#content -->
+            </article></li>
+                </ol><!-- /#posts-list -->
+<p class="paginator">
+        <a href="http://patrick.cloke.us/tag/programming.html">&laquo;</a>
+    Page 2 / 2
+</p>
+                </section><!-- /#content -->
 
-        <aside id="sidebar">
-                <div class="widget">
-                        <h2>Categories</h2>
-                        <ul>
-                           <li ><a href="http://patrick.cloke.us/category/misc.html">misc</a></li>
-                        </ul>
-                </div>
-        </aside><!-- /#sidebar -->
 
-        <footer id="footer" class="body">
+        </div>
+
+        <footer id="contentinfo" class="body">
                 <address id="about" class="vcard body">
-                Proudly powered by <a href="http://alexis.notmyidea.org/pelican/">pelican</a>, which takes great advantages of <a href="http://python.org">python</a>.
+                Proudly powered by <a href="http://getpelican.com/">Pelican</a>, which takes great advantage of <a href="http://python.org">Python</a>.
                 </address><!-- /#about -->
-
-                <p>The theme is «notmyidea-cms», a modified version of «notmyidea», the default theme.</p>
-        </footer><!-- /#footer -->
+        </footer><!-- /#contentinfo -->
 
     <script type="text/javascript">
-    var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
-    document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-52389517-1']);
+    _gaq.push(['_trackPageview']);
+    (function() {
+        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
     </script>
-    <script type="text/javascript">
-    try {
-        var pageTracker = _gat._getTracker("UA-52389517-1");
-    pageTracker._trackPageview();
-    } catch(err) {}</script>
 </body>
 </html>
