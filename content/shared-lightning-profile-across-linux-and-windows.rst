@@ -2,7 +2,6 @@ Shared Lightning profile across Linux and Windows
 #################################################
 :date: 2011-07-08 00:46
 :author: Patrick Cloke
-:category: Mozilla
 :tags: Lightning, Mozilla
 :slug: shared-lightning-profile-across-linux-and-windows
 

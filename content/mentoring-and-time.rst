@@ -2,7 +2,6 @@ Mentoring and Time
 ##################
 :date: 2014-06-18 23:46
 :author: Patrick Cloke
-:category: Mozilla
 :tags: community, GSoC
 :slug: mentoring-and-time
 

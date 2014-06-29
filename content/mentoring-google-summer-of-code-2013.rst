@@ -2,7 +2,6 @@ Mentoring Google Summer of Code 2013
 ####################################
 :date: 2013-06-28 22:05
 :author: Patrick Cloke
-:category: Mozilla
 :tags: chat, GSoC, IM, instant messaging, Instantbird, Yahoo
 :slug: mentoring-google-summer-of-code-2013
 

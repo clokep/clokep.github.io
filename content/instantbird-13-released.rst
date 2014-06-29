@@ -2,7 +2,6 @@ Instantbird 1.3 Released!!!
 ###########################
 :date: 2012-11-16 10:42
 :author: Patrick Cloke
-:category: Mozilla
 :tags: Instantbird
 :slug: instantbird-13-released
 

@@ -2,7 +2,6 @@ The so-called IRC "specifications"
 ##################################
 :date: 2011-03-09 01:20
 :author: Patrick Cloke
-:category: Mozilla
 :tags: Instantbird, IRC, programming, specifications
 :slug: the-so-called-irc-specifications
 

@@ -2,7 +2,6 @@ On Status
 #########
 :date: 2012-10-17 01:33
 :author: Patrick Cloke
-:category: Mozilla
 :tags: chat, IM, instant messaging, Instantbird, messaging, status, Thunderbird
 :slug: on-status
 

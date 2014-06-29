@@ -2,7 +2,6 @@ JavaScript typed arrays pain
 ############################
 :date: 2012-11-29 03:11
 :author: Patrick Cloke
-:category: Mozilla
 :tags: IM, Instantbird, Mozilla, OSCAR, Thunderbird, Wat
 :slug: javascript-typed-arrays-pain
 

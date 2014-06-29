@@ -17,8 +17,6 @@ RELATIVE_URLS = False
 FEED_DOMAIN = SITEURL
 FEED_ALL_ATOM = 'feeds/atom.xml'
 FEED_ALL_RSS = 'feeds/rss.xml'
-CATEGORY_FEED_ATOM = 'feeds/category/%s.atom.xml'
-CATEGORY_FEED_RSS = 'feeds/category/%s.rss.xml'
 TAG_FEED_ATOM = 'feeds/tag/%s.atom.xml'
 TAG_FEED_RSS = 'feeds/tag/%s.rss.xml'
 

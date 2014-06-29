@@ -12,7 +12,6 @@ DEFAULT_LANG = u'en'
 
 # Feed generation is usually not desired when developing
 FEED_ALL_ATOM = None
-CATEGORY_FEED_ATOM = None
 TRANSLATION_FEED_ATOM = None
 
 # Appliy the typogrify improvements.
@@ -20,6 +19,17 @@ TYPOGRIFY = True
 
 # Uncomment following line if you want document-relative URLs when developing
 RELATIVE_URLS = True
+
+# Disable categories.
+DISPLAY_PAGES_ON_MENU = True
+DISPLAY_CATEGORIES_ON_MENU = False
+CATEGORY_FEED_ATOM = None
+CATEGORY_SAVE_AS = ''
+CATEGORIES_SAVE_AS = ''
+
+# Disable author pages.
+AUTHOR_SAVE_AS = ''
+AUTHORS_SAVE_AS = ''
 
 # Set up locations of articles, pages and theme.
 PATH = 'content'
@@ -44,8 +54,6 @@ EXTRA_PATH_METADATA = {
 # Change the default URLs.
 ARTICLE_URL = 'posts/{date:%Y}/{date:%b}/{date:%d}/{slug}/'
 ARTICLE_SAVE_AS = 'posts/{date:%Y}/{date:%b}/{date:%d}/{slug}/index.html'
-# Do not generate author pages.
-AUTHOR_SAVE_AS = ''
 
 # Paginate, but have at least three items per page.
 DEFAULT_ORPHANS = 2
