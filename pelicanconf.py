@@ -36,8 +36,7 @@ PAGE_DIR = '../pages'
 PAGE_EXCLUDES = ['theme']
 ARTICLE_EXCLUDES = ['theme']
 
-# This is currently a modified copy of the gum theme:
-# https://github.com/getpelican/pelican-themes/tree/master/gum
+# This is currently a modified copy of notmyidea, one of the default themes.
 THEME = 'theme'
 
 # Set up static content and output locations.
@@ -64,6 +63,8 @@ DEFAULT_PAGINATION = 5
 TAG_CLOUD_MAX_ITEMS=10
 
 # Auto-generated content.
+DISPLAY_PAGES_ON_MENU = True
+DISPLAY_CATEGORIES_ON_SIDEBAR = False
 LINKS = ()
 SOCIAL = (
     ('twitter', 'https://www.twitter.com/clokep'),
