@@ -15,42 +15,49 @@ FEED_ALL_ATOM = None
 CATEGORY_FEED_ATOM = None
 TRANSLATION_FEED_ATOM = None
 
-# Blogroll
-LINKS =  (('Pelican', 'http://getpelican.com/'),
-          ('Python.org', 'http://python.org/'),
-          ('Jinja2', 'http://jinja.pocoo.org/'),
-          ('You can modify those links in your config file', '#'),)
+# Appliy the typogrify improvements.
+TYPOGRIFY = True
 
-# Social widget
+# Uncomment following line if you want document-relative URLs when developing
+RELATIVE_URLS = True
+
+# Set up locations of articles, pages and theme.
+PATH = 'content'
+PAGE_DIR = '../pages'
+
+PAGE_EXCLUDES = ['theme']
+ARTICLE_EXCLUDES = ['theme']
+
+# This is currently a modified copy of the gum theme:
+# https://github.com/getpelican/pelican-themes/tree/master/gum
+THEME = 'theme'
+
+# Set up static content and output locations.
+STATIC_PATHS = [
+    'images',
+    'static/CNAME'
+]
+EXTRA_PATH_METADATA = {
+    'static/CNAME': {'path': 'CNAME'},
+}
+
+# Change the default URLs.
+ARTICLE_URL = 'posts/{date:%Y}/{date:%b}/{date:%d}/{slug}/'
+ARTICLE_SAVE_AS = 'posts/{date:%Y}/{date:%b}/{date:%d}/{slug}/index.html'
+# Do not generate author pages.
+AUTHOR_SAVE_AS = ''
+
+# Paginate, but have at least three items per page.
+DEFAULT_ORPHANS = 2
+DEFAULT_PAGINATION = 5
+
+TAG_CLOUD_MAX_ITEMS=10
+
+# Auto-generated content.
+LINKS =  ()
 SOCIAL = ()
 
 GITHUB_URL = "https://www.github.com/clokep"
 TWITTER_URL = "https://www.twitter.com/clokep"
 BITBUCKET_URL = "https://bitbucket.org/clokep"
 MOZILLIANS_URL = "https://mozillians.org/clokep"
-
-# Paginate, but have at least three items per page.
-DEFAULT_ORPHANS = 2
-DEFAULT_PAGINATION = 5
-
-# Uncomment following line if you want document-relative URLs when developing
-RELATIVE_URLS = True
-
-# Content directory.
-PATH = 'content'
-PAGE_DIR = '../pages'
-
-STATIC_PATHS = [
-    'images',
-    'static/CNAME'
-]
-
-# path-specific metadata
-EXTRA_PATH_METADATA = {
-    'static/CNAME': {'path': 'CNAME'},
-}
-
-PAGE_EXCLUDES = ['theme']
-ARTICLE_EXCLUDES = ['theme']
-
-THEME = 'theme'
