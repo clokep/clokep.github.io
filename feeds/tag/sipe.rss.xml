@@ -1,69 +1,70 @@
 <?xml version="1.0" encoding="utf-8"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Like bricks in the sky</title><link>http://patrick.cloke.us/</link><description></description><atom:link href="http://patrick.cloke.us/feeds/tag/sipe.rss.xml" rel="self"></atom:link><lastBuildDate>Sat, 03 Sep 2011 14:31:00 -0400</lastBuildDate><item><title>Adding a protocol to Instantbird (Part 2)</title><link>http://patrick.cloke.us/posts/2011/Sep/03/adding-a-protocol-to-instantbird-part-2/</link><description>&lt;p&gt;I had &lt;a class="reference external" href="http://patrick.cloke.us/posts/2011/Jun/19/adding-a-new-protocol-sipeoffice-communicator-to-instantbird-part-1/"&gt;previously talked about adding a protocol to Instantbird&lt;/a&gt;,
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Like bricks in the sky</title><link>http://patrick.cloke.us/</link><description></description><atom:link href="http://patrick.cloke.us/feeds/tag/sipe.rss.xml" rel="self"></atom:link><lastBuildDate>Sat, 03 Sep 2011 14:31:00 -0400</lastBuildDate><item><title>Adding a protocol to Instantbird (Part 2)</title><link>http://patrick.cloke.us/posts/2011/Sep/03/adding-a-protocol-to-instantbird-part-2/</link><description>
+&lt;p&gt;I had &lt;a class="reference external" href="http://patrick.cloke.us/posts/2011/Jun/19/adding-a-new-protocol-sipeoffice-communicator-to-instantbird-part-1/"&gt;previously talked about adding a protocol to Instantbird&lt;/a&gt;,
 that focused on adding &lt;span class="caps"&gt;SIPE&lt;/span&gt; (Microsoft Office Communicator support).
-Since then I&amp;#8217;ve been slowly working on defeating &lt;span class="caps"&gt;SIPE&lt;/span&gt;.&amp;nbsp; Fortunately I
+Since then I’ve been slowly working on defeating &lt;span class="caps"&gt;SIPE&lt;/span&gt;.  Fortunately I
 found a few flags that help us compile it easily in Instantbird: we can
 declare that we do &lt;em&gt;not&lt;/em&gt; have gmime and the standard libpurple &lt;span class="caps"&gt;MIME&lt;/span&gt;
 functions will be used (they might not be as good, but it keeps from
-adding &amp;gt;10 &lt;span class="caps"&gt;MB&lt;/span&gt; of source to&amp;nbsp;Instantbird).&lt;/p&gt;
+adding &amp;gt;10 &lt;span class="caps"&gt;MB&lt;/span&gt; of source to Instantbird).&lt;/p&gt;
 &lt;p&gt;Some modifications to the &lt;span class="caps"&gt;SIPE&lt;/span&gt; source were made to compile it in
 Instantbird (note that most of the changes were probably more based on
-using &lt;span class="caps"&gt;MSVC&lt;/span&gt;, than having to do with Instantbird).&amp;nbsp; The code is also
+using &lt;span class="caps"&gt;MSVC&lt;/span&gt;, than having to do with Instantbird).  The code is also
 broken up into a few different sections the core, api, and purple are
-ones we care about (they&amp;#8217;re working on making a general Office
+ones we care about (they’re working on making a general Office
 Communicator protocol library, so the purple folder contains the
-libpurple bindings that use the api, while the core is&amp;nbsp;private).&lt;/p&gt;
+libpurple bindings that use the api, while the core is private).&lt;/p&gt;
 &lt;div class="section" id="purple"&gt;
-&lt;h2&gt;Purple&lt;/h2&gt;
+&lt;h2&gt;&lt;a class="toc-backref" href="#id1"&gt;Purple&lt;/a&gt;&lt;/h2&gt;
 &lt;p&gt;Changes to purple consisted mostly of ifdefs that remove some header
-files not supported on Windows.&amp;nbsp; For example, I encountered a few&amp;nbsp;of:&lt;/p&gt;
+files not supported on Windows.  For example, I encountered a few of:&lt;/p&gt;
 &lt;pre class="literal-block"&gt;
 #include &amp;lt;unistd.h&amp;gt;
 &lt;/pre&gt;
 &lt;p&gt;Luckily there was already a define &lt;tt class="docutils literal"&gt;HAVE_UNISTD_H&lt;/tt&gt;, so I just needed
-to&amp;nbsp;add:&lt;/p&gt;
+to add:&lt;/p&gt;
 &lt;pre class="literal-block"&gt;
 #ifdef HAVE_UNISTD_H
 #include &amp;lt;unistd.h&amp;gt;
 #endif
 &lt;/pre&gt;
-&lt;p&gt;Easy!&amp;nbsp; There were also a couple other issues, but those were rather&amp;nbsp;trivial.&lt;/p&gt;
+&lt;p&gt;Easy!  There were also a couple other issues, but those were rather trivial.&lt;/p&gt;
 &lt;/div&gt;
 &lt;div class="section" id="core"&gt;
-&lt;h2&gt;Core&lt;/h2&gt;
-&lt;p&gt;There isn&amp;#8217;t a specific issue in the core I&amp;#8217;d like to highlight, it did
-use a few glib functions which we didn&amp;#8217;t have (we removed the files, as
+&lt;h2&gt;&lt;a class="toc-backref" href="#id2"&gt;Core&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;There isn’t a specific issue in the core I’d like to highlight, it did
+use a few glib functions which we didn’t have (we removed the files, as
 they were unused), they were all reimplemented in libpurple though, so
-we were able to just define the function calls to the libpurple&amp;nbsp;variants.&lt;/p&gt;
+we were able to just define the function calls to the libpurple variants.&lt;/p&gt;
 &lt;/div&gt;
 &lt;div class="section" id="api"&gt;
-&lt;h2&gt;&lt;span class="caps"&gt;API&lt;/span&gt;&lt;/h2&gt;
+&lt;h2&gt;&lt;a class="toc-backref" href="#id3"&gt;&lt;span class="caps"&gt;API&lt;/span&gt;&lt;/a&gt;&lt;/h2&gt;
 &lt;p&gt;This had similar issues the core (in particular, there was a function
 which used &lt;tt class="docutils literal"&gt;g_usleep&lt;/tt&gt;, which is blocking and a definite no-no for a
-protocol plug-in, I&amp;#8217;ve removed that&amp;#8230;hopefully it doesn&amp;#8217;t break
-anything!)&amp;nbsp; In addition to that, we needed to use the libpurple l10n
-system instead of glib&amp;#8217;s gi18n.h, this was easily copied from
-libpurple&amp;#8217;s internal &lt;span class="caps"&gt;API&lt;/span&gt;&amp;nbsp;though.&lt;/p&gt;
-&lt;p&gt;So at this point&amp;#8230;I have a copy of &lt;span class="caps"&gt;SIPE&lt;/span&gt; compiled!&amp;nbsp; Unfortunately
-since I&amp;#8217;m using Visual Studio Express I cannot compile on my computer
+protocol plug-in, I’ve removed that…hopefully it doesn’t break
+anything!)  In addition to that, we needed to use the libpurple l10n
+system instead of glib’s gi18n.h, this was easily copied from
+libpurple’s internal &lt;span class="caps"&gt;API&lt;/span&gt; though.&lt;/p&gt;
+&lt;p&gt;So at this point…I have a copy of &lt;span class="caps"&gt;SIPE&lt;/span&gt; compiled!  Unfortunately
+since I’m using Visual Studio Express I cannot compile on my computer
 and deploy to other computers for testing (a Mozilla issue with how it
-uses some of the header files, etc., I believe).&amp;nbsp; I&amp;#8217;m looking into
+uses some of the header files, etc., I believe).  I’m looking into
 trying to get this to work though, apparently using the exact same copy
-of &lt;span class="caps"&gt;MSVC&lt;/span&gt; Redistributable might help.&amp;nbsp; Once this is tested, hopefully
-it&amp;#8217;ll land in Instantbird for&amp;nbsp;use!&lt;/p&gt;
+of &lt;span class="caps"&gt;MSVC&lt;/span&gt; Redistributable might help.  Once this is tested, hopefully
+it’ll land in Instantbird for use!&lt;/p&gt;
 &lt;/div&gt;
 &lt;div class="section" id="sametime-support"&gt;
-&lt;h2&gt;Sametime&amp;nbsp;support&lt;/h2&gt;
+&lt;h2&gt;&lt;a class="toc-backref" href="#id4"&gt;Sametime support&lt;/a&gt;&lt;/h2&gt;
 &lt;p&gt;Unrelated to &lt;span class="caps"&gt;SIPE&lt;/span&gt;, but recently I landed a patch in Instantbird to add
-back Sametime support (Sametime is Lotus Notes&amp;#8217; equivalent to Office
-Communicator).&amp;nbsp; You can see the gory details in &lt;a class="reference external" href="https://bugzilla.instantbird.org/show_bug.cgi?id=102"&gt;bug 102&lt;/a&gt;, but in
-general it&amp;#8217;s similar to what I&amp;#8217;ve (not gone into great detail about)
+back Sametime support (Sametime is Lotus Notes’ equivalent to Office
+Communicator).  You can see the gory details in &lt;a class="reference external" href="https://bugzilla.instantbird.org/show_bug.cgi?id=102"&gt;bug 102&lt;/a&gt;, but in
+general it’s similar to what I’ve (not gone into great detail about)
 here. Most of getting Sametime to work was rewriting some C code
-that doesn&amp;#8217;t compile in &lt;span class="caps"&gt;MSVC&lt;/span&gt;.&amp;nbsp; There&amp;#8217;s also a &lt;a class="reference external" href="https://bugzilla.instantbird.org/attachment.cgi?id=797&amp;amp;action=diff"&gt;diff&lt;/a&gt; of all the
+that doesn’t compile in &lt;span class="caps"&gt;MSVC&lt;/span&gt;.  There’s also a &lt;a class="reference external" href="https://bugzilla.instantbird.org/attachment.cgi?id=797&amp;amp;action=diff"&gt;diff&lt;/a&gt; of all the
 changes I made to the libpurple Sametime plugin and the external library
-(called &lt;a class="reference external" href="http://meanwhile.sourceforge.net/"&gt;Meanwhile&lt;/a&gt;) to get it to work.&amp;nbsp; Once I get Monotone (a version
-control system) set up I&amp;#8217;ll look into getting these changes pushed back
-to libpurple to avoid diverging code&amp;nbsp;bases.&lt;/p&gt;
+(called &lt;a class="reference external" href="http://meanwhile.sourceforge.net/"&gt;Meanwhile&lt;/a&gt;) to get it to work.  Once I get Monotone (a version
+control system) set up I’ll look into getting these changes pushed back
+to libpurple to avoid diverging code bases.&lt;/p&gt;
 &lt;/div&gt;
 </description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Patrick Cloke</dc:creator><pubDate>Sat, 03 Sep 2011 14:31:00 -0400</pubDate><guid>tag:patrick.cloke.us,2011-09-03:posts/2011/Sep/03/adding-a-protocol-to-instantbird-part-2/</guid><category>Instantbird</category><category>programming</category><category>SIPE</category></item><item><title>Adding a new protocol (SIPE/Office Communicator) to Instantbird (part 1)</title><link>http://patrick.cloke.us/posts/2011/Jun/19/adding-a-new-protocol-sipeoffice-communicator-to-instantbird-part-1/</link><description>&lt;p&gt;&lt;a class="reference external" href="http://en.wikipedia.org/wiki/Office_Communicator"&gt;Microsoft Office Communicator&lt;/a&gt; is an instant messaging client that
 integrates into the &lt;a class="reference external" href="http://en.wikipedia.org/wiki/Microsoft_Exchange_Server"&gt;Exchange Messaging Server&lt;/a&gt; (the protocol behind it

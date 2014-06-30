@@ -24,24 +24,25 @@ been in nightly builds&amp;#8230;forever), so we started making a list of some
 of the stuff we&amp;#8217;d like to implement in future Instantbirds, you can
 check it out &lt;a class="reference external" href="https://etherpad.mozilla.org/ib-1-3"&gt;here&lt;/a&gt;. Some of them are very exciting, feel free to grab
 one and work on&amp;nbsp;it.&lt;/p&gt;
-</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Patrick Cloke</dc:creator><pubDate>Wed, 08 Aug 2012 17:08:00 -0400</pubDate><guid>tag:patrick.cloke.us,2012-08-08:posts/2012/Aug/08/instantbird-12-released-with-awesome-new-irc-features/</guid><category>Instantbird</category><category>IRC</category></item><item><title>IRC Auto-Performs</title><link>http://patrick.cloke.us/posts/2012/Jun/11/irc-auto-performs/</link><description>&lt;p&gt;There have been a &lt;a class="reference external" href="https://bugzilla.mozilla.org/show_bug.cgi?id=742675"&gt;few&lt;/a&gt; &lt;a class="reference external" href="https://bugzilla.instantbird.org/show_bug.cgi?id=1101"&gt;requests&lt;/a&gt; to support &amp;quot;auto-performs&amp;quot;
+</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Patrick Cloke</dc:creator><pubDate>Wed, 08 Aug 2012 17:08:00 -0400</pubDate><guid>tag:patrick.cloke.us,2012-08-08:posts/2012/Aug/08/instantbird-12-released-with-awesome-new-irc-features/</guid><category>Instantbird</category><category>IRC</category></item><item><title>IRC Auto-Performs</title><link>http://patrick.cloke.us/posts/2012/Jun/11/irc-auto-performs/</link><description>
+&lt;p&gt;There have been a &lt;a class="reference external" href="https://bugzilla.mozilla.org/show_bug.cgi?id=742675"&gt;few&lt;/a&gt; &lt;a class="reference external" href="https://bugzilla.instantbird.org/show_bug.cgi?id=1101"&gt;requests&lt;/a&gt; to support "auto-performs"
 (sending commands to the &lt;span class="caps"&gt;IRC&lt;/span&gt; server after connection that the user types
-into a box or whatever). Personally I find this to&amp;nbsp;be:&lt;/p&gt;
+into a box or whatever). Personally I find this to be:&lt;/p&gt;
 &lt;ol class="arabic simple"&gt;
-&lt;li&gt;A fairly awful user&amp;nbsp;experience.&lt;/li&gt;
-&lt;li&gt;Confusing to new&amp;nbsp;users.&lt;/li&gt;
+&lt;li&gt;A fairly awful user experience.&lt;/li&gt;
+&lt;li&gt;Confusing to new users.&lt;/li&gt;
 &lt;li&gt;Unnecessary.&lt;/li&gt;
 &lt;/ol&gt;
-&lt;p&gt;I additionally don&amp;#8217;t like this idea since it requires us to have
-commands for all the common tasks you&amp;#8217;d want to do in an auto-perform
+&lt;p&gt;I additionally don’t like this idea since it requires us to have
+commands for all the common tasks you’d want to do in an auto-perform
 (or support sending absolutely raw messages to the server, which we
 actually do already in the /quote command). Essentially what I just
-described is writing our own scripting language&amp;#8230;that seems pointless
-(and frankly, I have better things to do). I&amp;#8217;m hoping to convince you
-with this post (and maybe a series of posts) that auto-performs aren&amp;#8217;t
-necessary and a trivial restartless extension can replace&amp;nbsp;them.&lt;/p&gt;
+described is writing our own scripting language…that seems pointless
+(and frankly, I have better things to do). I’m hoping to convince you
+with this post (and maybe a series of posts) that auto-performs aren’t
+necessary and a trivial restartless extension can replace them.&lt;/p&gt;
 &lt;div class="section" id="design"&gt;
-&lt;h2&gt;Design&lt;/h2&gt;
+&lt;h2&gt;&lt;a class="toc-backref" href="#id1"&gt;Design&lt;/a&gt;&lt;/h2&gt;
 &lt;p&gt;Part of the desire to &lt;a class="reference external" href="http://patrick.cloke.us/posts/2011/Apr/30/why-rewrite-the-irc-protocol-plugin-part-2/"&gt;replace the libpurple &lt;span class="caps"&gt;IRC&lt;/span&gt; protocol plugin&lt;/a&gt;
 with a new JavaScript one built specifically for Instantbird (which is
 also now used in Thunderbird!) was to make the protocol fully
@@ -49,84 +50,84 @@ extensible. There are &lt;a class="reference external" href="http://patrick.clok
 and we might not necessarily want to support them all (especially if
 they only apply to a single network). Allowing all parts of the protocol
 implementation to be touched and extended seemed like a great way to
-handle&amp;nbsp;this.&lt;/p&gt;
+handle this.&lt;/p&gt;
 &lt;p&gt;Initially I tried to do this by making the &lt;span class="caps"&gt;IRC&lt;/span&gt; account into an &lt;span class="caps"&gt;XPCOM&lt;/span&gt;
-component (well it is one already, it&amp;#8217;s an prplIAccount, but I meant an
+component (well it is one already, it’s an prplIAccount, but I meant an
 &lt;span class="caps"&gt;IRC&lt;/span&gt; specific one: implementing ircIAccount, if you will). Unfortunately,
 this seemed to have a lot of overhead and got complicated extremely
-quickly. Anything I&amp;#8217;d want to touch from a message handler (wait,
-wait&amp;#8230;what&amp;#8217;s a handler?! I&amp;#8217;ll get back to that) would need to have
+quickly. Anything I’d want to touch from a message handler (wait,
+wait…what’s a handler?! I’ll get back to that) would need to have
 methods written and exposed to access internal data of the
-account&amp;#8230;does that sound very extensible to you? Well, it doesn&amp;#8217;t to&amp;nbsp;me&amp;#8230;&lt;/p&gt;
-&lt;p&gt;Onto design two! (Well actually my first design&amp;#8230;) Lots of JavaScript
+account…does that sound very extensible to you? Well, it doesn’t to me…&lt;/p&gt;
+&lt;p&gt;Onto design two! (Well actually my first design…) Lots of JavaScript
 objects! The entire protocol is implemented as a set of JavaScript
-objects and the handlers directly touch and modify the account&amp;#8217;s data
-(of course there&amp;#8217;s methods for abstraction, etc.). This means that an
-extension has absolutely &lt;span class="caps"&gt;FULL&lt;/span&gt; access to every about an account&amp;#8230;this
+objects and the handlers directly touch and modify the account’s data
+(of course there’s methods for abstraction, etc.). This means that an
+extension has absolutely &lt;span class="caps"&gt;FULL&lt;/span&gt; access to every about an account…this
 also means an extension could seriously mess with and cause the protocol
 to stop working or do really crazy things, etc. Unfortunately there
-isn&amp;#8217;t really a way to avoid that. Hopefully people write good&amp;nbsp;code.&lt;/p&gt;
+isn’t really a way to avoid that. Hopefully people write good code.&lt;/p&gt;
 &lt;/div&gt;
 &lt;div class="section" id="messages"&gt;
-&lt;h2&gt;Messages&lt;/h2&gt;
-&lt;p&gt;I&amp;#8217;m going to go into an aside about messages right now, even though it
-doesn&amp;#8217;t quite seem relevent yet. It will. &lt;span class="caps"&gt;IRC&lt;/span&gt; has a bunch of
+&lt;h2&gt;&lt;a class="toc-backref" href="#id2"&gt;Messages&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;I’m going to go into an aside about messages right now, even though it
+doesn’t quite seem relevent yet. It will. &lt;span class="caps"&gt;IRC&lt;/span&gt; has a bunch of
 sub-protocols embedded within the &lt;span class="caps"&gt;IRC&lt;/span&gt; protocol (see the link above about
 unofficial extensions). We attempt to parse all the string messages and
-make pretty JavaScript objects out of them. I&amp;#8217;ve actually identified
-five (yes, count that: five) different sub-&amp;quot;protocols&amp;quot; within &lt;span class="caps"&gt;IRC&lt;/span&gt; that
-we&amp;nbsp;deal:&lt;/p&gt;
+make pretty JavaScript objects out of them. I’ve actually identified
+five (yes, count that: five) different sub-"protocols" within &lt;span class="caps"&gt;IRC&lt;/span&gt; that
+we deal:&lt;/p&gt;
 &lt;ol class="arabic simple"&gt;
-&lt;li&gt;&lt;span class="caps"&gt;IRC&lt;/span&gt; itself (i.e. &lt;a class="reference external" href="http://tools.ietf.org/html/rfc1459"&gt;&lt;span class="caps"&gt;RFC&lt;/span&gt; 1459&lt;/a&gt; / &lt;a class="reference external" href="http://tools.ietf.org/html/rfc2812"&gt;&lt;span class="caps"&gt;RFC&lt;/span&gt; 2812&lt;/a&gt; / various numeric&amp;nbsp;extensions)&lt;/li&gt;
+&lt;li&gt;&lt;span class="caps"&gt;IRC&lt;/span&gt; itself (i.e. &lt;a class="reference external" href="http://tools.ietf.org/html/rfc1459"&gt;&lt;span class="caps"&gt;RFC&lt;/span&gt; 1459&lt;/a&gt; / &lt;a class="reference external" href="http://tools.ietf.org/html/rfc2812"&gt;&lt;span class="caps"&gt;RFC&lt;/span&gt; 2812&lt;/a&gt; / various numeric extensions)&lt;/li&gt;
 &lt;li&gt;&lt;a class="reference external" href="http://www.irchelp.org/irchelp/rfc/ctcpspec.html"&gt;&lt;span class="caps"&gt;CTCP&lt;/span&gt; (the Client-to-Client Protocol)&lt;/a&gt;,embedded in &lt;span class="caps"&gt;PRIVMSG&lt;/span&gt; commands
 of &lt;span class="caps"&gt;IRC&lt;/span&gt;&lt;/li&gt;
 &lt;li&gt;&lt;span class="caps"&gt;DCC&lt;/span&gt; (Direct Client-to-Client), a subprotocol of &lt;span class="caps"&gt;CTCP&lt;/span&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a class="reference external" href="http://tools.ietf.org/html/draft-brocklesby-irc-isupport-03"&gt;&lt;span class="caps"&gt;ISUPPORT&lt;/span&gt;&lt;/a&gt; (also known as Numeric 005), a method of negotiating
-capabilities between a client and&amp;nbsp;server&lt;/li&gt;
-&lt;li&gt;And finally, handling of &lt;span class="caps"&gt;IRC&lt;/span&gt; Services (there&amp;#8217;s a lot of them and no
-specification, but we treat them&amp;nbsp;specially)&lt;/li&gt;
+capabilities between a client and server&lt;/li&gt;
+&lt;li&gt;And finally, handling of &lt;span class="caps"&gt;IRC&lt;/span&gt; Services (there’s a lot of them and no
+specification, but we treat them specially)&lt;/li&gt;
 &lt;/ol&gt;
 &lt;p&gt;Briefly what happens when we receive a raw message over the wire, we
 create an &lt;a class="reference external" href="http://hg.instantbird.org/instantbird/file/b8d8b6e60aef/chat/protocols/irc/irc.js#l14"&gt;ircMessage object out of it using a variety of regular
 expressions&lt;/a&gt;. This object has a variety of fields (see the link for
-details), including the command, who sent the message and the&amp;nbsp;parameters.&lt;/p&gt;
+details), including the command, who sent the message and the parameters.&lt;/p&gt;
 &lt;p&gt;If the message is identified as a &lt;span class="caps"&gt;CTCP&lt;/span&gt; message, we then morph the
 ircMessage into a &lt;a class="reference external" href="http://hg.instantbird.org/instantbird/file/b8d8b6e60aef/chat/protocols/irc/ircCTCP.jsm#l44"&gt;CTCPMessage&lt;/a&gt;, which can be morphed into a
 &lt;a class="reference external" href="http://hg.instantbird.org/instantbird/file/b8d8b6e60aef/chat/protocols/irc/ircDCC.jsm#l20"&gt;DCCMessage&lt;/a&gt;. Additionally, a 005 reply can be parsed into a
 &lt;a class="reference external" href="http://hg.instantbird.org/instantbird/file/b8d8b6e60aef/chat/protocols/irc/ircISUPPORT.jsm#l22"&gt;isupportMessage&lt;/a&gt;. And last, but not least, a received &lt;span class="caps"&gt;PRIVMSG&lt;/span&gt; can also
 be parsed into a &lt;a class="reference external" href="http://hg.instantbird.org/instantbird/file/b8d8b6e60aef/chat/protocols/irc/ircServices.jsm#l19"&gt;ServiceMessage&lt;/a&gt;. Each of these extends the &lt;span class="caps"&gt;IRC&lt;/span&gt;
-message without destroying information. (Yes, I&amp;#8217;m realizing now that my
-choice of whether to use capitals is all messed&amp;nbsp;up&amp;#8230;)&lt;/p&gt;
-&lt;p&gt;Well, why do we care&amp;#8230;? By preparsing the strings into objects (as
-defined by any &amp;quot;specifications&amp;quot; that exist), we keep extensions from
-having to parse messages over and over again from&amp;nbsp;strings.&lt;/p&gt;
+message without destroying information. (Yes, I’m realizing now that my
+choice of whether to use capitals is all messed up…)&lt;/p&gt;
+&lt;p&gt;Well, why do we care…? By preparsing the strings into objects (as
+defined by any "specifications" that exist), we keep extensions from
+having to parse messages over and over again from strings.&lt;/p&gt;
 &lt;/div&gt;
 &lt;div class="section" id="handlers"&gt;
-&lt;h2&gt;Handlers&lt;/h2&gt;
+&lt;h2&gt;&lt;a class="toc-backref" href="#id3"&gt;Handlers&lt;/a&gt;&lt;/h2&gt;
 &lt;p&gt;A handler is simply what I call the object that contains the methods
-to deal with an incoming message. Pretty much, you get to say &amp;quot;Only send
-me &lt;span class="caps"&gt;ISUPPORT&lt;/span&gt; messages!&amp;quot; or &amp;quot;Only send me &lt;span class="caps"&gt;CTCP&lt;/span&gt; messages!&amp;quot; and voila, you
+to deal with an incoming message. Pretty much, you get to say "Only send
+me &lt;span class="caps"&gt;ISUPPORT&lt;/span&gt; messages!" or "Only send me &lt;span class="caps"&gt;CTCP&lt;/span&gt; messages!" and voila, you
 only get that type of message. Each message type has a field that is
-used to choose the method to run (for the &lt;span class="caps"&gt;IRC&lt;/span&gt; messages, the &amp;quot;command&amp;quot;,
-for &lt;span class="caps"&gt;CTCP&lt;/span&gt; the &amp;quot;&lt;span class="caps"&gt;CTCP&lt;/span&gt; command&amp;quot;, &lt;span class="caps"&gt;ISUPPORT&lt;/span&gt; the &amp;quot;parameter&amp;quot;, etc.) This sounds
-a lot more complicated than it is, I think a brief &lt;a class="reference external" href="https://bitbucket.org/clokep/irc-extras/src/6f778f17172a/example/bootstrap.js"&gt;example&lt;/a&gt; is in&amp;nbsp;order:&lt;/p&gt;
+used to choose the method to run (for the &lt;span class="caps"&gt;IRC&lt;/span&gt; messages, the "command",
+for &lt;span class="caps"&gt;CTCP&lt;/span&gt; the "&lt;span class="caps"&gt;CTCP&lt;/span&gt; command", &lt;span class="caps"&gt;ISUPPORT&lt;/span&gt; the "parameter", etc.) This sounds
+a lot more complicated than it is, I think a brief &lt;a class="reference external" href="https://bitbucket.org/clokep/irc-extras/src/6f778f17172a/example/bootstrap.js"&gt;example&lt;/a&gt; is in order:&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="kd"&gt;var&lt;/span&gt; &lt;span class="nx"&gt;ircSimpleExample&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
   &lt;span class="c1"&gt;// The name here is really only used in error messages.&lt;/span&gt;
-  &lt;span class="nx"&gt;name&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;IRC Simple Example&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+  &lt;span class="nx"&gt;name&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="s2"&gt;"IRC Simple Example"&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
   &lt;span class="c1"&gt;// Slightly above the default priority so we run before the main IRC handler.&lt;/span&gt;
   &lt;span class="nx"&gt;priority&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="nx"&gt;ircHandlers&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;DEFAULT_PRIORITY&lt;/span&gt; &lt;span class="o"&gt;+&lt;/span&gt; &lt;span class="mi"&gt;10&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
-  &lt;span class="c1"&gt;// Run this for all accounts (note that the &amp;#39;this&amp;#39; object in this method is&lt;/span&gt;
+  &lt;span class="c1"&gt;// Run this for all accounts (note that the 'this' object in this method is&lt;/span&gt;
   &lt;span class="c1"&gt;// the JavaScript account object.&lt;/span&gt;
   &lt;span class="nx"&gt;isEnabled&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="kd"&gt;function&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt; &lt;span class="kc"&gt;true&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
 
   &lt;span class="c1"&gt;// The commands we want to handle. For each of these, the account object is&lt;/span&gt;
-  &lt;span class="c1"&gt;// bound to &amp;#39;this&amp;#39; and the single parameter is of the type that you&amp;#39;ve&lt;/span&gt;
+  &lt;span class="c1"&gt;// bound to 'this' and the single parameter is of the type that you've&lt;/span&gt;
   &lt;span class="c1"&gt;// registered your handle.&lt;/span&gt;
   &lt;span class="nx"&gt;commands&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
-    &lt;span class="s2"&gt;&amp;quot;001&amp;quot;&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="kd"&gt;function&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;aMessage&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
-      &lt;span class="c1"&gt;// At the 001 response we&amp;#39;ve successfully connected to the server.&lt;/span&gt;
+    &lt;span class="s2"&gt;"001"&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="kd"&gt;function&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;aMessage&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+      &lt;span class="c1"&gt;// At the 001 response we've successfully connected to the server.&lt;/span&gt;
       &lt;span class="c1"&gt;// Send an IDENTIFY command to NickServ.&lt;/span&gt;
-      &lt;span class="k"&gt;this&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;sendMessage&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;PRIVMSG&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;NickServ&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;IDENTIFY &amp;lt;your password&amp;gt;&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;]);&lt;/span&gt;
+      &lt;span class="k"&gt;this&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;sendMessage&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;"PRIVMSG"&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="s2"&gt;"NickServ"&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s2"&gt;"IDENTIFY &amp;lt;your password&amp;gt;"&lt;/span&gt;&lt;span class="p"&gt;]);&lt;/span&gt;
 
       &lt;span class="c1"&gt;// Return false so the default handler still runs.&lt;/span&gt;
       &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="kc"&gt;false&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
@@ -134,19 +135,19 @@ a lot more complicated than it is, I think a brief &lt;a class="reference extern
   &lt;span class="p"&gt;}&lt;/span&gt;
 &lt;span class="p"&gt;}&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
-&lt;p&gt;Just like that we&amp;#8217;ve designed a handler! Whenever the 001 method is
+&lt;p&gt;Just like that we’ve designed a handler! Whenever the 001 method is
 received from the server, this function will run and attempt to identify
 with the NickServ (of course this could use a bit more security on it,
-but it&amp;#8217;s to demonstrate the possibilities). (The sendMessage function
-takes the command to send and an array of parameters to&amp;nbsp;send.)&lt;/p&gt;
-&lt;p&gt;As this is already a long post, I think I&amp;#8217;ll cut this off now and
-continue this at another time, but I hope I&amp;#8217;m beginning to convince you
+but it’s to demonstrate the possibilities). (The sendMessage function
+takes the command to send and an array of parameters to send.)&lt;/p&gt;
+&lt;p&gt;As this is already a long post, I think I’ll cut this off now and
+continue this at another time, but I hope I’m beginning to convince you
 that allowing directy access to the account and protocol implementation
 is a more powerful (and even simpler in many ways, in my opinion)
-alternative to &amp;quot;auto-performs&amp;quot;. The one major downside I see to this, is
+alternative to "auto-performs". The one major downside I see to this, is
 that it requires a bit more understanding of the actual protocol level
-implementation, I don&amp;#8217;t feel that knowing you need to use &amp;quot;&lt;span class="caps"&gt;PRIVMSG&lt;/span&gt;&amp;quot; as a
-command instead of /msg is a huge issue,&amp;nbsp;however.&lt;/p&gt;
+implementation, I don’t feel that knowing you need to use "&lt;span class="caps"&gt;PRIVMSG&lt;/span&gt;" as a
+command instead of /msg is a huge issue, however.&lt;/p&gt;
 &lt;/div&gt;
 </description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Patrick Cloke</dc:creator><pubDate>Mon, 11 Jun 2012 02:25:00 -0400</pubDate><guid>tag:patrick.cloke.us,2012-06-11:posts/2012/Jun/11/irc-auto-performs/</guid><category>Instantbird</category><category>IRC</category><category>Mozilla</category></item><item><title>Why rewrite the IRC protocol plugin? (Part 2)</title><link>http://patrick.cloke.us/posts/2011/Apr/30/why-rewrite-the-irc-protocol-plugin-part-2/</link><description>&lt;p&gt;I &lt;a class="reference external" href="http://patrick.cloke.us/posts/2010/Dec/08/why-rewrite-irc-into-javascript-vs-libpurples-vs-chatzillas/"&gt;previously wrote about&lt;/a&gt; why I&amp;#8217;m rewriting the libpurple &lt;span class="caps"&gt;IRC&lt;/span&gt;
 implementation into a JavaScript implementation for Instantbird.&amp;nbsp; This
@@ -212,70 +213,71 @@ that issue and reconnection should happen&amp;nbsp;automatically!&lt;/p&gt;
 &lt;p&gt;One last quick note, if you happen to have the &lt;a class="reference external" href="https://hg.instantbird.org/experiments"&gt;repository&lt;/a&gt; checked
 out, you&amp;#8217;ll want to update on the default branch from now on as I&amp;#8217;ve
 merged the separate branches together under&amp;nbsp;subfolders.&lt;/p&gt;
-</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Patrick Cloke</dc:creator><pubDate>Sat, 30 Apr 2011 17:01:00 -0400</pubDate><guid>tag:patrick.cloke.us,2011-04-30:posts/2011/Apr/30/why-rewrite-the-irc-protocol-plugin-part-2/</guid><category>Instantbird</category><category>IRC</category></item><item><title>The so-called IRC "specifications"</title><link>http://patrick.cloke.us/posts/2011/Mar/09/the-so-called-irc-specifications/</link><description>&lt;p&gt;In a &lt;a class="reference external" href="http://patrick.cloke.us/posts/2010/Dec/08/why-rewrite-irc-into-javascript-vs-libpurples-vs-chatzillas/"&gt;previous post&lt;/a&gt; I had briefly gone over the &amp;quot;history of &lt;span class="caps"&gt;IRC&lt;/span&gt;&amp;quot; as
-I know it.&amp;nbsp; I&amp;#8217;m going to expand on this a bit as I&amp;#8217;ve come to understand
-it a bit more while reading through documentation.&amp;nbsp; (Hopefully it won&amp;#8217;t
-sound too much like a rant, as it is all driving me&amp;nbsp;crazy!)&lt;/p&gt;
+</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Patrick Cloke</dc:creator><pubDate>Sat, 30 Apr 2011 17:01:00 -0400</pubDate><guid>tag:patrick.cloke.us,2011-04-30:posts/2011/Apr/30/why-rewrite-the-irc-protocol-plugin-part-2/</guid><category>Instantbird</category><category>IRC</category></item><item><title>The so-called IRC "specifications"</title><link>http://patrick.cloke.us/posts/2011/Mar/09/the-so-called-irc-specifications/</link><description>
+&lt;p&gt;In a &lt;a class="reference external" href="http://patrick.cloke.us/posts/2010/Dec/08/why-rewrite-irc-into-javascript-vs-libpurples-vs-chatzillas/"&gt;previous post&lt;/a&gt; I had briefly gone over the "history of &lt;span class="caps"&gt;IRC&lt;/span&gt;" as
+I know it.  I’m going to expand on this a bit as I’ve come to understand
+it a bit more while reading through documentation.  (Hopefully it won’t
+sound too much like a rant, as it is all driving me crazy!)&lt;/p&gt;
 &lt;div class="section" id="irc-specifications"&gt;
-&lt;h2&gt;&lt;span class="caps"&gt;IRC&lt;/span&gt;&amp;nbsp;Specifications&lt;/h2&gt;
-&lt;p&gt;So there&amp;#8217;s the original specification (&lt;a class="reference external" href="http://tools.ietf.org/html/rfc1459"&gt;&lt;span class="caps"&gt;RFC&lt;/span&gt; 1459&lt;/a&gt;) in May 1993; this
+&lt;h2&gt;&lt;a class="toc-backref" href="#id5"&gt;&lt;span class="caps"&gt;IRC&lt;/span&gt; Specifications&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;So there’s the original specification (&lt;a class="reference external" href="http://tools.ietf.org/html/rfc1459"&gt;&lt;span class="caps"&gt;RFC&lt;/span&gt; 1459&lt;/a&gt;) in May 1993; this
 was expanded and replaced by four different specifications (&lt;a class="reference external" href="http://tools.ietf.org/html/rfc2810"&gt;&lt;span class="caps"&gt;RFC&lt;/span&gt; 2810&lt;/a&gt;,
-&lt;a class="reference external" href="http://tools.ietf.org/html/rfc2811"&gt;2811&lt;/a&gt;, &lt;a class="reference external" href="http://tools.ietf.org/html/rfc2812"&gt;2812&lt;/a&gt;, &lt;a class="reference external" href="http://tools.ietf.org/html/rfc2813"&gt;2813&lt;/a&gt;) in April 2000.&amp;nbsp; Seems pretty straightforward,&amp;nbsp;right?&lt;/p&gt;
+&lt;a class="reference external" href="http://tools.ietf.org/html/rfc2811"&gt;2811&lt;/a&gt;, &lt;a class="reference external" href="http://tools.ietf.org/html/rfc2812"&gt;2812&lt;/a&gt;, &lt;a class="reference external" href="http://tools.ietf.org/html/rfc2813"&gt;2813&lt;/a&gt;) in April 2000.  Seems pretty straightforward, right?&lt;/p&gt;
 &lt;/div&gt;
 &lt;div class="section" id="dcc-ctcp"&gt;
-&lt;h2&gt;&lt;span class="caps"&gt;DCC&lt;/span&gt;/&lt;span class="caps"&gt;CTCP&lt;/span&gt;&lt;/h2&gt;
-&lt;p&gt;Well, kind of&amp;#8230;there&amp;#8217;s also the &lt;span class="caps"&gt;DCC&lt;/span&gt;/&lt;span class="caps"&gt;CTCP&lt;/span&gt; specifications, which is a
-separate protocol embedded/hidden within the &lt;span class="caps"&gt;IRC&lt;/span&gt; protocol (e.g. they&amp;#8217;re
+&lt;h2&gt;&lt;a class="toc-backref" href="#id6"&gt;&lt;span class="caps"&gt;DCC&lt;/span&gt;/&lt;span class="caps"&gt;CTCP&lt;/span&gt;&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;Well, kind of…there’s also the &lt;span class="caps"&gt;DCC&lt;/span&gt;/&lt;span class="caps"&gt;CTCP&lt;/span&gt; specifications, which is a
+separate protocol embedded/hidden within the &lt;span class="caps"&gt;IRC&lt;/span&gt; protocol (e.g. they’re
 sent as &lt;span class="caps"&gt;IRC&lt;/span&gt; messages and parsed specially by clients, the server sees
-them as normal messages).&amp;nbsp; &lt;span class="caps"&gt;DCC&lt;/span&gt;/&lt;span class="caps"&gt;CTCP&lt;/span&gt; is used to send files as well as
+them as normal messages).  &lt;span class="caps"&gt;DCC&lt;/span&gt;/&lt;span class="caps"&gt;CTCP&lt;/span&gt; is used to send files as well as
 other particular messages (&lt;span class="caps"&gt;ACTION&lt;/span&gt; commands for roleplaying, &lt;span class="caps"&gt;SED&lt;/span&gt; for
 encrypting conversations, &lt;span class="caps"&gt;VERSION&lt;/span&gt; to get client information, etc.).
-Anyway, this get&amp;#8217;s a bit more complicated &amp;#8212; it starts with the &lt;a class="reference external" href="http://www.irchelp.org/irchelp/rfc/dccspec.html"&gt;&lt;span class="caps"&gt;DCC&lt;/span&gt;
-specification&lt;/a&gt;.&amp;nbsp; This was replaced/updated by the &lt;a class="reference external" href="http://www.irchelp.org/irchelp/rfc/ctcpspec.html"&gt;&lt;span class="caps"&gt;CTCP&lt;/span&gt; specification&lt;/a&gt;
-(which fully includes the &lt;span class="caps"&gt;DCC&lt;/span&gt; specification) in 1994.&amp;nbsp; An &lt;a class="reference external" href="http://www.invlogic.com/irc/ctcp.html"&gt;&amp;quot;updated&amp;quot;
-&lt;span class="caps"&gt;CTCP&lt;/span&gt; specification&lt;/a&gt; was released in February 1997.&amp;nbsp; There&amp;#8217;s also a
+Anyway, this get’s a bit more complicated — it starts with the &lt;a class="reference external" href="http://www.irchelp.org/irchelp/rfc/dccspec.html"&gt;&lt;span class="caps"&gt;DCC&lt;/span&gt;
+specification&lt;/a&gt;.  This was replaced/updated by the &lt;a class="reference external" href="http://www.irchelp.org/irchelp/rfc/ctcpspec.html"&gt;&lt;span class="caps"&gt;CTCP&lt;/span&gt; specification&lt;/a&gt;
+(which fully includes the &lt;span class="caps"&gt;DCC&lt;/span&gt; specification) in 1994.  An &lt;a class="reference external" href="http://www.invlogic.com/irc/ctcp.html"&gt;"updated"
+&lt;span class="caps"&gt;CTCP&lt;/span&gt; specification&lt;/a&gt; was released in February 1997.  There’s also a
 &lt;a class="reference external" href="http://www.invlogic.com/irc/ctcp2_intro.html"&gt;&lt;span class="caps"&gt;CTCP&lt;/span&gt;/2 specification&lt;/a&gt; from October 1998, which was meant to
-reformulate a lot of the previous three versions.&amp;nbsp; And &lt;em&gt;finally&lt;/em&gt;,
-there&amp;#8217;s the &lt;span class="caps"&gt;DCC2&lt;/span&gt; specification (two parts: &lt;a class="reference external" href="http://tools.ietf.org/html/draft-smith-irc-dcc2-negotiation-00"&gt;connection negotiation&lt;/a&gt; and
-&lt;a class="reference external" href="http://www.dcc2.org/files/dcc2/draft-smith-irc-dcc2-files-00.txt"&gt;file transfers&lt;/a&gt;) from April&amp;nbsp;2004.&lt;/p&gt;
-&lt;p&gt;But wait!&amp;nbsp; I lied&amp;#8230;that&amp;#8217;s not really the end of &lt;span class="caps"&gt;DCC&lt;/span&gt;/&lt;span class="caps"&gt;CTCP&lt;/span&gt;, there&amp;#8217;s
+reformulate a lot of the previous three versions.  And &lt;em&gt;finally&lt;/em&gt;,
+there’s the &lt;span class="caps"&gt;DCC2&lt;/span&gt; specification (two parts: &lt;a class="reference external" href="http://tools.ietf.org/html/draft-smith-irc-dcc2-negotiation-00"&gt;connection negotiation&lt;/a&gt; and
+&lt;a class="reference external" href="http://www.dcc2.org/files/dcc2/draft-smith-irc-dcc2-files-00.txt"&gt;file transfers&lt;/a&gt;) from April 2004.&lt;/p&gt;
+&lt;p&gt;But wait!  I lied…that’s not really the end of &lt;span class="caps"&gt;DCC&lt;/span&gt;/&lt;span class="caps"&gt;CTCP&lt;/span&gt;, there’s
 also a bunch of extensions to it: &lt;a class="reference external" href="http://www.visualirc.net/tech-tdcc.php"&gt;Turbo &lt;span class="caps"&gt;DCC&lt;/span&gt;&lt;/a&gt;, &lt;a class="reference external" href="http://xa.bi/files/irc/xdcc.3.3.0b.irc"&gt;&lt;span class="caps"&gt;XDCC&lt;/span&gt; (eXtended &lt;span class="caps"&gt;DCC&lt;/span&gt;)&lt;/a&gt;
 in 1993, &lt;a class="reference external" href="http://www.visualirc.net/tech-wboard.php"&gt;&lt;span class="caps"&gt;DCC&lt;/span&gt; Whiteboard&lt;/a&gt;, and a few other variations of this: &lt;span class="caps"&gt;RDCC&lt;/span&gt;
-(Reverse &lt;span class="caps"&gt;DCC&lt;/span&gt;), &lt;span class="caps"&gt;SDD&lt;/span&gt; (Secure &lt;span class="caps"&gt;DCC&lt;/span&gt;), &lt;span class="caps"&gt;DCC&lt;/span&gt; Voice, etc.&amp;nbsp; Wikipedia has a &lt;a class="reference external" href="http://en.wikipedia.org/wiki/Direct_Client-to-Client"&gt;good
+(Reverse &lt;span class="caps"&gt;DCC&lt;/span&gt;), &lt;span class="caps"&gt;SDD&lt;/span&gt; (Secure &lt;span class="caps"&gt;DCC&lt;/span&gt;), &lt;span class="caps"&gt;DCC&lt;/span&gt; Voice, etc.  Wikipedia has a &lt;a class="reference external" href="http://en.wikipedia.org/wiki/Direct_Client-to-Client"&gt;good
 summary&lt;/a&gt;.&lt;/p&gt;
-&lt;p&gt;Something else to note about the whole &lt;span class="caps"&gt;DCC&lt;/span&gt;/&lt;span class="caps"&gt;CTCP&lt;/span&gt; mess&amp;#8230;parts of it
-just &lt;em&gt;don&amp;#8217;t&lt;/em&gt; have any documentation.&amp;nbsp; There&amp;#8217;s &lt;em&gt;none&lt;/em&gt;at all for &lt;span class="caps"&gt;SED&lt;/span&gt; (at
-least that I&amp;#8217;ve found, I&amp;#8217;d love to be proved wrong) and very little
-(really just a mention) for &lt;span class="caps"&gt;DCC&lt;/span&gt;&amp;nbsp;Voice.&lt;/p&gt;
-&lt;p&gt;So, we&amp;#8217;re about halfway through now.&amp;nbsp; There&amp;#8217;s a bunch of extensions to
-the &lt;span class="caps"&gt;IRC&lt;/span&gt; protocol specifications that add new commands to the actual&amp;nbsp;protocol.&lt;/p&gt;
+&lt;p&gt;Something else to note about the whole &lt;span class="caps"&gt;DCC&lt;/span&gt;/&lt;span class="caps"&gt;CTCP&lt;/span&gt; mess…parts of it
+just &lt;em&gt;don’t&lt;/em&gt; have any documentation.  There’s &lt;em&gt;none&lt;/em&gt;at all for &lt;span class="caps"&gt;SED&lt;/span&gt; (at
+least that I’ve found, I’d love to be proved wrong) and very little
+(really just a mention) for &lt;span class="caps"&gt;DCC&lt;/span&gt; Voice.&lt;/p&gt;
+&lt;p&gt;So, we’re about halfway through now.  There’s a bunch of extensions to
+the &lt;span class="caps"&gt;IRC&lt;/span&gt; protocol specifications that add new commands to the actual protocol.&lt;/p&gt;
 &lt;/div&gt;
 &lt;div class="section" id="authentication"&gt;
-&lt;h2&gt;Authentication&lt;/h2&gt;
+&lt;h2&gt;&lt;a class="toc-backref" href="#id7"&gt;Authentication&lt;/a&gt;&lt;/h2&gt;
 &lt;p&gt;Originally &lt;span class="caps"&gt;IRC&lt;/span&gt; had no authentication ability except the &lt;span class="caps"&gt;PASS&lt;/span&gt; command,
 which very few servers seem to use, a variety of mechanisms have
 replaced this, including &lt;a class="reference external" href="http://hg.atheme.org/atheme/atheme/raw-file/tip/doc/SASL"&gt;&lt;span class="caps"&gt;SASL&lt;/span&gt; authentication&lt;/a&gt; (both &lt;span class="caps"&gt;PLAIN&lt;/span&gt; and &lt;span class="caps"&gt;BLOWFISH&lt;/span&gt;
-methods, although &lt;span class="caps"&gt;BLOWFISH&lt;/span&gt; isn&amp;#8217;t documented); and &lt;span class="caps"&gt;SASL&lt;/span&gt; itself is covered
-by at least &lt;a class="reference external" href="http://tools.ietf.org/html/rfc2222"&gt;four&lt;/a&gt; &lt;a class="reference external" href="http://tools.ietf.org/html/rfc4422"&gt;RFCs&lt;/a&gt; &lt;a class="reference external" href="http://tools.ietf.org/html/rfc2595"&gt;in this&lt;/a&gt; &lt;a class="reference external" href="http://tools.ietf.org/html/rfc4616"&gt;situation&lt;/a&gt;.&amp;nbsp; There also seems
-to be a method called &amp;quot;Auth&amp;quot; which I haven&amp;#8217;t been able to pin down, as
+methods, although &lt;span class="caps"&gt;BLOWFISH&lt;/span&gt; isn’t documented); and &lt;span class="caps"&gt;SASL&lt;/span&gt; itself is covered
+by at least &lt;a class="reference external" href="http://tools.ietf.org/html/rfc2222"&gt;four&lt;/a&gt; &lt;a class="reference external" href="http://tools.ietf.org/html/rfc4422"&gt;RFCs&lt;/a&gt; &lt;a class="reference external" href="http://tools.ietf.org/html/rfc2595"&gt;in this&lt;/a&gt; &lt;a class="reference external" href="http://tools.ietf.org/html/rfc4616"&gt;situation&lt;/a&gt;.  There also seems
+to be a method called "Auth" which I haven’t been able to pin down, as
 well as Ident (which is a more general protocol authentication method I
-haven&amp;#8217;t looked into&amp;nbsp;yet).&lt;/p&gt;
+haven’t looked into yet).&lt;/p&gt;
 &lt;/div&gt;
 &lt;div class="section" id="extension-support"&gt;
-&lt;h2&gt;Extension&amp;nbsp;Support&lt;/h2&gt;
+&lt;h2&gt;&lt;a class="toc-backref" href="#id8"&gt;Extension Support&lt;/a&gt;&lt;/h2&gt;
 &lt;p&gt;This includes a few that generally add a way by which servers are able
-to tell their clients exactly what a server supports.&amp;nbsp; The first of
+to tell their clients exactly what a server supports.  The first of
 these was RPL_ISUPPORT, which was defined as a &lt;a class="reference external" href="http://tools.ietf.org/html/draft-brocklesby-irc-isupport-03"&gt;draft specification&lt;/a&gt;
-in January 2004, and &lt;a class="reference external" href="http://tools.ietf.org/html/draft-hardy-irc-isupport-00"&gt;updated&lt;/a&gt; in January of&amp;nbsp;2005.&lt;/p&gt;
-&lt;p&gt;A similar concept was defined as &lt;a class="reference external" href="http://tools.ietf.org/html/draft-mitchell-irc-capabilities-01"&gt;&lt;span class="caps"&gt;IRC&lt;/span&gt; Capabilities&lt;/a&gt; in March&amp;nbsp;2005.&lt;/p&gt;
+in January 2004, and &lt;a class="reference external" href="http://tools.ietf.org/html/draft-hardy-irc-isupport-00"&gt;updated&lt;/a&gt; in January of 2005.&lt;/p&gt;
+&lt;p&gt;A similar concept was defined as &lt;a class="reference external" href="http://tools.ietf.org/html/draft-mitchell-irc-capabilities-01"&gt;&lt;span class="caps"&gt;IRC&lt;/span&gt; Capabilities&lt;/a&gt; in March 2005.&lt;/p&gt;
 &lt;/div&gt;
 &lt;div class="section" id="protocol-extensions"&gt;
-&lt;h2&gt;Protocol&amp;nbsp;Extensions&lt;/h2&gt;
+&lt;h2&gt;&lt;a class="toc-backref" href="#id9"&gt;Protocol Extensions&lt;/a&gt;&lt;/h2&gt;
 &lt;p&gt;&lt;span class="caps"&gt;IRCX&lt;/span&gt;, a Microsoft extension to &lt;span class="caps"&gt;IRC&lt;/span&gt; used (at one point) for some of
-it&amp;#8217;s instant messaging products &lt;a class="reference external" href="http://tools.ietf.org/html/draft-pfenning-irc-extensions-04"&gt;exists as a draft&lt;/a&gt; from June&amp;nbsp;1998.&lt;/p&gt;
-&lt;p&gt;There&amp;#8217;s&amp;nbsp;also:&lt;/p&gt;
+it’s instant messaging products &lt;a class="reference external" href="http://tools.ietf.org/html/draft-pfenning-irc-extensions-04"&gt;exists as a draft&lt;/a&gt; from June 1998.&lt;/p&gt;
+&lt;p&gt;There’s also:&lt;/p&gt;
 &lt;ul class="simple"&gt;
-&lt;li&gt;The &lt;a class="reference external" href="http://hg.atheme.org/charybdis/charybdis/raw-file/tip/doc/monitor.txt"&gt;&lt;span class="caps"&gt;MONITOR&lt;/span&gt;&lt;/a&gt;&amp;nbsp;command.&lt;/li&gt;
+&lt;li&gt;The &lt;a class="reference external" href="http://hg.atheme.org/charybdis/charybdis/raw-file/tip/doc/monitor.txt"&gt;&lt;span class="caps"&gt;MONITOR&lt;/span&gt;&lt;/a&gt; command.&lt;/li&gt;
 &lt;li&gt;&lt;a class="reference external" href="http://hg.atheme.org/charybdis/charybdis/raw-file/tip/doc/modeg.txt"&gt;User mode +g&lt;/a&gt;.&lt;/li&gt;
 &lt;li&gt;&lt;a class="reference external" href="http://hg.atheme.org/charybdis/charybdis/raw-file/tip/doc/services.txt"&gt;Services compatibility modes&lt;/a&gt;.&lt;/li&gt;
 &lt;li&gt;&lt;a class="reference external" href="http://hg.atheme.org/charybdis/charybdis/raw-file/tip/doc/account-notify.txt"&gt;Account-notify client capability&lt;/a&gt;.&lt;/li&gt;
@@ -283,31 +285,31 @@ it&amp;#8217;s instant messaging products &lt;a class="reference external" href=
 &lt;/ul&gt;
 &lt;/div&gt;
 &lt;div class="section" id="services"&gt;
-&lt;h2&gt;Services&lt;/h2&gt;
+&lt;h2&gt;&lt;a class="toc-backref" href="#id10"&gt;Services&lt;/a&gt;&lt;/h2&gt;
 &lt;p&gt;To fill in some of the missing features of &lt;span class="caps"&gt;IRC&lt;/span&gt;, services were created
-(Wikipedia has a good &lt;a class="reference external" href="http://en.wikipedia.org/wiki/Internet_Relay_Chat_services"&gt;summary&lt;/a&gt; again).&amp;nbsp; This commonly includes
-ChanServ, NickServ, OperServ, and MemoServ.&amp;nbsp; Not too hard, but different
+(Wikipedia has a good &lt;a class="reference external" href="http://en.wikipedia.org/wiki/Internet_Relay_Chat_services"&gt;summary&lt;/a&gt; again).  This commonly includes
+ChanServ, NickServ, OperServ, and MemoServ.  Not too hard, but different
 server packages include different services (or even the same services
 that behave differently), one of more common ones is &lt;a class="reference external" href="http://www.anope.org/docgen/1.8/en_us/"&gt;Anope&lt;/a&gt;, however
-(plus they have awesome documentation, so they get a&amp;nbsp;link).&lt;/p&gt;
+(plus they have awesome documentation, so they get a link).&lt;/p&gt;
 &lt;p&gt;There was an attempt to standardize how to interact with services
 called &lt;span class="caps"&gt;IRC&lt;/span&gt;+, which included three specifications: &lt;a class="reference external" href="http://www.irc-plus.org/specs/confctrl-draft.html"&gt;conference control
-protocol&lt;/a&gt;, &lt;a class="reference external" href="http://www.irc-plus.org/specs/identity-draft.html"&gt;identity protocol&lt;/a&gt; and &lt;a class="reference external" href="http://www.irc-plus.org/specs/subscriptions-draft.html"&gt;subscriptions protocol&lt;/a&gt;.&amp;nbsp; I don&amp;#8217;t
-believe this are supported widely (if at&amp;nbsp;all).&lt;/p&gt;
+protocol&lt;/a&gt;, &lt;a class="reference external" href="http://www.irc-plus.org/specs/identity-draft.html"&gt;identity protocol&lt;/a&gt; and &lt;a class="reference external" href="http://www.irc-plus.org/specs/subscriptions-draft.html"&gt;subscriptions protocol&lt;/a&gt;.  I don’t
+believe this are supported widely (if at all).&lt;/p&gt;
 &lt;/div&gt;
 &lt;div class="section" id="irc-url-scheme"&gt;
-&lt;h2&gt;&lt;span class="caps"&gt;IRC&lt;/span&gt; &lt;span class="caps"&gt;URL&lt;/span&gt;&amp;nbsp;Scheme&lt;/h2&gt;
+&lt;h2&gt;&lt;a class="toc-backref" href="#id11"&gt;&lt;span class="caps"&gt;IRC&lt;/span&gt; &lt;span class="caps"&gt;URL&lt;/span&gt; Scheme&lt;/a&gt;&lt;/h2&gt;
 &lt;p&gt;Finally this brings us to the &lt;span class="caps"&gt;IRC&lt;/span&gt; &lt;span class="caps"&gt;URL&lt;/span&gt; scheme of which there are a few
-versions.&amp;nbsp; A draft from August 1996 defines the original &lt;a class="reference external" href="http://tools.ietf.org/html/draft-mirashi-url-irc-01"&gt;irc: &lt;span class="caps"&gt;URL&lt;/span&gt;
-scheme&lt;/a&gt;.&amp;nbsp; This was updated/replaced by &lt;a class="reference external" href="http://tools.ietf.org/html/draft-butcher-irc-url-04"&gt;another draft&lt;/a&gt; which defines
-irc: and ircs: &lt;span class="caps"&gt;URL&lt;/span&gt;&amp;nbsp;schemes.&lt;/p&gt;
-&lt;p&gt;As of right now that&amp;#8217;s all that I&amp;#8217;ve found&amp;#8230;an awful lot.&amp;nbsp; Plus it&amp;#8217;s
+versions.  A draft from August 1996 defines the original &lt;a class="reference external" href="http://tools.ietf.org/html/draft-mirashi-url-irc-01"&gt;irc: &lt;span class="caps"&gt;URL&lt;/span&gt;
+scheme&lt;/a&gt;.  This was updated/replaced by &lt;a class="reference external" href="http://tools.ietf.org/html/draft-butcher-irc-url-04"&gt;another draft&lt;/a&gt; which defines
+irc: and ircs: &lt;span class="caps"&gt;URL&lt;/span&gt; schemes.&lt;/p&gt;
+&lt;p&gt;As of right now that’s all that I’ve found…an awful lot.  Plus it’s
 not all compatible with each other (and sometimes out right contradicts
-each other).&amp;nbsp; Often newer specifications say not to support older
-specifications, but who knows what servers/clients you&amp;#8217;ll end up talking
-to!&amp;nbsp; It&amp;#8217;s difficult to know what&amp;#8217;s used in practice, especially since
-there&amp;#8217;s an awful lot of &lt;a class="reference external" href="http://en.wikipedia.org/wiki/Comparison_of_IRC_daemons"&gt;&lt;span class="caps"&gt;IRC&lt;/span&gt; servers&lt;/a&gt; out there.&amp;nbsp; Anyway, if someone
-does know of another specification, etc. that I missed please let me&amp;nbsp;know!&lt;/p&gt;
+each other).  Often newer specifications say not to support older
+specifications, but who knows what servers/clients you’ll end up talking
+to!  It’s difficult to know what’s used in practice, especially since
+there’s an awful lot of &lt;a class="reference external" href="http://en.wikipedia.org/wiki/Comparison_of_IRC_daemons"&gt;&lt;span class="caps"&gt;IRC&lt;/span&gt; servers&lt;/a&gt; out there.  Anyway, if someone
+does know of another specification, etc. that I missed please let me know!&lt;/p&gt;
 &lt;/div&gt;
 </description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Patrick Cloke</dc:creator><pubDate>Wed, 09 Mar 2011 01:20:00 -0500</pubDate><guid>tag:patrick.cloke.us,2011-03-09:posts/2011/Mar/09/the-so-called-irc-specifications/</guid><category>Instantbird</category><category>IRC</category><category>programming</category><category>specifications</category></item><item><title>Status Update - February 17, 2011</title><link>http://patrick.cloke.us/posts/2011/Feb/17/status-update-february-17-2011/</link><description>&lt;p&gt;Another month has gone by so it&amp;#8217;s time for another status update.
 Unfortunately not as much got done this month as I was hoping, but
@@ -402,190 +404,191 @@ line here, on &lt;span class="caps"&gt;IRC&lt;/span&gt; or via&amp;nbsp;email).&
 &lt;li&gt;Start my new&amp;nbsp;job&lt;/li&gt;
 &lt;li&gt;Work on richtext messages a bit&amp;nbsp;more&lt;/li&gt;
 &lt;/ul&gt;
-</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Patrick Cloke</dc:creator><pubDate>Wed, 19 Jan 2011 03:17:00 -0500</pubDate><guid>tag:patrick.cloke.us,2011-01-19:posts/2011/Jan/19/status-update-january-18-2011/</guid><category>Instantbird</category><category>IRC</category><category>Mozilla</category><category>programming</category></item><item><title>Why Rewrite IRC into JavaScript? (vs. libpurple’s vs. ChatZilla’s)</title><link>http://patrick.cloke.us/posts/2010/Dec/08/why-rewrite-irc-into-javascript-vs-libpurples-vs-chatzillas/</link><description>&lt;p&gt;I had a request on &lt;span class="caps"&gt;IRC&lt;/span&gt; (from Mic) to write an in-depth blog post
+</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Patrick Cloke</dc:creator><pubDate>Wed, 19 Jan 2011 03:17:00 -0500</pubDate><guid>tag:patrick.cloke.us,2011-01-19:posts/2011/Jan/19/status-update-january-18-2011/</guid><category>Instantbird</category><category>IRC</category><category>Mozilla</category><category>programming</category></item><item><title>Why Rewrite IRC into JavaScript? (vs. libpurple’s vs. ChatZilla’s)</title><link>http://patrick.cloke.us/posts/2010/Dec/08/why-rewrite-irc-into-javascript-vs-libpurples-vs-chatzillas/</link><description>
+&lt;p&gt;I had a request on &lt;span class="caps"&gt;IRC&lt;/span&gt; (from Mic) to write an in-depth blog post
 about &lt;a class="reference external" href="https://bugzilla.instantbird.org/show_bug.cgi?id=507"&gt;&lt;span class="caps"&gt;IRC&lt;/span&gt; in JavaScript&lt;/a&gt;:&lt;/p&gt;
 &lt;blockquote&gt;
-&amp;quot;Maybe we could ask clokep if he&amp;#8217;d like to write something about
-js-irc? Why it is done, what the advantages are once it&amp;#8217;s done, how
+"Maybe we could ask clokep if he’d like to write something about
+js-irc? Why it is done, what the advantages are once it’s done, how
 he is working on it (going through the specs), putting the
-jsProtocol code to test and adding missing pieces?&amp;quot; &amp;#8212; &lt;a class="reference external" href="http://log.bezut.info/instantbird/101208/#m54"&gt;Mic&lt;/a&gt;&lt;/blockquote&gt;
+jsProtocol code to test and adding missing pieces?" — &lt;a class="reference external" href="http://log.bezut.info/instantbird/101208/#m54"&gt;Mic&lt;/a&gt;&lt;/blockquote&gt;
 &lt;div class="section" id="wait-a-second-what-is-irc"&gt;
-&lt;h2&gt;Wait a second, what is &lt;span class="caps"&gt;IRC&lt;/span&gt;?&lt;/h2&gt;
-&lt;p&gt;I guess this is a good first question, I&amp;#8217;ll steal from &lt;a class="reference external" href="http://en.wikipedia.org/wiki/IRC"&gt;Wikipedia&lt;/a&gt;:&lt;/p&gt;
+&lt;h2&gt;&lt;a class="toc-backref" href="#id3"&gt;Wait a second, what is &lt;span class="caps"&gt;IRC&lt;/span&gt;?&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;I guess this is a good first question, I’ll steal from &lt;a class="reference external" href="http://en.wikipedia.org/wiki/IRC"&gt;Wikipedia&lt;/a&gt;:&lt;/p&gt;
 &lt;blockquote&gt;
-Internet Relay Chat (&lt;span class="caps"&gt;IRC&lt;/span&gt;) is a form of real-time [&amp;#8230;] chat [&amp;#8230;] It
-is mainly designed for group communication [&amp;#8230;] but also allows
-[&amp;#8230;for&amp;#8230;] private message as well as chat and data transfers.&lt;/blockquote&gt;
-&lt;p&gt;Awesome, what&amp;#8217;s that really mean?&amp;nbsp; It&amp;#8217;s an instant messaging protocol
-with an actual specification (i.e. it&amp;#8217;s not owned by some large, unnamed
-company), with open-source libraries for clients and servers.&amp;nbsp; It&amp;#8217;s
+Internet Relay Chat (&lt;span class="caps"&gt;IRC&lt;/span&gt;) is a form of real-time […] chat […] It
+is mainly designed for group communication […] but also allows
+[…for…] private message as well as chat and data transfers.&lt;/blockquote&gt;
+&lt;p&gt;Awesome, what’s that really mean?  It’s an instant messaging protocol
+with an actual specification (i.e. it’s not owned by some large, unnamed
+company), with open-source libraries for clients and servers.  It’s
 usually used by more computer-oriented types of people and centers
-around group conversation.&amp;nbsp; Personally most of what I use it for is
-open-source software I use (I&amp;#8217;m almost always in &lt;a class="reference external" href="irc://irc.mozilla.org/#instantbird"&gt;#instantbird&lt;/a&gt;,
-&lt;a class="reference external" href="irc://irc.mozilla.org/#maildev"&gt;#maildev&lt;/a&gt;, and &lt;a class="reference external" href="irc://irc.mozilla.org/#songbird"&gt;#songbird&lt;/a&gt; on &lt;a class="reference external" href="http://irc.mozilla.org/"&gt;Mozilla&amp;#8217;s &lt;span class="caps"&gt;IRC&lt;/span&gt; servers&lt;/a&gt;.)&lt;/p&gt;
+around group conversation.  Personally most of what I use it for is
+open-source software I use (I’m almost always in &lt;a class="reference external" href="irc://irc.mozilla.org/#instantbird"&gt;#instantbird&lt;/a&gt;,
+&lt;a class="reference external" href="irc://irc.mozilla.org/#maildev"&gt;#maildev&lt;/a&gt;, and &lt;a class="reference external" href="irc://irc.mozilla.org/#songbird"&gt;#songbird&lt;/a&gt; on &lt;a class="reference external" href="http://irc.mozilla.org/"&gt;Mozilla’s &lt;span class="caps"&gt;IRC&lt;/span&gt; servers&lt;/a&gt;.)&lt;/p&gt;
 &lt;/div&gt;
 &lt;div class="section" id="why-it-is-done-what-advantages-are-there-once-this-is-done"&gt;
-&lt;h2&gt;Why it is done?&amp;nbsp; What advantages are there once this is&amp;nbsp;done?&lt;/h2&gt;
-&lt;p&gt;I touched upon this a little in my &lt;a class="reference external" href="http://patrick.cloke.us/posts/2010/Dec/04/javascript-irc-in-instantbird/"&gt;last post&lt;/a&gt;.&amp;nbsp; In terms of
-Instantbird: there&amp;#8217;s an idea of switching some / all of the protocols
+&lt;h2&gt;&lt;a class="toc-backref" href="#id4"&gt;Why it is done?  What advantages are there once this is done?&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;I touched upon this a little in my &lt;a class="reference external" href="http://patrick.cloke.us/posts/2010/Dec/04/javascript-irc-in-instantbird/"&gt;last post&lt;/a&gt;.  In terms of
+Instantbird: there’s an idea of switching some / all of the protocols
 (eventually) to be JavaScript protocols instead of the libpurple
 versions (libpurple is written mostly in C and is cross-platform, but
 recent gains in speed in JavaScript allow this advantage of libpurple to
-not matter as much).&amp;nbsp; This would unfortunately mean we need to maintain
+not matter as much).  This would unfortunately mean we need to maintain
 a lot more code, but it would allow us to integrate protocols in any way
 that we see fit, instead of only using APIs / methods provided by
-libpurple.&amp;nbsp; Hopefully this would allow us to &lt;a class="reference external" href="https://bugzilla.instantbird.org/showdependencytree.cgi?id=507&amp;amp;maxdepth=2&amp;amp;hide_resolved=1"&gt;enhance our &lt;span class="caps"&gt;IRC&lt;/span&gt;
-implementation&lt;/a&gt; a&amp;nbsp;bit.&lt;/p&gt;
+libpurple.  Hopefully this would allow us to &lt;a class="reference external" href="https://bugzilla.instantbird.org/showdependencytree.cgi?id=507&amp;amp;maxdepth=2&amp;amp;hide_resolved=1"&gt;enhance our &lt;span class="caps"&gt;IRC&lt;/span&gt;
+implementation&lt;/a&gt; a bit.&lt;/p&gt;
 &lt;p&gt;Also, Instantbird (nightlies) currently have limited support for
-generating a protocol plug-in in JavaScript.&amp;nbsp; A couple of &amp;quot;test&amp;quot;
-protocols have be done, but nothing in &amp;quot;real&amp;quot; (in particular, none that
-used a multi-user chat).&amp;nbsp; This would allow us to iron out &lt;a class="reference external" href="https://bugzilla.instantbird.org/show_bug.cgi?id=519"&gt;some&lt;/a&gt;
-&lt;a class="reference external" href="https://bugzilla.instantbird.org/show_bug.cgi?id=118"&gt;bugs&lt;/a&gt; in the implementation of JavaScript&amp;nbsp;protocols.&lt;/p&gt;
-&lt;p&gt;&lt;em&gt;[Edit: Florian suggested another question that wasn&amp;#8217;t originally
-covered, which some people more familiar with Mozilla code might be&amp;nbsp;wondering.]&lt;/em&gt;&lt;/p&gt;
+generating a protocol plug-in in JavaScript.  A couple of "test"
+protocols have be done, but nothing in "real" (in particular, none that
+used a multi-user chat).  This would allow us to iron out &lt;a class="reference external" href="https://bugzilla.instantbird.org/show_bug.cgi?id=519"&gt;some&lt;/a&gt;
+&lt;a class="reference external" href="https://bugzilla.instantbird.org/show_bug.cgi?id=118"&gt;bugs&lt;/a&gt; in the implementation of JavaScript protocols.&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;[Edit: Florian suggested another question that wasn’t originally
+covered, which some people more familiar with Mozilla code might be wondering.]&lt;/em&gt;&lt;/p&gt;
 &lt;/div&gt;
 &lt;div class="section" id="why-aren-t-you-using-the-code-from-chatzilla"&gt;
-&lt;h2&gt;Why aren&amp;#8217;t you using the code from&amp;nbsp;ChatZilla?&lt;/h2&gt;
-&lt;p&gt;This was a tough one.&amp;nbsp; Honestly when I first wanted a parsing
-algorithm, I looked at the ChatZilla code, I used it.&amp;nbsp; Then rewrote it
-in a fourth as many lines (&lt;a class="reference external" href="http://hg.mozilla.org/chatzilla/file/tip/js/lib/irc.js#l1250"&gt;93&lt;/a&gt; vs. &lt;a class="reference external" href="https://hg.instantbird.org/experiments/file/IRC-JavaScript/components/ircProtocol.js#l208"&gt;20&lt;/a&gt;).&amp;nbsp; Simply said, the code in
-ChatZilla is &lt;em&gt;old&lt;/em&gt;, it doesn&amp;#8217;t use many of the features available only
-in newer versions of JavaScript.&amp;nbsp; To that point, the ChatZilla code
-hasn&amp;#8217;t been updated in over a year!&amp;nbsp; The last check-in was: 2009-10-03,
-below is a &lt;a class="reference external" href="http://hg.mozilla.org/chatzilla/log/tip/js/lib/irc.js"&gt;quick summary&lt;/a&gt; of the number of check-ins per&amp;nbsp;year:&lt;/p&gt;
+&lt;h2&gt;&lt;a class="toc-backref" href="#id5"&gt;Why aren’t you using the code from ChatZilla?&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;This was a tough one.  Honestly when I first wanted a parsing
+algorithm, I looked at the ChatZilla code, I used it.  Then rewrote it
+in a fourth as many lines (&lt;a class="reference external" href="http://hg.mozilla.org/chatzilla/file/tip/js/lib/irc.js#l1250"&gt;93&lt;/a&gt; vs. &lt;a class="reference external" href="https://hg.instantbird.org/experiments/file/IRC-JavaScript/components/ircProtocol.js#l208"&gt;20&lt;/a&gt;).  Simply said, the code in
+ChatZilla is &lt;em&gt;old&lt;/em&gt;, it doesn’t use many of the features available only
+in newer versions of JavaScript.  To that point, the ChatZilla code
+hasn’t been updated in over a year!  The last check-in was: 2009-10-03,
+below is a &lt;a class="reference external" href="http://hg.mozilla.org/chatzilla/log/tip/js/lib/irc.js"&gt;quick summary&lt;/a&gt; of the number of check-ins per year:&lt;/p&gt;
 &lt;ul class="simple"&gt;
-&lt;li&gt;2010:&amp;nbsp;0&lt;/li&gt;
-&lt;li&gt;2009:&amp;nbsp;5&lt;/li&gt;
-&lt;li&gt;2008:&amp;nbsp;15&lt;/li&gt;
-&lt;li&gt;2007:&amp;nbsp;11&lt;/li&gt;
-&lt;li&gt;2006:&amp;nbsp;18&lt;/li&gt;
+&lt;li&gt;2010: 0&lt;/li&gt;
+&lt;li&gt;2009: 5&lt;/li&gt;
+&lt;li&gt;2008: 15&lt;/li&gt;
+&lt;li&gt;2007: 11&lt;/li&gt;
+&lt;li&gt;2006: 18&lt;/li&gt;
 &lt;/ul&gt;
-&lt;p&gt;There&amp;#8217;s been a pretty steady decline in check-ins.&amp;nbsp; I could take this
+&lt;p&gt;There’s been a pretty steady decline in check-ins.  I could take this
 code and attempt to whip it into shape and make huge sweeping changes
 and commit them back to ChatZilla, but honestly it was easier to start
-over for me.&amp;nbsp; Regardless of ease, I&amp;#8217;m not sure it would work any:
+over for me.  Regardless of ease, I’m not sure it would work any:
 especially since the ChatZilla code seems overly complicated and overly
-specific (since it wasn&amp;#8217;t really built as a library as far as I can
-see), especially since all the code is meant to deal only with &lt;span class="caps"&gt;IRC&lt;/span&gt;.&amp;nbsp; The
+specific (since it wasn’t really built as a library as far as I can
+see), especially since all the code is meant to deal only with &lt;span class="caps"&gt;IRC&lt;/span&gt;.  The
 Instantbird code needs to be protocol agnostic to a degree, while is why
-it interfaces to&amp;nbsp;purplexpcom.&lt;/p&gt;
+it interfaces to purplexpcom.&lt;/p&gt;
 &lt;p&gt;A quick example of this is: ChatZilla uses a CIRCUser object, but for
 Instantbird I need to create either an imIContact or a
-purpleIAccountBuddy (depending on the situation).&amp;nbsp; It&amp;#8217;s possible that&amp;#8217;s
-can be abstracted and code shared &amp;#8212; but I&amp;#8217;m not sure it would be worth
-the effort.&amp;nbsp; After all this, I should probably look more into the
-ChatZilla code, perhaps more of it could be&amp;nbsp;used.&lt;/p&gt;
-&lt;p&gt;(If someone familiar with the ChatZilla code base &amp;#8212; I don&amp;#8217;t know
-who/if there&amp;#8217;s a maintainer &amp;#8212; is interested in talking with me, please
-get in contact here or on #instantbird.&amp;nbsp; It&amp;#8217;s possible we could align
-some of what I&amp;#8217;ve been working on, but I&amp;#8217;m not sure how much could be
-shared besides the parsing&amp;nbsp;algorithm).&lt;/p&gt;
-&lt;p&gt;&lt;em&gt;[End&amp;nbsp;edit]&lt;/em&gt;&lt;/p&gt;
+purpleIAccountBuddy (depending on the situation).  It’s possible that’s
+can be abstracted and code shared — but I’m not sure it would be worth
+the effort.  After all this, I should probably look more into the
+ChatZilla code, perhaps more of it could be used.&lt;/p&gt;
+&lt;p&gt;(If someone familiar with the ChatZilla code base — I don’t know
+who/if there’s a maintainer — is interested in talking with me, please
+get in contact here or on #instantbird.  It’s possible we could align
+some of what I’ve been working on, but I’m not sure how much could be
+shared besides the parsing algorithm).&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;[End edit]&lt;/em&gt;&lt;/p&gt;
 &lt;/div&gt;
 &lt;div class="section" id="what-are-the-specific-advantages-for-an-end-user"&gt;
-&lt;h2&gt;What are the specific advantages for an&amp;nbsp;end-user?&lt;/h2&gt;
-&lt;p&gt;In terms of the &lt;span class="caps"&gt;IRC&lt;/span&gt; protocol itself, there shouldn&amp;#8217;t be any, my goal
+&lt;h2&gt;&lt;a class="toc-backref" href="#id6"&gt;What are the specific advantages for an end-user?&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;In terms of the &lt;span class="caps"&gt;IRC&lt;/span&gt; protocol itself, there shouldn’t be any, my goal
 is for it to be a drop in replacement for the libpurple implementation
 with automatic account migration, etc. For end-users we can hopefully
 solve &lt;a class="reference external" href="https://bugzilla.instantbird.org/showdependencytree.cgi?id=574&amp;amp;maxdepth=1&amp;amp;hide_resolved=1"&gt;a few annoying &lt;span class="caps"&gt;IRC&lt;/span&gt; &lt;span class="caps"&gt;UI&lt;/span&gt; issues&lt;/a&gt;.&lt;/p&gt;
 &lt;/div&gt;
 &lt;div class="section" id="what-about-for-developers-anything-cool-there"&gt;
-&lt;h2&gt;What about for developers?&amp;nbsp; Anything cool&amp;nbsp;there?&lt;/h2&gt;
-&lt;p&gt;Well, I&amp;#8217;m hoping to be able to test this replacement via an extension
+&lt;h2&gt;&lt;a class="toc-backref" href="#id7"&gt;What about for developers?  Anything cool there?&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;Well, I’m hoping to be able to test this replacement via an extension
 that replaces the libpurple &lt;span class="caps"&gt;IRC&lt;/span&gt; to dogfood it before eventual inclusion
-in Instantbird.&amp;nbsp; I&amp;#8217;m not sure if that counts as &amp;quot;cool.&amp;quot; though.&amp;nbsp; If
+in Instantbird.  I’m not sure if that counts as "cool." though.  If
 nothing else there will be an example of how to write a protocol in
-JavaScript (using sockets).&amp;nbsp; So hopefully other people can make some
-other cool protocols off of that example.&amp;nbsp; You might wonder what else we
+JavaScript (using sockets).  So hopefully other people can make some
+other cool protocols off of that example.  You might wonder what else we
 have planned for JavaScript protocols; there are plans to make at least
-a Twitter&amp;nbsp;protocol.&lt;/p&gt;
+a Twitter protocol.&lt;/p&gt;
 &lt;/div&gt;
 &lt;div class="section" id="how-is-this-being-done"&gt;
-&lt;h2&gt;How is this being&amp;nbsp;done?&lt;/h2&gt;
-&lt;p&gt;Well I said up above &lt;span class="caps"&gt;IRC&lt;/span&gt; has a specification, right?&amp;nbsp; Well, yes.
-There&amp;#8217;s the &lt;a class="reference external" href="http://tools.ietf.org/html/rfc1459"&gt;original specification&lt;/a&gt;, this was superseded by &lt;a class="reference external" href="http://tools.ietf.org/html/rfc2810"&gt;four&lt;/a&gt;
-&lt;a class="reference external" href="http://tools.ietf.org/html/rfc2811"&gt;different&lt;/a&gt; &lt;a class="reference external" href="http://tools.ietf.org/html/rfc2812"&gt;specification&lt;/a&gt; &lt;a class="reference external" href="http://tools.ietf.org/html/rfc2813"&gt;documents&lt;/a&gt;.&amp;nbsp; Of which we only really
-care about one: &lt;a class="reference external" href="http://tools.ietf.org/html/rfc2812"&gt;the client protocol&lt;/a&gt;.&amp;nbsp; So we have this updated
-specification (try reading it, it&amp;#8217;s rather painful), which is good.
-It&amp;#8217;s relatively straightforward set of commands and responses/errors.
-It&amp;#8217;s a bit more confusing than that though since there are a couple of
-extensions, etc.&amp;nbsp; This is summarized&amp;nbsp;below:&lt;/p&gt;
+&lt;h2&gt;&lt;a class="toc-backref" href="#id8"&gt;How is this being done?&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;Well I said up above &lt;span class="caps"&gt;IRC&lt;/span&gt; has a specification, right?  Well, yes.
+There’s the &lt;a class="reference external" href="http://tools.ietf.org/html/rfc1459"&gt;original specification&lt;/a&gt;, this was superseded by &lt;a class="reference external" href="http://tools.ietf.org/html/rfc2810"&gt;four&lt;/a&gt;
+&lt;a class="reference external" href="http://tools.ietf.org/html/rfc2811"&gt;different&lt;/a&gt; &lt;a class="reference external" href="http://tools.ietf.org/html/rfc2812"&gt;specification&lt;/a&gt; &lt;a class="reference external" href="http://tools.ietf.org/html/rfc2813"&gt;documents&lt;/a&gt;.  Of which we only really
+care about one: &lt;a class="reference external" href="http://tools.ietf.org/html/rfc2812"&gt;the client protocol&lt;/a&gt;.  So we have this updated
+specification (try reading it, it’s rather painful), which is good.
+It’s relatively straightforward set of commands and responses/errors.
+It’s a bit more confusing than that though since there are a couple of
+extensions, etc.  This is summarized below:&lt;/p&gt;
 &lt;ul class="simple"&gt;
 &lt;li&gt;[&lt;span class="caps"&gt;STRIKEOUT&lt;/span&gt;:&lt;span class="caps"&gt;RFC&lt;/span&gt; 1459]&lt;ul&gt;
-&lt;li&gt;Extended with &lt;a class="reference external" href="http://www.irchelp.org/irchelp/rfc/dccspec.html"&gt;[&lt;span class="caps"&gt;STRIKEOUT&lt;/span&gt;:&lt;span class="caps"&gt;DCC&lt;/span&gt; specification (&amp;quot;direct client-to-client&amp;quot;)]&lt;/a&gt;&lt;ul&gt;
-&lt;li&gt;Replaced with [&lt;span class="caps"&gt;STRIKEOUT&lt;/span&gt;:&lt;a class="reference external" href="http://www.irchelp.org/irchelp/rfc/dccspec.html"&gt;&lt;span class="caps"&gt;CTCP&lt;/span&gt; (&amp;quot;client-to-client protocol&amp;quot;)&lt;/a&gt;]&lt;ul&gt;
+&lt;li&gt;Extended with &lt;a class="reference external" href="http://www.irchelp.org/irchelp/rfc/dccspec.html"&gt;[&lt;span class="caps"&gt;STRIKEOUT&lt;/span&gt;:&lt;span class="caps"&gt;DCC&lt;/span&gt; specification ("direct client-to-client")]&lt;/a&gt;&lt;ul&gt;
+&lt;li&gt;Replaced with [&lt;span class="caps"&gt;STRIKEOUT&lt;/span&gt;:&lt;a class="reference external" href="http://www.irchelp.org/irchelp/rfc/dccspec.html"&gt;&lt;span class="caps"&gt;CTCP&lt;/span&gt; ("client-to-client protocol")&lt;/a&gt;]&lt;ul&gt;
 &lt;li&gt;&lt;a class="reference external" href="http://www.invlogic.com/irc/ctcp.html"&gt;Draft for a formalized &lt;span class="caps"&gt;CTCP&lt;/span&gt;&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 &lt;/li&gt;
 &lt;li&gt;(Apparently some people are working on a &lt;a class="reference external" href="http://www.dcc2.org/"&gt;&lt;span class="caps"&gt;DCC2&lt;/span&gt;&lt;/a&gt;)&lt;/li&gt;
 &lt;/ul&gt;
 &lt;/li&gt;
-&lt;li&gt;Officially replaced with RFCs 2810, 2811, 2812,&amp;nbsp;2813&lt;/li&gt;
+&lt;li&gt;Officially replaced with RFCs 2810, 2811, 2812, 2813&lt;/li&gt;
 &lt;/ul&gt;
 &lt;/li&gt;
 &lt;/ul&gt;
 &lt;p&gt;A lot of this is being done by reading the specifications and finding
-the proper responses, etc.&amp;nbsp; I&amp;#8217;ve also used &lt;a class="reference external" href="http://www.wireshark.org/download.html"&gt;Wireshark&lt;/a&gt; a bit to see how
+the proper responses, etc.  I’ve also used &lt;a class="reference external" href="http://www.wireshark.org/download.html"&gt;Wireshark&lt;/a&gt; a bit to see how
 libpurple sends &lt;span class="caps"&gt;IRC&lt;/span&gt; commands (in particular, in what order it sends them
-in).&amp;nbsp; A lot of my development is happening on live &lt;span class="caps"&gt;IRC&lt;/span&gt; servers, which
-isn&amp;#8217;t really best practice, but I&amp;#8217;m mostly sending commands by hand to
+in).  A lot of my development is happening on live &lt;span class="caps"&gt;IRC&lt;/span&gt; servers, which
+isn’t really best practice, but I’m mostly sending commands by hand to
 see the responses since a bunch of non-standard responses and extensions
-have developed beyond the above.&amp;nbsp; I have been using &lt;a class="reference external" href="http://ircd.bircd.org/"&gt;beware irc&lt;/a&gt; to run
-a daemon on my own machine,&amp;nbsp;however.&lt;/p&gt;
+have developed beyond the above.  I have been using &lt;a class="reference external" href="http://ircd.bircd.org/"&gt;beware irc&lt;/a&gt; to run
+a daemon on my own machine, however.&lt;/p&gt;
 &lt;/div&gt;
 &lt;div class="section" id="so-how-far-along-are-you"&gt;
-&lt;h2&gt;So how far along are&amp;nbsp;you?&lt;/h2&gt;
-&lt;p&gt;I&amp;#8217;ve started implementing &lt;span class="caps"&gt;RFC&lt;/span&gt; 2812 and have a variety of commands done
+&lt;h2&gt;&lt;a class="toc-backref" href="#id9"&gt;So how far along are you?&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;I’ve started implementing &lt;span class="caps"&gt;RFC&lt;/span&gt; 2812 and have a variety of commands done
 (the login sequence occurs automatically, the server connection is kept
 alive, messages can be sent to a channel and are parsed when received, a
-lot of the initial server information is displayed but unparsed).&amp;nbsp; But
-there&amp;#8217;s a lot more to do!&amp;nbsp; As my last post outlined, I recently was able
+lot of the initial server information is displayed but unparsed).  But
+there’s a lot more to do!  As my last post outlined, I recently was able
 to successfully get a chat to work in Instantbird from a silly bug I had
-been&amp;nbsp;having.&lt;/p&gt;
-&lt;p&gt;It&amp;#8217;s rather slow going since I&amp;#8217;ll start to implement something from
+been having.&lt;/p&gt;
+&lt;p&gt;It’s rather slow going since I’ll start to implement something from
 the &lt;span class="caps"&gt;IRC&lt;/span&gt; side, and then realize the &lt;a class="reference external" href="http://hg.instantbird.org/instantbird/file/tip/purple/purplexpcom/src/jsProtoHelper.jsm"&gt;Instantbird layer&lt;/a&gt; (the jsProtocol
-module) is missing a component I need.&amp;nbsp; One of the major parts of
+module) is missing a component I need.  One of the major parts of
 working on this is extending the Instantbird layer to contain the proper
-functions and objects needed to implement chats via JavaScript.&amp;nbsp; This is
+functions and objects needed to implement chats via JavaScript.  This is
 usually the slowest going part of my code, since it involves interfacing
-with Instantbird / &lt;a class="reference external" href="http://hg.instantbird.org/instantbird/file/tip/purple/purplexpcom/public/"&gt;purplexpcom&lt;/a&gt;.&amp;nbsp; Luckily Florian, the main developer
+with Instantbird / &lt;a class="reference external" href="http://hg.instantbird.org/instantbird/file/tip/purple/purplexpcom/public/"&gt;purplexpcom&lt;/a&gt;.  Luckily Florian, the main developer
 of Instantbird, has been a big help with this (as have other
-participants of #instantbird &amp;#8212; in particular I know Mic helped track
-down a few syntax type&amp;nbsp;bugs).&lt;/p&gt;
+participants of #instantbird — in particular I know Mic helped track
+down a few syntax type bugs).&lt;/p&gt;
 &lt;/div&gt;
 &lt;div class="section" id="what-s-next"&gt;
-&lt;h2&gt;What&amp;#8217;s&amp;nbsp;next?&lt;/h2&gt;
+&lt;h2&gt;&lt;a class="toc-backref" href="#id10"&gt;What’s next?&lt;/a&gt;&lt;/h2&gt;
 &lt;p&gt;Now that have the basics of chat working, I need to start handling the
 &lt;span class="caps"&gt;QUIT&lt;/span&gt;, &lt;span class="caps"&gt;PART&lt;/span&gt; and &lt;span class="caps"&gt;JOIN&lt;/span&gt; commands for when other users enter &lt;span class="amp"&gt;&amp;amp;&lt;/span&gt; leave chat
-rooms.&amp;nbsp; Once these are complete it should be quite usable, although the
-entire preference system still doesn&amp;#8217;t exist, including notifying the &lt;span class="caps"&gt;UI&lt;/span&gt;
-of what options are available.&amp;nbsp; In addition, I need to look into doing
-&lt;span class="caps"&gt;SSL&lt;/span&gt;&amp;nbsp;sockets.&lt;/p&gt;
+rooms.  Once these are complete it should be quite usable, although the
+entire preference system still doesn’t exist, including notifying the &lt;span class="caps"&gt;UI&lt;/span&gt;
+of what options are available.  In addition, I need to look into doing
+&lt;span class="caps"&gt;SSL&lt;/span&gt; sockets.&lt;/p&gt;
 &lt;p&gt;Once the protocol plug-in is done, we plan to abstract sections of it
 that will be useful for other protocols (in particular the socket
-connection&amp;nbsp;aspects).&lt;/p&gt;
+connection aspects).&lt;/p&gt;
 &lt;/div&gt;
 &lt;div class="section" id="where-can-i-see-this-stuff"&gt;
-&lt;h2&gt;Where can I see this&amp;nbsp;stuff&amp;#8230;?&lt;/h2&gt;
-&lt;p&gt;My work is kept in the &amp;quot;&lt;a class="reference external" href="https://hg.instantbird.org/experiments/file/IRC-JavaScript/"&gt;experiments&lt;/a&gt;&amp;quot; repository on Instantbird&amp;#8217;s
-&lt;a class="reference external" href="http://mercurial.selenic.com/"&gt;Mercurial&lt;/a&gt; repository.&amp;nbsp; There&amp;#8217;s also a variety of bugs open (they&amp;#8217;re
-listed above, I&amp;#8217;m not going to re-list them), although not a ton is
-happening in&amp;nbsp;them.&lt;/p&gt;
+&lt;h2&gt;&lt;a class="toc-backref" href="#id11"&gt;Where can I see this stuff…?&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;My work is kept in the "&lt;a class="reference external" href="https://hg.instantbird.org/experiments/file/IRC-JavaScript/"&gt;experiments&lt;/a&gt;" repository on Instantbird’s
+&lt;a class="reference external" href="http://mercurial.selenic.com/"&gt;Mercurial&lt;/a&gt; repository.  There’s also a variety of bugs open (they’re
+listed above, I’m not going to re-list them), although not a ton is
+happening in them.&lt;/p&gt;
 &lt;/div&gt;
 &lt;div class="section" id="how-can-i-help"&gt;
-&lt;h2&gt;How can I&amp;nbsp;help?!&lt;/h2&gt;
+&lt;h2&gt;&lt;a class="toc-backref" href="#id12"&gt;How can I help?!&lt;/a&gt;&lt;/h2&gt;
 &lt;p&gt;Well you can of course feel free to download the code and hack on it,
 let me know (via &lt;span class="caps"&gt;IRC&lt;/span&gt; or any of the bugs most likely) if you have a patch
-you&amp;#8217;d like me to apply.&amp;nbsp; Or if you just found something that doesn&amp;#8217;t
-work you can feel free to let me know, although I probably just haven&amp;#8217;t
-gotten around to fixing it&amp;nbsp;yet.&lt;/p&gt;
-&lt;p&gt;Also, if you&amp;#8217;ve ever found something annoying / broken in the &lt;span class="caps"&gt;IRC&lt;/span&gt;
+you’d like me to apply.  Or if you just found something that doesn’t
+work you can feel free to let me know, although I probably just haven’t
+gotten around to fixing it yet.&lt;/p&gt;
+&lt;p&gt;Also, if you’ve ever found something annoying / broken in the &lt;span class="caps"&gt;IRC&lt;/span&gt;
 implementation in Instantbird / libpurple please let us know (through
-any of the above contact&amp;nbsp;sources).&lt;/p&gt;
-&lt;p&gt;Hopefully that&amp;#8217;s a bit of a better explanation of why we&amp;#8217;re spending
-time to rewrite the &lt;span class="caps"&gt;IRC&lt;/span&gt; protocol implementation into JavaScript &amp;#8212; we
-definitely think it&amp;#8217;s worth it and can lead to a bunch of new unique
-protocol plug-ins for&amp;nbsp;Instantbird.&lt;/p&gt;
+any of the above contact sources).&lt;/p&gt;
+&lt;p&gt;Hopefully that’s a bit of a better explanation of why we’re spending
+time to rewrite the &lt;span class="caps"&gt;IRC&lt;/span&gt; protocol implementation into JavaScript — we
+definitely think it’s worth it and can lead to a bunch of new unique
+protocol plug-ins for Instantbird.&lt;/p&gt;
 &lt;/div&gt;
 </description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Patrick Cloke</dc:creator><pubDate>Wed, 08 Dec 2010 18:29:00 -0500</pubDate><guid>tag:patrick.cloke.us,2010-12-08:posts/2010/Dec/08/why-rewrite-irc-into-javascript-vs-libpurples-vs-chatzillas/</guid><category>Instantbird</category><category>IRC</category><category>Mozilla</category><category>programming</category></item><item><title>JavaScript IRC in Instantbird</title><link>http://patrick.cloke.us/posts/2010/Dec/04/javascript-irc-in-instantbird/</link><description>&lt;p&gt;I&amp;#8217;ve been working on rewriting the &lt;span class="caps"&gt;IRC&lt;/span&gt; plugin for &lt;a class="reference external" href="http://www.instantbird.com/"&gt;Instantbird&lt;/a&gt; since
 the summer (sometime in August, I can&amp;#8217;t seem to find the exact date &amp;#8212;

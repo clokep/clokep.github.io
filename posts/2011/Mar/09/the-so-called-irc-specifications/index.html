@@ -1,123 +1,140 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-        <meta charset="utf-8" />
-        <title>The so-called IRC "specifications"</title>
-        <link rel="stylesheet" href="http://patrick.cloke.us/theme/css/main.css" />
-        <link href="http://patrick.cloke.us/feeds/atom.xml" type="application/atom+xml" rel="alternate" title="Like bricks in the sky Atom Feed" />
-        <link href="http://patrick.cloke.us/feeds/rss.xml" type="application/rss+xml" rel="alternate" title="Like bricks in the sky RSS Feed" />
+    <meta charset="utf-8" />
+    <title>The so-called IRC "specifications"</title>
+    <link rel="stylesheet" href="http://patrick.cloke.us/theme/css/main.css" />
+    <link href="http://patrick.cloke.us/feeds/atom.xml" type="application/atom+xml" rel="alternate" title="Like bricks in the sky Atom Feed" />
+    <link href="http://patrick.cloke.us/feeds/rss.xml" type="application/rss+xml" rel="alternate" title="Like bricks in the sky RSS Feed" />
 
-        <!--[if IE]>
-            <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
-        <![endif]-->
+    <!--[if IE]>
+        <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
 </head>
 
 <body id="index" class="home">
-        <header id="banner" class="body">
-                <h1><a href="http://patrick.cloke.us/">Like bricks in the sky </a></h1>
-                <nav><ul>
-                    <li><a href="http://patrick.cloke.us/pages/about.html">About</a></li>
-                    <li><a href="http://patrick.cloke.us/pages/contact.html">Contact</a></li>
-                    <li class="active"><a href="http://patrick.cloke.us/category/misc.html">misc</a></li>
-                </ul></nav>
-        </header><!-- /#banner -->
+    <header id="banner" class="body">
+        <h1><a href="http://patrick.cloke.us/">Like bricks in the sky </a></h1>
+        <nav><ul>
+            <li><a href="http://patrick.cloke.us/pages/about.html">About</a></li>
+            <li><a href="http://patrick.cloke.us/pages/contact.html">Contact</a></li>
+        </ul></nav>
+    </header><!-- /#banner -->
 
-        <div id="container" class="body">
-        <section id="extras">
-                <div class="social">
-                        <h2>social</h2>
-                        <ul>
-                            <li><a href="http://patrick.cloke.us/feeds/atom.xml" type="application/atom+xml" rel="alternate">atom feed</a></li>
-                            <li><a href="http://patrick.cloke.us/feeds/rss.xml" type="application/rss+xml" rel="alternate">rss feed</a></li>
+    <div id="container" class="body">
+        <section id="extras" class="left">
+            <div class="social">
+                <h2>social</h2>
+                <ul>
+                    <li><a href="http://patrick.cloke.us/feeds/atom.xml" type="application/atom+xml" rel="alternate">atom feed</a></li>
+                    <li><a href="http://patrick.cloke.us/feeds/rss.xml" type="application/rss+xml" rel="alternate">rss feed</a></li>
 
-                            <li><a href="https://www.twitter.com/clokep">twitter</a></li>
-                            <li><a href="https://bitbucket.org/clokep">bitbucket</a></li>
-                            <li><a href="https://www.github.com/clokep">github</a></li>
-                            <li><a href="https://mozillians.org/clokep">mozillians</a></li>
-                        </ul>
-                </div><!-- /.social -->
+                    <li><a href="https://www.twitter.com/clokep">twitter</a></li>
+                    <li><a href="https://bitbucket.org/clokep">bitbucket</a></li>
+                    <li><a href="https://www.github.com/clokep">github</a></li>
+                    <li><a href="https://mozillians.org/clokep">mozillians</a></li>
+                </ul>
+            </div><!-- /.social -->
         </section><!-- /#extras -->
+
+
+<section id="toc" class="left">
+    <h2>table of contents</h2>
+    <div class="contents topic" id="contents">
+<p class="topic-title first">Contents</p>
+<ul class="simple">
+<li><a class="reference internal" href="#irc-specifications" id="id5"><span class="caps">IRC</span> Specifications</a></li>
+<li><a class="reference internal" href="#dcc-ctcp" id="id6"><span class="caps">DCC</span>/<span class="caps">CTCP</span></a></li>
+<li><a class="reference internal" href="#authentication" id="id7">Authentication</a></li>
+<li><a class="reference internal" href="#extension-support" id="id8">Extension Support</a></li>
+<li><a class="reference internal" href="#protocol-extensions" id="id9">Protocol Extensions</a></li>
+<li><a class="reference internal" href="#services" id="id10">Services</a></li>
+<li><a class="reference internal" href="#irc-url-scheme" id="id11"><span class="caps">IRC</span> <span class="caps">URL</span> Scheme</a></li>
+</ul>
+</div>
+</section>
 
 <section id="content" class="body">
   <article>
     <header>
-      <h1 class="entry-title">
-        <a href="http://patrick.cloke.us/posts/2011/Mar/09/the-so-called-irc-specifications/" rel="bookmark"
-           title="Permalink to The so-called IRC "specifications"">The so-called <span class="caps">IRC</span>&nbsp;&quot;specifications&quot;</a></h1>
+        <h1 class="entry-title">
+            <a href="http://patrick.cloke.us/posts/2011/Mar/09/the-so-called-irc-specifications/" rel="bookmark"
+               title="Permalink to The so-called IRC "specifications"">The so-called <span class="caps">IRC</span>&nbsp;&quot;specifications&quot;</a></h1>
     </header>
 
     <div class="entry-content">
 <footer class="post-info">
-        <abbr class="published" title="2011-03-09T01:20:00">
-                Published: 03/09/2011 01:20 AM UTC
-        </abbr>
+    <abbr class="published" title="2011-03-09T01:20:00">
+        Published: 03/09/2011 01:20 AM UTC
+    </abbr>
 
-<p>In <a href="http://patrick.cloke.us/category/misc.html">misc</a>. </p>
+
 <p>tags: <a href="http://patrick.cloke.us/tag/instantbird.html">Instantbird</a> <a href="http://patrick.cloke.us/tag/irc.html">IRC</a> <a href="http://patrick.cloke.us/tag/programming.html">programming</a> <a href="http://patrick.cloke.us/tag/specifications.html">specifications</a> </p>
-</footer><!-- /.post-info -->      <p>In a <a class="reference external" href="http://patrick.cloke.us/posts/2010/Dec/08/why-rewrite-irc-into-javascript-vs-libpurples-vs-chatzillas/">previous post</a> I had briefly gone over the &quot;history of <span class="caps">IRC</span>&quot; as
-I know it.&nbsp; I&#8217;m going to expand on this a bit as I&#8217;ve come to understand
-it a bit more while reading through documentation.&nbsp; (Hopefully it won&#8217;t
-sound too much like a rant, as it is all driving me&nbsp;crazy!)</p>
+</footer><!-- /.post-info -->        
+<p>In a <a class="reference external" href="http://patrick.cloke.us/posts/2010/Dec/08/why-rewrite-irc-into-javascript-vs-libpurples-vs-chatzillas/">previous post</a> I had briefly gone over the "history of <span class="caps">IRC</span>" as
+I know it.  I’m going to expand on this a bit as I’ve come to understand
+it a bit more while reading through documentation.  (Hopefully it won’t
+sound too much like a rant, as it is all driving me crazy!)</p>
 <div class="section" id="irc-specifications">
-<h2><span class="caps">IRC</span>&nbsp;Specifications</h2>
-<p>So there&#8217;s the original specification (<a class="reference external" href="http://tools.ietf.org/html/rfc1459"><span class="caps">RFC</span> 1459</a>) in May 1993; this
+<h2><a class="toc-backref" href="#id5"><span class="caps">IRC</span> Specifications</a></h2>
+<p>So there’s the original specification (<a class="reference external" href="http://tools.ietf.org/html/rfc1459"><span class="caps">RFC</span> 1459</a>) in May 1993; this
 was expanded and replaced by four different specifications (<a class="reference external" href="http://tools.ietf.org/html/rfc2810"><span class="caps">RFC</span> 2810</a>,
-<a class="reference external" href="http://tools.ietf.org/html/rfc2811">2811</a>, <a class="reference external" href="http://tools.ietf.org/html/rfc2812">2812</a>, <a class="reference external" href="http://tools.ietf.org/html/rfc2813">2813</a>) in April 2000.&nbsp; Seems pretty straightforward,&nbsp;right?</p>
+<a class="reference external" href="http://tools.ietf.org/html/rfc2811">2811</a>, <a class="reference external" href="http://tools.ietf.org/html/rfc2812">2812</a>, <a class="reference external" href="http://tools.ietf.org/html/rfc2813">2813</a>) in April 2000.  Seems pretty straightforward, right?</p>
 </div>
 <div class="section" id="dcc-ctcp">
-<h2><span class="caps">DCC</span>/<span class="caps">CTCP</span></h2>
-<p>Well, kind of&#8230;there&#8217;s also the <span class="caps">DCC</span>/<span class="caps">CTCP</span> specifications, which is a
-separate protocol embedded/hidden within the <span class="caps">IRC</span> protocol (e.g. they&#8217;re
+<h2><a class="toc-backref" href="#id6"><span class="caps">DCC</span>/<span class="caps">CTCP</span></a></h2>
+<p>Well, kind of…there’s also the <span class="caps">DCC</span>/<span class="caps">CTCP</span> specifications, which is a
+separate protocol embedded/hidden within the <span class="caps">IRC</span> protocol (e.g. they’re
 sent as <span class="caps">IRC</span> messages and parsed specially by clients, the server sees
-them as normal messages).&nbsp; <span class="caps">DCC</span>/<span class="caps">CTCP</span> is used to send files as well as
+them as normal messages).  <span class="caps">DCC</span>/<span class="caps">CTCP</span> is used to send files as well as
 other particular messages (<span class="caps">ACTION</span> commands for roleplaying, <span class="caps">SED</span> for
 encrypting conversations, <span class="caps">VERSION</span> to get client information, etc.).
-Anyway, this get&#8217;s a bit more complicated &#8212; it starts with the <a class="reference external" href="http://www.irchelp.org/irchelp/rfc/dccspec.html"><span class="caps">DCC</span>
-specification</a>.&nbsp; This was replaced/updated by the <a class="reference external" href="http://www.irchelp.org/irchelp/rfc/ctcpspec.html"><span class="caps">CTCP</span> specification</a>
-(which fully includes the <span class="caps">DCC</span> specification) in 1994.&nbsp; An <a class="reference external" href="http://www.invlogic.com/irc/ctcp.html">&quot;updated&quot;
-<span class="caps">CTCP</span> specification</a> was released in February 1997.&nbsp; There&#8217;s also a
+Anyway, this get’s a bit more complicated — it starts with the <a class="reference external" href="http://www.irchelp.org/irchelp/rfc/dccspec.html"><span class="caps">DCC</span>
+specification</a>.  This was replaced/updated by the <a class="reference external" href="http://www.irchelp.org/irchelp/rfc/ctcpspec.html"><span class="caps">CTCP</span> specification</a>
+(which fully includes the <span class="caps">DCC</span> specification) in 1994.  An <a class="reference external" href="http://www.invlogic.com/irc/ctcp.html">"updated"
+<span class="caps">CTCP</span> specification</a> was released in February 1997.  There’s also a
 <a class="reference external" href="http://www.invlogic.com/irc/ctcp2_intro.html"><span class="caps">CTCP</span>/2 specification</a> from October 1998, which was meant to
-reformulate a lot of the previous three versions.&nbsp; And <em>finally</em>,
-there&#8217;s the <span class="caps">DCC2</span> specification (two parts: <a class="reference external" href="http://tools.ietf.org/html/draft-smith-irc-dcc2-negotiation-00">connection negotiation</a> and
-<a class="reference external" href="http://www.dcc2.org/files/dcc2/draft-smith-irc-dcc2-files-00.txt">file transfers</a>) from April&nbsp;2004.</p>
-<p>But wait!&nbsp; I lied&#8230;that&#8217;s not really the end of <span class="caps">DCC</span>/<span class="caps">CTCP</span>, there&#8217;s
+reformulate a lot of the previous three versions.  And <em>finally</em>,
+there’s the <span class="caps">DCC2</span> specification (two parts: <a class="reference external" href="http://tools.ietf.org/html/draft-smith-irc-dcc2-negotiation-00">connection negotiation</a> and
+<a class="reference external" href="http://www.dcc2.org/files/dcc2/draft-smith-irc-dcc2-files-00.txt">file transfers</a>) from April 2004.</p>
+<p>But wait!  I lied…that’s not really the end of <span class="caps">DCC</span>/<span class="caps">CTCP</span>, there’s
 also a bunch of extensions to it: <a class="reference external" href="http://www.visualirc.net/tech-tdcc.php">Turbo <span class="caps">DCC</span></a>, <a class="reference external" href="http://xa.bi/files/irc/xdcc.3.3.0b.irc"><span class="caps">XDCC</span> (eXtended <span class="caps">DCC</span>)</a>
 in 1993, <a class="reference external" href="http://www.visualirc.net/tech-wboard.php"><span class="caps">DCC</span> Whiteboard</a>, and a few other variations of this: <span class="caps">RDCC</span>
-(Reverse <span class="caps">DCC</span>), <span class="caps">SDD</span> (Secure <span class="caps">DCC</span>), <span class="caps">DCC</span> Voice, etc.&nbsp; Wikipedia has a <a class="reference external" href="http://en.wikipedia.org/wiki/Direct_Client-to-Client">good
+(Reverse <span class="caps">DCC</span>), <span class="caps">SDD</span> (Secure <span class="caps">DCC</span>), <span class="caps">DCC</span> Voice, etc.  Wikipedia has a <a class="reference external" href="http://en.wikipedia.org/wiki/Direct_Client-to-Client">good
 summary</a>.</p>
-<p>Something else to note about the whole <span class="caps">DCC</span>/<span class="caps">CTCP</span> mess&#8230;parts of it
-just <em>don&#8217;t</em> have any documentation.&nbsp; There&#8217;s <em>none</em>at all for <span class="caps">SED</span> (at
-least that I&#8217;ve found, I&#8217;d love to be proved wrong) and very little
-(really just a mention) for <span class="caps">DCC</span>&nbsp;Voice.</p>
-<p>So, we&#8217;re about halfway through now.&nbsp; There&#8217;s a bunch of extensions to
-the <span class="caps">IRC</span> protocol specifications that add new commands to the actual&nbsp;protocol.</p>
+<p>Something else to note about the whole <span class="caps">DCC</span>/<span class="caps">CTCP</span> mess…parts of it
+just <em>don’t</em> have any documentation.  There’s <em>none</em>at all for <span class="caps">SED</span> (at
+least that I’ve found, I’d love to be proved wrong) and very little
+(really just a mention) for <span class="caps">DCC</span> Voice.</p>
+<p>So, we’re about halfway through now.  There’s a bunch of extensions to
+the <span class="caps">IRC</span> protocol specifications that add new commands to the actual protocol.</p>
 </div>
 <div class="section" id="authentication">
-<h2>Authentication</h2>
+<h2><a class="toc-backref" href="#id7">Authentication</a></h2>
 <p>Originally <span class="caps">IRC</span> had no authentication ability except the <span class="caps">PASS</span> command,
 which very few servers seem to use, a variety of mechanisms have
 replaced this, including <a class="reference external" href="http://hg.atheme.org/atheme/atheme/raw-file/tip/doc/SASL"><span class="caps">SASL</span> authentication</a> (both <span class="caps">PLAIN</span> and <span class="caps">BLOWFISH</span>
-methods, although <span class="caps">BLOWFISH</span> isn&#8217;t documented); and <span class="caps">SASL</span> itself is covered
-by at least <a class="reference external" href="http://tools.ietf.org/html/rfc2222">four</a> <a class="reference external" href="http://tools.ietf.org/html/rfc4422">RFCs</a> <a class="reference external" href="http://tools.ietf.org/html/rfc2595">in this</a> <a class="reference external" href="http://tools.ietf.org/html/rfc4616">situation</a>.&nbsp; There also seems
-to be a method called &quot;Auth&quot; which I haven&#8217;t been able to pin down, as
+methods, although <span class="caps">BLOWFISH</span> isn’t documented); and <span class="caps">SASL</span> itself is covered
+by at least <a class="reference external" href="http://tools.ietf.org/html/rfc2222">four</a> <a class="reference external" href="http://tools.ietf.org/html/rfc4422">RFCs</a> <a class="reference external" href="http://tools.ietf.org/html/rfc2595">in this</a> <a class="reference external" href="http://tools.ietf.org/html/rfc4616">situation</a>.  There also seems
+to be a method called "Auth" which I haven’t been able to pin down, as
 well as Ident (which is a more general protocol authentication method I
-haven&#8217;t looked into&nbsp;yet).</p>
+haven’t looked into yet).</p>
 </div>
 <div class="section" id="extension-support">
-<h2>Extension&nbsp;Support</h2>
+<h2><a class="toc-backref" href="#id8">Extension Support</a></h2>
 <p>This includes a few that generally add a way by which servers are able
-to tell their clients exactly what a server supports.&nbsp; The first of
+to tell their clients exactly what a server supports.  The first of
 these was RPL_ISUPPORT, which was defined as a <a class="reference external" href="http://tools.ietf.org/html/draft-brocklesby-irc-isupport-03">draft specification</a>
-in January 2004, and <a class="reference external" href="http://tools.ietf.org/html/draft-hardy-irc-isupport-00">updated</a> in January of&nbsp;2005.</p>
-<p>A similar concept was defined as <a class="reference external" href="http://tools.ietf.org/html/draft-mitchell-irc-capabilities-01"><span class="caps">IRC</span> Capabilities</a> in March&nbsp;2005.</p>
+in January 2004, and <a class="reference external" href="http://tools.ietf.org/html/draft-hardy-irc-isupport-00">updated</a> in January of 2005.</p>
+<p>A similar concept was defined as <a class="reference external" href="http://tools.ietf.org/html/draft-mitchell-irc-capabilities-01"><span class="caps">IRC</span> Capabilities</a> in March 2005.</p>
 </div>
 <div class="section" id="protocol-extensions">
-<h2>Protocol&nbsp;Extensions</h2>
+<h2><a class="toc-backref" href="#id9">Protocol Extensions</a></h2>
 <p><span class="caps">IRCX</span>, a Microsoft extension to <span class="caps">IRC</span> used (at one point) for some of
-it&#8217;s instant messaging products <a class="reference external" href="http://tools.ietf.org/html/draft-pfenning-irc-extensions-04">exists as a draft</a> from June&nbsp;1998.</p>
-<p>There&#8217;s&nbsp;also:</p>
+it’s instant messaging products <a class="reference external" href="http://tools.ietf.org/html/draft-pfenning-irc-extensions-04">exists as a draft</a> from June 1998.</p>
+<p>There’s also:</p>
 <ul class="simple">
-<li>The <a class="reference external" href="http://hg.atheme.org/charybdis/charybdis/raw-file/tip/doc/monitor.txt"><span class="caps">MONITOR</span></a>&nbsp;command.</li>
+<li>The <a class="reference external" href="http://hg.atheme.org/charybdis/charybdis/raw-file/tip/doc/monitor.txt"><span class="caps">MONITOR</span></a> command.</li>
 <li><a class="reference external" href="http://hg.atheme.org/charybdis/charybdis/raw-file/tip/doc/modeg.txt">User mode +g</a>.</li>
 <li><a class="reference external" href="http://hg.atheme.org/charybdis/charybdis/raw-file/tip/doc/services.txt">Services compatibility modes</a>.</li>
 <li><a class="reference external" href="http://hg.atheme.org/charybdis/charybdis/raw-file/tip/doc/account-notify.txt">Account-notify client capability</a>.</li>
@@ -125,46 +142,44 @@ it&#8217;s instant messaging products <a class="reference external" href="http:/
 </ul>
 </div>
 <div class="section" id="services">
-<h2>Services</h2>
+<h2><a class="toc-backref" href="#id10">Services</a></h2>
 <p>To fill in some of the missing features of <span class="caps">IRC</span>, services were created
-(Wikipedia has a good <a class="reference external" href="http://en.wikipedia.org/wiki/Internet_Relay_Chat_services">summary</a> again).&nbsp; This commonly includes
-ChanServ, NickServ, OperServ, and MemoServ.&nbsp; Not too hard, but different
+(Wikipedia has a good <a class="reference external" href="http://en.wikipedia.org/wiki/Internet_Relay_Chat_services">summary</a> again).  This commonly includes
+ChanServ, NickServ, OperServ, and MemoServ.  Not too hard, but different
 server packages include different services (or even the same services
 that behave differently), one of more common ones is <a class="reference external" href="http://www.anope.org/docgen/1.8/en_us/">Anope</a>, however
-(plus they have awesome documentation, so they get a&nbsp;link).</p>
+(plus they have awesome documentation, so they get a link).</p>
 <p>There was an attempt to standardize how to interact with services
 called <span class="caps">IRC</span>+, which included three specifications: <a class="reference external" href="http://www.irc-plus.org/specs/confctrl-draft.html">conference control
-protocol</a>, <a class="reference external" href="http://www.irc-plus.org/specs/identity-draft.html">identity protocol</a> and <a class="reference external" href="http://www.irc-plus.org/specs/subscriptions-draft.html">subscriptions protocol</a>.&nbsp; I don&#8217;t
-believe this are supported widely (if at&nbsp;all).</p>
+protocol</a>, <a class="reference external" href="http://www.irc-plus.org/specs/identity-draft.html">identity protocol</a> and <a class="reference external" href="http://www.irc-plus.org/specs/subscriptions-draft.html">subscriptions protocol</a>.  I don’t
+believe this are supported widely (if at all).</p>
 </div>
 <div class="section" id="irc-url-scheme">
-<h2><span class="caps">IRC</span> <span class="caps">URL</span>&nbsp;Scheme</h2>
+<h2><a class="toc-backref" href="#id11"><span class="caps">IRC</span> <span class="caps">URL</span> Scheme</a></h2>
 <p>Finally this brings us to the <span class="caps">IRC</span> <span class="caps">URL</span> scheme of which there are a few
-versions.&nbsp; A draft from August 1996 defines the original <a class="reference external" href="http://tools.ietf.org/html/draft-mirashi-url-irc-01">irc: <span class="caps">URL</span>
-scheme</a>.&nbsp; This was updated/replaced by <a class="reference external" href="http://tools.ietf.org/html/draft-butcher-irc-url-04">another draft</a> which defines
-irc: and ircs: <span class="caps">URL</span>&nbsp;schemes.</p>
-<p>As of right now that&#8217;s all that I&#8217;ve found&#8230;an awful lot.&nbsp; Plus it&#8217;s
+versions.  A draft from August 1996 defines the original <a class="reference external" href="http://tools.ietf.org/html/draft-mirashi-url-irc-01">irc: <span class="caps">URL</span>
+scheme</a>.  This was updated/replaced by <a class="reference external" href="http://tools.ietf.org/html/draft-butcher-irc-url-04">another draft</a> which defines
+irc: and ircs: <span class="caps">URL</span> schemes.</p>
+<p>As of right now that’s all that I’ve found…an awful lot.  Plus it’s
 not all compatible with each other (and sometimes out right contradicts
-each other).&nbsp; Often newer specifications say not to support older
-specifications, but who knows what servers/clients you&#8217;ll end up talking
-to!&nbsp; It&#8217;s difficult to know what&#8217;s used in practice, especially since
-there&#8217;s an awful lot of <a class="reference external" href="http://en.wikipedia.org/wiki/Comparison_of_IRC_daemons"><span class="caps">IRC</span> servers</a> out there.&nbsp; Anyway, if someone
-does know of another specification, etc. that I missed please let me&nbsp;know!</p>
+each other).  Often newer specifications say not to support older
+specifications, but who knows what servers/clients you’ll end up talking
+to!  It’s difficult to know what’s used in practice, especially since
+there’s an awful lot of <a class="reference external" href="http://en.wikipedia.org/wiki/Comparison_of_IRC_daemons"><span class="caps">IRC</span> servers</a> out there.  Anyway, if someone
+does know of another specification, etc. that I missed please let me know!</p>
 </div>
 
     </div><!-- /.entry-content -->
 
   </article>
 </section>
+    </div>
 
-
-        </div>
-
-        <footer id="contentinfo" class="body">
-                <address id="about" class="vcard body">
-                Proudly powered by <a href="http://getpelican.com/">Pelican</a>, which takes great advantage of <a href="http://python.org">Python</a>.
-                </address><!-- /#about -->
-        </footer><!-- /#contentinfo -->
+    <footer id="contentinfo" class="body">
+        <address id="about" class="vcard body">
+        Proudly powered by <a href="http://getpelican.com/">Pelican</a>, which takes great advantage of <a href="http://python.org">Python</a>.
+        </address><!-- /#about -->
+    </footer><!-- /#contentinfo -->
 
     <script type="text/javascript">
     var _gaq = _gaq || [];
