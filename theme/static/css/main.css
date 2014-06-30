@@ -87,9 +87,9 @@ ol {
 li { margin-top: 0.5em;}
 
 .post-info {
-    float:right;
-    margin:10px;
-    padding:5px;
+    float: right;
+    margin: 10px;
+    padding: 5px;
 }
 
 .post-info p{
@@ -97,7 +97,9 @@ li { margin-top: 0.5em;}
     margin-bottom: 1px;
 }
 
-.readmore { float: right }
+.readmore {
+    float: right;
+}
 
 dl {margin: 0 0 1.5em 0;}
 dt {font-weight: bold;}
@@ -394,16 +396,35 @@ li:last-child .hentry, #content > .hentry {border: 0; margin: 0;}
 .entry-title a:link, .entry-title a:visited {text-decoration: none; color: #333;}
 .entry-title a:visited {background-color: #fff;}
 
-.hentry .post-info * {font-style: normal;}
+.hentry .post-info {
+    margin: 0;
+    margin-right: 10px;
+    margin-bottom: 10px;
+    padding: 0;
+}
+.hentry .post-info * {
+    font-style: normal;
+}
 
 /* Content */
-.hentry footer {margin-bottom: 2em;}
+/*.hentry footer {
+    margin-bottom: 2em;
+}*/
 .hentry footer address {display: inline;}
 #posts-list footer address {display: block;}
 
 /* Blog Index */
-#posts-list {list-style: none; margin: 0;}
-#posts-list .hentry {padding-left: 10px; position: relative;}
+#posts-list {
+    list-style: none;
+    margin: 0;
+}
+#posts-list > li {
+    margin-top: 0.2em;
+}
+#posts-list .hentry {
+    padding-left: 10px;
+    position: relative;
+}
 
 #posts-list footer {
     left: 10px;
@@ -433,7 +454,11 @@ li:last-child .hentry, #content > .hentry {border: 0; margin: 0;}
     font-size: 1.429em;
 }
 
-#about-author .photo {border: 1px solid #ddd; float: left; margin: 5px 1em 0 0;}
+#about-author .photo {
+    border: 1px solid #ddd;
+    float: left;
+    margin: 5px 1em 0 0;
+}
 
 /* Comments */
 #comments-list {list-style: none; margin: 0 1em;}
