@@ -5,6 +5,8 @@ Compiling Instantbird
 :tags: Instantbird, Mozilla, programming
 :slug: compiling-instantbird
 
+.. contents::
+
 In the past I've tried to compile a few different programs that use
 the Mozilla toolkit to various levels of success.  I've tried to compile
 Thunderbird, Songbird and Instantbird at various points.  I got

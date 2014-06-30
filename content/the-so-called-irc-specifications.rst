@@ -5,6 +5,8 @@ The so-called IRC "specifications"
 :tags: Instantbird, IRC, programming, specifications
 :slug: the-so-called-irc-specifications
 
+.. contents::
+
 In a `previous post`_ I had briefly gone over the "history of IRC" as
 I know it.  I'm going to expand on this a bit as I've come to understand
 it a bit more while reading through documentation.  (Hopefully it won't

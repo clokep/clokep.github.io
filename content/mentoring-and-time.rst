@@ -5,7 +5,7 @@ Mentoring and Time
 :tags: community, GSoC
 :slug: mentoring-and-time
 
-.. contents:: Table of contents
+.. contents::
 
 Google Summer of Code 2014
 ==========================

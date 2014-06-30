@@ -5,6 +5,8 @@ Adding a protocol to Instantbird (Part 2)
 :tags: Instantbird, programming, SIPE
 :slug: adding-a-protocol-to-instantbird-part-2
 
+.. contents::
+
 I had `previously talked about adding a protocol to Instantbird`_,
 that focused on adding SIPE (Microsoft Office Communicator support). 
 Since then I've been slowly working on defeating SIPE.  Fortunately I

@@ -5,6 +5,8 @@ Extending JavaScript Maps (or other built-in objects)
 :tags: IM, Instantbird, programming, specifications, Thunderbird, Wat
 :slug: extending-javascript-maps-or-other-built-in-objects
 
+.. contents::
+
 Finally another technical post, this one is about my adventures in
 attempting to extend the built-in `Map`_ object in JavaScript to extend
 the functionality. As background, there are two reasons we'd want this:

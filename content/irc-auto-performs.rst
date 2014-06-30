@@ -5,6 +5,8 @@ IRC Auto-Performs
 :tags: Instantbird, IRC, Mozilla
 :slug: irc-auto-performs
 
+.. contents::
+
 There have been a `few`_ `requests`_ to support "auto-performs"
 (sending commands to the IRC server after connection that the user types
 into a box or whatever). Personally I find this to be:

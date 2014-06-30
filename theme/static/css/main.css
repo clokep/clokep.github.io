@@ -150,12 +150,18 @@ aside, nav, article, figure {
     margin: 0 auto;
     width: 800px;
 }
-#container {
+container {
     margin: 0 auto;
-    /*width: 1000px;*/
 }
 img.right, figure.right {float: right; margin: 0 0 2em 2em;}
 img.left, figure.left {float: left; margin: 0 2em 2em 0;}
+
+.left {
+    width: 160px;
+    float: left;
+    margin-left: calc(-160px - 2em);
+    clear: left;
+}
 
 /*
     Header
@@ -269,28 +275,33 @@ img.left, figure.left {float: left; margin: 0 2em 2em 0;}
     -webkit-border-radius: 10px;
 }
 
+#toc p {
+    display: none;
+}
+
 /*
     Extras
 *****************/
+
 #extras {
-    /*margin: 0 auto 3em auto;*/
-    /*margin: 0;/*
-    /*overflow: hidden;*/
-    width: 160px;
-    float: left;
-    margin-left: calc(-160px - 2em);
+    margin-bottom: 1em;
 }
 
-#extras ul {list-style: none; margin: 0;}
-#extras li {border-bottom: 1px solid #fff;}
-#extras h2 {
+#extras ul {
+    list-style: none;
+    margin: 0;
+}
+#extras li, #toc li {
+    border-bottom: 1px solid #fff;
+}
+#extras h2, #toc h2 {
     color: #C74350;
     font-size: 1.429em;
     margin-bottom: .25em;
     padding: 0 3px;
 }
 
-#extras a:link, #extras a:visited {
+#extras a:link, #extras a:visited, #toc a:link, #toc a:visited {
     color: #444;
     display: block;
     border-bottom: 1px solid #F4E3E3;
@@ -298,21 +309,11 @@ img.left, figure.left {float: left; margin: 0 2em 2em 0;}
     padding: .3em .25em;
 }
 
-#extras a:hover, #extras a:active {color: #fff;}
-
-/* Blogroll */
-#extras .blogroll {
-    float: left;
-    width: 615px;
+#extras a:hover, #extras a:active, #toc a:hover, #toc a:active {
+    color: #fff;
 }
-
-#extras .blogroll li {float: left; margin: 0 20px 0 0; width: 185px;}
 
 /* Social */
-#extras .social {
-    float: right;
-    width: 175px;
-}
 
 #extras div[class='social'] a {
     background-repeat: no-repeat;
@@ -395,71 +396,71 @@ li:last-child .hentry, #content > .hentry {border: 0; margin: 0;}
 
 .hentry .post-info * {font-style: normal;}
 
-    /* Content */
-    .hentry footer {margin-bottom: 2em;}
-    .hentry footer address {display: inline;}
-    #posts-list footer address {display: block;}
+/* Content */
+.hentry footer {margin-bottom: 2em;}
+.hentry footer address {display: inline;}
+#posts-list footer address {display: block;}
 
-    /* Blog Index */
-    #posts-list {list-style: none; margin: 0;}
-    #posts-list .hentry {padding-left: 10px; position: relative;}
+/* Blog Index */
+#posts-list {list-style: none; margin: 0;}
+#posts-list .hentry {padding-left: 10px; position: relative;}
 
-    #posts-list footer {
-        left: 10px;
-        position: relative;
-        float: left;
-        top: 0.5em;
-        width: 190px;
-    }
+#posts-list footer {
+    left: 10px;
+    position: relative;
+    float: left;
+    top: 0.5em;
+    width: 190px;
+}
 
-    /* About the Author */
-    #about-author {
-        background: #f9f9f9;
-        clear: both;
-        font-style: normal;
-        margin: 2em 0;
-        padding: 10px 20px 15px 20px;
+/* About the Author */
+#about-author {
+    background: #f9f9f9;
+    clear: both;
+    font-style: normal;
+    margin: 2em 0;
+    padding: 10px 20px 15px 20px;
 
-        border-radius: 5px;
-        -moz-border-radius: 5px;
-        -webkit-border-radius: 5px;
-    }
+    border-radius: 5px;
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+}
 
-    #about-author strong {
-        color: #C64350;
-        clear: both;
-        display: block;
-        font-size: 1.429em;
-    }
+#about-author strong {
+    color: #C64350;
+    clear: both;
+    display: block;
+    font-size: 1.429em;
+}
 
-    #about-author .photo {border: 1px solid #ddd; float: left; margin: 5px 1em 0 0;}
+#about-author .photo {border: 1px solid #ddd; float: left; margin: 5px 1em 0 0;}
 
-    /* Comments */
-    #comments-list {list-style: none; margin: 0 1em;}
-    #comments-list blockquote {
-        background: #f8f8f8;
-        clear: both;
-        font-style: normal;
-        margin: 0;
-        padding: 15px 20px;
+/* Comments */
+#comments-list {list-style: none; margin: 0 1em;}
+#comments-list blockquote {
+    background: #f8f8f8;
+    clear: both;
+    font-style: normal;
+    margin: 0;
+    padding: 15px 20px;
 
-        border-radius: 5px;
-        -moz-border-radius: 5px;
-        -webkit-border-radius: 5px;
-    }
-    #comments-list footer {color: #888; padding: .5em 1em 0 0; text-align: right;}
+    border-radius: 5px;
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+}
+#comments-list footer {color: #888; padding: .5em 1em 0 0; text-align: right;}
 
-    #comments-list li:nth-child(2n) blockquote {background: #F5f5f5;}
+#comments-list li:nth-child(2n) blockquote {background: #F5f5f5;}
 
-    /* Add a Comment */
-    #add-comment label {clear: left; float: left; text-align: left; width: 150px;}
-    #add-comment input[type='text'],
-    #add-comment input[type='email'],
-    #add-comment input[type='url'] {float: left; width: 200px;}
+/* Add a Comment */
+#add-comment label {clear: left; float: left; text-align: left; width: 150px;}
+#add-comment input[type='text'],
+#add-comment input[type='email'],
+#add-comment input[type='url'] {float: left; width: 200px;}
 
-    #add-comment textarea {float: left; height: 150px; width: 495px;}
+#add-comment textarea {float: left; height: 150px; width: 495px;}
 
-    #add-comment p.req {clear: both; margin: 0 .5em 1em 0; text-align: right;}
+#add-comment p.req {clear: both; margin: 0 .5em 1em 0; text-align: right;}
 
-    #add-comment input[type='submit'] {float: right; margin: 0 .5em;}
-    #add-comment * {margin-bottom: .5em;}
+#add-comment input[type='submit'] {float: right; margin: 0 .5em;}
+#add-comment * {margin-bottom: .5em;}
