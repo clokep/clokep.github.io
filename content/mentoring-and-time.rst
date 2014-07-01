@@ -1,24 +1,9 @@
 Mentoring and Time
 ##################
-:date: 2014-06-18 23:46
+:date: 2014-07-03 23:46
 :author: Patrick Cloke
 :tags: community, GSoC
 :slug: mentoring-and-time
-
-.. contents::
-
-Google Summer of Code 2014
-==========================
-
-I'm again mentoring for `Google Summer of Code`_ 2014, this year my student is
-`Saurabh Anand`_ (sawrubh), who has been working on a full related things:
-
-* Adding a `file transfer mechanism for XMPP`_
-* Hooking up libpurple's file transfer code to Instantbird
-* Integrating FileLink_ as a fallback to in-protocol file transfers
-
-On Time
-=======
 
 No, this is not about being late places, it's about respecting people's time. I
 won't go super into this as, Michael Haggerty wrote an awesome article_ on this.
@@ -72,8 +57,4 @@ h(im|er)self open. A few thoughts on interacting as a mentor:
   and algorithms than nits. (Maybe even point out nits, but fix them yourself
   for an initial patch.)
 
-.. _Google Summer of Code: https://www.google-melange.com/gsoc/homepage/google/gsoc2014
-.. _Saurabh Anand: http://sawrubh.tumblr.com/
-.. _file transfer mechanism for XMPP: https://bugzilla.mozilla.org/show_bug.cgi?id=1024023
-.. _FileLink: https://support.mozilla.org/en-US/kb/filelink-large-attachments
 .. _article: http://softwareswirl.blogspot.fr/2014/03/my-secret-tip-for-gsoc-success.html
