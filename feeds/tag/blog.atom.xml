@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Like bricks in the sky</title><link href="http://patrick.cloke.us/" rel="alternate"></link><link href="http://patrick.cloke.us/feeds/tag/blog.atom.xml" rel="self"></link><id>http://patrick.cloke.us/</id><updated>2014-08-01T12:03:00-04:00</updated><entry><title>New Blog</title><link href="http://patrick.cloke.us/posts/2014/Aug/01/new-blog/" rel="alternate"></link><updated>2014-08-01T12:03:00-04:00</updated><author><name>Patrick Cloke</name></author><id>tag:patrick.cloke.us,2014-08-01:posts/2014/Aug/01/new-blog/</id><summary type="html">&lt;p&gt;Using&amp;nbsp;pelican!&lt;/p&gt;
+&lt;p&gt;Link to&amp;nbsp;github!&lt;/p&gt;
+&lt;p&gt;&lt;a class="reference external" href="http://terriyu.info/blog/posts/2013/07/pelican-setup/"&gt;http://terriyu.info/blog/posts/2013/07/pelican-setup/&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Something about redirecting&amp;nbsp;blogger!&lt;/p&gt;
+</summary><category term="blog"></category></entry></feed>
