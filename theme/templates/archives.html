@@ -1,13 +1,30 @@
 {% extends "base.html" %}
 {% block content %}
 <section id="content" class="body">
-<h1>Archives for {{ SITENAME }}</h1>
+<h1>Archives</h1>
 
+
+{# Group by year. #}
+{% for year in dates|groupby('date.year')|reverse %}
+<h2>{{ year.grouper }}</h2>
 <dl>
-{% for article in dates %}
-    <dt>{{ article.locale_date }}</dt>
-    <dd><a href="{{ SITEURL }}/{{ article.url }}">{{ article.title }}</a></dd>
+{# Group by month. #}
+{% for month in year.list|groupby('date.month') %}
+    {# List the articles in this month, ordered by day. #}
+    {% for article in month.list|sort(attribute='date') %}
+    {# But first display the month name! #}
+    {% if loop.first %}
+    <dt>{{ article.date.strftime("%B") }}</dt>
+    <dd>
+        <ul>
+    {% endif %}
+            <li><a href="{{ SITEURL }}/{{ article.url }}">{{ article.title }}</a></li>
+    {% endfor %}
+        </ul>
+    </dd>
 {% endfor %}
 </dl>
+{% endfor %}
+
 </section>
 {% endblock %}

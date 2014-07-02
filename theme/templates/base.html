@@ -34,6 +34,8 @@
             <li{% if cat == category %} class="active"{% endif %}><a href="{{ SITEURL }}/{{ cat.url }}">{{ cat }}</a></li>
         {% endfor %}
         {% endif %}
+            <li{% if output_file == "archives.html" %} class="active"{% endif %}><a href="{{ SITEURL }}/archives.html">Archives</a></li>
+            <li{% if output_file == "tags.html" %} class="active"{% endif %}><a href="{{ SITEURL }}/tags.html">Tags</a></li>
         </ul></nav>
     </header><!-- /#banner -->
 
