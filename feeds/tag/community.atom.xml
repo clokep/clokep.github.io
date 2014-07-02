@@ -1,53 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>Like bricks in the sky</title><link href="http://patrick.cloke.us/" rel="alternate"></link><link href="http://patrick.cloke.us/feeds/tag/community.atom.xml" rel="self"></link><id>http://patrick.cloke.us/</id><updated>2014-07-03T23:46:00-04:00</updated><entry><title>Mentoring and Time</title><link href="http://patrick.cloke.us/posts/2014/Jul/03/mentoring-and-time/" rel="alternate"></link><updated>2014-07-03T23:46:00-04:00</updated><author><name>Patrick Cloke</name></author><id>tag:patrick.cloke.us,2014-07-03:posts/2014/Jul/03/mentoring-and-time/</id><summary type="html">&lt;p&gt;No, this is not about being late places, it&amp;#8217;s about respecting people&amp;#8217;s time. I
-won&amp;#8217;t go super into this as, Michael Haggerty wrote an awesome &lt;a class="reference external" href="http://softwareswirl.blogspot.fr/2014/03/my-secret-tip-for-gsoc-success.html"&gt;article&lt;/a&gt; on this.
-His thoughts boild down to a single line of advice:
-&amp;quot;&lt;strong&gt;&lt;span class="caps"&gt;DON&lt;/span&gt;&amp;#8217;T &lt;span class="caps"&gt;WASTE&lt;/span&gt; &lt;span class="caps"&gt;OTHER&lt;/span&gt; &lt;span class="caps"&gt;PEOPLE&lt;/span&gt;&amp;#8217;S &lt;span class="caps"&gt;TIME&lt;/span&gt;&lt;/strong&gt;&amp;quot;.&lt;/p&gt;
-&lt;p&gt;I think this applies to more than just Google Summer of Code mentoring, and not
-only open source work, but anything where someone is mentoring and helping you!
-This advice isn&amp;#8217;t meant just for GSoC students, interns or new employees, but
-also things I&amp;#8217;d like to remind myself to&amp;nbsp;do.&lt;/p&gt;
-&lt;p&gt;To make this sound a little more positive, I&amp;#8217;d reword his advice as &lt;strong&gt;Respect
-people&amp;#8217;s time!&lt;/strong&gt;. Someone is willing to help you, so assume some good faith,
-but help them help you. Some actions to focus&amp;nbsp;on:&lt;/p&gt;
-&lt;ul class="simple"&gt;
-&lt;li&gt;Ask &lt;em&gt;focused&lt;/em&gt; questions! If you do not understand an answer, do not &lt;em&gt;re-ask&lt;/em&gt;
-the same question, but ask &lt;em&gt;followup&lt;/em&gt; question. Show you&amp;#8217;ve researched the
-original answer and attempted to understand it. Write sample code, play with
-it, etc. If you think the answer given doesn&amp;#8217;t apply to your question,
-&lt;em&gt;reword&lt;/em&gt; your question: your mentor probably did not&amp;nbsp;understand.&lt;/li&gt;
-&lt;li&gt;Be cognizant of &lt;em&gt;timezones&lt;/em&gt;: if you&amp;#8217;d like a question asked (in realtime), ask
-it when the person is awake! (And this includes realizing if they have just
-woken up or are going to&amp;nbsp;bed.)&lt;/li&gt;
-&lt;li&gt;They will not have the &lt;em&gt;context&lt;/em&gt; you do: your &amp;quot;mentor&amp;quot; might be helping many
-people at once, try not to get frustrated if you have to explain your context
-to them multiple times or have to clarify your question. You are living and
-breathing the code you&amp;#8217;re working in; they are&amp;nbsp;not.&lt;/li&gt;
-&lt;li&gt;Don&amp;#8217;t be afraid to &lt;em&gt;post code&lt;/em&gt;. It&amp;#8217;s much easier to ask a question when
-there&amp;#8217;s an example in front of you. Be specific and don&amp;#8217;t talk&amp;nbsp;theoretically.&lt;/li&gt;
-&lt;li&gt;Don&amp;#8217;t be upset about an &lt;em&gt;r-&lt;/em&gt; (a rejected change)! Part of helping you to grow
-is telling you what you&amp;#8217;re doing&amp;nbsp;wrong.&lt;/li&gt;
-&lt;li&gt;Working &lt;em&gt;remotely&lt;/em&gt; is hard. It requires effort to build a level of trust
-between people. Don&amp;#8217;t just assume it will come in time, but work at it and try
-to get to know and understand your&amp;nbsp;mentor.&lt;/li&gt;
-&lt;li&gt;&lt;em&gt;Quickly&lt;/em&gt; respond to both feedback and questions. Your mentor is taking the
-time out of whatever they&amp;#8217;re doing to help you. If they ask you a question or
-ask something of you, do it now&amp;nbsp;(well&amp;#8230;*soon*).&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;All of the above is a lot to handle, but it can make it a join to work with a&amp;nbsp;mentor.&lt;/p&gt;
-&lt;p&gt;Mentoring is also hard and a skill to practice. Although I&amp;#8217;ve talked a lot
-about what a mentee needs to do, it is also important that a mentor leaves
-h(im|er)self open. A few thoughts on interacting as a&amp;nbsp;mentor:&lt;/p&gt;
-&lt;ul class="simple"&gt;
-&lt;li&gt;Be cognizant of &lt;em&gt;culture&lt;/em&gt; and &lt;em&gt;language&lt;/em&gt; (as in how well a mentor and mentee
-share their common language). In particular, colloquialisms should be avoided
-whenever possible. At least until a level of trust is&amp;nbsp;reached.&lt;/li&gt;
-&lt;li&gt;Be tactful when &lt;em&gt;giving feedback&lt;/em&gt;. Thank people for submitting a patch, give
-good, &lt;em&gt;actionable&lt;/em&gt; feedback quickly. Concentrate more on overall code design
-and algorithms than nits. (Maybe even point out nits, but fix them yourself
-for an initial&amp;nbsp;patch.)&lt;/li&gt;
-&lt;/ul&gt;
-</summary><category term="community"></category><category term="GSoC"></category></entry><entry><title>Google Summer of Code 2014</title><link href="http://patrick.cloke.us/posts/2014/Jul/01/google-summer-of-code-2014/" rel="alternate"></link><updated>2014-07-01T12:03:00-04:00</updated><author><name>Patrick Cloke</name></author><id>tag:patrick.cloke.us,2014-07-01:posts/2014/Jul/01/google-summer-of-code-2014/</id><summary type="html">&lt;p&gt;I&amp;#8217;m again mentoring for &lt;a class="reference external" href="https://www.google-melange.com/gsoc/homepage/google/gsoc2014"&gt;Google Summer of Code&lt;/a&gt; 2014, this year my student is
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Like bricks in the sky</title><link href="http://patrick.cloke.us/" rel="alternate"></link><link href="http://patrick.cloke.us/feeds/tag/community.atom.xml" rel="self"></link><id>http://patrick.cloke.us/</id><updated>2014-07-01T12:03:00-04:00</updated><entry><title>Google Summer of Code 2014</title><link href="http://patrick.cloke.us/posts/2014/Jul/01/google-summer-of-code-2014/" rel="alternate"></link><updated>2014-07-01T12:03:00-04:00</updated><author><name>Patrick Cloke</name></author><id>tag:patrick.cloke.us,2014-07-01:posts/2014/Jul/01/google-summer-of-code-2014/</id><summary type="html">&lt;p&gt;I&amp;#8217;m again mentoring for &lt;a class="reference external" href="https://www.google-melange.com/gsoc/homepage/google/gsoc2014"&gt;Google Summer of Code&lt;/a&gt; 2014, this year my student is
 &lt;a class="reference external" href="http://sawrubh.tumblr.com/"&gt;Saurabh Anand&lt;/a&gt; (sawrubh), who has been working on a few related&amp;nbsp;things:&lt;/p&gt;
 &lt;ul class="simple"&gt;
 &lt;li&gt;Adding a &lt;a class="reference external" href="https://bugzilla.mozilla.org/show_bug.cgi?id=1024023"&gt;file transfer mechanism for &lt;span class="caps"&gt;XMPP&lt;/span&gt;&lt;/a&gt;&lt;/li&gt;
