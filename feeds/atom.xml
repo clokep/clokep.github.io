@@ -22,10 +22,11 @@ seemed alright, but no one seemed to use it. Farther down the page I came across
 necessarily agree with all the ideas in that post, it just introduced me to Pelican.)&lt;/p&gt;
 &lt;div class="section" id="set-up-pelican"&gt;
 &lt;h2&gt;&lt;a class="toc-backref" href="#id1"&gt;Set up Pelican&lt;/a&gt;&lt;/h2&gt;
-&lt;p&gt;(Since I dislike writing my own descriptions:) "Pelican is a static site
-generator, written in &lt;a class="reference external" href="http://www.python.org/"&gt;Python&lt;/a&gt;, that requires no database or server-side logic."
-Cool! Sounds real simple to use!&lt;/p&gt;
-&lt;p&gt;And it was. Mostly.&lt;/p&gt;
+&lt;p&gt;(Since I dislike writing my own descriptions:)&lt;/p&gt;
+&lt;blockquote&gt;
+"Pelican is a static site generator, written in &lt;a class="reference external" href="http://www.python.org/"&gt;Python&lt;/a&gt;, that requires no
+database or server-side logic."&lt;/blockquote&gt;
+&lt;p&gt;Cool! Sounds real simple to use! And it was. Mostly.&lt;/p&gt;
 &lt;p&gt;I pretty much followed the &lt;a class="reference external" href="http://docs.getpelican.com/en/3.4.0/quickstart.html"&gt;quickstart&lt;/a&gt;:&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;mkdir -p blog/blog &lt;span class="c"&gt;# The first blog is to store other repos, etc.&lt;/span&gt;
 &lt;span class="nb"&gt;cd &lt;/span&gt;blog/blog

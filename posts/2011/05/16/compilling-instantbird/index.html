@@ -83,6 +83,9 @@
         Published: 05/16/2011 09:30 PM UTC
     </abbr>
 
+    <address class="vcard author">
+        By             <a class="url fn" href="http://patrick.cloke.us/author/patrick-cloke.html">Patrick Cloke</a>
+    </address>
 
 <p>tags: <a href="http://patrick.cloke.us/tag/instantbird.html">Instantbird</a> <a href="http://patrick.cloke.us/tag/mozilla.html">Mozilla</a> <a href="http://patrick.cloke.us/tag/programming.html">programming</a> </p>
 </footer><!-- /.post-info -->        
@@ -255,6 +258,86 @@ spelling error in the title.</p>
 </div>
 
     </div><!-- /.entry-content -->
+
+    <div class="comments">
+        <h2>2 Comments:</h2>
+        <ul id="comments-list">
+            <li>
+                <abbr class="published" title="2011-05-17T05:56:00">
+                    Commented: <a href="http://patrick.cloke.us/posts/2011/05/16/compilling-instantbird/#comment-0"
+                                  rel="bookmark" title="Permalink to this comment">05/17/2011 05:56 AM UTC</a>
+                </abbr>
+
+                <address class="vcard author">
+                    By <a class="url fn" href="http://queze.net/">                        Florian Queze
+</a>                </address>
+
+                <p>First, congratulations for your successful build!&nbsp;:)</p>
+<ul class="simple">
+<li>I don&#8217;t think you need the &quot;Microsoft Visual C++ 2008 <span class="caps">SP1</span> Redistributable
+Package&quot; but it certainly doesn&#8217;t hurt to keep&nbsp;it.</li>
+<li>On the buildbot we have <span class="caps">VC2005</span> Pro. The express version won&#8217;t be able to
+compile jemalloc (which most likely doesn&#8217;t matter for development&nbsp;builds).</li>
+<li>The accessibility error is because you need the Windows 2003 <span class="caps">SDK</span>. Yes, in
+addition to the Windows 7 <span class="caps">SDK</span>. Yes, that&#8217;s stupid. Microsoft apparently has a
+hard time including all the previously available files in the newer versions
+of the <span class="caps">SDK</span>.</li>
+<li>The testable executable is in objdir-ib-release/<em>mozilla</em>/dist/bin because of
+the comm-central build&nbsp;system.</li>
+<li>The flat chrome format is not as useful as it used to be as the new default
+chrome format (omnijar) packages the files only during make package and keeps
+flat chrome in the dist/bin/chrome&nbsp;folder.</li>
+</ul>
+<p>Again, congrats! And thanks for documenting&nbsp;this!</p>
+
+                            <ul id="comments-list">
+            <li>
+                <abbr class="published" title="2011-05-19T20:58:00">
+                    Commented: <a href="http://patrick.cloke.us/posts/2011/05/16/compilling-instantbird/#comment-1"
+                                  rel="bookmark" title="Permalink to this comment">05/19/2011 08:58 PM UTC</a>
+                </abbr>
+
+                <address class="vcard author">
+                    By <a class="url fn" href="http://patrick.cloke.us">                        Patrick Cloke
+</a>                </address>
+
+                <!--  -->
+<blockquote>
+First, congratulations for your successful build! :)</blockquote>
+<p>Thanks!</p>
+<blockquote>
+<ul class="simple">
+<li>On the buildbot we have <span class="caps">VC2005</span> Pro. The express version won&#8217;t be able to
+compile jemalloc (which most likely doesn&#8217;t matter for development&nbsp;builds).</li>
+</ul>
+</blockquote>
+<p>Right, I remember reading that. But it&#8217;s fine for development&nbsp;builds</p>
+<blockquote>
+<ul class="simple">
+<li>The accessibility error is because you need the Windows 2003 <span class="caps">SDK</span>. Yes, in
+addition to the Windows 7 <span class="caps">SDK</span>. Yes, that&#8217;s stupid. Microsoft apparently
+has a hard time including all the previously available files in the newer
+versions of the <span class="caps">SDK</span>.</li>
+</ul>
+</blockquote>
+<p>Bah, that&#8217;s ridiculous. Easier to disable&nbsp;it.</p>
+<blockquote>
+<ul class="simple">
+<li>The testable executable is in objdir-ib-release/<em>mozilla</em>/dist/bin because
+of the comm-central build&nbsp;system.</li>
+</ul>
+</blockquote>
+<p>Fixed, thank you.&nbsp;:)</p>
+<blockquote>
+Again, congrats! And thanks for documenting this!</blockquote>
+<p>:)</p>
+
+            </li>
+        </ul>
+
+            </li>
+        </ul>
+    </div>
 
   </article>
 </section>
