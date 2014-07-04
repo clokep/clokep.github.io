@@ -17,6 +17,8 @@ Use template!
 
 Check dates / links!
 
+Set Settings > Other > "Post Feed Redirect URL" to your new Atom feed URL.
+
 http://terriyu.info/blog/posts/2013/07/pelican-setup/
 http://www.labnol.org/internet/switch-from-blogger-to-wordpress/9707/
 https://support.google.com/blogger/answer/42095

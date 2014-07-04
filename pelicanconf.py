@@ -58,8 +58,8 @@ PLUGIN_PATH = '../pelican-plugins/'
 PLUGINS = ['extract_toc']
 
 # Change the default URLs.
-ARTICLE_URL = 'posts/{date:%Y}/{date:%b}/{date:%d}/{slug}/'
-ARTICLE_SAVE_AS = 'posts/{date:%Y}/{date:%b}/{date:%d}/{slug}/index.html'
+ARTICLE_URL = 'posts/{date:%Y}/{date:%m}/{date:%d}/{slug}/'
+ARTICLE_SAVE_AS = ARTICLE_URL + 'index.html'
 
 # Paginate, but have at least three items per page.
 DEFAULT_ORPHANS = 2
