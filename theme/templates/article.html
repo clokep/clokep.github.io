@@ -28,9 +28,9 @@
         <h2>{{ article.comments_count }} Comments:</h2>
         {% for comment in article.comments recursive %}
         <ul id="comments-list">
-            <li>
+            <li id="comment-{{ comment.id }}">
                 <abbr class="published" title="{{ comment.date.isoformat() }}">
-                    Commented: <a href="{{ SITEURL }}/{{ article.url }}#comment-{{comment.id}}"
+                    Commented: <a href="{{ SITEURL }}/{{ article.url }}#comment-{{ comment.id }}"
                                   rel="bookmark" title="Permalink to this comment">{{ comment.locale_date }}</a>
                 </abbr>
 
