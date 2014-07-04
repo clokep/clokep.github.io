@@ -13,6 +13,9 @@ from pelicanconf import *
 SITEURL = 'http://patrick.cloke.us'
 RELATIVE_URLS = False
 
+# Don't publish drafts.
+WITH_FUTURE_DATES = False
+
 # Configure RSS and atom feeds.
 FEED_DOMAIN = SITEURL
 FEED_ALL_ATOM = 'feeds/atom.xml'

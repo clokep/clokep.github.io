@@ -10,9 +10,6 @@ DEFAULT_DATE_FORMAT = '%m/%d/%Y %I:%M %p UTC'
 
 DEFAULT_LANG = u'en'
 
-# Future dates are drafts.
-WITH_FUTURE_DATES = False
-
 # Feed generation is usually not desired when developing
 FEED_ALL_ATOM = None
 TRANSLATION_FEED_ATOM = None

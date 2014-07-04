@@ -1,29 +1,133 @@
 New Blog
 ########
-:date: 2099-08-01 12:03
+:date: 2014-07-03 23:04
 :tags: blog
+
+.. contents::
+
+If you're reading this you might have noticed that I have a shiny new blog! I
+had been pretty disappointed in Blogger_ practically since I started using it.
+But it was free, I was a poor college student, etc. I finally managed to get
+myself a `domain name`_ and set up a more proper blog!
+
+I was between a few different pieces of blog software (namely WordPress_,
+DotClear_ and Jekyll_) and couldn't really decide. I loved the idea of the
+simplicity of Jekyll, but it's Ruby_. (Who's got time for that?) I wanted
+something I could read the code of and understand if necessary. (And it has
+been necessary!) My main requirements for blog software were:
+
+* Easy to use and set up.
+* Free.
+* Support for syntax highlighted code blocks. (This was the only "hard" one to
+  come by.)
+* Support for RSS_ feeds.
+
+After a quick Google search for "`jekyll python`_", I ended up on Hyde_. It
+seemed alright, but no one seemed to use it. Farther down the page I came across
+`a blog`_ talking about moving to Pelican_. I was hooked. (Note that I don't
+necessarily agree with all the ideas in that post, it just introduced me to
+Pelican.)
 
 Set up Pelican
 ==============
 
-Using pelican!
+(Since I dislike writing my own descriptions:) "Pelican is a static site
+generator, written in Python_, that requires no database or server-side logic."
+Cool! Sounds real simple to use!
 
-Link to github!
+And it was. Mostly.
 
-Redirect Blogger
-================
+I pretty much followed the quickstart_:
 
-Use template!
+.. code-block:: bash
 
-Check dates / links!
+    mkdir -p blog/blog # The first blog is to store other repos, etc.
+    cd blog/blog
+    git init && git checkout -b source # Explained later on.
+    brew install pandoc # If you're not on Mac you'll need to do something else.
+    mkvirtualenv blog
+    pip install pelican markdown Fabric ghp_import feedparser
+    pelican-quickstart
 
-Set Settings > Other > "Post Feed Redirect URL" to your new Atom feed URL.
+I'll let you read the rest of the quickstart guide, but it was super quick to
+get up and running! (I also referenced another `blog post`_ I found that had some
+good information!) I, of course, had no content...but wait I did, it was just
+in Blogger!
 
-http://terriyu.info/blog/posts/2013/07/pelican-setup/
-http://www.labnol.org/internet/switch-from-blogger-to-wordpress/9707/
-https://support.google.com/blogger/answer/42095
-http://www.elizabethcastro.com/blogvqj/extras/templatetags.html
+Importing Content from Blogger
+==============================
 
-Set Settings > Language and formatting > Date Header Format to 2014/07/03
+Pelican does not directly support importing from Blogger, but it supports
+`importing from a RSS feed`_. The first time I did this it missed a couple of
+articles (which I didn't notice right away), so make sure you bump up the max
+amount in the URL like so (this also outputs in the folder "content"): ::
 
-Something about redirecting blogger!
+    pelican-import --feed http://clokep.blogspot.com/feeds/posts/default\?alt\=rss\&max-results\=240 -o content
+
+No import is ever perfect and I had to clean up a bunch of stuff by hand
+including:
+
+* The slugs did not match the ones from Blogger (this is important later on!)
+* Some of the dates were strangely wrong
+* Some HTML formatting was included (in particular around <code>/<pre> blocks I
+  had added).
+* Some formatting was messed up.
+* The (single) image I had on my blog had to be downloaded and manually
+  configured.
+* Things that I really wanted to be headers I had just bolded. (This is my
+  fault!)
+
+I probably spent a couple of hours cleaning all the reStructuredText content up,
+but now I feel that I have a portable set of all of my blog posts, which I'm
+pretty happy about!
+
+Customizing Pelican
+===================
+
+I tried a few different themes for Pelican, but eventually settled on just using
+and modifying the default theme. I frankly have tried it on too many different
+systems, so hopefully it doesn't totally break on small screen sizes or
+something. I'm not HTML expert, so I'd rather talk about the other stuff I
+modified. (Although the main elements I *did* modify, if you're curious, are
+adding the sidebar on the left and the organization of the archives page).
+
+Blogger has a concept of "labels", Pelican has a concept of "category" and
+"tags". I *hate* this. What's the difference? Anyway, I wanted to eradicate the
+concept of a "category" (and "authors" since I'm the only one on my blog!), so I
+added a few things to my pelicanconf.py:
+
+.. code-block:: python
+
+    # Disable categories.
+    DISPLAY_CATEGORIES_ON_MENU = False
+    DISPLAY_CATEGORY_ON_ARTICLE = False
+    CATEGORY_FEED_ATOM = None
+    CATEGORY_SAVE_AS = ''
+    CATEGORIES_SAVE_AS = ''
+
+    # Disable author pages.
+    AUTHOR_SAVE_AS = ''
+    AUTHORS_SAVE_AS = ''
+
+Note that ``DISPLAY_CATEGORY_ON_ARTICLE`` is actually a variable I added and
+used in the template to not show categories above the list of tags on each
+article.
+
+This is getting pretty long so I'll leave how I'm actually serving this content
+to my next article!
+
+.. _Blogger: https://www.blogger.com/
+.. _domain name: http://patrick.cloke.us
+.. _WordPress: https://wordpress.com/
+.. _DotClear: http://dotclear.org/
+.. _Jekyll: http://jekyllrb.com/
+.. _Ruby: http://www.ruby-lang.org/
+.. _jekyll python: https://www.google.com/search?q=jekyll+python
+.. _RSS: https://en.wikipedia.org/wiki/RSS
+.. _Hyde: https://hyde.github.io/
+.. _a blog: http://arunrocks.com/moving-blogs-to-pelican/
+.. _Pelican: http://getpelican.com/
+.. _Python: http://www.python.org/
+.. _quickstart: http://docs.getpelican.com/en/3.4.0/quickstart.html
+.. _blog post: http://terriyu.info/blog/posts/2013/07/pelican-setup/
+.. _importing from a RSS feed: http://docs.getpelican.com/en/3.4.0/importer.html
