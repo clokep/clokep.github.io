@@ -263,6 +263,14 @@ img.left, figure.left {float: left; margin: 0 2em 2em 0;}
 #featured h3 a:hover, #featured h3 a:active {color: #fff;}
 
 /*
+ * See https://stackoverflow.com/questions/501671/superscript-in-css-only
+ */
+#featured .footnote-reference, #content .footnote-reference {
+    vertical-align: super;
+    font-size: .83em;
+}
+
+/*
     Body
 *****************/
 #content {
