@@ -8,5 +8,6 @@ Using pelican!
 Link to github!
 
 http://terriyu.info/blog/posts/2013/07/pelican-setup/
+http://www.labnol.org/internet/switch-from-blogger-to-wordpress/9707/
 
 Something about redirecting blogger!

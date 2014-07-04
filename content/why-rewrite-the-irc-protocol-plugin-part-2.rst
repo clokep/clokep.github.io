@@ -3,7 +3,7 @@ Why rewrite the IRC protocol plugin? (Part 2)
 :date: 2011-04-30 17:01
 :author: Patrick Cloke
 :tags: Instantbird, IRC
-:slug: why-rewrite-the-irc-protocol-plugin-part-2
+:slug: why-rewrite-irc-protocol-plugin-part-2
 
 I `previously wrote about`_ why I'm rewriting the libpurple IRC
 implementation into a JavaScript implementation for Instantbird.  This

@@ -3,7 +3,7 @@ Adding a new protocol (SIPE/Office Communicator) to Instantbird (part 1)
 :date: 2011-06-19 01:53
 :author: Patrick Cloke
 :tags: Instantbird, programming, SIPE
-:slug: adding-a-new-protocol-sipeoffice-communicator-to-instantbird-part-1
+:slug: adding-new-protocol-sipeoffice
 
 `Microsoft Office Communicator`_ is an instant messaging client that
 integrates into the `Exchange Messaging Server`_ (the protocol behind it

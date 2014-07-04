@@ -3,7 +3,7 @@ Why Rewrite IRC into JavaScript? (vs. libpurple's vs. ChatZilla's)
 :date: 2010-12-08 18:29
 :author: Patrick Cloke
 :tags: Instantbird, IRC, Mozilla, programming
-:slug: why-rewrite-irc-into-javascript-vs-libpurples-vs-chatzillas
+:slug: why-rewrite-irc-into-javascript
 
 .. contents::
 

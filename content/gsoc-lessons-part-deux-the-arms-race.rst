@@ -3,7 +3,7 @@ GSoc Lessons: Part Deux: The Arms Race
 :date: 2013-12-04 13:17
 :author: Patrick Cloke
 :tags: community, GSoC, Mozilla
-:slug: gsoc-lessons-part-deux-the-arms-race
+:slug: gsoc-lessons-part-deux-arms-race
 
 This post title might be a little excessive, but I'll blame `The Sum
 of All Fears`_ that I was watching last night. This is the second part

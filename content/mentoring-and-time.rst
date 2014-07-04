@@ -3,7 +3,6 @@ Mentoring and Time
 :date: 2014-07-03 23:46
 :author: Patrick Cloke
 :tags: community, GSoC
-:slug: mentoring-and-time
 
 No, this is not about being late places, it's about respecting people's time. I
 won't go super into this as, Michael Haggerty wrote an awesome article_ on this.

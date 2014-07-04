@@ -3,7 +3,7 @@ Adding a protocol to Instantbird (Part 2)
 :date: 2011-09-03 14:31
 :author: Patrick Cloke
 :tags: Instantbird, programming, SIPE
-:slug: adding-a-protocol-to-instantbird-part-2
+:slug: adding-protocol-to-instantbird-part-2
 
 .. contents::
 

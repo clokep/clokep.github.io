@@ -3,7 +3,7 @@ Shared Lightning profile across Linux and Windows
 :date: 2011-07-08 00:46
 :author: Patrick Cloke
 :tags: Lightning, Mozilla
-:slug: shared-lightning-profile-across-linux-and-windows
+:slug: shared-lightning-profile-across-linux
 
 In `#calendar on Mozilla IRC`_ the past few days a user has been
 asking about using a shared profile on Thunderbird between Linux and

@@ -3,7 +3,7 @@ The so-called IRC "specifications"
 :date: 2011-03-09 01:20
 :author: Patrick Cloke
 :tags: Instantbird, IRC, programming, specifications
-:slug: the-so-called-irc-specifications
+:slug: so-called-irc-specifications
 
 .. contents::
 

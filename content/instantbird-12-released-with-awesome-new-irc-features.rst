@@ -3,7 +3,7 @@ Instantbird 1.2 Released (with awesome new IRC features)!
 :date: 2012-08-08 17:08
 :author: Patrick Cloke
 :tags: Instantbird, IRC
-:slug: instantbird-12-released-with-awesome-new-irc-features
+:slug: instantbird-12-released-with-awesome
 
 If you haven't seen the announcement...\ `Instantbird 1.2 has been
 released`_!  It's got a ton of great new features that I'm excited for:

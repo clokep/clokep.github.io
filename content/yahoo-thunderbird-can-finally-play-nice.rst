@@ -3,7 +3,7 @@ Yahoo & Thunderbird Can Finally Play Nice?
 :date: 2010-11-23 03:03
 :author: Patrick Cloke
 :tags: bugs, email, IMAP, Mozilla, POP3, programming, SMTP, Thunderbird, Yahoo
-:slug: yahoo-thunderbird-can-finally-play-nice
+:slug: yahoo-thunderbird
 
 For years I've been dealing with Yahoo's lack of support for any sort
 of decent (free) POP3/IMAP/SMTP protocol support.  Why do I need this? 

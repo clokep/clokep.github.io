@@ -3,6 +3,7 @@ Google Summer of Code 2014
 :date: 2014-07-01 12:03
 :author: Patrick Cloke
 :tags: community, GSoC
+:slug: google-summer-of-code-2014-file
 
 I'm again mentoring for `Google Summer of Code`_ 2014, this year my student is
 `Saurabh Anand`_ (sawrubh), who has been working on a few related things:
