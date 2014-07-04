@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Like bricks in the sky</title><link>http://patrick.cloke.us/</link><description></description><atom:link href="http://patrick.cloke.us/feeds/tag/mozilla.rss.xml" rel="self"></atom:link><lastBuildDate>Wed, 16 Apr 2014 16:34:00 -0400</lastBuildDate><item><title>Community and Volunteers</title><link>http://patrick.cloke.us/posts/2014/04/16/community-and-volunteers/</link><description>&lt;p&gt;It was suggested that I cross-post this from mozilla.dev.planning onto
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Like bricks in the sky</title><link>http://patrick.cloke.us/</link><description></description><atom:link href="http://patrick.cloke.us/feeds/tag/mozilla.rss.xml" rel="self"></atom:link><lastBuildDate>Wed, 16 Apr 2014 12:34:00 -0400</lastBuildDate><item><title>Community and Volunteers</title><link>http://patrick.cloke.us/posts/2014/04/16/community-and-volunteers/</link><description>&lt;p&gt;It was suggested that I cross-post this from mozilla.dev.planning onto
 my blog. This is in reply to a thread entitled &amp;quot;&lt;a class="reference external" href="https://groups.google.com/forum/#%21topic/mozilla.dev.planning/P8oHKTCWSiQ"&gt;Proposal: Move
 Thunderbird and SeaMonkey to mozilla-central&lt;/a&gt;&amp;quot; about (essentially)
 merging comm-central back into mozilla-central. There have been many
@@ -71,10 +71,10 @@ keeping a dying one on life-support. (And prove to all that
 &lt;/blockquote&gt;
 &lt;p&gt;I don&amp;#8217;t have much else to say beyond that (besides thanks for reading
 this&amp;nbsp;far!)&lt;/p&gt;
-</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Patrick Cloke</dc:creator><pubDate>Wed, 16 Apr 2014 16:34:00 -0400</pubDate><guid>tag:patrick.cloke.us,2014-04-16:posts/2014/04/16/community-and-volunteers/</guid><category>community</category><category>crosspost</category><category>Mozilla</category><category>Thunderbird</category></item><item><title>GSoc Lessons: Part Deux: The Arms Race</title><link>http://patrick.cloke.us/posts/2013/12/04/gsoc-lessons-part-deux-arms-race/</link><description>&lt;p&gt;This post title might be a little excessive, but I&amp;#8217;ll blame &lt;a class="reference external" href="http://en.wikipedia.org/wiki/The_Sum_of_All_Fears_%28film%29"&gt;The Sum
+</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Patrick Cloke</dc:creator><pubDate>Wed, 16 Apr 2014 12:34:00 -0400</pubDate><guid>tag:patrick.cloke.us,2014-04-16:posts/2014/04/16/community-and-volunteers/</guid><category>community</category><category>crosspost</category><category>Mozilla</category><category>Thunderbird</category></item><item><title>GSoc Lessons: Part Deux: The Arms Race</title><link>http://patrick.cloke.us/posts/2013/12/04/gsoc-lessons-part-deux-arms-race/</link><description>&lt;p&gt;This post title might be a little excessive, but I&amp;#8217;ll blame &lt;a class="reference external" href="http://en.wikipedia.org/wiki/The_Sum_of_All_Fears_%28film%29"&gt;The Sum
 of All Fears&lt;/a&gt; that I was watching last night. This is the second part
 of a set of posts about ideas I heard at the Google Summer of Code 2013
-Mentor Summit (you can read &lt;a class="reference external" href="http://patrick.cloke.us/posts/2013/12/02/gsoc-lessons-part-1-application-period/"&gt;the first part about the application
+Mentor Summit (you can read &lt;a class="reference external" href="http://patrick.cloke.us/posts/2013/12/01/gsoc-lessons-part-1-application-period/"&gt;the first part about the application
 process&lt;/a&gt;).&lt;/p&gt;
 &lt;p&gt;This will explore an interesting anecdote I heard about the
 interaction between applicants from another organization that, on
@@ -123,7 +123,7 @@ anyone in &lt;a class="reference external" href="irc://irc.mozilla.org/#instantb
 Upon letting it sink in and reflecting on it&amp;#8230;I realized I had actually
 seen similar situations during the application periods I&amp;#8217;ve been
 involved with. This year, we found a bug in Instantbird&amp;#8217;s &lt;span class="caps"&gt;IRC&lt;/span&gt; code (&lt;span class="caps"&gt;CTCP&lt;/span&gt;
-quoting and dequoting); after referencing some &lt;a class="reference external" href="http://patrick.cloke.us/posts/2011/03/09/so-called-irc-specifications/"&gt;specifications&lt;/a&gt;, I was
+quoting and dequoting); after referencing some &lt;a class="reference external" href="http://patrick.cloke.us/posts/2011/03/08/so-called-irc-specifications/"&gt;specifications&lt;/a&gt;, I was
 pretty quickly able to figure out the vague areas where people should
 look for a fix. A couple of GSoC students in the room started looking
 into it and exhibited a greatly reduced form of the behavior I discussed
@@ -147,7 +147,7 @@ accepted. (And that they&amp;#8217;re used to competing, e.g. homework and exams
 not collaborating!) I don&amp;#8217;t really know whether I feel the above
 situation is good or bad, but it&amp;#8217;s certainly an interesting effect from
 the way the GSoC process&amp;nbsp;works.&lt;/p&gt;
-</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Patrick Cloke</dc:creator><pubDate>Wed, 04 Dec 2013 13:17:00 -0500</pubDate><guid>tag:patrick.cloke.us,2013-12-04:posts/2013/12/04/gsoc-lessons-part-deux-arms-race/</guid><category>community</category><category>GSoC</category><category>Mozilla</category></item><item><title>GSoC Lessons: Part 1: Application Period</title><link>http://patrick.cloke.us/posts/2013/12/02/gsoc-lessons-part-1-application-period/</link><description>&lt;p&gt;I briefly talked about &lt;a class="reference external" href="http://patrick.cloke.us/posts/2013/10/21/google-summer-of-code-mentor-summit-2013/"&gt;my experiences&lt;/a&gt; at the Google Summer of Code
+</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Patrick Cloke</dc:creator><pubDate>Wed, 04 Dec 2013 09:17:00 -0500</pubDate><guid>tag:patrick.cloke.us,2013-12-04:posts/2013/12/04/gsoc-lessons-part-deux-arms-race/</guid><category>community</category><category>GSoC</category><category>Mozilla</category></item><item><title>GSoC Lessons: Part 1: Application Period</title><link>http://patrick.cloke.us/posts/2013/12/01/gsoc-lessons-part-1-application-period/</link><description>&lt;p&gt;I briefly talked about &lt;a class="reference external" href="http://patrick.cloke.us/posts/2013/10/20/google-summer-of-code-mentor-summit-2013/"&gt;my experiences&lt;/a&gt; at the Google Summer of Code
 2013 Mentor Summit. I&amp;#8217;ve been pretty remiss in sharing what was actually
 discussed there and for that I must apologize! This will hopefully be
 one of a few posts about what I learned and discussed at the&amp;nbsp;Summit.&lt;/p&gt;
@@ -216,7 +216,7 @@ students before they apply to GSoC? I&amp;#8217;d love to hear&amp;nbsp;it!&lt;/
 include: community lessons, and handling a failing student. The
 community one will be very not-GSoC focused and could apply to just
 trying to incorporate new contributors&amp;#8230;but I&amp;#8217;ll include it in this&amp;nbsp;series.&lt;/p&gt;
-</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Patrick Cloke</dc:creator><pubDate>Mon, 02 Dec 2013 00:55:00 -0500</pubDate><guid>tag:patrick.cloke.us,2013-12-02:posts/2013/12/02/gsoc-lessons-part-1-application-period/</guid><category>community</category><category>GSoC</category><category>Mozilla</category></item><item><title>Google Summer of Code Mentor Summit 2013</title><link>http://patrick.cloke.us/posts/2013/10/21/google-summer-of-code-mentor-summit-2013/</link><description>&lt;p&gt;Not only was I lucky enough to mentor a great student for this year&amp;#8217;s
+</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Patrick Cloke</dc:creator><pubDate>Sun, 01 Dec 2013 20:55:00 -0500</pubDate><guid>tag:patrick.cloke.us,2013-12-01:posts/2013/12/01/gsoc-lessons-part-1-application-period/</guid><category>community</category><category>GSoC</category><category>Mozilla</category></item><item><title>Google Summer of Code Mentor Summit 2013</title><link>http://patrick.cloke.us/posts/2013/10/20/google-summer-of-code-mentor-summit-2013/</link><description>&lt;p&gt;Not only was I lucky enough to mentor a great student for this year&amp;#8217;s
 Google Summer of Code, but Mozilla asked me to represent them at the
 Google Summer of Code Mentor Summit!&amp;nbsp; This was located at Google&amp;#8217;s
 offices in Mountain View, California this past weekend (Friday, Oct.
@@ -256,7 +256,7 @@ some people were excited by this and hopefully they&amp;#8217;ll try it&amp;nbsp
 was great and I&amp;#8217;d like to thank both Mozilla and Google for giving me
 this opportunity.&amp;nbsp; If I find any really great gems in my notes I&amp;#8217;ll
 write further blog posts about&amp;nbsp;them.&lt;/p&gt;
-</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Patrick Cloke</dc:creator><pubDate>Mon, 21 Oct 2013 02:18:00 -0400</pubDate><guid>tag:patrick.cloke.us,2013-10-21:posts/2013/10/21/google-summer-of-code-mentor-summit-2013/</guid><category>Google</category><category>GSoC</category><category>Mozilla</category></item><item><title>JavaScript typed arrays pain</title><link>http://patrick.cloke.us/posts/2012/11/29/javascript-typed-arrays-pain/</link><description>&lt;p&gt;If you&amp;#8217;ve ever tried to deal with binary data in JavaScript you know
+</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Patrick Cloke</dc:creator><pubDate>Sun, 20 Oct 2013 22:18:00 -0400</pubDate><guid>tag:patrick.cloke.us,2013-10-20:posts/2013/10/20/google-summer-of-code-mentor-summit-2013/</guid><category>Google</category><category>GSoC</category><category>Mozilla</category></item><item><title>JavaScript typed arrays pain</title><link>http://patrick.cloke.us/posts/2012/11/28/javascript-typed-arrays-pain/</link><description>&lt;p&gt;If you&amp;#8217;ve ever tried to deal with binary data in JavaScript you know
 it isn&amp;#8217;t much fun and you usually resort to using strings lots of
 charCodeAt and related functions.&amp;nbsp; &lt;a class="reference external" href="https://developer.mozilla.org/en-US/docs/JavaScript_typed_arrays"&gt;Typed arrays&lt;/a&gt; are supposed to solve
 this though!&amp;nbsp; The typed array &lt;span class="caps"&gt;API&lt;/span&gt; consists of creating a buffer of bytes
@@ -344,7 +344,7 @@ don&amp;#8217;t use ArrayBufferViews, use DataViews.&amp;nbsp; (Although Uint8Ar
 Int8Arrays should work&amp;nbsp;fine!)&lt;/p&gt;
 &lt;p&gt;And to not rant the &lt;em&gt;entire&lt;/em&gt; time, working with typed arrays certainly
 does beat strings +&amp;nbsp;charCodeAt!&lt;/p&gt;
-</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Patrick Cloke</dc:creator><pubDate>Thu, 29 Nov 2012 03:11:00 -0500</pubDate><guid>tag:patrick.cloke.us,2012-11-29:posts/2012/11/29/javascript-typed-arrays-pain/</guid><category>IM</category><category>Instantbird</category><category>Mozilla</category><category>OSCAR</category><category>Thunderbird</category><category>Wat</category></item><item><title>IRC Auto-Performs</title><link>http://patrick.cloke.us/posts/2012/06/11/irc-auto-performs/</link><description>
+</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Patrick Cloke</dc:creator><pubDate>Wed, 28 Nov 2012 23:11:00 -0500</pubDate><guid>tag:patrick.cloke.us,2012-11-28:posts/2012/11/28/javascript-typed-arrays-pain/</guid><category>IM</category><category>Instantbird</category><category>Mozilla</category><category>OSCAR</category><category>Thunderbird</category><category>Wat</category></item><item><title>IRC Auto-Performs</title><link>http://patrick.cloke.us/posts/2012/06/11/irc-auto-performs/</link><description>
 &lt;p&gt;There have been a &lt;a class="reference external" href="https://bugzilla.mozilla.org/show_bug.cgi?id=742675"&gt;few&lt;/a&gt; &lt;a class="reference external" href="https://bugzilla.instantbird.org/show_bug.cgi?id=1101"&gt;requests&lt;/a&gt; to support "auto-performs"
 (sending commands to the &lt;span class="caps"&gt;IRC&lt;/span&gt; server after connection that the user types
 into a box or whatever). Personally I find this to be:&lt;/p&gt;
@@ -366,7 +366,7 @@ necessary and a trivial restartless extension can replace them.&lt;/p&gt;
 &lt;p&gt;Part of the desire to &lt;a class="reference external" href="http://patrick.cloke.us/posts/2011/04/30/why-rewrite-irc-protocol-plugin-part-2/"&gt;replace the libpurple &lt;span class="caps"&gt;IRC&lt;/span&gt; protocol plugin&lt;/a&gt;
 with a new JavaScript one built specifically for Instantbird (which is
 also now used in Thunderbird!) was to make the protocol fully
-extensible. There are &lt;a class="reference external" href="http://patrick.cloke.us/posts/2011/03/09/so-called-irc-specifications/"&gt;many revisions and unofficial extensions to &lt;span class="caps"&gt;IRC&lt;/span&gt;&lt;/a&gt;
+extensible. There are &lt;a class="reference external" href="http://patrick.cloke.us/posts/2011/03/08/so-called-irc-specifications/"&gt;many revisions and unofficial extensions to &lt;span class="caps"&gt;IRC&lt;/span&gt;&lt;/a&gt;
 and we might not necessarily want to support them all (especially if
 they only apply to a single network). Allowing all parts of the protocol
 implementation to be touched and extended seemed like a great way to
@@ -469,7 +469,7 @@ that it requires a bit more understanding of the actual protocol level
 implementation, I don’t feel that knowing you need to use "&lt;span class="caps"&gt;PRIVMSG&lt;/span&gt;" as a
 command instead of /msg is a huge issue, however.&lt;/p&gt;
 &lt;/div&gt;
-</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Patrick Cloke</dc:creator><pubDate>Mon, 11 Jun 2012 02:25:00 -0400</pubDate><guid>tag:patrick.cloke.us,2012-06-11:posts/2012/06/11/irc-auto-performs/</guid><category>Instantbird</category><category>IRC</category><category>Mozilla</category></item><item><title>Shared Lightning profile across Linux and Windows</title><link>http://patrick.cloke.us/posts/2011/07/08/shared-lightning-profile-across-linux/</link><description>&lt;p&gt;In &lt;a class="reference external" href="irc://irc.mozilla.org/calendar"&gt;#calendar on Mozilla &lt;span class="caps"&gt;IRC&lt;/span&gt;&lt;/a&gt; the past few days a user has been
+</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Patrick Cloke</dc:creator><pubDate>Mon, 11 Jun 2012 22:25:00 -0400</pubDate><guid>tag:patrick.cloke.us,2012-06-11:posts/2012/06/11/irc-auto-performs/</guid><category>Instantbird</category><category>IRC</category><category>Mozilla</category></item><item><title>Shared Lightning profile across Linux and Windows</title><link>http://patrick.cloke.us/posts/2011/07/07/shared-lightning-profile-across-linux/</link><description>&lt;p&gt;In &lt;a class="reference external" href="irc://irc.mozilla.org/calendar"&gt;#calendar on Mozilla &lt;span class="caps"&gt;IRC&lt;/span&gt;&lt;/a&gt; the past few days a user has been
 asking about using a shared profile on Thunderbird between Linux and
 Windows (&amp;quot;shared&amp;quot; meaning a dual boot system of Linux/Windows, but not
 at the same time, obviously).&amp;nbsp; Generally this isn&amp;#8217;t a big deal &lt;span class="caps"&gt;UNLESS&lt;/span&gt;
@@ -504,7 +504,7 @@ script files (as is discussed in that big) but hopefully it should
 similar with the themes folders if they differ dramatically (it seems
 there&amp;#8217;s &lt;a class="reference external" href="http://mxr.mozilla.org/comm-central/source/calendar/lightning/themes/"&gt;just two&lt;/a&gt;: winstripe and pinstripe: i.e. Windows &lt;span class="amp"&gt;&amp;amp;&lt;/span&gt; Mac; Linux
 and Solaris most likely also use&amp;nbsp;winstripe).&lt;/p&gt;
-</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Patrick Cloke</dc:creator><pubDate>Fri, 08 Jul 2011 00:46:00 -0400</pubDate><guid>tag:patrick.cloke.us,2011-07-08:posts/2011/07/08/shared-lightning-profile-across-linux/</guid><category>Lightning</category><category>Mozilla</category></item><item><title>Compiling Instantbird</title><link>http://patrick.cloke.us/posts/2011/05/17/compilling-instantbird/</link><description>
+</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Patrick Cloke</dc:creator><pubDate>Thu, 07 Jul 2011 20:46:00 -0400</pubDate><guid>tag:patrick.cloke.us,2011-07-07:posts/2011/07/07/shared-lightning-profile-across-linux/</guid><category>Lightning</category><category>Mozilla</category></item><item><title>Compiling Instantbird</title><link>http://patrick.cloke.us/posts/2011/05/16/compilling-instantbird/</link><description>
 &lt;p&gt;In the past I’ve tried to compile a few different programs that use
 the Mozilla toolkit to various levels of success.  I’ve tried to compile
 Thunderbird, Songbird and Instantbird at various points.  I got
@@ -672,7 +672,7 @@ the way while developing).  See &lt;a class="reference external" href="https:/
 &lt;p&gt;Edit: Fixed the path to the executable thanks to Florian. And fixed a
 spelling error in the title.&lt;/p&gt;
 &lt;/div&gt;
-</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Patrick Cloke</dc:creator><pubDate>Tue, 17 May 2011 01:30:00 -0400</pubDate><guid>tag:patrick.cloke.us,2011-05-17:posts/2011/05/17/compilling-instantbird/</guid><category>Instantbird</category><category>Mozilla</category><category>programming</category></item><item><title>Status Update - January 18, 2011</title><link>http://patrick.cloke.us/posts/2011/01/19/status-update-january-18-2011/</link><description>&lt;p&gt;I haven&amp;#8217;t had an update in a few weeks (since early December)
+</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Patrick Cloke</dc:creator><pubDate>Mon, 16 May 2011 21:30:00 -0400</pubDate><guid>tag:patrick.cloke.us,2011-05-16:posts/2011/05/16/compilling-instantbird/</guid><category>Instantbird</category><category>Mozilla</category><category>programming</category></item><item><title>Status Update - January 18, 2011</title><link>http://patrick.cloke.us/posts/2011/01/18/status-update-january-18-2011/</link><description>&lt;p&gt;I haven&amp;#8217;t had an update in a few weeks (since early December)
 actually, so I thought I would post a bit about what I&amp;#8217;ve worked on.
 I&amp;#8217;ve fixed a bunch of bugs in the backend of Instantbird that allow work
 on JavaScript &lt;span class="caps"&gt;IRC&lt;/span&gt; protocol to&amp;nbsp;continue:&lt;/p&gt;
@@ -743,7 +743,7 @@ line here, on &lt;span class="caps"&gt;IRC&lt;/span&gt; or via&amp;nbsp;email).&
 &lt;li&gt;Start my new&amp;nbsp;job&lt;/li&gt;
 &lt;li&gt;Work on richtext messages a bit&amp;nbsp;more&lt;/li&gt;
 &lt;/ul&gt;
-</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Patrick Cloke</dc:creator><pubDate>Wed, 19 Jan 2011 03:17:00 -0500</pubDate><guid>tag:patrick.cloke.us,2011-01-19:posts/2011/01/19/status-update-january-18-2011/</guid><category>Instantbird</category><category>IRC</category><category>Mozilla</category><category>programming</category></item><item><title>Why Rewrite IRC into JavaScript? (vs. libpurple’s vs. ChatZilla’s)</title><link>http://patrick.cloke.us/posts/2010/12/08/why-rewrite-irc-into-javascript/</link><description>
+</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Patrick Cloke</dc:creator><pubDate>Tue, 18 Jan 2011 23:17:00 -0500</pubDate><guid>tag:patrick.cloke.us,2011-01-18:posts/2011/01/18/status-update-january-18-2011/</guid><category>Instantbird</category><category>IRC</category><category>Mozilla</category><category>programming</category></item><item><title>Why Rewrite IRC into JavaScript? (vs. libpurple’s vs. ChatZilla’s)</title><link>http://patrick.cloke.us/posts/2010/12/08/why-rewrite-irc-into-javascript/</link><description>
 &lt;p&gt;I had a request on &lt;span class="caps"&gt;IRC&lt;/span&gt; (from Mic) to write an in-depth blog post
 about &lt;a class="reference external" href="https://bugzilla.instantbird.org/show_bug.cgi?id=507"&gt;&lt;span class="caps"&gt;IRC&lt;/span&gt; in JavaScript&lt;/a&gt;:&lt;/p&gt;
 &lt;blockquote&gt;
@@ -929,7 +929,7 @@ time to rewrite the &lt;span class="caps"&gt;IRC&lt;/span&gt; protocol implement
 definitely think it’s worth it and can lead to a bunch of new unique
 protocol plug-ins for Instantbird.&lt;/p&gt;
 &lt;/div&gt;
-</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Patrick Cloke</dc:creator><pubDate>Wed, 08 Dec 2010 18:29:00 -0500</pubDate><guid>tag:patrick.cloke.us,2010-12-08:posts/2010/12/08/why-rewrite-irc-into-javascript/</guid><category>Instantbird</category><category>IRC</category><category>Mozilla</category><category>programming</category></item><item><title>JavaScript IRC in Instantbird</title><link>http://patrick.cloke.us/posts/2010/12/04/javascript-irc-in-instantbird/</link><description>&lt;p&gt;I&amp;#8217;ve been working on rewriting the &lt;span class="caps"&gt;IRC&lt;/span&gt; plugin for &lt;a class="reference external" href="http://www.instantbird.com/"&gt;Instantbird&lt;/a&gt; since
+</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Patrick Cloke</dc:creator><pubDate>Wed, 08 Dec 2010 14:29:00 -0500</pubDate><guid>tag:patrick.cloke.us,2010-12-08:posts/2010/12/08/why-rewrite-irc-into-javascript/</guid><category>Instantbird</category><category>IRC</category><category>Mozilla</category><category>programming</category></item><item><title>JavaScript IRC in Instantbird</title><link>http://patrick.cloke.us/posts/2010/12/04/javascript-irc-in-instantbird/</link><description>&lt;p&gt;I&amp;#8217;ve been working on rewriting the &lt;span class="caps"&gt;IRC&lt;/span&gt; plugin for &lt;a class="reference external" href="http://www.instantbird.com/"&gt;Instantbird&lt;/a&gt; since
 the summer (sometime in August, I can&amp;#8217;t seem to find the exact date &amp;#8212;
 at least since Sept. 10th&amp;nbsp;though).&lt;/p&gt;
 &lt;p&gt;Since &lt;a class="reference external" href="http://developer.pidgin.im/wiki/WhatIsLibpurple"&gt;libpurple&lt;/a&gt; (used in Pidgin, Adium, etc.) provides the &lt;span class="caps"&gt;IRC&lt;/span&gt;
@@ -957,7 +957,7 @@ After today&amp;#8217;s work I was able to generate the following&amp;nbsp;scree
 &lt;span class="caps"&gt;IRC&lt;/span&gt; (i.e. if you just want to go and chat, it&amp;#8217;d work well), but there&amp;#8217;s
 a lot more work to be done.&amp;nbsp; The code can be viewed in the &lt;a class="reference external" href="https://hg.instantbird.org/experiments/file/IRC-JavaScript/"&gt;Experiments
 repository&lt;/a&gt;.&amp;nbsp; (Check it out, there&amp;#8217;s a 600+ line switch&amp;nbsp;statement.)&lt;/p&gt;
-</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Patrick Cloke</dc:creator><pubDate>Sat, 04 Dec 2010 21:24:00 -0500</pubDate><guid>tag:patrick.cloke.us,2010-12-04:posts/2010/12/04/javascript-irc-in-instantbird/</guid><category>Instantbird</category><category>IRC</category><category>Mozilla</category><category>programming</category></item><item><title>Yahoo &amp; Thunderbird Can Finally Play Nice?</title><link>http://patrick.cloke.us/posts/2010/11/23/yahoo-thunderbird/</link><description>&lt;p&gt;For years I&amp;#8217;ve been dealing with Yahoo&amp;#8217;s lack of support for any sort
+</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Patrick Cloke</dc:creator><pubDate>Sat, 04 Dec 2010 17:24:00 -0500</pubDate><guid>tag:patrick.cloke.us,2010-12-04:posts/2010/12/04/javascript-irc-in-instantbird/</guid><category>Instantbird</category><category>IRC</category><category>Mozilla</category><category>programming</category></item><item><title>Yahoo &amp; Thunderbird Can Finally Play Nice?</title><link>http://patrick.cloke.us/posts/2010/11/22/yahoo-thunderbird/</link><description>&lt;p&gt;For years I&amp;#8217;ve been dealing with Yahoo&amp;#8217;s lack of support for any sort
 of decent (free) &lt;span class="caps"&gt;POP3&lt;/span&gt;/&lt;span class="caps"&gt;IMAP&lt;/span&gt;/&lt;span class="caps"&gt;SMTP&lt;/span&gt; protocol support.&amp;nbsp; Why do I need this?
 So I can check my &lt;a class="reference external" href="http://mail.yahoo.com/"&gt;Yahoo mail&lt;/a&gt; in &lt;a class="reference external" href="http://www.mozillamessaging.com/en-US/thunderbird/"&gt;Mozilla Thunderbird&lt;/a&gt; of&amp;nbsp;course!&lt;/p&gt;
 &lt;p&gt;At first I used &lt;a class="reference external" href="http://ypopsemail.com/"&gt;&lt;span class="caps"&gt;YPOPS&lt;/span&gt;!&lt;/a&gt;, a program that read the &lt;span class="caps"&gt;HTML&lt;/span&gt; pages provided
@@ -1024,4 +1024,4 @@ suggest using that&amp;nbsp;former.&lt;/p&gt;
 &lt;p&gt;Note that I&amp;#8217;m currently suffering from &lt;a class="reference external" href="https://bugzilla.mozilla.org/show_bug.cgi?id=610264"&gt;another bug&lt;/a&gt; while using
 Yahoo &lt;span class="caps"&gt;IMAP&lt;/span&gt;.&amp;nbsp; Everything works, there&amp;#8217;s just an annoying pop-up
 occasionally about the error.&amp;nbsp; Hopefully it will be fixed&amp;nbsp;soon.&lt;/p&gt;
-</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Patrick Cloke</dc:creator><pubDate>Tue, 23 Nov 2010 03:03:00 -0500</pubDate><guid>tag:patrick.cloke.us,2010-11-23:posts/2010/11/23/yahoo-thunderbird/</guid><category>bugs</category><category>email</category><category>IMAP</category><category>Mozilla</category><category>POP3</category><category>programming</category><category>SMTP</category><category>Thunderbird</category><category>Yahoo</category></item></channel></rss>
+</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Patrick Cloke</dc:creator><pubDate>Mon, 22 Nov 2010 23:03:00 -0500</pubDate><guid>tag:patrick.cloke.us,2010-11-22:posts/2010/11/22/yahoo-thunderbird/</guid><category>bugs</category><category>email</category><category>IMAP</category><category>Mozilla</category><category>POP3</category><category>programming</category><category>SMTP</category><category>Thunderbird</category><category>Yahoo</category></item></channel></rss>

@@ -1,5 +1,53 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>Like bricks in the sky</title><link href="http://patrick.cloke.us/" rel="alternate"></link><link href="http://patrick.cloke.us/feeds/tag/community.atom.xml" rel="self"></link><id>http://patrick.cloke.us/</id><updated>2014-07-01T12:03:00-04:00</updated><entry><title>Google Summer of Code 2014</title><link href="http://patrick.cloke.us/posts/2014/07/01/google-summer-of-code-2014-file/" rel="alternate"></link><updated>2014-07-01T12:03:00-04:00</updated><author><name>Patrick Cloke</name></author><id>tag:patrick.cloke.us,2014-07-01:posts/2014/07/01/google-summer-of-code-2014-file/</id><summary type="html">&lt;p&gt;I&amp;#8217;m again mentoring for &lt;a class="reference external" href="https://www.google-melange.com/gsoc/homepage/google/gsoc2014"&gt;Google Summer of Code&lt;/a&gt; 2014, this year my student is
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Like bricks in the sky</title><link href="http://patrick.cloke.us/" rel="alternate"></link><link href="http://patrick.cloke.us/feeds/tag/community.atom.xml" rel="self"></link><id>http://patrick.cloke.us/</id><updated>2014-07-03T19:46:00-04:00</updated><entry><title>Mentoring and Time</title><link href="http://patrick.cloke.us/posts/2014/07/03/mentoring-and-time/" rel="alternate"></link><updated>2014-07-03T19:46:00-04:00</updated><author><name>Patrick Cloke</name></author><id>tag:patrick.cloke.us,2014-07-03:posts/2014/07/03/mentoring-and-time/</id><summary type="html">&lt;p&gt;No, this is not about being late places, it&amp;#8217;s about respecting people&amp;#8217;s time. I
+won&amp;#8217;t go super into this as, Michael Haggerty wrote an awesome &lt;a class="reference external" href="http://softwareswirl.blogspot.fr/2014/03/my-secret-tip-for-gsoc-success.html"&gt;article&lt;/a&gt; on this.
+His thoughts boild down to a single line of advice:
+&amp;quot;&lt;strong&gt;&lt;span class="caps"&gt;DON&lt;/span&gt;&amp;#8217;T &lt;span class="caps"&gt;WASTE&lt;/span&gt; &lt;span class="caps"&gt;OTHER&lt;/span&gt; &lt;span class="caps"&gt;PEOPLE&lt;/span&gt;&amp;#8217;S &lt;span class="caps"&gt;TIME&lt;/span&gt;&lt;/strong&gt;&amp;quot;.&lt;/p&gt;
+&lt;p&gt;I think this applies to more than just Google Summer of Code mentoring, and not
+only open source work, but anything where someone is mentoring and helping you!
+This advice isn&amp;#8217;t meant just for GSoC students, interns or new employees, but
+also things I&amp;#8217;d like to remind myself to&amp;nbsp;do.&lt;/p&gt;
+&lt;p&gt;To make this sound a little more positive, I&amp;#8217;d reword his advice as &lt;strong&gt;Respect
+people&amp;#8217;s time!&lt;/strong&gt;. Someone is willing to help you, so assume some good faith,
+but help them help you. Some actions to focus&amp;nbsp;on:&lt;/p&gt;
+&lt;ul class="simple"&gt;
+&lt;li&gt;Ask &lt;em&gt;focused&lt;/em&gt; questions! If you do not understand an answer, do not &lt;em&gt;re-ask&lt;/em&gt;
+the same question, but ask &lt;em&gt;followup&lt;/em&gt; question. Show you&amp;#8217;ve researched the
+original answer and attempted to understand it. Write sample code, play with
+it, etc. If you think the answer given doesn&amp;#8217;t apply to your question,
+&lt;em&gt;reword&lt;/em&gt; your question: your mentor probably did not&amp;nbsp;understand.&lt;/li&gt;
+&lt;li&gt;Be cognizant of &lt;em&gt;timezones&lt;/em&gt;: if you&amp;#8217;d like a question asked (in realtime), ask
+it when the person is awake! (And this includes realizing if they have just
+woken up or are going to&amp;nbsp;bed.)&lt;/li&gt;
+&lt;li&gt;They will not have the &lt;em&gt;context&lt;/em&gt; you do: your &amp;quot;mentor&amp;quot; might be helping many
+people at once, try not to get frustrated if you have to explain your context
+to them multiple times or have to clarify your question. You are living and
+breathing the code you&amp;#8217;re working in; they are&amp;nbsp;not.&lt;/li&gt;
+&lt;li&gt;Don&amp;#8217;t be afraid to &lt;em&gt;post code&lt;/em&gt;. It&amp;#8217;s much easier to ask a question when
+there&amp;#8217;s an example in front of you. Be specific and don&amp;#8217;t talk&amp;nbsp;theoretically.&lt;/li&gt;
+&lt;li&gt;Don&amp;#8217;t be upset about an &lt;em&gt;r-&lt;/em&gt; (a rejected change)! Part of helping you to grow
+is telling you what you&amp;#8217;re doing&amp;nbsp;wrong.&lt;/li&gt;
+&lt;li&gt;Working &lt;em&gt;remotely&lt;/em&gt; is hard. It requires effort to build a level of trust
+between people. Don&amp;#8217;t just assume it will come in time, but work at it and try
+to get to know and understand your&amp;nbsp;mentor.&lt;/li&gt;
+&lt;li&gt;&lt;em&gt;Quickly&lt;/em&gt; respond to both feedback and questions. Your mentor is taking the
+time out of whatever they&amp;#8217;re doing to help you. If they ask you a question or
+ask something of you, do it now&amp;nbsp;(well&amp;#8230;*soon*).&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;All of the above is a lot to handle, but it can make it a join to work with a&amp;nbsp;mentor.&lt;/p&gt;
+&lt;p&gt;Mentoring is also hard and a skill to practice. Although I&amp;#8217;ve talked a lot
+about what a mentee needs to do, it is also important that a mentor leaves
+h(im|er)self open. A few thoughts on interacting as a&amp;nbsp;mentor:&lt;/p&gt;
+&lt;ul class="simple"&gt;
+&lt;li&gt;Be cognizant of &lt;em&gt;culture&lt;/em&gt; and &lt;em&gt;language&lt;/em&gt; (as in how well a mentor and mentee
+share their common language). In particular, colloquialisms should be avoided
+whenever possible. At least until a level of trust is&amp;nbsp;reached.&lt;/li&gt;
+&lt;li&gt;Be tactful when &lt;em&gt;giving feedback&lt;/em&gt;. Thank people for submitting a patch, give
+good, &lt;em&gt;actionable&lt;/em&gt; feedback quickly. Concentrate more on overall code design
+and algorithms than nits. (Maybe even point out nits, but fix them yourself
+for an initial&amp;nbsp;patch.)&lt;/li&gt;
+&lt;/ul&gt;
+</summary><category term="community"></category><category term="GSoC"></category></entry><entry><title>Google Summer of Code 2014</title><link href="http://patrick.cloke.us/posts/2014/07/01/google-summer-of-code-2014-file/" rel="alternate"></link><updated>2014-07-01T08:03:00-04:00</updated><author><name>Patrick Cloke</name></author><id>tag:patrick.cloke.us,2014-07-01:posts/2014/07/01/google-summer-of-code-2014-file/</id><summary type="html">&lt;p&gt;I&amp;#8217;m again mentoring for &lt;a class="reference external" href="https://www.google-melange.com/gsoc/homepage/google/gsoc2014"&gt;Google Summer of Code&lt;/a&gt; 2014, this year my student is
 &lt;a class="reference external" href="http://sawrubh.tumblr.com/"&gt;Saurabh Anand&lt;/a&gt; (sawrubh), who has been working on a few related&amp;nbsp;things:&lt;/p&gt;
 &lt;ul class="simple"&gt;
 &lt;li&gt;Adding a &lt;a class="reference external" href="https://bugzilla.mozilla.org/show_bug.cgi?id=1024023"&gt;file transfer mechanism for &lt;span class="caps"&gt;XMPP&lt;/span&gt;&lt;/a&gt;&lt;/li&gt;
@@ -7,7 +55,7 @@
 &lt;li&gt;Integrating &lt;a class="reference external" href="https://support.mozilla.org/en-US/kb/filelink-large-attachments"&gt;FileLink&lt;/a&gt; as a fallback to in-protocol file&amp;nbsp;transfers&lt;/li&gt;
 &lt;/ul&gt;
 &lt;p&gt;Sorry for the way overdue post (as it&amp;#8217;s already past mid-term for&amp;nbsp;GSoC)!&lt;/p&gt;
-</summary><category term="community"></category><category term="GSoC"></category></entry><entry><title>Community and Volunteers</title><link href="http://patrick.cloke.us/posts/2014/04/16/community-and-volunteers/" rel="alternate"></link><updated>2014-04-16T16:34:00-04:00</updated><author><name>Patrick Cloke</name></author><id>tag:patrick.cloke.us,2014-04-16:posts/2014/04/16/community-and-volunteers/</id><summary type="html">&lt;p&gt;It was suggested that I cross-post this from mozilla.dev.planning onto
+</summary><category term="community"></category><category term="GSoC"></category></entry><entry><title>Community and Volunteers</title><link href="http://patrick.cloke.us/posts/2014/04/16/community-and-volunteers/" rel="alternate"></link><updated>2014-04-16T12:34:00-04:00</updated><author><name>Patrick Cloke</name></author><id>tag:patrick.cloke.us,2014-04-16:posts/2014/04/16/community-and-volunteers/</id><summary type="html">&lt;p&gt;It was suggested that I cross-post this from mozilla.dev.planning onto
 my blog. This is in reply to a thread entitled &amp;quot;&lt;a class="reference external" href="https://groups.google.com/forum/#%21topic/mozilla.dev.planning/P8oHKTCWSiQ"&gt;Proposal: Move
 Thunderbird and SeaMonkey to mozilla-central&lt;/a&gt;&amp;quot; about (essentially)
 merging comm-central back into mozilla-central. There have been many
@@ -79,10 +127,10 @@ keeping a dying one on life-support. (And prove to all that
 &lt;/blockquote&gt;
 &lt;p&gt;I don&amp;#8217;t have much else to say beyond that (besides thanks for reading
 this&amp;nbsp;far!)&lt;/p&gt;
-</summary><category term="community"></category><category term="crosspost"></category><category term="Mozilla"></category><category term="Thunderbird"></category></entry><entry><title>GSoc Lessons: Part Deux: The Arms Race</title><link href="http://patrick.cloke.us/posts/2013/12/04/gsoc-lessons-part-deux-arms-race/" rel="alternate"></link><updated>2013-12-04T13:17:00-05:00</updated><author><name>Patrick Cloke</name></author><id>tag:patrick.cloke.us,2013-12-04:posts/2013/12/04/gsoc-lessons-part-deux-arms-race/</id><summary type="html">&lt;p&gt;This post title might be a little excessive, but I&amp;#8217;ll blame &lt;a class="reference external" href="http://en.wikipedia.org/wiki/The_Sum_of_All_Fears_%28film%29"&gt;The Sum
+</summary><category term="community"></category><category term="crosspost"></category><category term="Mozilla"></category><category term="Thunderbird"></category></entry><entry><title>GSoc Lessons: Part Deux: The Arms Race</title><link href="http://patrick.cloke.us/posts/2013/12/04/gsoc-lessons-part-deux-arms-race/" rel="alternate"></link><updated>2013-12-04T09:17:00-05:00</updated><author><name>Patrick Cloke</name></author><id>tag:patrick.cloke.us,2013-12-04:posts/2013/12/04/gsoc-lessons-part-deux-arms-race/</id><summary type="html">&lt;p&gt;This post title might be a little excessive, but I&amp;#8217;ll blame &lt;a class="reference external" href="http://en.wikipedia.org/wiki/The_Sum_of_All_Fears_%28film%29"&gt;The Sum
 of All Fears&lt;/a&gt; that I was watching last night. This is the second part
 of a set of posts about ideas I heard at the Google Summer of Code 2013
-Mentor Summit (you can read &lt;a class="reference external" href="http://patrick.cloke.us/posts/2013/12/02/gsoc-lessons-part-1-application-period/"&gt;the first part about the application
+Mentor Summit (you can read &lt;a class="reference external" href="http://patrick.cloke.us/posts/2013/12/01/gsoc-lessons-part-1-application-period/"&gt;the first part about the application
 process&lt;/a&gt;).&lt;/p&gt;
 &lt;p&gt;This will explore an interesting anecdote I heard about the
 interaction between applicants from another organization that, on
@@ -131,7 +179,7 @@ anyone in &lt;a class="reference external" href="irc://irc.mozilla.org/#instantb
 Upon letting it sink in and reflecting on it&amp;#8230;I realized I had actually
 seen similar situations during the application periods I&amp;#8217;ve been
 involved with. This year, we found a bug in Instantbird&amp;#8217;s &lt;span class="caps"&gt;IRC&lt;/span&gt; code (&lt;span class="caps"&gt;CTCP&lt;/span&gt;
-quoting and dequoting); after referencing some &lt;a class="reference external" href="http://patrick.cloke.us/posts/2011/03/09/so-called-irc-specifications/"&gt;specifications&lt;/a&gt;, I was
+quoting and dequoting); after referencing some &lt;a class="reference external" href="http://patrick.cloke.us/posts/2011/03/08/so-called-irc-specifications/"&gt;specifications&lt;/a&gt;, I was
 pretty quickly able to figure out the vague areas where people should
 look for a fix. A couple of GSoC students in the room started looking
 into it and exhibited a greatly reduced form of the behavior I discussed
@@ -155,7 +203,7 @@ accepted. (And that they&amp;#8217;re used to competing, e.g. homework and exams
 not collaborating!) I don&amp;#8217;t really know whether I feel the above
 situation is good or bad, but it&amp;#8217;s certainly an interesting effect from
 the way the GSoC process&amp;nbsp;works.&lt;/p&gt;
-</summary><category term="community"></category><category term="GSoC"></category><category term="Mozilla"></category></entry><entry><title>GSoC Lessons: Part 1: Application Period</title><link href="http://patrick.cloke.us/posts/2013/12/02/gsoc-lessons-part-1-application-period/" rel="alternate"></link><updated>2013-12-02T00:55:00-05:00</updated><author><name>Patrick Cloke</name></author><id>tag:patrick.cloke.us,2013-12-02:posts/2013/12/02/gsoc-lessons-part-1-application-period/</id><summary type="html">&lt;p&gt;I briefly talked about &lt;a class="reference external" href="http://patrick.cloke.us/posts/2013/10/21/google-summer-of-code-mentor-summit-2013/"&gt;my experiences&lt;/a&gt; at the Google Summer of Code
+</summary><category term="community"></category><category term="GSoC"></category><category term="Mozilla"></category></entry><entry><title>GSoC Lessons: Part 1: Application Period</title><link href="http://patrick.cloke.us/posts/2013/12/01/gsoc-lessons-part-1-application-period/" rel="alternate"></link><updated>2013-12-01T20:55:00-05:00</updated><author><name>Patrick Cloke</name></author><id>tag:patrick.cloke.us,2013-12-01:posts/2013/12/01/gsoc-lessons-part-1-application-period/</id><summary type="html">&lt;p&gt;I briefly talked about &lt;a class="reference external" href="http://patrick.cloke.us/posts/2013/10/20/google-summer-of-code-mentor-summit-2013/"&gt;my experiences&lt;/a&gt; at the Google Summer of Code
 2013 Mentor Summit. I&amp;#8217;ve been pretty remiss in sharing what was actually
 discussed there and for that I must apologize! This will hopefully be
 one of a few posts about what I learned and discussed at the&amp;nbsp;Summit.&lt;/p&gt;

@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <title>GSoC Lessons: Part 1: Application Period</title>
+    <link rel="stylesheet" href="http://patrick.cloke.us/theme/css/main.css" />
+    <link href="http://patrick.cloke.us/feeds/atom.xml" type="application/atom+xml" rel="alternate" title="Like bricks in the sky Atom Feed" />
+    <link href="http://patrick.cloke.us/feeds/rss.xml" type="application/rss+xml" rel="alternate" title="Like bricks in the sky RSS Feed" />
+
+    <!--[if IE]>
+        <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+</head>
+
+<body id="index" class="home">
+    <header id="banner" class="body">
+        <h1><a href="http://patrick.cloke.us/">Like bricks in the sky </a></h1>
+        <nav><ul>
+            <li><a href="http://patrick.cloke.us/pages/about.html">About</a></li>
+            <li><a href="http://patrick.cloke.us/pages/contact.html">Contact</a></li>
+            <li><a href="http://patrick.cloke.us/archives.html">Archives</a></li>
+            <li><a href="http://patrick.cloke.us/tags.html">Tags</a></li>
+        </ul></nav>
+    </header><!-- /#banner -->
+
+    <div id="container" class="body">
+        <section id="extras" class="left">
+            <div class="social">
+                <h2>social</h2>
+                <ul>
+                    <li><a href="http://patrick.cloke.us/feeds/atom.xml" type="application/atom+xml" rel="alternate">atom feed</a></li>
+                    <li><a href="http://patrick.cloke.us/feeds/rss.xml" type="application/rss+xml" rel="alternate">rss feed</a></li>
+
+                    <li><a href="https://www.twitter.com/clokep">twitter</a></li>
+                    <li><a href="https://bitbucket.org/clokep">bitbucket</a></li>
+                    <li><a href="https://www.github.com/clokep">github</a></li>
+                    <li><a href="https://mozillians.org/clokep">mozillians</a></li>
+                </ul>
+            </div><!-- /.social -->
+        </section><!-- /#extras -->
+
+        <section id="search" class="left">
+            <h2>search</h2>
+
+            <form method="get" action="http://www.bing.com/search">
+
+                <input type="text" name="q" placeholder="search this site" />
+                <input type="submit" value="Search" />
+                <input type="hidden"  name="q1" value="site:patrick.cloke.us" />
+            </form>
+        </section>
+
+
+
+<section id="content" class="body">
+  <article>
+    <header>
+        <h1 class="entry-title">
+            <a href="http://patrick.cloke.us/posts/2013/12/01/gsoc-lessons-part-1-application-period/" rel="bookmark"
+               title="Permalink to GSoC Lessons: Part 1: Application Period">GSoC Lessons: Part 1: Application&nbsp;Period</a></h1>
+    </header>
+
+    <div class="entry-content">
+<footer class="post-info">
+    <abbr class="published" title="2013-12-01T20:55:00">
+        Published: 12/01/2013 08:55 PM UTC
+    </abbr>
+
+
+<p>tags: <a href="http://patrick.cloke.us/tag/community.html">community</a> <a href="http://patrick.cloke.us/tag/gsoc.html">GSoC</a> <a href="http://patrick.cloke.us/tag/mozilla.html">Mozilla</a> </p>
+</footer><!-- /.post-info -->        <p>I briefly talked about <a class="reference external" href="http://patrick.cloke.us/posts/2013/10/20/google-summer-of-code-mentor-summit-2013/">my experiences</a> at the Google Summer of Code
+2013 Mentor Summit. I&#8217;ve been pretty remiss in sharing what was actually
+discussed there and for that I must apologize! This will hopefully be
+one of a few posts about what I learned and discussed at the&nbsp;Summit.</p>
+<p>The first part I&#8217;d like to talk about is the application period:
+welcoming students, requirements for student applications, etc. Much of
+what I say on here is just ideas I&#8217;ve heard other organizations
+implement (with my personal opinion on them, please don&#8217;t think this
+represents what Mozilla is suggesting students do, or even what I&#8217;m
+suggesting Mozilla should ask students to&nbsp;do!)</p>
+<p>I had many separate conversations about what is required for an
+application to be accepted. It seems that Mozilla is actually on the
+side of one of the easier organizations to apply to. We don&#8217;t (to my
+knowledge) require that students have contributed at all to the
+community beforehand. It is possible that some smaller communities
+inside of Mozilla require more than just an application, but there does
+not seem to be any rule across Mozilla. I said I wouldn&#8217;t offer my
+opinion above&#8230;but I lied: I think Mozilla should make it clearer to
+applicants what is expected of them before the&nbsp;application.</p>
+<p>There seem to be a variety of things different organizations &quot;require&quot;
+before accepting a student application, for&nbsp;example:</p>
+<ul class="simple">
+<li>A patch / pull&nbsp;request</li>
+<li><span class="caps">IRC</span> / email involvement /&nbsp;idling</li>
+<li>File a bug (I mean this in the &quot;Mozilla&quot; sense: an actual bug, a
+feature request,&nbsp;etc.)</li>
+<li>Fix a bug / make a&nbsp;commit</li>
+</ul>
+<p>I think all of these have pros and cons and making any a hard and fast
+rule would probably be a bad idea. Personally for Instantbird, we
+greatly encourage students to idle on <span class="caps">IRC</span> and get to know us; and to fix
+a minor bug or two or three. What I&#8217;m always looking for is: use,
+passion, and&nbsp;skill.</p>
+<p>Asking for a <strong>patch / pull request</strong> (I include these together since
+they really just depend on how an organization accepts changes) can be a
+bit intimidating for a new user. I think this can be a pretty rough
+thing to ask for new contributors that might not want to share their
+work publicly with a large group of people (on a mailing list, public
+bug tracker, etc.) where they might be wrong. Even after being part of
+the community, I find that GSoC students are often very unwilling to
+publicly share code unless it&#8217;s &quot;perfect&quot;, but I digress. Anyway, if
+you&#8217;re considering &quot;requiring&quot; this, I think it should be pretty clear
+that this changeset doesn&#8217;t need to be <em>perfect</em>, it just needs to show
+that the student is able to read code, understand a bug report, provide
+a fix and test&nbsp;it.</p>
+<p>I think it&#8217;s perfect reasonable to ask students to <strong>idle on <span class="caps">IRC</span> and
+join mailing lists</strong>. They should definitely be trying to understand the
+community before attempting to join it. It isn&#8217;t just a matter of if the
+community thinks the student would be a good fit, but also the student
+must ensure they can fit into the&nbsp;community.</p>
+<p><strong>Filing a bug</strong> is a great way for a student to show a few different
+things: they&#8217;ve used your software; they&#8217;ve used your software enough to
+find a bug in it (and there most likely is one!); they&#8217;re able to
+express themselves in a clear and concise matter. If you&#8217;re lucky
+they&#8217;ll find something that actually annoys them and fix it&nbsp;themselves!</p>
+<p>I have <strong>fix a bug</strong> listed last. You might ask how this differs from
+submitting a patch&#8230;and it does! Fixing a bug requires a patch to go
+through whatever review process your project uses, but builds upon just
+submitting a patch. My thoughts on this are pretty similar to just
+submitting a patch, but it depends on how large the bug&nbsp;is.</p>
+<p>Something I found interesting is that almost everyone I talked to
+didn&#8217;t treat their GSoC students any differently than they would treat a
+new contributor to their project. They still had to prove they were
+worthy of commit access, etc. Is there anything else you ask of your
+students before they apply to GSoC? I&#8217;d love to hear&nbsp;it!</p>
+<p>Some other topics I&#8217;ll hopefully find some time to write about
+include: community lessons, and handling a failing student. The
+community one will be very not-GSoC focused and could apply to just
+trying to incorporate new contributors&#8230;but I&#8217;ll include it in this&nbsp;series.</p>
+
+    </div><!-- /.entry-content -->
+
+  </article>
+</section>
+    </div>
+
+    <footer id="contentinfo" class="body">
+        <address id="about" class="vcard body">
+        Proudly powered by <a href="http://getpelican.com/">Pelican</a>, which takes great advantage of <a href="http://python.org">Python</a>.
+        </address><!-- /#about -->
+    </footer><!-- /#contentinfo -->
+
+    <script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-52389517-1']);
+    _gaq.push(['_trackPageview']);
+    (function() {
+        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+    </script>
+</body>
+</html>

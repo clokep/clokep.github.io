@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <title>On Status</title>
+    <link rel="stylesheet" href="http://patrick.cloke.us/theme/css/main.css" />
+    <link href="http://patrick.cloke.us/feeds/atom.xml" type="application/atom+xml" rel="alternate" title="Like bricks in the sky Atom Feed" />
+    <link href="http://patrick.cloke.us/feeds/rss.xml" type="application/rss+xml" rel="alternate" title="Like bricks in the sky RSS Feed" />
+
+    <!--[if IE]>
+        <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+</head>
+
+<body id="index" class="home">
+    <header id="banner" class="body">
+        <h1><a href="http://patrick.cloke.us/">Like bricks in the sky </a></h1>
+        <nav><ul>
+            <li><a href="http://patrick.cloke.us/pages/about.html">About</a></li>
+            <li><a href="http://patrick.cloke.us/pages/contact.html">Contact</a></li>
+            <li><a href="http://patrick.cloke.us/archives.html">Archives</a></li>
+            <li><a href="http://patrick.cloke.us/tags.html">Tags</a></li>
+        </ul></nav>
+    </header><!-- /#banner -->
+
+    <div id="container" class="body">
+        <section id="extras" class="left">
+            <div class="social">
+                <h2>social</h2>
+                <ul>
+                    <li><a href="http://patrick.cloke.us/feeds/atom.xml" type="application/atom+xml" rel="alternate">atom feed</a></li>
+                    <li><a href="http://patrick.cloke.us/feeds/rss.xml" type="application/rss+xml" rel="alternate">rss feed</a></li>
+
+                    <li><a href="https://www.twitter.com/clokep">twitter</a></li>
+                    <li><a href="https://bitbucket.org/clokep">bitbucket</a></li>
+                    <li><a href="https://www.github.com/clokep">github</a></li>
+                    <li><a href="https://mozillians.org/clokep">mozillians</a></li>
+                </ul>
+            </div><!-- /.social -->
+        </section><!-- /#extras -->
+
+        <section id="search" class="left">
+            <h2>search</h2>
+
+            <form method="get" action="http://www.bing.com/search">
+
+                <input type="text" name="q" placeholder="search this site" />
+                <input type="submit" value="Search" />
+                <input type="hidden"  name="q1" value="site:patrick.cloke.us" />
+            </form>
+        </section>
+
+
+
+<section id="content" class="body">
+  <article>
+    <header>
+        <h1 class="entry-title">
+            <a href="http://patrick.cloke.us/posts/2012/10/16/on-status/" rel="bookmark"
+               title="Permalink to On Status">On&nbsp;Status</a></h1>
+    </header>
+
+    <div class="entry-content">
+<footer class="post-info">
+    <abbr class="published" title="2012-10-16T21:33:00">
+        Published: 10/16/2012 09:33 PM UTC
+    </abbr>
+
+
+<p>tags: <a href="http://patrick.cloke.us/tag/chat.html">chat</a> <a href="http://patrick.cloke.us/tag/im.html">IM</a> <a href="http://patrick.cloke.us/tag/instant-messaging.html">instant messaging</a> <a href="http://patrick.cloke.us/tag/instantbird.html">Instantbird</a> <a href="http://patrick.cloke.us/tag/messaging.html">messaging</a> <a href="http://patrick.cloke.us/tag/status.html">status</a> <a href="http://patrick.cloke.us/tag/thunderbird.html">Thunderbird</a> </p>
+</footer><!-- /.post-info -->        <p>Something that comes up often about Instantbird is why we only support
+three statuses: Available, Unavailable and Offline.&nbsp; (We do actually
+support a fourth one too, Idle, but that is set automatically, not
+chosen by the user.)&nbsp; Frequently this discussion is in the context of
+wanting an &quot;Invisible&quot; status, but I&#8217;ll get to that&nbsp;later&#8230;</p>
+<p>Many users have talked to us on <span class="caps">IRC</span>, email or via bugs and complained
+about wanting an &quot;Away&quot; status or a &quot;Do Not Disturb&quot; status.&nbsp; There&#8217;s a
+few issues with&nbsp;this:</p>
+<ol class="arabic simple">
+<li>What&#8217;s really the difference between &quot;Unavailable&quot;, &quot;Away&quot; and &quot;Do
+Not Disturb&quot;?&nbsp; Do you really need to choose them individually?
+(Other things that fit into here: &quot;Not at my desk&quot;, &quot;on the phone&quot;,
+&quot;busy&quot;, &quot;stepped out&quot;.&nbsp; It is amazing how some protocols have so many
+ways to describe being&nbsp;unavailable!)</li>
+<li>A technical issue that we often run into is trying to shoehorn
+different protocol implementations into our abstract protocol
+interface.&nbsp; (We already have some fairly complicated interfaces
+around joining chat rooms, creating different account, etc. because
+of&nbsp;this.)</li>
+<li>Setting yourself as &quot;Away&quot; or &quot;Invisible&quot; is a lie.&nbsp; Perhaps this is
+me being overly idealistic, but why would you set yourself as
+&quot;Away&quot;?&nbsp; It seems that this is something that should be done
+automatically (when you lock your display, perhaps?).&nbsp; You can&#8217;t be
+&quot;Away&quot; and using your computer at the same time!
+Again, perhaps being idealistic, but what is the point of the
+&quot;Invisible&quot; status?&nbsp; If you wish to be hidden from someone
+(everyone?) why not just block those users.&nbsp; Or ignore them when they
+send you a message.&nbsp; If you are busy, set yourself to &quot;Unavailable&quot;
+and people should understand that they should not talk to you&#8230;if
+they don&#8217;t, well&#8230;do you really want them talking to you ever?&nbsp; (Are
+they really your friend?&nbsp; I guess you don&#8217;t get to choose your
+co-workers, but still.)&nbsp; Now, perhaps this is just my opinion as
+being someone who never really hard an &quot;Invisible&quot; status (I actually
+remember it being added to the <span class="caps">AIM</span> client at some&nbsp;point).</li>
+</ol>
+<p>At this point you probably don&#8217;t believe me that there&#8217;s really <em>that</em>
+many different protocol statuses out there, so I figured I&#8217;d illustrate
+a few protocols in a matrix.&nbsp; Note that this isn&#8217;t meant to be
+exhaustive, just to show how complicated of a situation this really is.
+All protocols can obviously be &quot;offline&quot; as well, but that&#8217;s not shown
+in the&nbsp;table.</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="30%" />
+<col width="13%" />
+<col width="21%" />
+<col width="17%" />
+<col width="19%" />
+</colgroup>
+<thead valign="bottom">
+<tr><th class="head">&nbsp;</th>
+<th class="head">Available</th>
+<th class="head">Unavailable</th>
+<th class="head">Phone</th>
+<th class="head">Invisible</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr><td>Oscar (<span class="caps">AIM</span>/<span class="caps">ICQ</span>)</td>
+<td>Online</td>
+<td>Away</td>
+<td>&nbsp;</td>
+<td>Invisible</td>
+</tr>
+<tr><td><span class="caps">IRC</span></td>
+<td>Online</td>
+<td>Away</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+</tr>
+<tr><td>Microsoft Lync</td>
+<td>Online</td>
+<td><ul class="first last simple">
+<li>Busy</li>
+<li>Away</li>
+<li>In a&nbsp;meeting</li>
+</ul>
+</td>
+<td>In a call</td>
+<td>&nbsp;</td>
+</tr>
+<tr><td>Yahoo! Messenger</td>
+<td>Available</td>
+<td><ul class="first last simple">
+<li>Busy</li>
+<li>Stepped&nbsp;out</li>
+<li>Be right&nbsp;back</li>
+<li>Not at my&nbsp;desk</li>
+</ul>
+</td>
+<td>On the phone</td>
+<td>&nbsp;</td>
+</tr>
+<tr><td>Windows Live Messenger</td>
+<td>Online</td>
+<td><ul class="first last simple">
+<li>Busy</li>
+<li>Away</li>
+<li>Be Right&nbsp;Back</li>
+<li>Out to&nbsp;lunch</li>
+</ul>
+</td>
+<td>On the phone</td>
+<td>Appear offline</td>
+</tr>
+<tr><td><span class="caps">XMPP</span> (e.g. Google Talk)</td>
+<td>Available</td>
+<td>Busy</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+</tr>
+</tbody>
+</table>
+
+    </div><!-- /.entry-content -->
+
+  </article>
+</section>
+    </div>
+
+    <footer id="contentinfo" class="body">
+        <address id="about" class="vcard body">
+        Proudly powered by <a href="http://getpelican.com/">Pelican</a>, which takes great advantage of <a href="http://python.org">Python</a>.
+        </address><!-- /#about -->
+    </footer><!-- /#contentinfo -->
+
+    <script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-52389517-1']);
+    _gaq.push(['_trackPageview']);
+    (function() {
+        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+    </script>
+</body>
+</html>
