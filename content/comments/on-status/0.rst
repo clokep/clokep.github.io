@@ -1,0 +1,35 @@
+:date: 2012-10-16 23:30
+:author: Samuel Sidler
+
+Personally, I prefer custom statuses, instead of a set of predefined ones,
+but...
+
+I think you underestimate the importance of each status. While I don't use them
+all, they all have a fairly set meaning to a lot of people. For example, while
+"Away" might be a good status for when you have stepped away from your desk for
+a set amount of time (5 or 10 minutes?), other statuses give me a general
+timeframe when the person might be back.
+
+Someone idle with a status of "Be Right Back" makes me think they'll be back in
+5-10 minutes at most. Someone with "Out to lunch" might mean an hour or two, but
+I'm fairly confident I'll get a reply. Meanwhile "Busy" means my message might
+get ignored.
+
+Those are all very different statuses to most people, but yet all cover
+"Unavailable" for you.
+
+You also mention that setting yourself as "away" or "invisible" is a lie. Maybe
+"away" is a lie, but invisible isn't really. Being invisible has its purposes. I
+often go invisible when I'm waiting for one person to get online, but don't want
+to be bothered by everyone else. Yes, I can ignore everyone, but getting those
+"You're not idle, I know you're there, why are you ignoring me?" messages isn't
+fun (of course, less likely to get those in a business environment).
+
+Personally, I use invisible less and less now because Adium supports setting my
+unavailable status and adding an idle time. So to most people I might show as
+away and idle for 1 hour as soon as I don't want to be bothered. But again, I
+might want to talk to one or two people if they sign on.
+
+In any case, I think this post is incredibly one-sided and kind of short-sighted
+as far as how others use chat clients. Maybe that word is idealistic as you
+said.

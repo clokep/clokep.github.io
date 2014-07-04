@@ -1,0 +1,27 @@
+:date: 2014-04-28 23:18
+:author: mook
+:website: http://mook.wordpress.com/
+
+Hmm, bug 683218 is about removing __noSuchMethod__, but I guess there isn't much
+going on there recently. Still, using proxies (as in, | new Proxy(...) | ) might
+be more future-proof. But the proxy API is a bit too low level...
+
+How does the __noSuchMethod__ deal with methods that need to normalize?
+
+Seeing your code now, make me think that you can probably get away with...
+
+.. code-block:: javascript
+
+    function NormalizedMap(aNormalizeFunction, aIt = []) {
+        if (typeof(aNormalizeFunction) != "function")
+            throw "NormalizedMap must have a normalize function!";
+        var m = new Map([[aNormalizeFunction(key), val] for ([key, val] of aIt)]);
+        m.set = function(k, v) Map.prototype.set.call(this, aNormalizeFunction(k), v);
+        m.get = function(k) Map.prototype.get.call(this, aNormalizeFunction(k));
+        m['delete'] = function(k) Map.prototype['delete'].call(this, aNormalizeFunction(k));
+        m.has = function(k) Map.prototype.has.call(this, aNormalizeFunction(k));
+        return m;
+    }
+
+Of course, this is bloatier (a different function for each instance of
+NormalizedMap)...

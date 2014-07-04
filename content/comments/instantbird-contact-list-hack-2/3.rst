@@ -1,0 +1,70 @@
+:date: 2012-11-24 13:12
+:author: RongYao
+:website: https://www.blogger.com/profile/14112477927795363957
+
+Thank to you I revamp the list totally. Starting to like instantbird more and
+more. Posting it here so others who find your blog to see it.
+
+New buddy list.
+
+1. Its expanded as in your example
+2. With gray background same as the UI color.
+3. When you hover or select a contact it becomes with blue background and white
+   text, also expanding the buddy does the same color behaviour.
+4. Remembers the highlighted selected contact, while you hovering the others
+   which also gets highlited.
+5. When you remove the mouse from that contact and hover another, 1st one gets
+   black text on blue background, while still selected but not on focus, newly
+   hovered one, focused contacts, gets white text.
+6. Also has bigger fonts.
+7. 1px rounded blue highlitght, makes it more smooth.
+
+;)
+YEY for the open source software.
+
+.. code-block:: css
+
+    /* Expand all contacts to the big contact. */
+    contact {
+    -moz-binding: url("chrome://instantbird/content/contact.xml#contact-big") !important;
+    -moz-box-orient: vertical !important;
+    -moz-box-align: stretch !important;
+    }
+    group {
+    font-size: 1em !important;
+    background-color: -moz-Dialog !important;
+    }
+    contact {
+    font-size: 1.1em !important;
+    font-weight: bold !important;
+    overflow-y: inherit !important;
+    background: -moz-Dialog;
+    }
+    contact[selected="true"] {
+    border-radius: 3px !important;
+    color: HighlightText;
+    background: Highlight !important;
+    }
+    contact:not([selected="true"]) {
+    background: -moz-Dialog !important;
+    }
+    contact:focus([selected="true"]) {
+    background: -moz-Dialog !important;
+    border-radius: 3px !important;
+    }
+    contact:hover{
+    background: Highlight !important;
+    color: HighlightText !important;
+    border-radius: 3px !important;
+    }
+    buddy {
+    font-size: 1em !important;
+    background: Highlight !important;
+    overflow-y: inherit !important;
+    }
+    conv {
+    font-size: 1.1em !important;
+    font-weight: bold !important;
+    overflow-y: inherit !important;
+    background: -moz-Dialog;
+    }

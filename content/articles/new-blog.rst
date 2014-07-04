@@ -31,11 +31,12 @@ Pelican.)
 Set up Pelican
 ==============
 
-(Since I dislike writing my own descriptions:) "Pelican is a static site
-generator, written in Python_, that requires no database or server-side logic."
-Cool! Sounds real simple to use!
+(Since I dislike writing my own descriptions:)
 
-And it was. Mostly.
+    "Pelican is a static site generator, written in Python_, that requires no
+    database or server-side logic."
+
+Cool! Sounds real simple to use! And it was. Mostly.
 
 I pretty much followed the quickstart_:
 

@@ -1,0 +1,6 @@
+:date: 2012-01-27 10:13
+:author: Nick
+:website: https://www.blogger.com/profile/05396564695223153752
+
+Hi! So what happened with this -- was the patch not accepted by the Instantbird
+folks? :)

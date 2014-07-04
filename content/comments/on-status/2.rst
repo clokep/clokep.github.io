@@ -1,0 +1,64 @@
+:date: 2012-10-17 09:59
+:author: Patrick Cloke
+:website: http://patrick.cloke.us
+:replyto: 0
+
+Thanks for the feedback Samuel. I think part of your comments can be explained
+by a terminology mismatch. When I refer to "Status" I am NOT referring to the
+"Status Message", I mean simply the Status as set by the protocol (the little
+green/red/grey dot in Instantbird, I'm unsure what Adium uses for this).
+
+I agree with you that information such as "Be Right Back" or "At Lunch" is
+important, but my point is that this does not need to be a separate Status; it
+can be explained easily in the (free text style) Status Message. I believe this
+is a more flexible and powerful way to deal with these instead of having a
+different Status for each. This could get kind of ridiculous, e.g. why is there
+only an "Out to lunch" one, why not an "Eating breakfast" or "Eating dinner"
+one? Well, let's make it more vague and just say "Eating" for all three, but
+that sounds kind of silly...this really can just be part of the "Status
+Message". (It probably does make sense to have some preset/common Status
+Messages, but that's not what this post is about.)
+
+Invisible is a lie, it let's you pretend you're not signed into a network when
+you really are. I don't think I've ever signed in when waiting for a single
+person to get on, but if I was I'd just put up I'm unavailable. If people are
+still sending messages ("You're not idle..."), then that's certainly an
+issue...but I think your client should be able to handle that for you. I use Do
+Not Disturb for Instantbird which automatically puts any new conversation while
+Unavailable into my conversations on hold (open conversations work as normal).
+This idea could be extended to allow IMs only from a certain person (e.g. people
+who know I'm really available during work hours know that they can IM me, even
+though it says not available). I think there's a benefit to this as well...you
+don't need to wait for them to come on and keep checking, once they're online
+they can IM you at their leisure. Setting yourself to invisible is also
+detrimental to the IM network you use, but that's probably a point most people
+don't care about.
+
+Of course it is one-sided, it is based off how I have used instant messaging
+over the past 15 years. Your mileage may vary. In terms of being
+short-sighted...I think half of your comments come from a misunderstanding of
+terminology. I'm still not convinced, however, that being able to be "Invisible"
+is a good thing, see below:
+
+Your comment ignores the technical ramifications of allowing "Invisible". For
+example, I talk to the same people on multiple protocols. Some of those
+protocols don't support the "Invisibility" status, therefore when I set myself
+as Invisible, the following occurs:
+
+1. I'm online on protocol foo.
+2. I'm not online on protocol bar.
+3. My buddies know that I'm set to invisible since I'm not on protocol bar.
+4. I didn't IM them so I must not want them to know I'm online.
+5. Queue the whining.
+
+Additionally (I didn't initially cover this in the post) protocol
+implementations of Invisible are also...rough around the edges, we shall say.
+Sending a message to an AIM user who is offline usually returns a message saying
+they'll receive it when they sign on...but if they're invisible...no message is
+returned. Voila you just broke the supposed "privacy" of being "Invisible" (at
+the cost of being annoying and sending lots of offline messages when they are
+really offline). It's just broken and doesn't work well.
+
+Anyway, thanks for your thoughts. It is fascinating to see how different people
+use instant messaging (and more proof there's no such thing as the mythical
+"general user").

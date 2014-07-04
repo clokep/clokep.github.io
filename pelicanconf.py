@@ -36,6 +36,9 @@ PATH = 'content'
 ARTICLE_PATHS = ['articles']
 PAGE_PATHS = ['pages']
 
+ARTICLE_EXCLUDES = ['comments', 'pages']
+PAGE_EXCLUDES = ['comments']
+
 # This is currently a modified copy of notmyidea, one of the default themes.
 THEME = 'theme'
 
@@ -49,8 +52,8 @@ EXTRA_PATH_METADATA = {
 }
 
 # Plugin setup.
-PLUGIN_PATH = '../pelican-plugins/'
-PLUGINS = ['extract_toc']
+PLUGIN_PATHS = ['../pelican-plugins/']
+PLUGINS = ['extract_toc', 'pelican_comment_system']
 
 # Change the default URLs.
 ARTICLE_URL = 'posts/{date:%Y}/{date:%m}/{date:%d}/{slug}/'
@@ -71,3 +74,6 @@ SOCIAL = (
     ('github', 'https://www.github.com/clokep'),
     ('mozillians', 'https://mozillians.org/u/clokep/'),
 )
+
+# For comments imported from blogger.
+PELICAN_COMMENT_SYSTEM = True
