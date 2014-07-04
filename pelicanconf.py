@@ -72,5 +72,5 @@ SOCIAL = (
     ('twitter', 'https://www.twitter.com/clokep'),
     ('bitbucket', 'https://bitbucket.org/clokep'),
     ('github', 'https://www.github.com/clokep'),
-    ('mozillians', 'https://mozillians.org/clokep'),
+    ('mozillians', 'https://mozillians.org/u/clokep/'),
 )
