@@ -74,7 +74,7 @@ this&amp;nbsp;far!)&lt;/p&gt;
 </description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Patrick Cloke</dc:creator><pubDate>Wed, 16 Apr 2014 12:34:00 -0400</pubDate><guid>tag:patrick.cloke.us,2014-04-16:posts/2014/04/16/community-and-volunteers/</guid><category>community</category><category>crosspost</category><category>Mozilla</category><category>Thunderbird</category></item><item><title>GSoc Lessons: Part Deux: The Arms Race</title><link>http://patrick.cloke.us/posts/2013/12/04/gsoc-lessons-part-deux-arms-race/</link><description>&lt;p&gt;This post title might be a little excessive, but I&amp;#8217;ll blame &lt;a class="reference external" href="http://en.wikipedia.org/wiki/The_Sum_of_All_Fears_%28film%29"&gt;The Sum
 of All Fears&lt;/a&gt; that I was watching last night. This is the second part
 of a set of posts about ideas I heard at the Google Summer of Code 2013
-Mentor Summit (you can read &lt;a class="reference external" href="http://patrick.cloke.us/posts/2013/12/01/gsoc-lessons-part-1-application-period/"&gt;the first part about the application
+Mentor Summit (you can read &lt;a class="reference external" href="http://patrick.cloke.us/posts/2013/12/02/gsoc-lessons-part-1-application-period/"&gt;the first part about the application
 process&lt;/a&gt;).&lt;/p&gt;
 &lt;p&gt;This will explore an interesting anecdote I heard about the
 interaction between applicants from another organization that, on
@@ -147,7 +147,7 @@ accepted. (And that they&amp;#8217;re used to competing, e.g. homework and exams
 not collaborating!) I don&amp;#8217;t really know whether I feel the above
 situation is good or bad, but it&amp;#8217;s certainly an interesting effect from
 the way the GSoC process&amp;nbsp;works.&lt;/p&gt;
-</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Patrick Cloke</dc:creator><pubDate>Wed, 04 Dec 2013 09:17:00 -0500</pubDate><guid>tag:patrick.cloke.us,2013-12-04:posts/2013/12/04/gsoc-lessons-part-deux-arms-race/</guid><category>community</category><category>GSoC</category><category>Mozilla</category></item><item><title>GSoC Lessons: Part 1: Application Period</title><link>http://patrick.cloke.us/posts/2013/12/01/gsoc-lessons-part-1-application-period/</link><description>&lt;p&gt;I briefly talked about &lt;a class="reference external" href="http://patrick.cloke.us/posts/2013/10/20/google-summer-of-code-mentor-summit-2013/"&gt;my experiences&lt;/a&gt; at the Google Summer of Code
+</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Patrick Cloke</dc:creator><pubDate>Wed, 04 Dec 2013 09:17:00 -0500</pubDate><guid>tag:patrick.cloke.us,2013-12-04:posts/2013/12/04/gsoc-lessons-part-deux-arms-race/</guid><category>community</category><category>GSoC</category><category>Mozilla</category></item><item><title>GSoC Lessons: Part 1: Application Period</title><link>http://patrick.cloke.us/posts/2013/12/02/gsoc-lessons-part-1-application-period/</link><description>&lt;p&gt;I briefly talked about &lt;a class="reference external" href="http://patrick.cloke.us/posts/2013/10/20/google-summer-of-code-mentor-summit-2013/"&gt;my experiences&lt;/a&gt; at the Google Summer of Code
 2013 Mentor Summit. I&amp;#8217;ve been pretty remiss in sharing what was actually
 discussed there and for that I must apologize! This will hopefully be
 one of a few posts about what I learned and discussed at the&amp;nbsp;Summit.&lt;/p&gt;
@@ -216,7 +216,7 @@ students before they apply to GSoC? I&amp;#8217;d love to hear&amp;nbsp;it!&lt;/
 include: community lessons, and handling a failing student. The
 community one will be very not-GSoC focused and could apply to just
 trying to incorporate new contributors&amp;#8230;but I&amp;#8217;ll include it in this&amp;nbsp;series.&lt;/p&gt;
-</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Patrick Cloke</dc:creator><pubDate>Sun, 01 Dec 2013 20:55:00 -0500</pubDate><guid>tag:patrick.cloke.us,2013-12-01:posts/2013/12/01/gsoc-lessons-part-1-application-period/</guid><category>community</category><category>GSoC</category><category>Mozilla</category></item><item><title>Google Summer of Code Mentor Summit 2013</title><link>http://patrick.cloke.us/posts/2013/10/20/google-summer-of-code-mentor-summit-2013/</link><description>&lt;p&gt;Not only was I lucky enough to mentor a great student for this year&amp;#8217;s
+</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Patrick Cloke</dc:creator><pubDate>Mon, 02 Dec 2013 20:55:00 -0500</pubDate><guid>tag:patrick.cloke.us,2013-12-02:posts/2013/12/02/gsoc-lessons-part-1-application-period/</guid><category>community</category><category>GSoC</category><category>Mozilla</category></item><item><title>Google Summer of Code Mentor Summit 2013</title><link>http://patrick.cloke.us/posts/2013/10/20/google-summer-of-code-mentor-summit-2013/</link><description>&lt;p&gt;Not only was I lucky enough to mentor a great student for this year&amp;#8217;s
 Google Summer of Code, but Mozilla asked me to represent them at the
 Google Summer of Code Mentor Summit!&amp;nbsp; This was located at Google&amp;#8217;s
 offices in Mountain View, California this past weekend (Friday, Oct.
@@ -469,7 +469,7 @@ that it requires a bit more understanding of the actual protocol level
 implementation, I don’t feel that knowing you need to use "&lt;span class="caps"&gt;PRIVMSG&lt;/span&gt;" as a
 command instead of /msg is a huge issue, however.&lt;/p&gt;
 &lt;/div&gt;
-</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Patrick Cloke</dc:creator><pubDate>Mon, 11 Jun 2012 22:25:00 -0400</pubDate><guid>tag:patrick.cloke.us,2012-06-11:posts/2012/06/11/irc-auto-performs/</guid><category>Instantbird</category><category>IRC</category><category>Mozilla</category></item><item><title>Shared Lightning profile across Linux and Windows</title><link>http://patrick.cloke.us/posts/2011/07/07/shared-lightning-profile-across-linux/</link><description>&lt;p&gt;In &lt;a class="reference external" href="irc://irc.mozilla.org/calendar"&gt;#calendar on Mozilla &lt;span class="caps"&gt;IRC&lt;/span&gt;&lt;/a&gt; the past few days a user has been
+</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Patrick Cloke</dc:creator><pubDate>Mon, 11 Jun 2012 22:25:00 -0400</pubDate><guid>tag:patrick.cloke.us,2012-06-11:posts/2012/06/11/irc-auto-performs/</guid><category>Instantbird</category><category>IRC</category><category>Mozilla</category></item><item><title>Shared Lightning profile across Linux and Windows</title><link>http://patrick.cloke.us/posts/2011/07/08/shared-lightning-profile-across-linux/</link><description>&lt;p&gt;In &lt;a class="reference external" href="irc://irc.mozilla.org/calendar"&gt;#calendar on Mozilla &lt;span class="caps"&gt;IRC&lt;/span&gt;&lt;/a&gt; the past few days a user has been
 asking about using a shared profile on Thunderbird between Linux and
 Windows (&amp;quot;shared&amp;quot; meaning a dual boot system of Linux/Windows, but not
 at the same time, obviously).&amp;nbsp; Generally this isn&amp;#8217;t a big deal &lt;span class="caps"&gt;UNLESS&lt;/span&gt;
@@ -504,7 +504,7 @@ script files (as is discussed in that big) but hopefully it should
 similar with the themes folders if they differ dramatically (it seems
 there&amp;#8217;s &lt;a class="reference external" href="http://mxr.mozilla.org/comm-central/source/calendar/lightning/themes/"&gt;just two&lt;/a&gt;: winstripe and pinstripe: i.e. Windows &lt;span class="amp"&gt;&amp;amp;&lt;/span&gt; Mac; Linux
 and Solaris most likely also use&amp;nbsp;winstripe).&lt;/p&gt;
-</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Patrick Cloke</dc:creator><pubDate>Thu, 07 Jul 2011 20:46:00 -0400</pubDate><guid>tag:patrick.cloke.us,2011-07-07:posts/2011/07/07/shared-lightning-profile-across-linux/</guid><category>Lightning</category><category>Mozilla</category></item><item><title>Compiling Instantbird</title><link>http://patrick.cloke.us/posts/2011/05/16/compilling-instantbird/</link><description>
+</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Patrick Cloke</dc:creator><pubDate>Fri, 08 Jul 2011 20:46:00 -0400</pubDate><guid>tag:patrick.cloke.us,2011-07-08:posts/2011/07/08/shared-lightning-profile-across-linux/</guid><category>Lightning</category><category>Mozilla</category></item><item><title>Compiling Instantbird</title><link>http://patrick.cloke.us/posts/2011/05/16/compilling-instantbird/</link><description>
 &lt;p&gt;In the past I’ve tried to compile a few different programs that use
 the Mozilla toolkit to various levels of success.  I’ve tried to compile
 Thunderbird, Songbird and Instantbird at various points.  I got
