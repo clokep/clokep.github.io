@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <title>Status Update - February 17, 2011</title>
+    <link rel="stylesheet" href="http://patrick.cloke.us/theme/css/main.css" />
+    <link href="http://patrick.cloke.us/feeds/atom.xml" type="application/atom+xml" rel="alternate" title="Like bricks in the sky Atom Feed" />
+    <link href="http://patrick.cloke.us/feeds/rss.xml" type="application/rss+xml" rel="alternate" title="Like bricks in the sky RSS Feed" />
+
+    <!--[if IE]>
+        <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+</head>
+
+<body id="index" class="home">
+    <header id="banner" class="body">
+        <h1><a href="http://patrick.cloke.us/">Like bricks in the sky </a></h1>
+        <nav><ul>
+            <li><a href="http://patrick.cloke.us/pages/about.html">About</a></li>
+            <li><a href="http://patrick.cloke.us/pages/contact.html">Contact</a></li>
+            <li><a href="http://patrick.cloke.us/archives.html">Archives</a></li>
+            <li><a href="http://patrick.cloke.us/tags.html">Tags</a></li>
+        </ul></nav>
+    </header><!-- /#banner -->
+
+    <div id="container" class="body">
+        <section id="extras" class="left">
+            <div class="social">
+                <h2>social</h2>
+                <ul>
+                    <li><a href="http://patrick.cloke.us/feeds/atom.xml" type="application/atom+xml" rel="alternate">atom feed</a></li>
+                    <li><a href="http://patrick.cloke.us/feeds/rss.xml" type="application/rss+xml" rel="alternate">rss feed</a></li>
+
+                    <li><a href="https://www.twitter.com/clokep">twitter</a></li>
+                    <li><a href="https://bitbucket.org/clokep">bitbucket</a></li>
+                    <li><a href="https://www.github.com/clokep">github</a></li>
+                    <li><a href="https://mozillians.org/clokep">mozillians</a></li>
+                </ul>
+            </div><!-- /.social -->
+        </section><!-- /#extras -->
+
+        <section id="search" class="left">
+            <h2>search</h2>
+
+            <form method="get" action="http://www.bing.com/search">
+
+                <input type="text" name="q" placeholder="search this site" />
+                <input type="submit" value="Search" />
+                <input type="hidden"  name="q1" value="site:patrick.cloke.us" />
+            </form>
+        </section>
+
+
+
+<section id="content" class="body">
+  <article>
+    <header>
+        <h1 class="entry-title">
+            <a href="http://patrick.cloke.us/posts/2011/02/17/status-update-february-17-2011/" rel="bookmark"
+               title="Permalink to Status Update - February 17, 2011">Status Update - February 17,&nbsp;2011</a></h1>
+    </header>
+
+    <div class="entry-content">
+<footer class="post-info">
+    <abbr class="published" title="2011-02-17T23:21:00">
+        Published: 02/17/2011 11:21 PM UTC
+    </abbr>
+
+
+<p>tags: <a href="http://patrick.cloke.us/tag/instantbird.html">Instantbird</a> <a href="http://patrick.cloke.us/tag/irc.html">IRC</a> <a href="http://patrick.cloke.us/tag/programming.html">programming</a> </p>
+</footer><!-- /.post-info -->        <p>Another month has gone by so it&#8217;s time for another status update.
+Unfortunately not as much got done this month as I was hoping, but
+here&#8217;s a quick update of what I&#8217;ve worked&nbsp;on:</p>
+<ul class="simple">
+<li><a class="reference external" href="https://bugzilla.instantbird.org/show_bug.cgi?id=690">Bug 690</a> - jsProtoHelper could help registering&nbsp;commands</li>
+<li><a class="reference external" href="https://bugzilla.instantbird.org/show_bug.cgi?id=661">Bug 661</a> - JavaScript accounts do not automatically set
+containsNick field on&nbsp;messages</li>
+<li><a class="reference external" href="https://bugzilla.instantbird.org/show_bug.cgi?id=686">Bug 686</a> - Implement default chat name for
+getChatRoomDefaultFieldValues for&nbsp;js-proto</li>
+</ul>
+<p>Florian also implemented a few things that are really helpful for
+JavaScript&nbsp;protocols:</p>
+<ul class="simple">
+<li><a class="reference external" href="https://bugzilla.instantbird.org/show_bug.cgi?id=649">Bug 649</a> - purple proxies should not be in the way of JavaScript&nbsp;protocols</li>
+<li><a class="reference external" href="https://bugzilla.instantbird.org/show_bug.cgi?id=118">Bug 118</a> - Extensions should be able to register&nbsp;commands.</li>
+</ul>
+<p>In addition, Twitter support was added to nightly builds as a
+JavaScript protocol (<a class="reference external" href="https://bugzilla.instantbird.org/show_bug.cgi?id=598">bug 598</a>).</p>
+<p>Hopefully next I&#8217;ll implement most of the commands for <span class="caps">IRC</span> (within the
+next week) at which point I&#8217;ll release a sample extension (which will
+overwrite the libpurple <span class="caps">IRC</span> implementation), allowing people to test
+without needing to make a new account,&nbsp;etc.</p>
+
+    </div><!-- /.entry-content -->
+
+  </article>
+</section>
+    </div>
+
+    <footer id="contentinfo" class="body">
+        <address id="about" class="vcard body">
+        Proudly powered by <a href="http://getpelican.com/">Pelican</a>, which takes great advantage of <a href="http://python.org">Python</a>.
+        </address><!-- /#about -->
+    </footer><!-- /#contentinfo -->
+
+    <script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-52389517-1']);
+    _gaq.push(['_trackPageview']);
+    (function() {
+        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+    </script>
+</body>
+</html>

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Like bricks in the sky</title><link>http://patrick.cloke.us/</link><description></description><atom:link href="http://patrick.cloke.us/feeds/tag/crosspost.rss.xml" rel="self"></atom:link><lastBuildDate>Wed, 16 Apr 2014 16:34:00 -0400</lastBuildDate><item><title>Community and Volunteers</title><link>http://patrick.cloke.us/posts/2014/Apr/16/community-and-volunteers/</link><description>&lt;p&gt;It was suggested that I cross-post this from mozilla.dev.planning onto
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Like bricks in the sky</title><link>http://patrick.cloke.us/</link><description></description><atom:link href="http://patrick.cloke.us/feeds/tag/crosspost.rss.xml" rel="self"></atom:link><lastBuildDate>Wed, 16 Apr 2014 16:34:00 -0400</lastBuildDate><item><title>Community and Volunteers</title><link>http://patrick.cloke.us/posts/2014/04/16/community-and-volunteers/</link><description>&lt;p&gt;It was suggested that I cross-post this from mozilla.dev.planning onto
 my blog. This is in reply to a thread entitled &amp;quot;&lt;a class="reference external" href="https://groups.google.com/forum/#%21topic/mozilla.dev.planning/P8oHKTCWSiQ"&gt;Proposal: Move
 Thunderbird and SeaMonkey to mozilla-central&lt;/a&gt;&amp;quot; about (essentially)
 merging comm-central back into mozilla-central. There have been many
@@ -71,4 +71,4 @@ keeping a dying one on life-support. (And prove to all that
 &lt;/blockquote&gt;
 &lt;p&gt;I don&amp;#8217;t have much else to say beyond that (besides thanks for reading
 this&amp;nbsp;far!)&lt;/p&gt;
-</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Patrick Cloke</dc:creator><pubDate>Wed, 16 Apr 2014 16:34:00 -0400</pubDate><guid>tag:patrick.cloke.us,2014-04-16:posts/2014/Apr/16/community-and-volunteers/</guid><category>community</category><category>crosspost</category><category>Mozilla</category><category>Thunderbird</category></item></channel></rss>
+</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Patrick Cloke</dc:creator><pubDate>Wed, 16 Apr 2014 16:34:00 -0400</pubDate><guid>tag:patrick.cloke.us,2014-04-16:posts/2014/04/16/community-and-volunteers/</guid><category>community</category><category>crosspost</category><category>Mozilla</category><category>Thunderbird</category></item></channel></rss>

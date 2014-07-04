@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Like bricks in the sky</title><link>http://patrick.cloke.us/</link><description></description><atom:link href="http://patrick.cloke.us/feeds/tag/specifications.rss.xml" rel="self"></atom:link><lastBuildDate>Sun, 27 Apr 2014 17:46:00 -0400</lastBuildDate><item><title>Extending JavaScript Maps (or other built-in objects)</title><link>http://patrick.cloke.us/posts/2014/Apr/27/extending-javascript-maps-or-other-built-in-objects/</link><description>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Like bricks in the sky</title><link>http://patrick.cloke.us/</link><description></description><atom:link href="http://patrick.cloke.us/feeds/tag/specifications.rss.xml" rel="self"></atom:link><lastBuildDate>Sun, 27 Apr 2014 17:46:00 -0400</lastBuildDate><item><title>Extending JavaScript Maps (or other built-in objects)</title><link>http://patrick.cloke.us/posts/2014/04/27/extending-javascript-maps-or-other/</link><description>
 &lt;p&gt;Finally another technical post, this one is about my adventures in
 attempting to extend the built-in &lt;a class="reference external" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Map"&gt;Map&lt;/a&gt; object in JavaScript to extend
 the functionality. As background, there are two reasons we’d want this:&lt;/p&gt;
@@ -150,7 +150,7 @@ we’ve fixed most of them at this point though!&lt;/td&gt;&lt;/tr&gt;
 &lt;table class="docutils footnote" frame="void" id="id5" rules="none"&gt;
 &lt;colgroup&gt;&lt;col class="label"&gt;&lt;/col&gt;&lt;col&gt;&lt;/col&gt;&lt;/colgroup&gt;
 &lt;tbody valign="top"&gt;
-&lt;tr&gt;&lt;td class="label"&gt;&lt;a class="fn-backref" href="#id2"&gt;[2]&lt;/a&gt;&lt;/td&gt;&lt;td&gt;As I’ve &lt;a class="reference external" href="http://patrick.cloke.us/posts/2011/Mar/09/the-so-called-irc-specifications/"&gt;written before&lt;/a&gt;, &lt;span class="caps"&gt;IRC&lt;/span&gt; tends to have crazy specifications.
+&lt;tr&gt;&lt;td class="label"&gt;&lt;a class="fn-backref" href="#id2"&gt;[2]&lt;/a&gt;&lt;/td&gt;&lt;td&gt;As I’ve &lt;a class="reference external" href="http://patrick.cloke.us/posts/2011/03/09/so-called-irc-specifications/"&gt;written before&lt;/a&gt;, &lt;span class="caps"&gt;IRC&lt;/span&gt; tends to have crazy specifications.
 In &lt;span class="caps"&gt;IRC&lt;/span&gt;, &lt;a class="reference external" href="https://tools.ietf.org/html/rfc2812#section-2.2"&gt;the characters of A-Z[]\~ are considered the upper case of a-z{}|^&lt;/a&gt;
 ("because of &lt;span class="caps"&gt;IRC&lt;/span&gt;’s Scandinavian origin"). Oh, also this can
 change based on an &lt;a class="reference external" href="http://tools.ietf.org/html/draft-brocklesby-irc-isupport-03#section-3.1"&gt;&lt;span class="caps"&gt;ISUPPORT&lt;/span&gt; response&lt;/a&gt; from the server to pure &lt;span class="caps"&gt;ASCII&lt;/span&gt; or
@@ -167,8 +167,8 @@ expected, but they’re uhh…not up anywhere yet though. Oops.&lt;/td&gt;&lt;/t
 &lt;/tbody&gt;
 &lt;/table&gt;
 &lt;/div&gt;
-</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Patrick Cloke</dc:creator><pubDate>Sun, 27 Apr 2014 17:46:00 -0400</pubDate><guid>tag:patrick.cloke.us,2014-04-27:posts/2014/Apr/27/extending-javascript-maps-or-other-built-in-objects/</guid><category>IM</category><category>Instantbird</category><category>programming</category><category>specifications</category><category>Thunderbird</category><category>Wat</category></item><item><title>The so-called IRC "specifications"</title><link>http://patrick.cloke.us/posts/2011/Mar/09/the-so-called-irc-specifications/</link><description>
-&lt;p&gt;In a &lt;a class="reference external" href="http://patrick.cloke.us/posts/2010/Dec/08/why-rewrite-irc-into-javascript-vs-libpurples-vs-chatzillas/"&gt;previous post&lt;/a&gt; I had briefly gone over the "history of &lt;span class="caps"&gt;IRC&lt;/span&gt;" as
+</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Patrick Cloke</dc:creator><pubDate>Sun, 27 Apr 2014 17:46:00 -0400</pubDate><guid>tag:patrick.cloke.us,2014-04-27:posts/2014/04/27/extending-javascript-maps-or-other/</guid><category>IM</category><category>Instantbird</category><category>programming</category><category>specifications</category><category>Thunderbird</category><category>Wat</category></item><item><title>The so-called IRC "specifications"</title><link>http://patrick.cloke.us/posts/2011/03/09/so-called-irc-specifications/</link><description>
+&lt;p&gt;In a &lt;a class="reference external" href="http://patrick.cloke.us/posts/2010/12/08/why-rewrite-irc-into-javascript/"&gt;previous post&lt;/a&gt; I had briefly gone over the "history of &lt;span class="caps"&gt;IRC&lt;/span&gt;" as
 I know it.  I’m going to expand on this a bit as I’ve come to understand
 it a bit more while reading through documentation.  (Hopefully it won’t
 sound too much like a rant, as it is all driving me crazy!)&lt;/p&gt;
@@ -265,4 +265,4 @@ to!  It’s difficult to know what’s used in practice, especially since
 there’s an awful lot of &lt;a class="reference external" href="http://en.wikipedia.org/wiki/Comparison_of_IRC_daemons"&gt;&lt;span class="caps"&gt;IRC&lt;/span&gt; servers&lt;/a&gt; out there.  Anyway, if someone
 does know of another specification, etc. that I missed please let me know!&lt;/p&gt;
 &lt;/div&gt;
-</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Patrick Cloke</dc:creator><pubDate>Wed, 09 Mar 2011 01:20:00 -0500</pubDate><guid>tag:patrick.cloke.us,2011-03-09:posts/2011/Mar/09/the-so-called-irc-specifications/</guid><category>Instantbird</category><category>IRC</category><category>programming</category><category>specifications</category></item></channel></rss>
+</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Patrick Cloke</dc:creator><pubDate>Wed, 09 Mar 2011 01:20:00 -0500</pubDate><guid>tag:patrick.cloke.us,2011-03-09:posts/2011/03/09/so-called-irc-specifications/</guid><category>Instantbird</category><category>IRC</category><category>programming</category><category>specifications</category></item></channel></rss>

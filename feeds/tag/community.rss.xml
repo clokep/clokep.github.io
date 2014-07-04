@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Like bricks in the sky</title><link>http://patrick.cloke.us/</link><description></description><atom:link href="http://patrick.cloke.us/feeds/tag/community.rss.xml" rel="self"></atom:link><lastBuildDate>Tue, 01 Jul 2014 12:03:00 -0400</lastBuildDate><item><title>Google Summer of Code 2014</title><link>http://patrick.cloke.us/posts/2014/Jul/01/google-summer-of-code-2014/</link><description>&lt;p&gt;I&amp;#8217;m again mentoring for &lt;a class="reference external" href="https://www.google-melange.com/gsoc/homepage/google/gsoc2014"&gt;Google Summer of Code&lt;/a&gt; 2014, this year my student is
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Like bricks in the sky</title><link>http://patrick.cloke.us/</link><description></description><atom:link href="http://patrick.cloke.us/feeds/tag/community.rss.xml" rel="self"></atom:link><lastBuildDate>Tue, 01 Jul 2014 12:03:00 -0400</lastBuildDate><item><title>Google Summer of Code 2014</title><link>http://patrick.cloke.us/posts/2014/07/01/google-summer-of-code-2014-file/</link><description>&lt;p&gt;I&amp;#8217;m again mentoring for &lt;a class="reference external" href="https://www.google-melange.com/gsoc/homepage/google/gsoc2014"&gt;Google Summer of Code&lt;/a&gt; 2014, this year my student is
 &lt;a class="reference external" href="http://sawrubh.tumblr.com/"&gt;Saurabh Anand&lt;/a&gt; (sawrubh), who has been working on a few related&amp;nbsp;things:&lt;/p&gt;
 &lt;ul class="simple"&gt;
 &lt;li&gt;Adding a &lt;a class="reference external" href="https://bugzilla.mozilla.org/show_bug.cgi?id=1024023"&gt;file transfer mechanism for &lt;span class="caps"&gt;XMPP&lt;/span&gt;&lt;/a&gt;&lt;/li&gt;
@@ -7,7 +7,7 @@
 &lt;li&gt;Integrating &lt;a class="reference external" href="https://support.mozilla.org/en-US/kb/filelink-large-attachments"&gt;FileLink&lt;/a&gt; as a fallback to in-protocol file&amp;nbsp;transfers&lt;/li&gt;
 &lt;/ul&gt;
 &lt;p&gt;Sorry for the way overdue post (as it&amp;#8217;s already past mid-term for&amp;nbsp;GSoC)!&lt;/p&gt;
-</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Patrick Cloke</dc:creator><pubDate>Tue, 01 Jul 2014 12:03:00 -0400</pubDate><guid>tag:patrick.cloke.us,2014-07-01:posts/2014/Jul/01/google-summer-of-code-2014/</guid><category>community</category><category>GSoC</category></item><item><title>Community and Volunteers</title><link>http://patrick.cloke.us/posts/2014/Apr/16/community-and-volunteers/</link><description>&lt;p&gt;It was suggested that I cross-post this from mozilla.dev.planning onto
+</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Patrick Cloke</dc:creator><pubDate>Tue, 01 Jul 2014 12:03:00 -0400</pubDate><guid>tag:patrick.cloke.us,2014-07-01:posts/2014/07/01/google-summer-of-code-2014-file/</guid><category>community</category><category>GSoC</category></item><item><title>Community and Volunteers</title><link>http://patrick.cloke.us/posts/2014/04/16/community-and-volunteers/</link><description>&lt;p&gt;It was suggested that I cross-post this from mozilla.dev.planning onto
 my blog. This is in reply to a thread entitled &amp;quot;&lt;a class="reference external" href="https://groups.google.com/forum/#%21topic/mozilla.dev.planning/P8oHKTCWSiQ"&gt;Proposal: Move
 Thunderbird and SeaMonkey to mozilla-central&lt;/a&gt;&amp;quot; about (essentially)
 merging comm-central back into mozilla-central. There have been many
@@ -79,10 +79,10 @@ keeping a dying one on life-support. (And prove to all that
 &lt;/blockquote&gt;
 &lt;p&gt;I don&amp;#8217;t have much else to say beyond that (besides thanks for reading
 this&amp;nbsp;far!)&lt;/p&gt;
-</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Patrick Cloke</dc:creator><pubDate>Wed, 16 Apr 2014 16:34:00 -0400</pubDate><guid>tag:patrick.cloke.us,2014-04-16:posts/2014/Apr/16/community-and-volunteers/</guid><category>community</category><category>crosspost</category><category>Mozilla</category><category>Thunderbird</category></item><item><title>GSoc Lessons: Part Deux: The Arms Race</title><link>http://patrick.cloke.us/posts/2013/Dec/04/gsoc-lessons-part-deux-the-arms-race/</link><description>&lt;p&gt;This post title might be a little excessive, but I&amp;#8217;ll blame &lt;a class="reference external" href="http://en.wikipedia.org/wiki/The_Sum_of_All_Fears_%28film%29"&gt;The Sum
+</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Patrick Cloke</dc:creator><pubDate>Wed, 16 Apr 2014 16:34:00 -0400</pubDate><guid>tag:patrick.cloke.us,2014-04-16:posts/2014/04/16/community-and-volunteers/</guid><category>community</category><category>crosspost</category><category>Mozilla</category><category>Thunderbird</category></item><item><title>GSoc Lessons: Part Deux: The Arms Race</title><link>http://patrick.cloke.us/posts/2013/12/04/gsoc-lessons-part-deux-arms-race/</link><description>&lt;p&gt;This post title might be a little excessive, but I&amp;#8217;ll blame &lt;a class="reference external" href="http://en.wikipedia.org/wiki/The_Sum_of_All_Fears_%28film%29"&gt;The Sum
 of All Fears&lt;/a&gt; that I was watching last night. This is the second part
 of a set of posts about ideas I heard at the Google Summer of Code 2013
-Mentor Summit (you can read &lt;a class="reference external" href="http://patrick.cloke.us/posts/2013/Dec/02/gsoc-lessons-part-1-application-period/"&gt;the first part about the application
+Mentor Summit (you can read &lt;a class="reference external" href="http://patrick.cloke.us/posts/2013/12/02/gsoc-lessons-part-1-application-period/"&gt;the first part about the application
 process&lt;/a&gt;).&lt;/p&gt;
 &lt;p&gt;This will explore an interesting anecdote I heard about the
 interaction between applicants from another organization that, on
@@ -131,7 +131,7 @@ anyone in &lt;a class="reference external" href="irc://irc.mozilla.org/#instantb
 Upon letting it sink in and reflecting on it&amp;#8230;I realized I had actually
 seen similar situations during the application periods I&amp;#8217;ve been
 involved with. This year, we found a bug in Instantbird&amp;#8217;s &lt;span class="caps"&gt;IRC&lt;/span&gt; code (&lt;span class="caps"&gt;CTCP&lt;/span&gt;
-quoting and dequoting); after referencing some &lt;a class="reference external" href="http://patrick.cloke.us/posts/2011/Mar/09/the-so-called-irc-specifications/"&gt;specifications&lt;/a&gt;, I was
+quoting and dequoting); after referencing some &lt;a class="reference external" href="http://patrick.cloke.us/posts/2011/03/09/so-called-irc-specifications/"&gt;specifications&lt;/a&gt;, I was
 pretty quickly able to figure out the vague areas where people should
 look for a fix. A couple of GSoC students in the room started looking
 into it and exhibited a greatly reduced form of the behavior I discussed
@@ -155,7 +155,7 @@ accepted. (And that they&amp;#8217;re used to competing, e.g. homework and exams
 not collaborating!) I don&amp;#8217;t really know whether I feel the above
 situation is good or bad, but it&amp;#8217;s certainly an interesting effect from
 the way the GSoC process&amp;nbsp;works.&lt;/p&gt;
-</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Patrick Cloke</dc:creator><pubDate>Wed, 04 Dec 2013 13:17:00 -0500</pubDate><guid>tag:patrick.cloke.us,2013-12-04:posts/2013/Dec/04/gsoc-lessons-part-deux-the-arms-race/</guid><category>community</category><category>GSoC</category><category>Mozilla</category></item><item><title>GSoC Lessons: Part 1: Application Period</title><link>http://patrick.cloke.us/posts/2013/Dec/02/gsoc-lessons-part-1-application-period/</link><description>&lt;p&gt;I briefly talked about &lt;a class="reference external" href="http://patrick.cloke.us/posts/2013/Oct/21/google-summer-of-code-mentor-summit-2013/"&gt;my experiences&lt;/a&gt; at the Google Summer of Code
+</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Patrick Cloke</dc:creator><pubDate>Wed, 04 Dec 2013 13:17:00 -0500</pubDate><guid>tag:patrick.cloke.us,2013-12-04:posts/2013/12/04/gsoc-lessons-part-deux-arms-race/</guid><category>community</category><category>GSoC</category><category>Mozilla</category></item><item><title>GSoC Lessons: Part 1: Application Period</title><link>http://patrick.cloke.us/posts/2013/12/02/gsoc-lessons-part-1-application-period/</link><description>&lt;p&gt;I briefly talked about &lt;a class="reference external" href="http://patrick.cloke.us/posts/2013/10/21/google-summer-of-code-mentor-summit-2013/"&gt;my experiences&lt;/a&gt; at the Google Summer of Code
 2013 Mentor Summit. I&amp;#8217;ve been pretty remiss in sharing what was actually
 discussed there and for that I must apologize! This will hopefully be
 one of a few posts about what I learned and discussed at the&amp;nbsp;Summit.&lt;/p&gt;
@@ -224,4 +224,4 @@ students before they apply to GSoC? I&amp;#8217;d love to hear&amp;nbsp;it!&lt;/
 include: community lessons, and handling a failing student. The
 community one will be very not-GSoC focused and could apply to just
 trying to incorporate new contributors&amp;#8230;but I&amp;#8217;ll include it in this&amp;nbsp;series.&lt;/p&gt;
-</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Patrick Cloke</dc:creator><pubDate>Mon, 02 Dec 2013 00:55:00 -0500</pubDate><guid>tag:patrick.cloke.us,2013-12-02:posts/2013/Dec/02/gsoc-lessons-part-1-application-period/</guid><category>community</category><category>GSoC</category><category>Mozilla</category></item></channel></rss>
+</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Patrick Cloke</dc:creator><pubDate>Mon, 02 Dec 2013 00:55:00 -0500</pubDate><guid>tag:patrick.cloke.us,2013-12-02:posts/2013/12/02/gsoc-lessons-part-1-application-period/</guid><category>community</category><category>GSoC</category><category>Mozilla</category></item></channel></rss>

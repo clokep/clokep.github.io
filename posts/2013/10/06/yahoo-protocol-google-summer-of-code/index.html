@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <title>Yahoo Protocol Google Summer of Code Round-up</title>
+    <link rel="stylesheet" href="http://patrick.cloke.us/theme/css/main.css" />
+    <link href="http://patrick.cloke.us/feeds/atom.xml" type="application/atom+xml" rel="alternate" title="Like bricks in the sky Atom Feed" />
+    <link href="http://patrick.cloke.us/feeds/rss.xml" type="application/rss+xml" rel="alternate" title="Like bricks in the sky RSS Feed" />
+
+    <!--[if IE]>
+        <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+</head>
+
+<body id="index" class="home">
+    <header id="banner" class="body">
+        <h1><a href="http://patrick.cloke.us/">Like bricks in the sky </a></h1>
+        <nav><ul>
+            <li><a href="http://patrick.cloke.us/pages/about.html">About</a></li>
+            <li><a href="http://patrick.cloke.us/pages/contact.html">Contact</a></li>
+            <li><a href="http://patrick.cloke.us/archives.html">Archives</a></li>
+            <li><a href="http://patrick.cloke.us/tags.html">Tags</a></li>
+        </ul></nav>
+    </header><!-- /#banner -->
+
+    <div id="container" class="body">
+        <section id="extras" class="left">
+            <div class="social">
+                <h2>social</h2>
+                <ul>
+                    <li><a href="http://patrick.cloke.us/feeds/atom.xml" type="application/atom+xml" rel="alternate">atom feed</a></li>
+                    <li><a href="http://patrick.cloke.us/feeds/rss.xml" type="application/rss+xml" rel="alternate">rss feed</a></li>
+
+                    <li><a href="https://www.twitter.com/clokep">twitter</a></li>
+                    <li><a href="https://bitbucket.org/clokep">bitbucket</a></li>
+                    <li><a href="https://www.github.com/clokep">github</a></li>
+                    <li><a href="https://mozillians.org/clokep">mozillians</a></li>
+                </ul>
+            </div><!-- /.social -->
+        </section><!-- /#extras -->
+
+        <section id="search" class="left">
+            <h2>search</h2>
+
+            <form method="get" action="http://www.bing.com/search">
+
+                <input type="text" name="q" placeholder="search this site" />
+                <input type="submit" value="Search" />
+                <input type="hidden"  name="q1" value="site:patrick.cloke.us" />
+            </form>
+        </section>
+
+
+
+<section id="content" class="body">
+  <article>
+    <header>
+        <h1 class="entry-title">
+            <a href="http://patrick.cloke.us/posts/2013/10/06/yahoo-protocol-google-summer-of-code/" rel="bookmark"
+               title="Permalink to Yahoo Protocol Google Summer of Code Round-up">Yahoo Protocol Google Summer of Code&nbsp;Round-up</a></h1>
+    </header>
+
+    <div class="entry-content">
+<footer class="post-info">
+    <abbr class="published" title="2013-10-06T13:18:00">
+        Published: 10/06/2013 01:18 PM UTC
+    </abbr>
+
+
+<p>tags: <a href="http://patrick.cloke.us/tag/chat.html">chat</a> <a href="http://patrick.cloke.us/tag/gsoc.html">GSoC</a> <a href="http://patrick.cloke.us/tag/im.html">IM</a> <a href="http://patrick.cloke.us/tag/instant-messaging.html">instant messaging</a> <a href="http://patrick.cloke.us/tag/instantbird.html">Instantbird</a> <a href="http://patrick.cloke.us/tag/yahoo.html">Yahoo</a> </p>
+</footer><!-- /.post-info -->        <p>I have to apologize to my student, <a class="reference external" href="http://phaseshiftsoftware.com/blog/">Quentin</a> (aka qheaden on <span class="caps">IRC</span>),
+for taking so long to write this&#8230;but anyway: Google Summer of Code
+2013 is over!&nbsp; Quentin has done a great job working at implementing the
+Yahoo Protocol for Instantbird (and Thunderbird) in JavaScript
+(henceforth called &quot;<span class="caps">JS</span>-Yahoo&quot;).&nbsp; It&#8217;s at the point where it has mostly
+reached feature-parity with the libpurple plug-in.&nbsp; Before <a class="reference external" href="https://bugzilla.instantbird.org/show_bug.cgi?id=2135">turning this
+on as default</a> there are a few minor bugs that still need to be fixed,
+but most of them have patches that just need another couple&nbsp;iterations.</p>
+<div class="section" id="where-do-we-go-from-here">
+<h2>Where do we go from&nbsp;here?</h2>
+<p>Once the last few bugs are fixed we&#8217;ll enable Yahoo by default in the nightly
+builds and, assuming we have no issues, it will be enabled by default in the
+upcoming Instantbird 1.5. If there are no major issues in 1.5, we&#8217;ll remove the
+libpurple Yahoo implementation for Instantbird&nbsp;1.next.</p>
+</div>
+<div class="section" id="how-do-i-try-this-now">
+<h2>How do I try this&nbsp;now?!</h2>
+<p>You can already easily enable <span class="caps">JS</span>-Yahoo in <a class="reference external" href="http://nightly.instantbird.im/">Instantbird nightly builds</a>:</p>
+<ol class="arabic simple">
+<li>Type /about config in a conversation tab&#8217;s&nbsp;textbox</li>
+<li>Type &quot;forcePurple&quot; in the search&nbsp;box</li>
+<li>Remove &quot;prpl-yahoo&quot; and &quot;prpl-yahoojp&quot; from this comma separated list
+of values (you can also remove prpl-jabber if you want to always use
+the <span class="caps">JS</span>-<span class="caps">XMPP</span> implementation from GSoC 2011! Note that this doesn&#8217;t
+support <a class="reference external" href="https://bugzilla.mozilla.org/show_bug.cgi?id=14328"><span class="caps">DNS</span> <span class="caps">SRV</span></a>,&nbsp;however.)</li>
+<li>Restart&nbsp;Instantbird!</li>
+</ol>
+<p>You should now be using the <span class="caps">JS</span>-Yahoo protocol.&nbsp; Hopefully you don&#8217;t
+notice anything different, but <a class="reference external" href="https://bugzilla.instantbird.org/"><span class="caps">PLEASE</span> file bugs</a> if you see any&nbsp;issues.</p>
+</div>
+<div class="section" id="how-come-i-can-t-use-this-in-thunderbird">
+<h2>How come I can&#8217;t use this in&nbsp;Thunderbird?!</h2>
+<p>Because Instantbird and comm-central development don&#8217;t happen in the same
+Mercurial repository.&nbsp; I&#8217;m working on <a class="reference external" href="https://bugzilla.mozilla.org/show_bug.cgi?id=920801">syncing the chat/ folder of these
+repositories</a> currently and <span class="caps">JS</span>-Yahoo should be in Daily soon to be
+included in the next Thunderbird release (i.e. Thunderbird&nbsp;31).</p>
+<p>The whole Instantbird community has been super happy with the progress
+Quentin made and we hope that Quentin has learned a lot! Thanks for a
+great summer qheaden and hopefully we&#8217;ll see you around&nbsp;still!</p>
+</div>
+
+    </div><!-- /.entry-content -->
+
+  </article>
+</section>
+    </div>
+
+    <footer id="contentinfo" class="body">
+        <address id="about" class="vcard body">
+        Proudly powered by <a href="http://getpelican.com/">Pelican</a>, which takes great advantage of <a href="http://python.org">Python</a>.
+        </address><!-- /#about -->
+    </footer><!-- /#contentinfo -->
+
+    <script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-52389517-1']);
+    _gaq.push(['_trackPageview']);
+    (function() {
+        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+    </script>
+</body>
+</html>
