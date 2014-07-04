@@ -12,7 +12,7 @@ Getting a Domain
 ================
 
 The most exciting part! Getting a domain! I used `gandi.net`_, it was
-recommended to me by Florian as "awesome, but a bit expensive". I liked that
+recommended to me by Florian_ as "awesome, but a bit expensive". I liked that
 they actually said *exactly* what I was getting by registering a domain through
 them. Nowhere else I looked was this explicit.
 
@@ -164,6 +164,7 @@ Atom feed URL (wherever that might be).
 
 .. _first part: {filename}/new-blog.rst
 .. _gandi.net: https://www.gandi.net/
+.. _Florian: http://blog.queze.net/
 .. _CNAME: https://en.wikipedia.org/wiki/CNAME
 .. _DNS zone: https://en.wikipedia.org/wiki/DNS_zone
 .. _GitHub Pages: https://pages.github.com/
