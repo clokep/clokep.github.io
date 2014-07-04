@@ -1,6 +1,6 @@
 GSoC Lessons: Part 1: Application Period
 ########################################
-:date: 2013-12-01 20:55
+:date: 2013-12-02 20:55
 :author: Patrick Cloke
 :tags: community, GSoC, Mozilla
 :slug: gsoc-lessons-part-1-application-period

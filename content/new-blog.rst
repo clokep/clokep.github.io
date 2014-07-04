@@ -1,6 +1,6 @@
 New Blog
 ########
-:date: 2014-08-01 12:03
+:date: 2099-08-01 12:03
 :tags: blog
 
 Set up Pelican
@@ -12,6 +12,10 @@ Link to github!
 
 Redirect Blogger
 ================
+
+Use template!
+
+Check dates / links!
 
 http://terriyu.info/blog/posts/2013/07/pelican-setup/
 http://www.labnol.org/internet/switch-from-blogger-to-wordpress/9707/
