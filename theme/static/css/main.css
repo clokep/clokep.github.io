@@ -285,7 +285,7 @@ img.left, figure.left {float: left; margin: 0 2em 2em 0;}
     Extras
 *****************/
 
-#extras {
+#extras, #search, #toc {
     margin-bottom: 1em;
 }
 
@@ -296,7 +296,7 @@ img.left, figure.left {float: left; margin: 0 2em 2em 0;}
 #extras li, #toc li {
     border-bottom: 1px solid #fff;
 }
-#extras h2, #toc h2 {
+#extras h2, #search h2, #toc h2 {
     color: #C74350;
     font-size: 1.429em;
     margin-bottom: .25em;
