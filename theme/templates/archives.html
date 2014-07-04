@@ -9,9 +9,9 @@
 <h2>{{ year.grouper }}</h2>
 <dl>
 {# Group by month. #}
-{% for month in year.list|groupby('date.month') %}
+{% for month in year.list|groupby('date.month')|sort(reverse=True) %}
     {# List the articles in this month, ordered by day. #}
-    {% for article in month.list|sort(attribute='date') %}
+    {% for article in month.list %}
     {# But first display the month name! #}
     {% if loop.first %}
     <dt>{{ article.date.strftime("%B") }}</dt>
