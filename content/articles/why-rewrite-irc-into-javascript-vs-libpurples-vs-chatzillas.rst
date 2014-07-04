@@ -220,7 +220,7 @@ protocol plug-ins for Instantbird.
 .. _#maildev: irc://irc.mozilla.org/#maildev
 .. _#songbird: irc://irc.mozilla.org/#songbird
 .. _Mozilla's IRC servers: http://irc.mozilla.org/
-.. _last post: {filename}/javascript-irc-in-instantbird.rst
+.. _last post: {filename}/articles/javascript-irc-in-instantbird.rst
 .. _enhance our IRC implementation: https://bugzilla.instantbird.org/showdependencytree.cgi?id=507&maxdepth=2&hide_resolved=1
 .. _some: https://bugzilla.instantbird.org/show_bug.cgi?id=519
 .. _bugs: https://bugzilla.instantbird.org/show_bug.cgi?id=118

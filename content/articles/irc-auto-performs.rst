@@ -149,8 +149,8 @@ command instead of /msg is a huge issue, however.
 
 .. _few: https://bugzilla.mozilla.org/show_bug.cgi?id=742675
 .. _requests: https://bugzilla.instantbird.org/show_bug.cgi?id=1101
-.. _replace the libpurple IRC protocol plugin: {filename}/why-rewrite-the-irc-protocol-plugin-part-2.rst
-.. _many revisions and unofficial extensions to IRC: {filename}/the-so-called-irc-specifications.rst
+.. _replace the libpurple IRC protocol plugin: {filename}/articles/why-rewrite-the-irc-protocol-plugin-part-2.rst
+.. _many revisions and unofficial extensions to IRC: {filename}/articles/the-so-called-irc-specifications.rst
 .. _RFC 1459: http://tools.ietf.org/html/rfc1459
 .. _RFC 2812: http://tools.ietf.org/html/rfc2812
 .. _CTCP (the Client-to-Client Protocol): http://www.irchelp.org/irchelp/rfc/ctcpspec.html

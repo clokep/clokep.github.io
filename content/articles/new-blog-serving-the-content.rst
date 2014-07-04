@@ -162,7 +162,7 @@ Atom feed URL (wherever that might be).
 .. [#] Pro-tip: You can change the "default" branch of your repository in the
        settings page on GitHub.
 
-.. _first part: {filename}/new-blog.rst
+.. _first part: {filename}/articles/new-blog.rst
 .. _gandi.net: https://www.gandi.net/
 .. _Florian: http://blog.queze.net/
 .. _CNAME: https://en.wikipedia.org/wiki/CNAME

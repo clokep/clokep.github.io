@@ -92,7 +92,7 @@ situation is good or bad, but it's certainly an interesting effect from
 the way the GSoC process works.
 
 .. _The Sum of All Fears: http://en.wikipedia.org/wiki/The_Sum_of_All_Fears_%28film%29
-.. _the first part about the application process: {filename}/gsoc-lessons-part-1-application-period.rst
+.. _the first part about the application process: {filename}/articles/gsoc-lessons-part-1-application-period.rst
 .. _arms race: http://en.wikipedia.org/wiki/Arms_race#Nuclear_arms_race
 .. _#instantbird: irc://irc.mozilla.org/#instantbird
-.. _specifications: {filename}/the-so-called-irc-specifications.rst
+.. _specifications: {filename}/articles/the-so-called-irc-specifications.rst

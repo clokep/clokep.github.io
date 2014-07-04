@@ -30,5 +30,5 @@ contacts.  I haven't seen any issues of using this (missing or wrong
 behavior), but of course your mileage might vary.  Have fun!
 
 .. _request: https://bugzilla.instantbird.org/show_bug.cgi?id=987
-.. _last post: {filename}/instantbird-contact-list-hack.rst
+.. _last post: {filename}/articles/instantbird-contact-list-hack.rst
 .. _blist.css: http://lxr.instantbird.org/instantbird/source/instantbird/content/blist.css#38

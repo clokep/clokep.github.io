@@ -74,7 +74,7 @@ One last quick note, if you happen to have the `repository`_ checked
 out, you'll want to update on the default branch from now on as I've
 merged the separate branches together under subfolders.
 
-.. _previously wrote about: {filename}/why-rewrite-irc-into-javascript-vs-libpurples-vs-chatzillas.rst
+.. _previously wrote about: {filename}/articles/why-rewrite-irc-into-javascript-vs-libpurples-vs-chatzillas.rst
 .. _dependencies of bug 507: https://bugzilla.instantbird.org/showdependencygraph.cgi?id=507&display=web&rankdir=LR
 .. _bug 720: https://bugzilla.instantbird.org/show_bug.cgi?id=720
 .. _bug 318: https://bugzilla.instantbird.org/show_bug.cgi?id=318
