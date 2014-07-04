@@ -26,31 +26,28 @@
     {% if article.comments %}
     <div class="comments">
         <h2>{{ article.comments_count }} Comments:</h2>
-    {% for comment in article.comments recursive %}
-        {% if loop.depth0 == 0 %}
-            {% set marginLeft = 0 %}
-        {% else %}
-            {% set marginLeft = 2 %}
-        {% endif %}
-        <article id="comment-{{ comment.id }}" style="border: 1px solid #DDDDDD; padding: 5px 0px 0px 5px; margin-left: {{marginLeft}}em; margin-bottom: 5px;">
-            <abbr class="published" title="{{ comment.date.isoformat() }}">
-                Commented: <a href="{{ SITEURL }}/{{ article.url }}#comment-{{comment.id}}"
-                              rel="bookmark" title="Permalink to this comment">{{ comment.locale_date }}</a>
-            </abbr>
+        {% for comment in article.comments recursive %}
+        <ul id="comments-list">
+            <li>
+                <abbr class="published" title="{{ comment.date.isoformat() }}">
+                    Commented: <a href="{{ SITEURL }}/{{ article.url }}#comment-{{comment.id}}"
+                                  rel="bookmark" title="Permalink to this comment">{{ comment.locale_date }}</a>
+                </abbr>
 
-            <address class="vcard author">
-                By {% if comment.website %}<a class="url fn" href="{{ comment.website }}">{% endif %}
-                    {{ comment.author }}
-                {% if comment.website %}</a>{% endif %}
-            </address>
+                <address class="vcard author">
+                    By {% if comment.website %}<a class="url fn" href="{{ comment.website }}">{% endif %}
+                        {{ comment.author }}
+                    {% if comment.website %}</a>{% endif %}
+                </address>
 
-            {{ comment.content }}
-            {% if comment.replies %}
-                {{ loop(comment.replies) }}
-            {% endif %}
-        </article>
+                {{ comment.content }}
+                {% if comment.replies %}
+                    {{ loop(comment.replies) }}
+                {% endif %}
+            </li>
+        </ul>
+        {% endfor %}
     </div>
-    {% endfor %}
     {% elif DISQUS_SITENAME and SITEURL and article.status != "draft" %}
     <div class="comments">
         <h2>Comments !</h2>
