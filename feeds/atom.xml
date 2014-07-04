@@ -1,5 +1,97 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>Like bricks in the sky</title><link href="http://patrick.cloke.us/" rel="alternate"></link><link href="http://patrick.cloke.us/feeds/atom.xml" rel="self"></link><id>http://patrick.cloke.us/</id><updated>2014-07-01T08:03:00-04:00</updated><entry><title>Google Summer of Code 2014</title><link href="http://patrick.cloke.us/posts/2014/07/01/google-summer-of-code-2014-file/" rel="alternate"></link><updated>2014-07-01T08:03:00-04:00</updated><author><name>Patrick Cloke</name></author><id>tag:patrick.cloke.us,2014-07-01:posts/2014/07/01/google-summer-of-code-2014-file/</id><summary type="html">&lt;p&gt;I&amp;#8217;m again mentoring for &lt;a class="reference external" href="https://www.google-melange.com/gsoc/homepage/google/gsoc2014"&gt;Google Summer of Code&lt;/a&gt; 2014, this year my student is
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Like bricks in the sky</title><link href="http://patrick.cloke.us/" rel="alternate"></link><link href="http://patrick.cloke.us/feeds/atom.xml" rel="self"></link><id>http://patrick.cloke.us/</id><updated>2014-07-03T23:04:00-04:00</updated><entry><title>New Blog</title><link href="http://patrick.cloke.us/posts/2014/07/03/new-blog/" rel="alternate"></link><updated>2014-07-03T23:04:00-04:00</updated><author><name>Patrick Cloke</name></author><id>tag:patrick.cloke.us,2014-07-03:posts/2014/07/03/new-blog/</id><summary type="html">
+&lt;p&gt;If you’re reading this you might have noticed that I have a shiny new blog! I
+had been pretty disappointed in &lt;a class="reference external" href="https://www.blogger.com/"&gt;Blogger&lt;/a&gt; practically since I started using it.
+But it was free, I was a poor college student, etc. I finally managed to get
+myself a &lt;a class="reference external" href="http://patrick.cloke.us"&gt;domain name&lt;/a&gt; and set up a more proper blog!&lt;/p&gt;
+&lt;p&gt;I was between a few different pieces of blog software (namely &lt;a class="reference external" href="https://wordpress.com/"&gt;WordPress&lt;/a&gt;,
+&lt;a class="reference external" href="http://dotclear.org/"&gt;DotClear&lt;/a&gt; and &lt;a class="reference external" href="http://jekyllrb.com/"&gt;Jekyll&lt;/a&gt;) and couldn’t really decide. I loved the idea of the
+simplicity of Jekyll, but it’s &lt;a class="reference external" href="http://www.ruby-lang.org/"&gt;Ruby&lt;/a&gt;. (Who’s got time for that?) I wanted
+something I could read the code of and understand if necessary. (And it has
+been necessary!) My main requirements for blog software were:&lt;/p&gt;
+&lt;ul class="simple"&gt;
+&lt;li&gt;Easy to use and set up.&lt;/li&gt;
+&lt;li&gt;Free.&lt;/li&gt;
+&lt;li&gt;Support for syntax highlighted code blocks. (This was the only "hard" one to
+come by.)&lt;/li&gt;
+&lt;li&gt;Support for &lt;a class="reference external" href="https://en.wikipedia.org/wiki/RSS"&gt;&lt;span class="caps"&gt;RSS&lt;/span&gt;&lt;/a&gt; feeds.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;After a quick Google search for "&lt;a class="reference external" href="https://www.google.com/search?q=jekyll+python"&gt;jekyll python&lt;/a&gt;", I ended up on &lt;a class="reference external" href="https://hyde.github.io/"&gt;Hyde&lt;/a&gt;. It
+seemed alright, but no one seemed to use it. Farther down the page I came across
+&lt;a class="reference external" href="http://arunrocks.com/moving-blogs-to-pelican/"&gt;a blog&lt;/a&gt; talking about moving to &lt;a class="reference external" href="http://getpelican.com/"&gt;Pelican&lt;/a&gt;. I was hooked. (Note that I don’t
+necessarily agree with all the ideas in that post, it just introduced me to Pelican.)&lt;/p&gt;
+&lt;div class="section" id="set-up-pelican"&gt;
+&lt;h2&gt;&lt;a class="toc-backref" href="#id1"&gt;Set up Pelican&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;(Since I dislike writing my own descriptions:) "Pelican is a static site
+generator, written in &lt;a class="reference external" href="http://www.python.org/"&gt;Python&lt;/a&gt;, that requires no database or server-side logic."
+Cool! Sounds real simple to use!&lt;/p&gt;
+&lt;p&gt;And it was. Mostly.&lt;/p&gt;
+&lt;p&gt;I pretty much followed the &lt;a class="reference external" href="http://docs.getpelican.com/en/3.4.0/quickstart.html"&gt;quickstart&lt;/a&gt;:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;mkdir -p blog/blog &lt;span class="c"&gt;# The first blog is to store other repos, etc.&lt;/span&gt;
+&lt;span class="nb"&gt;cd &lt;/span&gt;blog/blog
+git init &lt;span class="o"&gt;&amp;amp;&amp;amp;&lt;/span&gt; git checkout -b &lt;span class="nb"&gt;source&lt;/span&gt; &lt;span class="c"&gt;# Explained later on.&lt;/span&gt;
+brew install pandoc &lt;span class="c"&gt;# If you're not on Mac you'll need to do something else.&lt;/span&gt;
+mkvirtualenv blog
+pip install pelican markdown Fabric ghp_import feedparser
+pelican-quickstart
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;I’ll let you read the rest of the quickstart guide, but it was super quick to
+get up and running! (I also referenced another &lt;a class="reference external" href="http://terriyu.info/blog/posts/2013/07/pelican-setup/"&gt;blog post&lt;/a&gt; I found that had some
+good information!) I, of course, had no content…but wait I did, it was just
+in Blogger!&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="section" id="importing-content-from-blogger"&gt;
+&lt;h2&gt;&lt;a class="toc-backref" href="#id2"&gt;Importing Content from Blogger&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;Pelican does not directly support importing from Blogger, but it supports
+&lt;a class="reference external" href="http://docs.getpelican.com/en/3.4.0/importer.html"&gt;importing from a &lt;span class="caps"&gt;RSS&lt;/span&gt; feed&lt;/a&gt;. The first time I did this it missed a couple of
+articles (which I didn’t notice right away), so make sure you bump up the max
+amount in the &lt;span class="caps"&gt;URL&lt;/span&gt; like so (this also outputs in the folder "content"):&lt;/p&gt;
+&lt;pre class="literal-block"&gt;
+pelican-import --feed http://clokep.blogspot.com/feeds/posts/default\?alt\=rss\&amp;amp;max-results\=240 -o content
+&lt;/pre&gt;
+&lt;p&gt;No import is ever perfect and I had to clean up a bunch of stuff by hand including:&lt;/p&gt;
+&lt;ul class="simple"&gt;
+&lt;li&gt;The slugs did not match the ones from Blogger (this is important later on!)&lt;/li&gt;
+&lt;li&gt;Some of the dates were strangely wrong&lt;/li&gt;
+&lt;li&gt;Some &lt;span class="caps"&gt;HTML&lt;/span&gt; formatting was included (in particular around &amp;lt;code&amp;gt;/&amp;lt;pre&amp;gt; blocks I
+had added).&lt;/li&gt;
+&lt;li&gt;Some formatting was messed up.&lt;/li&gt;
+&lt;li&gt;The (single) image I had on my blog had to be downloaded and manually configured.&lt;/li&gt;
+&lt;li&gt;Things that I really wanted to be headers I had just bolded. (This is my fault!)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;I probably spent a couple of hours cleaning all the reStructuredText content up,
+but now I feel that I have a portable set of all of my blog posts, which I’m
+pretty happy about!&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="section" id="customizing-pelican"&gt;
+&lt;h2&gt;&lt;a class="toc-backref" href="#id3"&gt;Customizing Pelican&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;I tried a few different themes for Pelican, but eventually settled on just using
+and modifying the default theme. I frankly have tried it on too many different
+systems, so hopefully it doesn’t totally break on small screen sizes or
+something. I’m not &lt;span class="caps"&gt;HTML&lt;/span&gt; expert, so I’d rather talk about the other stuff I
+modified. (Although the main elements I &lt;em&gt;did&lt;/em&gt; modify, if you’re curious, are
+adding the sidebar on the left and the organization of the archives page).&lt;/p&gt;
+&lt;p&gt;Blogger has a concept of "labels", Pelican has a concept of "category" and
+"tags". I &lt;em&gt;hate&lt;/em&gt; this. What’s the difference? Anyway, I wanted to eradicate the
+concept of a "category" (and "authors" since I’m the only one on my blog!), so I
+added a few things to my pelicanconf.py:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="c"&gt;# Disable categories.&lt;/span&gt;
+&lt;span class="n"&gt;DISPLAY_CATEGORIES_ON_MENU&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="bp"&gt;False&lt;/span&gt;
+&lt;span class="n"&gt;DISPLAY_CATEGORY_ON_ARTICLE&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="bp"&gt;False&lt;/span&gt;
+&lt;span class="n"&gt;CATEGORY_FEED_ATOM&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="bp"&gt;None&lt;/span&gt;
+&lt;span class="n"&gt;CATEGORY_SAVE_AS&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s"&gt;''&lt;/span&gt;
+&lt;span class="n"&gt;CATEGORIES_SAVE_AS&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s"&gt;''&lt;/span&gt;
+
+&lt;span class="c"&gt;# Disable author pages.&lt;/span&gt;
+&lt;span class="n"&gt;AUTHOR_SAVE_AS&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s"&gt;''&lt;/span&gt;
+&lt;span class="n"&gt;AUTHORS_SAVE_AS&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s"&gt;''&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Note that &lt;tt class="docutils literal"&gt;DISPLAY_CATEGORY_ON_ARTICLE&lt;/tt&gt; is actually a variable I added and
+used in the template to not show categories above the list of tags on each article.&lt;/p&gt;
+&lt;p&gt;This is getting pretty long so I’ll leave how I’m actually serving this content
+to my next article!&lt;/p&gt;
+&lt;/div&gt;
+</summary><category term="blog"></category></entry><entry><title>Google Summer of Code 2014</title><link href="http://patrick.cloke.us/posts/2014/07/01/google-summer-of-code-2014-file/" rel="alternate"></link><updated>2014-07-01T08:03:00-04:00</updated><author><name>Patrick Cloke</name></author><id>tag:patrick.cloke.us,2014-07-01:posts/2014/07/01/google-summer-of-code-2014-file/</id><summary type="html">&lt;p&gt;I&amp;#8217;m again mentoring for &lt;a class="reference external" href="https://www.google-melange.com/gsoc/homepage/google/gsoc2014"&gt;Google Summer of Code&lt;/a&gt; 2014, this year my student is
 &lt;a class="reference external" href="http://sawrubh.tumblr.com/"&gt;Saurabh Anand&lt;/a&gt; (sawrubh), who has been working on a few related&amp;nbsp;things:&lt;/p&gt;
 &lt;ul class="simple"&gt;
 &lt;li&gt;Adding a &lt;a class="reference external" href="https://bugzilla.mozilla.org/show_bug.cgi?id=1024023"&gt;file transfer mechanism for &lt;span class="caps"&gt;XMPP&lt;/span&gt;&lt;/a&gt;&lt;/li&gt;

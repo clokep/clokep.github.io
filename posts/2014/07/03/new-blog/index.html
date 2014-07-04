@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8" />
-    <title>Like bricks in the sky</title>
+    <title>New Blog</title>
     <link rel="stylesheet" href="http://patrick.cloke.us/theme/css/main.css" />
     <link href="http://patrick.cloke.us/feeds/atom.xml" type="application/atom+xml" rel="alternate" title="Like bricks in the sky Atom Feed" />
     <link href="http://patrick.cloke.us/feeds/rss.xml" type="application/rss+xml" rel="alternate" title="Like bricks in the sky RSS Feed" />
@@ -51,9 +51,9 @@
         </section>
 
 
-        <section id="toc" class="left">
-            <h2>table of contents</h2>
-            <div class="contents topic" id="contents">
+<section id="toc" class="left">
+    <h2>table of contents</h2>
+    <div class="contents topic" id="contents">
 <p class="topic-title first">Contents</p>
 <ul class="simple">
 <li><a class="reference internal" href="#set-up-pelican" id="id1">Set up Pelican</a></li>
@@ -61,11 +61,17 @@
 <li><a class="reference internal" href="#customizing-pelican" id="id3">Customizing Pelican</a></li>
 </ul>
 </div>
-        </section>
+</section>
 
-        <aside id="featured" class="body">
-        <article>
-            <h1 class="entry-title"><a href="http://patrick.cloke.us/posts/2014/07/03/new-blog/">New&nbsp;Blog</a></h1>
+<section id="content" class="body">
+  <article>
+    <header>
+        <h1 class="entry-title">
+            <a href="http://patrick.cloke.us/posts/2014/07/03/new-blog/" rel="bookmark"
+               title="Permalink to New Blog">New&nbsp;Blog</a></h1>
+    </header>
+
+    <div class="entry-content">
 <footer class="post-info">
     <abbr class="published" title="2014-07-03T23:04:00">
         Published: 07/03/2014 11:04 PM UTC
@@ -73,7 +79,7 @@
 
 
 <p>tags: <a href="http://patrick.cloke.us/tag/blog.html">blog</a> </p>
-</footer><!-- /.post-info -->
+</footer><!-- /.post-info -->        
 <p>If you’re reading this you might have noticed that I have a shiny new blog! I
 had been pretty disappointed in <a class="reference external" href="https://www.blogger.com/">Blogger</a> practically since I started using it.
 But it was free, I was a poor college student, etc. I finally managed to get
@@ -165,112 +171,11 @@ used in the template to not show categories above the list of tags on each arti
 <p>This is getting pretty long so I’ll leave how I’m actually serving this content
 to my next article!</p>
 </div>
-        </article>
-        </aside><!-- /#featured -->
-        <section id="content" class="body">
-            <h1>Other articles</h1>
-            <hr />
-            <ol id="posts-list" class="hfeed">
 
-        <li><article class="hentry">
-        <header>
-            <h1><a href="http://patrick.cloke.us/posts/2014/07/01/google-summer-of-code-2014-file/" rel="bookmark"
-               title="Permalink to Google Summer of Code 2014">Google Summer of Code&nbsp;2014</a></h1>
-        </header>
+    </div><!-- /.entry-content -->
 
-        <div class="entry-content">
-<footer class="post-info">
-    <abbr class="published" title="2014-07-01T08:03:00">
-        Published: 07/01/2014 08:03 AM UTC
-    </abbr>
-
-
-<p>tags: <a href="http://patrick.cloke.us/tag/community.html">community</a> <a href="http://patrick.cloke.us/tag/gsoc.html">GSoC</a> </p>
-</footer><!-- /.post-info -->        <p>I&#8217;m again mentoring for <a class="reference external" href="https://www.google-melange.com/gsoc/homepage/google/gsoc2014">Google Summer of Code</a> 2014, this year my student is
-<a class="reference external" href="http://sawrubh.tumblr.com/">Saurabh Anand</a> (sawrubh), who has been working on a few related&nbsp;things:</p>
-<ul class="simple">
-<li>Adding a <a class="reference external" href="https://bugzilla.mozilla.org/show_bug.cgi?id=1024023">file transfer mechanism for <span class="caps">XMPP</span></a></li>
-<li>Hooking up libpurple&#8217;s file transfer code to&nbsp;Instantbird</li>
-<li>Integrating <a class="reference external" href="https://support.mozilla.org/en-US/kb/filelink-large-attachments">FileLink</a> as a fallback to in-protocol ...</li></ul>
-        <a class="readmore" href="http://patrick.cloke.us/posts/2014/07/01/google-summer-of-code-2014-file/">read more &rarr;</a>
-        </div><!-- /.entry-content -->
-        </article></li>
-
-        <li><article class="hentry">
-        <header>
-            <h1><a href="http://patrick.cloke.us/posts/2014/04/27/extending-javascript-maps-or-other/" rel="bookmark"
-               title="Permalink to Extending JavaScript Maps (or other built-in objects)">Extending JavaScript Maps (or other built-in&nbsp;objects)</a></h1>
-        </header>
-
-        <div class="entry-content">
-<footer class="post-info">
-    <abbr class="published" title="2014-04-27T13:46:00">
-        Published: 04/27/2014 01:46 PM UTC
-    </abbr>
-
-
-<p>tags: <a href="http://patrick.cloke.us/tag/im.html">IM</a> <a href="http://patrick.cloke.us/tag/instantbird.html">Instantbird</a> <a href="http://patrick.cloke.us/tag/programming.html">programming</a> <a href="http://patrick.cloke.us/tag/specifications.html">specifications</a> <a href="http://patrick.cloke.us/tag/thunderbird.html">Thunderbird</a> <a href="http://patrick.cloke.us/tag/wat.html">Wat</a> </p>
-</footer><!-- /.post-info -->        
-<p>Finally another technical post, this one is about my adventures in
-attempting to extend the built-in <a class="reference external" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Map">Map</a> object in JavaScript to extend
-the functionality. As background, there are two reasons we’d want this:</p>
-<ol class="arabic">
-<li><p class="first">In the chat backend we currently use JavaScript <a class="reference external" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object">objects</a> (<tt class="docutils literal">{}</tt>) as
-hashes/maps to keep track of ...</p></li></ol>
-        <a class="readmore" href="http://patrick.cloke.us/posts/2014/04/27/extending-javascript-maps-or-other/">read more &rarr;</a>
-        </div><!-- /.entry-content -->
-        </article></li>
-
-        <li><article class="hentry">
-        <header>
-            <h1><a href="http://patrick.cloke.us/posts/2014/04/16/community-and-volunteers/" rel="bookmark"
-               title="Permalink to Community and Volunteers">Community and&nbsp;Volunteers</a></h1>
-        </header>
-
-        <div class="entry-content">
-<footer class="post-info">
-    <abbr class="published" title="2014-04-16T12:34:00">
-        Published: 04/16/2014 12:34 PM UTC
-    </abbr>
-
-
-<p>tags: <a href="http://patrick.cloke.us/tag/community.html">community</a> <a href="http://patrick.cloke.us/tag/crosspost.html">crosspost</a> <a href="http://patrick.cloke.us/tag/mozilla.html">Mozilla</a> <a href="http://patrick.cloke.us/tag/thunderbird.html">Thunderbird</a> </p>
-</footer><!-- /.post-info -->        <p>It was suggested that I cross-post this from mozilla.dev.planning onto
-my blog. This is in reply to a thread entitled &quot;<a class="reference external" href="https://groups.google.com/forum/#%21topic/mozilla.dev.planning/P8oHKTCWSiQ">Proposal: Move
-Thunderbird and SeaMonkey to mozilla-central</a>&quot; about (essentially)
-merging comm-central back into mozilla-central. There have been many
-technical concerns raised in the thread (that I&#8217;m not ...</p>
-        <a class="readmore" href="http://patrick.cloke.us/posts/2014/04/16/community-and-volunteers/">read more &rarr;</a>
-        </div><!-- /.entry-content -->
-        </article></li>
-
-        <li><article class="hentry">
-        <header>
-            <h1><a href="http://patrick.cloke.us/posts/2013/12/04/gsoc-lessons-part-deux-arms-race/" rel="bookmark"
-               title="Permalink to GSoc Lessons: Part Deux: The Arms Race">GSoc Lessons: Part Deux: The Arms&nbsp;Race</a></h1>
-        </header>
-
-        <div class="entry-content">
-<footer class="post-info">
-    <abbr class="published" title="2013-12-04T09:17:00">
-        Published: 12/04/2013 09:17 AM UTC
-    </abbr>
-
-
-<p>tags: <a href="http://patrick.cloke.us/tag/community.html">community</a> <a href="http://patrick.cloke.us/tag/gsoc.html">GSoC</a> <a href="http://patrick.cloke.us/tag/mozilla.html">Mozilla</a> </p>
-</footer><!-- /.post-info -->        <p>This post title might be a little excessive, but I&#8217;ll blame <a class="reference external" href="http://en.wikipedia.org/wiki/The_Sum_of_All_Fears_%28film%29">The Sum
-of All Fears</a> that I was watching last night. This is the second part
-of a set of posts about ideas I heard at the Google Summer of Code 2013
-Mentor Summit (you can read <a class="reference external" href="http://patrick.cloke.us/posts/2013/12/02/gsoc-lessons-part-1-application-period/">the ...</a></p>
-        <a class="readmore" href="http://patrick.cloke.us/posts/2013/12/04/gsoc-lessons-part-deux-arms-race/">read more &rarr;</a>
-        </div><!-- /.entry-content -->
-        </article></li>
-        </ol><!-- /#posts-list -->
-<p class="paginator">
-    Page 1 / 6
-        <a href="http://patrick.cloke.us/index2.html">&raquo;</a>
-</p>
-        </section><!-- /#content -->
+  </article>
+</section>
     </div>
 
     <footer id="contentinfo" class="body">
