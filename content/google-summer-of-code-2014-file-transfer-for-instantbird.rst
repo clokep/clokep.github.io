@@ -1,6 +1,6 @@
 Google Summer of Code 2014
 ##########################
-:date: 2014-07-01 12:03
+:date: 2014-07-01 08:03
 :author: Patrick Cloke
 :tags: community, GSoC
 :slug: google-summer-of-code-2014-file

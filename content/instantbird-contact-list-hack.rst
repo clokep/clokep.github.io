@@ -1,6 +1,6 @@
 Instantbird Contact List Hack
 #############################
-:date: 2011-11-01 00:20
+:date: 2011-10-31 20:20
 :author: Patrick Cloke
 :tags: customizing, Instantbird, programming
 :slug: instantbird-contact-list-hack

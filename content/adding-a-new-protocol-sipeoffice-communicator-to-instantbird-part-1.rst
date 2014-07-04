@@ -1,6 +1,6 @@
 Adding a new protocol (SIPE/Office Communicator) to Instantbird (part 1)
 ########################################################################
-:date: 2011-06-19 01:53
+:date: 2011-06-18 21:53
 :author: Patrick Cloke
 :tags: Instantbird, programming, SIPE
 :slug: adding-new-protocol-sipeoffice

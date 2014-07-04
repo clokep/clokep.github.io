@@ -1,6 +1,6 @@
 Instantbird 1.3 Released!!!
 ###########################
-:date: 2012-11-16 10:42
+:date: 2012-11-16 06:42
 :author: Patrick Cloke
 :tags: Instantbird
 :slug: instantbird-13-released

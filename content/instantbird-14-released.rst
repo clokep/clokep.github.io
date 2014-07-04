@@ -1,6 +1,6 @@
 Instantbird 1.4 Released!
 #########################
-:date: 2013-05-20 20:45
+:date: 2013-05-20 16:45
 :author: Patrick Cloke
 :tags: Instantbird
 :slug: instantbird-14-released

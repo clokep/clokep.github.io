@@ -1,6 +1,6 @@
 GSoc Lessons: Part Deux: The Arms Race
 ######################################
-:date: 2013-12-04 13:17
+:date: 2013-12-04 09:17
 :author: Patrick Cloke
 :tags: community, GSoC, Mozilla
 :slug: gsoc-lessons-part-deux-arms-race

@@ -1,6 +1,6 @@
 Blogger RSS Feeds for a Label
 #############################
-:date: 2010-12-08 19:25
+:date: 2010-12-08 15:25
 :author: Patrick Cloke
 :tags: bugs, Google, RSS
 :slug: blogger-rss-feeds-for-label

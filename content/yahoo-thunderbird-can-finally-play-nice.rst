@@ -1,6 +1,6 @@
 Yahoo & Thunderbird Can Finally Play Nice?
 ##########################################
-:date: 2010-11-23 03:03
+:date: 2010-11-22 23:03
 :author: Patrick Cloke
 :tags: bugs, email, IMAP, Mozilla, POP3, programming, SMTP, Thunderbird, Yahoo
 :slug: yahoo-thunderbird

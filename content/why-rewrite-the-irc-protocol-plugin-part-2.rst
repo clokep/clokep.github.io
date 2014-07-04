@@ -1,6 +1,6 @@
 Why rewrite the IRC protocol plugin? (Part 2)
 #############################################
-:date: 2011-04-30 17:01
+:date: 2011-04-30 13:01
 :author: Patrick Cloke
 :tags: Instantbird, IRC
 :slug: why-rewrite-irc-protocol-plugin-part-2

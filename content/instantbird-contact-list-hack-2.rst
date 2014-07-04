@@ -1,6 +1,6 @@
 Instantbird Contact List Hack #2
 ################################
-:date: 2012-01-15 14:00
+:date: 2012-01-15 10:00
 :author: Patrick Cloke
 :tags: customizing, Instantbird, programming
 :slug: instantbird-contact-list-hack-2

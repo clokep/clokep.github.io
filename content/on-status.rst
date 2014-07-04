@@ -1,6 +1,6 @@
 On Status
 #########
-:date: 2012-10-17 01:33
+:date: 2012-10-16 21:33
 :author: Patrick Cloke
 :tags: chat, IM, instant messaging, Instantbird, messaging, status, Thunderbird
 :slug: on-status
