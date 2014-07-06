@@ -1,5 +1,5 @@
 :date: 2011-05-17 05:56
-:author: Florian Quèze
+:author: Florian Qu√®ze
 :website: http://queze.net/
 
 First, congratulations for your successful build! :)

@@ -1,5 +1,5 @@
 :date: 2012-10-17 09:57
-:author: Florian Quèze
+:author: Florian Qu√®ze
 :website: http://queze.net
 :replyto: 0
 
