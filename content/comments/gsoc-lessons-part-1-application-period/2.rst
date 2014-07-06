@@ -1,5 +1,5 @@
 :date: 2013-12-03 07:10
-:author: Florian Queze
+:author: Florian Quèze
 :website: http://queze.net
 
 I think having the student fix a non trivial bug is interesting because it shows

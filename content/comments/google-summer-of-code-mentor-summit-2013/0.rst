@@ -1,5 +1,5 @@
 :date: 2013-10-21 05:56
-:author: Florian Queze
+:author: Florian Quèze
 :website: http://queze.net
 
 Thanks for the summary of your experience of the Google Summer of Code mentor
