@@ -1,6 +1,7 @@
 New Blog
 ########
 :date: 2014-07-03 23:04
+:modified: 2014-07-06 18:24
 :tags: blog
 
 .. contents::
@@ -58,7 +59,8 @@ in Blogger!
 Importing Content from Blogger
 ==============================
 
-Pelican does not directly support importing from Blogger, but it supports
+Pelican does not directly support importing from Blogger (*Edit: Seems someone
+just put up a `pull request`_ to support Blogger natively!*), but it supports
 `importing from a RSS feed`_. The first time I did this it missed a couple of
 articles (which I didn't notice right away), so make sure you bump up the max
 amount in the URL like so (this also outputs in the folder "content"): ::
@@ -73,10 +75,8 @@ including:
 * Some HTML formatting was included (in particular around <code>/<pre> blocks I
   had added).
 * Some formatting was messed up.
-* The (single) image I had on my blog had to be downloaded and manually
-  configured.
-* Things that I really wanted to be headers I had just bolded. (This is my
-  fault!)
+* The (single) image I had on my blog had to be manually downloaded and added.
+* I had bolded things I really wanted to be headers. (This is my fault!)
 
 I probably spent a couple of hours cleaning all the reStructuredText content up,
 but now I feel that I have a portable set of all of my blog posts, which I'm
@@ -86,11 +86,11 @@ Customizing Pelican
 ===================
 
 I tried a few different themes for Pelican, but eventually settled on just using
-and modifying the default theme. I frankly have tried it on too many different
-systems, so hopefully it doesn't totally break on small screen sizes or
-something. I'm not HTML expert, so I'd rather talk about the other stuff I
-modified. (Although the main elements I *did* modify, if you're curious, are
-adding the sidebar on the left and the organization of the archives page).
+and modifying the default theme. I, frankly, haven't tried it on too many
+different systems, so hopefully it doesn't totally break on small screen sizes
+or something. I'm not HTML expert, so I'd rather talk about the other stuff I
+modified. (Although, if you're curious, the main elements I *did* modify are
+adding the sidebar to the left and the organization of the archives page.)
 
 Blogger has a concept of "labels", Pelican has a concept of "category" and
 "tags". I *hate* this. What's the difference? Anyway, I wanted to eradicate the
@@ -131,4 +131,5 @@ to my next article!
 .. _Python: http://www.python.org/
 .. _quickstart: http://docs.getpelican.com/en/3.4.0/quickstart.html
 .. _blog post: http://terriyu.info/blog/posts/2013/07/pelican-setup/
+.. _pull request: https://github.com/getpelican/pelican/pull/1390
 .. _importing from a RSS feed: http://docs.getpelican.com/en/3.4.0/importer.html

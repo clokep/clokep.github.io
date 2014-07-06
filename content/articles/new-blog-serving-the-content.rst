@@ -1,6 +1,6 @@
 New Blog: Serving the Content
 #############################
-:date: 2099-08-01 12:03
+:date: 2014-07-06 18:36
 :tags: blog
 
 .. contents::
@@ -13,8 +13,8 @@ Getting a Domain
 
 The most exciting part! Getting a domain! I used `gandi.net`_, it was
 recommended to me by Florian_ as "awesome, but a bit expensive". I liked that
-they actually said *exactly* what I was getting by registering a domain through
-them. Nowhere else I looked was this explicit.
+they actually explain exactly_ what I was getting by registering a domain
+through them. Nowhere else I looked was this explicit.
 
 Once you get your domain you'll need to set up your CNAME_ record to forward to
 wherever you're serving your content. I found it pretty interesting that gandi
@@ -41,8 +41,8 @@ version:
 
 Personally, I store my Pelican code in a separate source_ branch [#]_ and use
 ghp-import_ to actually publish my content. I've automated a lot of the tasks by
-extend the default `fabfile.py`_ that is generated with the quickstart. My workflow
-looks something like:
+extending_ the default `fabfile.py`_ that is generated with the quickstart. My
+workflow looks something like:
 
 .. code-block:: bash
 
@@ -75,9 +75,6 @@ extremely confusing, but it's pretty simple:
 It took 10 - 20 minutes for this to "kick in" on GitHub, until that time I had a
 404 GitHub page.
 
-This is already getting pretty long so I'm going to leave the last part:
-Redirecting Blogger content to a separate file.
-
 Redirect Blogger
 ================
 
@@ -90,7 +87,7 @@ modified the template they had there. On the Blogger dashboard, choose
 "Template", scroll to the bottom and click "Revert to Classic Template". Then
 use something like the following template:
 
-.. code-block:: html
+.. code-block:: xml
 
     <html>
         <head>
@@ -153,24 +150,28 @@ needs to match the slug you used in your template so the link will work. (I had
 some_ help_ in figuring out these template tags.)
 
 I'd suggest you check the links to all your articles! A couple of the dates were
-messed up in mine (so the day was off by way, but I had a broken link).
+messed up in mine (the day was off by one, causing the forwarded location to be
+broken).
 
 The last thing to do is to redirect the Atom/RSS feed (if anyone is using that).
 Go to "Settings" > "Other" > "Post Feed Redirect URL" and set it to your new
 Atom feed URL (wherever that might be).
 
-.. [#] Pro-tip: You can change the "default" branch of your repository in the
+.. [#] Pro-tip: You can `change the "default" branch`_ of your repository in the
        settings page on GitHub.
 
 .. _first part: {filename}/articles/new-blog.rst
 .. _gandi.net: https://www.gandi.net/
 .. _Florian: http://blog.queze.net/
+.. _exactly: https://www.gandi.net/domain/interface
 .. _CNAME: https://en.wikipedia.org/wiki/CNAME
 .. _DNS zone: https://en.wikipedia.org/wiki/DNS_zone
 .. _GitHub Pages: https://pages.github.com/
 .. _source: https://github.com/clokep/clokep.github.io
 .. _ghp-import: https://github.com/davisp/ghp-import
+.. _extending: https://github.com/clokep/clokep.github.io/blob/source/fabfile.py
 .. _fabfile.py: http://www.fabfile.org/
 .. _switching to WordPress from Blogger: http://www.labnol.org/internet/switch-from-blogger-to-wordpress/9707/
 .. _some: https://support.google.com/blogger/answer/42095
 .. _help: http://www.elizabethcastro.com/blogvqj/extras/templatetags.html
+.. _change the "default" branch: https://help.github.com/articles/setting-the-default-branch

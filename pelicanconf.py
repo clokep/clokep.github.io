@@ -6,7 +6,7 @@ AUTHOR = u'Patrick Cloke'
 SITENAME = u'Like bricks in the sky'
 
 TIMEZONE = 'America/New_York'
-DEFAULT_DATE_FORMAT = '%m/%d/%Y %I:%M %p UTC'
+DEFAULT_DATE_FORMAT = '%m/%d/%Y %I:%M %p EST'
 
 DEFAULT_LANG = u'en'
 
