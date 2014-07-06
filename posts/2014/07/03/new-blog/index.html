@@ -74,7 +74,11 @@
     <div class="entry-content">
 <footer class="post-info">
     <abbr class="published" title="2014-07-03T23:04:00">
-        Published: 07/03/2014 11:04 PM UTC
+        Published: 07/03/2014 11:04 PM EST
+    </abbr>
+    <br />
+    <abbr class="modified" title="2014-07-06T18:24:00">
+        Updated: 07/06/2014 06:24 PM EST
     </abbr>
 
     <address class="vcard author">
@@ -126,7 +130,8 @@ in Blogger!</p>
 </div>
 <div class="section" id="importing-content-from-blogger">
 <h2><a class="toc-backref" href="#id2">Importing Content from Blogger</a></h2>
-<p>Pelican does not directly support importing from Blogger, but it supports
+<p>Pelican does not directly support importing from Blogger (<em>Edit: Seems someone
+just put up a `pull request`_ to support Blogger natively!</em>), but it supports
 <a class="reference external" href="http://docs.getpelican.com/en/3.4.0/importer.html">importing from a <span class="caps">RSS</span> feed</a>. The first time I did this it missed a couple of
 articles (which I didn’t notice right away), so make sure you bump up the max
 amount in the <span class="caps">URL</span> like so (this also outputs in the folder "content"):</p>
@@ -140,8 +145,8 @@ pelican-import --feed http://clokep.blogspot.com/feeds/posts/default\?alt\=rss\&
 <li>Some <span class="caps">HTML</span> formatting was included (in particular around &lt;code&gt;/&lt;pre&gt; blocks I
 had added).</li>
 <li>Some formatting was messed up.</li>
-<li>The (single) image I had on my blog had to be downloaded and manually configured.</li>
-<li>Things that I really wanted to be headers I had just bolded. (This is my fault!)</li>
+<li>The (single) image I had on my blog had to be manually downloaded and added.</li>
+<li>I had bolded things I really wanted to be headers. (This is my fault!)</li>
 </ul>
 <p>I probably spent a couple of hours cleaning all the reStructuredText content up,
 but now I feel that I have a portable set of all of my blog posts, which I’m
@@ -150,11 +155,11 @@ pretty happy about!</p>
 <div class="section" id="customizing-pelican">
 <h2><a class="toc-backref" href="#id3">Customizing Pelican</a></h2>
 <p>I tried a few different themes for Pelican, but eventually settled on just using
-and modifying the default theme. I frankly have tried it on too many different
-systems, so hopefully it doesn’t totally break on small screen sizes or
-something. I’m not <span class="caps">HTML</span> expert, so I’d rather talk about the other stuff I
-modified. (Although the main elements I <em>did</em> modify, if you’re curious, are
-adding the sidebar on the left and the organization of the archives page).</p>
+and modifying the default theme. I, frankly, haven’t tried it on too many
+different systems, so hopefully it doesn’t totally break on small screen sizes
+or something. I’m not <span class="caps">HTML</span> expert, so I’d rather talk about the other stuff I
+modified. (Although, if you’re curious, the main elements I <em>did</em> modify are
+adding the sidebar to the left and the organization of the archives page.)</p>
 <p>Blogger has a concept of "labels", Pelican has a concept of "category" and
 "tags". I <em>hate</em> this. What’s the difference? Anyway, I wanted to eradicate the
 concept of a "category" (and "authors" since I’m the only one on my blog!), so I

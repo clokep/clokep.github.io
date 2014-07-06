@@ -1,5 +1,145 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>Like bricks in the sky</title><link href="http://patrick.cloke.us/" rel="alternate"></link><link href="http://patrick.cloke.us/feeds/atom.xml" rel="self"></link><id>http://patrick.cloke.us/</id><updated>2014-07-03T23:04:00-04:00</updated><entry><title>New Blog</title><link href="http://patrick.cloke.us/posts/2014/07/03/new-blog/" rel="alternate"></link><updated>2014-07-03T23:04:00-04:00</updated><author><name>Patrick Cloke</name></author><id>tag:patrick.cloke.us,2014-07-03:posts/2014/07/03/new-blog/</id><summary type="html">
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Like bricks in the sky</title><link href="http://patrick.cloke.us/" rel="alternate"></link><link href="http://patrick.cloke.us/feeds/atom.xml" rel="self"></link><id>http://patrick.cloke.us/</id><updated>2014-07-06T18:36:00-04:00</updated><entry><title>New Blog: Serving the Content</title><link href="http://patrick.cloke.us/posts/2014/07/06/new-blog-serving-the-content/" rel="alternate"></link><updated>2014-07-06T18:36:00-04:00</updated><author><name>Patrick Cloke</name></author><id>tag:patrick.cloke.us,2014-07-06:posts/2014/07/06/new-blog-serving-the-content/</id><summary type="html">
+&lt;p&gt;In the &lt;a class="reference external" href="http://patrick.cloke.us/posts/2014/07/03/new-blog/"&gt;first part&lt;/a&gt; of this blog post I talked about using Pelican to create a
+blog, this is a bit more about how I got it up and running.&lt;/p&gt;
+&lt;div class="section" id="getting-a-domain"&gt;
+&lt;h2&gt;&lt;a class="toc-backref" href="#id3"&gt;Getting a Domain&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;The most exciting part! Getting a domain! I used &lt;a class="reference external" href="https://www.gandi.net/"&gt;gandi.net&lt;/a&gt;, it was
+recommended to me by &lt;a class="reference external" href="http://blog.queze.net/"&gt;Florian&lt;/a&gt; as "awesome, but a bit expensive". I liked that
+they actually explain &lt;a class="reference external" href="https://www.gandi.net/domain/interface"&gt;exactly&lt;/a&gt; what I was getting by registering a domain
+through them. Nowhere else I looked was this explicit.&lt;/p&gt;
+&lt;p&gt;Once you get your domain you’ll need to set up your &lt;a class="reference external" href="https://en.wikipedia.org/wiki/CNAME"&gt;&lt;span class="caps"&gt;CNAME&lt;/span&gt;&lt;/a&gt; record to forward to
+wherever you’re serving your content. I found it pretty interesting that gandi
+essentially gives you an &lt;a class="reference external" href="https://en.wikipedia.org/wiki/DNS_zone"&gt;&lt;span class="caps"&gt;DNS&lt;/span&gt; zone&lt;/a&gt; file to modify. I ended up making a few modifications:&lt;/p&gt;
+&lt;ul class="simple"&gt;
+&lt;li&gt;Created a patrick subdomain (patrick.cloke.us)&lt;/li&gt;
+&lt;li&gt;Redirected the apex domain (cloke.us) to the patrick subdomain&lt;/li&gt;
+&lt;li&gt;Redirected the www subdomain to the patrick subdomain&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;I also created a few email aliases which forward to the email accounts I already own.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="section" id="serving-the-content"&gt;
+&lt;h2&gt;&lt;a class="toc-backref" href="#id4"&gt;Serving the Content&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;&lt;span class="caps"&gt;OK&lt;/span&gt;, we have a domain! We have content! How do we actually link them!? I used
+&lt;a class="reference external" href="https://pages.github.com/"&gt;GitHub Pages&lt;/a&gt;, cause I’m cheap and don’t like to pay for things. The quick version:&lt;/p&gt;
+&lt;ul class="simple"&gt;
+&lt;li&gt;Create a repository that is named &lt;tt class="docutils literal"&gt;&amp;lt;your account &lt;span class="pre"&gt;name&amp;gt;.github.io&lt;/span&gt;&lt;/tt&gt;&lt;/li&gt;
+&lt;li&gt;Push whatever &lt;span class="caps"&gt;HTML&lt;/span&gt; content you want into the master branch&lt;/li&gt;
+&lt;li&gt;Voila it’s available as &amp;lt;your account name&amp;gt;.github.io&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Personally, I store my Pelican code in a separate &lt;a class="reference external" href="https://github.com/clokep/clokep.github.io"&gt;source&lt;/a&gt; branch &lt;a class="footnote-reference" href="#id2" id="id1"&gt;[1]&lt;/a&gt; and use
+&lt;a class="reference external" href="https://github.com/davisp/ghp-import"&gt;ghp-import&lt;/a&gt; to actually publish my content. I’ve automated a lot of the tasks by
+&lt;a class="reference external" href="https://github.com/clokep/clokep.github.io/blob/source/fabfile.py"&gt;extending&lt;/a&gt; the default &lt;a class="reference external" href="http://www.fabfile.org/"&gt;fabfile.py&lt;/a&gt; that is generated with the quickstart. My
+workflow looks something like:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;komodo content/new-article.rst
+&lt;span class="c"&gt;# &amp;lt;edit article&amp;gt;&lt;/span&gt;
+&lt;span class="c"&gt;# &amp;lt;check it out in a browser using fab build/serve/regenerate&amp;gt;&lt;/span&gt;
+git add content/ &lt;span class="o"&gt;&amp;amp;&amp;amp;&lt;/span&gt; git commit -m &lt;span class="s2"&gt;"Add 'New Article!'."&lt;/span&gt;
+fab publish &lt;span class="c"&gt;# Which runs "ghp-import -p -b master output" underneath!&lt;/span&gt;
+git push origin &lt;span class="nb"&gt;source&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;One other thing you’ll need to do is add a &lt;span class="caps"&gt;CNAME&lt;/span&gt; file that has the domain of
+your host in it (and only the domain). I found the GitHub documents on this
+extremely confusing, but it’s pretty simple:&lt;/p&gt;
+&lt;ul class="simple"&gt;
+&lt;li&gt;Create a file called &lt;span class="caps"&gt;CNAME&lt;/span&gt; somewhere you have static files in Pelican (mine is
+at content/static/&lt;span class="caps"&gt;CNAME&lt;/span&gt;)&lt;/li&gt;
+&lt;li&gt;Add a line to your pelicanconf.py to have this file end up in the root:&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="c"&gt;# Set up static content and output locations.&lt;/span&gt;
+&lt;span class="n"&gt;STATIC_PATHS&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;
+    &lt;span class="s"&gt;'images'&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+    &lt;span class="s"&gt;'static/CNAME'&lt;/span&gt;
+&lt;span class="p"&gt;]&lt;/span&gt;
+&lt;span class="n"&gt;EXTRA_PATH_METADATA&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+    &lt;span class="s"&gt;'static/CNAME'&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;&lt;span class="s"&gt;'path'&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s"&gt;'CNAME'&lt;/span&gt;&lt;span class="p"&gt;},&lt;/span&gt;
+&lt;span class="p"&gt;}&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;It took 10 - 20 minutes for this to "kick in" on GitHub, until that time I had a
+404 GitHub page.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="section" id="redirect-blogger"&gt;
+&lt;h2&gt;&lt;a class="toc-backref" href="#id5"&gt;Redirect Blogger&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;This is the really fun part. How the hell do we redirect blogger links to
+actually go to the new location of each blog post? With some hackery, some luck,
+and some magic.&lt;/p&gt;
+&lt;p&gt;I found some help in an article about &lt;a class="reference external" href="http://www.labnol.org/internet/switch-from-blogger-to-wordpress/9707/"&gt;switching to WordPress from Blogger&lt;/a&gt; and
+modified the template they had there. On the Blogger dashboard, choose
+"Template", scroll to the bottom and click "Revert to Classic Template". Then
+use something like the following template:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="nt"&gt;&amp;lt;html&amp;gt;&lt;/span&gt;
+    &lt;span class="nt"&gt;&amp;lt;head&amp;gt;&lt;/span&gt;
+        &lt;span class="nt"&gt;&amp;lt;title&amp;gt;&lt;/span&gt;&lt;span class="err"&gt;&amp;lt;&lt;/span&gt;$BlogPageTitle$&amp;gt;&lt;span class="nt"&gt;&amp;lt;/title&amp;gt;&lt;/span&gt;
+        &lt;span class="nt"&gt;&amp;lt;script&amp;gt;&lt;/span&gt;
+            &lt;span class="nt"&gt;&amp;lt;MainOrArchivePage&amp;gt;&lt;/span&gt;
+                window.location.href = "http://patrick.cloke.us/";
+            &lt;span class="nt"&gt;&amp;lt;/MainOrArchivePage&amp;gt;&lt;/span&gt;
+            &lt;span class="nt"&gt;&amp;lt;Blogger&amp;gt;&lt;/span&gt;
+                &lt;span class="nt"&gt;&amp;lt;ItemPage&amp;gt;&lt;/span&gt;
+                    // This is the full permalink.
+                    var permalink = "&lt;span class="err"&gt;&amp;lt;&lt;/span&gt;$BlogItemPermalinkURL$&amp;gt;";
+                    // Split up each part by the slash.
+                    var parts = permalink.split("/");
+                    // Take the last part (the page) and strip off the .html.
+                    var slug = parts.slice(-1)[0].slice(0, -5);
+
+                    var article = "http://patrick.cloke.us/posts/&lt;span class="nt"&gt;&amp;lt;BlogDateHeader&amp;gt;&lt;/span&gt;&lt;span class="err"&gt;&amp;lt;&lt;/span&gt;$BlogDateHeaderDate$&amp;gt;&lt;span class="nt"&gt;&amp;lt;/BlogDateHeader&amp;gt;&lt;/span&gt;/" + slug;
+                    window.location.href = article;
+
+                    window.onload = function() {
+                        document.getElementById("linkrel").href = article;
+                        document.getElementById("simplelink").href = article;
+                    }
+                &lt;span class="nt"&gt;&amp;lt;/ItemPage&amp;gt;&lt;/span&gt;
+            &lt;span class="nt"&gt;&amp;lt;/Blogger&amp;gt;&lt;/span&gt;
+        &lt;span class="nt"&gt;&amp;lt;/script&amp;gt;&lt;/span&gt;
+        &lt;span class="nt"&gt;&amp;lt;MainPage&amp;gt;&lt;/span&gt;
+            &lt;span class="nt"&gt;&amp;lt;link&lt;/span&gt; &lt;span class="na"&gt;rel=&lt;/span&gt;&lt;span class="s"&gt;"canonical"&lt;/span&gt; &lt;span class="na"&gt;href=&lt;/span&gt;&lt;span class="s"&gt;"http://patrick.cloke.us/"&lt;/span&gt; &lt;span class="nt"&gt;/&amp;gt;&lt;/span&gt;
+        &lt;span class="nt"&gt;&amp;lt;/MainPage&amp;gt;&lt;/span&gt;
+        &lt;span class="nt"&gt;&amp;lt;Blogger&amp;gt;&lt;/span&gt;
+            &lt;span class="nt"&gt;&amp;lt;ItemPage&amp;gt;&lt;/span&gt;
+                &lt;span class="nt"&gt;&amp;lt;link&lt;/span&gt; &lt;span class="na"&gt;id=&lt;/span&gt;&lt;span class="s"&gt;"linkrel"&lt;/span&gt; &lt;span class="na"&gt;rel=&lt;/span&gt;&lt;span class="s"&gt;"canonical"&lt;/span&gt; &lt;span class="nt"&gt;/&amp;gt;&lt;/span&gt;
+            &lt;span class="nt"&gt;&amp;lt;/ItemPage&amp;gt;&lt;/span&gt;
+        &lt;span class="nt"&gt;&amp;lt;/Blogger&amp;gt;&lt;/span&gt;
+    &lt;span class="nt"&gt;&amp;lt;/head&amp;gt;&lt;/span&gt;
+    &lt;span class="nt"&gt;&amp;lt;body&amp;gt;&lt;/span&gt;
+        &lt;span class="nt"&gt;&amp;lt;MainOrArchivePage&amp;gt;&lt;/span&gt;
+        &lt;span class="nt"&gt;&amp;lt;h1&amp;gt;&amp;lt;a&lt;/span&gt; &lt;span class="na"&gt;href=&lt;/span&gt;&lt;span class="s"&gt;"http://patrick.cloke.us"&lt;/span&gt;&lt;span class="nt"&gt;&amp;gt;&lt;/span&gt;&lt;span class="err"&gt;&amp;lt;&lt;/span&gt;$BlogTitle$&amp;gt;&lt;span class="nt"&gt;&amp;lt;/a&amp;gt;&amp;lt;/h1&amp;gt;&lt;/span&gt;
+        &lt;span class="nt"&gt;&amp;lt;/MainOrArchivePage&amp;gt;&lt;/span&gt;
+        &lt;span class="nt"&gt;&amp;lt;Blogger&amp;gt;&lt;/span&gt;
+            &lt;span class="nt"&gt;&amp;lt;ItemPage&amp;gt;&lt;/span&gt;
+                &lt;span class="nt"&gt;&amp;lt;h1&amp;gt;&lt;/span&gt;
+                    &lt;span class="nt"&gt;&amp;lt;a&lt;/span&gt; &lt;span class="na"&gt;id=&lt;/span&gt;&lt;span class="s"&gt;"simplelink"&lt;/span&gt;&lt;span class="nt"&gt;&amp;gt;&lt;/span&gt;
+                        &lt;span class="err"&gt;&amp;lt;&lt;/span&gt;$BlogItemTitle$&amp;gt;
+                    &lt;span class="nt"&gt;&amp;lt;/a&amp;gt;&lt;/span&gt;
+                &lt;span class="nt"&gt;&amp;lt;/h1&amp;gt;&lt;/span&gt;
+                &lt;span class="err"&gt;&amp;lt;&lt;/span&gt;$BlogItemBody$&amp;gt;
+            &lt;span class="nt"&gt;&amp;lt;/ItemPage&amp;gt;&lt;/span&gt;
+        &lt;span class="nt"&gt;&amp;lt;/Blogger&amp;gt;&lt;/span&gt;
+    &lt;span class="nt"&gt;&amp;lt;/body&amp;gt;&lt;/span&gt;
+&lt;span class="nt"&gt;&amp;lt;/html&amp;gt;&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Obviously you’ll need to change the URLs, but the key parts here are that we’re
+generating a &lt;span class="caps"&gt;URL&lt;/span&gt; based on the date and the full article name. The magic comes in
+generating the date. The get it in the format I wanted (&lt;span class="caps"&gt;YYYY&lt;/span&gt;/&lt;span class="caps"&gt;MM&lt;/span&gt;/&lt;span class="caps"&gt;DD&lt;/span&gt;) I modified a
+the "Date Header Format" in "Settings" &amp;gt; "Language and formatting". This matches
+how I formatted my URLs in my pelicanconf.py. The &lt;tt class="docutils literal"&gt;slug&lt;/tt&gt; that gets generated
+needs to match the slug you used in your template so the link will work. (I had
+&lt;a class="reference external" href="https://support.google.com/blogger/answer/42095"&gt;some&lt;/a&gt; &lt;a class="reference external" href="http://www.elizabethcastro.com/blogvqj/extras/templatetags.html"&gt;help&lt;/a&gt; in figuring out these template tags.)&lt;/p&gt;
+&lt;p&gt;I’d suggest you check the links to all your articles! A couple of the dates were
+messed up in mine (the day was off by one, causing the forwarded location to be broken).&lt;/p&gt;
+&lt;p&gt;The last thing to do is to redirect the Atom/&lt;span class="caps"&gt;RSS&lt;/span&gt; feed (if anyone is using that).
+Go to "Settings" &amp;gt; "Other" &amp;gt; "Post Feed Redirect &lt;span class="caps"&gt;URL&lt;/span&gt;" and set it to your new
+Atom feed &lt;span class="caps"&gt;URL&lt;/span&gt; (wherever that might be).&lt;/p&gt;
+&lt;table class="docutils footnote" frame="void" id="id2" rules="none"&gt;
+&lt;colgroup&gt;&lt;col class="label"&gt;&lt;/col&gt;&lt;col&gt;&lt;/col&gt;&lt;/colgroup&gt;
+&lt;tbody valign="top"&gt;
+&lt;tr&gt;&lt;td class="label"&gt;&lt;a class="fn-backref" href="#id1"&gt;[1]&lt;/a&gt;&lt;/td&gt;&lt;td&gt;Pro-tip: You can &lt;a class="reference external" href="https://help.github.com/articles/setting-the-default-branch"&gt;change the "default" branch&lt;/a&gt; of your repository in the
+settings page on GitHub.&lt;/td&gt;&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;/div&gt;
+</summary><category term="blog"></category></entry><entry><title>New Blog</title><link href="http://patrick.cloke.us/posts/2014/07/03/new-blog/" rel="alternate"></link><updated>2014-07-06T18:24:00-04:00</updated><author><name>Patrick Cloke</name></author><id>tag:patrick.cloke.us,2014-07-03:posts/2014/07/03/new-blog/</id><summary type="html">
 &lt;p&gt;If you’re reading this you might have noticed that I have a shiny new blog! I
 had been pretty disappointed in &lt;a class="reference external" href="https://www.blogger.com/"&gt;Blogger&lt;/a&gt; practically since I started using it.
 But it was free, I was a poor college student, etc. I finally managed to get
@@ -43,7 +183,8 @@ in Blogger!&lt;/p&gt;
 &lt;/div&gt;
 &lt;div class="section" id="importing-content-from-blogger"&gt;
 &lt;h2&gt;&lt;a class="toc-backref" href="#id2"&gt;Importing Content from Blogger&lt;/a&gt;&lt;/h2&gt;
-&lt;p&gt;Pelican does not directly support importing from Blogger, but it supports
+&lt;p&gt;Pelican does not directly support importing from Blogger (&lt;em&gt;Edit: Seems someone
+just put up a `pull request`_ to support Blogger natively!&lt;/em&gt;), but it supports
 &lt;a class="reference external" href="http://docs.getpelican.com/en/3.4.0/importer.html"&gt;importing from a &lt;span class="caps"&gt;RSS&lt;/span&gt; feed&lt;/a&gt;. The first time I did this it missed a couple of
 articles (which I didn’t notice right away), so make sure you bump up the max
 amount in the &lt;span class="caps"&gt;URL&lt;/span&gt; like so (this also outputs in the folder "content"):&lt;/p&gt;
@@ -57,8 +198,8 @@ pelican-import --feed http://clokep.blogspot.com/feeds/posts/default\?alt\=rss\&
 &lt;li&gt;Some &lt;span class="caps"&gt;HTML&lt;/span&gt; formatting was included (in particular around &amp;lt;code&amp;gt;/&amp;lt;pre&amp;gt; blocks I
 had added).&lt;/li&gt;
 &lt;li&gt;Some formatting was messed up.&lt;/li&gt;
-&lt;li&gt;The (single) image I had on my blog had to be downloaded and manually configured.&lt;/li&gt;
-&lt;li&gt;Things that I really wanted to be headers I had just bolded. (This is my fault!)&lt;/li&gt;
+&lt;li&gt;The (single) image I had on my blog had to be manually downloaded and added.&lt;/li&gt;
+&lt;li&gt;I had bolded things I really wanted to be headers. (This is my fault!)&lt;/li&gt;
 &lt;/ul&gt;
 &lt;p&gt;I probably spent a couple of hours cleaning all the reStructuredText content up,
 but now I feel that I have a portable set of all of my blog posts, which I’m
@@ -67,11 +208,11 @@ pretty happy about!&lt;/p&gt;
 &lt;div class="section" id="customizing-pelican"&gt;
 &lt;h2&gt;&lt;a class="toc-backref" href="#id3"&gt;Customizing Pelican&lt;/a&gt;&lt;/h2&gt;
 &lt;p&gt;I tried a few different themes for Pelican, but eventually settled on just using
-and modifying the default theme. I frankly have tried it on too many different
-systems, so hopefully it doesn’t totally break on small screen sizes or
-something. I’m not &lt;span class="caps"&gt;HTML&lt;/span&gt; expert, so I’d rather talk about the other stuff I
-modified. (Although the main elements I &lt;em&gt;did&lt;/em&gt; modify, if you’re curious, are
-adding the sidebar on the left and the organization of the archives page).&lt;/p&gt;
+and modifying the default theme. I, frankly, haven’t tried it on too many
+different systems, so hopefully it doesn’t totally break on small screen sizes
+or something. I’m not &lt;span class="caps"&gt;HTML&lt;/span&gt; expert, so I’d rather talk about the other stuff I
+modified. (Although, if you’re curious, the main elements I &lt;em&gt;did&lt;/em&gt; modify are
+adding the sidebar to the left and the organization of the archives page.)&lt;/p&gt;
 &lt;p&gt;Blogger has a concept of "labels", Pelican has a concept of "category" and
 "tags". I &lt;em&gt;hate&lt;/em&gt; this. What’s the difference? Anyway, I wanted to eradicate the
 concept of a "category" (and "authors" since I’m the only one on my blog!), so I
