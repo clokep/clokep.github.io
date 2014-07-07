@@ -514,9 +514,9 @@ It’s relatively straightforward set of commands and responses/errors.
 It’s a bit more confusing than that though since there are a couple of
 extensions, etc.  This is summarized below:&lt;/p&gt;
 &lt;ul class="simple"&gt;
-&lt;li&gt;[&lt;span class="caps"&gt;STRIKEOUT&lt;/span&gt;:&lt;span class="caps"&gt;RFC&lt;/span&gt; 1459]&lt;ul&gt;
-&lt;li&gt;Extended with &lt;a class="reference external" href="http://www.irchelp.org/irchelp/rfc/dccspec.html"&gt;[&lt;span class="caps"&gt;STRIKEOUT&lt;/span&gt;:&lt;span class="caps"&gt;DCC&lt;/span&gt; specification ("direct client-to-client")]&lt;/a&gt;&lt;ul&gt;
-&lt;li&gt;Replaced with [&lt;span class="caps"&gt;STRIKEOUT&lt;/span&gt;:&lt;a class="reference external" href="http://www.irchelp.org/irchelp/rfc/dccspec.html"&gt;&lt;span class="caps"&gt;CTCP&lt;/span&gt; ("client-to-client protocol")&lt;/a&gt;]&lt;ul&gt;
+&lt;li&gt;&lt;span class="strike"&gt;&lt;span class="caps"&gt;RFC&lt;/span&gt; 1459&lt;/span&gt;&lt;ul&gt;
+&lt;li&gt;Extended with &lt;a class="reference external" href="http://www.irchelp.org/irchelp/rfc/dccspec.html"&gt;&lt;span class="strike"&gt;&lt;span class="caps"&gt;DCC&lt;/span&gt; specification ("direct client-to-client")&lt;/span&gt;&lt;/a&gt;&lt;ul&gt;
+&lt;li&gt;Replaced with &lt;a class="reference external" href="http://www.irchelp.org/irchelp/rfc/dccspec.html"&gt;&lt;span class="strike"&gt;&lt;span class="caps"&gt;CTCP&lt;/span&gt; ("client-to-client protocol")&lt;/span&gt;&lt;/a&gt;&lt;ul&gt;
 &lt;li&gt;&lt;a class="reference external" href="http://www.invlogic.com/irc/ctcp.html"&gt;Draft for a formalized &lt;span class="caps"&gt;CTCP&lt;/span&gt;&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 &lt;/li&gt;

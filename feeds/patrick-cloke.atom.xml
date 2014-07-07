@@ -462,7 +462,7 @@ that implies taking advtange of them, but &amp;quot;How can I work with the&amp;
 &lt;p&gt;Please don&amp;#8217;t see this as an &amp;quot;employees vs. volunteers&amp;quot; argument. I
 believe that I&amp;#8217;m expected to live up to these same goals. If I, as a
 volunteer, can help an employee achieve his goals; I&amp;#8217;m
-[&lt;span class="caps"&gt;STRIKEOUT&lt;/span&gt;:more than willing], no&amp;#8230;I&amp;#8217;m &lt;span class="caps"&gt;EXPECTED&lt;/span&gt; to do that. I think
+&lt;span class="strike"&gt;more than willing&lt;/span&gt;, no&amp;#8230;I&amp;#8217;m &lt;span class="caps"&gt;EXPECTED&lt;/span&gt; to do that. I think
 this is a two-way relationship that must be fostered. It has seemed
 to me that over the past couple of years that I&amp;#8217;ve been hanging
 around here there&amp;#8217;s been less and less focus on the community and
@@ -1848,9 +1848,9 @@ It’s relatively straightforward set of commands and responses/errors.
 It’s a bit more confusing than that though since there are a couple of
 extensions, etc.  This is summarized below:&lt;/p&gt;
 &lt;ul class="simple"&gt;
-&lt;li&gt;[&lt;span class="caps"&gt;STRIKEOUT&lt;/span&gt;:&lt;span class="caps"&gt;RFC&lt;/span&gt; 1459]&lt;ul&gt;
-&lt;li&gt;Extended with &lt;a class="reference external" href="http://www.irchelp.org/irchelp/rfc/dccspec.html"&gt;[&lt;span class="caps"&gt;STRIKEOUT&lt;/span&gt;:&lt;span class="caps"&gt;DCC&lt;/span&gt; specification ("direct client-to-client")]&lt;/a&gt;&lt;ul&gt;
-&lt;li&gt;Replaced with [&lt;span class="caps"&gt;STRIKEOUT&lt;/span&gt;:&lt;a class="reference external" href="http://www.irchelp.org/irchelp/rfc/dccspec.html"&gt;&lt;span class="caps"&gt;CTCP&lt;/span&gt; ("client-to-client protocol")&lt;/a&gt;]&lt;ul&gt;
+&lt;li&gt;&lt;span class="strike"&gt;&lt;span class="caps"&gt;RFC&lt;/span&gt; 1459&lt;/span&gt;&lt;ul&gt;
+&lt;li&gt;Extended with &lt;a class="reference external" href="http://www.irchelp.org/irchelp/rfc/dccspec.html"&gt;&lt;span class="strike"&gt;&lt;span class="caps"&gt;DCC&lt;/span&gt; specification ("direct client-to-client")&lt;/span&gt;&lt;/a&gt;&lt;ul&gt;
+&lt;li&gt;Replaced with &lt;a class="reference external" href="http://www.irchelp.org/irchelp/rfc/dccspec.html"&gt;&lt;span class="strike"&gt;&lt;span class="caps"&gt;CTCP&lt;/span&gt; ("client-to-client protocol")&lt;/span&gt;&lt;/a&gt;&lt;ul&gt;
 &lt;li&gt;&lt;a class="reference external" href="http://www.invlogic.com/irc/ctcp.html"&gt;Draft for a formalized &lt;span class="caps"&gt;CTCP&lt;/span&gt;&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 &lt;/li&gt;
@@ -1989,9 +1989,9 @@ enough they did!&amp;nbsp; The settings are copied&amp;nbsp;below:&lt;/p&gt;
 &lt;col class="field-name" /&gt;
 &lt;col class="field-body" /&gt;
 &lt;tbody valign="top"&gt;
-&lt;tr class="field"&gt;&lt;th class="field-name"&gt;User name:&lt;/th&gt;&lt;td class="field-body"&gt;[&lt;span class="caps"&gt;STRIKEOUT&lt;/span&gt;:user&amp;#64;yahoo.com] user&lt;/td&gt;
+&lt;tr class="field"&gt;&lt;th class="field-name"&gt;User name:&lt;/th&gt;&lt;td class="field-body"&gt;&lt;span class="strike"&gt;user&amp;#64;yahoo.com&lt;/span&gt; user&lt;/td&gt;
 &lt;/tr&gt;
-&lt;tr class="field"&gt;&lt;th class="field-name"&gt;&lt;span class="caps"&gt;IMAP&lt;/span&gt; server:&lt;/th&gt;&lt;td class="field-body"&gt;[&lt;span class="caps"&gt;STRIKEOUT&lt;/span&gt;:imap-ssl.mail.yahoo.com] imap.mail.yahoo.com&lt;/td&gt;
+&lt;tr class="field"&gt;&lt;th class="field-name"&gt;&lt;span class="caps"&gt;IMAP&lt;/span&gt; server:&lt;/th&gt;&lt;td class="field-body"&gt;&lt;span class="strike"&gt;imap-ssl.mail.yahoo.com&lt;/span&gt; imap.mail.yahoo.com&lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr class="field"&gt;&lt;th class="field-name"&gt;Port:&lt;/th&gt;&lt;td class="field-body"&gt;993&lt;/td&gt;
 &lt;/tr&gt;
