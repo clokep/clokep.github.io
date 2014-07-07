@@ -16,6 +16,7 @@
     <header id="banner" class="body">
         <h1><a href="http://patrick.cloke.us/">Like bricks in the sky </a></h1>
         <nav><ul>
+            <li><a href="http://patrick.cloke.us/pages/404.html">404: Not&nbsp;Found</a></li>
             <li><a href="http://patrick.cloke.us/pages/about.html">About</a></li>
             <li><a href="http://patrick.cloke.us/pages/contact.html">Contact</a></li>
             <li><a href="http://patrick.cloke.us/archives.html">Archives</a></li>
@@ -95,9 +96,9 @@ behavior), but of course your mileage might vary.&nbsp; Have&nbsp;fun!</p>
     <div class="comments">
         <h2>5 Comments:</h2>
         <ul id="comments-list">
-            <li id="comment-0">
+            <li id="comment-0.rst">
                 <abbr class="published" title="2012-11-21T22:00:00">
-                    Commented: <a href="http://patrick.cloke.us/posts/2012/01/15/instantbird-contact-list-hack-2/#comment-0"
+                    Commented: <a href="http://patrick.cloke.us/posts/2012/01/15/instantbird-contact-list-hack-2/#comment-0.rst"
                                   rel="bookmark" title="Permalink to this comment">11/21/2012 10:00 PM EST</a>
                 </abbr>
 
@@ -106,7 +107,19 @@ behavior), but of course your mileage might vary.&nbsp; Have&nbsp;fun!</p>
 </a>                </address>
 
                 <p>In&nbsp;addition&#8230;</p>
-<div class="highlight"><pre><span class="nt">group</span> <span class="p">{</span>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13</pre></div></td><td class="code"><div class="highlight"><pre><span class="nt">group</span> <span class="p">{</span>
 <span class="k">font-size</span><span class="o">:</span> <span class="m">1em</span><span class="p">;</span>
 <span class="k">background-color</span><span class="o">:</span> <span class="m">#D6D6D5</span><span class="p">;</span>
 <span class="p">}</span>
@@ -120,16 +133,16 @@ behavior), but of course your mileage might vary.&nbsp; Have&nbsp;fun!</p>
 <span class="k">font-size</span><span class="o">:</span> <span class="m">1em</span><span class="p">;</span>
 <span class="p">}</span>
 </pre></div>
-<p>And background-color values can be removed. It is just like my miranda im buddy
+</td></tr></table><p>And background-color values can be removed. It is just like my miranda im buddy
 list now. Everything gray! Only thing I&#8217;m missing is the user icons in the&nbsp;list.</p>
 <p>I wanted to ask from where you know the name of the classes so you can modify
 them? Maybe not so smart question but lack of documentation about those stuff
 draws me&nbsp;back.</p>
 
                             <ul id="comments-list">
-            <li id="comment-1">
+            <li id="comment-1.rst">
                 <abbr class="published" title="2012-11-21T22:22:00">
-                    Commented: <a href="http://patrick.cloke.us/posts/2012/01/15/instantbird-contact-list-hack-2/#comment-1"
+                    Commented: <a href="http://patrick.cloke.us/posts/2012/01/15/instantbird-contact-list-hack-2/#comment-1.rst"
                                   rel="bookmark" title="Permalink to this comment">11/21/2012 10:22 PM EST</a>
                 </abbr>
 
@@ -148,9 +161,9 @@ and <a class="reference external" href="http://lxr.instantbird.org/instantbird/s
 <p>I&#8217;m glad you found this&nbsp;useful!</p>
 
                             <ul id="comments-list">
-            <li id="comment-2">
+            <li id="comment-2.rst">
                 <abbr class="published" title="2012-11-22T10:15:00">
-                    Commented: <a href="http://patrick.cloke.us/posts/2012/01/15/instantbird-contact-list-hack-2/#comment-2"
+                    Commented: <a href="http://patrick.cloke.us/posts/2012/01/15/instantbird-contact-list-hack-2/#comment-2.rst"
                                   rel="bookmark" title="Permalink to this comment">11/22/2012 10:15 AM EST</a>
                 </abbr>
 
@@ -171,9 +184,9 @@ links! Lovely! I will jump to <span class="caps">IRC</span> channel for&nbsp;sur
             </li>
         </ul>
         <ul id="comments-list">
-            <li id="comment-3">
+            <li id="comment-3.rst">
                 <abbr class="published" title="2012-11-24T13:12:00">
-                    Commented: <a href="http://patrick.cloke.us/posts/2012/01/15/instantbird-contact-list-hack-2/#comment-3"
+                    Commented: <a href="http://patrick.cloke.us/posts/2012/01/15/instantbird-contact-list-hack-2/#comment-3.rst"
                                   rel="bookmark" title="Permalink to this comment">11/24/2012 01:12 PM EST</a>
                 </abbr>
 
@@ -199,7 +212,50 @@ hovered one, focused contacts, gets white&nbsp;text.</li>
 </ol>
 <p>;)
 <span class="caps">YEY</span> for the open source&nbsp;software.</p>
-<div class="highlight"><pre><span class="c">/* Expand all contacts to the big contact. */</span>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44</pre></div></td><td class="code"><div class="highlight"><pre><span class="c">/* Expand all contacts to the big contact. */</span>
 <span class="nt">contact</span> <span class="p">{</span>
 <span class="o">-</span><span class="n">moz</span><span class="o">-</span><span class="n">binding</span><span class="o">:</span> <span class="sx">url(&quot;chrome://instantbird/content/contact.xml#contact-big&quot;)</span> <span class="cp">!important</span><span class="p">;</span>
 <span class="o">-</span><span class="n">moz</span><span class="o">-</span><span class="n">box</span><span class="o">-</span><span class="n">orient</span><span class="o">:</span> <span class="n">vertical</span> <span class="cp">!important</span><span class="p">;</span>
@@ -244,11 +300,11 @@ hovered one, focused contacts, gets white&nbsp;text.</li>
 <span class="k">background</span><span class="o">:</span> <span class="o">-</span><span class="n">moz</span><span class="o">-</span><span class="n">Dialog</span><span class="p">;</span>
 <span class="p">}</span>
 </pre></div>
-
+</td></tr></table>
                             <ul id="comments-list">
-            <li id="comment-4">
+            <li id="comment-4.rst">
                 <abbr class="published" title="2012-11-24T13:38:00">
-                    Commented: <a href="http://patrick.cloke.us/posts/2012/01/15/instantbird-contact-list-hack-2/#comment-4"
+                    Commented: <a href="http://patrick.cloke.us/posts/2012/01/15/instantbird-contact-list-hack-2/#comment-4.rst"
                                   rel="bookmark" title="Permalink to this comment">11/24/2012 01:38 PM EST</a>
                 </abbr>
 
