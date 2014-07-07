@@ -147,6 +147,10 @@ aside, nav, article, figure {
     display: block;
 }
 
+.strike {
+    text-decoration: line-through;
+}
+
 /***** Layout *****/
 .body {
     margin: 0 auto;

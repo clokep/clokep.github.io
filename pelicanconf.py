@@ -52,7 +52,7 @@ EXTRA_PATH_METADATA = {
 
 # Plugin setup.
 PLUGIN_PATHS = ['../pelican-plugins/']
-PLUGINS = ['extract_toc', 'pelican_comment_system']
+PLUGINS = ['extract_toc', 'pelican_comment_system', 'strikethrough']
 
 # Change the default URLs.
 ARTICLE_URL = 'posts/{date:%Y}/{date:%m}/{date:%d}/{slug}/'

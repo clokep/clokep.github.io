@@ -130,11 +130,11 @@ It's relatively straightforward set of commands and responses/errors. 
 It's a bit more confusing than that though since there are a couple of
 extensions, etc.  This is summarized below:
 
-* [STRIKEOUT:RFC 1459]
+* :strike:`RFC 1459`
 
-  * Extended with `[STRIKEOUT:DCC specification ("direct client-to-client")]`_
+  * Extended with |DCC|_
 
-    * Replaced with [STRIKEOUT:`CTCP ("client-to-client protocol")`_]
+    * Replaced with |CTCP|_
 
       * `Draft for a formalized CTCP`_
 
@@ -234,8 +234,10 @@ protocol plug-ins for Instantbird.
 .. _specification: http://tools.ietf.org/html/rfc2812
 .. _documents: http://tools.ietf.org/html/rfc2813
 .. _the client protocol: http://tools.ietf.org/html/rfc2812
-.. _`[STRIKEOUT:DCC specification ("direct client-to-client")]`: http://www.irchelp.org/irchelp/rfc/dccspec.html
-.. _CTCP ("client-to-client protocol"): http://www.irchelp.org/irchelp/rfc/dccspec.html
+.. |DCC| replace:: :strike:`DCC specification ("direct client-to-client")`
+.. _DCC: http://www.irchelp.org/irchelp/rfc/dccspec.html
+.. |CTCP| replace:: :strike:`CTCP ("client-to-client protocol")`
+.. _CTCP: http://www.irchelp.org/irchelp/rfc/dccspec.html
 .. _Draft for a formalized CTCP: http://www.invlogic.com/irc/ctcp.html
 .. _DCC2: http://www.dcc2.org/
 .. _Wireshark: http://www.wireshark.org/download.html

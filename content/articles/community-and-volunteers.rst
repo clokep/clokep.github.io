@@ -70,7 +70,7 @@ converted to HTML formatting):
     Please don't see this as an "employees vs. volunteers" argument. I
     believe that I'm expected to live up to these same goals. If I, as a
     volunteer, can help an employee achieve his goals; I'm
-    [STRIKEOUT:more than willing], no...I'm EXPECTED to do that. I think
+    :strike:`more than willing`, no...I'm EXPECTED to do that. I think
     this is a two-way relationship that must be fostered. It has seemed
     to me that over the past couple of years that I've been hanging
     around here there's been less and less focus on the community and

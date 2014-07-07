@@ -42,8 +42,8 @@ have support this for free! A quick Bing search brought up a `page with
 IMAP server settings`_.  I figured I'd check if they work, and sure
 enough they did!  The settings are copied below:
 
-    :User name: [STRIKEOUT:user@yahoo.com] user
-    :IMAP server: [STRIKEOUT:imap-ssl.mail.yahoo.com] imap.mail.yahoo.com
+    :User name: :strike:`user@yahoo.com` user
+    :IMAP server: :strike:`imap-ssl.mail.yahoo.com` imap.mail.yahoo.com
     :Port: 993
     :Password: Cleartext/Normal
     :SSL: yes
