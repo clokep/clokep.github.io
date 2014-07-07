@@ -1,7 +1,7 @@
 :date: 2012-01-27 11:45
 :author: Patrick Cloke
 :website: http://patrick.cloke.us
-:replyto: 0
+:replyto: 0.rst
 
 Currently I have a working patch up in `bug 976`_ (you can CC yourself to get
 updates!). There's a few things to handle still (I think): localization and

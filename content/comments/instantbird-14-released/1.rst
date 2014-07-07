@@ -1,7 +1,7 @@
 :date: 2013-05-21 06:11
 :author: Patrick Cloke
 :website: http://patrick.cloke.us
-:replyto: 0
+:replyto: 0.rst
 
 Right, if you were reading this on Planet, it would be non-obvious...
 

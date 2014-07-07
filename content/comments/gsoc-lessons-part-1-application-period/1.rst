@@ -1,7 +1,7 @@
 :date: 2013-12-03 06:52
 :author: Patrick Cloke
 :website: http://patrick.cloke.us
-:replyto: 0
+:replyto: 0.rst
 
 Thanks for your feedback! I'm not sure if it's just early in the morning here,
 but I'm having trouble understanding your sentence. I think you're saying:

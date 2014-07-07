@@ -1,6 +1,6 @@
 :date: 2012-10-18 06:43
 :author: Samuel Sidler
-:replyto: 1
+:replyto: 1.rst
 
 Patrick, you're right. Probably half of my comments are misunderstanding and
 apologies for that. I was thinking of "status message" not of status. I didn't

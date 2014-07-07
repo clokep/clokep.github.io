@@ -1,7 +1,7 @@
 :date: 2014-04-29 18:23
 :author: Patrick Cloke
 :website: http://patrick.cloke.us
-:replyto: 0
+:replyto: 0.rst
 
 I hadn't heard of the Proxy API although someone hinted it to me recently in
 #maildev. I'm going to check it out and probably write another post! Thanks for

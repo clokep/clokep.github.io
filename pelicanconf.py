@@ -36,9 +36,6 @@ PATH = 'content'
 ARTICLE_PATHS = ['articles']
 PAGE_PATHS = ['pages']
 
-ARTICLE_EXCLUDES = ['comments', 'pages']
-PAGE_EXCLUDES = ['comments']
-
 # This is currently a modified copy of notmyidea, one of the default themes.
 THEME = 'theme'
 

@@ -1,7 +1,7 @@
 :date: 2012-11-21 22:22
 :author: Patrick Cloke
 :website: http://patrick.cloke.us
-:replyto: 0
+:replyto: 0.rst
 
 I looked at the source, of course! :-D
 

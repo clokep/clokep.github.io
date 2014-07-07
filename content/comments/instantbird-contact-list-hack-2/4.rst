@@ -1,6 +1,6 @@
 :date: 2012-11-24 13:38
 :author: RongYao
 :website: https://www.blogger.com/profile/14112477927795363957
-:replyto: 3
+:replyto: 3.rst
 
 Screenshot: http://i48.tinypic.com/20uubzr.png
