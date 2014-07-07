@@ -1,6 +1,5 @@
 Contact
 #######
-:slug: contact
 
 So you wanna contact me? Below you can find some of that stuff:
 

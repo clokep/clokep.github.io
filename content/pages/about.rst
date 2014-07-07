@@ -1,6 +1,5 @@
 About
 #####
-:slug: about
 
 Hey! I'm Patrick Cloke. This is my (not so) exciting website! Thanks for
 visiting.

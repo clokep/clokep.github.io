@@ -42,10 +42,12 @@ THEME = 'theme'
 # Set up static content and output locations.
 STATIC_PATHS = [
     'images',
-    'static/CNAME'
+    'static'
 ]
 EXTRA_PATH_METADATA = {
     'static/CNAME': {'path': 'CNAME'},
+    # Custom 404 page for GitHub pages.
+    'pages/404.rst': {'save_as': '404.html'},
 }
 
 # Plugin setup.
