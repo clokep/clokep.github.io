@@ -46,8 +46,10 @@ STATIC_PATHS = [
 ]
 EXTRA_PATH_METADATA = {
     'static/CNAME': {'path': 'CNAME'},
+}
+TEMPLATE_PAGES = {
     # Custom 404 page for GitHub pages.
-    'pages/404.rst': {'save_as': '404.html'},
+    '404.html': '404.html',
 }
 
 # Plugin setup.
