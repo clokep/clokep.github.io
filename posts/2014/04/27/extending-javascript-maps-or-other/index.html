@@ -272,16 +272,7 @@ going on there recently. Still, using proxies (as in, | new Proxy(&#8230;) | ) m
 be more future-proof. But the proxy <span class="caps">API</span> is a bit too low&nbsp;level&#8230;</p>
 <p>How does the __noSuchMethod__ deal with methods that need to&nbsp;normalize?</p>
 <p>Seeing your code now, make me think that you can probably get away&nbsp;with&#8230;</p>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
- 2
- 3
- 4
- 5
- 6
- 7
- 8
- 9
-10</pre></div></td><td class="code"><div class="highlight"><pre><span class="kd">function</span> <span class="nx">NormalizedMap</span><span class="p">(</span><span class="nx">aNormalizeFunction</span><span class="p">,</span> <span class="nx">aIt</span> <span class="o">=</span> <span class="p">[])</span> <span class="p">{</span>
+<div class="highlight"><pre><span class="kd">function</span> <span class="nx">NormalizedMap</span><span class="p">(</span><span class="nx">aNormalizeFunction</span><span class="p">,</span> <span class="nx">aIt</span> <span class="o">=</span> <span class="p">[])</span> <span class="p">{</span>
     <span class="k">if</span> <span class="p">(</span><span class="k">typeof</span><span class="p">(</span><span class="nx">aNormalizeFunction</span><span class="p">)</span> <span class="o">!=</span> <span class="s2">&quot;function&quot;</span><span class="p">)</span>
         <span class="k">throw</span> <span class="s2">&quot;NormalizedMap must have a normalize function!&quot;</span><span class="p">;</span>
     <span class="kd">var</span> <span class="nx">m</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Map</span><span class="p">([[</span><span class="nx">aNormalizeFunction</span><span class="p">(</span><span class="nx">key</span><span class="p">),</span> <span class="nx">val</span><span class="p">]</span> <span class="k">for</span> <span class="p">([</span><span class="nx">key</span><span class="p">,</span> <span class="nx">val</span><span class="p">]</span> <span class="nx">of</span> <span class="nx">aIt</span><span class="p">)]);</span>
@@ -292,7 +283,7 @@ be more future-proof. But the proxy <span class="caps">API</span> is a bit too l
     <span class="k">return</span> <span class="nx">m</span><span class="p">;</span>
 <span class="p">}</span>
 </pre></div>
-</td></tr></table><p>Of course, this is bloatier (a different function for each instance of&nbsp;NormalizedMap)&#8230;</p>
+<p>Of course, this is bloatier (a different function for each instance of&nbsp;NormalizedMap)&#8230;</p>
 
                             <ul id="comments-list">
             <li id="comment-1.rst">
