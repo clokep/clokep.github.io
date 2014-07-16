@@ -1,7 +1,7 @@
 :date: 2012-10-17 09:57
 :author: Florian Quèze
 :website: http://queze.net
-:replyto: 0.rst
+:replyto: 0rst
 
 Typically protocols that support multiple "unavailable" status types are those
 that originally didn't have a status message that the user could type. (on the

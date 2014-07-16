@@ -1,7 +1,7 @@
 :date: 2012-08-09 08:35
 :author: Patrick Cloke
 :website: http://patrick.cloke.us
-:replyto: 1.rst
+:replyto: 1rst
 
 I mostly work on the chat backend that is shared between Instantbird and
 Thunderbird as well as Instantbird specific bugs. But I do review bugs for

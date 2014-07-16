@@ -1,7 +1,7 @@
 :date: 2012-10-17 09:59
 :author: Patrick Cloke
 :website: http://patrick.cloke.us
-:replyto: 0.rst
+:replyto: 0rst
 
 Thanks for the feedback Samuel. I think part of your comments can be explained
 by a terminology mismatch. When I refer to "Status" I am NOT referring to the

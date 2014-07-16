@@ -1,7 +1,7 @@
 :date: 2010-12-26 08:33
 :author: benediktp
 :website: http://plusphi.wordpress.com/
-:replyto: 0.rst
+:replyto: 0rst
 
 @Sevenspade: It's still a great difference in my opinion. Just keep in mind how
 easy it is to create all sorts of extensions for the Mozilla platform. Someone
