@@ -2,8 +2,7 @@ Adding an Auxiliary Audio Input to a 2005 Subaru Outback
 ########################################################
 :date: 2014-08-30 17:34
 :author: Patrick Cloke
-:tags: hacking
-:status: draft
+:tags: hacking, auto, hardware
 
 I own a `2005 (fourth generation) Subaru Outback`_, I've had it since the fall
 of 2006 and it has been great. I have a little over 100,000 miles and do not
