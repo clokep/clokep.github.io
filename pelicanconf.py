@@ -27,7 +27,10 @@ CATEGORY_FEED_ATOM = None
 CATEGORY_SAVE_AS = ''
 CATEGORIES_SAVE_AS = ''
 
-# Disable author pages.
+# This is a hack to make the author URLs link to my about page (without
+# modifying the template).
+AUTHOR_URL = 'pages/about.html'
+# Disable generating author pages.
 AUTHOR_SAVE_AS = ''
 AUTHORS_SAVE_AS = ''
 
