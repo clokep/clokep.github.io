@@ -277,6 +277,7 @@ remember to set the stereo to FM.
 .. [#]  This might seem insane, but I was fairly certain I'd be able to solder a
         jumper back into place if everything didn't work, so I actually felt
         more comfortable doing this than cutting the pin.
+.. [#]  Playing one of my favorite albums: |No Control|_ by `Bad Religion`_
 .. [#]  You can see I actually had a CD in the CD player when I removed the
         radio. Oops! Luckily it was just a copy of one of my CDs (I never take
         originals in my car). I didn't end up scratching it or anything either!
@@ -284,7 +285,6 @@ remember to set the stereo to FM.
         little sloppy (I had to add solder to those instead of just tinning the
         wires). I did ensure there were no shorts with a multimeter (and had to
         resolder one connection).
-.. [#]  Playing one of my favorite albums: |No Control|_ by `Bad Religion`_
 
 .. _2005 (fourth generation) Subaru Outback: http://en.wikipedia.org/wiki/Subaru_Legacy#Fourth_generation_.282003.E2.80.932009.29_-_BL.2C_BP
 .. _involved always playing a silent CD: http://www.jazzyengineering.com/product_info.php?cPath=21&products_id=28
