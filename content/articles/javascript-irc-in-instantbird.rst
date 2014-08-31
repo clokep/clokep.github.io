@@ -31,7 +31,16 @@ a **new** object.  And after learning a bit above observers I was able
 to get the UI to respond.  I even threw in support for op/half-op/voice 
 After today's work I was able to generate the following screenshot:
 
-|IRCworking|
+.. class:: center
+..
+
+    .. image:: {filename}/images/IRCworking2.png
+        :target: {filename}/images/IRCworking2.png
+        :alt: Example conversation using JavaScript IRC.
+        :height: 297px
+        :class: center
+
+    An initial example of Instantbird communicating using JavaScript IRC.
 
 This build would be almost fully usable by those who do very little on
 IRC (i.e. if you just want to go and chat, it'd work well), but there's
@@ -42,7 +51,3 @@ repository`_.  (Check it out, there's a 600+ line switch statement.)
 .. _libpurple: http://developer.pidgin.im/wiki/WhatIsLibpurple
 .. _Florian: http://queze.net/
 .. _Experiments repository: https://hg.instantbird.org/experiments/file/IRC-JavaScript/
-
-.. |IRCworking| image:: {filename}/images/IRCworking2.png
-   :target: {filename}/images/IRCworking2.png
-   :height: 297px

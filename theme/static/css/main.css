@@ -47,8 +47,19 @@ h3, h4, h5, h6 { margin-top: .8em; }
 hr { border: 2px solid #EEEEEE; }
 
 /* Anchors */
-a {outline: 0;}
-a img {border: 0px; text-decoration: none;}
+a {
+    outline: 0;
+}
+a img {
+    border: 0px;
+    text-decoration: none;
+    outline: 0;
+
+    /* This removes the padding on links that causes the red background to show
+     * when hovered. */
+    margin: 0 -1px;
+    margin-bottom: -5px;
+}
 a:link, a:visited {
     color: #C74350;
     padding: 0 1px;
@@ -148,8 +159,12 @@ aside, nav, article, figure {
     display: block;
 }
 
+/* Custom roles. */
 .strike {
     text-decoration: line-through;
+}
+.center {
+    text-align: center;
 }
 
 /***** Layout *****/
