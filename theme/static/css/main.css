@@ -181,8 +181,25 @@ img.left, figure.left {float: left; margin: 0 2em 2em 0;}
 .left {
     width: 160px;
     float: left;
-    margin-left: calc(-160px - 2em);
-    clear: left;
+}
+
+/*
+ * Ensure that the navigation is actually on screen. If the screen is wide
+ * enough the left class is pushed off to the left, if it is not wide enough it
+ * is kept above the article content.
+ *
+ * This width is .body[width] + .left[width] * 2 + buffer
+ */
+@media (min-width: 1200px) {
+    .left {
+        margin-left: calc(-160px - 2em);
+        clear: left;
+    }
+}
+@media (max-width: 1200px) {
+    .body {
+        clear: both;
+    }
 }
 
 /*
