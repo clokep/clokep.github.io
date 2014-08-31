@@ -2009,7 +2009,11 @@ to work: one error, (which I found quickly) one of the other developers
 a &lt;strong&gt;new&lt;/strong&gt; object.&amp;nbsp; And after learning a bit above observers I was able
 to get the &lt;span class="caps"&gt;UI&lt;/span&gt; to respond.&amp;nbsp; I even threw in support for op/half-op/voice
 After today&amp;#8217;s work I was able to generate the following&amp;nbsp;screenshot:&lt;/p&gt;
-&lt;p&gt;&lt;a class="reference external" href="http://patrick.cloke.us/images/IRCworking2.png"&gt;&lt;img alt="IRCworking" src="http://patrick.cloke.us/images/IRCworking2.png" style="height: 297px;" /&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;!--  --&gt;
+&lt;blockquote class="center"&gt;
+&lt;a class="reference external image-reference" href="http://patrick.cloke.us/images/IRCworking2.png"&gt;&lt;img alt="Example conversation using JavaScript IRC." class="center" src="http://patrick.cloke.us/images/IRCworking2.png" style="height: 297px;" /&gt;&lt;/a&gt;
+&lt;p&gt;An initial example of Instantbird communicating using JavaScript &lt;span class="caps"&gt;IRC&lt;/span&gt;.&lt;/p&gt;
+&lt;/blockquote&gt;
 &lt;p&gt;This build would be almost fully usable by those who do very little on
 &lt;span class="caps"&gt;IRC&lt;/span&gt; (i.e. if you just want to go and chat, it&amp;#8217;d work well), but there&amp;#8217;s
 a lot more work to be done.&amp;nbsp; The code can be viewed in the &lt;a class="reference external" href="https://hg.instantbird.org/experiments/file/IRC-JavaScript/"&gt;Experiments

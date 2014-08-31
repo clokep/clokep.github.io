@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>Like bricks in the sky - Comments: On Status</title><link href="http://patrick.cloke.us/posts/2012/10/16/on-status//" rel="alternate"></link><link href="http://patrick.cloke.us/feeds/comment.on-status.atom.xml" rel="self"></link><id>http://patrick.cloke.us/posts/2012/10/16/on-status//</id><updated>2012-10-18T07:31:00-04:00</updated><entry><title>Posted by: Samuel Sidler</title><link href="http://patrick.cloke.us/posts/2012/10/16/on-status//#comment-comments/on-status/0.rst" rel="alternate"></link><updated>2012-10-16T23:30:00-04:00</updated><author><name>Samuel Sidler</name></author><id>tag:patrick.cloke.us,2012-10-16:posts/2012/10/16/on-status//</id><summary type="html">&lt;p&gt;Personally, I prefer custom statuses, instead of a set of predefined ones,&amp;nbsp;but&amp;#8230;&lt;/p&gt;
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Like bricks in the sky - Comments: On Status</title><link href="http://patrick.cloke.us/posts/2012/10/16/on-status//" rel="alternate"></link><link href="http://patrick.cloke.us/feeds/comment.on-status.atom.xml" rel="self"></link><id>http://patrick.cloke.us/posts/2012/10/16/on-status//</id><updated>2012-10-18T07:31:00-04:00</updated><entry><title>Posted by: Samuel Sidler</title><link href="http://patrick.cloke.us/posts/2012/10/16/on-status//#comment-0rst" rel="alternate"></link><updated>2012-10-16T23:30:00-04:00</updated><author><name>Samuel Sidler</name></author><id>tag:patrick.cloke.us,2012-10-16:posts/2012/10/16/on-status//</id><summary type="html">&lt;p&gt;Personally, I prefer custom statuses, instead of a set of predefined ones,&amp;nbsp;but&amp;#8230;&lt;/p&gt;
 &lt;p&gt;I think you underestimate the importance of each status. While I don&amp;#8217;t use them
 all, they all have a fairly set meaning to a lot of people. For example, while
 &amp;quot;Away&amp;quot; might be a good status for when you have stepped away from your desk for
@@ -23,14 +23,14 @@ away and idle for 1 hour as soon as I don&amp;#8217;t want to be bothered. But a
 might want to talk to one or two people if they sign&amp;nbsp;on.&lt;/p&gt;
 &lt;p&gt;In any case, I think this post is incredibly one-sided and kind of short-sighted
 as far as how others use chat clients. Maybe that word is idealistic as you&amp;nbsp;said.&lt;/p&gt;
-</summary></entry><entry><title>Posted by: Florian Quèze</title><link href="http://patrick.cloke.us/posts/2012/10/16/on-status//#comment-comments/on-status/1.rst" rel="alternate"></link><updated>2012-10-17T09:57:00-04:00</updated><author><name>Florian Quèze</name></author><id>tag:patrick.cloke.us,2012-10-17:posts/2012/10/16/on-status//</id><summary type="html">&lt;p&gt;Typically protocols that support multiple &amp;quot;unavailable&amp;quot; status types are those
+</summary></entry><entry><title>Posted by: Florian Quèze</title><link href="http://patrick.cloke.us/posts/2012/10/16/on-status//#comment-1rst" rel="alternate"></link><updated>2012-10-17T09:57:00-04:00</updated><author><name>Florian Quèze</name></author><id>tag:patrick.cloke.us,2012-10-17:posts/2012/10/16/on-status//</id><summary type="html">&lt;p&gt;Typically protocols that support multiple &amp;quot;unavailable&amp;quot; status types are those
 that originally didn&amp;#8217;t have a status message that the user could type. (on the
 other hand, protocols that had customizable messages from the begining never
 needed these: &lt;span class="caps"&gt;AIM&lt;/span&gt;, Google&amp;nbsp;Talk&amp;#8230;)&lt;/p&gt;
 &lt;p&gt;The invisible status is bad for 3 reasons: (idealistic) it&amp;#8217;s a lie, (technical)
 it&amp;#8217;s impossible to get right, (long term) it damages the network by making the
 presence information (the thing that makes &lt;span class="caps"&gt;IM&lt;/span&gt; more useful than SMSes) completely&amp;nbsp;unreliable.&lt;/p&gt;
-</summary></entry><entry><title>Posted by: Patrick Cloke</title><link href="http://patrick.cloke.us/posts/2012/10/16/on-status//#comment-comments/on-status/2.rst" rel="alternate"></link><updated>2012-10-17T09:59:00-04:00</updated><author><name>Patrick Cloke</name></author><id>tag:patrick.cloke.us,2012-10-17:posts/2012/10/16/on-status//</id><summary type="html">&lt;p&gt;Thanks for the feedback Samuel. I think part of your comments can be explained
+</summary></entry><entry><title>Posted by: Patrick Cloke</title><link href="http://patrick.cloke.us/posts/2012/10/16/on-status//#comment-2rst" rel="alternate"></link><updated>2012-10-17T09:59:00-04:00</updated><author><name>Patrick Cloke</name></author><id>tag:patrick.cloke.us,2012-10-17:posts/2012/10/16/on-status//</id><summary type="html">&lt;p&gt;Thanks for the feedback Samuel. I think part of your comments can be explained
 by a terminology mismatch. When I refer to &amp;quot;Status&amp;quot; I am &lt;span class="caps"&gt;NOT&lt;/span&gt; referring to the
 &amp;quot;Status Message&amp;quot;, I mean simply the Status as set by the protocol (the little
 green/red/grey dot in Instantbird, I&amp;#8217;m unsure what Adium uses for&amp;nbsp;this).&lt;/p&gt;
@@ -84,7 +84,7 @@ really offline). It&amp;#8217;s just broken and doesn&amp;#8217;t work&amp;nbsp;
 &lt;p&gt;Anyway, thanks for your thoughts. It is fascinating to see how different people
 use instant messaging (and more proof there&amp;#8217;s no such thing as the mythical
 &amp;quot;general&amp;nbsp;user&amp;quot;).&lt;/p&gt;
-</summary></entry><entry><title>Posted by: Samuel Sidler</title><link href="http://patrick.cloke.us/posts/2012/10/16/on-status//#comment-comments/on-status/3.rst" rel="alternate"></link><updated>2012-10-18T06:43:00-04:00</updated><author><name>Samuel Sidler</name></author><id>tag:patrick.cloke.us,2012-10-18:posts/2012/10/16/on-status//</id><summary type="html">&lt;p&gt;Patrick, you&amp;#8217;re right. Probably half of my comments are misunderstanding and
+</summary></entry><entry><title>Posted by: Samuel Sidler</title><link href="http://patrick.cloke.us/posts/2012/10/16/on-status//#comment-3rst" rel="alternate"></link><updated>2012-10-18T06:43:00-04:00</updated><author><name>Samuel Sidler</name></author><id>tag:patrick.cloke.us,2012-10-18:posts/2012/10/16/on-status//</id><summary type="html">&lt;p&gt;Patrick, you&amp;#8217;re right. Probably half of my comments are misunderstanding and
 apologies for that. I was thinking of &amp;quot;status message&amp;quot; not of status. I didn&amp;#8217;t
 realize you were saying these are pre-programmed statuses. But what Florian said
 below rings true. Most of those with the pre-programmed statuses are from
@@ -104,7 +104,7 @@ not list &amp;quot;invisible&amp;quot; at&amp;nbsp;all).&lt;/p&gt;
 &lt;p&gt;You&amp;#8217;re right about how some protocols act with regards to being offline vs
 invisible. But just because one or two protocols don&amp;#8217;t handle it well doesn&amp;#8217;t
 mean it shouldn&amp;#8217;t be implemented as best as possible for all&amp;nbsp;protocols&amp;#8230;&lt;/p&gt;
-</summary></entry><entry><title>Posted by: Patrick Cloke</title><link href="http://patrick.cloke.us/posts/2012/10/16/on-status//#comment-comments/on-status/4.rst" rel="alternate"></link><updated>2012-10-18T07:31:00-04:00</updated><author><name>Patrick Cloke</name></author><id>tag:patrick.cloke.us,2012-10-18:posts/2012/10/16/on-status//</id><summary type="html">&lt;p&gt;I&amp;#8217;m sure I haven&amp;#8217;t though of all the scenarios (and there are probably valid
+</summary></entry><entry><title>Posted by: Patrick Cloke</title><link href="http://patrick.cloke.us/posts/2012/10/16/on-status//#comment-4rst" rel="alternate"></link><updated>2012-10-18T07:31:00-04:00</updated><author><name>Patrick Cloke</name></author><id>tag:patrick.cloke.us,2012-10-18:posts/2012/10/16/on-status//</id><summary type="html">&lt;p&gt;I&amp;#8217;m sure I haven&amp;#8217;t though of all the scenarios (and there are probably valid
 reasons for&amp;nbsp;it).&lt;/p&gt;
 &lt;p&gt;Your suggestion is what a few &lt;span class="caps"&gt;IM&lt;/span&gt; clients do (I&amp;#8217;m very surprised that Messages
 does that since Apple is always touted as pushing the simplest solutions&amp;#8230;). To

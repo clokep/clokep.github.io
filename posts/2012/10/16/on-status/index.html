@@ -31,10 +31,10 @@
                     <li><a href="http://patrick.cloke.us/feeds/atom.xml" type="application/atom+xml" rel="alternate">atom feed</a></li>
                     <li><a href="http://patrick.cloke.us/feeds/rss.xml" type="application/rss+xml" rel="alternate">rss feed</a></li>
 
-                    <li><a href="https://www.twitter.com/clokep">twitter</a></li>
-                    <li><a href="https://bitbucket.org/clokep">bitbucket</a></li>
-                    <li><a href="https://www.github.com/clokep">github</a></li>
-                    <li><a href="https://mozillians.org/u/clokep/">mozillians</a></li>
+                    <li><a href="https://www.twitter.com/clokep" target="_blank">twitter</a></li>
+                    <li><a href="https://bitbucket.org/clokep" target="_blank">bitbucket</a></li>
+                    <li><a href="https://www.github.com/clokep" target="_blank">github</a></li>
+                    <li><a href="https://mozillians.org/u/clokep/" target="_blank">mozillians</a></li>
                 </ul>
             </div><!-- /.social -->
         </section><!-- /#extras -->
@@ -42,11 +42,11 @@
         <section id="search" class="left">
             <h2>search</h2>
 
-            <form method="get" action="http://www.bing.com/search">
+            <form method="get" action="http://www.google.com/search" target="_blank">
 
                 <input type="text" name="q" placeholder="search this site" />
                 <input type="submit" value="Search" />
-                <input type="hidden"  name="q1" value="site:patrick.cloke.us" />
+                <input type="hidden"  name="sitesearch" value="patrick.cloke.us" />
             </form>
         </section>
 
@@ -67,7 +67,7 @@
     </abbr>
 
     <address class="vcard author">
-        By             <a class="url fn" href="http://patrick.cloke.us/author/patrick-cloke.html">Patrick Cloke</a>
+        By             <a class="url fn" href="http://patrick.cloke.us/pages/about.html">Patrick Cloke</a>
     </address>
 
 <p>tags: <a href="http://patrick.cloke.us/tag/chat.html">chat</a> <a href="http://patrick.cloke.us/tag/im.html">IM</a> <a href="http://patrick.cloke.us/tag/instant-messaging.html">instant messaging</a> <a href="http://patrick.cloke.us/tag/instantbird.html">Instantbird</a> <a href="http://patrick.cloke.us/tag/messaging.html">messaging</a> <a href="http://patrick.cloke.us/tag/status.html">status</a> <a href="http://patrick.cloke.us/tag/thunderbird.html">Thunderbird</a> </p>
@@ -190,9 +190,9 @@ in the&nbsp;table.</p>
     <div class="comments">
         <h2>5 Comments:</h2>
         <ul id="comments-list">
-            <li id="comment-0.rst">
+            <li id="comment-0rst">
                 <abbr class="published" title="2012-10-16T23:30:00">
-                    Commented: <a href="http://patrick.cloke.us/posts/2012/10/16/on-status/#comment-0.rst"
+                    Commented: <a href="http://patrick.cloke.us/posts/2012/10/16/on-status/#comment-0rst"
                                   rel="bookmark" title="Permalink to this comment">10/16/2012 11:30 PM EST</a>
                 </abbr>
 
@@ -226,9 +226,9 @@ might want to talk to one or two people if they sign&nbsp;on.</p>
 as far as how others use chat clients. Maybe that word is idealistic as you&nbsp;said.</p>
 
                             <ul id="comments-list">
-            <li id="comment-1.rst">
+            <li id="comment-1rst">
                 <abbr class="published" title="2012-10-17T09:57:00">
-                    Commented: <a href="http://patrick.cloke.us/posts/2012/10/16/on-status/#comment-1.rst"
+                    Commented: <a href="http://patrick.cloke.us/posts/2012/10/16/on-status/#comment-1rst"
                                   rel="bookmark" title="Permalink to this comment">10/17/2012 09:57 AM EST</a>
                 </abbr>
 
@@ -244,47 +244,12 @@ needed these: <span class="caps">AIM</span>, Google&nbsp;Talk&#8230;)</p>
 it&#8217;s impossible to get right, (long term) it damages the network by making the
 presence information (the thing that makes <span class="caps">IM</span> more useful than SMSes) completely&nbsp;unreliable.</p>
 
-                            <ul id="comments-list">
-            <li id="comment-3.rst">
-                <abbr class="published" title="2012-10-18T06:43:00">
-                    Commented: <a href="http://patrick.cloke.us/posts/2012/10/16/on-status/#comment-3.rst"
-                                  rel="bookmark" title="Permalink to this comment">10/18/2012 06:43 AM EST</a>
-                </abbr>
-
-                <address class="vcard author">
-                    By                         Samuel Sidler
-                </address>
-
-                <p>Patrick, you&#8217;re right. Probably half of my comments are misunderstanding and
-apologies for that. I was thinking of &quot;status message&quot; not of status. I didn&#8217;t
-realize you were saying these are pre-programmed statuses. But what Florian said
-below rings true. Most of those with the pre-programmed statuses are from
-protocols that didn&#8217;t have status messages to&nbsp;start.</p>
-<p>I still think that invisible is an important status and I imagine a lot of other
-people do too. The scenario I gave is just my personal one. The simple
-explanation for invisible is &quot;privacy&quot; and different people have different&nbsp;scenarios.</p>
-<p>As far as technical ramifications&#8230; Some <span class="caps">IM</span> clients (like the new &quot;Messages&quot;
-app on Mac <span class="caps">OS</span> X 10.8) allow you to set per-protocol, per-account statuses. So I
-can be logged into yahooaccount1 and yahooaccount2, but only invisible on
-yahooaccount1. Perhaps any client that implements the invisible status could
-show what accounts are set as invisible and what accounts are still set to the
-previous status, when you change the client-wide status to &quot;invisible.&quot; But
-clients could also show that no invisible status existed for individual clients,
-when attempting to change their statuses (list only the available statuses and
-not list &quot;invisible&quot; at&nbsp;all).</p>
-<p>You&#8217;re right about how some protocols act with regards to being offline vs
-invisible. But just because one or two protocols don&#8217;t handle it well doesn&#8217;t
-mean it shouldn&#8217;t be implemented as best as possible for all&nbsp;protocols&#8230;</p>
-
-            </li>
-        </ul>
-
             </li>
         </ul>
         <ul id="comments-list">
-            <li id="comment-2.rst">
+            <li id="comment-2rst">
                 <abbr class="published" title="2012-10-17T09:59:00">
-                    Commented: <a href="http://patrick.cloke.us/posts/2012/10/16/on-status/#comment-2.rst"
+                    Commented: <a href="http://patrick.cloke.us/posts/2012/10/16/on-status/#comment-2rst"
                                   rel="bookmark" title="Permalink to this comment">10/17/2012 09:59 AM EST</a>
                 </abbr>
 
@@ -348,9 +313,41 @@ use instant messaging (and more proof there&#8217;s no such thing as the mythica
 &quot;general&nbsp;user&quot;).</p>
 
                             <ul id="comments-list">
-            <li id="comment-4.rst">
+            <li id="comment-3rst">
+                <abbr class="published" title="2012-10-18T06:43:00">
+                    Commented: <a href="http://patrick.cloke.us/posts/2012/10/16/on-status/#comment-3rst"
+                                  rel="bookmark" title="Permalink to this comment">10/18/2012 06:43 AM EST</a>
+                </abbr>
+
+                <address class="vcard author">
+                    By                         Samuel Sidler
+                </address>
+
+                <p>Patrick, you&#8217;re right. Probably half of my comments are misunderstanding and
+apologies for that. I was thinking of &quot;status message&quot; not of status. I didn&#8217;t
+realize you were saying these are pre-programmed statuses. But what Florian said
+below rings true. Most of those with the pre-programmed statuses are from
+protocols that didn&#8217;t have status messages to&nbsp;start.</p>
+<p>I still think that invisible is an important status and I imagine a lot of other
+people do too. The scenario I gave is just my personal one. The simple
+explanation for invisible is &quot;privacy&quot; and different people have different&nbsp;scenarios.</p>
+<p>As far as technical ramifications&#8230; Some <span class="caps">IM</span> clients (like the new &quot;Messages&quot;
+app on Mac <span class="caps">OS</span> X 10.8) allow you to set per-protocol, per-account statuses. So I
+can be logged into yahooaccount1 and yahooaccount2, but only invisible on
+yahooaccount1. Perhaps any client that implements the invisible status could
+show what accounts are set as invisible and what accounts are still set to the
+previous status, when you change the client-wide status to &quot;invisible.&quot; But
+clients could also show that no invisible status existed for individual clients,
+when attempting to change their statuses (list only the available statuses and
+not list &quot;invisible&quot; at&nbsp;all).</p>
+<p>You&#8217;re right about how some protocols act with regards to being offline vs
+invisible. But just because one or two protocols don&#8217;t handle it well doesn&#8217;t
+mean it shouldn&#8217;t be implemented as best as possible for all&nbsp;protocols&#8230;</p>
+
+                            <ul id="comments-list">
+            <li id="comment-4rst">
                 <abbr class="published" title="2012-10-18T07:31:00">
-                    Commented: <a href="http://patrick.cloke.us/posts/2012/10/16/on-status/#comment-4.rst"
+                    Commented: <a href="http://patrick.cloke.us/posts/2012/10/16/on-status/#comment-4rst"
                                   rel="bookmark" title="Permalink to this comment">10/18/2012 07:31 AM EST</a>
                 </abbr>
 
@@ -372,6 +369,9 @@ some sort of advanced understanding of all the implications of enabling it.
 Again it would be great for an extension to expose this option. Note that I do
 think we should strive to have our protocols support it as best as possible, as
 I suggested in <a class="reference external" href="https://bugzilla.mozilla.org/show_bug.cgi?id=802133">bug 802133</a>.</p>
+
+            </li>
+        </ul>
 
             </li>
         </ul>

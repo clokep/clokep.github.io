@@ -31,10 +31,10 @@
                     <li><a href="http://patrick.cloke.us/feeds/atom.xml" type="application/atom+xml" rel="alternate">atom feed</a></li>
                     <li><a href="http://patrick.cloke.us/feeds/rss.xml" type="application/rss+xml" rel="alternate">rss feed</a></li>
 
-                    <li><a href="https://www.twitter.com/clokep">twitter</a></li>
-                    <li><a href="https://bitbucket.org/clokep">bitbucket</a></li>
-                    <li><a href="https://www.github.com/clokep">github</a></li>
-                    <li><a href="https://mozillians.org/u/clokep/">mozillians</a></li>
+                    <li><a href="https://www.twitter.com/clokep" target="_blank">twitter</a></li>
+                    <li><a href="https://bitbucket.org/clokep" target="_blank">bitbucket</a></li>
+                    <li><a href="https://www.github.com/clokep" target="_blank">github</a></li>
+                    <li><a href="https://mozillians.org/u/clokep/" target="_blank">mozillians</a></li>
                 </ul>
             </div><!-- /.social -->
         </section><!-- /#extras -->
@@ -42,11 +42,11 @@
         <section id="search" class="left">
             <h2>search</h2>
 
-            <form method="get" action="http://www.bing.com/search">
+            <form method="get" action="http://www.google.com/search" target="_blank">
 
                 <input type="text" name="q" placeholder="search this site" />
                 <input type="submit" value="Search" />
-                <input type="hidden"  name="q1" value="site:patrick.cloke.us" />
+                <input type="hidden"  name="sitesearch" value="patrick.cloke.us" />
             </form>
         </section>
 
@@ -67,7 +67,7 @@
     </abbr>
 
     <address class="vcard author">
-        By             <a class="url fn" href="http://patrick.cloke.us/author/patrick-cloke.html">Patrick Cloke</a>
+        By             <a class="url fn" href="http://patrick.cloke.us/pages/about.html">Patrick Cloke</a>
     </address>
 
 <p>tags: <a href="http://patrick.cloke.us/tag/instantbird.html">Instantbird</a> <a href="http://patrick.cloke.us/tag/irc.html">IRC</a> <a href="http://patrick.cloke.us/tag/mozilla.html">Mozilla</a> <a href="http://patrick.cloke.us/tag/programming.html">programming</a> </p>
@@ -94,7 +94,11 @@ to work: one error, (which I found quickly) one of the other developers
 a <strong>new</strong> object.&nbsp; And after learning a bit above observers I was able
 to get the <span class="caps">UI</span> to respond.&nbsp; I even threw in support for op/half-op/voice
 After today&#8217;s work I was able to generate the following&nbsp;screenshot:</p>
-<p><a class="reference external" href="http://patrick.cloke.us/images/IRCworking2.png"><img alt="IRCworking" src="http://patrick.cloke.us/images/IRCworking2.png" style="height: 297px;" /></a></p>
+<!--  -->
+<blockquote class="center">
+<a class="reference external image-reference" href="http://patrick.cloke.us/images/IRCworking2.png"><img alt="Example conversation using JavaScript IRC." class="center" src="http://patrick.cloke.us/images/IRCworking2.png" style="height: 297px;" /></a>
+<p>An initial example of Instantbird communicating using JavaScript <span class="caps">IRC</span>.</p>
+</blockquote>
 <p>This build would be almost fully usable by those who do very little on
 <span class="caps">IRC</span> (i.e. if you just want to go and chat, it&#8217;d work well), but there&#8217;s
 a lot more work to be done.&nbsp; The code can be viewed in the <a class="reference external" href="https://hg.instantbird.org/experiments/file/IRC-JavaScript/">Experiments

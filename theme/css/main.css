@@ -47,8 +47,19 @@ h3, h4, h5, h6 { margin-top: .8em; }
 hr { border: 2px solid #EEEEEE; }
 
 /* Anchors */
-a {outline: 0;}
-a img {border: 0px; text-decoration: none;}
+a {
+    outline: 0;
+}
+a img {
+    border: 0px;
+    text-decoration: none;
+    outline: 0;
+
+    /* This removes the padding on links that causes the red background to show
+     * when hovered. */
+    margin: 4px -1px;
+    margin-bottom: -4px;
+}
 a:link, a:visited {
     color: #C74350;
     padding: 0 1px;
@@ -90,6 +101,7 @@ li { margin-top: 0.5em;}
     float: right;
     margin: 10px;
     padding: 5px;
+    max-width: 20em;
 }
 
 .post-info p{
@@ -147,8 +159,12 @@ aside, nav, article, figure {
     display: block;
 }
 
+/* Custom roles. */
 .strike {
     text-decoration: line-through;
+}
+.center {
+    text-align: center;
 }
 
 /***** Layout *****/
@@ -165,8 +181,25 @@ img.left, figure.left {float: left; margin: 0 2em 2em 0;}
 .left {
     width: 160px;
     float: left;
-    margin-left: calc(-160px - 2em);
-    clear: left;
+}
+
+/*
+ * Ensure that the navigation is actually on screen. If the screen is wide
+ * enough the left class is pushed off to the left, if it is not wide enough it
+ * is kept above the article content.
+ *
+ * This width is .body[width] + .left[width] * 2 + buffer
+ */
+@media (min-width: 1200px) {
+    .left {
+        margin-left: calc(-160px - 2em);
+        clear: left;
+    }
+}
+@media (max-width: 1200px) {
+    .body {
+        clear: both;
+    }
 }
 
 /*
@@ -272,6 +305,20 @@ img.left, figure.left {float: left; margin: 0 2em 2em 0;}
 #featured .footnote-reference, #content .footnote-reference {
     vertical-align: super;
     font-size: .83em;
+}
+
+/*
+ * Tight up the spacing around footnotes a bit.
+ */
+.footnote {
+    margin-top: 0;
+    margin-bottom: 0;
+}
+
+/* Ensure that the actual footnote takes the majority of the line, even for
+ * single line footnotes. */
+.footnote td:not(.label) {
+    width: 100%;
 }
 
 /*
