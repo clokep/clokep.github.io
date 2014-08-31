@@ -1,5 +1,6 @@
 # Filenames to ignore no matter where they are.
 *.py[cod]
+.DS_Store
 
 # Specific directories.
 cache/

@@ -4,3 +4,6 @@ ghp_import==0.4.1
 pelican==3.4.0
 Pillow==2.5.0
 typogrify==2.0.4
+
+# For extract toc
+beautifulsoup4

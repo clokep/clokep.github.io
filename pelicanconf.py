@@ -18,7 +18,7 @@ TRANSLATION_FEED_ATOM = None
 TYPOGRIFY = True
 
 # Uncomment following line if you want document-relative URLs when developing
-RELATIVE_URLS = True
+#RELATIVE_URLS = True
 
 # Disable categories.
 DISPLAY_CATEGORIES_ON_MENU = False
@@ -53,8 +53,17 @@ TEMPLATE_PAGES = {
 }
 
 # Plugin setup.
-PLUGIN_PATHS = ['../pelican-plugins/']
-PLUGINS = ['extract_toc', 'pelican_comment_system', 'strikethrough']
+PLUGIN_PATHS = [
+    '../pelican-plugins/',
+]
+PLUGINS = [
+    'extract_toc',
+    'pelican_comment_system',
+    'thumbnailer',
+
+    # Custom plug-ins.
+    'strikethrough',
+]
 
 # Change the default URLs.
 ARTICLE_URL = 'posts/{date:%Y}/{date:%m}/{date:%d}/{slug}/'
@@ -78,3 +87,9 @@ SOCIAL = (
 
 # For comments imported from blogger.
 PELICAN_COMMENT_SYSTEM = True
+
+# For thumbnails.
+IMAGE_PATH = 'images'
+THUMBNAIL_SIZES = {
+    'small': '?x150',
+}

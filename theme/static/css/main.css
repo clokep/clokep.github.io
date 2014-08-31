@@ -57,8 +57,8 @@ a img {
 
     /* This removes the padding on links that causes the red background to show
      * when hovered. */
-    margin: 0 -1px;
-    margin-bottom: -5px;
+    margin: 4px -1px;
+    margin-bottom: -4px;
 }
 a:link, a:visited {
     color: #C74350;
@@ -296,6 +296,12 @@ img.left, figure.left {float: left; margin: 0 2em 2em 0;}
 .footnote {
     margin-top: 0;
     margin-bottom: 0;
+}
+
+/* Ensure that the actual footnote takes the majority of the line, even for
+ * single line footnotes. */
+.footnote td:not(.label) {
+    width: 100%;
 }
 
 /*
