@@ -3,6 +3,7 @@ import os
 
 # Local path configuration (can be absolute or relative to fabfile)
 env.deploy_path = 'output'
+env.listen_port = 8000
 DEPLOY_PATH = env.deploy_path
 
 def clean():
@@ -21,7 +22,7 @@ def regenerate():
     local('pelican -r -s pelicanconf.py content')
 
 def serve():
-    local('cd {deploy_path} && python -m SimpleHTTPServer'.format(**env))
+    local('cd {deploy_path} && python ../fake_server.py {listen_port}'.format(**env))
 
 def reserve():
     build()
