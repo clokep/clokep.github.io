@@ -92,4 +92,5 @@ PELICAN_COMMENT_SYSTEM = True
 IMAGE_PATH = 'images'
 THUMBNAIL_SIZES = {
     'small': '?x150',
+    'medium': '?x350',
 }

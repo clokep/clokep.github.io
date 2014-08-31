@@ -147,7 +147,7 @@ is right audio and green is left audio (black is ground).
 .. class:: center
 ..
 
-    .. image:: /thumbnails/subaru-outback-radio/diagrams_small.jpg
+    .. image:: /thumbnails/subaru-outback-radio/diagrams_medium.jpg
         :target: {filename}/images/subaru-outback-radio/diagrams.jpg
         :alt: Wiring diagrams of the connections.
 
