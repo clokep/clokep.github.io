@@ -28,6 +28,7 @@ def reserve():
     serve()
 
 def preview():
+    clean()
     local('pelican -s publishconf.py content')
 
 def publish():
