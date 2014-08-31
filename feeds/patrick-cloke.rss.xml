@@ -1,5 +1,221 @@
 <?xml version="1.0" encoding="utf-8"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Like bricks in the sky</title><link>http://patrick.cloke.us/</link><description></description><atom:link href="http://patrick.cloke.us/feeds/patrick-cloke.rss.xml" rel="self"></atom:link><lastBuildDate>Wed, 09 Jul 2014 17:32:00 -0400</lastBuildDate><item><title>Mentoring and Time</title><link>http://patrick.cloke.us/posts/2014/07/09/mentoring-and-time/</link><description>&lt;p&gt;No, this is not about being late places, it&amp;#8217;s about respecting people&amp;#8217;s time. I
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Like bricks in the sky</title><link>http://patrick.cloke.us/</link><description></description><atom:link href="http://patrick.cloke.us/feeds/patrick-cloke.rss.xml" rel="self"></atom:link><lastBuildDate>Sat, 30 Aug 2014 17:34:00 -0400</lastBuildDate><item><title>Adding an Auxiliary Audio Input to a 2005 Subaru Outback</title><link>http://patrick.cloke.us/posts/2014/08/30/adding-an-auxiliary-audio-input-to-a-2005-subaru-outback/</link><description>&lt;p&gt;I own a &lt;a class="reference external" href="http://en.wikipedia.org/wiki/Subaru_Legacy#Fourth_generation_.282003.E2.80.932009.29_-_BL.2C_BP"&gt;2005 (fourth generation) Subaru Outback&lt;/a&gt;, I&amp;#8217;ve had it since the fall
+of 2006 and it has been great. I have a little over 100,000 miles and do not
+plan to sell it anytime&amp;nbsp;soon.&lt;/p&gt;
+&lt;p&gt;There is one thing that just &lt;em&gt;kills&lt;/em&gt; me though. You cannot (easily &lt;a class="footnote-reference" href="#id7" id="id1"&gt;[1]&lt;/a&gt;) change
+the radio in it&amp;#8230;and it is &lt;em&gt;just&lt;/em&gt; old enough &lt;a class="footnote-reference" href="#id8" id="id2"&gt;[2]&lt;/a&gt; to have neigher BlueTooth nor
+an auxiliary audio input. I&amp;#8217;ve been carrying around a book of CDs with me for
+the past 8 years. I decided it was time to change&amp;nbsp;that.&lt;/p&gt;
+&lt;p&gt;I knew that it was possible to &amp;quot;modify&amp;quot; the radio to accept an auxiliary input,
+but it &lt;a class="reference external" href="http://www.jazzyengineering.com/product_info.php?cPath=21&amp;amp;products_id=28"&gt;involved always playing a silent &lt;span class="caps"&gt;CD&lt;/span&gt;&lt;/a&gt;, which I did not find adequate. I
+recently &lt;a class="reference external" href="http://snackeyes.blogspot.com/2011/06/2005-subaru-outback-aux-in-hack-via.html"&gt;came across&lt;/a&gt; a post of how to do this in such a way that the radio
+functions as normal, but when you plug in a device to the auxiliary port it cuts
+out the radio and plays from the device. &lt;a class="reference external" href="http://www.subaruoutback.org/forums/69-audio-video-security-navigation/36606-2005-outback-aux-hack-via-radio-module-success.html"&gt;Someone else&lt;/a&gt; had also confirmed that
+it worked for them.&amp;nbsp;Cool!&lt;/p&gt;
+&lt;p&gt;I vaguely followed the directions, but made a few changes here and there. Also,
+everyone online seems to make it seem like the radio is &lt;em&gt;super&lt;/em&gt; easy to get
+out&amp;#8230;I seriously think I spent at least two hours on it. There were &lt;a class="reference external" href="https://www.youtube.com/watch?v=7W7otDaBwJk"&gt;two&lt;/a&gt;
+&lt;a class="reference external" href="https://www.youtube.com/watch?v=EzoGJBNMwmU"&gt;videos&lt;/a&gt; and a &lt;a class="reference external" href="http://www.metraonline.com/files/products/INST99-8901.pdf"&gt;&lt;span class="caps"&gt;PDF&lt;/span&gt;&lt;/a&gt; I found useful for this&amp;nbsp;task.&lt;/p&gt;
+&lt;!--  --&gt;
+&lt;blockquote class="center"&gt;
+&lt;a class="reference external image-reference" href="http://patrick.cloke.us/images/subaru-outback-radio/uninstall-front.jpg"&gt;&lt;img alt="Front view of my uninstalled 2005 Subaru Outback stereo." src="/thumbnails/subaru-outback-radio/uninstall-front_small.jpg" /&gt;&lt;/a&gt;
+&lt;a class="reference external image-reference" href="http://patrick.cloke.us/images/subaru-outback-radio/uninstall-right.jpg"&gt;&lt;img alt="Right view of my uninstalled 2005 Subaru Outback stereo." src="/thumbnails/subaru-outback-radio/uninstall-right_small.jpg" /&gt;&lt;/a&gt;
+&lt;a class="reference external image-reference" href="http://patrick.cloke.us/images/subaru-outback-radio/uninstall-back.jpg"&gt;&lt;img alt="Back view of my uninstalled 2005 Subaru Outback stereo." src="/thumbnails/subaru-outback-radio/uninstall-back_small.jpg" /&gt;&lt;/a&gt;
+&lt;p&gt;A few images of the uninstalled stereo before any disassembly. (So I could
+remember how to reassemble&amp;nbsp;it!)&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;I wouldn&amp;#8217;t say that this modification was extremely difficult, but it does&amp;nbsp;involve:&lt;/p&gt;
+&lt;ul class="simple"&gt;
+&lt;li&gt;Soldering to surface mount components (I&amp;#8217;m not awesome a soldering, but I have
+had a good amount of&amp;nbsp;experience).&lt;/li&gt;
+&lt;li&gt;The willingness to potentially trash a&amp;nbsp;radio.&lt;/li&gt;
+&lt;li&gt;Basic understanding of electrical diagrams and how switches&amp;nbsp;work.&lt;/li&gt;
+&lt;li&gt;A lot of time! I spent ~13 hours total working on&amp;nbsp;this.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Total cost of components, however, was &amp;lt; $5.00 (and that&amp;#8217;s probably
+overestimating.) Really the only component I didn&amp;#8217;t have was the &lt;a class="reference external" href="http://www.radioshack.com/product/index.jsp?productId=2103451"&gt;switching
+audio jack&lt;/a&gt;, which I got at my local RadioShack for $2.99. (I also picked up
+wire, heatshrink, etc. so&amp;#8230;$5.00 sounded reasonable.) The actual list of parts
+and tools I used&amp;nbsp;was:&lt;/p&gt;
+&lt;ul class="simple"&gt;
+&lt;li&gt;1/8&amp;quot; Stereo Panel-Mount Phone Jack [$2.99, RadioShack&amp;nbsp;#274-246]&lt;/li&gt;
+&lt;li&gt;~2 feet of each of green and red 22 gauge wire, ~1 foot of black 22 gauge&amp;nbsp;wire.&lt;/li&gt;
+&lt;li&gt;Soldering iron /&amp;nbsp;Solder&lt;/li&gt;
+&lt;li&gt;3 x Alligator clip testing wires (1 black, 1 red, 1&amp;nbsp;green)&lt;/li&gt;
+&lt;li&gt;Multimeter&lt;/li&gt;
+&lt;li&gt;Hot glue gun / Hot&amp;nbsp;glue&lt;/li&gt;
+&lt;li&gt;Various sizes of flat/slotted and Phillips head screw&amp;nbsp;drivers&lt;/li&gt;
+&lt;li&gt;&lt;a class="reference external" href="http://en.wikipedia.org/wiki/File:Wire_stripper.jpg"&gt;Wire&amp;nbsp;strippers&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Wire&amp;nbsp;cutter&lt;/li&gt;
+&lt;li&gt;Needle nosed&amp;nbsp;pliers&lt;/li&gt;
+&lt;li&gt;&lt;a class="reference external" href="http://www.streamlight.com/product/product.aspx?pid=133"&gt;Flashlight&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Drill with 1/4&amp;quot; drill bit and a 1/2&amp;quot; spade bit (plus some smaller sized drill
+bits for pilot&amp;nbsp;holes)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Anyway, once you have the radio out you can disassembly it down to it&amp;#8217;s bare
+components. (It is held together with a bunch of screws and tabs, I took
+pictures along each step of the way to ensure I could put it back&amp;nbsp;together.)&lt;/p&gt;
+&lt;!--  --&gt;
+&lt;blockquote class="center"&gt;
+&lt;a class="reference external image-reference" href="http://patrick.cloke.us/images/subaru-outback-radio/disassembly-front.jpg"&gt;&lt;img alt="The front of the stereo after removing the control unit." src="/thumbnails/subaru-outback-radio/disassembly-front_small.jpg" /&gt;&lt;/a&gt;
+&lt;a class="reference external image-reference" href="http://patrick.cloke.us/images/subaru-outback-radio/disassembly-front-reverse.jpg"&gt;&lt;img alt="The reverse of the control unit." src="/thumbnails/subaru-outback-radio/disassembly-front-reverse_small.jpg" /&gt;&lt;/a&gt;
+&lt;a class="reference external image-reference" href="http://patrick.cloke.us/images/subaru-outback-radio/disassembly-top.jpg"&gt;&lt;img alt="The top of the unit with the cover removed showing the CD drive." src="/thumbnails/subaru-outback-radio/disassembly-top_small.jpg" /&gt;&lt;/a&gt;
+&lt;p&gt;The initial steps of disassembly: the front after removing the controls, the
+reverse of the control unit, a top-down view after removing the top of the
+unit &lt;a class="footnote-reference" href="#id9" id="id3"&gt;[3]&lt;/a&gt;.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;!--  --&gt;
+&lt;blockquote class="center"&gt;
+&lt;a class="reference external image-reference" href="http://patrick.cloke.us/images/subaru-outback-radio/disassembly-motherboard.jpg"&gt;&lt;img alt="The main circuit board of the unit." src="/thumbnails/subaru-outback-radio/disassembly-motherboard_small.jpg" /&gt;&lt;/a&gt;
+&lt;a class="reference external image-reference" href="http://patrick.cloke.us/images/subaru-outback-radio/disassembly-motherboard-reverse.jpg"&gt;&lt;img alt="The reverse of the mian circuit board of the unit." src="/thumbnails/subaru-outback-radio/disassembly-motherboard-reverse_small.jpg" /&gt;&lt;/a&gt;
+&lt;p&gt;The actual circuit board of the stereo unit. You can see the radio module on
+the&amp;nbsp;left.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;The radio module connects to the motherboard with a 36-pin connector. Pin 31 is
+the right audio channel and pin 32 is left audio channel. I verified this by
+connected the disassembly radio to the car and testing with alligator clips
+hooked up to my phones audio output &lt;a class="footnote-reference" href="#id10" id="id4"&gt;[4]&lt;/a&gt;. I already knew these were the pins
+from the directions, but I verified by completing the circuit to these pins and
+ensuring I heard mixed audio with my phone and the&amp;nbsp;radio.&lt;/p&gt;
+&lt;p&gt;The direction suggested cutting the pin and bending it up to solder to it. I
+didn&amp;#8217;t have any cutting tool small enough to get inbetween the pins&amp;#8230;so I
+flipped the board over and did sketchier things. I scored the board to remove
+the traces &lt;a class="footnote-reference" href="#id11" id="id5"&gt;[5]&lt;/a&gt; that connected the radio module to the rest of the board. I then
+soldered on either side of this connection to put it through the audo&amp;nbsp;connector.&lt;/p&gt;
+&lt;!--  --&gt;
+&lt;blockquote class="center"&gt;
+&lt;a class="reference external image-reference" href="http://patrick.cloke.us/images/subaru-outback-radio/soldered-connections.jpg"&gt;&lt;img alt="Soldered leads to the bottom of the stereo board." src="/thumbnails/subaru-outback-radio/soldered-connections_small.jpg" /&gt;&lt;/a&gt;
+&lt;a class="reference external image-reference" href="http://patrick.cloke.us/images/subaru-outback-radio/soldered-ground.jpg"&gt;&lt;img alt="Soldered ground to the top of the radio unit." src="/thumbnails/subaru-outback-radio/soldered-ground_small.jpg" /&gt;&lt;/a&gt;
+&lt;p&gt;Five soldered connections are required, four to the bottom of the board &lt;a class="footnote-reference" href="#id12" id="id6"&gt;[6]&lt;/a&gt;
+and one to the ground at the top of the&amp;nbsp;unit.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;Now, the way that this works is that the audio connector output (pins 2 and 5)
+is &lt;em&gt;always&lt;/em&gt; connected. If nothing is in the jack, it is connected as a
+passthrough to the inputs (pins 3 and 4, respectively). If an audio connector is
+plugged in, input redirects to the jack. (Pin 1 is ground.) For reference, red
+is right audio and green is left audio (black is&amp;nbsp;ground).&lt;/p&gt;
+&lt;!--  --&gt;
+&lt;blockquote class="center"&gt;
+&lt;a class="reference external image-reference" href="http://patrick.cloke.us/images/subaru-outback-radio/diagrams.jpg"&gt;&lt;img alt="Wiring diagrams of the connections." src="/thumbnails/subaru-outback-radio/diagrams_medium.jpg" /&gt;&lt;/a&gt;
+&lt;p&gt;A few of the diagrams necessary to do this. The top two diagram is simple
+the connectors two states: no plug and plug. The bottom two diagrams are a
+normal 1/8&amp;quot; audio plug and the physical pin-out and measurements of the&amp;nbsp;jack.&lt;/p&gt;
+&lt;p&gt;To reiterate, pins 2 and 5 connect to the &amp;quot;stereo side&amp;quot; of the scored pins
+31 and 32 of the radio module. (I.e. They are the output from the connector
+back to what will be played by the stereo.) Pins 3 and 4 are the inputs from
+the radio module side of pins 31 and 32 to the&amp;nbsp;connector.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;So after soldering for connections (and some hot glue), we have the ability to
+intercept the signal. At this point I took the bare motherboard and tested this
+in my car with alligator clips to ensure the radio still worked, I then
+connected the alligator clips to a cut audio plug to ensure everything&amp;nbsp;worked.&lt;/p&gt;
+&lt;!--  --&gt;
+&lt;blockquote class="center"&gt;
+&lt;a class="reference external image-reference" href="http://patrick.cloke.us/images/subaru-outback-radio/hot-glued-connections.jpg"&gt;&lt;img alt="Hot glued wires to the board as strain relief." src="/thumbnails/subaru-outback-radio/hot-glued-connections_small.jpg" /&gt;&lt;/a&gt;
+&lt;a class="reference external image-reference" href="http://patrick.cloke.us/images/subaru-outback-radio/testing-alligator-clips.jpg"&gt;&lt;img alt="Testing with alligator clips. (after reassmbly)." src="/thumbnails/subaru-outback-radio/testing-alligator-clips_small.jpg" /&gt;&lt;/a&gt;
+&lt;p&gt;The wires were also hot glued to the circuit board as strain relief. After
+reassembly I tested again with alligator&amp;nbsp;clips.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;At this point, I reassembled the radio case and ran the wires out through holes
+in the side / bottom toward the front of the unit. I noticed there was an empty
+spot in the top left of the unit which looked like it would fit the panel mount
+audio jack. After doing some measurements I deemed my chances good enough to
+drill a hole here for the connector. Some tips on drilling plastic, if you
+haven&amp;#8217;t done it much: use the lowest speed you can; start with very small bits
+and work your way up (I used 4 stages of bits); and cover both sides in masking
+tape to avoid&amp;nbsp;scratches.&lt;/p&gt;
+&lt;!--  --&gt;
+&lt;blockquote class="center"&gt;
+&lt;a class="reference external image-reference" href="http://patrick.cloke.us/images/subaru-outback-radio/drilled-setup.jpg"&gt;&lt;img alt="Taped and measurements for drilling the hole from the front." src="/thumbnails/subaru-outback-radio/drilled-setup_small.jpg" /&gt;&lt;/a&gt;
+&lt;a class="reference external image-reference" href="http://patrick.cloke.us/images/subaru-outback-radio/drilled-setup-reverse.jpg"&gt;&lt;img alt="Taped and measurements for drilling the hole from the reverse." src="/thumbnails/subaru-outback-radio/drilled-setup-reverse_small.jpg" /&gt;&lt;/a&gt;
+&lt;p&gt;Another benefit of tape is you can write anywhere you want. These
+measurements were taken initially on the back and transcribed to the front
+(where I drilled&amp;nbsp;from).&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;The plastic was actually too think for the panel mount connector to reach
+through, which is where the 1/2&amp;quot; spade bit came in handy. I use it to drill
+through roughly half the thickness of the plastic (a little at a time with lots
+of testing). The connector was able to nestle inside the thinner plastic and
+reach all the way&amp;nbsp;through.&lt;/p&gt;
+&lt;!--  --&gt;
+&lt;blockquote class="center"&gt;
+&lt;a class="reference external image-reference" href="http://patrick.cloke.us/images/subaru-outback-radio/drilled-hole.jpg"&gt;&lt;img alt="The 1/4&amp;quot; hole drilled through the plastic." src="/thumbnails/subaru-outback-radio/drilled-hole_small.jpg" /&gt;&lt;/a&gt;
+&lt;a class="reference external image-reference" href="http://patrick.cloke.us/images/subaru-outback-radio/drilled-hole-reverse.jpg"&gt;&lt;img alt="The thinning of the plastic from the 1/2&amp;quot; spade bit." src="/thumbnails/subaru-outback-radio/drilled-hole-reverse_small.jpg" /&gt;&lt;/a&gt;
+&lt;a class="reference external image-reference" href="http://patrick.cloke.us/images/subaru-outback-radio/drilled-hole-assembly.jpg"&gt;&lt;img alt="The assembled connector in the hole" src="/thumbnails/subaru-outback-radio/drilled-hole-assembly_small.jpg" /&gt;&lt;/a&gt;
+&lt;p&gt;After the initial hole was drilled, the tape on the back was removed to thin
+the&amp;nbsp;plastic.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;The last bit was soldering the five connections onto the audio connector,
+applying a coating of hot glue (for strain relief and to avoid shorts). Once
+the connector was soldered, the front panel was carefully reassembled. Finally,
+the completed unit was reinstalled back into the car and voila, I now have an
+auxiliary audio input! Can&amp;#8217;t wait to test it out on a long car&amp;nbsp;trip.&lt;/p&gt;
+&lt;!--  --&gt;
+&lt;blockquote class="center"&gt;
+&lt;a class="reference external image-reference" href="http://patrick.cloke.us/images/subaru-outback-radio/soldered-switch.jpg"&gt;&lt;img alt="The soldered jack." src="/thumbnails/subaru-outback-radio/soldered-switch_small.jpg" /&gt;&lt;/a&gt;
+&lt;a class="reference external image-reference" href="http://patrick.cloke.us/images/subaru-outback-radio/hot-glued-switch.jpg"&gt;&lt;img alt="The hot-glued jack." src="/thumbnails/subaru-outback-radio/hot-glued-switch_small.jpg" /&gt;&lt;/a&gt;
+&lt;p&gt;The soldered and hot-glued audio&amp;nbsp;jack.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;!--  --&gt;
+&lt;blockquote class="center"&gt;
+&lt;a class="reference external image-reference" href="http://patrick.cloke.us/images/subaru-outback-radio/install-1.jpg"&gt;&lt;img alt="The installed unit." src="/thumbnails/subaru-outback-radio/install-1_small.jpg" /&gt;&lt;/a&gt;
+&lt;a class="reference external image-reference" href="http://patrick.cloke.us/images/subaru-outback-radio/install-2.jpg"&gt;&lt;img alt="Close-up of the new jack." src="/thumbnails/subaru-outback-radio/install-2_small.jpg" /&gt;&lt;/a&gt;
+&lt;p&gt;The final installed stereo&amp;nbsp;unit.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;One caveat of doing this (and I&amp;#8217;m unsure if this is because I didn&amp;#8217;t cut the
+pins as suggested or if this is just a fact of doing it this way&amp;#8230;). If you
+have an auxiliary input device playing &lt;span class="caps"&gt;AND&lt;/span&gt; play a &lt;span class="caps"&gt;CD&lt;/span&gt;, the audio mixes instead of
+being replaced by the auxiliary device. It works fine on radio though, so just
+remember to set the stereo to &lt;span class="caps"&gt;FM&lt;/span&gt;.&lt;/p&gt;
+&lt;table class="docutils footnote" frame="void" id="id7" rules="none"&gt;
+&lt;colgroup&gt;&lt;col class="label" /&gt;&lt;col /&gt;&lt;/colgroup&gt;
+&lt;tbody valign="top"&gt;
+&lt;tr&gt;&lt;td class="label"&gt;&lt;a class="fn-backref" href="#id1"&gt;[1]&lt;/a&gt;&lt;/td&gt;&lt;td&gt;The head unit of the stereo is directly built into the dashboard and
+includes the heat / air conditioning controls. &lt;a class="reference external" href="http://www.metraonline.com/part/Subaru_Legacy_Dash_kit_99-8901"&gt;People&lt;/a&gt; do sell kits to
+convert the dash into one that can accept an aftermarket radio&amp;#8230;but
+where&amp;#8217;s the fun in that?&lt;/td&gt;&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;table class="docutils footnote" frame="void" id="id8" rules="none"&gt;
+&lt;colgroup&gt;&lt;col class="label" /&gt;&lt;col /&gt;&lt;/colgroup&gt;
+&lt;tbody valign="top"&gt;
+&lt;tr&gt;&lt;td class="label"&gt;&lt;a class="fn-backref" href="#id2"&gt;[2]&lt;/a&gt;&lt;/td&gt;&lt;td&gt;The 2007 edition had an option for a stereo with satelite radio and an
+&lt;span class="caps"&gt;AUX&lt;/span&gt; input. I probably could have bought this stereo and installed it,
+but I was quoted $285 last time I asked about changing my radio.&lt;/td&gt;&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;table class="docutils footnote" frame="void" id="id9" rules="none"&gt;
+&lt;colgroup&gt;&lt;col class="label" /&gt;&lt;col /&gt;&lt;/colgroup&gt;
+&lt;tbody valign="top"&gt;
+&lt;tr&gt;&lt;td class="label"&gt;&lt;a class="fn-backref" href="#id3"&gt;[3]&lt;/a&gt;&lt;/td&gt;&lt;td&gt;This might seem insane, but I was fairly certain I&amp;#8217;d be able to solder a
+jumper back into place if everything didn&amp;#8217;t work, so I actually felt
+more comfortable doing this than cutting the pin.&lt;/td&gt;&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;table class="docutils footnote" frame="void" id="id10" rules="none"&gt;
+&lt;colgroup&gt;&lt;col class="label" /&gt;&lt;col /&gt;&lt;/colgroup&gt;
+&lt;tbody valign="top"&gt;
+&lt;tr&gt;&lt;td class="label"&gt;&lt;a class="fn-backref" href="#id4"&gt;[4]&lt;/a&gt;&lt;/td&gt;&lt;td&gt;Playing one of my favorite albums: &lt;a class="reference external" href="http://en.wikipedia.org/wiki/No_Control_%28Bad_Religion_album%29"&gt;&lt;em&gt;No Control&lt;/em&gt;&lt;/a&gt; by &lt;a class="reference external" href="http://en.wikipedia.org/wiki/Bad_Religion"&gt;Bad Religion&lt;/a&gt;&lt;/td&gt;&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;table class="docutils footnote" frame="void" id="id11" rules="none"&gt;
+&lt;colgroup&gt;&lt;col class="label" /&gt;&lt;col /&gt;&lt;/colgroup&gt;
+&lt;tbody valign="top"&gt;
+&lt;tr&gt;&lt;td class="label"&gt;&lt;a class="fn-backref" href="#id5"&gt;[5]&lt;/a&gt;&lt;/td&gt;&lt;td&gt;You can see I actually had a &lt;span class="caps"&gt;CD&lt;/span&gt; in the &lt;span class="caps"&gt;CD&lt;/span&gt; player when I removed the
+radio. Oops! Luckily it was just a copy of one of my CDs (I never take
+originals in my car). I didn&amp;#8217;t end up scratching it or anything either!&lt;/td&gt;&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;table class="docutils footnote" frame="void" id="id12" rules="none"&gt;
+&lt;colgroup&gt;&lt;col class="label" /&gt;&lt;col /&gt;&lt;/colgroup&gt;
+&lt;tbody valign="top"&gt;
+&lt;tr&gt;&lt;td class="label"&gt;&lt;a class="fn-backref" href="#id6"&gt;[6]&lt;/a&gt;&lt;/td&gt;&lt;td&gt;Please don&amp;#8217;t judge my soldering! Two of the four connections were a
+little sloppy (I had to add solder to those instead of just tinning the
+wires). I did ensure there were no shorts with a multimeter (and had to
+resolder one connection).&lt;/td&gt;&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Patrick Cloke</dc:creator><pubDate>Sat, 30 Aug 2014 17:34:00 -0400</pubDate><guid>tag:patrick.cloke.us,2014-08-30:posts/2014/08/30/adding-an-auxiliary-audio-input-to-a-2005-subaru-outback/</guid><category>hacking</category><category>auto</category><category>hardware</category></item><item><title>Mentoring and Time</title><link>http://patrick.cloke.us/posts/2014/07/09/mentoring-and-time/</link><description>&lt;p&gt;No, this is not about being late places, it&amp;#8217;s about respecting people&amp;#8217;s time. I
 won&amp;#8217;t go deep into why this is important as, &lt;a class="reference external" href="https://plus.google.com/118086293667040637133"&gt;Michael Haggerty&lt;/a&gt; wrote an
 awesome &lt;a class="reference external" href="http://softwareswirl.blogspot.fr/2014/03/my-secret-tip-for-gsoc-success.html"&gt;article&lt;/a&gt; on this. His thoughts boiled down to a single line of&amp;nbsp;advice:&lt;/p&gt;
 &lt;blockquote&gt;
