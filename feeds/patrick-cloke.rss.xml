@@ -3,7 +3,7 @@
 of 2006 and it has been great. I have a little over 100,000 miles and do not
 plan to sell it anytime&amp;nbsp;soon.&lt;/p&gt;
 &lt;p&gt;There is one thing that just &lt;em&gt;kills&lt;/em&gt; me though. You cannot (easily &lt;a class="footnote-reference" href="#id7" id="id1"&gt;[1]&lt;/a&gt;) change
-the radio in it&amp;#8230;and it is &lt;em&gt;just&lt;/em&gt; old enough &lt;a class="footnote-reference" href="#id8" id="id2"&gt;[2]&lt;/a&gt; to have neigher BlueTooth nor
+the radio in it&amp;#8230;and it is &lt;em&gt;just&lt;/em&gt; old enough &lt;a class="footnote-reference" href="#id8" id="id2"&gt;[2]&lt;/a&gt; to have neither BlueTooth nor
 an auxiliary audio input. I&amp;#8217;ve been carrying around a book of CDs with me for
 the past 8 years. I decided it was time to change&amp;nbsp;that.&lt;/p&gt;
 &lt;p&gt;I knew that it was possible to &amp;quot;modify&amp;quot; the radio to accept an auxiliary input,
@@ -67,7 +67,7 @@ unit &lt;a class="footnote-reference" href="#id9" id="id3"&gt;[3]&lt;/a&gt;.&lt;
 &lt;!--  --&gt;
 &lt;blockquote class="center"&gt;
 &lt;a class="reference external image-reference" href="http://patrick.cloke.us/images/subaru-outback-radio/disassembly-motherboard.jpg"&gt;&lt;img alt="The main circuit board of the unit." src="/thumbnails/subaru-outback-radio/disassembly-motherboard_small.jpg" /&gt;&lt;/a&gt;
-&lt;a class="reference external image-reference" href="http://patrick.cloke.us/images/subaru-outback-radio/disassembly-motherboard-reverse.jpg"&gt;&lt;img alt="The reverse of the mian circuit board of the unit." src="/thumbnails/subaru-outback-radio/disassembly-motherboard-reverse_small.jpg" /&gt;&lt;/a&gt;
+&lt;a class="reference external image-reference" href="http://patrick.cloke.us/images/subaru-outback-radio/disassembly-motherboard-reverse.jpg"&gt;&lt;img alt="The reverse of the main circuit board of the unit." src="/thumbnails/subaru-outback-radio/disassembly-motherboard-reverse_small.jpg" /&gt;&lt;/a&gt;
 &lt;p&gt;The actual circuit board of the stereo unit. You can see the radio module on
 the&amp;nbsp;left.&lt;/p&gt;
 &lt;/blockquote&gt;
@@ -78,10 +78,10 @@ hooked up to my phones audio output &lt;a class="footnote-reference" href="#id10
 from the directions, but I verified by completing the circuit to these pins and
 ensuring I heard mixed audio with my phone and the&amp;nbsp;radio.&lt;/p&gt;
 &lt;p&gt;The direction suggested cutting the pin and bending it up to solder to it. I
-didn&amp;#8217;t have any cutting tool small enough to get inbetween the pins&amp;#8230;so I
+didn&amp;#8217;t have any cutting tool small enough to get in between the pins&amp;#8230;so I
 flipped the board over and did sketchier things. I scored the board to remove
 the traces &lt;a class="footnote-reference" href="#id11" id="id5"&gt;[5]&lt;/a&gt; that connected the radio module to the rest of the board. I then
-soldered on either side of this connection to put it through the audo&amp;nbsp;connector.&lt;/p&gt;
+soldered on either side of this connection to put it through the audio&amp;nbsp;connector.&lt;/p&gt;
 &lt;!--  --&gt;
 &lt;blockquote class="center"&gt;
 &lt;a class="reference external image-reference" href="http://patrick.cloke.us/images/subaru-outback-radio/soldered-connections.jpg"&gt;&lt;img alt="Soldered leads to the bottom of the stereo board." src="/thumbnails/subaru-outback-radio/soldered-connections_small.jpg" /&gt;&lt;/a&gt;
@@ -112,7 +112,7 @@ connected the alligator clips to a cut audio plug to ensure everything&amp;nbsp;
 &lt;!--  --&gt;
 &lt;blockquote class="center"&gt;
 &lt;a class="reference external image-reference" href="http://patrick.cloke.us/images/subaru-outback-radio/hot-glued-connections.jpg"&gt;&lt;img alt="Hot glued wires to the board as strain relief." src="/thumbnails/subaru-outback-radio/hot-glued-connections_small.jpg" /&gt;&lt;/a&gt;
-&lt;a class="reference external image-reference" href="http://patrick.cloke.us/images/subaru-outback-radio/testing-alligator-clips.jpg"&gt;&lt;img alt="Testing with alligator clips. (after reassmbly)." src="/thumbnails/subaru-outback-radio/testing-alligator-clips_small.jpg" /&gt;&lt;/a&gt;
+&lt;a class="reference external image-reference" href="http://patrick.cloke.us/images/subaru-outback-radio/testing-alligator-clips.jpg"&gt;&lt;img alt="Testing with alligator clips. (after reassembly)." src="/thumbnails/subaru-outback-radio/testing-alligator-clips_small.jpg" /&gt;&lt;/a&gt;
 &lt;p&gt;The wires were also hot glued to the circuit board as strain relief. After
 reassembly I tested again with alligator&amp;nbsp;clips.&lt;/p&gt;
 &lt;/blockquote&gt;
@@ -179,7 +179,7 @@ where&amp;#8217;s the fun in that?&lt;/td&gt;&lt;/tr&gt;
 &lt;table class="docutils footnote" frame="void" id="id8" rules="none"&gt;
 &lt;colgroup&gt;&lt;col class="label" /&gt;&lt;col /&gt;&lt;/colgroup&gt;
 &lt;tbody valign="top"&gt;
-&lt;tr&gt;&lt;td class="label"&gt;&lt;a class="fn-backref" href="#id2"&gt;[2]&lt;/a&gt;&lt;/td&gt;&lt;td&gt;The 2007 edition had an option for a stereo with satelite radio and an
+&lt;tr&gt;&lt;td class="label"&gt;&lt;a class="fn-backref" href="#id2"&gt;[2]&lt;/a&gt;&lt;/td&gt;&lt;td&gt;The 2007 edition had an option for a stereo with satellite radio and an
 &lt;span class="caps"&gt;AUX&lt;/span&gt; input. I probably could have bought this stereo and installed it,
 but I was quoted $285 last time I asked about changing my radio.&lt;/td&gt;&lt;/tr&gt;
 &lt;/tbody&gt;
