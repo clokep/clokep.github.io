@@ -9,7 +9,7 @@ of 2006 and it has been great. I have a little over 100,000 miles and do not
 plan to sell it anytime soon.
 
 There is one thing that just *kills* me though. You cannot (easily [#]_) change
-the radio in it...and it is *just* old enough [#]_ to have neigher BlueTooth nor
+the radio in it...and it is *just* old enough [#]_ to have neither BlueTooth nor
 an auxiliary audio input. I've been carrying around a book of CDs with me for
 the past 8 years. I decided it was time to change that.
 
@@ -105,7 +105,7 @@ pictures along each step of the way to ensure I could put it back together.)
 
     .. image:: /thumbnails/subaru-outback-radio/disassembly-motherboard-reverse_small.jpg
         :target: {filename}/images/subaru-outback-radio/disassembly-motherboard-reverse.jpg
-        :alt: The reverse of the mian circuit board of the unit.
+        :alt: The reverse of the main circuit board of the unit.
 
     The actual circuit board of the stereo unit. You can see the radio module on
     the left.
@@ -118,10 +118,11 @@ from the directions, but I verified by completing the circuit to these pins and
 ensuring I heard mixed audio with my phone and the radio.
 
 The direction suggested cutting the pin and bending it up to solder to it. I
-didn't have any cutting tool small enough to get inbetween the pins...so I
+didn't have any cutting tool small enough to get in between the pins...so I
 flipped the board over and did sketchier things. I scored the board to remove
 the traces [#]_ that connected the radio module to the rest of the board. I then
-soldered on either side of this connection to put it through the audo connector.
+soldered on either side of this connection to put it through the audio
+connector.
 
 .. class:: center
 ..
@@ -175,7 +176,7 @@ connected the alligator clips to a cut audio plug to ensure everything worked.
 
     .. image:: /thumbnails/subaru-outback-radio/testing-alligator-clips_small.jpg
         :target: {filename}/images/subaru-outback-radio/testing-alligator-clips.jpg
-        :alt: Testing with alligator clips. (after reassmbly).
+        :alt: Testing with alligator clips. (after reassembly).
 
     The wires were also hot glued to the circuit board as strain relief. After
     reassembly I tested again with alligator clips.
@@ -270,7 +271,7 @@ remember to set the stereo to FM.
         includes the heat / air conditioning controls. People_ do sell kits to
         convert the dash into one that can accept an aftermarket radio...but
         where's the fun in that?
-.. [#]  The 2007 edition had an option for a stereo with satelite radio and an
+.. [#]  The 2007 edition had an option for a stereo with satellite radio and an
         AUX input. I probably could have bought this stereo and installed it,
         but I was quoted $285 last time I asked about changing my radio.
 .. [#]  This might seem insane, but I was fairly certain I'd be able to solder a
