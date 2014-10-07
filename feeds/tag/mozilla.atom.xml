@@ -1,5 +1,74 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>Like bricks in the sky</title><link href="http://patrick.cloke.us/" rel="alternate"></link><link href="http://patrick.cloke.us/feeds/tag/mozilla.atom.xml" rel="self"></link><id>http://patrick.cloke.us/</id><updated>2014-04-16T12:34:00-04:00</updated><entry><title>Community and Volunteers</title><link href="http://patrick.cloke.us/posts/2014/04/16/community-and-volunteers/" rel="alternate"></link><updated>2014-04-16T12:34:00-04:00</updated><author><name>Patrick Cloke</name></author><id>tag:patrick.cloke.us,2014-04-16:posts/2014/04/16/community-and-volunteers/</id><summary type="html">&lt;p&gt;It was suggested that I cross-post this from mozilla.dev.planning onto
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Like bricks in the sky</title><link href="http://patrick.cloke.us/" rel="alternate"></link><link href="http://patrick.cloke.us/feeds/tag/mozilla.atom.xml" rel="self"></link><id>http://patrick.cloke.us/</id><updated>2014-10-07T09:31:00-04:00</updated><entry><title>How I Got Involved in Mozilla</title><link href="http://patrick.cloke.us/posts/2014/10/07/how-i-got-involved-in-mozilla/" rel="alternate"></link><updated>2014-10-07T09:31:00-04:00</updated><author><name>Patrick Cloke</name></author><id>tag:patrick.cloke.us,2014-10-07:posts/2014/10/07/how-i-got-involved-in-mozilla/</id><summary type="html">&lt;p&gt;This is discussed very briefly on my &lt;a class="reference external" href="http://patrick.cloke.us/pages/about.html"&gt;about page&lt;/a&gt;, but I figured it could use a
+bit of a longer discussion. I generally consider myself to have joined the
+&lt;a class="reference external" href="https://www.mozilla.org/"&gt;Mozilla&lt;/a&gt; community in ~2006. I know that I was using Mozilla Firefox, Mozilla
+Thunderbird, &lt;em&gt;and&lt;/em&gt; Mozilla Sunbird way before that (probably since ~2004, which
+is when I built my own computer). But I was just an enthusiast then, running
+beta builds, then alpha and eventually nightly builds. (This was way back when
+we things were more dangerous to run: Minefield and&amp;nbsp;Shredder.)&lt;/p&gt;
+&lt;p&gt;Anyway, back to 2006&amp;#8230;I initially got involved in a more technical fashion by
+writing extensions (or maybe it was &lt;a class="reference external" href="http://www.greasespot.net/"&gt;GreaseMonkey&lt;/a&gt; scripts). I don&amp;#8217;t really have
+anyway to prove this though &amp;#8212; I don&amp;#8217;t seem to have any of that code. (This was
+before widespread distributed version control.) Anyway, let&amp;#8217;s just assume this
+2006 date is&amp;nbsp;correct.&lt;/p&gt;
+&lt;p&gt;My &lt;a class="reference external" href="https://bugzilla.mozilla.org/show_bug.cgi?id=468020"&gt;first patch&lt;/a&gt; was in 2008 to move a function from the &lt;a class="reference external" href="https://addons.mozilla.org/en-us/thunderbird/addon/provider-for-google-calendar/"&gt;Provider for Google
+Calendar&lt;/a&gt; to the calendar core so that I could use it in &lt;a class="reference external" href="https://bitbucket.org/clokep/thundershows"&gt;Thundershows&lt;/a&gt;: a
+calendar provider for &lt;span class="caps"&gt;TV&lt;/span&gt; shows &lt;a class="footnote-reference" href="#id6" id="id1"&gt;[1]&lt;/a&gt; &lt;a class="footnote-reference" href="#id7" id="id2"&gt;[2]&lt;/a&gt;. (As far as I know, I&amp;#8217;m one of a
+handful of people to actually implement a &lt;a class="reference external" href="https://wiki.mozilla.org/Calendar:Creating_an_Extension#Provider_Extensions"&gt;calendar provider&lt;/a&gt;.) I found the
+calendar project much easier to get involved in than other aspects of Mozilla
+since it was so much smaller. (I also &lt;a class="reference external" href="https://bitbucket.org/clokep/microblog-mailnews"&gt;toyed&lt;/a&gt; with adding an entire new protocol
+to Thunderbird, which &lt;a class="reference external" href="http://mesquilla.com/"&gt;R Kent James&lt;/a&gt; has &lt;a class="reference external" href="https://bitbucket.org/rkentjames/skinkglue"&gt;now done&lt;/a&gt; successfully! &lt;a class="footnote-reference" href="#id8" id="id3"&gt;[3]&lt;/a&gt; &lt;a class="footnote-reference" href="#id9" id="id4"&gt;[4]&lt;/a&gt;)&lt;/p&gt;
+&lt;p&gt;I then came across &lt;a class="reference external" href="http://www.instantbird.com/"&gt;Instantbird&lt;/a&gt; in ~2008 (sometime in the Instantbird 0.1 era).
+I thought this was great &amp;#8212; Mozilla was finally making an instant messaging
+client! Well, I was kind of right&amp;#8230;Instantbird is not an official Mozilla
+project, but it was exactly what I wanted! The guys (mostly &lt;a class="reference external" href="http://queze.net/"&gt;Florian Quèze&lt;/a&gt;) in
+the &lt;a class="reference external" href="irc://irc.mozilla.org/#instantbird"&gt;#instantbird&lt;/a&gt; &lt;span class="caps"&gt;IRC&lt;/span&gt; channel were awesome: kind, patient, helpful, and
+welcoming. They were the ones that really introduced me into the Mozilla way of
+doing things. I fixed my first bug for Instantbird in &lt;a class="reference external" href="https://bugzilla.mozilla.org/show_bug.cgi?id=953935"&gt;2010&lt;/a&gt; and haven&amp;#8217;t stopped
+since! I&amp;#8217;ve since added &lt;a class="reference external" href="https://bugzilla.mozilla.org/show_bug.cgi?id=953944"&gt;&lt;span class="caps"&gt;IRC&lt;/span&gt; support&lt;/a&gt; and am now one of the lead developers.
+I&amp;#8217;ve mentored Google Summer of Code students twice (2013 and 2014), contribute
+to Thunderbird and am a peer of the &lt;a class="reference external" href="https://wiki.mozilla.org/Modules/Chat"&gt;chat code&lt;/a&gt; shared between Instantbird and
+Thunderbird. (I do also occassionally contribute to other projects. &lt;a class="footnote-reference" href="#id10" id="id5"&gt;[5]&lt;/a&gt;)&lt;/p&gt;
+&lt;table class="docutils footnote" frame="void" id="id6" rules="none"&gt;
+&lt;colgroup&gt;&lt;col class="label" /&gt;&lt;col /&gt;&lt;/colgroup&gt;
+&lt;tbody valign="top"&gt;
+&lt;tr&gt;&lt;td class="label"&gt;&lt;a class="fn-backref" href="#id1"&gt;[1]&lt;/a&gt;&lt;/td&gt;&lt;td&gt;This was my first project to really have other users, I had people filing
+bugs, asking for new features, etc. It was great! I even had someone
+(years later) tell me in &lt;a class="reference external" href="irc://irc.mozilla.org/#instantbird"&gt;#instantbird&lt;/a&gt; that they had loved
+Thundershows!&lt;/td&gt;&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;table class="docutils footnote" frame="void" id="id7" rules="none"&gt;
+&lt;colgroup&gt;&lt;col class="label" /&gt;&lt;col /&gt;&lt;/colgroup&gt;
+&lt;tbody valign="top"&gt;
+&lt;tr&gt;&lt;td class="label"&gt;&lt;a class="fn-backref" href="#id2"&gt;[2]&lt;/a&gt;&lt;/td&gt;&lt;td&gt;My &lt;a class="reference external" href="https://bugzilla.mozilla.org/show_bug.cgi?id=469477"&gt;second bug&lt;/a&gt; dealt with the same set of code and had tests committed
+(by me) over 5 years after the initial patch. Oops!&lt;/td&gt;&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;table class="docutils footnote" frame="void" id="id8" rules="none"&gt;
+&lt;colgroup&gt;&lt;col class="label" /&gt;&lt;col /&gt;&lt;/colgroup&gt;
+&lt;tbody valign="top"&gt;
+&lt;tr&gt;&lt;td class="label"&gt;&lt;a class="fn-backref" href="#id3"&gt;[3]&lt;/a&gt;&lt;/td&gt;&lt;td&gt;My work was based off of some experiments &lt;a class="reference external" href="http://quetzalcoatal.blogspot.com/"&gt;Joshua Cranmer&lt;/a&gt; did to add
+support for &lt;a class="reference external" href="http://quetzalcoatal.blogspot.com/2010/01/developing-new-account-types-part-0.html"&gt;web forums&lt;/a&gt; to Thunderbird. After all this time, I still
+want that extension.&lt;/td&gt;&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;table class="docutils footnote" frame="void" id="id9" rules="none"&gt;
+&lt;colgroup&gt;&lt;col class="label" /&gt;&lt;col /&gt;&lt;/colgroup&gt;
+&lt;tbody valign="top"&gt;
+&lt;tr&gt;&lt;td class="label"&gt;&lt;a class="fn-backref" href="#id4"&gt;[4]&lt;/a&gt;&lt;/td&gt;&lt;td&gt;Oh, also rkent did &lt;a class="reference external" href="http://mesquilla.com/extensions/tweequilla/"&gt;&lt;span class="caps"&gt;EXACTLY&lt;/span&gt;&lt;/a&gt; what I wanted years later: which is add
+Twitter to Thunderbird.&lt;/td&gt;&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;table class="docutils footnote" frame="void" id="id10" rules="none"&gt;
+&lt;colgroup&gt;&lt;col class="label" /&gt;&lt;col /&gt;&lt;/colgroup&gt;
+&lt;tbody valign="top"&gt;
+&lt;tr&gt;&lt;td class="label"&gt;&lt;a class="fn-backref" href="#id5"&gt;[5]&lt;/a&gt;&lt;/td&gt;&lt;td&gt;But not Firefox. After seven years (and over 1800 commits), I&amp;#8217;ve never
+fixed a bug in Firefox; although I have had &lt;a class="reference external" href="https://bugzilla.mozilla.org/show_bug.cgi?id=884319"&gt;code&lt;/a&gt; committed to
+&lt;tt class="docutils literal"&gt;&lt;span class="pre"&gt;mozilla-central&lt;/span&gt;&lt;/tt&gt;.&lt;/td&gt;&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+</summary><category term="Mozilla"></category></entry><entry><title>Community and Volunteers</title><link href="http://patrick.cloke.us/posts/2014/04/16/community-and-volunteers/" rel="alternate"></link><updated>2014-04-16T12:34:00-04:00</updated><author><name>Patrick Cloke</name></author><id>tag:patrick.cloke.us,2014-04-16:posts/2014/04/16/community-and-volunteers/</id><summary type="html">&lt;p&gt;It was suggested that I cross-post this from mozilla.dev.planning onto
 my blog. This is in reply to a thread entitled &amp;quot;&lt;a class="reference external" href="https://groups.google.com/forum/#%21topic/mozilla.dev.planning/P8oHKTCWSiQ"&gt;Proposal: Move
 Thunderbird and SeaMonkey to mozilla-central&lt;/a&gt;&amp;quot; about (essentially)
 merging comm-central back into mozilla-central. There have been many
