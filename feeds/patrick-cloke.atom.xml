@@ -5,7 +5,7 @@ bit of a longer discussion. I generally consider myself to have joined the
 Thunderbird, &lt;em&gt;and&lt;/em&gt; Mozilla Sunbird way before that (probably since ~2004, which
 is when I built my own computer). But I was just an enthusiast then, running
 beta builds, then alpha and eventually nightly builds. (This was way back when
-we things were more dangerous to run: Minefield and&amp;nbsp;Shredder.)&lt;/p&gt;
+things were more dangerous to run: Minefield and&amp;nbsp;Shredder.)&lt;/p&gt;
 &lt;p&gt;Anyway, back to 2006&amp;#8230;I initially got involved in a more technical fashion by
 writing extensions (or maybe it was &lt;a class="reference external" href="http://www.greasespot.net/"&gt;GreaseMonkey&lt;/a&gt; scripts). I don&amp;#8217;t really have
 anyway to prove this though &amp;#8212; I don&amp;#8217;t seem to have any of that code. (This was
@@ -21,14 +21,15 @@ to Thunderbird, which &lt;a class="reference external" href="http://mesquilla.co
 &lt;p&gt;I then came across &lt;a class="reference external" href="http://www.instantbird.com/"&gt;Instantbird&lt;/a&gt; in ~2008 (sometime in the Instantbird 0.1 era).
 I thought this was great &amp;#8212; Mozilla was finally making an instant messaging
 client! Well, I was kind of right&amp;#8230;Instantbird is not an official Mozilla
-project, but it was exactly what I wanted! The guys (mostly &lt;a class="reference external" href="http://queze.net/"&gt;Florian Quèze&lt;/a&gt;) in
+project, but it was exactly what I wanted! The guys (mostly &lt;a class="reference external" href="http://blog.queze.net/"&gt;Florian Quèze&lt;/a&gt;) in
 the &lt;a class="reference external" href="irc://irc.mozilla.org/#instantbird"&gt;#instantbird&lt;/a&gt; &lt;span class="caps"&gt;IRC&lt;/span&gt; channel were awesome: kind, patient, helpful, and
 welcoming. They were the ones that really introduced me into the Mozilla way of
 doing things. I fixed my first bug for Instantbird in &lt;a class="reference external" href="https://bugzilla.mozilla.org/show_bug.cgi?id=953935"&gt;2010&lt;/a&gt; and haven&amp;#8217;t stopped
-since! I&amp;#8217;ve since added &lt;a class="reference external" href="https://bugzilla.mozilla.org/show_bug.cgi?id=953944"&gt;&lt;span class="caps"&gt;IRC&lt;/span&gt; support&lt;/a&gt; and am now one of the lead developers.
-I&amp;#8217;ve mentored Google Summer of Code students twice (2013 and 2014), contribute
-to Thunderbird and am a peer of the &lt;a class="reference external" href="https://wiki.mozilla.org/Modules/Chat"&gt;chat code&lt;/a&gt; shared between Instantbird and
-Thunderbird. (I do also occassionally contribute to other projects. &lt;a class="footnote-reference" href="#id10" id="id5"&gt;[5]&lt;/a&gt;)&lt;/p&gt;
+since! I&amp;#8217;ve since added &lt;a class="reference external" href="https://bugzilla.mozilla.org/show_bug.cgi?id=953944"&gt;&lt;span class="caps"&gt;IRC&lt;/span&gt; support&lt;/a&gt; via JavaScript (instead of libpurple) and
+am now one of the lead developers. I&amp;#8217;ve mentored Google Summer of Code students
+twice (2013 and 2014), contribute to Thunderbird and am a peer of the &lt;a class="reference external" href="https://wiki.mozilla.org/Modules/Chat"&gt;chat
+code&lt;/a&gt; shared between Instantbird and Thunderbird. (I do also occassionally
+contribute to other projects. &lt;a class="footnote-reference" href="#id10" id="id5"&gt;[5]&lt;/a&gt;)&lt;/p&gt;
 &lt;table class="docutils footnote" frame="void" id="id6" rules="none"&gt;
 &lt;colgroup&gt;&lt;col class="label" /&gt;&lt;col /&gt;&lt;/colgroup&gt;
 &lt;tbody valign="top"&gt;
