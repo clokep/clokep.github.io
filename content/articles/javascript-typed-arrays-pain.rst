@@ -2,7 +2,7 @@ JavaScript typed arrays pain
 ############################
 :date: 2012-11-28 23:11
 :author: Patrick Cloke
-:tags: IM, Instantbird, Mozilla, OSCAR, Thunderbird, Wat
+:tags: Instantbird, Mozilla, OSCAR, Thunderbird, Wat
 :slug: javascript-typed-arrays-pain
 
 If you've ever tried to deal with binary data in JavaScript you know

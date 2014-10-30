@@ -2,7 +2,7 @@ Extending JavaScript Maps (or other built-in objects)
 #####################################################
 :date: 2014-04-27 13:46
 :author: Patrick Cloke
-:tags: IM, Instantbird, programming, specifications, Thunderbird, Wat
+:tags: Instantbird, programming, specifications, Thunderbird, Wat
 :slug: extending-javascript-maps-or-other
 
 .. contents::
