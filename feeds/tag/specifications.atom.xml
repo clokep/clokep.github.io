@@ -167,7 +167,7 @@ expected, but they’re uhh…not up anywhere yet though. Oops.&lt;/td&gt;&lt;/t
 &lt;/tbody&gt;
 &lt;/table&gt;
 &lt;/div&gt;
-</summary><category term="IM"></category><category term="Instantbird"></category><category term="programming"></category><category term="specifications"></category><category term="Thunderbird"></category><category term="Wat"></category></entry><entry><title>The so-called IRC "specifications"</title><link href="http://patrick.cloke.us/posts/2011/03/08/so-called-irc-specifications/" rel="alternate"></link><updated>2011-03-08T21:20:00-05:00</updated><author><name>Patrick Cloke</name></author><id>tag:patrick.cloke.us,2011-03-08:posts/2011/03/08/so-called-irc-specifications/</id><summary type="html">
+</summary><category term="Instantbird"></category><category term="programming"></category><category term="specifications"></category><category term="Thunderbird"></category><category term="Wat"></category></entry><entry><title>The so-called IRC "specifications"</title><link href="http://patrick.cloke.us/posts/2011/03/08/so-called-irc-specifications/" rel="alternate"></link><updated>2011-03-08T21:20:00-05:00</updated><author><name>Patrick Cloke</name></author><id>tag:patrick.cloke.us,2011-03-08:posts/2011/03/08/so-called-irc-specifications/</id><summary type="html">
 &lt;p&gt;In a &lt;a class="reference external" href="http://patrick.cloke.us/posts/2010/12/08/why-rewrite-irc-into-javascript/"&gt;previous post&lt;/a&gt; I had briefly gone over the "history of &lt;span class="caps"&gt;IRC&lt;/span&gt;" as
 I know it.  I’m going to expand on this a bit as I’ve come to understand
 it a bit more while reading through documentation.  (Hopefully it won’t

@@ -1,5 +1,45 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>Like bricks in the sky</title><link href="http://patrick.cloke.us/" rel="alternate"></link><link href="http://patrick.cloke.us/feeds/tag/community.atom.xml" rel="self"></link><id>http://patrick.cloke.us/</id><updated>2014-07-09T17:32:00-04:00</updated><entry><title>Mentoring and Time</title><link href="http://patrick.cloke.us/posts/2014/07/09/mentoring-and-time/" rel="alternate"></link><updated>2014-07-09T17:32:00-04:00</updated><author><name>Patrick Cloke</name></author><id>tag:patrick.cloke.us,2014-07-09:posts/2014/07/09/mentoring-and-time/</id><summary type="html">&lt;p&gt;No, this is not about being late places, it&amp;#8217;s about respecting people&amp;#8217;s time. I
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Like bricks in the sky</title><link href="http://patrick.cloke.us/" rel="alternate"></link><link href="http://patrick.cloke.us/feeds/tag/community.atom.xml" rel="self"></link><id>http://patrick.cloke.us/</id><updated>2014-11-14T18:37:00-05:00</updated><entry><title>Thunderbird Summit 2014</title><link href="http://patrick.cloke.us/posts/2014/11/14/thunderbird-summit-2014/" rel="alternate"></link><updated>2014-11-14T18:37:00-05:00</updated><author><name>Patrick Cloke</name></author><id>tag:patrick.cloke.us,2014-11-14:posts/2014/11/14/thunderbird-summit-2014/</id><summary type="html">&lt;p&gt;Last month (Oct. 15th to Oct. 18th, to be precise), &lt;a class="reference external" href="https://wiki.mozilla.org/Thunderbird:Summit_2014#Invited_Attendees"&gt;twenty volunteers&lt;/a&gt;
+descended on Mozilla&amp;#8217;s &lt;a class="reference external" href="foo"&gt;Toronto office&lt;/a&gt; to discuss &lt;a class="reference external" href="foo"&gt;Mozilla Thunderbird&lt;/a&gt;. This
+included Mozilla employees, Thunderbird contributors of all sorts (developers,
+user interface designers, add-on reviewers), Lightning contributors, and
+chat/&lt;a class="reference external" href="http://instantbird.com/"&gt;Instantbird&lt;/a&gt;&amp;nbsp;contributors.&lt;/p&gt;
+&lt;!--  --&gt;
+&lt;blockquote class="center"&gt;
+&lt;a class="reference external image-reference" href="http://patrick.cloke.us/images/chat-tb-summit/IMG_6516.jpg"&gt;&lt;img alt="The entire group of volunteers." src="/thumbnails/chat-tb-summit/IMG_6516_small.jpg" /&gt;&lt;/a&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;It was great to spend some quality hacking time with &lt;a class="reference external" href="http://blog.queze.net/"&gt;Florian&lt;/a&gt; and to meet
+&lt;a class="reference external" href="http://blog.nhnt11.com/"&gt;Nihanth&lt;/a&gt;, both Instantbird guys who I talk to most days on &lt;span class="caps"&gt;IRC&lt;/span&gt;! I also had the
+pleasure of re-meeting a few people from the Mozilla Summit last year (I
+attended in Toronto) and to meet some brand new&amp;nbsp;people!&lt;/p&gt;
+&lt;!--  --&gt;
+&lt;blockquote class="center"&gt;
+&lt;a class="reference external image-reference" href="http://patrick.cloke.us/images/chat-tb-summit/IMG_6408.jpg"&gt;&lt;img alt="Nihanth hacking." src="/thumbnails/chat-tb-summit/IMG_6408_small.jpg" /&gt;&lt;/a&gt;
+&lt;a class="reference external image-reference" href="http://patrick.cloke.us/images/chat-tb-summit/IMG_6426.jpg"&gt;&lt;img alt="The chat contributors: me, Florian and Nihanth." src="/thumbnails/chat-tb-summit/IMG_6426_small.jpg" /&gt;&lt;/a&gt;
+&lt;a class="reference external image-reference" href="http://patrick.cloke.us/images/chat-tb-summit/IMG_6508.jpg"&gt;&lt;img alt="Daniel joining us over Vidyo." src="/thumbnails/chat-tb-summit/IMG_6508_small.jpg" /&gt;&lt;/a&gt;
+&lt;p&gt;A few pictures of the chat contributors: Nihanth; me, Florian and Nihanth;
+and Daniel (dialing&amp;nbsp;in!)&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;It was really nice to actually sit down for a few days and work on
+Instantbird/Thunderbird without the distractions of &amp;quot;real life&amp;quot;. I,
+unfortunately, spent the first day fixing an Instantbird &lt;a class="reference external" href="http://hg.mozilla.org/comm-central/rev/05bb70d5b231"&gt;bustage&lt;/a&gt; (from a
+mozilla-central change that removed some &lt;span class="caps"&gt;NSS&lt;/span&gt; symbols&amp;#8230;why, I have no idea). But
+after that, we got some really exciting work done! We started cleaning up and
+finalizing some patches from Google Summer of Code 2014 to add &lt;a class="reference external" href="http://www.webrtc.org/"&gt;WebRTC&lt;/a&gt; support
+to &lt;a class="reference external" href="http://xmpp.org/"&gt;&lt;span class="caps"&gt;XMPP&lt;/span&gt;&lt;/a&gt;! You can check out the progress in &lt;a class="reference external" href="https://bugzilla.mozilla.org/show_bug.cgi?id=1018060"&gt;bug 1018060&lt;/a&gt;.&lt;/p&gt;
+&lt;!--  --&gt;
+&lt;blockquote class="center"&gt;
+&lt;a class="reference external image-reference" href="http://patrick.cloke.us/images/chat-tb-summit/IMG_6394.jpg"&gt;&lt;img alt="First working call over Instantbird WebRTC." src="/thumbnails/chat-tb-summit/IMG_6394_small.jpg" /&gt;&lt;/a&gt;
+&lt;a class="reference external image-reference" href="http://patrick.cloke.us/images/chat-tb-summit/webrtc_preview.jpg"&gt;&lt;img alt="Screenshot of first working call over Instantbird WebRTC." src="/thumbnails/chat-tb-summit/webrtc_preview_small.jpg" /&gt;&lt;/a&gt;
+&lt;p&gt;First working call over Instantbird&amp;nbsp;WebRTC.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;!--  --&gt;
+&lt;blockquote class="center"&gt;
+&lt;a class="reference external image-reference" href="http://patrick.cloke.us/images/chat-tb-summit/IMG_6594.jpg"&gt;&lt;img alt="Eating some poutine!" src="/thumbnails/chat-tb-summit/IMG_6594_small.jpg" /&gt;&lt;/a&gt;
+&lt;p&gt;Other highlights of the trip include eating the &amp;quot;Canadian delicacy&amp;quot; of
+poutine (with pulled pork on&amp;nbsp;it)!&lt;/p&gt;
+&lt;/blockquote&gt;
+</summary><category term="Mozilla"></category><category term="Thunderbird"></category><category term="community"></category><category term="Instantbird"></category></entry><entry><title>Mentoring and Time</title><link href="http://patrick.cloke.us/posts/2014/07/09/mentoring-and-time/" rel="alternate"></link><updated>2014-07-09T17:32:00-04:00</updated><author><name>Patrick Cloke</name></author><id>tag:patrick.cloke.us,2014-07-09:posts/2014/07/09/mentoring-and-time/</id><summary type="html">&lt;p&gt;No, this is not about being late places, it&amp;#8217;s about respecting people&amp;#8217;s time. I
 won&amp;#8217;t go deep into why this is important as, &lt;a class="reference external" href="https://plus.google.com/118086293667040637133"&gt;Michael Haggerty&lt;/a&gt; wrote an
 awesome &lt;a class="reference external" href="http://softwareswirl.blogspot.fr/2014/03/my-secret-tip-for-gsoc-success.html"&gt;article&lt;/a&gt; on this. His thoughts boiled down to a single line of&amp;nbsp;advice:&lt;/p&gt;
 &lt;blockquote&gt;

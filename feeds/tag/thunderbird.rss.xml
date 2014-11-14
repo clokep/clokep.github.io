@@ -1,5 +1,45 @@
 <?xml version="1.0" encoding="utf-8"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Like bricks in the sky</title><link>http://patrick.cloke.us/</link><description></description><atom:link href="http://patrick.cloke.us/feeds/tag/thunderbird.rss.xml" rel="self"></atom:link><lastBuildDate>Sun, 27 Apr 2014 13:46:00 -0400</lastBuildDate><item><title>Extending JavaScript Maps (or other built-in objects)</title><link>http://patrick.cloke.us/posts/2014/04/27/extending-javascript-maps-or-other/</link><description>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Like bricks in the sky</title><link>http://patrick.cloke.us/</link><description></description><atom:link href="http://patrick.cloke.us/feeds/tag/thunderbird.rss.xml" rel="self"></atom:link><lastBuildDate>Fri, 14 Nov 2014 18:37:00 -0500</lastBuildDate><item><title>Thunderbird Summit 2014</title><link>http://patrick.cloke.us/posts/2014/11/14/thunderbird-summit-2014/</link><description>&lt;p&gt;Last month (Oct. 15th to Oct. 18th, to be precise), &lt;a class="reference external" href="https://wiki.mozilla.org/Thunderbird:Summit_2014#Invited_Attendees"&gt;twenty volunteers&lt;/a&gt;
+descended on Mozilla&amp;#8217;s &lt;a class="reference external" href="foo"&gt;Toronto office&lt;/a&gt; to discuss &lt;a class="reference external" href="foo"&gt;Mozilla Thunderbird&lt;/a&gt;. This
+included Mozilla employees, Thunderbird contributors of all sorts (developers,
+user interface designers, add-on reviewers), Lightning contributors, and
+chat/&lt;a class="reference external" href="http://instantbird.com/"&gt;Instantbird&lt;/a&gt;&amp;nbsp;contributors.&lt;/p&gt;
+&lt;!--  --&gt;
+&lt;blockquote class="center"&gt;
+&lt;a class="reference external image-reference" href="http://patrick.cloke.us/images/chat-tb-summit/IMG_6516.jpg"&gt;&lt;img alt="The entire group of volunteers." src="/thumbnails/chat-tb-summit/IMG_6516_small.jpg" /&gt;&lt;/a&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;It was great to spend some quality hacking time with &lt;a class="reference external" href="http://blog.queze.net/"&gt;Florian&lt;/a&gt; and to meet
+&lt;a class="reference external" href="http://blog.nhnt11.com/"&gt;Nihanth&lt;/a&gt;, both Instantbird guys who I talk to most days on &lt;span class="caps"&gt;IRC&lt;/span&gt;! I also had the
+pleasure of re-meeting a few people from the Mozilla Summit last year (I
+attended in Toronto) and to meet some brand new&amp;nbsp;people!&lt;/p&gt;
+&lt;!--  --&gt;
+&lt;blockquote class="center"&gt;
+&lt;a class="reference external image-reference" href="http://patrick.cloke.us/images/chat-tb-summit/IMG_6408.jpg"&gt;&lt;img alt="Nihanth hacking." src="/thumbnails/chat-tb-summit/IMG_6408_small.jpg" /&gt;&lt;/a&gt;
+&lt;a class="reference external image-reference" href="http://patrick.cloke.us/images/chat-tb-summit/IMG_6426.jpg"&gt;&lt;img alt="The chat contributors: me, Florian and Nihanth." src="/thumbnails/chat-tb-summit/IMG_6426_small.jpg" /&gt;&lt;/a&gt;
+&lt;a class="reference external image-reference" href="http://patrick.cloke.us/images/chat-tb-summit/IMG_6508.jpg"&gt;&lt;img alt="Daniel joining us over Vidyo." src="/thumbnails/chat-tb-summit/IMG_6508_small.jpg" /&gt;&lt;/a&gt;
+&lt;p&gt;A few pictures of the chat contributors: Nihanth; me, Florian and Nihanth;
+and Daniel (dialing&amp;nbsp;in!)&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;It was really nice to actually sit down for a few days and work on
+Instantbird/Thunderbird without the distractions of &amp;quot;real life&amp;quot;. I,
+unfortunately, spent the first day fixing an Instantbird &lt;a class="reference external" href="http://hg.mozilla.org/comm-central/rev/05bb70d5b231"&gt;bustage&lt;/a&gt; (from a
+mozilla-central change that removed some &lt;span class="caps"&gt;NSS&lt;/span&gt; symbols&amp;#8230;why, I have no idea). But
+after that, we got some really exciting work done! We started cleaning up and
+finalizing some patches from Google Summer of Code 2014 to add &lt;a class="reference external" href="http://www.webrtc.org/"&gt;WebRTC&lt;/a&gt; support
+to &lt;a class="reference external" href="http://xmpp.org/"&gt;&lt;span class="caps"&gt;XMPP&lt;/span&gt;&lt;/a&gt;! You can check out the progress in &lt;a class="reference external" href="https://bugzilla.mozilla.org/show_bug.cgi?id=1018060"&gt;bug 1018060&lt;/a&gt;.&lt;/p&gt;
+&lt;!--  --&gt;
+&lt;blockquote class="center"&gt;
+&lt;a class="reference external image-reference" href="http://patrick.cloke.us/images/chat-tb-summit/IMG_6394.jpg"&gt;&lt;img alt="First working call over Instantbird WebRTC." src="/thumbnails/chat-tb-summit/IMG_6394_small.jpg" /&gt;&lt;/a&gt;
+&lt;a class="reference external image-reference" href="http://patrick.cloke.us/images/chat-tb-summit/webrtc_preview.jpg"&gt;&lt;img alt="Screenshot of first working call over Instantbird WebRTC." src="/thumbnails/chat-tb-summit/webrtc_preview_small.jpg" /&gt;&lt;/a&gt;
+&lt;p&gt;First working call over Instantbird&amp;nbsp;WebRTC.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;!--  --&gt;
+&lt;blockquote class="center"&gt;
+&lt;a class="reference external image-reference" href="http://patrick.cloke.us/images/chat-tb-summit/IMG_6594.jpg"&gt;&lt;img alt="Eating some poutine!" src="/thumbnails/chat-tb-summit/IMG_6594_small.jpg" /&gt;&lt;/a&gt;
+&lt;p&gt;Other highlights of the trip include eating the &amp;quot;Canadian delicacy&amp;quot; of
+poutine (with pulled pork on&amp;nbsp;it)!&lt;/p&gt;
+&lt;/blockquote&gt;
+</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Patrick Cloke</dc:creator><pubDate>Fri, 14 Nov 2014 18:37:00 -0500</pubDate><guid>tag:patrick.cloke.us,2014-11-14:posts/2014/11/14/thunderbird-summit-2014/</guid><category>Mozilla</category><category>Thunderbird</category><category>community</category><category>Instantbird</category></item><item><title>Extending JavaScript Maps (or other built-in objects)</title><link>http://patrick.cloke.us/posts/2014/04/27/extending-javascript-maps-or-other/</link><description>
 &lt;p&gt;Finally another technical post, this one is about my adventures in
 attempting to extend the built-in &lt;a class="reference external" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Map"&gt;Map&lt;/a&gt; object in JavaScript to extend
 the functionality. As background, there are two reasons we’d want this:&lt;/p&gt;
@@ -167,7 +207,7 @@ expected, but they’re uhh…not up anywhere yet though. Oops.&lt;/td&gt;&lt;/t
 &lt;/tbody&gt;
 &lt;/table&gt;
 &lt;/div&gt;
-</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Patrick Cloke</dc:creator><pubDate>Sun, 27 Apr 2014 13:46:00 -0400</pubDate><guid>tag:patrick.cloke.us,2014-04-27:posts/2014/04/27/extending-javascript-maps-or-other/</guid><category>IM</category><category>Instantbird</category><category>programming</category><category>specifications</category><category>Thunderbird</category><category>Wat</category></item><item><title>Community and Volunteers</title><link>http://patrick.cloke.us/posts/2014/04/16/community-and-volunteers/</link><description>&lt;p&gt;It was suggested that I cross-post this from mozilla.dev.planning onto
+</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Patrick Cloke</dc:creator><pubDate>Sun, 27 Apr 2014 13:46:00 -0400</pubDate><guid>tag:patrick.cloke.us,2014-04-27:posts/2014/04/27/extending-javascript-maps-or-other/</guid><category>Instantbird</category><category>programming</category><category>specifications</category><category>Thunderbird</category><category>Wat</category></item><item><title>Community and Volunteers</title><link>http://patrick.cloke.us/posts/2014/04/16/community-and-volunteers/</link><description>&lt;p&gt;It was suggested that I cross-post this from mozilla.dev.planning onto
 my blog. This is in reply to a thread entitled &amp;quot;&lt;a class="reference external" href="https://groups.google.com/forum/#%21topic/mozilla.dev.planning/P8oHKTCWSiQ"&gt;Proposal: Move
 Thunderbird and SeaMonkey to mozilla-central&lt;/a&gt;&amp;quot; about (essentially)
 merging comm-central back into mozilla-central. There have been many
@@ -327,7 +367,7 @@ don&amp;#8217;t use ArrayBufferViews, use DataViews.&amp;nbsp; (Although Uint8Ar
 Int8Arrays should work&amp;nbsp;fine!)&lt;/p&gt;
 &lt;p&gt;And to not rant the &lt;em&gt;entire&lt;/em&gt; time, working with typed arrays certainly
 does beat strings +&amp;nbsp;charCodeAt!&lt;/p&gt;
-</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Patrick Cloke</dc:creator><pubDate>Wed, 28 Nov 2012 23:11:00 -0500</pubDate><guid>tag:patrick.cloke.us,2012-11-28:posts/2012/11/28/javascript-typed-arrays-pain/</guid><category>IM</category><category>Instantbird</category><category>Mozilla</category><category>OSCAR</category><category>Thunderbird</category><category>Wat</category></item><item><title>On Status</title><link>http://patrick.cloke.us/posts/2012/10/16/on-status/</link><description>&lt;p&gt;Something that comes up often about Instantbird is why we only support
+</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Patrick Cloke</dc:creator><pubDate>Wed, 28 Nov 2012 23:11:00 -0500</pubDate><guid>tag:patrick.cloke.us,2012-11-28:posts/2012/11/28/javascript-typed-arrays-pain/</guid><category>Instantbird</category><category>Mozilla</category><category>OSCAR</category><category>Thunderbird</category><category>Wat</category></item><item><title>On Status</title><link>http://patrick.cloke.us/posts/2012/10/16/on-status/</link><description>&lt;p&gt;Something that comes up often about Instantbird is why we only support
 three statuses: Available, Unavailable and Offline.&amp;nbsp; (We do actually
 support a fourth one too, Idle, but that is set automatically, not
 chosen by the user.)&amp;nbsp; Frequently this discussion is in the context of
@@ -440,7 +480,7 @@ in the&amp;nbsp;table.&lt;/p&gt;
 &lt;/tr&gt;
 &lt;/tbody&gt;
 &lt;/table&gt;
-</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Patrick Cloke</dc:creator><pubDate>Tue, 16 Oct 2012 21:33:00 -0400</pubDate><guid>tag:patrick.cloke.us,2012-10-16:posts/2012/10/16/on-status/</guid><category>chat</category><category>IM</category><category>instant messaging</category><category>Instantbird</category><category>messaging</category><category>status</category><category>Thunderbird</category></item><item><title>Yahoo &amp; Thunderbird Can Finally Play Nice?</title><link>http://patrick.cloke.us/posts/2010/11/22/yahoo-thunderbird/</link><description>&lt;p&gt;For years I&amp;#8217;ve been dealing with Yahoo&amp;#8217;s lack of support for any sort
+</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Patrick Cloke</dc:creator><pubDate>Tue, 16 Oct 2012 21:33:00 -0400</pubDate><guid>tag:patrick.cloke.us,2012-10-16:posts/2012/10/16/on-status/</guid><category>chat</category><category>instant messaging</category><category>Instantbird</category><category>messaging</category><category>status</category><category>Thunderbird</category></item><item><title>Yahoo &amp; Thunderbird Can Finally Play Nice?</title><link>http://patrick.cloke.us/posts/2010/11/22/yahoo-thunderbird/</link><description>&lt;p&gt;For years I&amp;#8217;ve been dealing with Yahoo&amp;#8217;s lack of support for any sort
 of decent (free) &lt;span class="caps"&gt;POP3&lt;/span&gt;/&lt;span class="caps"&gt;IMAP&lt;/span&gt;/&lt;span class="caps"&gt;SMTP&lt;/span&gt; protocol support.&amp;nbsp; Why do I need this?
 So I can check my &lt;a class="reference external" href="http://mail.yahoo.com/"&gt;Yahoo mail&lt;/a&gt; in &lt;a class="reference external" href="http://www.mozillamessaging.com/en-US/thunderbird/"&gt;Mozilla Thunderbird&lt;/a&gt; of&amp;nbsp;course!&lt;/p&gt;
 &lt;p&gt;At first I used &lt;a class="reference external" href="http://ypopsemail.com/"&gt;&lt;span class="caps"&gt;YPOPS&lt;/span&gt;!&lt;/a&gt;, a program that read the &lt;span class="caps"&gt;HTML&lt;/span&gt; pages provided

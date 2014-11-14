@@ -167,7 +167,7 @@ expected, but they’re uhh…not up anywhere yet though. Oops.&lt;/td&gt;&lt;/t
 &lt;/tbody&gt;
 &lt;/table&gt;
 &lt;/div&gt;
-</summary><category term="IM"></category><category term="Instantbird"></category><category term="programming"></category><category term="specifications"></category><category term="Thunderbird"></category><category term="Wat"></category></entry><entry><title>JavaScript typed arrays pain</title><link href="http://patrick.cloke.us/posts/2012/11/28/javascript-typed-arrays-pain/" rel="alternate"></link><updated>2012-11-28T23:11:00-05:00</updated><author><name>Patrick Cloke</name></author><id>tag:patrick.cloke.us,2012-11-28:posts/2012/11/28/javascript-typed-arrays-pain/</id><summary type="html">&lt;p&gt;If you&amp;#8217;ve ever tried to deal with binary data in JavaScript you know
+</summary><category term="Instantbird"></category><category term="programming"></category><category term="specifications"></category><category term="Thunderbird"></category><category term="Wat"></category></entry><entry><title>JavaScript typed arrays pain</title><link href="http://patrick.cloke.us/posts/2012/11/28/javascript-typed-arrays-pain/" rel="alternate"></link><updated>2012-11-28T23:11:00-05:00</updated><author><name>Patrick Cloke</name></author><id>tag:patrick.cloke.us,2012-11-28:posts/2012/11/28/javascript-typed-arrays-pain/</id><summary type="html">&lt;p&gt;If you&amp;#8217;ve ever tried to deal with binary data in JavaScript you know
 it isn&amp;#8217;t much fun and you usually resort to using strings lots of
 charCodeAt and related functions.&amp;nbsp; &lt;a class="reference external" href="https://developer.mozilla.org/en-US/docs/JavaScript_typed_arrays"&gt;Typed arrays&lt;/a&gt; are supposed to solve
 this though!&amp;nbsp; The typed array &lt;span class="caps"&gt;API&lt;/span&gt; consists of creating a buffer of bytes
@@ -255,4 +255,4 @@ don&amp;#8217;t use ArrayBufferViews, use DataViews.&amp;nbsp; (Although Uint8Ar
 Int8Arrays should work&amp;nbsp;fine!)&lt;/p&gt;
 &lt;p&gt;And to not rant the &lt;em&gt;entire&lt;/em&gt; time, working with typed arrays certainly
 does beat strings +&amp;nbsp;charCodeAt!&lt;/p&gt;
-</summary><category term="IM"></category><category term="Instantbird"></category><category term="Mozilla"></category><category term="OSCAR"></category><category term="Thunderbird"></category><category term="Wat"></category></entry></feed>
+</summary><category term="Instantbird"></category><category term="Mozilla"></category><category term="OSCAR"></category><category term="Thunderbird"></category><category term="Wat"></category></entry></feed>
