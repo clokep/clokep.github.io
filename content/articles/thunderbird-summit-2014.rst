@@ -1,9 +1,8 @@
 Thunderbird Summit 2014
 #######################
-:date: 2014-10-20 23:11
+:date: 2014-11-14 18:37
 :author: Patrick Cloke
 :tags: Mozilla, Thunderbird, community, Instantbird
-:status: draft
 
 Last month (Oct. 15th to Oct. 18th, to be precise), `twenty volunteers`_
 descended on Mozilla's `Toronto office`_ to discuss `Mozilla Thunderbird`_. This
