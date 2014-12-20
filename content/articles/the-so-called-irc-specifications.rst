@@ -1,6 +1,7 @@
 The so-called IRC "specifications"
 ##################################
 :date: 2011-03-08 21:20
+:modified: 2014-12-20 15:55
 :author: Patrick Cloke
 :tags: Instantbird, IRC, programming, specifications
 :slug: so-called-irc-specifications
@@ -121,6 +122,11 @@ there's an awful lot of `IRC servers`_ out there.  Anyway, if someone
 does know of another specification, etc. that I missed please let me
 know!
 
+Updated [2014-12-20]
+    Fixed some dead links. Unfortunately some links now point to the `Wayback
+    Machine`_. There are also copies of most, if not all, of these links in my
+    `irc-docs repository`_. Thanks Ultra Rocks for the heads up!
+
 .. _previous post: {filename}/articles/why-rewrite-irc-into-javascript-vs-libpurples-vs-chatzillas.rst
 .. _RFC 1459: http://tools.ietf.org/html/rfc1459
 .. _RFC 2810: http://tools.ietf.org/html/rfc2810
@@ -129,15 +135,15 @@ know!
 .. _2813: http://tools.ietf.org/html/rfc2813
 .. _DCC specification: http://www.irchelp.org/irchelp/rfc/dccspec.html
 .. _CTCP specification: http://www.irchelp.org/irchelp/rfc/ctcpspec.html
-.. _"updated" CTCP specification: http://www.invlogic.com/irc/ctcp.html
-.. _CTCP/2 specification: http://www.invlogic.com/irc/ctcp2_intro.html
+.. _"updated" CTCP specification: https://web.archive.org/web/20101129023108/http://www.invlogic.com/irc/ctcp.html
+.. _CTCP/2 specification: https://web.archive.org/web/20080723170128/http://www.invlogic.com/irc/ctcp2_intro.html
 .. _connection negotiation: http://tools.ietf.org/html/draft-smith-irc-dcc2-negotiation-00
 .. _file transfers: http://www.dcc2.org/files/dcc2/draft-smith-irc-dcc2-files-00.txt
 .. _Turbo DCC: http://www.visualirc.net/tech-tdcc.php
 .. _XDCC (eXtended DCC): http://xa.bi/files/irc/xdcc.3.3.0b.irc
 .. _DCC Whiteboard: http://www.visualirc.net/tech-wboard.php
 .. _good summary: http://en.wikipedia.org/wiki/Direct_Client-to-Client
-.. _SASL authentication: http://hg.atheme.org/atheme/atheme/raw-file/tip/doc/SASL
+.. _SASL authentication: https://raw.githubusercontent.com/atheme/charybdis/master/doc/sasl.txt
 .. _four: http://tools.ietf.org/html/rfc2222
 .. _RFCs: http://tools.ietf.org/html/rfc4422
 .. _in this: http://tools.ietf.org/html/rfc2595
@@ -146,11 +152,11 @@ know!
 .. _updated: http://tools.ietf.org/html/draft-hardy-irc-isupport-00
 .. _IRC Capabilities: http://tools.ietf.org/html/draft-mitchell-irc-capabilities-01
 .. _exists as a draft: http://tools.ietf.org/html/draft-pfenning-irc-extensions-04
-.. _MONITOR: http://hg.atheme.org/charybdis/charybdis/raw-file/tip/doc/monitor.txt
-.. _User mode +g: http://hg.atheme.org/charybdis/charybdis/raw-file/tip/doc/modeg.txt
-.. _Services compatibility modes: http://hg.atheme.org/charybdis/charybdis/raw-file/tip/doc/services.txt
-.. _Account-notify client capability: http://hg.atheme.org/charybdis/charybdis/raw-file/tip/doc/account-notify.txt
-.. _Target change for messages: http://hg.atheme.org/charybdis/charybdis/raw-file/tip/doc/tgchange.txt
+.. _MONITOR: https://github.com/atheme/charybdis/raw/master/doc/monitor.txt
+.. _User mode +g: https://raw.githubusercontent.com/atheme/charybdis/master/doc/modeg.txt
+.. _Services compatibility modes: https://raw.githubusercontent.com/atheme/charybdis/master/doc/services.txt
+.. _Account-notify client capability: https://raw.githubusercontent.com/atheme/charybdis/master/doc/account-notify.txt
+.. _Target change for messages: https://raw.githubusercontent.com/atheme/charybdis/master/doc/tgchange.txt
 .. _summary: http://en.wikipedia.org/wiki/Internet_Relay_Chat_services
 .. _Anope: http://www.anope.org/docgen/1.8/en_us/
 .. _conference control protocol: http://www.irc-plus.org/specs/confctrl-draft.html
@@ -159,3 +165,5 @@ know!
 .. _`irc: URL scheme`: http://tools.ietf.org/html/draft-mirashi-url-irc-01
 .. _another draft: http://tools.ietf.org/html/draft-butcher-irc-url-04
 .. _IRC servers: http://en.wikipedia.org/wiki/Comparison_of_IRC_daemons
+.. _Wayback Machine: https://archive.org/web/
+.. _irc-docs repository: https://bitbucket.org/clokep/irc-docs
