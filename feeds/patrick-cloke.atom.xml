@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>Like bricks in the sky</title><link href="http://patrick.cloke.us/" rel="alternate"></link><link href="http://patrick.cloke.us/feeds/patrick-cloke.atom.xml" rel="self"></link><id>http://patrick.cloke.us/</id><updated>2014-11-14T18:37:00-05:00</updated><entry><title>Thunderbird Summit 2014</title><link href="http://patrick.cloke.us/posts/2014/11/14/thunderbird-summit-2014/" rel="alternate"></link><updated>2014-11-14T18:37:00-05:00</updated><author><name>Patrick Cloke</name></author><id>tag:patrick.cloke.us,2014-11-14:posts/2014/11/14/thunderbird-summit-2014/</id><summary type="html">&lt;p&gt;Last month (Oct. 15th to Oct. 18th, to be precise), &lt;a class="reference external" href="https://wiki.mozilla.org/Thunderbird:Summit_2014#Invited_Attendees"&gt;twenty volunteers&lt;/a&gt;
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Like bricks in the sky</title><link href="http://patrick.cloke.us/" rel="alternate"></link><link href="http://patrick.cloke.us/feeds/patrick-cloke.atom.xml" rel="self"></link><id>http://patrick.cloke.us/</id><updated>2014-12-20T15:55:00-05:00</updated><entry><title>Thunderbird Summit 2014</title><link href="http://patrick.cloke.us/posts/2014/11/14/thunderbird-summit-2014/" rel="alternate"></link><updated>2014-11-14T18:37:00-05:00</updated><author><name>Patrick Cloke</name></author><id>tag:patrick.cloke.us,2014-11-14:posts/2014/11/14/thunderbird-summit-2014/</id><summary type="html">&lt;p&gt;Last month (Oct. 15th to Oct. 18th, to be precise), &lt;a class="reference external" href="https://wiki.mozilla.org/Thunderbird:Summit_2014#Invited_Attendees"&gt;twenty volunteers&lt;/a&gt;
 descended on Mozilla&amp;#8217;s &lt;a class="reference external" href="foo"&gt;Toronto office&lt;/a&gt; to discuss &lt;a class="reference external" href="foo"&gt;Mozilla Thunderbird&lt;/a&gt;. This
 included Mozilla employees, Thunderbird contributors of all sorts (developers,
 user interface designers, add-on reviewers), Lightning contributors, and
@@ -1923,7 +1923,7 @@ that issue and reconnection should happen&amp;nbsp;automatically!&lt;/p&gt;
 &lt;p&gt;One last quick note, if you happen to have the &lt;a class="reference external" href="https://hg.instantbird.org/experiments"&gt;repository&lt;/a&gt; checked
 out, you&amp;#8217;ll want to update on the default branch from now on as I&amp;#8217;ve
 merged the separate branches together under&amp;nbsp;subfolders.&lt;/p&gt;
-</summary><category term="Instantbird"></category><category term="IRC"></category></entry><entry><title>The so-called IRC "specifications"</title><link href="http://patrick.cloke.us/posts/2011/03/08/so-called-irc-specifications/" rel="alternate"></link><updated>2011-03-08T21:20:00-05:00</updated><author><name>Patrick Cloke</name></author><id>tag:patrick.cloke.us,2011-03-08:posts/2011/03/08/so-called-irc-specifications/</id><summary type="html">
+</summary><category term="Instantbird"></category><category term="IRC"></category></entry><entry><title>The so-called IRC "specifications"</title><link href="http://patrick.cloke.us/posts/2011/03/08/so-called-irc-specifications/" rel="alternate"></link><updated>2014-12-20T15:55:00-05:00</updated><author><name>Patrick Cloke</name></author><id>tag:patrick.cloke.us,2011-03-08:posts/2011/03/08/so-called-irc-specifications/</id><summary type="html">
 &lt;p&gt;In a &lt;a class="reference external" href="http://patrick.cloke.us/posts/2010/12/08/why-rewrite-irc-into-javascript/"&gt;previous post&lt;/a&gt; I had briefly gone over the "history of &lt;span class="caps"&gt;IRC&lt;/span&gt;" as
 I know it.  I’m going to expand on this a bit as I’ve come to understand
 it a bit more while reading through documentation.  (Hopefully it won’t
@@ -1944,9 +1944,9 @@ other particular messages (&lt;span class="caps"&gt;ACTION&lt;/span&gt; commands
 encrypting conversations, &lt;span class="caps"&gt;VERSION&lt;/span&gt; to get client information, etc.).
 Anyway, this get’s a bit more complicated — it starts with the &lt;a class="reference external" href="http://www.irchelp.org/irchelp/rfc/dccspec.html"&gt;&lt;span class="caps"&gt;DCC&lt;/span&gt;
 specification&lt;/a&gt;.  This was replaced/updated by the &lt;a class="reference external" href="http://www.irchelp.org/irchelp/rfc/ctcpspec.html"&gt;&lt;span class="caps"&gt;CTCP&lt;/span&gt; specification&lt;/a&gt;
-(which fully includes the &lt;span class="caps"&gt;DCC&lt;/span&gt; specification) in 1994.  An &lt;a class="reference external" href="http://www.invlogic.com/irc/ctcp.html"&gt;"updated"
+(which fully includes the &lt;span class="caps"&gt;DCC&lt;/span&gt; specification) in 1994.  An &lt;a class="reference external" href="https://web.archive.org/web/20101129023108/http://www.invlogic.com/irc/ctcp.html"&gt;"updated"
 &lt;span class="caps"&gt;CTCP&lt;/span&gt; specification&lt;/a&gt; was released in February 1997.  There’s also a
-&lt;a class="reference external" href="http://www.invlogic.com/irc/ctcp2_intro.html"&gt;&lt;span class="caps"&gt;CTCP&lt;/span&gt;/2 specification&lt;/a&gt; from October 1998, which was meant to
+&lt;a class="reference external" href="https://web.archive.org/web/20080723170128/http://www.invlogic.com/irc/ctcp2_intro.html"&gt;&lt;span class="caps"&gt;CTCP&lt;/span&gt;/2 specification&lt;/a&gt; from October 1998, which was meant to
 reformulate a lot of the previous three versions.  And &lt;em&gt;finally&lt;/em&gt;,
 there’s the &lt;span class="caps"&gt;DCC2&lt;/span&gt; specification (two parts: &lt;a class="reference external" href="http://tools.ietf.org/html/draft-smith-irc-dcc2-negotiation-00"&gt;connection negotiation&lt;/a&gt; and
 &lt;a class="reference external" href="http://www.dcc2.org/files/dcc2/draft-smith-irc-dcc2-files-00.txt"&gt;file transfers&lt;/a&gt;) from April 2004.&lt;/p&gt;
@@ -1966,7 +1966,7 @@ the &lt;span class="caps"&gt;IRC&lt;/span&gt; protocol specifications that add n
 &lt;h2&gt;&lt;a class="toc-backref" href="#id7"&gt;Authentication&lt;/a&gt;&lt;/h2&gt;
 &lt;p&gt;Originally &lt;span class="caps"&gt;IRC&lt;/span&gt; had no authentication ability except the &lt;span class="caps"&gt;PASS&lt;/span&gt; command,
 which very few servers seem to use, a variety of mechanisms have
-replaced this, including &lt;a class="reference external" href="http://hg.atheme.org/atheme/atheme/raw-file/tip/doc/SASL"&gt;&lt;span class="caps"&gt;SASL&lt;/span&gt; authentication&lt;/a&gt; (both &lt;span class="caps"&gt;PLAIN&lt;/span&gt; and &lt;span class="caps"&gt;BLOWFISH&lt;/span&gt;
+replaced this, including &lt;a class="reference external" href="https://raw.githubusercontent.com/atheme/charybdis/master/doc/sasl.txt"&gt;&lt;span class="caps"&gt;SASL&lt;/span&gt; authentication&lt;/a&gt; (both &lt;span class="caps"&gt;PLAIN&lt;/span&gt; and &lt;span class="caps"&gt;BLOWFISH&lt;/span&gt;
 methods, although &lt;span class="caps"&gt;BLOWFISH&lt;/span&gt; isn’t documented); and &lt;span class="caps"&gt;SASL&lt;/span&gt; itself is covered
 by at least &lt;a class="reference external" href="http://tools.ietf.org/html/rfc2222"&gt;four&lt;/a&gt; &lt;a class="reference external" href="http://tools.ietf.org/html/rfc4422"&gt;RFCs&lt;/a&gt; &lt;a class="reference external" href="http://tools.ietf.org/html/rfc2595"&gt;in this&lt;/a&gt; &lt;a class="reference external" href="http://tools.ietf.org/html/rfc4616"&gt;situation&lt;/a&gt;.  There also seems
 to be a method called "Auth" which I haven’t been able to pin down, as
@@ -1987,11 +1987,11 @@ in January 2004, and &lt;a class="reference external" href="http://tools.ietf.or
 it’s instant messaging products &lt;a class="reference external" href="http://tools.ietf.org/html/draft-pfenning-irc-extensions-04"&gt;exists as a draft&lt;/a&gt; from June 1998.&lt;/p&gt;
 &lt;p&gt;There’s also:&lt;/p&gt;
 &lt;ul class="simple"&gt;
-&lt;li&gt;The &lt;a class="reference external" href="http://hg.atheme.org/charybdis/charybdis/raw-file/tip/doc/monitor.txt"&gt;&lt;span class="caps"&gt;MONITOR&lt;/span&gt;&lt;/a&gt; command.&lt;/li&gt;
-&lt;li&gt;&lt;a class="reference external" href="http://hg.atheme.org/charybdis/charybdis/raw-file/tip/doc/modeg.txt"&gt;User mode +g&lt;/a&gt;.&lt;/li&gt;
-&lt;li&gt;&lt;a class="reference external" href="http://hg.atheme.org/charybdis/charybdis/raw-file/tip/doc/services.txt"&gt;Services compatibility modes&lt;/a&gt;.&lt;/li&gt;
-&lt;li&gt;&lt;a class="reference external" href="http://hg.atheme.org/charybdis/charybdis/raw-file/tip/doc/account-notify.txt"&gt;Account-notify client capability&lt;/a&gt;.&lt;/li&gt;
-&lt;li&gt;&lt;a class="reference external" href="http://hg.atheme.org/charybdis/charybdis/raw-file/tip/doc/tgchange.txt"&gt;Target change for messages&lt;/a&gt;.&lt;/li&gt;
+&lt;li&gt;The &lt;a class="reference external" href="https://github.com/atheme/charybdis/raw/master/doc/monitor.txt"&gt;&lt;span class="caps"&gt;MONITOR&lt;/span&gt;&lt;/a&gt; command.&lt;/li&gt;
+&lt;li&gt;&lt;a class="reference external" href="https://raw.githubusercontent.com/atheme/charybdis/master/doc/modeg.txt"&gt;User mode +g&lt;/a&gt;.&lt;/li&gt;
+&lt;li&gt;&lt;a class="reference external" href="https://raw.githubusercontent.com/atheme/charybdis/master/doc/services.txt"&gt;Services compatibility modes&lt;/a&gt;.&lt;/li&gt;
+&lt;li&gt;&lt;a class="reference external" href="https://raw.githubusercontent.com/atheme/charybdis/master/doc/account-notify.txt"&gt;Account-notify client capability&lt;/a&gt;.&lt;/li&gt;
+&lt;li&gt;&lt;a class="reference external" href="https://raw.githubusercontent.com/atheme/charybdis/master/doc/tgchange.txt"&gt;Target change for messages&lt;/a&gt;.&lt;/li&gt;
 &lt;/ul&gt;
 &lt;/div&gt;
 &lt;div class="section" id="services"&gt;
@@ -2020,6 +2020,12 @@ specifications, but who knows what servers/clients you’ll end up talking
 to!  It’s difficult to know what’s used in practice, especially since
 there’s an awful lot of &lt;a class="reference external" href="http://en.wikipedia.org/wiki/Comparison_of_IRC_daemons"&gt;&lt;span class="caps"&gt;IRC&lt;/span&gt; servers&lt;/a&gt; out there.  Anyway, if someone
 does know of another specification, etc. that I missed please let me know!&lt;/p&gt;
+&lt;dl class="docutils"&gt;
+&lt;dt&gt;Updated [2014-12-20]&lt;/dt&gt;
+&lt;dd&gt;Fixed some dead links. Unfortunately some links now point to the &lt;a class="reference external" href="https://archive.org/web/"&gt;Wayback
+Machine&lt;/a&gt;. There are also copies of most, if not all, of these links in my
+&lt;a class="reference external" href="https://bitbucket.org/clokep/irc-docs"&gt;irc-docs repository&lt;/a&gt;. Thanks Ultra Rocks for the heads up!&lt;/dd&gt;
+&lt;/dl&gt;
 &lt;/div&gt;
 </summary><category term="Instantbird"></category><category term="IRC"></category><category term="programming"></category><category term="specifications"></category></entry><entry><title>Status Update - February 17, 2011</title><link href="http://patrick.cloke.us/posts/2011/02/17/status-update-february-17-2011/" rel="alternate"></link><updated>2011-02-17T19:21:00-05:00</updated><author><name>Patrick Cloke</name></author><id>tag:patrick.cloke.us,2011-02-17:posts/2011/02/17/status-update-february-17-2011/</id><summary type="html">&lt;p&gt;Another month has gone by so it&amp;#8217;s time for another status update.
 Unfortunately not as much got done this month as I was hoping, but
