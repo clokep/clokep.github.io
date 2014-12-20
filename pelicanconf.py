@@ -47,7 +47,8 @@ THEME = 'theme'
 # Set up static content and output locations.
 STATIC_PATHS = [
     'images',
-    'static'
+    'js',
+    'static',
 ]
 EXTRA_PATH_METADATA = {
     # Disable GitHub's Jekyll parsing, this will allow folders starting with a .

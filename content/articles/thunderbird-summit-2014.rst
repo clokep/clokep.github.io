@@ -5,7 +5,7 @@ Thunderbird Summit 2014
 :tags: Mozilla, Thunderbird, community, Instantbird
 
 Last month (Oct. 15th to Oct. 18th, to be precise), `twenty volunteers`_
-descended on Mozilla's `Toronto office`_ to discuss `Mozilla Thunderbird`_. This
+descended on Mozilla's Toronto office to discuss `Mozilla Thunderbird`_. This
 included Mozilla employees, Thunderbird contributors of all sorts (developers,
 user interface designers, add-on reviewers), Lightning contributors, and
 chat/`Instantbird`_ contributors.
@@ -72,8 +72,7 @@ to XMPP_! You can check out the progress in `bug 1018060`_.
     poutine (with pulled pork on it)!
 
 .. _twenty volunteers: https://wiki.mozilla.org/Thunderbird:Summit_2014#Invited_Attendees
-.. _Toronto office: foo
-.. _Mozilla Thunderbird: foo
+.. _Mozilla Thunderbird: https://www.mozilla.org/en-US/thunderbird/
 .. _Florian: http://blog.queze.net/
 .. _Nihanth: http://blog.nhnt11.com/
 .. _Instantbird: http://instantbird.com/
