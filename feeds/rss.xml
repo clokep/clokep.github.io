@@ -1,5 +1,41 @@
 <?xml version="1.0" encoding="utf-8"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Like bricks in the sky</title><link>http://patrick.cloke.us/</link><description></description><atom:link href="http://patrick.cloke.us/feeds/rss.xml" rel="self"></atom:link><lastBuildDate>Sat, 20 Dec 2014 15:55:00 -0500</lastBuildDate><item><title>Thunderbird Summit 2014</title><link>http://patrick.cloke.us/posts/2014/11/14/thunderbird-summit-2014/</link><description>&lt;p&gt;Last month (Oct. 15th to Oct. 18th, to be precise), &lt;a class="reference external" href="https://wiki.mozilla.org/Thunderbird:Summit_2014#Invited_Attendees"&gt;twenty volunteers&lt;/a&gt;
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Like bricks in the sky</title><link>http://patrick.cloke.us/</link><description></description><atom:link href="http://patrick.cloke.us/feeds/rss.xml" rel="self"></atom:link><lastBuildDate>Wed, 21 Jan 2015 13:18:00 -0500</lastBuildDate><item><title>Google Summer of Code 2015 Project Ideas for Mozilla</title><link>http://patrick.cloke.us/posts/2015/01/21/google-summer-of-code-2015-project-ideas-for-mozilla/</link><description>&lt;p&gt;As &lt;a class="reference external" href="http://blog.queze.net/post/2015/01/22/Project-ideas-wanted-for-Summer-of-Code-2015"&gt;Florian announced&lt;/a&gt; last Thursday, &lt;strong&gt;now&lt;/strong&gt; is the time to brainstorm and
+discuss project ideas for &lt;a class="reference external" href="http://google-opensource.blogspot.fr/2014/10/google-summer-of-code-2015-and-google.html"&gt;Google Summer of Code 2015&lt;/a&gt;. Mozilla has
+participated in every previous Google Summer of Code (GSoC), and hopes to
+participate again this year! In order to help ensure we&amp;#8217;re selected, we need
+project ideas before February 20th,&amp;nbsp;2015!&lt;/p&gt;
+&lt;p&gt;There are always projects that we&amp;#8217;re passionate about, but keep getting pushed
+down our ever growing to-do lists. GSoC is a great opportunity to introduce a
+new member to your team, and have a student work full time on a project for 3&amp;nbsp;months.&lt;/p&gt;
+&lt;dl class="docutils"&gt;
+&lt;dt&gt;What makes a good&amp;nbsp;project?&lt;/dt&gt;
+&lt;dd&gt;&lt;ul class="first last simple"&gt;
+&lt;li&gt;A project you&amp;#8217;re passionate about and has a clear&amp;nbsp;mentor.&lt;/li&gt;
+&lt;li&gt;It should take (&lt;em&gt;a student&lt;/em&gt;) roughly 3 months to design, code, test,
+review,&amp;nbsp;etc.&lt;/li&gt;
+&lt;li&gt;It should not be in the critical path to your next&amp;nbsp;release/milestone.&lt;/li&gt;
+&lt;li&gt;Is related to any Mozilla project (e.g. Firefox, Firefox &lt;span class="caps"&gt;OS&lt;/span&gt;, Thunderbird,
+Instantbird, SeaMonkey, Bugzilla, l10n, &lt;span class="caps"&gt;NSS&lt;/span&gt;, &lt;span class="caps"&gt;QA&lt;/span&gt;, &lt;span class="caps"&gt;SUMO&lt;/span&gt;, Rust, and many&amp;nbsp;more!)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/dd&gt;
+&lt;/dl&gt;
+&lt;p&gt;Please add ideas you might have to the &lt;a class="reference external" href="https://wiki.mozilla.org/Community:SummerOfCode15:Brainstorming"&gt;brainstorming page&lt;/a&gt;, eventually these
+ideas will move to the &lt;a class="reference external" href="https://wiki.mozilla.org/Community:SummerOfCode15"&gt;formal ideas page&lt;/a&gt;. Please ensure you read the
+directions at the top of the&amp;nbsp;page.&lt;/p&gt;
+&lt;p&gt;I&amp;#8217;d also like to thank &lt;a class="reference external" href="http://blog.gerv.net/"&gt;Gerv&lt;/a&gt; for doing an awesome job for the past 10 years as
+the organization administrator. He is now passing the reins off to Florian and
+I, who are the new points of contact for GSoC at Mozilla. If you have any
+questions about GSoC, please check the &lt;a class="reference external" href="https://www.google-melange.com/gsoc/document/show/gsoc_program/google/gsoc2015/help_page"&gt;&lt;span class="caps"&gt;FAQ&lt;/span&gt;&lt;/a&gt; and, if it is still not answered,
+please contact Florian or I&amp;nbsp;directly.&lt;/p&gt;
+&lt;div class="section" id="for-students"&gt;
+&lt;h2&gt;For&amp;nbsp;Students&lt;/h2&gt;
+&lt;p&gt;The application period for students is March 16th, 2015 to March 27th, 2015. It
+is not too soon to start discussing ideas with a potential mentor/community,
+however. If you have an idea of what you&amp;#8217;d like to work on, feel free to seek
+out that area of the community, introduce yourself and maybe find a &lt;a class="reference external" href="http://www.joshmatthews.net/bugsahoy/"&gt;mentored
+bug&lt;/a&gt; to work&amp;nbsp;on.&lt;/p&gt;
+&lt;/div&gt;
+</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Patrick Cloke</dc:creator><pubDate>Wed, 21 Jan 2015 13:18:00 -0500</pubDate><guid>tag:patrick.cloke.us,2015-01-21:posts/2015/01/21/google-summer-of-code-2015-project-ideas-for-mozilla/</guid><category>mozilla</category><category>GSoC</category></item><item><title>Thunderbird Summit 2014</title><link>http://patrick.cloke.us/posts/2014/11/14/thunderbird-summit-2014/</link><description>&lt;p&gt;Last month (Oct. 15th to Oct. 18th, to be precise), &lt;a class="reference external" href="https://wiki.mozilla.org/Thunderbird:Summit_2014#Invited_Attendees"&gt;twenty volunteers&lt;/a&gt;
 descended on Mozilla&amp;#8217;s &lt;a class="reference external" href="foo"&gt;Toronto office&lt;/a&gt; to discuss &lt;a class="reference external" href="foo"&gt;Mozilla Thunderbird&lt;/a&gt;. This
 included Mozilla employees, Thunderbird contributors of all sorts (developers,
 user interface designers, add-on reviewers), Lightning contributors, and
