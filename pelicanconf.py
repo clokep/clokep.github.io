@@ -48,7 +48,16 @@ STATIC_PATHS = [
     'static'
 ]
 EXTRA_PATH_METADATA = {
+    # Disable GitHub's Jekyll parsing, this will allow folders starting with a .
+    # to be served:
+    # https://help.github.com/articles/files-that-start-with-an-underscore-are-missing/
+    'static/.nojekyll': {'path': '.nojekyll'},
+    # Tell GitHub the domain name:
+    # https://help.github.com/articles/adding-a-cname-file-to-your-repository/
     'static/CNAME': {'path': 'CNAME'},
+    # Server an Autoconfig entry for email:
+    # https://developer.mozilla.org/en-US/docs/Mozilla/Thunderbird/Autoconfiguration
+    'static/mail-config.xml': {'path': '.well-known/autoconfig/mail/config-v1.1.xml'},
 }
 TEMPLATE_PAGES = {
     # Custom 404 page for GitHub pages.

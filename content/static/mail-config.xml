@@ -1,0 +1,40 @@
+<?xml version="1.0"?>
+<clientConfig version="1.1">
+  <emailProvider id="cloke.us">
+    <domain>cloke.us</domain>
+    <domain>patrick.cloke.us</domain>
+
+    <displayName>cloke.us</displayName>
+    <displayShortName>cloke.us</displayShortName>
+
+    <incomingServer type="imap">
+      <hostname>imap.cloke.us</hostname>
+      <port>993</port>
+      <socketType>SSL</socketType>
+      <authentication>plain</authentication>
+      <username>%EMAILADDRESS%</username>
+    </incomingServer>
+
+    <incomingServer type="pop3">
+     <hostname>pop.cloke.us</hostname>
+     <port>995</port>
+     <socketType>SSL</socketType>
+     <username>%EMAILADDRESS%</username>
+     <authentication>plain</authentication>
+    </incomingServer>
+
+    <outgoingServer type="smtp">
+     <hostname>smtp.cloke.us</hostname>
+     <port>465</port>
+     <socketType>SSL</socketType>
+     <username>%EMAILADDRESS%</username>
+     <authentication>plain</authentication>
+     <addThisServer>true</addThisServer>
+    </outgoingServer>
+
+    <!-- Can't really point this to a cloke.us URL. -->
+    <documentation url="https://www.fastmail.com/help/technical/servernamesandports.html">
+     <descr lang="en">Server names and ports</descr>
+    </documentation>
+  </emailProvider>
+</clientConfig>
