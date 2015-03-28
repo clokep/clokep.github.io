@@ -185,8 +185,8 @@ img.left, figure.left {float: left; margin: 0 2em 2em 0;}
 
 /*
  * Ensure that the navigation is actually on screen. If the screen is wide
- * enough the left class is pushed off to the left, if it is not wide enough it
- * is kept above the article content.
+ * enough the .left class is set to float on the left, if it is not wide enough
+ * the .left class is kept above the article content.
  *
  * This width is .body[width] + .left[width] * 2 + buffer
  */
@@ -199,6 +199,31 @@ img.left, figure.left {float: left; margin: 0 2em 2em 0;}
 @media (max-width: 1200px) {
     .body {
         clear: both;
+    }
+
+    /*
+     * Space out the .left elements a bit.
+     */
+    .left {
+        margin-right: 0.5em;
+    }
+
+    /*
+     * Don't force the table of contents to the normal .left width, allow it to
+     * spread over the entire top of the contents.
+     *
+     * Remove the right margin so it becomes potentially flush with the content.
+     */
+    #toc {
+        margin-right: 0;
+        width: auto;
+        max-width: calc(800px - 160px - 160px - 0.5em - 0.5em);
+    }
+    /*
+     * Tighten up the top a bit to get more content up top.
+     */
+    .left li {
+        margin-top: 0;
     }
 }
 
