@@ -274,13 +274,13 @@ remember to set the stereo to FM.
 .. [#]  The 2007 edition had an option for a stereo with satellite radio and an
         AUX input. I probably could have bought this stereo and installed it,
         but I was quoted $285 last time I asked about changing my radio.
-.. [#]  This might seem insane, but I was fairly certain I'd be able to solder a
-        jumper back into place if everything didn't work, so I actually felt
-        more comfortable doing this than cutting the pin.
-.. [#]  Playing one of my favorite albums: |No Control|_ by `Bad Religion`_
 .. [#]  You can see I actually had a CD in the CD player when I removed the
         radio. Oops! Luckily it was just a copy of one of my CDs (I never take
         originals in my car). I didn't end up scratching it or anything either!
+.. [#]  Playing one of my favorite albums: |No Control|_ by `Bad Religion`_
+.. [#]  This might seem insane, but I was fairly certain I'd be able to solder a
+        jumper back into place if everything didn't work, so I actually felt
+        more comfortable doing this than cutting the pin.
 .. [#]  Please don't judge my soldering! Two of the four connections were a
         little sloppy (I had to add solder to those instead of just tinning the
         wires). I did ensure there were no shorts with a multimeter (and had to
