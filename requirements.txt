@@ -1,9 +1,8 @@
+beautifulsoup4==4.3.2       # For extract toc
 Fabric==1.9.0
 feedparser==5.1.3
 ghp_import==0.4.1
 pelican==3.4.0
 Pillow==2.5.0
+SimpleHTTP404Server==0.2.0
 typogrify==2.0.4
-
-# For extract toc
-beautifulsoup4

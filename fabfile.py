@@ -4,13 +4,12 @@ import os
 # Local path configuration (can be absolute or relative to fabfile)
 env.deploy_path = 'output'
 env.listen_port = 8000
-DEPLOY_PATH = env.deploy_path
 
 
 @task
 def clean():
     """Delete any built output."""
-    if os.path.isdir(DEPLOY_PATH):
+    if os.path.isdir(env.deploy_path):
         local('rm -rf {deploy_path}'.format(**env))
         local('mkdir {deploy_path}'.format(**env))
 
@@ -37,7 +36,7 @@ def regenerate():
 @task
 def serve():
     """Locally serve the blog."""
-    local('cd {deploy_path} && python ../fake_server.py {listen_port}'.format(**env))
+    local('cd {deploy_path} && python -m SimpleHTTP404Server {listen_port}'.format(**env))
 
 
 @task
