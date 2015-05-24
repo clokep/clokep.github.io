@@ -66,7 +66,7 @@ TEMPLATE_PAGES = {
 
 # Plugin setup.
 PLUGIN_PATHS = [
-    '../pelican-plugins/',
+    'pelican-plugins/',
 ]
 PLUGINS = [
     'extract_toc',
