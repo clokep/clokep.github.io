@@ -5,6 +5,7 @@ from __future__ import unicode_literals
 AUTHOR = u'Patrick Cloke'
 AUTHOR_EMAIL = 'patrick@cloke.us'
 SITENAME = u'Like bricks in the sky'
+GITHUB_URL = 'https://github.com/clokep/clokep.github.io'
 
 TIMEZONE = 'America/New_York'
 DEFAULT_DATE_FORMAT = '%m/%d/%Y %I:%M %p EST'

@@ -17,7 +17,6 @@
 </head>
 
 <body id="index" class="home">
-{% include 'github.html' %}
     <header id="banner" class="body">
         <h1><a href="{{ SITEURL }}/">{{ SITENAME }} {% if SITESUBTITLE %} <strong>{{ SITESUBTITLE }}</strong>{% endif %}</a></h1>
         <nav><ul>
@@ -88,6 +87,9 @@
     <footer id="contentinfo" class="body">
         <address id="about" class="vcard body">
         Proudly powered by <a href="http://getpelican.com/">Pelican</a>, which takes great advantage of <a href="http://python.org">Python</a>.
+        {% if GITHUB_URL %}
+        Blog source available on <a href="{{ GITHUB_URL }}">GitHub</a>.
+        {% endif %}
         </address><!-- /#about -->
     </footer><!-- /#contentinfo -->
 
