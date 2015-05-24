@@ -1,4 +1,4 @@
-beautifulsoup4==4.3.2       # For extract toc
+beautifulsoup4==4.3.2       # For extract_toc, share_post
 Fabric==1.10.1
 feedparser==5.2.0
 ghp_import==0.4.1

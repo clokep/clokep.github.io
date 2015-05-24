@@ -18,17 +18,27 @@
     {% endif %}
 
     {% if DISPLAY_CATEGORY_ON_ARTICLE != False %}
-    <p>In <a href="{{ SITEURL }}/{{ article.category.url }}">{{ article.category }}</a>.</p>
+    <div>In <a href="{{ SITEURL }}/{{ article.category.url }}">{{ article.category }}</a>.</div>
     {% endif %}
 
     {% if article.tags %}
-    <p>
+    <div>
         tags: {% for tag in article.tags %}
             <a href="{{ SITEURL }}/{{ tag.url }}">{{ tag | escape }}</a>
         {% endfor %}
-    </p>
+    </div>
     {% endif %}
 
     {% import 'translations.html' as translations with context %}
     {{ translations.translations_for(article) }}
+
+    {% if article.share_post and article.status != 'draft' %}
+    <div id="post-share-links" class="social">
+        share:
+        <a href="{{article.share_post['twitter']}}" target="_blank" title="Share on Twitter">Twitter</a>
+        <a href="{{article.share_post['facebook']}}" target="_blank" title="Share on Facebook">Facebook</a>
+        <a href="{{article.share_post['google-plus']}}" target="_blank" title="Share on Google Plus">Google+</a>
+        <a href="{{article.share_post['email']}}" target="_blank" title="Share via Email">Email</a>
+    </div>
+    {% endif %}
 </footer><!-- /.post-info -->

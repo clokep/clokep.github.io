@@ -70,6 +70,7 @@ PLUGIN_PATHS = [
 ]
 PLUGINS = [
     'extract_toc',
+    'share_post',
     'thumbnailer',
 
     # Custom plug-ins.

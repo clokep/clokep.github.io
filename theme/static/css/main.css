@@ -407,6 +407,12 @@ img.left, figure.left {float: left; margin: 0 2em 2em 0;}
     padding-left: 25px;
 }
 
+#post-share-links.social a {
+    background-repeat: no-repeat;
+    background-position: center left;
+    padding-left: 18px;
+}
+
 /* Icons */
 .social a[href*='about.me'] {background-image: url('../images/icons/aboutme.png');}
 .social a[href*='bitbucket.org'] {background-image: url('../images/icons/bitbucket.png');}
@@ -432,9 +438,13 @@ img.left, figure.left {float: left; margin: 0 2em 2em 0;}
 .social a[href*='slideshare.net'] {background-image: url('../images/icons/slideshare.png');}
 .social a[href*='speakerdeck.com'] {background-image: url('../images/icons/speakerdeck.png');}
 .social a[href*='stackoverflow.com'] {background-image: url('../images/icons/stackoverflow.png');}
-.social a[href*='twitter.com'] {background-image: url('../images/icons/twtr.png');}
+.social a[href*='twitter.com'] {background-image: url('../images/icons/twitter.png');}
 .social a[href*='vimeo.com'] {background-image: url('../images/icons/vimeo.png');}
 .social a[href*='youtube.com'] {background-image: url('../images/icons/youtube.png');}
+.social a[href*='mailto:'] {
+    background-image: url('../images/icons/mailto.png');
+    background-size: 16px 16px;
+}
 
 /*
     About
