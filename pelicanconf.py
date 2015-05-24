@@ -3,6 +3,7 @@
 from __future__ import unicode_literals
 
 AUTHOR = u'Patrick Cloke'
+AUTHOR_EMAIL = 'patrick@cloke.us'
 SITENAME = u'Like bricks in the sky'
 
 TIMEZONE = 'America/New_York'
@@ -70,6 +71,7 @@ PLUGIN_PATHS = [
 ]
 PLUGINS = [
     'extract_toc',
+    'gravatar',
     'share_post',
     'thumbnailer',
 

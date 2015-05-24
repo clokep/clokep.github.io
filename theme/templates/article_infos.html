@@ -1,4 +1,9 @@
 <footer class="post-info">
+    {% if article.author_gravatar %}
+    <div id="gravatar" style="background-image: url('{{ article.author_gravatar }}');">
+    </div>
+    {% endif %}
+
     <abbr class="published" title="{{ article.date.isoformat() }}">
         Published: {{ article.locale_date }}
     </abbr>

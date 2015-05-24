@@ -102,11 +102,32 @@ li { margin-top: 0.5em;}
     margin: 10px;
     padding: 5px;
     max-width: 20em;
+
+    border-radius: 5px;
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+    background-color: #F5F4EF;
 }
 
-.post-info p{
+.post-info p {
     margin-top: 1px;
     margin-bottom: 1px;
+}
+
+.post-info #gravatar {
+    float: left;
+    margin-right: 0.5em;
+    margin-bottom: 0.5em;
+
+    width: 80px;
+    height: 80px;
+
+    /* Note that the background itself is set directly in the HTML. */
+    background-repeat: no-repeat;
+
+    border-radius: 5px;
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
 }
 
 .readmore {
