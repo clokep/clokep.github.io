@@ -23,38 +23,14 @@
         {{ article.content }}
     </div><!-- /.entry-content -->
 
-    {% if article.comments %}
-    <div class="comments">
-        <h2>{{ article.comments_count }} Comments:</h2>
-        {% for comment in article.comments recursive %}
-        <ul id="comments-list">
-            <li id="comment-{{ comment.slug }}">
-                <abbr class="published" title="{{ comment.date.isoformat() }}">
-                    Commented: <a href="{{ SITEURL }}/{{ article.url }}#comment-{{ comment.slug }}"
-                                  rel="bookmark" title="Permalink to this comment">{{ comment.locale_date }}</a>
-                </abbr>
-
-                <address class="vcard author">
-                    By {% if comment.website %}<a class="url fn" href="{{ comment.website }}">{% endif %}
-                        {{ comment.author }}
-                    {% if comment.website %}</a>{% endif %}
-                </address>
-
-                {{ comment.content }}
-                {% if comment.replies %}
-                    {{ loop(comment.replies) }}
-                {% endif %}
-            </li>
-        </ul>
-        {% endfor %}
-    </div>
-    {% elif DISQUS_SITENAME and SITEURL and article.status != "draft" %}
+    {% if DISQUS_SITENAME and SITEURL and article.status != "draft" %}
     <div class="comments">
         <div id="disqus_thread"></div>
         <script type="text/javascript">
             var disqus_shortname = '{{ DISQUS_SITENAME }}';
-            var disqus_identifier = '{{ article.url }}';
+            var disqus_identifier = '{{ article.slug }}';
             var disqus_url = '{{ SITEURL }}/{{ article.url }}';
+            var disqus_title = '{{ article.title|striptags }}';
             (function() {
             var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
             dsq.src = '//{{ DISQUS_SITENAME }}.disqus.com/embed.js';

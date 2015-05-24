@@ -70,7 +70,6 @@ PLUGIN_PATHS = [
 ]
 PLUGINS = [
     'extract_toc',
-    'pelican_comment_system',
     'thumbnailer',
 
     # Custom plug-ins.

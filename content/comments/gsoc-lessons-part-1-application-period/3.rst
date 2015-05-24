@@ -1,9 +1,0 @@
-:date: 2013-12-03 18:31
-:author: Patrick Cloke
-:website: http://patrick.cloke.us
-:replyto: 2rst
-
-I agree it's interesting to see how they handle feedback from a community and
-you can learn a lot from it! I don't know how I feel about "requiring" it (What
-about for someone applying for a project that is from scratch?) But I think it
-should be strongly encouraged!

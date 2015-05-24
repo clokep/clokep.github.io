@@ -1,7 +1,0 @@
-:date: 2012-08-09 08:04
-:author: booniffle
-:website: https://www.blogger.com/profile/13002058397247359996
-
-So you will be part of the "Community Innovation" of TB in the future? Well,
-maybe will TB will not be dead after all even after the next ESR cycle ends.
-
