@@ -97,13 +97,40 @@ ol {
 
 li { margin-top: 0.5em;}
 
-.post-info {
+.post-info-container {
     float: right;
-    margin: 10px;
-    padding: 5px;
+    margin-left: 10px;
+    /* The padding from the container. */
+    margin-right: -20px;
+    /* Get rid of the height of post-info-top, note that post-info-bottom serves
+     * as a margin for the bottom. */
+    margin-top: -10px;
     max-width: 20em;
 
-    border-radius: 5px;
+    background-color: #F5F4EF;
+}
+
+.post-info-top {
+    border-bottom-right-radius: 10px;
+    height: 10px;
+    background-color: #FFF;
+}
+
+.post-info-bottom {
+    border-top-right-radius: 10px;
+    height: 10px;
+    background-color: #FFF;
+}
+
+/* Just here to change the background back to the content container. */
+.post-info-bg {
+    background-color: #FFF;
+}
+
+.post-info-container .post-info {
+    padding: 10px;
+
+    border-radius: 15px 0 0 15px;
     -moz-border-radius: 5px;
     -webkit-border-radius: 5px;
     background-color: #F5F4EF;
@@ -119,6 +146,7 @@ li { margin-top: 0.5em;}
     margin-right: 0.5em;
     margin-bottom: 0.5em;
 
+    /* Gravatar image height. */
     width: 80px;
     height: 80px;
 
@@ -128,6 +156,10 @@ li { margin-top: 0.5em;}
     border-radius: 5px;
     -moz-border-radius: 5px;
     -webkit-border-radius: 5px;
+}
+
+.post-info #tag-list {
+    clear: both;
 }
 
 .readmore {
@@ -522,9 +554,6 @@ li:last-child .hentry, #content > .hentry {border: 0; margin: 0;}
 }
 
 /* Content */
-/*.hentry footer {
-    margin-bottom: 2em;
-}*/
 .hentry footer address {display: inline;}
 #posts-list footer address {display: block;}
 
@@ -545,8 +574,7 @@ li:last-child .hentry, #content > .hentry {border: 0; margin: 0;}
     left: 10px;
     position: relative;
     float: left;
-    top: 0.5em;
-    width: 190px;
+    width: 180px;
 }
 
 /* About the Author */
