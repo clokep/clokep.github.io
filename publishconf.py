@@ -11,7 +11,6 @@ sys.path.append(os.curdir)
 from pelicanconf import *
 
 SITEURL = 'http://patrick.cloke.us'
-RELATIVE_URLS = False
 
 # Don't publish drafts.
 WITH_FUTURE_DATES = False
