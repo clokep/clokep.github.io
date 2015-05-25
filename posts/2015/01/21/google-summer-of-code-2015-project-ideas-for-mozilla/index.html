@@ -28,13 +28,13 @@
             <div class="social">
                 <h2>social</h2>
                 <ul>
-                    <li><a href="http://patrick.cloke.us/feeds/atom.xml" type="application/atom+xml" rel="alternate">atom feed</a></li>
-                    <li><a href="http://patrick.cloke.us/feeds/rss.xml" type="application/rss+xml" rel="alternate">rss feed</a></li>
-
                     <li><a href="https://www.twitter.com/clokep" target="_blank">twitter</a></li>
                     <li><a href="https://bitbucket.org/clokep" target="_blank">bitbucket</a></li>
                     <li><a href="https://www.github.com/clokep" target="_blank">github</a></li>
                     <li><a href="https://mozillians.org/u/clokep/" target="_blank">mozillians</a></li>
+
+                    <li><a href="http://patrick.cloke.us/feeds/atom.xml" type="application/atom+xml" rel="alternate">atom feed</a></li>
+                    <li><a href="http://patrick.cloke.us/feeds/rss.xml" type="application/rss+xml" rel="alternate">rss feed</a></li>
                 </ul>
             </div><!-- /.social -->
         </section><!-- /#extras -->
@@ -61,16 +61,44 @@
     </header>
 
     <div class="entry-content">
-<footer class="post-info">
-    <abbr class="published" title="2015-01-21T13:18:00">
-        Published: 01/21/2015 01:18 PM EST
-    </abbr>
+<footer class="post-info-container">
+    <div class="post-info-top">
+    </div>
 
-    <address class="vcard author">
-        By             <a class="url fn" href="http://patrick.cloke.us/pages/about.html">Patrick Cloke</a>
-    </address>
+    <!-- Second div is to change the background color again. -->
+    <div class="post-info-bg">
+    <div class="post-info">
+        <div id="gravatar" style="background-image: url('http://www.gravatar.com/avatar/130405f65521b6ee6bbbe0204070a163');">
+        </div>
 
-<p>tags: <a href="http://patrick.cloke.us/tag/mozilla.html">mozilla</a> <a href="http://patrick.cloke.us/tag/gsoc.html">GSoC</a> </p>
+        <abbr class="published" title="2015-01-21T13:18:00">
+            Published: 01/21/2015 01:18 PM EST
+        </abbr>
+
+        <address class="vcard author">
+            By                 <a class="url fn" href="http://patrick.cloke.us/pages/about.html">Patrick Cloke</a>
+        </address>
+
+
+        <div id="tag-list">
+            tags:                 <a href="http://patrick.cloke.us/tag/mozilla.html">mozilla</a>
+                <a href="http://patrick.cloke.us/tag/gsoc.html">GSoC</a>
+        </div>
+
+        
+
+        <div id="post-share-links" class="social">
+            share:
+            <a href="http://twitter.com/home?status=Google%20Summer%20of%20Code%202015%20Project%20Ideas%20for%C2%A0Mozilla%20http%3A//patrick.cloke.us/posts/2015/01/21/google-summer-of-code-2015-project-ideas-for-mozilla/" target="_blank" title="Share on Twitter">Twitter</a>
+            <a href="http://www.facebook.com/sharer/sharer.php?s=100&amp;p%5Burl%5D=http%3A//patrick.cloke.us/posts/2015/01/21/google-summer-of-code-2015-project-ideas-for-mozilla/" target="_blank" title="Share on Facebook">Facebook</a>
+            <a href="https://plus.google.com/share?url=http%3A//patrick.cloke.us/posts/2015/01/21/google-summer-of-code-2015-project-ideas-for-mozilla/" target="_blank" title="Share on Google Plus">Google+</a>
+            <a href="mailto:?subject=Google%20Summer%20of%20Code%202015%20Project%20Ideas%20for%C2%A0Mozilla&amp;body=http%3A//patrick.cloke.us/posts/2015/01/21/google-summer-of-code-2015-project-ideas-for-mozilla/" target="_blank" title="Share via Email">Email</a>
+        </div>
+    </div>
+    </div>
+
+    <div class="post-info-bottom">
+    </div>
 </footer><!-- /.post-info -->        <p>As <a class="reference external" href="http://blog.queze.net/post/2015/01/22/Project-ideas-wanted-for-Summer-of-Code-2015">Florian announced</a> last Thursday, <strong>now</strong> is the time to brainstorm and
 discuss project ideas for <a class="reference external" href="http://google-opensource.blogspot.fr/2014/10/google-summer-of-code-2015-and-google.html">Google Summer of Code 2015</a>. Mozilla has
 participated in every previous Google Summer of Code (GSoC), and hopes to
@@ -111,20 +139,20 @@ bug</a> to work&nbsp;on.</p>
     </div><!-- /.entry-content -->
 
     <div class="comments">
-        <div id="disqus_thread"></div>
-        <script type="text/javascript">
-            var disqus_shortname = 'clokep';
-            var disqus_identifier = 'posts/2015/01/21/google-summer-of-code-2015-project-ideas-for-mozilla/';
-            var disqus_url = 'http://patrick.cloke.us/posts/2015/01/21/google-summer-of-code-2015-project-ideas-for-mozilla/';
-            (function() {
-            var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
-            dsq.src = '//clokep.disqus.com/embed.js';
-            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
-            })();
-        </script>
-        <noscript>Please enable JavaScript to view the comments.</noscript>
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+    var disqus_shortname = 'clokep';
+    var disqus_identifier = 'google-summer-of-code-2015-project-ideas-for-mozilla';
+    var disqus_url = 'http://patrick.cloke.us/posts/2015/01/21/google-summer-of-code-2015-project-ideas-for-mozilla/';
+    var disqus_title = 'Google Summer of Code 2015 Project Ideas for Mozilla';
+    (function() {
+    var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+    dsq.src = '//clokep.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the comments.</noscript>
     </div>
-
   </article>
 </section>
     </div>
@@ -132,6 +160,7 @@ bug</a> to work&nbsp;on.</p>
     <footer id="contentinfo" class="body">
         <address id="about" class="vcard body">
         Proudly powered by <a href="http://getpelican.com/">Pelican</a>, which takes great advantage of <a href="http://python.org">Python</a>.
+        Blog source available on <a href="https://github.com/clokep/clokep.github.io">GitHub</a>.
         </address><!-- /#about -->
     </footer><!-- /#contentinfo -->
 
@@ -145,6 +174,9 @@ bug</a> to work&nbsp;on.</p>
         var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
     })();
     </script>
+    <script src="//static.getclicky.com/js" type="text/javascript"></script>
+    <script type="text/javascript">try{ clicky.init(100846713); }catch(e){}</script>
+    <noscript><p><img alt="Clicky" width="1" height="1" src="//in.getclicky.com/100846713ns.gif" /></p></noscript>
 <script type="text/javascript">
     var disqus_shortname = 'clokep';
     (function () {

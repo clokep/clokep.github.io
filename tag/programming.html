@@ -28,13 +28,13 @@
             <div class="social">
                 <h2>social</h2>
                 <ul>
-                    <li><a href="http://patrick.cloke.us/feeds/atom.xml" type="application/atom+xml" rel="alternate">atom feed</a></li>
-                    <li><a href="http://patrick.cloke.us/feeds/rss.xml" type="application/rss+xml" rel="alternate">rss feed</a></li>
-
                     <li><a href="https://www.twitter.com/clokep" target="_blank">twitter</a></li>
                     <li><a href="https://bitbucket.org/clokep" target="_blank">bitbucket</a></li>
                     <li><a href="https://www.github.com/clokep" target="_blank">github</a></li>
                     <li><a href="https://mozillians.org/u/clokep/" target="_blank">mozillians</a></li>
+
+                    <li><a href="http://patrick.cloke.us/feeds/atom.xml" type="application/atom+xml" rel="alternate">atom feed</a></li>
+                    <li><a href="http://patrick.cloke.us/feeds/rss.xml" type="application/rss+xml" rel="alternate">rss feed</a></li>
                 </ul>
             </div><!-- /.social -->
         </section><!-- /#extras -->
@@ -67,16 +67,47 @@
         <aside id="featured" class="body">
         <article>
             <h1 class="entry-title"><a href="http://patrick.cloke.us/posts/2014/04/27/extending-javascript-maps-or-other/">Extending JavaScript Maps (or other built-in&nbsp;objects)</a></h1>
-<footer class="post-info">
-    <abbr class="published" title="2014-04-27T13:46:00">
-        Published: 04/27/2014 01:46 PM EST
-    </abbr>
+<footer class="post-info-container">
+    <div class="post-info-top">
+    </div>
 
-    <address class="vcard author">
-        By             <a class="url fn" href="http://patrick.cloke.us/pages/about.html">Patrick Cloke</a>
-    </address>
+    <!-- Second div is to change the background color again. -->
+    <div class="post-info-bg">
+    <div class="post-info">
+        <div id="gravatar" style="background-image: url('http://www.gravatar.com/avatar/130405f65521b6ee6bbbe0204070a163');">
+        </div>
 
-<p>tags: <a href="http://patrick.cloke.us/tag/instantbird.html">Instantbird</a> <a href="http://patrick.cloke.us/tag/programming.html">programming</a> <a href="http://patrick.cloke.us/tag/specifications.html">specifications</a> <a href="http://patrick.cloke.us/tag/thunderbird.html">Thunderbird</a> <a href="http://patrick.cloke.us/tag/wat.html">Wat</a> </p>
+        <abbr class="published" title="2014-04-27T13:46:00">
+            Published: 04/27/2014 01:46 PM EST
+        </abbr>
+
+        <address class="vcard author">
+            By                 <a class="url fn" href="http://patrick.cloke.us/pages/about.html">Patrick Cloke</a>
+        </address>
+
+
+        <div id="tag-list">
+            tags:                 <a href="http://patrick.cloke.us/tag/instantbird.html">Instantbird</a>
+                <a href="http://patrick.cloke.us/tag/programming.html">programming</a>
+                <a href="http://patrick.cloke.us/tag/specifications.html">specifications</a>
+                <a href="http://patrick.cloke.us/tag/thunderbird.html">Thunderbird</a>
+                <a href="http://patrick.cloke.us/tag/wat.html">Wat</a>
+        </div>
+
+        
+
+        <div id="post-share-links" class="social">
+            share:
+            <a href="http://twitter.com/home?status=Extending%20JavaScript%20Maps%20%28or%20other%20built-in%C2%A0objects%29%20http%3A//patrick.cloke.us/posts/2014/04/27/extending-javascript-maps-or-other/" target="_blank" title="Share on Twitter">Twitter</a>
+            <a href="http://www.facebook.com/sharer/sharer.php?s=100&amp;p%5Burl%5D=http%3A//patrick.cloke.us/posts/2014/04/27/extending-javascript-maps-or-other/" target="_blank" title="Share on Facebook">Facebook</a>
+            <a href="https://plus.google.com/share?url=http%3A//patrick.cloke.us/posts/2014/04/27/extending-javascript-maps-or-other/" target="_blank" title="Share on Google Plus">Google+</a>
+            <a href="mailto:?subject=Extending%20JavaScript%20Maps%20%28or%20other%20built-in%C2%A0objects%29&amp;body=http%3A//patrick.cloke.us/posts/2014/04/27/extending-javascript-maps-or-other/" target="_blank" title="Share via Email">Email</a>
+        </div>
+    </div>
+    </div>
+
+    <div class="post-info-bottom">
+    </div>
 </footer><!-- /.post-info -->
 <p>Finally another technical post, this one is about my adventures in
 attempting to extend the built-in <a class="reference external" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Map">Map</a> object in JavaScript to extend
@@ -245,7 +276,7 @@ expected, but they’re uhh…not up anywhere yet though. Oops.</td></tr>
 </tbody>
 </table>
 </div>
-<p>There are <a href="http://patrick.cloke.us/posts/2014/04/27/extending-javascript-maps-or-other/#disqus_thread">comments</a>.</p>        </article>
+<p><a href="http://patrick.cloke.us/posts/2014/04/27/extending-javascript-maps-or-other/#disqus_thread">comments</a></p>        </article>
         </aside><!-- /#featured -->
         <section id="content" class="body">
             <h1>Other articles</h1>
@@ -268,14 +299,21 @@ expected, but they’re uhh…not up anywhere yet though. Oops.</td></tr>
         By             <a class="url fn" href="http://patrick.cloke.us/pages/about.html">Patrick Cloke</a>
     </address>
 
-<p>tags: <a href="http://patrick.cloke.us/tag/customizing.html">customizing</a> <a href="http://patrick.cloke.us/tag/instantbird.html">Instantbird</a> <a href="http://patrick.cloke.us/tag/programming.html">programming</a> </p>
+
+    <p>
+        tags:             <a href="http://patrick.cloke.us/tag/customizing.html">customizing</a>
+            <a href="http://patrick.cloke.us/tag/instantbird.html">Instantbird</a>
+            <a href="http://patrick.cloke.us/tag/programming.html">programming</a>
+    </p>
+
+    
 </footer><!-- /.post-info -->        <p>There was a <a class="reference external" href="https://bugzilla.instantbird.org/show_bug.cgi?id=987">request</a> on the Instantbird Bugzilla to always show
 contacts in the contact list as the &quot;big&quot; contact (as shown when a
 contact is selected).&nbsp; Similarly to my <a class="reference external" href="http://patrick.cloke.us/posts/2011/10/31/instantbird-contact-list-hack/">last post</a>, this can easily be
 done with userChrome.css.&nbsp; See the post if you don&#8217;t know what
 userChrome ...</p>
         <a class="readmore" href="http://patrick.cloke.us/posts/2012/01/15/instantbird-contact-list-hack-2/">read more &rarr;</a>
-<p>There are <a href="http://patrick.cloke.us/posts/2012/01/15/instantbird-contact-list-hack-2/#disqus_thread">comments</a>.</p>        </div><!-- /.entry-content -->
+<p><a href="http://patrick.cloke.us/posts/2012/01/15/instantbird-contact-list-hack-2/#disqus_thread">comments</a></p>        </div><!-- /.entry-content -->
         </article></li>
 
         <li><article class="hentry">
@@ -294,14 +332,21 @@ userChrome ...</p>
         By             <a class="url fn" href="http://patrick.cloke.us/pages/about.html">Patrick Cloke</a>
     </address>
 
-<p>tags: <a href="http://patrick.cloke.us/tag/customizing.html">customizing</a> <a href="http://patrick.cloke.us/tag/instantbird.html">Instantbird</a> <a href="http://patrick.cloke.us/tag/programming.html">programming</a> </p>
+
+    <p>
+        tags:             <a href="http://patrick.cloke.us/tag/customizing.html">customizing</a>
+            <a href="http://patrick.cloke.us/tag/instantbird.html">Instantbird</a>
+            <a href="http://patrick.cloke.us/tag/programming.html">programming</a>
+    </p>
+
+    
 </footer><!-- /.post-info -->        <p>A friend of mine asked me if there was a way to have selected contacts
 in the contact list <span class="caps">NOT</span> expand to two lines (where the status goes onto
 the second line) in&nbsp;Instantbird.</p>
 <p>There&#8217;s actually no option to do this in Instantbird, but with a
 little <a class="reference external" href="http://www-archive.mozilla.org/unix/customizing.html">userChrome</a> tweak ...</p>
         <a class="readmore" href="http://patrick.cloke.us/posts/2011/10/31/instantbird-contact-list-hack/">read more &rarr;</a>
-<p>There are <a href="http://patrick.cloke.us/posts/2011/10/31/instantbird-contact-list-hack/#disqus_thread">comments</a>.</p>        </div><!-- /.entry-content -->
+<p><a href="http://patrick.cloke.us/posts/2011/10/31/instantbird-contact-list-hack/#disqus_thread">comments</a></p>        </div><!-- /.entry-content -->
         </article></li>
 
         <li><article class="hentry">
@@ -320,7 +365,14 @@ little <a class="reference external" href="http://www-archive.mozilla.org/unix/c
         By             <a class="url fn" href="http://patrick.cloke.us/pages/about.html">Patrick Cloke</a>
     </address>
 
-<p>tags: <a href="http://patrick.cloke.us/tag/instantbird.html">Instantbird</a> <a href="http://patrick.cloke.us/tag/programming.html">programming</a> <a href="http://patrick.cloke.us/tag/sipe.html">SIPE</a> </p>
+
+    <p>
+        tags:             <a href="http://patrick.cloke.us/tag/instantbird.html">Instantbird</a>
+            <a href="http://patrick.cloke.us/tag/programming.html">programming</a>
+            <a href="http://patrick.cloke.us/tag/sipe.html">SIPE</a>
+    </p>
+
+    
 </footer><!-- /.post-info -->        
 <p>I had <a class="reference external" href="http://patrick.cloke.us/posts/2011/06/18/adding-new-protocol-sipeoffice/">previously talked about adding a protocol to Instantbird</a>,
 that focused on adding <span class="caps">SIPE</span> (Microsoft Office Communicator support).
@@ -328,7 +380,7 @@ Since then I’ve been slowly working on defeating <span class="caps">SIPE</span
 found a few flags that help us compile it easily in Instantbird: we can
 declare that we do <em>not ...</em></p>
         <a class="readmore" href="http://patrick.cloke.us/posts/2011/09/03/adding-protocol-to-instantbird-part-2/">read more &rarr;</a>
-<p>There are <a href="http://patrick.cloke.us/posts/2011/09/03/adding-protocol-to-instantbird-part-2/#disqus_thread">comments</a>.</p>        </div><!-- /.entry-content -->
+<p><a href="http://patrick.cloke.us/posts/2011/09/03/adding-protocol-to-instantbird-part-2/#disqus_thread">comments</a></p>        </div><!-- /.entry-content -->
         </article></li>
 
         <li><article class="hentry">
@@ -347,14 +399,21 @@ declare that we do <em>not ...</em></p>
         By             <a class="url fn" href="http://patrick.cloke.us/pages/about.html">Patrick Cloke</a>
     </address>
 
-<p>tags: <a href="http://patrick.cloke.us/tag/instantbird.html">Instantbird</a> <a href="http://patrick.cloke.us/tag/programming.html">programming</a> <a href="http://patrick.cloke.us/tag/sipe.html">SIPE</a> </p>
+
+    <p>
+        tags:             <a href="http://patrick.cloke.us/tag/instantbird.html">Instantbird</a>
+            <a href="http://patrick.cloke.us/tag/programming.html">programming</a>
+            <a href="http://patrick.cloke.us/tag/sipe.html">SIPE</a>
+    </p>
+
+    
 </footer><!-- /.post-info -->        <p><a class="reference external" href="http://en.wikipedia.org/wiki/Office_Communicator">Microsoft Office Communicator</a> is an instant messaging client that
 integrates into the <a class="reference external" href="http://en.wikipedia.org/wiki/Microsoft_Exchange_Server">Exchange Messaging Server</a> (the protocol behind it
 is an extended version of <span class="caps">SIP</span>/<span class="caps">SIMPLE</span>).&nbsp; Anyway, there&#8217;s a <a class="reference external" href="http://developer.pidgin.im/wiki/WhatIsLibpurple">libpurple</a>
 (i.e. the backend of <a class="reference external" href="http://instantbird.com/">Instantbird</a> and <a class="reference external" href="http://pidgin.im/">Pidgin</a>) protocol plug-in for
 <span class="caps">OCS</span> (Office Communicator Server) called <a class="reference external" href="http://sipe.sourceforge.net/"><span class="caps">SIPE</span></a>.&nbsp; (It&#8217;s ...</p>
         <a class="readmore" href="http://patrick.cloke.us/posts/2011/06/18/adding-new-protocol-sipeoffice/">read more &rarr;</a>
-<p>There are <a href="http://patrick.cloke.us/posts/2011/06/18/adding-new-protocol-sipeoffice/#disqus_thread">comments</a>.</p>        </div><!-- /.entry-content -->
+<p><a href="http://patrick.cloke.us/posts/2011/06/18/adding-new-protocol-sipeoffice/#disqus_thread">comments</a></p>        </div><!-- /.entry-content -->
         </article></li>
         </ol><!-- /#posts-list -->
 <p class="paginator">
@@ -367,6 +426,7 @@ is an extended version of <span class="caps">SIP</span>/<span class="caps">SIMPL
     <footer id="contentinfo" class="body">
         <address id="about" class="vcard body">
         Proudly powered by <a href="http://getpelican.com/">Pelican</a>, which takes great advantage of <a href="http://python.org">Python</a>.
+        Blog source available on <a href="https://github.com/clokep/clokep.github.io">GitHub</a>.
         </address><!-- /#about -->
     </footer><!-- /#contentinfo -->
 
@@ -380,6 +440,9 @@ is an extended version of <span class="caps">SIP</span>/<span class="caps">SIMPL
         var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
     })();
     </script>
+    <script src="//static.getclicky.com/js" type="text/javascript"></script>
+    <script type="text/javascript">try{ clicky.init(100846713); }catch(e){}</script>
+    <noscript><p><img alt="Clicky" width="1" height="1" src="//in.getclicky.com/100846713ns.gif" /></p></noscript>
 <script type="text/javascript">
     var disqus_shortname = 'clokep';
     (function () {

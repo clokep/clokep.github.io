@@ -28,13 +28,13 @@
             <div class="social">
                 <h2>social</h2>
                 <ul>
-                    <li><a href="http://patrick.cloke.us/feeds/atom.xml" type="application/atom+xml" rel="alternate">atom feed</a></li>
-                    <li><a href="http://patrick.cloke.us/feeds/rss.xml" type="application/rss+xml" rel="alternate">rss feed</a></li>
-
                     <li><a href="https://www.twitter.com/clokep" target="_blank">twitter</a></li>
                     <li><a href="https://bitbucket.org/clokep" target="_blank">bitbucket</a></li>
                     <li><a href="https://www.github.com/clokep" target="_blank">github</a></li>
                     <li><a href="https://mozillians.org/u/clokep/" target="_blank">mozillians</a></li>
+
+                    <li><a href="http://patrick.cloke.us/feeds/atom.xml" type="application/atom+xml" rel="alternate">atom feed</a></li>
+                    <li><a href="http://patrick.cloke.us/feeds/rss.xml" type="application/rss+xml" rel="alternate">rss feed</a></li>
                 </ul>
             </div><!-- /.social -->
         </section><!-- /#extras -->
@@ -61,16 +61,45 @@
     </header>
 
     <div class="entry-content">
-<footer class="post-info">
-    <abbr class="published" title="2012-01-15T10:00:00">
-        Published: 01/15/2012 10:00 AM EST
-    </abbr>
+<footer class="post-info-container">
+    <div class="post-info-top">
+    </div>
 
-    <address class="vcard author">
-        By             <a class="url fn" href="http://patrick.cloke.us/pages/about.html">Patrick Cloke</a>
-    </address>
+    <!-- Second div is to change the background color again. -->
+    <div class="post-info-bg">
+    <div class="post-info">
+        <div id="gravatar" style="background-image: url('http://www.gravatar.com/avatar/130405f65521b6ee6bbbe0204070a163');">
+        </div>
 
-<p>tags: <a href="http://patrick.cloke.us/tag/customizing.html">customizing</a> <a href="http://patrick.cloke.us/tag/instantbird.html">Instantbird</a> <a href="http://patrick.cloke.us/tag/programming.html">programming</a> </p>
+        <abbr class="published" title="2012-01-15T10:00:00">
+            Published: 01/15/2012 10:00 AM EST
+        </abbr>
+
+        <address class="vcard author">
+            By                 <a class="url fn" href="http://patrick.cloke.us/pages/about.html">Patrick Cloke</a>
+        </address>
+
+
+        <div id="tag-list">
+            tags:                 <a href="http://patrick.cloke.us/tag/customizing.html">customizing</a>
+                <a href="http://patrick.cloke.us/tag/instantbird.html">Instantbird</a>
+                <a href="http://patrick.cloke.us/tag/programming.html">programming</a>
+        </div>
+
+        
+
+        <div id="post-share-links" class="social">
+            share:
+            <a href="http://twitter.com/home?status=Instantbird%20Contact%20List%20Hack%C2%A0%232%20http%3A//patrick.cloke.us/posts/2012/01/15/instantbird-contact-list-hack-2/" target="_blank" title="Share on Twitter">Twitter</a>
+            <a href="http://www.facebook.com/sharer/sharer.php?s=100&amp;p%5Burl%5D=http%3A//patrick.cloke.us/posts/2012/01/15/instantbird-contact-list-hack-2/" target="_blank" title="Share on Facebook">Facebook</a>
+            <a href="https://plus.google.com/share?url=http%3A//patrick.cloke.us/posts/2012/01/15/instantbird-contact-list-hack-2/" target="_blank" title="Share on Google Plus">Google+</a>
+            <a href="mailto:?subject=Instantbird%20Contact%20List%20Hack%C2%A0%232&amp;body=http%3A//patrick.cloke.us/posts/2012/01/15/instantbird-contact-list-hack-2/" target="_blank" title="Share via Email">Email</a>
+        </div>
+    </div>
+    </div>
+
+    <div class="post-info-bottom">
+    </div>
 </footer><!-- /.post-info -->        <p>There was a <a class="reference external" href="https://bugzilla.instantbird.org/show_bug.cgi?id=987">request</a> on the Instantbird Bugzilla to always show
 contacts in the contact list as the &quot;big&quot; contact (as shown when a
 contact is selected).&nbsp; Similarly to my <a class="reference external" href="http://patrick.cloke.us/posts/2011/10/31/instantbird-contact-list-hack/">last post</a>, this can easily be
@@ -93,178 +122,20 @@ behavior), but of course your mileage might vary.&nbsp; Have&nbsp;fun!</p>
     </div><!-- /.entry-content -->
 
     <div class="comments">
-        <h2>5 Comments:</h2>
-        <ul id="comments-list">
-            <li id="comment-0rst">
-                <abbr class="published" title="2012-11-21T22:00:00">
-                    Commented: <a href="http://patrick.cloke.us/posts/2012/01/15/instantbird-contact-list-hack-2/#comment-0rst"
-                                  rel="bookmark" title="Permalink to this comment">11/21/2012 10:00 PM EST</a>
-                </abbr>
-
-                <address class="vcard author">
-                    By <a class="url fn" href="https://www.blogger.com/profile/14112477927795363957">                        RongYao
-</a>                </address>
-
-                <p>In&nbsp;addition&#8230;</p>
-<div class="highlight"><pre><span class="nt">group</span> <span class="p">{</span>
-<span class="k">font-size</span><span class="o">:</span> <span class="m">1em</span><span class="p">;</span>
-<span class="k">background-color</span><span class="o">:</span> <span class="m">#D6D6D5</span><span class="p">;</span>
-<span class="p">}</span>
-<span class="nt">contact</span> <span class="p">{</span>
-<span class="k">font-size</span><span class="o">:</span> <span class="m">1.1em</span><span class="p">;</span>
-<span class="k">font-weight</span><span class="o">:</span> <span class="k">bold</span><span class="p">;</span>
-<span class="k">overflow-y</span><span class="o">:</span> <span class="k">inherit</span><span class="p">;</span>
-<span class="k">background-color</span><span class="o">:</span> <span class="m">#D6D6D5</span><span class="p">;</span>
-<span class="p">}</span>
-<span class="nt">buddy</span> <span class="p">{</span>
-<span class="k">font-size</span><span class="o">:</span> <span class="m">1em</span><span class="p">;</span>
-<span class="p">}</span>
-</pre></div>
-<p>And background-color values can be removed. It is just like my miranda im buddy
-list now. Everything gray! Only thing I&#8217;m missing is the user icons in the&nbsp;list.</p>
-<p>I wanted to ask from where you know the name of the classes so you can modify
-them? Maybe not so smart question but lack of documentation about those stuff
-draws me&nbsp;back.</p>
-
-                            <ul id="comments-list">
-            <li id="comment-1rst">
-                <abbr class="published" title="2012-11-21T22:22:00">
-                    Commented: <a href="http://patrick.cloke.us/posts/2012/01/15/instantbird-contact-list-hack-2/#comment-1rst"
-                                  rel="bookmark" title="Permalink to this comment">11/21/2012 10:22 PM EST</a>
-                </abbr>
-
-                <address class="vcard author">
-                    By <a class="url fn" href="http://patrick.cloke.us">                        Patrick Cloke
-</a>                </address>
-
-                <p>I looked at the source, of course!&nbsp;:-D</p>
-<p>Specifically
-<a class="reference external" href="http://lxr.instantbird.org/instantbird/source/instantbird/content/blist.xul">http://lxr.instantbird.org/instantbird/source/instantbird/content/blist.xul</a> and
-related:
-<a class="reference external" href="http://lxr.instantbird.org/instantbird/source/instantbird/content/contact.xml">http://lxr.instantbird.org/instantbird/source/instantbird/content/contact.xml</a>
-and <a class="reference external" href="http://lxr.instantbird.org/instantbird/source/instantbird/content/group.xml">http://lxr.instantbird.org/instantbird/source/instantbird/content/group.xml</a></p>
-<p>I&#8217;d also certainly suggest hopping on <span class="caps">IRC</span> if you have any questions
-(#instantbird on&nbsp;irc.mozilla.org).</p>
-<p>I&#8217;m glad you found this&nbsp;useful!</p>
-
-                            <ul id="comments-list">
-            <li id="comment-2rst">
-                <abbr class="published" title="2012-11-22T10:15:00">
-                    Commented: <a href="http://patrick.cloke.us/posts/2012/01/15/instantbird-contact-list-hack-2/#comment-2rst"
-                                  rel="bookmark" title="Permalink to this comment">11/22/2012 10:15 AM EST</a>
-                </abbr>
-
-                <address class="vcard author">
-                    By <a class="url fn" href="https://www.blogger.com/profile/14112477927795363957">                        RongYao
-</a>                </address>
-
-                <p>Facepalm! Of course the source, logical, when the project is open sourced, I
-knew it was not a smart question. Thank you very much for the info and the
-links! Lovely! I will jump to <span class="caps">IRC</span> channel for&nbsp;sure.</p>
-
-            </li>
-        </ul>
-
-            </li>
-        </ul>
-
-            </li>
-        </ul>
-        <ul id="comments-list">
-            <li id="comment-3rst">
-                <abbr class="published" title="2012-11-24T13:12:00">
-                    Commented: <a href="http://patrick.cloke.us/posts/2012/01/15/instantbird-contact-list-hack-2/#comment-3rst"
-                                  rel="bookmark" title="Permalink to this comment">11/24/2012 01:12 PM EST</a>
-                </abbr>
-
-                <address class="vcard author">
-                    By <a class="url fn" href="https://www.blogger.com/profile/14112477927795363957">                        RongYao
-</a>                </address>
-
-                <p>Thank to you I revamp the list totally. Starting to like instantbird more and
-more. Posting it here so others who find your blog to see&nbsp;it.</p>
-<p>New buddy&nbsp;list.</p>
-<ol class="arabic simple">
-<li>Its expanded as in your&nbsp;example</li>
-<li>With gray background same as the <span class="caps">UI</span>&nbsp;color.</li>
-<li>When you hover or select a contact it becomes with blue background and white
-text, also expanding the buddy does the same color&nbsp;behaviour.</li>
-<li>Remembers the highlighted selected contact, while you hovering the others
-which also gets&nbsp;highlited.</li>
-<li>When you remove the mouse from that contact and hover another, 1st one gets
-black text on blue background, while still selected but not on focus, newly
-hovered one, focused contacts, gets white&nbsp;text.</li>
-<li>Also has bigger&nbsp;fonts.</li>
-<li>1px rounded blue highlitght, makes it more&nbsp;smooth.</li>
-</ol>
-<p>;)
-<span class="caps">YEY</span> for the open source&nbsp;software.</p>
-<div class="highlight"><pre><span class="c">/* Expand all contacts to the big contact. */</span>
-<span class="nt">contact</span> <span class="p">{</span>
-<span class="o">-</span><span class="n">moz</span><span class="o">-</span><span class="n">binding</span><span class="o">:</span> <span class="sx">url(&quot;chrome://instantbird/content/contact.xml#contact-big&quot;)</span> <span class="cp">!important</span><span class="p">;</span>
-<span class="o">-</span><span class="n">moz</span><span class="o">-</span><span class="n">box</span><span class="o">-</span><span class="n">orient</span><span class="o">:</span> <span class="n">vertical</span> <span class="cp">!important</span><span class="p">;</span>
-<span class="o">-</span><span class="n">moz</span><span class="o">-</span><span class="n">box</span><span class="o">-</span><span class="n">align</span><span class="o">:</span> <span class="n">stretch</span> <span class="cp">!important</span><span class="p">;</span>
-<span class="p">}</span>
-<span class="nt">group</span> <span class="p">{</span>
-<span class="k">font-size</span><span class="o">:</span> <span class="m">1em</span> <span class="cp">!important</span><span class="p">;</span>
-<span class="k">background-color</span><span class="o">:</span> <span class="o">-</span><span class="n">moz</span><span class="o">-</span><span class="n">Dialog</span> <span class="cp">!important</span><span class="p">;</span>
-<span class="p">}</span>
-<span class="nt">contact</span> <span class="p">{</span>
-<span class="k">font-size</span><span class="o">:</span> <span class="m">1.1em</span> <span class="cp">!important</span><span class="p">;</span>
-<span class="k">font-weight</span><span class="o">:</span> <span class="k">bold</span> <span class="cp">!important</span><span class="p">;</span>
-<span class="k">overflow-y</span><span class="o">:</span> <span class="k">inherit</span> <span class="cp">!important</span><span class="p">;</span>
-<span class="k">background</span><span class="o">:</span> <span class="o">-</span><span class="n">moz</span><span class="o">-</span><span class="n">Dialog</span><span class="p">;</span>
-<span class="p">}</span>
-<span class="nt">contact</span><span class="o">[</span><span class="nt">selected</span><span class="o">=</span><span class="s2">&quot;true&quot;</span><span class="o">]</span> <span class="p">{</span>
-<span class="k">border</span><span class="o">-</span><span class="n">radius</span><span class="o">:</span> <span class="m">3px</span> <span class="cp">!important</span><span class="p">;</span>
-<span class="k">color</span><span class="o">:</span> <span class="n">HighlightText</span><span class="p">;</span>
-<span class="k">background</span><span class="o">:</span> <span class="n">Highlight</span> <span class="cp">!important</span><span class="p">;</span>
-<span class="p">}</span>
-<span class="nt">contact</span><span class="nd">:not</span><span class="o">([</span><span class="nt">selected</span><span class="o">=</span><span class="s2">&quot;true&quot;</span><span class="o">])</span> <span class="p">{</span>
-<span class="k">background</span><span class="o">:</span> <span class="o">-</span><span class="n">moz</span><span class="o">-</span><span class="n">Dialog</span> <span class="cp">!important</span><span class="p">;</span>
-<span class="p">}</span>
-<span class="nt">contact</span><span class="nd">:focus</span><span class="o">([</span><span class="nt">selected</span><span class="o">=</span><span class="s2">&quot;true&quot;</span><span class="o">])</span> <span class="p">{</span>
-<span class="k">background</span><span class="o">:</span> <span class="o">-</span><span class="n">moz</span><span class="o">-</span><span class="n">Dialog</span> <span class="cp">!important</span><span class="p">;</span>
-<span class="k">border</span><span class="o">-</span><span class="n">radius</span><span class="o">:</span> <span class="m">3px</span> <span class="cp">!important</span><span class="p">;</span>
-<span class="p">}</span>
-<span class="nt">contact</span><span class="nd">:hover</span><span class="p">{</span>
-<span class="k">background</span><span class="o">:</span> <span class="n">Highlight</span> <span class="cp">!important</span><span class="p">;</span>
-<span class="k">color</span><span class="o">:</span> <span class="n">HighlightText</span> <span class="cp">!important</span><span class="p">;</span>
-<span class="k">border</span><span class="o">-</span><span class="n">radius</span><span class="o">:</span> <span class="m">3px</span> <span class="cp">!important</span><span class="p">;</span>
-<span class="p">}</span>
-<span class="nt">buddy</span> <span class="p">{</span>
-<span class="k">font-size</span><span class="o">:</span> <span class="m">1em</span> <span class="cp">!important</span><span class="p">;</span>
-<span class="k">background</span><span class="o">:</span> <span class="n">Highlight</span> <span class="cp">!important</span><span class="p">;</span>
-<span class="k">overflow-y</span><span class="o">:</span> <span class="k">inherit</span> <span class="cp">!important</span><span class="p">;</span>
-<span class="p">}</span>
-<span class="nt">conv</span> <span class="p">{</span>
-<span class="k">font-size</span><span class="o">:</span> <span class="m">1.1em</span> <span class="cp">!important</span><span class="p">;</span>
-<span class="k">font-weight</span><span class="o">:</span> <span class="k">bold</span> <span class="cp">!important</span><span class="p">;</span>
-<span class="k">overflow-y</span><span class="o">:</span> <span class="k">inherit</span> <span class="cp">!important</span><span class="p">;</span>
-<span class="k">background</span><span class="o">:</span> <span class="o">-</span><span class="n">moz</span><span class="o">-</span><span class="n">Dialog</span><span class="p">;</span>
-<span class="p">}</span>
-</pre></div>
-
-                            <ul id="comments-list">
-            <li id="comment-4rst">
-                <abbr class="published" title="2012-11-24T13:38:00">
-                    Commented: <a href="http://patrick.cloke.us/posts/2012/01/15/instantbird-contact-list-hack-2/#comment-4rst"
-                                  rel="bookmark" title="Permalink to this comment">11/24/2012 01:38 PM EST</a>
-                </abbr>
-
-                <address class="vcard author">
-                    By <a class="url fn" href="https://www.blogger.com/profile/14112477927795363957">                        RongYao
-</a>                </address>
-
-                <p>Screenshot: <a class="reference external" href="http://i48.tinypic.com/20uubzr.png">http://i48.tinypic.com/20uubzr.png</a></p>
-
-            </li>
-        </ul>
-
-            </li>
-        </ul>
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+    var disqus_shortname = 'clokep';
+    var disqus_identifier = 'instantbird-contact-list-hack-2';
+    var disqus_url = 'http://patrick.cloke.us/posts/2012/01/15/instantbird-contact-list-hack-2/';
+    var disqus_title = 'Instantbird Contact List Hack #2';
+    (function() {
+    var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+    dsq.src = '//clokep.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the comments.</noscript>
     </div>
-
   </article>
 </section>
     </div>
@@ -272,6 +143,7 @@ hovered one, focused contacts, gets white&nbsp;text.</li>
     <footer id="contentinfo" class="body">
         <address id="about" class="vcard body">
         Proudly powered by <a href="http://getpelican.com/">Pelican</a>, which takes great advantage of <a href="http://python.org">Python</a>.
+        Blog source available on <a href="https://github.com/clokep/clokep.github.io">GitHub</a>.
         </address><!-- /#about -->
     </footer><!-- /#contentinfo -->
 
@@ -285,6 +157,9 @@ hovered one, focused contacts, gets white&nbsp;text.</li>
         var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
     })();
     </script>
+    <script src="//static.getclicky.com/js" type="text/javascript"></script>
+    <script type="text/javascript">try{ clicky.init(100846713); }catch(e){}</script>
+    <noscript><p><img alt="Clicky" width="1" height="1" src="//in.getclicky.com/100846713ns.gif" /></p></noscript>
 <script type="text/javascript">
     var disqus_shortname = 'clokep';
     (function () {

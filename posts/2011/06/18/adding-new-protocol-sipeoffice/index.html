@@ -28,13 +28,13 @@
             <div class="social">
                 <h2>social</h2>
                 <ul>
-                    <li><a href="http://patrick.cloke.us/feeds/atom.xml" type="application/atom+xml" rel="alternate">atom feed</a></li>
-                    <li><a href="http://patrick.cloke.us/feeds/rss.xml" type="application/rss+xml" rel="alternate">rss feed</a></li>
-
                     <li><a href="https://www.twitter.com/clokep" target="_blank">twitter</a></li>
                     <li><a href="https://bitbucket.org/clokep" target="_blank">bitbucket</a></li>
                     <li><a href="https://www.github.com/clokep" target="_blank">github</a></li>
                     <li><a href="https://mozillians.org/u/clokep/" target="_blank">mozillians</a></li>
+
+                    <li><a href="http://patrick.cloke.us/feeds/atom.xml" type="application/atom+xml" rel="alternate">atom feed</a></li>
+                    <li><a href="http://patrick.cloke.us/feeds/rss.xml" type="application/rss+xml" rel="alternate">rss feed</a></li>
                 </ul>
             </div><!-- /.social -->
         </section><!-- /#extras -->
@@ -61,16 +61,45 @@
     </header>
 
     <div class="entry-content">
-<footer class="post-info">
-    <abbr class="published" title="2011-06-18T21:53:00">
-        Published: 06/18/2011 09:53 PM EST
-    </abbr>
+<footer class="post-info-container">
+    <div class="post-info-top">
+    </div>
 
-    <address class="vcard author">
-        By             <a class="url fn" href="http://patrick.cloke.us/pages/about.html">Patrick Cloke</a>
-    </address>
+    <!-- Second div is to change the background color again. -->
+    <div class="post-info-bg">
+    <div class="post-info">
+        <div id="gravatar" style="background-image: url('http://www.gravatar.com/avatar/130405f65521b6ee6bbbe0204070a163');">
+        </div>
 
-<p>tags: <a href="http://patrick.cloke.us/tag/instantbird.html">Instantbird</a> <a href="http://patrick.cloke.us/tag/programming.html">programming</a> <a href="http://patrick.cloke.us/tag/sipe.html">SIPE</a> </p>
+        <abbr class="published" title="2011-06-18T21:53:00">
+            Published: 06/18/2011 09:53 PM EST
+        </abbr>
+
+        <address class="vcard author">
+            By                 <a class="url fn" href="http://patrick.cloke.us/pages/about.html">Patrick Cloke</a>
+        </address>
+
+
+        <div id="tag-list">
+            tags:                 <a href="http://patrick.cloke.us/tag/instantbird.html">Instantbird</a>
+                <a href="http://patrick.cloke.us/tag/programming.html">programming</a>
+                <a href="http://patrick.cloke.us/tag/sipe.html">SIPE</a>
+        </div>
+
+        
+
+        <div id="post-share-links" class="social">
+            share:
+            <a href="http://twitter.com/home?status=Adding%20a%20new%20protocol%20%28SIPE/Office%20Communicator%29%20to%20Instantbird%20%28part%C2%A01%29%20http%3A//patrick.cloke.us/posts/2011/06/18/adding-new-protocol-sipeoffice/" target="_blank" title="Share on Twitter">Twitter</a>
+            <a href="http://www.facebook.com/sharer/sharer.php?s=100&amp;p%5Burl%5D=http%3A//patrick.cloke.us/posts/2011/06/18/adding-new-protocol-sipeoffice/" target="_blank" title="Share on Facebook">Facebook</a>
+            <a href="https://plus.google.com/share?url=http%3A//patrick.cloke.us/posts/2011/06/18/adding-new-protocol-sipeoffice/" target="_blank" title="Share on Google Plus">Google+</a>
+            <a href="mailto:?subject=Adding%20a%20new%20protocol%20%28SIPE/Office%20Communicator%29%20to%20Instantbird%20%28part%C2%A01%29&amp;body=http%3A//patrick.cloke.us/posts/2011/06/18/adding-new-protocol-sipeoffice/" target="_blank" title="Share via Email">Email</a>
+        </div>
+    </div>
+    </div>
+
+    <div class="post-info-bottom">
+    </div>
 </footer><!-- /.post-info -->        <p><a class="reference external" href="http://en.wikipedia.org/wiki/Office_Communicator">Microsoft Office Communicator</a> is an instant messaging client that
 integrates into the <a class="reference external" href="http://en.wikipedia.org/wiki/Microsoft_Exchange_Server">Exchange Messaging Server</a> (the protocol behind it
 is an extended version of <span class="caps">SIP</span>/<span class="caps">SIMPLE</span>).&nbsp; Anyway, there&#8217;s a <a class="reference external" href="http://developer.pidgin.im/wiki/WhatIsLibpurple">libpurple</a>
@@ -108,20 +137,20 @@ that&#8217;s where I&#8217;m at now.&nbsp; I&#8217;ll post back when I get&nbsp;
     </div><!-- /.entry-content -->
 
     <div class="comments">
-        <div id="disqus_thread"></div>
-        <script type="text/javascript">
-            var disqus_shortname = 'clokep';
-            var disqus_identifier = 'posts/2011/06/18/adding-new-protocol-sipeoffice/';
-            var disqus_url = 'http://patrick.cloke.us/posts/2011/06/18/adding-new-protocol-sipeoffice/';
-            (function() {
-            var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
-            dsq.src = '//clokep.disqus.com/embed.js';
-            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
-            })();
-        </script>
-        <noscript>Please enable JavaScript to view the comments.</noscript>
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+    var disqus_shortname = 'clokep';
+    var disqus_identifier = 'adding-new-protocol-sipeoffice';
+    var disqus_url = 'http://patrick.cloke.us/posts/2011/06/18/adding-new-protocol-sipeoffice/';
+    var disqus_title = 'Adding a new protocol (SIPE/Office Communicator) to Instantbird (part 1)';
+    (function() {
+    var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+    dsq.src = '//clokep.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the comments.</noscript>
     </div>
-
   </article>
 </section>
     </div>
@@ -129,6 +158,7 @@ that&#8217;s where I&#8217;m at now.&nbsp; I&#8217;ll post back when I get&nbsp;
     <footer id="contentinfo" class="body">
         <address id="about" class="vcard body">
         Proudly powered by <a href="http://getpelican.com/">Pelican</a>, which takes great advantage of <a href="http://python.org">Python</a>.
+        Blog source available on <a href="https://github.com/clokep/clokep.github.io">GitHub</a>.
         </address><!-- /#about -->
     </footer><!-- /#contentinfo -->
 
@@ -142,6 +172,9 @@ that&#8217;s where I&#8217;m at now.&nbsp; I&#8217;ll post back when I get&nbsp;
         var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
     })();
     </script>
+    <script src="//static.getclicky.com/js" type="text/javascript"></script>
+    <script type="text/javascript">try{ clicky.init(100846713); }catch(e){}</script>
+    <noscript><p><img alt="Clicky" width="1" height="1" src="//in.getclicky.com/100846713ns.gif" /></p></noscript>
 <script type="text/javascript">
     var disqus_shortname = 'clokep';
     (function () {

@@ -28,13 +28,13 @@
             <div class="social">
                 <h2>social</h2>
                 <ul>
-                    <li><a href="http://patrick.cloke.us/feeds/atom.xml" type="application/atom+xml" rel="alternate">atom feed</a></li>
-                    <li><a href="http://patrick.cloke.us/feeds/rss.xml" type="application/rss+xml" rel="alternate">rss feed</a></li>
-
                     <li><a href="https://www.twitter.com/clokep" target="_blank">twitter</a></li>
                     <li><a href="https://bitbucket.org/clokep" target="_blank">bitbucket</a></li>
                     <li><a href="https://www.github.com/clokep" target="_blank">github</a></li>
                     <li><a href="https://mozillians.org/u/clokep/" target="_blank">mozillians</a></li>
+
+                    <li><a href="http://patrick.cloke.us/feeds/atom.xml" type="application/atom+xml" rel="alternate">atom feed</a></li>
+                    <li><a href="http://patrick.cloke.us/feeds/rss.xml" type="application/rss+xml" rel="alternate">rss feed</a></li>
                 </ul>
             </div><!-- /.social -->
         </section><!-- /#extras -->
@@ -73,16 +73,47 @@
     </header>
 
     <div class="entry-content">
-<footer class="post-info">
-    <abbr class="published" title="2014-04-27T13:46:00">
-        Published: 04/27/2014 01:46 PM EST
-    </abbr>
+<footer class="post-info-container">
+    <div class="post-info-top">
+    </div>
 
-    <address class="vcard author">
-        By             <a class="url fn" href="http://patrick.cloke.us/pages/about.html">Patrick Cloke</a>
-    </address>
+    <!-- Second div is to change the background color again. -->
+    <div class="post-info-bg">
+    <div class="post-info">
+        <div id="gravatar" style="background-image: url('http://www.gravatar.com/avatar/130405f65521b6ee6bbbe0204070a163');">
+        </div>
 
-<p>tags: <a href="http://patrick.cloke.us/tag/instantbird.html">Instantbird</a> <a href="http://patrick.cloke.us/tag/programming.html">programming</a> <a href="http://patrick.cloke.us/tag/specifications.html">specifications</a> <a href="http://patrick.cloke.us/tag/thunderbird.html">Thunderbird</a> <a href="http://patrick.cloke.us/tag/wat.html">Wat</a> </p>
+        <abbr class="published" title="2014-04-27T13:46:00">
+            Published: 04/27/2014 01:46 PM EST
+        </abbr>
+
+        <address class="vcard author">
+            By                 <a class="url fn" href="http://patrick.cloke.us/pages/about.html">Patrick Cloke</a>
+        </address>
+
+
+        <div id="tag-list">
+            tags:                 <a href="http://patrick.cloke.us/tag/instantbird.html">Instantbird</a>
+                <a href="http://patrick.cloke.us/tag/programming.html">programming</a>
+                <a href="http://patrick.cloke.us/tag/specifications.html">specifications</a>
+                <a href="http://patrick.cloke.us/tag/thunderbird.html">Thunderbird</a>
+                <a href="http://patrick.cloke.us/tag/wat.html">Wat</a>
+        </div>
+
+        
+
+        <div id="post-share-links" class="social">
+            share:
+            <a href="http://twitter.com/home?status=Extending%20JavaScript%20Maps%20%28or%20other%20built-in%C2%A0objects%29%20http%3A//patrick.cloke.us/posts/2014/04/27/extending-javascript-maps-or-other/" target="_blank" title="Share on Twitter">Twitter</a>
+            <a href="http://www.facebook.com/sharer/sharer.php?s=100&amp;p%5Burl%5D=http%3A//patrick.cloke.us/posts/2014/04/27/extending-javascript-maps-or-other/" target="_blank" title="Share on Facebook">Facebook</a>
+            <a href="https://plus.google.com/share?url=http%3A//patrick.cloke.us/posts/2014/04/27/extending-javascript-maps-or-other/" target="_blank" title="Share on Google Plus">Google+</a>
+            <a href="mailto:?subject=Extending%20JavaScript%20Maps%20%28or%20other%20built-in%C2%A0objects%29&amp;body=http%3A//patrick.cloke.us/posts/2014/04/27/extending-javascript-maps-or-other/" target="_blank" title="Share via Email">Email</a>
+        </div>
+    </div>
+    </div>
+
+    <div class="post-info-bottom">
+    </div>
 </footer><!-- /.post-info -->        
 <p>Finally another technical post, this one is about my adventures in
 attempting to extend the built-in <a class="reference external" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Map">Map</a> object in JavaScript to extend
@@ -255,60 +286,20 @@ expected, but they’re uhh…not up anywhere yet though. Oops.</td></tr>
     </div><!-- /.entry-content -->
 
     <div class="comments">
-        <h2>2 Comments:</h2>
-        <ul id="comments-list">
-            <li id="comment-0rst">
-                <abbr class="published" title="2014-04-28T23:18:00">
-                    Commented: <a href="http://patrick.cloke.us/posts/2014/04/27/extending-javascript-maps-or-other/#comment-0rst"
-                                  rel="bookmark" title="Permalink to this comment">04/28/2014 11:18 PM EST</a>
-                </abbr>
-
-                <address class="vcard author">
-                    By <a class="url fn" href="http://mook.wordpress.com/">                        mook
-</a>                </address>
-
-                <p>Hmm, bug 683218 is about removing __noSuchMethod__, but I guess there isn&#8217;t much
-going on there recently. Still, using proxies (as in, | new Proxy(&#8230;) | ) might
-be more future-proof. But the proxy <span class="caps">API</span> is a bit too low&nbsp;level&#8230;</p>
-<p>How does the __noSuchMethod__ deal with methods that need to&nbsp;normalize?</p>
-<p>Seeing your code now, make me think that you can probably get away&nbsp;with&#8230;</p>
-<div class="highlight"><pre><span class="kd">function</span> <span class="nx">NormalizedMap</span><span class="p">(</span><span class="nx">aNormalizeFunction</span><span class="p">,</span> <span class="nx">aIt</span> <span class="o">=</span> <span class="p">[])</span> <span class="p">{</span>
-    <span class="k">if</span> <span class="p">(</span><span class="k">typeof</span><span class="p">(</span><span class="nx">aNormalizeFunction</span><span class="p">)</span> <span class="o">!=</span> <span class="s2">&quot;function&quot;</span><span class="p">)</span>
-        <span class="k">throw</span> <span class="s2">&quot;NormalizedMap must have a normalize function!&quot;</span><span class="p">;</span>
-    <span class="kd">var</span> <span class="nx">m</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Map</span><span class="p">([[</span><span class="nx">aNormalizeFunction</span><span class="p">(</span><span class="nx">key</span><span class="p">),</span> <span class="nx">val</span><span class="p">]</span> <span class="k">for</span> <span class="p">([</span><span class="nx">key</span><span class="p">,</span> <span class="nx">val</span><span class="p">]</span> <span class="nx">of</span> <span class="nx">aIt</span><span class="p">)]);</span>
-    <span class="nx">m</span><span class="p">.</span><span class="nx">set</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(</span><span class="nx">k</span><span class="p">,</span> <span class="nx">v</span><span class="p">)</span> <span class="nx">Map</span><span class="p">.</span><span class="nx">prototype</span><span class="p">.</span><span class="nx">set</span><span class="p">.</span><span class="nx">call</span><span class="p">(</span><span class="k">this</span><span class="p">,</span> <span class="nx">aNormalizeFunction</span><span class="p">(</span><span class="nx">k</span><span class="p">),</span> <span class="nx">v</span><span class="p">);</span>
-    <span class="nx">m</span><span class="p">.</span><span class="nx">get</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(</span><span class="nx">k</span><span class="p">)</span> <span class="nx">Map</span><span class="p">.</span><span class="nx">prototype</span><span class="p">.</span><span class="nx">get</span><span class="p">.</span><span class="nx">call</span><span class="p">(</span><span class="k">this</span><span class="p">,</span> <span class="nx">aNormalizeFunction</span><span class="p">(</span><span class="nx">k</span><span class="p">));</span>
-    <span class="nx">m</span><span class="p">[</span><span class="s1">&#39;delete&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(</span><span class="nx">k</span><span class="p">)</span> <span class="nx">Map</span><span class="p">.</span><span class="nx">prototype</span><span class="p">[</span><span class="s1">&#39;delete&#39;</span><span class="p">].</span><span class="nx">call</span><span class="p">(</span><span class="k">this</span><span class="p">,</span> <span class="nx">aNormalizeFunction</span><span class="p">(</span><span class="nx">k</span><span class="p">));</span>
-    <span class="nx">m</span><span class="p">.</span><span class="nx">has</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(</span><span class="nx">k</span><span class="p">)</span> <span class="nx">Map</span><span class="p">.</span><span class="nx">prototype</span><span class="p">.</span><span class="nx">has</span><span class="p">.</span><span class="nx">call</span><span class="p">(</span><span class="k">this</span><span class="p">,</span> <span class="nx">aNormalizeFunction</span><span class="p">(</span><span class="nx">k</span><span class="p">));</span>
-    <span class="k">return</span> <span class="nx">m</span><span class="p">;</span>
-<span class="p">}</span>
-</pre></div>
-<p>Of course, this is bloatier (a different function for each instance of&nbsp;NormalizedMap)&#8230;</p>
-
-                            <ul id="comments-list">
-            <li id="comment-1rst">
-                <abbr class="published" title="2014-04-29T18:23:00">
-                    Commented: <a href="http://patrick.cloke.us/posts/2014/04/27/extending-javascript-maps-or-other/#comment-1rst"
-                                  rel="bookmark" title="Permalink to this comment">04/29/2014 06:23 PM EST</a>
-                </abbr>
-
-                <address class="vcard author">
-                    By <a class="url fn" href="http://patrick.cloke.us">                        Patrick Cloke
-</a>                </address>
-
-                <p>I hadn&#8217;t heard of the Proxy <span class="caps">API</span> although someone hinted it to me recently in
-#maildev. I&#8217;m going to check it out and probably write another post! Thanks for
-the&nbsp;feedback.</p>
-<p>I didn&#8217;t want to do your other suggestion because it creates the separate
-function for each one instead of a share prototype, as you&nbsp;suggest.</p>
-
-            </li>
-        </ul>
-
-            </li>
-        </ul>
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+    var disqus_shortname = 'clokep';
+    var disqus_identifier = 'extending-javascript-maps-or-other';
+    var disqus_url = 'http://patrick.cloke.us/posts/2014/04/27/extending-javascript-maps-or-other/';
+    var disqus_title = 'Extending JavaScript Maps (or other built-in objects)';
+    (function() {
+    var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+    dsq.src = '//clokep.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the comments.</noscript>
     </div>
-
   </article>
 </section>
     </div>
@@ -316,6 +307,7 @@ function for each one instead of a share prototype, as you&nbsp;suggest.</p>
     <footer id="contentinfo" class="body">
         <address id="about" class="vcard body">
         Proudly powered by <a href="http://getpelican.com/">Pelican</a>, which takes great advantage of <a href="http://python.org">Python</a>.
+        Blog source available on <a href="https://github.com/clokep/clokep.github.io">GitHub</a>.
         </address><!-- /#about -->
     </footer><!-- /#contentinfo -->
 
@@ -329,6 +321,9 @@ function for each one instead of a share prototype, as you&nbsp;suggest.</p>
         var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
     })();
     </script>
+    <script src="//static.getclicky.com/js" type="text/javascript"></script>
+    <script type="text/javascript">try{ clicky.init(100846713); }catch(e){}</script>
+    <noscript><p><img alt="Clicky" width="1" height="1" src="//in.getclicky.com/100846713ns.gif" /></p></noscript>
 <script type="text/javascript">
     var disqus_shortname = 'clokep';
     (function () {

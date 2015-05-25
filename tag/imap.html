@@ -28,13 +28,13 @@
             <div class="social">
                 <h2>social</h2>
                 <ul>
-                    <li><a href="http://patrick.cloke.us/feeds/atom.xml" type="application/atom+xml" rel="alternate">atom feed</a></li>
-                    <li><a href="http://patrick.cloke.us/feeds/rss.xml" type="application/rss+xml" rel="alternate">rss feed</a></li>
-
                     <li><a href="https://www.twitter.com/clokep" target="_blank">twitter</a></li>
                     <li><a href="https://bitbucket.org/clokep" target="_blank">bitbucket</a></li>
                     <li><a href="https://www.github.com/clokep" target="_blank">github</a></li>
                     <li><a href="https://mozillians.org/u/clokep/" target="_blank">mozillians</a></li>
+
+                    <li><a href="http://patrick.cloke.us/feeds/atom.xml" type="application/atom+xml" rel="alternate">atom feed</a></li>
+                    <li><a href="http://patrick.cloke.us/feeds/rss.xml" type="application/rss+xml" rel="alternate">rss feed</a></li>
                 </ul>
             </div><!-- /.social -->
         </section><!-- /#extras -->
@@ -55,16 +55,51 @@
         <aside id="featured" class="body">
         <article>
             <h1 class="entry-title"><a href="http://patrick.cloke.us/posts/2010/11/22/yahoo-thunderbird/">Yahoo <span class="amp">&amp;</span> Thunderbird Can Finally Play&nbsp;Nice?</a></h1>
-<footer class="post-info">
-    <abbr class="published" title="2010-11-22T23:03:00">
-        Published: 11/22/2010 11:03 PM EST
-    </abbr>
+<footer class="post-info-container">
+    <div class="post-info-top">
+    </div>
 
-    <address class="vcard author">
-        By             <a class="url fn" href="http://patrick.cloke.us/pages/about.html">Patrick Cloke</a>
-    </address>
+    <!-- Second div is to change the background color again. -->
+    <div class="post-info-bg">
+    <div class="post-info">
+        <div id="gravatar" style="background-image: url('http://www.gravatar.com/avatar/130405f65521b6ee6bbbe0204070a163');">
+        </div>
 
-<p>tags: <a href="http://patrick.cloke.us/tag/bugs.html">bugs</a> <a href="http://patrick.cloke.us/tag/email.html">email</a> <a href="http://patrick.cloke.us/tag/imap.html">IMAP</a> <a href="http://patrick.cloke.us/tag/mozilla.html">Mozilla</a> <a href="http://patrick.cloke.us/tag/pop3.html">POP3</a> <a href="http://patrick.cloke.us/tag/programming.html">programming</a> <a href="http://patrick.cloke.us/tag/smtp.html">SMTP</a> <a href="http://patrick.cloke.us/tag/thunderbird.html">Thunderbird</a> <a href="http://patrick.cloke.us/tag/yahoo.html">Yahoo</a> </p>
+        <abbr class="published" title="2010-11-22T23:03:00">
+            Published: 11/22/2010 11:03 PM EST
+        </abbr>
+
+        <address class="vcard author">
+            By                 <a class="url fn" href="http://patrick.cloke.us/pages/about.html">Patrick Cloke</a>
+        </address>
+
+
+        <div id="tag-list">
+            tags:                 <a href="http://patrick.cloke.us/tag/bugs.html">bugs</a>
+                <a href="http://patrick.cloke.us/tag/email.html">email</a>
+                <a href="http://patrick.cloke.us/tag/imap.html">IMAP</a>
+                <a href="http://patrick.cloke.us/tag/mozilla.html">Mozilla</a>
+                <a href="http://patrick.cloke.us/tag/pop3.html">POP3</a>
+                <a href="http://patrick.cloke.us/tag/programming.html">programming</a>
+                <a href="http://patrick.cloke.us/tag/smtp.html">SMTP</a>
+                <a href="http://patrick.cloke.us/tag/thunderbird.html">Thunderbird</a>
+                <a href="http://patrick.cloke.us/tag/yahoo.html">Yahoo</a>
+        </div>
+
+        
+
+        <div id="post-share-links" class="social">
+            share:
+            <a href="http://twitter.com/home?status=Yahoo%20%26%20Thunderbird%20Can%20Finally%20Play%C2%A0Nice%3F%20http%3A//patrick.cloke.us/posts/2010/11/22/yahoo-thunderbird/" target="_blank" title="Share on Twitter">Twitter</a>
+            <a href="http://www.facebook.com/sharer/sharer.php?s=100&amp;p%5Burl%5D=http%3A//patrick.cloke.us/posts/2010/11/22/yahoo-thunderbird/" target="_blank" title="Share on Facebook">Facebook</a>
+            <a href="https://plus.google.com/share?url=http%3A//patrick.cloke.us/posts/2010/11/22/yahoo-thunderbird/" target="_blank" title="Share on Google Plus">Google+</a>
+            <a href="mailto:?subject=Yahoo%20%26%20Thunderbird%20Can%20Finally%20Play%C2%A0Nice%3F&amp;body=http%3A//patrick.cloke.us/posts/2010/11/22/yahoo-thunderbird/" target="_blank" title="Share via Email">Email</a>
+        </div>
+    </div>
+    </div>
+
+    <div class="post-info-bottom">
+    </div>
 </footer><!-- /.post-info --><p>For years I&#8217;ve been dealing with Yahoo&#8217;s lack of support for any sort
 of decent (free) <span class="caps">POP3</span>/<span class="caps">IMAP</span>/<span class="caps">SMTP</span> protocol support.&nbsp; Why do I need this?
 So I can check my <a class="reference external" href="http://mail.yahoo.com/">Yahoo mail</a> in <a class="reference external" href="http://www.mozillamessaging.com/en-US/thunderbird/">Mozilla Thunderbird</a> of&nbsp;course!</p>
@@ -132,7 +167,7 @@ suggest using that&nbsp;former.</p>
 <p>Note that I&#8217;m currently suffering from <a class="reference external" href="https://bugzilla.mozilla.org/show_bug.cgi?id=610264">another bug</a> while using
 Yahoo <span class="caps">IMAP</span>.&nbsp; Everything works, there&#8217;s just an annoying pop-up
 occasionally about the error.&nbsp; Hopefully it will be fixed&nbsp;soon.</p>
-<p>There are <a href="http://patrick.cloke.us/posts/2010/11/22/yahoo-thunderbird/#disqus_thread">comments</a>.</p>        </article>
+<p><a href="http://patrick.cloke.us/posts/2010/11/22/yahoo-thunderbird/#disqus_thread">comments</a></p>        </article>
 <p class="paginator">
     Page 1 / 1
 </p>
@@ -142,6 +177,7 @@ occasionally about the error.&nbsp; Hopefully it will be fixed&nbsp;soon.</p>
     <footer id="contentinfo" class="body">
         <address id="about" class="vcard body">
         Proudly powered by <a href="http://getpelican.com/">Pelican</a>, which takes great advantage of <a href="http://python.org">Python</a>.
+        Blog source available on <a href="https://github.com/clokep/clokep.github.io">GitHub</a>.
         </address><!-- /#about -->
     </footer><!-- /#contentinfo -->
 
@@ -155,6 +191,9 @@ occasionally about the error.&nbsp; Hopefully it will be fixed&nbsp;soon.</p>
         var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
     })();
     </script>
+    <script src="//static.getclicky.com/js" type="text/javascript"></script>
+    <script type="text/javascript">try{ clicky.init(100846713); }catch(e){}</script>
+    <noscript><p><img alt="Clicky" width="1" height="1" src="//in.getclicky.com/100846713ns.gif" /></p></noscript>
 <script type="text/javascript">
     var disqus_shortname = 'clokep';
     (function () {

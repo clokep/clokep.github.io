@@ -28,13 +28,13 @@
             <div class="social">
                 <h2>social</h2>
                 <ul>
-                    <li><a href="http://patrick.cloke.us/feeds/atom.xml" type="application/atom+xml" rel="alternate">atom feed</a></li>
-                    <li><a href="http://patrick.cloke.us/feeds/rss.xml" type="application/rss+xml" rel="alternate">rss feed</a></li>
-
                     <li><a href="https://www.twitter.com/clokep" target="_blank">twitter</a></li>
                     <li><a href="https://bitbucket.org/clokep" target="_blank">bitbucket</a></li>
                     <li><a href="https://www.github.com/clokep" target="_blank">github</a></li>
                     <li><a href="https://mozillians.org/u/clokep/" target="_blank">mozillians</a></li>
+
+                    <li><a href="http://patrick.cloke.us/feeds/atom.xml" type="application/atom+xml" rel="alternate">atom feed</a></li>
+                    <li><a href="http://patrick.cloke.us/feeds/rss.xml" type="application/rss+xml" rel="alternate">rss feed</a></li>
                 </ul>
             </div><!-- /.social -->
         </section><!-- /#extras -->
@@ -61,16 +61,47 @@
     </header>
 
     <div class="entry-content">
-<footer class="post-info">
-    <abbr class="published" title="2013-06-28T18:05:00">
-        Published: 06/28/2013 06:05 PM EST
-    </abbr>
+<footer class="post-info-container">
+    <div class="post-info-top">
+    </div>
 
-    <address class="vcard author">
-        By             <a class="url fn" href="http://patrick.cloke.us/pages/about.html">Patrick Cloke</a>
-    </address>
+    <!-- Second div is to change the background color again. -->
+    <div class="post-info-bg">
+    <div class="post-info">
+        <div id="gravatar" style="background-image: url('http://www.gravatar.com/avatar/130405f65521b6ee6bbbe0204070a163');">
+        </div>
 
-<p>tags: <a href="http://patrick.cloke.us/tag/chat.html">chat</a> <a href="http://patrick.cloke.us/tag/gsoc.html">GSoC</a> <a href="http://patrick.cloke.us/tag/instant-messaging.html">instant messaging</a> <a href="http://patrick.cloke.us/tag/instantbird.html">Instantbird</a> <a href="http://patrick.cloke.us/tag/yahoo.html">Yahoo</a> </p>
+        <abbr class="published" title="2013-06-28T18:05:00">
+            Published: 06/28/2013 06:05 PM EST
+        </abbr>
+
+        <address class="vcard author">
+            By                 <a class="url fn" href="http://patrick.cloke.us/pages/about.html">Patrick Cloke</a>
+        </address>
+
+
+        <div id="tag-list">
+            tags:                 <a href="http://patrick.cloke.us/tag/chat.html">chat</a>
+                <a href="http://patrick.cloke.us/tag/gsoc.html">GSoC</a>
+                <a href="http://patrick.cloke.us/tag/instant-messaging.html">instant messaging</a>
+                <a href="http://patrick.cloke.us/tag/instantbird.html">Instantbird</a>
+                <a href="http://patrick.cloke.us/tag/yahoo.html">Yahoo</a>
+        </div>
+
+        
+
+        <div id="post-share-links" class="social">
+            share:
+            <a href="http://twitter.com/home?status=Mentoring%20Google%20Summer%20of%20Code%C2%A02013%20http%3A//patrick.cloke.us/posts/2013/06/28/mentoring-google-summer-of-code-2013/" target="_blank" title="Share on Twitter">Twitter</a>
+            <a href="http://www.facebook.com/sharer/sharer.php?s=100&amp;p%5Burl%5D=http%3A//patrick.cloke.us/posts/2013/06/28/mentoring-google-summer-of-code-2013/" target="_blank" title="Share on Facebook">Facebook</a>
+            <a href="https://plus.google.com/share?url=http%3A//patrick.cloke.us/posts/2013/06/28/mentoring-google-summer-of-code-2013/" target="_blank" title="Share on Google Plus">Google+</a>
+            <a href="mailto:?subject=Mentoring%20Google%20Summer%20of%20Code%C2%A02013&amp;body=http%3A//patrick.cloke.us/posts/2013/06/28/mentoring-google-summer-of-code-2013/" target="_blank" title="Share via Email">Email</a>
+        </div>
+    </div>
+    </div>
+
+    <div class="post-info-bottom">
+    </div>
 </footer><!-- /.post-info -->        <p>I&#8217;m officially a mentor this year for <a class="reference external" href="http://www.google-melange.com/gsoc/homepage/google/gsoc2013">2013&#8217;s Google Summer of Code</a>.
 I&#8217;m a bit late on posting this, but oh well! My student this year is
 <a class="reference external" href="http://phaseshiftsoftware.com/">Quentin Headen</a> who is <a class="reference external" href="http://www.google-melange.com/gsoc/project/google/gsoc2013/qheaden/26001">working on</a> a <a class="reference external" href="http://en.wikipedia.org/wiki/Yahoo!_Messenger_Protocol">Yahoo! Messenger protocol</a>
@@ -106,20 +137,20 @@ in <a class="reference external" href="http://blog.gerv.net/2013/06/gsoc-2013-pr
     </div><!-- /.entry-content -->
 
     <div class="comments">
-        <div id="disqus_thread"></div>
-        <script type="text/javascript">
-            var disqus_shortname = 'clokep';
-            var disqus_identifier = 'posts/2013/06/28/mentoring-google-summer-of-code-2013/';
-            var disqus_url = 'http://patrick.cloke.us/posts/2013/06/28/mentoring-google-summer-of-code-2013/';
-            (function() {
-            var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
-            dsq.src = '//clokep.disqus.com/embed.js';
-            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
-            })();
-        </script>
-        <noscript>Please enable JavaScript to view the comments.</noscript>
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+    var disqus_shortname = 'clokep';
+    var disqus_identifier = 'mentoring-google-summer-of-code-2013';
+    var disqus_url = 'http://patrick.cloke.us/posts/2013/06/28/mentoring-google-summer-of-code-2013/';
+    var disqus_title = 'Mentoring Google Summer of Code 2013';
+    (function() {
+    var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+    dsq.src = '//clokep.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the comments.</noscript>
     </div>
-
   </article>
 </section>
     </div>
@@ -127,6 +158,7 @@ in <a class="reference external" href="http://blog.gerv.net/2013/06/gsoc-2013-pr
     <footer id="contentinfo" class="body">
         <address id="about" class="vcard body">
         Proudly powered by <a href="http://getpelican.com/">Pelican</a>, which takes great advantage of <a href="http://python.org">Python</a>.
+        Blog source available on <a href="https://github.com/clokep/clokep.github.io">GitHub</a>.
         </address><!-- /#about -->
     </footer><!-- /#contentinfo -->
 
@@ -140,6 +172,9 @@ in <a class="reference external" href="http://blog.gerv.net/2013/06/gsoc-2013-pr
         var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
     })();
     </script>
+    <script src="//static.getclicky.com/js" type="text/javascript"></script>
+    <script type="text/javascript">try{ clicky.init(100846713); }catch(e){}</script>
+    <noscript><p><img alt="Clicky" width="1" height="1" src="//in.getclicky.com/100846713ns.gif" /></p></noscript>
 <script type="text/javascript">
     var disqus_shortname = 'clokep';
     (function () {

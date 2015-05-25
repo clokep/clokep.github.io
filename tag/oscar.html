@@ -28,13 +28,13 @@
             <div class="social">
                 <h2>social</h2>
                 <ul>
-                    <li><a href="http://patrick.cloke.us/feeds/atom.xml" type="application/atom+xml" rel="alternate">atom feed</a></li>
-                    <li><a href="http://patrick.cloke.us/feeds/rss.xml" type="application/rss+xml" rel="alternate">rss feed</a></li>
-
                     <li><a href="https://www.twitter.com/clokep" target="_blank">twitter</a></li>
                     <li><a href="https://bitbucket.org/clokep" target="_blank">bitbucket</a></li>
                     <li><a href="https://www.github.com/clokep" target="_blank">github</a></li>
                     <li><a href="https://mozillians.org/u/clokep/" target="_blank">mozillians</a></li>
+
+                    <li><a href="http://patrick.cloke.us/feeds/atom.xml" type="application/atom+xml" rel="alternate">atom feed</a></li>
+                    <li><a href="http://patrick.cloke.us/feeds/rss.xml" type="application/rss+xml" rel="alternate">rss feed</a></li>
                 </ul>
             </div><!-- /.social -->
         </section><!-- /#extras -->
@@ -55,16 +55,47 @@
         <aside id="featured" class="body">
         <article>
             <h1 class="entry-title"><a href="http://patrick.cloke.us/posts/2012/11/28/javascript-typed-arrays-pain/">JavaScript typed arrays&nbsp;pain</a></h1>
-<footer class="post-info">
-    <abbr class="published" title="2012-11-28T23:11:00">
-        Published: 11/28/2012 11:11 PM EST
-    </abbr>
+<footer class="post-info-container">
+    <div class="post-info-top">
+    </div>
 
-    <address class="vcard author">
-        By             <a class="url fn" href="http://patrick.cloke.us/pages/about.html">Patrick Cloke</a>
-    </address>
+    <!-- Second div is to change the background color again. -->
+    <div class="post-info-bg">
+    <div class="post-info">
+        <div id="gravatar" style="background-image: url('http://www.gravatar.com/avatar/130405f65521b6ee6bbbe0204070a163');">
+        </div>
 
-<p>tags: <a href="http://patrick.cloke.us/tag/instantbird.html">Instantbird</a> <a href="http://patrick.cloke.us/tag/mozilla.html">Mozilla</a> <a href="http://patrick.cloke.us/tag/oscar.html">OSCAR</a> <a href="http://patrick.cloke.us/tag/thunderbird.html">Thunderbird</a> <a href="http://patrick.cloke.us/tag/wat.html">Wat</a> </p>
+        <abbr class="published" title="2012-11-28T23:11:00">
+            Published: 11/28/2012 11:11 PM EST
+        </abbr>
+
+        <address class="vcard author">
+            By                 <a class="url fn" href="http://patrick.cloke.us/pages/about.html">Patrick Cloke</a>
+        </address>
+
+
+        <div id="tag-list">
+            tags:                 <a href="http://patrick.cloke.us/tag/instantbird.html">Instantbird</a>
+                <a href="http://patrick.cloke.us/tag/mozilla.html">Mozilla</a>
+                <a href="http://patrick.cloke.us/tag/oscar.html">OSCAR</a>
+                <a href="http://patrick.cloke.us/tag/thunderbird.html">Thunderbird</a>
+                <a href="http://patrick.cloke.us/tag/wat.html">Wat</a>
+        </div>
+
+        
+
+        <div id="post-share-links" class="social">
+            share:
+            <a href="http://twitter.com/home?status=JavaScript%20typed%20arrays%C2%A0pain%20http%3A//patrick.cloke.us/posts/2012/11/28/javascript-typed-arrays-pain/" target="_blank" title="Share on Twitter">Twitter</a>
+            <a href="http://www.facebook.com/sharer/sharer.php?s=100&amp;p%5Burl%5D=http%3A//patrick.cloke.us/posts/2012/11/28/javascript-typed-arrays-pain/" target="_blank" title="Share on Facebook">Facebook</a>
+            <a href="https://plus.google.com/share?url=http%3A//patrick.cloke.us/posts/2012/11/28/javascript-typed-arrays-pain/" target="_blank" title="Share on Google Plus">Google+</a>
+            <a href="mailto:?subject=JavaScript%20typed%20arrays%C2%A0pain&amp;body=http%3A//patrick.cloke.us/posts/2012/11/28/javascript-typed-arrays-pain/" target="_blank" title="Share via Email">Email</a>
+        </div>
+    </div>
+    </div>
+
+    <div class="post-info-bottom">
+    </div>
 </footer><!-- /.post-info --><p>If you&#8217;ve ever tried to deal with binary data in JavaScript you know
 it isn&#8217;t much fun and you usually resort to using strings lots of
 charCodeAt and related functions.&nbsp; <a class="reference external" href="https://developer.mozilla.org/en-US/docs/JavaScript_typed_arrays">Typed arrays</a> are supposed to solve
@@ -153,7 +184,7 @@ don&#8217;t use ArrayBufferViews, use DataViews.&nbsp; (Although Uint8Arrays and
 Int8Arrays should work&nbsp;fine!)</p>
 <p>And to not rant the <em>entire</em> time, working with typed arrays certainly
 does beat strings +&nbsp;charCodeAt!</p>
-<p>There are <a href="http://patrick.cloke.us/posts/2012/11/28/javascript-typed-arrays-pain/#disqus_thread">comments</a>.</p>        </article>
+<p><a href="http://patrick.cloke.us/posts/2012/11/28/javascript-typed-arrays-pain/#disqus_thread">comments</a></p>        </article>
 <p class="paginator">
     Page 1 / 1
 </p>
@@ -163,6 +194,7 @@ does beat strings +&nbsp;charCodeAt!</p>
     <footer id="contentinfo" class="body">
         <address id="about" class="vcard body">
         Proudly powered by <a href="http://getpelican.com/">Pelican</a>, which takes great advantage of <a href="http://python.org">Python</a>.
+        Blog source available on <a href="https://github.com/clokep/clokep.github.io">GitHub</a>.
         </address><!-- /#about -->
     </footer><!-- /#contentinfo -->
 
@@ -176,6 +208,9 @@ does beat strings +&nbsp;charCodeAt!</p>
         var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
     })();
     </script>
+    <script src="//static.getclicky.com/js" type="text/javascript"></script>
+    <script type="text/javascript">try{ clicky.init(100846713); }catch(e){}</script>
+    <noscript><p><img alt="Clicky" width="1" height="1" src="//in.getclicky.com/100846713ns.gif" /></p></noscript>
 <script type="text/javascript">
     var disqus_shortname = 'clokep';
     (function () {
