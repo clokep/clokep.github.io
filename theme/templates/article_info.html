@@ -32,6 +32,10 @@
         <div>In <a href="{{ SITEURL }}/{{ article.category.url }}">{{ article.category }}</a>.</div>
         {% endif %}
 
+        {% if article.author_gravatar %}
+        <div id="gravatar-clear"></div>
+        {% endif %}
+
         {% if article.tags %}
         <div id="tag-list">
             tags: {% for tag in article.tags %}
