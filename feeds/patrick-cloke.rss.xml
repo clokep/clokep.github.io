@@ -1,5 +1,54 @@
 <?xml version="1.0" encoding="utf-8"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Like bricks in the sky</title><link>http://patrick.cloke.us/</link><description></description><atom:link href="http://patrick.cloke.us/feeds/patrick-cloke.rss.xml" rel="self"></atom:link><lastBuildDate>Wed, 21 Jan 2015 13:18:00 -0500</lastBuildDate><item><title>Google Summer of Code 2015 Project Ideas for Mozilla</title><link>http://patrick.cloke.us/posts/2015/01/21/google-summer-of-code-2015-project-ideas-for-mozilla/</link><description>&lt;p&gt;As &lt;a class="reference external" href="http://blog.queze.net/post/2015/01/22/Project-ideas-wanted-for-Summer-of-Code-2015"&gt;Florian announced&lt;/a&gt; last Thursday, &lt;strong&gt;now&lt;/strong&gt; is the time to brainstorm and
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Like bricks in the sky</title><link>http://patrick.cloke.us/</link><description></description><atom:link href="http://patrick.cloke.us/feeds/patrick-cloke.rss.xml" rel="self"></atom:link><lastBuildDate>Sat, 30 May 2015 13:59:00 -0400</lastBuildDate><item><title>New Position in Cyber Security at Percipient Networks</title><link>http://patrick.cloke.us/posts/2015/05/30/new-position-in-cyber-security-at-percipient-networks/</link><description>&lt;div class="note"&gt;
+&lt;p class="first admonition-title"&gt;Note&lt;/p&gt;
+&lt;p class="last"&gt;If you&amp;#8217;re hitting this from &lt;a class="reference external" href="http://planet.mozilla.org/"&gt;planet mozilla&lt;/a&gt;, this doesn&amp;#8217;t mean I&amp;#8217;m leaving
+the Mozilla Community since I&amp;#8217;m not (nor was I ever) a Mozilla&amp;nbsp;employee.&lt;/p&gt;
+&lt;/div&gt;
+&lt;p&gt;After working for &lt;a class="reference external" href="https://www.mitre.org"&gt;The &lt;span class="caps"&gt;MITRE&lt;/span&gt; Corporation&lt;/a&gt; for a bit over four years, I left a
+few weeks ago to begin work at a cyber security start-up: &lt;a class="reference external" href="https://percipientnetworks.com/"&gt;Percipient
+Networks&lt;/a&gt;. Currently our main product is &lt;a class="reference external" href="https://strongarm.percipientnetworks.com"&gt;&lt;span class="caps"&gt;STRONGARM&lt;/span&gt;&lt;/a&gt;: an intelligent &lt;span class="caps"&gt;DNS&lt;/span&gt;
+blackhole. Usually &lt;span class="caps"&gt;DNS&lt;/span&gt; blackholes are set-up to block known bad domains by
+sending requests for those domains to a non-routable or localhost. &lt;span class="caps"&gt;STRONGARM&lt;/span&gt;
+redirects that traffic for identification and analysis. You could
+&lt;a class="reference external" href="https://strongarm.percipientnetworks.com"&gt;give it a try&lt;/a&gt; and let us know of any feedback you might have! Much of my
+involvement has been in the &lt;a class="reference external" href="https://strongarm.percipientnetworks.com/help/tech/"&gt;design and creation of the blackhole&lt;/a&gt;, including
+writing protocol parsers for both standard protocols and&amp;nbsp;malware.&lt;/p&gt;
+&lt;p&gt;So far, I&amp;#8217;ve been greatly enjoying my new position. There&amp;#8217;s been a renewed focus
+on technical work, while being in a position to greatly influence both &lt;span class="caps"&gt;SRTONGARM&lt;/span&gt;
+and Percipient Networks. My average day involves many more activities now,
+including technical work: reverse engineering, reviewing/writing code, or
+reading RFCs; as well as other work: mentoring &lt;a class="footnote-reference" href="#id4" id="id1"&gt;[1]&lt;/a&gt;, user support, writing
+documentation, and putting desks together &lt;a class="footnote-reference" href="#id5" id="id2"&gt;[2]&lt;/a&gt;. I&amp;#8217;ve been thoroughly enjoying the
+varied&amp;nbsp;activities!&lt;/p&gt;
+&lt;p&gt;Shifting software stacks has also been nice. I&amp;#8217;m now writing mostly Python code,
+instead of mostly &lt;span class="caps"&gt;MATLAB&lt;/span&gt;, Java and C/C++ &lt;a class="footnote-reference" href="#id6" id="id3"&gt;[3]&lt;/a&gt;. It has been great how many ready
+to use packages are available for Python! I&amp;#8217;ve been very impressed with the
+ecosystem, and been encouraged to feed back into the open-source community,
+where&amp;nbsp;appropriate.&lt;/p&gt;
+&lt;table class="docutils footnote" frame="void" id="id4" rules="none"&gt;
+&lt;colgroup&gt;&lt;col class="label" /&gt;&lt;col /&gt;&lt;/colgroup&gt;
+&lt;tbody valign="top"&gt;
+&lt;tr&gt;&lt;td class="label"&gt;&lt;a class="fn-backref" href="#id1"&gt;[1]&lt;/a&gt;&lt;/td&gt;&lt;td&gt;We currently have four interns, so there&amp;#8217;s always some mentoring to do!&lt;/td&gt;&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;table class="docutils footnote" frame="void" id="id5" rules="none"&gt;
+&lt;colgroup&gt;&lt;col class="label" /&gt;&lt;col /&gt;&lt;/colgroup&gt;
+&lt;tbody valign="top"&gt;
+&lt;tr&gt;&lt;td class="label"&gt;&lt;a class="fn-backref" href="#id2"&gt;[2]&lt;/a&gt;&lt;/td&gt;&lt;td&gt;We got a delivery of 10 &lt;a class="reference external" href="http://www.ergodepot.com/Jarvis_Desk_s/566.htm"&gt;desks&lt;/a&gt; a couple of weeks ago and spent the
+evening putting them together.&lt;/td&gt;&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;table class="docutils footnote" frame="void" id="id6" rules="none"&gt;
+&lt;colgroup&gt;&lt;col class="label" /&gt;&lt;col /&gt;&lt;/colgroup&gt;
+&lt;tbody valign="top"&gt;
+&lt;tr&gt;&lt;td class="label"&gt;&lt;a class="fn-backref" href="#id3"&gt;[3]&lt;/a&gt;&lt;/td&gt;&lt;td&gt;I originally titled this post &amp;quot;xx days since my last semi-colon!&amp;quot;, since
+that has gone from being a common key press of mine to a rare one.
+Although now I just get confused when switching between Python and
+JavaScript. Since semicolons are optional in both, but encouraged in
+JavaScript and discouraged in Python&amp;#8230;&lt;/td&gt;&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Patrick Cloke</dc:creator><pubDate>Sat, 30 May 2015 13:59:00 -0400</pubDate><guid>tag:patrick.cloke.us,2015-05-30:posts/2015/05/30/new-position-in-cyber-security-at-percipient-networks/</guid><category>personal</category></item><item><title>Google Summer of Code 2015 Project Ideas for Mozilla</title><link>http://patrick.cloke.us/posts/2015/01/21/google-summer-of-code-2015-project-ideas-for-mozilla/</link><description>&lt;p&gt;As &lt;a class="reference external" href="http://blog.queze.net/post/2015/01/22/Project-ideas-wanted-for-Summer-of-Code-2015"&gt;Florian announced&lt;/a&gt; last Thursday, &lt;strong&gt;now&lt;/strong&gt; is the time to brainstorm and
 discuss project ideas for &lt;a class="reference external" href="http://google-opensource.blogspot.fr/2014/10/google-summer-of-code-2015-and-google.html"&gt;Google Summer of Code 2015&lt;/a&gt;. Mozilla has
 participated in every previous Google Summer of Code (GSoC), and hopes to
 participate again this year! In order to help ensure we&amp;#8217;re selected, we need

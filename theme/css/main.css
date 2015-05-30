@@ -158,7 +158,7 @@ li { margin-top: 0.5em;}
     -webkit-border-radius: 5px;
 }
 
-.post-info #tag-list {
+.post-info #gravatar-clear {
     clear: both;
 }
 
@@ -182,10 +182,18 @@ cite {}
 q {}
 
 div.note {
-   float: right;
-   margin: 5px;
+   padding: 0 20px;
    font-size: 85%;
-   max-width: 300px;
+}
+
+/* Flatten note title onto the same line as the note. */
+div.note p {
+    display: inline;
+}
+
+/* Probably the most complicated way ever to change "Note" to "Note:". */
+div.note p:first-child::after {
+    content: ":";
 }
 
 /* Tables */
