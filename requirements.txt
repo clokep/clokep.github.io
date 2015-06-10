@@ -2,8 +2,8 @@ beautifulsoup4==4.3.2       # For extract_toc, share_post
 Fabric==1.10.1
 feedparser==5.2.0.post1
 ghp_import==0.4.1
-pelican==3.4.0
-Pillow==2.8.1
+pelican==3.5.0
+Pillow==2.8.2
 SimpleHTTP404Server==0.2.0
 typogrify==2.0.7
 webassets==0.10.1
