@@ -1,8 +1,7 @@
 Resources
 #########
-:status: draft
 
-A collection of links of useful articles, videos, etc.
+A curated collection of links to useful articles, videos, etc.
 
 Software Development
 ====================
@@ -23,18 +22,22 @@ JavaScript
 ==========
 
 * `No more JS frameworks`_ by `Joe Gregorio`_
+* `Vanilla JS`_
 
 .. _No more JS frameworks: http://bitworking.org/news/2014/05/zero_framework_manifesto
 .. _Joe Gregorio: http://bitworking.org
+.. _Vanilla JS: http://vanilla-js.com/
 
 Python
 ======
 
 * `10 awesome features of Python that you can't use because you refuse to upgrade to Python 3`_ by Aaron Meurer
 * `When to use logging`_
+* `Sharing Your Labor of Love: PyPI Quick and Dirty`_
 
 .. _10 awesome features of Python that you can't use because you refuse to upgrade to Python 3: https://asmeurer.github.io/python3-presentation/slides.html
 .. _When to use logging: https://docs.python.org/2/howto/logging.html#when-to-use-logging
+.. _Sharing Your Labor of Love\: PyPI Quick and Dirty: https://hynek.me/articles/sharing-your-labor-of-love-pypi-quick-and-dirty/
 
 Twisted
 -------
@@ -49,8 +52,8 @@ Twisted
 .. _Guide to twisted.internet.defer: http://ezyang.com/twisted/defer2.html
 .. _Twisted Conch in 60 Seconds: http://as.ynchrono.us/2011/08/twisted-conch-in-60-seconds-protocols.html
 
-Software
-========
+Virtualization
+==============
 
 * Terraform_
 * Vagrant_
