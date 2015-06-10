@@ -101,9 +101,6 @@ SOCIAL = (
     ('mozillians', 'https://mozillians.org/u/clokep/'),
 )
 
-# For comments imported from blogger.
-PELICAN_COMMENT_SYSTEM = True
-
 # For thumbnails.
 IMAGE_PATH = 'images'
 THUMBNAIL_SIZES = {
