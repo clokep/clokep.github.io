@@ -71,6 +71,7 @@ PLUGIN_PATHS = [
     'pelican-plugins/',
 ]
 PLUGINS = [
+    'assets',
     'extract_toc',
     'gravatar',
     'share_post',
