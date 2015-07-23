@@ -46,11 +46,13 @@ Twisted
 * `Deferreds are beautiful! (A Tutorial)`_
 * `Guide to twisted.internet.defer`_
 * `Twisted Conch in 60 Seconds`_ by Jean-Paul Calderone
+* `Twisted: Recipes for defer.inlineCallbacks`_ by Jared Grubb
 
 .. _Deferred Reference: https://twistedmatrix.com/documents/current/core/howto/defer.html
 .. _Deferreds are beautiful! (A Tutorial): http://twistedmatrix.com/documents/10.2.0/core/howto/deferredindepth.html
 .. _Guide to twisted.internet.defer: http://ezyang.com/twisted/defer2.html
 .. _Twisted Conch in 60 Seconds: http://as.ynchrono.us/2011/08/twisted-conch-in-60-seconds-protocols.html
+.. _Twisted\: Recipes for defer.inlineCallbacks: http://jaredgrubb.blogspot.com/2013/03/twisted-recipes-for-deferinlinecallbacks.html
 
 Virtualization
 ==============
