@@ -59,7 +59,7 @@ follow [#]_.
 .. raw:: html
 
     <style type="text/css">
-        #client-count, #family-count {
+        #family-all-count, #family-count {
           width: 100%;
           height: 300px;
         }
@@ -110,29 +110,26 @@ follow [#]_.
         }
 
         document.addEventListener("DOMContentLoaded", function() {
-            console.log("BOOYAHO");
-
-            var clients = new Map();
-            clients.set("Instantbird 1.6pre", 3);
-            clients.set("Instantbird 1.5", 1);
-            clients.set("Thunderbird", 2);
-            clients.set(undefined, 1);
-
-            var families = new Map();
+            var families = new Map([["instantbird", 21], ["thunderbird", 39], ["xchat", 77], ["colloquy", 33], ["limechat", 61], ["irssi", 204], ["irccloud", 520], ["znc", 161], ["icedove", 3], ["chatzilla", 59], ["bip-", 11], ["hexchat", 61], ["mozbot", 3], ["miranda", 6], ["mirc", 31], ["textual", 44], ["weechat", 76], ["kvirc", 6], ["purple", 70], ["x-chat", 8], ["xchat-wdk", 1], ["dircproxy", 1], ["konversation", 12], ["quassel", 69], ["linkinus", 3], ["\x02erc\x02", 6], ["leroooooy", 1], ["elitebnc", 1], ["fu,", 1], ["anope-", 1], [">", 2], ["telepathy-idle", 3], ["rcirc", 3], ["mrgiggles:", 1], ["ircii", 1], ["http://www.mibbit.com", 4], ["shout", 7], ["yaaic", 2], ["karen", 1], ["", 3], ["sceners", 1], ["uberscript", 1], ["tiarra:", 3], ["snak", 1], ["wuunyan", 1], ["adiirc", 1], ["n/a", 1], ["pircbotx", 3], ["none", 1], ["yes", 1], ["nettalk", 1], ["riece/", 1], ["unknown", 1], ["version", 1], ["circ", 3], ["request", 1], ["forrest,", 1], ["trillian", 1], ["\x03", 2], ["smuxi-frontend-gnome", 1], ["some", 1], ["\x02\x03", 1], ["oh", 1], ["\u201Cnever", 1], ["this", 1], ["nochat", 1], ["wee", 1], ["foadirc", 1], ["smuxi-server", 1], ["aperture", 1], ["internet", 1], ["supybot", 1], ["ejabberd", 2], ["dxirc", 1], ["ircle", 1], ["infobot", 1], ["exovenom", 1], ["nsa-irc", 1]]);
             families.set("Instantbird", 4);
             families.set("Thunderbird", 2);
             families.set(undefined, 1);
 
             // Update the plots.
-            createPlot("client-count", "Clients", clients);
-            createPlot("family-count", "Families", families);
+            createPlot("family-all-count", "All Families", families);
+
+            // Remove all families that have less than 10 hits.
+            for (var family of families.entries()) {
+                if (family[1] < 10)
+                    families.delete(family[0])
+            }
+
+            createPlot("family-count", "Families with at Least 10 Users", families);
         });
     </script>
 
-    <div id="client-count"></div>
     <div id="family-count"></div>
-
-TODO Final results.
+    <div id="family-all-count"></div>
 
 .. [#]  "Most" is a wild accusation here. But...from the numbers I've seen, it
         seems like a reasonable statement.
