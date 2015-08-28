@@ -33,13 +33,13 @@ def rebuild():
 @task
 def regenerate():
     """Watch files and continually build the blog as changes occur."""
-    run('pelican -r -s pelicanconf.py content')
+    run('pelican -r -s pelicanconf.py content', pty=True)
 
 
 @task
 def serve():
     """runly serve the blog."""
-    run('cd {deploy_path} && python -m SimpleHTTP404Server {listen_port}'.format(**env))
+    run('cd {deploy_path} && python -m SimpleHTTP404Server {listen_port}'.format(**env), pty=True)
 
 
 @task
