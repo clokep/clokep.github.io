@@ -1,5 +1,26 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>Like bricks in the sky</title><link href="http://patrick.cloke.us/" rel="alternate"></link><link href="http://patrick.cloke.us/feeds/tag/community.atom.xml" rel="self"></link><id>http://patrick.cloke.us/</id><updated>2014-11-14T18:37:00-05:00</updated><entry><title>Thunderbird Summit 2014</title><link href="http://patrick.cloke.us/posts/2014/11/14/thunderbird-summit-2014/" rel="alternate"></link><updated>2014-11-14T18:37:00-05:00</updated><author><name>Patrick Cloke</name></author><id>tag:patrick.cloke.us,2014-11-14:posts/2014/11/14/thunderbird-summit-2014/</id><summary type="html">&lt;p&gt;Last month (Oct. 15th to Oct. 18th, to be precise), &lt;a class="reference external" href="https://wiki.mozilla.org/Thunderbird:Summit_2014#Invited_Attendees"&gt;twenty volunteers&lt;/a&gt;
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Like bricks in the sky</title><link href="http://patrick.cloke.us/" rel="alternate"></link><link href="http://patrick.cloke.us/feeds/tag/community.atom.xml" rel="self"></link><id>http://patrick.cloke.us/</id><updated>2015-08-28T08:42:00-04:00</updated><entry><title>Boston Python: Twisted async networking framework</title><link href="http://patrick.cloke.us/posts/2015/08/28/boston-python-twisted-talk/" rel="alternate"></link><updated>2015-08-28T08:42:00-04:00</updated><author><name>Patrick Cloke</name></author><id>tag:patrick.cloke.us,2015-08-28:posts/2015/08/28/boston-python-twisted-talk/</id><summary type="html">&lt;p&gt;Yesterday, &lt;a class="reference external" href="http://stephendicato.com/"&gt;Stephen DiCato&lt;/a&gt; and I gave a talk for &lt;a class="reference external" href="http://www.meetup.com/bostonpython/"&gt;Boston Python&lt;/a&gt; titled:
+&lt;a class="reference external" href="http://www.meetup.com/bostonpython/events/221406450/"&gt;Twisted async networking framework&lt;/a&gt;. It was an introduction to intermediate
+level talk about using the &lt;a class="reference external" href="https://twistedmatrix.com/"&gt;Twisted networking framework&lt;/a&gt; based on our
+experiences at &lt;a class="reference external" href="https://percipientnetworks.com/"&gt;Percipient Networks&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;The talk, available &lt;a class="reference external" href="https://github.com/percipient/talks/tree/master/boston_python_08_27_2015"&gt;on our GitHub&lt;/a&gt; (&lt;a class="reference external" href="https://github.com/percipient/talks/raw/master/boston_python_08_27_2015/boston_python_08_27_2015.pdf"&gt;&lt;span class="caps"&gt;PDF&lt;/span&gt;&lt;/a&gt;) covered a few basic&amp;nbsp;topics:&lt;/p&gt;
+&lt;ol class="arabic simple"&gt;
+&lt;li&gt;What is asynchronous&amp;nbsp;programming?&lt;/li&gt;
+&lt;li&gt;What is &lt;a class="reference external" href="https://twistedmatrix.com/"&gt;Twisted&lt;/a&gt;?&lt;/li&gt;
+&lt;li&gt;When/why to use&amp;nbsp;Twisted?&lt;/li&gt;
+&lt;li&gt;What is the event loop&amp;nbsp;(reactor)?&lt;/li&gt;
+&lt;li&gt;What are &lt;a class="reference external" href="https://twistedmatrix.com/documents/current/core/howto/defer.html"&gt;Deferreds&lt;/a&gt; and how do you use&amp;nbsp;them?&lt;/li&gt;
+&lt;li&gt;What are protocols (and related objects) and how do you use&amp;nbsp;them?&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;Additionally there was a &amp;#8216;bonus&amp;#8217; section: Using Twisted to build systems &lt;span class="amp"&gt;&amp;amp;&lt;/span&gt;&amp;nbsp;services.&lt;/p&gt;
+&lt;p&gt;We used an example of a very simple chat server (NetCatChat: where the official
+client is netcat) to demonstrate these principles. All of our (working!) demo
+code is included in the &lt;a class="reference external" href="https://github.com/percipient/talks/tree/master/boston_python_08_27_2015"&gt;repository&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;There was a great turn out (almost 100 people showed up) and I greatly enjoyed
+the experience. Thanks to everyone who came, the sponsors for the night,
+&lt;a class="reference external" href="http://www.meetup.com/bostonpython/"&gt;Boston Python&lt;/a&gt; for setting this up, and Stephen for co-presenting! Please let
+us know if you have any questions or&amp;nbsp;comments.&lt;/p&gt;
+</summary><category term="python"></category><category term="community"></category><category term="programming"></category><category term="twisted"></category></entry><entry><title>Thunderbird Summit 2014</title><link href="http://patrick.cloke.us/posts/2014/11/14/thunderbird-summit-2014/" rel="alternate"></link><updated>2014-11-14T18:37:00-05:00</updated><author><name>Patrick Cloke</name></author><id>tag:patrick.cloke.us,2014-11-14:posts/2014/11/14/thunderbird-summit-2014/</id><summary type="html">&lt;p&gt;Last month (Oct. 15th to Oct. 18th, to be precise), &lt;a class="reference external" href="https://wiki.mozilla.org/Thunderbird:Summit_2014#Invited_Attendees"&gt;twenty volunteers&lt;/a&gt;
 descended on Mozilla&amp;#8217;s &lt;a class="reference external" href="foo"&gt;Toronto office&lt;/a&gt; to discuss &lt;a class="reference external" href="foo"&gt;Mozilla Thunderbird&lt;/a&gt;. This
 included Mozilla employees, Thunderbird contributors of all sorts (developers,
 user interface designers, add-on reviewers), Lightning contributors, and
