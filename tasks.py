@@ -53,7 +53,7 @@ def reserve():
 def preview():
     """Clean then build with the publish config."""
     clean()
-    run('pelican -s publishconf.py content')
+    run('pelican -s publishconf.py content', pty=True)
 
 
 @task
