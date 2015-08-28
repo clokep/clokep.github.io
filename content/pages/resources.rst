@@ -34,10 +34,12 @@ Python
 * `10 awesome features of Python that you can't use because you refuse to upgrade to Python 3`_ by Aaron Meurer
 * `When to use logging`_
 * `Sharing Your Labor of Love: PyPI Quick and Dirty`_
+* `The End Of Object Inheritance & The Beginning Of A New Modularity`_
 
 .. _10 awesome features of Python that you can't use because you refuse to upgrade to Python 3: https://asmeurer.github.io/python3-presentation/slides.html
 .. _When to use logging: https://docs.python.org/2/howto/logging.html#when-to-use-logging
 .. _Sharing Your Labor of Love\: PyPI Quick and Dirty: https://hynek.me/articles/sharing-your-labor-of-love-pypi-quick-and-dirty/
+.. _The End Of Object Inheritance & The Beginning Of A New Modularity: http://pyvideo.org/video/1684/the-end-of-object-inheritance-the-beginning-of
 
 Twisted
 -------
@@ -47,12 +49,16 @@ Twisted
 * `Guide to twisted.internet.defer`_
 * `Twisted Conch in 60 Seconds`_ by Jean-Paul Calderone
 * `Twisted: Recipes for defer.inlineCallbacks`_ by Jared Grubb
+* `Twisted Mixing`_ by LVH
+* `Twisted / How Deferreds work`_ by Glyph
 
 .. _Deferred Reference: https://twistedmatrix.com/documents/current/core/howto/defer.html
 .. _Deferreds are beautiful! (A Tutorial): http://twistedmatrix.com/documents/10.2.0/core/howto/deferredindepth.html
 .. _Guide to twisted.internet.defer: http://ezyang.com/twisted/defer2.html
 .. _Twisted Conch in 60 Seconds: http://as.ynchrono.us/2011/08/twisted-conch-in-60-seconds-protocols.html
 .. _Twisted\: Recipes for defer.inlineCallbacks: http://jaredgrubb.blogspot.com/2013/03/twisted-recipes-for-deferinlinecallbacks.html
+.. _Twisted Mixing: http://pyvideo.org/video/2597/twisted-mixing
+.. _Twisted / How Deferreds work: http://stackoverflow.com/questions/16690622/twisted-how-deferreds-work
 
 Virtualization
 ==============
