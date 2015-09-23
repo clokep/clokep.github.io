@@ -8,9 +8,11 @@ Software Development
 
 * `What is BDD and why should I care?`_ from Matt Wynne
 * `How we use Trello & Google Docs to make UserVoice better every day`_
+* `Online Schema Migrations`_ by Mike Bayer
 
 .. _What is BDD and why should I care?: http://vimeo.com/72673788
 .. _How we use Trello & Google Docs to make UserVoice better every day: https://community.uservoice.com/blog/trello-google-docs-product-management/
+.. _Online Schema Migrations: http://specs.openstack.org/openstack/neutron-specs/specs/liberty/online-schema-migrations.html
 
 zsh
 ===
