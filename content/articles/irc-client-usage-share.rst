@@ -101,7 +101,9 @@ with at least 10 users).
     <script type="text/javascript">
         function createPlot(aId, aTitle, aData) {
           // Put the data in order from biggest to smallest.
-          var data = [d for (d of aData.entries())];
+          var data = []
+          for (var d of aData.entries())
+            data.push(d);
           data.sort(function(a, b) a[1] < b[1]);
 
           // Re-arrange the data to be plotted into two arrays: one is a set of points
