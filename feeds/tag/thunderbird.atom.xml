@@ -1,6 +1,197 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>Like bricks in the sky</title><link href="http://patrick.cloke.us/" rel="alternate"></link><link href="http://patrick.cloke.us/feeds/tag/thunderbird.atom.xml" rel="self"></link><id>http://patrick.cloke.us/</id><updated>2014-11-14T18:37:00-05:00</updated><entry><title>Thunderbird Summit 2014</title><link href="http://patrick.cloke.us/posts/2014/11/14/thunderbird-summit-2014/" rel="alternate"></link><updated>2014-11-14T18:37:00-05:00</updated><author><name>Patrick Cloke</name></author><id>tag:patrick.cloke.us,2014-11-14:posts/2014/11/14/thunderbird-summit-2014/</id><summary type="html">&lt;p&gt;Last month (Oct. 15th to Oct. 18th, to be precise), &lt;a class="reference external" href="https://wiki.mozilla.org/Thunderbird:Summit_2014#Invited_Attendees"&gt;twenty volunteers&lt;/a&gt;
-descended on Mozilla&amp;#8217;s &lt;a class="reference external" href="foo"&gt;Toronto office&lt;/a&gt; to discuss &lt;a class="reference external" href="foo"&gt;Mozilla Thunderbird&lt;/a&gt;. This
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Like bricks in the sky</title><link href="http://patrick.cloke.us/" rel="alternate"></link><link href="http://patrick.cloke.us/feeds/tag/thunderbird.atom.xml" rel="self"></link><id>http://patrick.cloke.us/</id><updated>2015-09-23T17:07:00-04:00</updated><entry><title>IRC Client Usage Share on moznet</title><link href="http://patrick.cloke.us/posts/2015/09/23/irc-client-usage-share-on-moznet/" rel="alternate"></link><updated>2015-09-23T17:07:00-04:00</updated><author><name>Patrick Cloke</name></author><id>tag:patrick.cloke.us,2015-09-23:posts/2015/09/23/irc-client-usage-share-on-moznet/</id><summary type="html">
+&lt;div class="section" id="background"&gt;
+&lt;h2&gt;&lt;a class="toc-backref" href="#id7"&gt;Background&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;The usage share of &lt;span class="caps"&gt;IRC&lt;/span&gt; clients has always been something I’m interested in. This
+is partially to see how many people are using &lt;a class="reference external" href="http://instantbird.com/"&gt;Instantbird&lt;/a&gt; or &lt;a class="reference external" href="https://www.mozilla.org/en-US/thunderbird/"&gt;Mozilla
+Thunderbird&lt;/a&gt; for &lt;span class="caps"&gt;IRC&lt;/span&gt; (as I’ve written much of the &lt;span class="caps"&gt;IRC&lt;/span&gt; code for those clients).
+&lt;a class="reference external" href="http://en.wikipedia.org/wiki/Usage_share_of_web_browsers"&gt;Usage share of browsers&lt;/a&gt; is quite a researched topic, but I’ve never come
+across this data for &lt;span class="caps"&gt;IRC&lt;/span&gt;. Most &lt;a class="footnote-reference" href="#id4" id="id1"&gt;[1]&lt;/a&gt; &lt;span class="caps"&gt;IRC&lt;/span&gt; clients implement a part of the &lt;a class="reference external" href="http://www.irchelp.org/irchelp/rfc/ctcpspec.html"&gt;&lt;span class="caps"&gt;CTCP&lt;/span&gt;&lt;/a&gt;
+protocol which allows a client to query another client for their version.
+Thinking of this as a &lt;a class="reference external" href="http://en.wikipedia.org/wiki/User_agent"&gt;user agent&lt;/a&gt; is probably a good analogue. I don’t think
+this would imply that there is much of an issue with &lt;a class="reference external" href="http://en.wikipedia.org/wiki/Usage_share_of_web_browsers#User_agent_spoofing"&gt;user agent spoofing&lt;/a&gt;, as
+there would be for web browser statistics since (as far as I know), no one uses
+the version response to do capability negotiation. It also is not used by servers.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="section" id="technical-bits"&gt;
+&lt;h2&gt;&lt;a class="toc-backref" href="#id8"&gt;Technical Bits&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;So how’d we do this? I wrote an &lt;a class="reference external" href="https://bitbucket.org/clokep/irc-extras/src/tip/stats/"&gt;extension&lt;/a&gt; for Instantbird which handled both
+the backend and the display of the results. I think that this really showcases
+the extensibility of Instantbird and the effort we’ve put into ensuring their
+are generic APIs available for developers. In particular this uses the &lt;a class="reference external" href="http://dxr.mozilla.org/comm-central/source/chat/protocols/irc/ircHandlers.jsm"&gt;&lt;span class="caps"&gt;IRC&lt;/span&gt;
+handler &lt;span class="caps"&gt;API&lt;/span&gt;&lt;/a&gt; and the &lt;a class="reference external" href="http://hg.mozilla.org/comm-central/file/dbab5a531594/im/content/tabbrowser.xml#l432"&gt;add panel &lt;span class="caps"&gt;API&lt;/span&gt;&lt;/a&gt; (added by &lt;a class="reference external" href="http://blog.nhnt11.com/"&gt;one of our GSoC students&lt;/a&gt; a
+couple of years ago.)&lt;/p&gt;
+&lt;p&gt;Anyway, at the actual protocol level, I simply send a &lt;tt class="docutils literal"&gt;&lt;span class="caps"&gt;CTCP&lt;/span&gt; &lt;span class="caps"&gt;VERSION&lt;/span&gt;&lt;/tt&gt; query to
+each user I know of on the &lt;span class="caps"&gt;IRC&lt;/span&gt; network (based on who is in the same channels as
+me) and then record the responses. I tried to be nice to the network here and
+rate-limited myself to 1 query per second. No one complained after ~100 queries
+and I didn’t seem to have any &lt;tt class="docutils literal"&gt;fakelag&lt;/tt&gt; issues. I then dumped the results and
+made a pretty(-ish) plot of this. (If you’re a network administrator reading
+this and think this is insane, I’d be very curious to hear a better way to do this!)&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="section" id="results"&gt;
+&lt;h2&gt;&lt;a class="toc-backref" href="#id9"&gt;Results&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;In order to get some results I hooked my client up to &lt;a class="reference external" href="https://wiki.mozilla.org/IRC"&gt;moznet&lt;/a&gt; on July 23rd,
+2015 and let it run on many channels (pretty much anything with more than 20
+users) for a few hours &lt;a class="footnote-reference" href="#id5" id="id2"&gt;[2]&lt;/a&gt;. I was in Europe and started early in the morning
+and let it run through the evening, so it should encompass some “normal” usage
+by Mozillians. I would expect a bit of skew in these results toward
+Mozilla-esque &lt;span class="caps"&gt;IRC&lt;/span&gt; clients (Instantbird, Thunderbird and &lt;a class="reference external" href="http://chatzilla.hacksrus.com/"&gt;ChatZilla&lt;/a&gt;).&lt;/p&gt;
+&lt;p&gt;Of course these numbers are just a single sampling and I have no idea how much
+variance there is day-to-day or over time, but I found the (un-scientific)
+results to be interesting!&lt;/p&gt;
+&lt;div class="section" id="responses"&gt;
+&lt;h3&gt;&lt;a class="toc-backref" href="#id10"&gt;Responses&lt;/a&gt;&lt;/h3&gt;
+&lt;p&gt;The first thing I noticed is the large amount of information some version
+responses gave (in no particular order):&lt;/p&gt;
+&lt;ul class="simple"&gt;
+&lt;li&gt;&lt;tt class="docutils literal"&gt;KVIrc 4.3.1 &lt;span class="pre"&gt;svn-6313&lt;/span&gt; 'Aria' 20120701 - build &lt;span class="pre"&gt;2013-02-14&lt;/span&gt; 17:47:33 &lt;span class="caps"&gt;UTC&lt;/span&gt; - Windows 7 Ultimate (x64) Service Pack 1 (Build 7601)&lt;/tt&gt;&lt;/li&gt;
+&lt;li&gt;&lt;tt class="docutils literal"&gt;xchat 2.8.8 Linux &lt;span class="pre"&gt;3.17.4-1-&lt;span class="caps"&gt;ARCH&lt;/span&gt;&lt;/span&gt; [x86_64/2.90GHz/&lt;span class="caps"&gt;SMP&lt;/span&gt;]&lt;/tt&gt;&lt;/li&gt;
+&lt;li&gt;&lt;tt class="docutils literal"&gt;HexChat 2.10.1 [x64] / Windows 7 &lt;span class="caps"&gt;SP1&lt;/span&gt; [4.09GHz]&lt;/tt&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;I don’t understand the rationale behind sharing a user’s operating system and
+&lt;span class="caps"&gt;CPU&lt;/span&gt; speed. Most clients responded with a simple &lt;tt class="docutils literal"&gt;&amp;lt;software&amp;gt; &amp;lt;version number&amp;gt;&lt;/tt&gt;,
+although quite a few also include a &lt;span class="caps"&gt;URL&lt;/span&gt;.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="section" id="client-summary"&gt;
+&lt;h3&gt;&lt;a class="toc-backref" href="#id11"&gt;Client Summary&lt;/a&gt;&lt;/h3&gt;
+&lt;p&gt;Initially I visualized the data by plotting it two serparate ways: first by
+showing the count of each version response and then grouping by “client family”.
+The first plot had too many columns to reasonably show in this post: thus I’ve
+only included a plot of the client families &lt;a class="footnote-reference" href="#id6" id="id3"&gt;[3]&lt;/a&gt;. There are two plots, the first
+shows a subset of the data by cutting the tail (arbitrarily including families
+with at least 10 users).&lt;/p&gt;
+&lt;div class="note"&gt;
+&lt;p class="first admonition-title"&gt;Note&lt;/p&gt;
+&lt;p&gt;A “client family” is counting all versions of the same client together. This
+was calculated by taking the text up to the first whitespace or digit and
+converting to lowercase:&lt;/p&gt;
+&lt;div class="last"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="nx"&gt;family&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="nx"&gt;version&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;split&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="sr"&gt;/[\s\d]/&lt;/span&gt;&lt;span class="p"&gt;)[&lt;/span&gt;&lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;].&lt;/span&gt;&lt;span class="nx"&gt;toLowerCase&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/div&gt;&lt;/div&gt;
+&lt;style type="text/css"&gt;
+    #family-all-count, #family-count {
+      width: 100%;
+      height: 300px;
+    }
+&lt;/style&gt;
+&lt;script src="/js/flotr2.min.js" type="text/javascript"&gt;&lt;/script&gt;
+&lt;script type="text/javascript"&gt;
+    function createPlot(aId, aTitle, aData) {
+      // Put the data in order from biggest to smallest.
+      var data = [d for (d of aData.entries())];
+      data.sort(function(a, b) a[1] &lt; b[1]);
+
+      // Re-arrange the data to be plotted into two arrays: one is a set of points
+      // of x-index to value, the other is x-index to label.
+      var labels = [];
+      for (var i = 0; i &lt; data.length; i++) {
+        // Sometimes the labels are stupid long.
+        labels[i] = [i, (data[i][0] || "undefined").slice(0, 25)];
+        data[i] = [i, data[i][1]];
+      }
+
+      var options = {
+        title: aTitle,
+        HtmlText: false,
+        bars: {
+          show: true,
+          shadowSize: 0,
+          barWidth: 0.5
+        },
+        mouse: {
+          track: true,
+          relative: true
+        },
+        xaxis: {
+          ticks: labels,
+          labelsAngle: 90
+        },
+        yaxis: {
+          min: 0,
+          autoscaleMargin: 1,
+          title: "Count",
+          titleAngle: 90
+        }
+      };
+
+      var plot = document.getElementById(aId);
+      Flotr.draw(plot, [data], options);
+    }
+
+    document.addEventListener("DOMContentLoaded", function() {
+        var families = new Map([["instantbird", 21], ["thunderbird", 39], ["xchat", 77], ["colloquy", 33], ["limechat", 61], ["irssi", 204], ["irccloud", 520], ["znc", 161], ["icedove", 3], ["chatzilla", 59], ["bip-", 11], ["hexchat", 61], ["mozbot", 3], ["miranda", 6], ["mirc", 31], ["textual", 44], ["weechat", 76], ["kvirc", 6], ["purple", 70], ["x-chat", 8], ["xchat-wdk", 1], ["dircproxy", 1], ["konversation", 12], ["quassel", 69], ["linkinus", 3], ["\x02erc\x02", 6], ["leroooooy", 1], ["elitebnc", 1], ["fu,", 1], ["anope-", 1], ["&gt;", 2], ["telepathy-idle", 3], ["rcirc", 3], ["mrgiggles:", 1], ["ircii", 1], ["http://www.mibbit.com", 4], ["shout", 7], ["yaaic", 2], ["karen", 1], ["", 3], ["sceners", 1], ["uberscript", 1], ["tiarra:", 3], ["snak", 1], ["wuunyan", 1], ["adiirc", 1], ["n/a", 1], ["pircbotx", 3], ["none", 1], ["yes", 1], ["nettalk", 1], ["riece/", 1], ["unknown", 1], ["version", 1], ["circ", 3], ["request", 1], ["forrest,", 1], ["trillian", 1], ["\x03", 2], ["smuxi-frontend-gnome", 1], ["some", 1], ["\x02\x03", 1], ["oh", 1], ["\u201Cnever", 1], ["this", 1], ["nochat", 1], ["wee", 1], ["foadirc", 1], ["smuxi-server", 1], ["aperture", 1], ["internet", 1], ["supybot", 1], ["ejabberd", 2], ["dxirc", 1], ["ircle", 1], ["infobot", 1], ["exovenom", 1], ["nsa-irc", 1]]);
+
+        // Count the totals, used in reporting not actually displayed.
+        var total = 0;
+        for (var family of families.entries())
+            total += family[1];
+
+        // Update the plots.
+        createPlot("family-all-count",
+                   "All Families (Total: " + total + ")", families);
+
+        // Remove all families that have less than 10 hits.
+        for (var family of families.entries()) {
+            if (family[1] &lt; 10) {
+                families.delete(family[0])
+                total -= family[1];
+            }
+        }
+
+        createPlot("family-count",
+                   "Families with at Least 10 Users (Total: " + total + ")",
+                   families);
+    });
+&lt;/script&gt;
+&lt;div id="family-count"&gt;&lt;/div&gt;
+&lt;div id="family-all-count"&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;div class="section" id="points-of-note"&gt;
+&lt;h3&gt;&lt;a class="toc-backref" href="#id12"&gt;Points of Note&lt;/a&gt;&lt;/h3&gt;
+&lt;p&gt;I have to admit that I was fairly shocked by the number of IRCCloud users as I
+found it pretty unusable when messing with it. I suspect it being an 'easy'
+bouncer draws many people to it. The bouncer-like software (IRCCloud, &lt;span class="caps"&gt;ZNC&lt;/span&gt;, bip)
+represents almost half of the users surveyed (692 / 1549 ≈ 45%)!&lt;/p&gt;
+&lt;p&gt;I'm surprised so many people are using &lt;tt class="docutils literal"&gt;purple&lt;/tt&gt; as their &lt;span class="caps"&gt;IRC&lt;/span&gt; client, as the
+support there is really barebones. (It makes sense if you're already using
+Pidgin and don't want another client.) I think we've made a significant amount
+of improvements in Instantbird's &lt;span class="caps"&gt;IRC&lt;/span&gt; support to make it simpler for a user to
+get started (give it a try if you haven't!).&lt;/p&gt;
+&lt;p&gt;The last thing I'll note that, when taken together, Instantbird and Thunderbird
+come in as part of the top 10 (60 users, right before ChatZilla)! There's a lot
+of great clients out there and I'm happy to say I've helped to create one of the
+more popular ones (on moznet, at least!).&lt;/p&gt;
+&lt;p&gt;Let me know if I missed a great insight!&lt;/p&gt;
+&lt;table class="docutils footnote" frame="void" id="id4" rules="none"&gt;
+&lt;colgroup&gt;&lt;col class="label"&gt;&lt;/col&gt;&lt;col&gt;&lt;/col&gt;&lt;/colgroup&gt;
+&lt;tbody valign="top"&gt;
+&lt;tr&gt;&lt;td class="label"&gt;&lt;a class="fn-backref" href="#id1"&gt;[1]&lt;/a&gt;&lt;/td&gt;&lt;td&gt;"Most" is a wild accusation here. But...from the numbers I've seen, it
+seems like a reasonable statement.&lt;/td&gt;&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;table class="docutils footnote" frame="void" id="id5" rules="none"&gt;
+&lt;colgroup&gt;&lt;col class="label"&gt;&lt;/col&gt;&lt;col&gt;&lt;/col&gt;&lt;/colgroup&gt;
+&lt;tbody valign="top"&gt;
+&lt;tr&gt;&lt;td class="label"&gt;&lt;a class="fn-backref" href="#id2"&gt;[2]&lt;/a&gt;&lt;/td&gt;&lt;td&gt;While running this I had a few users question what I was doing over
+private messages or in a channel. I'm &lt;em&gt;shocked&lt;/em&gt; that clients bother
+their users by showing them they received a &lt;tt class="docutils literal"&gt;&lt;span class="caps"&gt;VERSION&lt;/span&gt;&lt;/tt&gt; request. (Most)
+users just won't care! Why show that low-level of the protocol?!&lt;/td&gt;&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;table class="docutils footnote" frame="void" id="id6" rules="none"&gt;
+&lt;colgroup&gt;&lt;col class="label"&gt;&lt;/col&gt;&lt;col&gt;&lt;/col&gt;&lt;/colgroup&gt;
+&lt;tbody valign="top"&gt;
+&lt;tr&gt;&lt;td class="label"&gt;&lt;a class="fn-backref" href="#id3"&gt;[3]&lt;/a&gt;&lt;/td&gt;&lt;td&gt;I stole the code to plot this from the &lt;a class="reference external" href="https://bitbucket.org/clokep/irc-extras/src/41a9572caf957ab8ae3969a145834bcd5be74abe/stats/content/ircStats.js?at=default#cl-55"&gt;plotting code&lt;/a&gt; in the extension
+I wrote for this. When actually using that extension, something similar
+to this appears as a tab and refreshes as results come in. It uses
+&lt;a class="reference external" href="http://humblesoftware.com/flotr2/"&gt;Flotr2&lt;/a&gt; to do the plotting in JavaScript, I've been pretty happy with
+it.&lt;/td&gt;&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+</summary><category term="Mozilla"></category><category term="Thunderbird"></category><category term="Instantbird"></category><category term="IRC"></category></entry><entry><title>Thunderbird Summit 2014</title><link href="http://patrick.cloke.us/posts/2014/11/14/thunderbird-summit-2014/" rel="alternate"></link><updated>2014-11-14T18:37:00-05:00</updated><author><name>Patrick Cloke</name></author><id>tag:patrick.cloke.us,2014-11-14:posts/2014/11/14/thunderbird-summit-2014/</id><summary type="html">&lt;p&gt;Last month (Oct. 15th to Oct. 18th, to be precise), &lt;a class="reference external" href="https://wiki.mozilla.org/Thunderbird:Summit_2014#Invited_Attendees"&gt;twenty volunteers&lt;/a&gt;
+descended on Mozilla&amp;#8217;s Toronto office to discuss &lt;a class="reference external" href="https://www.mozilla.org/en-US/thunderbird/"&gt;Mozilla Thunderbird&lt;/a&gt;. This
 included Mozilla employees, Thunderbird contributors of all sorts (developers,
 user interface designers, add-on reviewers), Lightning contributors, and
 chat/&lt;a class="reference external" href="http://instantbird.com/"&gt;Instantbird&lt;/a&gt;&amp;nbsp;contributors.&lt;/p&gt;
@@ -21,7 +212,7 @@ attended in Toronto) and to meet some brand new&amp;nbsp;people!&lt;/p&gt;
 and Daniel (dialing&amp;nbsp;in!)&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;p&gt;It was really nice to actually sit down for a few days and work on
-Instantbird/Thunderbird without the distractions of &amp;quot;real life&amp;quot;. I,
+Instantbird/Thunderbird without the distractions of &amp;#8220;real life&amp;#8221;. I,
 unfortunately, spent the first day fixing an Instantbird &lt;a class="reference external" href="http://hg.mozilla.org/comm-central/rev/05bb70d5b231"&gt;bustage&lt;/a&gt; (from a
 mozilla-central change that removed some &lt;span class="caps"&gt;NSS&lt;/span&gt; symbols&amp;#8230;why, I have no idea). But
 after that, we got some really exciting work done! We started cleaning up and
@@ -36,7 +227,7 @@ to &lt;a class="reference external" href="http://xmpp.org/"&gt;&lt;span class="c
 &lt;!--  --&gt;
 &lt;blockquote class="center"&gt;
 &lt;a class="reference external image-reference" href="http://patrick.cloke.us/images/chat-tb-summit/IMG_6594.jpg"&gt;&lt;img alt="Eating some poutine!" src="/thumbnails/chat-tb-summit/IMG_6594_small.jpg" /&gt;&lt;/a&gt;
-&lt;p&gt;Other highlights of the trip include eating the &amp;quot;Canadian delicacy&amp;quot; of
+&lt;p&gt;Other highlights of the trip include eating the &amp;#8220;Canadian delicacy&amp;#8221; of
 poutine (with pulled pork on&amp;nbsp;it)!&lt;/p&gt;
 &lt;/blockquote&gt;
 </summary><category term="Mozilla"></category><category term="Thunderbird"></category><category term="community"></category><category term="Instantbird"></category></entry><entry><title>Extending JavaScript Maps (or other built-in objects)</title><link href="http://patrick.cloke.us/posts/2014/04/27/extending-javascript-maps-or-other/" rel="alternate"></link><updated>2014-04-27T13:46:00-04:00</updated><author><name>Patrick Cloke</name></author><id>tag:patrick.cloke.us,2014-04-27:posts/2014/04/27/extending-javascript-maps-or-other/</id><summary type="html">
@@ -61,7 +252,7 @@ named hasOwnProperty. This is &lt;a class="reference external" href="https://mxr
 &lt;p&gt;&lt;a class="reference external" href="https://bugzilla.mozilla.org/show_bug.cgi?id=955366"&gt;Replacing these custom objects with a Map&lt;/a&gt; would alleviate this
 funky dance.&lt;/p&gt;
 &lt;/li&gt;
-&lt;li&gt;&lt;p class="first"&gt;Frequently in the chat backend we have to "normalize" &lt;a class="footnote-reference" href="#id4" id="id1"&gt;[1]&lt;/a&gt; strings
+&lt;li&gt;&lt;p class="first"&gt;Frequently in the chat backend we have to “normalize” &lt;a class="footnote-reference" href="#id4" id="id1"&gt;[1]&lt;/a&gt; strings
 (e.g. #INsTanTBIrd and #instantbird are the same on &lt;span class="caps"&gt;IRC&lt;/span&gt; &lt;a class="footnote-reference" href="#id5" id="id2"&gt;[2]&lt;/a&gt;). This is
 almost always done for sane storage of data received from the network
 (or from the user). I figured it’d be great if, instead of having to
@@ -81,7 +272,7 @@ that don’t really limit us for backend code.&lt;/p&gt;
 &lt;li&gt;Replace objects with Maps for safe access. This is pretty easily
 fixed by switching all &lt;tt class="docutils literal"&gt;&lt;span class="pre"&gt;obj["foo"]&lt;/span&gt;&lt;/tt&gt; calls to &lt;tt class="docutils literal"&gt;&lt;span class="pre"&gt;obj.get("foo")&lt;/span&gt;&lt;/tt&gt; (or the
 appropriate other method: set, delete, etc.)&lt;/li&gt;
-&lt;li&gt;Automatically "normalize" keys in the some user defined way, e.g.
+&lt;li&gt;Automatically “normalize” keys in the some user defined way, e.g.
 such that &lt;tt class="docutils literal"&gt;&lt;span class="pre"&gt;obj.get("foo")&lt;/span&gt;&lt;/tt&gt; and &lt;tt class="docutils literal"&gt;&lt;span class="pre"&gt;obj.get("FoO")&lt;/span&gt;&lt;/tt&gt; return the same value.&lt;/li&gt;
 &lt;/ol&gt;
 &lt;/div&gt;
@@ -192,7 +383,7 @@ we’ve fixed most of them at this point though!&lt;/td&gt;&lt;/tr&gt;
 &lt;tbody valign="top"&gt;
 &lt;tr&gt;&lt;td class="label"&gt;&lt;a class="fn-backref" href="#id2"&gt;[2]&lt;/a&gt;&lt;/td&gt;&lt;td&gt;As I’ve &lt;a class="reference external" href="http://patrick.cloke.us/posts/2011/03/08/so-called-irc-specifications/"&gt;written before&lt;/a&gt;, &lt;span class="caps"&gt;IRC&lt;/span&gt; tends to have crazy specifications.
 In &lt;span class="caps"&gt;IRC&lt;/span&gt;, &lt;a class="reference external" href="https://tools.ietf.org/html/rfc2812#section-2.2"&gt;the characters of A-Z[]\~ are considered the upper case of a-z{}|^&lt;/a&gt;
-("because of &lt;span class="caps"&gt;IRC&lt;/span&gt;’s Scandinavian origin"). Oh, also this can
+(“because of &lt;span class="caps"&gt;IRC&lt;/span&gt;’s Scandinavian origin”). Oh, also this can
 change based on an &lt;a class="reference external" href="http://tools.ietf.org/html/draft-brocklesby-irc-isupport-03#section-3.1"&gt;&lt;span class="caps"&gt;ISUPPORT&lt;/span&gt; response&lt;/a&gt; from the server to pure &lt;span class="caps"&gt;ASCII&lt;/span&gt; or
 &lt;span class="caps"&gt;RFC&lt;/span&gt; 1459 casemapping (A-Z[]\ map to a-z{}|). It seems like this could
 theoretically change at any point on a live server too, although that
@@ -208,14 +399,14 @@ expected, but they’re uhh…not up anywhere yet though. Oops.&lt;/td&gt;&lt;/t
 &lt;/table&gt;
 &lt;/div&gt;
 </summary><category term="Instantbird"></category><category term="programming"></category><category term="specifications"></category><category term="Thunderbird"></category><category term="Wat"></category></entry><entry><title>Community and Volunteers</title><link href="http://patrick.cloke.us/posts/2014/04/16/community-and-volunteers/" rel="alternate"></link><updated>2014-04-16T12:34:00-04:00</updated><author><name>Patrick Cloke</name></author><id>tag:patrick.cloke.us,2014-04-16:posts/2014/04/16/community-and-volunteers/</id><summary type="html">&lt;p&gt;It was suggested that I cross-post this from mozilla.dev.planning onto
-my blog. This is in reply to a thread entitled &amp;quot;&lt;a class="reference external" href="https://groups.google.com/forum/#%21topic/mozilla.dev.planning/P8oHKTCWSiQ"&gt;Proposal: Move
-Thunderbird and SeaMonkey to mozilla-central&lt;/a&gt;&amp;quot; about (essentially)
+my blog. This is in reply to a thread entitled &amp;#8220;&lt;a class="reference external" href="https://groups.google.com/forum/#%21topic/mozilla.dev.planning/P8oHKTCWSiQ"&gt;Proposal: Move
+Thunderbird and SeaMonkey to mozilla-central&lt;/a&gt;&amp;#8221; about (essentially)
 merging comm-central back into mozilla-central. There have been many
 technical concerns raised in the thread (that I&amp;#8217;m not going to rehash
 here). What I&amp;#8217;m more interested in is the lack of community feeling
 there. As Nicholas Nethercote said in that&amp;nbsp;thread:&lt;/p&gt;
 &lt;blockquote&gt;
-&amp;quot;I am surprised [&amp;#8230;] by how heartless the discussion has been.&amp;quot;&lt;/blockquote&gt;
+&amp;#8220;I am surprised [&amp;#8230;] by how heartless the discussion has been.&amp;#8221;&lt;/blockquote&gt;
 &lt;p&gt;I should note that I did have some help editing this down from my
 original post. Turns out I tend to write inflammatory statements that
 don&amp;#8217;t help get me point across. Who knew? Anyway, thanks to all of you
@@ -231,13 +422,13 @@ converted to &lt;span class="caps"&gt;HTML&lt;/span&gt;&amp;nbsp;formatting):&lt
 Joshua and others, but the non-technical parts of this discussion
 have left mefeeling disheartened and confused with the Mozilla&amp;nbsp;community.&lt;/p&gt;
 &lt;p&gt;I find it ironic/amusing/sad/upsetting that a few threads above this
-is a thread entitled &amp;quot;&lt;a class="reference external" href="https://groups.google.com/forum/#!topic/mozilla.dev.planning/1kbZsYoQcng"&gt;Contributor pathways, engagement points and
-bug mentoring&lt;/a&gt;&amp;quot; while in this thread I see community contributors
+is a thread entitled &amp;#8220;&lt;a class="reference external" href="https://groups.google.com/forum/#!topic/mozilla.dev.planning/1kbZsYoQcng"&gt;Contributor pathways, engagement points and
+bug mentoring&lt;/a&gt;&amp;#8221; while in this thread I see community contributors
 being blocked at every&amp;nbsp;turn!&lt;/p&gt;
 &lt;p&gt;Here I don&amp;#8217;t see people attempting to foster a community by putting
 their best foot forward. I see people trying to get their &lt;strong&gt;job&lt;/strong&gt;
-done; with an attitude of &amp;quot;if this doesn&amp;#8217;t help me, get it outta my
-way!&amp;quot; I don&amp;#8217;t think this is the right way to grow a community. I
+done; with an attitude of &amp;#8220;if this doesn&amp;#8217;t help me, get it outta my
+way!&amp;#8221; I don&amp;#8217;t think this is the right way to grow a community. I
 don&amp;#8217;t think this is how Mozilla &lt;span class="caps"&gt;HAS&lt;/span&gt; grown it&amp;#8217;s community. I don&amp;#8217;t
 think it&amp;#8217;s in line with what Mozilla expects from it&amp;#8217;s community
 members (both employees and&amp;nbsp;volunteers!)&lt;/p&gt;
@@ -251,13 +442,13 @@ everyone. And no, I&amp;#8217;m not talking about Firefox. I&amp;#8217;m talking
 Thunderbird. I understand that Mozilla&amp;#8217;s goals arecurrently Firefox
 and Firefox &lt;span class="caps"&gt;OS&lt;/span&gt;, but these are not my personal&amp;nbsp;goals.&lt;/p&gt;
 &lt;p&gt;At the Summit I had a few conversations with people about
-&amp;quot;on-boarding&amp;quot; new employees and getting them to understand how the
+&amp;#8220;on-boarding&amp;#8221; new employees and getting them to understand how the
 community works and that interacting with the community in a
 positive manner is an important part of Mozilla. I don&amp;#8217;t remember
 the exact context, but part of it wasthat it is important that new
-employees don&amp;#8217;t think of it as &amp;quot;How can I &lt;em&gt;use&lt;/em&gt; the community?&amp;quot;, for
-that implies taking advtange of them, but &amp;quot;How can I work with the&amp;nbsp;community?&amp;quot;&lt;/p&gt;
-&lt;p&gt;Please don&amp;#8217;t see this as an &amp;quot;employees vs. volunteers&amp;quot; argument. I
+employees don&amp;#8217;t think of it as &amp;#8220;How can I &lt;em&gt;use&lt;/em&gt; the community?&amp;#8221;, for
+that implies taking advtange of them, but &amp;#8220;How can I work with the&amp;nbsp;community?&amp;#8221;&lt;/p&gt;
+&lt;p&gt;Please don&amp;#8217;t see this as an &amp;#8220;employees vs. volunteers&amp;#8221; argument. I
 believe that I&amp;#8217;m expected to live up to these same goals. If I, as a
 volunteer, can help an employee achieve his goals; I&amp;#8217;m
 &lt;span class="strike"&gt;more than willing&lt;/span&gt;, no&amp;#8230;I&amp;#8217;m &lt;span class="caps"&gt;EXPECTED&lt;/span&gt; to do that. I think
@@ -270,12 +461,12 @@ but it is important tome! (And otherswho contribute
 totheThunderbird/SeaMonkey community, including employees who
 contribute on their spare time.) When Mozilla stopped directly
 supporting development of Thunderbird it was widely announced that
-&amp;quot;Thunderbird is dead!&amp;quot;. We, as part of the Mozilla community, have
+&amp;#8220;Thunderbird is dead!&amp;#8221;. We, as part of the Mozilla community, have
 been fighting to prove this wrong.Could you please respect our
 efforts? Merging c-c into m-c will help us focus our efforts on
 building a great product instead of spending significant effort on
 keeping a dying one on life-support. (And prove to all that
-&amp;quot;Thunderbird is dead!&amp;quot; was just a sensational&amp;nbsp;headline.)&lt;/p&gt;
+&amp;#8220;Thunderbird is dead!&amp;#8221; was just a sensational&amp;nbsp;headline.)&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;p&gt;I don&amp;#8217;t have much else to say beyond that (besides thanks for reading
 this&amp;nbsp;far!)&lt;/p&gt;
@@ -347,10 +538,10 @@ tested heavily at all,&amp;nbsp;however.)&lt;/p&gt;
 &lt;span class="p"&gt;}&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;&lt;span class="caps"&gt;OK&lt;/span&gt;, so typed arrays seem good, but kind of annoying, right?
-Wrong&amp;#8230;the &lt;span class="caps"&gt;OSCAR&lt;/span&gt; protocol is a &amp;quot;network order&amp;quot; protocol (aka it is big
-endian). At this point you&amp;#8217;re probably thinking &amp;quot;&lt;span class="caps"&gt;OK&lt;/span&gt;, so the ArrayBuffer
-constructor must take an endianess flag!&amp;quot;&amp;nbsp; Wrong, it does no such
-thing.&amp;nbsp; &amp;quot;Hmmm&amp;#8230;Well do the ArrayBufferViews take an endianess flag?&amp;quot;
+Wrong&amp;#8230;the &lt;span class="caps"&gt;OSCAR&lt;/span&gt; protocol is a &amp;#8220;network order&amp;#8221; protocol (aka it is big
+endian). At this point you&amp;#8217;re probably thinking &amp;#8220;&lt;span class="caps"&gt;OK&lt;/span&gt;, so the ArrayBuffer
+constructor must take an endianess flag!&amp;#8221;&amp;nbsp; Wrong, it does no such
+thing.&amp;nbsp; &amp;#8220;Hmmm&amp;#8230;Well do the ArrayBufferViews take an endianess flag?&amp;#8221;
 Nope, wrong again.&amp;nbsp; The only way to specify the endianess of the data is
 to use a &lt;a class="reference external" href="https://developer.mozilla.org/en-US/docs/JavaScript_typed_arrays/DataView"&gt;DataView&lt;/a&gt;, a slightly different interface to the underlying
 bytes.&amp;nbsp; It offers an &lt;span class="caps"&gt;API&lt;/span&gt; to individually set different data elements via
@@ -371,42 +562,42 @@ does beat strings +&amp;nbsp;charCodeAt!&lt;/p&gt;
 three statuses: Available, Unavailable and Offline.&amp;nbsp; (We do actually
 support a fourth one too, Idle, but that is set automatically, not
 chosen by the user.)&amp;nbsp; Frequently this discussion is in the context of
-wanting an &amp;quot;Invisible&amp;quot; status, but I&amp;#8217;ll get to that&amp;nbsp;later&amp;#8230;&lt;/p&gt;
+wanting an &amp;#8220;Invisible&amp;#8221; status, but I&amp;#8217;ll get to that&amp;nbsp;later&amp;#8230;&lt;/p&gt;
 &lt;p&gt;Many users have talked to us on &lt;span class="caps"&gt;IRC&lt;/span&gt;, email or via bugs and complained
-about wanting an &amp;quot;Away&amp;quot; status or a &amp;quot;Do Not Disturb&amp;quot; status.&amp;nbsp; There&amp;#8217;s a
+about wanting an &amp;#8220;Away&amp;#8221; status or a &amp;#8220;Do Not Disturb&amp;#8221; status.&amp;nbsp; There&amp;#8217;s a
 few issues with&amp;nbsp;this:&lt;/p&gt;
 &lt;ol class="arabic simple"&gt;
-&lt;li&gt;What&amp;#8217;s really the difference between &amp;quot;Unavailable&amp;quot;, &amp;quot;Away&amp;quot; and &amp;quot;Do
-Not Disturb&amp;quot;?&amp;nbsp; Do you really need to choose them individually?
-(Other things that fit into here: &amp;quot;Not at my desk&amp;quot;, &amp;quot;on the phone&amp;quot;,
-&amp;quot;busy&amp;quot;, &amp;quot;stepped out&amp;quot;.&amp;nbsp; It is amazing how some protocols have so many
+&lt;li&gt;What&amp;#8217;s really the difference between &amp;#8220;Unavailable&amp;#8221;, &amp;#8220;Away&amp;#8221; and &amp;#8220;Do
+Not Disturb&amp;#8221;?&amp;nbsp; Do you really need to choose them individually?
+(Other things that fit into here: &amp;#8220;Not at my desk&amp;#8221;, &amp;#8220;on the phone&amp;#8221;,
+&amp;#8220;busy&amp;#8221;, &amp;#8220;stepped out&amp;#8221;.&amp;nbsp; It is amazing how some protocols have so many
 ways to describe being&amp;nbsp;unavailable!)&lt;/li&gt;
 &lt;li&gt;A technical issue that we often run into is trying to shoehorn
 different protocol implementations into our abstract protocol
 interface.&amp;nbsp; (We already have some fairly complicated interfaces
 around joining chat rooms, creating different account, etc. because
 of&amp;nbsp;this.)&lt;/li&gt;
-&lt;li&gt;Setting yourself as &amp;quot;Away&amp;quot; or &amp;quot;Invisible&amp;quot; is a lie.&amp;nbsp; Perhaps this is
+&lt;li&gt;Setting yourself as &amp;#8220;Away&amp;#8221; or &amp;#8220;Invisible&amp;#8221; is a lie.&amp;nbsp; Perhaps this is
 me being overly idealistic, but why would you set yourself as
-&amp;quot;Away&amp;quot;?&amp;nbsp; It seems that this is something that should be done
+&amp;#8220;Away&amp;#8221;?&amp;nbsp; It seems that this is something that should be done
 automatically (when you lock your display, perhaps?).&amp;nbsp; You can&amp;#8217;t be
-&amp;quot;Away&amp;quot; and using your computer at the same time!
+&amp;#8220;Away&amp;#8221; and using your computer at the same time!
 Again, perhaps being idealistic, but what is the point of the
-&amp;quot;Invisible&amp;quot; status?&amp;nbsp; If you wish to be hidden from someone
+&amp;#8220;Invisible&amp;#8221; status?&amp;nbsp; If you wish to be hidden from someone
 (everyone?) why not just block those users.&amp;nbsp; Or ignore them when they
-send you a message.&amp;nbsp; If you are busy, set yourself to &amp;quot;Unavailable&amp;quot;
+send you a message.&amp;nbsp; If you are busy, set yourself to &amp;#8220;Unavailable&amp;#8221;
 and people should understand that they should not talk to you&amp;#8230;if
 they don&amp;#8217;t, well&amp;#8230;do you really want them talking to you ever?&amp;nbsp; (Are
 they really your friend?&amp;nbsp; I guess you don&amp;#8217;t get to choose your
 co-workers, but still.)&amp;nbsp; Now, perhaps this is just my opinion as
-being someone who never really hard an &amp;quot;Invisible&amp;quot; status (I actually
+being someone who never really hard an &amp;#8220;Invisible&amp;#8221; status (I actually
 remember it being added to the &lt;span class="caps"&gt;AIM&lt;/span&gt; client at some&amp;nbsp;point).&lt;/li&gt;
 &lt;/ol&gt;
 &lt;p&gt;At this point you probably don&amp;#8217;t believe me that there&amp;#8217;s really &lt;em&gt;that&lt;/em&gt;
 many different protocol statuses out there, so I figured I&amp;#8217;d illustrate
 a few protocols in a matrix.&amp;nbsp; Note that this isn&amp;#8217;t meant to be
 exhaustive, just to show how complicated of a situation this really is.
-All protocols can obviously be &amp;quot;offline&amp;quot; as well, but that&amp;#8217;s not shown
+All protocols can obviously be &amp;#8220;offline&amp;#8221; as well, but that&amp;#8217;s not shown
 in the&amp;nbsp;table.&lt;/p&gt;
 &lt;table border="1" class="docutils"&gt;
 &lt;colgroup&gt;
@@ -506,9 +697,9 @@ working fine.)&amp;nbsp; There was &lt;a class="reference external" href="http:/
 filed for&amp;nbsp;Thunderbird.&lt;/p&gt;
 &lt;p&gt;So how did this lead to free &lt;span class="caps"&gt;IMAP&lt;/span&gt; support?&amp;nbsp; I noticed in the &lt;a class="reference external" href="https://wiki.mozilla.org/Thunderbird/StatusMeetings/2010-11-16#Web_Update"&gt;Weekly
 Status Meeting Notes (2010-11-16)&lt;/a&gt; for Thunderbird a mention of &lt;a class="reference external" href="http://trunk.mozillamessaging.com/en-US/thunderbird/features/email_providers.html"&gt;Free
-Email Providers&lt;/a&gt; page.&amp;nbsp; Checking it out it said &amp;quot;Y! Mail is a free
+Email Providers&lt;/a&gt; page.&amp;nbsp; Checking it out it said &amp;#8220;Y! Mail is a free
 email service provided by Yahoo! It offers webmail supported by targeted
-advertising as well as &lt;span class="caps"&gt;IMAP&lt;/span&gt; access.&amp;quot;&amp;nbsp; Hmm&amp;#8230;but I just said they don&amp;#8217;t
+advertising as well as &lt;span class="caps"&gt;IMAP&lt;/span&gt; access.&amp;#8221;&amp;nbsp; Hmm&amp;#8230;but I just said they don&amp;#8217;t
 have support this for free! A quick Bing search brought up a &lt;a class="reference external" href="http://www.theanimail.com/imap_server_settings.html"&gt;page with
 &lt;span class="caps"&gt;IMAP&lt;/span&gt; server settings&lt;/a&gt;.&amp;nbsp; I figured I&amp;#8217;d check if they work, and sure
 enough they did!&amp;nbsp; The settings are copied&amp;nbsp;below:&lt;/p&gt;

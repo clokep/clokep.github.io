@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom"><title>Like bricks in the sky</title><link href="http://patrick.cloke.us/" rel="alternate"></link><link href="http://patrick.cloke.us/feeds/tag/lightning.atom.xml" rel="self"></link><id>http://patrick.cloke.us/</id><updated>2011-07-08T20:46:00-04:00</updated><entry><title>Shared Lightning profile across Linux and Windows</title><link href="http://patrick.cloke.us/posts/2011/07/08/shared-lightning-profile-across-linux/" rel="alternate"></link><updated>2011-07-08T20:46:00-04:00</updated><author><name>Patrick Cloke</name></author><id>tag:patrick.cloke.us,2011-07-08:posts/2011/07/08/shared-lightning-profile-across-linux/</id><summary type="html">&lt;p&gt;In &lt;a class="reference external" href="irc://irc.mozilla.org/calendar"&gt;#calendar on Mozilla &lt;span class="caps"&gt;IRC&lt;/span&gt;&lt;/a&gt; the past few days a user has been
 asking about using a shared profile on Thunderbird between Linux and
-Windows (&amp;quot;shared&amp;quot; meaning a dual boot system of Linux/Windows, but not
+Windows (&amp;#8220;shared&amp;#8221; meaning a dual boot system of Linux/Windows, but not
 at the same time, obviously).&amp;nbsp; Generally this isn&amp;#8217;t a big deal &lt;span class="caps"&gt;UNLESS&lt;/span&gt;
 you have a binary extension, in which case you&amp;#8217;d have to reinstall the
 extension every time! That&amp;#8217;s awfully&amp;nbsp;lame.&lt;/p&gt;
@@ -12,7 +12,7 @@ changes,&amp;nbsp;however.&lt;/p&gt;
 &lt;p&gt;The steps are mostly the same, with some&amp;nbsp;added.&lt;/p&gt;
 &lt;ol class="arabic simple"&gt;
 &lt;li&gt;Download whatever versions you want (&lt;a class="reference external" href="http://releases.mozilla.org/pub/mozilla.org/calendar/lightning/releases/1.0b4/"&gt;perhaps 1.0b4&lt;/a&gt;?).&lt;/li&gt;
-&lt;li&gt;Unzip them all and choose which one will be your &amp;quot;unified&amp;quot;&amp;nbsp;version.&lt;/li&gt;
+&lt;li&gt;Unzip them all and choose which one will be your &amp;#8220;unified&amp;#8221;&amp;nbsp;version.&lt;/li&gt;
 &lt;li&gt;Find the &amp;lt;em:targetPlatform&amp;gt; section in the install.rdfs and include
 all the necessary&amp;nbsp;ones.&lt;/li&gt;
 &lt;li&gt;Find the libcalbasecomps.* (where * is dll, dylib, so, etc. for
@@ -29,7 +29,7 @@ Sparc and Solaris x86.&amp;nbsp; Why is this not done by default?&amp;nbsp; Prob
 cause no one has done it&amp;#8230;there is a &lt;a class="reference external" href="https://bugzilla.mozilla.org/show_bug.cgi?id=352543"&gt;bug about it&lt;/a&gt; though.&amp;nbsp; One issue
 that might be encountered using this method is pre-processing of some
 script files (as is discussed in that big) but hopefully it should
-&amp;quot;mostly&amp;quot; work.&amp;nbsp; (Note that this is mostly&amp;nbsp;untested.)&lt;/p&gt;
+&amp;#8220;mostly&amp;#8221; work.&amp;nbsp; (Note that this is mostly&amp;nbsp;untested.)&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;Edit:&lt;/strong&gt; I should also mention that you would need to do something
 similar with the themes folders if they differ dramatically (it seems
 there&amp;#8217;s &lt;a class="reference external" href="http://mxr.mozilla.org/comm-central/source/calendar/lightning/themes/"&gt;just two&lt;/a&gt;: winstripe and pinstripe: i.e. Windows &lt;span class="amp"&gt;&amp;amp;&lt;/span&gt; Mac; Linux

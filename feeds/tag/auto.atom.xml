@@ -6,7 +6,7 @@ plan to sell it anytime&amp;nbsp;soon.&lt;/p&gt;
 the radio in it&amp;#8230;and it is &lt;em&gt;just&lt;/em&gt; old enough &lt;a class="footnote-reference" href="#id8" id="id2"&gt;[2]&lt;/a&gt; to have neither BlueTooth nor
 an auxiliary audio input. I&amp;#8217;ve been carrying around a book of CDs with me for
 the past 8 years. I decided it was time to change&amp;nbsp;that.&lt;/p&gt;
-&lt;p&gt;I knew that it was possible to &amp;quot;modify&amp;quot; the radio to accept an auxiliary input,
+&lt;p&gt;I knew that it was possible to &amp;#8220;modify&amp;#8221; the radio to accept an auxiliary input,
 but it &lt;a class="reference external" href="http://www.jazzyengineering.com/product_info.php?cPath=21&amp;amp;products_id=28"&gt;involved always playing a silent &lt;span class="caps"&gt;CD&lt;/span&gt;&lt;/a&gt;, which I did not find adequate. I
 recently &lt;a class="reference external" href="http://snackeyes.blogspot.com/2011/06/2005-subaru-outback-aux-in-hack-via.html"&gt;came across&lt;/a&gt; a post of how to do this in such a way that the radio
 functions as normal, but when you plug in a device to the auxiliary port it cuts
@@ -38,7 +38,7 @@ audio jack&lt;/a&gt;, which I got at my local RadioShack for $2.99. (I also pick
 wire, heatshrink, etc. so&amp;#8230;$5.00 sounded reasonable.) The actual list of parts
 and tools I used&amp;nbsp;was:&lt;/p&gt;
 &lt;ul class="simple"&gt;
-&lt;li&gt;1/8&amp;quot; Stereo Panel-Mount Phone Jack [$2.99, RadioShack&amp;nbsp;#274-246]&lt;/li&gt;
+&lt;li&gt;1/8&amp;#8221; Stereo Panel-Mount Phone Jack [$2.99, RadioShack&amp;nbsp;#274-246]&lt;/li&gt;
 &lt;li&gt;~2 feet of each of green and red 22 gauge wire, ~1 foot of black 22 gauge&amp;nbsp;wire.&lt;/li&gt;
 &lt;li&gt;Soldering iron /&amp;nbsp;Solder&lt;/li&gt;
 &lt;li&gt;3 x Alligator clip testing wires (1 black, 1 red, 1&amp;nbsp;green)&lt;/li&gt;
@@ -49,7 +49,7 @@ and tools I used&amp;nbsp;was:&lt;/p&gt;
 &lt;li&gt;Wire&amp;nbsp;cutter&lt;/li&gt;
 &lt;li&gt;Needle nosed&amp;nbsp;pliers&lt;/li&gt;
 &lt;li&gt;&lt;a class="reference external" href="http://www.streamlight.com/product/product.aspx?pid=133"&gt;Flashlight&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;Drill with 1/4&amp;quot; drill bit and a 1/2&amp;quot; spade bit (plus some smaller sized drill
+&lt;li&gt;Drill with 1/4&amp;#8221; drill bit and a 1/2&amp;#8221; spade bit (plus some smaller sized drill
 bits for pilot&amp;nbsp;holes)&lt;/li&gt;
 &lt;/ul&gt;
 &lt;p&gt;Anyway, once you have the radio out you can disassembly it down to it&amp;#8217;s bare
@@ -99,8 +99,8 @@ is right audio and green is left audio (black is&amp;nbsp;ground).&lt;/p&gt;
 &lt;a class="reference external image-reference" href="http://patrick.cloke.us/images/subaru-outback-radio/diagrams.jpg"&gt;&lt;img alt="Wiring diagrams of the connections." src="/thumbnails/subaru-outback-radio/diagrams_medium.jpg" /&gt;&lt;/a&gt;
 &lt;p&gt;A few of the diagrams necessary to do this. The top two diagram is simple
 the connectors two states: no plug and plug. The bottom two diagrams are a
-normal 1/8&amp;quot; audio plug and the physical pin-out and measurements of the&amp;nbsp;jack.&lt;/p&gt;
-&lt;p&gt;To reiterate, pins 2 and 5 connect to the &amp;quot;stereo side&amp;quot; of the scored pins
+normal 1/8&amp;#8221; audio plug and the physical pin-out and measurements of the&amp;nbsp;jack.&lt;/p&gt;
+&lt;p&gt;To reiterate, pins 2 and 5 connect to the &amp;#8220;stereo side&amp;#8221; of the scored pins
 31 and 32 of the radio module. (I.e. They are the output from the connector
 back to what will be played by the stereo.) Pins 3 and 4 are the inputs from
 the radio module side of pins 31 and 32 to the&amp;nbsp;connector.&lt;/p&gt;
@@ -133,7 +133,7 @@ measurements were taken initially on the back and transcribed to the front
 (where I drilled&amp;nbsp;from).&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;p&gt;The plastic was actually too think for the panel mount connector to reach
-through, which is where the 1/2&amp;quot; spade bit came in handy. I use it to drill
+through, which is where the 1/2&amp;#8221; spade bit came in handy. I use it to drill
 through roughly half the thickness of the plastic (a little at a time with lots
 of testing). The connector was able to nestle inside the thinner plastic and
 reach all the way&amp;nbsp;through.&lt;/p&gt;

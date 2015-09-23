@@ -117,13 +117,13 @@ corner of the Mozilla&amp;nbsp;community.&lt;/p&gt;
 &lt;p&gt;The organization these students were applying to required patches to
 be fixed for a student&amp;#8217;s application to be accepted (as discussed in my
 previous post). For a particular project there existed multiple highly
-motivated and skilled students, but only one slot. Thus, a &amp;quot;patch race&amp;quot;
+motivated and skilled students, but only one slot. Thus, a &amp;#8220;patch race&amp;#8221;
 of sorts occurred where the students competed by continually providing
 more patches that were increasingly complex. (Note that this wasn&amp;#8217;t a in
 response to a challenge from community members, it was a spontaneous
 situation.) Once a single student started to submit extra patches the
 other students felt they must also submit more patches to be considered
-equal/superior (hence my allusion to an &amp;quot;&lt;a class="reference external" href="http://en.wikipedia.org/wiki/Arms_race#Nuclear_arms_race"&gt;arms race&lt;/a&gt;&amp;quot;).
+equal/superior (hence my allusion to an &amp;#8220;&lt;a class="reference external" href="http://en.wikipedia.org/wiki/Arms_race#Nuclear_arms_race"&gt;arms race&lt;/a&gt;&amp;#8220;).
 Interestingly, they would also sometimes work on the same bug in a sort
 of race to see who could fix it&amp;nbsp;first.&lt;/p&gt;
 &lt;p&gt;There&amp;#8217;s a couple things I took away from&amp;nbsp;this:&lt;/p&gt;
@@ -151,7 +151,7 @@ has now vested a large amount of time in the&amp;nbsp;project.&lt;/p&gt;
 students were not working in an open manner! Instead of collaborating,
 they were competing! To me, this would set off a very poor tone for the
 rest of GSoC. In fact, one of the biggest challenges I&amp;#8217;ve had with GSoC
-students is getting them to work in the open (i.e. &amp;quot;show me the code&amp;quot;,
+students is getting them to work in the open (i.e. &amp;#8220;show me the code&amp;#8221;,
 anyone in &lt;a class="reference external" href="irc://irc.mozilla.org/#instantbird"&gt;#instantbird&lt;/a&gt; is probably tired of hearing me say&amp;nbsp;that).&lt;/p&gt;
 &lt;p&gt;At this point you &lt;em&gt;might&lt;/em&gt; think this is a hypothetical case I made up!
 Upon letting it sink in and reflecting on it&amp;#8230;I realized I had actually
@@ -200,12 +200,12 @@ inside of Mozilla require more than just an application, but there does
 not seem to be any rule across Mozilla. I said I wouldn&amp;#8217;t offer my
 opinion above&amp;#8230;but I lied: I think Mozilla should make it clearer to
 applicants what is expected of them before the&amp;nbsp;application.&lt;/p&gt;
-&lt;p&gt;There seem to be a variety of things different organizations &amp;quot;require&amp;quot;
+&lt;p&gt;There seem to be a variety of things different organizations &amp;#8220;require&amp;#8221;
 before accepting a student application, for&amp;nbsp;example:&lt;/p&gt;
 &lt;ul class="simple"&gt;
 &lt;li&gt;A patch / pull&amp;nbsp;request&lt;/li&gt;
 &lt;li&gt;&lt;span class="caps"&gt;IRC&lt;/span&gt; / email involvement /&amp;nbsp;idling&lt;/li&gt;
-&lt;li&gt;File a bug (I mean this in the &amp;quot;Mozilla&amp;quot; sense: an actual bug, a
+&lt;li&gt;File a bug (I mean this in the &amp;#8220;Mozilla&amp;#8221; sense: an actual bug, a
 feature request,&amp;nbsp;etc.)&lt;/li&gt;
 &lt;li&gt;Fix a bug / make a&amp;nbsp;commit&lt;/li&gt;
 &lt;/ul&gt;
@@ -221,8 +221,8 @@ thing to ask for new contributors that might not want to share their
 work publicly with a large group of people (on a mailing list, public
 bug tracker, etc.) where they might be wrong. Even after being part of
 the community, I find that GSoC students are often very unwilling to
-publicly share code unless it&amp;#8217;s &amp;quot;perfect&amp;quot;, but I digress. Anyway, if
-you&amp;#8217;re considering &amp;quot;requiring&amp;quot; this, I think it should be pretty clear
+publicly share code unless it&amp;#8217;s &amp;#8220;perfect&amp;#8221;, but I digress. Anyway, if
+you&amp;#8217;re considering &amp;#8220;requiring&amp;#8221; this, I think it should be pretty clear
 that this changeset doesn&amp;#8217;t need to be &lt;em&gt;perfect&lt;/em&gt;, it just needs to show
 that the student is able to read code, understand a bug report, provide
 a fix and test&amp;nbsp;it.&lt;/p&gt;
@@ -258,7 +258,7 @@ offices in Mountain View, California this past weekend (Friday, Oct.
 &lt;p&gt;Before actually heading over to the Summit, &lt;a class="reference external" href="http://mykzilla.org/"&gt;Myk Melez&lt;/a&gt; and &lt;a class="reference external" href="http://nickdesaulniers.github.io/"&gt;Nick
 Desaulniers&lt;/a&gt; were kind enough to show me around the Mozilla Mountain
 View office!&amp;nbsp; (Thanks to Daniel Holbert for setting that&amp;nbsp;up!)&lt;/p&gt;
-&lt;p&gt;The GSoC Mentor Summit is run as an &amp;quot;unconference&amp;quot;, the open sessions
+&lt;p&gt;The GSoC Mentor Summit is run as an &amp;#8220;unconference&amp;#8221;, the open sessions
 were chosen by conference attendees and run as discussions with no
 keynote speakers.&amp;nbsp; This was an interesting experience and how good each
 session was varied quite a bit by who was taking part in the discussion,
@@ -272,7 +272,7 @@ a few of which were: &lt;a class="reference external" href="http://pidgin.im/"&g
 Lighting Project&lt;/a&gt;, the &lt;a class="reference external" href="https://www.torproject.org/"&gt;Tor Project&lt;/a&gt;, &lt;a class="reference external" href="https://www.phpbb.com/%E2%80%8E"&gt;phpBB&lt;/a&gt;, etc.&amp;nbsp; Unfortunately
 being from Mozilla, most people already know what you do&amp;#8230;or they think
 you do at least!&amp;nbsp; Many people were surprised when I said I work on
-Thunderbird and Instantbird.&amp;nbsp; I heard &amp;quot;Thunderbird is dead&amp;quot; at least
+Thunderbird and Instantbird.&amp;nbsp; I heard &amp;#8220;Thunderbird is dead&amp;#8221; at least
 twenty times, which was quite disappointing that those in the open
 source community don&amp;#8217;t even understand the current status of
 Thunderbird.&amp;nbsp; Many were happy to hear that it is still being maintained
@@ -294,7 +294,7 @@ write further blog posts about&amp;nbsp;them.&lt;/p&gt;
 for taking so long to write this&amp;#8230;but anyway: Google Summer of Code
 2013 is over!&amp;nbsp; Quentin has done a great job working at implementing the
 Yahoo Protocol for Instantbird (and Thunderbird) in JavaScript
-(henceforth called &amp;quot;&lt;span class="caps"&gt;JS&lt;/span&gt;-Yahoo&amp;quot;).&amp;nbsp; It&amp;#8217;s at the point where it has mostly
+(henceforth called &amp;#8220;&lt;span class="caps"&gt;JS&lt;/span&gt;-Yahoo&amp;#8221;).&amp;nbsp; It&amp;#8217;s at the point where it has mostly
 reached feature-parity with the libpurple plug-in.&amp;nbsp; Before &lt;a class="reference external" href="https://bugzilla.instantbird.org/show_bug.cgi?id=2135"&gt;turning this
 on as default&lt;/a&gt; there are a few minor bugs that still need to be fixed,
 but most of them have patches that just need another couple&amp;nbsp;iterations.&lt;/p&gt;
@@ -310,8 +310,8 @@ libpurple Yahoo implementation for Instantbird&amp;nbsp;1.next.&lt;/p&gt;
 &lt;p&gt;You can already easily enable &lt;span class="caps"&gt;JS&lt;/span&gt;-Yahoo in &lt;a class="reference external" href="http://nightly.instantbird.im/"&gt;Instantbird nightly builds&lt;/a&gt;:&lt;/p&gt;
 &lt;ol class="arabic simple"&gt;
 &lt;li&gt;Type /about config in a conversation tab&amp;#8217;s&amp;nbsp;textbox&lt;/li&gt;
-&lt;li&gt;Type &amp;quot;forcePurple&amp;quot; in the search&amp;nbsp;box&lt;/li&gt;
-&lt;li&gt;Remove &amp;quot;prpl-yahoo&amp;quot; and &amp;quot;prpl-yahoojp&amp;quot; from this comma separated list
+&lt;li&gt;Type &amp;#8220;forcePurple&amp;#8221; in the search&amp;nbsp;box&lt;/li&gt;
+&lt;li&gt;Remove &amp;#8220;prpl-yahoo&amp;#8221; and &amp;#8220;prpl-yahoojp&amp;#8221; from this comma separated list
 of values (you can also remove prpl-jabber if you want to always use
 the &lt;span class="caps"&gt;JS&lt;/span&gt;-&lt;span class="caps"&gt;XMPP&lt;/span&gt; implementation from GSoC 2011! Note that this doesn&amp;#8217;t
 support &lt;a class="reference external" href="https://bugzilla.mozilla.org/show_bug.cgi?id=14328"&gt;&lt;span class="caps"&gt;DNS&lt;/span&gt; &lt;span class="caps"&gt;SRV&lt;/span&gt;&lt;/a&gt;,&amp;nbsp;however.)&lt;/li&gt;
@@ -346,7 +346,7 @@ current libpurple Yahoo implementation. Once we&amp;#8217;re satisified that it
 has feature parity we&amp;#8217;ll remove the libpurple version and enable this by&amp;nbsp;default!&lt;/p&gt;
 &lt;p&gt;Instantbird is also supporting two other&amp;nbsp;projects:&lt;/p&gt;
 &lt;ul class="simple"&gt;
-&lt;li&gt;The &lt;a class="reference external" href="http://www.google-melange.com/gsoc/project/google/gsoc2013/nhnt11/7001"&gt;&amp;quot;Awesometab&amp;quot;&lt;/a&gt; is being done by &lt;a class="reference external" href="http://awesometab.blogspot.com/"&gt;Nihanth Subramanya&lt;/a&gt;
+&lt;li&gt;The &lt;a class="reference external" href="http://www.google-melange.com/gsoc/project/google/gsoc2013/nhnt11/7001"&gt;&amp;#8220;Awesometab&amp;#8221;&lt;/a&gt; is being done by &lt;a class="reference external" href="http://awesometab.blogspot.com/"&gt;Nihanth Subramanya&lt;/a&gt;
 (&lt;a class="reference external" href="http://awesometab.blogspot.com/feeds/posts/default?alt=rss"&gt;&lt;span class="caps"&gt;RSS&lt;/span&gt;&lt;/a&gt;)
 and being mentored by Benedikt Pfeifer, his code is &lt;a class="reference external" href="https://bitbucket.org/nhnt11/instantbird-addons"&gt;available&lt;/a&gt; and
 some has already been &lt;a class="reference external" href="http://hg.instantbird.org/instantbird/rev/55009d68c4ec"&gt;checked&lt;/a&gt; &lt;a class="reference external" href="http://hg.instantbird.org/instantbird/rev/46ee5c836e48"&gt;into&lt;/a&gt; &lt;a class="reference external" href="http://hg.instantbird.org/instantbird/rev/52401d522970"&gt;Instantbird&lt;/a&gt; &lt;a class="reference external" href="http://hg.instantbird.org/instantbird/rev/ea36babac4be"&gt;nightlies&lt;/a&gt;!&lt;/li&gt;
@@ -357,7 +357,7 @@ Florian Quèze, check out the &lt;a class="reference external" href="https://bit
 &lt;/ul&gt;
 &lt;p&gt;You can find any of us in #instantbird on irc.mozilla.org, my nick is
 clokep, Quentin&amp;#8217;s is qheaden, Nihanth&amp;#8217;s: nhnt11, Atul&amp;#8217;s: atuljangra,
-Benedikt goes by Mic and Florian goes by something starting with&amp;nbsp;&amp;quot;flo&amp;quot;.&lt;/p&gt;
+Benedikt goes by Mic and Florian goes by something starting with&amp;nbsp;&amp;#8220;flo&amp;#8221;.&lt;/p&gt;
 &lt;p&gt;Thanks also go out to Mozilla for letting us participate in Google
 Summer of Code with them again! You can see all of the accepted projects
 in &lt;a class="reference external" href="http://blog.gerv.net/2013/06/gsoc-2013-project-list/"&gt;Gerv&amp;#8217;s blogpost&lt;/a&gt;.&lt;/p&gt;

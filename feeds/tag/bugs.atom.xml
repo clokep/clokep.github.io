@@ -4,7 +4,7 @@ on a label, then found the &lt;span class="caps"&gt;RSS&lt;/span&gt; embedded in
 the &lt;span class="caps"&gt;RSS&lt;/span&gt; feed for that label,&amp;nbsp;right?&lt;/p&gt;
 &lt;p&gt;Wrong.&lt;/p&gt;
 &lt;p&gt;Of course there&amp;#8217;s an&amp;nbsp;&lt;a class="reference external" href="http://www.google.com/support/blogger/bin/answer.py?hl=en&amp;amp;answer=97933"&gt;&lt;span class="caps"&gt;FAQ&lt;/span&gt;&lt;/a&gt; page about this, but the syntax it gives
-is broken.&amp;nbsp; For a specific label (I&amp;#8217;m using the label&amp;nbsp;&amp;quot;Instantbird&amp;quot;):&lt;/p&gt;
+is broken.&amp;nbsp; For a specific label (I&amp;#8217;m using the label&amp;nbsp;&amp;#8220;Instantbird&amp;#8221;):&lt;/p&gt;
 &lt;ul class="simple"&gt;
 &lt;li&gt;&lt;span class="caps"&gt;RSS&lt;/span&gt;:
 &lt;a class="reference external" href="http://clokep.blogspot.com/feeds/posts/default/-/Instantbird?alt=rss"&gt;http://clokep.blogspot.com/feeds/posts/default/-/Instantbird?alt=rss&lt;/a&gt;&lt;/li&gt;
@@ -37,9 +37,9 @@ working fine.)&amp;nbsp; There was &lt;a class="reference external" href="http:/
 filed for&amp;nbsp;Thunderbird.&lt;/p&gt;
 &lt;p&gt;So how did this lead to free &lt;span class="caps"&gt;IMAP&lt;/span&gt; support?&amp;nbsp; I noticed in the &lt;a class="reference external" href="https://wiki.mozilla.org/Thunderbird/StatusMeetings/2010-11-16#Web_Update"&gt;Weekly
 Status Meeting Notes (2010-11-16)&lt;/a&gt; for Thunderbird a mention of &lt;a class="reference external" href="http://trunk.mozillamessaging.com/en-US/thunderbird/features/email_providers.html"&gt;Free
-Email Providers&lt;/a&gt; page.&amp;nbsp; Checking it out it said &amp;quot;Y! Mail is a free
+Email Providers&lt;/a&gt; page.&amp;nbsp; Checking it out it said &amp;#8220;Y! Mail is a free
 email service provided by Yahoo! It offers webmail supported by targeted
-advertising as well as &lt;span class="caps"&gt;IMAP&lt;/span&gt; access.&amp;quot;&amp;nbsp; Hmm&amp;#8230;but I just said they don&amp;#8217;t
+advertising as well as &lt;span class="caps"&gt;IMAP&lt;/span&gt; access.&amp;#8221;&amp;nbsp; Hmm&amp;#8230;but I just said they don&amp;#8217;t
 have support this for free! A quick Bing search brought up a &lt;a class="reference external" href="http://www.theanimail.com/imap_server_settings.html"&gt;page with
 &lt;span class="caps"&gt;IMAP&lt;/span&gt; server settings&lt;/a&gt;.&amp;nbsp; I figured I&amp;#8217;d check if they work, and sure
 enough they did!&amp;nbsp; The settings are copied&amp;nbsp;below:&lt;/p&gt;

@@ -130,11 +130,11 @@ been necessary!) My main requirements for blog software were:</p>
 <ul class="simple">
 <li>Easy to use and set up.</li>
 <li>Free.</li>
-<li>Support for syntax highlighted code blocks. (This was the only "hard" one to
+<li>Support for syntax highlighted code blocks. (This was the only “hard” one to
 come by.)</li>
 <li>Support for <a class="reference external" href="https://en.wikipedia.org/wiki/RSS"><span class="caps">RSS</span></a> feeds.</li>
 </ul>
-<p>After a quick Google search for "<a class="reference external" href="https://www.google.com/search?q=jekyll+python">jekyll python</a>", I ended up on <a class="reference external" href="https://hyde.github.io/">Hyde</a>. It
+<p>After a quick Google search for “<a class="reference external" href="https://www.google.com/search?q=jekyll+python">jekyll python</a>“, I ended up on <a class="reference external" href="https://hyde.github.io/">Hyde</a>. It
 seemed alright, but no one seemed to use it. Farther down the page I came across
 <a class="reference external" href="http://arunrocks.com/moving-blogs-to-pelican/">a blog</a> talking about moving to <a class="reference external" href="http://getpelican.com/">Pelican</a>. I was hooked. (Note that I don’t
 necessarily agree with all the ideas in that post, it just introduced me to Pelican.)</p>
@@ -142,8 +142,8 @@ necessarily agree with all the ideas in that post, it just introduced me to Pel
 <h2><a class="toc-backref" href="#id1">Set up Pelican</a></h2>
 <p>(Since I dislike writing my own descriptions:)</p>
 <blockquote>
-"Pelican is a static site generator, written in <a class="reference external" href="http://www.python.org/">Python</a>, that requires no
-database or server-side logic."</blockquote>
+“Pelican is a static site generator, written in <a class="reference external" href="http://www.python.org/">Python</a>, that requires no
+database or server-side logic.”</blockquote>
 <p>Cool! Sounds real simple to use! And it was. Mostly.</p>
 <p>I pretty much followed the <a class="reference external" href="http://docs.getpelican.com/en/3.4.0/quickstart.html">quickstart</a>:</p>
 <div class="highlight"><pre>mkdir -p blog/blog <span class="c"># The first blog is to store other repos, etc.</span>
@@ -165,7 +165,7 @@ in Blogger!</p>
 just put up a `pull request`_ to support Blogger natively!</em>), but it supports
 <a class="reference external" href="http://docs.getpelican.com/en/3.4.0/importer.html">importing from a <span class="caps">RSS</span> feed</a>. The first time I did this it missed a couple of
 articles (which I didn’t notice right away), so make sure you bump up the max
-amount in the <span class="caps">URL</span> like so (this also outputs in the folder "content"):</p>
+amount in the <span class="caps">URL</span> like so (this also outputs in the folder “content”):</p>
 <pre class="literal-block">
 pelican-import --feed http://clokep.blogspot.com/feeds/posts/default\?alt\=rss\&amp;max-results\=240 -o content
 </pre>
@@ -191,9 +191,9 @@ different systems, so hopefully it doesn’t totally break on small screen sizes
 or something. I’m not <span class="caps">HTML</span> expert, so I’d rather talk about the other stuff I
 modified. (Although, if you’re curious, the main elements I <em>did</em> modify are
 adding the sidebar to the left and the organization of the archives page.)</p>
-<p>Blogger has a concept of "labels", Pelican has a concept of "category" and
-"tags". I <em>hate</em> this. What’s the difference? Anyway, I wanted to eradicate the
-concept of a "category" (and "authors" since I’m the only one on my blog!), so I
+<p>Blogger has a concept of “labels”, Pelican has a concept of “category” and
+“tags”. I <em>hate</em> this. What’s the difference? Anyway, I wanted to eradicate the
+concept of a “category” (and “authors” since I’m the only one on my blog!), so I
 added a few things to my pelicanconf.py:</p>
 <div class="highlight"><pre><span class="c"># Disable categories.</span>
 <span class="n">DISPLAY_CATEGORIES_ON_MENU</span> <span class="o">=</span> <span class="bp">False</span>

@@ -25,9 +25,9 @@ working fine.)&amp;nbsp; There was &lt;a class="reference external" href="http:/
 filed for&amp;nbsp;Thunderbird.&lt;/p&gt;
 &lt;p&gt;So how did this lead to free &lt;span class="caps"&gt;IMAP&lt;/span&gt; support?&amp;nbsp; I noticed in the &lt;a class="reference external" href="https://wiki.mozilla.org/Thunderbird/StatusMeetings/2010-11-16#Web_Update"&gt;Weekly
 Status Meeting Notes (2010-11-16)&lt;/a&gt; for Thunderbird a mention of &lt;a class="reference external" href="http://trunk.mozillamessaging.com/en-US/thunderbird/features/email_providers.html"&gt;Free
-Email Providers&lt;/a&gt; page.&amp;nbsp; Checking it out it said &amp;quot;Y! Mail is a free
+Email Providers&lt;/a&gt; page.&amp;nbsp; Checking it out it said &amp;#8220;Y! Mail is a free
 email service provided by Yahoo! It offers webmail supported by targeted
-advertising as well as &lt;span class="caps"&gt;IMAP&lt;/span&gt; access.&amp;quot;&amp;nbsp; Hmm&amp;#8230;but I just said they don&amp;#8217;t
+advertising as well as &lt;span class="caps"&gt;IMAP&lt;/span&gt; access.&amp;#8221;&amp;nbsp; Hmm&amp;#8230;but I just said they don&amp;#8217;t
 have support this for free! A quick Bing search brought up a &lt;a class="reference external" href="http://www.theanimail.com/imap_server_settings.html"&gt;page with
 &lt;span class="caps"&gt;IMAP&lt;/span&gt; server settings&lt;/a&gt;.&amp;nbsp; I figured I&amp;#8217;d check if they work, and sure
 enough they did!&amp;nbsp; The settings are copied&amp;nbsp;below:&lt;/p&gt;

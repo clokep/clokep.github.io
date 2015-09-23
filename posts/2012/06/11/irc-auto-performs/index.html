@@ -116,7 +116,7 @@
     <div class="post-info-bottom">
     </div>
 </footer><!-- /.post-info -->        
-<p>There have been a <a class="reference external" href="https://bugzilla.mozilla.org/show_bug.cgi?id=742675">few</a> <a class="reference external" href="https://bugzilla.instantbird.org/show_bug.cgi?id=1101">requests</a> to support "auto-performs"
+<p>There have been a <a class="reference external" href="https://bugzilla.mozilla.org/show_bug.cgi?id=742675">few</a> <a class="reference external" href="https://bugzilla.instantbird.org/show_bug.cgi?id=1101">requests</a> to support “auto-performs”
 (sending commands to the <span class="caps">IRC</span> server after connection that the user types
 into a box or whatever). Personally I find this to be:</p>
 <ol class="arabic simple">
@@ -166,7 +166,7 @@ doesn’t quite seem relevent yet. It will. <span class="caps">IRC</span> has a 
 sub-protocols embedded within the <span class="caps">IRC</span> protocol (see the link above about
 unofficial extensions). We attempt to parse all the string messages and
 make pretty JavaScript objects out of them. I’ve actually identified
-five (yes, count that: five) different sub-"protocols" within <span class="caps">IRC</span> that
+five (yes, count that: five) different sub-“protocols” within <span class="caps">IRC</span> that
 we deal:</p>
 <ol class="arabic simple">
 <li><span class="caps">IRC</span> itself (i.e. <a class="reference external" href="http://tools.ietf.org/html/rfc1459"><span class="caps">RFC</span> 1459</a> / <a class="reference external" href="http://tools.ietf.org/html/rfc2812"><span class="caps">RFC</span> 2812</a> / various numeric extensions)</li>
@@ -190,17 +190,17 @@ be parsed into a <a class="reference external" href="http://hg.instantbird.org/i
 message without destroying information. (Yes, I’m realizing now that my
 choice of whether to use capitals is all messed up…)</p>
 <p>Well, why do we care…? By preparsing the strings into objects (as
-defined by any "specifications" that exist), we keep extensions from
+defined by any “specifications” that exist), we keep extensions from
 having to parse messages over and over again from strings.</p>
 </div>
 <div class="section" id="handlers">
 <h2><a class="toc-backref" href="#id3">Handlers</a></h2>
 <p>A handler is simply what I call the object that contains the methods
-to deal with an incoming message. Pretty much, you get to say "Only send
-me <span class="caps">ISUPPORT</span> messages!" or "Only send me <span class="caps">CTCP</span> messages!" and voila, you
+to deal with an incoming message. Pretty much, you get to say “Only send
+me <span class="caps">ISUPPORT</span> messages!” or “Only send me <span class="caps">CTCP</span> messages!” and voila, you
 only get that type of message. Each message type has a field that is
-used to choose the method to run (for the <span class="caps">IRC</span> messages, the "command",
-for <span class="caps">CTCP</span> the "<span class="caps">CTCP</span> command", <span class="caps">ISUPPORT</span> the "parameter", etc.) This sounds
+used to choose the method to run (for the <span class="caps">IRC</span> messages, the “command”,
+for <span class="caps">CTCP</span> the “<span class="caps">CTCP</span> command”, <span class="caps">ISUPPORT</span> the “parameter”, etc.) This sounds
 a lot more complicated than it is, I think a brief <a class="reference external" href="https://bitbucket.org/clokep/irc-extras/src/6f778f17172a/example/bootstrap.js">example</a> is in order:</p>
 <div class="highlight"><pre><span class="kd">var</span> <span class="nx">ircSimpleExample</span> <span class="o">=</span> <span class="p">{</span>
   <span class="c1">// The name here is really only used in error messages.</span>
@@ -235,9 +235,9 @@ takes the command to send and an array of parameters to send.)</p>
 continue this at another time, but I hope I’m beginning to convince you
 that allowing directy access to the account and protocol implementation
 is a more powerful (and even simpler in many ways, in my opinion)
-alternative to "auto-performs". The one major downside I see to this, is
+alternative to “auto-performs”. The one major downside I see to this, is
 that it requires a bit more understanding of the actual protocol level
-implementation, I don’t feel that knowing you need to use "<span class="caps">PRIVMSG</span>" as a
+implementation, I don’t feel that knowing you need to use “<span class="caps">PRIVMSG</span>” as a
 command instead of /msg is a huge issue, however.</p>
 </div>
 

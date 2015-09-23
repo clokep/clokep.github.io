@@ -3,7 +3,7 @@
 for taking so long to write this&amp;#8230;but anyway: Google Summer of Code
 2013 is over!&amp;nbsp; Quentin has done a great job working at implementing the
 Yahoo Protocol for Instantbird (and Thunderbird) in JavaScript
-(henceforth called &amp;quot;&lt;span class="caps"&gt;JS&lt;/span&gt;-Yahoo&amp;quot;).&amp;nbsp; It&amp;#8217;s at the point where it has mostly
+(henceforth called &amp;#8220;&lt;span class="caps"&gt;JS&lt;/span&gt;-Yahoo&amp;#8221;).&amp;nbsp; It&amp;#8217;s at the point where it has mostly
 reached feature-parity with the libpurple plug-in.&amp;nbsp; Before &lt;a class="reference external" href="https://bugzilla.instantbird.org/show_bug.cgi?id=2135"&gt;turning this
 on as default&lt;/a&gt; there are a few minor bugs that still need to be fixed,
 but most of them have patches that just need another couple&amp;nbsp;iterations.&lt;/p&gt;
@@ -19,8 +19,8 @@ libpurple Yahoo implementation for Instantbird&amp;nbsp;1.next.&lt;/p&gt;
 &lt;p&gt;You can already easily enable &lt;span class="caps"&gt;JS&lt;/span&gt;-Yahoo in &lt;a class="reference external" href="http://nightly.instantbird.im/"&gt;Instantbird nightly builds&lt;/a&gt;:&lt;/p&gt;
 &lt;ol class="arabic simple"&gt;
 &lt;li&gt;Type /about config in a conversation tab&amp;#8217;s&amp;nbsp;textbox&lt;/li&gt;
-&lt;li&gt;Type &amp;quot;forcePurple&amp;quot; in the search&amp;nbsp;box&lt;/li&gt;
-&lt;li&gt;Remove &amp;quot;prpl-yahoo&amp;quot; and &amp;quot;prpl-yahoojp&amp;quot; from this comma separated list
+&lt;li&gt;Type &amp;#8220;forcePurple&amp;#8221; in the search&amp;nbsp;box&lt;/li&gt;
+&lt;li&gt;Remove &amp;#8220;prpl-yahoo&amp;#8221; and &amp;#8220;prpl-yahoojp&amp;#8221; from this comma separated list
 of values (you can also remove prpl-jabber if you want to always use
 the &lt;span class="caps"&gt;JS&lt;/span&gt;-&lt;span class="caps"&gt;XMPP&lt;/span&gt; implementation from GSoC 2011! Note that this doesn&amp;#8217;t
 support &lt;a class="reference external" href="https://bugzilla.mozilla.org/show_bug.cgi?id=14328"&gt;&lt;span class="caps"&gt;DNS&lt;/span&gt; &lt;span class="caps"&gt;SRV&lt;/span&gt;&lt;/a&gt;,&amp;nbsp;however.)&lt;/li&gt;
@@ -55,7 +55,7 @@ current libpurple Yahoo implementation. Once we&amp;#8217;re satisified that it
 has feature parity we&amp;#8217;ll remove the libpurple version and enable this by&amp;nbsp;default!&lt;/p&gt;
 &lt;p&gt;Instantbird is also supporting two other&amp;nbsp;projects:&lt;/p&gt;
 &lt;ul class="simple"&gt;
-&lt;li&gt;The &lt;a class="reference external" href="http://www.google-melange.com/gsoc/project/google/gsoc2013/nhnt11/7001"&gt;&amp;quot;Awesometab&amp;quot;&lt;/a&gt; is being done by &lt;a class="reference external" href="http://awesometab.blogspot.com/"&gt;Nihanth Subramanya&lt;/a&gt;
+&lt;li&gt;The &lt;a class="reference external" href="http://www.google-melange.com/gsoc/project/google/gsoc2013/nhnt11/7001"&gt;&amp;#8220;Awesometab&amp;#8221;&lt;/a&gt; is being done by &lt;a class="reference external" href="http://awesometab.blogspot.com/"&gt;Nihanth Subramanya&lt;/a&gt;
 (&lt;a class="reference external" href="http://awesometab.blogspot.com/feeds/posts/default?alt=rss"&gt;&lt;span class="caps"&gt;RSS&lt;/span&gt;&lt;/a&gt;)
 and being mentored by Benedikt Pfeifer, his code is &lt;a class="reference external" href="https://bitbucket.org/nhnt11/instantbird-addons"&gt;available&lt;/a&gt; and
 some has already been &lt;a class="reference external" href="http://hg.instantbird.org/instantbird/rev/55009d68c4ec"&gt;checked&lt;/a&gt; &lt;a class="reference external" href="http://hg.instantbird.org/instantbird/rev/46ee5c836e48"&gt;into&lt;/a&gt; &lt;a class="reference external" href="http://hg.instantbird.org/instantbird/rev/52401d522970"&gt;Instantbird&lt;/a&gt; &lt;a class="reference external" href="http://hg.instantbird.org/instantbird/rev/ea36babac4be"&gt;nightlies&lt;/a&gt;!&lt;/li&gt;
@@ -66,7 +66,7 @@ Florian Quèze, check out the &lt;a class="reference external" href="https://bit
 &lt;/ul&gt;
 &lt;p&gt;You can find any of us in #instantbird on irc.mozilla.org, my nick is
 clokep, Quentin&amp;#8217;s is qheaden, Nihanth&amp;#8217;s: nhnt11, Atul&amp;#8217;s: atuljangra,
-Benedikt goes by Mic and Florian goes by something starting with&amp;nbsp;&amp;quot;flo&amp;quot;.&lt;/p&gt;
+Benedikt goes by Mic and Florian goes by something starting with&amp;nbsp;&amp;#8220;flo&amp;#8221;.&lt;/p&gt;
 &lt;p&gt;Thanks also go out to Mozilla for letting us participate in Google
 Summer of Code with them again! You can see all of the accepted projects
 in &lt;a class="reference external" href="http://blog.gerv.net/2013/06/gsoc-2013-project-list/"&gt;Gerv&amp;#8217;s blogpost&lt;/a&gt;.&lt;/p&gt;
@@ -96,9 +96,9 @@ working fine.)&amp;nbsp; There was &lt;a class="reference external" href="http:/
 filed for&amp;nbsp;Thunderbird.&lt;/p&gt;
 &lt;p&gt;So how did this lead to free &lt;span class="caps"&gt;IMAP&lt;/span&gt; support?&amp;nbsp; I noticed in the &lt;a class="reference external" href="https://wiki.mozilla.org/Thunderbird/StatusMeetings/2010-11-16#Web_Update"&gt;Weekly
 Status Meeting Notes (2010-11-16)&lt;/a&gt; for Thunderbird a mention of &lt;a class="reference external" href="http://trunk.mozillamessaging.com/en-US/thunderbird/features/email_providers.html"&gt;Free
-Email Providers&lt;/a&gt; page.&amp;nbsp; Checking it out it said &amp;quot;Y! Mail is a free
+Email Providers&lt;/a&gt; page.&amp;nbsp; Checking it out it said &amp;#8220;Y! Mail is a free
 email service provided by Yahoo! It offers webmail supported by targeted
-advertising as well as &lt;span class="caps"&gt;IMAP&lt;/span&gt; access.&amp;quot;&amp;nbsp; Hmm&amp;#8230;but I just said they don&amp;#8217;t
+advertising as well as &lt;span class="caps"&gt;IMAP&lt;/span&gt; access.&amp;#8221;&amp;nbsp; Hmm&amp;#8230;but I just said they don&amp;#8217;t
 have support this for free! A quick Bing search brought up a &lt;a class="reference external" href="http://www.theanimail.com/imap_server_settings.html"&gt;page with
 &lt;span class="caps"&gt;IMAP&lt;/span&gt; server settings&lt;/a&gt;.&amp;nbsp; I figured I&amp;#8217;d check if they work, and sure
 enough they did!&amp;nbsp; The settings are copied&amp;nbsp;below:&lt;/p&gt;

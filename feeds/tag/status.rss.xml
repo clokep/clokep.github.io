@@ -3,42 +3,42 @@
 three statuses: Available, Unavailable and Offline.&amp;nbsp; (We do actually
 support a fourth one too, Idle, but that is set automatically, not
 chosen by the user.)&amp;nbsp; Frequently this discussion is in the context of
-wanting an &amp;quot;Invisible&amp;quot; status, but I&amp;#8217;ll get to that&amp;nbsp;later&amp;#8230;&lt;/p&gt;
+wanting an &amp;#8220;Invisible&amp;#8221; status, but I&amp;#8217;ll get to that&amp;nbsp;later&amp;#8230;&lt;/p&gt;
 &lt;p&gt;Many users have talked to us on &lt;span class="caps"&gt;IRC&lt;/span&gt;, email or via bugs and complained
-about wanting an &amp;quot;Away&amp;quot; status or a &amp;quot;Do Not Disturb&amp;quot; status.&amp;nbsp; There&amp;#8217;s a
+about wanting an &amp;#8220;Away&amp;#8221; status or a &amp;#8220;Do Not Disturb&amp;#8221; status.&amp;nbsp; There&amp;#8217;s a
 few issues with&amp;nbsp;this:&lt;/p&gt;
 &lt;ol class="arabic simple"&gt;
-&lt;li&gt;What&amp;#8217;s really the difference between &amp;quot;Unavailable&amp;quot;, &amp;quot;Away&amp;quot; and &amp;quot;Do
-Not Disturb&amp;quot;?&amp;nbsp; Do you really need to choose them individually?
-(Other things that fit into here: &amp;quot;Not at my desk&amp;quot;, &amp;quot;on the phone&amp;quot;,
-&amp;quot;busy&amp;quot;, &amp;quot;stepped out&amp;quot;.&amp;nbsp; It is amazing how some protocols have so many
+&lt;li&gt;What&amp;#8217;s really the difference between &amp;#8220;Unavailable&amp;#8221;, &amp;#8220;Away&amp;#8221; and &amp;#8220;Do
+Not Disturb&amp;#8221;?&amp;nbsp; Do you really need to choose them individually?
+(Other things that fit into here: &amp;#8220;Not at my desk&amp;#8221;, &amp;#8220;on the phone&amp;#8221;,
+&amp;#8220;busy&amp;#8221;, &amp;#8220;stepped out&amp;#8221;.&amp;nbsp; It is amazing how some protocols have so many
 ways to describe being&amp;nbsp;unavailable!)&lt;/li&gt;
 &lt;li&gt;A technical issue that we often run into is trying to shoehorn
 different protocol implementations into our abstract protocol
 interface.&amp;nbsp; (We already have some fairly complicated interfaces
 around joining chat rooms, creating different account, etc. because
 of&amp;nbsp;this.)&lt;/li&gt;
-&lt;li&gt;Setting yourself as &amp;quot;Away&amp;quot; or &amp;quot;Invisible&amp;quot; is a lie.&amp;nbsp; Perhaps this is
+&lt;li&gt;Setting yourself as &amp;#8220;Away&amp;#8221; or &amp;#8220;Invisible&amp;#8221; is a lie.&amp;nbsp; Perhaps this is
 me being overly idealistic, but why would you set yourself as
-&amp;quot;Away&amp;quot;?&amp;nbsp; It seems that this is something that should be done
+&amp;#8220;Away&amp;#8221;?&amp;nbsp; It seems that this is something that should be done
 automatically (when you lock your display, perhaps?).&amp;nbsp; You can&amp;#8217;t be
-&amp;quot;Away&amp;quot; and using your computer at the same time!
+&amp;#8220;Away&amp;#8221; and using your computer at the same time!
 Again, perhaps being idealistic, but what is the point of the
-&amp;quot;Invisible&amp;quot; status?&amp;nbsp; If you wish to be hidden from someone
+&amp;#8220;Invisible&amp;#8221; status?&amp;nbsp; If you wish to be hidden from someone
 (everyone?) why not just block those users.&amp;nbsp; Or ignore them when they
-send you a message.&amp;nbsp; If you are busy, set yourself to &amp;quot;Unavailable&amp;quot;
+send you a message.&amp;nbsp; If you are busy, set yourself to &amp;#8220;Unavailable&amp;#8221;
 and people should understand that they should not talk to you&amp;#8230;if
 they don&amp;#8217;t, well&amp;#8230;do you really want them talking to you ever?&amp;nbsp; (Are
 they really your friend?&amp;nbsp; I guess you don&amp;#8217;t get to choose your
 co-workers, but still.)&amp;nbsp; Now, perhaps this is just my opinion as
-being someone who never really hard an &amp;quot;Invisible&amp;quot; status (I actually
+being someone who never really hard an &amp;#8220;Invisible&amp;#8221; status (I actually
 remember it being added to the &lt;span class="caps"&gt;AIM&lt;/span&gt; client at some&amp;nbsp;point).&lt;/li&gt;
 &lt;/ol&gt;
 &lt;p&gt;At this point you probably don&amp;#8217;t believe me that there&amp;#8217;s really &lt;em&gt;that&lt;/em&gt;
 many different protocol statuses out there, so I figured I&amp;#8217;d illustrate
 a few protocols in a matrix.&amp;nbsp; Note that this isn&amp;#8217;t meant to be
 exhaustive, just to show how complicated of a situation this really is.
-All protocols can obviously be &amp;quot;offline&amp;quot; as well, but that&amp;#8217;s not shown
+All protocols can obviously be &amp;#8220;offline&amp;#8221; as well, but that&amp;#8217;s not shown
 in the&amp;nbsp;table.&lt;/p&gt;
 &lt;table border="1" class="docutils"&gt;
 &lt;colgroup&gt;

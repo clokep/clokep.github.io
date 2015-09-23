@@ -67,10 +67,10 @@ tested heavily at all,&amp;nbsp;however.)&lt;/p&gt;
 &lt;span class="p"&gt;}&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;&lt;span class="caps"&gt;OK&lt;/span&gt;, so typed arrays seem good, but kind of annoying, right?
-Wrong&amp;#8230;the &lt;span class="caps"&gt;OSCAR&lt;/span&gt; protocol is a &amp;quot;network order&amp;quot; protocol (aka it is big
-endian). At this point you&amp;#8217;re probably thinking &amp;quot;&lt;span class="caps"&gt;OK&lt;/span&gt;, so the ArrayBuffer
-constructor must take an endianess flag!&amp;quot;&amp;nbsp; Wrong, it does no such
-thing.&amp;nbsp; &amp;quot;Hmmm&amp;#8230;Well do the ArrayBufferViews take an endianess flag?&amp;quot;
+Wrong&amp;#8230;the &lt;span class="caps"&gt;OSCAR&lt;/span&gt; protocol is a &amp;#8220;network order&amp;#8221; protocol (aka it is big
+endian). At this point you&amp;#8217;re probably thinking &amp;#8220;&lt;span class="caps"&gt;OK&lt;/span&gt;, so the ArrayBuffer
+constructor must take an endianess flag!&amp;#8221;&amp;nbsp; Wrong, it does no such
+thing.&amp;nbsp; &amp;#8220;Hmmm&amp;#8230;Well do the ArrayBufferViews take an endianess flag?&amp;#8221;
 Nope, wrong again.&amp;nbsp; The only way to specify the endianess of the data is
 to use a &lt;a class="reference external" href="https://developer.mozilla.org/en-US/docs/JavaScript_typed_arrays/DataView"&gt;DataView&lt;/a&gt;, a slightly different interface to the underlying
 bytes.&amp;nbsp; It offers an &lt;span class="caps"&gt;API&lt;/span&gt; to individually set different data elements via

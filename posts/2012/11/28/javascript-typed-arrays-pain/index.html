@@ -174,10 +174,10 @@ tested heavily at all,&nbsp;however.)</p>
 <span class="p">}</span>
 </pre></div>
 <p><span class="caps">OK</span>, so typed arrays seem good, but kind of annoying, right?
-Wrong&#8230;the <span class="caps">OSCAR</span> protocol is a &quot;network order&quot; protocol (aka it is big
-endian). At this point you&#8217;re probably thinking &quot;<span class="caps">OK</span>, so the ArrayBuffer
-constructor must take an endianess flag!&quot;&nbsp; Wrong, it does no such
-thing.&nbsp; &quot;Hmmm&#8230;Well do the ArrayBufferViews take an endianess flag?&quot;
+Wrong&#8230;the <span class="caps">OSCAR</span> protocol is a &#8220;network order&#8221; protocol (aka it is big
+endian). At this point you&#8217;re probably thinking &#8220;<span class="caps">OK</span>, so the ArrayBuffer
+constructor must take an endianess flag!&#8221;&nbsp; Wrong, it does no such
+thing.&nbsp; &#8220;Hmmm&#8230;Well do the ArrayBufferViews take an endianess flag?&#8221;
 Nope, wrong again.&nbsp; The only way to specify the endianess of the data is
 to use a <a class="reference external" href="https://developer.mozilla.org/en-US/docs/JavaScript_typed_arrays/DataView">DataView</a>, a slightly different interface to the underlying
 bytes.&nbsp; It offers an <span class="caps">API</span> to individually set different data elements via

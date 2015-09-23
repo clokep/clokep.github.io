@@ -4,7 +4,7 @@ on a label, then found the &lt;span class="caps"&gt;RSS&lt;/span&gt; embedded in
 the &lt;span class="caps"&gt;RSS&lt;/span&gt; feed for that label,&amp;nbsp;right?&lt;/p&gt;
 &lt;p&gt;Wrong.&lt;/p&gt;
 &lt;p&gt;Of course there&amp;#8217;s an&amp;nbsp;&lt;a class="reference external" href="http://www.google.com/support/blogger/bin/answer.py?hl=en&amp;amp;answer=97933"&gt;&lt;span class="caps"&gt;FAQ&lt;/span&gt;&lt;/a&gt; page about this, but the syntax it gives
-is broken.&amp;nbsp; For a specific label (I&amp;#8217;m using the label&amp;nbsp;&amp;quot;Instantbird&amp;quot;):&lt;/p&gt;
+is broken.&amp;nbsp; For a specific label (I&amp;#8217;m using the label&amp;nbsp;&amp;#8220;Instantbird&amp;#8221;):&lt;/p&gt;
 &lt;ul class="simple"&gt;
 &lt;li&gt;&lt;span class="caps"&gt;RSS&lt;/span&gt;:
 &lt;a class="reference external" href="http://clokep.blogspot.com/feeds/posts/default/-/Instantbird?alt=rss"&gt;http://clokep.blogspot.com/feeds/posts/default/-/Instantbird?alt=rss&lt;/a&gt;&lt;/li&gt;

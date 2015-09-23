@@ -127,10 +127,10 @@
 <p>I had a request on <span class="caps">IRC</span> (from Mic) to write an in-depth blog post
 about <a class="reference external" href="https://bugzilla.instantbird.org/show_bug.cgi?id=507"><span class="caps">IRC</span> in JavaScript</a>:</p>
 <blockquote>
-"Maybe we could ask clokep if he’d like to write something about
+“Maybe we could ask clokep if he’d like to write something about
 js-irc? Why it is done, what the advantages are once it’s done, how
 he is working on it (going through the specs), putting the
-jsProtocol code to test and adding missing pieces?" — <a class="reference external" href="http://log.bezut.info/instantbird/101208/#m54">Mic</a></blockquote>
+jsProtocol code to test and adding missing pieces?” — <a class="reference external" href="http://log.bezut.info/instantbird/101208/#m54">Mic</a></blockquote>
 <div class="section" id="wait-a-second-what-is-irc">
 <h2><a class="toc-backref" href="#id3">Wait a second, what is <span class="caps">IRC</span>?</a></h2>
 <p>I guess this is a good first question, I’ll steal from <a class="reference external" href="http://en.wikipedia.org/wiki/IRC">Wikipedia</a>:</p>
@@ -159,8 +159,8 @@ that we see fit, instead of only using APIs / methods provided by
 libpurple.  Hopefully this would allow us to <a class="reference external" href="https://bugzilla.instantbird.org/showdependencytree.cgi?id=507&amp;maxdepth=2&amp;hide_resolved=1">enhance our <span class="caps">IRC</span>
 implementation</a> a bit.</p>
 <p>Also, Instantbird (nightlies) currently have limited support for
-generating a protocol plug-in in JavaScript.  A couple of "test"
-protocols have be done, but nothing in "real" (in particular, none that
+generating a protocol plug-in in JavaScript.  A couple of “test”
+protocols have be done, but nothing in “real” (in particular, none that
 used a multi-user chat).  This would allow us to iron out <a class="reference external" href="https://bugzilla.instantbird.org/show_bug.cgi?id=519">some</a>
 <a class="reference external" href="https://bugzilla.instantbird.org/show_bug.cgi?id=118">bugs</a> in the implementation of JavaScript protocols.</p>
 <p><em>[Edit: Florian suggested another question that wasn’t originally
@@ -215,7 +215,7 @@ solve <a class="reference external" href="https://bugzilla.instantbird.org/showd
 <h2><a class="toc-backref" href="#id7">What about for developers?  Anything cool there?</a></h2>
 <p>Well, I’m hoping to be able to test this replacement via an extension
 that replaces the libpurple <span class="caps">IRC</span> to dogfood it before eventual inclusion
-in Instantbird.  I’m not sure if that counts as "cool." though.  If
+in Instantbird.  I’m not sure if that counts as “cool.” though.  If
 nothing else there will be an example of how to write a protocol in
 JavaScript (using sockets).  So hopefully other people can make some
 other cool protocols off of that example.  You might wonder what else we
@@ -234,8 +234,8 @@ It’s a bit more confusing than that though since there are a couple of
 extensions, etc.  This is summarized below:</p>
 <ul class="simple">
 <li><span class="strike"><span class="caps">RFC</span> 1459</span><ul>
-<li>Extended with <a class="reference external" href="http://www.irchelp.org/irchelp/rfc/dccspec.html"><span class="strike"><span class="caps">DCC</span> specification ("direct client-to-client")</span></a><ul>
-<li>Replaced with <a class="reference external" href="http://www.irchelp.org/irchelp/rfc/dccspec.html"><span class="strike"><span class="caps">CTCP</span> ("client-to-client protocol")</span></a><ul>
+<li>Extended with <a class="reference external" href="http://www.irchelp.org/irchelp/rfc/dccspec.html"><span class="strike"><span class="caps">DCC</span> specification (“direct client-to-client”)</span></a><ul>
+<li>Replaced with <a class="reference external" href="http://www.irchelp.org/irchelp/rfc/dccspec.html"><span class="strike"><span class="caps">CTCP</span> (“client-to-client protocol”)</span></a><ul>
 <li><a class="reference external" href="http://www.invlogic.com/irc/ctcp.html">Draft for a formalized <span class="caps">CTCP</span></a></li>
 </ul>
 </li>
@@ -289,7 +289,7 @@ connection aspects).</p>
 </div>
 <div class="section" id="where-can-i-see-this-stuff">
 <h2><a class="toc-backref" href="#id11">Where can I see this stuff…?</a></h2>
-<p>My work is kept in the "<a class="reference external" href="https://hg.instantbird.org/experiments/file/IRC-JavaScript/">experiments</a>" repository on Instantbird’s
+<p>My work is kept in the “<a class="reference external" href="https://hg.instantbird.org/experiments/file/IRC-JavaScript/">experiments</a>” repository on Instantbird’s
 <a class="reference external" href="http://mercurial.selenic.com/">Mercurial</a> repository.  There’s also a variety of bugs open (they’re
 listed above, I’m not going to re-list them), although not a ton is
 happening in them.</p>

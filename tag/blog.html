@@ -113,7 +113,7 @@ blog, this is a bit more about how I got it up and running.</p>
 <div class="section" id="getting-a-domain">
 <h2><a class="toc-backref" href="#id3">Getting a Domain</a></h2>
 <p>The most exciting part! Getting a domain! I used <a class="reference external" href="https://www.gandi.net/">gandi.net</a>, it was
-recommended to me by <a class="reference external" href="http://blog.queze.net/">Florian</a> as "awesome, but a bit expensive". I liked that
+recommended to me by <a class="reference external" href="http://blog.queze.net/">Florian</a> as “awesome, but a bit expensive”. I liked that
 they actually explain <a class="reference external" href="https://www.gandi.net/domain/interface">exactly</a> what I was getting by registering a domain
 through them. Nowhere else I looked was this explicit.</p>
 <p>Once you get your domain you’ll need to set up your <a class="reference external" href="https://en.wikipedia.org/wiki/CNAME"><span class="caps">CNAME</span></a> record to forward to
@@ -163,7 +163,7 @@ at content/static/<span class="caps">CNAME</span>)</li>
     <span class="s">'static/CNAME'</span><span class="p">:</span> <span class="p">{</span><span class="s">'path'</span><span class="p">:</span> <span class="s">'CNAME'</span><span class="p">},</span>
 <span class="p">}</span>
 </pre></div>
-<p>It took 10 - 20 minutes for this to "kick in" on GitHub, until that time I had a
+<p>It took 10 - 20 minutes for this to “kick in” on GitHub, until that time I had a
 404 GitHub page.</p>
 </div>
 <div class="section" id="redirect-blogger">
@@ -173,7 +173,7 @@ actually go to the new location of each blog post? With some hackery, some luck,
 and some magic.</p>
 <p>I found some help in an article about <a class="reference external" href="http://www.labnol.org/internet/switch-from-blogger-to-wordpress/9707/">switching to WordPress from Blogger</a> and
 modified the template they had there. On the Blogger dashboard, choose
-"Template", scroll to the bottom and click "Revert to Classic Template". Then
+“Template”, scroll to the bottom and click “Revert to Classic Template”. Then
 use something like the following template:</p>
 <div class="highlight"><pre><span class="nt">&lt;html&gt;</span>
     <span class="nt">&lt;head&gt;</span>
@@ -230,19 +230,19 @@ use something like the following template:</p>
 <p>Obviously you’ll need to change the URLs, but the key parts here are that we’re
 generating a <span class="caps">URL</span> based on the date and the full article name. The magic comes in
 generating the date. The get it in the format I wanted (<span class="caps">YYYY</span>/<span class="caps">MM</span>/<span class="caps">DD</span>) I modified a
-the "Date Header Format" in "Settings" &gt; "Language and formatting". This matches
+the “Date Header Format” in “Settings” &gt; “Language and formatting”. This matches
 how I formatted my URLs in my pelicanconf.py. The <tt class="docutils literal">slug</tt> that gets generated
 needs to match the slug you used in your template so the link will work. (I had
 <a class="reference external" href="https://support.google.com/blogger/answer/42095">some</a> <a class="reference external" href="http://www.elizabethcastro.com/blogvqj/extras/templatetags.html">help</a> in figuring out these template tags.)</p>
 <p>I’d suggest you check the links to all your articles! A couple of the dates were
 messed up in mine (the day was off by one, causing the forwarded location to be broken).</p>
 <p>The last thing to do is to redirect the Atom/<span class="caps">RSS</span> feed (if anyone is using that).
-Go to "Settings" &gt; "Other" &gt; "Post Feed Redirect <span class="caps">URL</span>" and set it to your new
+Go to “Settings” &gt; “Other” &gt; “Post Feed Redirect <span class="caps">URL</span>” and set it to your new
 Atom feed <span class="caps">URL</span> (wherever that might be).</p>
 <table class="docutils footnote" frame="void" id="id2" rules="none">
 <colgroup><col class="label"></col><col></col></colgroup>
 <tbody valign="top">
-<tr><td class="label"><a class="fn-backref" href="#id1">[1]</a></td><td>Pro-tip: You can <a class="reference external" href="https://help.github.com/articles/setting-the-default-branch">change the "default" branch</a> of your repository in the
+<tr><td class="label"><a class="fn-backref" href="#id1">[1]</a></td><td>Pro-tip: You can <a class="reference external" href="https://help.github.com/articles/setting-the-default-branch">change the “default” branch</a> of your repository in the
 settings page on GitHub.</td></tr>
 </tbody>
 </table>

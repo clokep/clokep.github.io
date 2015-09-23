@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Like bricks in the sky</title><link>http://patrick.cloke.us/</link><description></description><atom:link href="http://patrick.cloke.us/feeds/tag/customizing.rss.xml" rel="self"></atom:link><lastBuildDate>Sun, 15 Jan 2012 10:00:00 -0500</lastBuildDate><item><title>Instantbird Contact List Hack #2</title><link>http://patrick.cloke.us/posts/2012/01/15/instantbird-contact-list-hack-2/</link><description>&lt;p&gt;There was a &lt;a class="reference external" href="https://bugzilla.instantbird.org/show_bug.cgi?id=987"&gt;request&lt;/a&gt; on the Instantbird Bugzilla to always show
-contacts in the contact list as the &amp;quot;big&amp;quot; contact (as shown when a
+contacts in the contact list as the &amp;#8220;big&amp;#8221; contact (as shown when a
 contact is selected).&amp;nbsp; Similarly to my &lt;a class="reference external" href="http://patrick.cloke.us/posts/2011/10/31/instantbird-contact-list-hack/"&gt;last post&lt;/a&gt;, this can easily be
 done with userChrome.css.&amp;nbsp; See the post if you don&amp;#8217;t know what
 userChrome.css&amp;nbsp;is.&lt;/p&gt;

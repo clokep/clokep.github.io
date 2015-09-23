@@ -5,7 +5,7 @@ blog, this is a bit more about how I got it up and running.&lt;/p&gt;
 &lt;div class="section" id="getting-a-domain"&gt;
 &lt;h2&gt;&lt;a class="toc-backref" href="#id3"&gt;Getting a Domain&lt;/a&gt;&lt;/h2&gt;
 &lt;p&gt;The most exciting part! Getting a domain! I used &lt;a class="reference external" href="https://www.gandi.net/"&gt;gandi.net&lt;/a&gt;, it was
-recommended to me by &lt;a class="reference external" href="http://blog.queze.net/"&gt;Florian&lt;/a&gt; as "awesome, but a bit expensive". I liked that
+recommended to me by &lt;a class="reference external" href="http://blog.queze.net/"&gt;Florian&lt;/a&gt; as “awesome, but a bit expensive”. I liked that
 they actually explain &lt;a class="reference external" href="https://www.gandi.net/domain/interface"&gt;exactly&lt;/a&gt; what I was getting by registering a domain
 through them. Nowhere else I looked was this explicit.&lt;/p&gt;
 &lt;p&gt;Once you get your domain you’ll need to set up your &lt;a class="reference external" href="https://en.wikipedia.org/wiki/CNAME"&gt;&lt;span class="caps"&gt;CNAME&lt;/span&gt;&lt;/a&gt; record to forward to
@@ -55,7 +55,7 @@ at content/static/&lt;span class="caps"&gt;CNAME&lt;/span&gt;)&lt;/li&gt;
     &lt;span class="s"&gt;'static/CNAME'&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;&lt;span class="s"&gt;'path'&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s"&gt;'CNAME'&lt;/span&gt;&lt;span class="p"&gt;},&lt;/span&gt;
 &lt;span class="p"&gt;}&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
-&lt;p&gt;It took 10 - 20 minutes for this to "kick in" on GitHub, until that time I had a
+&lt;p&gt;It took 10 - 20 minutes for this to “kick in” on GitHub, until that time I had a
 404 GitHub page.&lt;/p&gt;
 &lt;/div&gt;
 &lt;div class="section" id="redirect-blogger"&gt;
@@ -65,7 +65,7 @@ actually go to the new location of each blog post? With some hackery, some luck,
 and some magic.&lt;/p&gt;
 &lt;p&gt;I found some help in an article about &lt;a class="reference external" href="http://www.labnol.org/internet/switch-from-blogger-to-wordpress/9707/"&gt;switching to WordPress from Blogger&lt;/a&gt; and
 modified the template they had there. On the Blogger dashboard, choose
-"Template", scroll to the bottom and click "Revert to Classic Template". Then
+“Template”, scroll to the bottom and click “Revert to Classic Template”. Then
 use something like the following template:&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="nt"&gt;&amp;lt;html&amp;gt;&lt;/span&gt;
     &lt;span class="nt"&gt;&amp;lt;head&amp;gt;&lt;/span&gt;
@@ -122,19 +122,19 @@ use something like the following template:&lt;/p&gt;
 &lt;p&gt;Obviously you’ll need to change the URLs, but the key parts here are that we’re
 generating a &lt;span class="caps"&gt;URL&lt;/span&gt; based on the date and the full article name. The magic comes in
 generating the date. The get it in the format I wanted (&lt;span class="caps"&gt;YYYY&lt;/span&gt;/&lt;span class="caps"&gt;MM&lt;/span&gt;/&lt;span class="caps"&gt;DD&lt;/span&gt;) I modified a
-the "Date Header Format" in "Settings" &amp;gt; "Language and formatting". This matches
+the “Date Header Format” in “Settings” &amp;gt; “Language and formatting”. This matches
 how I formatted my URLs in my pelicanconf.py. The &lt;tt class="docutils literal"&gt;slug&lt;/tt&gt; that gets generated
 needs to match the slug you used in your template so the link will work. (I had
 &lt;a class="reference external" href="https://support.google.com/blogger/answer/42095"&gt;some&lt;/a&gt; &lt;a class="reference external" href="http://www.elizabethcastro.com/blogvqj/extras/templatetags.html"&gt;help&lt;/a&gt; in figuring out these template tags.)&lt;/p&gt;
 &lt;p&gt;I’d suggest you check the links to all your articles! A couple of the dates were
 messed up in mine (the day was off by one, causing the forwarded location to be broken).&lt;/p&gt;
 &lt;p&gt;The last thing to do is to redirect the Atom/&lt;span class="caps"&gt;RSS&lt;/span&gt; feed (if anyone is using that).
-Go to "Settings" &amp;gt; "Other" &amp;gt; "Post Feed Redirect &lt;span class="caps"&gt;URL&lt;/span&gt;" and set it to your new
+Go to “Settings” &amp;gt; “Other” &amp;gt; “Post Feed Redirect &lt;span class="caps"&gt;URL&lt;/span&gt;” and set it to your new
 Atom feed &lt;span class="caps"&gt;URL&lt;/span&gt; (wherever that might be).&lt;/p&gt;
 &lt;table class="docutils footnote" frame="void" id="id2" rules="none"&gt;
 &lt;colgroup&gt;&lt;col class="label"&gt;&lt;/col&gt;&lt;col&gt;&lt;/col&gt;&lt;/colgroup&gt;
 &lt;tbody valign="top"&gt;
-&lt;tr&gt;&lt;td class="label"&gt;&lt;a class="fn-backref" href="#id1"&gt;[1]&lt;/a&gt;&lt;/td&gt;&lt;td&gt;Pro-tip: You can &lt;a class="reference external" href="https://help.github.com/articles/setting-the-default-branch"&gt;change the "default" branch&lt;/a&gt; of your repository in the
+&lt;tr&gt;&lt;td class="label"&gt;&lt;a class="fn-backref" href="#id1"&gt;[1]&lt;/a&gt;&lt;/td&gt;&lt;td&gt;Pro-tip: You can &lt;a class="reference external" href="https://help.github.com/articles/setting-the-default-branch"&gt;change the “default” branch&lt;/a&gt; of your repository in the
 settings page on GitHub.&lt;/td&gt;&lt;/tr&gt;
 &lt;/tbody&gt;
 &lt;/table&gt;
@@ -152,11 +152,11 @@ been necessary!) My main requirements for blog software were:&lt;/p&gt;
 &lt;ul class="simple"&gt;
 &lt;li&gt;Easy to use and set up.&lt;/li&gt;
 &lt;li&gt;Free.&lt;/li&gt;
-&lt;li&gt;Support for syntax highlighted code blocks. (This was the only "hard" one to
+&lt;li&gt;Support for syntax highlighted code blocks. (This was the only “hard” one to
 come by.)&lt;/li&gt;
 &lt;li&gt;Support for &lt;a class="reference external" href="https://en.wikipedia.org/wiki/RSS"&gt;&lt;span class="caps"&gt;RSS&lt;/span&gt;&lt;/a&gt; feeds.&lt;/li&gt;
 &lt;/ul&gt;
-&lt;p&gt;After a quick Google search for "&lt;a class="reference external" href="https://www.google.com/search?q=jekyll+python"&gt;jekyll python&lt;/a&gt;", I ended up on &lt;a class="reference external" href="https://hyde.github.io/"&gt;Hyde&lt;/a&gt;. It
+&lt;p&gt;After a quick Google search for “&lt;a class="reference external" href="https://www.google.com/search?q=jekyll+python"&gt;jekyll python&lt;/a&gt;“, I ended up on &lt;a class="reference external" href="https://hyde.github.io/"&gt;Hyde&lt;/a&gt;. It
 seemed alright, but no one seemed to use it. Farther down the page I came across
 &lt;a class="reference external" href="http://arunrocks.com/moving-blogs-to-pelican/"&gt;a blog&lt;/a&gt; talking about moving to &lt;a class="reference external" href="http://getpelican.com/"&gt;Pelican&lt;/a&gt;. I was hooked. (Note that I don’t
 necessarily agree with all the ideas in that post, it just introduced me to Pelican.)&lt;/p&gt;
@@ -164,8 +164,8 @@ necessarily agree with all the ideas in that post, it just introduced me to Pel
 &lt;h2&gt;&lt;a class="toc-backref" href="#id1"&gt;Set up Pelican&lt;/a&gt;&lt;/h2&gt;
 &lt;p&gt;(Since I dislike writing my own descriptions:)&lt;/p&gt;
 &lt;blockquote&gt;
-"Pelican is a static site generator, written in &lt;a class="reference external" href="http://www.python.org/"&gt;Python&lt;/a&gt;, that requires no
-database or server-side logic."&lt;/blockquote&gt;
+“Pelican is a static site generator, written in &lt;a class="reference external" href="http://www.python.org/"&gt;Python&lt;/a&gt;, that requires no
+database or server-side logic.”&lt;/blockquote&gt;
 &lt;p&gt;Cool! Sounds real simple to use! And it was. Mostly.&lt;/p&gt;
 &lt;p&gt;I pretty much followed the &lt;a class="reference external" href="http://docs.getpelican.com/en/3.4.0/quickstart.html"&gt;quickstart&lt;/a&gt;:&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;mkdir -p blog/blog &lt;span class="c"&gt;# The first blog is to store other repos, etc.&lt;/span&gt;
@@ -187,7 +187,7 @@ in Blogger!&lt;/p&gt;
 just put up a `pull request`_ to support Blogger natively!&lt;/em&gt;), but it supports
 &lt;a class="reference external" href="http://docs.getpelican.com/en/3.4.0/importer.html"&gt;importing from a &lt;span class="caps"&gt;RSS&lt;/span&gt; feed&lt;/a&gt;. The first time I did this it missed a couple of
 articles (which I didn’t notice right away), so make sure you bump up the max
-amount in the &lt;span class="caps"&gt;URL&lt;/span&gt; like so (this also outputs in the folder "content"):&lt;/p&gt;
+amount in the &lt;span class="caps"&gt;URL&lt;/span&gt; like so (this also outputs in the folder “content”):&lt;/p&gt;
 &lt;pre class="literal-block"&gt;
 pelican-import --feed http://clokep.blogspot.com/feeds/posts/default\?alt\=rss\&amp;amp;max-results\=240 -o content
 &lt;/pre&gt;
@@ -213,9 +213,9 @@ different systems, so hopefully it doesn’t totally break on small screen sizes
 or something. I’m not &lt;span class="caps"&gt;HTML&lt;/span&gt; expert, so I’d rather talk about the other stuff I
 modified. (Although, if you’re curious, the main elements I &lt;em&gt;did&lt;/em&gt; modify are
 adding the sidebar to the left and the organization of the archives page.)&lt;/p&gt;
-&lt;p&gt;Blogger has a concept of "labels", Pelican has a concept of "category" and
-"tags". I &lt;em&gt;hate&lt;/em&gt; this. What’s the difference? Anyway, I wanted to eradicate the
-concept of a "category" (and "authors" since I’m the only one on my blog!), so I
+&lt;p&gt;Blogger has a concept of “labels”, Pelican has a concept of “category” and
+“tags”. I &lt;em&gt;hate&lt;/em&gt; this. What’s the difference? Anyway, I wanted to eradicate the
+concept of a “category” (and “authors” since I’m the only one on my blog!), so I
 added a few things to my pelicanconf.py:&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="c"&gt;# Disable categories.&lt;/span&gt;
 &lt;span class="n"&gt;DISPLAY_CATEGORIES_ON_MENU&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="bp"&gt;False&lt;/span&gt;

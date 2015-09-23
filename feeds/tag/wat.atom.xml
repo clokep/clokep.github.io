@@ -21,7 +21,7 @@ named hasOwnProperty. This is &lt;a class="reference external" href="https://mxr
 &lt;p&gt;&lt;a class="reference external" href="https://bugzilla.mozilla.org/show_bug.cgi?id=955366"&gt;Replacing these custom objects with a Map&lt;/a&gt; would alleviate this
 funky dance.&lt;/p&gt;
 &lt;/li&gt;
-&lt;li&gt;&lt;p class="first"&gt;Frequently in the chat backend we have to "normalize" &lt;a class="footnote-reference" href="#id4" id="id1"&gt;[1]&lt;/a&gt; strings
+&lt;li&gt;&lt;p class="first"&gt;Frequently in the chat backend we have to “normalize” &lt;a class="footnote-reference" href="#id4" id="id1"&gt;[1]&lt;/a&gt; strings
 (e.g. #INsTanTBIrd and #instantbird are the same on &lt;span class="caps"&gt;IRC&lt;/span&gt; &lt;a class="footnote-reference" href="#id5" id="id2"&gt;[2]&lt;/a&gt;). This is
 almost always done for sane storage of data received from the network
 (or from the user). I figured it’d be great if, instead of having to
@@ -41,7 +41,7 @@ that don’t really limit us for backend code.&lt;/p&gt;
 &lt;li&gt;Replace objects with Maps for safe access. This is pretty easily
 fixed by switching all &lt;tt class="docutils literal"&gt;&lt;span class="pre"&gt;obj["foo"]&lt;/span&gt;&lt;/tt&gt; calls to &lt;tt class="docutils literal"&gt;&lt;span class="pre"&gt;obj.get("foo")&lt;/span&gt;&lt;/tt&gt; (or the
 appropriate other method: set, delete, etc.)&lt;/li&gt;
-&lt;li&gt;Automatically "normalize" keys in the some user defined way, e.g.
+&lt;li&gt;Automatically “normalize” keys in the some user defined way, e.g.
 such that &lt;tt class="docutils literal"&gt;&lt;span class="pre"&gt;obj.get("foo")&lt;/span&gt;&lt;/tt&gt; and &lt;tt class="docutils literal"&gt;&lt;span class="pre"&gt;obj.get("FoO")&lt;/span&gt;&lt;/tt&gt; return the same value.&lt;/li&gt;
 &lt;/ol&gt;
 &lt;/div&gt;
@@ -152,7 +152,7 @@ we’ve fixed most of them at this point though!&lt;/td&gt;&lt;/tr&gt;
 &lt;tbody valign="top"&gt;
 &lt;tr&gt;&lt;td class="label"&gt;&lt;a class="fn-backref" href="#id2"&gt;[2]&lt;/a&gt;&lt;/td&gt;&lt;td&gt;As I’ve &lt;a class="reference external" href="http://patrick.cloke.us/posts/2011/03/08/so-called-irc-specifications/"&gt;written before&lt;/a&gt;, &lt;span class="caps"&gt;IRC&lt;/span&gt; tends to have crazy specifications.
 In &lt;span class="caps"&gt;IRC&lt;/span&gt;, &lt;a class="reference external" href="https://tools.ietf.org/html/rfc2812#section-2.2"&gt;the characters of A-Z[]\~ are considered the upper case of a-z{}|^&lt;/a&gt;
-("because of &lt;span class="caps"&gt;IRC&lt;/span&gt;’s Scandinavian origin"). Oh, also this can
+(“because of &lt;span class="caps"&gt;IRC&lt;/span&gt;’s Scandinavian origin”). Oh, also this can
 change based on an &lt;a class="reference external" href="http://tools.ietf.org/html/draft-brocklesby-irc-isupport-03#section-3.1"&gt;&lt;span class="caps"&gt;ISUPPORT&lt;/span&gt; response&lt;/a&gt; from the server to pure &lt;span class="caps"&gt;ASCII&lt;/span&gt; or
 &lt;span class="caps"&gt;RFC&lt;/span&gt; 1459 casemapping (A-Z[]\ map to a-z{}|). It seems like this could
 theoretically change at any point on a live server too, although that
@@ -235,10 +235,10 @@ tested heavily at all,&amp;nbsp;however.)&lt;/p&gt;
 &lt;span class="p"&gt;}&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;&lt;span class="caps"&gt;OK&lt;/span&gt;, so typed arrays seem good, but kind of annoying, right?
-Wrong&amp;#8230;the &lt;span class="caps"&gt;OSCAR&lt;/span&gt; protocol is a &amp;quot;network order&amp;quot; protocol (aka it is big
-endian). At this point you&amp;#8217;re probably thinking &amp;quot;&lt;span class="caps"&gt;OK&lt;/span&gt;, so the ArrayBuffer
-constructor must take an endianess flag!&amp;quot;&amp;nbsp; Wrong, it does no such
-thing.&amp;nbsp; &amp;quot;Hmmm&amp;#8230;Well do the ArrayBufferViews take an endianess flag?&amp;quot;
+Wrong&amp;#8230;the &lt;span class="caps"&gt;OSCAR&lt;/span&gt; protocol is a &amp;#8220;network order&amp;#8221; protocol (aka it is big
+endian). At this point you&amp;#8217;re probably thinking &amp;#8220;&lt;span class="caps"&gt;OK&lt;/span&gt;, so the ArrayBuffer
+constructor must take an endianess flag!&amp;#8221;&amp;nbsp; Wrong, it does no such
+thing.&amp;nbsp; &amp;#8220;Hmmm&amp;#8230;Well do the ArrayBufferViews take an endianess flag?&amp;#8221;
 Nope, wrong again.&amp;nbsp; The only way to specify the endianess of the data is
 to use a &lt;a class="reference external" href="https://developer.mozilla.org/en-US/docs/JavaScript_typed_arrays/DataView"&gt;DataView&lt;/a&gt;, a slightly different interface to the underlying
 bytes.&amp;nbsp; It offers an &lt;span class="caps"&gt;API&lt;/span&gt; to individually set different data elements via

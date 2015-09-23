@@ -134,7 +134,7 @@ named hasOwnProperty. This is <a class="reference external" href="https://mxr.mo
 <p><a class="reference external" href="https://bugzilla.mozilla.org/show_bug.cgi?id=955366">Replacing these custom objects with a Map</a> would alleviate this
 funky dance.</p>
 </li>
-<li><p class="first">Frequently in the chat backend we have to "normalize" <a class="footnote-reference" href="#id4" id="id1">[1]</a> strings
+<li><p class="first">Frequently in the chat backend we have to “normalize” <a class="footnote-reference" href="#id4" id="id1">[1]</a> strings
 (e.g. #INsTanTBIrd and #instantbird are the same on <span class="caps">IRC</span> <a class="footnote-reference" href="#id5" id="id2">[2]</a>). This is
 almost always done for sane storage of data received from the network
 (or from the user). I figured it’d be great if, instead of having to
@@ -154,7 +154,7 @@ that don’t really limit us for backend code.</p>
 <li>Replace objects with Maps for safe access. This is pretty easily
 fixed by switching all <tt class="docutils literal"><span class="pre">obj["foo"]</span></tt> calls to <tt class="docutils literal"><span class="pre">obj.get("foo")</span></tt> (or the
 appropriate other method: set, delete, etc.)</li>
-<li>Automatically "normalize" keys in the some user defined way, e.g.
+<li>Automatically “normalize” keys in the some user defined way, e.g.
 such that <tt class="docutils literal"><span class="pre">obj.get("foo")</span></tt> and <tt class="docutils literal"><span class="pre">obj.get("FoO")</span></tt> return the same value.</li>
 </ol>
 </div>
@@ -265,7 +265,7 @@ we’ve fixed most of them at this point though!</td></tr>
 <tbody valign="top">
 <tr><td class="label"><a class="fn-backref" href="#id2">[2]</a></td><td>As I’ve <a class="reference external" href="http://patrick.cloke.us/posts/2011/03/08/so-called-irc-specifications/">written before</a>, <span class="caps">IRC</span> tends to have crazy specifications.
 In <span class="caps">IRC</span>, <a class="reference external" href="https://tools.ietf.org/html/rfc2812#section-2.2">the characters of A-Z[]\~ are considered the upper case of a-z{}|^</a>
-("because of <span class="caps">IRC</span>’s Scandinavian origin"). Oh, also this can
+(“because of <span class="caps">IRC</span>’s Scandinavian origin”). Oh, also this can
 change based on an <a class="reference external" href="http://tools.ietf.org/html/draft-brocklesby-irc-isupport-03#section-3.1"><span class="caps">ISUPPORT</span> response</a> from the server to pure <span class="caps">ASCII</span> or
 <span class="caps">RFC</span> 1459 casemapping (A-Z[]\ map to a-z{}|). It seems like this could
 theoretically change at any point on a live server too, although that
@@ -290,7 +290,7 @@ expected, but they’re uhh…not up anywhere yet though. Oops.</td></tr>
         <li><article class="hentry">
         <header>
             <h1><a href="http://patrick.cloke.us/posts/2011/03/08/so-called-irc-specifications/" rel="bookmark"
-               title="Permalink to The so-called IRC "specifications"">The so-called <span class="caps">IRC</span>&nbsp;&quot;specifications&quot;</a></h1>
+               title="Permalink to The so-called IRC “specifications”">The so-called <span class="caps">IRC</span>&nbsp;&#8220;specifications&#8221;</a></h1>
         </header>
 
         <div class="entry-content">
@@ -317,7 +317,7 @@ expected, but they’re uhh…not up anywhere yet though. Oops.</td></tr>
 
     
 </footer><!-- /.post-info -->        
-<p>In a <a class="reference external" href="http://patrick.cloke.us/posts/2010/12/08/why-rewrite-irc-into-javascript/">previous post</a> I had briefly gone over the "history of <span class="caps">IRC</span>" as
+<p>In a <a class="reference external" href="http://patrick.cloke.us/posts/2010/12/08/why-rewrite-irc-into-javascript/">previous post</a> I had briefly gone over the “history of <span class="caps">IRC</span>” as
 I know it.  I’m going to expand on this a bit as I’ve come to understand
 it a bit more while reading through documentation.  (Hopefully it won’t
 sound too much like a rant ...</p>

@@ -21,7 +21,7 @@ named hasOwnProperty. This is &lt;a class="reference external" href="https://mxr
 &lt;p&gt;&lt;a class="reference external" href="https://bugzilla.mozilla.org/show_bug.cgi?id=955366"&gt;Replacing these custom objects with a Map&lt;/a&gt; would alleviate this
 funky dance.&lt;/p&gt;
 &lt;/li&gt;
-&lt;li&gt;&lt;p class="first"&gt;Frequently in the chat backend we have to "normalize" &lt;a class="footnote-reference" href="#id4" id="id1"&gt;[1]&lt;/a&gt; strings
+&lt;li&gt;&lt;p class="first"&gt;Frequently in the chat backend we have to “normalize” &lt;a class="footnote-reference" href="#id4" id="id1"&gt;[1]&lt;/a&gt; strings
 (e.g. #INsTanTBIrd and #instantbird are the same on &lt;span class="caps"&gt;IRC&lt;/span&gt; &lt;a class="footnote-reference" href="#id5" id="id2"&gt;[2]&lt;/a&gt;). This is
 almost always done for sane storage of data received from the network
 (or from the user). I figured it’d be great if, instead of having to
@@ -41,7 +41,7 @@ that don’t really limit us for backend code.&lt;/p&gt;
 &lt;li&gt;Replace objects with Maps for safe access. This is pretty easily
 fixed by switching all &lt;tt class="docutils literal"&gt;&lt;span class="pre"&gt;obj["foo"]&lt;/span&gt;&lt;/tt&gt; calls to &lt;tt class="docutils literal"&gt;&lt;span class="pre"&gt;obj.get("foo")&lt;/span&gt;&lt;/tt&gt; (or the
 appropriate other method: set, delete, etc.)&lt;/li&gt;
-&lt;li&gt;Automatically "normalize" keys in the some user defined way, e.g.
+&lt;li&gt;Automatically “normalize” keys in the some user defined way, e.g.
 such that &lt;tt class="docutils literal"&gt;&lt;span class="pre"&gt;obj.get("foo")&lt;/span&gt;&lt;/tt&gt; and &lt;tt class="docutils literal"&gt;&lt;span class="pre"&gt;obj.get("FoO")&lt;/span&gt;&lt;/tt&gt; return the same value.&lt;/li&gt;
 &lt;/ol&gt;
 &lt;/div&gt;
@@ -152,7 +152,7 @@ we’ve fixed most of them at this point though!&lt;/td&gt;&lt;/tr&gt;
 &lt;tbody valign="top"&gt;
 &lt;tr&gt;&lt;td class="label"&gt;&lt;a class="fn-backref" href="#id2"&gt;[2]&lt;/a&gt;&lt;/td&gt;&lt;td&gt;As I’ve &lt;a class="reference external" href="http://patrick.cloke.us/posts/2011/03/08/so-called-irc-specifications/"&gt;written before&lt;/a&gt;, &lt;span class="caps"&gt;IRC&lt;/span&gt; tends to have crazy specifications.
 In &lt;span class="caps"&gt;IRC&lt;/span&gt;, &lt;a class="reference external" href="https://tools.ietf.org/html/rfc2812#section-2.2"&gt;the characters of A-Z[]\~ are considered the upper case of a-z{}|^&lt;/a&gt;
-("because of &lt;span class="caps"&gt;IRC&lt;/span&gt;’s Scandinavian origin"). Oh, also this can
+(“because of &lt;span class="caps"&gt;IRC&lt;/span&gt;’s Scandinavian origin”). Oh, also this can
 change based on an &lt;a class="reference external" href="http://tools.ietf.org/html/draft-brocklesby-irc-isupport-03#section-3.1"&gt;&lt;span class="caps"&gt;ISUPPORT&lt;/span&gt; response&lt;/a&gt; from the server to pure &lt;span class="caps"&gt;ASCII&lt;/span&gt; or
 &lt;span class="caps"&gt;RFC&lt;/span&gt; 1459 casemapping (A-Z[]\ map to a-z{}|). It seems like this could
 theoretically change at any point on a live server too, although that
@@ -167,8 +167,8 @@ expected, but they’re uhh…not up anywhere yet though. Oops.&lt;/td&gt;&lt;/t
 &lt;/tbody&gt;
 &lt;/table&gt;
 &lt;/div&gt;
-</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Patrick Cloke</dc:creator><pubDate>Sun, 27 Apr 2014 13:46:00 -0400</pubDate><guid>tag:patrick.cloke.us,2014-04-27:posts/2014/04/27/extending-javascript-maps-or-other/</guid><category>Instantbird</category><category>programming</category><category>specifications</category><category>Thunderbird</category><category>Wat</category></item><item><title>The so-called IRC "specifications"</title><link>http://patrick.cloke.us/posts/2011/03/08/so-called-irc-specifications/</link><description>
-&lt;p&gt;In a &lt;a class="reference external" href="http://patrick.cloke.us/posts/2010/12/08/why-rewrite-irc-into-javascript/"&gt;previous post&lt;/a&gt; I had briefly gone over the "history of &lt;span class="caps"&gt;IRC&lt;/span&gt;" as
+</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Patrick Cloke</dc:creator><pubDate>Sun, 27 Apr 2014 13:46:00 -0400</pubDate><guid>tag:patrick.cloke.us,2014-04-27:posts/2014/04/27/extending-javascript-maps-or-other/</guid><category>Instantbird</category><category>programming</category><category>specifications</category><category>Thunderbird</category><category>Wat</category></item><item><title>The so-called IRC “specifications”</title><link>http://patrick.cloke.us/posts/2011/03/08/so-called-irc-specifications/</link><description>
+&lt;p&gt;In a &lt;a class="reference external" href="http://patrick.cloke.us/posts/2010/12/08/why-rewrite-irc-into-javascript/"&gt;previous post&lt;/a&gt; I had briefly gone over the “history of &lt;span class="caps"&gt;IRC&lt;/span&gt;” as
 I know it.  I’m going to expand on this a bit as I’ve come to understand
 it a bit more while reading through documentation.  (Hopefully it won’t
 sound too much like a rant, as it is all driving me crazy!)&lt;/p&gt;
@@ -188,7 +188,7 @@ other particular messages (&lt;span class="caps"&gt;ACTION&lt;/span&gt; commands
 encrypting conversations, &lt;span class="caps"&gt;VERSION&lt;/span&gt; to get client information, etc.).
 Anyway, this get’s a bit more complicated — it starts with the &lt;a class="reference external" href="http://www.irchelp.org/irchelp/rfc/dccspec.html"&gt;&lt;span class="caps"&gt;DCC&lt;/span&gt;
 specification&lt;/a&gt;.  This was replaced/updated by the &lt;a class="reference external" href="http://www.irchelp.org/irchelp/rfc/ctcpspec.html"&gt;&lt;span class="caps"&gt;CTCP&lt;/span&gt; specification&lt;/a&gt;
-(which fully includes the &lt;span class="caps"&gt;DCC&lt;/span&gt; specification) in 1994.  An &lt;a class="reference external" href="https://web.archive.org/web/20101129023108/http://www.invlogic.com/irc/ctcp.html"&gt;"updated"
+(which fully includes the &lt;span class="caps"&gt;DCC&lt;/span&gt; specification) in 1994.  An &lt;a class="reference external" href="https://web.archive.org/web/20101129023108/http://www.invlogic.com/irc/ctcp.html"&gt;“updated”
 &lt;span class="caps"&gt;CTCP&lt;/span&gt; specification&lt;/a&gt; was released in February 1997.  There’s also a
 &lt;a class="reference external" href="https://web.archive.org/web/20080723170128/http://www.invlogic.com/irc/ctcp2_intro.html"&gt;&lt;span class="caps"&gt;CTCP&lt;/span&gt;/2 specification&lt;/a&gt; from October 1998, which was meant to
 reformulate a lot of the previous three versions.  And &lt;em&gt;finally&lt;/em&gt;,
@@ -213,7 +213,7 @@ which very few servers seem to use, a variety of mechanisms have
 replaced this, including &lt;a class="reference external" href="https://raw.githubusercontent.com/atheme/charybdis/master/doc/sasl.txt"&gt;&lt;span class="caps"&gt;SASL&lt;/span&gt; authentication&lt;/a&gt; (both &lt;span class="caps"&gt;PLAIN&lt;/span&gt; and &lt;span class="caps"&gt;BLOWFISH&lt;/span&gt;
 methods, although &lt;span class="caps"&gt;BLOWFISH&lt;/span&gt; isn’t documented); and &lt;span class="caps"&gt;SASL&lt;/span&gt; itself is covered
 by at least &lt;a class="reference external" href="http://tools.ietf.org/html/rfc2222"&gt;four&lt;/a&gt; &lt;a class="reference external" href="http://tools.ietf.org/html/rfc4422"&gt;RFCs&lt;/a&gt; &lt;a class="reference external" href="http://tools.ietf.org/html/rfc2595"&gt;in this&lt;/a&gt; &lt;a class="reference external" href="http://tools.ietf.org/html/rfc4616"&gt;situation&lt;/a&gt;.  There also seems
-to be a method called "Auth" which I haven’t been able to pin down, as
+to be a method called “Auth” which I haven’t been able to pin down, as
 well as Ident (which is a more general protocol authentication method I
 haven’t looked into yet).&lt;/p&gt;
 &lt;/div&gt;
