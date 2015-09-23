@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Like bricks in the sky</title><link>http://patrick.cloke.us/</link><description></description><atom:link href="http://patrick.cloke.us/feeds/tag/thunderbird.rss.xml" rel="self"></atom:link><lastBuildDate>Wed, 23 Sep 2015 17:07:00 -0400</lastBuildDate><item><title>IRC Client Usage Share on moznet</title><link>http://patrick.cloke.us/posts/2015/09/23/irc-client-usage-share-on-moznet/</link><description>
 &lt;div class="section" id="background"&gt;
-&lt;h2&gt;&lt;a class="toc-backref" href="#id7"&gt;Background&lt;/a&gt;&lt;/h2&gt;
+&lt;h2&gt;&lt;a class="toc-backref" href="#id9"&gt;Background&lt;/a&gt;&lt;/h2&gt;
 &lt;p&gt;The usage share of &lt;span class="caps"&gt;IRC&lt;/span&gt; clients has always been something I’m interested in. This
 is partially to see how many people are using &lt;a class="reference external" href="http://instantbird.com/"&gt;Instantbird&lt;/a&gt; or &lt;a class="reference external" href="https://www.mozilla.org/en-US/thunderbird/"&gt;Mozilla
 Thunderbird&lt;/a&gt; for &lt;span class="caps"&gt;IRC&lt;/span&gt; (as I’ve written much of the &lt;span class="caps"&gt;IRC&lt;/span&gt; code for those clients).
 &lt;a class="reference external" href="http://en.wikipedia.org/wiki/Usage_share_of_web_browsers"&gt;Usage share of browsers&lt;/a&gt; is quite a researched topic, but I’ve never come
-across this data for &lt;span class="caps"&gt;IRC&lt;/span&gt;. Most &lt;a class="footnote-reference" href="#id4" id="id1"&gt;[1]&lt;/a&gt; &lt;span class="caps"&gt;IRC&lt;/span&gt; clients implement a part of the &lt;a class="reference external" href="http://www.irchelp.org/irchelp/rfc/ctcpspec.html"&gt;&lt;span class="caps"&gt;CTCP&lt;/span&gt;&lt;/a&gt;
+across this data for &lt;span class="caps"&gt;IRC&lt;/span&gt;. Most &lt;a class="footnote-reference" href="#id5" id="id1"&gt;[1]&lt;/a&gt; &lt;span class="caps"&gt;IRC&lt;/span&gt; clients implement a part of the &lt;a class="reference external" href="http://www.irchelp.org/irchelp/rfc/ctcpspec.html"&gt;&lt;span class="caps"&gt;CTCP&lt;/span&gt;&lt;/a&gt;
 protocol which allows a client to query another client for their version.
 Thinking of this as a &lt;a class="reference external" href="http://en.wikipedia.org/wiki/User_agent"&gt;user agent&lt;/a&gt; is probably a good analogue. I don’t think
 this would imply that there is much of an issue with &lt;a class="reference external" href="http://en.wikipedia.org/wiki/Usage_share_of_web_browsers#User_agent_spoofing"&gt;user agent spoofing&lt;/a&gt;, as
@@ -14,7 +14,7 @@ there would be for web browser statistics since (as far as I know), no one uses
 the version response to do capability negotiation. It also is not used by servers.&lt;/p&gt;
 &lt;/div&gt;
 &lt;div class="section" id="technical-bits"&gt;
-&lt;h2&gt;&lt;a class="toc-backref" href="#id8"&gt;Technical Bits&lt;/a&gt;&lt;/h2&gt;
+&lt;h2&gt;&lt;a class="toc-backref" href="#id10"&gt;Technical Bits&lt;/a&gt;&lt;/h2&gt;
 &lt;p&gt;So how’d we do this? I wrote an &lt;a class="reference external" href="https://bitbucket.org/clokep/irc-extras/src/tip/stats/"&gt;extension&lt;/a&gt; for Instantbird which handled both
 the backend and the display of the results. I think that this really showcases
 the extensibility of Instantbird and the effort we’ve put into ensuring their
@@ -30,10 +30,10 @@ made a pretty(-ish) plot of this. (If you’re a network administrator reading
 this and think this is insane, I’d be very curious to hear a better way to do this!)&lt;/p&gt;
 &lt;/div&gt;
 &lt;div class="section" id="results"&gt;
-&lt;h2&gt;&lt;a class="toc-backref" href="#id9"&gt;Results&lt;/a&gt;&lt;/h2&gt;
+&lt;h2&gt;&lt;a class="toc-backref" href="#id11"&gt;Results&lt;/a&gt;&lt;/h2&gt;
 &lt;p&gt;In order to get some results I hooked my client up to &lt;a class="reference external" href="https://wiki.mozilla.org/IRC"&gt;moznet&lt;/a&gt; on July 23rd,
 2015 and let it run on many channels (pretty much anything with more than 20
-users) for a few hours &lt;a class="footnote-reference" href="#id5" id="id2"&gt;[2]&lt;/a&gt;. I was in Europe and started early in the morning
+users) for a few hours &lt;a class="footnote-reference" href="#id6" id="id2"&gt;[2]&lt;/a&gt;. I was in Europe and started early in the morning
 and let it run through the evening, so it should encompass some “normal” usage
 by Mozillians. I would expect a bit of skew in these results toward
 Mozilla-esque &lt;span class="caps"&gt;IRC&lt;/span&gt; clients (Instantbird, Thunderbird and &lt;a class="reference external" href="http://chatzilla.hacksrus.com/"&gt;ChatZilla&lt;/a&gt;).&lt;/p&gt;
@@ -41,7 +41,7 @@ Mozilla-esque &lt;span class="caps"&gt;IRC&lt;/span&gt; clients (Instantbird, Th
 variance there is day-to-day or over time, but I found the (un-scientific)
 results to be interesting!&lt;/p&gt;
 &lt;div class="section" id="responses"&gt;
-&lt;h3&gt;&lt;a class="toc-backref" href="#id10"&gt;Responses&lt;/a&gt;&lt;/h3&gt;
+&lt;h3&gt;&lt;a class="toc-backref" href="#id12"&gt;Responses&lt;/a&gt;&lt;/h3&gt;
 &lt;p&gt;The first thing I noticed is the large amount of information some version
 responses gave (in no particular order):&lt;/p&gt;
 &lt;ul class="simple"&gt;
@@ -52,13 +52,22 @@ responses gave (in no particular order):&lt;/p&gt;
 &lt;p&gt;I don’t understand the rationale behind sharing a user’s operating system and
 &lt;span class="caps"&gt;CPU&lt;/span&gt; speed. Most clients responded with a simple &lt;tt class="docutils literal"&gt;&amp;lt;software&amp;gt; &amp;lt;version number&amp;gt;&lt;/tt&gt;,
 although quite a few also include a &lt;span class="caps"&gt;URL&lt;/span&gt;.&lt;/p&gt;
+&lt;p&gt;Additionally, some bouncers respond in weird ways which might skew the results:&lt;/p&gt;
+&lt;ul class="simple"&gt;
+&lt;li&gt;&lt;span class="caps"&gt;ZNC&lt;/span&gt; responds with both the &lt;span class="caps"&gt;ZNC&lt;/span&gt; version and the version of connected client(s?).&lt;/li&gt;
+&lt;li&gt;bip responds with it’s own version if no one is connected &lt;span class="caps"&gt;OR&lt;/span&gt; the version of
+all connected clients. &lt;a class="footnote-reference" href="#id7" id="id3"&gt;[3]&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Lastly, some clients just don’t respond (or respond with an empty string). The
+results below aren’t really a count of “users”, but a count of “clients” where
+some users might be counted multiple times.&lt;/p&gt;
 &lt;/div&gt;
 &lt;div class="section" id="client-summary"&gt;
-&lt;h3&gt;&lt;a class="toc-backref" href="#id11"&gt;Client Summary&lt;/a&gt;&lt;/h3&gt;
+&lt;h3&gt;&lt;a class="toc-backref" href="#id13"&gt;Client Summary&lt;/a&gt;&lt;/h3&gt;
 &lt;p&gt;Initially I visualized the data by plotting it two serparate ways: first by
 showing the count of each version response and then grouping by “client family”.
 The first plot had too many columns to reasonably show in this post: thus I’ve
-only included a plot of the client families &lt;a class="footnote-reference" href="#id6" id="id3"&gt;[3]&lt;/a&gt;. There are two plots, the first
+only included a plot of the client families &lt;a class="footnote-reference" href="#id8" id="id4"&gt;[4]&lt;/a&gt;. There are two plots, the first
 shows a subset of the data by cutting the tail (arbitrarily including families
 with at least 10 users).&lt;/p&gt;
 &lt;div class="note"&gt;
@@ -152,7 +161,7 @@ converting to lowercase:&lt;/p&gt;
 &lt;div id="family-count"&gt;&lt;/div&gt;
 &lt;div id="family-all-count"&gt;&lt;/div&gt;&lt;/div&gt;
 &lt;div class="section" id="points-of-note"&gt;
-&lt;h3&gt;&lt;a class="toc-backref" href="#id12"&gt;Points of Note&lt;/a&gt;&lt;/h3&gt;
+&lt;h3&gt;&lt;a class="toc-backref" href="#id14"&gt;Points of Note&lt;/a&gt;&lt;/h3&gt;
 &lt;p&gt;I have to admit that I was fairly shocked by the number of IRCCloud users as I
 found it pretty unusable when messing with it. I suspect it being an 'easy'
 bouncer draws many people to it. The bouncer-like software (IRCCloud, &lt;span class="caps"&gt;ZNC&lt;/span&gt;, bip)
@@ -167,14 +176,14 @@ come in as part of the top 10 (60 users, right before ChatZilla)! There's a lot
 of great clients out there and I'm happy to say I've helped to create one of the
 more popular ones (on moznet, at least!).&lt;/p&gt;
 &lt;p&gt;Let me know if I missed a great insight!&lt;/p&gt;
-&lt;table class="docutils footnote" frame="void" id="id4" rules="none"&gt;
+&lt;table class="docutils footnote" frame="void" id="id5" rules="none"&gt;
 &lt;colgroup&gt;&lt;col class="label"&gt;&lt;/col&gt;&lt;col&gt;&lt;/col&gt;&lt;/colgroup&gt;
 &lt;tbody valign="top"&gt;
 &lt;tr&gt;&lt;td class="label"&gt;&lt;a class="fn-backref" href="#id1"&gt;[1]&lt;/a&gt;&lt;/td&gt;&lt;td&gt;"Most" is a wild accusation here. But...from the numbers I've seen, it
 seems like a reasonable statement.&lt;/td&gt;&lt;/tr&gt;
 &lt;/tbody&gt;
 &lt;/table&gt;
-&lt;table class="docutils footnote" frame="void" id="id5" rules="none"&gt;
+&lt;table class="docutils footnote" frame="void" id="id6" rules="none"&gt;
 &lt;colgroup&gt;&lt;col class="label"&gt;&lt;/col&gt;&lt;col&gt;&lt;/col&gt;&lt;/colgroup&gt;
 &lt;tbody valign="top"&gt;
 &lt;tr&gt;&lt;td class="label"&gt;&lt;a class="fn-backref" href="#id2"&gt;[2]&lt;/a&gt;&lt;/td&gt;&lt;td&gt;While running this I had a few users question what I was doing over
@@ -183,10 +192,17 @@ their users by showing them they received a &lt;tt class="docutils literal"&gt;&
 users just won't care! Why show that low-level of the protocol?!&lt;/td&gt;&lt;/tr&gt;
 &lt;/tbody&gt;
 &lt;/table&gt;
-&lt;table class="docutils footnote" frame="void" id="id6" rules="none"&gt;
+&lt;table class="docutils footnote" frame="void" id="id7" rules="none"&gt;
 &lt;colgroup&gt;&lt;col class="label"&gt;&lt;/col&gt;&lt;col&gt;&lt;/col&gt;&lt;/colgroup&gt;
 &lt;tbody valign="top"&gt;
-&lt;tr&gt;&lt;td class="label"&gt;&lt;a class="fn-backref" href="#id3"&gt;[3]&lt;/a&gt;&lt;/td&gt;&lt;td&gt;I stole the code to plot this from the &lt;a class="reference external" href="https://bitbucket.org/clokep/irc-extras/src/41a9572caf957ab8ae3969a145834bcd5be74abe/stats/content/ircStats.js?at=default#cl-55"&gt;plotting code&lt;/a&gt; in the extension
+&lt;tr&gt;&lt;td class="label"&gt;&lt;a class="fn-backref" href="#id3"&gt;[3]&lt;/a&gt;&lt;/td&gt;&lt;td&gt;&lt;a class="reference external" href="https://twitter.com/dioxmat/status/646815252898803712"&gt;Source&lt;/a&gt;, have
+I mentioned yet in this article that I hate bouncers?&lt;/td&gt;&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;table class="docutils footnote" frame="void" id="id8" rules="none"&gt;
+&lt;colgroup&gt;&lt;col class="label"&gt;&lt;/col&gt;&lt;col&gt;&lt;/col&gt;&lt;/colgroup&gt;
+&lt;tbody valign="top"&gt;
+&lt;tr&gt;&lt;td class="label"&gt;&lt;a class="fn-backref" href="#id4"&gt;[4]&lt;/a&gt;&lt;/td&gt;&lt;td&gt;I stole the code to plot this from the &lt;a class="reference external" href="https://bitbucket.org/clokep/irc-extras/src/41a9572caf957ab8ae3969a145834bcd5be74abe/stats/content/ircStats.js?at=default#cl-55"&gt;plotting code&lt;/a&gt; in the extension
 I wrote for this. When actually using that extension, something similar
 to this appears as a tab and refreshes as results come in. It uses
 &lt;a class="reference external" href="http://humblesoftware.com/flotr2/"&gt;Flotr2&lt;/a&gt; to do the plotting in JavaScript, I've been pretty happy with
