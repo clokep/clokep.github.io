@@ -68,6 +68,17 @@ I don't understand the rationale behind sharing a user's operating system and
 CPU speed. Most clients responded with a simple ``<software> <version number>``,
 although quite a few also include a URL.
 
+Additionally, some bouncers respond in weird ways which might skew the results:
+
+*   ZNC responds with both the ZNC version and the version of connected
+    client(s?).
+*   bip responds with it's own version if no one is connected OR the version of
+    all connected clients. [#]_
+
+Lastly, some clients just don't respond (or respond with an empty string). The
+results below aren't really a count of "users", but a count of "clients" where
+some users might be counted multiple times.
+
 Client Summary
 ''''''''''''''
 
@@ -202,6 +213,8 @@ Let me know if I missed a great insight!
         private messages or in a channel. I'm *shocked* that clients bother
         their users by showing them they received a ``VERSION`` request. (Most)
         users just won't care! Why show that low-level of the protocol?!
+.. [#]  `Source <https://twitter.com/dioxmat/status/646815252898803712>`_, have
+        I mentioned yet in this article that I hate bouncers?
 .. [#]  I stole the code to plot this from the `plotting code`_ in the extension
         I wrote for this. When actually using that extension, something similar
         to this appears as a tab and refreshes as results come in. It uses
