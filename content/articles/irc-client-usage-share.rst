@@ -1,6 +1,6 @@
-IRC Client Usage Share
-######################
-:date: 2014-12-13 18:37
+IRC Client Usage Share on moznet
+################################
+:date: 2015-09-23 17:07
 :author: Patrick Cloke
 :tags: Mozilla, Thunderbird, Instantbird, IRC
 
@@ -36,25 +36,57 @@ each user I know of on the IRC network (based on who is in the same channels as
 me) and then record the responses. I tried to be nice to the network here and
 rate-limited myself to 1 query per second. No one complained after ~100 queries
 and I didn't seem to have any ``fakelag`` issues. I then dumped the results and
-make a pretty plot of this. (If you're a network administrator reading this and
-think this is insane, I'd be very curious to hear a better way to do this!)
+made a pretty(-ish) plot of this. (If you're a network administrator reading
+this and think this is insane, I'd be very curious to hear a better way to do
+this!)
 
 Results
 =======
 
-In order to get some results I hooked my client up to `moznet`_ and let it run
-in some of the main channels. TODO FILL IN THE CHANNELS. I would expect a bit of
-skew in these results toward Mozilla-esque IRC clients (Instantbird, Thunderbird
-and `ChatZilla`_).
+In order to get some results I hooked my client up to `moznet`_ on July 23rd,
+2015 and let it run on many channels (pretty much anything with more than 20
+users) for a few hours [#]_. I was in Europe and started early in the morning
+and let it run through the evening, so it should encompass some "normal" usage
+by Mozillians. I would expect a bit of skew in these results toward
+Mozilla-esque IRC clients (Instantbird, Thunderbird and `ChatZilla`_).
 
-The first thing I noticed is the large amount of information some of these
-version responses given...
+Of course these numbers are just a single sampling and I have no idea how much
+variance there is day-to-day or over time, but I found the (un-scientific)
+results to be interesting!
 
-I plotted the data two separate ways: first by just showing the raw count of
-each version response and then by "client family". By "client family" I mean
-that all versions of the same client should be counted together. The most sane
-way to try to guess this was to take the text up to the first space. These plots
-follow [#]_.
+Responses
+'''''''''
+
+The first thing I noticed is the large amount of information some version
+responses gave (in no particular order):
+
+* ``KVIrc 4.3.1 svn-6313 'Aria' 20120701 - build 2013-02-14 17:47:33 UTC - Windows 7 Ultimate (x64) Service Pack 1 (Build 7601)``
+* ``xchat 2.8.8 Linux 3.17.4-1-ARCH [x86_64/2.90GHz/SMP]``
+* ``HexChat 2.10.1 [x64] / Windows 7 SP1 [4.09GHz]``
+
+I don't understand the rationale behind sharing a user's operating system and
+CPU speed. Most clients responded with a simple ``<software> <version number>``,
+although quite a few also include a URL.
+
+Client Summary
+''''''''''''''
+
+Initially I visualized the data by plotting it two serparate ways: first by
+showing the count of each version response and then grouping by "client family".
+The first plot had too many columns to reasonably show in this post: thus I've
+only included a plot of the client families [#]_. There are two plots, the first
+shows a subset of the data by cutting the tail (arbitrarily including families
+with at least 10 users).
+
+.. note::
+
+    A "client family" is counting all versions of the same client together. This
+    was calculated by taking the text up to the first whitespace or digit and
+    converting to lowercase:
+
+    .. code-block:: javascript
+
+        family = version.split(/[\s\d]/)[0].toLowerCase()
 
 .. raw:: html
 
@@ -111,28 +143,60 @@ follow [#]_.
 
         document.addEventListener("DOMContentLoaded", function() {
             var families = new Map([["instantbird", 21], ["thunderbird", 39], ["xchat", 77], ["colloquy", 33], ["limechat", 61], ["irssi", 204], ["irccloud", 520], ["znc", 161], ["icedove", 3], ["chatzilla", 59], ["bip-", 11], ["hexchat", 61], ["mozbot", 3], ["miranda", 6], ["mirc", 31], ["textual", 44], ["weechat", 76], ["kvirc", 6], ["purple", 70], ["x-chat", 8], ["xchat-wdk", 1], ["dircproxy", 1], ["konversation", 12], ["quassel", 69], ["linkinus", 3], ["\x02erc\x02", 6], ["leroooooy", 1], ["elitebnc", 1], ["fu,", 1], ["anope-", 1], [">", 2], ["telepathy-idle", 3], ["rcirc", 3], ["mrgiggles:", 1], ["ircii", 1], ["http://www.mibbit.com", 4], ["shout", 7], ["yaaic", 2], ["karen", 1], ["", 3], ["sceners", 1], ["uberscript", 1], ["tiarra:", 3], ["snak", 1], ["wuunyan", 1], ["adiirc", 1], ["n/a", 1], ["pircbotx", 3], ["none", 1], ["yes", 1], ["nettalk", 1], ["riece/", 1], ["unknown", 1], ["version", 1], ["circ", 3], ["request", 1], ["forrest,", 1], ["trillian", 1], ["\x03", 2], ["smuxi-frontend-gnome", 1], ["some", 1], ["\x02\x03", 1], ["oh", 1], ["\u201Cnever", 1], ["this", 1], ["nochat", 1], ["wee", 1], ["foadirc", 1], ["smuxi-server", 1], ["aperture", 1], ["internet", 1], ["supybot", 1], ["ejabberd", 2], ["dxirc", 1], ["ircle", 1], ["infobot", 1], ["exovenom", 1], ["nsa-irc", 1]]);
-            families.set("Instantbird", 4);
-            families.set("Thunderbird", 2);
-            families.set(undefined, 1);
+
+            // Count the totals, used in reporting not actually displayed.
+            var total = 0;
+            for (var family of families.entries())
+                total += family[1];
 
             // Update the plots.
-            createPlot("family-all-count", "All Families", families);
+            createPlot("family-all-count",
+                       "All Families (Total: " + total + ")", families);
 
             // Remove all families that have less than 10 hits.
             for (var family of families.entries()) {
-                if (family[1] < 10)
+                if (family[1] < 10) {
                     families.delete(family[0])
+                    total -= family[1];
+                }
             }
 
-            createPlot("family-count", "Families with at Least 10 Users", families);
+            createPlot("family-count",
+                       "Families with at Least 10 Users (Total: " + total + ")",
+                       families);
         });
     </script>
 
     <div id="family-count"></div>
     <div id="family-all-count"></div>
 
+Points of Note
+''''''''''''''
+
+I have to admit that I was fairly shocked by the number of IRCCloud users as I
+found it pretty unusable when messing with it. I suspect it being an 'easy'
+bouncer draws many people to it. The bouncer-like software (IRCCloud, ZNC, bip)
+represents almost half of the users surveyed (692 / 1549 ≈ 45%)!
+
+I'm surprised so many people are using ``purple`` as their IRC client, as the
+support there is really barebones. (It makes sense if you're already using
+Pidgin and don't want another client.) I think we've made a significant amount
+of improvements in Instantbird's IRC support to make it simpler for a user to
+get started (give it a try if you haven't!).
+
+The last thing I'll note that, when taken together, Instantbird and Thunderbird
+come in as part of the top 10 (60 users, right before ChatZilla)! There's a lot
+of great clients out there and I'm happy to say I've helped to create one of the
+more popular ones (on moznet, at least!).
+
+Let me know if I missed a great insight!
+
 .. [#]  "Most" is a wild accusation here. But...from the numbers I've seen, it
         seems like a reasonable statement.
+.. [#]  While running this I had a few users question what I was doing over
+        private messages or in a channel. I'm *shocked* that clients bother
+        their users by showing them they received a ``VERSION`` request. (Most)
+        users just won't care! Why show that low-level of the protocol?!
 .. [#]  I stole the code to plot this from the `plotting code`_ in the extension
         I wrote for this. When actually using that extension, something similar
         to this appears as a tab and refreshes as results come in. It uses
