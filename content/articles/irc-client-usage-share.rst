@@ -1,6 +1,7 @@
 IRC Client Usage Share on moznet
 ################################
 :date: 2015-09-23 17:07
+:modified: 2015-09-24 07:18
 :author: Patrick Cloke
 :tags: Mozilla, Thunderbird, Instantbird, IRC
 
@@ -70,8 +71,8 @@ although quite a few also include a URL.
 
 Additionally, some bouncers respond in weird ways which might skew the results:
 
-*   ZNC responds with both the ZNC version and the version of connected
-    client(s?).
+*   ZNC responds only if there are no clients connected OR, depending on the
+    version, it appends itself to the client response. [#]_
 *   bip responds with it's own version if no one is connected OR the version of
     all connected clients. [#]_
 
@@ -190,7 +191,7 @@ Points of Note
 ''''''''''''''
 
 I have to admit that I was fairly shocked by the number of IRCCloud users as I
-found it pretty unusable when messing with it. I suspect it being an 'easy'
+found it pretty unusable when messing with it [#]_. I suspect it being an 'easy'
 bouncer draws many people to it. The bouncer-like software (IRCCloud, ZNC, bip)
 represents almost half of the users surveyed (692 / 1549 ≈ 45%)!
 
@@ -200,10 +201,10 @@ Pidgin and don't want another client.) I think we've made a significant amount
 of improvements in Instantbird's IRC support to make it simpler for a user to
 get started (give it a try if you haven't!).
 
-The last thing I'll note that, when taken together, Instantbird and Thunderbird
-come in as part of the top 10 (60 users, right before ChatZilla)! There's a lot
-of great clients out there and I'm happy to say I've helped to create one of the
-more popular ones (on moznet, at least!).
+The last thing I'll note is that, when taken together, Instantbird, Thunderbird,
+and Icedove, come in as part of the top 10 (63 users, right before ChatZilla)!
+There's a lot of great clients out there and I'm happy to say I've helped to
+create one of the more popular ones (on moznet, at least!).
 
 Let me know if I missed a great insight!
 
@@ -213,6 +214,9 @@ Let me know if I missed a great insight!
         private messages or in a channel. I'm *shocked* that clients bother
         their users by showing them they received a ``VERSION`` request. (Most)
         users just won't care! Why show that low-level of the protocol?!
+.. [#]  As corrected by DarthGandalf on IRC: "Before 1.6, ZNC version is
+        returned iff no clients are connected. After 1.6, it's also appended to
+        the client's response (but still one line per connected client)"
 .. [#]  `Source <https://twitter.com/dioxmat/status/646815252898803712>`_, have
         I mentioned yet in this article that I hate bouncers?
 .. [#]  I stole the code to plot this from the `plotting code`_ in the extension
@@ -220,6 +224,8 @@ Let me know if I missed a great insight!
         to this appears as a tab and refreshes as results come in. It uses
         `Flotr2`_ to do the plotting in JavaScript, I've been pretty happy with
         it.
+.. [#]  Although in retrospect I shouldn't be since Mozilla runs their own
+        `IRCCloud instance`_.
 
 .. _Mozilla Thunderbird: https://www.mozilla.org/en-US/thunderbird/
 .. _Instantbird: http://instantbird.com/
@@ -236,3 +242,4 @@ Let me know if I missed a great insight!
 
 .. _plotting code: https://bitbucket.org/clokep/irc-extras/src/41a9572caf957ab8ae3969a145834bcd5be74abe/stats/content/ircStats.js?at=default#cl-55
 .. _Flotr2: http://humblesoftware.com/flotr2/
+.. _IRCCloud instance: https://irccloud.mozilla.com/
