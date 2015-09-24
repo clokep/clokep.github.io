@@ -58,12 +58,12 @@
     <div class="toc" id="">
 
 <ul class="simple">
-<li><a class="reference internal" href="#background" id="id9">Background</a></li>
-<li><a class="reference internal" href="#technical-bits" id="id10">Technical Bits</a></li>
-<li><a class="reference internal" href="#results" id="id11">Results</a><ul>
-<li><a class="reference internal" href="#responses" id="id12">Responses</a></li>
-<li><a class="reference internal" href="#client-summary" id="id13">Client Summary</a></li>
-<li><a class="reference internal" href="#points-of-note" id="id14">Points of Note</a></li>
+<li><a class="reference internal" href="#background" id="id13">Background</a></li>
+<li><a class="reference internal" href="#technical-bits" id="id14">Technical Bits</a></li>
+<li><a class="reference internal" href="#results" id="id15">Results</a><ul>
+<li><a class="reference internal" href="#responses" id="id16">Responses</a></li>
+<li><a class="reference internal" href="#client-summary" id="id17">Client Summary</a></li>
+<li><a class="reference internal" href="#points-of-note" id="id18">Points of Note</a></li>
 </ul>
 </li>
 </ul>
@@ -91,6 +91,10 @@
 
         <abbr class="published" title="2015-09-23T17:07:00-04:00">
             Published: 09/23/2015 05:07 PM EDT
+        </abbr>
+        <br />
+        <abbr class="modified" title="2015-09-24T07:18:00-04:00">
+            Updated: 09/24/2015 07:18 AM EDT
         </abbr>
 
         <address class="vcard author">
@@ -123,12 +127,12 @@
     </div>
 </footer><!-- /.post-info -->        
 <div class="section" id="background">
-<h2><a class="toc-backref" href="#id9">Background</a></h2>
+<h2><a class="toc-backref" href="#id13">Background</a></h2>
 <p>The usage share of <span class="caps">IRC</span> clients has always been something I’m interested in. This
 is partially to see how many people are using <a class="reference external" href="http://instantbird.com/">Instantbird</a> or <a class="reference external" href="https://www.mozilla.org/en-US/thunderbird/">Mozilla
 Thunderbird</a> for <span class="caps">IRC</span> (as I’ve written much of the <span class="caps">IRC</span> code for those clients).
 <a class="reference external" href="http://en.wikipedia.org/wiki/Usage_share_of_web_browsers">Usage share of browsers</a> is quite a researched topic, but I’ve never come
-across this data for <span class="caps">IRC</span>. Most <a class="footnote-reference" href="#id5" id="id1">[1]</a> <span class="caps">IRC</span> clients implement a part of the <a class="reference external" href="http://www.irchelp.org/irchelp/rfc/ctcpspec.html"><span class="caps">CTCP</span></a>
+across this data for <span class="caps">IRC</span>. Most <a class="footnote-reference" href="#id7" id="id1">[1]</a> <span class="caps">IRC</span> clients implement a part of the <a class="reference external" href="http://www.irchelp.org/irchelp/rfc/ctcpspec.html"><span class="caps">CTCP</span></a>
 protocol which allows a client to query another client for their version.
 Thinking of this as a <a class="reference external" href="http://en.wikipedia.org/wiki/User_agent">user agent</a> is probably a good analogue. I don’t think
 this would imply that there is much of an issue with <a class="reference external" href="http://en.wikipedia.org/wiki/Usage_share_of_web_browsers#User_agent_spoofing">user agent spoofing</a>, as
@@ -136,7 +140,7 @@ there would be for web browser statistics since (as far as I know), no one uses
 the version response to do capability negotiation. It also is not used by servers.</p>
 </div>
 <div class="section" id="technical-bits">
-<h2><a class="toc-backref" href="#id10">Technical Bits</a></h2>
+<h2><a class="toc-backref" href="#id14">Technical Bits</a></h2>
 <p>So how’d we do this? I wrote an <a class="reference external" href="https://bitbucket.org/clokep/irc-extras/src/tip/stats/">extension</a> for Instantbird which handled both
 the backend and the display of the results. I think that this really showcases
 the extensibility of Instantbird and the effort we’ve put into ensuring their
@@ -152,10 +156,10 @@ made a pretty(-ish) plot of this. (If you’re a network administrator reading
 this and think this is insane, I’d be very curious to hear a better way to do this!)</p>
 </div>
 <div class="section" id="results">
-<h2><a class="toc-backref" href="#id11">Results</a></h2>
+<h2><a class="toc-backref" href="#id15">Results</a></h2>
 <p>In order to get some results I hooked my client up to <a class="reference external" href="https://wiki.mozilla.org/IRC">moznet</a> on July 23rd,
 2015 and let it run on many channels (pretty much anything with more than 20
-users) for a few hours <a class="footnote-reference" href="#id6" id="id2">[2]</a>. I was in Europe and started early in the morning
+users) for a few hours <a class="footnote-reference" href="#id8" id="id2">[2]</a>. I was in Europe and started early in the morning
 and let it run through the evening, so it should encompass some “normal” usage
 by Mozillians. I would expect a bit of skew in these results toward
 Mozilla-esque <span class="caps">IRC</span> clients (Instantbird, Thunderbird and <a class="reference external" href="http://chatzilla.hacksrus.com/">ChatZilla</a>).</p>
@@ -163,7 +167,7 @@ Mozilla-esque <span class="caps">IRC</span> clients (Instantbird, Thunderbird an
 variance there is day-to-day or over time, but I found the (un-scientific)
 results to be interesting!</p>
 <div class="section" id="responses">
-<h3><a class="toc-backref" href="#id12">Responses</a></h3>
+<h3><a class="toc-backref" href="#id16">Responses</a></h3>
 <p>The first thing I noticed is the large amount of information some version
 responses gave (in no particular order):</p>
 <ul class="simple">
@@ -176,20 +180,21 @@ responses gave (in no particular order):</p>
 although quite a few also include a <span class="caps">URL</span>.</p>
 <p>Additionally, some bouncers respond in weird ways which might skew the results:</p>
 <ul class="simple">
-<li><span class="caps">ZNC</span> responds with both the <span class="caps">ZNC</span> version and the version of connected client(s?).</li>
+<li><span class="caps">ZNC</span> responds only if there are no clients connected <span class="caps">OR</span>, depending on the
+version, it appends itself to the client response. <a class="footnote-reference" href="#id9" id="id3">[3]</a></li>
 <li>bip responds with it’s own version if no one is connected <span class="caps">OR</span> the version of
-all connected clients. <a class="footnote-reference" href="#id7" id="id3">[3]</a></li>
+all connected clients. <a class="footnote-reference" href="#id10" id="id4">[4]</a></li>
 </ul>
 <p>Lastly, some clients just don’t respond (or respond with an empty string). The
 results below aren’t really a count of “users”, but a count of “clients” where
 some users might be counted multiple times.</p>
 </div>
 <div class="section" id="client-summary">
-<h3><a class="toc-backref" href="#id13">Client Summary</a></h3>
+<h3><a class="toc-backref" href="#id17">Client Summary</a></h3>
 <p>Initially I visualized the data by plotting it two serparate ways: first by
 showing the count of each version response and then grouping by “client family”.
 The first plot had too many columns to reasonably show in this post: thus I’ve
-only included a plot of the client families <a class="footnote-reference" href="#id8" id="id4">[4]</a>. There are two plots, the first
+only included a plot of the client families <a class="footnote-reference" href="#id11" id="id5">[5]</a>. There are two plots, the first
 shows a subset of the data by cutting the tail (arbitrarily including families
 with at least 10 users).</p>
 <div class="note">
@@ -283,9 +288,9 @@ converting to lowercase:</p>
 <div id="family-count"></div>
 <div id="family-all-count"></div></div>
 <div class="section" id="points-of-note">
-<h3><a class="toc-backref" href="#id14">Points of Note</a></h3>
+<h3><a class="toc-backref" href="#id18">Points of Note</a></h3>
 <p>I have to admit that I was fairly shocked by the number of IRCCloud users as I
-found it pretty unusable when messing with it. I suspect it being an 'easy'
+found it pretty unusable when messing with it <a class="footnote-reference" href="#id12" id="id6">[6]</a>. I suspect it being an 'easy'
 bouncer draws many people to it. The bouncer-like software (IRCCloud, <span class="caps">ZNC</span>, bip)
 represents almost half of the users surveyed (692 / 1549 ≈ 45%)!</p>
 <p>I'm surprised so many people are using <tt class="docutils literal">purple</tt> as their <span class="caps">IRC</span> client, as the
@@ -293,19 +298,19 @@ support there is really barebones. (It makes sense if you're already using
 Pidgin and don't want another client.) I think we've made a significant amount
 of improvements in Instantbird's <span class="caps">IRC</span> support to make it simpler for a user to
 get started (give it a try if you haven't!).</p>
-<p>The last thing I'll note that, when taken together, Instantbird and Thunderbird
-come in as part of the top 10 (60 users, right before ChatZilla)! There's a lot
-of great clients out there and I'm happy to say I've helped to create one of the
-more popular ones (on moznet, at least!).</p>
+<p>The last thing I'll note is that, when taken together, Instantbird, Thunderbird,
+and Icedove, come in as part of the top 10 (63 users, right before ChatZilla)!
+There's a lot of great clients out there and I'm happy to say I've helped to
+create one of the more popular ones (on moznet, at least!).</p>
 <p>Let me know if I missed a great insight!</p>
-<table class="docutils footnote" frame="void" id="id5" rules="none">
+<table class="docutils footnote" frame="void" id="id7" rules="none">
 <colgroup><col class="label"></col><col></col></colgroup>
 <tbody valign="top">
 <tr><td class="label"><a class="fn-backref" href="#id1">[1]</a></td><td>"Most" is a wild accusation here. But...from the numbers I've seen, it
 seems like a reasonable statement.</td></tr>
 </tbody>
 </table>
-<table class="docutils footnote" frame="void" id="id6" rules="none">
+<table class="docutils footnote" frame="void" id="id8" rules="none">
 <colgroup><col class="label"></col><col></col></colgroup>
 <tbody valign="top">
 <tr><td class="label"><a class="fn-backref" href="#id2">[2]</a></td><td>While running this I had a few users question what I was doing over
@@ -314,21 +319,36 @@ their users by showing them they received a <tt class="docutils literal"><span c
 users just won't care! Why show that low-level of the protocol?!</td></tr>
 </tbody>
 </table>
-<table class="docutils footnote" frame="void" id="id7" rules="none">
+<table class="docutils footnote" frame="void" id="id9" rules="none">
 <colgroup><col class="label"></col><col></col></colgroup>
 <tbody valign="top">
-<tr><td class="label"><a class="fn-backref" href="#id3">[3]</a></td><td><a class="reference external" href="https://twitter.com/dioxmat/status/646815252898803712">Source</a>, have
+<tr><td class="label"><a class="fn-backref" href="#id3">[3]</a></td><td>As corrected by DarthGandalf on <span class="caps">IRC</span>: "Before 1.6, <span class="caps">ZNC</span> version is
+returned iff no clients are connected. After 1.6, it's also appended to
+the client's response (but still one line per connected client)"</td></tr>
+</tbody>
+</table>
+<table class="docutils footnote" frame="void" id="id10" rules="none">
+<colgroup><col class="label"></col><col></col></colgroup>
+<tbody valign="top">
+<tr><td class="label"><a class="fn-backref" href="#id4">[4]</a></td><td><a class="reference external" href="https://twitter.com/dioxmat/status/646815252898803712">Source</a>, have
 I mentioned yet in this article that I hate bouncers?</td></tr>
 </tbody>
 </table>
-<table class="docutils footnote" frame="void" id="id8" rules="none">
+<table class="docutils footnote" frame="void" id="id11" rules="none">
 <colgroup><col class="label"></col><col></col></colgroup>
 <tbody valign="top">
-<tr><td class="label"><a class="fn-backref" href="#id4">[4]</a></td><td>I stole the code to plot this from the <a class="reference external" href="https://bitbucket.org/clokep/irc-extras/src/41a9572caf957ab8ae3969a145834bcd5be74abe/stats/content/ircStats.js?at=default#cl-55">plotting code</a> in the extension
+<tr><td class="label"><a class="fn-backref" href="#id5">[5]</a></td><td>I stole the code to plot this from the <a class="reference external" href="https://bitbucket.org/clokep/irc-extras/src/41a9572caf957ab8ae3969a145834bcd5be74abe/stats/content/ircStats.js?at=default#cl-55">plotting code</a> in the extension
 I wrote for this. When actually using that extension, something similar
 to this appears as a tab and refreshes as results come in. It uses
 <a class="reference external" href="http://humblesoftware.com/flotr2/">Flotr2</a> to do the plotting in JavaScript, I've been pretty happy with
 it.</td></tr>
+</tbody>
+</table>
+<table class="docutils footnote" frame="void" id="id12" rules="none">
+<colgroup><col class="label"></col><col></col></colgroup>
+<tbody valign="top">
+<tr><td class="label"><a class="fn-backref" href="#id6">[6]</a></td><td>Although in retrospect I shouldn't be since Mozilla runs their own
+<a class="reference external" href="https://irccloud.mozilla.com/">IRCCloud instance</a>.</td></tr>
 </tbody>
 </table>
 </div>
