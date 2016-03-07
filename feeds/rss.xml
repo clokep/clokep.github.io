@@ -28,8 +28,7 @@ being accepted.&lt;/li&gt;
 you have a question), check here for answers &lt;em&gt;before&lt;/em&gt; asking anyone. (In
 particular this includes questions about how to apply.)&lt;/li&gt;
 &lt;li&gt;The final important page to internalize is the &lt;a class="reference external" href="https://summerofcode.withgoogle.com/how-it-works/"&gt;schedule&lt;/a&gt;. It is a
-student’s responsibility to meet each of the deadlines during the
-application period.&lt;/li&gt;
+student’s responsibility to meet each of the deadlines.&lt;/li&gt;
 &lt;/ul&gt;
 &lt;/li&gt;
 &lt;li&gt;Mozilla has some good &lt;a class="reference external" href="https://wiki.mozilla.org/Community:SummerOfCode16#Application_Advice"&gt;application advice&lt;/a&gt; on the idea page. I’ve
@@ -138,7 +137,7 @@ you need to add/update documentation? Add new tests? Keep an old &lt;span class=
 &lt;h2&gt;&lt;a class="toc-backref" href="#id8"&gt;Summary&lt;/a&gt;&lt;/h2&gt;
 &lt;p&gt;This is just a few ideas of what I look for when reviewing a Google Summer of
 Code application. To repeat, try to understand an organization’s members, get
-involved and gain experience, try to build an accurate schedule. One additional,
+involved and gain experience, try to build an accurate schedule. An additional
 thing I’d like to add is to &lt;a class="reference external" href="http://patrick.cloke.us/posts/2014/07/09/mentoring-and-time/"&gt;respect your mentors time&lt;/a&gt;, especially for GSoC,
 many mentors are volunteers! You’ll likely be working on their project &lt;strong&gt;more&lt;/strong&gt;
 than they do during GSoC!&lt;/p&gt;
