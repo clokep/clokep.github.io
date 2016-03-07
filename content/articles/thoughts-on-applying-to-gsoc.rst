@@ -1,6 +1,6 @@
 Thoughts on Appyling to Google Summer of Code
 #############################################
-:date: 2016-03-06 14:00
+:date: 2016-03-07 09:18
 :author: Patrick Cloke
 :tags: GSoC, Mozilla
 :slug: thoughts-on-applying-to-gsoc
@@ -37,8 +37,7 @@ with. Some particular resources to help you in applying to GSoC are:
         you have a question), check here for answers *before* asking anyone. (In
         particular this includes questions about how to apply.)
     *   The final important page to internalize is the schedule_. It is a
-        student's responsibility to meet each of the deadlines during the
-        application period.
+        student's responsibility to meet each of the deadlines.
 
 2.  Mozilla has some good `application advice`_ on the idea page. I've
     included/expanded on this below:
@@ -157,13 +156,13 @@ Summary
 
 This is just a few ideas of what I look for when reviewing a Google Summer of
 Code application. To repeat, try to understand an organization's members, get
-involved and gain experience, try to build an accurate schedule. One additional,
+involved and gain experience, try to build an accurate schedule. An additional
 thing I'd like to add is to `respect your mentors time`_, especially for GSoC,
 many mentors are volunteers! You'll likely be working on their project **more**
 than they do during GSoC!
 
-Please let me know if you have any additions or comments! If
-you have specific questions that pertain to your application at Mozilla, please
+Please let me know if you have any additions or comments! If you have specific
+questions that pertain to your application at Mozilla, please
 `contact`_ me individually.
 
 .. _Google Summer of Code: https://developers.google.com/open-source/gsoc/
