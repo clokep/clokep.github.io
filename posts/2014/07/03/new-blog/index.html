@@ -81,7 +81,7 @@
     <!-- Second div is to change the background color again. -->
     <div class="post-info-bg">
     <div class="post-info">
-        <div id="gravatar" style="background-image: url('http://www.gravatar.com/avatar/130405f65521b6ee6bbbe0204070a163');">
+        <div id="gravatar" style="background-image: url('https://www.gravatar.com/avatar/130405f65521b6ee6bbbe0204070a163');">
         </div>
 
         <abbr class="published" title="2014-07-03T23:04:00-04:00">
@@ -108,7 +108,7 @@
         <div id="post-share-links" class="social">
             share:
             <a href="http://twitter.com/home?status=New%C2%A0Blog%20http%3A//patrick.cloke.us/posts/2014/07/03/new-blog/" target="_blank" title="Share on Twitter">Twitter</a>
-            <a href="http://www.facebook.com/sharer/sharer.php?s=100&amp;p%5Burl%5D=http%3A//patrick.cloke.us/posts/2014/07/03/new-blog/" target="_blank" title="Share on Facebook">Facebook</a>
+            <a href="http://www.facebook.com/sharer/sharer.php?u=http%3A//patrick.cloke.us/posts/2014/07/03/new-blog/" target="_blank" title="Share on Facebook">Facebook</a>
             <a href="https://plus.google.com/share?url=http%3A//patrick.cloke.us/posts/2014/07/03/new-blog/" target="_blank" title="Share on Google Plus">Google+</a>
             <a href="mailto:?subject=New%C2%A0Blog&amp;body=http%3A//patrick.cloke.us/posts/2014/07/03/new-blog/" target="_blank" title="Share via Email">Email</a>
         </div>
@@ -146,10 +146,10 @@ necessarily agree with all the ideas in that post, it just introduced me to Pel
 database or server-side logic.”</blockquote>
 <p>Cool! Sounds real simple to use! And it was. Mostly.</p>
 <p>I pretty much followed the <a class="reference external" href="http://docs.getpelican.com/en/3.4.0/quickstart.html">quickstart</a>:</p>
-<div class="highlight"><pre>mkdir -p blog/blog <span class="c"># The first blog is to store other repos, etc.</span>
-<span class="nb">cd </span>blog/blog
-git init <span class="o">&amp;&amp;</span> git checkout -b <span class="nb">source</span> <span class="c"># Explained later on.</span>
-brew install pandoc <span class="c"># If you're not on Mac you'll need to do something else.</span>
+<div class="highlight"><pre><span></span>mkdir -p blog/blog <span class="c1"># The first blog is to store other repos, etc.</span>
+<span class="nb">cd</span> blog/blog
+git init <span class="o">&amp;&amp;</span> git checkout -b <span class="nb">source</span> <span class="c1"># Explained later on.</span>
+brew install pandoc <span class="c1"># If you're not on Mac you'll need to do something else.</span>
 mkvirtualenv blog
 pip install pelican markdown Fabric ghp_import feedparser
 pelican-quickstart
@@ -195,16 +195,16 @@ adding the sidebar to the left and the organization of the archives page.)</p>
 “tags”. I <em>hate</em> this. What’s the difference? Anyway, I wanted to eradicate the
 concept of a “category” (and “authors” since I’m the only one on my blog!), so I
 added a few things to my pelicanconf.py:</p>
-<div class="highlight"><pre><span class="c"># Disable categories.</span>
+<div class="highlight"><pre><span></span><span class="c1"># Disable categories.</span>
 <span class="n">DISPLAY_CATEGORIES_ON_MENU</span> <span class="o">=</span> <span class="bp">False</span>
 <span class="n">DISPLAY_CATEGORY_ON_ARTICLE</span> <span class="o">=</span> <span class="bp">False</span>
 <span class="n">CATEGORY_FEED_ATOM</span> <span class="o">=</span> <span class="bp">None</span>
-<span class="n">CATEGORY_SAVE_AS</span> <span class="o">=</span> <span class="s">''</span>
-<span class="n">CATEGORIES_SAVE_AS</span> <span class="o">=</span> <span class="s">''</span>
+<span class="n">CATEGORY_SAVE_AS</span> <span class="o">=</span> <span class="s1">''</span>
+<span class="n">CATEGORIES_SAVE_AS</span> <span class="o">=</span> <span class="s1">''</span>
 
-<span class="c"># Disable author pages.</span>
-<span class="n">AUTHOR_SAVE_AS</span> <span class="o">=</span> <span class="s">''</span>
-<span class="n">AUTHORS_SAVE_AS</span> <span class="o">=</span> <span class="s">''</span>
+<span class="c1"># Disable author pages.</span>
+<span class="n">AUTHOR_SAVE_AS</span> <span class="o">=</span> <span class="s1">''</span>
+<span class="n">AUTHORS_SAVE_AS</span> <span class="o">=</span> <span class="s1">''</span>
 </pre></div>
 <p>Note that <tt class="docutils literal">DISPLAY_CATEGORY_ON_ARTICLE</tt> is actually a variable I added and
 used in the template to not show categories above the list of tags on each article.</p>
@@ -250,9 +250,6 @@ to my next article!</p>
         var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
     })();
     </script>
-    <script src="//static.getclicky.com/js" type="text/javascript"></script>
-    <script type="text/javascript">try{ clicky.init(100846713); }catch(e){}</script>
-    <noscript><p><img alt="Clicky" width="1" height="1" src="//in.getclicky.com/100846713ns.gif" /></p></noscript>
 <script type="text/javascript">
     var disqus_shortname = 'clokep';
     (function () {

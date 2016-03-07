@@ -18,7 +18,7 @@ structures of the protocol&amp;#8230;)&amp;nbsp; I started by writing some test 
 using ArrayBuffers and views, which have been around a while: since
 Gecko 2.0 in fact!&amp;nbsp; I quickly ran into some tedious issues with
 repetitive code such&amp;nbsp;as:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="cm"&gt;/*&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="cm"&gt;/*&lt;/span&gt;
 &lt;span class="cm"&gt; * A TLV (Type, Length and Value) data structure:&lt;/span&gt;
 &lt;span class="cm"&gt; *  Unsigned Short  type    Describes what the value represents.&lt;/span&gt;
 &lt;span class="cm"&gt; *  Unsigned Short  length  The length of the data block.&lt;/span&gt;
@@ -57,7 +57,7 @@ but it took a while to figure&amp;nbsp;out.&lt;/li&gt;
 &lt;p&gt;(As an aside, some of you might find the following function helpful,
 it is essentially a &lt;a class="reference external" href="http://en.cppreference.com/w/cpp/string/byte/memcpy"&gt;memcpy&lt;/a&gt; for ArrayBuffers&amp;#8230;this isn&amp;#8217;t really
 tested heavily at all,&amp;nbsp;however.)&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="cm"&gt;/*&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="cm"&gt;/*&lt;/span&gt;
 &lt;span class="cm"&gt; * aTarget / aSource are ArrayBuffers&lt;/span&gt;
 &lt;span class="cm"&gt; */&lt;/span&gt;
 &lt;span class="kd"&gt;function&lt;/span&gt; &lt;span class="nx"&gt;copyBytes&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;aTarget&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="nx"&gt;aSource&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="nx"&gt;aTargetOffset&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="nx"&gt;aSourceOffset&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="nx"&gt;aLength&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="nx"&gt;aSource&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;byteLength&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;

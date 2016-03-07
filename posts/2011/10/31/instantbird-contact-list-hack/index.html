@@ -70,7 +70,7 @@
     <!-- Second div is to change the background color again. -->
     <div class="post-info-bg">
     <div class="post-info">
-        <div id="gravatar" style="background-image: url('http://www.gravatar.com/avatar/130405f65521b6ee6bbbe0204070a163');">
+        <div id="gravatar" style="background-image: url('https://www.gravatar.com/avatar/130405f65521b6ee6bbbe0204070a163');">
         </div>
 
         <abbr class="published" title="2011-10-31T20:20:00-04:00">
@@ -95,7 +95,7 @@
         <div id="post-share-links" class="social">
             share:
             <a href="http://twitter.com/home?status=Instantbird%20Contact%20List%C2%A0Hack%20http%3A//patrick.cloke.us/posts/2011/10/31/instantbird-contact-list-hack/" target="_blank" title="Share on Twitter">Twitter</a>
-            <a href="http://www.facebook.com/sharer/sharer.php?s=100&amp;p%5Burl%5D=http%3A//patrick.cloke.us/posts/2011/10/31/instantbird-contact-list-hack/" target="_blank" title="Share on Facebook">Facebook</a>
+            <a href="http://www.facebook.com/sharer/sharer.php?u=http%3A//patrick.cloke.us/posts/2011/10/31/instantbird-contact-list-hack/" target="_blank" title="Share on Facebook">Facebook</a>
             <a href="https://plus.google.com/share?url=http%3A//patrick.cloke.us/posts/2011/10/31/instantbird-contact-list-hack/" target="_blank" title="Share on Google Plus">Google+</a>
             <a href="mailto:?subject=Instantbird%20Contact%20List%C2%A0Hack&amp;body=http%3A//patrick.cloke.us/posts/2011/10/31/instantbird-contact-list-hack/" target="_blank" title="Share via Email">Email</a>
         </div>
@@ -112,7 +112,7 @@ little <a class="reference external" href="http://www-archive.mozilla.org/unix/c
 with a couple caveats).&nbsp; You should be able to add a new folder <a class="reference external" href="http://instantbird.com/faq.html#profilefolder">inside
 your profile</a> called chrome.&nbsp; Inside of this make a new file called
 userChrome.css and place the&nbsp;following:</p>
-<div class="highlight"><pre><span class="nf">#buddylistbox</span><span class="nd">:focus</span> <span class="o">&gt;</span> <span class="nt">contact</span><span class="o">[</span><span class="nt">selected</span><span class="o">]</span> <span class="p">{</span>
+<div class="highlight"><pre><span></span><span class="nn">#buddylistbox</span><span class="nd">:focus</span> <span class="o">&gt;</span> <span class="nt">contact</span><span class="o">[</span><span class="nt">selected</span><span class="o">]</span> <span class="p">{</span>
     <span class="o">-</span><span class="n">moz</span><span class="o">-</span><span class="n">binding</span><span class="o">:</span> <span class="sx">url(&quot;chrome://instantbird/content/contact.xml#contact&quot;)</span> <span class="cp">!important</span><span class="p">;</span>
     <span class="o">-</span><span class="n">moz</span><span class="o">-</span><span class="n">box</span><span class="o">-</span><span class="n">orient</span><span class="o">:</span> <span class="n">horizontal</span> <span class="cp">!important</span><span class="p">;</span>
 <span class="p">}</span>
@@ -167,9 +167,6 @@ contact is expanded; i.e. we&#8217;re overwriting the command given
         var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
     })();
     </script>
-    <script src="//static.getclicky.com/js" type="text/javascript"></script>
-    <script type="text/javascript">try{ clicky.init(100846713); }catch(e){}</script>
-    <noscript><p><img alt="Clicky" width="1" height="1" src="//in.getclicky.com/100846713ns.gif" /></p></noscript>
 <script type="text/javascript">
     var disqus_shortname = 'clokep';
     (function () {

@@ -81,7 +81,7 @@
     <!-- Second div is to change the background color again. -->
     <div class="post-info-bg">
     <div class="post-info">
-        <div id="gravatar" style="background-image: url('http://www.gravatar.com/avatar/130405f65521b6ee6bbbe0204070a163');">
+        <div id="gravatar" style="background-image: url('https://www.gravatar.com/avatar/130405f65521b6ee6bbbe0204070a163');">
         </div>
 
         <abbr class="published" title="2014-07-06T18:36:00-04:00">
@@ -104,7 +104,7 @@
         <div id="post-share-links" class="social">
             share:
             <a href="http://twitter.com/home?status=New%20Blog%3A%20Serving%20the%C2%A0Content%20http%3A//patrick.cloke.us/posts/2014/07/06/new-blog-serving-the-content/" target="_blank" title="Share on Twitter">Twitter</a>
-            <a href="http://www.facebook.com/sharer/sharer.php?s=100&amp;p%5Burl%5D=http%3A//patrick.cloke.us/posts/2014/07/06/new-blog-serving-the-content/" target="_blank" title="Share on Facebook">Facebook</a>
+            <a href="http://www.facebook.com/sharer/sharer.php?u=http%3A//patrick.cloke.us/posts/2014/07/06/new-blog-serving-the-content/" target="_blank" title="Share on Facebook">Facebook</a>
             <a href="https://plus.google.com/share?url=http%3A//patrick.cloke.us/posts/2014/07/06/new-blog-serving-the-content/" target="_blank" title="Share on Google Plus">Google+</a>
             <a href="mailto:?subject=New%20Blog%3A%20Serving%20the%C2%A0Content&amp;body=http%3A//patrick.cloke.us/posts/2014/07/06/new-blog-serving-the-content/" target="_blank" title="Share via Email">Email</a>
         </div>
@@ -145,11 +145,11 @@ essentially gives you an <a class="reference external" href="https://en.wikipedi
 <a class="reference external" href="https://github.com/davisp/ghp-import">ghp-import</a> to actually publish my content. I’ve automated a lot of the tasks by
 <a class="reference external" href="https://github.com/clokep/clokep.github.io/blob/source/fabfile.py">extending</a> the default <a class="reference external" href="http://www.fabfile.org/">fabfile.py</a> that is generated with the quickstart. My
 workflow looks something like:</p>
-<div class="highlight"><pre>komodo content/new-article.rst
-<span class="c"># &lt;edit article&gt;</span>
-<span class="c"># &lt;check it out in a browser using fab build/serve/regenerate&gt;</span>
+<div class="highlight"><pre><span></span>komodo content/new-article.rst
+<span class="c1"># &lt;edit article&gt;</span>
+<span class="c1"># &lt;check it out in a browser using fab build/serve/regenerate&gt;</span>
 git add content/ <span class="o">&amp;&amp;</span> git commit -m <span class="s2">"Add 'New Article!'."</span>
-fab publish <span class="c"># Which runs "ghp-import -p -b master output" underneath!</span>
+fab publish <span class="c1"># Which runs "ghp-import -p -b master output" underneath!</span>
 git push origin <span class="nb">source</span>
 </pre></div>
 <p>One other thing you’ll need to do is add a <span class="caps">CNAME</span> file that has the domain of
@@ -160,13 +160,13 @@ extremely confusing, but it’s pretty simple:</p>
 at content/static/<span class="caps">CNAME</span>)</li>
 <li>Add a line to your pelicanconf.py to have this file end up in the root:</li>
 </ul>
-<div class="highlight"><pre><span class="c"># Set up static content and output locations.</span>
+<div class="highlight"><pre><span></span><span class="c1"># Set up static content and output locations.</span>
 <span class="n">STATIC_PATHS</span> <span class="o">=</span> <span class="p">[</span>
-    <span class="s">'images'</span><span class="p">,</span>
-    <span class="s">'static/CNAME'</span>
+    <span class="s1">'images'</span><span class="p">,</span>
+    <span class="s1">'static/CNAME'</span>
 <span class="p">]</span>
 <span class="n">EXTRA_PATH_METADATA</span> <span class="o">=</span> <span class="p">{</span>
-    <span class="s">'static/CNAME'</span><span class="p">:</span> <span class="p">{</span><span class="s">'path'</span><span class="p">:</span> <span class="s">'CNAME'</span><span class="p">},</span>
+    <span class="s1">'static/CNAME'</span><span class="p">:</span> <span class="p">{</span><span class="s1">'path'</span><span class="p">:</span> <span class="s1">'CNAME'</span><span class="p">},</span>
 <span class="p">}</span>
 </pre></div>
 <p>It took 10 - 20 minutes for this to “kick in” on GitHub, until that time I had a
@@ -181,7 +181,7 @@ and some magic.</p>
 modified the template they had there. On the Blogger dashboard, choose
 “Template”, scroll to the bottom and click “Revert to Classic Template”. Then
 use something like the following template:</p>
-<div class="highlight"><pre><span class="nt">&lt;html&gt;</span>
+<div class="highlight"><pre><span></span><span class="nt">&lt;html&gt;</span>
     <span class="nt">&lt;head&gt;</span>
         <span class="nt">&lt;title&gt;</span><span class="err">&lt;</span>$BlogPageTitle$&gt;<span class="nt">&lt;/title&gt;</span>
         <span class="nt">&lt;script&gt;</span>
@@ -292,9 +292,6 @@ settings page on GitHub.</td></tr>
         var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
     })();
     </script>
-    <script src="//static.getclicky.com/js" type="text/javascript"></script>
-    <script type="text/javascript">try{ clicky.init(100846713); }catch(e){}</script>
-    <noscript><p><img alt="Clicky" width="1" height="1" src="//in.getclicky.com/100846713ns.gif" /></p></noscript>
 <script type="text/javascript">
     var disqus_shortname = 'clokep';
     (function () {
