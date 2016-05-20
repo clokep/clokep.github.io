@@ -1,9 +1,9 @@
-Google Summer of Code 2016 project roundup
-##########################################
+Google Summer of Code 2016 projects
+###################################
 :date: 2016-05-20 09:15
 :author: Patrick Cloke
 :tags: community, GSoC, Mozilla
-:slug: google-summer-of-code-2016-project-roundup
+:slug: google-summer-of-code-2016-projects
 
 I'd like to introduce the 13 students that are being mentored by Mozilla this
 year as part of `Google Summer of Code 2016`_! Currently the "community bonding"
@@ -28,7 +28,7 @@ the name of each student and the name of their mentor(s).
 +-----------------------------------------------------------------------+------------------+----------------------------+
 | `Implement RFC7512 PKCS#11 URI support and system integration`_ (NSS) | varunnaganathan  | Bob Relyea, David Woodhoue |
 +-----------------------------------------------------------------------+------------------+----------------------------+
-| `Implementing Service Worker Infrastructure in Servo Browser Engine`_ | creativcoder     | mrlachatte                 |
+| `Implementing Service Worker Infrastructure in Servo Browser Engine`_ | creativcoder     | jdm                        |
 +-----------------------------------------------------------------------+------------------+----------------------------+
 | `Improving and expanding the JavaScript XMPP Implementation`_         | Abdelrhman Ahmed | aleth, nhnt11              |
 +-----------------------------------------------------------------------+------------------+----------------------------+
@@ -48,7 +48,6 @@ the name of each student and the name of their mentor(s).
 +-----------------------------------------------------------------------+------------------+----------------------------+
 | `Web-based GDB Frontend`_                                             | baygeldin        | jonasfj                    |
 +-----------------------------------------------------------------------+------------------+----------------------------+
-
 
 .. _Google Summer of Code 2016: https://summerofcode.withgoogle.com/
 
