@@ -197,26 +197,30 @@ div.note p:first-child::after {
 }
 
 /* Tables */
-table {margin: .5em auto 1.5em auto; width: 98%;}
+table {
+    margin: .5em auto 1.5em auto;
+    width: 98%;
+    border-collapse: collapse;
+    border: 1px solid black;
+}
 
 /* Thead */
-thead th {padding: .5em .4em; text-align: left;}
-thead td {}
+thead th {
+    padding: .5em .4em;
+    text-align: left;
+    border-collapse: collapse;
+    border: 1px solid black;
+}
 
 /* Tbody */
-tbody td {padding: .5em .4em;}
-tbody th {}
-
-tbody .alt td {}
-tbody .alt th {}
-
-/* Tfoot */
-tfoot th {}
-tfoot td {}
+tbody td {
+    padding: .5em .4em;
+    border-collapse: collapse;
+    border: 1px solid black;
+}
 
 /* HTML5 tags */
-header, section, footer,
-aside, nav, article, figure {
+header, section, footer, aside, nav, article, figure {
     display: block;
 }
 
@@ -236,8 +240,14 @@ aside, nav, article, figure {
 container {
     margin: 0 auto;
 }
-img.right, figure.right {float: right; margin: 0 0 2em 2em;}
-img.left, figure.left {float: left; margin: 0 2em 2em 0;}
+img.right, figure.right {
+    float: right;
+    margin: 0 0 2em 2em;
+}
+img.left, figure.left {
+    float: left;
+    margin: 0 2em 2em 0;
+}
 
 .left {
     width: 160px;
