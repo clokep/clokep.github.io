@@ -1,5 +1,83 @@
 <?xml version="1.0" encoding="utf-8"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Like bricks in the sky</title><link>http://patrick.cloke.us/</link><description></description><atom:link href="http://patrick.cloke.us/feeds/tag/gsoc.rss.xml" rel="self"></atom:link><lastBuildDate>Mon, 07 Mar 2016 09:18:00 -0500</lastBuildDate><item><title>Thoughts on Appyling to Google Summer of Code</title><link>http://patrick.cloke.us/posts/2016/03/07/thoughts-on-applying-to-gsoc/</link><description>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Like bricks in the sky</title><link>http://patrick.cloke.us/</link><description></description><atom:link href="http://patrick.cloke.us/feeds/tag/gsoc.rss.xml" rel="self"></atom:link><lastBuildDate>Fri, 20 May 2016 09:15:00 -0400</lastBuildDate><item><title>Google Summer of Code 2016 projects</title><link>http://patrick.cloke.us/posts/2016/05/20/google-summer-of-code-2016-projects/</link><description>&lt;p&gt;I&amp;#8217;d like to introduce the 13 students that are being mentored by Mozilla this
+year as part of &lt;a class="reference external" href="https://summerofcode.withgoogle.com/"&gt;Google Summer of Code 2016&lt;/a&gt;! Currently the &amp;#8220;community bonding&amp;#8221;
+period is ongoing, but we are on the cusp of the &amp;#8220;coding period&amp;#8221;&amp;nbsp;starting.&lt;/p&gt;
+&lt;p&gt;As part of Google Summer of Code (GSoC), we ask students to provide weekly
+updates of their progress in a public area (usually a blog). If you&amp;#8217;re
+interested in a particular project, please follow along! Lastly, remember that
+GSoC is a community effort: if a student is working in an area where you
+consider yourself knowledgable, please introduce yourself and offer to provide
+help and/or&amp;nbsp;advice!&lt;/p&gt;
+&lt;p&gt;Below is a listing of each student&amp;#8217;s project (linked to their weekly updates),
+the name of each student and the name of their&amp;nbsp;mentor(s).&lt;/p&gt;
+&lt;table border="1" class="docutils"&gt;
+&lt;colgroup&gt;
+&lt;col width="61%" /&gt;
+&lt;col width="15%" /&gt;
+&lt;col width="24%" /&gt;
+&lt;/colgroup&gt;
+&lt;thead valign="bottom"&gt;
+&lt;tr&gt;&lt;th class="head"&gt;Project&lt;/th&gt;
+&lt;th class="head"&gt;Student&lt;/th&gt;
+&lt;th class="head"&gt;Mentor(s)&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody valign="top"&gt;
+&lt;tr&gt;&lt;td&gt;&lt;a class="reference external" href="http://krishnakannan.github.io/"&gt;Download app assets at runtime&lt;/a&gt; (Firefox for Android)&lt;/td&gt;
+&lt;td&gt;Krish&lt;/td&gt;
+&lt;td&gt;skaspari&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;&lt;a class="reference external" href="https://github.com/izgzhen/gsoc-file-support"&gt;File &lt;span class="caps"&gt;API&lt;/span&gt; Support&lt;/a&gt; (Servo)&lt;/td&gt;
+&lt;td&gt;izgzhen&lt;/td&gt;
+&lt;td&gt;Manishearth&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;&lt;a class="reference external" href="http://myveryownsummerofcode.blogspot.fr/"&gt;Implement &lt;span class="caps"&gt;RFC7512&lt;/span&gt; &lt;span class="caps"&gt;PKCS&lt;/span&gt;#11 &lt;span class="caps"&gt;URI&lt;/span&gt; support and system integration&lt;/a&gt; (&lt;span class="caps"&gt;NSS&lt;/span&gt;)&lt;/td&gt;
+&lt;td&gt;varunnaganathan&lt;/td&gt;
+&lt;td&gt;Bob Relyea, David Woodhoue&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;&lt;a class="reference external" href="http://creativcoder.xyz/"&gt;Implementing Service Worker Infrastructure in Servo Browser Engine&lt;/a&gt;&lt;/td&gt;
+&lt;td&gt;creativcoder&lt;/td&gt;
+&lt;td&gt;jdm&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;&lt;a class="reference external" href="https://wiki.mozilla.org/User:Abdelrhman/gsoc16"&gt;Improving and expanding the JavaScript &lt;span class="caps"&gt;XMPP&lt;/span&gt; Implementation&lt;/a&gt;&lt;/td&gt;
+&lt;td&gt;Abdelrhman Ahmed&lt;/td&gt;
+&lt;td&gt;aleth, nhnt11&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;&lt;a class="reference external" href="https://blog.mozilla.org/calendar/tag/gsoc/"&gt;Mozilla Calendar – Event in a Tab&lt;/a&gt;&lt;/td&gt;
+&lt;td&gt;paulmorris&lt;/td&gt;
+&lt;td&gt;Philipp Kewisch&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;&lt;a class="reference external" href="https://drive.google.com/folderview?id=0Bzvo3C7XKc_wVzVQWG5xaHo0NTA"&gt;Mozilla Investigator (&lt;span class="caps"&gt;MIG&lt;/span&gt;): Auditd integration&lt;/a&gt;&lt;/td&gt;
+&lt;td&gt;Arun&lt;/td&gt;
+&lt;td&gt;kang&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;&lt;a class="reference external" href="http://blog.varun-joshi.com/"&gt;Prevent Failures due to Update Races&lt;/a&gt; (Balrog)&lt;/td&gt;
+&lt;td&gt;varunjoshi&lt;/td&gt;
+&lt;td&gt;Ben Hearsum&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;&lt;a class="reference external" href="https://mikelingblog.wordpress.com/"&gt;Proposal of Redesign &lt;span class="caps"&gt;SETA&lt;/span&gt;&lt;/a&gt;&lt;/td&gt;
+&lt;td&gt;MikeLing&lt;/td&gt;
+&lt;td&gt;Joel Maher&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;&lt;a class="reference external" href="http://martiansideofthemoon.github.io/archive.html"&gt;Schedule TaskCluster Jobs in Treeherder&lt;/a&gt;&lt;/td&gt;
+&lt;td&gt;martianwars&lt;/td&gt;
+&lt;td&gt;armenzg&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;&lt;a class="reference external" href="https://wiki.mozilla.org/User:Anindyapandey"&gt;Thunderbird - Implement mbox -&amp;gt; maildir converter&lt;/a&gt;&lt;/td&gt;
+&lt;td&gt;Shiva&lt;/td&gt;
+&lt;td&gt;mkmelin&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;&lt;a class="reference external" href="http://graphpanovr.blogspot.fr/"&gt;Two Projects to Make A-Frame More Useful, Accessible, and Exciting&lt;/a&gt;&lt;/td&gt;
+&lt;td&gt;bryik&lt;/td&gt;
+&lt;td&gt;Diego Marcos&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;&lt;a class="reference external" href="http://baygeldin.name/gsoc-2016/"&gt;Web-based &lt;span class="caps"&gt;GDB&lt;/span&gt; Frontend&lt;/a&gt;&lt;/td&gt;
+&lt;td&gt;baygeldin&lt;/td&gt;
+&lt;td&gt;jonasfj&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Patrick Cloke</dc:creator><pubDate>Fri, 20 May 2016 09:15:00 -0400</pubDate><guid>tag:patrick.cloke.us,2016-05-20:posts/2016/05/20/google-summer-of-code-2016-projects/</guid><category>community</category><category>GSoC</category><category>Mozilla</category></item><item><title>Thoughts on Appyling to Google Summer of Code</title><link>http://patrick.cloke.us/posts/2016/03/07/thoughts-on-applying-to-gsoc/</link><description>
 &lt;!-- --&gt;
 &lt;blockquote&gt;
 &lt;p&gt;Over the past few years I’ve been involved in &lt;a class="reference external" href="https://developers.google.com/open-source/gsoc/"&gt;Google Summer of Code&lt;/a&gt;
