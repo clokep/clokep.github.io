@@ -447,7 +447,7 @@ img.left, figure.left {
     margin-bottom: 1em;
 }
 
-#extras ul {
+#extras ul, #toc ul {
     list-style: none;
     margin: 0;
 }
