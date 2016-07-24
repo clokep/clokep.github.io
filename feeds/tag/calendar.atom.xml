@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Like bricks in the sky</title><link href="http://patrick.cloke.us/" rel="alternate"></link><link href="http://patrick.cloke.us/feeds/tag/calendar.atom.xml" rel="self"></link><id>http://patrick.cloke.us/</id><updated>2016-07-24T13:19:00-04:00</updated><entry><title>Windows Mobile (or Windows Phone) and FastMail</title><link href="http://patrick.cloke.us/posts/2016/07/24/windows-mobile-or-windows-phone-and-fastmail/" rel="alternate"></link><updated>2016-07-24T13:19:00-04:00</updated><author><name>Patrick Cloke</name></author><id>tag:patrick.cloke.us,2016-07-24:posts/2016/07/24/windows-mobile-or-windows-phone-and-fastmail/</id><summary type="html">
+&lt;p&gt;I’ve been a big fan of Windows Phone (now Windows Mobile) for a while and have
+had a few phones across versions 7, 8, and now 10. A while ago I switched to
+&lt;a class="reference external" href="https://www.fastmail.com/"&gt;FastMail&lt;/a&gt; as my e-mail provider &lt;a class="footnote-reference" href="#id5" id="id1"&gt;[1]&lt;/a&gt;, but had been stuck using Google as my
+calendar provider still (and my contacts were on my Windows Live account). I had
+a desire to move all these onto a single account, but Windows 10 Mobile only
+officially supports e-mail from arbitrary providers. Calendar and contacts are
+limited to a few special providers.&lt;/p&gt;
+&lt;p&gt;Below I’ve outlined how I’ve gotten all three services (email, contacts, and
+calendar) from my FastMail account onto my Windows Mobile device.&lt;/p&gt;
+&lt;div class="section" id="email"&gt;
+&lt;h2&gt;&lt;a class="toc-backref" href="#id9"&gt;Email&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;Email is the easy one, FastMail even has a
+&lt;a class="reference external" href="https://www.fastmail.com/help/clients/winphone.html"&gt;guide to setting up email on Windows Phone&lt;/a&gt;. This guide did not handle sending
+emails with a custom domain name, if you don’t have that situation, probably
+just use the FastMail guide.&lt;/p&gt;
+&lt;ol class="arabic simple"&gt;
+&lt;li&gt;Add a new account, choose “other account”.&lt;/li&gt;
+&lt;li&gt;Type in your email address (e.g. &lt;tt class="docutils literal"&gt;you@yourcustomdomain.com&lt;/tt&gt;) and password.&lt;/li&gt;
+&lt;li&gt;It will complain about being unable to find proper account settings. Click
+“try again”.&lt;/li&gt;
+&lt;li&gt;It will complain again, but not give you an option for “advanced”, click it.&lt;/li&gt;
+&lt;li&gt;Choose “Internel email account”.&lt;/li&gt;
+&lt;li&gt;Enter any “Account name” and “Your name” that you want.&lt;/li&gt;
+&lt;li&gt;Choose “&lt;span class="caps"&gt;IMAP4&lt;/span&gt;” as the “Account type”.&lt;/li&gt;
+&lt;li&gt;Change the incoming mail server to &lt;tt class="docutils literal"&gt;mail.messagingengine.com&lt;/tt&gt;.&lt;/li&gt;
+&lt;li&gt;Change the username to your FastMail username (e.g. &lt;tt class="docutils literal"&gt;you@fastmail.com&lt;/tt&gt;).&lt;/li&gt;
+&lt;li&gt;Change the outgoing mailserver to &lt;tt class="docutils literal"&gt;mail.messagingengine.com&lt;/tt&gt;.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;Now when you send email it should show up properly as
+&lt;tt class="docutils literal"&gt;you@yourcustomdomain.com&lt;/tt&gt;, but be sent via FastMail’s servers!&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="section" id="contacts"&gt;
+&lt;h2&gt;&lt;a class="toc-backref" href="#id10"&gt;Contacts&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;FastMail &lt;a class="reference external" href="https://blog.fastmail.com/2015/08/21/carddav-your-contacts-everywhere-you-need-them/"&gt;added support for CardDAV last year&lt;/a&gt; and Windows Phone
+&lt;a class="reference external" href="https://blogs.windows.com/windowsexperience/2013/01/30/syncing-google-services-with-windows-phone/"&gt;added support back in 2013&lt;/a&gt;, so why is this hard? Well…turns out that there
+isn’t a way to make a CardDAV account on Windows Mobile, it’s just used for
+certain account types. Luckily, there is a &lt;a class="reference external" href="http://www.emaildiscussions.com/showthread.php?t=70967"&gt;forum post&lt;/a&gt; about hooking up
+CardDAV via a hack. Steps are reproduced below:&lt;/p&gt;
+&lt;ol class="arabic simple"&gt;
+&lt;li&gt;Add a new account, choose “iCloud”.&lt;/li&gt;
+&lt;li&gt;Type in your FastMail username, but add &lt;tt class="docutils literal"&gt;+Default&lt;/tt&gt; before the &lt;tt class="docutils literal"&gt;@&lt;/tt&gt; (e.g.
+&lt;tt class="docutils literal"&gt;you+Default@fastmail.com&lt;/tt&gt;), note that this isn’t anything special, just
+the &lt;a class="reference external" href="https://www.fastmail.com/help/clients/iphone.html#contacts"&gt;scheme FastMail uses for CardDAV usernames&lt;/a&gt;.&lt;/li&gt;
+&lt;li&gt;Put in your password. &lt;a class="footnote-reference" href="#id6" id="id2"&gt;[2]&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Click “sign in”, it will fail.&lt;/li&gt;
+&lt;li&gt;Go back into the account settings (click “Manage”) and modify the advanced
+settings (“Change mailbox sync settings”). Choose manually for when to
+download new email. Disable syncing of email and calendar.&lt;/li&gt;
+&lt;li&gt;Go to “Advanced account settings”. Change the “Incoming email server”,
+“Outgoing (&lt;span class="caps"&gt;SMTP&lt;/span&gt;) email server” and “Calendar server (CalDAV)” to
+&lt;tt class="docutils literal"&gt;localhost&lt;/tt&gt;. &lt;a class="footnote-reference" href="#id7" id="id3"&gt;[3]&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Change “Contacts server (CardDAV)” to
+&lt;tt class="docutils literal"&gt;carddav.messagingengine.com:443/dav/addressbooks/user/you@fastmail.com/Default&lt;/tt&gt;,
+changing &lt;tt class="docutils literal"&gt;you@fastmail.com&lt;/tt&gt; to your FastMail username.&lt;/li&gt;
+&lt;li&gt;Click “Done”!&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;Your contacts should eventually appear in your address book! I couldn’t figure
+out a way to force my phone to sync contacts, but they appeared fairly quickly.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="section" id="calendar"&gt;
+&lt;h2&gt;&lt;a class="toc-backref" href="#id11"&gt;Calendar&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;FastMail &lt;a class="reference external" href="https://blog.fastmail.com/2014/01/23/calendar-now-available-on-beta-fastmail-fm-for-testing/"&gt;added support for CalDAV&lt;/a&gt; back in the beginning of 2014 &lt;a class="footnote-reference" href="#id8" id="id4"&gt;[4]&lt;/a&gt;. These
+steps are almost identical to the &lt;a class="reference internal" href="#contacts"&gt;Contacts&lt;/a&gt; section above, but using
+information from the &lt;a class="reference external" href="https://www.fastmail.com/help/clients/maccalendar.html"&gt;guide for setting up Calendar.app&lt;/a&gt;.&lt;/p&gt;
+&lt;ol class="arabic simple"&gt;
+&lt;li&gt;Add a new account, choose “iCloud”.&lt;/li&gt;
+&lt;li&gt;Type in your FastMail username (e.g. &lt;tt class="docutils literal"&gt;you@fastmail.com&lt;/tt&gt;).&lt;/li&gt;
+&lt;li&gt;Put in your password.&lt;/li&gt;
+&lt;li&gt;Click “sign in”, it will fail.&lt;/li&gt;
+&lt;li&gt;Go back into the account settings (click “Manage”) and modify the advanced
+settings (“Change mailbox sync settings”). Choose manually for when to
+download new email. Disable syncing of email and contacts.&lt;/li&gt;
+&lt;li&gt;Go to “Advanced account settings”. Change the “Incoming email server”,
+“Outgoing (&lt;span class="caps"&gt;SMTP&lt;/span&gt;) email server” and “Contacts server (CardDAV)” to
+&lt;tt class="docutils literal"&gt;localhost&lt;/tt&gt;.&lt;/li&gt;
+&lt;li&gt;Change “Calendar server (CalDAV)” to
+&lt;tt class="docutils literal"&gt;caldav.messagingengine.com/dav/principals/user/you@fastmail.com/&lt;/tt&gt;,
+changing &lt;tt class="docutils literal"&gt;you@fastmail.com&lt;/tt&gt; to your FastMail username.&lt;/li&gt;
+&lt;li&gt;Click “Done”!&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;My default calendar appeared very quickly, but additional calendars took a bit
+to sync onto my phone.&lt;/p&gt;
+&lt;p&gt;Good luck and let me know if there are any errors, easier ways, or other tricks
+to getting the most of FastMail on a Windows Mobile device!&lt;/p&gt;
+&lt;table class="docutils footnote" frame="void" id="id5" rules="none"&gt;
+&lt;colgroup&gt;&lt;col class="label"&gt;&lt;/col&gt;&lt;col&gt;&lt;/col&gt;&lt;/colgroup&gt;
+&lt;tbody valign="top"&gt;
+&lt;tr&gt;&lt;td class="label"&gt;&lt;a class="fn-backref" href="#id1"&gt;[1]&lt;/a&gt;&lt;/td&gt;&lt;td&gt;There are a variety of reasons why I switched, I had
+&lt;a class="reference external" href="http://patrick.cloke.us/posts/2014/07/03/new-blog/"&gt;recently bought a domain name&lt;/a&gt; to get better control over my online
+presence (email, website, etc.). I was also tired of my email being used
+to server me advertisements and various other issues with free webmail.
+I highly recommend FastMail, they have awesome &lt;a class="reference external" href="https://www.fastmail.com/help/ourservice/security.html"&gt;security&lt;/a&gt; and &lt;a class="reference external" href="https://www.fastmail.com/about/privacy.html"&gt;privacy&lt;/a&gt;
+policies. They also have &lt;em&gt;amazing&lt;/em&gt; support, give back to (a lot) to open
+source and a whole slew of other things.&lt;/td&gt;&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;table class="docutils footnote" frame="void" id="id6" rules="none"&gt;
+&lt;colgroup&gt;&lt;col class="label"&gt;&lt;/col&gt;&lt;col&gt;&lt;/col&gt;&lt;/colgroup&gt;
+&lt;tbody valign="top"&gt;
+&lt;tr&gt;&lt;td class="label"&gt;&lt;a class="fn-backref" href="#id2"&gt;[2]&lt;/a&gt;&lt;/td&gt;&lt;td&gt;I put a dummy one in and then changed it after I updated the servers in
+step 6. This was to not send my password to iCloud servers. The password
+is hopefully encrypted and hashed, but I don’t know for sure.&lt;/td&gt;&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;table class="docutils footnote" frame="void" id="id7" rules="none"&gt;
+&lt;colgroup&gt;&lt;col class="label"&gt;&lt;/col&gt;&lt;col&gt;&lt;/col&gt;&lt;/colgroup&gt;
+&lt;tbody valign="top"&gt;
+&lt;tr&gt;&lt;td class="label"&gt;&lt;a class="fn-backref" href="#id3"&gt;[3]&lt;/a&gt;&lt;/td&gt;&lt;td&gt;We’re just ensuring that our credentials for these other services will
+not hit Apple servers for any reason.&lt;/td&gt;&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;table class="docutils footnote" frame="void" id="id8" rules="none"&gt;
+&lt;colgroup&gt;&lt;col class="label"&gt;&lt;/col&gt;&lt;col&gt;&lt;/col&gt;&lt;/colgroup&gt;
+&lt;tbody valign="top"&gt;
+&lt;tr&gt;&lt;td class="label"&gt;&lt;a class="fn-backref" href="#id4"&gt;[4]&lt;/a&gt;&lt;/td&gt;&lt;td&gt;That article talks about beta.fastmail.fm, but this is now available on
+the production FastMail servers too!&lt;/td&gt;&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;/div&gt;
+</summary><category term="email"></category><category term="IMAP"></category><category term="SMTP"></category><category term="CalDAV"></category><category term="CardDAV"></category><category term="contacts"></category><category term="calendar"></category><category term="FastMail"></category><category term="Windows Phone"></category></entry></feed>
