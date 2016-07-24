@@ -203,20 +203,23 @@ table {
     border-collapse: collapse;
     border: 1px solid black;
 }
-
-/* Thead */
 thead th {
     padding: .5em .4em;
     text-align: left;
     border-collapse: collapse;
     border: 1px solid black;
 }
-
-/* Tbody */
 tbody td {
     padding: .5em .4em;
     border-collapse: collapse;
     border: 1px solid black;
+}
+
+/* Don't show borders on the footnote tables. */
+table.footnote,
+table.footnote thead th,
+table.footnote tbody td {
+    border: 0;
 }
 
 /* HTML5 tags */
