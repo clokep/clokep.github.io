@@ -2,7 +2,7 @@ Windows Mobile (or Windows Phone) and FastMail
 ##############################################
 :date: 2016-07-24 13:19
 :author: Patrick Cloke
-:tags: email
+:tags: email, IMAP, SMTP, CalDAV, CardDAV, contacts, calendar, FastMail, Windows Phone
 
 .. contents::
 

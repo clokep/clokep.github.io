@@ -38,7 +38,7 @@
 
         {% if article.tags %}
         <div id="tag-list">
-            tags: {% for tag in article.tags %}
+            tags: {% for tag in article.tags|sort %}
                 <a href="{{ SITEURL }}/{{ tag.url }}">{{ tag | escape }}</a>
             {% endfor %}
         </div>
