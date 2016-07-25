@@ -1,5 +1,5 @@
 beautifulsoup4==4.3.2       # For extract_toc, share_post
-invoke==0.10.1
+invoke==0.13.0
 feedparser==5.2.0.post1
 ghp_import==0.4.1
 pelican==3.6.3

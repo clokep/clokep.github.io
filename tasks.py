@@ -10,7 +10,7 @@ env = {
 
 
 @task
-def clean():
+def clean(ctx):
     """Delete any built output."""
     if os.path.isdir(env.get('deploy_path')):
         run('rm -rf {deploy_path}'.format(**env))
@@ -18,32 +18,32 @@ def clean():
 
 
 @task
-def build():
+def build(ctx):
     """Build the blog."""
     run('pelican -s pelicanconf.py content')
 
 
 @task
-def regenerate():
+def regenerate(ctx):
     """Watch files and continually build the blog as changes occur."""
     run('pelican -r -s pelicanconf.py content', pty=True)
 
 
 @task
-def serve():
+def serve(ctx):
     """runly serve the blog."""
     run('cd {deploy_path} && python -m SimpleHTTP404Server {listen_port}'.format(**env), pty=True)
 
 
 @task
-def preview():
+def preview(ctx):
     """Clean then build with the publish config."""
-    clean()
+    clean(ctx)
     run('pelican -s publishconf.py content', pty=True)
 
 
 @task
-def publish():
+def publish(ctx):
     """Build with the publish config and push to the remote server."""
-    preview()
+    preview(ctx)
     run('ghp-import -p -b master output')
