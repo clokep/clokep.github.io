@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>Like bricks in the sky</title><link href="http://patrick.cloke.us/" rel="alternate"></link><link href="http://patrick.cloke.us/feeds/tag/blog.atom.xml" rel="self"></link><id>http://patrick.cloke.us/</id><updated>2014-07-06T18:36:00-04:00</updated><entry><title>New Blog: Serving the Content</title><link href="http://patrick.cloke.us/posts/2014/07/06/new-blog-serving-the-content/" rel="alternate"></link><updated>2014-07-06T18:36:00-04:00</updated><author><name>Patrick Cloke</name></author><id>tag:patrick.cloke.us,2014-07-06:posts/2014/07/06/new-blog-serving-the-content/</id><summary type="html">
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Like bricks in the sky</title><link href="http://patrick.cloke.us/" rel="alternate"></link><link href="http://patrick.cloke.us/feeds/tag/blog.atom.xml" rel="self"></link><id>http://patrick.cloke.us/</id><updated>2014-07-06T18:36:00-04:00</updated><entry><title>New Blog: Serving the Content</title><link href="http://patrick.cloke.us/posts/2014/07/06/new-blog-serving-the-content/" rel="alternate"></link><published>2014-07-06T18:36:00-04:00</published><author><name>Patrick Cloke</name></author><id>tag:patrick.cloke.us,2014-07-06:posts/2014/07/06/new-blog-serving-the-content/</id><summary type="html">
 &lt;p&gt;In the &lt;a class="reference external" href="http://patrick.cloke.us/posts/2014/07/03/new-blog/"&gt;first part&lt;/a&gt; of this blog post I talked about using Pelican to create a
 blog, this is a bit more about how I got it up and running.&lt;/p&gt;
 &lt;div class="section" id="getting-a-domain"&gt;
@@ -139,7 +139,7 @@ settings page on GitHub.&lt;/td&gt;&lt;/tr&gt;
 &lt;/tbody&gt;
 &lt;/table&gt;
 &lt;/div&gt;
-</summary><category term="blog"></category></entry><entry><title>New Blog</title><link href="http://patrick.cloke.us/posts/2014/07/03/new-blog/" rel="alternate"></link><updated>2014-07-06T18:24:00-04:00</updated><author><name>Patrick Cloke</name></author><id>tag:patrick.cloke.us,2014-07-03:posts/2014/07/03/new-blog/</id><summary type="html">
+</summary><category term="blog"></category></entry><entry><title>New Blog</title><link href="http://patrick.cloke.us/posts/2014/07/03/new-blog/" rel="alternate"></link><published>2014-07-06T18:24:00-04:00</published><author><name>Patrick Cloke</name></author><id>tag:patrick.cloke.us,2014-07-03:posts/2014/07/03/new-blog/</id><summary type="html">
 &lt;p&gt;If you’re reading this you might have noticed that I have a shiny new blog! I
 had been pretty disappointed in &lt;a class="reference external" href="https://www.blogger.com/"&gt;Blogger&lt;/a&gt; practically since I started using it.
 But it was free, I was a poor college student, etc. I finally managed to get
