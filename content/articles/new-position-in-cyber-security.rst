@@ -20,7 +20,7 @@ involvement has been in the `design and creation of the blackhole`_, including
 writing protocol parsers for both standard protocols and malware.
 
 So far, I've been greatly enjoying my new position. There's been a renewed focus
-on technical work, while being in a position to greatly influence both SRTONGARM
+on technical work, while being in a position to greatly influence both STRONGARM
 and Percipient Networks. My average day involves many more activities now,
 including technical work: reverse engineering, reviewing/writing code, or
 reading RFCs; as well as other work: mentoring [#]_, user support, writing
