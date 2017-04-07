@@ -112,9 +112,9 @@ little <a class="reference external" href="http://www-archive.mozilla.org/unix/c
 with a couple caveats).&nbsp; You should be able to add a new folder <a class="reference external" href="http://instantbird.com/faq.html#profilefolder">inside
 your profile</a> called chrome.&nbsp; Inside of this make a new file called
 userChrome.css and place the&nbsp;following:</p>
-<div class="highlight"><pre><span></span><span class="nn">#buddylistbox</span><span class="nd">:focus</span> <span class="o">&gt;</span> <span class="nt">contact</span><span class="o">[</span><span class="nt">selected</span><span class="o">]</span> <span class="p">{</span>
-    <span class="o">-</span><span class="n">moz</span><span class="o">-</span><span class="n">binding</span><span class="o">:</span> <span class="sx">url(&quot;chrome://instantbird/content/contact.xml#contact&quot;)</span> <span class="cp">!important</span><span class="p">;</span>
-    <span class="o">-</span><span class="n">moz</span><span class="o">-</span><span class="n">box</span><span class="o">-</span><span class="n">orient</span><span class="o">:</span> <span class="n">horizontal</span> <span class="cp">!important</span><span class="p">;</span>
+<div class="highlight"><pre><span></span><span class="p">#</span><span class="nn">buddylistbox</span><span class="p">:</span><span class="nd">focus</span> <span class="o">&gt;</span> <span class="nt">contact</span><span class="o">[</span><span class="nt">selected</span><span class="o">]</span> <span class="p">{</span>
+    <span class="kp">-moz-</span><span class="n">binding</span><span class="p">:</span> <span class="nb">url</span><span class="p">(</span><span class="s2">&quot;chrome://instantbird/content/contact.xml#contact&quot;</span><span class="p">)</span> <span class="cp">!important</span><span class="p">;</span>
+    <span class="kp">-moz-</span><span class="n">box-orient</span><span class="p">:</span> <span class="kc">horizontal</span> <span class="cp">!important</span><span class="p">;</span>
 <span class="p">}</span>
 </pre></div>
 <p>Save the file and restart&#8230;and that&#8217;s it! Now your selected contacts

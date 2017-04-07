@@ -1,5 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>Like bricks in the sky</title><link href="http://patrick.cloke.us/" rel="alternate"></link><link href="http://patrick.cloke.us/feeds/tag/specifications.atom.xml" rel="self"></link><id>http://patrick.cloke.us/</id><updated>2014-12-20T15:55:00-05:00</updated><entry><title>Extending JavaScript Maps (or other built-in objects)</title><link href="http://patrick.cloke.us/posts/2014/04/27/extending-javascript-maps-or-other/" rel="alternate"></link><published>2014-04-27T13:46:00-04:00</published><author><name>Patrick Cloke</name></author><id>tag:patrick.cloke.us,2014-04-27:posts/2014/04/27/extending-javascript-maps-or-other/</id><summary type="html">
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Like bricks in the sky - specifications</title><link href="http://patrick.cloke.us/" rel="alternate"></link><link href="http://patrick.cloke.us/feeds/tag/specifications.atom.xml" rel="self"></link><id>http://patrick.cloke.us/</id><updated>2014-12-20T15:55:00-05:00</updated><entry><title>Extending JavaScript Maps (or other built-in objects)</title><link href="http://patrick.cloke.us/posts/2014/04/27/extending-javascript-maps-or-other/" rel="alternate"></link><published>2014-04-27T13:46:00-04:00</published><updated>2014-04-27T13:46:00-04:00</updated><author><name>Patrick Cloke</name></author><id>tag:patrick.cloke.us,2014-04-27:/posts/2014/04/27/extending-javascript-maps-or-other/</id><summary type="html">
+&lt;p&gt;Finally another technical post, this one is about my adventures in
+attempting to extend the built-in &lt;a class="reference external" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Map"&gt;Map&lt;/a&gt; object in JavaScript to extend
+the functionality. As background, there are two reasons we’d want this:&lt;/p&gt;
+&lt;ol class="arabic"&gt;
+&lt;li&gt;&lt;p class="first"&gt;In the chat backend we currently use JavaScript &lt;a class="reference external" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object"&gt;objects&lt;/a&gt; (&lt;tt class="docutils literal"&gt;{}&lt;/tt&gt;) as
+hashes/maps to keep track of …&lt;/p&gt;&lt;/li&gt;&lt;/ol&gt;</summary><content type="html">
 &lt;p&gt;Finally another technical post, this one is about my adventures in
 attempting to extend the built-in &lt;a class="reference external" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Map"&gt;Map&lt;/a&gt; object in JavaScript to extend
 the functionality. As background, there are two reasons we’d want this:&lt;/p&gt;
@@ -167,7 +173,11 @@ expected, but they’re uhh…not up anywhere yet though. Oops.&lt;/td&gt;&lt;/t
 &lt;/tbody&gt;
 &lt;/table&gt;
 &lt;/div&gt;
-</summary><category term="Instantbird"></category><category term="programming"></category><category term="specifications"></category><category term="Thunderbird"></category><category term="Wat"></category></entry><entry><title>The so-called IRC “specifications”</title><link href="http://patrick.cloke.us/posts/2011/03/08/so-called-irc-specifications/" rel="alternate"></link><published>2014-12-20T15:55:00-05:00</published><author><name>Patrick Cloke</name></author><id>tag:patrick.cloke.us,2011-03-08:posts/2011/03/08/so-called-irc-specifications/</id><summary type="html">
+</content><category term="Instantbird"></category><category term="programming"></category><category term="specifications"></category><category term="Thunderbird"></category><category term="Wat"></category></entry><entry><title>The so-called IRC “specifications”</title><link href="http://patrick.cloke.us/posts/2011/03/08/so-called-irc-specifications/" rel="alternate"></link><published>2011-03-08T21:20:00-05:00</published><updated>2014-12-20T15:55:00-05:00</updated><author><name>Patrick Cloke</name></author><id>tag:patrick.cloke.us,2011-03-08:/posts/2011/03/08/so-called-irc-specifications/</id><summary type="html">
+&lt;p&gt;In a &lt;a class="reference external" href="http://patrick.cloke.us/posts/2010/12/08/why-rewrite-irc-into-javascript/"&gt;previous post&lt;/a&gt; I had briefly gone over the “history of &lt;span class="caps"&gt;IRC&lt;/span&gt;” as
+I know it.  I’m going to expand on this a bit as I’ve come to understand
+it a bit more while reading through documentation.  (Hopefully it won’t
+sound too much like a rant …&lt;/p&gt;</summary><content type="html">
 &lt;p&gt;In a &lt;a class="reference external" href="http://patrick.cloke.us/posts/2010/12/08/why-rewrite-irc-into-javascript/"&gt;previous post&lt;/a&gt; I had briefly gone over the “history of &lt;span class="caps"&gt;IRC&lt;/span&gt;” as
 I know it.  I’m going to expand on this a bit as I’ve come to understand
 it a bit more while reading through documentation.  (Hopefully it won’t
@@ -271,4 +281,4 @@ Machine&lt;/a&gt;. There are also copies of most, if not all, of these links in 
 &lt;a class="reference external" href="https://bitbucket.org/clokep/irc-docs"&gt;irc-docs repository&lt;/a&gt;. Thanks Ultra Rocks for the heads up!&lt;/dd&gt;
 &lt;/dl&gt;
 &lt;/div&gt;
-</summary><category term="Instantbird"></category><category term="IRC"></category><category term="programming"></category><category term="specifications"></category></entry></feed>
+</content><category term="Instantbird"></category><category term="IRC"></category><category term="programming"></category><category term="specifications"></category></entry></feed>

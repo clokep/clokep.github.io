@@ -1,14 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<rss version="2.0"><channel><title>Like bricks in the sky</title><link>http://patrick.cloke.us/</link><description></description><lastBuildDate>Wed, 08 Dec 2010 15:25:00 -0500</lastBuildDate><item><title>Blogger RSS Feeds for a Label</title><link>http://patrick.cloke.us/posts/2010/12/08/blogger-rss-feeds-for-label/</link><description>&lt;p&gt;Blogger has crappy support for &lt;span class="caps"&gt;RSS&lt;/span&gt; apparently.&amp;nbsp; I figured if I clicked
+<rss version="2.0"><channel><title>Like bricks in the sky - RSS</title><link>http://patrick.cloke.us/</link><description></description><lastBuildDate>Wed, 08 Dec 2010 15:25:00 -0500</lastBuildDate><item><title>Blogger RSS Feeds for a Label</title><link>http://patrick.cloke.us/posts/2010/12/08/blogger-rss-feeds-for-label/</link><description>&lt;p&gt;Blogger has crappy support for &lt;span class="caps"&gt;RSS&lt;/span&gt; apparently.&amp;nbsp; I figured if I clicked
 on a label, then found the &lt;span class="caps"&gt;RSS&lt;/span&gt; embedded in the page&amp;#8230;it would give me
 the &lt;span class="caps"&gt;RSS&lt;/span&gt; feed for that label,&amp;nbsp;right?&lt;/p&gt;
 &lt;p&gt;Wrong.&lt;/p&gt;
 &lt;p&gt;Of course there&amp;#8217;s an&amp;nbsp;&lt;a class="reference external" href="http://www.google.com/support/blogger/bin/answer.py?hl=en&amp;amp;answer=97933"&gt;&lt;span class="caps"&gt;FAQ&lt;/span&gt;&lt;/a&gt; page about this, but the syntax it gives
-is broken.&amp;nbsp; For a specific label (I&amp;#8217;m using the label&amp;nbsp;&amp;#8220;Instantbird&amp;#8221;):&lt;/p&gt;
-&lt;ul class="simple"&gt;
-&lt;li&gt;&lt;span class="caps"&gt;RSS&lt;/span&gt;:
-&lt;a class="reference external" href="http://clokep.blogspot.com/feeds/posts/default/-/Instantbird?alt=rss"&gt;http://clokep.blogspot.com/feeds/posts/default/-/Instantbird?alt=rss&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;Atom: &lt;a class="reference external" href="http://clokep.blogspot.com/feeds/posts/default/-/Instantbird"&gt;http://clokep.blogspot.com/feeds/posts/default/-/Instantbird&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;Who knows what versions of &lt;span class="caps"&gt;RSS&lt;/span&gt;/Atom these are.&amp;nbsp; But the feeds do&amp;nbsp;exist.&lt;/p&gt;
-</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Patrick Cloke</dc:creator><pubDate>Wed, 08 Dec 2010 15:25:00 -0500</pubDate><guid isPermaLink="false">tag:patrick.cloke.us,2010-12-08:posts/2010/12/08/blogger-rss-feeds-for-label/</guid><category>bugs</category><category>Google</category><category>RSS</category></item></channel></rss>
+is …&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Patrick Cloke</dc:creator><pubDate>Wed, 08 Dec 2010 15:25:00 -0500</pubDate><guid isPermaLink="false">tag:patrick.cloke.us,2010-12-08:/posts/2010/12/08/blogger-rss-feeds-for-label/</guid><category>bugs</category><category>Google</category><category>RSS</category></item></channel></rss>

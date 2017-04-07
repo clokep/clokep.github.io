@@ -1,5 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>Like bricks in the sky</title><link href="http://patrick.cloke.us/" rel="alternate"></link><link href="http://patrick.cloke.us/feeds/tag/status.atom.xml" rel="self"></link><id>http://patrick.cloke.us/</id><updated>2012-10-16T21:33:00-04:00</updated><entry><title>On Status</title><link href="http://patrick.cloke.us/posts/2012/10/16/on-status/" rel="alternate"></link><published>2012-10-16T21:33:00-04:00</published><author><name>Patrick Cloke</name></author><id>tag:patrick.cloke.us,2012-10-16:posts/2012/10/16/on-status/</id><summary type="html">&lt;p&gt;Something that comes up often about Instantbird is why we only support
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Like bricks in the sky - status</title><link href="http://patrick.cloke.us/" rel="alternate"></link><link href="http://patrick.cloke.us/feeds/tag/status.atom.xml" rel="self"></link><id>http://patrick.cloke.us/</id><updated>2012-10-16T21:33:00-04:00</updated><entry><title>On Status</title><link href="http://patrick.cloke.us/posts/2012/10/16/on-status/" rel="alternate"></link><published>2012-10-16T21:33:00-04:00</published><updated>2012-10-16T21:33:00-04:00</updated><author><name>Patrick Cloke</name></author><id>tag:patrick.cloke.us,2012-10-16:/posts/2012/10/16/on-status/</id><summary type="html">&lt;p&gt;Something that comes up often about Instantbird is why we only support
+three statuses: Available, Unavailable and Offline.&amp;nbsp; (We do actually
+support a fourth one too, Idle, but that is set automatically, not
+chosen by the user.)&amp;nbsp; Frequently this discussion is in the context of
+wanting an &amp;#8220;Invisible&amp;#8221; status, but …&lt;/p&gt;</summary><content type="html">&lt;p&gt;Something that comes up often about Instantbird is why we only support
 three statuses: Available, Unavailable and Offline.&amp;nbsp; (We do actually
 support a fourth one too, Idle, but that is set automatically, not
 chosen by the user.)&amp;nbsp; Frequently this discussion is in the context of
@@ -112,4 +116,4 @@ in the&amp;nbsp;table.&lt;/p&gt;
 &lt;/tr&gt;
 &lt;/tbody&gt;
 &lt;/table&gt;
-</summary><category term="chat"></category><category term="instant messaging"></category><category term="Instantbird"></category><category term="messaging"></category><category term="status"></category><category term="Thunderbird"></category></entry></feed>
+</content><category term="chat"></category><category term="instant messaging"></category><category term="Instantbird"></category><category term="messaging"></category><category term="status"></category><category term="Thunderbird"></category></entry></feed>

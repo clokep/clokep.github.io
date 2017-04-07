@@ -1,5 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>Like bricks in the sky</title><link href="http://patrick.cloke.us/" rel="alternate"></link><link href="http://patrick.cloke.us/feeds/tag/thunderbird.atom.xml" rel="self"></link><id>http://patrick.cloke.us/</id><updated>2015-09-24T07:18:00-04:00</updated><entry><title>IRC Client Usage Share on moznet</title><link href="http://patrick.cloke.us/posts/2015/09/23/irc-client-usage-share-on-moznet/" rel="alternate"></link><published>2015-09-24T07:18:00-04:00</published><author><name>Patrick Cloke</name></author><id>tag:patrick.cloke.us,2015-09-23:posts/2015/09/23/irc-client-usage-share-on-moznet/</id><summary type="html">
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Like bricks in the sky - Thunderbird</title><link href="http://patrick.cloke.us/" rel="alternate"></link><link href="http://patrick.cloke.us/feeds/tag/thunderbird.atom.xml" rel="self"></link><id>http://patrick.cloke.us/</id><updated>2015-09-24T07:18:00-04:00</updated><entry><title>IRC Client Usage Share on moznet</title><link href="http://patrick.cloke.us/posts/2015/09/23/irc-client-usage-share-on-moznet/" rel="alternate"></link><published>2015-09-23T17:07:00-04:00</published><updated>2015-09-24T07:18:00-04:00</updated><author><name>Patrick Cloke</name></author><id>tag:patrick.cloke.us,2015-09-23:/posts/2015/09/23/irc-client-usage-share-on-moznet/</id><summary type="html">
+&lt;div class="section" id="background"&gt;
+&lt;h2&gt;&lt;a class="toc-backref" href="#id13"&gt;Background&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;The usage share of &lt;span class="caps"&gt;IRC&lt;/span&gt; clients has always been something I’m interested in. This
+is partially to see how many people are using &lt;a class="reference external" href="http://instantbird.com/"&gt;Instantbird&lt;/a&gt; or &lt;a class="reference external" href="https://www.mozilla.org/en-US/thunderbird/"&gt;Mozilla
+Thunderbird&lt;/a&gt; for &lt;span class="caps"&gt;IRC&lt;/span&gt; (as I’ve written much of the &lt;span class="caps"&gt;IRC&lt;/span&gt; code for those clients).
+&lt;a class="reference external" href="http://en.wikipedia.org/wiki/Usage_share_of_web_browsers"&gt;Usage share of browsers&lt;/a&gt; is quite a …&lt;/p&gt;&lt;/div&gt;</summary><content type="html">
 &lt;div class="section" id="background"&gt;
 &lt;h2&gt;&lt;a class="toc-backref" href="#id13"&gt;Background&lt;/a&gt;&lt;/h2&gt;
 &lt;p&gt;The usage share of &lt;span class="caps"&gt;IRC&lt;/span&gt; clients has always been something I’m interested in. This
@@ -71,7 +77,7 @@ The first plot had too many columns to reasonably show in this post: thus I’ve
 only included a plot of the client families &lt;a class="footnote-reference" href="#id11" id="id5"&gt;[5]&lt;/a&gt;. There are two plots, the first
 shows a subset of the data by cutting the tail (arbitrarily including families
 with at least 10 users).&lt;/p&gt;
-&lt;div class="note"&gt;
+&lt;div class="admonition note"&gt;
 &lt;p class="first admonition-title"&gt;Note&lt;/p&gt;
 &lt;p&gt;A “client family” is counting all versions of the same client together. This
 was calculated by taking the text up to the first whitespace or digit and
@@ -227,7 +233,16 @@ it.&lt;/td&gt;&lt;/tr&gt;
 &lt;/table&gt;
 &lt;/div&gt;
 &lt;/div&gt;
-</summary><category term="Mozilla"></category><category term="Thunderbird"></category><category term="Instantbird"></category><category term="IRC"></category></entry><entry><title>Thunderbird Summit 2014</title><link href="http://patrick.cloke.us/posts/2014/11/14/thunderbird-summit-2014/" rel="alternate"></link><published>2014-11-14T18:37:00-05:00</published><author><name>Patrick Cloke</name></author><id>tag:patrick.cloke.us,2014-11-14:posts/2014/11/14/thunderbird-summit-2014/</id><summary type="html">&lt;p&gt;Last month (Oct. 15th to Oct. 18th, to be precise), &lt;a class="reference external" href="https://wiki.mozilla.org/Thunderbird:Summit_2014#Invited_Attendees"&gt;twenty volunteers&lt;/a&gt;
+</content><category term="Mozilla"></category><category term="Thunderbird"></category><category term="Instantbird"></category><category term="IRC"></category></entry><entry><title>Thunderbird Summit 2014</title><link href="http://patrick.cloke.us/posts/2014/11/14/thunderbird-summit-2014/" rel="alternate"></link><published>2014-11-14T18:37:00-05:00</published><updated>2014-11-14T18:37:00-05:00</updated><author><name>Patrick Cloke</name></author><id>tag:patrick.cloke.us,2014-11-14:/posts/2014/11/14/thunderbird-summit-2014/</id><summary type="html">&lt;p&gt;Last month (Oct. 15th to Oct. 18th, to be precise), &lt;a class="reference external" href="https://wiki.mozilla.org/Thunderbird:Summit_2014#Invited_Attendees"&gt;twenty volunteers&lt;/a&gt;
+descended on Mozilla&amp;#8217;s Toronto office to discuss &lt;a class="reference external" href="https://www.mozilla.org/en-US/thunderbird/"&gt;Mozilla Thunderbird&lt;/a&gt;. This
+included Mozilla employees, Thunderbird contributors of all sorts (developers,
+user interface designers, add-on reviewers), Lightning contributors, and
+chat/&lt;a class="reference external" href="http://instantbird.com/"&gt;Instantbird&lt;/a&gt;&amp;nbsp;contributors.&lt;/p&gt;
+&lt;!--  --&gt;
+&lt;blockquote class="center"&gt;
+&lt;a class="reference external image-reference" href="http://patrick.cloke.us/images/chat-tb-summit/IMG_6516.jpg"&gt;&lt;img alt="The entire group of volunteers." src="/thumbnails/chat-tb-summit/IMG_6516_small.jpg" /&gt;&lt;/a&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;It was great to spend some quality …&lt;/p&gt;</summary><content type="html">&lt;p&gt;Last month (Oct. 15th to Oct. 18th, to be precise), &lt;a class="reference external" href="https://wiki.mozilla.org/Thunderbird:Summit_2014#Invited_Attendees"&gt;twenty volunteers&lt;/a&gt;
 descended on Mozilla&amp;#8217;s Toronto office to discuss &lt;a class="reference external" href="https://www.mozilla.org/en-US/thunderbird/"&gt;Mozilla Thunderbird&lt;/a&gt;. This
 included Mozilla employees, Thunderbird contributors of all sorts (developers,
 user interface designers, add-on reviewers), Lightning contributors, and
@@ -267,7 +282,13 @@ to &lt;a class="reference external" href="http://xmpp.org/"&gt;&lt;span class="c
 &lt;p&gt;Other highlights of the trip include eating the &amp;#8220;Canadian delicacy&amp;#8221; of
 poutine (with pulled pork on&amp;nbsp;it)!&lt;/p&gt;
 &lt;/blockquote&gt;
-</summary><category term="Mozilla"></category><category term="Thunderbird"></category><category term="community"></category><category term="Instantbird"></category></entry><entry><title>Extending JavaScript Maps (or other built-in objects)</title><link href="http://patrick.cloke.us/posts/2014/04/27/extending-javascript-maps-or-other/" rel="alternate"></link><published>2014-04-27T13:46:00-04:00</published><author><name>Patrick Cloke</name></author><id>tag:patrick.cloke.us,2014-04-27:posts/2014/04/27/extending-javascript-maps-or-other/</id><summary type="html">
+</content><category term="Mozilla"></category><category term="Thunderbird"></category><category term="community"></category><category term="Instantbird"></category></entry><entry><title>Extending JavaScript Maps (or other built-in objects)</title><link href="http://patrick.cloke.us/posts/2014/04/27/extending-javascript-maps-or-other/" rel="alternate"></link><published>2014-04-27T13:46:00-04:00</published><updated>2014-04-27T13:46:00-04:00</updated><author><name>Patrick Cloke</name></author><id>tag:patrick.cloke.us,2014-04-27:/posts/2014/04/27/extending-javascript-maps-or-other/</id><summary type="html">
+&lt;p&gt;Finally another technical post, this one is about my adventures in
+attempting to extend the built-in &lt;a class="reference external" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Map"&gt;Map&lt;/a&gt; object in JavaScript to extend
+the functionality. As background, there are two reasons we’d want this:&lt;/p&gt;
+&lt;ol class="arabic"&gt;
+&lt;li&gt;&lt;p class="first"&gt;In the chat backend we currently use JavaScript &lt;a class="reference external" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object"&gt;objects&lt;/a&gt; (&lt;tt class="docutils literal"&gt;{}&lt;/tt&gt;) as
+hashes/maps to keep track of …&lt;/p&gt;&lt;/li&gt;&lt;/ol&gt;</summary><content type="html">
 &lt;p&gt;Finally another technical post, this one is about my adventures in
 attempting to extend the built-in &lt;a class="reference external" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Map"&gt;Map&lt;/a&gt; object in JavaScript to extend
 the functionality. As background, there are two reasons we’d want this:&lt;/p&gt;
@@ -435,7 +456,11 @@ expected, but they’re uhh…not up anywhere yet though. Oops.&lt;/td&gt;&lt;/t
 &lt;/tbody&gt;
 &lt;/table&gt;
 &lt;/div&gt;
-</summary><category term="Instantbird"></category><category term="programming"></category><category term="specifications"></category><category term="Thunderbird"></category><category term="Wat"></category></entry><entry><title>Community and Volunteers</title><link href="http://patrick.cloke.us/posts/2014/04/16/community-and-volunteers/" rel="alternate"></link><published>2014-04-16T12:34:00-04:00</published><author><name>Patrick Cloke</name></author><id>tag:patrick.cloke.us,2014-04-16:posts/2014/04/16/community-and-volunteers/</id><summary type="html">&lt;p&gt;It was suggested that I cross-post this from mozilla.dev.planning onto
+</content><category term="Instantbird"></category><category term="programming"></category><category term="specifications"></category><category term="Thunderbird"></category><category term="Wat"></category></entry><entry><title>Community and Volunteers</title><link href="http://patrick.cloke.us/posts/2014/04/16/community-and-volunteers/" rel="alternate"></link><published>2014-04-16T12:34:00-04:00</published><updated>2014-04-16T12:34:00-04:00</updated><author><name>Patrick Cloke</name></author><id>tag:patrick.cloke.us,2014-04-16:/posts/2014/04/16/community-and-volunteers/</id><summary type="html">&lt;p&gt;It was suggested that I cross-post this from mozilla.dev.planning onto
+my blog. This is in reply to a thread entitled &amp;#8220;&lt;a class="reference external" href="https://groups.google.com/forum/#%21topic/mozilla.dev.planning/P8oHKTCWSiQ"&gt;Proposal: Move
+Thunderbird and SeaMonkey to mozilla-central&lt;/a&gt;&amp;#8221; about (essentially)
+merging comm-central back into mozilla-central. There have been many
+technical concerns raised in the thread (that I&amp;#8217;m not …&lt;/p&gt;</summary><content type="html">&lt;p&gt;It was suggested that I cross-post this from mozilla.dev.planning onto
 my blog. This is in reply to a thread entitled &amp;#8220;&lt;a class="reference external" href="https://groups.google.com/forum/#%21topic/mozilla.dev.planning/P8oHKTCWSiQ"&gt;Proposal: Move
 Thunderbird and SeaMonkey to mozilla-central&lt;/a&gt;&amp;#8221; about (essentially)
 merging comm-central back into mozilla-central. There have been many
@@ -507,7 +532,10 @@ keeping a dying one on life-support. (And prove to all that
 &lt;/blockquote&gt;
 &lt;p&gt;I don&amp;#8217;t have much else to say beyond that (besides thanks for reading
 this&amp;nbsp;far!)&lt;/p&gt;
-</summary><category term="community"></category><category term="crosspost"></category><category term="Mozilla"></category><category term="Thunderbird"></category></entry><entry><title>JavaScript typed arrays pain</title><link href="http://patrick.cloke.us/posts/2012/11/28/javascript-typed-arrays-pain/" rel="alternate"></link><published>2012-11-28T23:11:00-05:00</published><author><name>Patrick Cloke</name></author><id>tag:patrick.cloke.us,2012-11-28:posts/2012/11/28/javascript-typed-arrays-pain/</id><summary type="html">&lt;p&gt;If you&amp;#8217;ve ever tried to deal with binary data in JavaScript you know
+</content><category term="community"></category><category term="crosspost"></category><category term="Mozilla"></category><category term="Thunderbird"></category></entry><entry><title>JavaScript typed arrays pain</title><link href="http://patrick.cloke.us/posts/2012/11/28/javascript-typed-arrays-pain/" rel="alternate"></link><published>2012-11-28T23:11:00-05:00</published><updated>2012-11-28T23:11:00-05:00</updated><author><name>Patrick Cloke</name></author><id>tag:patrick.cloke.us,2012-11-28:/posts/2012/11/28/javascript-typed-arrays-pain/</id><summary type="html">&lt;p&gt;If you&amp;#8217;ve ever tried to deal with binary data in JavaScript you know
+it isn&amp;#8217;t much fun and you usually resort to using strings lots of
+charCodeAt and related functions.&amp;nbsp; &lt;a class="reference external" href="https://developer.mozilla.org/en-US/docs/JavaScript_typed_arrays"&gt;Typed arrays&lt;/a&gt; are supposed to solve
+this though!&amp;nbsp; The typed array &lt;span class="caps"&gt;API&lt;/span&gt; consists of creating a buffer of …&lt;/p&gt;</summary><content type="html">&lt;p&gt;If you&amp;#8217;ve ever tried to deal with binary data in JavaScript you know
 it isn&amp;#8217;t much fun and you usually resort to using strings lots of
 charCodeAt and related functions.&amp;nbsp; &lt;a class="reference external" href="https://developer.mozilla.org/en-US/docs/JavaScript_typed_arrays"&gt;Typed arrays&lt;/a&gt; are supposed to solve
 this though!&amp;nbsp; The typed array &lt;span class="caps"&gt;API&lt;/span&gt; consists of creating a buffer of bytes
@@ -595,7 +623,11 @@ don&amp;#8217;t use ArrayBufferViews, use DataViews.&amp;nbsp; (Although Uint8Ar
 Int8Arrays should work&amp;nbsp;fine!)&lt;/p&gt;
 &lt;p&gt;And to not rant the &lt;em&gt;entire&lt;/em&gt; time, working with typed arrays certainly
 does beat strings +&amp;nbsp;charCodeAt!&lt;/p&gt;
-</summary><category term="Instantbird"></category><category term="Mozilla"></category><category term="OSCAR"></category><category term="Thunderbird"></category><category term="Wat"></category></entry><entry><title>On Status</title><link href="http://patrick.cloke.us/posts/2012/10/16/on-status/" rel="alternate"></link><published>2012-10-16T21:33:00-04:00</published><author><name>Patrick Cloke</name></author><id>tag:patrick.cloke.us,2012-10-16:posts/2012/10/16/on-status/</id><summary type="html">&lt;p&gt;Something that comes up often about Instantbird is why we only support
+</content><category term="Instantbird"></category><category term="Mozilla"></category><category term="OSCAR"></category><category term="Thunderbird"></category><category term="Wat"></category></entry><entry><title>On Status</title><link href="http://patrick.cloke.us/posts/2012/10/16/on-status/" rel="alternate"></link><published>2012-10-16T21:33:00-04:00</published><updated>2012-10-16T21:33:00-04:00</updated><author><name>Patrick Cloke</name></author><id>tag:patrick.cloke.us,2012-10-16:/posts/2012/10/16/on-status/</id><summary type="html">&lt;p&gt;Something that comes up often about Instantbird is why we only support
+three statuses: Available, Unavailable and Offline.&amp;nbsp; (We do actually
+support a fourth one too, Idle, but that is set automatically, not
+chosen by the user.)&amp;nbsp; Frequently this discussion is in the context of
+wanting an &amp;#8220;Invisible&amp;#8221; status, but …&lt;/p&gt;</summary><content type="html">&lt;p&gt;Something that comes up often about Instantbird is why we only support
 three statuses: Available, Unavailable and Offline.&amp;nbsp; (We do actually
 support a fourth one too, Idle, but that is set automatically, not
 chosen by the user.)&amp;nbsp; Frequently this discussion is in the context of
@@ -708,7 +740,10 @@ in the&amp;nbsp;table.&lt;/p&gt;
 &lt;/tr&gt;
 &lt;/tbody&gt;
 &lt;/table&gt;
-</summary><category term="chat"></category><category term="instant messaging"></category><category term="Instantbird"></category><category term="messaging"></category><category term="status"></category><category term="Thunderbird"></category></entry><entry><title>Yahoo &amp; Thunderbird Can Finally Play Nice?</title><link href="http://patrick.cloke.us/posts/2010/11/22/yahoo-thunderbird/" rel="alternate"></link><published>2010-11-22T23:03:00-05:00</published><author><name>Patrick Cloke</name></author><id>tag:patrick.cloke.us,2010-11-22:posts/2010/11/22/yahoo-thunderbird/</id><summary type="html">&lt;p&gt;For years I&amp;#8217;ve been dealing with Yahoo&amp;#8217;s lack of support for any sort
+</content><category term="chat"></category><category term="instant messaging"></category><category term="Instantbird"></category><category term="messaging"></category><category term="status"></category><category term="Thunderbird"></category></entry><entry><title>Yahoo &amp; Thunderbird Can Finally Play Nice?</title><link href="http://patrick.cloke.us/posts/2010/11/22/yahoo-thunderbird/" rel="alternate"></link><published>2010-11-22T23:03:00-05:00</published><updated>2010-11-22T23:03:00-05:00</updated><author><name>Patrick Cloke</name></author><id>tag:patrick.cloke.us,2010-11-22:/posts/2010/11/22/yahoo-thunderbird/</id><summary type="html">&lt;p&gt;For years I&amp;#8217;ve been dealing with Yahoo&amp;#8217;s lack of support for any sort
+of decent (free) &lt;span class="caps"&gt;POP3&lt;/span&gt;/&lt;span class="caps"&gt;IMAP&lt;/span&gt;/&lt;span class="caps"&gt;SMTP&lt;/span&gt; protocol support.&amp;nbsp; Why do I need this?
+So I can check my &lt;a class="reference external" href="http://mail.yahoo.com/"&gt;Yahoo mail&lt;/a&gt; in &lt;a class="reference external" href="http://www.mozillamessaging.com/en-US/thunderbird/"&gt;Mozilla Thunderbird&lt;/a&gt; of&amp;nbsp;course!&lt;/p&gt;
+&lt;p&gt;At first I used &lt;a class="reference external" href="http://ypopsemail.com/"&gt;&lt;span class="caps"&gt;YPOPS&lt;/span&gt;!&lt;/a&gt;, a program that read the …&lt;/p&gt;</summary><content type="html">&lt;p&gt;For years I&amp;#8217;ve been dealing with Yahoo&amp;#8217;s lack of support for any sort
 of decent (free) &lt;span class="caps"&gt;POP3&lt;/span&gt;/&lt;span class="caps"&gt;IMAP&lt;/span&gt;/&lt;span class="caps"&gt;SMTP&lt;/span&gt; protocol support.&amp;nbsp; Why do I need this?
 So I can check my &lt;a class="reference external" href="http://mail.yahoo.com/"&gt;Yahoo mail&lt;/a&gt; in &lt;a class="reference external" href="http://www.mozillamessaging.com/en-US/thunderbird/"&gt;Mozilla Thunderbird&lt;/a&gt; of&amp;nbsp;course!&lt;/p&gt;
 &lt;p&gt;At first I used &lt;a class="reference external" href="http://ypopsemail.com/"&gt;&lt;span class="caps"&gt;YPOPS&lt;/span&gt;!&lt;/a&gt;, a program that read the &lt;span class="caps"&gt;HTML&lt;/span&gt; pages provided
@@ -775,4 +810,4 @@ suggest using that&amp;nbsp;former.&lt;/p&gt;
 &lt;p&gt;Note that I&amp;#8217;m currently suffering from &lt;a class="reference external" href="https://bugzilla.mozilla.org/show_bug.cgi?id=610264"&gt;another bug&lt;/a&gt; while using
 Yahoo &lt;span class="caps"&gt;IMAP&lt;/span&gt;.&amp;nbsp; Everything works, there&amp;#8217;s just an annoying pop-up
 occasionally about the error.&amp;nbsp; Hopefully it will be fixed&amp;nbsp;soon.&lt;/p&gt;
-</summary><category term="bugs"></category><category term="email"></category><category term="IMAP"></category><category term="Mozilla"></category><category term="POP3"></category><category term="programming"></category><category term="SMTP"></category><category term="Thunderbird"></category><category term="Yahoo"></category></entry></feed>
+</content><category term="bugs"></category><category term="email"></category><category term="IMAP"></category><category term="Mozilla"></category><category term="POP3"></category><category term="programming"></category><category term="SMTP"></category><category term="Thunderbird"></category><category term="Yahoo"></category></entry></feed>

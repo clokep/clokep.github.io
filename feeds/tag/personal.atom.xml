@@ -1,5 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>Like bricks in the sky</title><link href="http://patrick.cloke.us/" rel="alternate"></link><link href="http://patrick.cloke.us/feeds/tag/personal.atom.xml" rel="self"></link><id>http://patrick.cloke.us/</id><updated>2015-05-30T13:59:00-04:00</updated><entry><title>New Position in Cyber Security at Percipient Networks</title><link href="http://patrick.cloke.us/posts/2015/05/30/new-position-in-cyber-security-at-percipient-networks/" rel="alternate"></link><published>2015-05-30T13:59:00-04:00</published><author><name>Patrick Cloke</name></author><id>tag:patrick.cloke.us,2015-05-30:posts/2015/05/30/new-position-in-cyber-security-at-percipient-networks/</id><summary type="html">&lt;div class="note"&gt;
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Like bricks in the sky - personal</title><link href="http://patrick.cloke.us/" rel="alternate"></link><link href="http://patrick.cloke.us/feeds/tag/personal.atom.xml" rel="self"></link><id>http://patrick.cloke.us/</id><updated>2015-05-30T13:59:00-04:00</updated><entry><title>New Position in Cyber Security at Percipient Networks</title><link href="http://patrick.cloke.us/posts/2015/05/30/new-position-in-cyber-security-at-percipient-networks/" rel="alternate"></link><published>2015-05-30T13:59:00-04:00</published><updated>2015-05-30T13:59:00-04:00</updated><author><name>Patrick Cloke</name></author><id>tag:patrick.cloke.us,2015-05-30:/posts/2015/05/30/new-position-in-cyber-security-at-percipient-networks/</id><summary type="html">&lt;div class="admonition note"&gt;
+&lt;p class="first admonition-title"&gt;Note&lt;/p&gt;
+&lt;p class="last"&gt;If you&amp;#8217;re hitting this from &lt;a class="reference external" href="http://planet.mozilla.org/"&gt;planet mozilla&lt;/a&gt;, this doesn&amp;#8217;t mean I&amp;#8217;m leaving
+the Mozilla Community since I&amp;#8217;m not (nor was I ever) a Mozilla&amp;nbsp;employee.&lt;/p&gt;
+&lt;/div&gt;
+&lt;p&gt;After working for &lt;a class="reference external" href="https://www.mitre.org"&gt;The &lt;span class="caps"&gt;MITRE&lt;/span&gt; Corporation&lt;/a&gt; for a bit over four years, I left a
+few weeks ago to begin …&lt;/p&gt;</summary><content type="html">&lt;div class="admonition note"&gt;
 &lt;p class="first admonition-title"&gt;Note&lt;/p&gt;
 &lt;p class="last"&gt;If you&amp;#8217;re hitting this from &lt;a class="reference external" href="http://planet.mozilla.org/"&gt;planet mozilla&lt;/a&gt;, this doesn&amp;#8217;t mean I&amp;#8217;m leaving
 the Mozilla Community since I&amp;#8217;m not (nor was I ever) a Mozilla&amp;nbsp;employee.&lt;/p&gt;
@@ -48,4 +54,4 @@ JavaScript. Since semicolons are optional in both, but encouraged in
 JavaScript and discouraged in Python&amp;#8230;&lt;/td&gt;&lt;/tr&gt;
 &lt;/tbody&gt;
 &lt;/table&gt;
-</summary><category term="personal"></category></entry></feed>
+</content><category term="personal"></category></entry></feed>
