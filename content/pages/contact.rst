@@ -7,8 +7,8 @@ So you wanna contact me? Below you can find some of that stuff:
 * BitBucket_
 * GitHub_
 * Mozillians_
-* clokep on moznet_ or freenode_
-* E-mail: c l o k e p - a t - g m a i l - d o t - c o m (and Google Talk)
+* ``clokep`` (or ``clokep_work``) on moznet_ or freenode_
+* E-mail: ``c l o k e p - a t - g m a i l - d o t - c o m``
 
 .. _Twitter: http://www.twitter.com/clokep
 .. _GitHub: https://www.github.com/clokep
