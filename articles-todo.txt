@@ -1,0 +1,8 @@
+Backfill articles from Strongarm blog:
+* https://strongarm.io/blog/combining-disparate-querysets-in-django/
+
+Articles on:
+* Boston Python talk:
+    * http://www.meetup.com/bostonpython/events/221406450/
+    * https://github.com/percipient/talks/raw/master/boston_python_08_27_2015/boston_python_08_27_2015.pdf
+    * https://github.com/percipient/talks/tree/master/boston_python_08_27_2015
