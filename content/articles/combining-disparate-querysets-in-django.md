@@ -1,7 +1,11 @@
 Title: Combining Disparate QuerySets in Django
 Slug: combining-disparate-querysets-in-django
-Date: 2016-2-4
+Date: 2016-2-4 16:00
+Tags: django
+Status: hidden
 Author: Patrick Cloke
+
+This was originally posted on the [Strongarm Blog](https://strongarm.io/blog/combining-disparate-querysets-in-django/).
 
 While refactoring [strongarm.io](https://strongarm.io) we ran into a problem: we
 had different database tables that we needed to query over as if they were a
