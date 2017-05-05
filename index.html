@@ -56,7 +56,7 @@
 
         <aside id="featured" class="body">
         <article>
-            <h1 class="entry-title"><a href="http://patrick.cloke.us/posts/2017/04/06/django-allauth-2fa-lightning-talk/"><span class="dquo">&#8220;</span>Adding Two-Factor Authentication to Django (with <tt class="docutils literal"><span class="pre">django-allauth</span></tt>)&#8221; Lightning&nbsp;Talk</a></h1>
+            <h1 class="entry-title"><a href="http://patrick.cloke.us/posts/2017/05/05/google-summer-of-code-2017-matrix-protocol/">Google Summer of Code 2017: Matrix protocol for Instantbird and&nbsp;Thunderbird</a></h1>
 <footer class="post-info-container">
     <div class="post-info-top">
     </div>
@@ -67,8 +67,8 @@
         <div id="gravatar" style="background-image: url('https://www.gravatar.com/avatar/130405f65521b6ee6bbbe0204070a163');">
         </div>
 
-        <abbr class="published" title="2017-04-06T21:14:00-04:00">
-            Published: 04/06/2017 09:14 PM EDT
+        <abbr class="published" title="2017-05-05T11:20:00-04:00">
+            Published: 05/05/2017 11:20 AM EDT
         </abbr>
 
         <address class="vcard author">
@@ -79,54 +79,86 @@
         <div id="gravatar-clear"></div>
 
         <div id="tag-list">
-            tags:                 <a href="http://patrick.cloke.us/tag/django.html">django</a>
-                <a href="http://patrick.cloke.us/tag/talks.html">talks</a>
+            tags:                 <a href="http://patrick.cloke.us/tag/chat.html">chat</a>
+                <a href="http://patrick.cloke.us/tag/gsoc.html">GSoC</a>
+                <a href="http://patrick.cloke.us/tag/instant-messaging.html">instant messaging</a>
+                <a href="http://patrick.cloke.us/tag/instantbird.html">Instantbird</a>
+                <a href="http://patrick.cloke.us/tag/matrix.html">Matrix</a>
         </div>
 
         
 
         <div id="post-share-links" class="social">
             share:
-            <a href="http://twitter.com/home?status=%E2%80%9CAdding%20Two-Factor%20Authentication%20to%20Django%20%28with%20django-allauth%29%E2%80%9D%20Lightning%C2%A0Talk%20http%3A//patrick.cloke.us/posts/2017/04/06/django-allauth-2fa-lightning-talk/" target="_blank" title="Share on Twitter">Twitter</a>
-            <a href="http://www.facebook.com/sharer/sharer.php?u=http%3A//patrick.cloke.us/posts/2017/04/06/django-allauth-2fa-lightning-talk/" target="_blank" title="Share on Facebook">Facebook</a>
-            <a href="https://plus.google.com/share?url=http%3A//patrick.cloke.us/posts/2017/04/06/django-allauth-2fa-lightning-talk/" target="_blank" title="Share on Google Plus">Google+</a>
-            <a href="mailto:?subject=%E2%80%9CAdding%20Two-Factor%20Authentication%20to%20Django%20%28with%20django-allauth%29%E2%80%9D%20Lightning%C2%A0Talk&amp;body=http%3A//patrick.cloke.us/posts/2017/04/06/django-allauth-2fa-lightning-talk/" target="_blank" title="Share via Email">Email</a>
+            <a href="http://twitter.com/home?status=Google%20Summer%20of%20Code%202017%3A%20Matrix%20protocol%20for%20Instantbird%20and%C2%A0Thunderbird%20http%3A//patrick.cloke.us/posts/2017/05/05/google-summer-of-code-2017-matrix-protocol/" target="_blank" title="Share on Twitter">Twitter</a>
+            <a href="http://www.facebook.com/sharer/sharer.php?u=http%3A//patrick.cloke.us/posts/2017/05/05/google-summer-of-code-2017-matrix-protocol/" target="_blank" title="Share on Facebook">Facebook</a>
+            <a href="https://plus.google.com/share?url=http%3A//patrick.cloke.us/posts/2017/05/05/google-summer-of-code-2017-matrix-protocol/" target="_blank" title="Share on Google Plus">Google+</a>
+            <a href="mailto:?subject=Google%20Summer%20of%20Code%202017%3A%20Matrix%20protocol%20for%20Instantbird%20and%C2%A0Thunderbird&amp;body=http%3A//patrick.cloke.us/posts/2017/05/05/google-summer-of-code-2017-matrix-protocol/" target="_blank" title="Share via Email">Email</a>
         </div>
     </div>
     </div>
 
     <div class="post-info-bottom">
     </div>
-</footer><!-- /.post-info --><p>A bit late on this article, but better late than never! Back on October 27th,
-2016 I gave a talk at <a class="reference external" href="http://www.meetup.com/djangoboston/">Django Boston</a> entitled &#8220;Adding Two-Factor
-Authentication to Django (with <tt class="docutils literal"><span class="pre">django-allauth</span></tt>)&#8221;. It was a ~20 minute talk on
-integrating the <a class="reference external" href="https://github.com/percipient/django-allauth-2fa/">django-allauth-2fa</a> package into a <a class="reference external" href="https://www.djangoproject.com/">Django</a> project. The
-package (which I should note is maintained by my employer and used in production
-on <a class="reference external" href="https://strongarm.io">Strongarm</a>) expands the excellent <a class="reference external" href="http://www.intenct.nl/projects/django-allauth/">django-allauth</a> package by adding
-<a class="reference external" href="https://en.wikipedia.org/wiki/Multi-factor_authentication">two-factor authentication</a> using <a class="reference external" href="https://en.wikipedia.org/wiki/Time-based_One-time_Password_Algorithm"><span class="caps">TOTP</span></a> (and backup&nbsp;codes).</p>
-<p>Integrating this into your project is (mostly) just some configuration changes
-to your <tt class="docutils literal">settings.py</tt>, and <span class="caps">URL</span> configuration! It takes advantage of the awesome
-<a class="reference external" href="http://django-allauth.readthedocs.io/en/latest/advanced.html">adapter</a> methodology, the <a class="reference external" href="https://bitbucket.org/psagers/django-otp/">django-otp</a> package to do all the <span class="caps">2FA</span> bits, and
-some custom middleware to enforce <span class="caps">2FA</span> during&nbsp;login.</p>
-<p>You can view a <a class="reference external" href="http://files.patrick.cloke.us/boston-django-20161027/">rendered version</a> of the slides online (use the arrow keys to
-navigate) or check out the <a class="reference external" href="https://github.com/percipient/talks/tree/master/boston_django_10_27_2016/adding-two-factor-authentication-to-django">source</a>. We&#8217;re always look for more contributors to
-<a class="reference external" href="https://github.com/percipient/django-allauth-2fa/">django-allauth-2fa</a>, there&#8217;s plenty to do,&nbsp;including:</p>
-<ul class="simple">
-<li>More testing needed (different configurations, interaction with social&nbsp;accounts).</li>
-<li>Support for more device types (e.g. <span class="caps">HOTP</span>, YubiKey, Twilio). (<a class="reference external" href="https://github.com/percipient/django-allauth-2fa/issues/23">#23</a>)</li>
-<li>Support for multiple devices per user. (<a class="reference external" href="https://github.com/percipient/django-allauth-2fa/issues/36">#36</a>)</li>
-<li>Improving the documentation (e.g. add a quickstart&nbsp;document).</li>
-<li>Setting up and adding&nbsp;translations.</li>
-<li>Any other feedback you might&nbsp;have!</li>
-</ul>
-<p>You can also check out the open <a class="reference external" href="https://github.com/percipient/django-allauth-2fa/issues">issues on GitHub</a> or <a class="reference external" href="http://patrick.cloke.us/pages/contact.html">reach out</a> directly if
-you&#8217;re&nbsp;interested!</p>
-<p><a href="http://patrick.cloke.us/posts/2017/04/06/django-allauth-2fa-lightning-talk/#disqus_thread">comments</a></p>        </article>
+</footer><!-- /.post-info --><p>I&#8217;ll be mentoring Pavan Karthik on his <a class="reference external" href="https://summerofcode.withgoogle.com/projects/#6473832528347136">project for Google Summer of Code 2017</a>
+entitled &#8220;Matrix Protocol Support for Instantbird&#8221;. <a class="reference external" href="http://matrix.org/">Matrix</a> is a new(er)
+protocol that is an open, decentralized network with some unique features.
+Initial support for this landed in <a class="reference external" href="https://bugzilla.mozilla.org/show_bug.cgi?id=1315926">bug 1315926</a>, but it is not feature
+rich-enough to turn on for users. Pavan will work to finish Matrix support so we
+can enable it for all users! The brief description of his proposal is&nbsp;below:</p>
+<blockquote>
+Matrix is an open, decentralized protocol for instant messaging (and more!)
+It has bridges to many other networks and protocol, e.g. <span class="caps">IRC</span>, Slack, and
+more. Initial support for Matrix was added in bug 1199855, but there&#8217;s a lot
+to do still : Support more features from the Matrix <span class="caps">SDK</span> (video/audio calls,
+room topics, typing notifications, read receipts and a lot more.) Support
+one-on-one conversations. Add tests specific to Matrix. Improve the Matrix
+<span class="caps">JS</span>-<span class="caps">SDK</span> that Instantbird and Thunderbird depend on. Improving and expanding
+shared code and APIs used by all JavaScript protocol plugins (<span class="caps">IRC</span>, <span class="caps">XMPP</span>,
+Yahoo and Twitter). Improving documentation of the process for adding a
+protocol to Instantbird/Thunderbird. Using the Matrix protocol on a
+day-to-day basis to dog-food the code.</blockquote>
+<p>I&#8217;m super excited to finalize support for Matrix in both Instantbird and
+Thunderbird! You can also checkout the full 25 projects that
+<a class="reference external" href="https://summerofcode.withgoogle.com/organizations/6421332469219328/">Mozilla accepted</a>.</p>
+<p><a href="http://patrick.cloke.us/posts/2017/05/05/google-summer-of-code-2017-matrix-protocol/#disqus_thread">comments</a></p>        </article>
         </aside><!-- /#featured -->
         <section id="content" class="body">
             <h1>Other articles</h1>
             <hr />
             <ol id="posts-list" class="hfeed">
+
+        <li><article class="hentry">
+        <header>
+            <h1><a href="http://patrick.cloke.us/posts/2017/04/06/django-allauth-2fa-lightning-talk/" rel="bookmark"
+               title="Permalink to “Adding Two-Factor Authentication to Django (with django-allauth)” Lightning Talk"><span class="dquo">&#8220;</span>Adding Two-Factor Authentication to Django (with <tt class="docutils literal"><span class="pre">django-allauth</span></tt>)&#8221; Lightning&nbsp;Talk</a></h1>
+        </header>
+
+        <div class="entry-content">
+<footer class="post-info">
+    <abbr class="published" title="2017-04-06T21:14:00-04:00">
+        Published: 04/06/2017 09:14 PM EDT
+    </abbr>
+
+    <address class="vcard author">
+        By             <a class="url fn" href="http://patrick.cloke.us/pages/about.html">Patrick Cloke</a>
+    </address>
+
+
+    <p>
+        tags:             <a href="http://patrick.cloke.us/tag/django.html">django</a>
+            <a href="http://patrick.cloke.us/tag/talks.html">talks</a>
+    </p>
+
+    
+</footer><!-- /.post-info -->        <p>A bit late on this article, but better late than never! Back on October 27th,
+2016 I gave a talk at <a class="reference external" href="http://www.meetup.com/djangoboston/">Django Boston</a> entitled &#8220;Adding Two-Factor
+Authentication to Django (with <tt class="docutils literal"><span class="pre">django-allauth</span></tt>)&#8221;. It was a ~20 minute talk on
+integrating the <a class="reference external" href="https://github.com/percipient/django-allauth-2fa/">django-allauth-2fa</a> package into a <a class="reference external" href="https://www.djangoproject.com/">Django</a> project. The
+package (which I …</p>
+        <a class="readmore" href="http://patrick.cloke.us/posts/2017/04/06/django-allauth-2fa-lightning-talk/">read more &rarr;</a>
+<p><a href="http://patrick.cloke.us/posts/2017/04/06/django-allauth-2fa-lightning-talk/#disqus_thread">comments</a></p>        </div><!-- /.entry-content -->
+        </article></li>
 
         <li><article class="hentry">
         <header>
@@ -233,49 +265,9 @@ should …</p></blockquote>
         <a class="readmore" href="http://patrick.cloke.us/posts/2016/03/07/thoughts-on-applying-to-gsoc/">read more &rarr;</a>
 <p><a href="http://patrick.cloke.us/posts/2016/03/07/thoughts-on-applying-to-gsoc/#disqus_thread">comments</a></p>        </div><!-- /.entry-content -->
         </article></li>
-
-        <li><article class="hentry">
-        <header>
-            <h1><a href="http://patrick.cloke.us/posts/2015/09/23/irc-client-usage-share-on-moznet/" rel="bookmark"
-               title="Permalink to IRC Client Usage Share on moznet"><span class="caps">IRC</span> Client Usage Share on&nbsp;moznet</a></h1>
-        </header>
-
-        <div class="entry-content">
-<footer class="post-info">
-    <abbr class="published" title="2015-09-23T17:07:00-04:00">
-        Published: 09/23/2015 05:07 PM EDT
-    </abbr>
-    <br />
-    <abbr class="modified" title="2015-09-24T07:18:00-04:00">
-        Updated: 09/24/2015 07:18 AM EDT
-    </abbr>
-
-    <address class="vcard author">
-        By             <a class="url fn" href="http://patrick.cloke.us/pages/about.html">Patrick Cloke</a>
-    </address>
-
-
-    <p>
-        tags:             <a href="http://patrick.cloke.us/tag/instantbird.html">Instantbird</a>
-            <a href="http://patrick.cloke.us/tag/irc.html">IRC</a>
-            <a href="http://patrick.cloke.us/tag/mozilla.html">Mozilla</a>
-            <a href="http://patrick.cloke.us/tag/thunderbird.html">Thunderbird</a>
-    </p>
-
-    
-</footer><!-- /.post-info -->        
-<div class="section" id="background">
-<h2><a class="toc-backref" href="#id13">Background</a></h2>
-<p>The usage share of <span class="caps">IRC</span> clients has always been something I’m interested in. This
-is partially to see how many people are using <a class="reference external" href="http://instantbird.com/">Instantbird</a> or <a class="reference external" href="https://www.mozilla.org/en-US/thunderbird/">Mozilla
-Thunderbird</a> for <span class="caps">IRC</span> (as I’ve written much of the <span class="caps">IRC</span> code for those clients).
-<a class="reference external" href="http://en.wikipedia.org/wiki/Usage_share_of_web_browsers">Usage share of browsers</a> is quite a …</p></div>
-        <a class="readmore" href="http://patrick.cloke.us/posts/2015/09/23/irc-client-usage-share-on-moznet/">read more &rarr;</a>
-<p><a href="http://patrick.cloke.us/posts/2015/09/23/irc-client-usage-share-on-moznet/#disqus_thread">comments</a></p>        </div><!-- /.entry-content -->
-        </article></li>
         </ol><!-- /#posts-list -->
 <p class="paginator">
-    Page 1 / 8
+    Page 1 / 9
         <a href="http://patrick.cloke.us/index2.html">&raquo;</a>
 </p>
         </section><!-- /#content -->

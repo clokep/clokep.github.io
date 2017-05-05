@@ -1,5 +1,29 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>Like bricks in the sky - Patrick Cloke</title><link href="http://patrick.cloke.us/" rel="alternate"></link><link href="http://patrick.cloke.us/feeds/patrick-cloke.atom.xml" rel="self"></link><id>http://patrick.cloke.us/</id><updated>2017-04-06T21:14:00-04:00</updated><entry><title>“Adding Two-Factor Authentication to Django (with django-allauth)” Lightning Talk</title><link href="http://patrick.cloke.us/posts/2017/04/06/django-allauth-2fa-lightning-talk/" rel="alternate"></link><published>2017-04-06T21:14:00-04:00</published><updated>2017-04-06T21:14:00-04:00</updated><author><name>Patrick Cloke</name></author><id>tag:patrick.cloke.us,2017-04-06:/posts/2017/04/06/django-allauth-2fa-lightning-talk/</id><summary type="html">&lt;p&gt;A bit late on this article, but better late than never! Back on October 27th,
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Like bricks in the sky - Patrick Cloke</title><link href="http://patrick.cloke.us/" rel="alternate"></link><link href="http://patrick.cloke.us/feeds/patrick-cloke.atom.xml" rel="self"></link><id>http://patrick.cloke.us/</id><updated>2017-05-05T11:20:00-04:00</updated><entry><title>Google Summer of Code 2017: Matrix protocol for Instantbird and Thunderbird</title><link href="http://patrick.cloke.us/posts/2017/05/05/google-summer-of-code-2017-matrix-protocol/" rel="alternate"></link><published>2017-05-05T11:20:00-04:00</published><updated>2017-05-05T11:20:00-04:00</updated><author><name>Patrick Cloke</name></author><id>tag:patrick.cloke.us,2017-05-05:/posts/2017/05/05/google-summer-of-code-2017-matrix-protocol/</id><summary type="html">&lt;p&gt;I&amp;#8217;ll be mentoring Pavan Karthik on his &lt;a class="reference external" href="https://summerofcode.withgoogle.com/projects/#6473832528347136"&gt;project for Google Summer of Code 2017&lt;/a&gt;
+entitled &amp;#8220;Matrix Protocol Support for Instantbird&amp;#8221;. &lt;a class="reference external" href="http://matrix.org/"&gt;Matrix&lt;/a&gt; is a new(er)
+protocol that is an open, decentralized network with some unique features.
+Initial support for this landed in &lt;a class="reference external" href="https://bugzilla.mozilla.org/show_bug.cgi?id=1315926"&gt;bug 1315926&lt;/a&gt;, but it is not feature …&lt;/p&gt;</summary><content type="html">&lt;p&gt;I&amp;#8217;ll be mentoring Pavan Karthik on his &lt;a class="reference external" href="https://summerofcode.withgoogle.com/projects/#6473832528347136"&gt;project for Google Summer of Code 2017&lt;/a&gt;
+entitled &amp;#8220;Matrix Protocol Support for Instantbird&amp;#8221;. &lt;a class="reference external" href="http://matrix.org/"&gt;Matrix&lt;/a&gt; is a new(er)
+protocol that is an open, decentralized network with some unique features.
+Initial support for this landed in &lt;a class="reference external" href="https://bugzilla.mozilla.org/show_bug.cgi?id=1315926"&gt;bug 1315926&lt;/a&gt;, but it is not feature
+rich-enough to turn on for users. Pavan will work to finish Matrix support so we
+can enable it for all users! The brief description of his proposal is&amp;nbsp;below:&lt;/p&gt;
+&lt;blockquote&gt;
+Matrix is an open, decentralized protocol for instant messaging (and more!)
+It has bridges to many other networks and protocol, e.g. &lt;span class="caps"&gt;IRC&lt;/span&gt;, Slack, and
+more. Initial support for Matrix was added in bug 1199855, but there&amp;#8217;s a lot
+to do still : Support more features from the Matrix &lt;span class="caps"&gt;SDK&lt;/span&gt; (video/audio calls,
+room topics, typing notifications, read receipts and a lot more.) Support
+one-on-one conversations. Add tests specific to Matrix. Improve the Matrix
+&lt;span class="caps"&gt;JS&lt;/span&gt;-&lt;span class="caps"&gt;SDK&lt;/span&gt; that Instantbird and Thunderbird depend on. Improving and expanding
+shared code and APIs used by all JavaScript protocol plugins (&lt;span class="caps"&gt;IRC&lt;/span&gt;, &lt;span class="caps"&gt;XMPP&lt;/span&gt;,
+Yahoo and Twitter). Improving documentation of the process for adding a
+protocol to Instantbird/Thunderbird. Using the Matrix protocol on a
+day-to-day basis to dog-food the code.&lt;/blockquote&gt;
+&lt;p&gt;I&amp;#8217;m super excited to finalize support for Matrix in both Instantbird and
+Thunderbird! You can also checkout the full 25 projects that
+&lt;a class="reference external" href="https://summerofcode.withgoogle.com/organizations/6421332469219328/"&gt;Mozilla accepted&lt;/a&gt;.&lt;/p&gt;
+</content><category term="chat"></category><category term="GSoC"></category><category term="instant messaging"></category><category term="Instantbird"></category><category term="Matrix"></category></entry><entry><title>“Adding Two-Factor Authentication to Django (with django-allauth)” Lightning Talk</title><link href="http://patrick.cloke.us/posts/2017/04/06/django-allauth-2fa-lightning-talk/" rel="alternate"></link><published>2017-04-06T21:14:00-04:00</published><updated>2017-04-06T21:14:00-04:00</updated><author><name>Patrick Cloke</name></author><id>tag:patrick.cloke.us,2017-04-06:/posts/2017/04/06/django-allauth-2fa-lightning-talk/</id><summary type="html">&lt;p&gt;A bit late on this article, but better late than never! Back on October 27th,
 2016 I gave a talk at &lt;a class="reference external" href="http://www.meetup.com/djangoboston/"&gt;Django Boston&lt;/a&gt; entitled &amp;#8220;Adding Two-Factor
 Authentication to Django (with &lt;tt class="docutils literal"&gt;&lt;span class="pre"&gt;django-allauth&lt;/span&gt;&lt;/tt&gt;)&amp;#8221;. It was a ~20 minute talk on
 integrating the &lt;a class="reference external" href="https://github.com/percipient/django-allauth-2fa/"&gt;django-allauth-2fa&lt;/a&gt; package into a &lt;a class="reference external" href="https://www.djangoproject.com/"&gt;Django&lt;/a&gt; project. The
