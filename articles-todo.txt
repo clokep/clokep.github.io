@@ -8,7 +8,4 @@ Articles on:
     * https://github.com/percipient/talks/tree/master/boston_python_08_27_2015
 
 Other articles:
-* RSS feeds
-    * https://github.com/clokep/wp-current-events-rss
-    * https://github.com/clokep/nhl-news-rss
 * Plugging the mail slot in the door
