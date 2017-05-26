@@ -5,7 +5,7 @@ RSS Feeds for Wikipedia Current Events and NHL News
 :tags: programming, python, RSS, Atom
 :slug: rss-feeds-for-wikipedia-and-nhl
 
-I subscribe to a fair amoung of feeds for news, blogs, articles, etc. I'm
+I subscribe to a fair amount of feeds for news, blogs, articles, etc. I'm
 currently subscribed to 122 feeds, some of which have tens of articles a day
 (news sites), some of which are dead. [#]_ Unfortunately there's still a few
 sites that I was visiting manually each day to get updates from because they
