@@ -56,7 +56,7 @@
 
         <aside id="featured" class="body">
         <article>
-            <h1 class="entry-title"><a href="http://patrick.cloke.us/posts/2015/08/28/boston-python-twisted-talk/">Boston Python: Twisted async networking&nbsp;framework</a></h1>
+            <h1 class="entry-title"><a href="http://patrick.cloke.us/posts/2017/05/26/rss-feeds-for-wikipedia-and-nhl/"><span class="caps">RSS</span> Feeds for Wikipedia Current Events and <span class="caps">NHL</span>&nbsp;News</a></h1>
 <footer class="post-info-container">
     <div class="post-info-top">
     </div>
@@ -67,8 +67,8 @@
         <div id="gravatar" style="background-image: url('https://www.gravatar.com/avatar/130405f65521b6ee6bbbe0204070a163');">
         </div>
 
-        <abbr class="published" title="2015-08-28T08:42:00-04:00">
-            Published: 08/28/2015 08:42 AM EDT
+        <abbr class="published" title="2017-05-26T08:13:00-04:00">
+            Published: 05/26/2017 08:13 AM EDT
         </abbr>
 
         <address class="vcard author">
@@ -79,52 +79,156 @@
         <div id="gravatar-clear"></div>
 
         <div id="tag-list">
-            tags:                 <a href="http://patrick.cloke.us/tag/community.html">community</a>
+            tags:                 <a href="http://patrick.cloke.us/tag/atom.html">Atom</a>
                 <a href="http://patrick.cloke.us/tag/programming.html">programming</a>
                 <a href="http://patrick.cloke.us/tag/python.html">python</a>
-                <a href="http://patrick.cloke.us/tag/twisted.html">twisted</a>
+                <a href="http://patrick.cloke.us/tag/rss.html">RSS</a>
         </div>
 
         
 
         <div id="post-share-links" class="social">
             share:
-            <a href="http://twitter.com/home?status=Boston%20Python%3A%20Twisted%20async%20networking%C2%A0framework%20http%3A//patrick.cloke.us/posts/2015/08/28/boston-python-twisted-talk/" target="_blank" title="Share on Twitter">Twitter</a>
-            <a href="http://www.facebook.com/sharer/sharer.php?u=http%3A//patrick.cloke.us/posts/2015/08/28/boston-python-twisted-talk/" target="_blank" title="Share on Facebook">Facebook</a>
-            <a href="https://plus.google.com/share?url=http%3A//patrick.cloke.us/posts/2015/08/28/boston-python-twisted-talk/" target="_blank" title="Share on Google Plus">Google+</a>
-            <a href="mailto:?subject=Boston%20Python%3A%20Twisted%20async%20networking%C2%A0framework&amp;body=http%3A//patrick.cloke.us/posts/2015/08/28/boston-python-twisted-talk/" target="_blank" title="Share via Email">Email</a>
+            <a href="http://twitter.com/home?status=RSS%20Feeds%20for%20Wikipedia%20Current%20Events%20and%20NHL%C2%A0News%20http%3A//patrick.cloke.us/posts/2017/05/26/rss-feeds-for-wikipedia-and-nhl/" target="_blank" title="Share on Twitter">Twitter</a>
+            <a href="http://www.facebook.com/sharer/sharer.php?u=http%3A//patrick.cloke.us/posts/2017/05/26/rss-feeds-for-wikipedia-and-nhl/" target="_blank" title="Share on Facebook">Facebook</a>
+            <a href="https://plus.google.com/share?url=http%3A//patrick.cloke.us/posts/2017/05/26/rss-feeds-for-wikipedia-and-nhl/" target="_blank" title="Share on Google Plus">Google+</a>
+            <a href="mailto:?subject=RSS%20Feeds%20for%20Wikipedia%20Current%20Events%20and%20NHL%C2%A0News&amp;body=http%3A//patrick.cloke.us/posts/2017/05/26/rss-feeds-for-wikipedia-and-nhl/" target="_blank" title="Share via Email">Email</a>
         </div>
     </div>
     </div>
 
     <div class="post-info-bottom">
     </div>
-</footer><!-- /.post-info --><p>Yesterday, <a class="reference external" href="http://stephendicato.com/">Stephen DiCato</a> and I gave a talk for <a class="reference external" href="http://www.meetup.com/bostonpython/">Boston Python</a> titled:
+</footer><!-- /.post-info --><p>I subscribe to a fair amoung of feeds for news, blogs, articles, etc. I&#8217;m
+currently subscribed to 122 feeds, some of which have tens of articles a day
+(news sites), some of which are dead. <a class="footnote-reference" href="#id3" id="id1">[1]</a> Unfortunately there&#8217;s still a few
+sites that I was visiting manually each day to get updates from because they
+don&#8217;t offer any feeds. This&nbsp;included:</p>
+<ul class="simple">
+<li>The <a class="reference external" href="https://en.wikipedia.org/wiki/Portal:Current_events">Wikipedia Current Events portal</a>, which usually has a nice daily summary
+of interesting worldwide stories. <a class="footnote-reference" href="#id4" id="id2">[2]</a></li>
+<li>The <a class="reference external" href="https://www.nhl.com/news"><span class="caps">NHL</span> News</a> (and specifically the <a class="reference external" href="https://www.nhl.com/islanders/news">Islanders News</a>) pages. (I still
+follow a <a class="reference external" href="http://islanders.nhl.com/rss/news.xml">broken feed</a> from the older site, but it seems one of the redesigns
+of the <span class="caps">NHL</span> team sites broke this&nbsp;feed.)</li>
+</ul>
+<p>Having the Wikipedia Current Events as a feed is a pretty specific thing that&#8217;s
+outside of the scope of <a class="reference external" href="https://www.mediawiki.org/">MediaWiki</a>, so I can understand why that doesn&#8217;t
+exist. The <span class="caps">NHL</span> not having news feeds over <span class="caps">RSS</span> or Atom though? That shocks me! I
+hope I&#8217;ve just been unable to find them and that they do exist. Please point me
+to them if they&nbsp;do!</p>
+<div class="section" id="wikipedia-current-events">
+<h2>Wikipedia Current&nbsp;Events</h2>
+<p>The Wikipedia Current Events feed is <a class="reference external" href="https://wp-current-events-rss.herokuapp.com">publically available</a>, code can be found
+in the GitHub repository: <a class="reference external" href="https://github.com/clokep/wp-current-events-rss">clokep/wp-current-events-rss</a>. Note that this pulls
+data on demand and thus always serves the most up-to-date versions of the
+articles. This works&nbsp;by:</p>
+<ol class="arabic simple">
+<li>Pulling the last 7 days of Wikipedia&#8217;s current event articles (e.g. like
+<a class="reference external" href="https://en.wikipedia.org/wiki/Portal:Current_events/2017_May_8">this one</a>) using <a class="reference external" href="http://python-requests.org/">requests</a>. Each of these is processed individually as a
+separate article in the <span class="caps">RSS</span>&nbsp;feed.</li>
+<li>The <a class="reference external" href="https://en.wikipedia.org/wiki/Help:Wiki_markup">wikicode</a> for each article is converted to an <a class="reference external" href="https://en.wikipedia.org/wiki/Abstract_syntax_tree"><span class="caps">AST</span></a> using
+<a class="reference external" href="http://mwparserfromhell.readthedocs.io/">mwparserfromhell</a></li>
+<li>Some of the headers and templates are removed from each&nbsp;article.</li>
+<li>It then converts each article <em>back</em> to <span class="caps">HTML</span>. (This was the surprisingly
+hard part. I couldn&#8217;t find a good library to do this and ended up
+<a class="reference external" href="https://github.com/clokep/wp-current-events-rss/blob/7a6e2eb12d7fbe6efae6659dda65e2ad24e89611/parser.py#L23-L193">writing this myself</a>.)</li>
+<li>The articles are then turned into an <span class="caps">RSS</span> feed using <a class="reference external" href="https://github.com/getpelican/feedgenerator/">feedgenerator</a>.</li>
+<li>The feed itself is served via <a class="reference external" href="http://flask.pocoo.org/">Flask</a>.</li>
+</ol>
+<p>Feel free to <a class="reference external" href="https://wp-current-events-rss.herokuapp.com">check it out</a> and <a class="reference external" href="https://github.com/clokep/wp-current-events-rss/issues/new">let me know of any issues</a>!</p>
+</div>
+<div class="section" id="nhl-news">
+<h2><span class="caps">NHL</span>&nbsp;News</h2>
+<p>After building the above, I figured there was no reason not to do the same for
+the <span class="caps">NHL</span> News section (and specifically for the Islanders). You can <a class="reference external" href="https://nhl-news-rss.herokuapp.com/nhl/">see the <span class="caps">NHL</span>
+feed</a> or <a class="reference external" href="https://nhl-news-rss.herokuapp.com/">pick your favorite team</a>. Again, the code is available on GitHub:
+<a class="reference external" href="https://github.com/clokep/nhl-news-rss">clokep/nhl-news-rss</a>. The stack is pretty similar to the above, it works&nbsp;by:</p>
+<ol class="arabic simple">
+<li>Pulling the current <span class="caps">NHL</span> News&nbsp;page.</li>
+<li>Parsing the <span class="caps">HTML</span> with <a class="reference external" href="https://www.crummy.com/software/BeautifulSoup/bs4/">BeautifulSoup4</a> to pull out each article&#8217;s title,
+date, author, and short summary. (Note that the full article isn&#8217;t
+available, we could get it by loading each article individually, but I
+didn&#8217;t implement&nbsp;that.)</li>
+<li>The articles are then turned into an <span class="caps">RSS</span> feed using <a class="reference external" href="https://github.com/getpelican/feedgenerator/">feedgenerator</a>.</li>
+<li>The feed itself is served via <a class="reference external" href="http://flask.pocoo.org/">Flask</a>.</li>
+</ol>
+<p>Luckily the <span class="caps">NHL</span> News site and the news page for each team are in the same
+format, so it&#8217;s just loading different URLs to get the different articles. It
+was pretty trivial to get the full list of teams and add support for all of
+them, so that&#8217;s included too! Articles are pulled during page load, so should
+always be up to&nbsp;date.</p>
+<p>I hope one (or both) of these are useful to people! Again, please
+<a class="reference external" href="https://github.com/clokep/nhl-news-rss/issues/new">let me know if you have any issues or ideas</a>!</p>
+<table class="docutils footnote" frame="void" id="id3" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label"><a class="fn-backref" href="#id1">[1]</a></td><td><p class="first">I recently switched from using <a class="reference external" href="http://thunderbird.net">Thunderbird</a> to <a class="reference external" href="https://feedly.com">Feedly</a> in order to
+get cross device read status syncing on articles, but that&#8217;s not really
+related to the rest of this article. Switching has mostly worked out
+well, but I do miss the filtering capabilities of&nbsp;Thunderbird!</p>
+<p class="last">I also tried a few other services (e.g. <a class="reference external" href="https://theoldreader.com">The Old Reader</a>), but most had
+too many weird social features. I just wanted to read&nbsp;feeds.</p>
+</td></tr>
+</tbody>
+</table>
+<table class="docutils footnote" frame="void" id="id4" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label"><a class="fn-backref" href="#id2">[2]</a></td><td>I do know that Wikipedia page updates can be consumed via <span class="caps">RSS</span>, but I
+don&#8217;t want to know every time the article is updated, just the state of
+the article at the end of the day. (It also doesn&#8217;t work for the current
+events article since it&#8217;s dynamically generated from a bunch of
+templates.)</td></tr>
+</tbody>
+</table>
+</div>
+<p><a href="http://patrick.cloke.us/posts/2017/05/26/rss-feeds-for-wikipedia-and-nhl/#disqus_thread">comments</a></p>        </article>
+        </aside><!-- /#featured -->
+        <section id="content" class="body">
+            <h1>Other articles</h1>
+            <hr />
+            <ol id="posts-list" class="hfeed">
+
+        <li><article class="hentry">
+        <header>
+            <h1><a href="http://patrick.cloke.us/posts/2015/08/28/boston-python-twisted-talk/" rel="bookmark"
+               title="Permalink to Boston Python: Twisted async networking framework">Boston Python: Twisted async networking&nbsp;framework</a></h1>
+        </header>
+
+        <div class="entry-content">
+<footer class="post-info">
+    <abbr class="published" title="2015-08-28T08:42:00-04:00">
+        Published: 08/28/2015 08:42 AM EDT
+    </abbr>
+
+    <address class="vcard author">
+        By             <a class="url fn" href="http://patrick.cloke.us/pages/about.html">Patrick Cloke</a>
+    </address>
+
+
+    <p>
+        tags:             <a href="http://patrick.cloke.us/tag/community.html">community</a>
+            <a href="http://patrick.cloke.us/tag/programming.html">programming</a>
+            <a href="http://patrick.cloke.us/tag/python.html">python</a>
+            <a href="http://patrick.cloke.us/tag/twisted.html">twisted</a>
+    </p>
+
+    
+</footer><!-- /.post-info -->        <p>Yesterday, <a class="reference external" href="http://stephendicato.com/">Stephen DiCato</a> and I gave a talk for <a class="reference external" href="http://www.meetup.com/bostonpython/">Boston Python</a> titled:
 <a class="reference external" href="http://www.meetup.com/bostonpython/events/221406450/">Twisted async networking framework</a>. It was an introduction to intermediate
 level talk about using the <a class="reference external" href="https://twistedmatrix.com/">Twisted networking framework</a> based on our
 experiences at <a class="reference external" href="https://percipientnetworks.com/">Percipient Networks</a>.</p>
 <p>The talk, available <a class="reference external" href="https://github.com/percipient/talks/tree/master/boston_python_08_27_2015">on our GitHub</a> (<a class="reference external" href="https://github.com/percipient/talks/raw/master/boston_python_08_27_2015/boston_python_08_27_2015.pdf"><span class="caps">PDF</span></a>) covered a few basic&nbsp;topics:</p>
 <ol class="arabic simple">
-<li>What is asynchronous&nbsp;programming?</li>
-<li>What is <a class="reference external" href="https://twistedmatrix.com/">Twisted</a>?</li>
-<li>When/why to use&nbsp;Twisted?</li>
-<li>What is the event loop&nbsp;(reactor)?</li>
-<li>What are <a class="reference external" href="https://twistedmatrix.com/documents/current/core/howto/defer.html">Deferreds</a> and how do you use&nbsp;them?</li>
-<li>What are protocols (and related objects) and how do you use&nbsp;them?</li>
-</ol>
-<p>Additionally there was a &#8216;bonus&#8217; section: Using Twisted to build systems <span class="amp">&amp;</span>&nbsp;services.</p>
-<p>We used an example of a very simple chat server (NetCatChat: where the official
-client is netcat) to demonstrate these principles. All of our (working!) demo
-code is included in the <a class="reference external" href="https://github.com/percipient/talks/tree/master/boston_python_08_27_2015">repository</a>.</p>
-<p>There was a great turn out (almost 100 people showed up) and I greatly enjoyed
-the experience. Thanks to everyone who came, the sponsors for the night,
-<a class="reference external" href="http://www.meetup.com/bostonpython/">Boston Python</a> for setting this up, and Stephen for co-presenting! Please let
-us know if you have any questions or&nbsp;comments.</p>
-<p><a href="http://patrick.cloke.us/posts/2015/08/28/boston-python-twisted-talk/#disqus_thread">comments</a></p>        </article>
+<li>What …</li></ol>
+        <a class="readmore" href="http://patrick.cloke.us/posts/2015/08/28/boston-python-twisted-talk/">read more &rarr;</a>
+<p><a href="http://patrick.cloke.us/posts/2015/08/28/boston-python-twisted-talk/#disqus_thread">comments</a></p>        </div><!-- /.entry-content -->
+        </article></li>
+        </ol><!-- /#posts-list -->
 <p class="paginator">
     Page 1 / 1
 </p>
-        </aside><!-- /#featured -->
+        </section><!-- /#content -->
     </div>
 
     <footer id="contentinfo" class="body">
