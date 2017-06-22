@@ -55,7 +55,7 @@ and tools I used&amp;nbsp;was:&lt;/p&gt;
 &lt;li&gt;Drill with 1/4&amp;#8221; drill bit and a 1/2&amp;#8221; spade bit (plus some smaller sized drill
 bits for pilot&amp;nbsp;holes)&lt;/li&gt;
 &lt;/ul&gt;
-&lt;p&gt;Anyway, once you have the radio out you can disassembly it down to it&amp;#8217;s bare
+&lt;p&gt;Anyway, once you have the radio out you can disassemble it down to it&amp;#8217;s bare
 components. (It is held together with a bunch of screws and tabs, I took
 pictures along each step of the way to ensure I could put it back&amp;nbsp;together.)&lt;/p&gt;
 &lt;!--  --&gt;
@@ -76,7 +76,7 @@ the&amp;nbsp;left.&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;p&gt;The radio module connects to the motherboard with a 36-pin connector. Pin 31 is
 the right audio channel and pin 32 is left audio channel. I verified this by
-connected the disassembly radio to the car and testing with alligator clips
+connected the disassembled radio to the car and testing with alligator clips
 hooked up to my phones audio output &lt;a class="footnote-reference" href="#id10" id="id4"&gt;[4]&lt;/a&gt;. I already knew these were the pins
 from the directions, but I verified by completing the circuit to these pins and
 ensuring I heard mixed audio with my phone and the&amp;nbsp;radio.&lt;/p&gt;
