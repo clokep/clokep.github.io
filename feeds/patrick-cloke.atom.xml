@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>Like bricks in the sky - Patrick Cloke</title><link href="http://patrick.cloke.us/" rel="alternate"></link><link href="http://patrick.cloke.us/feeds/patrick-cloke.atom.xml" rel="self"></link><id>http://patrick.cloke.us/</id><updated>2017-05-26T08:13:00-04:00</updated><entry><title>RSS Feeds for Wikipedia Current Events and NHL News</title><link href="http://patrick.cloke.us/posts/2017/05/26/rss-feeds-for-wikipedia-and-nhl/" rel="alternate"></link><published>2017-05-26T08:13:00-04:00</published><updated>2017-05-26T08:13:00-04:00</updated><author><name>Patrick Cloke</name></author><id>tag:patrick.cloke.us,2017-05-26:/posts/2017/05/26/rss-feeds-for-wikipedia-and-nhl/</id><summary type="html">&lt;p&gt;I subscribe to a fair amount of feeds for news, blogs, articles, etc. I&amp;#8217;m
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Like bricks in the sky - Patrick Cloke</title><link href="http://patrick.cloke.us/" rel="alternate"></link><link href="http://patrick.cloke.us/feeds/patrick-cloke.atom.xml" rel="self"></link><id>http://patrick.cloke.us/</id><updated>2017-09-13T17:15:00-04:00</updated><entry><title>RSS Feeds for Wikipedia Current Events and NHL News</title><link href="http://patrick.cloke.us/posts/2017/05/26/rss-feeds-for-wikipedia-and-nhl/" rel="alternate"></link><published>2017-05-26T08:13:00-04:00</published><updated>2017-09-13T17:15:00-04:00</updated><author><name>Patrick Cloke</name></author><id>tag:patrick.cloke.us,2017-05-26:/posts/2017/05/26/rss-feeds-for-wikipedia-and-nhl/</id><summary type="html">&lt;p&gt;I subscribe to a fair amount of feeds for news, blogs, articles, etc. I&amp;#8217;m
 currently subscribed to 122 feeds, some of which have tens of articles a day
 (news sites), some of which are dead. &lt;a class="footnote-reference" href="#id3" id="id1"&gt;[1]&lt;/a&gt; Unfortunately there&amp;#8217;s still a few
 sites that I was visiting manually each …&lt;/p&gt;</summary><content type="html">&lt;p&gt;I subscribe to a fair amount of feeds for news, blogs, articles, etc. I&amp;#8217;m
@@ -21,7 +21,7 @@ hope I&amp;#8217;ve just been unable to find them and that they do exist. Please
 to them if they&amp;nbsp;do!&lt;/p&gt;
 &lt;div class="section" id="wikipedia-current-events"&gt;
 &lt;h2&gt;Wikipedia Current&amp;nbsp;Events&lt;/h2&gt;
-&lt;p&gt;The Wikipedia Current Events feed is &lt;a class="reference external" href="https://wp-current-events-rss.herokuapp.com"&gt;publically available&lt;/a&gt;, code can be found
+&lt;p&gt;The Wikipedia Current Events feed is &lt;a class="reference external" href="https://www.to-rss.xyz/wikipedia/current_events/"&gt;publically available&lt;/a&gt;, code can be found
 in the GitHub repository: &lt;a class="reference external" href="https://github.com/clokep/wp-current-events-rss"&gt;clokep/wp-current-events-rss&lt;/a&gt;. Note that this pulls
 data on demand and thus always serves the most up-to-date versions of the
 articles. This works&amp;nbsp;by:&lt;/p&gt;
@@ -38,13 +38,13 @@ hard part. I couldn&amp;#8217;t find a good library to do this and ended up
 &lt;li&gt;The articles are then turned into an &lt;span class="caps"&gt;RSS&lt;/span&gt; feed using &lt;a class="reference external" href="https://github.com/getpelican/feedgenerator/"&gt;feedgenerator&lt;/a&gt;.&lt;/li&gt;
 &lt;li&gt;The feed itself is served via &lt;a class="reference external" href="http://flask.pocoo.org/"&gt;Flask&lt;/a&gt;.&lt;/li&gt;
 &lt;/ol&gt;
-&lt;p&gt;Feel free to &lt;a class="reference external" href="https://wp-current-events-rss.herokuapp.com"&gt;check it out&lt;/a&gt; and &lt;a class="reference external" href="https://github.com/clokep/wp-current-events-rss/issues/new"&gt;let me know of any issues&lt;/a&gt;!&lt;/p&gt;
+&lt;p&gt;Feel free to &lt;a class="reference external" href="https://www.to-rss.xyz/wikipedia/"&gt;check it out&lt;/a&gt; and &lt;a class="reference external" href="https://github.com/clokep/wp-current-events-rss/issues/new"&gt;let me know of any issues&lt;/a&gt;!&lt;/p&gt;
 &lt;/div&gt;
 &lt;div class="section" id="nhl-news"&gt;
 &lt;h2&gt;&lt;span class="caps"&gt;NHL&lt;/span&gt;&amp;nbsp;News&lt;/h2&gt;
 &lt;p&gt;After building the above, I figured there was no reason not to do the same for
-the &lt;span class="caps"&gt;NHL&lt;/span&gt; News section (and specifically for the Islanders). You can &lt;a class="reference external" href="https://nhl-news-rss.herokuapp.com/nhl/"&gt;see the &lt;span class="caps"&gt;NHL&lt;/span&gt;
-feed&lt;/a&gt; or &lt;a class="reference external" href="https://nhl-news-rss.herokuapp.com/"&gt;pick your favorite team&lt;/a&gt;. Again, the code is available on GitHub:
+the &lt;span class="caps"&gt;NHL&lt;/span&gt; News section (and specifically for the Islanders). You can &lt;a class="reference external" href="https://www.to-rss.xyz/nhl/news/"&gt;see the &lt;span class="caps"&gt;NHL&lt;/span&gt;
+feed&lt;/a&gt; or &lt;a class="reference external" href="https://www.to-rss.xyz/nhl/"&gt;pick your favorite team&lt;/a&gt;. Again, the code is available on GitHub:
 &lt;a class="reference external" href="https://github.com/clokep/nhl-news-rss"&gt;clokep/nhl-news-rss&lt;/a&gt;. The stack is pretty similar to the above, it works&amp;nbsp;by:&lt;/p&gt;
 &lt;ol class="arabic simple"&gt;
 &lt;li&gt;Pulling the current &lt;span class="caps"&gt;NHL&lt;/span&gt; News&amp;nbsp;page.&lt;/li&gt;
@@ -84,6 +84,16 @@ events article since it&amp;#8217;s dynamically generated from a bunch of
 templates.)&lt;/td&gt;&lt;/tr&gt;
 &lt;/tbody&gt;
 &lt;/table&gt;
+&lt;div class="admonition note"&gt;
+&lt;p class="first admonition-title"&gt;Note&lt;/p&gt;
+&lt;p&gt;An update, as of September 13,&amp;nbsp;2017:&lt;/p&gt;
+&lt;ol class="last arabic simple"&gt;
+&lt;li&gt;The links to each &lt;span class="caps"&gt;RSS&lt;/span&gt; feed were&amp;nbsp;updated.&lt;/li&gt;
+&lt;li&gt;These apps are now hosted together on &lt;a class="reference external" href="https://www.to-rss.xyz"&gt;https://www.to-rss.xyz&lt;/a&gt;.&lt;/li&gt;
+&lt;li&gt;These projects are no longer being updated on GitHub. The combined site
+might be open sourced in the&amp;nbsp;future.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/div&gt;
 &lt;/div&gt;
 </content><category term="programming"></category><category term="python"></category><category term="RSS"></category><category term="Atom"></category></entry><entry><title>Google Summer of Code 2017: Matrix protocol for Instantbird and Thunderbird</title><link href="http://patrick.cloke.us/posts/2017/05/05/google-summer-of-code-2017-matrix-protocol/" rel="alternate"></link><published>2017-05-05T11:20:00-04:00</published><updated>2017-05-05T11:20:00-04:00</updated><author><name>Patrick Cloke</name></author><id>tag:patrick.cloke.us,2017-05-05:/posts/2017/05/05/google-summer-of-code-2017-matrix-protocol/</id><summary type="html">&lt;p&gt;I&amp;#8217;ll be mentoring Pavan Karthik on his &lt;a class="reference external" href="https://summerofcode.withgoogle.com/projects/#6473832528347136"&gt;project for Google Summer of Code 2017&lt;/a&gt;
 entitled &amp;#8220;Matrix Protocol Support for Instantbird&amp;#8221;. &lt;a class="reference external" href="http://matrix.org/"&gt;Matrix&lt;/a&gt; is a new(er)
