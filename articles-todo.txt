@@ -9,3 +9,7 @@ Articles on:
 
 Other articles:
 * Plugging the mail slot in the door
+
+Projects:
+* Django Template flake8 check
+* PowerDNS Mock code for testing with Lua

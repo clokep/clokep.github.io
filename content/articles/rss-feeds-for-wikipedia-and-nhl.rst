@@ -1,6 +1,7 @@
 RSS Feeds for Wikipedia Current Events and NHL News
 ###################################################
 :date: 2017-05-26 08:13
+:modified: 2017-09-13 17:15
 :author: Patrick Cloke
 :tags: programming, python, RSS, Atom
 :slug: rss-feeds-for-wikipedia-and-nhl
@@ -83,12 +84,21 @@ I hope one (or both) of these are useful to people! Again, please
         events article since it's dynamically generated from a bunch of
         templates.)
 
+.. note::
+
+    An update, as of September 13, 2017:
+
+    1. The links to each RSS feed were updated.
+    2. These apps are now hosted together on https://www.to-rss.xyz.
+    3. These projects are no longer being updated on GitHub. The combined site
+       might be open sourced in the future.
+
 .. _Wikipedia Current Events portal: https://en.wikipedia.org/wiki/Portal:Current_events
 .. _NHL News: https://www.nhl.com/news
 .. _Islanders News: https://www.nhl.com/islanders/news
 .. _broken feed: http://islanders.nhl.com/rss/news.xml
 .. _MediaWiki: https://www.mediawiki.org/
-.. _publically available: https://wp-current-events-rss.herokuapp.com
+.. _publically available: https://www.to-rss.xyz/wikipedia/current_events/
 .. _clokep/wp-current-events-rss: https://github.com/clokep/wp-current-events-rss
 .. _this one: https://en.wikipedia.org/wiki/Portal:Current_events/2017_May_8
 .. _requests: http://python-requests.org/
@@ -98,10 +108,10 @@ I hope one (or both) of these are useful to people! Again, please
 .. _writing this myself: https://github.com/clokep/wp-current-events-rss/blob/7a6e2eb12d7fbe6efae6659dda65e2ad24e89611/parser.py#L23-L193
 .. _feedgenerator: https://github.com/getpelican/feedgenerator/
 .. _Flask: http://flask.pocoo.org/
-.. _check it out: https://wp-current-events-rss.herokuapp.com
+.. _check it out: https://www.to-rss.xyz/wikipedia/
 .. _let me know of any issues: https://github.com/clokep/wp-current-events-rss/issues/new
-.. _see the NHL feed: https://nhl-news-rss.herokuapp.com/nhl/
-.. _pick your favorite team: https://nhl-news-rss.herokuapp.com/
+.. _see the NHL feed: https://www.to-rss.xyz/nhl/news/
+.. _pick your favorite team: https://www.to-rss.xyz/nhl/
 .. _clokep/nhl-news-rss: https://github.com/clokep/nhl-news-rss
 .. _BeautifulSoup4: https://www.crummy.com/software/BeautifulSoup/bs4/
 .. _let me know if you have any issues or ideas: https://github.com/clokep/nhl-news-rss/issues/new
