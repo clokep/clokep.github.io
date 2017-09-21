@@ -11,7 +11,7 @@ Engineering (with a concentration in `control theory`_).
 
 From school I worked at `The MITRE Corporation`_ for over 4 years doing work on
 various sensors systems (mostly radar) and systems engineering problems. I
-currently work on `Strongarm`_ by `Percipient Networks`_, helping to solve
+currently work on `Strongarm`_ by Percipient Networks, helping to solve
 cybersecurity problems for small and medium sized businesses.
 
 I've been part of the Mozilla_ community since ~2006 (although I don't seem to
@@ -24,9 +24,7 @@ my first bug for that in 2010_ and haven't stopped since! I've added `IRC
 support`_ and am now one of the lead developers. I also work on the Thunderbird_
 e-mail client's `chat code`_ and occassionally other Mozilla-esque things.
 
-Other open-source contributions I've made include `django-querysetsequence`_,
-`django-allauth-2fa`_, and `django-render-block`_. You can see more of my
-contributions on `GitHub`_ and `BitBucket`_.
+I've worked on a variety of `other projects`_ you can check out too!
 
 Besides my open source contributions, I'm also interested in: Ultimate, disc
 golf, reading (mostly science fiction, in particular `Star Wars`_, `Ender's
@@ -38,7 +36,6 @@ shooters, e.g. Halo_ or Destiny_ and platformers, e.g. Braid_).
 
 .. _The MITRE Corporation: http://www.mitre.org/
 .. _Strongarm: https://strongarm.io
-.. _Percipient Networks: http://percipientnetworks.com/
 
 .. _Mozilla: https://www.mozilla.org/
 .. _2008: https://bugzilla.mozilla.org/show_bug.cgi?id=468020
@@ -48,11 +45,7 @@ shooters, e.g. Halo_ or Destiny_ and platformers, e.g. Braid_).
 .. _Thunderbird: http://www.getthunderbird.com
 .. _chat code: https://wiki.mozilla.org/Modules/Chat
 
-.. _django-querysetsequence: https://github.com/percipient/django-querysetsequence
-.. _django-allauth-2fa: https://github.com/percipient/django-allauth-2fa
-.. _django-render-block: https://github.com/clokep/django-render-block/
-.. _GitHub: https://github.com/clokep/
-.. _BitBucket: https://bitbucket.org/clokep/
+.. _other projects: {filename}/pages/projects.rst
 
 .. _Star Wars: http://www.starwars.com/
 .. _Dune: http://www.dunenovels.com/
