@@ -138,7 +138,7 @@ messed up in mine (the day was off by one, causing the forwarded location to be�
 Go to “Settings” &amp;gt; “Other” &amp;gt; “Post Feed Redirect &lt;span class="caps"&gt;URL&lt;/span&gt;” and set it to your new
 Atom feed &lt;span class="caps"&gt;URL&lt;/span&gt; (wherever that might be).&lt;/p&gt;
 &lt;table class="docutils footnote" frame="void" id="id2" rules="none"&gt;
-&lt;colgroup&gt;&lt;col class="label"&gt;&lt;/col&gt;&lt;col&gt;&lt;/col&gt;&lt;/colgroup&gt;
+&lt;colgroup&gt;&lt;col class="label"/&gt;&lt;col/&gt;&lt;/colgroup&gt;
 &lt;tbody valign="top"&gt;
 &lt;tr&gt;&lt;td class="label"&gt;&lt;a class="fn-backref" href="#id1"&gt;[1]&lt;/a&gt;&lt;/td&gt;&lt;td&gt;Pro-tip: You can &lt;a class="reference external" href="https://help.github.com/articles/setting-the-default-branch"&gt;change the “default” branch&lt;/a&gt; of your repository in the
 settings page on GitHub.&lt;/td&gt;&lt;/tr&gt;
