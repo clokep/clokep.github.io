@@ -23,13 +23,13 @@
         {% if article.authors %}
         <address class="vcard author">
             By {% for author in article.authors %}
-                <a class="url fn" href="{{ SITEURL }}/{{ author.url }}">{{ author }}</a>
+                <a class="url fn" href="/{{ author.url }}">{{ author }}</a>
             {% endfor %}
         </address>
         {% endif %}
 
         {% if DISPLAY_CATEGORY_ON_ARTICLE != False %}
-        <div>In <a href="{{ SITEURL }}/{{ article.category.url }}">{{ article.category }}</a>.</div>
+        <div>In <a href="/{{ article.category.url }}">{{ article.category }}</a>.</div>
         {% endif %}
 
         {% if article.author_gravatar %}
@@ -39,7 +39,7 @@
         {% if article.tags %}
         <div id="tag-list">
             tags: {% for tag in article.tags|sort %}
-                <a href="{{ SITEURL }}/{{ tag.url }}">{{ tag | escape }}</a>
+                <a href="/{{ tag.url }}">{{ tag | escape }}</a>
             {% endfor %}
         </div>
         {% endif %}
