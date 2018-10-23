@@ -87,59 +87,8 @@ modified the template they had there. On the Blogger dashboard, choose
 "Template", scroll to the bottom and click "Revert to Classic Template". Then
 use something like the following template:
 
-.. code-block:: xml
-
-    <html>
-        <head>
-            <title><$BlogPageTitle$></title>
-            <script>
-                <MainOrArchivePage>
-                    window.location.href = "http://patrick.cloke.us/";
-                </MainOrArchivePage>
-                <Blogger>
-                    <ItemPage>
-                        // This is the full permalink.
-                        var permalink = "<$BlogItemPermalinkURL$>";
-                        // Split up each part by the slash.
-                        var parts = permalink.split("/");
-                        // Take the last part (the page) and strip off the .html.
-                        var slug = parts.slice(-1)[0].slice(0, -5);
-
-                        var article = "http://patrick.cloke.us/posts/<BlogDateHeader><$BlogDateHeaderDate$></BlogDateHeader>/" + slug;
-                        window.location.href = article;
-
-                        window.onload = function() {
-                            document.getElementById("linkrel").href = article;
-                            document.getElementById("simplelink").href = article;
-                        }
-                    </ItemPage>
-                </Blogger>
-            </script>
-            <MainPage>
-                <link rel="canonical" href="http://patrick.cloke.us/" />
-            </MainPage>
-            <Blogger>
-                <ItemPage>
-                    <link id="linkrel" rel="canonical" />
-                </ItemPage>
-            </Blogger>
-        </head>
-        <body>
-            <MainOrArchivePage>
-            <h1><a href="http://patrick.cloke.us"><$BlogTitle$></a></h1>
-            </MainOrArchivePage>
-            <Blogger>
-                <ItemPage>
-                    <h1>
-                        <a id="simplelink">
-                            <$BlogItemTitle$>
-                        </a>
-                    </h1>
-                    <$BlogItemBody$>
-                </ItemPage>
-            </Blogger>
-        </body>
-    </html>
+.. include:: ../code/blogger-template.html
+    :code: xml
 
 Obviously you'll need to change the URLs, but the key parts here are that we're
 generating a URL based on the date and the full article name. The magic comes in
