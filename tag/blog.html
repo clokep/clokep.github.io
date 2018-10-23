@@ -176,7 +176,8 @@ and some magic.</p>
 modified the template they had there. On the Blogger dashboard, choose
 “Template”, scroll to the bottom and click “Revert to Classic Template”. Then
 use something like the following template:</p>
-<div class="highlight"><pre><span></span><span class="nt">&lt;html&gt;</span>
+<pre class="code xml literal-block">
+<span class="nt">&lt;html&gt;</span>
     <span class="nt">&lt;head&gt;</span>
         <span class="nt">&lt;title&gt;</span><span class="err">&lt;</span>$BlogPageTitle$&gt;<span class="nt">&lt;/title&gt;</span>
         <span class="nt">&lt;script&gt;</span>
@@ -227,7 +228,7 @@ use something like the following template:</p>
         <span class="nt">&lt;/Blogger&gt;</span>
     <span class="nt">&lt;/body&gt;</span>
 <span class="nt">&lt;/html&gt;</span>
-</pre></div>
+</pre>
 <p>Obviously you’ll need to change the URLs, but the key parts here are that we’re
 generating a <span class="caps">URL</span> based on the date and the full article name. The magic comes in
 generating the date. The get it in the format I wanted (<span class="caps">YYYY</span>/<span class="caps">MM</span>/<span class="caps">DD</span>) I modified a

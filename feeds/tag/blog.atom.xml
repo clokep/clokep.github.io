@@ -73,7 +73,8 @@ and some magic.&lt;/p&gt;
 modified the template they had there. On the Blogger dashboard, choose
 “Template”, scroll to the bottom and click “Revert to Classic Template”. Then
 use something like the following template:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="nt"&gt;&amp;lt;html&amp;gt;&lt;/span&gt;
+&lt;pre class="code xml literal-block"&gt;
+&lt;span class="nt"&gt;&amp;lt;html&amp;gt;&lt;/span&gt;
     &lt;span class="nt"&gt;&amp;lt;head&amp;gt;&lt;/span&gt;
         &lt;span class="nt"&gt;&amp;lt;title&amp;gt;&lt;/span&gt;&lt;span class="err"&gt;&amp;lt;&lt;/span&gt;$BlogPageTitle$&amp;gt;&lt;span class="nt"&gt;&amp;lt;/title&amp;gt;&lt;/span&gt;
         &lt;span class="nt"&gt;&amp;lt;script&amp;gt;&lt;/span&gt;
@@ -124,7 +125,7 @@ use something like the following template:&lt;/p&gt;
         &lt;span class="nt"&gt;&amp;lt;/Blogger&amp;gt;&lt;/span&gt;
     &lt;span class="nt"&gt;&amp;lt;/body&amp;gt;&lt;/span&gt;
 &lt;span class="nt"&gt;&amp;lt;/html&amp;gt;&lt;/span&gt;
-&lt;/pre&gt;&lt;/div&gt;
+&lt;/pre&gt;
 &lt;p&gt;Obviously you’ll need to change the URLs, but the key parts here are that we’re
 generating a &lt;span class="caps"&gt;URL&lt;/span&gt; based on the date and the full article name. The magic comes in
 generating the date. The get it in the format I wanted (&lt;span class="caps"&gt;YYYY&lt;/span&gt;/&lt;span class="caps"&gt;MM&lt;/span&gt;/&lt;span class="caps"&gt;DD&lt;/span&gt;) I modified a
