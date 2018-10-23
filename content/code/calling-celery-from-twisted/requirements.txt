@@ -1,0 +1,9 @@
+# Celery.
+celery==4.2.1
+kombu==4.2.1
+
+# Twisted.
+Twisted==18.7.0
+
+# txCelery
+txCelery==1.0.2
