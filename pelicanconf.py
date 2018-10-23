@@ -23,8 +23,6 @@ TYPOGRIFY = True
 RELATIVE_URLS = False
 
 # Disable categories.
-DISPLAY_CATEGORIES_ON_MENU = False
-DISPLAY_CATEGORY_ON_ARTICLE = False
 CATEGORY_FEED_ATOM = None
 CATEGORY_SAVE_AS = ''
 CATEGORIES_SAVE_AS = ''
@@ -93,8 +91,6 @@ DEFAULT_PAGINATION = 5
 TAG_CLOUD_MAX_ITEMS = 10
 
 # Auto-generated content.
-DISPLAY_PAGES_ON_MENU = True
-LINKS = ()
 SOCIAL = (
     ('twitter', 'https://www.twitter.com/clokep'),
     ('bitbucket', 'https://bitbucket.org/clokep'),
