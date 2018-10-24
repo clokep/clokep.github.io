@@ -93,8 +93,10 @@ TAG_CLOUD_MAX_ITEMS = 10
 # Auto-generated content.
 SOCIAL = (
     ('twitter', 'https://www.twitter.com/clokep'),
-    ('bitbucket', 'https://bitbucket.org/clokep'),
+    ('mastodon', 'https://mastodon.social/@clokep'),
     ('github', 'https://www.github.com/clokep'),
+    ('gitlab', 'https://gitlab.com/clokep'),
+    ('bitbucket', 'https://bitbucket.org/clokep'),
     ('mozillians', 'https://mozillians.org/u/clokep/'),
 )
 
