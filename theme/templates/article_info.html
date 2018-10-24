@@ -1,64 +1,40 @@
-<footer class="post-info-container">
-    <div class="post-info-top">
-    </div>
+<div class="card float-right">
+  <div class="card-body">
+    {% if article.author_gravatar %}
+    {# <img class="card-img-top" src="{{ article.author_gravatar }}" width="80px"> #}
+    {% endif %}
 
-    <!-- Second div is to change the background color again. -->
-    <div class="post-info-bg">
-    <div class="post-info">
-        {% if article.author_gravatar %}
-        <div id="gravatar" style="background-image: url('{{ article.author_gravatar }}');">
-        </div>
-        {% endif %}
+    {% if article.authors %}
+    <p class="card-text">
+      By {% for author in article.authors %}
+        <a href="/{{ author.url }}">{{ author }}</a>
+      {% endfor %}
+    </p>
+    {% endif %}
 
-        <abbr class="published" title="{{ article.date.isoformat() }}">
-            Published: {{ article.locale_date }}
-        </abbr>
-        {% if article.modified %}
-        <br />
-        <abbr class="modified" title="{{ article.modified.isoformat() }}">
-            Updated: {{ article.locale_modified }}
-        </abbr>
-        {% endif %}
+    <p class="card-text">
+      Published: {{ article.locale_date }}
+    </p>
+    {% if article.modified %}
+    <p class="card-text text-muted"  title="{{ article.modified.isoformat() }}">
+        Updated: {{ article.locale_modified }}
+    </p>
+    {% endif %}
 
-        {% if article.authors %}
-        <address class="vcard author">
-            By {% for author in article.authors %}
-                <a class="url fn" href="/{{ author.url }}">{{ author }}</a>
-            {% endfor %}
-        </address>
-        {% endif %}
+    {% if article.tags %}
+    <p class="card-text">
+      tags: {% for tag in article.tags|sort %}
+        <a href="/{{ tag.url }}">{{ tag | escape }}</a>
+      {% endfor %}
+    </p>
+    {% endif %}
 
-        {% if DISPLAY_CATEGORY_ON_ARTICLE != False %}
-        <div>In <a href="/{{ article.category.url }}">{{ article.category }}</a>.</div>
-        {% endif %}
-
-        {% if article.author_gravatar %}
-        <div id="gravatar-clear"></div>
-        {% endif %}
-
-        {% if article.tags %}
-        <div id="tag-list">
-            tags: {% for tag in article.tags|sort %}
-                <a href="/{{ tag.url }}">{{ tag | escape }}</a>
-            {% endfor %}
-        </div>
-        {% endif %}
-
-        {% import 'translations.html' as translations with context %}
-        {{ translations.translations_for(article) }}
-
-        {% if article.share_post and article.status != 'draft' %}
-        <div id="post-share-links" class="social">
-            share:
-            <a href="{{article.share_post['twitter']}}" target="_blank" title="Share on Twitter">Twitter</a>
-            <a href="{{article.share_post['facebook']}}" target="_blank" title="Share on Facebook">Facebook</a>
-            <a href="{{article.share_post['google-plus']}}" target="_blank" title="Share on Google Plus">Google+</a>
-            <a href="{{article.share_post['email']}}" target="_blank" title="Share via Email">Email</a>
-        </div>
-        {% endif %}
-    </div>
-    </div>
-
-    <div class="post-info-bottom">
-    </div>
-</footer><!-- /.post-info -->
+    {% if article.share_post and article.status != 'draft' %}
+    share:
+    <a href="{{ article.share_post['twitter'] }}" target="_blank" class="card-link" title="Share on Twitter">Twitter</a>
+    <a href="{{ article.share_post['facebook'] }}" target="_blank" class="card-link" title="Share on Facebook">Facebook</a>
+    <a href="{{ article.share_post['google-plus'] }}" target="_blank" class="card-link" title="Share on Google Plus">Google+</a>
+    <a href="{{ article.share_post['email'] }}" target="_blank" class="card-link" title="Share via Email">Email</a>
+    {% endif %}
+  </div>
+</div>

@@ -1,34 +1,32 @@
-<footer class="post-info">
-    <abbr class="published" title="{{ article.date.isoformat() }}">
-        Published: {{ article.locale_date }}
-    </abbr>
-    {% if article.modified %}
-    <br />
-    <abbr class="modified" title="{{ article.modified.isoformat() }}">
-        Updated: {{ article.locale_modified }}
-    </abbr>
+<div class="card float-right">
+  <div class="card-body">
+    {% if article.author_gravatar %}
+    {# <img class="card-img-top" src="{{ article.author_gravatar }}" width="80px"> #}
     {% endif %}
 
     {% if article.authors %}
-    <address class="vcard author">
-        By {% for author in article.authors %}
-            <a class="url fn" href="/{{ author.url }}">{{ author }}</a>
-        {% endfor %}
-    </address>
-    {% endif %}
-
-    {% if DISPLAY_CATEGORY_ON_ARTICLE != False %}
-    <p>In <a href="/{{ article.category.url }}">{{ article.category }}</a>.</p>
-    {% endif %}
-
-    {% if article.tags %}
-    <p>
-        tags: {% for tag in article.tags|sort %}
-            <a href="/{{ tag.url }}">{{ tag | escape }}</a>
-        {% endfor %}
+    <p class="card-text">
+      By {% for author in article.authors %}
+        <a href="/{{ author.url }}">{{ author }}</a>
+      {% endfor %}
     </p>
     {% endif %}
 
-    {% import 'translations.html' as translations with context %}
-    {{ translations.translations_for(article) }}
-</footer><!-- /.post-info -->
+    <p class="card-text">
+      Published: {{ article.locale_date }}
+    </p>
+    {% if article.modified %}
+    <p class="card-text text-muted"  title="{{ article.modified.isoformat() }}">
+        Updated: {{ article.locale_modified }}
+    </p>
+    {% endif %}
+
+    {% if article.tags %}
+    <p class="card-text">
+      tags: {% for tag in article.tags|sort %}
+        <a href="/{{ tag.url }}">{{ tag | escape }}</a>
+      {% endfor %}
+    </p>
+    {% endif %}
+  </div>
+</div>
