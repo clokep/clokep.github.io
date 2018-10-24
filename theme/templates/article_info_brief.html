@@ -1,32 +1,21 @@
-<div class="card float-right">
+<div class="card ml-2 mb-2">
   <div class="card-body">
-    {% if article.author_gravatar %}
-    {# <img class="card-img-top" src="{{ article.author_gravatar }}" width="80px"> #}
-    {% endif %}
-
-    {% if article.authors %}
     <p class="card-text">
-      By {% for author in article.authors %}
-        <a href="/{{ author.url }}">{{ author }}</a>
-      {% endfor %}
-    </p>
-    {% endif %}
+      {% if article.authors %}
+        By {% for author in article.authors %}
+          <a href="/{{ author.url }}">{{ author }}</a>
+        {% endfor %}
+        <br>
+      {% endif %}
 
-    <p class="card-text">
       Published: {{ article.locale_date }}
-    </p>
-    {% if article.modified %}
-    <p class="card-text text-muted"  title="{{ article.modified.isoformat() }}">
-        Updated: {{ article.locale_modified }}
-    </p>
-    {% endif %}
+      <br>
 
-    {% if article.tags %}
-    <p class="card-text">
+      {% if article.tags %}
       tags: {% for tag in article.tags|sort %}
         <a href="/{{ tag.url }}">{{ tag | escape }}</a>
       {% endfor %}
+      {% endif %}
     </p>
-    {% endif %}
   </div>
 </div>

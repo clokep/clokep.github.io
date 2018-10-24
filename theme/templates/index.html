@@ -9,13 +9,26 @@
 
       {# The first item: it gets displayed with additional information. #}
       {% if loop.first and not articles_page.has_previous() %}
-      {{ article.toc }}
-      {% include 'article_info.html' %}
-      {{ article.content }}
+        <div class="float-right">
+          {% include 'article_info.html' %}
+
+          {% if article.toc %}
+          <div class="card float-none ml-2 mb-2">
+            <div class="card-body">
+              <h3>table of contents</h3>
+              {{ article.toc }}
+            </div>
+          </div>
+          {% endif %}
+        </div>
+
+        {{ article.content }}
       {% else %}
-      {% include 'article_info_brief.html' %}
-      {{ article.summary }}
-      <a class="readmore" href="/{{ article.url }}">read more &rarr;</a>
+        <div class="float-right">
+          {% include 'article_info_brief.html' %}
+        </div>
+        {{ article.summary }}
+        <a class="readmore" href="/{{ article.url }}">read more &rarr;</a>
       {% endif %}
 
       {% include 'comments.html' %}
