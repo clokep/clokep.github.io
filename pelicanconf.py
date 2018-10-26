@@ -36,6 +36,11 @@ AUTHOR_URL = 'pages/about.html'
 AUTHOR_SAVE_AS = ''
 AUTHORS_SAVE_AS = ''
 
+# Disable time based archives.
+YEAR_ARCHIVE_SAVE_AS = ''
+MONTH_ARCHIVE_SAVE_AS = ''
+DAY_ARCHIVE_SAVE_AS = ''
+
 # Set up locations of articles, pages and theme.
 PATH = 'content'
 ARTICLE_PATHS = ['articles']
