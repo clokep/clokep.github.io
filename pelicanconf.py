@@ -2,6 +2,8 @@
 # -*- coding: utf-8 -*- #
 from __future__ import unicode_literals
 
+from chunk import chunk
+
 AUTHOR = u'Patrick Cloke'
 AUTHOR_EMAIL = 'patrick@cloke.us'
 SITENAME = u'Like bricks in the sky'
@@ -79,6 +81,11 @@ PLUGINS = [
     # Custom plug-ins.
     'strikethrough',
 ]
+
+# Foobar.
+JINJA_FILTERS = {
+    'chunk': chunk,
+}
 
 # Change the default URLs.
 ARTICLE_URL = 'posts/{date:%Y}/{date:%m}/{date:%d}/{slug}/'
