@@ -91,7 +91,13 @@
     {% block content %}
     {% endblock %}
 
-    {# TODO Footer #}
+    {# Footer #}
+    <nav class="navbar fixed-bottom navbar-light bg-light">
+      <a href="https://getpelican.com/" class="nav-item" target="_blank">Powered by Pelican</a>
+      {% if GITHUB_URL %}
+      <a href="{{ GITHUB_URL }}" class="nav-item" target="_blank">Source available on GitHub</a>
+      {% endif %}
+    </nav>
 
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
