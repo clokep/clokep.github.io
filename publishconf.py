@@ -24,7 +24,5 @@ TAG_FEED_RSS = 'feeds/tag/%s.rss.xml'
 
 DELETE_OUTPUT_DIRECTORY = True
 
-# Following items are often useful when publishing
-
+# Following items are only useful when publishing
 DISQUS_SITENAME = "clokep"
-GOOGLE_ANALYTICS = 'UA-52389517-1'

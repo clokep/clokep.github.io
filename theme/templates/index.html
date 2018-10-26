@@ -31,7 +31,10 @@
         <a class="readmore" href="/{{ article.url }}">read more &rarr;</a>
       {% endif %}
 
-      {% include 'comments.html' %}
+      {% if DISQUS_SITENAME %}
+      <br>
+      <a href="/{{ article.url }}#disqus_thread">comments</a>
+      {% endif %}
     </div>
   </div>
 </div>
@@ -44,5 +47,10 @@
   {#{% endif %}#}
 {% endif %}
 {% endfor %}
-
 {% endblock content %}
+
+{% block extra_scripts %}
+{% if DISQUS_SITENAME %}
+<script id="dsq-count-scr" src="//{{ DISQUS_SITENAME }}.disqus.com/count.js" async></script>
+{% endif %}
+{% endblock %}
