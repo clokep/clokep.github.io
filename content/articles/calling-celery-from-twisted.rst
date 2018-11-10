@@ -121,6 +121,7 @@ all I/O onto a separate thread instead of doing it in the reactor thread):
 
 .. include:: ../code/calling-celery-from-twisted/threadedcelery.py
     :code: python
+    :class: highlight
 
 The calling syntax of this isn't as nice as the initial approach, but it is
 pretty close (the modified lines are highlighted):

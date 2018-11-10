@@ -89,6 +89,7 @@ use something like the following template:
 
 .. include:: ../code/blogger-template.html
     :code: xml
+    :class: highlight
 
 Obviously you'll need to change the URLs, but the key parts here are that we're
 generating a URL based on the date and the full article name. The magic comes in
