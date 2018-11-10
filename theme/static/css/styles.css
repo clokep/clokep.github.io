@@ -3,3 +3,10 @@
     vertical-align: super;
     font-size: 80%;
 }
+
+/* Don't actually show the bullets in the table of contents. */
+.toc ul {
+    list-style: none;
+    padding-left: 1em !important;
+    margin-bottom: 0px;
+}
