@@ -16,3 +16,12 @@
     margin-left: 40px;
     margin-right: 40px;
 }
+
+/* Give special formatting to blockquotes. */
+blockquote {
+    margin: 20px;
+    font-style: italic;
+}
+blockquote em {
+    font-style: normal;
+}
