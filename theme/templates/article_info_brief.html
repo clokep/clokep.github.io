@@ -1,14 +1,7 @@
 <div class="card ml-2 mb-2">
   <div class="card-body">
     <p class="card-text">
-      {% if article.authors %}
-        By {% for author in article.authors %}
-          <a href="/{{ author.url }}">{{ author }}</a>
-        {% endfor %}
-        <br>
-      {% endif %}
-
-      Published: {{ article.locale_date }}
+      Published on {{ article.locale_date }}
       <br>
 
       {% if article.tags %}

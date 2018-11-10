@@ -5,13 +5,6 @@
     {% endif %}
 
     <p class="card-text">
-      {% if article.authors %}
-        By {% for author in article.authors %}
-          <a href="/{{ author.url }}">{{ author }}</a>
-        {% endfor %}
-        <br>
-      {% endif %}
-
       Published on {{ article.locale_date }}
       <br>
 
@@ -31,10 +24,15 @@
 
       {% if article.share_post and article.status != 'draft' %}
       share:
-      <a href="{{ article.share_post['twitter'] }}" target="_blank" class="card-link" title="Share on Twitter">Twitter</a>
-      <a href="{{ article.share_post['facebook'] }}" target="_blank" class="card-link" title="Share on Facebook">Facebook</a>
-      <a href="{{ article.share_post['google-plus'] }}" target="_blank" class="card-link" title="Share on Google Plus">Google+</a>
-      <a href="{{ article.share_post['email'] }}" target="_blank" class="card-link" title="Share via Email">Email</a>
+      <a href="{{ article.share_post['twitter'] }}" target="_blank" class="ml-1 mr-1" title="Share on Twitter">
+        <span class="fab fa-twitter"></span>
+      </a>
+      <a href="{{ article.share_post['facebook'] }}" target="_blank" class="ml-1 mr-1" title="Share on Facebook">
+        <span class="fab fa-facebook"></span>
+      </a>
+      <a href="{{ article.share_post['email'] }}" target="_blank" class="ml-1 mr-1" title="Share via Email">
+        <span class="fas fa-envelope"></span>
+      </a>
       {% endif %}
     </p>
   </div>
