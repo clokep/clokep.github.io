@@ -2,3 +2,10 @@
  * TODO: Syntax highlighting of literal includes.
  * TODO: Superscript of references.
  */
+
+/*
+ * Make the info card a reasonable width.
+ */
+.article-right {
+    width: 30em;
+}

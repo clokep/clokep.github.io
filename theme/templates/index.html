@@ -9,7 +9,7 @@
 
       {# The first item: it gets displayed with additional information. #}
       {% if loop.first and not articles_page.has_previous() %}
-        <div class="float-right">
+        <div class="float-right article-right">
           {% include 'article_info.html' %}
 
           {% if article.toc %}
@@ -24,7 +24,7 @@
 
         {{ article.content }}
       {% else %}
-        <div class="float-right">
+        <div class="float-right article-right">
           {% include 'article_info_brief.html' %}
         </div>
         {{ article.summary }}
