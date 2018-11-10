@@ -8,7 +8,7 @@ SITENAME = u'Like bricks in the sky'
 GITHUB_URL = 'https://github.com/clokep/clokep.github.io'
 
 TIMEZONE = 'America/New_York'
-DEFAULT_DATE_FORMAT = '%m/%d/%Y %I:%M %p'
+DEFAULT_DATE_FORMAT = '%A, %B %-d, %Y'
 
 DEFAULT_LANG = u'en'
 

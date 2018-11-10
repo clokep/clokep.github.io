@@ -2,34 +2,19 @@
 
 {% block content %}
 {% for article in articles_page.object_list %}
-<div class="container">
+<div class="container mt-4">
   <div class="row">
     <div class="col-md-12">
-      <h1><a href="/{{ article.url }}">{{ article.title }}</a></h1>
+      <h1>
+        <a href="/{{ article.url }}">{{ article.title }}</a>
+      </h1>
 
-      {# The first item: it gets displayed with additional information. #}
-      {% if loop.first and not articles_page.has_previous() %}
-        <div class="float-right article-right">
-          {% include 'article_info.html' %}
+      {# Publish date. #}
+      <i>{{ article.locale_date }}</i>
 
-          {% if article.toc %}
-          <div class="card float-none ml-2 mb-2">
-            <div class="card-body">
-              <h3>table of contents</h3>
-              {{ article.toc }}
-            </div>
-          </div>
-          {% endif %}
-        </div>
+      {{ article.summary }}
 
-        {{ article.content }}
-      {% else %}
-        <div class="float-right article-right">
-          {% include 'article_info_brief.html' %}
-        </div>
-        {{ article.summary }}
-        <a class="readmore" href="/{{ article.url }}">read more &rarr;</a>
-      {% endif %}
+      <a href="/{{ article.url }}">read more &rarr;</a>
 
       {% if DISQUS_SITENAME %}
       <br>

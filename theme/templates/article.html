@@ -12,22 +12,46 @@
            title="Permalink to {{ article.title|striptags }}">{{ article.title }}</a>
       </h1>
 
-      {# Article information and table of contents. #}
-      <div class="float-right article-right">
-        {% include 'article_info.html' %}
-
-        {% if article.toc %}
-        <div class="card float-none ml-2 mb-2">
-          <div class="card-body">
-            <h3>table of contents</h3>
-            {{ article.toc }}
-          </div>
-        </div>
+      {# Share links. #}
+      <div class="float-right">
+        {% if article.share_post and article.status != 'draft' %}
+        <a href="{{ article.share_post['twitter'] }}" target="_blank" class="ml-1 mr-1" title="Share on Twitter">
+          <span class="fab fa-twitter"></span>
+        </a>
+        <a href="{{ article.share_post['facebook'] }}" target="_blank" class="ml-1 mr-1" title="Share on Facebook">
+          <span class="fab fa-facebook"></span>
+        </a>
+        <a href="{{ article.share_post['email'] }}" target="_blank" class="ml-1 mr-1" title="Share via Email">
+          <span class="fas fa-envelope"></span>
+        </a>
         {% endif %}
       </div>
 
-      {# Article contents. #}
-      {{ article.content }}
+      {# Publish date. #}
+      <i>{{ article.locale_date }}</i>
+
+      {# Article tags. #}
+      {% if article.tags %}
+      <br>
+      <i>
+        Tags: {% for tag in article.tags|sort %}
+          <a href="/{{ tag.url }}">{{ tag|escape }}</a>
+        {% endfor %}
+      </i>
+      {% endif %}
+
+      <div class="mt-3">
+        {# Table of contents. #}
+        {% if article.toc %}
+        <div class="border rounded float-left p-2 mr-2 mb-1">
+          <b>Table of Contents</b>
+          {{ article.toc }}
+        </div>
+        {% endif %}
+
+        {# Article contents. #}
+        {{ article.content }}
+      </div>
 
       {# Article comments. #}
       {% include 'disqus_comments.html' %}

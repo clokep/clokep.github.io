@@ -1,12 +1,3 @@
-/*
- * Make the info card and table of contents a reasonable width.
- *
- * TODO: Make responsive.
- */
-.article-right {
-    width: 25em;
-}
-
 /* Make footnotes superscript. */
 .footnote-reference, .fn-backref {
     vertical-align: super;
