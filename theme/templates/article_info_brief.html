@@ -13,7 +13,7 @@
 
       {% if article.tags %}
       tags: {% for tag in article.tags|sort %}
-        <a href="/{{ tag.url }}">{{ tag | escape }}</a>
+        <a href="/{{ tag.url }}">{{ tag|escape }}</a>
       {% endfor %}
       {% endif %}
     </p>

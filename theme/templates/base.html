@@ -68,11 +68,11 @@
 
           {% if FEED_ALL_RSS or FEED_ALL_ATOM %}
           <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" id="social-dropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <a class="nav-link dropdown-toggle" href="#" id="feeds-dropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
               Feeds
             </a>
 
-            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="social-dropdown">
+            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="feeds-dropdown">
               {% if FEED_ALL_ATOM %}
               <a class="dropdown-item" href="{{ FEED_DOMAIN }}/{{ FEED_ALL_ATOM }}" type="application/atom+xml" rel="alternate">atom feed</a>
               {% endif %}

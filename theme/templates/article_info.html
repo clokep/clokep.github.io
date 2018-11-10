@@ -12,19 +12,19 @@
         <br>
       {% endif %}
 
-      Published: {{ article.locale_date }}
+      Published on {{ article.locale_date }}
       <br>
 
       {% if article.modified %}
       <span class="text-muted"  title="{{ article.modified.isoformat() }}">
-        Updated: {{ article.locale_modified }}
+        Updated on {{ article.locale_modified }}
       </span>
       <br>
       {% endif %}
 
       {% if article.tags %}
       tags: {% for tag in article.tags|sort %}
-        <a href="/{{ tag.url }}">{{ tag | escape }}</a>
+        <a href="/{{ tag.url }}">{{ tag|escape }}</a>
       {% endfor %}
       <br>
       {% endif %}
