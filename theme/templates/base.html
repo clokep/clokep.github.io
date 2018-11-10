@@ -87,11 +87,16 @@
             </div>
           </li>
           {% endif %}
+
+          <form class="form-inline" method="get" action="http://www.google.com/search">
+            <input class="form-control form-control-sm mr-sm-2" type="search" name="q" placeholder="Search" aria-label="Search" />
+            <input type="hidden"  name="sitesearch" value="patrick.cloke.us" />
+
+            <button class="btn-sm btn-outline-secondary d-none d-sm-inline" type="submit">Search</button>
+          </form>
         </ul>
       </div>
     </nav>
-
-    {# TODO Search #}
 
     {% block content %}
     {% endblock %}
