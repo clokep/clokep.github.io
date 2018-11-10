@@ -46,7 +46,7 @@ you're interested!
 .. _rendered version: http://files.patrick.cloke.us/boston-django-20161027/
 .. _source: https://github.com/percipient/talks/tree/master/boston_django_10_27_2016/adding-two-factor-authentication-to-django
 .. _issues on GitHub: https://github.com/percipient/django-allauth-2fa/issues
-.. _reach out: {filename}/pages/contact.rst
+.. _reach out: {filename}/pages/about.rst
 
 .. _#23: https://github.com/percipient/django-allauth-2fa/issues/23
 .. _#36: https://github.com/percipient/django-allauth-2fa/issues/36

@@ -31,6 +31,13 @@ golf, reading (mostly science fiction, in particular `Star Wars`_, `Ender's
 Game`_, Dune_ and Foundation_) and video games (generally first person
 shooters, e.g. Halo_ or Destiny_ and platformers, e.g. Braid_).
 
+Please reach out if you want to get in touch:
+
+* Twitter_ (@clokep)
+* GitHub_
+* ``clokep`` on moznet_ or freenode_
+* E-mail: ``c l o k e p - a t - g m a i l - d o t - c o m``
+
 .. _Rensselaer Polytechnic Insitute: http://www.rpi.edu/
 .. _control theory: https://en.wikipedia.org/wiki/Control_theory
 
@@ -54,3 +61,8 @@ shooters, e.g. Halo_ or Destiny_ and platformers, e.g. Braid_).
 .. _Halo: https://www.halowaypoint.com/
 .. _Destiny: http://www.destinythegame.com/
 .. _Braid: http://braid-game.com/
+
+.. _Twitter: http://www.twitter.com/clokep
+.. _GitHub: https://www.github.com/clokep
+.. _moznet: http://irc.mozilla.org/
+.. _freenode: https://freenode.net/
