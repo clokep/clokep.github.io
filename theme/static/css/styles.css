@@ -10,3 +10,9 @@
     padding-left: 1em !important;
     margin-bottom: 0px;
 }
+
+/* Indent code blocks. */
+.highlight {
+    margin-left: 40px;
+    margin-right: 40px;
+}
