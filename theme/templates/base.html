@@ -62,8 +62,10 @@
             </a>
 
             <div class="dropdown-menu dropdown-menu-right" aria-labelledby="social-dropdown">
-              {% for name, link in SOCIAL %}
-              <a class="dropdown-item" href="{{ link }}" target="_blank">{{ name }}</a>
+              {% for name, link, icon in SOCIAL %}
+              <a class="dropdown-item" href="{{ link }}" target="_blank">
+                <span class="fab fa-{{ icon }} mr-1"></span> {{ name }}
+              </a>
               {% endfor %}
             </div>
           </li>
@@ -98,7 +100,9 @@
     <nav class="navbar fixed-bottom navbar-light bg-light">
       <a href="https://getpelican.com/" class="nav-item" target="_blank">Powered by Pelican</a>
       {% if GITHUB_URL %}
-      <a href="{{ GITHUB_URL }}" class="nav-item" target="_blank">Source available on GitHub</a>
+      <a href="{{ GITHUB_URL }}" class="nav-item" target="_blank">
+        Source available on GitHub <span class="fab fa-github"></span>
+      </a>
       {% endif %}
     </nav>
 
