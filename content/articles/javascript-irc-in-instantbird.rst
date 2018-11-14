@@ -31,8 +31,7 @@ a **new** object.  And after learning a bit above observers I was able
 to get the UI to respond.  I even threw in support for op/half-op/voice 
 After today's work I was able to generate the following screenshot:
 
-.. class:: center
-..
+.. center::
 
     .. image:: {filename}/images/IRCworking2.png
         :target: {filename}/images/IRCworking2.png

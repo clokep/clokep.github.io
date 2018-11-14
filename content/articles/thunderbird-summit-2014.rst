@@ -10,8 +10,7 @@ included Mozilla employees, Thunderbird contributors of all sorts (developers,
 user interface designers, add-on reviewers), Lightning contributors, and
 chat/`Instantbird`_ contributors.
 
-.. class:: center
-..
+.. center::
 
     .. image:: /thumbnails/chat-tb-summit/IMG_6516_small.jpg
         :target: {filename}/images/chat-tb-summit/IMG_6516.jpg
@@ -22,8 +21,7 @@ Nihanth_, both Instantbird guys who I talk to most days on IRC! I also had the
 pleasure of re-meeting a few people from the Mozilla Summit last year (I
 attended in Toronto) and to meet some brand new people!
 
-.. class:: center
-..
+.. center::
 
     .. image:: /thumbnails/chat-tb-summit/IMG_6408_small.jpg
         :target: {filename}/images/chat-tb-summit/IMG_6408.jpg
@@ -48,8 +46,7 @@ after that, we got some really exciting work done! We started cleaning up and
 finalizing some patches from Google Summer of Code 2014 to add WebRTC_ support
 to XMPP_! You can check out the progress in `bug 1018060`_.
 
-.. class:: center
-..
+.. center::
 
     .. image:: /thumbnails/chat-tb-summit/IMG_6394_small.jpg
         :target: {filename}/images/chat-tb-summit/IMG_6394.jpg
@@ -61,8 +58,7 @@ to XMPP_! You can check out the progress in `bug 1018060`_.
 
     First working call over Instantbird WebRTC.
 
-.. class:: center
-..
+.. center::
 
     .. image:: /thumbnails/chat-tb-summit/IMG_6594_small.jpg
         :target: {filename}/images/chat-tb-summit/IMG_6594.jpg

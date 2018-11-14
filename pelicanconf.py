@@ -81,8 +81,8 @@ PLUGINS = [
     'share_post',
     'thumbnailer',
 
-    # Custom plug-ins.
-    'strikethrough',
+    # Custom plug-ins to add additional RST directives.
+    'directives',
 ]
 
 # From https://stackoverflow.com/questions/2130016/splitting-a-list-into-n-parts-of-approximately-equal-length
