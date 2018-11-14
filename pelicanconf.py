@@ -2,6 +2,14 @@
 # -*- coding: utf-8 -*- #
 from __future__ import unicode_literals
 
+import os
+import sys
+
+# Ensure that filters are importable.
+sys.path.append(os.path.dirname(__file__))
+
+from filters import chunk, paginate
+
 AUTHOR = u'Patrick Cloke'
 AUTHOR_EMAIL = 'patrick@cloke.us'
 SITENAME = u'Like bricks in the sky'
@@ -85,14 +93,10 @@ PLUGINS = [
     'directives',
 ]
 
-# From https://stackoverflow.com/questions/2130016/splitting-a-list-into-n-parts-of-approximately-equal-length
-def chunk(a, n):
-    k, m = divmod(len(a), n)
-    return (a[i * k + min(i, m):(i + 1) * k + min(i + 1, m)] for i in xrange(n))
-
 # Custom Jinja filters.
 JINJA_FILTERS = {
     'chunk': chunk,
+    'paginate': paginate,
 }
 
 # Change the default URLs.
