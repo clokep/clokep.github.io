@@ -19,9 +19,24 @@
 
 /* Give special formatting to blockquotes. */
 blockquote {
-    margin: 20px;
+    margin-left: 40px;
+    margin-right: 40px;
     font-style: italic;
 }
 blockquote em {
     font-style: normal;
+}
+
+/* Indent the "Note" lins. */
+div.admonition {
+    margin-left: 40px;
+    margin-right: 40px;
+}
+/* Display the "Note" on the same line as the content. */
+div.admonition p.first, div.admonition p.first + p {
+    display: inline;
+}
+/* Add a : after "Note". */
+p.admonition-title::after {
+    content: ":";
 }
