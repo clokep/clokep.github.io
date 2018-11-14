@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<rss version="2.0"><channel><title>Like bricks in the sky - celery</title><link>http://patrick.cloke.us/</link><description></description><lastBuildDate>Tue, 23 Oct 2018 19:24:00 -0400</lastBuildDate><item><title>Calling Celery from Twisted</title><link>http://patrick.cloke.us/posts/2018/10/23/calling-celery-from-twisted/</link><description>
+<rss version="2.0"><channel><title>Like bricks in the sky - celery</title><link>https://patrick.cloke.us/</link><description></description><lastBuildDate>Tue, 23 Oct 2018 19:24:00 -0400</lastBuildDate><item><title>Calling Celery from Twisted</title><link>https://patrick.cloke.us/posts/2018/10/23/calling-celery-from-twisted/</link><description>
 &lt;div class="section" id="background"&gt;
 &lt;h2&gt;&lt;a class="toc-backref" href="#id13"&gt;Background&lt;/a&gt;&lt;/h2&gt;
 &lt;p&gt;I use &lt;a class="reference external" href="https://twistedmatrix.com/"&gt;Twisted&lt;/a&gt; and &lt;a class="reference external" href="http://www.celeryproject.org/"&gt;Celery&lt;/a&gt; daily at work, both are useful frameworks, both have

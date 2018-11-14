@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>Like bricks in the sky - Instantbird</title><link href="http://patrick.cloke.us/" rel="alternate"></link><link href="http://patrick.cloke.us/feeds/tag/instantbird.atom.xml" rel="self"></link><id>http://patrick.cloke.us/</id><updated>2017-05-05T11:20:00-04:00</updated><entry><title>Google Summer of Code 2017: Matrix protocol for Instantbird and Thunderbird</title><link href="http://patrick.cloke.us/posts/2017/05/05/google-summer-of-code-2017-matrix-protocol/" rel="alternate"></link><published>2017-05-05T11:20:00-04:00</published><updated>2017-05-05T11:20:00-04:00</updated><author><name>Patrick Cloke</name></author><id>tag:patrick.cloke.us,2017-05-05:/posts/2017/05/05/google-summer-of-code-2017-matrix-protocol/</id><summary type="html">&lt;p&gt;I&amp;#8217;ll be mentoring Pavan Karthik on his &lt;a class="reference external" href="https://summerofcode.withgoogle.com/projects/#6473832528347136"&gt;project for Google Summer of Code 2017&lt;/a&gt;
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Like bricks in the sky - Instantbird</title><link href="https://patrick.cloke.us/" rel="alternate"></link><link href="https://patrick.cloke.us/feeds/tag/instantbird.atom.xml" rel="self"></link><id>https://patrick.cloke.us/</id><updated>2017-05-05T11:20:00-04:00</updated><entry><title>Google Summer of Code 2017: Matrix protocol for Instantbird and Thunderbird</title><link href="https://patrick.cloke.us/posts/2017/05/05/google-summer-of-code-2017-matrix-protocol/" rel="alternate"></link><published>2017-05-05T11:20:00-04:00</published><updated>2017-05-05T11:20:00-04:00</updated><author><name>Patrick Cloke</name></author><id>tag:patrick.cloke.us,2017-05-05:/posts/2017/05/05/google-summer-of-code-2017-matrix-protocol/</id><summary type="html">&lt;p&gt;I&amp;#8217;ll be mentoring Pavan Karthik on his &lt;a class="reference external" href="https://summerofcode.withgoogle.com/projects/#6473832528347136"&gt;project for Google Summer of Code 2017&lt;/a&gt;
 entitled &amp;#8220;Matrix Protocol Support for Instantbird&amp;#8221;. &lt;a class="reference external" href="http://matrix.org/"&gt;Matrix&lt;/a&gt; is a new(er)
 protocol that is an open, decentralized network with some unique features.
 Initial support for this landed in &lt;a class="reference external" href="https://bugzilla.mozilla.org/show_bug.cgi?id=1315926"&gt;bug 1315926&lt;/a&gt;, but it is not feature …&lt;/p&gt;</summary><content type="html">&lt;p&gt;I&amp;#8217;ll be mentoring Pavan Karthik on his &lt;a class="reference external" href="https://summerofcode.withgoogle.com/projects/#6473832528347136"&gt;project for Google Summer of Code 2017&lt;/a&gt;
@@ -23,7 +23,7 @@ day-to-day basis to dog-food the code.&lt;/blockquote&gt;
 &lt;p&gt;I&amp;#8217;m super excited to finalize support for Matrix in both Instantbird and
 Thunderbird! You can also checkout the full 25 projects that
 &lt;a class="reference external" href="https://summerofcode.withgoogle.com/organizations/6421332469219328/"&gt;Mozilla accepted&lt;/a&gt;.&lt;/p&gt;
-</content><category term="chat"></category><category term="GSoC"></category><category term="instant messaging"></category><category term="Instantbird"></category><category term="Matrix"></category></entry><entry><title>IRC Client Usage Share on moznet</title><link href="http://patrick.cloke.us/posts/2015/09/23/irc-client-usage-share-on-moznet/" rel="alternate"></link><published>2015-09-23T17:07:00-04:00</published><updated>2015-09-24T07:18:00-04:00</updated><author><name>Patrick Cloke</name></author><id>tag:patrick.cloke.us,2015-09-23:/posts/2015/09/23/irc-client-usage-share-on-moznet/</id><summary type="html">
+</content><category term="chat"></category><category term="GSoC"></category><category term="instant messaging"></category><category term="Instantbird"></category><category term="Matrix"></category></entry><entry><title>IRC Client Usage Share on moznet</title><link href="https://patrick.cloke.us/posts/2015/09/23/irc-client-usage-share-on-moznet/" rel="alternate"></link><published>2015-09-23T17:07:00-04:00</published><updated>2015-09-24T07:18:00-04:00</updated><author><name>Patrick Cloke</name></author><id>tag:patrick.cloke.us,2015-09-23:/posts/2015/09/23/irc-client-usage-share-on-moznet/</id><summary type="html">
 &lt;div class="section" id="background"&gt;
 &lt;h2&gt;&lt;a class="toc-backref" href="#id13"&gt;Background&lt;/a&gt;&lt;/h2&gt;
 &lt;p&gt;The usage share of &lt;span class="caps"&gt;IRC&lt;/span&gt; clients has always been something I’m interested in. This
@@ -257,13 +257,13 @@ it.&lt;/td&gt;&lt;/tr&gt;
 &lt;/table&gt;
 &lt;/div&gt;
 &lt;/div&gt;
-</content><category term="Mozilla"></category><category term="Thunderbird"></category><category term="Instantbird"></category><category term="IRC"></category></entry><entry><title>Thunderbird Summit 2014</title><link href="http://patrick.cloke.us/posts/2014/11/14/thunderbird-summit-2014/" rel="alternate"></link><published>2014-11-14T18:37:00-05:00</published><updated>2014-11-14T18:37:00-05:00</updated><author><name>Patrick Cloke</name></author><id>tag:patrick.cloke.us,2014-11-14:/posts/2014/11/14/thunderbird-summit-2014/</id><summary type="html">&lt;p&gt;Last month (Oct. 15th to Oct. 18th, to be precise), &lt;a class="reference external" href="https://wiki.mozilla.org/Thunderbird:Summit_2014#Invited_Attendees"&gt;twenty volunteers&lt;/a&gt;
+</content><category term="Mozilla"></category><category term="Thunderbird"></category><category term="Instantbird"></category><category term="IRC"></category></entry><entry><title>Thunderbird Summit 2014</title><link href="https://patrick.cloke.us/posts/2014/11/14/thunderbird-summit-2014/" rel="alternate"></link><published>2014-11-14T18:37:00-05:00</published><updated>2014-11-14T18:37:00-05:00</updated><author><name>Patrick Cloke</name></author><id>tag:patrick.cloke.us,2014-11-14:/posts/2014/11/14/thunderbird-summit-2014/</id><summary type="html">&lt;p&gt;Last month (Oct. 15th to Oct. 18th, to be precise), &lt;a class="reference external" href="https://wiki.mozilla.org/Thunderbird:Summit_2014#Invited_Attendees"&gt;twenty volunteers&lt;/a&gt;
 descended on Mozilla&amp;#8217;s Toronto office to discuss &lt;a class="reference external" href="https://www.mozilla.org/en-US/thunderbird/"&gt;Mozilla Thunderbird&lt;/a&gt;. This
 included Mozilla employees, Thunderbird contributors of all sorts (developers,
 user interface designers, add-on reviewers), Lightning contributors, and
 chat/&lt;a class="reference external" href="http://instantbird.com/"&gt;Instantbird&lt;/a&gt;&amp;nbsp;contributors.&lt;/p&gt;
 &lt;blockquote class="text-center"&gt;
-&lt;a class="reference external image-reference" href="http://patrick.cloke.us/images/chat-tb-summit/IMG_6516.jpg"&gt;&lt;img alt="The entire group of volunteers." src="/thumbnails/chat-tb-summit/IMG_6516_small.jpg" /&gt;&lt;/a&gt;
+&lt;a class="reference external image-reference" href="https://patrick.cloke.us/images/chat-tb-summit/IMG_6516.jpg"&gt;&lt;img alt="The entire group of volunteers." src="/thumbnails/chat-tb-summit/IMG_6516_small.jpg" /&gt;&lt;/a&gt;
 &lt;/blockquote&gt;
 &lt;p&gt;It was great to spend some quality …&lt;/p&gt;</summary><content type="html">&lt;p&gt;Last month (Oct. 15th to Oct. 18th, to be precise), &lt;a class="reference external" href="https://wiki.mozilla.org/Thunderbird:Summit_2014#Invited_Attendees"&gt;twenty volunteers&lt;/a&gt;
 descended on Mozilla&amp;#8217;s Toronto office to discuss &lt;a class="reference external" href="https://www.mozilla.org/en-US/thunderbird/"&gt;Mozilla Thunderbird&lt;/a&gt;. This
@@ -271,16 +271,16 @@ included Mozilla employees, Thunderbird contributors of all sorts (developers,
 user interface designers, add-on reviewers), Lightning contributors, and
 chat/&lt;a class="reference external" href="http://instantbird.com/"&gt;Instantbird&lt;/a&gt;&amp;nbsp;contributors.&lt;/p&gt;
 &lt;blockquote class="text-center"&gt;
-&lt;a class="reference external image-reference" href="http://patrick.cloke.us/images/chat-tb-summit/IMG_6516.jpg"&gt;&lt;img alt="The entire group of volunteers." src="/thumbnails/chat-tb-summit/IMG_6516_small.jpg" /&gt;&lt;/a&gt;
+&lt;a class="reference external image-reference" href="https://patrick.cloke.us/images/chat-tb-summit/IMG_6516.jpg"&gt;&lt;img alt="The entire group of volunteers." src="/thumbnails/chat-tb-summit/IMG_6516_small.jpg" /&gt;&lt;/a&gt;
 &lt;/blockquote&gt;
 &lt;p&gt;It was great to spend some quality hacking time with &lt;a class="reference external" href="http://blog.queze.net/"&gt;Florian&lt;/a&gt; and to meet
 &lt;a class="reference external" href="http://blog.nhnt11.com/"&gt;Nihanth&lt;/a&gt;, both Instantbird guys who I talk to most days on &lt;span class="caps"&gt;IRC&lt;/span&gt;! I also had the
 pleasure of re-meeting a few people from the Mozilla Summit last year (I
 attended in Toronto) and to meet some brand new&amp;nbsp;people!&lt;/p&gt;
 &lt;blockquote class="text-center"&gt;
-&lt;a class="reference external image-reference" href="http://patrick.cloke.us/images/chat-tb-summit/IMG_6408.jpg"&gt;&lt;img alt="Nihanth hacking." src="/thumbnails/chat-tb-summit/IMG_6408_small.jpg" /&gt;&lt;/a&gt;
-&lt;a class="reference external image-reference" href="http://patrick.cloke.us/images/chat-tb-summit/IMG_6426.jpg"&gt;&lt;img alt="The chat contributors: me, Florian and Nihanth." src="/thumbnails/chat-tb-summit/IMG_6426_small.jpg" /&gt;&lt;/a&gt;
-&lt;a class="reference external image-reference" href="http://patrick.cloke.us/images/chat-tb-summit/IMG_6508.jpg"&gt;&lt;img alt="Daniel joining us over Vidyo." src="/thumbnails/chat-tb-summit/IMG_6508_small.jpg" /&gt;&lt;/a&gt;
+&lt;a class="reference external image-reference" href="https://patrick.cloke.us/images/chat-tb-summit/IMG_6408.jpg"&gt;&lt;img alt="Nihanth hacking." src="/thumbnails/chat-tb-summit/IMG_6408_small.jpg" /&gt;&lt;/a&gt;
+&lt;a class="reference external image-reference" href="https://patrick.cloke.us/images/chat-tb-summit/IMG_6426.jpg"&gt;&lt;img alt="The chat contributors: me, Florian and Nihanth." src="/thumbnails/chat-tb-summit/IMG_6426_small.jpg" /&gt;&lt;/a&gt;
+&lt;a class="reference external image-reference" href="https://patrick.cloke.us/images/chat-tb-summit/IMG_6508.jpg"&gt;&lt;img alt="Daniel joining us over Vidyo." src="/thumbnails/chat-tb-summit/IMG_6508_small.jpg" /&gt;&lt;/a&gt;
 &lt;p&gt;A few pictures of the chat contributors: Nihanth; me, Florian and Nihanth;
 and Daniel (dialing&amp;nbsp;in!)&lt;/p&gt;
 &lt;/blockquote&gt;
@@ -292,16 +292,16 @@ after that, we got some really exciting work done! We started cleaning up and
 finalizing some patches from Google Summer of Code 2014 to add &lt;a class="reference external" href="http://www.webrtc.org/"&gt;WebRTC&lt;/a&gt; support
 to &lt;a class="reference external" href="http://xmpp.org/"&gt;&lt;span class="caps"&gt;XMPP&lt;/span&gt;&lt;/a&gt;! You can check out the progress in &lt;a class="reference external" href="https://bugzilla.mozilla.org/show_bug.cgi?id=1018060"&gt;bug 1018060&lt;/a&gt;.&lt;/p&gt;
 &lt;blockquote class="text-center"&gt;
-&lt;a class="reference external image-reference" href="http://patrick.cloke.us/images/chat-tb-summit/IMG_6394.jpg"&gt;&lt;img alt="First working call over Instantbird WebRTC." src="/thumbnails/chat-tb-summit/IMG_6394_small.jpg" /&gt;&lt;/a&gt;
-&lt;a class="reference external image-reference" href="http://patrick.cloke.us/images/chat-tb-summit/webrtc_preview.jpg"&gt;&lt;img alt="Screenshot of first working call over Instantbird WebRTC." src="/thumbnails/chat-tb-summit/webrtc_preview_small.jpg" /&gt;&lt;/a&gt;
+&lt;a class="reference external image-reference" href="https://patrick.cloke.us/images/chat-tb-summit/IMG_6394.jpg"&gt;&lt;img alt="First working call over Instantbird WebRTC." src="/thumbnails/chat-tb-summit/IMG_6394_small.jpg" /&gt;&lt;/a&gt;
+&lt;a class="reference external image-reference" href="https://patrick.cloke.us/images/chat-tb-summit/webrtc_preview.jpg"&gt;&lt;img alt="Screenshot of first working call over Instantbird WebRTC." src="/thumbnails/chat-tb-summit/webrtc_preview_small.jpg" /&gt;&lt;/a&gt;
 &lt;p&gt;First working call over Instantbird&amp;nbsp;WebRTC.&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;blockquote class="text-center"&gt;
-&lt;a class="reference external image-reference" href="http://patrick.cloke.us/images/chat-tb-summit/IMG_6594.jpg"&gt;&lt;img alt="Eating some poutine!" src="/thumbnails/chat-tb-summit/IMG_6594_small.jpg" /&gt;&lt;/a&gt;
+&lt;a class="reference external image-reference" href="https://patrick.cloke.us/images/chat-tb-summit/IMG_6594.jpg"&gt;&lt;img alt="Eating some poutine!" src="/thumbnails/chat-tb-summit/IMG_6594_small.jpg" /&gt;&lt;/a&gt;
 &lt;p&gt;Other highlights of the trip include eating the &amp;#8220;Canadian delicacy&amp;#8221; of
 poutine (with pulled pork on&amp;nbsp;it)!&lt;/p&gt;
 &lt;/blockquote&gt;
-</content><category term="Mozilla"></category><category term="Thunderbird"></category><category term="community"></category><category term="Instantbird"></category></entry><entry><title>Extending JavaScript Maps (or other built-in objects)</title><link href="http://patrick.cloke.us/posts/2014/04/27/extending-javascript-maps-or-other/" rel="alternate"></link><published>2014-04-27T13:46:00-04:00</published><updated>2014-04-27T13:46:00-04:00</updated><author><name>Patrick Cloke</name></author><id>tag:patrick.cloke.us,2014-04-27:/posts/2014/04/27/extending-javascript-maps-or-other/</id><summary type="html">
+</content><category term="Mozilla"></category><category term="Thunderbird"></category><category term="community"></category><category term="Instantbird"></category></entry><entry><title>Extending JavaScript Maps (or other built-in objects)</title><link href="https://patrick.cloke.us/posts/2014/04/27/extending-javascript-maps-or-other/" rel="alternate"></link><published>2014-04-27T13:46:00-04:00</published><updated>2014-04-27T13:46:00-04:00</updated><author><name>Patrick Cloke</name></author><id>tag:patrick.cloke.us,2014-04-27:/posts/2014/04/27/extending-javascript-maps-or-other/</id><summary type="html">
 &lt;p&gt;Finally another technical post, this one is about my adventures in
 attempting to extend the built-in &lt;a class="reference external" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Map"&gt;Map&lt;/a&gt; object in JavaScript to extend
 the functionality. As background, there are two reasons we’d want this:&lt;/p&gt;
@@ -458,7 +458,7 @@ we’ve fixed most of them at this point though!&lt;/td&gt;&lt;/tr&gt;
 &lt;table class="docutils footnote" frame="void" id="id5" rules="none"&gt;
 &lt;colgroup&gt;&lt;col class="label"/&gt;&lt;col/&gt;&lt;/colgroup&gt;
 &lt;tbody valign="top"&gt;
-&lt;tr&gt;&lt;td class="label"&gt;&lt;a class="fn-backref" href="#id2"&gt;[2]&lt;/a&gt;&lt;/td&gt;&lt;td&gt;As I’ve &lt;a class="reference external" href="http://patrick.cloke.us/posts/2011/03/08/so-called-irc-specifications/"&gt;written before&lt;/a&gt;, &lt;span class="caps"&gt;IRC&lt;/span&gt; tends to have crazy specifications.
+&lt;tr&gt;&lt;td class="label"&gt;&lt;a class="fn-backref" href="#id2"&gt;[2]&lt;/a&gt;&lt;/td&gt;&lt;td&gt;As I’ve &lt;a class="reference external" href="https://patrick.cloke.us/posts/2011/03/08/so-called-irc-specifications/"&gt;written before&lt;/a&gt;, &lt;span class="caps"&gt;IRC&lt;/span&gt; tends to have crazy specifications.
 In &lt;span class="caps"&gt;IRC&lt;/span&gt;, &lt;a class="reference external" href="https://tools.ietf.org/html/rfc2812#section-2.2"&gt;the characters of A-Z[]\~ are considered the upper case of a-z{}|^&lt;/a&gt;
 (“because of &lt;span class="caps"&gt;IRC&lt;/span&gt;’s Scandinavian origin”). Oh, also this can
 change based on an &lt;a class="reference external" href="http://tools.ietf.org/html/draft-brocklesby-irc-isupport-03#section-3.1"&gt;&lt;span class="caps"&gt;ISUPPORT&lt;/span&gt; response&lt;/a&gt; from the server to pure &lt;span class="caps"&gt;ASCII&lt;/span&gt; or
@@ -475,7 +475,7 @@ expected, but they’re uhh…not up anywhere yet though. Oops.&lt;/td&gt;&lt;/t
 &lt;/tbody&gt;
 &lt;/table&gt;
 &lt;/div&gt;
-</content><category term="Instantbird"></category><category term="programming"></category><category term="specifications"></category><category term="Thunderbird"></category><category term="Wat"></category></entry><entry><title>Yahoo Protocol Google Summer of Code Round-up</title><link href="http://patrick.cloke.us/posts/2013/10/06/yahoo-protocol-google-summer-of-code/" rel="alternate"></link><published>2013-10-06T09:18:00-04:00</published><updated>2013-10-06T09:18:00-04:00</updated><author><name>Patrick Cloke</name></author><id>tag:patrick.cloke.us,2013-10-06:/posts/2013/10/06/yahoo-protocol-google-summer-of-code/</id><summary type="html">&lt;p&gt;I have to apologize to my student, &lt;a class="reference external" href="http://phaseshiftsoftware.com/blog/"&gt;Quentin&lt;/a&gt; (aka qheaden on &lt;span class="caps"&gt;IRC&lt;/span&gt;),
+</content><category term="Instantbird"></category><category term="programming"></category><category term="specifications"></category><category term="Thunderbird"></category><category term="Wat"></category></entry><entry><title>Yahoo Protocol Google Summer of Code Round-up</title><link href="https://patrick.cloke.us/posts/2013/10/06/yahoo-protocol-google-summer-of-code/" rel="alternate"></link><published>2013-10-06T09:18:00-04:00</published><updated>2013-10-06T09:18:00-04:00</updated><author><name>Patrick Cloke</name></author><id>tag:patrick.cloke.us,2013-10-06:/posts/2013/10/06/yahoo-protocol-google-summer-of-code/</id><summary type="html">&lt;p&gt;I have to apologize to my student, &lt;a class="reference external" href="http://phaseshiftsoftware.com/blog/"&gt;Quentin&lt;/a&gt; (aka qheaden on &lt;span class="caps"&gt;IRC&lt;/span&gt;),
 for taking so long to write this&amp;#8230;but anyway: Google Summer of Code
 2013 is over!&amp;nbsp; Quentin has done a great job working at implementing the
 Yahoo Protocol for Instantbird (and Thunderbird) in JavaScript
@@ -519,7 +519,7 @@ included in the next Thunderbird release (i.e. Thunderbird&amp;nbsp;31).&lt;/p&g
 Quentin made and we hope that Quentin has learned a lot! Thanks for a
 great summer qheaden and hopefully we&amp;#8217;ll see you around&amp;nbsp;still!&lt;/p&gt;
 &lt;/div&gt;
-</content><category term="chat"></category><category term="GSoC"></category><category term="instant messaging"></category><category term="Instantbird"></category><category term="Yahoo"></category></entry><entry><title>Mentoring Google Summer of Code 2013</title><link href="http://patrick.cloke.us/posts/2013/06/28/mentoring-google-summer-of-code-2013/" rel="alternate"></link><published>2013-06-28T18:05:00-04:00</published><updated>2013-06-28T18:05:00-04:00</updated><author><name>Patrick Cloke</name></author><id>tag:patrick.cloke.us,2013-06-28:/posts/2013/06/28/mentoring-google-summer-of-code-2013/</id><summary type="html">&lt;p&gt;I&amp;#8217;m officially a mentor this year for &lt;a class="reference external" href="http://www.google-melange.com/gsoc/homepage/google/gsoc2013"&gt;2013&amp;#8217;s Google Summer of Code&lt;/a&gt;.
+</content><category term="chat"></category><category term="GSoC"></category><category term="instant messaging"></category><category term="Instantbird"></category><category term="Yahoo"></category></entry><entry><title>Mentoring Google Summer of Code 2013</title><link href="https://patrick.cloke.us/posts/2013/06/28/mentoring-google-summer-of-code-2013/" rel="alternate"></link><published>2013-06-28T18:05:00-04:00</published><updated>2013-06-28T18:05:00-04:00</updated><author><name>Patrick Cloke</name></author><id>tag:patrick.cloke.us,2013-06-28:/posts/2013/06/28/mentoring-google-summer-of-code-2013/</id><summary type="html">&lt;p&gt;I&amp;#8217;m officially a mentor this year for &lt;a class="reference external" href="http://www.google-melange.com/gsoc/homepage/google/gsoc2013"&gt;2013&amp;#8217;s Google Summer of Code&lt;/a&gt;.
 I&amp;#8217;m a bit late on posting this, but oh well! My student this year is
 &lt;a class="reference external" href="http://phaseshiftsoftware.com/"&gt;Quentin Headen&lt;/a&gt; who is &lt;a class="reference external" href="http://www.google-melange.com/gsoc/project/google/gsoc2013/qheaden/26001"&gt;working on&lt;/a&gt; a &lt;a class="reference external" href="http://en.wikipedia.org/wiki/Yahoo!_Messenger_Protocol"&gt;Yahoo! Messenger protocol&lt;/a&gt;
 for the Instantbird chat/ backend (so it&amp;#8217;ll also be …&lt;/p&gt;</summary><content type="html">&lt;p&gt;I&amp;#8217;m officially a mentor this year for &lt;a class="reference external" href="http://www.google-melange.com/gsoc/homepage/google/gsoc2013"&gt;2013&amp;#8217;s Google Summer of Code&lt;/a&gt;.
@@ -553,7 +553,7 @@ Benedikt goes by Mic and Florian goes by something starting with&amp;nbsp;&amp;#
 &lt;p&gt;Thanks also go out to Mozilla for letting us participate in Google
 Summer of Code with them again! You can see all of the accepted projects
 in &lt;a class="reference external" href="http://blog.gerv.net/2013/06/gsoc-2013-project-list/"&gt;Gerv&amp;#8217;s blogpost&lt;/a&gt;.&lt;/p&gt;
-</content><category term="chat"></category><category term="GSoC"></category><category term="instant messaging"></category><category term="Instantbird"></category><category term="Yahoo"></category></entry><entry><title>Instantbird 1.4 Released!</title><link href="http://patrick.cloke.us/posts/2013/05/20/instantbird-14-released/" rel="alternate"></link><published>2013-05-20T16:45:00-04:00</published><updated>2013-05-20T16:45:00-04:00</updated><author><name>Patrick Cloke</name></author><id>tag:patrick.cloke.us,2013-05-20:/posts/2013/05/20/instantbird-14-released/</id><summary type="html">&lt;p&gt;After a bunch of l10n build problems, we&amp;#8217;ve finally released
+</content><category term="chat"></category><category term="GSoC"></category><category term="instant messaging"></category><category term="Instantbird"></category><category term="Yahoo"></category></entry><entry><title>Instantbird 1.4 Released!</title><link href="https://patrick.cloke.us/posts/2013/05/20/instantbird-14-released/" rel="alternate"></link><published>2013-05-20T16:45:00-04:00</published><updated>2013-05-20T16:45:00-04:00</updated><author><name>Patrick Cloke</name></author><id>tag:patrick.cloke.us,2013-05-20:/posts/2013/05/20/instantbird-14-released/</id><summary type="html">&lt;p&gt;After a bunch of l10n build problems, we&amp;#8217;ve finally released
 Instantbird 1.4, which includes updates to libpurple 2.10.7 and Mozilla
 20.&amp;nbsp; In particular this&amp;nbsp;includes:&lt;/p&gt;
 &lt;ul class="simple"&gt;
@@ -579,7 +579,7 @@ you also go on &lt;span class="caps"&gt;IRC&lt;/span&gt;. Instantbird has great 
 have issues, feel free to ping me in #instantbird on irc.mozilla.org and
 let me know what your issue&amp;nbsp;is.)&lt;/p&gt;
 &lt;p&gt;You can download it &lt;a class="reference external" href="http://www.instantbird.com/download-all.html"&gt;here&lt;/a&gt;, or view the full &lt;a class="reference external" href="http://www.instantbird.com/release-notes.html"&gt;release notes&lt;/a&gt;.&lt;/p&gt;
-</content><category term="Instantbird"></category></entry><entry><title>JavaScript typed arrays pain</title><link href="http://patrick.cloke.us/posts/2012/11/28/javascript-typed-arrays-pain/" rel="alternate"></link><published>2012-11-28T23:11:00-05:00</published><updated>2012-11-28T23:11:00-05:00</updated><author><name>Patrick Cloke</name></author><id>tag:patrick.cloke.us,2012-11-28:/posts/2012/11/28/javascript-typed-arrays-pain/</id><summary type="html">&lt;p&gt;If you&amp;#8217;ve ever tried to deal with binary data in JavaScript you know
+</content><category term="Instantbird"></category></entry><entry><title>JavaScript typed arrays pain</title><link href="https://patrick.cloke.us/posts/2012/11/28/javascript-typed-arrays-pain/" rel="alternate"></link><published>2012-11-28T23:11:00-05:00</published><updated>2012-11-28T23:11:00-05:00</updated><author><name>Patrick Cloke</name></author><id>tag:patrick.cloke.us,2012-11-28:/posts/2012/11/28/javascript-typed-arrays-pain/</id><summary type="html">&lt;p&gt;If you&amp;#8217;ve ever tried to deal with binary data in JavaScript you know
 it isn&amp;#8217;t much fun and you usually resort to using strings lots of
 charCodeAt and related functions.&amp;nbsp; &lt;a class="reference external" href="https://developer.mozilla.org/en-US/docs/JavaScript_typed_arrays"&gt;Typed arrays&lt;/a&gt; are supposed to solve
 this though!&amp;nbsp; The typed array &lt;span class="caps"&gt;API&lt;/span&gt; consists of creating a buffer of …&lt;/p&gt;</summary><content type="html">&lt;p&gt;If you&amp;#8217;ve ever tried to deal with binary data in JavaScript you know
@@ -670,7 +670,7 @@ don&amp;#8217;t use ArrayBufferViews, use DataViews.&amp;nbsp; (Although Uint8Ar
 Int8Arrays should work&amp;nbsp;fine!)&lt;/p&gt;
 &lt;p&gt;And to not rant the &lt;em&gt;entire&lt;/em&gt; time, working with typed arrays certainly
 does beat strings +&amp;nbsp;charCodeAt!&lt;/p&gt;
-</content><category term="Instantbird"></category><category term="Mozilla"></category><category term="OSCAR"></category><category term="Thunderbird"></category><category term="Wat"></category></entry><entry><title>Instantbird 1.3 Released!!!</title><link href="http://patrick.cloke.us/posts/2012/11/16/instantbird-13-released/" rel="alternate"></link><published>2012-11-16T06:42:00-05:00</published><updated>2012-11-16T06:42:00-05:00</updated><author><name>Patrick Cloke</name></author><id>tag:patrick.cloke.us,2012-11-16:/posts/2012/11/16/instantbird-13-released/</id><summary type="html">&lt;p&gt;Well we finally got our release process down a bit better and were
+</content><category term="Instantbird"></category><category term="Mozilla"></category><category term="OSCAR"></category><category term="Thunderbird"></category><category term="Wat"></category></entry><entry><title>Instantbird 1.3 Released!!!</title><link href="https://patrick.cloke.us/posts/2012/11/16/instantbird-13-released/" rel="alternate"></link><published>2012-11-16T06:42:00-05:00</published><updated>2012-11-16T06:42:00-05:00</updated><author><name>Patrick Cloke</name></author><id>tag:patrick.cloke.us,2012-11-16:/posts/2012/11/16/instantbird-13-released/</id><summary type="html">&lt;p&gt;Well we finally got our release process down a bit better and were
 able to do a quicker release (from 1.2 to 1.3, compared to our previous
 few releases). This is great news, as it gives incremental changes to
 our users faster!&amp;nbsp; There&amp;#8217;s some new features available …&lt;/p&gt;</summary><content type="html">&lt;p&gt;Well we finally got our release process down a bit better and were
@@ -691,7 +691,7 @@ following multiple&amp;nbsp;conversations).&lt;/li&gt;
 &lt;p&gt;Instantbird 1.3 is based off of Mozilla 16.0.2, but I believe we&amp;#8217;re
 hoping to update to mozilla-central soon in order to benefit from cool
 new technologies, like WebRTC!&amp;nbsp; You should &lt;a class="reference external" href="http://www.instantbird.com/download-all.html"&gt;check out Instantbird&lt;/a&gt;&amp;nbsp;now!&lt;/p&gt;
-</content><category term="Instantbird"></category></entry><entry><title>On Status</title><link href="http://patrick.cloke.us/posts/2012/10/16/on-status/" rel="alternate"></link><published>2012-10-16T21:33:00-04:00</published><updated>2012-10-16T21:33:00-04:00</updated><author><name>Patrick Cloke</name></author><id>tag:patrick.cloke.us,2012-10-16:/posts/2012/10/16/on-status/</id><summary type="html">&lt;p&gt;Something that comes up often about Instantbird is why we only support
+</content><category term="Instantbird"></category></entry><entry><title>On Status</title><link href="https://patrick.cloke.us/posts/2012/10/16/on-status/" rel="alternate"></link><published>2012-10-16T21:33:00-04:00</published><updated>2012-10-16T21:33:00-04:00</updated><author><name>Patrick Cloke</name></author><id>tag:patrick.cloke.us,2012-10-16:/posts/2012/10/16/on-status/</id><summary type="html">&lt;p&gt;Something that comes up often about Instantbird is why we only support
 three statuses: Available, Unavailable and Offline.&amp;nbsp; (We do actually
 support a fourth one too, Idle, but that is set automatically, not
 chosen by the user.)&amp;nbsp; Frequently this discussion is in the context of
@@ -808,7 +808,7 @@ in the&amp;nbsp;table.&lt;/p&gt;
 &lt;/tr&gt;
 &lt;/tbody&gt;
 &lt;/table&gt;
-</content><category term="chat"></category><category term="instant messaging"></category><category term="Instantbird"></category><category term="messaging"></category><category term="status"></category><category term="Thunderbird"></category></entry><entry><title>Instantbird 1.2 Released (with awesome new IRC features)!</title><link href="http://patrick.cloke.us/posts/2012/08/08/instantbird-12-released-with-awesome/" rel="alternate"></link><published>2012-08-08T13:08:00-04:00</published><updated>2012-08-08T13:08:00-04:00</updated><author><name>Patrick Cloke</name></author><id>tag:patrick.cloke.us,2012-08-08:/posts/2012/08/08/instantbird-12-released-with-awesome/</id><summary type="html">&lt;p&gt;If you haven&amp;#8217;t seen the announcement&amp;#8230;&lt;a class="reference external" href="http://blog.instantbird.org/2012/08/instantbird-1-2-released/"&gt;Instantbird 1.2 has been
+</content><category term="chat"></category><category term="instant messaging"></category><category term="Instantbird"></category><category term="messaging"></category><category term="status"></category><category term="Thunderbird"></category></entry><entry><title>Instantbird 1.2 Released (with awesome new IRC features)!</title><link href="https://patrick.cloke.us/posts/2012/08/08/instantbird-12-released-with-awesome/" rel="alternate"></link><published>2012-08-08T13:08:00-04:00</published><updated>2012-08-08T13:08:00-04:00</updated><author><name>Patrick Cloke</name></author><id>tag:patrick.cloke.us,2012-08-08:/posts/2012/08/08/instantbird-12-released-with-awesome/</id><summary type="html">&lt;p&gt;If you haven&amp;#8217;t seen the announcement&amp;#8230;&lt;a class="reference external" href="http://blog.instantbird.org/2012/08/instantbird-1-2-released/"&gt;Instantbird 1.2 has been
 released&lt;/a&gt;!&amp;nbsp; It&amp;#8217;s got a ton of great new features that I&amp;#8217;m excited for:
 &lt;a class="reference external" href="http://blog.instantbird.org/2012/08/tab-completion-in-instantbird-1-2/"&gt;better tab complete&lt;/a&gt;, a marker showing the last viewed messages,
 support for Bonjour and more.&amp;nbsp; But the most exciting bits to me are …&lt;/p&gt;</summary><content type="html">&lt;p&gt;If you haven&amp;#8217;t seen the announcement&amp;#8230;&lt;a class="reference external" href="http://blog.instantbird.org/2012/08/instantbird-1-2-released/"&gt;Instantbird 1.2 has been
@@ -819,7 +819,7 @@ JavaScript implementations of &lt;a class="reference external" href="http://lxr.
 &lt;a class="reference external" href="http://lxr.instantbird.org/instantbird/source/chat/protocols/gtalk/"&gt;GTalk&lt;/a&gt;, so far) and &lt;a class="reference external" href="http://lxr.instantbird.org/instantbird/source/chat/protocols/irc/"&gt;&lt;span class="caps"&gt;IRC&lt;/span&gt;&lt;/a&gt;!&lt;/p&gt;
 &lt;p&gt;Why am I so excited for them? Mostly because they&amp;#8217;re extendable!
 (Well&amp;#8230;and I guess because I wrote most of the &lt;span class="caps"&gt;IRC&lt;/span&gt; code.) I&amp;#8217;ve
-&lt;a class="reference external" href="http://patrick.cloke.us/posts/2012/06/11/irc-auto-performs/"&gt;written&lt;/a&gt; a bit about this before for &lt;span class="caps"&gt;IRC&lt;/span&gt;&amp;#8230;but it will let add-ons do
+&lt;a class="reference external" href="https://patrick.cloke.us/posts/2012/06/11/irc-auto-performs/"&gt;written&lt;/a&gt; a bit about this before for &lt;span class="caps"&gt;IRC&lt;/span&gt;&amp;#8230;but it will let add-ons do
 whatever they want to the &lt;span class="caps"&gt;IRC&lt;/span&gt; protocol.&amp;nbsp; You should check out the
 implementations (links above), they&amp;#8217;re very hackable.&amp;nbsp; Hopefully we can
 remove libpurple &lt;span class="caps"&gt;XMPP&lt;/span&gt; and fully switch to Instantbird&amp;#8217;s &lt;span class="caps"&gt;XMPP&lt;/span&gt; for the
@@ -836,7 +836,7 @@ been in nightly builds&amp;#8230;forever), so we started making a list of some
 of the stuff we&amp;#8217;d like to implement in future Instantbirds, you can
 check it out &lt;a class="reference external" href="https://etherpad.mozilla.org/ib-1-3"&gt;here&lt;/a&gt;. Some of them are very exciting, feel free to grab
 one and work on&amp;nbsp;it.&lt;/p&gt;
-</content><category term="Instantbird"></category><category term="IRC"></category></entry><entry><title>IRC Auto-Performs</title><link href="http://patrick.cloke.us/posts/2012/06/11/irc-auto-performs/" rel="alternate"></link><published>2012-06-11T22:25:00-04:00</published><updated>2012-06-11T22:25:00-04:00</updated><author><name>Patrick Cloke</name></author><id>tag:patrick.cloke.us,2012-06-11:/posts/2012/06/11/irc-auto-performs/</id><summary type="html">
+</content><category term="Instantbird"></category><category term="IRC"></category></entry><entry><title>IRC Auto-Performs</title><link href="https://patrick.cloke.us/posts/2012/06/11/irc-auto-performs/" rel="alternate"></link><published>2012-06-11T22:25:00-04:00</published><updated>2012-06-11T22:25:00-04:00</updated><author><name>Patrick Cloke</name></author><id>tag:patrick.cloke.us,2012-06-11:/posts/2012/06/11/irc-auto-performs/</id><summary type="html">
 &lt;p&gt;There have been a &lt;a class="reference external" href="https://bugzilla.mozilla.org/show_bug.cgi?id=742675"&gt;few&lt;/a&gt; &lt;a class="reference external" href="https://bugzilla.instantbird.org/show_bug.cgi?id=1101"&gt;requests&lt;/a&gt; to support “auto-performs”
 (sending commands to the &lt;span class="caps"&gt;IRC&lt;/span&gt; server after connection that the user types
 into a box or whatever). Personally I find this to be:&lt;/p&gt;
@@ -864,10 +864,10 @@ with this post (and maybe a series of posts) that auto-performs aren’t
 necessary and a trivial restartless extension can replace them.&lt;/p&gt;
 &lt;div class="section" id="design"&gt;
 &lt;h2&gt;&lt;a class="toc-backref" href="#id1"&gt;Design&lt;/a&gt;&lt;/h2&gt;
-&lt;p&gt;Part of the desire to &lt;a class="reference external" href="http://patrick.cloke.us/posts/2011/04/30/why-rewrite-irc-protocol-plugin-part-2/"&gt;replace the libpurple &lt;span class="caps"&gt;IRC&lt;/span&gt; protocol plugin&lt;/a&gt;
+&lt;p&gt;Part of the desire to &lt;a class="reference external" href="https://patrick.cloke.us/posts/2011/04/30/why-rewrite-irc-protocol-plugin-part-2/"&gt;replace the libpurple &lt;span class="caps"&gt;IRC&lt;/span&gt; protocol plugin&lt;/a&gt;
 with a new JavaScript one built specifically for Instantbird (which is
 also now used in Thunderbird!) was to make the protocol fully
-extensible. There are &lt;a class="reference external" href="http://patrick.cloke.us/posts/2011/03/08/so-called-irc-specifications/"&gt;many revisions and unofficial extensions to &lt;span class="caps"&gt;IRC&lt;/span&gt;&lt;/a&gt;
+extensible. There are &lt;a class="reference external" href="https://patrick.cloke.us/posts/2011/03/08/so-called-irc-specifications/"&gt;many revisions and unofficial extensions to &lt;span class="caps"&gt;IRC&lt;/span&gt;&lt;/a&gt;
 and we might not necessarily want to support them all (especially if
 they only apply to a single network). Allowing all parts of the protocol
 implementation to be touched and extended seemed like a great way to
@@ -970,13 +970,13 @@ that it requires a bit more understanding of the actual protocol level
 implementation, I don’t feel that knowing you need to use “&lt;span class="caps"&gt;PRIVMSG&lt;/span&gt;” as a
 command instead of /msg is a huge issue, however.&lt;/p&gt;
 &lt;/div&gt;
-</content><category term="Instantbird"></category><category term="IRC"></category><category term="Mozilla"></category></entry><entry><title>Instantbird Contact List Hack #2</title><link href="http://patrick.cloke.us/posts/2012/01/15/instantbird-contact-list-hack-2/" rel="alternate"></link><published>2012-01-15T10:00:00-05:00</published><updated>2012-01-15T10:00:00-05:00</updated><author><name>Patrick Cloke</name></author><id>tag:patrick.cloke.us,2012-01-15:/posts/2012/01/15/instantbird-contact-list-hack-2/</id><summary type="html">&lt;p&gt;There was a &lt;a class="reference external" href="https://bugzilla.instantbird.org/show_bug.cgi?id=987"&gt;request&lt;/a&gt; on the Instantbird Bugzilla to always show
+</content><category term="Instantbird"></category><category term="IRC"></category><category term="Mozilla"></category></entry><entry><title>Instantbird Contact List Hack #2</title><link href="https://patrick.cloke.us/posts/2012/01/15/instantbird-contact-list-hack-2/" rel="alternate"></link><published>2012-01-15T10:00:00-05:00</published><updated>2012-01-15T10:00:00-05:00</updated><author><name>Patrick Cloke</name></author><id>tag:patrick.cloke.us,2012-01-15:/posts/2012/01/15/instantbird-contact-list-hack-2/</id><summary type="html">&lt;p&gt;There was a &lt;a class="reference external" href="https://bugzilla.instantbird.org/show_bug.cgi?id=987"&gt;request&lt;/a&gt; on the Instantbird Bugzilla to always show
 contacts in the contact list as the &amp;#8220;big&amp;#8221; contact (as shown when a
-contact is selected).&amp;nbsp; Similarly to my &lt;a class="reference external" href="http://patrick.cloke.us/posts/2011/10/31/instantbird-contact-list-hack/"&gt;last post&lt;/a&gt;, this can easily be
+contact is selected).&amp;nbsp; Similarly to my &lt;a class="reference external" href="https://patrick.cloke.us/posts/2011/10/31/instantbird-contact-list-hack/"&gt;last post&lt;/a&gt;, this can easily be
 done with userChrome.css.&amp;nbsp; See the post if you don&amp;#8217;t know what
 userChrome …&lt;/p&gt;</summary><content type="html">&lt;p&gt;There was a &lt;a class="reference external" href="https://bugzilla.instantbird.org/show_bug.cgi?id=987"&gt;request&lt;/a&gt; on the Instantbird Bugzilla to always show
 contacts in the contact list as the &amp;#8220;big&amp;#8221; contact (as shown when a
-contact is selected).&amp;nbsp; Similarly to my &lt;a class="reference external" href="http://patrick.cloke.us/posts/2011/10/31/instantbird-contact-list-hack/"&gt;last post&lt;/a&gt;, this can easily be
+contact is selected).&amp;nbsp; Similarly to my &lt;a class="reference external" href="https://patrick.cloke.us/posts/2011/10/31/instantbird-contact-list-hack/"&gt;last post&lt;/a&gt;, this can easily be
 done with userChrome.css.&amp;nbsp; See the post if you don&amp;#8217;t know what
 userChrome.css&amp;nbsp;is.&lt;/p&gt;
 &lt;p&gt;Again, we&amp;#8217;re simply going to always apply a specific &lt;span class="caps"&gt;CSS&lt;/span&gt; style to the
@@ -992,7 +992,7 @@ sure you don&amp;#8217;t really care about that and just want the code, well I&a
 &lt;p&gt;And that&amp;#8217;s it!&amp;nbsp; Restart Instantbird and you should always have big
 contacts.&amp;nbsp; I haven&amp;#8217;t seen any issues of using this (missing or wrong
 behavior), but of course your mileage might vary.&amp;nbsp; Have&amp;nbsp;fun!&lt;/p&gt;
-</content><category term="customizing"></category><category term="Instantbird"></category><category term="programming"></category></entry><entry><title>Instantbird Contact List Hack</title><link href="http://patrick.cloke.us/posts/2011/10/31/instantbird-contact-list-hack/" rel="alternate"></link><published>2011-10-31T20:20:00-04:00</published><updated>2011-10-31T20:20:00-04:00</updated><author><name>Patrick Cloke</name></author><id>tag:patrick.cloke.us,2011-10-31:/posts/2011/10/31/instantbird-contact-list-hack/</id><summary type="html">&lt;p&gt;A friend of mine asked me if there was a way to have selected contacts
+</content><category term="customizing"></category><category term="Instantbird"></category><category term="programming"></category></entry><entry><title>Instantbird Contact List Hack</title><link href="https://patrick.cloke.us/posts/2011/10/31/instantbird-contact-list-hack/" rel="alternate"></link><published>2011-10-31T20:20:00-04:00</published><updated>2011-10-31T20:20:00-04:00</updated><author><name>Patrick Cloke</name></author><id>tag:patrick.cloke.us,2011-10-31:/posts/2011/10/31/instantbird-contact-list-hack/</id><summary type="html">&lt;p&gt;A friend of mine asked me if there was a way to have selected contacts
 in the contact list &lt;span class="caps"&gt;NOT&lt;/span&gt; expand to two lines (where the status goes onto
 the second line) in&amp;nbsp;Instantbird.&lt;/p&gt;
 &lt;p&gt;There&amp;#8217;s actually no option to do this in Instantbird, but with a
@@ -1020,13 +1020,13 @@ that lets you expand/collapse isn&amp;#8217;t shown on a non-selected&amp;nbsp;c
 template to be used instead of the contact-big template, even when the
 contact is expanded; i.e. we&amp;#8217;re overwriting the command given
 &lt;a class="reference external" href="http://lxr.instantbird.org/instantbird/source/instantbird/content/blist.css#44"&gt;blist.css&lt;/a&gt;.)&lt;/p&gt;
-</content><category term="customizing"></category><category term="Instantbird"></category><category term="programming"></category></entry><entry><title>Adding a protocol to Instantbird (Part 2)</title><link href="http://patrick.cloke.us/posts/2011/09/03/adding-protocol-to-instantbird-part-2/" rel="alternate"></link><published>2011-09-03T10:31:00-04:00</published><updated>2011-09-03T10:31:00-04:00</updated><author><name>Patrick Cloke</name></author><id>tag:patrick.cloke.us,2011-09-03:/posts/2011/09/03/adding-protocol-to-instantbird-part-2/</id><summary type="html">
-&lt;p&gt;I had &lt;a class="reference external" href="http://patrick.cloke.us/posts/2011/06/18/adding-new-protocol-sipeoffice/"&gt;previously talked about adding a protocol to Instantbird&lt;/a&gt;,
+</content><category term="customizing"></category><category term="Instantbird"></category><category term="programming"></category></entry><entry><title>Adding a protocol to Instantbird (Part 2)</title><link href="https://patrick.cloke.us/posts/2011/09/03/adding-protocol-to-instantbird-part-2/" rel="alternate"></link><published>2011-09-03T10:31:00-04:00</published><updated>2011-09-03T10:31:00-04:00</updated><author><name>Patrick Cloke</name></author><id>tag:patrick.cloke.us,2011-09-03:/posts/2011/09/03/adding-protocol-to-instantbird-part-2/</id><summary type="html">
+&lt;p&gt;I had &lt;a class="reference external" href="https://patrick.cloke.us/posts/2011/06/18/adding-new-protocol-sipeoffice/"&gt;previously talked about adding a protocol to Instantbird&lt;/a&gt;,
 that focused on adding &lt;span class="caps"&gt;SIPE&lt;/span&gt; (Microsoft Office Communicator support).
 Since then I’ve been slowly working on defeating &lt;span class="caps"&gt;SIPE&lt;/span&gt;.  Fortunately I
 found a few flags that help us compile it easily in Instantbird: we can
 declare that we do &lt;em&gt;not …&lt;/em&gt;&lt;/p&gt;</summary><content type="html">
-&lt;p&gt;I had &lt;a class="reference external" href="http://patrick.cloke.us/posts/2011/06/18/adding-new-protocol-sipeoffice/"&gt;previously talked about adding a protocol to Instantbird&lt;/a&gt;,
+&lt;p&gt;I had &lt;a class="reference external" href="https://patrick.cloke.us/posts/2011/06/18/adding-new-protocol-sipeoffice/"&gt;previously talked about adding a protocol to Instantbird&lt;/a&gt;,
 that focused on adding &lt;span class="caps"&gt;SIPE&lt;/span&gt; (Microsoft Office Communicator support).
 Since then I’ve been slowly working on defeating &lt;span class="caps"&gt;SIPE&lt;/span&gt;.  Fortunately I
 found a few flags that help us compile it easily in Instantbird: we can
@@ -1090,7 +1090,7 @@ changes I made to the libpurple Sametime plugin and the external library
 control system) set up I’ll look into getting these changes pushed back
 to libpurple to avoid diverging code bases.&lt;/p&gt;
 &lt;/div&gt;
-</content><category term="Instantbird"></category><category term="programming"></category><category term="SIPE"></category></entry><entry><title>Adding a new protocol (SIPE/Office Communicator) to Instantbird (part 1)</title><link href="http://patrick.cloke.us/posts/2011/06/18/adding-new-protocol-sipeoffice/" rel="alternate"></link><published>2011-06-18T21:53:00-04:00</published><updated>2011-06-18T21:53:00-04:00</updated><author><name>Patrick Cloke</name></author><id>tag:patrick.cloke.us,2011-06-18:/posts/2011/06/18/adding-new-protocol-sipeoffice/</id><summary type="html">&lt;p&gt;&lt;a class="reference external" href="http://en.wikipedia.org/wiki/Office_Communicator"&gt;Microsoft Office Communicator&lt;/a&gt; is an instant messaging client that
+</content><category term="Instantbird"></category><category term="programming"></category><category term="SIPE"></category></entry><entry><title>Adding a new protocol (SIPE/Office Communicator) to Instantbird (part 1)</title><link href="https://patrick.cloke.us/posts/2011/06/18/adding-new-protocol-sipeoffice/" rel="alternate"></link><published>2011-06-18T21:53:00-04:00</published><updated>2011-06-18T21:53:00-04:00</updated><author><name>Patrick Cloke</name></author><id>tag:patrick.cloke.us,2011-06-18:/posts/2011/06/18/adding-new-protocol-sipeoffice/</id><summary type="html">&lt;p&gt;&lt;a class="reference external" href="http://en.wikipedia.org/wiki/Office_Communicator"&gt;Microsoft Office Communicator&lt;/a&gt; is an instant messaging client that
 integrates into the &lt;a class="reference external" href="http://en.wikipedia.org/wiki/Microsoft_Exchange_Server"&gt;Exchange Messaging Server&lt;/a&gt; (the protocol behind it
 is an extended version of &lt;span class="caps"&gt;SIP&lt;/span&gt;/&lt;span class="caps"&gt;SIMPLE&lt;/span&gt;).&amp;nbsp; Anyway, there&amp;#8217;s a &lt;a class="reference external" href="http://developer.pidgin.im/wiki/WhatIsLibpurple"&gt;libpurple&lt;/a&gt;
 (i.e. the backend of &lt;a class="reference external" href="http://instantbird.com/"&gt;Instantbird&lt;/a&gt; and &lt;a class="reference external" href="http://pidgin.im/"&gt;Pidgin&lt;/a&gt;) protocol plug-in for
@@ -1127,7 +1127,7 @@ not in our source code.&amp;nbsp; I can grab the &lt;a class="reference external
 of course) and add the gio subfolder, but first we should check if this
 part of gmime is even used by &lt;span class="caps"&gt;SIPE&lt;/span&gt;! (My guess is that it is &lt;em&gt;not&lt;/em&gt;, but
 that&amp;#8217;s where I&amp;#8217;m at now.&amp;nbsp; I&amp;#8217;ll post back when I get&amp;nbsp;further.&lt;/p&gt;
-</content><category term="Instantbird"></category><category term="programming"></category><category term="SIPE"></category></entry><entry><title>Compiling Instantbird</title><link href="http://patrick.cloke.us/posts/2011/05/16/compilling-instantbird/" rel="alternate"></link><published>2011-05-16T21:30:00-04:00</published><updated>2011-05-16T21:30:00-04:00</updated><author><name>Patrick Cloke</name></author><id>tag:patrick.cloke.us,2011-05-16:/posts/2011/05/16/compilling-instantbird/</id><summary type="html">
+</content><category term="Instantbird"></category><category term="programming"></category><category term="SIPE"></category></entry><entry><title>Compiling Instantbird</title><link href="https://patrick.cloke.us/posts/2011/05/16/compilling-instantbird/" rel="alternate"></link><published>2011-05-16T21:30:00-04:00</published><updated>2011-05-16T21:30:00-04:00</updated><author><name>Patrick Cloke</name></author><id>tag:patrick.cloke.us,2011-05-16:/posts/2011/05/16/compilling-instantbird/</id><summary type="html">
 &lt;p&gt;In the past I’ve tried to compile a few different programs that use
 the Mozilla toolkit to various levels of success.  I’ve tried to compile
 Thunderbird, Songbird and Instantbird at various points.  I got
@@ -1293,11 +1293,11 @@ the way while developing).  See &lt;a class="reference external" href="https:/
 &lt;p&gt;Edit: Fixed the path to the executable thanks to Florian. And fixed a
 spelling error in the title.&lt;/p&gt;
 &lt;/div&gt;
-</content><category term="Instantbird"></category><category term="Mozilla"></category><category term="programming"></category></entry><entry><title>Why rewrite the IRC protocol plugin? (Part 2)</title><link href="http://patrick.cloke.us/posts/2011/04/30/why-rewrite-irc-protocol-plugin-part-2/" rel="alternate"></link><published>2011-04-30T13:01:00-04:00</published><updated>2011-04-30T13:01:00-04:00</updated><author><name>Patrick Cloke</name></author><id>tag:patrick.cloke.us,2011-04-30:/posts/2011/04/30/why-rewrite-irc-protocol-plugin-part-2/</id><summary type="html">&lt;p&gt;I &lt;a class="reference external" href="http://patrick.cloke.us/posts/2010/12/08/why-rewrite-irc-into-javascript/"&gt;previously wrote about&lt;/a&gt; why I&amp;#8217;m rewriting the libpurple &lt;span class="caps"&gt;IRC&lt;/span&gt;
+</content><category term="Instantbird"></category><category term="Mozilla"></category><category term="programming"></category></entry><entry><title>Why rewrite the IRC protocol plugin? (Part 2)</title><link href="https://patrick.cloke.us/posts/2011/04/30/why-rewrite-irc-protocol-plugin-part-2/" rel="alternate"></link><published>2011-04-30T13:01:00-04:00</published><updated>2011-04-30T13:01:00-04:00</updated><author><name>Patrick Cloke</name></author><id>tag:patrick.cloke.us,2011-04-30:/posts/2011/04/30/why-rewrite-irc-protocol-plugin-part-2/</id><summary type="html">&lt;p&gt;I &lt;a class="reference external" href="https://patrick.cloke.us/posts/2010/12/08/why-rewrite-irc-into-javascript/"&gt;previously wrote about&lt;/a&gt; why I&amp;#8217;m rewriting the libpurple &lt;span class="caps"&gt;IRC&lt;/span&gt;
 implementation into a JavaScript implementation for Instantbird.&amp;nbsp; This
 is kind of a follow up, but more focused on what I hope to accomplish
 feature wise for &lt;span class="caps"&gt;IRC&lt;/span&gt; in Instantbird.&amp;nbsp; A good overview to look at is the
-&lt;a class="reference external" href="https://bugzilla.instantbird.org/showdependencygraph.cgi?id=507&amp;amp;display=web&amp;amp;rankdir=LR"&gt;dependencies of …&lt;/a&gt;&lt;/p&gt;</summary><content type="html">&lt;p&gt;I &lt;a class="reference external" href="http://patrick.cloke.us/posts/2010/12/08/why-rewrite-irc-into-javascript/"&gt;previously wrote about&lt;/a&gt; why I&amp;#8217;m rewriting the libpurple &lt;span class="caps"&gt;IRC&lt;/span&gt;
+&lt;a class="reference external" href="https://bugzilla.instantbird.org/showdependencygraph.cgi?id=507&amp;amp;display=web&amp;amp;rankdir=LR"&gt;dependencies of …&lt;/a&gt;&lt;/p&gt;</summary><content type="html">&lt;p&gt;I &lt;a class="reference external" href="https://patrick.cloke.us/posts/2010/12/08/why-rewrite-irc-into-javascript/"&gt;previously wrote about&lt;/a&gt; why I&amp;#8217;m rewriting the libpurple &lt;span class="caps"&gt;IRC&lt;/span&gt;
 implementation into a JavaScript implementation for Instantbird.&amp;nbsp; This
 is kind of a follow up, but more focused on what I hope to accomplish
 feature wise for &lt;span class="caps"&gt;IRC&lt;/span&gt; in Instantbird.&amp;nbsp; A good overview to look at is the
@@ -1361,12 +1361,12 @@ that issue and reconnection should happen&amp;nbsp;automatically!&lt;/p&gt;
 &lt;p&gt;One last quick note, if you happen to have the &lt;a class="reference external" href="https://hg.instantbird.org/experiments"&gt;repository&lt;/a&gt; checked
 out, you&amp;#8217;ll want to update on the default branch from now on as I&amp;#8217;ve
 merged the separate branches together under&amp;nbsp;subfolders.&lt;/p&gt;
-</content><category term="Instantbird"></category><category term="IRC"></category></entry><entry><title>The so-called IRC “specifications”</title><link href="http://patrick.cloke.us/posts/2011/03/08/so-called-irc-specifications/" rel="alternate"></link><published>2011-03-08T21:20:00-05:00</published><updated>2014-12-20T15:55:00-05:00</updated><author><name>Patrick Cloke</name></author><id>tag:patrick.cloke.us,2011-03-08:/posts/2011/03/08/so-called-irc-specifications/</id><summary type="html">
-&lt;p&gt;In a &lt;a class="reference external" href="http://patrick.cloke.us/posts/2010/12/08/why-rewrite-irc-into-javascript/"&gt;previous post&lt;/a&gt; I had briefly gone over the “history of &lt;span class="caps"&gt;IRC&lt;/span&gt;” as
+</content><category term="Instantbird"></category><category term="IRC"></category></entry><entry><title>The so-called IRC “specifications”</title><link href="https://patrick.cloke.us/posts/2011/03/08/so-called-irc-specifications/" rel="alternate"></link><published>2011-03-08T21:20:00-05:00</published><updated>2014-12-20T15:55:00-05:00</updated><author><name>Patrick Cloke</name></author><id>tag:patrick.cloke.us,2011-03-08:/posts/2011/03/08/so-called-irc-specifications/</id><summary type="html">
+&lt;p&gt;In a &lt;a class="reference external" href="https://patrick.cloke.us/posts/2010/12/08/why-rewrite-irc-into-javascript/"&gt;previous post&lt;/a&gt; I had briefly gone over the “history of &lt;span class="caps"&gt;IRC&lt;/span&gt;” as
 I know it.  I’m going to expand on this a bit as I’ve come to understand
 it a bit more while reading through documentation.  (Hopefully it won’t
 sound too much like a rant …&lt;/p&gt;</summary><content type="html">
-&lt;p&gt;In a &lt;a class="reference external" href="http://patrick.cloke.us/posts/2010/12/08/why-rewrite-irc-into-javascript/"&gt;previous post&lt;/a&gt; I had briefly gone over the “history of &lt;span class="caps"&gt;IRC&lt;/span&gt;” as
+&lt;p&gt;In a &lt;a class="reference external" href="https://patrick.cloke.us/posts/2010/12/08/why-rewrite-irc-into-javascript/"&gt;previous post&lt;/a&gt; I had briefly gone over the “history of &lt;span class="caps"&gt;IRC&lt;/span&gt;” as
 I know it.  I’m going to expand on this a bit as I’ve come to understand
 it a bit more while reading through documentation.  (Hopefully it won’t
 sound too much like a rant, as it is all driving me crazy!)&lt;/p&gt;
@@ -1469,7 +1469,7 @@ Machine&lt;/a&gt;. There are also copies of most, if not all, of these links in 
 &lt;a class="reference external" href="https://bitbucket.org/clokep/irc-docs"&gt;irc-docs repository&lt;/a&gt;. Thanks Ultra Rocks for the heads up!&lt;/dd&gt;
 &lt;/dl&gt;
 &lt;/div&gt;
-</content><category term="Instantbird"></category><category term="IRC"></category><category term="programming"></category><category term="specifications"></category></entry><entry><title>Status Update - February 17, 2011</title><link href="http://patrick.cloke.us/posts/2011/02/17/status-update-february-17-2011/" rel="alternate"></link><published>2011-02-17T19:21:00-05:00</published><updated>2011-02-17T19:21:00-05:00</updated><author><name>Patrick Cloke</name></author><id>tag:patrick.cloke.us,2011-02-17:/posts/2011/02/17/status-update-february-17-2011/</id><summary type="html">&lt;p&gt;Another month has gone by so it&amp;#8217;s time for another status update.
+</content><category term="Instantbird"></category><category term="IRC"></category><category term="programming"></category><category term="specifications"></category></entry><entry><title>Status Update - February 17, 2011</title><link href="https://patrick.cloke.us/posts/2011/02/17/status-update-february-17-2011/" rel="alternate"></link><published>2011-02-17T19:21:00-05:00</published><updated>2011-02-17T19:21:00-05:00</updated><author><name>Patrick Cloke</name></author><id>tag:patrick.cloke.us,2011-02-17:/posts/2011/02/17/status-update-february-17-2011/</id><summary type="html">&lt;p&gt;Another month has gone by so it&amp;#8217;s time for another status update.
 Unfortunately not as much got done this month as I was hoping, but
 here&amp;#8217;s a quick update of what I&amp;#8217;ve worked&amp;nbsp;on:&lt;/p&gt;
 &lt;ul class="simple"&gt;
@@ -1496,7 +1496,7 @@ JavaScript protocol (&lt;a class="reference external" href="https://bugzilla.ins
 next week) at which point I&amp;#8217;ll release a sample extension (which will
 overwrite the libpurple &lt;span class="caps"&gt;IRC&lt;/span&gt; implementation), allowing people to test
 without needing to make a new account,&amp;nbsp;etc.&lt;/p&gt;
-</content><category term="Instantbird"></category><category term="IRC"></category><category term="programming"></category></entry><entry><title>Status Update - January 18, 2011</title><link href="http://patrick.cloke.us/posts/2011/01/18/status-update-january-18-2011/" rel="alternate"></link><published>2011-01-18T23:17:00-05:00</published><updated>2011-01-18T23:17:00-05:00</updated><author><name>Patrick Cloke</name></author><id>tag:patrick.cloke.us,2011-01-18:/posts/2011/01/18/status-update-january-18-2011/</id><summary type="html">&lt;p&gt;I haven&amp;#8217;t had an update in a few weeks (since early December)
+</content><category term="Instantbird"></category><category term="IRC"></category><category term="programming"></category></entry><entry><title>Status Update - January 18, 2011</title><link href="https://patrick.cloke.us/posts/2011/01/18/status-update-january-18-2011/" rel="alternate"></link><published>2011-01-18T23:17:00-05:00</published><updated>2011-01-18T23:17:00-05:00</updated><author><name>Patrick Cloke</name></author><id>tag:patrick.cloke.us,2011-01-18:/posts/2011/01/18/status-update-january-18-2011/</id><summary type="html">&lt;p&gt;I haven&amp;#8217;t had an update in a few weeks (since early December)
 actually, so I thought I would post a bit about what I&amp;#8217;ve worked on.
 I&amp;#8217;ve fixed a bunch of bugs in the backend of Instantbird that allow work
 on JavaScript &lt;span class="caps"&gt;IRC&lt;/span&gt; protocol to&amp;nbsp;continue:&lt;/p&gt;
@@ -1572,7 +1572,7 @@ line here, on &lt;span class="caps"&gt;IRC&lt;/span&gt; or via&amp;nbsp;email).&
 &lt;li&gt;Start my new&amp;nbsp;job&lt;/li&gt;
 &lt;li&gt;Work on richtext messages a bit&amp;nbsp;more&lt;/li&gt;
 &lt;/ul&gt;
-</content><category term="Instantbird"></category><category term="IRC"></category><category term="Mozilla"></category><category term="programming"></category></entry><entry><title>Why Rewrite IRC into JavaScript? (vs. libpurple’s vs. ChatZilla’s)</title><link href="http://patrick.cloke.us/posts/2010/12/08/why-rewrite-irc-into-javascript/" rel="alternate"></link><published>2010-12-08T14:29:00-05:00</published><updated>2010-12-08T14:29:00-05:00</updated><author><name>Patrick Cloke</name></author><id>tag:patrick.cloke.us,2010-12-08:/posts/2010/12/08/why-rewrite-irc-into-javascript/</id><summary type="html">
+</content><category term="Instantbird"></category><category term="IRC"></category><category term="Mozilla"></category><category term="programming"></category></entry><entry><title>Why Rewrite IRC into JavaScript? (vs. libpurple’s vs. ChatZilla’s)</title><link href="https://patrick.cloke.us/posts/2010/12/08/why-rewrite-irc-into-javascript/" rel="alternate"></link><published>2010-12-08T14:29:00-05:00</published><updated>2010-12-08T14:29:00-05:00</updated><author><name>Patrick Cloke</name></author><id>tag:patrick.cloke.us,2010-12-08:/posts/2010/12/08/why-rewrite-irc-into-javascript/</id><summary type="html">
 &lt;p&gt;I had a request on &lt;span class="caps"&gt;IRC&lt;/span&gt; (from Mic) to write an in-depth blog post
 about &lt;a class="reference external" href="https://bugzilla.instantbird.org/show_bug.cgi?id=507"&gt;&lt;span class="caps"&gt;IRC&lt;/span&gt; in JavaScript&lt;/a&gt;:&lt;/p&gt;
 &lt;blockquote&gt;
@@ -1603,7 +1603,7 @@ open-source software I use (I’m almost always in &lt;a class="reference extern
 &lt;/div&gt;
 &lt;div class="section" id="why-it-is-done-what-advantages-are-there-once-this-is-done"&gt;
 &lt;h2&gt;&lt;a class="toc-backref" href="#id4"&gt;Why it is done?  What advantages are there once this is done?&lt;/a&gt;&lt;/h2&gt;
-&lt;p&gt;I touched upon this a little in my &lt;a class="reference external" href="http://patrick.cloke.us/posts/2010/12/04/javascript-irc-in-instantbird/"&gt;last post&lt;/a&gt;.  In terms of
+&lt;p&gt;I touched upon this a little in my &lt;a class="reference external" href="https://patrick.cloke.us/posts/2010/12/04/javascript-irc-in-instantbird/"&gt;last post&lt;/a&gt;.  In terms of
 Instantbird: there’s an idea of switching some / all of the protocols
 (eventually) to be JavaScript protocols instead of the libpurple
 versions (libpurple is written mostly in C and is cross-platform, but
@@ -1764,7 +1764,7 @@ time to rewrite the &lt;span class="caps"&gt;IRC&lt;/span&gt; protocol implement
 definitely think it’s worth it and can lead to a bunch of new unique
 protocol plug-ins for Instantbird.&lt;/p&gt;
 &lt;/div&gt;
-</content><category term="Instantbird"></category><category term="IRC"></category><category term="Mozilla"></category><category term="programming"></category></entry><entry><title>JavaScript IRC in Instantbird</title><link href="http://patrick.cloke.us/posts/2010/12/04/javascript-irc-in-instantbird/" rel="alternate"></link><published>2010-12-04T17:24:00-05:00</published><updated>2010-12-04T17:24:00-05:00</updated><author><name>Patrick Cloke</name></author><id>tag:patrick.cloke.us,2010-12-04:/posts/2010/12/04/javascript-irc-in-instantbird/</id><summary type="html">&lt;p&gt;I&amp;#8217;ve been working on rewriting the &lt;span class="caps"&gt;IRC&lt;/span&gt; plugin for &lt;a class="reference external" href="http://www.instantbird.com/"&gt;Instantbird&lt;/a&gt; since
+</content><category term="Instantbird"></category><category term="IRC"></category><category term="Mozilla"></category><category term="programming"></category></entry><entry><title>JavaScript IRC in Instantbird</title><link href="https://patrick.cloke.us/posts/2010/12/04/javascript-irc-in-instantbird/" rel="alternate"></link><published>2010-12-04T17:24:00-05:00</published><updated>2010-12-04T17:24:00-05:00</updated><author><name>Patrick Cloke</name></author><id>tag:patrick.cloke.us,2010-12-04:/posts/2010/12/04/javascript-irc-in-instantbird/</id><summary type="html">&lt;p&gt;I&amp;#8217;ve been working on rewriting the &lt;span class="caps"&gt;IRC&lt;/span&gt; plugin for &lt;a class="reference external" href="http://www.instantbird.com/"&gt;Instantbird&lt;/a&gt; since
 the summer (sometime in August, I can&amp;#8217;t seem to find the exact date &amp;#8212;
 at least since Sept. 10th&amp;nbsp;though).&lt;/p&gt;
 &lt;p&gt;Since &lt;a class="reference external" href="http://developer.pidgin.im/wiki/WhatIsLibpurple"&gt;libpurple&lt;/a&gt; (used in Pidgin, Adium, etc.) provides the &lt;span class="caps"&gt;IRC&lt;/span&gt;
@@ -1792,7 +1792,7 @@ a &lt;strong&gt;new&lt;/strong&gt; object.&amp;nbsp; And after learning a bit ab
 to get the &lt;span class="caps"&gt;UI&lt;/span&gt; to respond.&amp;nbsp; I even threw in support for op/half-op/voice
 After today&amp;#8217;s work I was able to generate the following&amp;nbsp;screenshot:&lt;/p&gt;
 &lt;blockquote class="text-center"&gt;
-&lt;a class="reference external image-reference" href="http://patrick.cloke.us/images/IRCworking2.png"&gt;&lt;img alt="Example conversation using JavaScript IRC." class="center" src="http://patrick.cloke.us/images/IRCworking2.png" style="height: 297px;" /&gt;&lt;/a&gt;
+&lt;a class="reference external image-reference" href="https://patrick.cloke.us/images/IRCworking2.png"&gt;&lt;img alt="Example conversation using JavaScript IRC." class="center" src="https://patrick.cloke.us/images/IRCworking2.png" style="height: 297px;" /&gt;&lt;/a&gt;
 &lt;p&gt;An initial example of Instantbird communicating using JavaScript &lt;span class="caps"&gt;IRC&lt;/span&gt;.&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;p&gt;This build would be almost fully usable by those who do very little on
