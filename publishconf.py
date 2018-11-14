@@ -10,7 +10,7 @@ import sys
 sys.path.append(os.curdir)
 from pelicanconf import *
 
-SITEURL = 'http://patrick.cloke.us'
+SITEURL = 'https://patrick.cloke.us'
 
 # Don't publish drafts.
 WITH_FUTURE_DATES = False
@@ -19,8 +19,8 @@ WITH_FUTURE_DATES = False
 FEED_DOMAIN = SITEURL
 FEED_ALL_ATOM = 'feeds/atom.xml'
 FEED_ALL_RSS = 'feeds/rss.xml'
-TAG_FEED_ATOM = 'feeds/tag/%s.atom.xml'
-TAG_FEED_RSS = 'feeds/tag/%s.rss.xml'
+TAG_FEED_ATOM = 'feeds/tag/{slug}.atom.xml'
+TAG_FEED_RSS = 'feeds/tag/{slug}.rss.xml'
 
 DELETE_OUTPUT_DIRECTORY = True
 
