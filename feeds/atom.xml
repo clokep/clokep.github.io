@@ -810,7 +810,103 @@ than they do during GSoC!&lt;/p&gt;
 questions that pertain to your application at Mozilla, please
 &lt;a class="reference external" href="http://patrick.cloke.us/pages/about.html"&gt;contact&lt;/a&gt; me individually.&lt;/p&gt;
 &lt;/div&gt;
-</content><category term="GSoC"></category><category term="Mozilla"></category></entry><entry><title>IRC Client Usage Share on moznet</title><link href="http://patrick.cloke.us/posts/2015/09/23/irc-client-usage-share-on-moznet/" rel="alternate"></link><published>2015-09-23T17:07:00-04:00</published><updated>2015-09-24T07:18:00-04:00</updated><author><name>Patrick Cloke</name></author><id>tag:patrick.cloke.us,2015-09-23:/posts/2015/09/23/irc-client-usage-share-on-moznet/</id><summary type="html">
+</content><category term="GSoC"></category><category term="Mozilla"></category></entry><entry><title>Combining Disparate QuerySets in Django</title><link href="http://patrick.cloke.us/posts/2016/02/04/combining-disparate-querysets-in-django/" rel="alternate"></link><published>2016-02-04T16:00:00-05:00</published><updated>2016-02-04T16:00:00-05:00</updated><author><name>Patrick Cloke</name></author><id>tag:patrick.cloke.us,2016-02-04:/posts/2016/02/04/combining-disparate-querysets-in-django/</id><summary type="html">&lt;blockquote&gt;
+&lt;p&gt;Note: This was originally posted on the &lt;a href="https://strongarm.io/blog/combining-disparate-querysets-in-django/"&gt;Strongarm Blog&lt;/a&gt;.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;While refactoring &lt;a href="https://strongarm.io"&gt;strongarm.io&lt;/a&gt; we ran into a problem: we
+had different database tables that we needed to query over as if they were a
+single database table. We use &lt;a href="https://www.djangoproject.com/"&gt;Django&lt;/a&gt; as an
+&lt;a href="https://en.wikipedia.org/wiki/Object-relational_mapping"&gt;&lt;span class="caps"&gt;ORM&lt;/span&gt;&lt;/a&gt; and needed to
+stay within the &lt;span class="caps"&gt;ORM …&lt;/span&gt;&lt;/p&gt;</summary><content type="html">&lt;blockquote&gt;
+&lt;p&gt;Note: This was originally posted on the &lt;a href="https://strongarm.io/blog/combining-disparate-querysets-in-django/"&gt;Strongarm Blog&lt;/a&gt;.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;While refactoring &lt;a href="https://strongarm.io"&gt;strongarm.io&lt;/a&gt; we ran into a problem: we
+had different database tables that we needed to query over as if they were a
+single database table. We use &lt;a href="https://www.djangoproject.com/"&gt;Django&lt;/a&gt; as an
+&lt;a href="https://en.wikipedia.org/wiki/Object-relational_mapping"&gt;&lt;span class="caps"&gt;ORM&lt;/span&gt;&lt;/a&gt; and needed to
+stay within the &lt;span class="caps"&gt;ORM&lt;/span&gt; in order to leverage third-party&amp;nbsp;libraries.&lt;/p&gt;
+&lt;p&gt;Our two models have overlapping fields, in this instance both had a &lt;code&gt;name&lt;/code&gt; field
+to search over and a &lt;code&gt;created&lt;/code&gt; field to order on. A naive implementation might
+serialize all the data to memory and come up with implementations&amp;nbsp;like:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="c1"&gt;# Consider ModelA and ModelB to exist somewhere, both have a name (CharField)&lt;/span&gt;
+&lt;span class="c1"&gt;# and created (DateTimeField).&lt;/span&gt;
+
+&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;itertools&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;chain&lt;/span&gt;
+
+&lt;span class="c1"&gt;# Sorted data.&lt;/span&gt;
+&lt;span class="n"&gt;sorted_data&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="nb"&gt;sorted&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;
+    &lt;span class="n"&gt;chain&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;
+        &lt;span class="n"&gt;ModelA&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;objects&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;order_by&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;-created&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;),&lt;/span&gt;
+        &lt;span class="n"&gt;ModelB&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;objects&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;order_by&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;-created&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;),&lt;/span&gt;
+    &lt;span class="p"&gt;),&lt;/span&gt;
+    &lt;span class="n"&gt;key&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="k"&gt;lambda&lt;/span&gt; &lt;span class="n"&gt;instance&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="n"&gt;instance&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;date&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+    &lt;span class="n"&gt;reverse&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="bp"&gt;True&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+
+&lt;span class="c1"&gt;# Search for a particular result.&lt;/span&gt;
+&lt;span class="n"&gt;result&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="bp"&gt;None&lt;/span&gt;
+&lt;span class="k"&gt;try&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
+    &lt;span class="n"&gt;result&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;ModelA&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;objects&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;get&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;name&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;foo&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="k"&gt;except&lt;/span&gt; &lt;span class="n"&gt;ModelA&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;DoesNotExist&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
+    &lt;span class="k"&gt;try&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
+        &lt;span class="n"&gt;result&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;ModelB&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;objects&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;get&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;name&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;foo&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+    &lt;span class="k"&gt;except&lt;/span&gt; &lt;span class="n"&gt;ModelB&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;DoesNotExist&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
+        &lt;span class="k"&gt;pass&lt;/span&gt;
+
+&lt;span class="c1"&gt;# Look at a subset.&lt;/span&gt;
+&lt;span class="n"&gt;subset_data&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nb"&gt;list&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;ModelA&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;objects&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;filter&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;name__contains&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;foo&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt; &lt;span class="o"&gt;+&lt;/span&gt;
+               &lt;span class="nb"&gt;list&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;ModelB&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;objects&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;filter&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;name__contains&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;foo&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)))&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;This has two issues we had to&amp;nbsp;overcome:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;We had too much data to serialize to&amp;nbsp;memory.&lt;/li&gt;
+&lt;li&gt;We needed to pass the result into Django APIs that expected a &lt;code&gt;QuerySet&lt;/code&gt;.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;Enter &lt;a href="https://github.com/percipient/django-querysetsequence"&gt;Django QuerySetSequence&lt;/a&gt;!
+We built Django QuerySetSequence (based on some previously available code) to
+provide the&amp;nbsp;following:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Provide a &lt;code&gt;QuerySet&lt;/code&gt; &lt;span class="caps"&gt;API&lt;/span&gt; that operates over multiple &lt;code&gt;QuerySets&lt;/code&gt; generated
+    from different &lt;code&gt;Model&lt;/code&gt; classes.&lt;/li&gt;
+&lt;li&gt;Evaluate each &lt;code&gt;QuerySet&lt;/code&gt; lazily (i.e. as late as&amp;nbsp;possible).&lt;/li&gt;
+&lt;li&gt;High quality code with&amp;nbsp;tests.&lt;/li&gt;
+&lt;li&gt;Guard against calling untested&amp;nbsp;methods.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;This allows much more Django-esque&amp;nbsp;code:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="c1"&gt;# Consider ModelA and ModelB to exist somewhere, both have a name (CharField)&lt;/span&gt;
+&lt;span class="c1"&gt;# and created (DateTimeField).&lt;/span&gt;
+&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;django.core.exceptions&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;ObjectDoesNotExist&lt;/span&gt;
+
+&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;queryset_sequence&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;QuerySetSequence&lt;/span&gt;
+
+&lt;span class="n"&gt;queryset&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;QuerySetSequence&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;ModelA&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;objects&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;all&lt;/span&gt;&lt;span class="p"&gt;(),&lt;/span&gt; &lt;span class="n"&gt;ModelB&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;objects&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;all&lt;/span&gt;&lt;span class="p"&gt;())&lt;/span&gt;
+
+&lt;span class="c1"&gt;# Sorted data.&lt;/span&gt;
+&lt;span class="n"&gt;sorted_data&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;queryset&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;order_by&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;-created&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+
+&lt;span class="c1"&gt;# Search for a particular result:&lt;/span&gt;
+&lt;span class="k"&gt;try&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
+    &lt;span class="n"&gt;result&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;queryset&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;get&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;name&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;foo&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="k"&gt;except&lt;/span&gt; &lt;span class="n"&gt;ObjectDoesNotExist&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
+    &lt;span class="n"&gt;result&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="bp"&gt;None&lt;/span&gt;
+
+&lt;span class="c1"&gt;# Look at a subset.&lt;/span&gt;
+&lt;span class="n"&gt;subset_data&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;queryset&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;filter&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;name__contains&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;foo&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Currently Django QuerySetSequence supports both Django 1.8 and Django 1.9 on
+Python 2.7, 3.4 and 3.5. Check out the full set of features or contribute to the
+&lt;a href="https://github.com/percipient/django-querysetsequence"&gt;source repository&lt;/a&gt;. You
+can install &lt;code&gt;django-querysetsequence&lt;/code&gt; package from
+&lt;a href="https://pypi.python.org/pypi/django-querysetsequence"&gt;pypi&lt;/a&gt; using&amp;nbsp;pip:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;pip install django-querysetsequence
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;If you&amp;#8217;re using Django QuerySetSequence we&amp;#8217;d love to
+&lt;a href="mailto:support@strongarm.io"&gt;hear about it&lt;/a&gt;!&lt;/p&gt;</content><category term="django"></category></entry><entry><title>IRC Client Usage Share on moznet</title><link href="http://patrick.cloke.us/posts/2015/09/23/irc-client-usage-share-on-moznet/" rel="alternate"></link><published>2015-09-23T17:07:00-04:00</published><updated>2015-09-24T07:18:00-04:00</updated><author><name>Patrick Cloke</name></author><id>tag:patrick.cloke.us,2015-09-23:/posts/2015/09/23/irc-client-usage-share-on-moznet/</id><summary type="html">
 &lt;div class="section" id="background"&gt;
 &lt;h2&gt;&lt;a class="toc-backref" href="#id13"&gt;Background&lt;/a&gt;&lt;/h2&gt;
 &lt;p&gt;The usage share of &lt;span class="caps"&gt;IRC&lt;/span&gt; clients has always been something I’m interested in. This

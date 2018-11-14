@@ -30,7 +30,14 @@ period is ongoing, but we are on the cusp of the &amp;#8220;coding period&amp;#8
 (GSoC), a program that sponsors students to write code for open-source
 projects, as part of Mozilla. I’ve been both a mentor and administrator,
 &lt;a class="reference external" href="http://blog.queze.net/"&gt;Florian Quèze&lt;/a&gt; and I frequently get asked questions about what students
-should …&lt;/p&gt;&lt;/blockquote&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Patrick Cloke</dc:creator><pubDate>Mon, 07 Mar 2016 09:18:00 -0500</pubDate><guid isPermaLink="false">tag:patrick.cloke.us,2016-03-07:/posts/2016/03/07/thoughts-on-applying-to-gsoc/</guid><category>GSoC</category><category>Mozilla</category></item><item><title>IRC Client Usage Share on moznet</title><link>http://patrick.cloke.us/posts/2015/09/23/irc-client-usage-share-on-moznet/</link><description>
+should …&lt;/p&gt;&lt;/blockquote&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Patrick Cloke</dc:creator><pubDate>Mon, 07 Mar 2016 09:18:00 -0500</pubDate><guid isPermaLink="false">tag:patrick.cloke.us,2016-03-07:/posts/2016/03/07/thoughts-on-applying-to-gsoc/</guid><category>GSoC</category><category>Mozilla</category></item><item><title>Combining Disparate QuerySets in Django</title><link>http://patrick.cloke.us/posts/2016/02/04/combining-disparate-querysets-in-django/</link><description>&lt;blockquote&gt;
+&lt;p&gt;Note: This was originally posted on the &lt;a href="https://strongarm.io/blog/combining-disparate-querysets-in-django/"&gt;Strongarm Blog&lt;/a&gt;.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;While refactoring &lt;a href="https://strongarm.io"&gt;strongarm.io&lt;/a&gt; we ran into a problem: we
+had different database tables that we needed to query over as if they were a
+single database table. We use &lt;a href="https://www.djangoproject.com/"&gt;Django&lt;/a&gt; as an
+&lt;a href="https://en.wikipedia.org/wiki/Object-relational_mapping"&gt;&lt;span class="caps"&gt;ORM&lt;/span&gt;&lt;/a&gt; and needed to
+stay within the &lt;span class="caps"&gt;ORM …&lt;/span&gt;&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Patrick Cloke</dc:creator><pubDate>Thu, 04 Feb 2016 16:00:00 -0500</pubDate><guid isPermaLink="false">tag:patrick.cloke.us,2016-02-04:/posts/2016/02/04/combining-disparate-querysets-in-django/</guid><category>django</category></item><item><title>IRC Client Usage Share on moznet</title><link>http://patrick.cloke.us/posts/2015/09/23/irc-client-usage-share-on-moznet/</link><description>
 &lt;div class="section" id="background"&gt;
 &lt;h2&gt;&lt;a class="toc-backref" href="#id13"&gt;Background&lt;/a&gt;&lt;/h2&gt;
 &lt;p&gt;The usage share of &lt;span class="caps"&gt;IRC&lt;/span&gt; clients has always been something I’m interested in. This
