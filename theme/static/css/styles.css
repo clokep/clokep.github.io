@@ -16,6 +16,14 @@
     margin-left: 40px;
     margin-right: 40px;
 }
+/* Change the background of code-blocks. */
+pre {
+    background-color: #F8F9FA;  /* .bg-light */
+    padding: 4px;  /* .p-1 */
+    border-color: rgb(23, 162, 184);  /* .border .border-info */
+    border-width: 1px;
+    border-style: solid;
+}
 
 /* Give special formatting to blockquotes. */
 blockquote {
