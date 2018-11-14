@@ -1,7 +1,17 @@
 /* Make footnotes superscript. */
-.footnote-reference, .fn-backref {
+.footnote-reference {
     vertical-align: super;
     font-size: 80%;
+}
+/* Indent the footnotes. */
+table.footnote {
+    margin-left: 40px;
+    margin-right: 40px;
+}
+/* Separate the footnote backref from the actual footnote. */
+table.footnote .label {
+    min-width: 3em;
+    text-align: center;  /* .text-center */
 }
 
 /* Don't actually show the bullets in the table of contents. */
