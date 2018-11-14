@@ -25,7 +25,7 @@
   </head>
 
   <body class="pb-5">
-    <nav class="navbar navbar-expand-lg sticky-top navbar-light bg-light">
+    <nav class="navbar navbar-expand-lg sticky-top navbar-light bg-light border-bottom border-info">
       <a class="navbar-brand" href="/">
         {{ SITENAME }}
       </a>
@@ -92,7 +92,7 @@
             <input class="form-control form-control-sm mr-sm-2" type="search" name="q" placeholder="Search" aria-label="Search" />
             <input type="hidden"  name="sitesearch" value="patrick.cloke.us" />
 
-            <button class="btn-sm btn-outline-secondary d-none d-sm-inline" type="submit">Search</button>
+            <button class="btn btn-sm btn-outline-info d-none d-sm-inline" type="submit">Search</button>
           </form>
         </ul>
       </div>
@@ -102,7 +102,7 @@
     {% endblock %}
 
     {# Footer #}
-    <nav class="navbar fixed-bottom navbar-light bg-light">
+    <nav class="navbar fixed-bottom navbar-light bg-light border-top border-info">
       <a href="https://getpelican.com/" class="nav-item" target="_blank">Powered by Pelican</a>
       {% if GITHUB_URL %}
       <a href="{{ GITHUB_URL }}" class="nav-item" target="_blank">
