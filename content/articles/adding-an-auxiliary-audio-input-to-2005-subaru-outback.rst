@@ -28,15 +28,15 @@ videos_ and a PDF_ I found useful for this task.
 .. center::
 
     .. image:: /thumbnails/subaru-outback-radio/uninstall-front_small.jpg
-        :target: {filename}/images/subaru-outback-radio/uninstall-front.jpg
+        :target: {static}/images/subaru-outback-radio/uninstall-front.jpg
         :alt: Front view of my uninstalled 2005 Subaru Outback stereo.
 
     .. image:: /thumbnails/subaru-outback-radio/uninstall-right_small.jpg
-        :target: {filename}/images/subaru-outback-radio/uninstall-right.jpg
+        :target: {static}/images/subaru-outback-radio/uninstall-right.jpg
         :alt: Right view of my uninstalled 2005 Subaru Outback stereo.
 
     .. image:: /thumbnails/subaru-outback-radio/uninstall-back_small.jpg
-        :target: {filename}/images/subaru-outback-radio/uninstall-back.jpg
+        :target: {static}/images/subaru-outback-radio/uninstall-back.jpg
         :alt: Back view of my uninstalled 2005 Subaru Outback stereo.
 
     A few images of the uninstalled stereo before any disassembly. (So I could
@@ -79,15 +79,15 @@ pictures along each step of the way to ensure I could put it back together.)
 .. center::
 
     .. image:: /thumbnails/subaru-outback-radio/disassembly-front_small.jpg
-        :target: {filename}/images/subaru-outback-radio/disassembly-front.jpg
+        :target: {static}/images/subaru-outback-radio/disassembly-front.jpg
         :alt: The front of the stereo after removing the control unit.
 
     .. image:: /thumbnails/subaru-outback-radio/disassembly-front-reverse_small.jpg
-        :target: {filename}/images/subaru-outback-radio/disassembly-front-reverse.jpg
+        :target: {static}/images/subaru-outback-radio/disassembly-front-reverse.jpg
         :alt: The reverse of the control unit.
 
     .. image:: /thumbnails/subaru-outback-radio/disassembly-top_small.jpg
-        :target: {filename}/images/subaru-outback-radio/disassembly-top.jpg
+        :target: {static}/images/subaru-outback-radio/disassembly-top.jpg
         :alt: The top of the unit with the cover removed showing the CD drive.
 
     The initial steps of disassembly: the front after removing the controls, the
@@ -97,11 +97,11 @@ pictures along each step of the way to ensure I could put it back together.)
 .. center::
 
     .. image:: /thumbnails/subaru-outback-radio/disassembly-motherboard_small.jpg
-        :target: {filename}/images/subaru-outback-radio/disassembly-motherboard.jpg
+        :target: {static}/images/subaru-outback-radio/disassembly-motherboard.jpg
         :alt: The main circuit board of the unit.
 
     .. image:: /thumbnails/subaru-outback-radio/disassembly-motherboard-reverse_small.jpg
-        :target: {filename}/images/subaru-outback-radio/disassembly-motherboard-reverse.jpg
+        :target: {static}/images/subaru-outback-radio/disassembly-motherboard-reverse.jpg
         :alt: The reverse of the main circuit board of the unit.
 
     The actual circuit board of the stereo unit. You can see the radio module on
@@ -124,11 +124,11 @@ connector.
 .. center::
 
     .. image:: /thumbnails/subaru-outback-radio/soldered-connections_small.jpg
-        :target: {filename}/images/subaru-outback-radio/soldered-connections.jpg
+        :target: {static}/images/subaru-outback-radio/soldered-connections.jpg
         :alt: Soldered leads to the bottom of the stereo board.
 
     .. image:: /thumbnails/subaru-outback-radio/soldered-ground_small.jpg
-        :target: {filename}/images/subaru-outback-radio/soldered-ground.jpg
+        :target: {static}/images/subaru-outback-radio/soldered-ground.jpg
         :alt: Soldered ground to the top of the radio unit.
 
     Five soldered connections are required, four to the bottom of the board [#]_
@@ -143,7 +143,7 @@ is right audio and green is left audio (black is ground).
 .. center::
 
     .. image:: /thumbnails/subaru-outback-radio/diagrams_medium.jpg
-        :target: {filename}/images/subaru-outback-radio/diagrams.jpg
+        :target: {static}/images/subaru-outback-radio/diagrams.jpg
         :alt: Wiring diagrams of the connections.
 
     A few of the diagrams necessary to do this. The top two diagram is simple
@@ -165,11 +165,11 @@ connected the alligator clips to a cut audio plug to ensure everything worked.
 .. center::
 
     .. image:: /thumbnails/subaru-outback-radio/hot-glued-connections_small.jpg
-        :target: {filename}/images/subaru-outback-radio/hot-glued-connections.jpg
+        :target: {static}/images/subaru-outback-radio/hot-glued-connections.jpg
         :alt: Hot glued wires to the board as strain relief.
 
     .. image:: /thumbnails/subaru-outback-radio/testing-alligator-clips_small.jpg
-        :target: {filename}/images/subaru-outback-radio/testing-alligator-clips.jpg
+        :target: {static}/images/subaru-outback-radio/testing-alligator-clips.jpg
         :alt: Testing with alligator clips. (after reassembly).
 
     The wires were also hot glued to the circuit board as strain relief. After
@@ -187,11 +187,11 @@ tape to avoid scratches.
 .. center::
 
     .. image:: /thumbnails/subaru-outback-radio/drilled-setup_small.jpg
-        :target: {filename}/images/subaru-outback-radio/drilled-setup.jpg
+        :target: {static}/images/subaru-outback-radio/drilled-setup.jpg
         :alt: Taped and measurements for drilling the hole from the front.
 
     .. image:: /thumbnails/subaru-outback-radio/drilled-setup-reverse_small.jpg
-        :target: {filename}/images/subaru-outback-radio/drilled-setup-reverse.jpg
+        :target: {static}/images/subaru-outback-radio/drilled-setup-reverse.jpg
         :alt: Taped and measurements for drilling the hole from the reverse.
 
     Another benefit of tape is you can write anywhere you want. These
@@ -207,15 +207,15 @@ reach all the way through.
 .. center::
 
     .. image:: /thumbnails/subaru-outback-radio/drilled-hole_small.jpg
-        :target: {filename}/images/subaru-outback-radio/drilled-hole.jpg
+        :target: {static}/images/subaru-outback-radio/drilled-hole.jpg
         :alt: The 1/4" hole drilled through the plastic.
 
     .. image:: /thumbnails/subaru-outback-radio/drilled-hole-reverse_small.jpg
-        :target: {filename}/images/subaru-outback-radio/drilled-hole-reverse.jpg
+        :target: {static}/images/subaru-outback-radio/drilled-hole-reverse.jpg
         :alt: The thinning of the plastic from the 1/2" spade bit.
 
     .. image:: /thumbnails/subaru-outback-radio/drilled-hole-assembly_small.jpg
-        :target: {filename}/images/subaru-outback-radio/drilled-hole-assembly.jpg
+        :target: {static}/images/subaru-outback-radio/drilled-hole-assembly.jpg
         :alt: The assembled connector in the hole
 
     After the initial hole was drilled, the tape on the back was removed to thin
@@ -230,11 +230,11 @@ auxiliary audio input! Can't wait to test it out on a long car trip.
 .. center::
 
     .. image:: /thumbnails/subaru-outback-radio/soldered-switch_small.jpg
-        :target: {filename}/images/subaru-outback-radio/soldered-switch.jpg
+        :target: {static}/images/subaru-outback-radio/soldered-switch.jpg
         :alt: The soldered jack.
 
     .. image:: /thumbnails/subaru-outback-radio/hot-glued-switch_small.jpg
-        :target: {filename}/images/subaru-outback-radio/hot-glued-switch.jpg
+        :target: {static}/images/subaru-outback-radio/hot-glued-switch.jpg
         :alt: The hot-glued jack.
 
     The soldered and hot-glued audio jack.
@@ -242,11 +242,11 @@ auxiliary audio input! Can't wait to test it out on a long car trip.
 .. center::
 
     .. image:: /thumbnails/subaru-outback-radio/install-1_small.jpg
-        :target: {filename}/images/subaru-outback-radio/install-1.jpg
+        :target: {static}/images/subaru-outback-radio/install-1.jpg
         :alt: The installed unit.
 
     .. image:: /thumbnails/subaru-outback-radio/install-2_small.jpg
-        :target: {filename}/images/subaru-outback-radio/install-2.jpg
+        :target: {static}/images/subaru-outback-radio/install-2.jpg
         :alt: Close-up of the new jack.
 
     The final installed stereo unit.

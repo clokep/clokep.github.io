@@ -13,7 +13,7 @@ chat/`Instantbird`_ contributors.
 .. center::
 
     .. image:: /thumbnails/chat-tb-summit/IMG_6516_small.jpg
-        :target: {filename}/images/chat-tb-summit/IMG_6516.jpg
+        :target: {static}/images/chat-tb-summit/IMG_6516.jpg
         :alt: The entire group of volunteers.
 
 It was great to spend some quality hacking time with Florian_ and to meet
@@ -24,15 +24,15 @@ attended in Toronto) and to meet some brand new people!
 .. center::
 
     .. image:: /thumbnails/chat-tb-summit/IMG_6408_small.jpg
-        :target: {filename}/images/chat-tb-summit/IMG_6408.jpg
+        :target: {static}/images/chat-tb-summit/IMG_6408.jpg
         :alt: Nihanth hacking.
 
     .. image:: /thumbnails/chat-tb-summit/IMG_6426_small.jpg
-        :target: {filename}/images/chat-tb-summit/IMG_6426.jpg
+        :target: {static}/images/chat-tb-summit/IMG_6426.jpg
         :alt: The chat contributors: me, Florian and Nihanth.
 
     .. image:: /thumbnails/chat-tb-summit/IMG_6508_small.jpg
-        :target: {filename}/images/chat-tb-summit/IMG_6508.jpg
+        :target: {static}/images/chat-tb-summit/IMG_6508.jpg
         :alt: Daniel joining us over Vidyo.
 
     A few pictures of the chat contributors: Nihanth; me, Florian and Nihanth;
@@ -49,11 +49,11 @@ to XMPP_! You can check out the progress in `bug 1018060`_.
 .. center::
 
     .. image:: /thumbnails/chat-tb-summit/IMG_6394_small.jpg
-        :target: {filename}/images/chat-tb-summit/IMG_6394.jpg
+        :target: {static}/images/chat-tb-summit/IMG_6394.jpg
         :alt: First working call over Instantbird WebRTC.
 
     .. image:: /thumbnails/chat-tb-summit/webrtc_preview_small.jpg
-        :target: {filename}/images/chat-tb-summit/webrtc_preview.jpg
+        :target: {static}/images/chat-tb-summit/webrtc_preview.jpg
         :alt: Screenshot of first working call over Instantbird WebRTC.
 
     First working call over Instantbird WebRTC.
@@ -61,7 +61,7 @@ to XMPP_! You can check out the progress in `bug 1018060`_.
 .. center::
 
     .. image:: /thumbnails/chat-tb-summit/IMG_6594_small.jpg
-        :target: {filename}/images/chat-tb-summit/IMG_6594.jpg
+        :target: {static}/images/chat-tb-summit/IMG_6594.jpg
         :alt: Eating some poutine!
 
     Other highlights of the trip include eating the "Canadian delicacy" of

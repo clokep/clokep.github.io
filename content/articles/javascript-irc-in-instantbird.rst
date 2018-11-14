@@ -33,8 +33,8 @@ After today's work I was able to generate the following screenshot:
 
 .. center::
 
-    .. image:: {filename}/images/IRCworking2.png
-        :target: {filename}/images/IRCworking2.png
+    .. image:: {static}/images/IRCworking2.png
+        :target: {static}/images/IRCworking2.png
         :alt: Example conversation using JavaScript IRC.
         :height: 297px
         :class: center
