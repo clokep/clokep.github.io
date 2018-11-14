@@ -27,12 +27,16 @@ Purple
 ======
 
 Changes to purple consisted mostly of ifdefs that remove some header
-files not supported on Windows.  For example, I encountered a few of: ::
+files not supported on Windows.  For example, I encountered a few of:
+
+.. code-block:: c++
 
     #include <unistd.h>
 
 Luckily there was already a define ``HAVE_UNISTD_H``, so I just needed
-to add: ::
+to add:
+
+.. code-block:: c++
 
     #ifdef HAVE_UNISTD_H
     #include <unistd.h>

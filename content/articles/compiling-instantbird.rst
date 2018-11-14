@@ -103,7 +103,9 @@ a version here which corresponds to each version of VS.
 
 Once this finishes loading you'll be in the home directory (which is
 in the root of your user's documents and settings folder, i.e. for me:
-C:\\Users\\clokep).  You'll want to do the following: ::
+C:\\Users\\clokep).  You'll want to do the following:
+
+.. code-block:: bash
 
     hg clone https://hg.instantbird.org/instantbird
 
@@ -112,7 +114,9 @@ connection is.  (The Instantbird source isn't THAT big though, it
 shouldn't take too long.)
 
 Then we'll need to change into the instantbird directory that was just
-created and download the Mozilla source code: ::
+created and download the Mozilla source code:
+
+.. code-block:: bash
 
     cd instantbird
     python client.py checkout
@@ -127,7 +131,9 @@ Compiling Instantbird:
 
 We need to set up the options we want to build with.  These are
 read from a .mozconfig (don't miss the "." in the front!).  The contents
-of the .mozconfig that worked for me are: ::
+of the .mozconfig that worked for me are:
+
+.. code-block:: bash
 
     ac_add_options --enable-application=instantbird
     mk_add_options MOZ_OBJDIR=@TOPSRCDIR@/objdir-ib-release
@@ -137,13 +143,17 @@ The first option says to build Instantbird, the second gives an output
 directory and the third `disables accessibility`_ (not really sure why
 we need to do this, but we'll get that error at that link otherwise).
 
-Finally (back in the bash shell) type: ::
+Finally (back in the bash shell) type:
+
+.. code-block:: bash
 
     make -f client.mk build
 
 Now sit back and relax.  My build took about an hour to finish, maybe
 a bit less -- I wasn't fully paying attention.  Once it's done you
-should see something like: ::
+should see something like:
+
+.. code-block:: bash
 
     Processed 1 file, writing output:
 
@@ -171,7 +181,9 @@ should see something like: ::
     make[1]: Leaving directory `/c/Users/clokep/instantbird/objdir-ib-release'
 
 Now, to test that the build actually worked we can browse to the
-compiled executable and run it: ::
+compiled executable and run it:
+
+.. code-block:: bash
 
     cd objdir-ib-release/mozilla/dist/bin/instantbird.exe -P dev -no-remote
 
@@ -185,7 +197,9 @@ Hopefully this will help someone else get started on hacking
 Instantbird.  There's other good ways you can hack too if your computer
 can't handle compiling, including unpacking omni.jar.
 
-One last tidbit is to possibly add the option to your .mozconfig: ::
+One last tidbit is to possibly add the option to your .mozconfig:
+
+.. code-block:: bash
 
     --enable-chrome-format=flat
 
