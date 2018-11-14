@@ -1,270 +1,205 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-    <meta charset="utf-8" />
-    <title>Like bricks in the sky - chat</title>
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-    <link rel="stylesheet" href="/theme/css/main.css?10ddb23c" />
+    <!-- Feed configuration. -->
     <link href="http://patrick.cloke.us/feeds/atom.xml" type="application/atom+xml" rel="alternate" title="Like bricks in the sky Atom Feed" />
     <link href="http://patrick.cloke.us/feeds/rss.xml" type="application/rss+xml" rel="alternate" title="Like bricks in the sky RSS Feed" />
 
-    <!--[if IE]>
-        <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
-    <![endif]-->
-</head>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
+    <link rel="stylesheet" href="/theme/css/styles.css">
+    <link rel="stylesheet" href="/theme/css/borland.css">
 
-<body id="index" class="home">
-    <header id="banner" class="body">
-        <h1><a href="/">Like bricks in the sky </a></h1>
-        <nav><ul>
-            <li><a href="/pages/about.html">About</a></li>
-            <li><a href="/pages/contact.html">Contact</a></li>
-            <li><a href="/pages/projects.html">Projects</a></li>
-            <li><a href="/pages/resources.html">Resources</a></li>
-            <li><a href="/archives.html">Archives</a></li>
-            <li><a href="/tags.html">Tags</a></li>
-        </ul></nav>
-    </header><!-- /#banner -->
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
 
-    <div id="container" class="body">
-        <section id="extras" class="left">
-            <div class="social">
-                <h2>social</h2>
-                <ul>
-                    <li><a href="https://www.twitter.com/clokep" target="_blank">twitter</a></li>
-                    <li><a href="https://bitbucket.org/clokep" target="_blank">bitbucket</a></li>
-                    <li><a href="https://www.github.com/clokep" target="_blank">github</a></li>
-                    <li><a href="https://mozillians.org/u/clokep/" target="_blank">mozillians</a></li>
+    <title>Like bricks in the sky - chat</title>
+  </head>
 
-                    <li><a href="http://patrick.cloke.us/feeds/atom.xml" type="application/atom+xml" rel="alternate">atom feed</a></li>
-                    <li><a href="http://patrick.cloke.us/feeds/rss.xml" type="application/rss+xml" rel="alternate">rss feed</a></li>
-                </ul>
-            </div><!-- /.social -->
-        </section><!-- /#extras -->
+  <body class="pb-5">
+    <nav class="navbar navbar-expand-lg sticky-top navbar-light bg-light border-bottom border-info">
+      <a class="navbar-brand" href="/">
+        Like bricks in the sky
+      </a>
 
-        <section id="search" class="left">
-            <h2>search</h2>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-items" aria-controls="navbar-items" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
 
-            <form method="get" action="http://www.google.com/search" target="_blank">
+      <div class="collapse navbar-collapse" id="navbar-items">
+        <ul class="navbar-nav ml-auto">
 
-                <input type="text" name="q" placeholder="search this site" />
-                <input type="submit" value="Search" />
-                <input type="hidden"  name="sitesearch" value="patrick.cloke.us" />
-            </form>
-        </section>
+          <li class="nav-item">
+            <a class="nav-link" href="/pages/about.html">About</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/pages/projects.html">Projects</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/pages/resources.html">Resources</a>
+          </li>
 
+          <li class="nav-item">
+            <a class="nav-link" href="/archives.html">Archives</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/tags.html">Tags</a>
+          </li>
 
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="social-dropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              Social
+            </a>
 
-        <aside id="featured" class="body">
-        <article>
-            <h1 class="entry-title"><a href="/posts/2017/05/05/google-summer-of-code-2017-matrix-protocol/">Google Summer of Code 2017: Matrix protocol for Instantbird and&nbsp;Thunderbird</a></h1>
-<footer class="post-info-container">
-    <div class="post-info-top">
-    </div>
+            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="social-dropdown">
+              <a class="dropdown-item" href="https://www.twitter.com/clokep" target="_blank">
+                <span class="fab fa-twitter mr-1"></span> twitter
+              </a>
+              <a class="dropdown-item" href="https://mastodon.social/@clokep" target="_blank">
+                <span class="fab fa-mastodon mr-1"></span> mastodon
+              </a>
+              <a class="dropdown-item" href="https://www.github.com/clokep" target="_blank">
+                <span class="fab fa-github mr-1"></span> github
+              </a>
+              <a class="dropdown-item" href="https://gitlab.com/clokep" target="_blank">
+                <span class="fab fa-gitlab mr-1"></span> gitlab
+              </a>
+              <a class="dropdown-item" href="https://bitbucket.org/clokep" target="_blank">
+                <span class="fab fa-bitbucket mr-1"></span> bitbucket
+              </a>
+              <a class="dropdown-item" href="https://mozillians.org/u/clokep/" target="_blank">
+                <span class="fab fa-firefox mr-1"></span> mozillians
+              </a>
+            </div>
+          </li>
 
-    <!-- Second div is to change the background color again. -->
-    <div class="post-info-bg">
-    <div class="post-info">
-        <div id="gravatar" style="background-image: url('https://www.gravatar.com/avatar/130405f65521b6ee6bbbe0204070a163');">
-        </div>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="feeds-dropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              Feeds
+            </a>
 
-        <abbr class="published" title="2017-05-05T11:20:00-04:00">
-            Published: 05/05/2017 11:20 AM EDT
-        </abbr>
+            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="feeds-dropdown">
+              <a class="dropdown-item" href="http://patrick.cloke.us/feeds/atom.xml" type="application/atom+xml" rel="alternate">atom feed</a>
+              <a class="dropdown-item" href="http://patrick.cloke.us/feeds/rss.xml" type="application/rss+xml" rel="alternate">rss feed</a>
+            </div>
+          </li>
 
-        <address class="vcard author">
-            By                 <a class="url fn" href="/pages/about.html">Patrick Cloke</a>
-        </address>
+          <form class="form-inline" method="get" action="http://www.google.com/search">
+            <input class="form-control form-control-sm mr-sm-2" type="search" name="q" placeholder="Search" aria-label="Search" />
+            <input type="hidden"  name="sitesearch" value="patrick.cloke.us" />
 
+            <button class="btn btn-sm btn-outline-info d-none d-sm-inline" type="submit">Search</button>
+          </form>
+        </ul>
+      </div>
+    </nav>
 
-        <div id="gravatar-clear"></div>
+<div class="container mt-4">
+  <div class="row">
+    <div class="col-md-12">
+      <h1>
+        <a href="/posts/2017/05/05/google-summer-of-code-2017-matrix-protocol/">Google Summer of Code 2017: Matrix protocol for Instantbird and&nbsp;Thunderbird</a>
+      </h1>
 
-        <div id="tag-list">
-            tags:                 <a href="/tag/chat.html">chat</a>
-                <a href="/tag/gsoc.html">GSoC</a>
-                <a href="/tag/instant-messaging.html">instant messaging</a>
-                <a href="/tag/instantbird.html">Instantbird</a>
-                <a href="/tag/matrix.html">Matrix</a>
-        </div>
+      <i>Friday, May 5, 2017</i>
 
-        
-
-        <div id="post-share-links" class="social">
-            share:
-            <a href="http://twitter.com/home?status=Google%20Summer%20of%20Code%202017%3A%20Matrix%20protocol%20for%20Instantbird%20and%C2%A0Thunderbird%20http%3A//patrick.cloke.us/posts/2017/05/05/google-summer-of-code-2017-matrix-protocol/" target="_blank" title="Share on Twitter">Twitter</a>
-            <a href="http://www.facebook.com/sharer/sharer.php?u=http%3A//patrick.cloke.us/posts/2017/05/05/google-summer-of-code-2017-matrix-protocol/" target="_blank" title="Share on Facebook">Facebook</a>
-            <a href="https://plus.google.com/share?url=http%3A//patrick.cloke.us/posts/2017/05/05/google-summer-of-code-2017-matrix-protocol/" target="_blank" title="Share on Google Plus">Google+</a>
-            <a href="mailto:?subject=Google%20Summer%20of%20Code%202017%3A%20Matrix%20protocol%20for%20Instantbird%20and%C2%A0Thunderbird&amp;body=http%3A//patrick.cloke.us/posts/2017/05/05/google-summer-of-code-2017-matrix-protocol/" target="_blank" title="Share via Email">Email</a>
-        </div>
-    </div>
-    </div>
-
-    <div class="post-info-bottom">
-    </div>
-</footer><!-- /.post-info --><p>I&#8217;ll be mentoring Pavan Karthik on his <a class="reference external" href="https://summerofcode.withgoogle.com/projects/#6473832528347136">project for Google Summer of Code 2017</a>
+      <p>I&#8217;ll be mentoring Pavan Karthik on his <a class="reference external" href="https://summerofcode.withgoogle.com/projects/#6473832528347136">project for Google Summer of Code 2017</a>
 entitled &#8220;Matrix Protocol Support for Instantbird&#8221;. <a class="reference external" href="http://matrix.org/">Matrix</a> is a new(er)
 protocol that is an open, decentralized network with some unique features.
-Initial support for this landed in <a class="reference external" href="https://bugzilla.mozilla.org/show_bug.cgi?id=1315926">bug 1315926</a>, but it is not feature
-rich-enough to turn on for users. Pavan will work to finish Matrix support so we
-can enable it for all users! The brief description of his proposal is&nbsp;below:</p>
-<blockquote>
-Matrix is an open, decentralized protocol for instant messaging (and more!)
-It has bridges to many other networks and protocol, e.g. <span class="caps">IRC</span>, Slack, and
-more. Initial support for Matrix was added in bug 1199855, but there&#8217;s a lot
-to do still : Support more features from the Matrix <span class="caps">SDK</span> (video/audio calls,
-room topics, typing notifications, read receipts and a lot more.) Support
-one-on-one conversations. Add tests specific to Matrix. Improve the Matrix
-<span class="caps">JS</span>-<span class="caps">SDK</span> that Instantbird and Thunderbird depend on. Improving and expanding
-shared code and APIs used by all JavaScript protocol plugins (<span class="caps">IRC</span>, <span class="caps">XMPP</span>,
-Yahoo and Twitter). Improving documentation of the process for adding a
-protocol to Instantbird/Thunderbird. Using the Matrix protocol on a
-day-to-day basis to dog-food the code.</blockquote>
-<p>I&#8217;m super excited to finalize support for Matrix in both Instantbird and
-Thunderbird! You can also checkout the full 25 projects that
-<a class="reference external" href="https://summerofcode.withgoogle.com/organizations/6421332469219328/">Mozilla accepted</a>.</p>
-<p><a href="/posts/2017/05/05/google-summer-of-code-2017-matrix-protocol/#disqus_thread">comments</a></p>        </article>
-        </aside><!-- /#featured -->
-        <section id="content" class="body">
-            <h1>Other articles</h1>
-            <hr />
-            <ol id="posts-list" class="hfeed">
+Initial support for this landed in <a class="reference external" href="https://bugzilla.mozilla.org/show_bug.cgi?id=1315926">bug 1315926</a>, but it is not feature …</p>
 
-        <li><article class="hentry">
-        <header>
-            <h1><a href="/posts/2013/10/06/yahoo-protocol-google-summer-of-code/" rel="bookmark"
-               title="Permalink to Yahoo Protocol Google Summer of Code Round-up">Yahoo Protocol Google Summer of Code&nbsp;Round-up</a></h1>
-        </header>
+      <a href="/posts/2017/05/05/google-summer-of-code-2017-matrix-protocol/">read more &rarr;</a>
 
-        <div class="entry-content">
-<footer class="post-info">
-    <abbr class="published" title="2013-10-06T09:18:00-04:00">
-        Published: 10/06/2013 09:18 AM EDT
-    </abbr>
+      <br>
+      <a href="/posts/2017/05/05/google-summer-of-code-2017-matrix-protocol/#disqus_thread">comments</a>
+    </div>
+  </div>
+</div>
+<div class="container mt-4">
+  <div class="row">
+    <div class="col-md-12">
+      <h1>
+        <a href="/posts/2013/10/06/yahoo-protocol-google-summer-of-code/">Yahoo Protocol Google Summer of Code&nbsp;Round-up</a>
+      </h1>
 
-    <address class="vcard author">
-        By             <a class="url fn" href="/pages/about.html">Patrick Cloke</a>
-    </address>
+      <i>Sunday, October 6, 2013</i>
 
-
-    <p>
-        tags:             <a href="/tag/chat.html">chat</a>
-            <a href="/tag/gsoc.html">GSoC</a>
-            <a href="/tag/instant-messaging.html">instant messaging</a>
-            <a href="/tag/instantbird.html">Instantbird</a>
-            <a href="/tag/yahoo.html">Yahoo</a>
-    </p>
-
-    
-</footer><!-- /.post-info -->        <p>I have to apologize to my student, <a class="reference external" href="http://phaseshiftsoftware.com/blog/">Quentin</a> (aka qheaden on <span class="caps">IRC</span>),
+      <p>I have to apologize to my student, <a class="reference external" href="http://phaseshiftsoftware.com/blog/">Quentin</a> (aka qheaden on <span class="caps">IRC</span>),
 for taking so long to write this&#8230;but anyway: Google Summer of Code
 2013 is over!&nbsp; Quentin has done a great job working at implementing the
 Yahoo Protocol for Instantbird (and Thunderbird) in JavaScript
 (henceforth called &#8220;<span class="caps">JS</span>-Yahoo …</p>
-        <a class="readmore" href="/posts/2013/10/06/yahoo-protocol-google-summer-of-code/">read more &rarr;</a>
-<p><a href="/posts/2013/10/06/yahoo-protocol-google-summer-of-code/#disqus_thread">comments</a></p>        </div><!-- /.entry-content -->
-        </article></li>
 
-        <li><article class="hentry">
-        <header>
-            <h1><a href="/posts/2013/06/28/mentoring-google-summer-of-code-2013/" rel="bookmark"
-               title="Permalink to Mentoring Google Summer of Code 2013">Mentoring Google Summer of Code&nbsp;2013</a></h1>
-        </header>
+      <a href="/posts/2013/10/06/yahoo-protocol-google-summer-of-code/">read more &rarr;</a>
 
-        <div class="entry-content">
-<footer class="post-info">
-    <abbr class="published" title="2013-06-28T18:05:00-04:00">
-        Published: 06/28/2013 06:05 PM EDT
-    </abbr>
+      <br>
+      <a href="/posts/2013/10/06/yahoo-protocol-google-summer-of-code/#disqus_thread">comments</a>
+    </div>
+  </div>
+</div>
+<div class="container mt-4">
+  <div class="row">
+    <div class="col-md-12">
+      <h1>
+        <a href="/posts/2013/06/28/mentoring-google-summer-of-code-2013/">Mentoring Google Summer of Code&nbsp;2013</a>
+      </h1>
 
-    <address class="vcard author">
-        By             <a class="url fn" href="/pages/about.html">Patrick Cloke</a>
-    </address>
+      <i>Friday, June 28, 2013</i>
 
-
-    <p>
-        tags:             <a href="/tag/chat.html">chat</a>
-            <a href="/tag/gsoc.html">GSoC</a>
-            <a href="/tag/instant-messaging.html">instant messaging</a>
-            <a href="/tag/instantbird.html">Instantbird</a>
-            <a href="/tag/yahoo.html">Yahoo</a>
-    </p>
-
-    
-</footer><!-- /.post-info -->        <p>I&#8217;m officially a mentor this year for <a class="reference external" href="http://www.google-melange.com/gsoc/homepage/google/gsoc2013">2013&#8217;s Google Summer of Code</a>.
+      <p>I&#8217;m officially a mentor this year for <a class="reference external" href="http://www.google-melange.com/gsoc/homepage/google/gsoc2013">2013&#8217;s Google Summer of Code</a>.
 I&#8217;m a bit late on posting this, but oh well! My student this year is
 <a class="reference external" href="http://phaseshiftsoftware.com/">Quentin Headen</a> who is <a class="reference external" href="http://www.google-melange.com/gsoc/project/google/gsoc2013/qheaden/26001">working on</a> a <a class="reference external" href="http://en.wikipedia.org/wiki/Yahoo!_Messenger_Protocol">Yahoo! Messenger protocol</a>
 for the Instantbird chat/ backend (so it&#8217;ll also be …</p>
-        <a class="readmore" href="/posts/2013/06/28/mentoring-google-summer-of-code-2013/">read more &rarr;</a>
-<p><a href="/posts/2013/06/28/mentoring-google-summer-of-code-2013/#disqus_thread">comments</a></p>        </div><!-- /.entry-content -->
-        </article></li>
 
-        <li><article class="hentry">
-        <header>
-            <h1><a href="/posts/2012/10/16/on-status/" rel="bookmark"
-               title="Permalink to On Status">On&nbsp;Status</a></h1>
-        </header>
+      <a href="/posts/2013/06/28/mentoring-google-summer-of-code-2013/">read more &rarr;</a>
 
-        <div class="entry-content">
-<footer class="post-info">
-    <abbr class="published" title="2012-10-16T21:33:00-04:00">
-        Published: 10/16/2012 09:33 PM EDT
-    </abbr>
+      <br>
+      <a href="/posts/2013/06/28/mentoring-google-summer-of-code-2013/#disqus_thread">comments</a>
+    </div>
+  </div>
+</div>
+<div class="container mt-4">
+  <div class="row">
+    <div class="col-md-12">
+      <h1>
+        <a href="/posts/2012/10/16/on-status/">On&nbsp;Status</a>
+      </h1>
 
-    <address class="vcard author">
-        By             <a class="url fn" href="/pages/about.html">Patrick Cloke</a>
-    </address>
+      <i>Tuesday, October 16, 2012</i>
 
-
-    <p>
-        tags:             <a href="/tag/chat.html">chat</a>
-            <a href="/tag/instant-messaging.html">instant messaging</a>
-            <a href="/tag/instantbird.html">Instantbird</a>
-            <a href="/tag/messaging.html">messaging</a>
-            <a href="/tag/status.html">status</a>
-            <a href="/tag/thunderbird.html">Thunderbird</a>
-    </p>
-
-    
-</footer><!-- /.post-info -->        <p>Something that comes up often about Instantbird is why we only support
+      <p>Something that comes up often about Instantbird is why we only support
 three statuses: Available, Unavailable and Offline.&nbsp; (We do actually
 support a fourth one too, Idle, but that is set automatically, not
 chosen by the user.)&nbsp; Frequently this discussion is in the context of
 wanting an &#8220;Invisible&#8221; status, but …</p>
-        <a class="readmore" href="/posts/2012/10/16/on-status/">read more &rarr;</a>
-<p><a href="/posts/2012/10/16/on-status/#disqus_thread">comments</a></p>        </div><!-- /.entry-content -->
-        </article></li>
-        </ol><!-- /#posts-list -->
-<p class="paginator">
-    Page 1 / 1
-</p>
-        </section><!-- /#content -->
+
+      <a href="/posts/2012/10/16/on-status/">read more &rarr;</a>
+
+      <br>
+      <a href="/posts/2012/10/16/on-status/#disqus_thread">comments</a>
     </div>
+  </div>
+</div>
 
-    <footer id="contentinfo" class="body">
-        <address id="about" class="vcard body">
-        Proudly powered by <a href="http://getpelican.com/">Pelican</a>, which takes great advantage of <a href="http://python.org">Python</a>.
-        Blog source available on <a href="https://github.com/clokep/clokep.github.io">GitHub</a>.
-        </address><!-- /#about -->
-    </footer><!-- /#contentinfo -->
 
-    <script type="text/javascript">
-    var _gaq = _gaq || [];
-    _gaq.push(['_setAccount', 'UA-52389517-1']);
-    _gaq.push(['_trackPageview']);
-    (function() {
-        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-    })();
-    </script>
-<script type="text/javascript">
-    var disqus_shortname = 'clokep';
-    (function () {
-        var s = document.createElement('script'); s.async = true;
-        s.type = 'text/javascript';
-        s.src = '//' + disqus_shortname + '.disqus.com/count.js';
-        (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
-    }());
-</script>
-</body>
+
+    <nav class="navbar fixed-bottom navbar-light bg-light border-top border-info">
+      <a href="https://getpelican.com/" class="nav-item" target="_blank">Powered by Pelican</a>
+      <a href="https://github.com/clokep/clokep.github.io" class="nav-item" target="_blank">
+        Source available on GitHub <span class="fab fa-github"></span>
+      </a>
+    </nav>
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T" crossorigin="anonymous"></script>
+
+<script id="dsq-count-scr" src="//clokep.disqus.com/count.js" async></script>
+  </body>
 </html>

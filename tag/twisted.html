@@ -1,487 +1,168 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-    <meta charset="utf-8" />
-    <title>Like bricks in the sky - twisted</title>
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-    <link rel="stylesheet" href="/theme/css/main.css?10ddb23c" />
+    <!-- Feed configuration. -->
     <link href="http://patrick.cloke.us/feeds/atom.xml" type="application/atom+xml" rel="alternate" title="Like bricks in the sky Atom Feed" />
     <link href="http://patrick.cloke.us/feeds/rss.xml" type="application/rss+xml" rel="alternate" title="Like bricks in the sky RSS Feed" />
 
-    <!--[if IE]>
-        <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
-    <![endif]-->
-</head>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
+    <link rel="stylesheet" href="/theme/css/styles.css">
+    <link rel="stylesheet" href="/theme/css/borland.css">
 
-<body id="index" class="home">
-    <header id="banner" class="body">
-        <h1><a href="/">Like bricks in the sky </a></h1>
-        <nav><ul>
-            <li><a href="/pages/about.html">About</a></li>
-            <li><a href="/pages/contact.html">Contact</a></li>
-            <li><a href="/pages/projects.html">Projects</a></li>
-            <li><a href="/pages/resources.html">Resources</a></li>
-            <li><a href="/archives.html">Archives</a></li>
-            <li><a href="/tags.html">Tags</a></li>
-        </ul></nav>
-    </header><!-- /#banner -->
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
 
-    <div id="container" class="body">
-        <section id="extras" class="left">
-            <div class="social">
-                <h2>social</h2>
-                <ul>
-                    <li><a href="https://www.twitter.com/clokep" target="_blank">twitter</a></li>
-                    <li><a href="https://bitbucket.org/clokep" target="_blank">bitbucket</a></li>
-                    <li><a href="https://www.github.com/clokep" target="_blank">github</a></li>
-                    <li><a href="https://mozillians.org/u/clokep/" target="_blank">mozillians</a></li>
+    <title>Like bricks in the sky - twisted</title>
+  </head>
 
-                    <li><a href="http://patrick.cloke.us/feeds/atom.xml" type="application/atom+xml" rel="alternate">atom feed</a></li>
-                    <li><a href="http://patrick.cloke.us/feeds/rss.xml" type="application/rss+xml" rel="alternate">rss feed</a></li>
-                </ul>
-            </div><!-- /.social -->
-        </section><!-- /#extras -->
+  <body class="pb-5">
+    <nav class="navbar navbar-expand-lg sticky-top navbar-light bg-light border-bottom border-info">
+      <a class="navbar-brand" href="/">
+        Like bricks in the sky
+      </a>
 
-        <section id="search" class="left">
-            <h2>search</h2>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-items" aria-controls="navbar-items" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
 
-            <form method="get" action="http://www.google.com/search" target="_blank">
+      <div class="collapse navbar-collapse" id="navbar-items">
+        <ul class="navbar-nav ml-auto">
 
-                <input type="text" name="q" placeholder="search this site" />
-                <input type="submit" value="Search" />
-                <input type="hidden"  name="sitesearch" value="patrick.cloke.us" />
-            </form>
-        </section>
+          <li class="nav-item">
+            <a class="nav-link" href="/pages/about.html">About</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/pages/projects.html">Projects</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/pages/resources.html">Resources</a>
+          </li>
 
+          <li class="nav-item">
+            <a class="nav-link" href="/archives.html">Archives</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/tags.html">Tags</a>
+          </li>
 
-        <section id="toc" class="left">
-            <h2>table of contents</h2>
-            <div class="toc" id="">
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="social-dropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              Social
+            </a>
 
-<ul class="simple">
-<li><a class="reference internal" href="#background" id="id13">Background</a></li>
-<li><a class="reference internal" href="#initial-approach" id="id14">Initial Approach</a></li>
-<li><a class="reference internal" href="#threaded-approach" id="id15">Threaded Approach</a></li>
-<li><a class="reference internal" href="#twisted-native-approach" id="id16">Twisted-native Approach</a></li>
-</ul>
-</div>
-        </section>
+            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="social-dropdown">
+              <a class="dropdown-item" href="https://www.twitter.com/clokep" target="_blank">
+                <span class="fab fa-twitter mr-1"></span> twitter
+              </a>
+              <a class="dropdown-item" href="https://mastodon.social/@clokep" target="_blank">
+                <span class="fab fa-mastodon mr-1"></span> mastodon
+              </a>
+              <a class="dropdown-item" href="https://www.github.com/clokep" target="_blank">
+                <span class="fab fa-github mr-1"></span> github
+              </a>
+              <a class="dropdown-item" href="https://gitlab.com/clokep" target="_blank">
+                <span class="fab fa-gitlab mr-1"></span> gitlab
+              </a>
+              <a class="dropdown-item" href="https://bitbucket.org/clokep" target="_blank">
+                <span class="fab fa-bitbucket mr-1"></span> bitbucket
+              </a>
+              <a class="dropdown-item" href="https://mozillians.org/u/clokep/" target="_blank">
+                <span class="fab fa-firefox mr-1"></span> mozillians
+              </a>
+            </div>
+          </li>
 
-        <aside id="featured" class="body">
-        <article>
-            <h1 class="entry-title"><a href="/posts/2018/10/23/calling-celery-from-twisted/">Calling Celery from&nbsp;Twisted</a></h1>
-<footer class="post-info-container">
-    <div class="post-info-top">
-    </div>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="feeds-dropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              Feeds
+            </a>
 
-    <!-- Second div is to change the background color again. -->
-    <div class="post-info-bg">
-    <div class="post-info">
-        <div id="gravatar" style="background-image: url('https://www.gravatar.com/avatar/130405f65521b6ee6bbbe0204070a163');">
-        </div>
+            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="feeds-dropdown">
+              <a class="dropdown-item" href="http://patrick.cloke.us/feeds/atom.xml" type="application/atom+xml" rel="alternate">atom feed</a>
+              <a class="dropdown-item" href="http://patrick.cloke.us/feeds/rss.xml" type="application/rss+xml" rel="alternate">rss feed</a>
+            </div>
+          </li>
 
-        <abbr class="published" title="2018-10-23T19:24:00-04:00">
-            Published: 10/23/2018 07:24 PM EDT
-        </abbr>
+          <form class="form-inline" method="get" action="http://www.google.com/search">
+            <input class="form-control form-control-sm mr-sm-2" type="search" name="q" placeholder="Search" aria-label="Search" />
+            <input type="hidden"  name="sitesearch" value="patrick.cloke.us" />
 
-        <address class="vcard author">
-            By                 <a class="url fn" href="/pages/about.html">Patrick Cloke</a>
-        </address>
+            <button class="btn btn-sm btn-outline-info d-none d-sm-inline" type="submit">Search</button>
+          </form>
+        </ul>
+      </div>
+    </nav>
 
+<div class="container mt-4">
+  <div class="row">
+    <div class="col-md-12">
+      <h1>
+        <a href="/posts/2018/10/23/calling-celery-from-twisted/">Calling Celery from&nbsp;Twisted</a>
+      </h1>
 
-        <div id="gravatar-clear"></div>
+      <i>Tuesday, October 23, 2018</i>
 
-        <div id="tag-list">
-            tags:                 <a href="/tag/celery.html">celery</a>
-                <a href="/tag/twisted.html">twisted</a>
-        </div>
-
-        
-
-        <div id="post-share-links" class="social">
-            share:
-            <a href="http://twitter.com/home?status=Calling%20Celery%20from%C2%A0Twisted%20http%3A//patrick.cloke.us/posts/2018/10/23/calling-celery-from-twisted/" target="_blank" title="Share on Twitter">Twitter</a>
-            <a href="http://www.facebook.com/sharer/sharer.php?u=http%3A//patrick.cloke.us/posts/2018/10/23/calling-celery-from-twisted/" target="_blank" title="Share on Facebook">Facebook</a>
-            <a href="https://plus.google.com/share?url=http%3A//patrick.cloke.us/posts/2018/10/23/calling-celery-from-twisted/" target="_blank" title="Share on Google Plus">Google+</a>
-            <a href="mailto:?subject=Calling%20Celery%20from%C2%A0Twisted&amp;body=http%3A//patrick.cloke.us/posts/2018/10/23/calling-celery-from-twisted/" target="_blank" title="Share via Email">Email</a>
-        </div>
-    </div>
-    </div>
-
-    <div class="post-info-bottom">
-    </div>
-</footer><!-- /.post-info -->
+      
 <div class="section" id="background">
 <h2><a class="toc-backref" href="#id13">Background</a></h2>
 <p>I use <a class="reference external" href="https://twistedmatrix.com/">Twisted</a> and <a class="reference external" href="http://www.celeryproject.org/">Celery</a> daily at work, both are useful frameworks, both have
 a lot of great information out there, but a particular use (that I haven’t seen
 discussed much online, hence this post) is calling Celery tasks <em>from</em> Twisted
 (and subsequently using the result).</p>
-<p>The difference between Twisted and Celery seems to be a frequent question people
-have (check out the number of questions on <a class="reference external" href="https://stackoverflow.com/search?q=twisted+or+celery">StackOverflow</a>). The main difference,
-from my point of view, is that Twisted is a “batteries included” networking
-framework that is asynchronous / evented for handling of I/O, Celery is a <em>distributed</em>
-task queue which excels at short <span class="caps">CPU</span>-bound tasks where the asynchronous nature
-comes from running multiple processes. The <a class="reference external" href="https://github.com/SentimensRG/txCelery">txCelery</a> project has a nice summary
-on their page:</p>
-<blockquote>
-<p>Celery is an outstanding choice for dispatching <em>short-lived</em>,
-computationally-expensive tasks to a distributed backend system. Note the
-emphasis; Celery is ill-suited for tasks tasks that require updating some
-in-memory representation with out-of-process data. If you want a specific
-process to read data from standard input, for instance, good luck…</p>
-<p>Twisted can be though of as having the opposite problem. Twisted is very
-good at maintaining and updating in-memory representations over extended
-periods of time, but fails miserably at performing expensive computations.
-Twisted notably has no built-in constructs for managing distributed task queues.</p>
-</blockquote>
-<p>The two main ways to interact with Celery are:</p>
-<ol class="arabic simple">
-<li>Call a task (and have it happen asynchronously).</li>
-<li>Get the result of that task.</li>
-</ol>
-<p>In order to call Celery from Twisted we’ll need to ensure that both of these can
-happen in a way that matches Twisted’s execution model. This might be
-illustrated best by a code example, we would want to do something like the following:</p>
-<div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">celery</span> <span class="kn">import</span> <span class="n">Celery</span>
+<p>The difference …</p></div>
 
-<span class="kn">from</span> <span class="nn">twisted.internet</span> <span class="kn">import</span> <span class="n">defer</span><span class="p">,</span> <span class="n">task</span>
+      <a href="/posts/2018/10/23/calling-celery-from-twisted/">read more &rarr;</a>
 
-<span class="n">app</span> <span class="o">=</span> <span class="n">Celery</span><span class="p">(</span><span class="n">broker</span><span class="o">=</span><span class="s1">'amqp://guest:guest@127.0.0.1:5672//'</span><span class="p">,</span> <span class="n">backend</span><span class="o">=</span><span class="s1">'rpc'</span><span class="p">)</span>
-
-<span class="nd">@app.task</span>
-<span class="k">def</span> <span class="nf">my_task</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">):</span>
-    <span class="c1"># Normally you'd do a CPU bound task here.</span>
-    <span class="k">return</span> <span class="n">a</span> <span class="o">+</span> <span class="n">b</span>
-
-<span class="nd">@defer.inlineCallbacks</span>
-<span class="k">def</span> <span class="nf">main</span><span class="p">():</span>
-    <span class="c1"># Normally you'd open some listening sockets or some outbound</span>
-    <span class="c1"># connections here.</span>
-
-    <span class="c1"># Call into Celery!</span>
-    <span class="n">result</span> <span class="o">=</span> <span class="k">yield</span> <span class="n">my_task</span><span class="o">.</span><span class="n">delay</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
-    <span class="c1"># Should print '1 + 2 = 3'.</span>
-    <span class="k">print</span><span class="p">(</span><span class="s2">"{} + {} = {}"</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="n">result</span><span class="p">))</span>
-
-<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">'__main__'</span><span class="p">:</span>
-    <span class="n">task</span><span class="o">.</span><span class="n">react</span><span class="p">(</span><span class="n">main</span><span class="p">)</span>
-</pre></div>
+      <br>
+      <a href="/posts/2018/10/23/calling-celery-from-twisted/#disqus_thread">comments</a>
+    </div>
+  </div>
 </div>
-<div class="section" id="initial-approach">
-<h2><a class="toc-backref" href="#id14">Initial Approach</a></h2>
-<p>The initial attempt to pair these libraries is to call Celery tasks like you
-would normally (import the Celery task and call <a class="reference external" href="http://docs.celeryproject.org/en/latest/reference/celery.app.task.html#celery.app.task.Task.delay"><tt class="docutils literal">delay()</tt></a> on it). <a class="footnote-reference" href="#id7" id="id1">[1]</a> There’s
-a hint that this won’t work in <a class="reference external" href="http://docs.celeryproject.org/en/latest/reference/celery.app.task.html#celery.app.task.Task.delay">the documentation</a> however:</p>
-<blockquote>
-Apply tasks asynchronously by sending a message.</blockquote>
-<p>The documentation around calling <a class="reference external" href="http://docs.celeryproject.org/en/latest/reference/celery.result.html#celery.result.AsyncResult.get"><tt class="docutils literal">AsyncResult.get()</tt></a>, to retrieve the result
-also hints about issues:</p>
-<blockquote>
-Wait until task is ready, and return its result.</blockquote>
-<p>It isn’t incredibly clear from the documentation, but this points to two
-separate issues with calling Celery from Twisted:</p>
-<ol class="arabic simple">
-<li>In both of these situations, (synchronous) I/O is happening in the
-background when you make this call! <a class="footnote-reference" href="#id8" id="id2">[2]</a> I/O happening outside of the
-reactor is a big no-no in a Twisted process since it can block the reactor
-from running. <a class="footnote-reference" href="#id9" id="id3">[3]</a></li>
-<li>Additionally, the <tt class="docutils literal">AsyncResult.get()</tt> call blocks until a result is ready,
-this doesn’t fit well into an evented programming paradigm. <a class="footnote-reference" href="#id10" id="id4">[4]</a></li>
-</ol>
-<p>The second problem is handled well by the <a class="reference external" href="https://github.com/SentimensRG/txCelery">txCelery</a> package, it allows you to
-call a task and get a sub-class of <a class="reference external" href="http://twistedmatrix.com/documents/current/api/twisted.internet.defer.Deferred.html"><tt class="docutils literal">Deferred</tt></a> which resolves into the result
-of the task call by periodically monitoring the status of the result.</p>
-<p>Unfortunately txCelery doesn’t solve the first issue (to my knowledge) since it
-just uses the normal mechanisms built into Celery for I/O (which causes I/O in
-the reactor thread).</p>
-</div>
-<div class="section" id="threaded-approach">
-<h2><a class="toc-backref" href="#id15">Threaded Approach</a></h2>
-<p>Twisted has a thread pool and makes it super easy to ask it to “run this code in
-a non-reactor thread and return the result to me”. It is pretty straightforward
-to cobble together a way to use <a class="reference external" href="https://twistedmatrix.com/documents/current/api/twisted.internet.threads.html#deferToThread"><tt class="docutils literal">threads.deferToThread()</tt></a> to call
-<a class="reference external" href="http://docs.celeryproject.org/en/latest/reference/celery.html#celery.Celery.send_task"><tt class="docutils literal">Celery.send_task()</tt></a> <a class="footnote-reference" href="#id11" id="id5">[5]</a>. You still need an asynchronous way to check if the
-task result is ready, however. You could just call <tt class="docutils literal">AsyncResult.get()</tt> in a
-thread, but you will likely quickly exhaust your thread pool since that blocks
-until a result is ready. Alternately you can check the status of a task using
-the <a class="reference external" href="http://docs.celeryproject.org/en/latest/reference/celery.result.html#celery.result.AsyncResult.state"><tt class="docutils literal">state</tt></a> property of an <tt class="docutils literal">AsyncResult</tt>. (I found it very surprising that
-accessing a <em>property</em> of this object causes I/O to happen, but it does.)</p>
-<p>Connecting these ideas together we came up with something similar to the
-following (note that this is heavily inspired by what txCelery does, but pushes
-all I/O onto a separate thread instead of doing it in the reactor thread):</p>
-<pre class="code python literal-block">
-<span class="kn">from</span> <span class="nn">celery</span> <span class="kn">import</span> <span class="n">states</span>
+<div class="container mt-4">
+  <div class="row">
+    <div class="col-md-12">
+      <h1>
+        <a href="/posts/2015/08/28/boston-python-twisted-async-networking-framework/">Boston Python: Twisted async networking&nbsp;framework</a>
+      </h1>
 
-<span class="kn">from</span> <span class="nn">twisted.internet</span> <span class="kn">import</span> <span class="n">defer</span><span class="p">,</span> <span class="n">reactor</span><span class="p">,</span> <span class="n">threads</span>
+      <i>Friday, August 28, 2015</i>
 
-
-<span class="k">def</span> <span class="nf">send_task</span><span class="p">(</span><span class="n">app</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
-    <span class="c1"># Call the real function via a background thread.</span>
-    <span class="k">return</span> <span class="n">threads</span><span class="o">.</span><span class="n">deferToThread</span><span class="p">(</span><span class="n">app</span><span class="o">.</span><span class="n">send_task</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span><span class="o">.</span><span class="n">addCallback</span><span class="p">(</span><span class="n">CeleryDeferred</span><span class="p">)</span>
-
-
-<span class="k">class</span> <span class="nc">CeleryDeferred</span><span class="p">(</span><span class="n">defer</span><span class="o">.</span><span class="n">Deferred</span><span class="p">,</span> <span class="nb">object</span><span class="p">):</span>
-    <span class="sd">"""
-    Extension of the Twisted Deferred object that wraps a Celery AsyncResult.
-
-    This Deferred will occasionally poll the Celery task for its status. When
-    complete, the Deferred will resolve and any added callbacks will be run.
-
-    Inspired by txCelery: https://github.com/SentimensRG/txCelery/
-    """</span>
-    <span class="n">CHECK_INTERVAL</span> <span class="o">=</span> <span class="mf">0.25</span>
-
-    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">async_result</span><span class="p">):</span>
-        <span class="c1"># Deferred is an old-style class</span>
-        <span class="n">defer</span><span class="o">.</span><span class="n">Deferred</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_canceller</span><span class="p">)</span>
-
-        <span class="bp">self</span><span class="o">.</span><span class="n">async_result</span> <span class="o">=</span> <span class="n">async_result</span>
-        <span class="c1"># Start the monitor loop</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">check_state</span><span class="p">()</span>
-
-    <span class="k">def</span> <span class="nf">check_state</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">"""Check the status of the celery task on another thread."""</span>
-        <span class="n">threads</span><span class="o">.</span><span class="n">deferToThread</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">get_state</span><span class="p">)</span><span class="o">.</span><span class="n">addCallbacks</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">state_received</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">errback</span><span class="p">)</span>
-
-    <span class="k">def</span> <span class="nf">get_state</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">"""Check the status of the celery task directly"""</span>
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">async_result</span><span class="o">.</span><span class="n">state</span>
-
-    <span class="k">def</span> <span class="nf">state_received</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">celery_state</span><span class="p">):</span>
-        <span class="sd">"""Called when the check_state thread finishes"""</span>
-        <span class="k">if</span> <span class="n">celery_state</span> <span class="ow">in</span> <span class="n">states</span><span class="o">.</span><span class="n">UNREADY_STATES</span><span class="p">:</span>
-            <span class="c1"># Schedule another status check, to be run later.</span>
-            <span class="n">reactor</span><span class="o">.</span><span class="n">callLater</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">CHECK_INTERVAL</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">check_state</span><span class="p">)</span>
-        <span class="k">elif</span> <span class="n">celery_state</span> <span class="o">==</span> <span class="n">states</span><span class="o">.</span><span class="n">SUCCESS</span><span class="p">:</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">callback</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">async_result</span><span class="o">.</span><span class="n">result</span><span class="p">)</span>
-        <span class="k">elif</span> <span class="n">celery_state</span> <span class="o">==</span> <span class="n">states</span><span class="o">.</span><span class="n">FAILURE</span><span class="p">:</span>
-            <span class="c1"># This will contain the Exception instance if the task raised one</span>
-            <span class="c1"># http://docs.celeryproject.org/en/latest/reference/celery.result.html</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">errback</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">async_result</span><span class="o">.</span><span class="n">result</span><span class="p">)</span>
-        <span class="k">elif</span> <span class="n">celery_state</span> <span class="o">==</span> <span class="n">states</span><span class="o">.</span><span class="n">REVOKED</span><span class="p">:</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">errback</span><span class="p">(</span><span class="n">defer</span><span class="o">.</span><span class="n">CancelledError</span><span class="p">(</span><span class="s1">'Task {0}'</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">async_result</span><span class="o">.</span><span class="n">id</span><span class="p">)))</span>
-        <span class="k">else</span><span class="p">:</span>
-            <span class="c1"># An unknown state was returned.</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">errback</span><span class="p">(</span><span class="ne">ValueError</span><span class="p">(</span><span class="s1">'Unknown state: `{}`'</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">celery_state</span><span class="p">)))</span>
-
-    <span class="k">def</span> <span class="nf">_canceller</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="c1"># Revoke the celery task</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">async_result</span><span class="o">.</span><span class="n">revoke</span><span class="p">()</span>
-</pre>
-<p>The calling syntax of this isn’t as nice as the initial approach, but it is
-pretty close (the modified lines are highlighted):</p>
-<div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">celery</span> <span class="kn">import</span> <span class="n">Celery</span>
-
-<span class="kn">from</span> <span class="nn">twisted.internet</span> <span class="kn">import</span> <span class="n">defer</span><span class="p">,</span> <span class="n">task</span>
-<span class="hll"><span class="kn">from</span> <span class="nn">twistedcelery</span> <span class="kn">import</span> <span class="n">send_task</span>
-</span>
-<span class="n">app</span> <span class="o">=</span> <span class="n">Celery</span><span class="p">(</span><span class="n">broker</span><span class="o">=</span><span class="s1">'amqp://guest:guest@127.0.0.1:5672//'</span><span class="p">,</span> <span class="n">backend</span><span class="o">=</span><span class="s1">'rpc'</span><span class="p">)</span>
-
-<span class="nd">@app.task</span>
-<span class="k">def</span> <span class="nf">my_task</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">):</span>
-    <span class="c1"># Normally you'd do a CPU bound task here.</span>
-    <span class="k">return</span> <span class="n">a</span> <span class="o">+</span> <span class="n">b</span>
-
-<span class="nd">@defer.inlineCallbacks</span>
-<span class="k">def</span> <span class="nf">main</span><span class="p">():</span>
-    <span class="c1"># Normally you'd open some listening sockets or some outbound</span>
-    <span class="c1"># connections here.</span>
-
-    <span class="c1"># Call into Celery!</span>
-<span class="hll">    <span class="n">result</span> <span class="o">=</span> <span class="k">yield</span> <span class="n">send_task</span><span class="p">(</span><span class="n">app</span><span class="p">,</span> <span class="s1">'my_task'</span><span class="p">,</span> <span class="n">args</span><span class="o">=</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">))</span>
-</span>    <span class="c1"># Should print '1 + 2 = 3'.</span>
-    <span class="k">print</span><span class="p">(</span><span class="s2">"{} + {} = {}"</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="n">result</span><span class="p">))</span>
-
-<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">'__main__'</span><span class="p">:</span>
-    <span class="n">task</span><span class="o">.</span><span class="n">react</span><span class="p">(</span><span class="n">main</span><span class="p">)</span>
-</pre></div>
-</div>
-<div class="section" id="twisted-native-approach">
-<h2><a class="toc-backref" href="#id16">Twisted-native Approach</a></h2>
-<p>I think the above solutions are fundamentally wrong, but are easy-ish to
-implement. They might work <span class="caps">OK</span> for small loads, or if increased latency is
-acceptable, but will start to fail when a large number of pending tasks are
-necessary. A better way is to consider:</p>
-<ol class="arabic simple">
-<li>Celery is designed to be <a class="reference external" href="http://docs.celeryproject.org/en/latest/faq.html#is-celery-dependent-on-pickle">language</a> <a class="reference external" href="http://docs.celeryproject.org/en/latest/faq.html#is-celery-multilingual">independent</a>.</li>
-<li>Celery <a class="reference external" href="http://docs.celeryproject.org/en/latest/internals/protocol.html">message formats</a> are part of the public “<span class="caps">API</span>”. <a class="footnote-reference" href="#id12" id="id6">[6]</a></li>
-<li>Celery uses standard networking protocols to enable distributed processing.</li>
-<li>Twisted is designed to efficiency implement networking protocols.</li>
-</ol>
-<p>This lead me to the conclusion that Twisted can just treat Celery tasks as if it
-is implemented in a different language and just try to directly communicate with
-the Celery broker and backend. It can just send task calls and query for
-responses, when available. We can be a little bit more clever, however, and use
-Celery to process the details of the messages to send, the queue to send them
-to, etc.</p>
-<p>The hope is to end up with code like this (again, modified lines are highlighted):</p>
-<div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">celery</span> <span class="kn">import</span> <span class="n">Celery</span>
-
-<span class="kn">from</span> <span class="nn">twisted.internet</span> <span class="kn">import</span> <span class="n">defer</span><span class="p">,</span> <span class="n">task</span>
-<span class="hll"><span class="kn">from</span> <span class="nn">twistedcelery</span> <span class="kn">import</span> <span class="n">TwistedCelery</span>
-</span>
-<span class="n">app</span> <span class="o">=</span> <span class="n">Celery</span><span class="p">(</span><span class="n">broker</span><span class="o">=</span><span class="s1">'amqp://guest:guest@127.0.0.1:5672//'</span><span class="p">,</span> <span class="n">backend</span><span class="o">=</span><span class="s1">'rpc'</span><span class="p">)</span>
-
-<span class="nd">@app.task</span>
-<span class="k">def</span> <span class="nf">my_task</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">):</span>
-    <span class="c1"># Normally you'd do a CPU bound task here.</span>
-    <span class="k">return</span> <span class="n">a</span> <span class="o">+</span> <span class="n">b</span>
-
-<span class="nd">@defer.inlineCallbacks</span>
-<span class="k">def</span> <span class="nf">main</span><span class="p">():</span>
-    <span class="c1"># Normally you'd open some listening sockets or some outbound</span>
-    <span class="c1"># connections here.</span>
-
-<span class="hll">    <span class="c1"># Turn the Celery app into a TwistedCelery app, which uses Twisted to do</span>
-</span><span class="hll">    <span class="c1"># I/O under the hood.</span>
-</span><span class="hll">    <span class="n">tx_app</span> <span class="o">=</span> <span class="n">TwistedCelery</span><span class="p">(</span><span class="n">app</span><span class="p">)</span>
-</span>
-    <span class="c1"># Call into Celery!</span>
-<span class="hll">    <span class="n">result</span> <span class="o">=</span> <span class="k">yield</span> <span class="n">tx_app</span><span class="o">.</span><span class="n">send_task</span><span class="p">(</span><span class="s1">'my_task'</span><span class="p">,</span> <span class="n">args</span><span class="o">=</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">))</span>
-</span>    <span class="c1"># Should print '1 + 2 = 3'.</span>
-    <span class="k">print</span><span class="p">(</span><span class="s2">"{} + {} = {}"</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="n">result</span><span class="p">))</span>
-
-<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">'__main__'</span><span class="p">:</span>
-    <span class="n">task</span><span class="o">.</span><span class="n">react</span><span class="p">(</span><span class="n">main</span><span class="p">)</span>
-</pre></div>
-<p>I’ve started the <a class="reference external" href="https://github.com/clokep/twistedcelery">Twisted-Celery</a> project in order to accomplish this goal. It
-uses Celery to create the messages and to decide what exchange/queue/etc. to
-use, but allows Twisted to handle all communication to your configured Celery
-broker and backend. It exposes a <tt class="docutils literal">send_task()</tt> compatible <span class="caps">API</span>, but returns a
-<tt class="docutils literal">Deferred</tt> instead of an <tt class="docutils literal">AsyncResult</tt> so you can write Twisted-compatible
-code easily.</p>
-<p>It is just a proof of concept right now, but was successfully tested on a real
-project. Note that it currently only supports <span class="caps">AMQP</span>, but this should be
-expandable to other brokers. I won’t go into the details of how it works here,
-but the hope is that you can give it a configured Celery app and it “just works”
-with Twisted.</p>
-<p>If you’re interested in helping out, checkout the <a class="reference external" href="https://github.com/clokep/twistedcelery">GitHub repository</a> or leave a
-comment below.</p>
-<table class="docutils footnote" frame="void" id="id7" rules="none">
-<colgroup><col class="label"/><col/></colgroup>
-<tbody valign="top">
-<tr><td class="label"><a class="fn-backref" href="#id1">[1]</a></td><td>If you’re unfamiliar with Celery, briefly it allows a “task” is defined
-in Python code, a “worker” is used to execute those tasks. The code
-which wants to execute those tasks calls <tt class="docutils literal">delay()</tt> or
-<tt class="docutils literal">apply_async()</tt> on the “task”, which returns an <tt class="docutils literal">AsyncResult</tt>, which
-can be used to retrieve the result of that task, once it runs.</td></tr>
-</tbody>
-</table>
-<table class="docutils footnote" frame="void" id="id8" rules="none">
-<colgroup><col class="label"/><col/></colgroup>
-<tbody valign="top">
-<tr><td class="label"><a class="fn-backref" href="#id2">[2]</a></td><td>Note that Celery is frequently used with web frameworks that might run
-on e.g. <a class="reference external" href="https://gunicorn.org/">gunicorn</a> with <a class="reference external" href="http://docs.gunicorn.org/en/latest/design.html">async workers (using greenlets)</a>, meaning that not
-everything is blocked, but that is somewhat beyond the scope of this
-post.</td></tr>
-</tbody>
-</table>
-<table class="docutils footnote" frame="void" id="id9" rules="none">
-<colgroup><col class="label"/><col/></colgroup>
-<tbody valign="top">
-<tr><td class="label"><a class="fn-backref" href="#id3">[3]</a></td><td>Twisted doesn’t <a class="reference external" href="https://twistedmatrix.com/trac/wiki/FrequentlyAskedQuestions#HowdoIuseDeferredstomakemyblockingcodenon-blocking">magically make your code non-blocking</a>.</td></tr>
-</tbody>
-</table>
-<table class="docutils footnote" frame="void" id="id10" rules="none">
-<colgroup><col class="label"/><col/></colgroup>
-<tbody valign="top">
-<tr><td class="label"><a class="fn-backref" href="#id4">[4]</a></td><td>Note that txCelery really only takes care of the second issue here.</td></tr>
-</tbody>
-</table>
-<table class="docutils footnote" frame="void" id="id11" rules="none">
-<colgroup><col class="label"/><col/></colgroup>
-<tbody valign="top">
-<tr><td class="label"><a class="fn-backref" href="#id5">[5]</a></td><td><tt class="docutils literal">Celery.send_task()</tt> is a generic way to call a task by name without
-importing it. It is generally useful, but in this particular case is a
-nice spot to generically interrupt how Celery communicates to the
-broker.</td></tr>
-</tbody>
-</table>
-<table class="docutils footnote" frame="void" id="id12" rules="none">
-<colgroup><col class="label"/><col/></colgroup>
-<tbody valign="top">
-<tr><td class="label"><a class="fn-backref" href="#id6">[6]</a></td><td>Note that there are two different versions of the protocol, they’re
-fairly similar, but version 2 moves some meta data from the body to the
-headers to avoid needing to deserialize the entire mesage multiple
-times. You can read <a class="reference external" href="http://docs.celeryproject.org/en/latest/history/whatsnew-4.0.html#new-protocol-highlights">the highlights</a> of the differences.</td></tr>
-</tbody>
-</table>
-</div>
-<p><a href="/posts/2018/10/23/calling-celery-from-twisted/#disqus_thread">comments</a></p>        </article>
-        </aside><!-- /#featured -->
-        <section id="content" class="body">
-            <h1>Other articles</h1>
-            <hr />
-            <ol id="posts-list" class="hfeed">
-
-        <li><article class="hentry">
-        <header>
-            <h1><a href="/posts/2015/08/28/boston-python-twisted-async-networking-framework/" rel="bookmark"
-               title="Permalink to Boston Python: Twisted async networking framework">Boston Python: Twisted async networking&nbsp;framework</a></h1>
-        </header>
-
-        <div class="entry-content">
-<footer class="post-info">
-    <abbr class="published" title="2015-08-28T08:42:00-04:00">
-        Published: 08/28/2015 08:42 AM EDT
-    </abbr>
-
-    <address class="vcard author">
-        By             <a class="url fn" href="/pages/about.html">Patrick Cloke</a>
-    </address>
-
-
-    <p>
-        tags:             <a href="/tag/community.html">community</a>
-            <a href="/tag/programming.html">programming</a>
-            <a href="/tag/python.html">python</a>
-            <a href="/tag/twisted.html">twisted</a>
-    </p>
-
-    
-</footer><!-- /.post-info -->        <p>Yesterday, <a class="reference external" href="http://stephendicato.com/">Stephen DiCato</a> and I gave a talk for <a class="reference external" href="http://www.meetup.com/bostonpython/">Boston Python</a> titled:
+      <p>Yesterday, <a class="reference external" href="http://stephendicato.com/">Stephen DiCato</a> and I gave a talk for <a class="reference external" href="http://www.meetup.com/bostonpython/">Boston Python</a> titled:
 <a class="reference external" href="http://www.meetup.com/bostonpython/events/221406450/">Twisted async networking framework</a>. It was an introduction to intermediate
 level talk about using the <a class="reference external" href="https://twistedmatrix.com/">Twisted networking framework</a> based on our
 experiences at <a class="reference external" href="https://percipientnetworks.com/">Percipient Networks</a>.</p>
 <p>The talk, available <a class="reference external" href="https://github.com/percipient/talks/tree/master/boston_python_08_27_2015">on our GitHub</a> (<a class="reference external" href="https://github.com/percipient/talks/raw/master/boston_python_08_27_2015/boston_python_08_27_2015.pdf"><span class="caps">PDF</span></a>) covered a few basic&nbsp;topics:</p>
 <ol class="arabic simple">
 <li>What …</li></ol>
-        <a class="readmore" href="/posts/2015/08/28/boston-python-twisted-async-networking-framework/">read more &rarr;</a>
-<p><a href="/posts/2015/08/28/boston-python-twisted-async-networking-framework/#disqus_thread">comments</a></p>        </div><!-- /.entry-content -->
-        </article></li>
-        </ol><!-- /#posts-list -->
-<p class="paginator">
-    Page 1 / 1
-</p>
-        </section><!-- /#content -->
+
+      <a href="/posts/2015/08/28/boston-python-twisted-async-networking-framework/">read more &rarr;</a>
+
+      <br>
+      <a href="/posts/2015/08/28/boston-python-twisted-async-networking-framework/#disqus_thread">comments</a>
     </div>
+  </div>
+</div>
 
-    <footer id="contentinfo" class="body">
-        <address id="about" class="vcard body">
-        Proudly powered by <a href="http://getpelican.com/">Pelican</a>, which takes great advantage of <a href="http://python.org">Python</a>.
-        Blog source available on <a href="https://github.com/clokep/clokep.github.io">GitHub</a>.
-        </address><!-- /#about -->
-    </footer><!-- /#contentinfo -->
 
-    <script type="text/javascript">
-    var _gaq = _gaq || [];
-    _gaq.push(['_setAccount', 'UA-52389517-1']);
-    _gaq.push(['_trackPageview']);
-    (function() {
-        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-    })();
-    </script>
-<script type="text/javascript">
-    var disqus_shortname = 'clokep';
-    (function () {
-        var s = document.createElement('script'); s.async = true;
-        s.type = 'text/javascript';
-        s.src = '//' + disqus_shortname + '.disqus.com/count.js';
-        (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
-    }());
-</script>
-</body>
+
+    <nav class="navbar fixed-bottom navbar-light bg-light border-top border-info">
+      <a href="https://getpelican.com/" class="nav-item" target="_blank">Powered by Pelican</a>
+      <a href="https://github.com/clokep/clokep.github.io" class="nav-item" target="_blank">
+        Source available on GitHub <span class="fab fa-github"></span>
+      </a>
+    </nav>
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T" crossorigin="anonymous"></script>
+
+<script id="dsq-count-scr" src="//clokep.disqus.com/count.js" async></script>
+  </body>
 </html>

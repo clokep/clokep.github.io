@@ -106,7 +106,7 @@ accessing a &lt;em&gt;property&lt;/em&gt; of this object causes I/O to happen, b
 &lt;p&gt;Connecting these ideas together we came up with something similar to the
 following (note that this is heavily inspired by what txCelery does, but pushes
 all I/O onto a separate thread instead of doing it in the reactor thread):&lt;/p&gt;
-&lt;pre class="code python literal-block"&gt;
+&lt;pre class="code python highlight literal-block"&gt;
 &lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;celery&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;states&lt;/span&gt;
 
 &lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;twisted.internet&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;defer&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;reactor&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;threads&lt;/span&gt;

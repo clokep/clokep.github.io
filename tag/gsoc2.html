@@ -1,291 +1,264 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-    <meta charset="utf-8" />
-    <title>Like bricks in the sky - GSoC</title>
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-    <link rel="stylesheet" href="/theme/css/main.css?10ddb23c" />
+    <!-- Feed configuration. -->
     <link href="http://patrick.cloke.us/feeds/atom.xml" type="application/atom+xml" rel="alternate" title="Like bricks in the sky Atom Feed" />
     <link href="http://patrick.cloke.us/feeds/rss.xml" type="application/rss+xml" rel="alternate" title="Like bricks in the sky RSS Feed" />
 
-    <!--[if IE]>
-        <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
-    <![endif]-->
-</head>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
+    <link rel="stylesheet" href="/theme/css/styles.css">
+    <link rel="stylesheet" href="/theme/css/borland.css">
 
-<body id="index" class="home">
-    <header id="banner" class="body">
-        <h1><a href="/">Like bricks in the sky </a></h1>
-        <nav><ul>
-            <li><a href="/pages/about.html">About</a></li>
-            <li><a href="/pages/contact.html">Contact</a></li>
-            <li><a href="/pages/projects.html">Projects</a></li>
-            <li><a href="/pages/resources.html">Resources</a></li>
-            <li><a href="/archives.html">Archives</a></li>
-            <li><a href="/tags.html">Tags</a></li>
-        </ul></nav>
-    </header><!-- /#banner -->
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
 
-    <div id="container" class="body">
-        <section id="extras" class="left">
-            <div class="social">
-                <h2>social</h2>
-                <ul>
-                    <li><a href="https://www.twitter.com/clokep" target="_blank">twitter</a></li>
-                    <li><a href="https://bitbucket.org/clokep" target="_blank">bitbucket</a></li>
-                    <li><a href="https://www.github.com/clokep" target="_blank">github</a></li>
-                    <li><a href="https://mozillians.org/u/clokep/" target="_blank">mozillians</a></li>
+    <title>Like bricks in the sky - GSoC</title>
+  </head>
 
-                    <li><a href="http://patrick.cloke.us/feeds/atom.xml" type="application/atom+xml" rel="alternate">atom feed</a></li>
-                    <li><a href="http://patrick.cloke.us/feeds/rss.xml" type="application/rss+xml" rel="alternate">rss feed</a></li>
-                </ul>
-            </div><!-- /.social -->
-        </section><!-- /#extras -->
+  <body class="pb-5">
+    <nav class="navbar navbar-expand-lg sticky-top navbar-light bg-light border-bottom border-info">
+      <a class="navbar-brand" href="/">
+        Like bricks in the sky
+      </a>
 
-        <section id="search" class="left">
-            <h2>search</h2>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-items" aria-controls="navbar-items" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
 
-            <form method="get" action="http://www.google.com/search" target="_blank">
+      <div class="collapse navbar-collapse" id="navbar-items">
+        <ul class="navbar-nav ml-auto">
 
-                <input type="text" name="q" placeholder="search this site" />
-                <input type="submit" value="Search" />
-                <input type="hidden"  name="sitesearch" value="patrick.cloke.us" />
-            </form>
-        </section>
+          <li class="nav-item">
+            <a class="nav-link" href="/pages/about.html">About</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/pages/projects.html">Projects</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/pages/resources.html">Resources</a>
+          </li>
 
+          <li class="nav-item">
+            <a class="nav-link" href="/archives.html">Archives</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/tags.html">Tags</a>
+          </li>
 
-        <section id="content" class="body">
-            <ol id="posts-list" class="hfeed" start="4">
-        <li><article class="hentry">
-        <header>
-            <h1><a href="/posts/2014/07/01/google-summer-of-code-2014-file/" rel="bookmark"
-               title="Permalink to Google Summer of Code 2014">Google Summer of Code&nbsp;2014</a></h1>
-        </header>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="social-dropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              Social
+            </a>
 
-        <div class="entry-content">
-<footer class="post-info">
-    <abbr class="published" title="2014-07-01T08:03:00-04:00">
-        Published: 07/01/2014 08:03 AM EDT
-    </abbr>
+            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="social-dropdown">
+              <a class="dropdown-item" href="https://www.twitter.com/clokep" target="_blank">
+                <span class="fab fa-twitter mr-1"></span> twitter
+              </a>
+              <a class="dropdown-item" href="https://mastodon.social/@clokep" target="_blank">
+                <span class="fab fa-mastodon mr-1"></span> mastodon
+              </a>
+              <a class="dropdown-item" href="https://www.github.com/clokep" target="_blank">
+                <span class="fab fa-github mr-1"></span> github
+              </a>
+              <a class="dropdown-item" href="https://gitlab.com/clokep" target="_blank">
+                <span class="fab fa-gitlab mr-1"></span> gitlab
+              </a>
+              <a class="dropdown-item" href="https://bitbucket.org/clokep" target="_blank">
+                <span class="fab fa-bitbucket mr-1"></span> bitbucket
+              </a>
+              <a class="dropdown-item" href="https://mozillians.org/u/clokep/" target="_blank">
+                <span class="fab fa-firefox mr-1"></span> mozillians
+              </a>
+            </div>
+          </li>
 
-    <address class="vcard author">
-        By             <a class="url fn" href="/pages/about.html">Patrick Cloke</a>
-    </address>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="feeds-dropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              Feeds
+            </a>
 
+            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="feeds-dropdown">
+              <a class="dropdown-item" href="http://patrick.cloke.us/feeds/atom.xml" type="application/atom+xml" rel="alternate">atom feed</a>
+              <a class="dropdown-item" href="http://patrick.cloke.us/feeds/rss.xml" type="application/rss+xml" rel="alternate">rss feed</a>
+            </div>
+          </li>
 
-    <p>
-        tags:             <a href="/tag/community.html">community</a>
-            <a href="/tag/gsoc.html">GSoC</a>
-    </p>
+          <form class="form-inline" method="get" action="http://www.google.com/search">
+            <input class="form-control form-control-sm mr-sm-2" type="search" name="q" placeholder="Search" aria-label="Search" />
+            <input type="hidden"  name="sitesearch" value="patrick.cloke.us" />
 
-    
-</footer><!-- /.post-info -->        <p>I&#8217;m again mentoring for <a class="reference external" href="https://www.google-melange.com/gsoc/homepage/google/gsoc2014">Google Summer of Code</a> 2014, this year my student is
+            <button class="btn btn-sm btn-outline-info d-none d-sm-inline" type="submit">Search</button>
+          </form>
+        </ul>
+      </div>
+    </nav>
+
+<div class="container mt-4">
+  <div class="row">
+    <div class="col-md-12">
+      <h1>
+        <a href="/posts/2014/07/01/google-summer-of-code-2014-file/">Google Summer of Code&nbsp;2014</a>
+      </h1>
+
+      <i>Tuesday, July 1, 2014</i>
+
+      <p>I&#8217;m again mentoring for <a class="reference external" href="https://www.google-melange.com/gsoc/homepage/google/gsoc2014">Google Summer of Code</a> 2014, this year my student is
 <a class="reference external" href="http://sawrubh.tumblr.com/">Saurabh Anand</a> (sawrubh), who has been working on a few related&nbsp;things:</p>
 <ul class="simple">
 <li>Adding a <a class="reference external" href="https://bugzilla.mozilla.org/show_bug.cgi?id=1024023">file transfer mechanism for <span class="caps">XMPP</span></a></li>
 <li>Hooking up libpurple&#8217;s file transfer code to&nbsp;Instantbird</li>
 <li>Integrating <a class="reference external" href="https://support.mozilla.org/en-US/kb/filelink-large-attachments">FileLink</a> as a fallback to in-protocol …</li></ul>
-        <a class="readmore" href="/posts/2014/07/01/google-summer-of-code-2014-file/">read more &rarr;</a>
-<p><a href="/posts/2014/07/01/google-summer-of-code-2014-file/#disqus_thread">comments</a></p>        </div><!-- /.entry-content -->
-        </article></li>
 
-        <li><article class="hentry">
-        <header>
-            <h1><a href="/posts/2013/12/04/gsoc-lessons-part-deux-arms-race/" rel="bookmark"
-               title="Permalink to GSoc Lessons: Part Deux: The Arms Race">GSoc Lessons: Part Deux: The Arms&nbsp;Race</a></h1>
-        </header>
+      <a href="/posts/2014/07/01/google-summer-of-code-2014-file/">read more &rarr;</a>
 
-        <div class="entry-content">
-<footer class="post-info">
-    <abbr class="published" title="2013-12-04T09:17:00-05:00">
-        Published: 12/04/2013 09:17 AM EST
-    </abbr>
+      <br>
+      <a href="/posts/2014/07/01/google-summer-of-code-2014-file/#disqus_thread">comments</a>
+    </div>
+  </div>
+</div>
+<div class="container mt-4">
+  <div class="row">
+    <div class="col-md-12">
+      <h1>
+        <a href="/posts/2013/12/04/gsoc-lessons-part-deux-arms-race/">GSoc Lessons: Part Deux: The Arms&nbsp;Race</a>
+      </h1>
 
-    <address class="vcard author">
-        By             <a class="url fn" href="/pages/about.html">Patrick Cloke</a>
-    </address>
+      <i>Wednesday, December 4, 2013</i>
 
-
-    <p>
-        tags:             <a href="/tag/community.html">community</a>
-            <a href="/tag/gsoc.html">GSoC</a>
-            <a href="/tag/mozilla.html">Mozilla</a>
-    </p>
-
-    
-</footer><!-- /.post-info -->        <p>This post title might be a little excessive, but I&#8217;ll blame <a class="reference external" href="http://en.wikipedia.org/wiki/The_Sum_of_All_Fears_%28film%29">The Sum
+      <p>This post title might be a little excessive, but I&#8217;ll blame <a class="reference external" href="http://en.wikipedia.org/wiki/The_Sum_of_All_Fears_%28film%29">The Sum
 of All Fears</a> that I was watching last night. This is the second part
 of a set of posts about ideas I heard at the Google Summer of Code 2013
 Mentor Summit (you can read <a class="reference external" href="http://patrick.cloke.us/posts/2013/12/02/gsoc-lessons-part-1-application-period/">the …</a></p>
-        <a class="readmore" href="/posts/2013/12/04/gsoc-lessons-part-deux-arms-race/">read more &rarr;</a>
-<p><a href="/posts/2013/12/04/gsoc-lessons-part-deux-arms-race/#disqus_thread">comments</a></p>        </div><!-- /.entry-content -->
-        </article></li>
 
-        <li><article class="hentry">
-        <header>
-            <h1><a href="/posts/2013/12/02/gsoc-lessons-part-1-application-period/" rel="bookmark"
-               title="Permalink to GSoC Lessons: Part 1: Application Period">GSoC Lessons: Part 1: Application&nbsp;Period</a></h1>
-        </header>
+      <a href="/posts/2013/12/04/gsoc-lessons-part-deux-arms-race/">read more &rarr;</a>
 
-        <div class="entry-content">
-<footer class="post-info">
-    <abbr class="published" title="2013-12-02T20:55:00-05:00">
-        Published: 12/02/2013 08:55 PM EST
-    </abbr>
+      <br>
+      <a href="/posts/2013/12/04/gsoc-lessons-part-deux-arms-race/#disqus_thread">comments</a>
+    </div>
+  </div>
+</div>
+<div class="container mt-4">
+  <div class="row">
+    <div class="col-md-12">
+      <h1>
+        <a href="/posts/2013/12/02/gsoc-lessons-part-1-application-period/">GSoC Lessons: Part 1: Application&nbsp;Period</a>
+      </h1>
 
-    <address class="vcard author">
-        By             <a class="url fn" href="/pages/about.html">Patrick Cloke</a>
-    </address>
+      <i>Monday, December 2, 2013</i>
 
-
-    <p>
-        tags:             <a href="/tag/community.html">community</a>
-            <a href="/tag/gsoc.html">GSoC</a>
-            <a href="/tag/mozilla.html">Mozilla</a>
-    </p>
-
-    
-</footer><!-- /.post-info -->        <p>I briefly talked about <a class="reference external" href="http://patrick.cloke.us/posts/2013/10/20/google-summer-of-code-mentor-summit-2013/">my experiences</a> at the Google Summer of Code
+      <p>I briefly talked about <a class="reference external" href="http://patrick.cloke.us/posts/2013/10/20/google-summer-of-code-mentor-summit-2013/">my experiences</a> at the Google Summer of Code
 2013 Mentor Summit. I&#8217;ve been pretty remiss in sharing what was actually
 discussed there and for that I must apologize! This will hopefully be
 one of a few posts about what I learned and discussed at the …</p>
-        <a class="readmore" href="/posts/2013/12/02/gsoc-lessons-part-1-application-period/">read more &rarr;</a>
-<p><a href="/posts/2013/12/02/gsoc-lessons-part-1-application-period/#disqus_thread">comments</a></p>        </div><!-- /.entry-content -->
-        </article></li>
 
-        <li><article class="hentry">
-        <header>
-            <h1><a href="/posts/2013/10/20/google-summer-of-code-mentor-summit-2013/" rel="bookmark"
-               title="Permalink to Google Summer of Code Mentor Summit 2013">Google Summer of Code Mentor Summit&nbsp;2013</a></h1>
-        </header>
+      <a href="/posts/2013/12/02/gsoc-lessons-part-1-application-period/">read more &rarr;</a>
 
-        <div class="entry-content">
-<footer class="post-info">
-    <abbr class="published" title="2013-10-20T22:18:00-04:00">
-        Published: 10/20/2013 10:18 PM EDT
-    </abbr>
+      <br>
+      <a href="/posts/2013/12/02/gsoc-lessons-part-1-application-period/#disqus_thread">comments</a>
+    </div>
+  </div>
+</div>
+<div class="container mt-4">
+  <div class="row">
+    <div class="col-md-12">
+      <h1>
+        <a href="/posts/2013/10/20/google-summer-of-code-mentor-summit-2013/">Google Summer of Code Mentor Summit&nbsp;2013</a>
+      </h1>
 
-    <address class="vcard author">
-        By             <a class="url fn" href="/pages/about.html">Patrick Cloke</a>
-    </address>
+      <i>Sunday, October 20, 2013</i>
 
-
-    <p>
-        tags:             <a href="/tag/google.html">Google</a>
-            <a href="/tag/gsoc.html">GSoC</a>
-            <a href="/tag/mozilla.html">Mozilla</a>
-    </p>
-
-    
-</footer><!-- /.post-info -->        <p>Not only was I lucky enough to mentor a great student for this year&#8217;s
+      <p>Not only was I lucky enough to mentor a great student for this year&#8217;s
 Google Summer of Code, but Mozilla asked me to represent them at the
 Google Summer of Code Mentor Summit!&nbsp; This was located at Google&#8217;s
 offices in Mountain View, California this past weekend (Friday, Oct …</p>
-        <a class="readmore" href="/posts/2013/10/20/google-summer-of-code-mentor-summit-2013/">read more &rarr;</a>
-<p><a href="/posts/2013/10/20/google-summer-of-code-mentor-summit-2013/#disqus_thread">comments</a></p>        </div><!-- /.entry-content -->
-        </article></li>
 
-        <li><article class="hentry">
-        <header>
-            <h1><a href="/posts/2013/10/06/yahoo-protocol-google-summer-of-code/" rel="bookmark"
-               title="Permalink to Yahoo Protocol Google Summer of Code Round-up">Yahoo Protocol Google Summer of Code&nbsp;Round-up</a></h1>
-        </header>
+      <a href="/posts/2013/10/20/google-summer-of-code-mentor-summit-2013/">read more &rarr;</a>
 
-        <div class="entry-content">
-<footer class="post-info">
-    <abbr class="published" title="2013-10-06T09:18:00-04:00">
-        Published: 10/06/2013 09:18 AM EDT
-    </abbr>
+      <br>
+      <a href="/posts/2013/10/20/google-summer-of-code-mentor-summit-2013/#disqus_thread">comments</a>
+    </div>
+  </div>
+</div>
+<div class="container mt-4">
+  <div class="row">
+    <div class="col-md-12">
+      <h1>
+        <a href="/posts/2013/10/06/yahoo-protocol-google-summer-of-code/">Yahoo Protocol Google Summer of Code&nbsp;Round-up</a>
+      </h1>
 
-    <address class="vcard author">
-        By             <a class="url fn" href="/pages/about.html">Patrick Cloke</a>
-    </address>
+      <i>Sunday, October 6, 2013</i>
 
-
-    <p>
-        tags:             <a href="/tag/chat.html">chat</a>
-            <a href="/tag/gsoc.html">GSoC</a>
-            <a href="/tag/instant-messaging.html">instant messaging</a>
-            <a href="/tag/instantbird.html">Instantbird</a>
-            <a href="/tag/yahoo.html">Yahoo</a>
-    </p>
-
-    
-</footer><!-- /.post-info -->        <p>I have to apologize to my student, <a class="reference external" href="http://phaseshiftsoftware.com/blog/">Quentin</a> (aka qheaden on <span class="caps">IRC</span>),
+      <p>I have to apologize to my student, <a class="reference external" href="http://phaseshiftsoftware.com/blog/">Quentin</a> (aka qheaden on <span class="caps">IRC</span>),
 for taking so long to write this&#8230;but anyway: Google Summer of Code
 2013 is over!&nbsp; Quentin has done a great job working at implementing the
 Yahoo Protocol for Instantbird (and Thunderbird) in JavaScript
 (henceforth called &#8220;<span class="caps">JS</span>-Yahoo …</p>
-        <a class="readmore" href="/posts/2013/10/06/yahoo-protocol-google-summer-of-code/">read more &rarr;</a>
-<p><a href="/posts/2013/10/06/yahoo-protocol-google-summer-of-code/#disqus_thread">comments</a></p>        </div><!-- /.entry-content -->
-        </article></li>
 
-        <li><article class="hentry">
-        <header>
-            <h1><a href="/posts/2013/06/28/mentoring-google-summer-of-code-2013/" rel="bookmark"
-               title="Permalink to Mentoring Google Summer of Code 2013">Mentoring Google Summer of Code&nbsp;2013</a></h1>
-        </header>
+      <a href="/posts/2013/10/06/yahoo-protocol-google-summer-of-code/">read more &rarr;</a>
 
-        <div class="entry-content">
-<footer class="post-info">
-    <abbr class="published" title="2013-06-28T18:05:00-04:00">
-        Published: 06/28/2013 06:05 PM EDT
-    </abbr>
+      <br>
+      <a href="/posts/2013/10/06/yahoo-protocol-google-summer-of-code/#disqus_thread">comments</a>
+    </div>
+  </div>
+</div>
+<div class="container mt-4">
+  <div class="row">
+    <div class="col-md-12">
+      <h1>
+        <a href="/posts/2013/06/28/mentoring-google-summer-of-code-2013/">Mentoring Google Summer of Code&nbsp;2013</a>
+      </h1>
 
-    <address class="vcard author">
-        By             <a class="url fn" href="/pages/about.html">Patrick Cloke</a>
-    </address>
+      <i>Friday, June 28, 2013</i>
 
-
-    <p>
-        tags:             <a href="/tag/chat.html">chat</a>
-            <a href="/tag/gsoc.html">GSoC</a>
-            <a href="/tag/instant-messaging.html">instant messaging</a>
-            <a href="/tag/instantbird.html">Instantbird</a>
-            <a href="/tag/yahoo.html">Yahoo</a>
-    </p>
-
-    
-</footer><!-- /.post-info -->        <p>I&#8217;m officially a mentor this year for <a class="reference external" href="http://www.google-melange.com/gsoc/homepage/google/gsoc2013">2013&#8217;s Google Summer of Code</a>.
+      <p>I&#8217;m officially a mentor this year for <a class="reference external" href="http://www.google-melange.com/gsoc/homepage/google/gsoc2013">2013&#8217;s Google Summer of Code</a>.
 I&#8217;m a bit late on posting this, but oh well! My student this year is
 <a class="reference external" href="http://phaseshiftsoftware.com/">Quentin Headen</a> who is <a class="reference external" href="http://www.google-melange.com/gsoc/project/google/gsoc2013/qheaden/26001">working on</a> a <a class="reference external" href="http://en.wikipedia.org/wiki/Yahoo!_Messenger_Protocol">Yahoo! Messenger protocol</a>
 for the Instantbird chat/ backend (so it&#8217;ll also be …</p>
-        <a class="readmore" href="/posts/2013/06/28/mentoring-google-summer-of-code-2013/">read more &rarr;</a>
-<p><a href="/posts/2013/06/28/mentoring-google-summer-of-code-2013/#disqus_thread">comments</a></p>        </div><!-- /.entry-content -->
-        </article></li>
-        </ol><!-- /#posts-list -->
-<p class="paginator">
-        <a href="http://patrick.cloke.us/tag/gsoc.html">&laquo;</a>
-    Page 2 / 2
-</p>
-        </section><!-- /#content -->
+
+      <a href="/posts/2013/06/28/mentoring-google-summer-of-code-2013/">read more &rarr;</a>
+
+      <br>
+      <a href="/posts/2013/06/28/mentoring-google-summer-of-code-2013/#disqus_thread">comments</a>
     </div>
+  </div>
+</div>
 
-    <footer id="contentinfo" class="body">
-        <address id="about" class="vcard body">
-        Proudly powered by <a href="http://getpelican.com/">Pelican</a>, which takes great advantage of <a href="http://python.org">Python</a>.
-        Blog source available on <a href="https://github.com/clokep/clokep.github.io">GitHub</a>.
-        </address><!-- /#about -->
-    </footer><!-- /#contentinfo -->
+<div class="container">
+  <div class="row">
+    <div class="col-md-12">
+      <nav aria-label="Page navigation">
+        <ul class="pagination justify-content-center">
+          <li class="page-item">
+            <a class="page-link" href="/tag/gsoc.html" >1</a>
+          </li>
+          <li class="page-item disabled">
+            <a class="page-link" href="/tag/gsoc2.html" >2</a>
+          </li>
+        </ul>
+      </nav>
+    </div>
+  </div>
+</div>
 
-    <script type="text/javascript">
-    var _gaq = _gaq || [];
-    _gaq.push(['_setAccount', 'UA-52389517-1']);
-    _gaq.push(['_trackPageview']);
-    (function() {
-        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-    })();
-    </script>
-<script type="text/javascript">
-    var disqus_shortname = 'clokep';
-    (function () {
-        var s = document.createElement('script'); s.async = true;
-        s.type = 'text/javascript';
-        s.src = '//' + disqus_shortname + '.disqus.com/count.js';
-        (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
-    }());
-</script>
-</body>
+
+    <nav class="navbar fixed-bottom navbar-light bg-light border-top border-info">
+      <a href="https://getpelican.com/" class="nav-item" target="_blank">Powered by Pelican</a>
+      <a href="https://github.com/clokep/clokep.github.io" class="nav-item" target="_blank">
+        Source available on GitHub <span class="fab fa-github"></span>
+      </a>
+    </nav>
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T" crossorigin="anonymous"></script>
+
+<script id="dsq-count-scr" src="//clokep.disqus.com/count.js" async></script>
+  </body>
 </html>

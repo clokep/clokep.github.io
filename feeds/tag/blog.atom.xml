@@ -73,7 +73,7 @@ and some magic.&lt;/p&gt;
 modified the template they had there. On the Blogger dashboard, choose
 “Template”, scroll to the bottom and click “Revert to Classic Template”. Then
 use something like the following template:&lt;/p&gt;
-&lt;pre class="code xml literal-block"&gt;
+&lt;pre class="code xml highlight literal-block"&gt;
 &lt;span class="nt"&gt;&amp;lt;html&amp;gt;&lt;/span&gt;
     &lt;span class="nt"&gt;&amp;lt;head&amp;gt;&lt;/span&gt;
         &lt;span class="nt"&gt;&amp;lt;title&amp;gt;&lt;/span&gt;&lt;span class="err"&gt;&amp;lt;&lt;/span&gt;$BlogPageTitle$&amp;gt;&lt;span class="nt"&gt;&amp;lt;/title&amp;gt;&lt;/span&gt;
@@ -199,9 +199,8 @@ just put up a `pull request`_ to support Blogger natively!&lt;/em&gt;), but it s
 &lt;a class="reference external" href="http://docs.getpelican.com/en/3.4.0/importer.html"&gt;importing from a &lt;span class="caps"&gt;RSS&lt;/span&gt; feed&lt;/a&gt;. The first time I did this it missed a couple of
 articles (which I didn’t notice right away), so make sure you bump up the max
 amount in the &lt;span class="caps"&gt;URL&lt;/span&gt; like so (this also outputs in the folder “content”):&lt;/p&gt;
-&lt;pre class="literal-block"&gt;
-pelican-import --feed http://clokep.blogspot.com/feeds/posts/default\?alt\=rss\&amp;amp;max-results\=240 -o content
-&lt;/pre&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;pelican-import --feed http://clokep.blogspot.com/feeds/posts/default&lt;span class="se"&gt;\?&lt;/span&gt;alt&lt;span class="se"&gt;\=&lt;/span&gt;rss&lt;span class="se"&gt;\&amp;amp;&lt;/span&gt;max-results&lt;span class="se"&gt;\=&lt;/span&gt;&lt;span class="m"&gt;240&lt;/span&gt; -o content
+&lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;No import is ever perfect and I had to clean up a bunch of stuff by hand including:&lt;/p&gt;
 &lt;ul class="simple"&gt;
 &lt;li&gt;The slugs did not match the ones from Blogger (this is important later on!)&lt;/li&gt;

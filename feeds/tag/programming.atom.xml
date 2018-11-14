@@ -370,16 +370,14 @@ libpurple bindings that use the api, while the core is private).&lt;/p&gt;
 &lt;h2&gt;&lt;a class="toc-backref" href="#id1"&gt;Purple&lt;/a&gt;&lt;/h2&gt;
 &lt;p&gt;Changes to purple consisted mostly of ifdefs that remove some header
 files not supported on Windows.  For example, I encountered a few of:&lt;/p&gt;
-&lt;pre class="literal-block"&gt;
-#include &amp;lt;unistd.h&amp;gt;
-&lt;/pre&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="cp"&gt;#include&lt;/span&gt; &lt;span class="cpf"&gt;&amp;lt;unistd.h&amp;gt;&lt;/span&gt;&lt;span class="cp"&gt;&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;Luckily there was already a define &lt;tt class="docutils literal"&gt;HAVE_UNISTD_H&lt;/tt&gt;, so I just needed
 to add:&lt;/p&gt;
-&lt;pre class="literal-block"&gt;
-#ifdef HAVE_UNISTD_H
-#include &amp;lt;unistd.h&amp;gt;
-#endif
-&lt;/pre&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="cp"&gt;#ifdef HAVE_UNISTD_H&lt;/span&gt;
+&lt;span class="cp"&gt;#include&lt;/span&gt; &lt;span class="cpf"&gt;&amp;lt;unistd.h&amp;gt;&lt;/span&gt;&lt;span class="cp"&gt;&lt;/span&gt;
+&lt;span class="cp"&gt;#endif&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;Easy!  There were also a couple other issues, but those were rather trivial.&lt;/p&gt;
 &lt;/div&gt;
 &lt;div class="section" id="core"&gt;
@@ -543,18 +541,16 @@ a version here which corresponds to each version of &lt;span class="caps"&gt;VS&
 &lt;p&gt;Once this finishes loading you’ll be in the home directory (which is
 in the root of your user’s documents and settings folder, i.e. for me:
 C:\Users\clokep).  You’ll want to do the following:&lt;/p&gt;
-&lt;pre class="literal-block"&gt;
-hg clone https://hg.instantbird.org/instantbird
-&lt;/pre&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;hg clone https://hg.instantbird.org/instantbird
+&lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;This might take a few minutes depending on how good your internet
 connection is.  (The Instantbird source isn’t &lt;span class="caps"&gt;THAT&lt;/span&gt; big though, it
 shouldn’t take too long.)&lt;/p&gt;
 &lt;p&gt;Then we’ll need to change into the instantbird directory that was just
 created and download the Mozilla source code:&lt;/p&gt;
-&lt;pre class="literal-block"&gt;
-cd instantbird
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="nb"&gt;cd&lt;/span&gt; instantbird
 python client.py checkout
-&lt;/pre&gt;
+&lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;Now this step?  This one is gonna take a while.  It took me like a
 couple of hours.  It pulls the Mozilla source code, which is large and
 has many changesets.  Just let it go, it’ll give you progress
@@ -565,52 +561,48 @@ occasionally (changes, manifests, files, etc.)&lt;/p&gt;
 &lt;p&gt;We need to set up the options we want to build with.  These are
 read from a .mozconfig (don’t miss the “.” in the front!).  The contents
 of the .mozconfig that worked for me are:&lt;/p&gt;
-&lt;pre class="literal-block"&gt;
-ac_add_options --enable-application=instantbird
-mk_add_options MOZ_OBJDIR=@TOPSRCDIR@/objdir-ib-release
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;ac_add_options --enable-application&lt;span class="o"&gt;=&lt;/span&gt;instantbird
+mk_add_options &lt;span class="nv"&gt;MOZ_OBJDIR&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;@TOPSRCDIR@/objdir-ib-release
 ac_add_options --disable-accessibility
-&lt;/pre&gt;
+&lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;The first option says to build Instantbird, the second gives an output
 directory and the third &lt;a class="reference external" href="https://developer.mozilla.org/en/atlbase.h"&gt;disables accessibility&lt;/a&gt; (not really sure why
 we need to do this, but we’ll get that error at that link otherwise).&lt;/p&gt;
 &lt;p&gt;Finally (back in the bash shell) type:&lt;/p&gt;
-&lt;pre class="literal-block"&gt;
-make -f client.mk build
-&lt;/pre&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;make -f client.mk build
+&lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;Now sit back and relax.  My build took about an hour to finish, maybe
 a bit less — I wasn’t fully paying attention.  Once it’s done you
 should see something like:&lt;/p&gt;
-&lt;pre class="literal-block"&gt;
-Processed 1 file, writing output:
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;Processed &lt;span class="m"&gt;1&lt;/span&gt; file, writing output:
 
 Output:
-"c:\\Users\\clokep\\instantbird\\objdir-ib-release\\instantbird\\installer\\windows\\instgen\\helper.exe"
-Install: 2 pages (128 bytes), 1 section (16416 bytes), 2579
-instructions (72212 bytes), 369 strings (10198 bytes), 1 language table (230 bytes).
-Uninstall: 5 pages (320 bytes),
-1 section (16416 bytes), 2063 instructions (57764 bytes), 388 strings
-(10828 bytes), 1 language table (314 bytes).
-Datablock optimizer saved 123940 bytes (~17.6%).
+&lt;span class="s2"&gt;"c:\\Users\\clokep\\instantbird\\objdir-ib-release\\instantbird\\installer\\windows\\instgen\\helper.exe"&lt;/span&gt;
+Install: &lt;span class="m"&gt;2&lt;/span&gt; pages &lt;span class="o"&gt;(&lt;/span&gt;&lt;span class="m"&gt;128&lt;/span&gt; bytes&lt;span class="o"&gt;)&lt;/span&gt;, &lt;span class="m"&gt;1&lt;/span&gt; section &lt;span class="o"&gt;(&lt;/span&gt;&lt;span class="m"&gt;16416&lt;/span&gt; bytes&lt;span class="o"&gt;)&lt;/span&gt;, &lt;span class="m"&gt;2579&lt;/span&gt;
+instructions &lt;span class="o"&gt;(&lt;/span&gt;&lt;span class="m"&gt;72212&lt;/span&gt; bytes&lt;span class="o"&gt;)&lt;/span&gt;, &lt;span class="m"&gt;369&lt;/span&gt; strings &lt;span class="o"&gt;(&lt;/span&gt;&lt;span class="m"&gt;10198&lt;/span&gt; bytes&lt;span class="o"&gt;)&lt;/span&gt;, &lt;span class="m"&gt;1&lt;/span&gt; language table &lt;span class="o"&gt;(&lt;/span&gt;&lt;span class="m"&gt;230&lt;/span&gt; bytes&lt;span class="o"&gt;)&lt;/span&gt;.
+Uninstall: &lt;span class="m"&gt;5&lt;/span&gt; pages &lt;span class="o"&gt;(&lt;/span&gt;&lt;span class="m"&gt;320&lt;/span&gt; bytes&lt;span class="o"&gt;)&lt;/span&gt;,
+&lt;span class="m"&gt;1&lt;/span&gt; section &lt;span class="o"&gt;(&lt;/span&gt;&lt;span class="m"&gt;16416&lt;/span&gt; bytes&lt;span class="o"&gt;)&lt;/span&gt;, &lt;span class="m"&gt;2063&lt;/span&gt; instructions &lt;span class="o"&gt;(&lt;/span&gt;&lt;span class="m"&gt;57764&lt;/span&gt; bytes&lt;span class="o"&gt;)&lt;/span&gt;, &lt;span class="m"&gt;388&lt;/span&gt; strings
+&lt;span class="o"&gt;(&lt;/span&gt;&lt;span class="m"&gt;10828&lt;/span&gt; bytes&lt;span class="o"&gt;)&lt;/span&gt;, &lt;span class="m"&gt;1&lt;/span&gt; language table &lt;span class="o"&gt;(&lt;/span&gt;&lt;span class="m"&gt;314&lt;/span&gt; bytes&lt;span class="o"&gt;)&lt;/span&gt;.
+Datablock optimizer saved &lt;span class="m"&gt;123940&lt;/span&gt; bytes &lt;span class="o"&gt;(&lt;/span&gt;~17.6%&lt;span class="o"&gt;)&lt;/span&gt;.
 Using zlib compression.
-EXE header size:               63488 / 39424 bytes
-Install code:                  99564 / 99560 bytes
-Install data:                 118002 / 241950 bytes
-Uninstall code+data:          398654 / 398646 bytes
-CRC (0x062AF3F5):                  4 / 4 bytes
-Total size:                   679712 / 779584 bytes (87.1%)
+EXE header size:               &lt;span class="m"&gt;63488&lt;/span&gt; / &lt;span class="m"&gt;39424&lt;/span&gt; bytes
+Install code:                  &lt;span class="m"&gt;99564&lt;/span&gt; / &lt;span class="m"&gt;99560&lt;/span&gt; bytes
+Install data:                 &lt;span class="m"&gt;118002&lt;/span&gt; / &lt;span class="m"&gt;241950&lt;/span&gt; bytes
+Uninstall code+data:          &lt;span class="m"&gt;398654&lt;/span&gt; / &lt;span class="m"&gt;398646&lt;/span&gt; bytes
+CRC &lt;span class="o"&gt;(&lt;/span&gt;0x062AF3F5&lt;span class="o"&gt;)&lt;/span&gt;:                  &lt;span class="m"&gt;4&lt;/span&gt; / &lt;span class="m"&gt;4&lt;/span&gt; bytes
+Total size:                   &lt;span class="m"&gt;679712&lt;/span&gt; / &lt;span class="m"&gt;779584&lt;/span&gt; bytes &lt;span class="o"&gt;(&lt;/span&gt;&lt;span class="m"&gt;87&lt;/span&gt;.1%&lt;span class="o"&gt;)&lt;/span&gt;
 c:/Users/clokep/instantbird/objdir-ib-release/mozilla/config/nsinstall.exe -D ../../../mozilla/dist/bin/uninstall
 cp instgen/helper.exe ../../../mozilla/dist/bin/uninstall
-make[5]: Leaving directory `/c/Users/clokep/instantbird/objdir-ib-release/instantbird/installer/windows'
-make[4]: Leaving directory `/c/Users/clokep/instantbird/objdir-ib-release/instantbird'
-make[3]: Leaving directory `/c/Users/clokep/instantbird/objdir-ib-release'
-make[2]: Leaving directory `/c/Users/clokep/instantbird/objdir-ib-release'
-make[1]: Leaving directory `/c/Users/clokep/instantbird/objdir-ib-release'
-&lt;/pre&gt;
+make&lt;span class="o"&gt;[&lt;/span&gt;&lt;span class="m"&gt;5&lt;/span&gt;&lt;span class="o"&gt;]&lt;/span&gt;: Leaving directory &lt;span class="sb"&gt;`&lt;/span&gt;/c/Users/clokep/instantbird/objdir-ib-release/instantbird/installer/windows&lt;span class="s1"&gt;'&lt;/span&gt;
+&lt;span class="s1"&gt;make[4]: Leaving directory `/c/Users/clokep/instantbird/objdir-ib-release/instantbird'&lt;/span&gt;
+make&lt;span class="o"&gt;[&lt;/span&gt;&lt;span class="m"&gt;3&lt;/span&gt;&lt;span class="o"&gt;]&lt;/span&gt;: Leaving directory &lt;span class="sb"&gt;`&lt;/span&gt;/c/Users/clokep/instantbird/objdir-ib-release&lt;span class="s1"&gt;'&lt;/span&gt;
+&lt;span class="s1"&gt;make[2]: Leaving directory `/c/Users/clokep/instantbird/objdir-ib-release'&lt;/span&gt;
+make&lt;span class="o"&gt;[&lt;/span&gt;&lt;span class="m"&gt;1&lt;/span&gt;&lt;span class="o"&gt;]&lt;/span&gt;: Leaving directory &lt;span class="sb"&gt;`&lt;/span&gt;/c/Users/clokep/instantbird/objdir-ib-release&lt;span class="err"&gt;'&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;Now, to test that the build actually worked we can browse to the
 compiled executable and run it:&lt;/p&gt;
-&lt;pre class="literal-block"&gt;
-cd objdir-ib-release/mozilla/dist/bin/instantbird.exe -P dev -no-remote
-&lt;/pre&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="nb"&gt;cd&lt;/span&gt; objdir-ib-release/mozilla/dist/bin/instantbird.exe -P dev -no-remote
+&lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;The -P option specifies a profile name (dev), the second option
 (-no-remote) allows you to run a second Instantbird instance (since I
 assume you use Instantbird to &lt;span class="caps"&gt;IM&lt;/span&gt;…you probably want to be able to run a
@@ -620,9 +612,8 @@ wrong Instantbird when you’re working on stuff).&lt;/p&gt;
 Instantbird.  There’s other good ways you can hack too if your computer
 can’t handle compiling, including unpacking omni.jar.&lt;/p&gt;
 &lt;p&gt;One last tidbit is to possibly add the option to your .mozconfig:&lt;/p&gt;
-&lt;pre class="literal-block"&gt;
---enable-chrome-format=flat
-&lt;/pre&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;--enable-chrome-format&lt;span class="o"&gt;=&lt;/span&gt;flat
+&lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;This will not package anything in JARs (which pretty much just get in
 the way while developing).  See &lt;a class="reference external" href="https://developer.mozilla.org/en/JAR_Packaging"&gt;here&lt;/a&gt; for more info.&lt;/p&gt;
 &lt;p&gt;Edit: Fixed the path to the executable thanks to Florian. And fixed a
@@ -1058,8 +1049,7 @@ to work: one error, (which I found quickly) one of the other developers
 a &lt;strong&gt;new&lt;/strong&gt; object.&amp;nbsp; And after learning a bit above observers I was able
 to get the &lt;span class="caps"&gt;UI&lt;/span&gt; to respond.&amp;nbsp; I even threw in support for op/half-op/voice
 After today&amp;#8217;s work I was able to generate the following&amp;nbsp;screenshot:&lt;/p&gt;
-&lt;!--  --&gt;
-&lt;blockquote class="center"&gt;
+&lt;blockquote class="text-center"&gt;
 &lt;a class="reference external image-reference" href="http://patrick.cloke.us/images/IRCworking2.png"&gt;&lt;img alt="Example conversation using JavaScript IRC." class="center" src="http://patrick.cloke.us/images/IRCworking2.png" style="height: 297px;" /&gt;&lt;/a&gt;
 &lt;p&gt;An initial example of Instantbird communicating using JavaScript &lt;span class="caps"&gt;IRC&lt;/span&gt;.&lt;/p&gt;
 &lt;/blockquote&gt;

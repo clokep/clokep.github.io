@@ -1,259 +1,268 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-    <meta charset="utf-8" />
-    <title>Like bricks in the sky</title>
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-    <link rel="stylesheet" href="/theme/css/main.css?10ddb23c" />
+    <!-- Feed configuration. -->
     <link href="http://patrick.cloke.us/feeds/atom.xml" type="application/atom+xml" rel="alternate" title="Like bricks in the sky Atom Feed" />
     <link href="http://patrick.cloke.us/feeds/rss.xml" type="application/rss+xml" rel="alternate" title="Like bricks in the sky RSS Feed" />
 
-    <!--[if IE]>
-        <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
-    <![endif]-->
-</head>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
+    <link rel="stylesheet" href="/theme/css/styles.css">
+    <link rel="stylesheet" href="/theme/css/borland.css">
 
-<body id="index" class="home">
-    <header id="banner" class="body">
-        <h1><a href="/">Like bricks in the sky </a></h1>
-        <nav><ul>
-            <li><a href="/pages/about.html">About</a></li>
-            <li><a href="/pages/contact.html">Contact</a></li>
-            <li><a href="/pages/projects.html">Projects</a></li>
-            <li><a href="/pages/resources.html">Resources</a></li>
-            <li><a href="/archives.html">Archives</a></li>
-            <li><a href="/tags.html">Tags</a></li>
-        </ul></nav>
-    </header><!-- /#banner -->
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
 
-    <div id="container" class="body">
-        <section id="extras" class="left">
-            <div class="social">
-                <h2>social</h2>
-                <ul>
-                    <li><a href="https://www.twitter.com/clokep" target="_blank">twitter</a></li>
-                    <li><a href="https://bitbucket.org/clokep" target="_blank">bitbucket</a></li>
-                    <li><a href="https://www.github.com/clokep" target="_blank">github</a></li>
-                    <li><a href="https://mozillians.org/u/clokep/" target="_blank">mozillians</a></li>
+    <title>Like bricks in the sky</title>
+  </head>
 
-                    <li><a href="http://patrick.cloke.us/feeds/atom.xml" type="application/atom+xml" rel="alternate">atom feed</a></li>
-                    <li><a href="http://patrick.cloke.us/feeds/rss.xml" type="application/rss+xml" rel="alternate">rss feed</a></li>
-                </ul>
-            </div><!-- /.social -->
-        </section><!-- /#extras -->
+  <body class="pb-5">
+    <nav class="navbar navbar-expand-lg sticky-top navbar-light bg-light border-bottom border-info">
+      <a class="navbar-brand" href="/">
+        Like bricks in the sky
+      </a>
 
-        <section id="search" class="left">
-            <h2>search</h2>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-items" aria-controls="navbar-items" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
 
-            <form method="get" action="http://www.google.com/search" target="_blank">
+      <div class="collapse navbar-collapse" id="navbar-items">
+        <ul class="navbar-nav ml-auto">
 
-                <input type="text" name="q" placeholder="search this site" />
-                <input type="submit" value="Search" />
-                <input type="hidden"  name="sitesearch" value="patrick.cloke.us" />
-            </form>
-        </section>
+          <li class="nav-item">
+            <a class="nav-link" href="/pages/about.html">About</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/pages/projects.html">Projects</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/pages/resources.html">Resources</a>
+          </li>
 
+          <li class="nav-item">
+            <a class="nav-link" href="/archives.html">Archives</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/tags.html">Tags</a>
+          </li>
 
-        <section id="content" class="body">
-            <ol id="posts-list" class="hfeed" start="4">
-        <li><article class="hentry">
-        <header>
-            <h1><a href="/posts/2015/01/21/google-summer-of-code-2015-project-ideas-for-mozilla/" rel="bookmark"
-               title="Permalink to Google Summer of Code 2015 Project Ideas for Mozilla">Google Summer of Code 2015 Project Ideas for&nbsp;Mozilla</a></h1>
-        </header>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="social-dropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              Social
+            </a>
 
-        <div class="entry-content">
-<footer class="post-info">
-    <abbr class="published" title="2015-01-21T13:18:00-05:00">
-        Published: 01/21/2015 01:18 PM EST
-    </abbr>
+            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="social-dropdown">
+              <a class="dropdown-item" href="https://www.twitter.com/clokep" target="_blank">
+                <span class="fab fa-twitter mr-1"></span> twitter
+              </a>
+              <a class="dropdown-item" href="https://mastodon.social/@clokep" target="_blank">
+                <span class="fab fa-mastodon mr-1"></span> mastodon
+              </a>
+              <a class="dropdown-item" href="https://www.github.com/clokep" target="_blank">
+                <span class="fab fa-github mr-1"></span> github
+              </a>
+              <a class="dropdown-item" href="https://gitlab.com/clokep" target="_blank">
+                <span class="fab fa-gitlab mr-1"></span> gitlab
+              </a>
+              <a class="dropdown-item" href="https://bitbucket.org/clokep" target="_blank">
+                <span class="fab fa-bitbucket mr-1"></span> bitbucket
+              </a>
+              <a class="dropdown-item" href="https://mozillians.org/u/clokep/" target="_blank">
+                <span class="fab fa-firefox mr-1"></span> mozillians
+              </a>
+            </div>
+          </li>
 
-    <address class="vcard author">
-        By             <a class="url fn" href="/pages/about.html">Patrick Cloke</a>
-    </address>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="feeds-dropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              Feeds
+            </a>
 
+            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="feeds-dropdown">
+              <a class="dropdown-item" href="http://patrick.cloke.us/feeds/atom.xml" type="application/atom+xml" rel="alternate">atom feed</a>
+              <a class="dropdown-item" href="http://patrick.cloke.us/feeds/rss.xml" type="application/rss+xml" rel="alternate">rss feed</a>
+            </div>
+          </li>
 
-    <p>
-        tags:             <a href="/tag/gsoc.html">GSoC</a>
-            <a href="/tag/mozilla.html">mozilla</a>
-    </p>
+          <form class="form-inline" method="get" action="http://www.google.com/search">
+            <input class="form-control form-control-sm mr-sm-2" type="search" name="q" placeholder="Search" aria-label="Search" />
+            <input type="hidden"  name="sitesearch" value="patrick.cloke.us" />
 
-    
-</footer><!-- /.post-info -->        <p>As <a class="reference external" href="http://blog.queze.net/post/2015/01/22/Project-ideas-wanted-for-Summer-of-Code-2015">Florian announced</a> last Thursday, <strong>now</strong> is the time to brainstorm and
+            <button class="btn btn-sm btn-outline-info d-none d-sm-inline" type="submit">Search</button>
+          </form>
+        </ul>
+      </div>
+    </nav>
+
+<div class="container mt-4">
+  <div class="row">
+    <div class="col-md-12">
+      <h1>
+        <a href="/posts/2015/01/21/google-summer-of-code-2015-project-ideas-for-mozilla/">Google Summer of Code 2015 Project Ideas for&nbsp;Mozilla</a>
+      </h1>
+
+      <i>Wednesday, January 21, 2015</i>
+
+      <p>As <a class="reference external" href="http://blog.queze.net/post/2015/01/22/Project-ideas-wanted-for-Summer-of-Code-2015">Florian announced</a> last Thursday, <strong>now</strong> is the time to brainstorm and
 discuss project ideas for <a class="reference external" href="http://google-opensource.blogspot.fr/2014/10/google-summer-of-code-2015-and-google.html">Google Summer of Code 2015</a>. Mozilla has
 participated in every previous Google Summer of Code (GSoC), and hopes to
 participate again this year! In order to help ensure we&#8217;re selected, we need
 project …</p>
-        <a class="readmore" href="/posts/2015/01/21/google-summer-of-code-2015-project-ideas-for-mozilla/">read more &rarr;</a>
-<p><a href="/posts/2015/01/21/google-summer-of-code-2015-project-ideas-for-mozilla/#disqus_thread">comments</a></p>        </div><!-- /.entry-content -->
-        </article></li>
 
-        <li><article class="hentry">
-        <header>
-            <h1><a href="/posts/2014/11/14/thunderbird-summit-2014/" rel="bookmark"
-               title="Permalink to Thunderbird Summit 2014">Thunderbird Summit&nbsp;2014</a></h1>
-        </header>
+      <a href="/posts/2015/01/21/google-summer-of-code-2015-project-ideas-for-mozilla/">read more &rarr;</a>
 
-        <div class="entry-content">
-<footer class="post-info">
-    <abbr class="published" title="2014-11-14T18:37:00-05:00">
-        Published: 11/14/2014 06:37 PM EST
-    </abbr>
+      <br>
+      <a href="/posts/2015/01/21/google-summer-of-code-2015-project-ideas-for-mozilla/#disqus_thread">comments</a>
+    </div>
+  </div>
+</div>
+<div class="container mt-4">
+  <div class="row">
+    <div class="col-md-12">
+      <h1>
+        <a href="/posts/2014/11/14/thunderbird-summit-2014/">Thunderbird Summit&nbsp;2014</a>
+      </h1>
 
-    <address class="vcard author">
-        By             <a class="url fn" href="/pages/about.html">Patrick Cloke</a>
-    </address>
+      <i>Friday, November 14, 2014</i>
 
-
-    <p>
-        tags:             <a href="/tag/community.html">community</a>
-            <a href="/tag/instantbird.html">Instantbird</a>
-            <a href="/tag/mozilla.html">Mozilla</a>
-            <a href="/tag/thunderbird.html">Thunderbird</a>
-    </p>
-
-    
-</footer><!-- /.post-info -->        <p>Last month (Oct. 15th to Oct. 18th, to be precise), <a class="reference external" href="https://wiki.mozilla.org/Thunderbird:Summit_2014#Invited_Attendees">twenty volunteers</a>
+      <p>Last month (Oct. 15th to Oct. 18th, to be precise), <a class="reference external" href="https://wiki.mozilla.org/Thunderbird:Summit_2014#Invited_Attendees">twenty volunteers</a>
 descended on Mozilla&#8217;s Toronto office to discuss <a class="reference external" href="https://www.mozilla.org/en-US/thunderbird/">Mozilla Thunderbird</a>. This
 included Mozilla employees, Thunderbird contributors of all sorts (developers,
 user interface designers, add-on reviewers), Lightning contributors, and
 chat/<a class="reference external" href="http://instantbird.com/">Instantbird</a>&nbsp;contributors.</p>
-<!--  -->
-<blockquote class="center">
+<blockquote class="text-center">
 <a class="reference external image-reference" href="http://patrick.cloke.us/images/chat-tb-summit/IMG_6516.jpg"><img alt="The entire group of volunteers." src="/thumbnails/chat-tb-summit/IMG_6516_small.jpg" /></a>
 </blockquote>
 <p>It was great to spend some quality …</p>
-        <a class="readmore" href="/posts/2014/11/14/thunderbird-summit-2014/">read more &rarr;</a>
-<p><a href="/posts/2014/11/14/thunderbird-summit-2014/#disqus_thread">comments</a></p>        </div><!-- /.entry-content -->
-        </article></li>
 
-        <li><article class="hentry">
-        <header>
-            <h1><a href="/posts/2014/10/07/how-i-got-involved-in-mozilla/" rel="bookmark"
-               title="Permalink to How I Got Involved in Mozilla">How I Got Involved in&nbsp;Mozilla</a></h1>
-        </header>
+      <a href="/posts/2014/11/14/thunderbird-summit-2014/">read more &rarr;</a>
 
-        <div class="entry-content">
-<footer class="post-info">
-    <abbr class="published" title="2014-10-07T09:31:00-04:00">
-        Published: 10/07/2014 09:31 AM EDT
-    </abbr>
+      <br>
+      <a href="/posts/2014/11/14/thunderbird-summit-2014/#disqus_thread">comments</a>
+    </div>
+  </div>
+</div>
+<div class="container mt-4">
+  <div class="row">
+    <div class="col-md-12">
+      <h1>
+        <a href="/posts/2014/10/07/how-i-got-involved-in-mozilla/">How I Got Involved in&nbsp;Mozilla</a>
+      </h1>
 
-    <address class="vcard author">
-        By             <a class="url fn" href="/pages/about.html">Patrick Cloke</a>
-    </address>
+      <i>Tuesday, October 7, 2014</i>
 
-
-    <p>
-        tags:             <a href="/tag/mozilla.html">Mozilla</a>
-    </p>
-
-    
-</footer><!-- /.post-info -->        <p>This is discussed very briefly on my <a class="reference external" href="http://patrick.cloke.us/pages/about.html">about page</a>, but I figured it could use a
+      <p>This is discussed very briefly on my <a class="reference external" href="http://patrick.cloke.us/pages/about.html">about page</a>, but I figured it could use a
 bit of a longer discussion. I generally consider myself to have joined the
 <a class="reference external" href="https://www.mozilla.org/">Mozilla</a> community in ~2006. I know that I was using Mozilla Firefox, Mozilla
 Thunderbird, <em>and</em> Mozilla Sunbird way before that (probably …</p>
-        <a class="readmore" href="/posts/2014/10/07/how-i-got-involved-in-mozilla/">read more &rarr;</a>
-<p><a href="/posts/2014/10/07/how-i-got-involved-in-mozilla/#disqus_thread">comments</a></p>        </div><!-- /.entry-content -->
-        </article></li>
 
-        <li><article class="hentry">
-        <header>
-            <h1><a href="/posts/2014/08/30/adding-an-auxiliary-audio-input-to-a-2005-subaru-outback/" rel="bookmark"
-               title="Permalink to Adding an Auxiliary Audio Input to a 2005 Subaru Outback">Adding an Auxiliary Audio Input to a 2005 Subaru&nbsp;Outback</a></h1>
-        </header>
+      <a href="/posts/2014/10/07/how-i-got-involved-in-mozilla/">read more &rarr;</a>
 
-        <div class="entry-content">
-<footer class="post-info">
-    <abbr class="published" title="2014-08-30T17:34:00-04:00">
-        Published: 08/30/2014 05:34 PM EDT
-    </abbr>
+      <br>
+      <a href="/posts/2014/10/07/how-i-got-involved-in-mozilla/#disqus_thread">comments</a>
+    </div>
+  </div>
+</div>
+<div class="container mt-4">
+  <div class="row">
+    <div class="col-md-12">
+      <h1>
+        <a href="/posts/2014/08/30/adding-an-auxiliary-audio-input-to-a-2005-subaru-outback/">Adding an Auxiliary Audio Input to a 2005 Subaru&nbsp;Outback</a>
+      </h1>
 
-    <address class="vcard author">
-        By             <a class="url fn" href="/pages/about.html">Patrick Cloke</a>
-    </address>
+      <i>Saturday, August 30, 2014</i>
 
-
-    <p>
-        tags:             <a href="/tag/auto.html">auto</a>
-            <a href="/tag/hacking.html">hacking</a>
-            <a href="/tag/hardware.html">hardware</a>
-    </p>
-
-    
-</footer><!-- /.post-info -->        <p>I own a <a class="reference external" href="http://en.wikipedia.org/wiki/Subaru_Legacy#Fourth_generation_.282003.E2.80.932009.29_-_BL.2C_BP">2005 (fourth generation) Subaru Outback</a>, I&#8217;ve had it since the fall
+      <p>I own a <a class="reference external" href="http://en.wikipedia.org/wiki/Subaru_Legacy#Fourth_generation_.282003.E2.80.932009.29_-_BL.2C_BP">2005 (fourth generation) Subaru Outback</a>, I&#8217;ve had it since the fall
 of 2006 and it has been great. I have a little over 100,000 miles and do not
 plan to sell it anytime&nbsp;soon.</p>
 <p>There is one thing that just <em>kills</em> me though. You cannot …</p>
-        <a class="readmore" href="/posts/2014/08/30/adding-an-auxiliary-audio-input-to-a-2005-subaru-outback/">read more &rarr;</a>
-<p><a href="/posts/2014/08/30/adding-an-auxiliary-audio-input-to-a-2005-subaru-outback/#disqus_thread">comments</a></p>        </div><!-- /.entry-content -->
-        </article></li>
 
-        <li><article class="hentry">
-        <header>
-            <h1><a href="/posts/2014/07/09/mentoring-and-time/" rel="bookmark"
-               title="Permalink to Mentoring and Time">Mentoring and&nbsp;Time</a></h1>
-        </header>
+      <a href="/posts/2014/08/30/adding-an-auxiliary-audio-input-to-a-2005-subaru-outback/">read more &rarr;</a>
 
-        <div class="entry-content">
-<footer class="post-info">
-    <abbr class="published" title="2014-07-09T17:32:00-04:00">
-        Published: 07/09/2014 05:32 PM EDT
-    </abbr>
+      <br>
+      <a href="/posts/2014/08/30/adding-an-auxiliary-audio-input-to-a-2005-subaru-outback/#disqus_thread">comments</a>
+    </div>
+  </div>
+</div>
+<div class="container mt-4">
+  <div class="row">
+    <div class="col-md-12">
+      <h1>
+        <a href="/posts/2014/07/09/mentoring-and-time/">Mentoring and&nbsp;Time</a>
+      </h1>
 
-    <address class="vcard author">
-        By             <a class="url fn" href="/pages/about.html">Patrick Cloke</a>
-    </address>
+      <i>Wednesday, July 9, 2014</i>
 
-
-    <p>
-        tags:             <a href="/tag/community.html">community</a>
-            <a href="/tag/gsoc.html">GSoC</a>
-    </p>
-
-    
-</footer><!-- /.post-info -->        <p>No, this is not about being late places, it&#8217;s about respecting people&#8217;s time. I
+      <p>No, this is not about being late places, it&#8217;s about respecting people&#8217;s time. I
 won&#8217;t go deep into why this is important as, <a class="reference external" href="https://plus.google.com/118086293667040637133">Michael Haggerty</a> wrote an
 awesome <a class="reference external" href="http://softwareswirl.blogspot.fr/2014/03/my-secret-tip-for-gsoc-success.html">article</a> on this. His thoughts boiled down to a single line of&nbsp;advice:</p>
 <blockquote>
 <strong><span class="caps">DON</span>&#8217;T <span class="caps">WASTE</span> <span class="caps">OTHER</span> <span class="caps">PEOPLE</span>&#8217;S …</strong></blockquote>
-        <a class="readmore" href="/posts/2014/07/09/mentoring-and-time/">read more &rarr;</a>
-<p><a href="/posts/2014/07/09/mentoring-and-time/#disqus_thread">comments</a></p>        </div><!-- /.entry-content -->
-        </article></li>
-        </ol><!-- /#posts-list -->
-<p class="paginator">
-        <a href="http://patrick.cloke.us/index2.html">&laquo;</a>
-    Page 3 / 9
-        <a href="http://patrick.cloke.us/index4.html">&raquo;</a>
-</p>
-        </section><!-- /#content -->
+
+      <a href="/posts/2014/07/09/mentoring-and-time/">read more &rarr;</a>
+
+      <br>
+      <a href="/posts/2014/07/09/mentoring-and-time/#disqus_thread">comments</a>
     </div>
+  </div>
+</div>
 
-    <footer id="contentinfo" class="body">
-        <address id="about" class="vcard body">
-        Proudly powered by <a href="http://getpelican.com/">Pelican</a>, which takes great advantage of <a href="http://python.org">Python</a>.
-        Blog source available on <a href="https://github.com/clokep/clokep.github.io">GitHub</a>.
-        </address><!-- /#about -->
-    </footer><!-- /#contentinfo -->
+<div class="container">
+  <div class="row">
+    <div class="col-md-12">
+      <nav aria-label="Page navigation">
+        <ul class="pagination justify-content-center">
+          <li class="page-item">
+            <a class="page-link" href="/index.html" >1</a>
+          </li>
+          <li class="page-item">
+            <a class="page-link" href="/index2.html" >2</a>
+          </li>
+          <li class="page-item disabled">
+            <a class="page-link" href="/index3.html" >3</a>
+          </li>
+          <li class="page-item">
+            <a class="page-link" href="/index4.html" >4</a>
+          </li>
+          <li class="page-item">
+            <a class="page-link" href="/index5.html" >5</a>
+          </li>
+          <li class="page-item">
+            <a class="page-link" href="/index6.html" >6</a>
+          </li>
+          <li class="page-item">
+            <a class="page-link" href="/index7.html" >7</a>
+          </li>
+          <li class="page-item">
+            <a class="page-link" href="/index8.html" >8</a>
+          </li>
+          <li class="page-item">
+            <a class="page-link" href="/index9.html" >9</a>
+          </li>
+        </ul>
+      </nav>
+    </div>
+  </div>
+</div>
 
-    <script type="text/javascript">
-    var _gaq = _gaq || [];
-    _gaq.push(['_setAccount', 'UA-52389517-1']);
-    _gaq.push(['_trackPageview']);
-    (function() {
-        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-    })();
-    </script>
-<script type="text/javascript">
-    var disqus_shortname = 'clokep';
-    (function () {
-        var s = document.createElement('script'); s.async = true;
-        s.type = 'text/javascript';
-        s.src = '//' + disqus_shortname + '.disqus.com/count.js';
-        (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
-    }());
-</script>
-</body>
+
+    <nav class="navbar fixed-bottom navbar-light bg-light border-top border-info">
+      <a href="https://getpelican.com/" class="nav-item" target="_blank">Powered by Pelican</a>
+      <a href="https://github.com/clokep/clokep.github.io" class="nav-item" target="_blank">
+        Source available on GitHub <span class="fab fa-github"></span>
+      </a>
+    </nav>
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T" crossorigin="anonymous"></script>
+
+<script id="dsq-count-scr" src="//clokep.disqus.com/count.js" async></script>
+  </body>
 </html>

@@ -1,416 +1,158 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-    <meta charset="utf-8" />
-    <title>Like bricks in the sky - IRC</title>
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-    <link rel="stylesheet" href="/theme/css/main.css?10ddb23c" />
+    <!-- Feed configuration. -->
     <link href="http://patrick.cloke.us/feeds/atom.xml" type="application/atom+xml" rel="alternate" title="Like bricks in the sky Atom Feed" />
     <link href="http://patrick.cloke.us/feeds/rss.xml" type="application/rss+xml" rel="alternate" title="Like bricks in the sky RSS Feed" />
 
-    <!--[if IE]>
-        <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
-    <![endif]-->
-</head>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
+    <link rel="stylesheet" href="/theme/css/styles.css">
+    <link rel="stylesheet" href="/theme/css/borland.css">
 
-<body id="index" class="home">
-    <header id="banner" class="body">
-        <h1><a href="/">Like bricks in the sky </a></h1>
-        <nav><ul>
-            <li><a href="/pages/about.html">About</a></li>
-            <li><a href="/pages/contact.html">Contact</a></li>
-            <li><a href="/pages/projects.html">Projects</a></li>
-            <li><a href="/pages/resources.html">Resources</a></li>
-            <li><a href="/archives.html">Archives</a></li>
-            <li><a href="/tags.html">Tags</a></li>
-        </ul></nav>
-    </header><!-- /#banner -->
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
 
-    <div id="container" class="body">
-        <section id="extras" class="left">
-            <div class="social">
-                <h2>social</h2>
-                <ul>
-                    <li><a href="https://www.twitter.com/clokep" target="_blank">twitter</a></li>
-                    <li><a href="https://bitbucket.org/clokep" target="_blank">bitbucket</a></li>
-                    <li><a href="https://www.github.com/clokep" target="_blank">github</a></li>
-                    <li><a href="https://mozillians.org/u/clokep/" target="_blank">mozillians</a></li>
+    <title>Like bricks in the sky - IRC</title>
+  </head>
 
-                    <li><a href="http://patrick.cloke.us/feeds/atom.xml" type="application/atom+xml" rel="alternate">atom feed</a></li>
-                    <li><a href="http://patrick.cloke.us/feeds/rss.xml" type="application/rss+xml" rel="alternate">rss feed</a></li>
-                </ul>
-            </div><!-- /.social -->
-        </section><!-- /#extras -->
+  <body class="pb-5">
+    <nav class="navbar navbar-expand-lg sticky-top navbar-light bg-light border-bottom border-info">
+      <a class="navbar-brand" href="/">
+        Like bricks in the sky
+      </a>
 
-        <section id="search" class="left">
-            <h2>search</h2>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-items" aria-controls="navbar-items" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
 
-            <form method="get" action="http://www.google.com/search" target="_blank">
+      <div class="collapse navbar-collapse" id="navbar-items">
+        <ul class="navbar-nav ml-auto">
 
-                <input type="text" name="q" placeholder="search this site" />
-                <input type="submit" value="Search" />
-                <input type="hidden"  name="sitesearch" value="patrick.cloke.us" />
-            </form>
-        </section>
+          <li class="nav-item">
+            <a class="nav-link" href="/pages/about.html">About</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/pages/projects.html">Projects</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/pages/resources.html">Resources</a>
+          </li>
 
+          <li class="nav-item">
+            <a class="nav-link" href="/archives.html">Archives</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/tags.html">Tags</a>
+          </li>
 
-        <section id="toc" class="left">
-            <h2>table of contents</h2>
-            <div class="toc" id="">
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="social-dropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              Social
+            </a>
 
-<ul class="simple">
-<li><a class="reference internal" href="#background" id="id13">Background</a></li>
-<li><a class="reference internal" href="#technical-bits" id="id14">Technical Bits</a></li>
-<li><a class="reference internal" href="#results" id="id15">Results</a><ul>
-<li><a class="reference internal" href="#responses" id="id16">Responses</a></li>
-<li><a class="reference internal" href="#client-summary" id="id17">Client Summary</a></li>
-<li><a class="reference internal" href="#points-of-note" id="id18">Points of Note</a></li>
-</ul>
-</li>
-</ul>
-</div>
-        </section>
+            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="social-dropdown">
+              <a class="dropdown-item" href="https://www.twitter.com/clokep" target="_blank">
+                <span class="fab fa-twitter mr-1"></span> twitter
+              </a>
+              <a class="dropdown-item" href="https://mastodon.social/@clokep" target="_blank">
+                <span class="fab fa-mastodon mr-1"></span> mastodon
+              </a>
+              <a class="dropdown-item" href="https://www.github.com/clokep" target="_blank">
+                <span class="fab fa-github mr-1"></span> github
+              </a>
+              <a class="dropdown-item" href="https://gitlab.com/clokep" target="_blank">
+                <span class="fab fa-gitlab mr-1"></span> gitlab
+              </a>
+              <a class="dropdown-item" href="https://bitbucket.org/clokep" target="_blank">
+                <span class="fab fa-bitbucket mr-1"></span> bitbucket
+              </a>
+              <a class="dropdown-item" href="https://mozillians.org/u/clokep/" target="_blank">
+                <span class="fab fa-firefox mr-1"></span> mozillians
+              </a>
+            </div>
+          </li>
 
-        <aside id="featured" class="body">
-        <article>
-            <h1 class="entry-title"><a href="/posts/2015/09/23/irc-client-usage-share-on-moznet/"><span class="caps">IRC</span> Client Usage Share on&nbsp;moznet</a></h1>
-<footer class="post-info-container">
-    <div class="post-info-top">
-    </div>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="feeds-dropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              Feeds
+            </a>
 
-    <!-- Second div is to change the background color again. -->
-    <div class="post-info-bg">
-    <div class="post-info">
-        <div id="gravatar" style="background-image: url('https://www.gravatar.com/avatar/130405f65521b6ee6bbbe0204070a163');">
-        </div>
+            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="feeds-dropdown">
+              <a class="dropdown-item" href="http://patrick.cloke.us/feeds/atom.xml" type="application/atom+xml" rel="alternate">atom feed</a>
+              <a class="dropdown-item" href="http://patrick.cloke.us/feeds/rss.xml" type="application/rss+xml" rel="alternate">rss feed</a>
+            </div>
+          </li>
 
-        <abbr class="published" title="2015-09-23T17:07:00-04:00">
-            Published: 09/23/2015 05:07 PM EDT
-        </abbr>
-        <br />
-        <abbr class="modified" title="2015-09-24T07:18:00-04:00">
-            Updated: 09/24/2015 07:18 AM EDT
-        </abbr>
+          <form class="form-inline" method="get" action="http://www.google.com/search">
+            <input class="form-control form-control-sm mr-sm-2" type="search" name="q" placeholder="Search" aria-label="Search" />
+            <input type="hidden"  name="sitesearch" value="patrick.cloke.us" />
 
-        <address class="vcard author">
-            By                 <a class="url fn" href="/pages/about.html">Patrick Cloke</a>
-        </address>
+            <button class="btn btn-sm btn-outline-info d-none d-sm-inline" type="submit">Search</button>
+          </form>
+        </ul>
+      </div>
+    </nav>
 
+<div class="container mt-4">
+  <div class="row">
+    <div class="col-md-12">
+      <h1>
+        <a href="/posts/2015/09/23/irc-client-usage-share-on-moznet/"><span class="caps">IRC</span> Client Usage Share on&nbsp;moznet</a>
+      </h1>
 
-        <div id="gravatar-clear"></div>
+      <i>Wednesday, September 23, 2015</i>
 
-        <div id="tag-list">
-            tags:                 <a href="/tag/instantbird.html">Instantbird</a>
-                <a href="/tag/irc.html">IRC</a>
-                <a href="/tag/mozilla.html">Mozilla</a>
-                <a href="/tag/thunderbird.html">Thunderbird</a>
-        </div>
-
-        
-
-        <div id="post-share-links" class="social">
-            share:
-            <a href="http://twitter.com/home?status=IRC%20Client%20Usage%20Share%20on%C2%A0moznet%20http%3A//patrick.cloke.us/posts/2015/09/23/irc-client-usage-share-on-moznet/" target="_blank" title="Share on Twitter">Twitter</a>
-            <a href="http://www.facebook.com/sharer/sharer.php?u=http%3A//patrick.cloke.us/posts/2015/09/23/irc-client-usage-share-on-moznet/" target="_blank" title="Share on Facebook">Facebook</a>
-            <a href="https://plus.google.com/share?url=http%3A//patrick.cloke.us/posts/2015/09/23/irc-client-usage-share-on-moznet/" target="_blank" title="Share on Google Plus">Google+</a>
-            <a href="mailto:?subject=IRC%20Client%20Usage%20Share%20on%C2%A0moznet&amp;body=http%3A//patrick.cloke.us/posts/2015/09/23/irc-client-usage-share-on-moznet/" target="_blank" title="Share via Email">Email</a>
-        </div>
-    </div>
-    </div>
-
-    <div class="post-info-bottom">
-    </div>
-</footer><!-- /.post-info -->
+      
 <div class="section" id="background">
 <h2><a class="toc-backref" href="#id13">Background</a></h2>
 <p>The usage share of <span class="caps">IRC</span> clients has always been something I’m interested in. This
 is partially to see how many people are using <a class="reference external" href="http://instantbird.com/">Instantbird</a> or <a class="reference external" href="https://www.mozilla.org/en-US/thunderbird/">Mozilla
 Thunderbird</a> for <span class="caps">IRC</span> (as I’ve written much of the <span class="caps">IRC</span> code for those clients).
-<a class="reference external" href="http://en.wikipedia.org/wiki/Usage_share_of_web_browsers">Usage share of browsers</a> is quite a researched topic, but I’ve never come
-across this data for <span class="caps">IRC</span>. Most <a class="footnote-reference" href="#id7" id="id1">[1]</a> <span class="caps">IRC</span> clients implement a part of the <a class="reference external" href="http://www.irchelp.org/irchelp/rfc/ctcpspec.html"><span class="caps">CTCP</span></a>
-protocol which allows a client to query another client for their version.
-Thinking of this as a <a class="reference external" href="http://en.wikipedia.org/wiki/User_agent">user agent</a> is probably a good analogue. I don’t think
-this would imply that there is much of an issue with <a class="reference external" href="http://en.wikipedia.org/wiki/Usage_share_of_web_browsers#User_agent_spoofing">user agent spoofing</a>, as
-there would be for web browser statistics since (as far as I know), no one uses
-the version response to do capability negotiation. It also is not used by servers.</p>
+<a class="reference external" href="http://en.wikipedia.org/wiki/Usage_share_of_web_browsers">Usage share of browsers</a> is quite a …</p></div>
+
+      <a href="/posts/2015/09/23/irc-client-usage-share-on-moznet/">read more &rarr;</a>
+
+      <br>
+      <a href="/posts/2015/09/23/irc-client-usage-share-on-moznet/#disqus_thread">comments</a>
+    </div>
+  </div>
 </div>
-<div class="section" id="technical-bits">
-<h2><a class="toc-backref" href="#id14">Technical Bits</a></h2>
-<p>So how’d we do this? I wrote an <a class="reference external" href="https://bitbucket.org/clokep/irc-extras/src/tip/stats/">extension</a> for Instantbird which handled both
-the backend and the display of the results. I think that this really showcases
-the extensibility of Instantbird and the effort we’ve put into ensuring their
-are generic APIs available for developers. In particular this uses the <a class="reference external" href="http://dxr.mozilla.org/comm-central/source/chat/protocols/irc/ircHandlers.jsm"><span class="caps">IRC</span>
-handler <span class="caps">API</span></a> and the <a class="reference external" href="http://hg.mozilla.org/comm-central/file/dbab5a531594/im/content/tabbrowser.xml#l432">add panel <span class="caps">API</span></a> (added by <a class="reference external" href="http://blog.nhnt11.com/">one of our GSoC students</a> a
-couple of years ago.)</p>
-<p>Anyway, at the actual protocol level, I simply send a <tt class="docutils literal"><span class="caps">CTCP</span> <span class="caps">VERSION</span></tt> query to
-each user I know of on the <span class="caps">IRC</span> network (based on who is in the same channels as
-me) and then record the responses. I tried to be nice to the network here and
-rate-limited myself to 1 query per second. No one complained after ~100 queries
-and I didn’t seem to have any <tt class="docutils literal">fakelag</tt> issues. I then dumped the results and
-made a pretty(-ish) plot of this. (If you’re a network administrator reading
-this and think this is insane, I’d be very curious to hear a better way to do this!)</p>
-</div>
-<div class="section" id="results">
-<h2><a class="toc-backref" href="#id15">Results</a></h2>
-<p>In order to get some results I hooked my client up to <a class="reference external" href="https://wiki.mozilla.org/IRC">moznet</a> on July 23rd,
-2015 and let it run on many channels (pretty much anything with more than 20
-users) for a few hours <a class="footnote-reference" href="#id8" id="id2">[2]</a>. I was in Europe and started early in the morning
-and let it run through the evening, so it should encompass some “normal” usage
-by Mozillians. I would expect a bit of skew in these results toward
-Mozilla-esque <span class="caps">IRC</span> clients (Instantbird, Thunderbird and <a class="reference external" href="http://chatzilla.hacksrus.com/">ChatZilla</a>).</p>
-<p>Of course these numbers are just a single sampling and I have no idea how much
-variance there is day-to-day or over time, but I found the (un-scientific)
-results to be interesting!</p>
-<div class="section" id="responses">
-<h3><a class="toc-backref" href="#id16">Responses</a></h3>
-<p>The first thing I noticed is the large amount of information some version
-responses gave (in no particular order):</p>
-<ul class="simple">
-<li><tt class="docutils literal">KVIrc 4.3.1 <span class="pre">svn-6313</span> 'Aria' 20120701 - build <span class="pre">2013-02-14</span> 17:47:33 <span class="caps">UTC</span> - Windows 7 Ultimate (x64) Service Pack 1 (Build 7601)</tt></li>
-<li><tt class="docutils literal">xchat 2.8.8 Linux <span class="pre">3.17.4-1-<span class="caps">ARCH</span></span> [x86_64/2.90GHz/<span class="caps">SMP</span>]</tt></li>
-<li><tt class="docutils literal">HexChat 2.10.1 [x64] / Windows 7 <span class="caps">SP1</span> [4.09GHz]</tt></li>
-</ul>
-<p>I don’t understand the rationale behind sharing a user’s operating system and
-<span class="caps">CPU</span> speed. Most clients responded with a simple <tt class="docutils literal">&lt;software&gt; &lt;version number&gt;</tt>,
-although quite a few also include a <span class="caps">URL</span>.</p>
-<p>Additionally, some bouncers respond in weird ways which might skew the results:</p>
-<ul class="simple">
-<li><span class="caps">ZNC</span> responds only if there are no clients connected <span class="caps">OR</span>, depending on the
-version, it appends itself to the client response. <a class="footnote-reference" href="#id9" id="id3">[3]</a></li>
-<li>bip responds with it’s own version if no one is connected <span class="caps">OR</span> the version of
-all connected clients. <a class="footnote-reference" href="#id10" id="id4">[4]</a></li>
-</ul>
-<p>Lastly, some clients just don’t respond (or respond with an empty string). The
-results below aren’t really a count of “users”, but a count of “clients” where
-some users might be counted multiple times.</p>
-</div>
-<div class="section" id="client-summary">
-<h3><a class="toc-backref" href="#id17">Client Summary</a></h3>
-<p>Initially I visualized the data by plotting it two serparate ways: first by
-showing the count of each version response and then grouping by “client family”.
-The first plot had too many columns to reasonably show in this post: thus I’ve
-only included a plot of the client families <a class="footnote-reference" href="#id11" id="id5">[5]</a>. There are two plots, the first
-shows a subset of the data by cutting the tail (arbitrarily including families
-with at least 10 users).</p>
-<div class="admonition note">
-<p class="first admonition-title">Note</p>
-<p>A “client family” is counting all versions of the same client together. This
-was calculated by taking the text up to the first whitespace or digit and
-converting to lowercase:</p>
-<div class="last"><div class="highlight"><pre><span></span><span class="nx">family</span> <span class="o">=</span> <span class="nx">version</span><span class="p">.</span><span class="nx">split</span><span class="p">(</span><span class="sr">/[\s\d]/</span><span class="p">)[</span><span class="mi">0</span><span class="p">].</span><span class="nx">toLowerCase</span><span class="p">()</span>
-</pre></div>
-</div></div>
-<style type="text/css">
-    #family-all-count, #family-count {
-      width: 100%;
-      height: 300px;
-    }
-</style>
-<script src="/js/flotr2.min.js" type="text/javascript"></script>
-<script type="text/javascript">
-    function createPlot(aId, aTitle, aData) {
-      // Put the data in order from biggest to smallest.
-      var data = []
-      for (var d of aData.entries())
-        data.push(d);
-      data.sort(function(a, b) { return a[1] < b[1]; });
+<div class="container mt-4">
+  <div class="row">
+    <div class="col-md-12">
+      <h1>
+        <a href="/posts/2012/08/08/instantbird-12-released-with-awesome/">Instantbird 1.2 Released (with awesome new <span class="caps">IRC</span>&nbsp;features)!</a>
+      </h1>
 
-      // Re-arrange the data to be plotted into two arrays: one is a set of points
-      // of x-index to value, the other is x-index to label.
-      var labels = [];
-      for (var i = 0; i < data.length; i++) {
-        // Sometimes the labels are stupid long.
-        labels[i] = [i, (data[i][0] || "undefined").slice(0, 25)];
-        data[i] = [i, data[i][1]];
-      }
+      <i>Wednesday, August 8, 2012</i>
 
-      var options = {
-        title: aTitle,
-        HtmlText: false,
-        bars: {
-          show: true,
-          shadowSize: 0,
-          barWidth: 0.5
-        },
-        mouse: {
-          track: true,
-          relative: true
-        },
-        xaxis: {
-          ticks: labels,
-          labelsAngle: 90
-        },
-        yaxis: {
-          min: 0,
-          autoscaleMargin: 1,
-          title: "Count",
-          titleAngle: 90
-        }
-      };
-
-      var plot = document.getElementById(aId);
-      Flotr.draw(plot, [data], options);
-    }
-
-    document.addEventListener("DOMContentLoaded", function() {
-        var raw_data = [["instantbird", 21], ["thunderbird", 39], ["xchat", 77], ["colloquy", 33], ["limechat", 61], ["irssi", 204], ["irccloud", 520], ["znc", 161], ["icedove", 3], ["chatzilla", 59], ["bip-", 11], ["hexchat", 61], ["mozbot", 3], ["miranda", 6], ["mirc", 31], ["textual", 44], ["weechat", 76], ["kvirc", 6], ["purple", 70], ["x-chat", 8], ["xchat-wdk", 1], ["dircproxy", 1], ["konversation", 12], ["quassel", 69], ["linkinus", 3], ["\x02erc\x02", 6], ["leroooooy", 1], ["elitebnc", 1], ["fu,", 1], ["anope-", 1], [">", 2], ["telepathy-idle", 3], ["rcirc", 3], ["mrgiggles:", 1], ["ircii", 1], ["http://www.mibbit.com", 4], ["shout", 7], ["yaaic", 2], ["karen", 1], ["", 3], ["sceners", 1], ["uberscript", 1], ["tiarra:", 3], ["snak", 1], ["wuunyan", 1], ["adiirc", 1], ["n/a", 1], ["pircbotx", 3], ["none", 1], ["yes", 1], ["nettalk", 1], ["riece/", 1], ["unknown", 1], ["version", 1], ["circ", 3], ["request", 1], ["forrest,", 1], ["trillian", 1], ["\x03", 2], ["smuxi-frontend-gnome", 1], ["some", 1], ["\x02\x03", 1], ["oh", 1], ["\u201Cnever", 1], ["this", 1], ["nochat", 1], ["wee", 1], ["foadirc", 1], ["smuxi-server", 1], ["aperture", 1], ["internet", 1], ["supybot", 1], ["ejabberd", 2], ["dxirc", 1], ["ircle", 1], ["infobot", 1], ["exovenom", 1], ["nsa-irc", 1]];
-        var families = new Map();
-        for (var data of raw_data)
-            families.set(data[0], data[1]);
-
-        // Count the totals, used in reporting not actually displayed.
-        var total = 0;
-        for (var family of families.entries())
-            total += family[1];
-
-        // Update the plots.
-        createPlot("family-all-count",
-                   "All Families (Total: " + total + ")", families);
-
-        // Remove all families that have less than 10 hits.
-        for (var family of families.entries()) {
-            if (family[1] < 10) {
-                families.delete(family[0])
-                total -= family[1];
-            }
-        }
-
-        createPlot("family-count",
-                   "Families with at Least 10 Users (Total: " + total + ")",
-                   families);
-    });
-</script>
-<div id="family-count"></div>
-<div id="family-all-count"></div></div>
-<div class="section" id="points-of-note">
-<h3><a class="toc-backref" href="#id18">Points of Note</a></h3>
-<p>I have to admit that I was fairly shocked by the number of IRCCloud users as I
-found it pretty unusable when messing with it <a class="footnote-reference" href="#id12" id="id6">[6]</a>. I suspect it being an 'easy'
-bouncer draws many people to it. The bouncer-like software (IRCCloud, <span class="caps">ZNC</span>, bip)
-represents almost half of the users surveyed (692 / 1549 ≈ 45%)!</p>
-<p>I'm surprised so many people are using <tt class="docutils literal">purple</tt> as their <span class="caps">IRC</span> client, as the
-support there is really barebones. (It makes sense if you're already using
-Pidgin and don't want another client.) I think we've made a significant amount
-of improvements in Instantbird's <span class="caps">IRC</span> support to make it simpler for a user to
-get started (give it a try if you haven't!).</p>
-<p>The last thing I'll note is that, when taken together, Instantbird, Thunderbird,
-and Icedove, come in as part of the top 10 (63 users, right before ChatZilla)!
-There's a lot of great clients out there and I'm happy to say I've helped to
-create one of the more popular ones (on moznet, at least!).</p>
-<p>Let me know if I missed a great insight!</p>
-<table class="docutils footnote" frame="void" id="id7" rules="none">
-<colgroup><col class="label"/><col/></colgroup>
-<tbody valign="top">
-<tr><td class="label"><a class="fn-backref" href="#id1">[1]</a></td><td>"Most" is a wild accusation here. But...from the numbers I've seen, it
-seems like a reasonable statement.</td></tr>
-</tbody>
-</table>
-<table class="docutils footnote" frame="void" id="id8" rules="none">
-<colgroup><col class="label"/><col/></colgroup>
-<tbody valign="top">
-<tr><td class="label"><a class="fn-backref" href="#id2">[2]</a></td><td>While running this I had a few users question what I was doing over
-private messages or in a channel. I'm <em>shocked</em> that clients bother
-their users by showing them they received a <tt class="docutils literal"><span class="caps">VERSION</span></tt> request. (Most)
-users just won't care! Why show that low-level of the protocol?!</td></tr>
-</tbody>
-</table>
-<table class="docutils footnote" frame="void" id="id9" rules="none">
-<colgroup><col class="label"/><col/></colgroup>
-<tbody valign="top">
-<tr><td class="label"><a class="fn-backref" href="#id3">[3]</a></td><td>As corrected by DarthGandalf on <span class="caps">IRC</span>: "Before 1.6, <span class="caps">ZNC</span> version is
-returned iff no clients are connected. After 1.6, it's also appended to
-the client's response (but still one line per connected client)"</td></tr>
-</tbody>
-</table>
-<table class="docutils footnote" frame="void" id="id10" rules="none">
-<colgroup><col class="label"/><col/></colgroup>
-<tbody valign="top">
-<tr><td class="label"><a class="fn-backref" href="#id4">[4]</a></td><td><a class="reference external" href="https://twitter.com/dioxmat/status/646815252898803712">Source</a>, have
-I mentioned yet in this article that I hate bouncers?</td></tr>
-</tbody>
-</table>
-<table class="docutils footnote" frame="void" id="id11" rules="none">
-<colgroup><col class="label"/><col/></colgroup>
-<tbody valign="top">
-<tr><td class="label"><a class="fn-backref" href="#id5">[5]</a></td><td>I stole the code to plot this from the <a class="reference external" href="https://bitbucket.org/clokep/irc-extras/src/41a9572caf957ab8ae3969a145834bcd5be74abe/stats/content/ircStats.js?at=default#cl-55">plotting code</a> in the extension
-I wrote for this. When actually using that extension, something similar
-to this appears as a tab and refreshes as results come in. It uses
-<a class="reference external" href="http://humblesoftware.com/flotr2/">Flotr2</a> to do the plotting in JavaScript, I've been pretty happy with
-it.</td></tr>
-</tbody>
-</table>
-<table class="docutils footnote" frame="void" id="id12" rules="none">
-<colgroup><col class="label"/><col/></colgroup>
-<tbody valign="top">
-<tr><td class="label"><a class="fn-backref" href="#id6">[6]</a></td><td>Although in retrospect I shouldn't be since Mozilla runs their own
-<a class="reference external" href="https://irccloud.mozilla.com/">IRCCloud instance</a>.</td></tr>
-</tbody>
-</table>
-</div>
-</div>
-<p><a href="/posts/2015/09/23/irc-client-usage-share-on-moznet/#disqus_thread">comments</a></p>        </article>
-        </aside><!-- /#featured -->
-        <section id="content" class="body">
-            <h1>Other articles</h1>
-            <hr />
-            <ol id="posts-list" class="hfeed">
-
-        <li><article class="hentry">
-        <header>
-            <h1><a href="/posts/2012/08/08/instantbird-12-released-with-awesome/" rel="bookmark"
-               title="Permalink to Instantbird 1.2 Released (with awesome new IRC features)!">Instantbird 1.2 Released (with awesome new <span class="caps">IRC</span>&nbsp;features)!</a></h1>
-        </header>
-
-        <div class="entry-content">
-<footer class="post-info">
-    <abbr class="published" title="2012-08-08T13:08:00-04:00">
-        Published: 08/08/2012 01:08 PM EDT
-    </abbr>
-
-    <address class="vcard author">
-        By             <a class="url fn" href="/pages/about.html">Patrick Cloke</a>
-    </address>
-
-
-    <p>
-        tags:             <a href="/tag/instantbird.html">Instantbird</a>
-            <a href="/tag/irc.html">IRC</a>
-    </p>
-
-    
-</footer><!-- /.post-info -->        <p>If you haven&#8217;t seen the announcement&#8230;<a class="reference external" href="http://blog.instantbird.org/2012/08/instantbird-1-2-released/">Instantbird 1.2 has been
+      <p>If you haven&#8217;t seen the announcement&#8230;<a class="reference external" href="http://blog.instantbird.org/2012/08/instantbird-1-2-released/">Instantbird 1.2 has been
 released</a>!&nbsp; It&#8217;s got a ton of great new features that I&#8217;m excited for:
 <a class="reference external" href="http://blog.instantbird.org/2012/08/tab-completion-in-instantbird-1-2/">better tab complete</a>, a marker showing the last viewed messages,
 support for Bonjour and more.&nbsp; But the most exciting bits to me are …</p>
-        <a class="readmore" href="/posts/2012/08/08/instantbird-12-released-with-awesome/">read more &rarr;</a>
-<p><a href="/posts/2012/08/08/instantbird-12-released-with-awesome/#disqus_thread">comments</a></p>        </div><!-- /.entry-content -->
-        </article></li>
 
-        <li><article class="hentry">
-        <header>
-            <h1><a href="/posts/2012/06/11/irc-auto-performs/" rel="bookmark"
-               title="Permalink to IRC Auto-Performs"><span class="caps">IRC</span>&nbsp;Auto-Performs</a></h1>
-        </header>
+      <a href="/posts/2012/08/08/instantbird-12-released-with-awesome/">read more &rarr;</a>
 
-        <div class="entry-content">
-<footer class="post-info">
-    <abbr class="published" title="2012-06-11T22:25:00-04:00">
-        Published: 06/11/2012 10:25 PM EDT
-    </abbr>
+      <br>
+      <a href="/posts/2012/08/08/instantbird-12-released-with-awesome/#disqus_thread">comments</a>
+    </div>
+  </div>
+</div>
+<div class="container mt-4">
+  <div class="row">
+    <div class="col-md-12">
+      <h1>
+        <a href="/posts/2012/06/11/irc-auto-performs/"><span class="caps">IRC</span>&nbsp;Auto-Performs</a>
+      </h1>
 
-    <address class="vcard author">
-        By             <a class="url fn" href="/pages/about.html">Patrick Cloke</a>
-    </address>
+      <i>Monday, June 11, 2012</i>
 
-
-    <p>
-        tags:             <a href="/tag/instantbird.html">Instantbird</a>
-            <a href="/tag/irc.html">IRC</a>
-            <a href="/tag/mozilla.html">Mozilla</a>
-    </p>
-
-    
-</footer><!-- /.post-info -->        
+      
 <p>There have been a <a class="reference external" href="https://bugzilla.mozilla.org/show_bug.cgi?id=742675">few</a> <a class="reference external" href="https://bugzilla.instantbird.org/show_bug.cgi?id=1101">requests</a> to support “auto-performs”
 (sending commands to the <span class="caps">IRC</span> server after connection that the user types
 into a box or whatever). Personally I find this to be:</p>
@@ -420,112 +162,90 @@ into a box or whatever). Personally I find this to be:</p>
 <li>Unnecessary.</li>
 </ol>
 <p>I additionally don’t like this idea since …</p>
-        <a class="readmore" href="/posts/2012/06/11/irc-auto-performs/">read more &rarr;</a>
-<p><a href="/posts/2012/06/11/irc-auto-performs/#disqus_thread">comments</a></p>        </div><!-- /.entry-content -->
-        </article></li>
 
-        <li><article class="hentry">
-        <header>
-            <h1><a href="/posts/2011/04/30/why-rewrite-irc-protocol-plugin-part-2/" rel="bookmark"
-               title="Permalink to Why rewrite the IRC protocol plugin? (Part 2)">Why rewrite the <span class="caps">IRC</span> protocol plugin? (Part&nbsp;2)</a></h1>
-        </header>
+      <a href="/posts/2012/06/11/irc-auto-performs/">read more &rarr;</a>
 
-        <div class="entry-content">
-<footer class="post-info">
-    <abbr class="published" title="2011-04-30T13:01:00-04:00">
-        Published: 04/30/2011 01:01 PM EDT
-    </abbr>
+      <br>
+      <a href="/posts/2012/06/11/irc-auto-performs/#disqus_thread">comments</a>
+    </div>
+  </div>
+</div>
+<div class="container mt-4">
+  <div class="row">
+    <div class="col-md-12">
+      <h1>
+        <a href="/posts/2011/04/30/why-rewrite-irc-protocol-plugin-part-2/">Why rewrite the <span class="caps">IRC</span> protocol plugin? (Part&nbsp;2)</a>
+      </h1>
 
-    <address class="vcard author">
-        By             <a class="url fn" href="/pages/about.html">Patrick Cloke</a>
-    </address>
+      <i>Saturday, April 30, 2011</i>
 
-
-    <p>
-        tags:             <a href="/tag/instantbird.html">Instantbird</a>
-            <a href="/tag/irc.html">IRC</a>
-    </p>
-
-    
-</footer><!-- /.post-info -->        <p>I <a class="reference external" href="http://patrick.cloke.us/posts/2010/12/08/why-rewrite-irc-into-javascript/">previously wrote about</a> why I&#8217;m rewriting the libpurple <span class="caps">IRC</span>
+      <p>I <a class="reference external" href="http://patrick.cloke.us/posts/2010/12/08/why-rewrite-irc-into-javascript/">previously wrote about</a> why I&#8217;m rewriting the libpurple <span class="caps">IRC</span>
 implementation into a JavaScript implementation for Instantbird.&nbsp; This
 is kind of a follow up, but more focused on what I hope to accomplish
 feature wise for <span class="caps">IRC</span> in Instantbird.&nbsp; A good overview to look at is the
 <a class="reference external" href="https://bugzilla.instantbird.org/showdependencygraph.cgi?id=507&amp;display=web&amp;rankdir=LR">dependencies of …</a></p>
-        <a class="readmore" href="/posts/2011/04/30/why-rewrite-irc-protocol-plugin-part-2/">read more &rarr;</a>
-<p><a href="/posts/2011/04/30/why-rewrite-irc-protocol-plugin-part-2/#disqus_thread">comments</a></p>        </div><!-- /.entry-content -->
-        </article></li>
 
-        <li><article class="hentry">
-        <header>
-            <h1><a href="/posts/2011/03/08/so-called-irc-specifications/" rel="bookmark"
-               title="Permalink to The so-called IRC “specifications”">The so-called <span class="caps">IRC</span>&nbsp;&#8220;specifications&#8221;</a></h1>
-        </header>
+      <a href="/posts/2011/04/30/why-rewrite-irc-protocol-plugin-part-2/">read more &rarr;</a>
 
-        <div class="entry-content">
-<footer class="post-info">
-    <abbr class="published" title="2011-03-08T21:20:00-05:00">
-        Published: 03/08/2011 09:20 PM EST
-    </abbr>
-    <br />
-    <abbr class="modified" title="2014-12-20T15:55:00-05:00">
-        Updated: 12/20/2014 03:55 PM EST
-    </abbr>
+      <br>
+      <a href="/posts/2011/04/30/why-rewrite-irc-protocol-plugin-part-2/#disqus_thread">comments</a>
+    </div>
+  </div>
+</div>
+<div class="container mt-4">
+  <div class="row">
+    <div class="col-md-12">
+      <h1>
+        <a href="/posts/2011/03/08/so-called-irc-specifications/">The so-called <span class="caps">IRC</span>&nbsp;&#8220;specifications&#8221;</a>
+      </h1>
 
-    <address class="vcard author">
-        By             <a class="url fn" href="/pages/about.html">Patrick Cloke</a>
-    </address>
+      <i>Tuesday, March 8, 2011</i>
 
-
-    <p>
-        tags:             <a href="/tag/instantbird.html">Instantbird</a>
-            <a href="/tag/irc.html">IRC</a>
-            <a href="/tag/programming.html">programming</a>
-            <a href="/tag/specifications.html">specifications</a>
-    </p>
-
-    
-</footer><!-- /.post-info -->        
+      
 <p>In a <a class="reference external" href="http://patrick.cloke.us/posts/2010/12/08/why-rewrite-irc-into-javascript/">previous post</a> I had briefly gone over the “history of <span class="caps">IRC</span>” as
 I know it.  I’m going to expand on this a bit as I’ve come to understand
 it a bit more while reading through documentation.  (Hopefully it won’t
 sound too much like a rant …</p>
-        <a class="readmore" href="/posts/2011/03/08/so-called-irc-specifications/">read more &rarr;</a>
-<p><a href="/posts/2011/03/08/so-called-irc-specifications/#disqus_thread">comments</a></p>        </div><!-- /.entry-content -->
-        </article></li>
-        </ol><!-- /#posts-list -->
-<p class="paginator">
-    Page 1 / 2
-        <a href="http://patrick.cloke.us/tag/irc2.html">&raquo;</a>
-</p>
-        </section><!-- /#content -->
+
+      <a href="/posts/2011/03/08/so-called-irc-specifications/">read more &rarr;</a>
+
+      <br>
+      <a href="/posts/2011/03/08/so-called-irc-specifications/#disqus_thread">comments</a>
     </div>
+  </div>
+</div>
 
-    <footer id="contentinfo" class="body">
-        <address id="about" class="vcard body">
-        Proudly powered by <a href="http://getpelican.com/">Pelican</a>, which takes great advantage of <a href="http://python.org">Python</a>.
-        Blog source available on <a href="https://github.com/clokep/clokep.github.io">GitHub</a>.
-        </address><!-- /#about -->
-    </footer><!-- /#contentinfo -->
+<div class="container">
+  <div class="row">
+    <div class="col-md-12">
+      <nav aria-label="Page navigation">
+        <ul class="pagination justify-content-center">
+          <li class="page-item disabled">
+            <a class="page-link" href="/tag/irc.html" >1</a>
+          </li>
+          <li class="page-item">
+            <a class="page-link" href="/tag/irc2.html" >2</a>
+          </li>
+        </ul>
+      </nav>
+    </div>
+  </div>
+</div>
 
-    <script type="text/javascript">
-    var _gaq = _gaq || [];
-    _gaq.push(['_setAccount', 'UA-52389517-1']);
-    _gaq.push(['_trackPageview']);
-    (function() {
-        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-    })();
-    </script>
-<script type="text/javascript">
-    var disqus_shortname = 'clokep';
-    (function () {
-        var s = document.createElement('script'); s.async = true;
-        s.type = 'text/javascript';
-        s.src = '//' + disqus_shortname + '.disqus.com/count.js';
-        (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
-    }());
-</script>
-</body>
+
+    <nav class="navbar fixed-bottom navbar-light bg-light border-top border-info">
+      <a href="https://getpelican.com/" class="nav-item" target="_blank">Powered by Pelican</a>
+      <a href="https://github.com/clokep/clokep.github.io" class="nav-item" target="_blank">
+        Source available on GitHub <span class="fab fa-github"></span>
+      </a>
+    </nav>
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T" crossorigin="anonymous"></script>
+
+<script id="dsq-count-scr" src="//clokep.disqus.com/count.js" async></script>
+  </body>
 </html>

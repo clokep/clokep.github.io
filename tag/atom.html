@@ -1,234 +1,140 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-    <meta charset="utf-8" />
-    <title>Like bricks in the sky - Atom</title>
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-    <link rel="stylesheet" href="/theme/css/main.css?10ddb23c" />
+    <!-- Feed configuration. -->
     <link href="http://patrick.cloke.us/feeds/atom.xml" type="application/atom+xml" rel="alternate" title="Like bricks in the sky Atom Feed" />
     <link href="http://patrick.cloke.us/feeds/rss.xml" type="application/rss+xml" rel="alternate" title="Like bricks in the sky RSS Feed" />
 
-    <!--[if IE]>
-        <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
-    <![endif]-->
-</head>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
+    <link rel="stylesheet" href="/theme/css/styles.css">
+    <link rel="stylesheet" href="/theme/css/borland.css">
 
-<body id="index" class="home">
-    <header id="banner" class="body">
-        <h1><a href="/">Like bricks in the sky </a></h1>
-        <nav><ul>
-            <li><a href="/pages/about.html">About</a></li>
-            <li><a href="/pages/contact.html">Contact</a></li>
-            <li><a href="/pages/projects.html">Projects</a></li>
-            <li><a href="/pages/resources.html">Resources</a></li>
-            <li><a href="/archives.html">Archives</a></li>
-            <li><a href="/tags.html">Tags</a></li>
-        </ul></nav>
-    </header><!-- /#banner -->
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
 
-    <div id="container" class="body">
-        <section id="extras" class="left">
-            <div class="social">
-                <h2>social</h2>
-                <ul>
-                    <li><a href="https://www.twitter.com/clokep" target="_blank">twitter</a></li>
-                    <li><a href="https://bitbucket.org/clokep" target="_blank">bitbucket</a></li>
-                    <li><a href="https://www.github.com/clokep" target="_blank">github</a></li>
-                    <li><a href="https://mozillians.org/u/clokep/" target="_blank">mozillians</a></li>
+    <title>Like bricks in the sky - Atom</title>
+  </head>
 
-                    <li><a href="http://patrick.cloke.us/feeds/atom.xml" type="application/atom+xml" rel="alternate">atom feed</a></li>
-                    <li><a href="http://patrick.cloke.us/feeds/rss.xml" type="application/rss+xml" rel="alternate">rss feed</a></li>
-                </ul>
-            </div><!-- /.social -->
-        </section><!-- /#extras -->
+  <body class="pb-5">
+    <nav class="navbar navbar-expand-lg sticky-top navbar-light bg-light border-bottom border-info">
+      <a class="navbar-brand" href="/">
+        Like bricks in the sky
+      </a>
 
-        <section id="search" class="left">
-            <h2>search</h2>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-items" aria-controls="navbar-items" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
 
-            <form method="get" action="http://www.google.com/search" target="_blank">
+      <div class="collapse navbar-collapse" id="navbar-items">
+        <ul class="navbar-nav ml-auto">
 
-                <input type="text" name="q" placeholder="search this site" />
-                <input type="submit" value="Search" />
-                <input type="hidden"  name="sitesearch" value="patrick.cloke.us" />
-            </form>
-        </section>
+          <li class="nav-item">
+            <a class="nav-link" href="/pages/about.html">About</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/pages/projects.html">Projects</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/pages/resources.html">Resources</a>
+          </li>
 
+          <li class="nav-item">
+            <a class="nav-link" href="/archives.html">Archives</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/tags.html">Tags</a>
+          </li>
 
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="social-dropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              Social
+            </a>
 
-        <aside id="featured" class="body">
-        <article>
-            <h1 class="entry-title"><a href="/posts/2017/05/26/rss-feeds-for-wikipedia-current-events-and-nhl-news/"><span class="caps">RSS</span> Feeds for Wikipedia Current Events and <span class="caps">NHL</span>&nbsp;News</a></h1>
-<footer class="post-info-container">
-    <div class="post-info-top">
-    </div>
+            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="social-dropdown">
+              <a class="dropdown-item" href="https://www.twitter.com/clokep" target="_blank">
+                <span class="fab fa-twitter mr-1"></span> twitter
+              </a>
+              <a class="dropdown-item" href="https://mastodon.social/@clokep" target="_blank">
+                <span class="fab fa-mastodon mr-1"></span> mastodon
+              </a>
+              <a class="dropdown-item" href="https://www.github.com/clokep" target="_blank">
+                <span class="fab fa-github mr-1"></span> github
+              </a>
+              <a class="dropdown-item" href="https://gitlab.com/clokep" target="_blank">
+                <span class="fab fa-gitlab mr-1"></span> gitlab
+              </a>
+              <a class="dropdown-item" href="https://bitbucket.org/clokep" target="_blank">
+                <span class="fab fa-bitbucket mr-1"></span> bitbucket
+              </a>
+              <a class="dropdown-item" href="https://mozillians.org/u/clokep/" target="_blank">
+                <span class="fab fa-firefox mr-1"></span> mozillians
+              </a>
+            </div>
+          </li>
 
-    <!-- Second div is to change the background color again. -->
-    <div class="post-info-bg">
-    <div class="post-info">
-        <div id="gravatar" style="background-image: url('https://www.gravatar.com/avatar/130405f65521b6ee6bbbe0204070a163');">
-        </div>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="feeds-dropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              Feeds
+            </a>
 
-        <abbr class="published" title="2017-05-26T08:13:00-04:00">
-            Published: 05/26/2017 08:13 AM EDT
-        </abbr>
-        <br />
-        <abbr class="modified" title="2017-09-13T17:15:00-04:00">
-            Updated: 09/13/2017 05:15 PM EDT
-        </abbr>
+            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="feeds-dropdown">
+              <a class="dropdown-item" href="http://patrick.cloke.us/feeds/atom.xml" type="application/atom+xml" rel="alternate">atom feed</a>
+              <a class="dropdown-item" href="http://patrick.cloke.us/feeds/rss.xml" type="application/rss+xml" rel="alternate">rss feed</a>
+            </div>
+          </li>
 
-        <address class="vcard author">
-            By                 <a class="url fn" href="/pages/about.html">Patrick Cloke</a>
-        </address>
+          <form class="form-inline" method="get" action="http://www.google.com/search">
+            <input class="form-control form-control-sm mr-sm-2" type="search" name="q" placeholder="Search" aria-label="Search" />
+            <input type="hidden"  name="sitesearch" value="patrick.cloke.us" />
 
+            <button class="btn btn-sm btn-outline-info d-none d-sm-inline" type="submit">Search</button>
+          </form>
+        </ul>
+      </div>
+    </nav>
 
-        <div id="gravatar-clear"></div>
+<div class="container mt-4">
+  <div class="row">
+    <div class="col-md-12">
+      <h1>
+        <a href="/posts/2017/05/26/rss-feeds-for-wikipedia-current-events-and-nhl-news/"><span class="caps">RSS</span> Feeds for Wikipedia Current Events and <span class="caps">NHL</span>&nbsp;News</a>
+      </h1>
 
-        <div id="tag-list">
-            tags:                 <a href="/tag/atom.html">Atom</a>
-                <a href="/tag/programming.html">programming</a>
-                <a href="/tag/python.html">python</a>
-                <a href="/tag/rss.html">RSS</a>
-        </div>
+      <i>Friday, May 26, 2017</i>
 
-        
-
-        <div id="post-share-links" class="social">
-            share:
-            <a href="http://twitter.com/home?status=RSS%20Feeds%20for%20Wikipedia%20Current%20Events%20and%20NHL%C2%A0News%20http%3A//patrick.cloke.us/posts/2017/05/26/rss-feeds-for-wikipedia-current-events-and-nhl-news/" target="_blank" title="Share on Twitter">Twitter</a>
-            <a href="http://www.facebook.com/sharer/sharer.php?u=http%3A//patrick.cloke.us/posts/2017/05/26/rss-feeds-for-wikipedia-current-events-and-nhl-news/" target="_blank" title="Share on Facebook">Facebook</a>
-            <a href="https://plus.google.com/share?url=http%3A//patrick.cloke.us/posts/2017/05/26/rss-feeds-for-wikipedia-current-events-and-nhl-news/" target="_blank" title="Share on Google Plus">Google+</a>
-            <a href="mailto:?subject=RSS%20Feeds%20for%20Wikipedia%20Current%20Events%20and%20NHL%C2%A0News&amp;body=http%3A//patrick.cloke.us/posts/2017/05/26/rss-feeds-for-wikipedia-current-events-and-nhl-news/" target="_blank" title="Share via Email">Email</a>
-        </div>
-    </div>
-    </div>
-
-    <div class="post-info-bottom">
-    </div>
-</footer><!-- /.post-info --><p>I subscribe to a fair amount of feeds for news, blogs, articles, etc. I&#8217;m
+      <p>I subscribe to a fair amount of feeds for news, blogs, articles, etc. I&#8217;m
 currently subscribed to 122 feeds, some of which have tens of articles a day
 (news sites), some of which are dead. <a class="footnote-reference" href="#id3" id="id1">[1]</a> Unfortunately there&#8217;s still a few
-sites that I was visiting manually each day to get updates from because they
-don&#8217;t offer any feeds. This&nbsp;included:</p>
-<ul class="simple">
-<li>The <a class="reference external" href="https://en.wikipedia.org/wiki/Portal:Current_events">Wikipedia Current Events portal</a>, which usually has a nice daily summary
-of interesting worldwide stories. <a class="footnote-reference" href="#id4" id="id2">[2]</a></li>
-<li>The <a class="reference external" href="https://www.nhl.com/news"><span class="caps">NHL</span> News</a> (and specifically the <a class="reference external" href="https://www.nhl.com/islanders/news">Islanders News</a>) pages. (I still
-follow a <a class="reference external" href="http://islanders.nhl.com/rss/news.xml">broken feed</a> from the older site, but it seems one of the redesigns
-of the <span class="caps">NHL</span> team sites broke this&nbsp;feed.)</li>
-</ul>
-<p>Having the Wikipedia Current Events as a feed is a pretty specific thing that&#8217;s
-outside of the scope of <a class="reference external" href="https://www.mediawiki.org/">MediaWiki</a>, so I can understand why that doesn&#8217;t
-exist. The <span class="caps">NHL</span> not having news feeds over <span class="caps">RSS</span> or Atom though? That shocks me! I
-hope I&#8217;ve just been unable to find them and that they do exist. Please point me
-to them if they&nbsp;do!</p>
-<div class="section" id="wikipedia-current-events">
-<h2>Wikipedia Current&nbsp;Events</h2>
-<p>The Wikipedia Current Events feed is <a class="reference external" href="https://www.to-rss.xyz/wikipedia/current_events/">publically available</a>, code can be found
-in the GitHub repository: <a class="reference external" href="https://github.com/clokep/wp-current-events-rss">clokep/wp-current-events-rss</a>. Note that this pulls
-data on demand and thus always serves the most up-to-date versions of the
-articles. This works&nbsp;by:</p>
-<ol class="arabic simple">
-<li>Pulling the last 7 days of Wikipedia&#8217;s current event articles (e.g. like
-<a class="reference external" href="https://en.wikipedia.org/wiki/Portal:Current_events/2017_May_8">this one</a>) using <a class="reference external" href="http://python-requests.org/">requests</a>. Each of these is processed individually as a
-separate article in the <span class="caps">RSS</span>&nbsp;feed.</li>
-<li>The <a class="reference external" href="https://en.wikipedia.org/wiki/Help:Wiki_markup">wikicode</a> for each article is converted to an <a class="reference external" href="https://en.wikipedia.org/wiki/Abstract_syntax_tree"><span class="caps">AST</span></a> using
-<a class="reference external" href="http://mwparserfromhell.readthedocs.io/">mwparserfromhell</a></li>
-<li>Some of the headers and templates are removed from each&nbsp;article.</li>
-<li>It then converts each article <em>back</em> to <span class="caps">HTML</span>. (This was the surprisingly
-hard part. I couldn&#8217;t find a good library to do this and ended up
-<a class="reference external" href="https://github.com/clokep/wp-current-events-rss/blob/7a6e2eb12d7fbe6efae6659dda65e2ad24e89611/parser.py#L23-L193">writing this myself</a>.)</li>
-<li>The articles are then turned into an <span class="caps">RSS</span> feed using <a class="reference external" href="https://github.com/getpelican/feedgenerator/">feedgenerator</a>.</li>
-<li>The feed itself is served via <a class="reference external" href="http://flask.pocoo.org/">Flask</a>.</li>
-</ol>
-<p>Feel free to <a class="reference external" href="https://www.to-rss.xyz/wikipedia/">check it out</a> and <a class="reference external" href="https://github.com/clokep/wp-current-events-rss/issues/new">let me know of any issues</a>!</p>
-</div>
-<div class="section" id="nhl-news">
-<h2><span class="caps">NHL</span>&nbsp;News</h2>
-<p>After building the above, I figured there was no reason not to do the same for
-the <span class="caps">NHL</span> News section (and specifically for the Islanders). You can <a class="reference external" href="https://www.to-rss.xyz/nhl/news/">see the <span class="caps">NHL</span>
-feed</a> or <a class="reference external" href="https://www.to-rss.xyz/nhl/">pick your favorite team</a>. Again, the code is available on GitHub:
-<a class="reference external" href="https://github.com/clokep/nhl-news-rss">clokep/nhl-news-rss</a>. The stack is pretty similar to the above, it works&nbsp;by:</p>
-<ol class="arabic simple">
-<li>Pulling the current <span class="caps">NHL</span> News&nbsp;page.</li>
-<li>Parsing the <span class="caps">HTML</span> with <a class="reference external" href="https://www.crummy.com/software/BeautifulSoup/bs4/">BeautifulSoup4</a> to pull out each article&#8217;s title,
-date, author, and short summary. (Note that the full article isn&#8217;t
-available, we could get it by loading each article individually, but I
-didn&#8217;t implement&nbsp;that.)</li>
-<li>The articles are then turned into an <span class="caps">RSS</span> feed using <a class="reference external" href="https://github.com/getpelican/feedgenerator/">feedgenerator</a>.</li>
-<li>The feed itself is served via <a class="reference external" href="http://flask.pocoo.org/">Flask</a>.</li>
-</ol>
-<p>Luckily the <span class="caps">NHL</span> News site and the news page for each team are in the same
-format, so it&#8217;s just loading different URLs to get the different articles. It
-was pretty trivial to get the full list of teams and add support for all of
-them, so that&#8217;s included too! Articles are pulled during page load, so should
-always be up to&nbsp;date.</p>
-<p>I hope one (or both) of these are useful to people! Again, please
-<a class="reference external" href="https://github.com/clokep/nhl-news-rss/issues/new">let me know if you have any issues or ideas</a>!</p>
-<table class="docutils footnote" frame="void" id="id3" rules="none">
-<colgroup><col class="label" /><col /></colgroup>
-<tbody valign="top">
-<tr><td class="label"><a class="fn-backref" href="#id1">[1]</a></td><td><p class="first">I recently switched from using <a class="reference external" href="http://thunderbird.net">Thunderbird</a> to <a class="reference external" href="https://feedly.com">Feedly</a> in order to
-get cross device read status syncing on articles, but that&#8217;s not really
-related to the rest of this article. Switching has mostly worked out
-well, but I do miss the filtering capabilities of&nbsp;Thunderbird!</p>
-<p class="last">I also tried a few other services (e.g. <a class="reference external" href="https://theoldreader.com">The Old Reader</a>), but most had
-too many weird social features. I just wanted to read&nbsp;feeds.</p>
-</td></tr>
-</tbody>
-</table>
-<table class="docutils footnote" frame="void" id="id4" rules="none">
-<colgroup><col class="label" /><col /></colgroup>
-<tbody valign="top">
-<tr><td class="label"><a class="fn-backref" href="#id2">[2]</a></td><td>I do know that Wikipedia page updates can be consumed via <span class="caps">RSS</span>, but I
-don&#8217;t want to know every time the article is updated, just the state of
-the article at the end of the day. (It also doesn&#8217;t work for the current
-events article since it&#8217;s dynamically generated from a bunch of
-templates.)</td></tr>
-</tbody>
-</table>
-<div class="admonition note">
-<p class="first admonition-title">Note</p>
-<p>An update, as of September 13,&nbsp;2017:</p>
-<ol class="last arabic simple">
-<li>The links to each <span class="caps">RSS</span> feed were&nbsp;updated.</li>
-<li>These apps are now hosted together on <a class="reference external" href="https://www.to-rss.xyz">https://www.to-rss.xyz</a>.</li>
-<li>These projects are no longer being updated on GitHub. The combined site
-might be open sourced in the&nbsp;future.</li>
-</ol>
-</div>
-</div>
-<p><a href="/posts/2017/05/26/rss-feeds-for-wikipedia-current-events-and-nhl-news/#disqus_thread">comments</a></p>        </article>
-<p class="paginator">
-    Page 1 / 1
-</p>
-        </aside><!-- /#featured -->
+sites that I was visiting manually each …</p>
+
+      <a href="/posts/2017/05/26/rss-feeds-for-wikipedia-current-events-and-nhl-news/">read more &rarr;</a>
+
+      <br>
+      <a href="/posts/2017/05/26/rss-feeds-for-wikipedia-current-events-and-nhl-news/#disqus_thread">comments</a>
     </div>
+  </div>
+</div>
 
-    <footer id="contentinfo" class="body">
-        <address id="about" class="vcard body">
-        Proudly powered by <a href="http://getpelican.com/">Pelican</a>, which takes great advantage of <a href="http://python.org">Python</a>.
-        Blog source available on <a href="https://github.com/clokep/clokep.github.io">GitHub</a>.
-        </address><!-- /#about -->
-    </footer><!-- /#contentinfo -->
 
-    <script type="text/javascript">
-    var _gaq = _gaq || [];
-    _gaq.push(['_setAccount', 'UA-52389517-1']);
-    _gaq.push(['_trackPageview']);
-    (function() {
-        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-    })();
-    </script>
-<script type="text/javascript">
-    var disqus_shortname = 'clokep';
-    (function () {
-        var s = document.createElement('script'); s.async = true;
-        s.type = 'text/javascript';
-        s.src = '//' + disqus_shortname + '.disqus.com/count.js';
-        (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
-    }());
-</script>
-</body>
+
+    <nav class="navbar fixed-bottom navbar-light bg-light border-top border-info">
+      <a href="https://getpelican.com/" class="nav-item" target="_blank">Powered by Pelican</a>
+      <a href="https://github.com/clokep/clokep.github.io" class="nav-item" target="_blank">
+        Source available on GitHub <span class="fab fa-github"></span>
+      </a>
+    </nav>
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T" crossorigin="anonymous"></script>
+
+<script id="dsq-count-scr" src="//clokep.disqus.com/count.js" async></script>
+  </body>
 </html>

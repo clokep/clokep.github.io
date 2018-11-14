@@ -1,362 +1,165 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-    <meta charset="utf-8" />
-    <title>Like bricks in the sky - specifications</title>
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-    <link rel="stylesheet" href="/theme/css/main.css?10ddb23c" />
+    <!-- Feed configuration. -->
     <link href="http://patrick.cloke.us/feeds/atom.xml" type="application/atom+xml" rel="alternate" title="Like bricks in the sky Atom Feed" />
     <link href="http://patrick.cloke.us/feeds/rss.xml" type="application/rss+xml" rel="alternate" title="Like bricks in the sky RSS Feed" />
 
-    <!--[if IE]>
-        <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
-    <![endif]-->
-</head>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
+    <link rel="stylesheet" href="/theme/css/styles.css">
+    <link rel="stylesheet" href="/theme/css/borland.css">
 
-<body id="index" class="home">
-    <header id="banner" class="body">
-        <h1><a href="/">Like bricks in the sky </a></h1>
-        <nav><ul>
-            <li><a href="/pages/about.html">About</a></li>
-            <li><a href="/pages/contact.html">Contact</a></li>
-            <li><a href="/pages/projects.html">Projects</a></li>
-            <li><a href="/pages/resources.html">Resources</a></li>
-            <li><a href="/archives.html">Archives</a></li>
-            <li><a href="/tags.html">Tags</a></li>
-        </ul></nav>
-    </header><!-- /#banner -->
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
 
-    <div id="container" class="body">
-        <section id="extras" class="left">
-            <div class="social">
-                <h2>social</h2>
-                <ul>
-                    <li><a href="https://www.twitter.com/clokep" target="_blank">twitter</a></li>
-                    <li><a href="https://bitbucket.org/clokep" target="_blank">bitbucket</a></li>
-                    <li><a href="https://www.github.com/clokep" target="_blank">github</a></li>
-                    <li><a href="https://mozillians.org/u/clokep/" target="_blank">mozillians</a></li>
+    <title>Like bricks in the sky - specifications</title>
+  </head>
 
-                    <li><a href="http://patrick.cloke.us/feeds/atom.xml" type="application/atom+xml" rel="alternate">atom feed</a></li>
-                    <li><a href="http://patrick.cloke.us/feeds/rss.xml" type="application/rss+xml" rel="alternate">rss feed</a></li>
-                </ul>
-            </div><!-- /.social -->
-        </section><!-- /#extras -->
+  <body class="pb-5">
+    <nav class="navbar navbar-expand-lg sticky-top navbar-light bg-light border-bottom border-info">
+      <a class="navbar-brand" href="/">
+        Like bricks in the sky
+      </a>
 
-        <section id="search" class="left">
-            <h2>search</h2>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-items" aria-controls="navbar-items" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
 
-            <form method="get" action="http://www.google.com/search" target="_blank">
+      <div class="collapse navbar-collapse" id="navbar-items">
+        <ul class="navbar-nav ml-auto">
 
-                <input type="text" name="q" placeholder="search this site" />
-                <input type="submit" value="Search" />
-                <input type="hidden"  name="sitesearch" value="patrick.cloke.us" />
-            </form>
-        </section>
+          <li class="nav-item">
+            <a class="nav-link" href="/pages/about.html">About</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/pages/projects.html">Projects</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/pages/resources.html">Resources</a>
+          </li>
 
+          <li class="nav-item">
+            <a class="nav-link" href="/archives.html">Archives</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/tags.html">Tags</a>
+          </li>
 
-        <section id="toc" class="left">
-            <h2>table of contents</h2>
-            <div class="toc" id="">
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="social-dropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              Social
+            </a>
 
-<ul class="simple">
-<li><a class="reference internal" href="#goals" id="id7">Goals</a></li>
-<li><a class="reference internal" href="#first-approach-setting-proto-to-map-prototype" id="id8">First Approach (setting __proto__ to Map.prototype)</a></li>
-<li><a class="reference internal" href="#second-approach-modifying-proto-after-instance-creation" id="id9">Second Approach (modifying __proto__ after instance creation)</a></li>
-<li><a class="reference internal" href="#solution-wrapping-a-map" id="id10">Solution (wrapping a Map)</a></li>
-</ul>
-</div>
-        </section>
+            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="social-dropdown">
+              <a class="dropdown-item" href="https://www.twitter.com/clokep" target="_blank">
+                <span class="fab fa-twitter mr-1"></span> twitter
+              </a>
+              <a class="dropdown-item" href="https://mastodon.social/@clokep" target="_blank">
+                <span class="fab fa-mastodon mr-1"></span> mastodon
+              </a>
+              <a class="dropdown-item" href="https://www.github.com/clokep" target="_blank">
+                <span class="fab fa-github mr-1"></span> github
+              </a>
+              <a class="dropdown-item" href="https://gitlab.com/clokep" target="_blank">
+                <span class="fab fa-gitlab mr-1"></span> gitlab
+              </a>
+              <a class="dropdown-item" href="https://bitbucket.org/clokep" target="_blank">
+                <span class="fab fa-bitbucket mr-1"></span> bitbucket
+              </a>
+              <a class="dropdown-item" href="https://mozillians.org/u/clokep/" target="_blank">
+                <span class="fab fa-firefox mr-1"></span> mozillians
+              </a>
+            </div>
+          </li>
 
-        <aside id="featured" class="body">
-        <article>
-            <h1 class="entry-title"><a href="/posts/2014/04/27/extending-javascript-maps-or-other/">Extending JavaScript Maps (or other built-in&nbsp;objects)</a></h1>
-<footer class="post-info-container">
-    <div class="post-info-top">
-    </div>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="feeds-dropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              Feeds
+            </a>
 
-    <!-- Second div is to change the background color again. -->
-    <div class="post-info-bg">
-    <div class="post-info">
-        <div id="gravatar" style="background-image: url('https://www.gravatar.com/avatar/130405f65521b6ee6bbbe0204070a163');">
-        </div>
+            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="feeds-dropdown">
+              <a class="dropdown-item" href="http://patrick.cloke.us/feeds/atom.xml" type="application/atom+xml" rel="alternate">atom feed</a>
+              <a class="dropdown-item" href="http://patrick.cloke.us/feeds/rss.xml" type="application/rss+xml" rel="alternate">rss feed</a>
+            </div>
+          </li>
 
-        <abbr class="published" title="2014-04-27T13:46:00-04:00">
-            Published: 04/27/2014 01:46 PM EDT
-        </abbr>
+          <form class="form-inline" method="get" action="http://www.google.com/search">
+            <input class="form-control form-control-sm mr-sm-2" type="search" name="q" placeholder="Search" aria-label="Search" />
+            <input type="hidden"  name="sitesearch" value="patrick.cloke.us" />
 
-        <address class="vcard author">
-            By                 <a class="url fn" href="/pages/about.html">Patrick Cloke</a>
-        </address>
+            <button class="btn btn-sm btn-outline-info d-none d-sm-inline" type="submit">Search</button>
+          </form>
+        </ul>
+      </div>
+    </nav>
 
+<div class="container mt-4">
+  <div class="row">
+    <div class="col-md-12">
+      <h1>
+        <a href="/posts/2014/04/27/extending-javascript-maps-or-other/">Extending JavaScript Maps (or other built-in&nbsp;objects)</a>
+      </h1>
 
-        <div id="gravatar-clear"></div>
+      <i>Sunday, April 27, 2014</i>
 
-        <div id="tag-list">
-            tags:                 <a href="/tag/instantbird.html">Instantbird</a>
-                <a href="/tag/programming.html">programming</a>
-                <a href="/tag/specifications.html">specifications</a>
-                <a href="/tag/thunderbird.html">Thunderbird</a>
-                <a href="/tag/wat.html">Wat</a>
-        </div>
-
-        
-
-        <div id="post-share-links" class="social">
-            share:
-            <a href="http://twitter.com/home?status=Extending%20JavaScript%20Maps%20%28or%20other%20built-in%C2%A0objects%29%20http%3A//patrick.cloke.us/posts/2014/04/27/extending-javascript-maps-or-other/" target="_blank" title="Share on Twitter">Twitter</a>
-            <a href="http://www.facebook.com/sharer/sharer.php?u=http%3A//patrick.cloke.us/posts/2014/04/27/extending-javascript-maps-or-other/" target="_blank" title="Share on Facebook">Facebook</a>
-            <a href="https://plus.google.com/share?url=http%3A//patrick.cloke.us/posts/2014/04/27/extending-javascript-maps-or-other/" target="_blank" title="Share on Google Plus">Google+</a>
-            <a href="mailto:?subject=Extending%20JavaScript%20Maps%20%28or%20other%20built-in%C2%A0objects%29&amp;body=http%3A//patrick.cloke.us/posts/2014/04/27/extending-javascript-maps-or-other/" target="_blank" title="Share via Email">Email</a>
-        </div>
-    </div>
-    </div>
-
-    <div class="post-info-bottom">
-    </div>
-</footer><!-- /.post-info -->
+      
 <p>Finally another technical post, this one is about my adventures in
 attempting to extend the built-in <a class="reference external" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Map">Map</a> object in JavaScript to extend
 the functionality. As background, there are two reasons we’d want this:</p>
 <ol class="arabic">
 <li><p class="first">In the chat backend we currently use JavaScript <a class="reference external" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object">objects</a> (<tt class="docutils literal">{}</tt>) as
-hashes/maps to keep track of various things (i.e. there’s a <a class="reference external" href="https://mxr.mozilla.org/comm-central/source/chat/protocols/irc/irc.js#789">hash of
-conversations</a> which map from conversation name to prplIConversation
-objects in the <span class="caps">IRC</span> code). Whenever checking to see if something is in
-this map we have to use <a class="reference external" href="https://mxr.mozilla.org/comm-central/source/chat/protocols/irc/irc.js#1509">hasOwnProperty</a>. This has to be the
-<a class="reference external" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/hasOwnProperty">version from Object.prototype</a> in case the map has a conversation
-named hasOwnProperty. This is <a class="reference external" href="https://mxr.mozilla.org/comm-central/source/chat/modules/imXPCOMUtils.jsm#166">super simple code</a>, but annoying:</p>
-<blockquote>
-<div class="highlight"><pre><span></span><span class="c1">// Similar to Object.hasOwnProperty, but doesn't fail if the object</span>
-<span class="c1">// has a hasOwnProperty property set.</span>
-<span class="kd">function</span> <span class="nx">hasOwnProperty</span><span class="p">(</span><span class="nx">aObject</span><span class="p">,</span> <span class="nx">aPropertyName</span><span class="p">)</span>
-  <span class="nb">Object</span><span class="p">.</span><span class="nx">prototype</span><span class="p">.</span><span class="nx">hasOwnProperty</span><span class="p">.</span><span class="nx">call</span><span class="p">(</span><span class="nx">aObject</span><span class="p">,</span> <span class="nx">aPropertyName</span><span class="p">)</span>
-</pre></div>
-</blockquote>
-<p><a class="reference external" href="https://bugzilla.mozilla.org/show_bug.cgi?id=955366">Replacing these custom objects with a Map</a> would alleviate this
-funky dance.</p>
-</li>
-<li><p class="first">Frequently in the chat backend we have to “normalize” <a class="footnote-reference" href="#id4" id="id1">[1]</a> strings
-(e.g. #INsTanTBIrd and #instantbird are the same on <span class="caps">IRC</span> <a class="footnote-reference" href="#id5" id="id2">[2]</a>). This is
-almost always done for sane storage of data received from the network
-(or from the user). I figured it’d be great if, instead of having to
-<a class="reference external" href="https://mxr.mozilla.org/comm-central/source/chat/protocols/irc/irc.js#1510">manually</a> <a class="reference external" href="https://mxr.mozilla.org/comm-central/source/chat/protocols/irc/irc.js#1514">handle</a> <a class="reference external" href="https://mxr.mozilla.org/comm-central/source/chat/protocols/irc/irc.js#1528">this</a> normalization each time we tried to
-access data, the keys were magically normalized when accessing the
-data.
-(Note that although normalization is generally more complicated, just
-consider to be <a class="reference external" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/toLowerCase">String.prototype.toLowerCase()</a> for the rest of this post!)</p>
-</li>
-</ol>
-<p>This has been explored before by <a class="reference external" href="http://perfectionkills.com/how-ecmascript-5-still-does-not-allow-to-subclass-an-array/">others</a>, but generally in the
-context of web sites / cross browser compatibility. Which are concerns
-that don’t really limit us for backend code.</p>
-<div class="section" id="goals">
-<h2><a class="toc-backref" href="#id7">Goals</a></h2>
-<ol class="arabic simple">
-<li>Replace objects with Maps for safe access. This is pretty easily
-fixed by switching all <tt class="docutils literal"><span class="pre">obj["foo"]</span></tt> calls to <tt class="docutils literal"><span class="pre">obj.get("foo")</span></tt> (or the
-appropriate other method: set, delete, etc.)</li>
-<li>Automatically “normalize” keys in the some user defined way, e.g.
-such that <tt class="docutils literal"><span class="pre">obj.get("foo")</span></tt> and <tt class="docutils literal"><span class="pre">obj.get("FoO")</span></tt> return the same value.</li>
-</ol>
+hashes/maps to keep track of …</p></li></ol>
+
+      <a href="/posts/2014/04/27/extending-javascript-maps-or-other/">read more &rarr;</a>
+
+      <br>
+      <a href="/posts/2014/04/27/extending-javascript-maps-or-other/#disqus_thread">comments</a>
+    </div>
+  </div>
 </div>
-<div class="section" id="first-approach-setting-proto-to-map-prototype">
-<h2><a class="toc-backref" href="#id8">First Approach (setting __proto__ to Map.prototype)</a></h2>
-<p>My first naive approach was to create an object with <tt class="docutils literal">__proto__</tt> set
-to Map.prototype and overwrite anything that uses keys to appropriately
-call a normalization function.</p>
-<div class="highlight"><pre><span></span><span class="kd">function</span> <span class="nx">NormalizedMap</span><span class="p">()</span> <span class="p">{</span> <span class="p">}</span>
-<span class="nx">NormalizedMap</span><span class="p">.</span><span class="nx">prototype</span> <span class="o">=</span> <span class="p">{</span>
-    <span class="nx">__proto__</span><span class="o">:</span> <span class="nx">Map</span><span class="p">.</span><span class="nx">prototype</span><span class="p">,</span>
-    <span class="nx">_normalize</span><span class="o">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">aStr</span><span class="p">)</span> <span class="nx">aStr</span><span class="p">.</span><span class="nx">toLowerCase</span><span class="p">(),</span>
+<div class="container mt-4">
+  <div class="row">
+    <div class="col-md-12">
+      <h1>
+        <a href="/posts/2011/03/08/so-called-irc-specifications/">The so-called <span class="caps">IRC</span>&nbsp;&#8220;specifications&#8221;</a>
+      </h1>
 
-    <span class="nx">get</span><span class="o">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">aStr</span><span class="p">)</span> <span class="nx">Map</span><span class="p">.</span><span class="nx">prototype</span><span class="p">.</span><span class="nx">get</span><span class="p">.</span><span class="nx">call</span><span class="p">(</span><span class="k">this</span><span class="p">,</span> <span class="k">this</span><span class="p">.</span><span class="nx">_normalize</span><span class="p">(</span><span class="nx">aStr</span><span class="p">)),</span>
-    <span class="nx">set</span><span class="o">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">aStr</span><span class="p">,</span> <span class="nx">aVal</span><span class="p">)</span> <span class="nx">Map</span><span class="p">.</span><span class="nx">prototype</span><span class="p">.</span><span class="nx">set</span><span class="p">.</span><span class="nx">call</span><span class="p">(</span><span class="k">this</span><span class="p">,</span> <span class="k">this</span><span class="p">.</span><span class="nx">_normalize</span><span class="p">(</span><span class="nx">aStr</span><span class="p">),</span> <span class="nx">aVal</span><span class="p">)</span>
-<span class="p">};</span>
+      <i>Tuesday, March 8, 2011</i>
 
-<span class="kd">let</span> <span class="nx">m</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">NormalizedMap</span><span class="p">();</span>
-<span class="nx">m</span><span class="p">.</span><span class="nx">set</span><span class="p">(</span><span class="s2">"foo"</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span> <span class="c1">// Throws TypeError: set method called on incompatible Object</span>
-<span class="nx">m</span> <span class="k">instanceof</span> <span class="nx">Map</span><span class="p">;</span> <span class="c1">// true . . . wat . . .</span>
-</pre></div>
-<p>This throws an error and does not work. Apparently there are plans to
-<a class="reference external" href="https://bugzilla.mozilla.org/show_bug.cgi?id=838540">support something like this</a>. The totally fun thing, in my opinion, is
-that m is an instance of a Map!</p>
-</div>
-<div class="section" id="second-approach-modifying-proto-after-instance-creation">
-<h2><a class="toc-backref" href="#id9">Second Approach (modifying __proto__ after instance creation)</a></h2>
-<p>My second approach was to generate a real Map and then override the
-<tt class="docutils literal">__proto__</tt> to give it the properties I wanted:</p>
-<div class="highlight"><pre><span></span><span class="kd">function</span> <span class="nx">NormalizedMap</span><span class="p">()</span> <span class="p">{</span>
-    <span class="kd">let</span> <span class="nx">m</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Map</span><span class="p">();</span>  <span class="nx">m</span><span class="p">.</span><span class="nx">__proto__</span> <span class="o">=</span> <span class="nx">NormalizedMap</span><span class="p">.</span><span class="nx">prototype</span><span class="p">;</span>
-    <span class="k">return</span> <span class="nx">m</span><span class="p">;</span>
-<span class="p">}</span>
-<span class="nx">NormalizedMap</span><span class="p">.</span><span class="nx">prototype</span> <span class="o">=</span> <span class="p">{</span>
-    <span class="nx">__proto__</span><span class="o">:</span> <span class="nx">Map</span><span class="p">.</span><span class="nx">prototype</span><span class="p">,</span>
-    <span class="nx">_normalize</span><span class="o">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">aStr</span><span class="p">)</span> <span class="nx">aStr</span><span class="p">.</span><span class="nx">toLowerCase</span><span class="p">(),</span>
-    <span class="nx">get</span><span class="o">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">aStr</span><span class="p">)</span> <span class="nx">Map</span><span class="p">.</span><span class="nx">prototype</span><span class="p">.</span><span class="nx">get</span><span class="p">.</span><span class="nx">call</span><span class="p">(</span><span class="k">this</span><span class="p">,</span> <span class="k">this</span><span class="p">.</span><span class="nx">_normalize</span><span class="p">(</span><span class="nx">aStr</span><span class="p">)),</span>
-    <span class="nx">set</span><span class="o">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">aStr</span><span class="p">,</span> <span class="nx">aVal</span><span class="p">)</span> <span class="nx">Map</span><span class="p">.</span><span class="nx">prototype</span><span class="p">.</span><span class="nx">set</span><span class="p">.</span><span class="nx">call</span><span class="p">(</span><span class="k">this</span><span class="p">,</span> <span class="k">this</span><span class="p">.</span><span class="nx">_normalize</span><span class="p">(</span><span class="nx">aStr</span><span class="p">),</span> <span class="nx">aVal</span><span class="p">)</span>
-<span class="p">};</span>
-<span class="kd">let</span> <span class="nx">m</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">NormalizedMap</span><span class="p">();</span>
-<span class="nx">m</span><span class="p">.</span><span class="nx">set</span><span class="p">(</span><span class="s2">"foo"</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
-<span class="nx">m</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s2">"FOO"</span><span class="p">);</span> <span class="c1">// 1</span>
-<span class="nx">m</span> <span class="k">instanceof</span> <span class="nx">Map</span><span class="p">;</span> <span class="c1">// true</span>
-</pre></div>
-<p>This actually works! But will <a class="reference external" href="https://bugzilla.mozilla.org/show_bug.cgi?id=963519">throw a warning</a> each time it is
-created since changing an objects <tt class="docutils literal">__proto__</tt> is generally a bad idea.
-I also thought of overriding individual methods, but this seemed
-cumbersome and would increase the time in the constructor calls. (Which
-occur during the start up of each account and is generally a resource
-constrained time. No, I didn’t profile this, it just seemed like bad design.)</p>
-</div>
-<div class="section" id="solution-wrapping-a-map">
-<h2><a class="toc-backref" href="#id10">Solution (wrapping a Map)</a></h2>
-<p>Finally I settled on the simple solution of just wrapping the Map in a
-custom object. Initially I thought this would be frustrating to
-re-declare every function (and prone to breakage in the future if new
-methods are added), but there’s a nice magic method
-<a class="reference external" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/noSuchMethod">__noSuchMethod__</a> that fixes this! (Note that this is a
-non-standard feature of SpiderMonkey.) <tt class="docutils literal">__noSuchMethod__</tt> allows an
-object to intercept a call to a non-existent method (and in this case
-call that same method on the internal Map object).</p>
-<p>Below is the final version that seems to act magically like a Map when
-necessary (e.g. iterating the map works, all functions and properties
-exist, the constructor works <a class="footnote-reference" href="#id6" id="id3">[3]</a>). I need to thank aleth (another chat
-developer) who helped out quite a bit with this (and will ultimately be
-reviewing this code)!</p>
-<div class="highlight"><pre><span></span><span class="c1">// A Map that automatically normalizes keys before accessing the values.</span>
-<span class="kd">function</span> <span class="nx">NormalizedMap</span><span class="p">(</span><span class="nx">aNormalizeFunction</span><span class="p">,</span> <span class="nx">aIt</span> <span class="o">=</span> <span class="p">[])</span> <span class="p">{</span>
-  <span class="k">if</span> <span class="p">(</span><span class="k">typeof</span><span class="p">(</span><span class="nx">aNormalizeFunction</span><span class="p">)</span> <span class="o">!=</span> <span class="s2">"function"</span><span class="p">)</span>
-    <span class="k">throw</span> <span class="s2">"NormalizedMap must have a normalize function!"</span><span class="p">;</span>
-  <span class="k">this</span><span class="p">.</span><span class="nx">_normalize</span> <span class="o">=</span> <span class="nx">aNormalizeFunction</span><span class="p">;</span>
-  <span class="k">this</span><span class="p">.</span><span class="nx">_map</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Map</span><span class="p">([[</span><span class="k">this</span><span class="p">.</span><span class="nx">_normalize</span><span class="p">(</span><span class="nx">key</span><span class="p">),</span> <span class="nx">val</span><span class="p">]</span> <span class="k">for</span> <span class="p">([</span><span class="nx">key</span><span class="p">,</span> <span class="nx">val</span><span class="p">]</span> <span class="k">of</span> <span class="nx">aIt</span><span class="p">)]);</span>
-<span class="p">}</span>
-<span class="nx">NormalizedMap</span><span class="p">.</span><span class="nx">prototype</span> <span class="o">=</span> <span class="p">{</span>
-  <span class="nx">_map</span><span class="o">:</span> <span class="kc">null</span><span class="p">,</span>
-  <span class="c1">// The function to apply to all keys.</span>
-  <span class="nx">_normalize</span><span class="o">:</span> <span class="kc">null</span><span class="p">,</span>
-
-  <span class="c1">// Anything that accepts a key as an input needs to be manually overridden.</span>
-  <span class="k">delete</span><span class="o">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">aKey</span><span class="p">)</span> <span class="k">this</span><span class="p">.</span><span class="nx">_map</span><span class="p">.</span><span class="k">delete</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">_normalize</span><span class="p">(</span><span class="nx">aKey</span><span class="p">)),</span>
-  <span class="nx">get</span><span class="o">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">aKey</span><span class="p">)</span> <span class="k">this</span><span class="p">.</span><span class="nx">_map</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">_normalize</span><span class="p">(</span><span class="nx">aKey</span><span class="p">)),</span>
-  <span class="nx">has</span><span class="o">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">aKey</span><span class="p">)</span> <span class="k">this</span><span class="p">.</span><span class="nx">_map</span><span class="p">.</span><span class="nx">has</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">_normalize</span><span class="p">(</span><span class="nx">aKey</span><span class="p">)),</span>
-  <span class="nx">set</span><span class="o">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">aKey</span><span class="p">,</span> <span class="nx">aValue</span><span class="p">)</span> <span class="k">this</span><span class="p">.</span><span class="nx">_map</span><span class="p">.</span><span class="nx">set</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">_normalize</span><span class="p">(</span><span class="nx">aKey</span><span class="p">),</span> <span class="nx">aValue</span><span class="p">),</span>
-
-  <span class="c1">// Properties must be manually forwarded.</span>
-  <span class="nx">get</span> <span class="nx">size</span><span class="p">()</span> <span class="k">this</span><span class="p">.</span><span class="nx">_map</span><span class="p">.</span><span class="nx">size</span><span class="p">,</span>
-
-  <span class="c1">// Here's where the magic happens. If a method is called that isn't defined</span>
-  <span class="c1">// here, just pass it to the internal _map object.</span>
-  <span class="nx">__noSuchMethod__</span><span class="o">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">aId</span><span class="p">,</span> <span class="nx">aArgs</span><span class="p">)</span> <span class="k">this</span><span class="p">.</span><span class="nx">_map</span><span class="p">[</span><span class="nx">aId</span><span class="p">].</span><span class="nx">apply</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">_map</span><span class="p">,</span> <span class="nx">aArgs</span><span class="p">)</span>
-<span class="p">}</span>
-</pre></div>
-<p>The one downside of see of this is that properties must be declared
-manually to forward to the internal <tt class="docutils literal">_map</tt> object. Maybe there is a
-matching <tt class="docutils literal">__noSuchProperty__</tt> method I’m missing? Overall, I’m happy
-with this solution, but please leave a comment if you can think of an
-easier / better way to do this! (Or see a glaring way this will break!)</p>
-<table class="docutils footnote" frame="void" id="id4" rules="none">
-<colgroup><col class="label"/><col/></colgroup>
-<tbody valign="top">
-<tr><td class="label"><a class="fn-backref" href="#id1">[1]</a></td><td>This is always a little bit of a sore subject in <a class="reference external" href="irc://irc.mozilla.org/#instantbird">#instantbird</a>
-since we’ve had a variety of issues with this over the years. I think
-we’ve fixed most of them at this point though!</td></tr>
-</tbody>
-</table>
-<table class="docutils footnote" frame="void" id="id5" rules="none">
-<colgroup><col class="label"/><col/></colgroup>
-<tbody valign="top">
-<tr><td class="label"><a class="fn-backref" href="#id2">[2]</a></td><td>As I’ve <a class="reference external" href="http://patrick.cloke.us/posts/2011/03/08/so-called-irc-specifications/">written before</a>, <span class="caps">IRC</span> tends to have crazy specifications.
-In <span class="caps">IRC</span>, <a class="reference external" href="https://tools.ietf.org/html/rfc2812#section-2.2">the characters of A-Z[]\~ are considered the upper case of a-z{}|^</a>
-(“because of <span class="caps">IRC</span>’s Scandinavian origin”). Oh, also this can
-change based on an <a class="reference external" href="http://tools.ietf.org/html/draft-brocklesby-irc-isupport-03#section-3.1"><span class="caps">ISUPPORT</span> response</a> from the server to pure <span class="caps">ASCII</span> or
-<span class="caps">RFC</span> 1459 casemapping (A-Z[]\ map to a-z{}|). It seems like this could
-theoretically change at any point on a live server too, although that
-would be <span class="caps">INSANE</span> and I hope no one ever does that.</td></tr>
-</tbody>
-</table>
-<table class="docutils footnote" frame="void" id="id6" rules="none">
-<colgroup><col class="label"/><col/></colgroup>
-<tbody valign="top">
-<tr><td class="label"><a class="fn-backref" href="#id3">[3]</a></td><td>I wrote some xpcshell tests to ensure these properties work as
-expected, but they’re uhh…not up anywhere yet though. Oops.</td></tr>
-</tbody>
-</table>
-</div>
-<p><a href="/posts/2014/04/27/extending-javascript-maps-or-other/#disqus_thread">comments</a></p>        </article>
-        </aside><!-- /#featured -->
-        <section id="content" class="body">
-            <h1>Other articles</h1>
-            <hr />
-            <ol id="posts-list" class="hfeed">
-
-        <li><article class="hentry">
-        <header>
-            <h1><a href="/posts/2011/03/08/so-called-irc-specifications/" rel="bookmark"
-               title="Permalink to The so-called IRC “specifications”">The so-called <span class="caps">IRC</span>&nbsp;&#8220;specifications&#8221;</a></h1>
-        </header>
-
-        <div class="entry-content">
-<footer class="post-info">
-    <abbr class="published" title="2011-03-08T21:20:00-05:00">
-        Published: 03/08/2011 09:20 PM EST
-    </abbr>
-    <br />
-    <abbr class="modified" title="2014-12-20T15:55:00-05:00">
-        Updated: 12/20/2014 03:55 PM EST
-    </abbr>
-
-    <address class="vcard author">
-        By             <a class="url fn" href="/pages/about.html">Patrick Cloke</a>
-    </address>
-
-
-    <p>
-        tags:             <a href="/tag/instantbird.html">Instantbird</a>
-            <a href="/tag/irc.html">IRC</a>
-            <a href="/tag/programming.html">programming</a>
-            <a href="/tag/specifications.html">specifications</a>
-    </p>
-
-    
-</footer><!-- /.post-info -->        
+      
 <p>In a <a class="reference external" href="http://patrick.cloke.us/posts/2010/12/08/why-rewrite-irc-into-javascript/">previous post</a> I had briefly gone over the “history of <span class="caps">IRC</span>” as
 I know it.  I’m going to expand on this a bit as I’ve come to understand
 it a bit more while reading through documentation.  (Hopefully it won’t
 sound too much like a rant …</p>
-        <a class="readmore" href="/posts/2011/03/08/so-called-irc-specifications/">read more &rarr;</a>
-<p><a href="/posts/2011/03/08/so-called-irc-specifications/#disqus_thread">comments</a></p>        </div><!-- /.entry-content -->
-        </article></li>
-        </ol><!-- /#posts-list -->
-<p class="paginator">
-    Page 1 / 1
-</p>
-        </section><!-- /#content -->
+
+      <a href="/posts/2011/03/08/so-called-irc-specifications/">read more &rarr;</a>
+
+      <br>
+      <a href="/posts/2011/03/08/so-called-irc-specifications/#disqus_thread">comments</a>
     </div>
+  </div>
+</div>
 
-    <footer id="contentinfo" class="body">
-        <address id="about" class="vcard body">
-        Proudly powered by <a href="http://getpelican.com/">Pelican</a>, which takes great advantage of <a href="http://python.org">Python</a>.
-        Blog source available on <a href="https://github.com/clokep/clokep.github.io">GitHub</a>.
-        </address><!-- /#about -->
-    </footer><!-- /#contentinfo -->
 
-    <script type="text/javascript">
-    var _gaq = _gaq || [];
-    _gaq.push(['_setAccount', 'UA-52389517-1']);
-    _gaq.push(['_trackPageview']);
-    (function() {
-        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-    })();
-    </script>
-<script type="text/javascript">
-    var disqus_shortname = 'clokep';
-    (function () {
-        var s = document.createElement('script'); s.async = true;
-        s.type = 'text/javascript';
-        s.src = '//' + disqus_shortname + '.disqus.com/count.js';
-        (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
-    }());
-</script>
-</body>
+
+    <nav class="navbar fixed-bottom navbar-light bg-light border-top border-info">
+      <a href="https://getpelican.com/" class="nav-item" target="_blank">Powered by Pelican</a>
+      <a href="https://github.com/clokep/clokep.github.io" class="nav-item" target="_blank">
+        Source available on GitHub <span class="fab fa-github"></span>
+      </a>
+    </nav>
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T" crossorigin="anonymous"></script>
+
+<script id="dsq-count-scr" src="//clokep.disqus.com/count.js" async></script>
+  </body>
 </html>

@@ -1,192 +1,163 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-    <meta charset="utf-8" />
-    <title>Like bricks in the sky - bugs</title>
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-    <link rel="stylesheet" href="/theme/css/main.css?10ddb23c" />
+    <!-- Feed configuration. -->
     <link href="http://patrick.cloke.us/feeds/atom.xml" type="application/atom+xml" rel="alternate" title="Like bricks in the sky Atom Feed" />
     <link href="http://patrick.cloke.us/feeds/rss.xml" type="application/rss+xml" rel="alternate" title="Like bricks in the sky RSS Feed" />
 
-    <!--[if IE]>
-        <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
-    <![endif]-->
-</head>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
+    <link rel="stylesheet" href="/theme/css/styles.css">
+    <link rel="stylesheet" href="/theme/css/borland.css">
 
-<body id="index" class="home">
-    <header id="banner" class="body">
-        <h1><a href="/">Like bricks in the sky </a></h1>
-        <nav><ul>
-            <li><a href="/pages/about.html">About</a></li>
-            <li><a href="/pages/contact.html">Contact</a></li>
-            <li><a href="/pages/projects.html">Projects</a></li>
-            <li><a href="/pages/resources.html">Resources</a></li>
-            <li><a href="/archives.html">Archives</a></li>
-            <li><a href="/tags.html">Tags</a></li>
-        </ul></nav>
-    </header><!-- /#banner -->
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
 
-    <div id="container" class="body">
-        <section id="extras" class="left">
-            <div class="social">
-                <h2>social</h2>
-                <ul>
-                    <li><a href="https://www.twitter.com/clokep" target="_blank">twitter</a></li>
-                    <li><a href="https://bitbucket.org/clokep" target="_blank">bitbucket</a></li>
-                    <li><a href="https://www.github.com/clokep" target="_blank">github</a></li>
-                    <li><a href="https://mozillians.org/u/clokep/" target="_blank">mozillians</a></li>
+    <title>Like bricks in the sky - bugs</title>
+  </head>
 
-                    <li><a href="http://patrick.cloke.us/feeds/atom.xml" type="application/atom+xml" rel="alternate">atom feed</a></li>
-                    <li><a href="http://patrick.cloke.us/feeds/rss.xml" type="application/rss+xml" rel="alternate">rss feed</a></li>
-                </ul>
-            </div><!-- /.social -->
-        </section><!-- /#extras -->
+  <body class="pb-5">
+    <nav class="navbar navbar-expand-lg sticky-top navbar-light bg-light border-bottom border-info">
+      <a class="navbar-brand" href="/">
+        Like bricks in the sky
+      </a>
 
-        <section id="search" class="left">
-            <h2>search</h2>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-items" aria-controls="navbar-items" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
 
-            <form method="get" action="http://www.google.com/search" target="_blank">
+      <div class="collapse navbar-collapse" id="navbar-items">
+        <ul class="navbar-nav ml-auto">
 
-                <input type="text" name="q" placeholder="search this site" />
-                <input type="submit" value="Search" />
-                <input type="hidden"  name="sitesearch" value="patrick.cloke.us" />
-            </form>
-        </section>
+          <li class="nav-item">
+            <a class="nav-link" href="/pages/about.html">About</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/pages/projects.html">Projects</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/pages/resources.html">Resources</a>
+          </li>
 
+          <li class="nav-item">
+            <a class="nav-link" href="/archives.html">Archives</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/tags.html">Tags</a>
+          </li>
 
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="social-dropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              Social
+            </a>
 
-        <aside id="featured" class="body">
-        <article>
-            <h1 class="entry-title"><a href="/posts/2010/12/08/blogger-rss-feeds-for-label/">Blogger <span class="caps">RSS</span> Feeds for a&nbsp;Label</a></h1>
-<footer class="post-info-container">
-    <div class="post-info-top">
-    </div>
+            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="social-dropdown">
+              <a class="dropdown-item" href="https://www.twitter.com/clokep" target="_blank">
+                <span class="fab fa-twitter mr-1"></span> twitter
+              </a>
+              <a class="dropdown-item" href="https://mastodon.social/@clokep" target="_blank">
+                <span class="fab fa-mastodon mr-1"></span> mastodon
+              </a>
+              <a class="dropdown-item" href="https://www.github.com/clokep" target="_blank">
+                <span class="fab fa-github mr-1"></span> github
+              </a>
+              <a class="dropdown-item" href="https://gitlab.com/clokep" target="_blank">
+                <span class="fab fa-gitlab mr-1"></span> gitlab
+              </a>
+              <a class="dropdown-item" href="https://bitbucket.org/clokep" target="_blank">
+                <span class="fab fa-bitbucket mr-1"></span> bitbucket
+              </a>
+              <a class="dropdown-item" href="https://mozillians.org/u/clokep/" target="_blank">
+                <span class="fab fa-firefox mr-1"></span> mozillians
+              </a>
+            </div>
+          </li>
 
-    <!-- Second div is to change the background color again. -->
-    <div class="post-info-bg">
-    <div class="post-info">
-        <div id="gravatar" style="background-image: url('https://www.gravatar.com/avatar/130405f65521b6ee6bbbe0204070a163');">
-        </div>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="feeds-dropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              Feeds
+            </a>
 
-        <abbr class="published" title="2010-12-08T15:25:00-05:00">
-            Published: 12/08/2010 03:25 PM EST
-        </abbr>
+            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="feeds-dropdown">
+              <a class="dropdown-item" href="http://patrick.cloke.us/feeds/atom.xml" type="application/atom+xml" rel="alternate">atom feed</a>
+              <a class="dropdown-item" href="http://patrick.cloke.us/feeds/rss.xml" type="application/rss+xml" rel="alternate">rss feed</a>
+            </div>
+          </li>
 
-        <address class="vcard author">
-            By                 <a class="url fn" href="/pages/about.html">Patrick Cloke</a>
-        </address>
+          <form class="form-inline" method="get" action="http://www.google.com/search">
+            <input class="form-control form-control-sm mr-sm-2" type="search" name="q" placeholder="Search" aria-label="Search" />
+            <input type="hidden"  name="sitesearch" value="patrick.cloke.us" />
 
+            <button class="btn btn-sm btn-outline-info d-none d-sm-inline" type="submit">Search</button>
+          </form>
+        </ul>
+      </div>
+    </nav>
 
-        <div id="gravatar-clear"></div>
+<div class="container mt-4">
+  <div class="row">
+    <div class="col-md-12">
+      <h1>
+        <a href="/posts/2010/12/08/blogger-rss-feeds-for-label/">Blogger <span class="caps">RSS</span> Feeds for a&nbsp;Label</a>
+      </h1>
 
-        <div id="tag-list">
-            tags:                 <a href="/tag/bugs.html">bugs</a>
-                <a href="/tag/google.html">Google</a>
-                <a href="/tag/rss.html">RSS</a>
-        </div>
+      <i>Wednesday, December 8, 2010</i>
 
-        
-
-        <div id="post-share-links" class="social">
-            share:
-            <a href="http://twitter.com/home?status=Blogger%20RSS%20Feeds%20for%20a%C2%A0Label%20http%3A//patrick.cloke.us/posts/2010/12/08/blogger-rss-feeds-for-label/" target="_blank" title="Share on Twitter">Twitter</a>
-            <a href="http://www.facebook.com/sharer/sharer.php?u=http%3A//patrick.cloke.us/posts/2010/12/08/blogger-rss-feeds-for-label/" target="_blank" title="Share on Facebook">Facebook</a>
-            <a href="https://plus.google.com/share?url=http%3A//patrick.cloke.us/posts/2010/12/08/blogger-rss-feeds-for-label/" target="_blank" title="Share on Google Plus">Google+</a>
-            <a href="mailto:?subject=Blogger%20RSS%20Feeds%20for%20a%C2%A0Label&amp;body=http%3A//patrick.cloke.us/posts/2010/12/08/blogger-rss-feeds-for-label/" target="_blank" title="Share via Email">Email</a>
-        </div>
-    </div>
-    </div>
-
-    <div class="post-info-bottom">
-    </div>
-</footer><!-- /.post-info --><p>Blogger has crappy support for <span class="caps">RSS</span> apparently.&nbsp; I figured if I clicked
+      <p>Blogger has crappy support for <span class="caps">RSS</span> apparently.&nbsp; I figured if I clicked
 on a label, then found the <span class="caps">RSS</span> embedded in the page&#8230;it would give me
 the <span class="caps">RSS</span> feed for that label,&nbsp;right?</p>
 <p>Wrong.</p>
 <p>Of course there&#8217;s an&nbsp;<a class="reference external" href="http://www.google.com/support/blogger/bin/answer.py?hl=en&amp;answer=97933"><span class="caps">FAQ</span></a> page about this, but the syntax it gives
-is broken.&nbsp; For a specific label (I&#8217;m using the label&nbsp;&#8220;Instantbird&#8221;):</p>
-<ul class="simple">
-<li><span class="caps">RSS</span>:
-<a class="reference external" href="http://clokep.blogspot.com/feeds/posts/default/-/Instantbird?alt=rss">http://clokep.blogspot.com/feeds/posts/default/-/Instantbird?alt=rss</a></li>
-<li>Atom: <a class="reference external" href="http://clokep.blogspot.com/feeds/posts/default/-/Instantbird">http://clokep.blogspot.com/feeds/posts/default/-/Instantbird</a></li>
-</ul>
-<p>Who knows what versions of <span class="caps">RSS</span>/Atom these are.&nbsp; But the feeds do&nbsp;exist.</p>
-<p><a href="/posts/2010/12/08/blogger-rss-feeds-for-label/#disqus_thread">comments</a></p>        </article>
-        </aside><!-- /#featured -->
-        <section id="content" class="body">
-            <h1>Other articles</h1>
-            <hr />
-            <ol id="posts-list" class="hfeed">
+is …</p>
 
-        <li><article class="hentry">
-        <header>
-            <h1><a href="/posts/2010/11/22/yahoo-thunderbird/" rel="bookmark"
-               title="Permalink to Yahoo & Thunderbird Can Finally Play Nice?">Yahoo <span class="amp">&amp;</span> Thunderbird Can Finally Play&nbsp;Nice?</a></h1>
-        </header>
+      <a href="/posts/2010/12/08/blogger-rss-feeds-for-label/">read more &rarr;</a>
 
-        <div class="entry-content">
-<footer class="post-info">
-    <abbr class="published" title="2010-11-22T23:03:00-05:00">
-        Published: 11/22/2010 11:03 PM EST
-    </abbr>
+      <br>
+      <a href="/posts/2010/12/08/blogger-rss-feeds-for-label/#disqus_thread">comments</a>
+    </div>
+  </div>
+</div>
+<div class="container mt-4">
+  <div class="row">
+    <div class="col-md-12">
+      <h1>
+        <a href="/posts/2010/11/22/yahoo-thunderbird/">Yahoo <span class="amp">&amp;</span> Thunderbird Can Finally Play&nbsp;Nice?</a>
+      </h1>
 
-    <address class="vcard author">
-        By             <a class="url fn" href="/pages/about.html">Patrick Cloke</a>
-    </address>
+      <i>Monday, November 22, 2010</i>
 
-
-    <p>
-        tags:             <a href="/tag/bugs.html">bugs</a>
-            <a href="/tag/email.html">email</a>
-            <a href="/tag/imap.html">IMAP</a>
-            <a href="/tag/mozilla.html">Mozilla</a>
-            <a href="/tag/pop3.html">POP3</a>
-            <a href="/tag/programming.html">programming</a>
-            <a href="/tag/smtp.html">SMTP</a>
-            <a href="/tag/thunderbird.html">Thunderbird</a>
-            <a href="/tag/yahoo.html">Yahoo</a>
-    </p>
-
-    
-</footer><!-- /.post-info -->        <p>For years I&#8217;ve been dealing with Yahoo&#8217;s lack of support for any sort
+      <p>For years I&#8217;ve been dealing with Yahoo&#8217;s lack of support for any sort
 of decent (free) <span class="caps">POP3</span>/<span class="caps">IMAP</span>/<span class="caps">SMTP</span> protocol support.&nbsp; Why do I need this?
 So I can check my <a class="reference external" href="http://mail.yahoo.com/">Yahoo mail</a> in <a class="reference external" href="http://www.mozillamessaging.com/en-US/thunderbird/">Mozilla Thunderbird</a> of&nbsp;course!</p>
 <p>At first I used <a class="reference external" href="http://ypopsemail.com/"><span class="caps">YPOPS</span>!</a>, a program that read the …</p>
-        <a class="readmore" href="/posts/2010/11/22/yahoo-thunderbird/">read more &rarr;</a>
-<p><a href="/posts/2010/11/22/yahoo-thunderbird/#disqus_thread">comments</a></p>        </div><!-- /.entry-content -->
-        </article></li>
-        </ol><!-- /#posts-list -->
-<p class="paginator">
-    Page 1 / 1
-</p>
-        </section><!-- /#content -->
+
+      <a href="/posts/2010/11/22/yahoo-thunderbird/">read more &rarr;</a>
+
+      <br>
+      <a href="/posts/2010/11/22/yahoo-thunderbird/#disqus_thread">comments</a>
     </div>
+  </div>
+</div>
 
-    <footer id="contentinfo" class="body">
-        <address id="about" class="vcard body">
-        Proudly powered by <a href="http://getpelican.com/">Pelican</a>, which takes great advantage of <a href="http://python.org">Python</a>.
-        Blog source available on <a href="https://github.com/clokep/clokep.github.io">GitHub</a>.
-        </address><!-- /#about -->
-    </footer><!-- /#contentinfo -->
 
-    <script type="text/javascript">
-    var _gaq = _gaq || [];
-    _gaq.push(['_setAccount', 'UA-52389517-1']);
-    _gaq.push(['_trackPageview']);
-    (function() {
-        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-    })();
-    </script>
-<script type="text/javascript">
-    var disqus_shortname = 'clokep';
-    (function () {
-        var s = document.createElement('script'); s.async = true;
-        s.type = 'text/javascript';
-        s.src = '//' + disqus_shortname + '.disqus.com/count.js';
-        (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
-    }());
-</script>
-</body>
+
+    <nav class="navbar fixed-bottom navbar-light bg-light border-top border-info">
+      <a href="https://getpelican.com/" class="nav-item" target="_blank">Powered by Pelican</a>
+      <a href="https://github.com/clokep/clokep.github.io" class="nav-item" target="_blank">
+        Source available on GitHub <span class="fab fa-github"></span>
+      </a>
+    </nav>
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T" crossorigin="anonymous"></script>
+
+<script id="dsq-count-scr" src="//clokep.disqus.com/count.js" async></script>
+  </body>
 </html>

@@ -23,16 +23,14 @@ libpurple bindings that use the api, while the core is private).&lt;/p&gt;
 &lt;h2&gt;&lt;a class="toc-backref" href="#id1"&gt;Purple&lt;/a&gt;&lt;/h2&gt;
 &lt;p&gt;Changes to purple consisted mostly of ifdefs that remove some header
 files not supported on Windows.  For example, I encountered a few of:&lt;/p&gt;
-&lt;pre class="literal-block"&gt;
-#include &amp;lt;unistd.h&amp;gt;
-&lt;/pre&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="cp"&gt;#include&lt;/span&gt; &lt;span class="cpf"&gt;&amp;lt;unistd.h&amp;gt;&lt;/span&gt;&lt;span class="cp"&gt;&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;Luckily there was already a define &lt;tt class="docutils literal"&gt;HAVE_UNISTD_H&lt;/tt&gt;, so I just needed
 to add:&lt;/p&gt;
-&lt;pre class="literal-block"&gt;
-#ifdef HAVE_UNISTD_H
-#include &amp;lt;unistd.h&amp;gt;
-#endif
-&lt;/pre&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="cp"&gt;#ifdef HAVE_UNISTD_H&lt;/span&gt;
+&lt;span class="cp"&gt;#include&lt;/span&gt; &lt;span class="cpf"&gt;&amp;lt;unistd.h&amp;gt;&lt;/span&gt;&lt;span class="cp"&gt;&lt;/span&gt;
+&lt;span class="cp"&gt;#endif&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;Easy!  There were also a couple other issues, but those were rather trivial.&lt;/p&gt;
 &lt;/div&gt;
 &lt;div class="section" id="core"&gt;

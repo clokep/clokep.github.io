@@ -1,209 +1,140 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-    <meta charset="utf-8" />
-    <title>Like bricks in the sky - POP3</title>
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-    <link rel="stylesheet" href="/theme/css/main.css?10ddb23c" />
+    <!-- Feed configuration. -->
     <link href="http://patrick.cloke.us/feeds/atom.xml" type="application/atom+xml" rel="alternate" title="Like bricks in the sky Atom Feed" />
     <link href="http://patrick.cloke.us/feeds/rss.xml" type="application/rss+xml" rel="alternate" title="Like bricks in the sky RSS Feed" />
 
-    <!--[if IE]>
-        <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
-    <![endif]-->
-</head>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
+    <link rel="stylesheet" href="/theme/css/styles.css">
+    <link rel="stylesheet" href="/theme/css/borland.css">
 
-<body id="index" class="home">
-    <header id="banner" class="body">
-        <h1><a href="/">Like bricks in the sky </a></h1>
-        <nav><ul>
-            <li><a href="/pages/about.html">About</a></li>
-            <li><a href="/pages/contact.html">Contact</a></li>
-            <li><a href="/pages/projects.html">Projects</a></li>
-            <li><a href="/pages/resources.html">Resources</a></li>
-            <li><a href="/archives.html">Archives</a></li>
-            <li><a href="/tags.html">Tags</a></li>
-        </ul></nav>
-    </header><!-- /#banner -->
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
 
-    <div id="container" class="body">
-        <section id="extras" class="left">
-            <div class="social">
-                <h2>social</h2>
-                <ul>
-                    <li><a href="https://www.twitter.com/clokep" target="_blank">twitter</a></li>
-                    <li><a href="https://bitbucket.org/clokep" target="_blank">bitbucket</a></li>
-                    <li><a href="https://www.github.com/clokep" target="_blank">github</a></li>
-                    <li><a href="https://mozillians.org/u/clokep/" target="_blank">mozillians</a></li>
+    <title>Like bricks in the sky - POP3</title>
+  </head>
 
-                    <li><a href="http://patrick.cloke.us/feeds/atom.xml" type="application/atom+xml" rel="alternate">atom feed</a></li>
-                    <li><a href="http://patrick.cloke.us/feeds/rss.xml" type="application/rss+xml" rel="alternate">rss feed</a></li>
-                </ul>
-            </div><!-- /.social -->
-        </section><!-- /#extras -->
+  <body class="pb-5">
+    <nav class="navbar navbar-expand-lg sticky-top navbar-light bg-light border-bottom border-info">
+      <a class="navbar-brand" href="/">
+        Like bricks in the sky
+      </a>
 
-        <section id="search" class="left">
-            <h2>search</h2>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-items" aria-controls="navbar-items" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
 
-            <form method="get" action="http://www.google.com/search" target="_blank">
+      <div class="collapse navbar-collapse" id="navbar-items">
+        <ul class="navbar-nav ml-auto">
 
-                <input type="text" name="q" placeholder="search this site" />
-                <input type="submit" value="Search" />
-                <input type="hidden"  name="sitesearch" value="patrick.cloke.us" />
-            </form>
-        </section>
+          <li class="nav-item">
+            <a class="nav-link" href="/pages/about.html">About</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/pages/projects.html">Projects</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/pages/resources.html">Resources</a>
+          </li>
 
+          <li class="nav-item">
+            <a class="nav-link" href="/archives.html">Archives</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/tags.html">Tags</a>
+          </li>
 
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="social-dropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              Social
+            </a>
 
-        <aside id="featured" class="body">
-        <article>
-            <h1 class="entry-title"><a href="/posts/2010/11/22/yahoo-thunderbird/">Yahoo <span class="amp">&amp;</span> Thunderbird Can Finally Play&nbsp;Nice?</a></h1>
-<footer class="post-info-container">
-    <div class="post-info-top">
-    </div>
+            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="social-dropdown">
+              <a class="dropdown-item" href="https://www.twitter.com/clokep" target="_blank">
+                <span class="fab fa-twitter mr-1"></span> twitter
+              </a>
+              <a class="dropdown-item" href="https://mastodon.social/@clokep" target="_blank">
+                <span class="fab fa-mastodon mr-1"></span> mastodon
+              </a>
+              <a class="dropdown-item" href="https://www.github.com/clokep" target="_blank">
+                <span class="fab fa-github mr-1"></span> github
+              </a>
+              <a class="dropdown-item" href="https://gitlab.com/clokep" target="_blank">
+                <span class="fab fa-gitlab mr-1"></span> gitlab
+              </a>
+              <a class="dropdown-item" href="https://bitbucket.org/clokep" target="_blank">
+                <span class="fab fa-bitbucket mr-1"></span> bitbucket
+              </a>
+              <a class="dropdown-item" href="https://mozillians.org/u/clokep/" target="_blank">
+                <span class="fab fa-firefox mr-1"></span> mozillians
+              </a>
+            </div>
+          </li>
 
-    <!-- Second div is to change the background color again. -->
-    <div class="post-info-bg">
-    <div class="post-info">
-        <div id="gravatar" style="background-image: url('https://www.gravatar.com/avatar/130405f65521b6ee6bbbe0204070a163');">
-        </div>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="feeds-dropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              Feeds
+            </a>
 
-        <abbr class="published" title="2010-11-22T23:03:00-05:00">
-            Published: 11/22/2010 11:03 PM EST
-        </abbr>
+            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="feeds-dropdown">
+              <a class="dropdown-item" href="http://patrick.cloke.us/feeds/atom.xml" type="application/atom+xml" rel="alternate">atom feed</a>
+              <a class="dropdown-item" href="http://patrick.cloke.us/feeds/rss.xml" type="application/rss+xml" rel="alternate">rss feed</a>
+            </div>
+          </li>
 
-        <address class="vcard author">
-            By                 <a class="url fn" href="/pages/about.html">Patrick Cloke</a>
-        </address>
+          <form class="form-inline" method="get" action="http://www.google.com/search">
+            <input class="form-control form-control-sm mr-sm-2" type="search" name="q" placeholder="Search" aria-label="Search" />
+            <input type="hidden"  name="sitesearch" value="patrick.cloke.us" />
 
+            <button class="btn btn-sm btn-outline-info d-none d-sm-inline" type="submit">Search</button>
+          </form>
+        </ul>
+      </div>
+    </nav>
 
-        <div id="gravatar-clear"></div>
+<div class="container mt-4">
+  <div class="row">
+    <div class="col-md-12">
+      <h1>
+        <a href="/posts/2010/11/22/yahoo-thunderbird/">Yahoo <span class="amp">&amp;</span> Thunderbird Can Finally Play&nbsp;Nice?</a>
+      </h1>
 
-        <div id="tag-list">
-            tags:                 <a href="/tag/bugs.html">bugs</a>
-                <a href="/tag/email.html">email</a>
-                <a href="/tag/imap.html">IMAP</a>
-                <a href="/tag/mozilla.html">Mozilla</a>
-                <a href="/tag/pop3.html">POP3</a>
-                <a href="/tag/programming.html">programming</a>
-                <a href="/tag/smtp.html">SMTP</a>
-                <a href="/tag/thunderbird.html">Thunderbird</a>
-                <a href="/tag/yahoo.html">Yahoo</a>
-        </div>
+      <i>Monday, November 22, 2010</i>
 
-        
-
-        <div id="post-share-links" class="social">
-            share:
-            <a href="http://twitter.com/home?status=Yahoo%20%26%20Thunderbird%20Can%20Finally%20Play%C2%A0Nice%3F%20http%3A//patrick.cloke.us/posts/2010/11/22/yahoo-thunderbird/" target="_blank" title="Share on Twitter">Twitter</a>
-            <a href="http://www.facebook.com/sharer/sharer.php?u=http%3A//patrick.cloke.us/posts/2010/11/22/yahoo-thunderbird/" target="_blank" title="Share on Facebook">Facebook</a>
-            <a href="https://plus.google.com/share?url=http%3A//patrick.cloke.us/posts/2010/11/22/yahoo-thunderbird/" target="_blank" title="Share on Google Plus">Google+</a>
-            <a href="mailto:?subject=Yahoo%20%26%20Thunderbird%20Can%20Finally%20Play%C2%A0Nice%3F&amp;body=http%3A//patrick.cloke.us/posts/2010/11/22/yahoo-thunderbird/" target="_blank" title="Share via Email">Email</a>
-        </div>
-    </div>
-    </div>
-
-    <div class="post-info-bottom">
-    </div>
-</footer><!-- /.post-info --><p>For years I&#8217;ve been dealing with Yahoo&#8217;s lack of support for any sort
+      <p>For years I&#8217;ve been dealing with Yahoo&#8217;s lack of support for any sort
 of decent (free) <span class="caps">POP3</span>/<span class="caps">IMAP</span>/<span class="caps">SMTP</span> protocol support.&nbsp; Why do I need this?
 So I can check my <a class="reference external" href="http://mail.yahoo.com/">Yahoo mail</a> in <a class="reference external" href="http://www.mozillamessaging.com/en-US/thunderbird/">Mozilla Thunderbird</a> of&nbsp;course!</p>
-<p>At first I used <a class="reference external" href="http://ypopsemail.com/"><span class="caps">YPOPS</span>!</a>, a program that read the <span class="caps">HTML</span> pages provided
-by the Yahoo webmail client and served the emails on a local <span class="caps">POP</span>
-server.&nbsp; Cool, right?&nbsp; Except it always broke whenever Yahoo changed
-their pages&nbsp;around.</p>
-<p>After a bit I moved onto using the <a class="reference external" href="http://www.blogger.com/">WebMail extension</a> for
-Thunderbird.&nbsp; It essentially works the same way, but runs in the
-Thunderbird process as an extension instead of as a separate service.
-It&#8217;s a little complicated to set up and requires two extensions.&nbsp; The
-general WebMail extension and a Yahoo specific one (there&#8217;s also ones
-available for Hotmail, Gmail, Libero and <span class="caps">AOL</span>).&nbsp; You might wonder why
-this exists for some services that have always had <span class="caps">POP</span>/<span class="caps">IMAP</span> access
-(Gmail)?&nbsp; I was too, apparently some people cannot check those ports
-because of firewall issues so this essentially allows them to check it
-via port 80, over an <span class="caps">HTTP</span>&nbsp;connection.</p>
-<p>A few months ago I came across <a class="reference external" href="http://www.emaildiscussions.com/showthread.php?t=59575">post</a> describing how a <a class="reference external" href="http://en.wikipedia.org/w/index.php?title=Yahoo%21_Mail&amp;oldid=396914770#Free_IMAP_and_SMTPs_access">simple
-(nonstandard) command</a> could allow access to the Yahoo <span class="caps">IMAP</span> server, but
-it required <a class="reference external" href="http://www.crasseux.com/linux/">patching the Thunderbird source</a> &#8212; not an option for me
-since I&#8217;ve been running nightlies of either Thunderbird 3.1 or 3.2/3.3
-for a while now. (I mean sure, I could do it&#8230;but WebMail extension was
-working fine.)&nbsp; There was <a class="reference external" href="http://groups.google.com/group/mozilla.dev.apps.thunderbird/browse_thread/thread/546356554c73f8ca">some discussion</a> about it and a <a class="reference external" href="https://bugzilla.mozilla.org/show_bug.cgi?id=493064">bug</a> was
-filed for&nbsp;Thunderbird.</p>
-<p>So how did this lead to free <span class="caps">IMAP</span> support?&nbsp; I noticed in the <a class="reference external" href="https://wiki.mozilla.org/Thunderbird/StatusMeetings/2010-11-16#Web_Update">Weekly
-Status Meeting Notes (2010-11-16)</a> for Thunderbird a mention of <a class="reference external" href="http://trunk.mozillamessaging.com/en-US/thunderbird/features/email_providers.html">Free
-Email Providers</a> page.&nbsp; Checking it out it said &#8220;Y! Mail is a free
-email service provided by Yahoo! It offers webmail supported by targeted
-advertising as well as <span class="caps">IMAP</span> access.&#8221;&nbsp; Hmm&#8230;but I just said they don&#8217;t
-have support this for free! A quick Bing search brought up a <a class="reference external" href="http://www.theanimail.com/imap_server_settings.html">page with
-<span class="caps">IMAP</span> server settings</a>.&nbsp; I figured I&#8217;d check if they work, and sure
-enough they did!&nbsp; The settings are copied&nbsp;below:</p>
-<blockquote>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field"><th class="field-name">User name:</th><td class="field-body"><span class="strike">user&#64;yahoo.com</span> user</td>
-</tr>
-<tr class="field"><th class="field-name"><span class="caps">IMAP</span> server:</th><td class="field-body"><span class="strike">imap-ssl.mail.yahoo.com</span> imap.mail.yahoo.com</td>
-</tr>
-<tr class="field"><th class="field-name">Port:</th><td class="field-body">993</td>
-</tr>
-<tr class="field"><th class="field-name">Password:</th><td class="field-body">Cleartext/Normal</td>
-</tr>
-<tr class="field"><th class="field-name"><span class="caps">SSL</span>:</th><td class="field-body">yes</td>
-</tr>
-<tr class="field"><th class="field-name"><span class="caps">SMTP</span> server:</th><td class="field-body">smtp.mail.yahoo.com</td>
-</tr>
-<tr class="field"><th class="field-name">Port:</th><td class="field-body">465</td>
-</tr>
-<tr class="field"><th class="field-name">Password:</th><td class="field-body">Cleartext/Normal</td>
-</tr>
-<tr class="field"><th class="field-name"><span class="caps">SSL</span>:</th><td class="field-body">yes</td>
-</tr>
-</tbody>
-</table>
-</blockquote>
-<p>Awesome!&nbsp; Anyway, I replied with this info in the aforementioned bug
-and <a class="reference external" href="https://bugzilla.mozilla.org/attachment.cgi?id=492550&amp;action=diff">a patch</a> was quickly added by Mozilla&#8217;s <a class="reference external" href="http://www.bucksch.org/1/projects/mozilla/">Ben Bucksch</a> to support
-this in Thunderbird, hopefully it&#8217;ll make it into the next version!&nbsp; It
-was also brought to my attention that imap-ssl.mail.yahoo.com provides
-an <span class="caps">SSL</span> certificate that is valid for imap.mail.yahoo.com only, I&#8217;d
-suggest using that&nbsp;former.</p>
-<p>Note that I&#8217;m currently suffering from <a class="reference external" href="https://bugzilla.mozilla.org/show_bug.cgi?id=610264">another bug</a> while using
-Yahoo <span class="caps">IMAP</span>.&nbsp; Everything works, there&#8217;s just an annoying pop-up
-occasionally about the error.&nbsp; Hopefully it will be fixed&nbsp;soon.</p>
-<p><a href="/posts/2010/11/22/yahoo-thunderbird/#disqus_thread">comments</a></p>        </article>
-<p class="paginator">
-    Page 1 / 1
-</p>
-        </aside><!-- /#featured -->
+<p>At first I used <a class="reference external" href="http://ypopsemail.com/"><span class="caps">YPOPS</span>!</a>, a program that read the …</p>
+
+      <a href="/posts/2010/11/22/yahoo-thunderbird/">read more &rarr;</a>
+
+      <br>
+      <a href="/posts/2010/11/22/yahoo-thunderbird/#disqus_thread">comments</a>
     </div>
+  </div>
+</div>
 
-    <footer id="contentinfo" class="body">
-        <address id="about" class="vcard body">
-        Proudly powered by <a href="http://getpelican.com/">Pelican</a>, which takes great advantage of <a href="http://python.org">Python</a>.
-        Blog source available on <a href="https://github.com/clokep/clokep.github.io">GitHub</a>.
-        </address><!-- /#about -->
-    </footer><!-- /#contentinfo -->
 
-    <script type="text/javascript">
-    var _gaq = _gaq || [];
-    _gaq.push(['_setAccount', 'UA-52389517-1']);
-    _gaq.push(['_trackPageview']);
-    (function() {
-        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-    })();
-    </script>
-<script type="text/javascript">
-    var disqus_shortname = 'clokep';
-    (function () {
-        var s = document.createElement('script'); s.async = true;
-        s.type = 'text/javascript';
-        s.src = '//' + disqus_shortname + '.disqus.com/count.js';
-        (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
-    }());
-</script>
-</body>
+
+    <nav class="navbar fixed-bottom navbar-light bg-light border-top border-info">
+      <a href="https://getpelican.com/" class="nav-item" target="_blank">Powered by Pelican</a>
+      <a href="https://github.com/clokep/clokep.github.io" class="nav-item" target="_blank">
+        Source available on GitHub <span class="fab fa-github"></span>
+      </a>
+    </nav>
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T" crossorigin="anonymous"></script>
+
+<script id="dsq-count-scr" src="//clokep.disqus.com/count.js" async></script>
+  </body>
 </html>
