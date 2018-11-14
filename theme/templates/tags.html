@@ -3,14 +3,23 @@
 {% block title %}{{ SITENAME }} - Tags{% endblock %}
 
 {% block content %}
+<div class="container">
+  <div class="row">
+    <div class="col-sm">
+      <h1>Article Tags</h1>
+    </div>
+  </div>
 
-<section id="content" class="body">
-    <h1>Tags for {{ SITENAME }}</h1>
-    <ul>
-    {% for tag, articles in tags|sort %}
+  <div class="row">
+    {% for chunk in tags|sort|chunk(3) %}
+    <div class="col-sm-6 col-md-4">
+      <ul>
+        {% for tag, articles in chunk %}
         <li><a href="/{{ tag.url }}">{{ tag }}</a> ({{ articles|count }})</li>
+        {% endfor %}
+      </ul>
+    </div>
     {% endfor %}
-    </ul>
-</section>
-
+  </div>
+</div>
 {% endblock %}

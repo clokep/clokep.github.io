@@ -172,4 +172,4 @@ questions that pertain to your application at Mozilla, please
 .. _schedule: https://summerofcode.withgoogle.com/how-it-works/
 .. _application advice: https://wiki.mozilla.org/Community:SummerOfCode16#Application_Advice
 .. _respect your mentors time: {filename}/articles/mentoring-and-time.rst
-.. _contact: {filename}/pages/contact.rst
+.. _contact: {filename}/pages/about.rst

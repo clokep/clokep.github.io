@@ -1,33 +1,61 @@
 {% extends "base.html" %}
+
 {% block title %}{{ article.title|striptags }}{% endblock %}
+
 {% block content %}
+<div class="container">
+  <div class="row">
+    <div class="col-md-12 mt-2 mb-2">
+      {# Article title. #}
+      <h1>
+        <a href="/{{ article.url }}" rel="bookmark"
+           title="Permalink to {{ article.title|striptags }}">{{ article.title }}</a>
+      </h1>
 
-{% if article.toc %}
-<section id="toc" class="left">
-    <h2>table of contents</h2>
-    {{ article.toc }}
-</section>
-{% endif %}
+      {# Share links. #}
+      <div class="float-right">
+        {% if article.share_post and article.status != 'draft' %}
+        <a href="{{ article.share_post['twitter'] }}" target="_blank" class="ml-1 mr-1" title="Share on Twitter">
+          <span class="fab fa-twitter"></span>
+        </a>
+        <a href="{{ article.share_post['facebook'] }}" target="_blank" class="ml-1 mr-1" title="Share on Facebook">
+          <span class="fab fa-facebook"></span>
+        </a>
+        <a href="{{ article.share_post['email'] }}" target="_blank" class="ml-1 mr-1" title="Share via Email">
+          <span class="fas fa-envelope"></span>
+        </a>
+        {% endif %}
+      </div>
 
-<section id="content" class="body">
-  <article>
-    <header>
-        <h1 class="entry-title">
-            <a href="/{{ article.url }}" rel="bookmark"
-               title="Permalink to {{ article.title|striptags }}">{{ article.title }}</a></h1>
-        {% include 'twitter.html' %}
-    </header>
+      {# Publish date. #}
+      <i>{{ article.locale_date }}</i>
 
-    <div class="entry-content">
-        {% include 'article_info.html' %}
+      {# Article tags. #}
+      {% if article.tags %}
+      <br>
+      <i>
+        Tags: {% for tag in article.tags|sort %}
+          <a href="/{{ tag.url }}">{{ tag|escape }}</a>
+        {% endfor %}
+      </i>
+      {% endif %}
+
+      <div class="mt-3">
+        {# Table of contents. #}
+        {% if article.toc %}
+        <div class="border rounded float-left p-2 mr-2 mb-1">
+          <b>Table of Contents</b>
+          {{ article.toc }}
+        </div>
+        {% endif %}
+
+        {# Article contents. #}
         {{ article.content }}
-    </div><!-- /.entry-content -->
+      </div>
 
-    {% if DISQUS_SITENAME and SITEURL and article.status != "draft" %}
-    <div class="comments">
-        {% include 'disqus_comments.html' %}
+      {# Article comments. #}
+      {% include 'disqus_comments.html' %}
     </div>
-    {% endif %}
-  </article>
-</section>
+  </div>
+</div>
 {% endblock %}

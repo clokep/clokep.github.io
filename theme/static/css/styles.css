@@ -1,0 +1,65 @@
+/* Make footnotes superscript. */
+.footnote-reference {
+    vertical-align: super;
+    font-size: 80%;
+}
+/* Indent the footnotes. */
+table.footnote {
+    margin-left: 40px;
+    margin-right: 40px;
+}
+/* Separate the footnote backref from the actual footnote. */
+table.footnote .label {
+    min-width: 3em;
+    text-align: center;  /* .text-center */
+}
+
+/* Don't actually show the bullets in the table of contents. */
+.toc ul {
+    list-style: none;
+    padding-left: 1em !important;
+    margin-bottom: 0px;
+}
+
+/* Indent code blocks. */
+.highlight {
+    margin-left: 40px;
+    margin-right: 40px;
+}
+/* Change the background of code-blocks. */
+pre {
+    background-color: #F8F9FA;  /* .bg-light */
+    padding: 4px;  /* .p-1 */
+    border-color: rgb(23, 162, 184);  /* .border .border-info */
+    border-width: 1px;
+    border-style: solid;
+}
+
+/* Give special formatting to blockquotes. */
+blockquote {
+    margin-left: 40px;
+    margin-right: 40px;
+    font-style: italic;
+}
+blockquote em {
+    font-style: normal;
+}
+
+/* Indent the "Note" lins. */
+div.admonition {
+    margin-left: 40px;
+    margin-right: 40px;
+}
+/* Display the "Note" on the same line as the content. */
+div.admonition p.first, div.admonition p.first + p {
+    display: inline;
+}
+/* The bottom margin of the first two paragraphs gets broken by making them
+ * inline, add it as a top-margin for the element below. */
+div.admonition p.first + p + * {
+    margin-top: 16px;
+}
+/* Add a : after "Note". */
+p.admonition-title::after {
+    content: ":";
+}

@@ -25,8 +25,7 @@ everyone online seems to make it seem like the radio is *super* easy to get
 out...I seriously think I spent at least two hours on it. There were two_
 videos_ and a PDF_ I found useful for this task.
 
-.. class:: center
-..
+.. center::
 
     .. image:: /thumbnails/subaru-outback-radio/uninstall-front_small.jpg
         :target: {filename}/images/subaru-outback-radio/uninstall-front.jpg
@@ -77,8 +76,7 @@ Anyway, once you have the radio out you can disassemble it down to it's bare
 components. (It is held together with a bunch of screws and tabs, I took
 pictures along each step of the way to ensure I could put it back together.)
 
-.. class:: center
-..
+.. center::
 
     .. image:: /thumbnails/subaru-outback-radio/disassembly-front_small.jpg
         :target: {filename}/images/subaru-outback-radio/disassembly-front.jpg
@@ -96,8 +94,7 @@ pictures along each step of the way to ensure I could put it back together.)
     reverse of the control unit, a top-down view after removing the top of the
     unit [#]_.
 
-.. class:: center
-..
+.. center::
 
     .. image:: /thumbnails/subaru-outback-radio/disassembly-motherboard_small.jpg
         :target: {filename}/images/subaru-outback-radio/disassembly-motherboard.jpg
@@ -124,8 +121,7 @@ the traces [#]_ that connected the radio module to the rest of the board. I then
 soldered on either side of this connection to put it through the audio
 connector.
 
-.. class:: center
-..
+.. center::
 
     .. image:: /thumbnails/subaru-outback-radio/soldered-connections_small.jpg
         :target: {filename}/images/subaru-outback-radio/soldered-connections.jpg
@@ -144,8 +140,7 @@ passthrough to the inputs (pins 3 and 4, respectively). If an audio connector is
 plugged in, input redirects to the jack. (Pin 1 is ground.) For reference, red
 is right audio and green is left audio (black is ground).
 
-.. class:: center
-..
+.. center::
 
     .. image:: /thumbnails/subaru-outback-radio/diagrams_medium.jpg
         :target: {filename}/images/subaru-outback-radio/diagrams.jpg
@@ -167,8 +162,7 @@ intercept the signal. At this point I took the bare motherboard and tested this
 in my car with alligator clips to ensure the radio still worked, I then
 connected the alligator clips to a cut audio plug to ensure everything worked.
 
-.. class:: center
-..
+.. center::
 
     .. image:: /thumbnails/subaru-outback-radio/hot-glued-connections_small.jpg
         :target: {filename}/images/subaru-outback-radio/hot-glued-connections.jpg
@@ -190,8 +184,7 @@ haven't done it much: use the lowest speed you can; start with very small bits
 and work your way up (I used 4 stages of bits); and cover both sides in masking
 tape to avoid scratches.
 
-.. class:: center
-..
+.. center::
 
     .. image:: /thumbnails/subaru-outback-radio/drilled-setup_small.jpg
         :target: {filename}/images/subaru-outback-radio/drilled-setup.jpg
@@ -211,8 +204,7 @@ through roughly half the thickness of the plastic (a little at a time with lots
 of testing). The connector was able to nestle inside the thinner plastic and
 reach all the way through.
 
-.. class:: center
-..
+.. center::
 
     .. image:: /thumbnails/subaru-outback-radio/drilled-hole_small.jpg
         :target: {filename}/images/subaru-outback-radio/drilled-hole.jpg
@@ -235,8 +227,7 @@ the connector was soldered, the front panel was carefully reassembled. Finally,
 the completed unit was reinstalled back into the car and voila, I now have an
 auxiliary audio input! Can't wait to test it out on a long car trip.
 
-.. class:: center
-..
+.. center::
 
     .. image:: /thumbnails/subaru-outback-radio/soldered-switch_small.jpg
         :target: {filename}/images/subaru-outback-radio/soldered-switch.jpg
@@ -248,8 +239,7 @@ auxiliary audio input! Can't wait to test it out on a long car trip.
 
     The soldered and hot-glued audio jack.
 
-.. class:: center
-..
+.. center::
 
     .. image:: /thumbnails/subaru-outback-radio/install-1_small.jpg
         :target: {filename}/images/subaru-outback-radio/install-1.jpg

@@ -2,13 +2,21 @@
 # -*- coding: utf-8 -*- #
 from __future__ import unicode_literals
 
+import os
+import sys
+
+# Ensure that filters are importable.
+sys.path.append(os.path.dirname(__file__))
+
+from filters import chunk, paginate
+
 AUTHOR = u'Patrick Cloke'
 AUTHOR_EMAIL = 'patrick@cloke.us'
 SITENAME = u'Like bricks in the sky'
 GITHUB_URL = 'https://github.com/clokep/clokep.github.io'
 
 TIMEZONE = 'America/New_York'
-DEFAULT_DATE_FORMAT = '%m/%d/%Y %I:%M %p %Z'
+DEFAULT_DATE_FORMAT = '%A, %B %-d, %Y'
 
 DEFAULT_LANG = u'en'
 
@@ -23,8 +31,6 @@ TYPOGRIFY = True
 RELATIVE_URLS = False
 
 # Disable categories.
-DISPLAY_CATEGORIES_ON_MENU = False
-DISPLAY_CATEGORY_ON_ARTICLE = False
 CATEGORY_FEED_ATOM = None
 CATEGORY_SAVE_AS = ''
 CATEGORIES_SAVE_AS = ''
@@ -35,6 +41,11 @@ AUTHOR_URL = 'pages/about.html'
 # Disable generating author pages.
 AUTHOR_SAVE_AS = ''
 AUTHORS_SAVE_AS = ''
+
+# Disable time based archives.
+YEAR_ARCHIVE_SAVE_AS = ''
+MONTH_ARCHIVE_SAVE_AS = ''
+DAY_ARCHIVE_SAVE_AS = ''
 
 # Set up locations of articles, pages and theme.
 PATH = 'content'
@@ -78,9 +89,15 @@ PLUGINS = [
     'share_post',
     'thumbnailer',
 
-    # Custom plug-ins.
-    'strikethrough',
+    # Custom plug-ins to add additional RST directives.
+    'directives',
 ]
+
+# Custom Jinja filters.
+JINJA_FILTERS = {
+    'chunk': chunk,
+    'paginate': paginate,
+}
 
 # Change the default URLs.
 ARTICLE_URL = 'posts/{date:%Y}/{date:%m}/{date:%d}/{slug}/'
@@ -93,13 +110,13 @@ DEFAULT_PAGINATION = 5
 TAG_CLOUD_MAX_ITEMS = 10
 
 # Auto-generated content.
-DISPLAY_PAGES_ON_MENU = True
-LINKS = ()
 SOCIAL = (
-    ('twitter', 'https://www.twitter.com/clokep'),
-    ('bitbucket', 'https://bitbucket.org/clokep'),
-    ('github', 'https://www.github.com/clokep'),
-    ('mozillians', 'https://mozillians.org/u/clokep/'),
+    ('twitter', 'https://www.twitter.com/clokep', 'twitter'),
+    ('mastodon', 'https://mastodon.social/@clokep', 'mastodon'),
+    ('github', 'https://www.github.com/clokep', 'github'),
+    ('gitlab', 'https://gitlab.com/clokep', 'gitlab'),
+    ('bitbucket', 'https://bitbucket.org/clokep', 'bitbucket'),
+    ('mozillians', 'https://mozillians.org/u/clokep/', 'firefox'),
 )
 
 # For thumbnails.

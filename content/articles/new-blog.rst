@@ -63,7 +63,9 @@ Pelican does not directly support importing from Blogger (*Edit: Seems someone
 just put up a `pull request`_ to support Blogger natively!*), but it supports
 `importing from a RSS feed`_. The first time I did this it missed a couple of
 articles (which I didn't notice right away), so make sure you bump up the max
-amount in the URL like so (this also outputs in the folder "content"): ::
+amount in the URL like so (this also outputs in the folder "content"):
+
+.. code-block:: bash
 
     pelican-import --feed http://clokep.blogspot.com/feeds/posts/default\?alt\=rss\&max-results\=240 -o content
 

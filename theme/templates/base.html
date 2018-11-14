@@ -1,12 +1,11 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="{{ DEFAULT_LANG }}">
-<head>
-    <meta charset="utf-8" />
-    <title>{% block title %}{{ SITENAME }}{%endblock%}</title>
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-    {% assets output="css/main.css", "css/main.css" %}
-    <link rel="stylesheet" href="/{{ ASSET_URL }}" />
-    {% endassets %}
+    <!-- Feed configuration. -->
     {% if FEED_ALL_ATOM %}
     <link href="{{ FEED_DOMAIN }}/{{ FEED_ALL_ATOM }}" type="application/atom+xml" rel="alternate" title="{{ SITENAME }} Atom Feed" />
     {% endif %}
@@ -14,89 +13,111 @@
     <link href="{{ FEED_DOMAIN }}/{{ FEED_ALL_RSS }}" type="application/rss+xml" rel="alternate" title="{{ SITENAME }} RSS Feed" />
     {% endif %}
 
-    <!--[if IE]>
-        <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
-    <![endif]-->
-</head>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
+    <link rel="stylesheet" href="/theme/css/styles.css">
+    <link rel="stylesheet" href="/theme/css/borland.css">
 
-<body id="index" class="home">
-    <header id="banner" class="body">
-        <h1><a href="/">{{ SITENAME }} {% if SITESUBTITLE %} <strong>{{ SITESUBTITLE }}</strong>{% endif %}</a></h1>
-        <nav><ul>
-        {% for title, link in MENUITEMS %}
-            <li><a href="{{ link }}">{{ title }}</a></li>
-        {% endfor %}
-        {% if DISPLAY_PAGES_ON_MENU -%}
-        {% for pg in pages %}
-            <li{% if pg == page %} class="active"{% endif %}><a href="/{{ pg.url }}">{{ pg.title }}</a></li>
-        {% endfor %}
-        {% endif %}
-        {% if DISPLAY_CATEGORIES_ON_MENU -%}
-        {% for cat, null in categories %}
-            <li{% if cat == category %} class="active"{% endif %}><a href="/{{ cat.url }}">{{ cat }}</a></li>
-        {% endfor %}
-        {% endif %}
-            <li{% if output_file == "archives.html" %} class="active"{% endif %}><a href="/archives.html">Archives</a></li>
-            <li{% if output_file == "tags.html" %} class="active"{% endif %}><a href="/tags.html">Tags</a></li>
-        </ul></nav>
-    </header><!-- /#banner -->
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
 
-    <div id="container" class="body">
-        <section id="extras" class="left">
-        {% if LINKS %}
-            <div class="blogroll">
-                <h2>blogroll</h2>
-                <ul>
-                {% for name, link in LINKS %}
-                    <li><a href="{{ link }}">{{ name }}</a></li>
-                {% endfor %}
-                </ul>
-            </div><!-- /.blogroll -->
-        {% endif %}
-        {% if SOCIAL or FEED_ALL_ATOM or FEED_ALL_RSS %}
-            <div class="social">
-                <h2>social</h2>
-                <ul>
-                    {% for name, link in SOCIAL %}
-                    <li><a href="{{ link }}" target="_blank">{{ name }}</a></li>
-                    {% endfor %}
+    <title>{% block title %}{{ SITENAME }}{%endblock%}</title>
+  </head>
 
-                    {% if FEED_ALL_ATOM %}
-                    <li><a href="{{ FEED_DOMAIN }}/{{ FEED_ALL_ATOM }}" type="application/atom+xml" rel="alternate">atom feed</a></li>
-                    {% endif %}
-                    {% if FEED_ALL_RSS %}
-                    <li><a href="{{ FEED_DOMAIN }}/{{ FEED_ALL_RSS }}" type="application/rss+xml" rel="alternate">rss feed</a></li>
-                    {% endif %}
-                </ul>
-            </div><!-- /.social -->
-        {% endif %}
-        </section><!-- /#extras -->
+  <body class="pb-5">
+    <nav class="navbar navbar-expand-lg sticky-top navbar-light bg-light border-bottom border-info">
+      <a class="navbar-brand" href="/">
+        {{ SITENAME }}
+      </a>
 
-        <section id="search" class="left">
-            <h2>search</h2>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-items" aria-controls="navbar-items" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
 
-            <form method="get" action="http://www.google.com/search" target="_blank">
+      <div class="collapse navbar-collapse" id="navbar-items">
+        <ul class="navbar-nav ml-auto">
+          {% for title, link in MENUITEMS %}
+          <li class="nav-item{% if page_name == 'index' %} active{% endif %}">
+            <a class="nav-link" href="{{ link }}">{{ title }}{% if page_name == 'index' %} <span class="sr-only">(current){% endif %}</a>
+          </li>
+          {% endfor %}
 
-                <input type="text" name="q" placeholder="search this site" />
-                <input type="submit" value="Search" />
-                <input type="hidden"  name="sitesearch" value="patrick.cloke.us" />
-            </form>
-        </section>
+          {% for pg in pages %}
+          <li class="nav-item{% if pg == page %} active{% endif %}">
+            <a class="nav-link" href="/{{ pg.url }}">{{ pg.title }}{% if pg == page %} <span class="sr-only">(current){% endif %}</a>
+          </li>
+          {% endfor %}
 
-        {% block content %}
-        {% endblock %}
-    </div>
+          <li class="nav-item{% if output_file == 'archives.html' %} active{% endif %}">
+            <a class="nav-link" href="/archives.html">Archives{% if output_file == 'archives.html' %} <span class="sr-only">(current){% endif %}</a>
+          </li>
+          <li class="nav-item{% if output_file == 'tags.html' %} active{% endif %}">
+            <a class="nav-link" href="/tags.html">Tags{% if tags == 'archives.html' %} <span class="sr-only">(current){% endif %}</a>
+          </li>
 
-    <footer id="contentinfo" class="body">
-        <address id="about" class="vcard body">
-        Proudly powered by <a href="http://getpelican.com/">Pelican</a>, which takes great advantage of <a href="http://python.org">Python</a>.
-        {% if GITHUB_URL %}
-        Blog source available on <a href="{{ GITHUB_URL }}">GitHub</a>.
-        {% endif %}
-        </address><!-- /#about -->
-    </footer><!-- /#contentinfo -->
+          {% if SOCIAL %}
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="social-dropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              Social
+            </a>
 
-{% include 'analytics.html' %}
-{% include 'disqus_script.html' %}
-</body>
+            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="social-dropdown">
+              {% for name, link, icon in SOCIAL %}
+              <a class="dropdown-item" href="{{ link }}" target="_blank">
+                <span class="fab fa-{{ icon }} mr-1"></span> {{ name }}
+              </a>
+              {% endfor %}
+            </div>
+          </li>
+          {% endif %}
+
+          {% if FEED_ALL_RSS or FEED_ALL_ATOM %}
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="feeds-dropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              Feeds
+            </a>
+
+            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="feeds-dropdown">
+              {% if FEED_ALL_ATOM %}
+              <a class="dropdown-item" href="{{ FEED_DOMAIN }}/{{ FEED_ALL_ATOM }}" type="application/atom+xml" rel="alternate">atom feed</a>
+              {% endif %}
+              {% if FEED_ALL_RSS %}
+              <a class="dropdown-item" href="{{ FEED_DOMAIN }}/{{ FEED_ALL_RSS }}" type="application/rss+xml" rel="alternate">rss feed</a>
+              {% endif %}
+            </div>
+          </li>
+          {% endif %}
+
+          <form class="form-inline" method="get" action="http://www.google.com/search">
+            <input class="form-control form-control-sm mr-sm-2" type="search" name="q" placeholder="Search" aria-label="Search" />
+            <input type="hidden"  name="sitesearch" value="patrick.cloke.us" />
+
+            <button class="btn btn-sm btn-outline-info d-none d-sm-inline" type="submit">Search</button>
+          </form>
+        </ul>
+      </div>
+    </nav>
+
+    {% block content %}
+    {% endblock %}
+
+    {# Footer #}
+    <nav class="navbar fixed-bottom navbar-light bg-light border-top border-info">
+      <a href="https://getpelican.com/" class="nav-item" target="_blank">Powered by Pelican</a>
+      {% if GITHUB_URL %}
+      <a href="{{ GITHUB_URL }}" class="nav-item" target="_blank">
+        Source available on GitHub <span class="fab fa-github"></span>
+      </a>
+      {% endif %}
+    </nav>
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T" crossorigin="anonymous"></script>
+
+    {% block extra_scripts %}
+    {% endblock %}
+  </body>
 </html>
