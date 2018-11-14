@@ -14,12 +14,13 @@
 
       {{ article.summary }}
 
-      <a href="/{{ article.url }}">read more &rarr;</a>
-
       {% if DISQUS_SITENAME %}
-      <br>
-      <a href="/{{ article.url }}#disqus_thread">comments</a>
+      <div class="float-right">
+        <a href="/{{ article.url }}#disqus_thread">comments</a>
+      </div>
       {% endif %}
+
+      <a href="/{{ article.url }}">read more &rarr;</a>
     </div>
   </div>
 </div>
