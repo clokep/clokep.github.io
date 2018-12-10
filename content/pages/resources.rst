@@ -21,6 +21,7 @@ Software Development
 * `Topicbox: the solution for team email!`_ by by Nicola Nye
 * `You don’t need standup`_ by palmerj3
 * `10X Programmer and other Myths in Software Engineering – Interview with Laurent Bossavit`_ by Gareth Wilson
+* `JIRA is an antipattern`_ by Jon Evans
 
 .. _What is BDD and why should I care?: http://vimeo.com/72673788
 .. _How we use Trello & Google Docs to make UserVoice better every day: https://community.uservoice.com/blog/trello-google-docs-product-management/
@@ -34,6 +35,7 @@ Software Development
 .. _Topicbox\: the solution for team email!: https://fastmail.blog/2017/12/07/topicbox-team-email-solution/
 .. _You don’t need standup: https://medium.com/@jsonpify/you-dont-need-standup-9a74782517c1
 .. _10X Programmer and other Myths in Software Engineering – Interview with Laurent Bossavit: https://web.archive.org/web/20170917010841/http://blog.fogcreek.com/10x-programmer-and-other-myths-in-software-engineering-interview-with-laurent-bossavit/
+.. _JIRA is an antipattern: https://techcrunch.com/2018/12/09/jira-is-an-antipattern/
 
 Software Architecture
 =====================
