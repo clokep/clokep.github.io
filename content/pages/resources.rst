@@ -42,12 +42,14 @@ Software Architecture
 
 * `The Twelve Factor App`_ by Adam Wiggins
 * `Designing a RESTful Web API`_ by Luis Rei
+* `Best Practices for Designing a Pragmatic RESTful API`_ by Vinay Sahni
 * `Performance Testing Modern Apps`_ by Dustin Whittle
 * `Julia's Drawings`_ by Julia Evans
 * `What Color is Your Function?`_ by Bob Nystrom
 
 .. _The Twelve Factor App: https://12factor.net/
 .. _Designing a RESTful Web API: https://blog.luisrei.com/articles/rest.html
+.. _Best Practices for Designing a Pragmatic RESTful API: https://www.vinaysahni.com/best-practices-for-a-pragmatic-restful-api
 .. _Performance Testing Modern Apps: https://speakerdeck.com/dustinwhittle/performance-testing-modern-apps
 .. _Julia's Drawings: https://drawings.jvns.ca/dns/
 .. _What Color is Your Function?: https://journal.stuffwithstuff.com/2015/02/01/what-color-is-your-function/
