@@ -21,6 +21,10 @@
       {% endif %}
 
       <a href="/{{ article.url }}">read more &rarr;</a>
+
+      {% if not loop.last %}
+      <hr>
+      {% endif %}
     </div>
   </div>
 </div>
