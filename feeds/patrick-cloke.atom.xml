@@ -1,5 +1,70 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>Like bricks in the sky - Patrick Cloke</title><link href="https://patrick.cloke.us/" rel="alternate"></link><link href="https://patrick.cloke.us/feeds/patrick-cloke.atom.xml" rel="self"></link><id>https://patrick.cloke.us/</id><updated>2018-10-23T19:24:00-04:00</updated><entry><title>Calling Celery from Twisted</title><link href="https://patrick.cloke.us/posts/2018/10/23/calling-celery-from-twisted/" rel="alternate"></link><published>2018-10-23T19:24:00-04:00</published><updated>2018-10-23T19:24:00-04:00</updated><author><name>Patrick Cloke</name></author><id>tag:patrick.cloke.us,2018-10-23:/posts/2018/10/23/calling-celery-from-twisted/</id><summary type="html">
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Like bricks in the sky - Patrick Cloke</title><link href="https://patrick.cloke.us/" rel="alternate"></link><link href="https://patrick.cloke.us/feeds/patrick-cloke.atom.xml" rel="self"></link><id>https://patrick.cloke.us/</id><updated>2018-12-28T14:38:00-05:00</updated><entry><title>Patching a Mail Slot</title><link href="https://patrick.cloke.us/posts/2018/12/28/patching-a-mail-slot/" rel="alternate"></link><published>2018-12-28T14:38:00-05:00</published><updated>2018-12-28T14:38:00-05:00</updated><author><name>Patrick Cloke</name></author><id>tag:patrick.cloke.us,2018-12-28:/posts/2018/12/28/patching-a-mail-slot/</id><summary type="html">&lt;p&gt;The front door of my condo has an unused mail slot in it (we have a mailbox on
+the front of the house to actually get mail). In order to avoid a draft during
+the winter, the previous owner had shoved some insulation in the mail slot and
+covered it …&lt;/p&gt;</summary><content type="html">&lt;p&gt;The front door of my condo has an unused mail slot in it (we have a mailbox on
+the front of the house to actually get mail). In order to avoid a draft during
+the winter, the previous owner had shoved some insulation in the mail slot and
+covered it with masking tape. This looked rather unsightly so I decided to do
+something about it! The goal was for the outside of the door to still have the
+mail slot, and for the inside of the door to look like a solid piece of&amp;nbsp;wood.&lt;/p&gt;
+&lt;blockquote class="text-center"&gt;
+&lt;a class="reference external image-reference" href="https://patrick.cloke.us/images/mail-slot/before.jpg"&gt;&lt;img alt="The inside of the mail slot before any work was done." src="/thumbnails/mail-slot/before_small.jpg" /&gt;&lt;/a&gt;
+&lt;a class="reference external image-reference" href="https://patrick.cloke.us/images/mail-slot/outside.jpg"&gt;&lt;img alt="The outside of the mail slot." src="/thumbnails/mail-slot/outside_small.jpg" /&gt;&lt;/a&gt;
+&lt;p&gt;The inside and outside of the door before any work was&amp;nbsp;done.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;The first step was to remove the metal bracket on the inside. It initially
+seemed that the front and back plates were connected: they weren&amp;#8217;t, which made
+this much easier. This was achived by simply removing four screws (that were
+covered in probably ten layers of&amp;nbsp;paint).&lt;/p&gt;
+&lt;blockquote class="text-center"&gt;
+&lt;a class="reference external image-reference" href="https://patrick.cloke.us/images/mail-slot/no-back-plate.jpg"&gt;&lt;img alt="After removal of the back plate." src="/thumbnails/mail-slot/no-back-plate_small.jpg" /&gt;&lt;/a&gt;
+&lt;p&gt;After removing the back plate of the mail&amp;nbsp;slot.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;It was desired to insulate the hole before filling it, but before doing that I
+wanted to ensure that the mail slot could not be opened from the outside. (The
+flap tended to get stuck on the insulation and there would not be an easy way to
+close it afterward.) A thin piece of wood was glued to the bottom of the hole to
+block the flap from opening. Once the glue dried, the insulation was&amp;nbsp;replaced.&lt;/p&gt;
+&lt;blockquote class="text-center"&gt;
+&lt;a class="reference external image-reference" href="https://patrick.cloke.us/images/mail-slot/flap-stop-1.jpg"&gt;&lt;img alt="Waiting for the glue to dry. Papertowels were used to pressure the stop to the bottom of the whole." src="/thumbnails/mail-slot/flap-stop-1_small.jpg" /&gt;&lt;/a&gt;
+&lt;a class="reference external image-reference" href="https://patrick.cloke.us/images/mail-slot/flap-stop-2.jpg"&gt;&lt;img alt="The inserted stop for the mail slot." src="/thumbnails/mail-slot/flap-stop-2_small.jpg" /&gt;&lt;/a&gt;
+&lt;a class="reference external image-reference" href="https://patrick.cloke.us/images/mail-slot/insulation.jpg"&gt;&lt;img alt="The insulated mail slot." src="/thumbnails/mail-slot/insulation_small.jpg" /&gt;&lt;/a&gt;
+&lt;p&gt;(1) Waiting for the glue to dry. Papertowels were used to pressure the stop
+to the bottom of the whole. (2) The inserted stop for the mail slot. (3) The
+insulated mail&amp;nbsp;slot.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;A (crude) patch was fashioned from balsa wood to fit the hole. (This is
+&lt;span class="strike"&gt;almost&lt;/span&gt; definitely not the correct material, but it was easy to work
+with and will not be bearing any weight.) The first step was to make patch match
+the size and shape of the hole as closely as possible. A brace was glued on the
+back to keep the patch from flexing. This was inserted into the hole with some
+glue around the edges to keep it in&amp;nbsp;place.&lt;/p&gt;
+&lt;blockquote class="text-center"&gt;
+&lt;a class="reference external image-reference" href="https://patrick.cloke.us/images/mail-slot/patch-1.jpg"&gt;&lt;img alt="The patch fashioned to match the mail slot hole." src="/thumbnails/mail-slot/patch-1_small.jpg" /&gt;&lt;/a&gt;
+&lt;a class="reference external image-reference" href="https://patrick.cloke.us/images/mail-slot/patch-2.jpg"&gt;&lt;img alt="The patch inserted into the mail slot." src="/thumbnails/mail-slot/patch-2_small.jpg" /&gt;&lt;/a&gt;
+&lt;p&gt;(1) The patch fashioned to match the mail slot hole. (2) The patch inserted
+into the mail&amp;nbsp;slot.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;Once the glue dried, the surface was lightly sanded, then wood putty was applied
+around the edges to smooth the transition from the door to the patch. This was
+repeated a few&amp;nbsp;times.&lt;/p&gt;
+&lt;blockquote class="text-center"&gt;
+&lt;a class="reference external image-reference" href="https://patrick.cloke.us/images/mail-slot/putty-1.jpg"&gt;&lt;img alt="The patch with wood putty." src="/thumbnails/mail-slot/putty-1_small.jpg" /&gt;&lt;/a&gt;
+&lt;a class="reference external image-reference" href="https://patrick.cloke.us/images/mail-slot/putty-2.jpg"&gt;&lt;img alt="The patch between sandings." src="/thumbnails/mail-slot/putty-2_small.jpg" /&gt;&lt;/a&gt;
+&lt;p&gt;The patch with wood putty around it and then&amp;nbsp;sanded.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;A few coats of paint were used to match the rest of the door. It looks good
+except under certain light where you can see the outline of the patch. Overall,
+this took only a few hours (plus time waiting for glue, putty, or paint to dry)
+and the overall cost was less than $5 (for the wood for the patch, the other
+material was already on&amp;nbsp;hand).&lt;/p&gt;
+&lt;blockquote class="text-center"&gt;
+&lt;a class="reference external image-reference" href="https://patrick.cloke.us/images/mail-slot/first-coat.jpg"&gt;&lt;img alt="The first coat of paint on the patch." src="/thumbnails/mail-slot/first-coat_small.jpg" /&gt;&lt;/a&gt;
+&lt;a class="reference external image-reference" href="https://patrick.cloke.us/images/mail-slot/after.jpg"&gt;&lt;img alt="The final result of the painted patch." src="/thumbnails/mail-slot/after_small.jpg" /&gt;&lt;/a&gt;
+&lt;p&gt;The patch with the first coat of paint, the finished&amp;nbsp;patch.&lt;/p&gt;
+&lt;/blockquote&gt;
+</content><category term="woodworking"></category><category term="home improvement"></category></entry><entry><title>Calling Celery from Twisted</title><link href="https://patrick.cloke.us/posts/2018/10/23/calling-celery-from-twisted/" rel="alternate"></link><published>2018-10-23T19:24:00-04:00</published><updated>2018-10-23T19:24:00-04:00</updated><author><name>Patrick Cloke</name></author><id>tag:patrick.cloke.us,2018-10-23:/posts/2018/10/23/calling-celery-from-twisted/</id><summary type="html">
 &lt;div class="section" id="background"&gt;
 &lt;h2&gt;&lt;a class="toc-backref" href="#id13"&gt;Background&lt;/a&gt;&lt;/h2&gt;
 &lt;p&gt;I use &lt;a class="reference external" href="https://twistedmatrix.com/"&gt;Twisted&lt;/a&gt; and &lt;a class="reference external" href="http://www.celeryproject.org/"&gt;Celery&lt;/a&gt; daily at work, both are useful frameworks, both have

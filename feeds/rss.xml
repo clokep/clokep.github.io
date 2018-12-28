@@ -1,5 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<rss version="2.0"><channel><title>Like bricks in the sky</title><link>https://patrick.cloke.us/</link><description></description><lastBuildDate>Tue, 23 Oct 2018 19:24:00 -0400</lastBuildDate><item><title>Calling Celery from Twisted</title><link>https://patrick.cloke.us/posts/2018/10/23/calling-celery-from-twisted/</link><description>
+<rss version="2.0"><channel><title>Like bricks in the sky</title><link>https://patrick.cloke.us/</link><description></description><lastBuildDate>Fri, 28 Dec 2018 14:38:00 -0500</lastBuildDate><item><title>Patching a Mail Slot</title><link>https://patrick.cloke.us/posts/2018/12/28/patching-a-mail-slot/</link><description>&lt;p&gt;The front door of my condo has an unused mail slot in it (we have a mailbox on
+the front of the house to actually get mail). In order to avoid a draft during
+the winter, the previous owner had shoved some insulation in the mail slot and
+covered it …&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Patrick Cloke</dc:creator><pubDate>Fri, 28 Dec 2018 14:38:00 -0500</pubDate><guid isPermaLink="false">tag:patrick.cloke.us,2018-12-28:/posts/2018/12/28/patching-a-mail-slot/</guid><category>woodworking</category><category>home improvement</category></item><item><title>Calling Celery from Twisted</title><link>https://patrick.cloke.us/posts/2018/10/23/calling-celery-from-twisted/</link><description>
 &lt;div class="section" id="background"&gt;
 &lt;h2&gt;&lt;a class="toc-backref" href="#id13"&gt;Background&lt;/a&gt;&lt;/h2&gt;
 &lt;p&gt;I use &lt;a class="reference external" href="https://twistedmatrix.com/"&gt;Twisted&lt;/a&gt; and &lt;a class="reference external" href="http://www.celeryproject.org/"&gt;Celery&lt;/a&gt; daily at work, both are useful frameworks, both have
