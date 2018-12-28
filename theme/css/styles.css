@@ -63,3 +63,8 @@ div.admonition p.first + p + * {
 p.admonition-title::after {
     content: ":";
 }
+
+/* Add some spacing between back-to-back pictures on small screens. */
+img {
+    margin-top: 4px;
+}
