@@ -35,7 +35,7 @@
       <br>
       <i>
         Tags: {% for tag in article.tags|sort %}
-          <a href="/{{ tag.url }}">{{ tag|escape }}</a>
+          <a href="/{{ tag.url }}">{{ tag|escape }}</a>{% if loop.nextitem %},{% endif %}
         {% endfor %}
       </i>
       {% endif %}
