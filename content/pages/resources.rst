@@ -37,6 +37,13 @@ Software Development
 .. _10X Programmer and other Myths in Software Engineering – Interview with Laurent Bossavit: https://web.archive.org/web/20170917010841/http://blog.fogcreek.com/10x-programmer-and-other-myths-in-software-engineering-interview-with-laurent-bossavit/
 .. _JIRA is an antipattern: https://techcrunch.com/2018/12/09/jira-is-an-antipattern/
 
+UI/UX
+=====
+
+* `Perceived Performance`_ by Eli Fitch
+
+.. _Perceived Performance: http://assets.eli.wtf/talks/perceived-perf-perfmatters-2018/#/
+
 Software Architecture
 =====================
 
@@ -46,6 +53,7 @@ Software Architecture
 * `Performance Testing Modern Apps`_ by Dustin Whittle
 * `Julia's Drawings`_ by Julia Evans
 * `What Color is Your Function?`_ by Bob Nystrom
+* `Idle Until Urgent`_ by Philip Walton
 
 .. _The Twelve Factor App: https://12factor.net/
 .. _Designing a RESTful Web API: https://blog.luisrei.com/articles/rest.html
@@ -53,6 +61,7 @@ Software Architecture
 .. _Performance Testing Modern Apps: https://speakerdeck.com/dustinwhittle/performance-testing-modern-apps
 .. _Julia's Drawings: https://drawings.jvns.ca/dns/
 .. _What Color is Your Function?: https://journal.stuffwithstuff.com/2015/02/01/what-color-is-your-function/
+.. _Idle Until Urgent: https://philipwalton.com/articles/idle-until-urgent/
 
 Databases
 =========
