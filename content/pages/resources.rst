@@ -22,6 +22,7 @@ Software Development
 * `You don’t need standup`_ by palmerj3
 * `10X Programmer and other Myths in Software Engineering – Interview with Laurent Bossavit`_ by Gareth Wilson
 * `JIRA is an antipattern`_ by Jon Evans
+* `Are startups getting value from project estimation?`_ by Abe Winter
 
 .. _What is BDD and why should I care?: http://vimeo.com/72673788
 .. _How we use Trello & Google Docs to make UserVoice better every day: https://community.uservoice.com/blog/trello-google-docs-product-management/
@@ -36,6 +37,7 @@ Software Development
 .. _You don’t need standup: https://medium.com/@jsonpify/you-dont-need-standup-9a74782517c1
 .. _10X Programmer and other Myths in Software Engineering – Interview with Laurent Bossavit: https://web.archive.org/web/20170917010841/http://blog.fogcreek.com/10x-programmer-and-other-myths-in-software-engineering-interview-with-laurent-bossavit/
 .. _JIRA is an antipattern: https://techcrunch.com/2018/12/09/jira-is-an-antipattern/
+.. _Are startups getting value from project estimation?: https://abe-winter.github.io/2019/05/25/estimation.html
 
 UI/UX
 =====
@@ -112,6 +114,13 @@ Python
 .. _Python internals\: Arbitrary-precision integer implementation: https://rushter.com/blog/python-integer-implementation/
 .. _Sharing Your Labor of Love\: PyPI Quick and Dirty: https://hynek.me/articles/sharing-your-labor-of-love-pypi-quick-and-dirty/
 .. _Packaging a python library: https://blog.ionelmc.ro/2014/05/25/python-packaging/
+
+Django
+''''''
+
+* `How to Switch to a Custom Django User Model Mid-Project`_ by Tobias McNulty
+
+.. _How to Switch to a Custom Django User Model Mid-Project: https://www.caktusgroup.com/blog/2019/04/26/how-switch-custom-django-user-model-mid-project/
 
 Twisted
 '''''''
