@@ -5,3 +5,6 @@
 # Specific directories.
 cache/
 output/
+
+# Editors
+.idea
