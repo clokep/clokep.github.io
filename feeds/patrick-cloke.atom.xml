@@ -1,5 +1,69 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>Like bricks in the sky - Patrick Cloke</title><link href="https://patrick.cloke.us/" rel="alternate"></link><link href="https://patrick.cloke.us/feeds/patrick-cloke.atom.xml" rel="self"></link><id>https://patrick.cloke.us/</id><updated>2018-12-28T14:38:00-05:00</updated><entry><title>Patching a Mail Slot</title><link href="https://patrick.cloke.us/posts/2018/12/28/patching-a-mail-slot/" rel="alternate"></link><published>2018-12-28T14:38:00-05:00</published><updated>2018-12-28T14:38:00-05:00</updated><author><name>Patrick Cloke</name></author><id>tag:patrick.cloke.us,2018-12-28:/posts/2018/12/28/patching-a-mail-slot/</id><summary type="html">&lt;p&gt;The front door of my condo has an unused mail slot in it (we have a mailbox on
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Like bricks in the sky - Patrick Cloke</title><link href="https://patrick.cloke.us/" rel="alternate"></link><link href="https://patrick.cloke.us/feeds/patrick-cloke.atom.xml" rel="self"></link><id>https://patrick.cloke.us/</id><updated>2019-07-17T20:35:00-04:00</updated><entry><title>Celery without a Results Backend</title><link href="https://patrick.cloke.us/posts/2019/07/17/celery-without-a-results-backend/" rel="alternate"></link><published>2019-07-17T20:35:00-04:00</published><updated>2019-07-17T20:35:00-04:00</updated><author><name>Patrick Cloke</name></author><id>tag:patrick.cloke.us,2019-07-17:/posts/2019/07/17/celery-without-a-results-backend/</id><summary type="html">&lt;p&gt;The &lt;a class="reference external" href="http://www.celeryproject.org/"&gt;Celery&lt;/a&gt; &lt;a class="reference external" href="https://docs.celeryproject.org/en/latest/reference/celery.html#celery.Celery.send_task"&gt;&lt;tt class="docutils literal"&gt;send_task&lt;/tt&gt;&lt;/a&gt; method allows you to invoke a task by name without
+importing it. &lt;a class="footnote-reference" href="#id5" id="id1"&gt;[1]&lt;/a&gt; There is an undocumented &lt;a class="footnote-reference" href="#id6" id="id2"&gt;[2]&lt;/a&gt; caveat to using &lt;tt class="docutils literal"&gt;send_task&lt;/tt&gt;:
+it doesn&amp;#8217;t have access to the configuration of the task (from when the task was
+created using the &lt;a class="reference external" href="https://docs.celeryproject.org/en/latest/reference/celery.html#celery.Celery.task"&gt;&lt;tt class="docutils literal"&gt;&amp;#64;task&lt;/tt&gt; decorator&lt;/a&gt;).&lt;/p&gt;
+&lt;p&gt;Much of this configuration …&lt;/p&gt;</summary><content type="html">&lt;p&gt;The &lt;a class="reference external" href="http://www.celeryproject.org/"&gt;Celery&lt;/a&gt; &lt;a class="reference external" href="https://docs.celeryproject.org/en/latest/reference/celery.html#celery.Celery.send_task"&gt;&lt;tt class="docutils literal"&gt;send_task&lt;/tt&gt;&lt;/a&gt; method allows you to invoke a task by name without
+importing it. &lt;a class="footnote-reference" href="#id5" id="id1"&gt;[1]&lt;/a&gt; There is an undocumented &lt;a class="footnote-reference" href="#id6" id="id2"&gt;[2]&lt;/a&gt; caveat to using &lt;tt class="docutils literal"&gt;send_task&lt;/tt&gt;:
+it doesn&amp;#8217;t have access to the configuration of the task (from when the task was
+created using the &lt;a class="reference external" href="https://docs.celeryproject.org/en/latest/reference/celery.html#celery.Celery.task"&gt;&lt;tt class="docutils literal"&gt;&amp;#64;task&lt;/tt&gt; decorator&lt;/a&gt;).&lt;/p&gt;
+&lt;p&gt;Much of this configuration doesn&amp;#8217;t matter to the caller, for example the caller
+doesn&amp;#8217;t care&amp;nbsp;about:&lt;/p&gt;
+&lt;ul class="simple"&gt;
+&lt;li&gt;Whether the task is bound or&amp;nbsp;not.&lt;/li&gt;
+&lt;li&gt;The retry configuration of&amp;nbsp;tasks.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;There is also configuration from the caller that &lt;em&gt;must&lt;/em&gt; be right for the task to
+execute as you&amp;#8217;d&amp;nbsp;expect:&lt;/p&gt;
+&lt;ul class="simple"&gt;
+&lt;li&gt;The serializer or compressor must match what the worker can&amp;nbsp;handle.&lt;/li&gt;
+&lt;li&gt;If a non-default results backend is to be&amp;nbsp;used.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Another piece of configuration that matters (which surprised me and had a
+performance impact for us &lt;a class="footnote-reference" href="#id7" id="id3"&gt;[3]&lt;/a&gt;) is whether to ignore a task result or not.
+Unexpectedly, Celery will attempt to connect to the results backend &lt;em&gt;on task call&lt;/em&gt;.
+I assumed that the results backend would never be contaced since we never
+attempted to &lt;strong&gt;retrieve&lt;/strong&gt; a result! This turned out to be&amp;nbsp;untrue.&lt;/p&gt;
+&lt;p&gt;Once identified, The fix was straightforward! We ensured that every task which
+had &lt;tt class="docutils literal"&gt;ignore_result=True&lt;/tt&gt; on task declaration also had &lt;tt class="docutils literal"&gt;ignore_result=True&lt;/tt&gt;
+on task call (when using &lt;tt class="docutils literal"&gt;send_task&lt;/tt&gt;). &lt;a class="footnote-reference" href="#id8" id="id4"&gt;[4]&lt;/a&gt; This duplciation is unfortunate,
+but easy&amp;nbsp;enough.&lt;/p&gt;
+&lt;p&gt;We figured this out due to a calling process which doesn&amp;#8217;t use any results, but
+th e&amp;#8220;celery.backends&amp;#8220; module was appearing in the &lt;a class="reference external" href="https://pyflame.readthedocs.io"&gt;pyflame&lt;/a&gt; profiles.
+Another solution (for this particular setup) was to use the (&lt;a class="reference external" href="http://docs.celeryproject.org/en/latest/userguide/configuration.html#task-result-backend-settings"&gt;undocumented&lt;/a&gt;)
+&lt;tt class="docutils literal"&gt;disabled&lt;/tt&gt; results&amp;nbsp;backend.&lt;/p&gt;
+&lt;table class="docutils footnote" frame="void" id="id5" rules="none"&gt;
+&lt;colgroup&gt;&lt;col class="label" /&gt;&lt;col /&gt;&lt;/colgroup&gt;
+&lt;tbody valign="top"&gt;
+&lt;tr&gt;&lt;td class="label"&gt;&lt;a class="fn-backref" href="#id1"&gt;[1]&lt;/a&gt;&lt;/td&gt;&lt;td&gt;There are a variety of reasons you might want to do this, but I&amp;#8217;ve
+used it when tasks that use &lt;a class="reference external" href="https://www.djangoproject.com/"&gt;Django&lt;/a&gt; models but the calling process
+does not have Django configured.&lt;/td&gt;&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;table class="docutils footnote" frame="void" id="id6" rules="none"&gt;
+&lt;colgroup&gt;&lt;col class="label" /&gt;&lt;col /&gt;&lt;/colgroup&gt;
+&lt;tbody valign="top"&gt;
+&lt;tr&gt;&lt;td class="label"&gt;&lt;a class="fn-backref" href="#id2"&gt;[2]&lt;/a&gt;&lt;/td&gt;&lt;td&gt;I couldn&amp;#8217;t find any documentation about it at least. Maybe this is meant
+to be obvious, but it didn&amp;#8217;t click for me without deep understanding of
+how Celery works.&lt;/td&gt;&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;table class="docutils footnote" frame="void" id="id7" rules="none"&gt;
+&lt;colgroup&gt;&lt;col class="label" /&gt;&lt;col /&gt;&lt;/colgroup&gt;
+&lt;tbody valign="top"&gt;
+&lt;tr&gt;&lt;td class="label"&gt;&lt;a class="fn-backref" href="#id3"&gt;[3]&lt;/a&gt;&lt;/td&gt;&lt;td&gt;The performance impact we were seeing was due to the &lt;span class="caps"&gt;TCP&lt;/span&gt; negotiation and
+login to the results backend. This got especially bad if the results
+backend was under load or down.&lt;/td&gt;&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;table class="docutils footnote" frame="void" id="id8" rules="none"&gt;
+&lt;colgroup&gt;&lt;col class="label" /&gt;&lt;col /&gt;&lt;/colgroup&gt;
+&lt;tbody valign="top"&gt;
+&lt;tr&gt;&lt;td class="label"&gt;&lt;a class="fn-backref" href="#id4"&gt;[4]&lt;/a&gt;&lt;/td&gt;&lt;td&gt;Note that it is a &lt;a class="reference external" href="https://docs.celeryproject.org/en/latest/userguide/tasks.html?highlight=argsrepr#ignore-results-you-don-t-want"&gt;best practice&lt;/a&gt; to ignore results on tasks where you
+don&amp;#8217;t need the result!&lt;/td&gt;&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+</content><category term="celery"></category></entry><entry><title>Patching a Mail Slot</title><link href="https://patrick.cloke.us/posts/2018/12/28/patching-a-mail-slot/" rel="alternate"></link><published>2018-12-28T14:38:00-05:00</published><updated>2018-12-28T14:38:00-05:00</updated><author><name>Patrick Cloke</name></author><id>tag:patrick.cloke.us,2018-12-28:/posts/2018/12/28/patching-a-mail-slot/</id><summary type="html">&lt;p&gt;The front door of my condo has an unused mail slot in it (we have a mailbox on
 the front of the house to actually get mail). In order to avoid a draft during
 the winter, the previous owner had shoved some insulation in the mail slot and
 covered it …&lt;/p&gt;</summary><content type="html">&lt;p&gt;The front door of my condo has an unused mail slot in it (we have a mailbox on
