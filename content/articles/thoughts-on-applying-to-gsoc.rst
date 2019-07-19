@@ -1,4 +1,4 @@
-Thoughts on Appyling to Google Summer of Code
+Thoughts on Applying to Google Summer of Code
 #############################################
 :date: 2016-03-07 09:18
 :author: Patrick Cloke
