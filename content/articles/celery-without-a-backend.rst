@@ -1,6 +1,7 @@
 Celery without a Results Backend
 ################################
 :date: 2019-7-17 20:35
+:modified: 2019-07-19 08:28
 :author: Patrick Cloke
 :tags: celery
 
@@ -18,6 +19,7 @@ doesn't care about:
 There is also configuration from the caller that *must* be right for the task to
 execute as you'd expect:
 
+* The number of arguments and the keywords for any keyword arguments.
 * The serializer or compressor must match what the worker can handle.
 * If a non-default results backend is to be used.
 
