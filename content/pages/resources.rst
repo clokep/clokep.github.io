@@ -23,6 +23,7 @@ Software Development
 * `10X Programmer and other Myths in Software Engineering – Interview with Laurent Bossavit`_ by Gareth Wilson
 * `JIRA is an antipattern`_ by Jon Evans
 * `Are startups getting value from project estimation?`_ by Abe Winter
+* `Why “Agile” and especially Scrum are terrible`_ by Michael O. Church
 
 .. _What is BDD and why should I care?: http://vimeo.com/72673788
 .. _How we use Trello & Google Docs to make UserVoice better every day: https://community.uservoice.com/blog/trello-google-docs-product-management/
@@ -38,6 +39,7 @@ Software Development
 .. _10X Programmer and other Myths in Software Engineering – Interview with Laurent Bossavit: https://web.archive.org/web/20170917010841/http://blog.fogcreek.com/10x-programmer-and-other-myths-in-software-engineering-interview-with-laurent-bossavit/
 .. _JIRA is an antipattern: https://techcrunch.com/2018/12/09/jira-is-an-antipattern/
 .. _Are startups getting value from project estimation?: https://abe-winter.github.io/2019/05/25/estimation.html
+.. _Why “Agile” and especially Scrum are terrible: https://michaelochurch.wordpress.com/2015/06/06/why-agile-and-especially-scrum-are-terrible/
 
 UI/UX
 =====
