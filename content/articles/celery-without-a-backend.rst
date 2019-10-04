@@ -35,7 +35,7 @@ on task call (when using ``send_task``). [#]_ This duplciation is unfortunate,
 but easy enough.
 
 We figured this out due to a calling process which doesn't use any results, but
-th e``celery.backends`` module was appearing in the `pyflame`_ profiles.
+the ``celery.backends`` module was appearing in the `pyflame`_ profiles.
 Another solution (for this particular setup) was to use the (`undocumented`_)
 ``disabled`` results backend.
 

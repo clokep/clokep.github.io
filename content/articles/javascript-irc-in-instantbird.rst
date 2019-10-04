@@ -37,7 +37,6 @@ After today's work I was able to generate the following screenshot:
         :target: {static}/images/IRCworking2.png
         :alt: Example conversation using JavaScript IRC.
         :height: 297px
-        :class: center
 
     An initial example of Instantbird communicating using JavaScript IRC.
 
