@@ -1,5 +1,81 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>Like bricks in the sky - Patrick Cloke</title><link href="https://patrick.cloke.us/" rel="alternate"></link><link href="https://patrick.cloke.us/feeds/patrick-cloke.atom.xml" rel="self"></link><id>https://patrick.cloke.us/</id><updated>2019-07-19T08:28:00-04:00</updated><entry><title>Celery without a Results Backend</title><link href="https://patrick.cloke.us/posts/2019/07/17/celery-without-a-results-backend/" rel="alternate"></link><published>2019-07-17T20:35:00-04:00</published><updated>2019-07-19T08:28:00-04:00</updated><author><name>Patrick Cloke</name></author><id>tag:patrick.cloke.us,2019-07-17:/posts/2019/07/17/celery-without-a-results-backend/</id><summary type="html">&lt;p&gt;The &lt;a class="reference external" href="http://www.celeryproject.org/"&gt;Celery&lt;/a&gt; &lt;a class="reference external" href="https://docs.celeryproject.org/en/latest/reference/celery.html#celery.Celery.send_task"&gt;&lt;tt class="docutils literal"&gt;send_task&lt;/tt&gt;&lt;/a&gt; method allows you to invoke a task by name without
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Like bricks in the sky - Patrick Cloke</title><link href="https://patrick.cloke.us/" rel="alternate"></link><link href="https://patrick.cloke.us/feeds/patrick-cloke.atom.xml" rel="self"></link><id>https://patrick.cloke.us/</id><updated>2019-10-04T08:10:00-04:00</updated><entry><title>Celery AMQP Backends</title><link href="https://patrick.cloke.us/posts/2019/10/04/celery-amqp-backends/" rel="alternate"></link><published>2019-10-04T08:10:00-04:00</published><updated>2019-10-04T08:10:00-04:00</updated><author><name>Patrick Cloke</name></author><id>tag:patrick.cloke.us,2019-10-04:/posts/2019/10/04/celery-amqp-backends/</id><summary type="html">&lt;div class="admonition note"&gt;
+&lt;p class="first admonition-title"&gt;Note&lt;/p&gt;
+&lt;p class="last"&gt;This started as notes explaining the internals of how Celery&amp;#8217;s &lt;span class="caps"&gt;AMQP&lt;/span&gt; backends
+operate. This isn&amp;#8217;t meant to be a comparison or prove one is better or that
+one is broken. There just seemed to be a lack of documentation about the
+design and limitations of each&amp;nbsp;backend …&lt;/p&gt;&lt;/div&gt;</summary><content type="html">&lt;div class="admonition note"&gt;
+&lt;p class="first admonition-title"&gt;Note&lt;/p&gt;
+&lt;p class="last"&gt;This started as notes explaining the internals of how Celery&amp;#8217;s &lt;span class="caps"&gt;AMQP&lt;/span&gt; backends
+operate. This isn&amp;#8217;t meant to be a comparison or prove one is better or that
+one is broken. There just seemed to be a lack of documentation about the
+design and limitations of each&amp;nbsp;backend.&lt;/p&gt;
+&lt;/div&gt;
+&lt;p&gt;Celery comes with &lt;a class="reference external" href="https://docs.celeryproject.org/en/latest/userguide/configuration.html#task-result-backend-settings"&gt;many results backends&lt;/a&gt;, two of which use &lt;span class="caps"&gt;AMQP&lt;/span&gt; under the
+hood: the &amp;#8220;&lt;span class="caps"&gt;AMQP&lt;/span&gt;&amp;#8221; and &amp;#8220;&lt;span class="caps"&gt;RPC&lt;/span&gt;&amp;#8221; backends. Both of them publish results as messages
+into &lt;span class="caps"&gt;AMQP&lt;/span&gt; queues. They&amp;#8217;re convenient since you only need one piece of
+infrastructure to handle both tasks and results (e.g. &lt;a class="reference external" href="https://www.rabbitmq.com/"&gt;RabbitMQ&lt;/a&gt;). Check the
+&lt;a class="reference external" href="https://docs.celeryproject.org/en/latest/userguide/configuration.html#result-backend"&gt;&lt;tt class="docutils literal"&gt;result_backend&lt;/tt&gt;&lt;/a&gt; setting if you&amp;#8217;re unsure what you&amp;#8217;re&amp;nbsp;using!&lt;/p&gt;
+&lt;div class="section" id="amqp-backend"&gt;
+&lt;h2&gt;&lt;span class="caps"&gt;AMQP&lt;/span&gt;&amp;nbsp;backend&lt;/h2&gt;
+&lt;p&gt;The &lt;a class="reference external" href="https://docs.celeryproject.org/en/latest/internals/reference/celery.backends.amqp.html"&gt;&lt;span class="caps"&gt;AMQP&lt;/span&gt; backend&lt;/a&gt; is deprecated, it uses a results queue &lt;strong&gt;per task call&lt;/strong&gt;,
+this doesn&amp;#8217;t scale well since there is significant overhead (many queues, many
+bindings, etc.). That&amp;#8217;s pretty much all I know about it, I&amp;#8217;ve never used&amp;nbsp;it.&lt;/p&gt;
+&lt;p&gt;A system level view is&amp;nbsp;below:&lt;/p&gt;
+&lt;blockquote class="text-center"&gt;
+&lt;a class="reference external image-reference" href="https://patrick.cloke.us/images/celery-amqp-backends/amqp-backend.png"&gt;&lt;img alt="RPC requeueing behavior" src="https://patrick.cloke.us/images/celery-amqp-backends/amqp-backend.png" style="width: 80%;" /&gt;&lt;/a&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;The caller produces a task into the task queue. The worker consumes the task
+from this queue and creates a result, which is added to a separate results queue
+per task call. In the example above there&amp;#8217;s tasks A, B, C, etc. Each of those
+produces a result (A&amp;#8217;, B&amp;#8217;, C&amp;#8217;, etc.) in separate&amp;nbsp;queues.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="section" id="rpc-backend"&gt;
+&lt;h2&gt;&lt;span class="caps"&gt;RPC&lt;/span&gt;&amp;nbsp;backend&lt;/h2&gt;
+&lt;p&gt;The &lt;a class="reference external" href="https://docs.celeryproject.org/en/latest/internals/reference/celery.backends.rpc.html"&gt;&lt;span class="caps"&gt;RPC&lt;/span&gt; backend&lt;/a&gt; uses a results queue &lt;strong&gt;per client&lt;/strong&gt; which scales better, but
+is a bit more limited in functionality &amp;#8212; it assumes that the process that
+produces the task also consumes the result (hence the &amp;#8220;&lt;span class="caps"&gt;RPC&lt;/span&gt;&amp;#8221; name &amp;#8212; referring to
+&lt;a class="reference external" href="https://en.wikipedia.org/wiki/Remote_procedure_call"&gt;remote procedure call&lt;/a&gt;). See the &lt;a class="reference external" href="https://docs.celeryproject.org/en/latest/history/whatsnew-3.1.html#new-rpc-result-backend"&gt;announcement of the &lt;span class="caps"&gt;RPC&lt;/span&gt; backend&lt;/a&gt; for more&amp;nbsp;information.&lt;/p&gt;
+&lt;p&gt;A system level view is&amp;nbsp;below:&lt;/p&gt;
+&lt;blockquote class="text-center"&gt;
+&lt;a class="reference external image-reference" href="https://patrick.cloke.us/images/celery-amqp-backends/rpc-backend.png"&gt;&lt;img alt="RPC requeueing behavior" src="https://patrick.cloke.us/images/celery-amqp-backends/rpc-backend.png" style="width: 80%;" /&gt;&lt;/a&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;The caller produces a task into the task queue. The worker consumes the task
+from this queue and creates a result, which is added to a results queue per
+caller. In the example above there&amp;#8217;s tasks A, B, C, etc. Each of those
+produces a result (A&amp;#8217;, B&amp;#8217;, C&amp;#8217;, etc.) in the same&amp;nbsp;queue.&lt;/p&gt;
+&lt;p&gt;Since the results go into a queue per caller, this works well when the caller
+(and only the caller) is what needs to consume the&amp;nbsp;result.&lt;/p&gt;
+&lt;p&gt;Other things to note with the &lt;span class="caps"&gt;RPC&lt;/span&gt;&amp;nbsp;backend:&lt;/p&gt;
+&lt;ul class="simple"&gt;
+&lt;li&gt;Each result can only be consumed once (since it is then removed from the
+results&amp;nbsp;queue).&lt;/li&gt;
+&lt;li&gt;&lt;a class="reference external" href="https://docs.celeryproject.org/en/latest/userguide/canvas.html#chords"&gt;chords&lt;/a&gt; are not supported (but that is not something that I&amp;#8217;ve ever&amp;nbsp;used).&lt;/li&gt;
+&lt;li&gt;Results are discarded when the client disconnects or if the broker restarts
+(they&amp;#8217;re not&amp;nbsp;durable).&lt;/li&gt;
+&lt;li&gt;If there is too much &amp;#8220;state history&amp;#8221; (if the results queue grows too large), a
+&lt;a class="reference external" href="https://docs.celeryproject.org/en/latest/internals/reference/celery.backends.rpc.html#celery.backends.rpc.BacklogLimitExceeded"&gt;&lt;tt class="docutils literal"&gt;BacklogLimitExceeded&lt;/tt&gt;&lt;/a&gt; exception will be raised. (By default too large is
+1000 pending task&amp;nbsp;results.)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;The &lt;span class="caps"&gt;RPC&lt;/span&gt; backend can run into issues with &lt;span class="caps"&gt;AMQP&lt;/span&gt; queues being &lt;a class="reference external" href="https://en.wikipedia.org/wiki/FIFO_(computing_and_electronics)"&gt;&lt;span class="caps"&gt;FIFO&lt;/span&gt;&lt;/a&gt; &amp;#8212; if two
+tasks (A &lt;span class="amp"&gt;&amp;amp;&lt;/span&gt; B) are started and task B finishes before A, but the client tries to
+get the result of task A first&amp;#8230;what happens? The &lt;span class="caps"&gt;RPC&lt;/span&gt; backend does one of two&amp;nbsp;things:&lt;/p&gt;
+&lt;ol class="arabic simple"&gt;
+&lt;li&gt;Requeues it (the&amp;nbsp;default).&lt;/li&gt;
+&lt;li&gt;Caches it locally until it is&amp;nbsp;needed.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;The requeuing behavior is shown&amp;nbsp;below:&lt;/p&gt;
+&lt;blockquote class="text-center"&gt;
+&lt;a class="reference external image-reference" href="https://patrick.cloke.us/images/celery-amqp-backends/rpc-requeues.png"&gt;&lt;img alt="RPC requeueing behavior" src="https://patrick.cloke.us/images/celery-amqp-backends/rpc-requeues.png" style="width: 50%;" /&gt;&lt;/a&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;In the example above, result B was added into the queue before A, but A is
+needed first. The queue is run down until A is received and all other items are
+requeued (onto the back of the&amp;nbsp;queue).&lt;/p&gt;
+&lt;p&gt;If you have many parallel tasks running this can cause issues, either by running
+into the &lt;tt class="docutils literal"&gt;BacklogLimitExceeded&lt;/tt&gt; error or just lots of churn in the queue
+(meaning lots of&amp;nbsp;I/O).&lt;/p&gt;
+&lt;/div&gt;
+</content><category term="celery"></category></entry><entry><title>Celery without a Results Backend</title><link href="https://patrick.cloke.us/posts/2019/07/17/celery-without-a-results-backend/" rel="alternate"></link><published>2019-07-17T20:35:00-04:00</published><updated>2019-07-19T08:28:00-04:00</updated><author><name>Patrick Cloke</name></author><id>tag:patrick.cloke.us,2019-07-17:/posts/2019/07/17/celery-without-a-results-backend/</id><summary type="html">&lt;p&gt;The &lt;a class="reference external" href="http://www.celeryproject.org/"&gt;Celery&lt;/a&gt; &lt;a class="reference external" href="https://docs.celeryproject.org/en/latest/reference/celery.html#celery.Celery.send_task"&gt;&lt;tt class="docutils literal"&gt;send_task&lt;/tt&gt;&lt;/a&gt; method allows you to invoke a task by name without
 importing it. &lt;a class="footnote-reference" href="#id5" id="id1"&gt;[1]&lt;/a&gt; There is an undocumented &lt;a class="footnote-reference" href="#id6" id="id2"&gt;[2]&lt;/a&gt; caveat to using &lt;tt class="docutils literal"&gt;send_task&lt;/tt&gt;:
 it doesn&amp;#8217;t have access to the configuration of the task (from when the task was
 created using the &lt;a class="reference external" href="https://docs.celeryproject.org/en/latest/reference/celery.html#celery.Celery.task"&gt;&lt;tt class="docutils literal"&gt;&amp;#64;task&lt;/tt&gt; decorator&lt;/a&gt;).&lt;/p&gt;
@@ -30,7 +106,7 @@ had &lt;tt class="docutils literal"&gt;ignore_result=True&lt;/tt&gt; on task dec
 on task call (when using &lt;tt class="docutils literal"&gt;send_task&lt;/tt&gt;). &lt;a class="footnote-reference" href="#id8" id="id4"&gt;[4]&lt;/a&gt; This duplciation is unfortunate,
 but easy&amp;nbsp;enough.&lt;/p&gt;
 &lt;p&gt;We figured this out due to a calling process which doesn&amp;#8217;t use any results, but
-th e&amp;#8220;celery.backends&amp;#8220; module was appearing in the &lt;a class="reference external" href="https://pyflame.readthedocs.io"&gt;pyflame&lt;/a&gt; profiles.
+the &lt;tt class="docutils literal"&gt;celery.backends&lt;/tt&gt; module was appearing in the &lt;a class="reference external" href="https://pyflame.readthedocs.io"&gt;pyflame&lt;/a&gt; profiles.
 Another solution (for this particular setup) was to use the (&lt;a class="reference external" href="http://docs.celeryproject.org/en/latest/userguide/configuration.html#task-result-backend-settings"&gt;undocumented&lt;/a&gt;)
 &lt;tt class="docutils literal"&gt;disabled&lt;/tt&gt; results&amp;nbsp;backend.&lt;/p&gt;
 &lt;table class="docutils footnote" frame="void" id="id5" rules="none"&gt;
@@ -3762,7 +3838,7 @@ a &lt;strong&gt;new&lt;/strong&gt; object.&amp;nbsp; And after learning a bit ab
 to get the &lt;span class="caps"&gt;UI&lt;/span&gt; to respond.&amp;nbsp; I even threw in support for op/half-op/voice
 After today&amp;#8217;s work I was able to generate the following&amp;nbsp;screenshot:&lt;/p&gt;
 &lt;blockquote class="text-center"&gt;
-&lt;a class="reference external image-reference" href="https://patrick.cloke.us/images/IRCworking2.png"&gt;&lt;img alt="Example conversation using JavaScript IRC." class="center" src="https://patrick.cloke.us/images/IRCworking2.png" style="height: 297px;" /&gt;&lt;/a&gt;
+&lt;a class="reference external image-reference" href="https://patrick.cloke.us/images/IRCworking2.png"&gt;&lt;img alt="Example conversation using JavaScript IRC." src="https://patrick.cloke.us/images/IRCworking2.png" style="height: 297px;" /&gt;&lt;/a&gt;
 &lt;p&gt;An initial example of Instantbird communicating using JavaScript &lt;span class="caps"&gt;IRC&lt;/span&gt;.&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;p&gt;This build would be almost fully usable by those who do very little on

@@ -150,7 +150,7 @@ had <tt class="docutils literal">ignore_result=True</tt> on task declaration als
 on task call (when using <tt class="docutils literal">send_task</tt>). <a class="footnote-reference" href="#id8" id="id4">[4]</a> This duplciation is unfortunate,
 but easy&nbsp;enough.</p>
 <p>We figured this out due to a calling process which doesn&#8217;t use any results, but
-th e&#8220;celery.backends&#8220; module was appearing in the <a class="reference external" href="https://pyflame.readthedocs.io">pyflame</a> profiles.
+the <tt class="docutils literal">celery.backends</tt> module was appearing in the <a class="reference external" href="https://pyflame.readthedocs.io">pyflame</a> profiles.
 Another solution (for this particular setup) was to use the (<a class="reference external" href="http://docs.celeryproject.org/en/latest/userguide/configuration.html#task-result-backend-settings">undocumented</a>)
 <tt class="docutils literal">disabled</tt> results&nbsp;backend.</p>
 <table class="docutils footnote" frame="void" id="id5" rules="none">

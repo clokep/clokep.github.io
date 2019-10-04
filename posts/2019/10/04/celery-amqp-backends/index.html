@@ -1,0 +1,237 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Feed configuration. -->
+    <link href="https://patrick.cloke.us/feeds/atom.xml" type="application/atom+xml" rel="alternate" title="Like bricks in the sky Atom Feed" />
+    <link href="https://patrick.cloke.us/feeds/rss.xml" type="application/rss+xml" rel="alternate" title="Like bricks in the sky RSS Feed" />
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
+    <link rel="stylesheet" href="/theme/css/styles.css">
+    <link rel="stylesheet" href="/theme/css/borland.css">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
+
+    <title>Celery AMQP Backends</title>
+  </head>
+
+  <body class="pb-5">
+    <nav class="navbar navbar-expand-lg sticky-top navbar-light bg-light border-bottom border-info">
+      <a class="navbar-brand" href="/">
+        Like bricks in the sky
+      </a>
+
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-items" aria-controls="navbar-items" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="navbar-items">
+        <ul class="navbar-nav ml-auto">
+
+          <li class="nav-item">
+            <a class="nav-link" href="/pages/about.html">About</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/pages/projects.html">Projects</a>
+          </li>
+
+          <li class="nav-item">
+            <a class="nav-link" href="/archives.html">Archives</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/tags.html">Tags</a>
+          </li>
+
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="social-dropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              Social
+            </a>
+
+            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="social-dropdown">
+              <a class="dropdown-item" href="https://www.twitter.com/clokep" target="_blank">
+                <span class="fab fa-twitter mr-1"></span> twitter
+              </a>
+              <a class="dropdown-item" href="https://mastodon.social/@clokep" target="_blank">
+                <span class="fab fa-mastodon mr-1"></span> mastodon
+              </a>
+              <a class="dropdown-item" href="https://www.github.com/clokep" target="_blank">
+                <span class="fab fa-github mr-1"></span> github
+              </a>
+              <a class="dropdown-item" href="https://gitlab.com/clokep" target="_blank">
+                <span class="fab fa-gitlab mr-1"></span> gitlab
+              </a>
+              <a class="dropdown-item" href="https://bitbucket.org/clokep" target="_blank">
+                <span class="fab fa-bitbucket mr-1"></span> bitbucket
+              </a>
+              <a class="dropdown-item" href="https://mozillians.org/u/clokep/" target="_blank">
+                <span class="fab fa-firefox mr-1"></span> mozillians
+              </a>
+            </div>
+          </li>
+
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="feeds-dropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              Feeds
+            </a>
+
+            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="feeds-dropdown">
+              <a class="dropdown-item" href="https://patrick.cloke.us/feeds/atom.xml" type="application/atom+xml" rel="alternate">atom feed</a>
+              <a class="dropdown-item" href="https://patrick.cloke.us/feeds/rss.xml" type="application/rss+xml" rel="alternate">rss feed</a>
+            </div>
+          </li>
+
+          <form class="form-inline" method="get" action="http://www.google.com/search">
+            <input class="form-control form-control-sm mr-sm-2" type="search" name="q" placeholder="Search" aria-label="Search" />
+            <input type="hidden"  name="sitesearch" value="patrick.cloke.us" />
+
+            <button class="btn btn-sm btn-outline-info d-none d-sm-inline" type="submit">Search</button>
+          </form>
+        </ul>
+      </div>
+    </nav>
+
+<div class="container">
+  <div class="row">
+    <div class="col-md-12 mt-2 mb-2">
+      <h1>
+        <a href="/posts/2019/10/04/celery-amqp-backends/" rel="bookmark"
+           title="Permalink to Celery AMQP Backends">Celery <span class="caps">AMQP</span>&nbsp;Backends</a>
+      </h1>
+
+      <div class="float-right">
+        <a href="https://twitter.com/intent/tweet?text=Celery%20AMQP%C2%A0Backends&url=https%3A//patrick.cloke.us/posts/2019/10/04/celery-amqp-backends/" target="_blank" class="ml-1 mr-1" title="Share on Twitter">
+          <span class="fab fa-twitter"></span>
+        </a>
+        <a href="http://www.facebook.com/sharer/sharer.php?u=https%3A//patrick.cloke.us/posts/2019/10/04/celery-amqp-backends/" target="_blank" class="ml-1 mr-1" title="Share on Facebook">
+          <span class="fab fa-facebook"></span>
+        </a>
+        <a href="mailto:?subject=Celery%20AMQP%C2%A0Backends&amp;body=https%3A//patrick.cloke.us/posts/2019/10/04/celery-amqp-backends/" target="_blank" class="ml-1 mr-1" title="Share via Email">
+          <span class="fas fa-envelope"></span>
+        </a>
+      </div>
+
+      <i>Friday, October 4, 2019</i>
+
+      <br>
+      <i>
+        Tags:           <a href="/tag/celery.html">celery</a>      </i>
+
+      <div class="mt-3">
+
+        <div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">This started as notes explaining the internals of how Celery&#8217;s <span class="caps">AMQP</span> backends
+operate. This isn&#8217;t meant to be a comparison or prove one is better or that
+one is broken. There just seemed to be a lack of documentation about the
+design and limitations of each&nbsp;backend.</p>
+</div>
+<p>Celery comes with <a class="reference external" href="https://docs.celeryproject.org/en/latest/userguide/configuration.html#task-result-backend-settings">many results backends</a>, two of which use <span class="caps">AMQP</span> under the
+hood: the &#8220;<span class="caps">AMQP</span>&#8221; and &#8220;<span class="caps">RPC</span>&#8221; backends. Both of them publish results as messages
+into <span class="caps">AMQP</span> queues. They&#8217;re convenient since you only need one piece of
+infrastructure to handle both tasks and results (e.g. <a class="reference external" href="https://www.rabbitmq.com/">RabbitMQ</a>). Check the
+<a class="reference external" href="https://docs.celeryproject.org/en/latest/userguide/configuration.html#result-backend"><tt class="docutils literal">result_backend</tt></a> setting if you&#8217;re unsure what you&#8217;re&nbsp;using!</p>
+<div class="section" id="amqp-backend">
+<h2><span class="caps">AMQP</span>&nbsp;backend</h2>
+<p>The <a class="reference external" href="https://docs.celeryproject.org/en/latest/internals/reference/celery.backends.amqp.html"><span class="caps">AMQP</span> backend</a> is deprecated, it uses a results queue <strong>per task call</strong>,
+this doesn&#8217;t scale well since there is significant overhead (many queues, many
+bindings, etc.). That&#8217;s pretty much all I know about it, I&#8217;ve never used&nbsp;it.</p>
+<p>A system level view is&nbsp;below:</p>
+<blockquote class="text-center">
+<a class="reference external image-reference" href="https://patrick.cloke.us/images/celery-amqp-backends/amqp-backend.png"><img alt="RPC requeueing behavior" src="https://patrick.cloke.us/images/celery-amqp-backends/amqp-backend.png" style="width: 80%;" /></a>
+</blockquote>
+<p>The caller produces a task into the task queue. The worker consumes the task
+from this queue and creates a result, which is added to a separate results queue
+per task call. In the example above there&#8217;s tasks A, B, C, etc. Each of those
+produces a result (A&#8217;, B&#8217;, C&#8217;, etc.) in separate&nbsp;queues.</p>
+</div>
+<div class="section" id="rpc-backend">
+<h2><span class="caps">RPC</span>&nbsp;backend</h2>
+<p>The <a class="reference external" href="https://docs.celeryproject.org/en/latest/internals/reference/celery.backends.rpc.html"><span class="caps">RPC</span> backend</a> uses a results queue <strong>per client</strong> which scales better, but
+is a bit more limited in functionality &#8212; it assumes that the process that
+produces the task also consumes the result (hence the &#8220;<span class="caps">RPC</span>&#8221; name &#8212; referring to
+<a class="reference external" href="https://en.wikipedia.org/wiki/Remote_procedure_call">remote procedure call</a>). See the <a class="reference external" href="https://docs.celeryproject.org/en/latest/history/whatsnew-3.1.html#new-rpc-result-backend">announcement of the <span class="caps">RPC</span> backend</a> for more&nbsp;information.</p>
+<p>A system level view is&nbsp;below:</p>
+<blockquote class="text-center">
+<a class="reference external image-reference" href="https://patrick.cloke.us/images/celery-amqp-backends/rpc-backend.png"><img alt="RPC requeueing behavior" src="https://patrick.cloke.us/images/celery-amqp-backends/rpc-backend.png" style="width: 80%;" /></a>
+</blockquote>
+<p>The caller produces a task into the task queue. The worker consumes the task
+from this queue and creates a result, which is added to a results queue per
+caller. In the example above there&#8217;s tasks A, B, C, etc. Each of those
+produces a result (A&#8217;, B&#8217;, C&#8217;, etc.) in the same&nbsp;queue.</p>
+<p>Since the results go into a queue per caller, this works well when the caller
+(and only the caller) is what needs to consume the&nbsp;result.</p>
+<p>Other things to note with the <span class="caps">RPC</span>&nbsp;backend:</p>
+<ul class="simple">
+<li>Each result can only be consumed once (since it is then removed from the
+results&nbsp;queue).</li>
+<li><a class="reference external" href="https://docs.celeryproject.org/en/latest/userguide/canvas.html#chords">chords</a> are not supported (but that is not something that I&#8217;ve ever&nbsp;used).</li>
+<li>Results are discarded when the client disconnects or if the broker restarts
+(they&#8217;re not&nbsp;durable).</li>
+<li>If there is too much &#8220;state history&#8221; (if the results queue grows too large), a
+<a class="reference external" href="https://docs.celeryproject.org/en/latest/internals/reference/celery.backends.rpc.html#celery.backends.rpc.BacklogLimitExceeded"><tt class="docutils literal">BacklogLimitExceeded</tt></a> exception will be raised. (By default too large is
+1000 pending task&nbsp;results.)</li>
+</ul>
+<p>The <span class="caps">RPC</span> backend can run into issues with <span class="caps">AMQP</span> queues being <a class="reference external" href="https://en.wikipedia.org/wiki/FIFO_(computing_and_electronics)"><span class="caps">FIFO</span></a> &#8212; if two
+tasks (A <span class="amp">&amp;</span> B) are started and task B finishes before A, but the client tries to
+get the result of task A first&#8230;what happens? The <span class="caps">RPC</span> backend does one of two&nbsp;things:</p>
+<ol class="arabic simple">
+<li>Requeues it (the&nbsp;default).</li>
+<li>Caches it locally until it is&nbsp;needed.</li>
+</ol>
+<p>The requeuing behavior is shown&nbsp;below:</p>
+<blockquote class="text-center">
+<a class="reference external image-reference" href="https://patrick.cloke.us/images/celery-amqp-backends/rpc-requeues.png"><img alt="RPC requeueing behavior" src="https://patrick.cloke.us/images/celery-amqp-backends/rpc-requeues.png" style="width: 50%;" /></a>
+</blockquote>
+<p>In the example above, result B was added into the queue before A, but A is
+needed first. The queue is run down until A is received and all other items are
+requeued (onto the back of the&nbsp;queue).</p>
+<p>If you have many parallel tasks running this can cause issues, either by running
+into the <tt class="docutils literal">BacklogLimitExceeded</tt> error or just lots of churn in the queue
+(meaning lots of&nbsp;I/O).</p>
+</div>
+
+      </div>
+
+<div id="disqus_thread"></div>
+<script>
+/**
+*  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+*  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/
+/*
+var disqus_config = function () {
+this.page.url = '/posts/2019/10/04/celery-amqp-backends/';
+this.page.identifier = 'celery-amqp-backends';
+};
+*/
+(function() { // DON'T EDIT BELOW THIS LINE
+var d = document, s = d.createElement('script');
+s.src = 'https://clokep.disqus.com/embed.js';
+s.setAttribute('data-timestamp', +new Date());
+(d.head || d.body).appendChild(s);
+})();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    </div>
+  </div>
+</div>
+
+    <nav class="navbar fixed-bottom navbar-light bg-light border-top border-info">
+      <a href="https://getpelican.com/" class="nav-item" target="_blank">Powered by Pelican</a>
+      <a href="https://github.com/clokep/clokep.github.io" class="nav-item" target="_blank">
+        Source available on GitHub <span class="fab fa-github"></span>
+      </a>
+    </nav>
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T" crossorigin="anonymous"></script>
+
+  </body>
+</html>

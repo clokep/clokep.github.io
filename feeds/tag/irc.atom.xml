@@ -894,7 +894,7 @@ a &lt;strong&gt;new&lt;/strong&gt; object.&amp;nbsp; And after learning a bit ab
 to get the &lt;span class="caps"&gt;UI&lt;/span&gt; to respond.&amp;nbsp; I even threw in support for op/half-op/voice
 After today&amp;#8217;s work I was able to generate the following&amp;nbsp;screenshot:&lt;/p&gt;
 &lt;blockquote class="text-center"&gt;
-&lt;a class="reference external image-reference" href="https://patrick.cloke.us/images/IRCworking2.png"&gt;&lt;img alt="Example conversation using JavaScript IRC." class="center" src="https://patrick.cloke.us/images/IRCworking2.png" style="height: 297px;" /&gt;&lt;/a&gt;
+&lt;a class="reference external image-reference" href="https://patrick.cloke.us/images/IRCworking2.png"&gt;&lt;img alt="Example conversation using JavaScript IRC." src="https://patrick.cloke.us/images/IRCworking2.png" style="height: 297px;" /&gt;&lt;/a&gt;
 &lt;p&gt;An initial example of Instantbird communicating using JavaScript &lt;span class="caps"&gt;IRC&lt;/span&gt;.&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;p&gt;This build would be almost fully usable by those who do very little on

@@ -45,10 +45,13 @@ blockquote em {
     font-style: normal;
 }
 
-/* Indent the "Note" lins. */
+/* Format "Notes" better. */
 div.admonition {
+    /* Indent the "Note" lines. */
     margin-left: 40px;
     margin-right: 40px;
+    /* Add back the missing bottom margin. */
+    margin-bottom: 1rem;
 }
 /* Display the "Note" on the same line as the content. */
 div.admonition p.first, div.admonition p.first + p {
