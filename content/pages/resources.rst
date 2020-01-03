@@ -24,6 +24,8 @@ Software Development
 * `JIRA is an antipattern`_ by Jon Evans
 * `Are startups getting value from project estimation?`_ by Abe Winter
 * `Why “Agile” and especially Scrum are terrible`_ by Michael O. Church
+* ` How to Make Good Code Reviews Better `_ by Gergely Orosz
+* `Production Oriented Development`_ by Paul Osman
 
 .. _What is BDD and why should I care?: http://vimeo.com/72673788
 .. _How we use Trello & Google Docs to make UserVoice better every day: https://community.uservoice.com/blog/trello-google-docs-product-management/
@@ -40,6 +42,8 @@ Software Development
 .. _JIRA is an antipattern: https://techcrunch.com/2018/12/09/jira-is-an-antipattern/
 .. _Are startups getting value from project estimation?: https://abe-winter.github.io/2019/05/25/estimation.html
 .. _Why “Agile” and especially Scrum are terrible: https://michaelochurch.wordpress.com/2015/06/06/why-agile-and-especially-scrum-are-terrible/
+.. _ How to Make Good Code Reviews Better: https://stackoverflow.blog/2019/09/30/how-to-make-good-code-reviews-better/
+.. _Production Oriented Development: https://medium.com/@paulosman/production-oriented-development-8ae05f8cc7ea
 
 UI/UX
 =====
