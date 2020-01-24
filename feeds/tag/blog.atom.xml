@@ -146,7 +146,7 @@ settings page on GitHub.&lt;/td&gt;&lt;/tr&gt;
 &lt;/tbody&gt;
 &lt;/table&gt;
 &lt;/div&gt;
-</content><category term="blog"></category></entry><entry><title>New Blog</title><link href="https://patrick.cloke.us/posts/2014/07/03/new-blog/" rel="alternate"></link><published>2014-07-03T23:04:00-04:00</published><updated>2014-07-06T18:24:00-04:00</updated><author><name>Patrick Cloke</name></author><id>tag:patrick.cloke.us,2014-07-03:/posts/2014/07/03/new-blog/</id><summary type="html">
+</content><category term="articles"></category><category term="blog"></category></entry><entry><title>New Blog</title><link href="https://patrick.cloke.us/posts/2014/07/03/new-blog/" rel="alternate"></link><published>2014-07-03T23:04:00-04:00</published><updated>2014-07-06T18:24:00-04:00</updated><author><name>Patrick Cloke</name></author><id>tag:patrick.cloke.us,2014-07-03:/posts/2014/07/03/new-blog/</id><summary type="html">
 &lt;p&gt;If you’re reading this you might have noticed that I have a shiny new blog! I
 had been pretty disappointed in &lt;a class="reference external" href="https://www.blogger.com/"&gt;Blogger&lt;/a&gt; practically since I started using it.
 But it was free, I was a poor college student, etc. I finally managed to get
@@ -228,9 +228,9 @@ adding the sidebar to the left and the organization of the archives page.)&lt;/
 concept of a “category” (and “authors” since I’m the only one on my blog!), so I
 added a few things to my pelicanconf.py:&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="c1"&gt;# Disable categories.&lt;/span&gt;
-&lt;span class="n"&gt;DISPLAY_CATEGORIES_ON_MENU&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="bp"&gt;False&lt;/span&gt;
-&lt;span class="n"&gt;DISPLAY_CATEGORY_ON_ARTICLE&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="bp"&gt;False&lt;/span&gt;
-&lt;span class="n"&gt;CATEGORY_FEED_ATOM&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="bp"&gt;None&lt;/span&gt;
+&lt;span class="n"&gt;DISPLAY_CATEGORIES_ON_MENU&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="kc"&gt;False&lt;/span&gt;
+&lt;span class="n"&gt;DISPLAY_CATEGORY_ON_ARTICLE&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="kc"&gt;False&lt;/span&gt;
+&lt;span class="n"&gt;CATEGORY_FEED_ATOM&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="kc"&gt;None&lt;/span&gt;
 &lt;span class="n"&gt;CATEGORY_SAVE_AS&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s1"&gt;''&lt;/span&gt;
 &lt;span class="n"&gt;CATEGORIES_SAVE_AS&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s1"&gt;''&lt;/span&gt;
 
@@ -243,4 +243,4 @@ used in the template to not show categories above the list of tags on each arti
 &lt;p&gt;This is getting pretty long so I’ll leave how I’m actually serving this content
 to my next article!&lt;/p&gt;
 &lt;/div&gt;
-</content><category term="blog"></category></entry></feed>
+</content><category term="articles"></category><category term="blog"></category></entry></feed>

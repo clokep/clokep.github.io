@@ -1,0 +1,255 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Feed configuration. -->
+    <link href="https://patrick.cloke.us/feeds/atom.xml" type="application/atom+xml" rel="alternate" title="Like bricks in the sky Atom Feed" />
+    <link href="https://patrick.cloke.us/feeds/rss.xml" type="application/rss+xml" rel="alternate" title="Like bricks in the sky RSS Feed" />
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
+    <link rel="stylesheet" href="/theme/css/styles.css">
+    <link rel="stylesheet" href="/theme/css/borland.css">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
+
+    <title>Combining Disparate QuerySets in Django</title>
+  </head>
+
+  <body class="pb-5">
+    <nav class="navbar navbar-expand-lg sticky-top navbar-light bg-light border-bottom border-info">
+      <a class="navbar-brand" href="/">
+        Like bricks in the sky
+      </a>
+
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-items" aria-controls="navbar-items" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="navbar-items">
+        <ul class="navbar-nav ml-auto">
+
+          <li class="nav-item">
+            <a class="nav-link" href="/pages/about.html">About</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/pages/projects.html">Projects</a>
+          </li>
+
+          <li class="nav-item">
+            <a class="nav-link" href="/archives.html">Archives</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/tags.html">Tags</a>
+          </li>
+
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="social-dropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              Social
+            </a>
+
+            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="social-dropdown">
+              <a class="dropdown-item" href="https://www.twitter.com/clokep" target="_blank">
+                <span class="fab fa-twitter mr-1"></span> twitter
+              </a>
+              <a class="dropdown-item" href="https://mastodon.social/@clokep" target="_blank">
+                <span class="fab fa-mastodon mr-1"></span> mastodon
+              </a>
+              <a class="dropdown-item" href="https://www.github.com/clokep" target="_blank">
+                <span class="fab fa-github mr-1"></span> github
+              </a>
+              <a class="dropdown-item" href="https://gitlab.com/clokep" target="_blank">
+                <span class="fab fa-gitlab mr-1"></span> gitlab
+              </a>
+              <a class="dropdown-item" href="https://bitbucket.org/clokep" target="_blank">
+                <span class="fab fa-bitbucket mr-1"></span> bitbucket
+              </a>
+              <a class="dropdown-item" href="https://mozillians.org/u/clokep/" target="_blank">
+                <span class="fab fa-firefox mr-1"></span> mozillians
+              </a>
+            </div>
+          </li>
+
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="feeds-dropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              Feeds
+            </a>
+
+            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="feeds-dropdown">
+              <a class="dropdown-item" href="https://patrick.cloke.us/feeds/atom.xml" type="application/atom+xml" rel="alternate">atom feed</a>
+              <a class="dropdown-item" href="https://patrick.cloke.us/feeds/rss.xml" type="application/rss+xml" rel="alternate">rss feed</a>
+            </div>
+          </li>
+
+          <form class="form-inline" method="get" action="http://www.google.com/search">
+            <input class="form-control form-control-sm mr-sm-2" type="search" name="q" placeholder="Search" aria-label="Search" />
+            <input type="hidden"  name="sitesearch" value="patrick.cloke.us" />
+
+            <button class="btn btn-sm btn-outline-info d-none d-sm-inline" type="submit">Search</button>
+          </form>
+        </ul>
+      </div>
+    </nav>
+
+<div class="container">
+  <div class="row">
+    <div class="col-md-12 mt-2 mb-2">
+      <h1>
+        <a href="/posts/2016/02/04/combining-disparate-querysets-in-django/" rel="bookmark"
+           title="Permalink to Combining Disparate QuerySets in Django">Combining Disparate QuerySets in&nbsp;Django</a>
+      </h1>
+
+      <div class="float-right">
+        <a href="https://twitter.com/intent/tweet?text=Combining%20Disparate%20QuerySets%20in%C2%A0Django&url=https%3A//patrick.cloke.us/posts/2016/02/04/combining-disparate-querysets-in-django/" target="_blank" class="ml-1 mr-1" title="Share on Twitter">
+          <span class="fab fa-twitter"></span>
+        </a>
+        <a href="http://www.facebook.com/sharer/sharer.php?u=https%3A//patrick.cloke.us/posts/2016/02/04/combining-disparate-querysets-in-django/" target="_blank" class="ml-1 mr-1" title="Share on Facebook">
+          <span class="fab fa-facebook"></span>
+        </a>
+        <a href="mailto:?subject=Combining%20Disparate%20QuerySets%20in%C2%A0Django&amp;body=https%3A//patrick.cloke.us/posts/2016/02/04/combining-disparate-querysets-in-django/" target="_blank" class="ml-1 mr-1" title="Share via Email">
+          <span class="fas fa-envelope"></span>
+        </a>
+      </div>
+
+      <i>Thursday, February 4, 2016</i>
+
+      <br>
+      <i>
+        Tags:           <a href="/tag/django.html">django</a>      </i>
+
+      <div class="mt-3">
+
+        <blockquote>
+<p>Note: This was originally posted on the <a href="https://strongarm.io/blog/combining-disparate-querysets-in-django/">Strongarm Blog</a>.</p>
+</blockquote>
+<p>While refactoring <a href="https://strongarm.io">strongarm.io</a> we ran into a problem: we
+had different database tables that we needed to query over as if they were a
+single database table. We use <a href="https://www.djangoproject.com/">Django</a> as an
+<a href="https://en.wikipedia.org/wiki/Object-relational_mapping"><span class="caps">ORM</span></a> and needed to
+stay within the <span class="caps">ORM</span> in order to leverage third-party&nbsp;libraries.</p>
+<p>Our two models have overlapping fields, in this instance both had a <code>name</code> field
+to search over and a <code>created</code> field to order on. A naive implementation might
+serialize all the data to memory and come up with implementations&nbsp;like:</p>
+<div class="highlight"><pre><span></span><span class="c1"># Consider ModelA and ModelB to exist somewhere, both have a name (CharField)</span>
+<span class="c1"># and created (DateTimeField).</span>
+
+<span class="kn">from</span> <span class="nn">itertools</span> <span class="kn">import</span> <span class="n">chain</span>
+
+<span class="c1"># Sorted data.</span>
+<span class="n">sorted_data</span> <span class="o">=</span> <span class="nb">sorted</span><span class="p">(</span>
+    <span class="n">chain</span><span class="p">(</span>
+        <span class="n">ModelA</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">order_by</span><span class="p">(</span><span class="s1">&#39;-created&#39;</span><span class="p">),</span>
+        <span class="n">ModelB</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">order_by</span><span class="p">(</span><span class="s1">&#39;-created&#39;</span><span class="p">),</span>
+    <span class="p">),</span>
+    <span class="n">key</span><span class="o">=</span><span class="k">lambda</span> <span class="n">instance</span><span class="p">:</span> <span class="n">instance</span><span class="o">.</span><span class="n">date</span><span class="p">,</span>
+    <span class="n">reverse</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="c1"># Search for a particular result.</span>
+<span class="n">result</span> <span class="o">=</span> <span class="kc">None</span>
+<span class="k">try</span><span class="p">:</span>
+    <span class="n">result</span> <span class="o">=</span> <span class="n">ModelA</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;foo&#39;</span><span class="p">)</span>
+<span class="k">except</span> <span class="n">ModelA</span><span class="o">.</span><span class="n">DoesNotExist</span><span class="p">:</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="n">result</span> <span class="o">=</span> <span class="n">ModelB</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;foo&#39;</span><span class="p">)</span>
+    <span class="k">except</span> <span class="n">ModelB</span><span class="o">.</span><span class="n">DoesNotExist</span><span class="p">:</span>
+        <span class="k">pass</span>
+
+<span class="c1"># Look at a subset.</span>
+<span class="n">subset_data</span> <span class="o">=</span> <span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="n">ModelA</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">name__contains</span><span class="o">=</span><span class="s1">&#39;foo&#39;</span><span class="p">))</span> <span class="o">+</span>
+               <span class="nb">list</span><span class="p">(</span><span class="n">ModelB</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">name__contains</span><span class="o">=</span><span class="s1">&#39;foo&#39;</span><span class="p">)))</span>
+</pre></div>
+
+
+<p>This has two issues we had to&nbsp;overcome:</p>
+<ol>
+<li>We had too much data to serialize to&nbsp;memory.</li>
+<li>We needed to pass the result into Django APIs that expected a <code>QuerySet</code>.</li>
+</ol>
+<p>Enter <a href="https://github.com/percipient/django-querysetsequence">Django QuerySetSequence</a>!
+We built Django QuerySetSequence (based on some previously available code) to
+provide the&nbsp;following:</p>
+<ol>
+<li>Provide a <code>QuerySet</code> <span class="caps">API</span> that operates over multiple <code>QuerySets</code> generated
+    from different <code>Model</code> classes.</li>
+<li>Evaluate each <code>QuerySet</code> lazily (i.e. as late as&nbsp;possible).</li>
+<li>High quality code with&nbsp;tests.</li>
+<li>Guard against calling untested&nbsp;methods.</li>
+</ol>
+<p>This allows much more Django-esque&nbsp;code:</p>
+<div class="highlight"><pre><span></span><span class="c1"># Consider ModelA and ModelB to exist somewhere, both have a name (CharField)</span>
+<span class="c1"># and created (DateTimeField).</span>
+<span class="kn">from</span> <span class="nn">django.core.exceptions</span> <span class="kn">import</span> <span class="n">ObjectDoesNotExist</span>
+
+<span class="kn">from</span> <span class="nn">queryset_sequence</span> <span class="kn">import</span> <span class="n">QuerySetSequence</span>
+
+<span class="n">queryset</span> <span class="o">=</span> <span class="n">QuerySetSequence</span><span class="p">(</span><span class="n">ModelA</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">all</span><span class="p">(),</span> <span class="n">ModelB</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">all</span><span class="p">())</span>
+
+<span class="c1"># Sorted data.</span>
+<span class="n">sorted_data</span> <span class="o">=</span> <span class="n">queryset</span><span class="o">.</span><span class="n">order_by</span><span class="p">(</span><span class="s1">&#39;-created&#39;</span><span class="p">)</span>
+
+<span class="c1"># Search for a particular result:</span>
+<span class="k">try</span><span class="p">:</span>
+    <span class="n">result</span> <span class="o">=</span> <span class="n">queryset</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;foo&#39;</span><span class="p">)</span>
+<span class="k">except</span> <span class="n">ObjectDoesNotExist</span><span class="p">:</span>
+    <span class="n">result</span> <span class="o">=</span> <span class="kc">None</span>
+
+<span class="c1"># Look at a subset.</span>
+<span class="n">subset_data</span> <span class="o">=</span> <span class="n">queryset</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">name__contains</span><span class="o">=</span><span class="s1">&#39;foo&#39;</span><span class="p">)</span>
+</pre></div>
+
+
+<p>Currently Django QuerySetSequence supports both Django 1.8 and Django 1.9 on
+Python 2.7, 3.4 and 3.5. Check out the full set of features or contribute to the
+<a href="https://github.com/percipient/django-querysetsequence">source repository</a>. You
+can install <code>django-querysetsequence</code> package from
+<a href="https://pypi.python.org/pypi/django-querysetsequence">pypi</a> using&nbsp;pip:</p>
+<div class="highlight"><pre><span></span><span class="err">pip install django-querysetsequence</span>
+</pre></div>
+
+
+<p>If you&#8217;re using Django QuerySetSequence we&#8217;d love to
+<a href="mailto:support@strongarm.io">hear about it</a>!</p>
+      </div>
+
+<div id="disqus_thread"></div>
+<script>
+/**
+*  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+*  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/
+/*
+var disqus_config = function () {
+this.page.url = '/posts/2016/02/04/combining-disparate-querysets-in-django/';
+this.page.identifier = 'combining-disparate-querysets-in-django';
+};
+*/
+(function() { // DON'T EDIT BELOW THIS LINE
+var d = document, s = d.createElement('script');
+s.src = 'https://clokep.disqus.com/embed.js';
+s.setAttribute('data-timestamp', +new Date());
+(d.head || d.body).appendChild(s);
+})();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    </div>
+  </div>
+</div>
+
+    <nav class="navbar fixed-bottom navbar-light bg-light border-top border-info">
+      <a href="https://getpelican.com/" class="nav-item" target="_blank">Powered by Pelican</a>
+      <a href="https://github.com/clokep/clokep.github.io" class="nav-item" target="_blank">
+        Source available on GitHub <span class="fab fa-github"></span>
+      </a>
+    </nav>
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T" crossorigin="anonymous"></script>
+
+  </body>
+</html>

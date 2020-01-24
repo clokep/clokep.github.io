@@ -95,7 +95,7 @@ might be open sourced in the&amp;nbsp;future.&lt;/li&gt;
 &lt;/ol&gt;
 &lt;/div&gt;
 &lt;/div&gt;
-</content><category term="programming"></category><category term="python"></category><category term="RSS"></category><category term="Atom"></category></entry><entry><title>Blogger RSS Feeds for a Label</title><link href="https://patrick.cloke.us/posts/2010/12/08/blogger-rss-feeds-for-label/" rel="alternate"></link><published>2010-12-08T15:25:00-05:00</published><updated>2010-12-08T15:25:00-05:00</updated><author><name>Patrick Cloke</name></author><id>tag:patrick.cloke.us,2010-12-08:/posts/2010/12/08/blogger-rss-feeds-for-label/</id><summary type="html">&lt;p&gt;Blogger has crappy support for &lt;span class="caps"&gt;RSS&lt;/span&gt; apparently.&amp;nbsp; I figured if I clicked
+</content><category term="articles"></category><category term="programming"></category><category term="python"></category><category term="RSS"></category><category term="Atom"></category></entry><entry><title>Blogger RSS Feeds for a Label</title><link href="https://patrick.cloke.us/posts/2010/12/08/blogger-rss-feeds-for-label/" rel="alternate"></link><published>2010-12-08T15:25:00-05:00</published><updated>2010-12-08T15:25:00-05:00</updated><author><name>Patrick Cloke</name></author><id>tag:patrick.cloke.us,2010-12-08:/posts/2010/12/08/blogger-rss-feeds-for-label/</id><summary type="html">&lt;p&gt;Blogger has crappy support for &lt;span class="caps"&gt;RSS&lt;/span&gt; apparently.&amp;nbsp; I figured if I clicked
 on a label, then found the &lt;span class="caps"&gt;RSS&lt;/span&gt; embedded in the page&amp;#8230;it would give me
 the &lt;span class="caps"&gt;RSS&lt;/span&gt; feed for that label,&amp;nbsp;right?&lt;/p&gt;
 &lt;p&gt;Wrong.&lt;/p&gt;
@@ -112,4 +112,4 @@ is broken.&amp;nbsp; For a specific label (I&amp;#8217;m using the label&amp;nbs
 &lt;li&gt;Atom: &lt;a class="reference external" href="http://clokep.blogspot.com/feeds/posts/default/-/Instantbird"&gt;http://clokep.blogspot.com/feeds/posts/default/-/Instantbird&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 &lt;p&gt;Who knows what versions of &lt;span class="caps"&gt;RSS&lt;/span&gt;/Atom these are.&amp;nbsp; But the feeds do&amp;nbsp;exist.&lt;/p&gt;
-</content><category term="bugs"></category><category term="Google"></category><category term="RSS"></category></entry></feed>
+</content><category term="articles"></category><category term="bugs"></category><category term="Google"></category><category term="RSS"></category></entry></feed>

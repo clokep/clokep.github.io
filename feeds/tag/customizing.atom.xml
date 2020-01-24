@@ -21,7 +21,7 @@ sure you don&amp;#8217;t really care about that and just want the code, well I&a
 &lt;p&gt;And that&amp;#8217;s it!&amp;nbsp; Restart Instantbird and you should always have big
 contacts.&amp;nbsp; I haven&amp;#8217;t seen any issues of using this (missing or wrong
 behavior), but of course your mileage might vary.&amp;nbsp; Have&amp;nbsp;fun!&lt;/p&gt;
-</content><category term="customizing"></category><category term="Instantbird"></category><category term="programming"></category></entry><entry><title>Instantbird Contact List Hack</title><link href="https://patrick.cloke.us/posts/2011/10/31/instantbird-contact-list-hack/" rel="alternate"></link><published>2011-10-31T20:20:00-04:00</published><updated>2011-10-31T20:20:00-04:00</updated><author><name>Patrick Cloke</name></author><id>tag:patrick.cloke.us,2011-10-31:/posts/2011/10/31/instantbird-contact-list-hack/</id><summary type="html">&lt;p&gt;A friend of mine asked me if there was a way to have selected contacts
+</content><category term="articles"></category><category term="customizing"></category><category term="Instantbird"></category><category term="programming"></category></entry><entry><title>Instantbird Contact List Hack</title><link href="https://patrick.cloke.us/posts/2011/10/31/instantbird-contact-list-hack/" rel="alternate"></link><published>2011-10-31T20:20:00-04:00</published><updated>2011-10-31T20:20:00-04:00</updated><author><name>Patrick Cloke</name></author><id>tag:patrick.cloke.us,2011-10-31:/posts/2011/10/31/instantbird-contact-list-hack/</id><summary type="html">&lt;p&gt;A friend of mine asked me if there was a way to have selected contacts
 in the contact list &lt;span class="caps"&gt;NOT&lt;/span&gt; expand to two lines (where the status goes onto
 the second line) in&amp;nbsp;Instantbird.&lt;/p&gt;
 &lt;p&gt;There&amp;#8217;s actually no option to do this in Instantbird, but with a
@@ -49,4 +49,4 @@ that lets you expand/collapse isn&amp;#8217;t shown on a non-selected&amp;nbsp;c
 template to be used instead of the contact-big template, even when the
 contact is expanded; i.e. we&amp;#8217;re overwriting the command given
 &lt;a class="reference external" href="http://lxr.instantbird.org/instantbird/source/instantbird/content/blist.css#44"&gt;blist.css&lt;/a&gt;.)&lt;/p&gt;
-</content><category term="customizing"></category><category term="Instantbird"></category><category term="programming"></category></entry></feed>
+</content><category term="articles"></category><category term="customizing"></category><category term="Instantbird"></category><category term="programming"></category></entry></feed>

@@ -90,4 +90,4 @@ don&amp;#8217;t use ArrayBufferViews, use DataViews.&amp;nbsp; (Although Uint8Ar
 Int8Arrays should work&amp;nbsp;fine!)&lt;/p&gt;
 &lt;p&gt;And to not rant the &lt;em&gt;entire&lt;/em&gt; time, working with typed arrays certainly
 does beat strings +&amp;nbsp;charCodeAt!&lt;/p&gt;
-</content><category term="Instantbird"></category><category term="Mozilla"></category><category term="OSCAR"></category><category term="Thunderbird"></category><category term="Wat"></category></entry></feed>
+</content><category term="articles"></category><category term="Instantbird"></category><category term="Mozilla"></category><category term="OSCAR"></category><category term="Thunderbird"></category><category term="Wat"></category></entry></feed>

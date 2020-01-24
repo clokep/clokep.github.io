@@ -1,5 +1,140 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>Like bricks in the sky</title><link href="https://patrick.cloke.us/" rel="alternate"></link><link href="https://patrick.cloke.us/feeds/atom.xml" rel="self"></link><id>https://patrick.cloke.us/</id><updated>2019-10-04T08:10:00-04:00</updated><entry><title>Celery AMQP Backends</title><link href="https://patrick.cloke.us/posts/2019/10/04/celery-amqp-backends/" rel="alternate"></link><published>2019-10-04T08:10:00-04:00</published><updated>2019-10-04T08:10:00-04:00</updated><author><name>Patrick Cloke</name></author><id>tag:patrick.cloke.us,2019-10-04:/posts/2019/10/04/celery-amqp-backends/</id><summary type="html">&lt;div class="admonition note"&gt;
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Like bricks in the sky</title><link href="https://patrick.cloke.us/" rel="alternate"></link><link href="https://patrick.cloke.us/feeds/atom.xml" rel="self"></link><id>https://patrick.cloke.us/</id><updated>2020-01-23T20:49:00-05:00</updated><entry><title>Using MySQLs LOAD DATA with Django</title><link href="https://patrick.cloke.us/posts/2020/01/23/using-mysqls-load-data-with-django/" rel="alternate"></link><published>2020-01-23T20:49:00-05:00</published><updated>2020-01-23T20:49:00-05:00</updated><author><name>Patrick Cloke</name></author><id>tag:patrick.cloke.us,2020-01-23:/posts/2020/01/23/using-mysqls-load-data-with-django/</id><summary type="html">&lt;p&gt;While attempting to improve performance of bulk inserting data into MySQL
+database my coworker came across the &lt;a class="reference external" href="https://dev.mysql.com/doc/refman/5.6/en/load-data.html"&gt;&lt;tt class="docutils literal"&gt;&lt;span class="caps"&gt;LOAD&lt;/span&gt; &lt;span class="caps"&gt;DATA&lt;/span&gt;&lt;/tt&gt;&lt;/a&gt; &lt;span class="caps"&gt;SQL&lt;/span&gt; statement. It allows you
+to read data from a text file (in a comma separated variable-like format) and
+quickly insert it into a table. There&amp;#8217;s two variations of it …&lt;/p&gt;</summary><content type="html">&lt;p&gt;While attempting to improve performance of bulk inserting data into MySQL
+database my coworker came across the &lt;a class="reference external" href="https://dev.mysql.com/doc/refman/5.6/en/load-data.html"&gt;&lt;tt class="docutils literal"&gt;&lt;span class="caps"&gt;LOAD&lt;/span&gt; &lt;span class="caps"&gt;DATA&lt;/span&gt;&lt;/tt&gt;&lt;/a&gt; &lt;span class="caps"&gt;SQL&lt;/span&gt; statement. It allows you
+to read data from a text file (in a comma separated variable-like format) and
+quickly insert it into a table. There&amp;#8217;s two variations of it, a local remote
+version. We did not experiment with the local version since we were connecting
+to a remote MySQL server and did not have access to the database&amp;#8217;s local&amp;nbsp;disk.&lt;/p&gt;
+&lt;p&gt;Since we are using Django we were hoping to match the calling behavior of the
+&lt;a class="reference external" href="https://docs.djangoproject.com/en/1.11/ref/models/querysets/#bulk-create"&gt;&lt;tt class="docutils literal"&gt;bulk_create()&lt;/tt&gt;&lt;/a&gt; method of a &lt;tt class="docutils literal"&gt;QuerySet&lt;/tt&gt; to do the&amp;nbsp;following:&lt;/p&gt;
+&lt;ol class="arabic simple"&gt;
+&lt;li&gt;Write the data to be inserted into a temporary&amp;nbsp;file.&lt;/li&gt;
+&lt;li&gt;Execute the &lt;tt class="docutils literal"&gt;&lt;span class="caps"&gt;LOAD&lt;/span&gt; &lt;span class="caps"&gt;DATA&lt;/span&gt;&lt;/tt&gt; referencing the&amp;nbsp;file.&lt;/li&gt;
+&lt;li&gt;Clean-up the temporary&amp;nbsp;file.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;After a bit of experimentation we were able to come up with a sub-class of
+&lt;tt class="docutils literal"&gt;QuerySet&lt;/tt&gt; with the desired features. This is heavily based on
+&lt;a class="reference external" href="https://github.com/django/django/blob/7fd1ca3ef63e5e834205a8208f4dc17d80f9a417/django/db/models/query.py#L402-L451"&gt;Django&amp;#8217;s implementation&lt;/a&gt; of &lt;tt class="docutils literal"&gt;bulk_create()&lt;/tt&gt;. There were a few details to get
+this to work&amp;nbsp;properly:&lt;/p&gt;
+&lt;ul class="simple"&gt;
+&lt;li&gt;Dynamically getting the fields to insert into the&amp;nbsp;database.&lt;/li&gt;
+&lt;li&gt;Converting the Python value to a proper string value for database&amp;nbsp;insertion.&lt;/li&gt;
+&lt;li&gt;Ensuring the proper database was used when using a read-replica with a&amp;nbsp;router.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class="admonition warning"&gt;
+&lt;p class="first admonition-title"&gt;Warning&lt;/p&gt;
+&lt;p&gt;The below code is not fully vetted if the escaping of the database values is&amp;nbsp;safe.&lt;/p&gt;
+&lt;p class="last"&gt;It is also missing error checking and handling of edge-cases (e.g. an empty
+list of objects; see the start of the &lt;tt class="docutils literal"&gt;bulk_create()&lt;/tt&gt; implementation).&lt;/p&gt;
+&lt;/div&gt;
+&lt;p&gt;Without further ado, see the&amp;nbsp;implementation:&lt;/p&gt;
+&lt;pre class="code python highlight literal-block"&gt;
+&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;__future__&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;absolute_import&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;print_function&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;unicode_literals&lt;/span&gt;
+
+&lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;tempfile&lt;/span&gt;
+
+&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;django.db&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;connections&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;models&lt;/span&gt;
+&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;django.db.models.fields&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;AutoField&lt;/span&gt;
+
+&lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;six&lt;/span&gt;
+
+
+&lt;span class="k"&gt;class&lt;/span&gt; &lt;span class="nc"&gt;LoadDataQuerySet&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;models&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;QuerySet&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+    &lt;span class="sd"&gt;&amp;quot;&amp;quot;&amp;quot;A QuerySet with an additional load_data method which inserts data quickly in bulk.&amp;quot;&amp;quot;&amp;quot;&lt;/span&gt;
+
+    &lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;_convert_instance_to_line&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;fields&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;instance&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;connection&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+        &lt;span class="sd"&gt;&amp;quot;&amp;quot;&amp;quot;Convert an object to a single line to be placed in the temporary file.&amp;quot;&amp;quot;&amp;quot;&lt;/span&gt;
+        &lt;span class="c1"&gt;# Convert each field value to a database value.&lt;/span&gt;
+        &lt;span class="c1"&gt;#&lt;/span&gt;
+        &lt;span class="c1"&gt;# Escape the enclosure and escape characters since they are not handled&lt;/span&gt;
+        &lt;span class="c1"&gt;# automatically.&lt;/span&gt;
+        &lt;span class="n"&gt;db_prep_values&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;
+            &lt;span class="n"&gt;six&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;text_type&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;model&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;_meta&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;get_field&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;field_name&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;get_db_prep_value&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;
+                &lt;span class="nb"&gt;getattr&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;instance&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;field_name&lt;/span&gt;&lt;span class="p"&gt;),&lt;/span&gt; &lt;span class="n"&gt;connection&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;replace&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;'&lt;/span&gt;&lt;span class="se"&gt;\\&lt;/span&gt;&lt;span class="s1"&gt;'&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s1"&gt;'&lt;/span&gt;&lt;span class="se"&gt;\\\\&lt;/span&gt;&lt;span class="s1"&gt;'&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;replace&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;'&amp;quot;'&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s1"&gt;'&lt;/span&gt;&lt;span class="se"&gt;\\&lt;/span&gt;&lt;span class="s1"&gt;&amp;quot;'&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+            &lt;span class="k"&gt;for&lt;/span&gt; &lt;span class="n"&gt;field_name&lt;/span&gt; &lt;span class="ow"&gt;in&lt;/span&gt; &lt;span class="n"&gt;fields&lt;/span&gt;
+        &lt;span class="p"&gt;]&lt;/span&gt;
+
+        &lt;span class="c1"&gt;# Comma separate the wrapped values.&lt;/span&gt;
+        &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="s1"&gt;','&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;join&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nb"&gt;map&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="k"&gt;lambda&lt;/span&gt; &lt;span class="n"&gt;v&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s1"&gt;'&amp;quot;'&lt;/span&gt; &lt;span class="o"&gt;+&lt;/span&gt; &lt;span class="n"&gt;v&lt;/span&gt; &lt;span class="o"&gt;+&lt;/span&gt; &lt;span class="s1"&gt;'&amp;quot;'&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;db_prep_values&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt; &lt;span class="o"&gt;+&lt;/span&gt; &lt;span class="s1"&gt;'&lt;/span&gt;&lt;span class="se"&gt;\n&lt;/span&gt;&lt;span class="s1"&gt;'&lt;/span&gt;
+
+    &lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;load_data&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;objs&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+        &lt;span class="sd"&gt;&amp;quot;&amp;quot;&amp;quot;
+        Inserts each of the instances into the database. This does *not* call
+        save() on each of the instances, does not send any pre/post save
+        signals, and does not set the primary key attribute if it is an
+        autoincrement field. Multi-table models are not supported.
+
+        Write the data to a temporary file, then insert that data into MySQL via a LOAD DATA call.
+
+        :param tuple fields: A tuple of string field names.
+        :param list objs: The list of objects to insert.
+        :returns: The number of inserted records.
+        :rtype int:
+        &amp;quot;&amp;quot;&amp;quot;&lt;/span&gt;
+
+        &lt;span class="c1"&gt;# This is based on by bulk_create.&lt;/span&gt;
+        &lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;_for_write&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="kc"&gt;True&lt;/span&gt;
+        &lt;span class="n"&gt;connection&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;connections&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;db&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;
+        &lt;span class="n"&gt;fields&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;model&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;_meta&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;concrete_fields&lt;/span&gt;
+        &lt;span class="n"&gt;fields&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;f&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;name&lt;/span&gt; &lt;span class="k"&gt;for&lt;/span&gt; &lt;span class="n"&gt;f&lt;/span&gt; &lt;span class="ow"&gt;in&lt;/span&gt; &lt;span class="n"&gt;fields&lt;/span&gt; &lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="ow"&gt;not&lt;/span&gt; &lt;span class="nb"&gt;isinstance&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;f&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;AutoField&lt;/span&gt;&lt;span class="p"&gt;)]&lt;/span&gt;
+
+        &lt;span class="c1"&gt;# The table name and field names cannot be parameterized when executing&lt;/span&gt;
+        &lt;span class="c1"&gt;# a SQL statement with the Django ORM. The name of the file where data&lt;/span&gt;
+        &lt;span class="c1"&gt;# is loaded from can be parameterized, however.&lt;/span&gt;
+        &lt;span class="c1"&gt;#&lt;/span&gt;
+        &lt;span class="c1"&gt;# The result of this is a partially formatted string to be fed into MySQL.&lt;/span&gt;
+        &lt;span class="n"&gt;load_data_statement&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;&amp;quot;&amp;quot;
+            LOAD DATA LOCAL INFILE &lt;/span&gt;&lt;span class="si"&gt;%s&lt;/span&gt;&lt;span class="s2"&gt; INTO TABLE &lt;/span&gt;&lt;span class="si"&gt;{mysql_table_name}&lt;/span&gt;&lt;span class="s2"&gt; CHARACTER SET utf8 FIELDS TERMINATED BY ',' ENCLOSED BY '&amp;quot;' LINES TERMINATED BY '&lt;/span&gt;&lt;span class="se"&gt;\\&lt;/span&gt;&lt;span class="s2"&gt;n' (&lt;/span&gt;&lt;span class="si"&gt;{fields}&lt;/span&gt;&lt;span class="s2"&gt;);
+            &amp;quot;&amp;quot;&amp;quot;&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;format&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;
+                &lt;span class="n"&gt;mysql_table_name&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;model&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;_meta&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;db_table&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+                &lt;span class="n"&gt;fields&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s1"&gt;', '&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;join&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;fields&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+            &lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;strip&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
+
+        &lt;span class="c1"&gt;# Write each object to their own line in a temporary file and bulk&lt;/span&gt;
+        &lt;span class="c1"&gt;# insert the data into MySQL using the LOAD DATA statement.&lt;/span&gt;
+        &lt;span class="k"&gt;with&lt;/span&gt; &lt;span class="n"&gt;tempfile&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;NamedTemporaryFile&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;mode&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s1"&gt;'w'&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;suffix&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s1"&gt;'.data'&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;delete&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="kc"&gt;True&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="k"&gt;as&lt;/span&gt; &lt;span class="n"&gt;data_file&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
+            &lt;span class="n"&gt;data_file&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;writelines&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;
+                &lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;_convert_instance_to_line&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;fields&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;obj&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;connection&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="k"&gt;for&lt;/span&gt; &lt;span class="n"&gt;obj&lt;/span&gt; &lt;span class="ow"&gt;in&lt;/span&gt; &lt;span class="n"&gt;objs&lt;/span&gt;
+            &lt;span class="p"&gt;)&lt;/span&gt;
+            &lt;span class="n"&gt;data_file&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;flush&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
+
+            &lt;span class="k"&gt;with&lt;/span&gt; &lt;span class="n"&gt;connection&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;cursor&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt; &lt;span class="k"&gt;as&lt;/span&gt; &lt;span class="n"&gt;cursor&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
+                &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="n"&gt;cursor&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;execute&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;load_data_statement&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;data_file&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;name&lt;/span&gt;&lt;span class="p"&gt;])&lt;/span&gt;
+&lt;/pre&gt;
+&lt;p&gt;This can be used by &lt;a class="reference external" href="https://docs.djangoproject.com/en/1.11/topics/db/managers/#custom-managers"&gt;using a custom manager&lt;/a&gt; to the &lt;tt class="docutils literal"&gt;LoadDataQuerySet&lt;/tt&gt;
+manager.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;django.db&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;models&lt;/span&gt;
+
+&lt;span class="k"&gt;class&lt;/span&gt; &lt;span class="nc"&gt;OpinionPoll&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;models&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;Model&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+    &lt;span class="n"&gt;question&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;models&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;CharField&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;max_length&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="mi"&gt;200&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+    &lt;span class="n"&gt;poll_date&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;models&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;DateField&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
+&lt;span class="hll"&gt;    &lt;span class="n"&gt;objects&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;LoadDataQuerySet&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;as_manager&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
+&lt;/span&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;You can then easily call &lt;tt class="docutils literal"&gt;load_data()&lt;/tt&gt; just like you would &lt;tt class="docutils literal"&gt;bulk_create()&lt;/tt&gt;!&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;datetime&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;date&lt;/span&gt;
+
+&lt;span class="c1"&gt;# Ask the same poll on the first of each month.&lt;/span&gt;
+&lt;span class="n"&gt;polls&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;[]&lt;/span&gt;
+&lt;span class="k"&gt;for&lt;/span&gt; &lt;span class="n"&gt;month&lt;/span&gt; &lt;span class="ow"&gt;in&lt;/span&gt; &lt;span class="nb"&gt;range&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;12&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+    &lt;span class="n"&gt;polls&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;append&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;
+        &lt;span class="n"&gt;OpinionPoll&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;
+            &lt;span class="n"&gt;question&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;What&amp;#39;s your favorite ice cream?&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+            &lt;span class="n"&gt;poll_date&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;date&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;2020&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;month&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+        &lt;span class="p"&gt;)&lt;/span&gt;
+    &lt;span class="p"&gt;)&lt;/span&gt;
+
+&lt;span class="c1"&gt;# Insert all the polls at once.&lt;/span&gt;
+&lt;span class="hll"&gt;&lt;span class="n"&gt;OpinionPoll&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;objects&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;load_data&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;polls&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Although the above code did work (using Django 1.11.x and MySQL 5.6, it should
+work without much work on similar versions) only a small increase in insertion
+rate was observed. In order to avoid complexity (and custom code) it was decided
+that the above code was not worth keeping, but it was a fun journey into
+extending Django&amp;#8217;s &lt;tt class="docutils literal"&gt;QuerySet&lt;/tt&gt; methods (and investigating obscure MySQL&amp;nbsp;features).&lt;/p&gt;
+</content><category term="articles"></category><category term="django"></category></entry><entry><title>Celery AMQP Backends</title><link href="https://patrick.cloke.us/posts/2019/10/04/celery-amqp-backends/" rel="alternate"></link><published>2019-10-04T08:10:00-04:00</published><updated>2019-10-04T08:10:00-04:00</updated><author><name>Patrick Cloke</name></author><id>tag:patrick.cloke.us,2019-10-04:/posts/2019/10/04/celery-amqp-backends/</id><summary type="html">&lt;div class="admonition note"&gt;
 &lt;p class="first admonition-title"&gt;Note&lt;/p&gt;
 &lt;p class="last"&gt;This started as notes explaining the internals of how Celery&amp;#8217;s &lt;span class="caps"&gt;AMQP&lt;/span&gt; backends
 operate. This isn&amp;#8217;t meant to be a comparison or prove one is better or that
@@ -75,7 +210,7 @@ requeued (onto the back of the&amp;nbsp;queue).&lt;/p&gt;
 into the &lt;tt class="docutils literal"&gt;BacklogLimitExceeded&lt;/tt&gt; error or just lots of churn in the queue
 (meaning lots of&amp;nbsp;I/O).&lt;/p&gt;
 &lt;/div&gt;
-</content><category term="celery"></category></entry><entry><title>Celery without a Results Backend</title><link href="https://patrick.cloke.us/posts/2019/07/17/celery-without-a-results-backend/" rel="alternate"></link><published>2019-07-17T20:35:00-04:00</published><updated>2019-07-19T08:28:00-04:00</updated><author><name>Patrick Cloke</name></author><id>tag:patrick.cloke.us,2019-07-17:/posts/2019/07/17/celery-without-a-results-backend/</id><summary type="html">&lt;p&gt;The &lt;a class="reference external" href="http://www.celeryproject.org/"&gt;Celery&lt;/a&gt; &lt;a class="reference external" href="https://docs.celeryproject.org/en/latest/reference/celery.html#celery.Celery.send_task"&gt;&lt;tt class="docutils literal"&gt;send_task&lt;/tt&gt;&lt;/a&gt; method allows you to invoke a task by name without
+</content><category term="articles"></category><category term="celery"></category></entry><entry><title>Celery without a Results Backend</title><link href="https://patrick.cloke.us/posts/2019/07/17/celery-without-a-results-backend/" rel="alternate"></link><published>2019-07-17T20:35:00-04:00</published><updated>2019-07-19T08:28:00-04:00</updated><author><name>Patrick Cloke</name></author><id>tag:patrick.cloke.us,2019-07-17:/posts/2019/07/17/celery-without-a-results-backend/</id><summary type="html">&lt;p&gt;The &lt;a class="reference external" href="http://www.celeryproject.org/"&gt;Celery&lt;/a&gt; &lt;a class="reference external" href="https://docs.celeryproject.org/en/latest/reference/celery.html#celery.Celery.send_task"&gt;&lt;tt class="docutils literal"&gt;send_task&lt;/tt&gt;&lt;/a&gt; method allows you to invoke a task by name without
 importing it. &lt;a class="footnote-reference" href="#id5" id="id1"&gt;[1]&lt;/a&gt; There is an undocumented &lt;a class="footnote-reference" href="#id6" id="id2"&gt;[2]&lt;/a&gt; caveat to using &lt;tt class="docutils literal"&gt;send_task&lt;/tt&gt;:
 it doesn&amp;#8217;t have access to the configuration of the task (from when the task was
 created using the &lt;a class="reference external" href="https://docs.celeryproject.org/en/latest/reference/celery.html#celery.Celery.task"&gt;&lt;tt class="docutils literal"&gt;&amp;#64;task&lt;/tt&gt; decorator&lt;/a&gt;).&lt;/p&gt;
@@ -140,7 +275,7 @@ backend was under load or down.&lt;/td&gt;&lt;/tr&gt;
 don&amp;#8217;t need the result!&lt;/td&gt;&lt;/tr&gt;
 &lt;/tbody&gt;
 &lt;/table&gt;
-</content><category term="celery"></category></entry><entry><title>Patching a Mail Slot</title><link href="https://patrick.cloke.us/posts/2018/12/28/patching-a-mail-slot/" rel="alternate"></link><published>2018-12-28T14:38:00-05:00</published><updated>2018-12-28T14:38:00-05:00</updated><author><name>Patrick Cloke</name></author><id>tag:patrick.cloke.us,2018-12-28:/posts/2018/12/28/patching-a-mail-slot/</id><summary type="html">&lt;p&gt;The front door of my condo has an unused mail slot in it (we have a mailbox on
+</content><category term="articles"></category><category term="celery"></category></entry><entry><title>Patching a Mail Slot</title><link href="https://patrick.cloke.us/posts/2018/12/28/patching-a-mail-slot/" rel="alternate"></link><published>2018-12-28T14:38:00-05:00</published><updated>2018-12-28T14:38:00-05:00</updated><author><name>Patrick Cloke</name></author><id>tag:patrick.cloke.us,2018-12-28:/posts/2018/12/28/patching-a-mail-slot/</id><summary type="html">&lt;p&gt;The front door of my condo has an unused mail slot in it (we have a mailbox on
 the front of the house to actually get mail). In order to avoid a draft during
 the winter, the previous owner had shoved some insulation in the mail slot and
 covered it …&lt;/p&gt;</summary><content type="html">&lt;p&gt;The front door of my condo has an unused mail slot in it (we have a mailbox on
@@ -205,7 +340,7 @@ material was already on&amp;nbsp;hand).&lt;/p&gt;
 &lt;a class="reference external image-reference" href="https://patrick.cloke.us/images/mail-slot/after.jpg"&gt;&lt;img alt="The final result of the painted patch." src="/thumbnails/mail-slot/after_small.jpg" /&gt;&lt;/a&gt;
 &lt;p&gt;The patch with the first coat of paint, the finished&amp;nbsp;patch.&lt;/p&gt;
 &lt;/blockquote&gt;
-</content><category term="woodworking"></category><category term="home improvement"></category></entry><entry><title>Calling Celery from Twisted</title><link href="https://patrick.cloke.us/posts/2018/10/23/calling-celery-from-twisted/" rel="alternate"></link><published>2018-10-23T19:24:00-04:00</published><updated>2018-10-23T19:24:00-04:00</updated><author><name>Patrick Cloke</name></author><id>tag:patrick.cloke.us,2018-10-23:/posts/2018/10/23/calling-celery-from-twisted/</id><summary type="html">
+</content><category term="articles"></category><category term="woodworking"></category><category term="home improvement"></category></entry><entry><title>Calling Celery from Twisted</title><link href="https://patrick.cloke.us/posts/2018/10/23/calling-celery-from-twisted/" rel="alternate"></link><published>2018-10-23T19:24:00-04:00</published><updated>2018-10-23T19:24:00-04:00</updated><author><name>Patrick Cloke</name></author><id>tag:patrick.cloke.us,2018-10-23:/posts/2018/10/23/calling-celery-from-twisted/</id><summary type="html">
 &lt;div class="section" id="background"&gt;
 &lt;h2&gt;&lt;a class="toc-backref" href="#id13"&gt;Background&lt;/a&gt;&lt;/h2&gt;
 &lt;p&gt;I use &lt;a class="reference external" href="https://twistedmatrix.com/"&gt;Twisted&lt;/a&gt; and &lt;a class="reference external" href="http://www.celeryproject.org/"&gt;Celery&lt;/a&gt; daily at work, both are useful frameworks, both have
@@ -251,12 +386,12 @@ illustrated best by a code example, we would want to do something like the foll
 
 &lt;span class="n"&gt;app&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;Celery&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;broker&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s1"&gt;'amqp://guest:guest@127.0.0.1:5672//'&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;backend&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s1"&gt;'rpc'&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
 
-&lt;span class="nd"&gt;@app.task&lt;/span&gt;
+&lt;span class="nd"&gt;@app&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;task&lt;/span&gt;
 &lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;my_task&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;a&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;b&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
     &lt;span class="c1"&gt;# Normally you'd do a CPU bound task here.&lt;/span&gt;
     &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="n"&gt;a&lt;/span&gt; &lt;span class="o"&gt;+&lt;/span&gt; &lt;span class="n"&gt;b&lt;/span&gt;
 
-&lt;span class="nd"&gt;@defer.inlineCallbacks&lt;/span&gt;
+&lt;span class="nd"&gt;@defer&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;inlineCallbacks&lt;/span&gt;
 &lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;main&lt;/span&gt;&lt;span class="p"&gt;():&lt;/span&gt;
     &lt;span class="c1"&gt;# Normally you'd open some listening sockets or some outbound&lt;/span&gt;
     &lt;span class="c1"&gt;# connections here.&lt;/span&gt;
@@ -264,7 +399,7 @@ illustrated best by a code example, we would want to do something like the foll
     &lt;span class="c1"&gt;# Call into Celery!&lt;/span&gt;
     &lt;span class="n"&gt;result&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="k"&gt;yield&lt;/span&gt; &lt;span class="n"&gt;my_task&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;delay&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;2&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
     &lt;span class="c1"&gt;# Should print '1 + 2 = 3'.&lt;/span&gt;
-    &lt;span class="k"&gt;print&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;"{} + {} = {}"&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;format&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;2&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;result&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;
+    &lt;span class="nb"&gt;print&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;"&lt;/span&gt;&lt;span class="si"&gt;{}&lt;/span&gt;&lt;span class="s2"&gt; + &lt;/span&gt;&lt;span class="si"&gt;{}&lt;/span&gt;&lt;span class="s2"&gt; = &lt;/span&gt;&lt;span class="si"&gt;{}&lt;/span&gt;&lt;span class="s2"&gt;"&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;format&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;2&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;result&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;
 
 &lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="vm"&gt;__name__&lt;/span&gt; &lt;span class="o"&gt;==&lt;/span&gt; &lt;span class="s1"&gt;'__main__'&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
     &lt;span class="n"&gt;task&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;react&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;main&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
@@ -362,10 +497,10 @@ all I/O onto a separate thread instead of doing it in the reactor thread):&lt;/
             &lt;span class="c1"&gt;# http://docs.celeryproject.org/en/latest/reference/celery.result.html&lt;/span&gt;
             &lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;errback&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;async_result&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;result&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
         &lt;span class="k"&gt;elif&lt;/span&gt; &lt;span class="n"&gt;celery_state&lt;/span&gt; &lt;span class="o"&gt;==&lt;/span&gt; &lt;span class="n"&gt;states&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;REVOKED&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
-            &lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;errback&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;defer&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;CancelledError&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;'Task {0}'&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;format&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;async_result&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;id&lt;/span&gt;&lt;span class="p"&gt;)))&lt;/span&gt;
+            &lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;errback&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;defer&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;CancelledError&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;'Task &lt;/span&gt;&lt;span class="si"&gt;{0}&lt;/span&gt;&lt;span class="s1"&gt;'&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;format&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;async_result&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;id&lt;/span&gt;&lt;span class="p"&gt;)))&lt;/span&gt;
         &lt;span class="k"&gt;else&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
             &lt;span class="c1"&gt;# An unknown state was returned.&lt;/span&gt;
-            &lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;errback&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="ne"&gt;ValueError&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;'Unknown state: `{}`'&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;format&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;celery_state&lt;/span&gt;&lt;span class="p"&gt;)))&lt;/span&gt;
+            &lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;errback&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="ne"&gt;ValueError&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;'Unknown state: `&lt;/span&gt;&lt;span class="si"&gt;{}&lt;/span&gt;&lt;span class="s1"&gt;`'&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;format&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;celery_state&lt;/span&gt;&lt;span class="p"&gt;)))&lt;/span&gt;
 
     &lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;_canceller&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
         &lt;span class="c1"&gt;# Revoke the celery task&lt;/span&gt;
@@ -380,12 +515,12 @@ pretty close (the modified lines are highlighted):&lt;/p&gt;
 &lt;/span&gt;
 &lt;span class="n"&gt;app&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;Celery&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;broker&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s1"&gt;'amqp://guest:guest@127.0.0.1:5672//'&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;backend&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s1"&gt;'rpc'&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
 
-&lt;span class="nd"&gt;@app.task&lt;/span&gt;
+&lt;span class="nd"&gt;@app&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;task&lt;/span&gt;
 &lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;my_task&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;a&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;b&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
     &lt;span class="c1"&gt;# Normally you'd do a CPU bound task here.&lt;/span&gt;
     &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="n"&gt;a&lt;/span&gt; &lt;span class="o"&gt;+&lt;/span&gt; &lt;span class="n"&gt;b&lt;/span&gt;
 
-&lt;span class="nd"&gt;@defer.inlineCallbacks&lt;/span&gt;
+&lt;span class="nd"&gt;@defer&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;inlineCallbacks&lt;/span&gt;
 &lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;main&lt;/span&gt;&lt;span class="p"&gt;():&lt;/span&gt;
     &lt;span class="c1"&gt;# Normally you'd open some listening sockets or some outbound&lt;/span&gt;
     &lt;span class="c1"&gt;# connections here.&lt;/span&gt;
@@ -393,7 +528,7 @@ pretty close (the modified lines are highlighted):&lt;/p&gt;
     &lt;span class="c1"&gt;# Call into Celery!&lt;/span&gt;
 &lt;span class="hll"&gt;    &lt;span class="n"&gt;result&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="k"&gt;yield&lt;/span&gt; &lt;span class="n"&gt;send_task&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;app&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s1"&gt;'my_task'&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;args&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;2&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;
 &lt;/span&gt;    &lt;span class="c1"&gt;# Should print '1 + 2 = 3'.&lt;/span&gt;
-    &lt;span class="k"&gt;print&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;"{} + {} = {}"&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;format&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;2&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;result&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;
+    &lt;span class="nb"&gt;print&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;"&lt;/span&gt;&lt;span class="si"&gt;{}&lt;/span&gt;&lt;span class="s2"&gt; + &lt;/span&gt;&lt;span class="si"&gt;{}&lt;/span&gt;&lt;span class="s2"&gt; = &lt;/span&gt;&lt;span class="si"&gt;{}&lt;/span&gt;&lt;span class="s2"&gt;"&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;format&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;2&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;result&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;
 
 &lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="vm"&gt;__name__&lt;/span&gt; &lt;span class="o"&gt;==&lt;/span&gt; &lt;span class="s1"&gt;'__main__'&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
     &lt;span class="n"&gt;task&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;react&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;main&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
@@ -425,12 +560,12 @@ to, etc.&lt;/p&gt;
 &lt;/span&gt;
 &lt;span class="n"&gt;app&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;Celery&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;broker&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s1"&gt;'amqp://guest:guest@127.0.0.1:5672//'&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;backend&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s1"&gt;'rpc'&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
 
-&lt;span class="nd"&gt;@app.task&lt;/span&gt;
+&lt;span class="nd"&gt;@app&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;task&lt;/span&gt;
 &lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;my_task&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;a&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;b&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
     &lt;span class="c1"&gt;# Normally you'd do a CPU bound task here.&lt;/span&gt;
     &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="n"&gt;a&lt;/span&gt; &lt;span class="o"&gt;+&lt;/span&gt; &lt;span class="n"&gt;b&lt;/span&gt;
 
-&lt;span class="nd"&gt;@defer.inlineCallbacks&lt;/span&gt;
+&lt;span class="nd"&gt;@defer&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;inlineCallbacks&lt;/span&gt;
 &lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;main&lt;/span&gt;&lt;span class="p"&gt;():&lt;/span&gt;
     &lt;span class="c1"&gt;# Normally you'd open some listening sockets or some outbound&lt;/span&gt;
     &lt;span class="c1"&gt;# connections here.&lt;/span&gt;
@@ -442,7 +577,7 @@ to, etc.&lt;/p&gt;
     &lt;span class="c1"&gt;# Call into Celery!&lt;/span&gt;
 &lt;span class="hll"&gt;    &lt;span class="n"&gt;result&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="k"&gt;yield&lt;/span&gt; &lt;span class="n"&gt;tx_app&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;send_task&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;'my_task'&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;args&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;2&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;
 &lt;/span&gt;    &lt;span class="c1"&gt;# Should print '1 + 2 = 3'.&lt;/span&gt;
-    &lt;span class="k"&gt;print&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;"{} + {} = {}"&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;format&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;2&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;result&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;
+    &lt;span class="nb"&gt;print&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;"&lt;/span&gt;&lt;span class="si"&gt;{}&lt;/span&gt;&lt;span class="s2"&gt; + &lt;/span&gt;&lt;span class="si"&gt;{}&lt;/span&gt;&lt;span class="s2"&gt; = &lt;/span&gt;&lt;span class="si"&gt;{}&lt;/span&gt;&lt;span class="s2"&gt;"&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;format&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;2&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;result&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;
 
 &lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="vm"&gt;__name__&lt;/span&gt; &lt;span class="o"&gt;==&lt;/span&gt; &lt;span class="s1"&gt;'__main__'&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
     &lt;span class="n"&gt;task&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;react&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;main&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
@@ -510,7 +645,7 @@ times. You can read &lt;a class="reference external" href="http://docs.celerypro
 &lt;/tbody&gt;
 &lt;/table&gt;
 &lt;/div&gt;
-</content><category term="twisted"></category><category term="celery"></category></entry><entry><title>RSS Feeds for Wikipedia Current Events and NHL News</title><link href="https://patrick.cloke.us/posts/2017/05/26/rss-feeds-for-wikipedia-current-events-and-nhl-news/" rel="alternate"></link><published>2017-05-26T08:13:00-04:00</published><updated>2017-09-13T17:15:00-04:00</updated><author><name>Patrick Cloke</name></author><id>tag:patrick.cloke.us,2017-05-26:/posts/2017/05/26/rss-feeds-for-wikipedia-current-events-and-nhl-news/</id><summary type="html">&lt;p&gt;I subscribe to a fair amount of feeds for news, blogs, articles, etc. I&amp;#8217;m
+</content><category term="articles"></category><category term="twisted"></category><category term="celery"></category></entry><entry><title>RSS Feeds for Wikipedia Current Events and NHL News</title><link href="https://patrick.cloke.us/posts/2017/05/26/rss-feeds-for-wikipedia-current-events-and-nhl-news/" rel="alternate"></link><published>2017-05-26T08:13:00-04:00</published><updated>2017-09-13T17:15:00-04:00</updated><author><name>Patrick Cloke</name></author><id>tag:patrick.cloke.us,2017-05-26:/posts/2017/05/26/rss-feeds-for-wikipedia-current-events-and-nhl-news/</id><summary type="html">&lt;p&gt;I subscribe to a fair amount of feeds for news, blogs, articles, etc. I&amp;#8217;m
 currently subscribed to 122 feeds, some of which have tens of articles a day
 (news sites), some of which are dead. &lt;a class="footnote-reference" href="#id3" id="id1"&gt;[1]&lt;/a&gt; Unfortunately there&amp;#8217;s still a few
 sites that I was visiting manually each …&lt;/p&gt;</summary><content type="html">&lt;p&gt;I subscribe to a fair amount of feeds for news, blogs, articles, etc. I&amp;#8217;m
@@ -606,7 +741,7 @@ might be open sourced in the&amp;nbsp;future.&lt;/li&gt;
 &lt;/ol&gt;
 &lt;/div&gt;
 &lt;/div&gt;
-</content><category term="programming"></category><category term="python"></category><category term="RSS"></category><category term="Atom"></category></entry><entry><title>Google Summer of Code 2017: Matrix protocol for Instantbird and Thunderbird</title><link href="https://patrick.cloke.us/posts/2017/05/05/google-summer-of-code-2017-matrix-protocol/" rel="alternate"></link><published>2017-05-05T11:20:00-04:00</published><updated>2017-05-05T11:20:00-04:00</updated><author><name>Patrick Cloke</name></author><id>tag:patrick.cloke.us,2017-05-05:/posts/2017/05/05/google-summer-of-code-2017-matrix-protocol/</id><summary type="html">&lt;p&gt;I&amp;#8217;ll be mentoring Pavan Karthik on his &lt;a class="reference external" href="https://summerofcode.withgoogle.com/projects/#6473832528347136"&gt;project for Google Summer of Code 2017&lt;/a&gt;
+</content><category term="articles"></category><category term="programming"></category><category term="python"></category><category term="RSS"></category><category term="Atom"></category></entry><entry><title>Google Summer of Code 2017: Matrix protocol for Instantbird and Thunderbird</title><link href="https://patrick.cloke.us/posts/2017/05/05/google-summer-of-code-2017-matrix-protocol/" rel="alternate"></link><published>2017-05-05T11:20:00-04:00</published><updated>2017-05-05T11:20:00-04:00</updated><author><name>Patrick Cloke</name></author><id>tag:patrick.cloke.us,2017-05-05:/posts/2017/05/05/google-summer-of-code-2017-matrix-protocol/</id><summary type="html">&lt;p&gt;I&amp;#8217;ll be mentoring Pavan Karthik on his &lt;a class="reference external" href="https://summerofcode.withgoogle.com/projects/#6473832528347136"&gt;project for Google Summer of Code 2017&lt;/a&gt;
 entitled &amp;#8220;Matrix Protocol Support for Instantbird&amp;#8221;. &lt;a class="reference external" href="http://matrix.org/"&gt;Matrix&lt;/a&gt; is a new(er)
 protocol that is an open, decentralized network with some unique features.
 Initial support for this landed in &lt;a class="reference external" href="https://bugzilla.mozilla.org/show_bug.cgi?id=1315926"&gt;bug 1315926&lt;/a&gt;, but it is not feature …&lt;/p&gt;</summary><content type="html">&lt;p&gt;I&amp;#8217;ll be mentoring Pavan Karthik on his &lt;a class="reference external" href="https://summerofcode.withgoogle.com/projects/#6473832528347136"&gt;project for Google Summer of Code 2017&lt;/a&gt;
@@ -630,7 +765,7 @@ day-to-day basis to dog-food the code.&lt;/blockquote&gt;
 &lt;p&gt;I&amp;#8217;m super excited to finalize support for Matrix in both Instantbird and
 Thunderbird! You can also checkout the full 25 projects that
 &lt;a class="reference external" href="https://summerofcode.withgoogle.com/organizations/6421332469219328/"&gt;Mozilla accepted&lt;/a&gt;.&lt;/p&gt;
-</content><category term="chat"></category><category term="GSoC"></category><category term="instant messaging"></category><category term="Instantbird"></category><category term="Matrix"></category></entry><entry><title>“Adding Two-Factor Authentication to Django (with django-allauth)” Lightning Talk</title><link href="https://patrick.cloke.us/posts/2017/04/06/adding-two-factor-authentication-to-django-with-django-allauth-lightning-talk/" rel="alternate"></link><published>2017-04-06T21:14:00-04:00</published><updated>2017-04-06T21:14:00-04:00</updated><author><name>Patrick Cloke</name></author><id>tag:patrick.cloke.us,2017-04-06:/posts/2017/04/06/adding-two-factor-authentication-to-django-with-django-allauth-lightning-talk/</id><summary type="html">&lt;p&gt;A bit late on this article, but better late than never! Back on October 27th,
+</content><category term="articles"></category><category term="chat"></category><category term="GSoC"></category><category term="instant messaging"></category><category term="Instantbird"></category><category term="Matrix"></category></entry><entry><title>“Adding Two-Factor Authentication to Django (with django-allauth)” Lightning Talk</title><link href="https://patrick.cloke.us/posts/2017/04/06/adding-two-factor-authentication-to-django-with-django-allauth-lightning-talk/" rel="alternate"></link><published>2017-04-06T21:14:00-04:00</published><updated>2017-04-06T21:14:00-04:00</updated><author><name>Patrick Cloke</name></author><id>tag:patrick.cloke.us,2017-04-06:/posts/2017/04/06/adding-two-factor-authentication-to-django-with-django-allauth-lightning-talk/</id><summary type="html">&lt;p&gt;A bit late on this article, but better late than never! Back on October 27th,
 2016 I gave a talk at &lt;a class="reference external" href="http://www.meetup.com/djangoboston/"&gt;Django Boston&lt;/a&gt; entitled &amp;#8220;Adding Two-Factor
 Authentication to Django (with &lt;tt class="docutils literal"&gt;&lt;span class="pre"&gt;django-allauth&lt;/span&gt;&lt;/tt&gt;)&amp;#8221;. It was a ~20 minute talk on
 integrating the &lt;a class="reference external" href="https://github.com/percipient/django-allauth-2fa/"&gt;django-allauth-2fa&lt;/a&gt; package into a &lt;a class="reference external" href="https://www.djangoproject.com/"&gt;Django&lt;/a&gt; project. The
@@ -658,7 +793,7 @@ navigate) or check out the &lt;a class="reference external" href="https://github
 &lt;/ul&gt;
 &lt;p&gt;You can also check out the open &lt;a class="reference external" href="https://github.com/percipient/django-allauth-2fa/issues"&gt;issues on GitHub&lt;/a&gt; or &lt;a class="reference external" href="https://patrick.cloke.us/pages/about.html"&gt;reach out&lt;/a&gt; directly if
 you&amp;#8217;re&amp;nbsp;interested!&lt;/p&gt;
-</content><category term="django"></category><category term="talks"></category></entry><entry><title>Windows Mobile (or Windows Phone) and FastMail</title><link href="https://patrick.cloke.us/posts/2016/07/24/windows-mobile-or-windows-phone-and-fastmail/" rel="alternate"></link><published>2016-07-24T13:19:00-04:00</published><updated>2016-07-24T13:19:00-04:00</updated><author><name>Patrick Cloke</name></author><id>tag:patrick.cloke.us,2016-07-24:/posts/2016/07/24/windows-mobile-or-windows-phone-and-fastmail/</id><summary type="html">
+</content><category term="articles"></category><category term="django"></category><category term="talks"></category></entry><entry><title>Windows Mobile (or Windows Phone) and FastMail</title><link href="https://patrick.cloke.us/posts/2016/07/24/windows-mobile-or-windows-phone-and-fastmail/" rel="alternate"></link><published>2016-07-24T13:19:00-04:00</published><updated>2016-07-24T13:19:00-04:00</updated><author><name>Patrick Cloke</name></author><id>tag:patrick.cloke.us,2016-07-24:/posts/2016/07/24/windows-mobile-or-windows-phone-and-fastmail/</id><summary type="html">
 &lt;p&gt;I’ve been a big fan of Windows Phone (now Windows Mobile) for a while and have
 had a few phones across versions 7, 8, and now 10. A while ago I switched to
 &lt;a class="reference external" href="https://www.fastmail.com/"&gt;FastMail&lt;/a&gt; as my e-mail provider &lt;a class="footnote-reference" href="#id5" id="id1"&gt;[1]&lt;/a&gt;, but had been stuck using Google as my
@@ -782,7 +917,7 @@ the production FastMail servers too!&lt;/td&gt;&lt;/tr&gt;
 &lt;/tbody&gt;
 &lt;/table&gt;
 &lt;/div&gt;
-</content><category term="email"></category><category term="IMAP"></category><category term="SMTP"></category><category term="CalDAV"></category><category term="CardDAV"></category><category term="contacts"></category><category term="calendar"></category><category term="FastMail"></category><category term="Windows Phone"></category></entry><entry><title>Google Summer of Code 2016 projects</title><link href="https://patrick.cloke.us/posts/2016/05/20/google-summer-of-code-2016-projects/" rel="alternate"></link><published>2016-05-20T09:15:00-04:00</published><updated>2016-05-20T09:15:00-04:00</updated><author><name>Patrick Cloke</name></author><id>tag:patrick.cloke.us,2016-05-20:/posts/2016/05/20/google-summer-of-code-2016-projects/</id><summary type="html">&lt;p&gt;I&amp;#8217;d like to introduce the 13 students that are being mentored by Mozilla this
+</content><category term="articles"></category><category term="email"></category><category term="IMAP"></category><category term="SMTP"></category><category term="CalDAV"></category><category term="CardDAV"></category><category term="contacts"></category><category term="calendar"></category><category term="FastMail"></category><category term="Windows Phone"></category></entry><entry><title>Google Summer of Code 2016 projects</title><link href="https://patrick.cloke.us/posts/2016/05/20/google-summer-of-code-2016-projects/" rel="alternate"></link><published>2016-05-20T09:15:00-04:00</published><updated>2016-05-20T09:15:00-04:00</updated><author><name>Patrick Cloke</name></author><id>tag:patrick.cloke.us,2016-05-20:/posts/2016/05/20/google-summer-of-code-2016-projects/</id><summary type="html">&lt;p&gt;I&amp;#8217;d like to introduce the 13 students that are being mentored by Mozilla this
 year as part of &lt;a class="reference external" href="https://summerofcode.withgoogle.com/"&gt;Google Summer of Code 2016&lt;/a&gt;! Currently the &amp;#8220;community bonding&amp;#8221;
 period is ongoing, but we are on the cusp of the &amp;#8220;coding period&amp;#8221;&amp;nbsp;starting.&lt;/p&gt;
 &lt;p&gt;As part of Google Summer of Code (GSoC …&lt;/p&gt;</summary><content type="html">&lt;p&gt;I&amp;#8217;d like to introduce the 13 students that are being mentored by Mozilla this
@@ -863,7 +998,7 @@ the name of each student and the name of their&amp;nbsp;mentor(s).&lt;/p&gt;
 &lt;/tr&gt;
 &lt;/tbody&gt;
 &lt;/table&gt;
-</content><category term="community"></category><category term="GSoC"></category><category term="Mozilla"></category></entry><entry><title>Thoughts on Applying to Google Summer of Code</title><link href="https://patrick.cloke.us/posts/2016/03/07/thoughts-on-applying-to-gsoc/" rel="alternate"></link><published>2016-03-07T09:18:00-05:00</published><updated>2016-03-07T09:18:00-05:00</updated><author><name>Patrick Cloke</name></author><id>tag:patrick.cloke.us,2016-03-07:/posts/2016/03/07/thoughts-on-applying-to-gsoc/</id><summary type="html">
+</content><category term="articles"></category><category term="community"></category><category term="GSoC"></category><category term="Mozilla"></category></entry><entry><title>Thoughts on Applying to Google Summer of Code</title><link href="https://patrick.cloke.us/posts/2016/03/07/thoughts-on-applying-to-gsoc/" rel="alternate"></link><published>2016-03-07T09:18:00-05:00</published><updated>2016-03-07T09:18:00-05:00</updated><author><name>Patrick Cloke</name></author><id>tag:patrick.cloke.us,2016-03-07:/posts/2016/03/07/thoughts-on-applying-to-gsoc/</id><summary type="html">
 &lt;!-- --&gt;
 &lt;blockquote&gt;
 &lt;p&gt;Over the past few years I’ve been involved in &lt;a class="reference external" href="https://developers.google.com/open-source/gsoc/"&gt;Google Summer of Code&lt;/a&gt;
@@ -1016,7 +1151,103 @@ than they do during GSoC!&lt;/p&gt;
 questions that pertain to your application at Mozilla, please
 &lt;a class="reference external" href="https://patrick.cloke.us/pages/about.html"&gt;contact&lt;/a&gt; me individually.&lt;/p&gt;
 &lt;/div&gt;
-</content><category term="GSoC"></category><category term="Mozilla"></category></entry><entry><title>IRC Client Usage Share on moznet</title><link href="https://patrick.cloke.us/posts/2015/09/23/irc-client-usage-share-on-moznet/" rel="alternate"></link><published>2015-09-23T17:07:00-04:00</published><updated>2015-09-24T07:18:00-04:00</updated><author><name>Patrick Cloke</name></author><id>tag:patrick.cloke.us,2015-09-23:/posts/2015/09/23/irc-client-usage-share-on-moznet/</id><summary type="html">
+</content><category term="articles"></category><category term="GSoC"></category><category term="Mozilla"></category></entry><entry><title>Combining Disparate QuerySets in Django</title><link href="https://patrick.cloke.us/posts/2016/02/04/combining-disparate-querysets-in-django/" rel="alternate"></link><published>2016-02-04T16:00:00-05:00</published><updated>2016-02-04T16:00:00-05:00</updated><author><name>Patrick Cloke</name></author><id>tag:patrick.cloke.us,2016-02-04:/posts/2016/02/04/combining-disparate-querysets-in-django/</id><summary type="html">&lt;blockquote&gt;
+&lt;p&gt;Note: This was originally posted on the &lt;a href="https://strongarm.io/blog/combining-disparate-querysets-in-django/"&gt;Strongarm Blog&lt;/a&gt;.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;While refactoring &lt;a href="https://strongarm.io"&gt;strongarm.io&lt;/a&gt; we ran into a problem: we
+had different database tables that we needed to query over as if they were a
+single database table. We use &lt;a href="https://www.djangoproject.com/"&gt;Django&lt;/a&gt; as an
+&lt;a href="https://en.wikipedia.org/wiki/Object-relational_mapping"&gt;&lt;span class="caps"&gt;ORM&lt;/span&gt;&lt;/a&gt; and needed to
+stay within the &lt;span class="caps"&gt;ORM …&lt;/span&gt;&lt;/p&gt;</summary><content type="html">&lt;blockquote&gt;
+&lt;p&gt;Note: This was originally posted on the &lt;a href="https://strongarm.io/blog/combining-disparate-querysets-in-django/"&gt;Strongarm Blog&lt;/a&gt;.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;While refactoring &lt;a href="https://strongarm.io"&gt;strongarm.io&lt;/a&gt; we ran into a problem: we
+had different database tables that we needed to query over as if they were a
+single database table. We use &lt;a href="https://www.djangoproject.com/"&gt;Django&lt;/a&gt; as an
+&lt;a href="https://en.wikipedia.org/wiki/Object-relational_mapping"&gt;&lt;span class="caps"&gt;ORM&lt;/span&gt;&lt;/a&gt; and needed to
+stay within the &lt;span class="caps"&gt;ORM&lt;/span&gt; in order to leverage third-party&amp;nbsp;libraries.&lt;/p&gt;
+&lt;p&gt;Our two models have overlapping fields, in this instance both had a &lt;code&gt;name&lt;/code&gt; field
+to search over and a &lt;code&gt;created&lt;/code&gt; field to order on. A naive implementation might
+serialize all the data to memory and come up with implementations&amp;nbsp;like:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="c1"&gt;# Consider ModelA and ModelB to exist somewhere, both have a name (CharField)&lt;/span&gt;
+&lt;span class="c1"&gt;# and created (DateTimeField).&lt;/span&gt;
+
+&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;itertools&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;chain&lt;/span&gt;
+
+&lt;span class="c1"&gt;# Sorted data.&lt;/span&gt;
+&lt;span class="n"&gt;sorted_data&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="nb"&gt;sorted&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;
+    &lt;span class="n"&gt;chain&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;
+        &lt;span class="n"&gt;ModelA&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;objects&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;order_by&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;-created&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;),&lt;/span&gt;
+        &lt;span class="n"&gt;ModelB&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;objects&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;order_by&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;-created&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;),&lt;/span&gt;
+    &lt;span class="p"&gt;),&lt;/span&gt;
+    &lt;span class="n"&gt;key&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="k"&gt;lambda&lt;/span&gt; &lt;span class="n"&gt;instance&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="n"&gt;instance&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;date&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+    &lt;span class="n"&gt;reverse&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="kc"&gt;True&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+
+&lt;span class="c1"&gt;# Search for a particular result.&lt;/span&gt;
+&lt;span class="n"&gt;result&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="kc"&gt;None&lt;/span&gt;
+&lt;span class="k"&gt;try&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
+    &lt;span class="n"&gt;result&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;ModelA&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;objects&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;get&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;name&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;foo&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="k"&gt;except&lt;/span&gt; &lt;span class="n"&gt;ModelA&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;DoesNotExist&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
+    &lt;span class="k"&gt;try&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
+        &lt;span class="n"&gt;result&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;ModelB&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;objects&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;get&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;name&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;foo&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+    &lt;span class="k"&gt;except&lt;/span&gt; &lt;span class="n"&gt;ModelB&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;DoesNotExist&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
+        &lt;span class="k"&gt;pass&lt;/span&gt;
+
+&lt;span class="c1"&gt;# Look at a subset.&lt;/span&gt;
+&lt;span class="n"&gt;subset_data&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nb"&gt;list&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;ModelA&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;objects&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;filter&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;name__contains&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;foo&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt; &lt;span class="o"&gt;+&lt;/span&gt;
+               &lt;span class="nb"&gt;list&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;ModelB&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;objects&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;filter&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;name__contains&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;foo&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)))&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;This has two issues we had to&amp;nbsp;overcome:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;We had too much data to serialize to&amp;nbsp;memory.&lt;/li&gt;
+&lt;li&gt;We needed to pass the result into Django APIs that expected a &lt;code&gt;QuerySet&lt;/code&gt;.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;Enter &lt;a href="https://github.com/percipient/django-querysetsequence"&gt;Django QuerySetSequence&lt;/a&gt;!
+We built Django QuerySetSequence (based on some previously available code) to
+provide the&amp;nbsp;following:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Provide a &lt;code&gt;QuerySet&lt;/code&gt; &lt;span class="caps"&gt;API&lt;/span&gt; that operates over multiple &lt;code&gt;QuerySets&lt;/code&gt; generated
+    from different &lt;code&gt;Model&lt;/code&gt; classes.&lt;/li&gt;
+&lt;li&gt;Evaluate each &lt;code&gt;QuerySet&lt;/code&gt; lazily (i.e. as late as&amp;nbsp;possible).&lt;/li&gt;
+&lt;li&gt;High quality code with&amp;nbsp;tests.&lt;/li&gt;
+&lt;li&gt;Guard against calling untested&amp;nbsp;methods.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;This allows much more Django-esque&amp;nbsp;code:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="c1"&gt;# Consider ModelA and ModelB to exist somewhere, both have a name (CharField)&lt;/span&gt;
+&lt;span class="c1"&gt;# and created (DateTimeField).&lt;/span&gt;
+&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;django.core.exceptions&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;ObjectDoesNotExist&lt;/span&gt;
+
+&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;queryset_sequence&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;QuerySetSequence&lt;/span&gt;
+
+&lt;span class="n"&gt;queryset&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;QuerySetSequence&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;ModelA&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;objects&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;all&lt;/span&gt;&lt;span class="p"&gt;(),&lt;/span&gt; &lt;span class="n"&gt;ModelB&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;objects&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;all&lt;/span&gt;&lt;span class="p"&gt;())&lt;/span&gt;
+
+&lt;span class="c1"&gt;# Sorted data.&lt;/span&gt;
+&lt;span class="n"&gt;sorted_data&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;queryset&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;order_by&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;-created&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+
+&lt;span class="c1"&gt;# Search for a particular result:&lt;/span&gt;
+&lt;span class="k"&gt;try&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
+    &lt;span class="n"&gt;result&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;queryset&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;get&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;name&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;foo&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="k"&gt;except&lt;/span&gt; &lt;span class="n"&gt;ObjectDoesNotExist&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
+    &lt;span class="n"&gt;result&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="kc"&gt;None&lt;/span&gt;
+
+&lt;span class="c1"&gt;# Look at a subset.&lt;/span&gt;
+&lt;span class="n"&gt;subset_data&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;queryset&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;filter&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;name__contains&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;foo&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Currently Django QuerySetSequence supports both Django 1.8 and Django 1.9 on
+Python 2.7, 3.4 and 3.5. Check out the full set of features or contribute to the
+&lt;a href="https://github.com/percipient/django-querysetsequence"&gt;source repository&lt;/a&gt;. You
+can install &lt;code&gt;django-querysetsequence&lt;/code&gt; package from
+&lt;a href="https://pypi.python.org/pypi/django-querysetsequence"&gt;pypi&lt;/a&gt; using&amp;nbsp;pip:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="err"&gt;pip install django-querysetsequence&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;If you&amp;#8217;re using Django QuerySetSequence we&amp;#8217;d love to
+&lt;a href="mailto:support@strongarm.io"&gt;hear about it&lt;/a&gt;!&lt;/p&gt;</content><category term="articles"></category><category term="django"></category></entry><entry><title>IRC Client Usage Share on moznet</title><link href="https://patrick.cloke.us/posts/2015/09/23/irc-client-usage-share-on-moznet/" rel="alternate"></link><published>2015-09-23T17:07:00-04:00</published><updated>2015-09-24T07:18:00-04:00</updated><author><name>Patrick Cloke</name></author><id>tag:patrick.cloke.us,2015-09-23:/posts/2015/09/23/irc-client-usage-share-on-moznet/</id><summary type="html">
 &lt;div class="section" id="background"&gt;
 &lt;h2&gt;&lt;a class="toc-backref" href="#id13"&gt;Background&lt;/a&gt;&lt;/h2&gt;
 &lt;p&gt;The usage share of &lt;span class="caps"&gt;IRC&lt;/span&gt; clients has always been something I’m interested in. This
@@ -1250,7 +1481,7 @@ it.&lt;/td&gt;&lt;/tr&gt;
 &lt;/table&gt;
 &lt;/div&gt;
 &lt;/div&gt;
-</content><category term="Mozilla"></category><category term="Thunderbird"></category><category term="Instantbird"></category><category term="IRC"></category></entry><entry><title>Boston Python: Twisted async networking framework</title><link href="https://patrick.cloke.us/posts/2015/08/28/boston-python-twisted-async-networking-framework/" rel="alternate"></link><published>2015-08-28T08:42:00-04:00</published><updated>2015-08-28T08:42:00-04:00</updated><author><name>Patrick Cloke</name></author><id>tag:patrick.cloke.us,2015-08-28:/posts/2015/08/28/boston-python-twisted-async-networking-framework/</id><summary type="html">&lt;p&gt;Yesterday, &lt;a class="reference external" href="http://stephendicato.com/"&gt;Stephen DiCato&lt;/a&gt; and I gave a talk for &lt;a class="reference external" href="http://www.meetup.com/bostonpython/"&gt;Boston Python&lt;/a&gt; titled:
+</content><category term="articles"></category><category term="Mozilla"></category><category term="Thunderbird"></category><category term="Instantbird"></category><category term="IRC"></category></entry><entry><title>Boston Python: Twisted async networking framework</title><link href="https://patrick.cloke.us/posts/2015/08/28/boston-python-twisted-async-networking-framework/" rel="alternate"></link><published>2015-08-28T08:42:00-04:00</published><updated>2015-08-28T08:42:00-04:00</updated><author><name>Patrick Cloke</name></author><id>tag:patrick.cloke.us,2015-08-28:/posts/2015/08/28/boston-python-twisted-async-networking-framework/</id><summary type="html">&lt;p&gt;Yesterday, &lt;a class="reference external" href="http://stephendicato.com/"&gt;Stephen DiCato&lt;/a&gt; and I gave a talk for &lt;a class="reference external" href="http://www.meetup.com/bostonpython/"&gt;Boston Python&lt;/a&gt; titled:
 &lt;a class="reference external" href="http://www.meetup.com/bostonpython/events/221406450/"&gt;Twisted async networking framework&lt;/a&gt;. It was an introduction to intermediate
 level talk about using the &lt;a class="reference external" href="https://twistedmatrix.com/"&gt;Twisted networking framework&lt;/a&gt; based on our
 experiences at &lt;a class="reference external" href="https://percipientnetworks.com/"&gt;Percipient Networks&lt;/a&gt;.&lt;/p&gt;
@@ -1277,7 +1508,7 @@ code is included in the &lt;a class="reference external" href="https://github.co
 the experience. Thanks to everyone who came, the sponsors for the night,
 &lt;a class="reference external" href="http://www.meetup.com/bostonpython/"&gt;Boston Python&lt;/a&gt; for setting this up, and Stephen for co-presenting! Please let
 us know if you have any questions or&amp;nbsp;comments.&lt;/p&gt;
-</content><category term="python"></category><category term="community"></category><category term="programming"></category><category term="twisted"></category></entry><entry><title>New Position in Cyber Security at Percipient Networks</title><link href="https://patrick.cloke.us/posts/2015/05/30/new-position-in-cyber-security-at-percipient-networks/" rel="alternate"></link><published>2015-05-30T13:59:00-04:00</published><updated>2015-05-30T13:59:00-04:00</updated><author><name>Patrick Cloke</name></author><id>tag:patrick.cloke.us,2015-05-30:/posts/2015/05/30/new-position-in-cyber-security-at-percipient-networks/</id><summary type="html">&lt;div class="admonition note"&gt;
+</content><category term="articles"></category><category term="python"></category><category term="community"></category><category term="programming"></category><category term="twisted"></category></entry><entry><title>New Position in Cyber Security at Percipient Networks</title><link href="https://patrick.cloke.us/posts/2015/05/30/new-position-in-cyber-security-at-percipient-networks/" rel="alternate"></link><published>2015-05-30T13:59:00-04:00</published><updated>2015-05-30T13:59:00-04:00</updated><author><name>Patrick Cloke</name></author><id>tag:patrick.cloke.us,2015-05-30:/posts/2015/05/30/new-position-in-cyber-security-at-percipient-networks/</id><summary type="html">&lt;div class="admonition note"&gt;
 &lt;p class="first admonition-title"&gt;Note&lt;/p&gt;
 &lt;p class="last"&gt;If you&amp;#8217;re hitting this from &lt;a class="reference external" href="http://planet.mozilla.org/"&gt;planet mozilla&lt;/a&gt;, this doesn&amp;#8217;t mean I&amp;#8217;m leaving
 the Mozilla Community since I&amp;#8217;m not (nor was I ever) a Mozilla&amp;nbsp;employee.&lt;/p&gt;
@@ -1332,7 +1563,7 @@ JavaScript. Since semicolons are optional in both, but encouraged in
 JavaScript and discouraged in Python&amp;#8230;&lt;/td&gt;&lt;/tr&gt;
 &lt;/tbody&gt;
 &lt;/table&gt;
-</content><category term="personal"></category></entry><entry><title>Google Summer of Code 2015 Project Ideas for Mozilla</title><link href="https://patrick.cloke.us/posts/2015/01/21/google-summer-of-code-2015-project-ideas-for-mozilla/" rel="alternate"></link><published>2015-01-21T13:18:00-05:00</published><updated>2015-01-21T13:18:00-05:00</updated><author><name>Patrick Cloke</name></author><id>tag:patrick.cloke.us,2015-01-21:/posts/2015/01/21/google-summer-of-code-2015-project-ideas-for-mozilla/</id><summary type="html">&lt;p&gt;As &lt;a class="reference external" href="http://blog.queze.net/post/2015/01/22/Project-ideas-wanted-for-Summer-of-Code-2015"&gt;Florian announced&lt;/a&gt; last Thursday, &lt;strong&gt;now&lt;/strong&gt; is the time to brainstorm and
+</content><category term="articles"></category><category term="personal"></category></entry><entry><title>Google Summer of Code 2015 Project Ideas for Mozilla</title><link href="https://patrick.cloke.us/posts/2015/01/21/google-summer-of-code-2015-project-ideas-for-mozilla/" rel="alternate"></link><published>2015-01-21T13:18:00-05:00</published><updated>2015-01-21T13:18:00-05:00</updated><author><name>Patrick Cloke</name></author><id>tag:patrick.cloke.us,2015-01-21:/posts/2015/01/21/google-summer-of-code-2015-project-ideas-for-mozilla/</id><summary type="html">&lt;p&gt;As &lt;a class="reference external" href="http://blog.queze.net/post/2015/01/22/Project-ideas-wanted-for-Summer-of-Code-2015"&gt;Florian announced&lt;/a&gt; last Thursday, &lt;strong&gt;now&lt;/strong&gt; is the time to brainstorm and
 discuss project ideas for &lt;a class="reference external" href="http://google-opensource.blogspot.fr/2014/10/google-summer-of-code-2015-and-google.html"&gt;Google Summer of Code 2015&lt;/a&gt;. Mozilla has
 participated in every previous Google Summer of Code (GSoC), and hopes to
 participate again this year! In order to help ensure we&amp;#8217;re selected, we need
@@ -1372,7 +1603,7 @@ however. If you have an idea of what you&amp;#8217;d like to work on, feel free 
 out that area of the community, introduce yourself and maybe find a &lt;a class="reference external" href="http://www.joshmatthews.net/bugsahoy/"&gt;mentored
 bug&lt;/a&gt; to work&amp;nbsp;on.&lt;/p&gt;
 &lt;/div&gt;
-</content><category term="mozilla"></category><category term="GSoC"></category></entry><entry><title>Thunderbird Summit 2014</title><link href="https://patrick.cloke.us/posts/2014/11/14/thunderbird-summit-2014/" rel="alternate"></link><published>2014-11-14T18:37:00-05:00</published><updated>2014-11-14T18:37:00-05:00</updated><author><name>Patrick Cloke</name></author><id>tag:patrick.cloke.us,2014-11-14:/posts/2014/11/14/thunderbird-summit-2014/</id><summary type="html">&lt;p&gt;Last month (Oct. 15th to Oct. 18th, to be precise), &lt;a class="reference external" href="https://wiki.mozilla.org/Thunderbird:Summit_2014#Invited_Attendees"&gt;twenty volunteers&lt;/a&gt;
+</content><category term="articles"></category><category term="mozilla"></category><category term="GSoC"></category></entry><entry><title>Thunderbird Summit 2014</title><link href="https://patrick.cloke.us/posts/2014/11/14/thunderbird-summit-2014/" rel="alternate"></link><published>2014-11-14T18:37:00-05:00</published><updated>2014-11-14T18:37:00-05:00</updated><author><name>Patrick Cloke</name></author><id>tag:patrick.cloke.us,2014-11-14:/posts/2014/11/14/thunderbird-summit-2014/</id><summary type="html">&lt;p&gt;Last month (Oct. 15th to Oct. 18th, to be precise), &lt;a class="reference external" href="https://wiki.mozilla.org/Thunderbird:Summit_2014#Invited_Attendees"&gt;twenty volunteers&lt;/a&gt;
 descended on Mozilla&amp;#8217;s Toronto office to discuss &lt;a class="reference external" href="https://www.mozilla.org/en-US/thunderbird/"&gt;Mozilla Thunderbird&lt;/a&gt;. This
 included Mozilla employees, Thunderbird contributors of all sorts (developers,
 user interface designers, add-on reviewers), Lightning contributors, and
@@ -1416,7 +1647,7 @@ to &lt;a class="reference external" href="http://xmpp.org/"&gt;&lt;span class="c
 &lt;p&gt;Other highlights of the trip include eating the &amp;#8220;Canadian delicacy&amp;#8221; of
 poutine (with pulled pork on&amp;nbsp;it)!&lt;/p&gt;
 &lt;/blockquote&gt;
-</content><category term="Mozilla"></category><category term="Thunderbird"></category><category term="community"></category><category term="Instantbird"></category></entry><entry><title>How I Got Involved in Mozilla</title><link href="https://patrick.cloke.us/posts/2014/10/07/how-i-got-involved-in-mozilla/" rel="alternate"></link><published>2014-10-07T09:31:00-04:00</published><updated>2014-10-07T09:31:00-04:00</updated><author><name>Patrick Cloke</name></author><id>tag:patrick.cloke.us,2014-10-07:/posts/2014/10/07/how-i-got-involved-in-mozilla/</id><summary type="html">&lt;p&gt;This is discussed very briefly on my &lt;a class="reference external" href="https://patrick.cloke.us/pages/about.html"&gt;about page&lt;/a&gt;, but I figured it could use a
+</content><category term="articles"></category><category term="Mozilla"></category><category term="Thunderbird"></category><category term="community"></category><category term="Instantbird"></category></entry><entry><title>How I Got Involved in Mozilla</title><link href="https://patrick.cloke.us/posts/2014/10/07/how-i-got-involved-in-mozilla/" rel="alternate"></link><published>2014-10-07T09:31:00-04:00</published><updated>2014-10-07T09:31:00-04:00</updated><author><name>Patrick Cloke</name></author><id>tag:patrick.cloke.us,2014-10-07:/posts/2014/10/07/how-i-got-involved-in-mozilla/</id><summary type="html">&lt;p&gt;This is discussed very briefly on my &lt;a class="reference external" href="https://patrick.cloke.us/pages/about.html"&gt;about page&lt;/a&gt;, but I figured it could use a
 bit of a longer discussion. I generally consider myself to have joined the
 &lt;a class="reference external" href="https://www.mozilla.org/"&gt;Mozilla&lt;/a&gt; community in ~2006. I know that I was using Mozilla Firefox, Mozilla
 Thunderbird, &lt;em&gt;and&lt;/em&gt; Mozilla Sunbird way before that (probably …&lt;/p&gt;</summary><content type="html">&lt;p&gt;This is discussed very briefly on my &lt;a class="reference external" href="https://patrick.cloke.us/pages/about.html"&gt;about page&lt;/a&gt;, but I figured it could use a
@@ -1489,7 +1720,7 @@ fixed a bug in Firefox; although I have had &lt;a class="reference external" hre
 &lt;tt class="docutils literal"&gt;&lt;span class="pre"&gt;mozilla-central&lt;/span&gt;&lt;/tt&gt;.&lt;/td&gt;&lt;/tr&gt;
 &lt;/tbody&gt;
 &lt;/table&gt;
-</content><category term="Mozilla"></category></entry><entry><title>Adding an Auxiliary Audio Input to a 2005 Subaru Outback</title><link href="https://patrick.cloke.us/posts/2014/08/30/adding-an-auxiliary-audio-input-to-a-2005-subaru-outback/" rel="alternate"></link><published>2014-08-30T17:34:00-04:00</published><updated>2014-08-30T17:34:00-04:00</updated><author><name>Patrick Cloke</name></author><id>tag:patrick.cloke.us,2014-08-30:/posts/2014/08/30/adding-an-auxiliary-audio-input-to-a-2005-subaru-outback/</id><summary type="html">&lt;p&gt;I own a &lt;a class="reference external" href="http://en.wikipedia.org/wiki/Subaru_Legacy#Fourth_generation_.282003.E2.80.932009.29_-_BL.2C_BP"&gt;2005 (fourth generation) Subaru Outback&lt;/a&gt;, I&amp;#8217;ve had it since the fall
+</content><category term="articles"></category><category term="Mozilla"></category></entry><entry><title>Adding an Auxiliary Audio Input to a 2005 Subaru Outback</title><link href="https://patrick.cloke.us/posts/2014/08/30/adding-an-auxiliary-audio-input-to-a-2005-subaru-outback/" rel="alternate"></link><published>2014-08-30T17:34:00-04:00</published><updated>2014-08-30T17:34:00-04:00</updated><author><name>Patrick Cloke</name></author><id>tag:patrick.cloke.us,2014-08-30:/posts/2014/08/30/adding-an-auxiliary-audio-input-to-a-2005-subaru-outback/</id><summary type="html">&lt;p&gt;I own a &lt;a class="reference external" href="http://en.wikipedia.org/wiki/Subaru_Legacy#Fourth_generation_.282003.E2.80.932009.29_-_BL.2C_BP"&gt;2005 (fourth generation) Subaru Outback&lt;/a&gt;, I&amp;#8217;ve had it since the fall
 of 2006 and it has been great. I have a little over 100,000 miles and do not
 plan to sell it anytime&amp;nbsp;soon.&lt;/p&gt;
 &lt;p&gt;There is one thing that just &lt;em&gt;kills&lt;/em&gt; me though. You cannot …&lt;/p&gt;</summary><content type="html">&lt;p&gt;I own a &lt;a class="reference external" href="http://en.wikipedia.org/wiki/Subaru_Legacy#Fourth_generation_.282003.E2.80.932009.29_-_BL.2C_BP"&gt;2005 (fourth generation) Subaru Outback&lt;/a&gt;, I&amp;#8217;ve had it since the fall
@@ -1698,7 +1929,7 @@ wires). I did ensure there were no shorts with a multimeter (and had to
 resolder one connection).&lt;/td&gt;&lt;/tr&gt;
 &lt;/tbody&gt;
 &lt;/table&gt;
-</content><category term="hacking"></category><category term="auto"></category><category term="hardware"></category></entry><entry><title>Mentoring and Time</title><link href="https://patrick.cloke.us/posts/2014/07/09/mentoring-and-time/" rel="alternate"></link><published>2014-07-09T17:32:00-04:00</published><updated>2014-07-09T17:32:00-04:00</updated><author><name>Patrick Cloke</name></author><id>tag:patrick.cloke.us,2014-07-09:/posts/2014/07/09/mentoring-and-time/</id><summary type="html">&lt;p&gt;No, this is not about being late places, it&amp;#8217;s about respecting people&amp;#8217;s time. I
+</content><category term="articles"></category><category term="hacking"></category><category term="auto"></category><category term="hardware"></category></entry><entry><title>Mentoring and Time</title><link href="https://patrick.cloke.us/posts/2014/07/09/mentoring-and-time/" rel="alternate"></link><published>2014-07-09T17:32:00-04:00</published><updated>2014-07-09T17:32:00-04:00</updated><author><name>Patrick Cloke</name></author><id>tag:patrick.cloke.us,2014-07-09:/posts/2014/07/09/mentoring-and-time/</id><summary type="html">&lt;p&gt;No, this is not about being late places, it&amp;#8217;s about respecting people&amp;#8217;s time. I
 won&amp;#8217;t go deep into why this is important as, &lt;a class="reference external" href="https://plus.google.com/118086293667040637133"&gt;Michael Haggerty&lt;/a&gt; wrote an
 awesome &lt;a class="reference external" href="http://softwareswirl.blogspot.fr/2014/03/my-secret-tip-for-gsoc-success.html"&gt;article&lt;/a&gt; on this. His thoughts boiled down to a single line of&amp;nbsp;advice:&lt;/p&gt;
 &lt;blockquote&gt;
@@ -1764,7 +1995,7 @@ good, &lt;em&gt;actionable&lt;/em&gt; feedback quickly. Concentrate more on over
 and algorithms than nits. (Maybe even point out nits, but fix them yourself
 for an initial&amp;nbsp;patch.)&lt;/li&gt;
 &lt;/ul&gt;
-</content><category term="community"></category><category term="GSoC"></category></entry><entry><title>New Blog: Serving the Content</title><link href="https://patrick.cloke.us/posts/2014/07/06/new-blog-serving-the-content/" rel="alternate"></link><published>2014-07-06T18:36:00-04:00</published><updated>2014-07-06T18:36:00-04:00</updated><author><name>Patrick Cloke</name></author><id>tag:patrick.cloke.us,2014-07-06:/posts/2014/07/06/new-blog-serving-the-content/</id><summary type="html">
+</content><category term="articles"></category><category term="community"></category><category term="GSoC"></category></entry><entry><title>New Blog: Serving the Content</title><link href="https://patrick.cloke.us/posts/2014/07/06/new-blog-serving-the-content/" rel="alternate"></link><published>2014-07-06T18:36:00-04:00</published><updated>2014-07-06T18:36:00-04:00</updated><author><name>Patrick Cloke</name></author><id>tag:patrick.cloke.us,2014-07-06:/posts/2014/07/06/new-blog-serving-the-content/</id><summary type="html">
 &lt;p&gt;In the &lt;a class="reference external" href="https://patrick.cloke.us/posts/2014/07/03/new-blog/"&gt;first part&lt;/a&gt; of this blog post I talked about using Pelican to create a
 blog, this is a bit more about how I got it up and running.&lt;/p&gt;
 &lt;div class="section" id="getting-a-domain"&gt;
@@ -1911,7 +2142,7 @@ settings page on GitHub.&lt;/td&gt;&lt;/tr&gt;
 &lt;/tbody&gt;
 &lt;/table&gt;
 &lt;/div&gt;
-</content><category term="blog"></category></entry><entry><title>New Blog</title><link href="https://patrick.cloke.us/posts/2014/07/03/new-blog/" rel="alternate"></link><published>2014-07-03T23:04:00-04:00</published><updated>2014-07-06T18:24:00-04:00</updated><author><name>Patrick Cloke</name></author><id>tag:patrick.cloke.us,2014-07-03:/posts/2014/07/03/new-blog/</id><summary type="html">
+</content><category term="articles"></category><category term="blog"></category></entry><entry><title>New Blog</title><link href="https://patrick.cloke.us/posts/2014/07/03/new-blog/" rel="alternate"></link><published>2014-07-03T23:04:00-04:00</published><updated>2014-07-06T18:24:00-04:00</updated><author><name>Patrick Cloke</name></author><id>tag:patrick.cloke.us,2014-07-03:/posts/2014/07/03/new-blog/</id><summary type="html">
 &lt;p&gt;If you’re reading this you might have noticed that I have a shiny new blog! I
 had been pretty disappointed in &lt;a class="reference external" href="https://www.blogger.com/"&gt;Blogger&lt;/a&gt; practically since I started using it.
 But it was free, I was a poor college student, etc. I finally managed to get
@@ -1993,9 +2224,9 @@ adding the sidebar to the left and the organization of the archives page.)&lt;/
 concept of a “category” (and “authors” since I’m the only one on my blog!), so I
 added a few things to my pelicanconf.py:&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="c1"&gt;# Disable categories.&lt;/span&gt;
-&lt;span class="n"&gt;DISPLAY_CATEGORIES_ON_MENU&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="bp"&gt;False&lt;/span&gt;
-&lt;span class="n"&gt;DISPLAY_CATEGORY_ON_ARTICLE&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="bp"&gt;False&lt;/span&gt;
-&lt;span class="n"&gt;CATEGORY_FEED_ATOM&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="bp"&gt;None&lt;/span&gt;
+&lt;span class="n"&gt;DISPLAY_CATEGORIES_ON_MENU&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="kc"&gt;False&lt;/span&gt;
+&lt;span class="n"&gt;DISPLAY_CATEGORY_ON_ARTICLE&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="kc"&gt;False&lt;/span&gt;
+&lt;span class="n"&gt;CATEGORY_FEED_ATOM&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="kc"&gt;None&lt;/span&gt;
 &lt;span class="n"&gt;CATEGORY_SAVE_AS&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s1"&gt;''&lt;/span&gt;
 &lt;span class="n"&gt;CATEGORIES_SAVE_AS&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s1"&gt;''&lt;/span&gt;
 
@@ -2008,7 +2239,7 @@ used in the template to not show categories above the list of tags on each arti
 &lt;p&gt;This is getting pretty long so I’ll leave how I’m actually serving this content
 to my next article!&lt;/p&gt;
 &lt;/div&gt;
-</content><category term="blog"></category></entry><entry><title>Google Summer of Code 2014</title><link href="https://patrick.cloke.us/posts/2014/07/01/google-summer-of-code-2014-file/" rel="alternate"></link><published>2014-07-01T08:03:00-04:00</published><updated>2014-07-01T08:03:00-04:00</updated><author><name>Patrick Cloke</name></author><id>tag:patrick.cloke.us,2014-07-01:/posts/2014/07/01/google-summer-of-code-2014-file/</id><summary type="html">&lt;p&gt;I&amp;#8217;m again mentoring for &lt;a class="reference external" href="https://www.google-melange.com/gsoc/homepage/google/gsoc2014"&gt;Google Summer of Code&lt;/a&gt; 2014, this year my student is
+</content><category term="articles"></category><category term="blog"></category></entry><entry><title>Google Summer of Code 2014</title><link href="https://patrick.cloke.us/posts/2014/07/01/google-summer-of-code-2014-file/" rel="alternate"></link><published>2014-07-01T08:03:00-04:00</published><updated>2014-07-01T08:03:00-04:00</updated><author><name>Patrick Cloke</name></author><id>tag:patrick.cloke.us,2014-07-01:/posts/2014/07/01/google-summer-of-code-2014-file/</id><summary type="html">&lt;p&gt;I&amp;#8217;m again mentoring for &lt;a class="reference external" href="https://www.google-melange.com/gsoc/homepage/google/gsoc2014"&gt;Google Summer of Code&lt;/a&gt; 2014, this year my student is
 &lt;a class="reference external" href="http://sawrubh.tumblr.com/"&gt;Saurabh Anand&lt;/a&gt; (sawrubh), who has been working on a few related&amp;nbsp;things:&lt;/p&gt;
 &lt;ul class="simple"&gt;
 &lt;li&gt;Adding a &lt;a class="reference external" href="https://bugzilla.mozilla.org/show_bug.cgi?id=1024023"&gt;file transfer mechanism for &lt;span class="caps"&gt;XMPP&lt;/span&gt;&lt;/a&gt;&lt;/li&gt;
@@ -2021,7 +2252,7 @@ to my next article!&lt;/p&gt;
 &lt;li&gt;Integrating &lt;a class="reference external" href="https://support.mozilla.org/en-US/kb/filelink-large-attachments"&gt;FileLink&lt;/a&gt; as a fallback to in-protocol file&amp;nbsp;transfers&lt;/li&gt;
 &lt;/ul&gt;
 &lt;p&gt;Sorry for the way overdue post (as it&amp;#8217;s already past mid-term for&amp;nbsp;GSoC)!&lt;/p&gt;
-</content><category term="community"></category><category term="GSoC"></category></entry><entry><title>Extending JavaScript Maps (or other built-in objects)</title><link href="https://patrick.cloke.us/posts/2014/04/27/extending-javascript-maps-or-other/" rel="alternate"></link><published>2014-04-27T13:46:00-04:00</published><updated>2014-04-27T13:46:00-04:00</updated><author><name>Patrick Cloke</name></author><id>tag:patrick.cloke.us,2014-04-27:/posts/2014/04/27/extending-javascript-maps-or-other/</id><summary type="html">
+</content><category term="articles"></category><category term="community"></category><category term="GSoC"></category></entry><entry><title>Extending JavaScript Maps (or other built-in objects)</title><link href="https://patrick.cloke.us/posts/2014/04/27/extending-javascript-maps-or-other/" rel="alternate"></link><published>2014-04-27T13:46:00-04:00</published><updated>2014-04-27T13:46:00-04:00</updated><author><name>Patrick Cloke</name></author><id>tag:patrick.cloke.us,2014-04-27:/posts/2014/04/27/extending-javascript-maps-or-other/</id><summary type="html">
 &lt;p&gt;Finally another technical post, this one is about my adventures in
 attempting to extend the built-in &lt;a class="reference external" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Map"&gt;Map&lt;/a&gt; object in JavaScript to extend
 the functionality. As background, there are two reasons we’d want this:&lt;/p&gt;
@@ -2195,7 +2426,7 @@ expected, but they’re uhh…not up anywhere yet though. Oops.&lt;/td&gt;&lt;/t
 &lt;/tbody&gt;
 &lt;/table&gt;
 &lt;/div&gt;
-</content><category term="Instantbird"></category><category term="programming"></category><category term="specifications"></category><category term="Thunderbird"></category><category term="Wat"></category></entry><entry><title>Community and Volunteers</title><link href="https://patrick.cloke.us/posts/2014/04/16/community-and-volunteers/" rel="alternate"></link><published>2014-04-16T12:34:00-04:00</published><updated>2014-04-16T12:34:00-04:00</updated><author><name>Patrick Cloke</name></author><id>tag:patrick.cloke.us,2014-04-16:/posts/2014/04/16/community-and-volunteers/</id><summary type="html">&lt;p&gt;It was suggested that I cross-post this from mozilla.dev.planning onto
+</content><category term="articles"></category><category term="Instantbird"></category><category term="programming"></category><category term="specifications"></category><category term="Thunderbird"></category><category term="Wat"></category></entry><entry><title>Community and Volunteers</title><link href="https://patrick.cloke.us/posts/2014/04/16/community-and-volunteers/" rel="alternate"></link><published>2014-04-16T12:34:00-04:00</published><updated>2014-04-16T12:34:00-04:00</updated><author><name>Patrick Cloke</name></author><id>tag:patrick.cloke.us,2014-04-16:/posts/2014/04/16/community-and-volunteers/</id><summary type="html">&lt;p&gt;It was suggested that I cross-post this from mozilla.dev.planning onto
 my blog. This is in reply to a thread entitled &amp;#8220;&lt;a class="reference external" href="https://groups.google.com/forum/#%21topic/mozilla.dev.planning/P8oHKTCWSiQ"&gt;Proposal: Move
 Thunderbird and SeaMonkey to mozilla-central&lt;/a&gt;&amp;#8221; about (essentially)
 merging comm-central back into mozilla-central. There have been many
@@ -2271,7 +2502,7 @@ keeping a dying one on life-support. (And prove to all that
 &lt;/blockquote&gt;
 &lt;p&gt;I don&amp;#8217;t have much else to say beyond that (besides thanks for reading
 this&amp;nbsp;far!)&lt;/p&gt;
-</content><category term="community"></category><category term="crosspost"></category><category term="Mozilla"></category><category term="Thunderbird"></category></entry><entry><title>GSoc Lessons: Part Deux: The Arms Race</title><link href="https://patrick.cloke.us/posts/2013/12/04/gsoc-lessons-part-deux-arms-race/" rel="alternate"></link><published>2013-12-04T09:17:00-05:00</published><updated>2013-12-04T09:17:00-05:00</updated><author><name>Patrick Cloke</name></author><id>tag:patrick.cloke.us,2013-12-04:/posts/2013/12/04/gsoc-lessons-part-deux-arms-race/</id><summary type="html">&lt;p&gt;This post title might be a little excessive, but I&amp;#8217;ll blame &lt;a class="reference external" href="http://en.wikipedia.org/wiki/The_Sum_of_All_Fears_%28film%29"&gt;The Sum
+</content><category term="articles"></category><category term="community"></category><category term="crosspost"></category><category term="Mozilla"></category><category term="Thunderbird"></category></entry><entry><title>GSoc Lessons: Part Deux: The Arms Race</title><link href="https://patrick.cloke.us/posts/2013/12/04/gsoc-lessons-part-deux-arms-race/" rel="alternate"></link><published>2013-12-04T09:17:00-05:00</published><updated>2013-12-04T09:17:00-05:00</updated><author><name>Patrick Cloke</name></author><id>tag:patrick.cloke.us,2013-12-04:/posts/2013/12/04/gsoc-lessons-part-deux-arms-race/</id><summary type="html">&lt;p&gt;This post title might be a little excessive, but I&amp;#8217;ll blame &lt;a class="reference external" href="http://en.wikipedia.org/wiki/The_Sum_of_All_Fears_%28film%29"&gt;The Sum
 of All Fears&lt;/a&gt; that I was watching last night. This is the second part
 of a set of posts about ideas I heard at the Google Summer of Code 2013
 Mentor Summit (you can read &lt;a class="reference external" href="https://patrick.cloke.us/posts/2013/12/02/gsoc-lessons-part-1-application-period/"&gt;the …&lt;/a&gt;&lt;/p&gt;</summary><content type="html">&lt;p&gt;This post title might be a little excessive, but I&amp;#8217;ll blame &lt;a class="reference external" href="http://en.wikipedia.org/wiki/The_Sum_of_All_Fears_%28film%29"&gt;The Sum
@@ -2350,7 +2581,7 @@ accepted. (And that they&amp;#8217;re used to competing, e.g. homework and exams
 not collaborating!) I don&amp;#8217;t really know whether I feel the above
 situation is good or bad, but it&amp;#8217;s certainly an interesting effect from
 the way the GSoC process&amp;nbsp;works.&lt;/p&gt;
-</content><category term="community"></category><category term="GSoC"></category><category term="Mozilla"></category></entry><entry><title>GSoC Lessons: Part 1: Application Period</title><link href="https://patrick.cloke.us/posts/2013/12/02/gsoc-lessons-part-1-application-period/" rel="alternate"></link><published>2013-12-02T20:55:00-05:00</published><updated>2013-12-02T20:55:00-05:00</updated><author><name>Patrick Cloke</name></author><id>tag:patrick.cloke.us,2013-12-02:/posts/2013/12/02/gsoc-lessons-part-1-application-period/</id><summary type="html">&lt;p&gt;I briefly talked about &lt;a class="reference external" href="https://patrick.cloke.us/posts/2013/10/20/google-summer-of-code-mentor-summit-2013/"&gt;my experiences&lt;/a&gt; at the Google Summer of Code
+</content><category term="articles"></category><category term="community"></category><category term="GSoC"></category><category term="Mozilla"></category></entry><entry><title>GSoC Lessons: Part 1: Application Period</title><link href="https://patrick.cloke.us/posts/2013/12/02/gsoc-lessons-part-1-application-period/" rel="alternate"></link><published>2013-12-02T20:55:00-05:00</published><updated>2013-12-02T20:55:00-05:00</updated><author><name>Patrick Cloke</name></author><id>tag:patrick.cloke.us,2013-12-02:/posts/2013/12/02/gsoc-lessons-part-1-application-period/</id><summary type="html">&lt;p&gt;I briefly talked about &lt;a class="reference external" href="https://patrick.cloke.us/posts/2013/10/20/google-summer-of-code-mentor-summit-2013/"&gt;my experiences&lt;/a&gt; at the Google Summer of Code
 2013 Mentor Summit. I&amp;#8217;ve been pretty remiss in sharing what was actually
 discussed there and for that I must apologize! This will hopefully be
 one of a few posts about what I learned and discussed at the …&lt;/p&gt;</summary><content type="html">&lt;p&gt;I briefly talked about &lt;a class="reference external" href="https://patrick.cloke.us/posts/2013/10/20/google-summer-of-code-mentor-summit-2013/"&gt;my experiences&lt;/a&gt; at the Google Summer of Code
@@ -2422,7 +2653,7 @@ students before they apply to GSoC? I&amp;#8217;d love to hear&amp;nbsp;it!&lt;/
 include: community lessons, and handling a failing student. The
 community one will be very not-GSoC focused and could apply to just
 trying to incorporate new contributors&amp;#8230;but I&amp;#8217;ll include it in this&amp;nbsp;series.&lt;/p&gt;
-</content><category term="community"></category><category term="GSoC"></category><category term="Mozilla"></category></entry><entry><title>Google Summer of Code Mentor Summit 2013</title><link href="https://patrick.cloke.us/posts/2013/10/20/google-summer-of-code-mentor-summit-2013/" rel="alternate"></link><published>2013-10-20T22:18:00-04:00</published><updated>2013-10-20T22:18:00-04:00</updated><author><name>Patrick Cloke</name></author><id>tag:patrick.cloke.us,2013-10-20:/posts/2013/10/20/google-summer-of-code-mentor-summit-2013/</id><summary type="html">&lt;p&gt;Not only was I lucky enough to mentor a great student for this year&amp;#8217;s
+</content><category term="articles"></category><category term="community"></category><category term="GSoC"></category><category term="Mozilla"></category></entry><entry><title>Google Summer of Code Mentor Summit 2013</title><link href="https://patrick.cloke.us/posts/2013/10/20/google-summer-of-code-mentor-summit-2013/" rel="alternate"></link><published>2013-10-20T22:18:00-04:00</published><updated>2013-10-20T22:18:00-04:00</updated><author><name>Patrick Cloke</name></author><id>tag:patrick.cloke.us,2013-10-20:/posts/2013/10/20/google-summer-of-code-mentor-summit-2013/</id><summary type="html">&lt;p&gt;Not only was I lucky enough to mentor a great student for this year&amp;#8217;s
 Google Summer of Code, but Mozilla asked me to represent them at the
 Google Summer of Code Mentor Summit!&amp;nbsp; This was located at Google&amp;#8217;s
 offices in Mountain View, California this past weekend (Friday, Oct …&lt;/p&gt;</summary><content type="html">&lt;p&gt;Not only was I lucky enough to mentor a great student for this year&amp;#8217;s
@@ -2465,7 +2696,7 @@ some people were excited by this and hopefully they&amp;#8217;ll try it&amp;nbsp
 was great and I&amp;#8217;d like to thank both Mozilla and Google for giving me
 this opportunity.&amp;nbsp; If I find any really great gems in my notes I&amp;#8217;ll
 write further blog posts about&amp;nbsp;them.&lt;/p&gt;
-</content><category term="Google"></category><category term="GSoC"></category><category term="Mozilla"></category></entry><entry><title>Yahoo Protocol Google Summer of Code Round-up</title><link href="https://patrick.cloke.us/posts/2013/10/06/yahoo-protocol-google-summer-of-code/" rel="alternate"></link><published>2013-10-06T09:18:00-04:00</published><updated>2013-10-06T09:18:00-04:00</updated><author><name>Patrick Cloke</name></author><id>tag:patrick.cloke.us,2013-10-06:/posts/2013/10/06/yahoo-protocol-google-summer-of-code/</id><summary type="html">&lt;p&gt;I have to apologize to my student, &lt;a class="reference external" href="http://phaseshiftsoftware.com/blog/"&gt;Quentin&lt;/a&gt; (aka qheaden on &lt;span class="caps"&gt;IRC&lt;/span&gt;),
+</content><category term="articles"></category><category term="Google"></category><category term="GSoC"></category><category term="Mozilla"></category></entry><entry><title>Yahoo Protocol Google Summer of Code Round-up</title><link href="https://patrick.cloke.us/posts/2013/10/06/yahoo-protocol-google-summer-of-code/" rel="alternate"></link><published>2013-10-06T09:18:00-04:00</published><updated>2013-10-06T09:18:00-04:00</updated><author><name>Patrick Cloke</name></author><id>tag:patrick.cloke.us,2013-10-06:/posts/2013/10/06/yahoo-protocol-google-summer-of-code/</id><summary type="html">&lt;p&gt;I have to apologize to my student, &lt;a class="reference external" href="http://phaseshiftsoftware.com/blog/"&gt;Quentin&lt;/a&gt; (aka qheaden on &lt;span class="caps"&gt;IRC&lt;/span&gt;),
 for taking so long to write this&amp;#8230;but anyway: Google Summer of Code
 2013 is over!&amp;nbsp; Quentin has done a great job working at implementing the
 Yahoo Protocol for Instantbird (and Thunderbird) in JavaScript
@@ -2509,7 +2740,7 @@ included in the next Thunderbird release (i.e. Thunderbird&amp;nbsp;31).&lt;/p&g
 Quentin made and we hope that Quentin has learned a lot! Thanks for a
 great summer qheaden and hopefully we&amp;#8217;ll see you around&amp;nbsp;still!&lt;/p&gt;
 &lt;/div&gt;
-</content><category term="chat"></category><category term="GSoC"></category><category term="instant messaging"></category><category term="Instantbird"></category><category term="Yahoo"></category></entry><entry><title>Mentoring Google Summer of Code 2013</title><link href="https://patrick.cloke.us/posts/2013/06/28/mentoring-google-summer-of-code-2013/" rel="alternate"></link><published>2013-06-28T18:05:00-04:00</published><updated>2013-06-28T18:05:00-04:00</updated><author><name>Patrick Cloke</name></author><id>tag:patrick.cloke.us,2013-06-28:/posts/2013/06/28/mentoring-google-summer-of-code-2013/</id><summary type="html">&lt;p&gt;I&amp;#8217;m officially a mentor this year for &lt;a class="reference external" href="http://www.google-melange.com/gsoc/homepage/google/gsoc2013"&gt;2013&amp;#8217;s Google Summer of Code&lt;/a&gt;.
+</content><category term="articles"></category><category term="chat"></category><category term="GSoC"></category><category term="instant messaging"></category><category term="Instantbird"></category><category term="Yahoo"></category></entry><entry><title>Mentoring Google Summer of Code 2013</title><link href="https://patrick.cloke.us/posts/2013/06/28/mentoring-google-summer-of-code-2013/" rel="alternate"></link><published>2013-06-28T18:05:00-04:00</published><updated>2013-06-28T18:05:00-04:00</updated><author><name>Patrick Cloke</name></author><id>tag:patrick.cloke.us,2013-06-28:/posts/2013/06/28/mentoring-google-summer-of-code-2013/</id><summary type="html">&lt;p&gt;I&amp;#8217;m officially a mentor this year for &lt;a class="reference external" href="http://www.google-melange.com/gsoc/homepage/google/gsoc2013"&gt;2013&amp;#8217;s Google Summer of Code&lt;/a&gt;.
 I&amp;#8217;m a bit late on posting this, but oh well! My student this year is
 &lt;a class="reference external" href="http://phaseshiftsoftware.com/"&gt;Quentin Headen&lt;/a&gt; who is &lt;a class="reference external" href="http://www.google-melange.com/gsoc/project/google/gsoc2013/qheaden/26001"&gt;working on&lt;/a&gt; a &lt;a class="reference external" href="http://en.wikipedia.org/wiki/Yahoo!_Messenger_Protocol"&gt;Yahoo! Messenger protocol&lt;/a&gt;
 for the Instantbird chat/ backend (so it&amp;#8217;ll also be …&lt;/p&gt;</summary><content type="html">&lt;p&gt;I&amp;#8217;m officially a mentor this year for &lt;a class="reference external" href="http://www.google-melange.com/gsoc/homepage/google/gsoc2013"&gt;2013&amp;#8217;s Google Summer of Code&lt;/a&gt;.
@@ -2543,7 +2774,7 @@ Benedikt goes by Mic and Florian goes by something starting with&amp;nbsp;&amp;#
 &lt;p&gt;Thanks also go out to Mozilla for letting us participate in Google
 Summer of Code with them again! You can see all of the accepted projects
 in &lt;a class="reference external" href="http://blog.gerv.net/2013/06/gsoc-2013-project-list/"&gt;Gerv&amp;#8217;s blogpost&lt;/a&gt;.&lt;/p&gt;
-</content><category term="chat"></category><category term="GSoC"></category><category term="instant messaging"></category><category term="Instantbird"></category><category term="Yahoo"></category></entry><entry><title>Instantbird 1.4 Released!</title><link href="https://patrick.cloke.us/posts/2013/05/20/instantbird-14-released/" rel="alternate"></link><published>2013-05-20T16:45:00-04:00</published><updated>2013-05-20T16:45:00-04:00</updated><author><name>Patrick Cloke</name></author><id>tag:patrick.cloke.us,2013-05-20:/posts/2013/05/20/instantbird-14-released/</id><summary type="html">&lt;p&gt;After a bunch of l10n build problems, we&amp;#8217;ve finally released
+</content><category term="articles"></category><category term="chat"></category><category term="GSoC"></category><category term="instant messaging"></category><category term="Instantbird"></category><category term="Yahoo"></category></entry><entry><title>Instantbird 1.4 Released!</title><link href="https://patrick.cloke.us/posts/2013/05/20/instantbird-14-released/" rel="alternate"></link><published>2013-05-20T16:45:00-04:00</published><updated>2013-05-20T16:45:00-04:00</updated><author><name>Patrick Cloke</name></author><id>tag:patrick.cloke.us,2013-05-20:/posts/2013/05/20/instantbird-14-released/</id><summary type="html">&lt;p&gt;After a bunch of l10n build problems, we&amp;#8217;ve finally released
 Instantbird 1.4, which includes updates to libpurple 2.10.7 and Mozilla
 20.&amp;nbsp; In particular this&amp;nbsp;includes:&lt;/p&gt;
 &lt;ul class="simple"&gt;
@@ -2569,7 +2800,7 @@ you also go on &lt;span class="caps"&gt;IRC&lt;/span&gt;. Instantbird has great 
 have issues, feel free to ping me in #instantbird on irc.mozilla.org and
 let me know what your issue&amp;nbsp;is.)&lt;/p&gt;
 &lt;p&gt;You can download it &lt;a class="reference external" href="http://www.instantbird.com/download-all.html"&gt;here&lt;/a&gt;, or view the full &lt;a class="reference external" href="http://www.instantbird.com/release-notes.html"&gt;release notes&lt;/a&gt;.&lt;/p&gt;
-</content><category term="Instantbird"></category></entry><entry><title>JavaScript typed arrays pain</title><link href="https://patrick.cloke.us/posts/2012/11/28/javascript-typed-arrays-pain/" rel="alternate"></link><published>2012-11-28T23:11:00-05:00</published><updated>2012-11-28T23:11:00-05:00</updated><author><name>Patrick Cloke</name></author><id>tag:patrick.cloke.us,2012-11-28:/posts/2012/11/28/javascript-typed-arrays-pain/</id><summary type="html">&lt;p&gt;If you&amp;#8217;ve ever tried to deal with binary data in JavaScript you know
+</content><category term="articles"></category><category term="Instantbird"></category></entry><entry><title>JavaScript typed arrays pain</title><link href="https://patrick.cloke.us/posts/2012/11/28/javascript-typed-arrays-pain/" rel="alternate"></link><published>2012-11-28T23:11:00-05:00</published><updated>2012-11-28T23:11:00-05:00</updated><author><name>Patrick Cloke</name></author><id>tag:patrick.cloke.us,2012-11-28:/posts/2012/11/28/javascript-typed-arrays-pain/</id><summary type="html">&lt;p&gt;If you&amp;#8217;ve ever tried to deal with binary data in JavaScript you know
 it isn&amp;#8217;t much fun and you usually resort to using strings lots of
 charCodeAt and related functions.&amp;nbsp; &lt;a class="reference external" href="https://developer.mozilla.org/en-US/docs/JavaScript_typed_arrays"&gt;Typed arrays&lt;/a&gt; are supposed to solve
 this though!&amp;nbsp; The typed array &lt;span class="caps"&gt;API&lt;/span&gt; consists of creating a buffer of …&lt;/p&gt;</summary><content type="html">&lt;p&gt;If you&amp;#8217;ve ever tried to deal with binary data in JavaScript you know
@@ -2660,7 +2891,7 @@ don&amp;#8217;t use ArrayBufferViews, use DataViews.&amp;nbsp; (Although Uint8Ar
 Int8Arrays should work&amp;nbsp;fine!)&lt;/p&gt;
 &lt;p&gt;And to not rant the &lt;em&gt;entire&lt;/em&gt; time, working with typed arrays certainly
 does beat strings +&amp;nbsp;charCodeAt!&lt;/p&gt;
-</content><category term="Instantbird"></category><category term="Mozilla"></category><category term="OSCAR"></category><category term="Thunderbird"></category><category term="Wat"></category></entry><entry><title>Instantbird 1.3 Released!!!</title><link href="https://patrick.cloke.us/posts/2012/11/16/instantbird-13-released/" rel="alternate"></link><published>2012-11-16T06:42:00-05:00</published><updated>2012-11-16T06:42:00-05:00</updated><author><name>Patrick Cloke</name></author><id>tag:patrick.cloke.us,2012-11-16:/posts/2012/11/16/instantbird-13-released/</id><summary type="html">&lt;p&gt;Well we finally got our release process down a bit better and were
+</content><category term="articles"></category><category term="Instantbird"></category><category term="Mozilla"></category><category term="OSCAR"></category><category term="Thunderbird"></category><category term="Wat"></category></entry><entry><title>Instantbird 1.3 Released!!!</title><link href="https://patrick.cloke.us/posts/2012/11/16/instantbird-13-released/" rel="alternate"></link><published>2012-11-16T06:42:00-05:00</published><updated>2012-11-16T06:42:00-05:00</updated><author><name>Patrick Cloke</name></author><id>tag:patrick.cloke.us,2012-11-16:/posts/2012/11/16/instantbird-13-released/</id><summary type="html">&lt;p&gt;Well we finally got our release process down a bit better and were
 able to do a quicker release (from 1.2 to 1.3, compared to our previous
 few releases). This is great news, as it gives incremental changes to
 our users faster!&amp;nbsp; There&amp;#8217;s some new features available …&lt;/p&gt;</summary><content type="html">&lt;p&gt;Well we finally got our release process down a bit better and were
@@ -2681,7 +2912,7 @@ following multiple&amp;nbsp;conversations).&lt;/li&gt;
 &lt;p&gt;Instantbird 1.3 is based off of Mozilla 16.0.2, but I believe we&amp;#8217;re
 hoping to update to mozilla-central soon in order to benefit from cool
 new technologies, like WebRTC!&amp;nbsp; You should &lt;a class="reference external" href="http://www.instantbird.com/download-all.html"&gt;check out Instantbird&lt;/a&gt;&amp;nbsp;now!&lt;/p&gt;
-</content><category term="Instantbird"></category></entry><entry><title>On Status</title><link href="https://patrick.cloke.us/posts/2012/10/16/on-status/" rel="alternate"></link><published>2012-10-16T21:33:00-04:00</published><updated>2012-10-16T21:33:00-04:00</updated><author><name>Patrick Cloke</name></author><id>tag:patrick.cloke.us,2012-10-16:/posts/2012/10/16/on-status/</id><summary type="html">&lt;p&gt;Something that comes up often about Instantbird is why we only support
+</content><category term="articles"></category><category term="Instantbird"></category></entry><entry><title>On Status</title><link href="https://patrick.cloke.us/posts/2012/10/16/on-status/" rel="alternate"></link><published>2012-10-16T21:33:00-04:00</published><updated>2012-10-16T21:33:00-04:00</updated><author><name>Patrick Cloke</name></author><id>tag:patrick.cloke.us,2012-10-16:/posts/2012/10/16/on-status/</id><summary type="html">&lt;p&gt;Something that comes up often about Instantbird is why we only support
 three statuses: Available, Unavailable and Offline.&amp;nbsp; (We do actually
 support a fourth one too, Idle, but that is set automatically, not
 chosen by the user.)&amp;nbsp; Frequently this discussion is in the context of
@@ -2798,7 +3029,7 @@ in the&amp;nbsp;table.&lt;/p&gt;
 &lt;/tr&gt;
 &lt;/tbody&gt;
 &lt;/table&gt;
-</content><category term="chat"></category><category term="instant messaging"></category><category term="Instantbird"></category><category term="messaging"></category><category term="status"></category><category term="Thunderbird"></category></entry><entry><title>Instantbird 1.2 Released (with awesome new IRC features)!</title><link href="https://patrick.cloke.us/posts/2012/08/08/instantbird-12-released-with-awesome/" rel="alternate"></link><published>2012-08-08T13:08:00-04:00</published><updated>2012-08-08T13:08:00-04:00</updated><author><name>Patrick Cloke</name></author><id>tag:patrick.cloke.us,2012-08-08:/posts/2012/08/08/instantbird-12-released-with-awesome/</id><summary type="html">&lt;p&gt;If you haven&amp;#8217;t seen the announcement&amp;#8230;&lt;a class="reference external" href="http://blog.instantbird.org/2012/08/instantbird-1-2-released/"&gt;Instantbird 1.2 has been
+</content><category term="articles"></category><category term="chat"></category><category term="instant messaging"></category><category term="Instantbird"></category><category term="messaging"></category><category term="status"></category><category term="Thunderbird"></category></entry><entry><title>Instantbird 1.2 Released (with awesome new IRC features)!</title><link href="https://patrick.cloke.us/posts/2012/08/08/instantbird-12-released-with-awesome/" rel="alternate"></link><published>2012-08-08T13:08:00-04:00</published><updated>2012-08-08T13:08:00-04:00</updated><author><name>Patrick Cloke</name></author><id>tag:patrick.cloke.us,2012-08-08:/posts/2012/08/08/instantbird-12-released-with-awesome/</id><summary type="html">&lt;p&gt;If you haven&amp;#8217;t seen the announcement&amp;#8230;&lt;a class="reference external" href="http://blog.instantbird.org/2012/08/instantbird-1-2-released/"&gt;Instantbird 1.2 has been
 released&lt;/a&gt;!&amp;nbsp; It&amp;#8217;s got a ton of great new features that I&amp;#8217;m excited for:
 &lt;a class="reference external" href="http://blog.instantbird.org/2012/08/tab-completion-in-instantbird-1-2/"&gt;better tab complete&lt;/a&gt;, a marker showing the last viewed messages,
 support for Bonjour and more.&amp;nbsp; But the most exciting bits to me are …&lt;/p&gt;</summary><content type="html">&lt;p&gt;If you haven&amp;#8217;t seen the announcement&amp;#8230;&lt;a class="reference external" href="http://blog.instantbird.org/2012/08/instantbird-1-2-released/"&gt;Instantbird 1.2 has been
@@ -2826,7 +3057,7 @@ been in nightly builds&amp;#8230;forever), so we started making a list of some
 of the stuff we&amp;#8217;d like to implement in future Instantbirds, you can
 check it out &lt;a class="reference external" href="https://etherpad.mozilla.org/ib-1-3"&gt;here&lt;/a&gt;. Some of them are very exciting, feel free to grab
 one and work on&amp;nbsp;it.&lt;/p&gt;
-</content><category term="Instantbird"></category><category term="IRC"></category></entry><entry><title>IRC Auto-Performs</title><link href="https://patrick.cloke.us/posts/2012/06/11/irc-auto-performs/" rel="alternate"></link><published>2012-06-11T22:25:00-04:00</published><updated>2012-06-11T22:25:00-04:00</updated><author><name>Patrick Cloke</name></author><id>tag:patrick.cloke.us,2012-06-11:/posts/2012/06/11/irc-auto-performs/</id><summary type="html">
+</content><category term="articles"></category><category term="Instantbird"></category><category term="IRC"></category></entry><entry><title>IRC Auto-Performs</title><link href="https://patrick.cloke.us/posts/2012/06/11/irc-auto-performs/" rel="alternate"></link><published>2012-06-11T22:25:00-04:00</published><updated>2012-06-11T22:25:00-04:00</updated><author><name>Patrick Cloke</name></author><id>tag:patrick.cloke.us,2012-06-11:/posts/2012/06/11/irc-auto-performs/</id><summary type="html">
 &lt;p&gt;There have been a &lt;a class="reference external" href="https://bugzilla.mozilla.org/show_bug.cgi?id=742675"&gt;few&lt;/a&gt; &lt;a class="reference external" href="https://bugzilla.instantbird.org/show_bug.cgi?id=1101"&gt;requests&lt;/a&gt; to support “auto-performs”
 (sending commands to the &lt;span class="caps"&gt;IRC&lt;/span&gt; server after connection that the user types
 into a box or whatever). Personally I find this to be:&lt;/p&gt;
@@ -2960,7 +3191,7 @@ that it requires a bit more understanding of the actual protocol level
 implementation, I don’t feel that knowing you need to use “&lt;span class="caps"&gt;PRIVMSG&lt;/span&gt;” as a
 command instead of /msg is a huge issue, however.&lt;/p&gt;
 &lt;/div&gt;
-</content><category term="Instantbird"></category><category term="IRC"></category><category term="Mozilla"></category></entry><entry><title>Instantbird Contact List Hack #2</title><link href="https://patrick.cloke.us/posts/2012/01/15/instantbird-contact-list-hack-2/" rel="alternate"></link><published>2012-01-15T10:00:00-05:00</published><updated>2012-01-15T10:00:00-05:00</updated><author><name>Patrick Cloke</name></author><id>tag:patrick.cloke.us,2012-01-15:/posts/2012/01/15/instantbird-contact-list-hack-2/</id><summary type="html">&lt;p&gt;There was a &lt;a class="reference external" href="https://bugzilla.instantbird.org/show_bug.cgi?id=987"&gt;request&lt;/a&gt; on the Instantbird Bugzilla to always show
+</content><category term="articles"></category><category term="Instantbird"></category><category term="IRC"></category><category term="Mozilla"></category></entry><entry><title>Instantbird Contact List Hack #2</title><link href="https://patrick.cloke.us/posts/2012/01/15/instantbird-contact-list-hack-2/" rel="alternate"></link><published>2012-01-15T10:00:00-05:00</published><updated>2012-01-15T10:00:00-05:00</updated><author><name>Patrick Cloke</name></author><id>tag:patrick.cloke.us,2012-01-15:/posts/2012/01/15/instantbird-contact-list-hack-2/</id><summary type="html">&lt;p&gt;There was a &lt;a class="reference external" href="https://bugzilla.instantbird.org/show_bug.cgi?id=987"&gt;request&lt;/a&gt; on the Instantbird Bugzilla to always show
 contacts in the contact list as the &amp;#8220;big&amp;#8221; contact (as shown when a
 contact is selected).&amp;nbsp; Similarly to my &lt;a class="reference external" href="https://patrick.cloke.us/posts/2011/10/31/instantbird-contact-list-hack/"&gt;last post&lt;/a&gt;, this can easily be
 done with userChrome.css.&amp;nbsp; See the post if you don&amp;#8217;t know what
@@ -2982,7 +3213,7 @@ sure you don&amp;#8217;t really care about that and just want the code, well I&a
 &lt;p&gt;And that&amp;#8217;s it!&amp;nbsp; Restart Instantbird and you should always have big
 contacts.&amp;nbsp; I haven&amp;#8217;t seen any issues of using this (missing or wrong
 behavior), but of course your mileage might vary.&amp;nbsp; Have&amp;nbsp;fun!&lt;/p&gt;
-</content><category term="customizing"></category><category term="Instantbird"></category><category term="programming"></category></entry><entry><title>Instantbird Contact List Hack</title><link href="https://patrick.cloke.us/posts/2011/10/31/instantbird-contact-list-hack/" rel="alternate"></link><published>2011-10-31T20:20:00-04:00</published><updated>2011-10-31T20:20:00-04:00</updated><author><name>Patrick Cloke</name></author><id>tag:patrick.cloke.us,2011-10-31:/posts/2011/10/31/instantbird-contact-list-hack/</id><summary type="html">&lt;p&gt;A friend of mine asked me if there was a way to have selected contacts
+</content><category term="articles"></category><category term="customizing"></category><category term="Instantbird"></category><category term="programming"></category></entry><entry><title>Instantbird Contact List Hack</title><link href="https://patrick.cloke.us/posts/2011/10/31/instantbird-contact-list-hack/" rel="alternate"></link><published>2011-10-31T20:20:00-04:00</published><updated>2011-10-31T20:20:00-04:00</updated><author><name>Patrick Cloke</name></author><id>tag:patrick.cloke.us,2011-10-31:/posts/2011/10/31/instantbird-contact-list-hack/</id><summary type="html">&lt;p&gt;A friend of mine asked me if there was a way to have selected contacts
 in the contact list &lt;span class="caps"&gt;NOT&lt;/span&gt; expand to two lines (where the status goes onto
 the second line) in&amp;nbsp;Instantbird.&lt;/p&gt;
 &lt;p&gt;There&amp;#8217;s actually no option to do this in Instantbird, but with a
@@ -3010,7 +3241,7 @@ that lets you expand/collapse isn&amp;#8217;t shown on a non-selected&amp;nbsp;c
 template to be used instead of the contact-big template, even when the
 contact is expanded; i.e. we&amp;#8217;re overwriting the command given
 &lt;a class="reference external" href="http://lxr.instantbird.org/instantbird/source/instantbird/content/blist.css#44"&gt;blist.css&lt;/a&gt;.)&lt;/p&gt;
-</content><category term="customizing"></category><category term="Instantbird"></category><category term="programming"></category></entry><entry><title>Adding a protocol to Instantbird (Part 2)</title><link href="https://patrick.cloke.us/posts/2011/09/03/adding-protocol-to-instantbird-part-2/" rel="alternate"></link><published>2011-09-03T10:31:00-04:00</published><updated>2011-09-03T10:31:00-04:00</updated><author><name>Patrick Cloke</name></author><id>tag:patrick.cloke.us,2011-09-03:/posts/2011/09/03/adding-protocol-to-instantbird-part-2/</id><summary type="html">
+</content><category term="articles"></category><category term="customizing"></category><category term="Instantbird"></category><category term="programming"></category></entry><entry><title>Adding a protocol to Instantbird (Part 2)</title><link href="https://patrick.cloke.us/posts/2011/09/03/adding-protocol-to-instantbird-part-2/" rel="alternate"></link><published>2011-09-03T10:31:00-04:00</published><updated>2011-09-03T10:31:00-04:00</updated><author><name>Patrick Cloke</name></author><id>tag:patrick.cloke.us,2011-09-03:/posts/2011/09/03/adding-protocol-to-instantbird-part-2/</id><summary type="html">
 &lt;p&gt;I had &lt;a class="reference external" href="https://patrick.cloke.us/posts/2011/06/18/adding-new-protocol-sipeoffice/"&gt;previously talked about adding a protocol to Instantbird&lt;/a&gt;,
 that focused on adding &lt;span class="caps"&gt;SIPE&lt;/span&gt; (Microsoft Office Communicator support).
 Since then I’ve been slowly working on defeating &lt;span class="caps"&gt;SIPE&lt;/span&gt;.  Fortunately I
@@ -3080,7 +3311,7 @@ changes I made to the libpurple Sametime plugin and the external library
 control system) set up I’ll look into getting these changes pushed back
 to libpurple to avoid diverging code bases.&lt;/p&gt;
 &lt;/div&gt;
-</content><category term="Instantbird"></category><category term="programming"></category><category term="SIPE"></category></entry><entry><title>Shared Lightning profile across Linux and Windows</title><link href="https://patrick.cloke.us/posts/2011/07/08/shared-lightning-profile-across-linux/" rel="alternate"></link><published>2011-07-08T20:46:00-04:00</published><updated>2011-07-08T20:46:00-04:00</updated><author><name>Patrick Cloke</name></author><id>tag:patrick.cloke.us,2011-07-08:/posts/2011/07/08/shared-lightning-profile-across-linux/</id><summary type="html">&lt;p&gt;In &lt;a class="reference external" href="irc://irc.mozilla.org/calendar"&gt;#calendar on Mozilla &lt;span class="caps"&gt;IRC&lt;/span&gt;&lt;/a&gt; the past few days a user has been
+</content><category term="articles"></category><category term="Instantbird"></category><category term="programming"></category><category term="SIPE"></category></entry><entry><title>Shared Lightning profile across Linux and Windows</title><link href="https://patrick.cloke.us/posts/2011/07/08/shared-lightning-profile-across-linux/" rel="alternate"></link><published>2011-07-08T20:46:00-04:00</published><updated>2011-07-08T20:46:00-04:00</updated><author><name>Patrick Cloke</name></author><id>tag:patrick.cloke.us,2011-07-08:/posts/2011/07/08/shared-lightning-profile-across-linux/</id><summary type="html">&lt;p&gt;In &lt;a class="reference external" href="irc://irc.mozilla.org/calendar"&gt;#calendar on Mozilla &lt;span class="caps"&gt;IRC&lt;/span&gt;&lt;/a&gt; the past few days a user has been
 asking about using a shared profile on Thunderbird between Linux and
 Windows (&amp;#8220;shared&amp;#8221; meaning a dual boot system of Linux/Windows, but not
 at the same time, obviously).&amp;nbsp; Generally this isn&amp;#8217;t a big deal &lt;span class="caps"&gt;UNLESS&lt;/span&gt;
@@ -3119,7 +3350,7 @@ script files (as is discussed in that big) but hopefully it should
 similar with the themes folders if they differ dramatically (it seems
 there&amp;#8217;s &lt;a class="reference external" href="http://mxr.mozilla.org/comm-central/source/calendar/lightning/themes/"&gt;just two&lt;/a&gt;: winstripe and pinstripe: i.e. Windows &lt;span class="amp"&gt;&amp;amp;&lt;/span&gt; Mac; Linux
 and Solaris most likely also use&amp;nbsp;winstripe).&lt;/p&gt;
-</content><category term="Lightning"></category><category term="Mozilla"></category></entry><entry><title>Adding a new protocol (SIPE/Office Communicator) to Instantbird (part 1)</title><link href="https://patrick.cloke.us/posts/2011/06/18/adding-new-protocol-sipeoffice/" rel="alternate"></link><published>2011-06-18T21:53:00-04:00</published><updated>2011-06-18T21:53:00-04:00</updated><author><name>Patrick Cloke</name></author><id>tag:patrick.cloke.us,2011-06-18:/posts/2011/06/18/adding-new-protocol-sipeoffice/</id><summary type="html">&lt;p&gt;&lt;a class="reference external" href="http://en.wikipedia.org/wiki/Office_Communicator"&gt;Microsoft Office Communicator&lt;/a&gt; is an instant messaging client that
+</content><category term="articles"></category><category term="Lightning"></category><category term="Mozilla"></category></entry><entry><title>Adding a new protocol (SIPE/Office Communicator) to Instantbird (part 1)</title><link href="https://patrick.cloke.us/posts/2011/06/18/adding-new-protocol-sipeoffice/" rel="alternate"></link><published>2011-06-18T21:53:00-04:00</published><updated>2011-06-18T21:53:00-04:00</updated><author><name>Patrick Cloke</name></author><id>tag:patrick.cloke.us,2011-06-18:/posts/2011/06/18/adding-new-protocol-sipeoffice/</id><summary type="html">&lt;p&gt;&lt;a class="reference external" href="http://en.wikipedia.org/wiki/Office_Communicator"&gt;Microsoft Office Communicator&lt;/a&gt; is an instant messaging client that
 integrates into the &lt;a class="reference external" href="http://en.wikipedia.org/wiki/Microsoft_Exchange_Server"&gt;Exchange Messaging Server&lt;/a&gt; (the protocol behind it
 is an extended version of &lt;span class="caps"&gt;SIP&lt;/span&gt;/&lt;span class="caps"&gt;SIMPLE&lt;/span&gt;).&amp;nbsp; Anyway, there&amp;#8217;s a &lt;a class="reference external" href="http://developer.pidgin.im/wiki/WhatIsLibpurple"&gt;libpurple&lt;/a&gt;
 (i.e. the backend of &lt;a class="reference external" href="http://instantbird.com/"&gt;Instantbird&lt;/a&gt; and &lt;a class="reference external" href="http://pidgin.im/"&gt;Pidgin&lt;/a&gt;) protocol plug-in for
@@ -3156,7 +3387,7 @@ not in our source code.&amp;nbsp; I can grab the &lt;a class="reference external
 of course) and add the gio subfolder, but first we should check if this
 part of gmime is even used by &lt;span class="caps"&gt;SIPE&lt;/span&gt;! (My guess is that it is &lt;em&gt;not&lt;/em&gt;, but
 that&amp;#8217;s where I&amp;#8217;m at now.&amp;nbsp; I&amp;#8217;ll post back when I get&amp;nbsp;further.&lt;/p&gt;
-</content><category term="Instantbird"></category><category term="programming"></category><category term="SIPE"></category></entry><entry><title>Compiling Instantbird</title><link href="https://patrick.cloke.us/posts/2011/05/16/compilling-instantbird/" rel="alternate"></link><published>2011-05-16T21:30:00-04:00</published><updated>2011-05-16T21:30:00-04:00</updated><author><name>Patrick Cloke</name></author><id>tag:patrick.cloke.us,2011-05-16:/posts/2011/05/16/compilling-instantbird/</id><summary type="html">
+</content><category term="articles"></category><category term="Instantbird"></category><category term="programming"></category><category term="SIPE"></category></entry><entry><title>Compiling Instantbird</title><link href="https://patrick.cloke.us/posts/2011/05/16/compilling-instantbird/" rel="alternate"></link><published>2011-05-16T21:30:00-04:00</published><updated>2011-05-16T21:30:00-04:00</updated><author><name>Patrick Cloke</name></author><id>tag:patrick.cloke.us,2011-05-16:/posts/2011/05/16/compilling-instantbird/</id><summary type="html">
 &lt;p&gt;In the past I’ve tried to compile a few different programs that use
 the Mozilla toolkit to various levels of success.  I’ve tried to compile
 Thunderbird, Songbird and Instantbird at various points.  I got
@@ -3322,7 +3553,7 @@ the way while developing).  See &lt;a class="reference external" href="https:/
 &lt;p&gt;Edit: Fixed the path to the executable thanks to Florian. And fixed a
 spelling error in the title.&lt;/p&gt;
 &lt;/div&gt;
-</content><category term="Instantbird"></category><category term="Mozilla"></category><category term="programming"></category></entry><entry><title>Why rewrite the IRC protocol plugin? (Part 2)</title><link href="https://patrick.cloke.us/posts/2011/04/30/why-rewrite-irc-protocol-plugin-part-2/" rel="alternate"></link><published>2011-04-30T13:01:00-04:00</published><updated>2011-04-30T13:01:00-04:00</updated><author><name>Patrick Cloke</name></author><id>tag:patrick.cloke.us,2011-04-30:/posts/2011/04/30/why-rewrite-irc-protocol-plugin-part-2/</id><summary type="html">&lt;p&gt;I &lt;a class="reference external" href="https://patrick.cloke.us/posts/2010/12/08/why-rewrite-irc-into-javascript/"&gt;previously wrote about&lt;/a&gt; why I&amp;#8217;m rewriting the libpurple &lt;span class="caps"&gt;IRC&lt;/span&gt;
+</content><category term="articles"></category><category term="Instantbird"></category><category term="Mozilla"></category><category term="programming"></category></entry><entry><title>Why rewrite the IRC protocol plugin? (Part 2)</title><link href="https://patrick.cloke.us/posts/2011/04/30/why-rewrite-irc-protocol-plugin-part-2/" rel="alternate"></link><published>2011-04-30T13:01:00-04:00</published><updated>2011-04-30T13:01:00-04:00</updated><author><name>Patrick Cloke</name></author><id>tag:patrick.cloke.us,2011-04-30:/posts/2011/04/30/why-rewrite-irc-protocol-plugin-part-2/</id><summary type="html">&lt;p&gt;I &lt;a class="reference external" href="https://patrick.cloke.us/posts/2010/12/08/why-rewrite-irc-into-javascript/"&gt;previously wrote about&lt;/a&gt; why I&amp;#8217;m rewriting the libpurple &lt;span class="caps"&gt;IRC&lt;/span&gt;
 implementation into a JavaScript implementation for Instantbird.&amp;nbsp; This
 is kind of a follow up, but more focused on what I hope to accomplish
 feature wise for &lt;span class="caps"&gt;IRC&lt;/span&gt; in Instantbird.&amp;nbsp; A good overview to look at is the
@@ -3390,7 +3621,7 @@ that issue and reconnection should happen&amp;nbsp;automatically!&lt;/p&gt;
 &lt;p&gt;One last quick note, if you happen to have the &lt;a class="reference external" href="https://hg.instantbird.org/experiments"&gt;repository&lt;/a&gt; checked
 out, you&amp;#8217;ll want to update on the default branch from now on as I&amp;#8217;ve
 merged the separate branches together under&amp;nbsp;subfolders.&lt;/p&gt;
-</content><category term="Instantbird"></category><category term="IRC"></category></entry><entry><title>The so-called IRC “specifications”</title><link href="https://patrick.cloke.us/posts/2011/03/08/so-called-irc-specifications/" rel="alternate"></link><published>2011-03-08T21:20:00-05:00</published><updated>2014-12-20T15:55:00-05:00</updated><author><name>Patrick Cloke</name></author><id>tag:patrick.cloke.us,2011-03-08:/posts/2011/03/08/so-called-irc-specifications/</id><summary type="html">
+</content><category term="articles"></category><category term="Instantbird"></category><category term="IRC"></category></entry><entry><title>The so-called IRC “specifications”</title><link href="https://patrick.cloke.us/posts/2011/03/08/so-called-irc-specifications/" rel="alternate"></link><published>2011-03-08T21:20:00-05:00</published><updated>2014-12-20T15:55:00-05:00</updated><author><name>Patrick Cloke</name></author><id>tag:patrick.cloke.us,2011-03-08:/posts/2011/03/08/so-called-irc-specifications/</id><summary type="html">
 &lt;p&gt;In a &lt;a class="reference external" href="https://patrick.cloke.us/posts/2010/12/08/why-rewrite-irc-into-javascript/"&gt;previous post&lt;/a&gt; I had briefly gone over the “history of &lt;span class="caps"&gt;IRC&lt;/span&gt;” as
 I know it.  I’m going to expand on this a bit as I’ve come to understand
 it a bit more while reading through documentation.  (Hopefully it won’t
@@ -3498,7 +3729,7 @@ Machine&lt;/a&gt;. There are also copies of most, if not all, of these links in 
 &lt;a class="reference external" href="https://bitbucket.org/clokep/irc-docs"&gt;irc-docs repository&lt;/a&gt;. Thanks Ultra Rocks for the heads up!&lt;/dd&gt;
 &lt;/dl&gt;
 &lt;/div&gt;
-</content><category term="Instantbird"></category><category term="IRC"></category><category term="programming"></category><category term="specifications"></category></entry><entry><title>Status Update - February 17, 2011</title><link href="https://patrick.cloke.us/posts/2011/02/17/status-update-february-17-2011/" rel="alternate"></link><published>2011-02-17T19:21:00-05:00</published><updated>2011-02-17T19:21:00-05:00</updated><author><name>Patrick Cloke</name></author><id>tag:patrick.cloke.us,2011-02-17:/posts/2011/02/17/status-update-february-17-2011/</id><summary type="html">&lt;p&gt;Another month has gone by so it&amp;#8217;s time for another status update.
+</content><category term="articles"></category><category term="Instantbird"></category><category term="IRC"></category><category term="programming"></category><category term="specifications"></category></entry><entry><title>Status Update - February 17, 2011</title><link href="https://patrick.cloke.us/posts/2011/02/17/status-update-february-17-2011/" rel="alternate"></link><published>2011-02-17T19:21:00-05:00</published><updated>2011-02-17T19:21:00-05:00</updated><author><name>Patrick Cloke</name></author><id>tag:patrick.cloke.us,2011-02-17:/posts/2011/02/17/status-update-february-17-2011/</id><summary type="html">&lt;p&gt;Another month has gone by so it&amp;#8217;s time for another status update.
 Unfortunately not as much got done this month as I was hoping, but
 here&amp;#8217;s a quick update of what I&amp;#8217;ve worked&amp;nbsp;on:&lt;/p&gt;
 &lt;ul class="simple"&gt;
@@ -3525,7 +3756,7 @@ JavaScript protocol (&lt;a class="reference external" href="https://bugzilla.ins
 next week) at which point I&amp;#8217;ll release a sample extension (which will
 overwrite the libpurple &lt;span class="caps"&gt;IRC&lt;/span&gt; implementation), allowing people to test
 without needing to make a new account,&amp;nbsp;etc.&lt;/p&gt;
-</content><category term="Instantbird"></category><category term="IRC"></category><category term="programming"></category></entry><entry><title>Status Update - January 18, 2011</title><link href="https://patrick.cloke.us/posts/2011/01/18/status-update-january-18-2011/" rel="alternate"></link><published>2011-01-18T23:17:00-05:00</published><updated>2011-01-18T23:17:00-05:00</updated><author><name>Patrick Cloke</name></author><id>tag:patrick.cloke.us,2011-01-18:/posts/2011/01/18/status-update-january-18-2011/</id><summary type="html">&lt;p&gt;I haven&amp;#8217;t had an update in a few weeks (since early December)
+</content><category term="articles"></category><category term="Instantbird"></category><category term="IRC"></category><category term="programming"></category></entry><entry><title>Status Update - January 18, 2011</title><link href="https://patrick.cloke.us/posts/2011/01/18/status-update-january-18-2011/" rel="alternate"></link><published>2011-01-18T23:17:00-05:00</published><updated>2011-01-18T23:17:00-05:00</updated><author><name>Patrick Cloke</name></author><id>tag:patrick.cloke.us,2011-01-18:/posts/2011/01/18/status-update-january-18-2011/</id><summary type="html">&lt;p&gt;I haven&amp;#8217;t had an update in a few weeks (since early December)
 actually, so I thought I would post a bit about what I&amp;#8217;ve worked on.
 I&amp;#8217;ve fixed a bunch of bugs in the backend of Instantbird that allow work
 on JavaScript &lt;span class="caps"&gt;IRC&lt;/span&gt; protocol to&amp;nbsp;continue:&lt;/p&gt;
@@ -3601,7 +3832,7 @@ line here, on &lt;span class="caps"&gt;IRC&lt;/span&gt; or via&amp;nbsp;email).&
 &lt;li&gt;Start my new&amp;nbsp;job&lt;/li&gt;
 &lt;li&gt;Work on richtext messages a bit&amp;nbsp;more&lt;/li&gt;
 &lt;/ul&gt;
-</content><category term="Instantbird"></category><category term="IRC"></category><category term="Mozilla"></category><category term="programming"></category></entry><entry><title>Blogger RSS Feeds for a Label</title><link href="https://patrick.cloke.us/posts/2010/12/08/blogger-rss-feeds-for-label/" rel="alternate"></link><published>2010-12-08T15:25:00-05:00</published><updated>2010-12-08T15:25:00-05:00</updated><author><name>Patrick Cloke</name></author><id>tag:patrick.cloke.us,2010-12-08:/posts/2010/12/08/blogger-rss-feeds-for-label/</id><summary type="html">&lt;p&gt;Blogger has crappy support for &lt;span class="caps"&gt;RSS&lt;/span&gt; apparently.&amp;nbsp; I figured if I clicked
+</content><category term="articles"></category><category term="Instantbird"></category><category term="IRC"></category><category term="Mozilla"></category><category term="programming"></category></entry><entry><title>Blogger RSS Feeds for a Label</title><link href="https://patrick.cloke.us/posts/2010/12/08/blogger-rss-feeds-for-label/" rel="alternate"></link><published>2010-12-08T15:25:00-05:00</published><updated>2010-12-08T15:25:00-05:00</updated><author><name>Patrick Cloke</name></author><id>tag:patrick.cloke.us,2010-12-08:/posts/2010/12/08/blogger-rss-feeds-for-label/</id><summary type="html">&lt;p&gt;Blogger has crappy support for &lt;span class="caps"&gt;RSS&lt;/span&gt; apparently.&amp;nbsp; I figured if I clicked
 on a label, then found the &lt;span class="caps"&gt;RSS&lt;/span&gt; embedded in the page&amp;#8230;it would give me
 the &lt;span class="caps"&gt;RSS&lt;/span&gt; feed for that label,&amp;nbsp;right?&lt;/p&gt;
 &lt;p&gt;Wrong.&lt;/p&gt;
@@ -3618,7 +3849,7 @@ is broken.&amp;nbsp; For a specific label (I&amp;#8217;m using the label&amp;nbs
 &lt;li&gt;Atom: &lt;a class="reference external" href="http://clokep.blogspot.com/feeds/posts/default/-/Instantbird"&gt;http://clokep.blogspot.com/feeds/posts/default/-/Instantbird&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 &lt;p&gt;Who knows what versions of &lt;span class="caps"&gt;RSS&lt;/span&gt;/Atom these are.&amp;nbsp; But the feeds do&amp;nbsp;exist.&lt;/p&gt;
-</content><category term="bugs"></category><category term="Google"></category><category term="RSS"></category></entry><entry><title>Why Rewrite IRC into JavaScript? (vs. libpurple’s vs. ChatZilla’s)</title><link href="https://patrick.cloke.us/posts/2010/12/08/why-rewrite-irc-into-javascript/" rel="alternate"></link><published>2010-12-08T14:29:00-05:00</published><updated>2010-12-08T14:29:00-05:00</updated><author><name>Patrick Cloke</name></author><id>tag:patrick.cloke.us,2010-12-08:/posts/2010/12/08/why-rewrite-irc-into-javascript/</id><summary type="html">
+</content><category term="articles"></category><category term="bugs"></category><category term="Google"></category><category term="RSS"></category></entry><entry><title>Why Rewrite IRC into JavaScript? (vs. libpurple’s vs. ChatZilla’s)</title><link href="https://patrick.cloke.us/posts/2010/12/08/why-rewrite-irc-into-javascript/" rel="alternate"></link><published>2010-12-08T14:29:00-05:00</published><updated>2010-12-08T14:29:00-05:00</updated><author><name>Patrick Cloke</name></author><id>tag:patrick.cloke.us,2010-12-08:/posts/2010/12/08/why-rewrite-irc-into-javascript/</id><summary type="html">
 &lt;p&gt;I had a request on &lt;span class="caps"&gt;IRC&lt;/span&gt; (from Mic) to write an in-depth blog post
 about &lt;a class="reference external" href="https://bugzilla.instantbird.org/show_bug.cgi?id=507"&gt;&lt;span class="caps"&gt;IRC&lt;/span&gt; in JavaScript&lt;/a&gt;:&lt;/p&gt;
 &lt;blockquote&gt;
@@ -3810,7 +4041,7 @@ time to rewrite the &lt;span class="caps"&gt;IRC&lt;/span&gt; protocol implement
 definitely think it’s worth it and can lead to a bunch of new unique
 protocol plug-ins for Instantbird.&lt;/p&gt;
 &lt;/div&gt;
-</content><category term="Instantbird"></category><category term="IRC"></category><category term="Mozilla"></category><category term="programming"></category></entry><entry><title>JavaScript IRC in Instantbird</title><link href="https://patrick.cloke.us/posts/2010/12/04/javascript-irc-in-instantbird/" rel="alternate"></link><published>2010-12-04T17:24:00-05:00</published><updated>2010-12-04T17:24:00-05:00</updated><author><name>Patrick Cloke</name></author><id>tag:patrick.cloke.us,2010-12-04:/posts/2010/12/04/javascript-irc-in-instantbird/</id><summary type="html">&lt;p&gt;I&amp;#8217;ve been working on rewriting the &lt;span class="caps"&gt;IRC&lt;/span&gt; plugin for &lt;a class="reference external" href="http://www.instantbird.com/"&gt;Instantbird&lt;/a&gt; since
+</content><category term="articles"></category><category term="Instantbird"></category><category term="IRC"></category><category term="Mozilla"></category><category term="programming"></category></entry><entry><title>JavaScript IRC in Instantbird</title><link href="https://patrick.cloke.us/posts/2010/12/04/javascript-irc-in-instantbird/" rel="alternate"></link><published>2010-12-04T17:24:00-05:00</published><updated>2010-12-04T17:24:00-05:00</updated><author><name>Patrick Cloke</name></author><id>tag:patrick.cloke.us,2010-12-04:/posts/2010/12/04/javascript-irc-in-instantbird/</id><summary type="html">&lt;p&gt;I&amp;#8217;ve been working on rewriting the &lt;span class="caps"&gt;IRC&lt;/span&gt; plugin for &lt;a class="reference external" href="http://www.instantbird.com/"&gt;Instantbird&lt;/a&gt; since
 the summer (sometime in August, I can&amp;#8217;t seem to find the exact date &amp;#8212;
 at least since Sept. 10th&amp;nbsp;though).&lt;/p&gt;
 &lt;p&gt;Since &lt;a class="reference external" href="http://developer.pidgin.im/wiki/WhatIsLibpurple"&gt;libpurple&lt;/a&gt; (used in Pidgin, Adium, etc.) provides the &lt;span class="caps"&gt;IRC&lt;/span&gt;
@@ -3845,7 +4076,7 @@ After today&amp;#8217;s work I was able to generate the following&amp;nbsp;scree
 &lt;span class="caps"&gt;IRC&lt;/span&gt; (i.e. if you just want to go and chat, it&amp;#8217;d work well), but there&amp;#8217;s
 a lot more work to be done.&amp;nbsp; The code can be viewed in the &lt;a class="reference external" href="https://hg.instantbird.org/experiments/file/IRC-JavaScript/"&gt;Experiments
 repository&lt;/a&gt;.&amp;nbsp; (Check it out, there&amp;#8217;s a 600+ line switch&amp;nbsp;statement.)&lt;/p&gt;
-</content><category term="Instantbird"></category><category term="IRC"></category><category term="Mozilla"></category><category term="programming"></category></entry><entry><title>Yahoo &amp; Thunderbird Can Finally Play Nice?</title><link href="https://patrick.cloke.us/posts/2010/11/22/yahoo-thunderbird/" rel="alternate"></link><published>2010-11-22T23:03:00-05:00</published><updated>2010-11-22T23:03:00-05:00</updated><author><name>Patrick Cloke</name></author><id>tag:patrick.cloke.us,2010-11-22:/posts/2010/11/22/yahoo-thunderbird/</id><summary type="html">&lt;p&gt;For years I&amp;#8217;ve been dealing with Yahoo&amp;#8217;s lack of support for any sort
+</content><category term="articles"></category><category term="Instantbird"></category><category term="IRC"></category><category term="Mozilla"></category><category term="programming"></category></entry><entry><title>Yahoo &amp; Thunderbird Can Finally Play Nice?</title><link href="https://patrick.cloke.us/posts/2010/11/22/yahoo-thunderbird/" rel="alternate"></link><published>2010-11-22T23:03:00-05:00</published><updated>2010-11-22T23:03:00-05:00</updated><author><name>Patrick Cloke</name></author><id>tag:patrick.cloke.us,2010-11-22:/posts/2010/11/22/yahoo-thunderbird/</id><summary type="html">&lt;p&gt;For years I&amp;#8217;ve been dealing with Yahoo&amp;#8217;s lack of support for any sort
 of decent (free) &lt;span class="caps"&gt;POP3&lt;/span&gt;/&lt;span class="caps"&gt;IMAP&lt;/span&gt;/&lt;span class="caps"&gt;SMTP&lt;/span&gt; protocol support.&amp;nbsp; Why do I need this?
 So I can check my &lt;a class="reference external" href="http://mail.yahoo.com/"&gt;Yahoo mail&lt;/a&gt; in &lt;a class="reference external" href="http://www.mozillamessaging.com/en-US/thunderbird/"&gt;Mozilla Thunderbird&lt;/a&gt; of&amp;nbsp;course!&lt;/p&gt;
 &lt;p&gt;At first I used &lt;a class="reference external" href="http://ypopsemail.com/"&gt;&lt;span class="caps"&gt;YPOPS&lt;/span&gt;!&lt;/a&gt;, a program that read the …&lt;/p&gt;</summary><content type="html">&lt;p&gt;For years I&amp;#8217;ve been dealing with Yahoo&amp;#8217;s lack of support for any sort
@@ -3915,4 +4146,4 @@ suggest using that&amp;nbsp;former.&lt;/p&gt;
 &lt;p&gt;Note that I&amp;#8217;m currently suffering from &lt;a class="reference external" href="https://bugzilla.mozilla.org/show_bug.cgi?id=610264"&gt;another bug&lt;/a&gt; while using
 Yahoo &lt;span class="caps"&gt;IMAP&lt;/span&gt;.&amp;nbsp; Everything works, there&amp;#8217;s just an annoying pop-up
 occasionally about the error.&amp;nbsp; Hopefully it will be fixed&amp;nbsp;soon.&lt;/p&gt;
-</content><category term="bugs"></category><category term="email"></category><category term="IMAP"></category><category term="Mozilla"></category><category term="POP3"></category><category term="programming"></category><category term="SMTP"></category><category term="Thunderbird"></category><category term="Yahoo"></category></entry></feed>
+</content><category term="articles"></category><category term="bugs"></category><category term="email"></category><category term="IMAP"></category><category term="Mozilla"></category><category term="POP3"></category><category term="programming"></category><category term="SMTP"></category><category term="Thunderbird"></category><category term="Yahoo"></category></entry></feed>

@@ -1,0 +1,298 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Feed configuration. -->
+    <link href="https://patrick.cloke.us/feeds/atom.xml" type="application/atom+xml" rel="alternate" title="Like bricks in the sky Atom Feed" />
+    <link href="https://patrick.cloke.us/feeds/rss.xml" type="application/rss+xml" rel="alternate" title="Like bricks in the sky RSS Feed" />
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
+    <link rel="stylesheet" href="/theme/css/styles.css">
+    <link rel="stylesheet" href="/theme/css/borland.css">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
+
+    <title>Using MySQLs LOAD DATA with Django</title>
+  </head>
+
+  <body class="pb-5">
+    <nav class="navbar navbar-expand-lg sticky-top navbar-light bg-light border-bottom border-info">
+      <a class="navbar-brand" href="/">
+        Like bricks in the sky
+      </a>
+
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-items" aria-controls="navbar-items" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="navbar-items">
+        <ul class="navbar-nav ml-auto">
+
+          <li class="nav-item">
+            <a class="nav-link" href="/pages/about.html">About</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/pages/projects.html">Projects</a>
+          </li>
+
+          <li class="nav-item">
+            <a class="nav-link" href="/archives.html">Archives</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/tags.html">Tags</a>
+          </li>
+
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="social-dropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              Social
+            </a>
+
+            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="social-dropdown">
+              <a class="dropdown-item" href="https://www.twitter.com/clokep" target="_blank">
+                <span class="fab fa-twitter mr-1"></span> twitter
+              </a>
+              <a class="dropdown-item" href="https://mastodon.social/@clokep" target="_blank">
+                <span class="fab fa-mastodon mr-1"></span> mastodon
+              </a>
+              <a class="dropdown-item" href="https://www.github.com/clokep" target="_blank">
+                <span class="fab fa-github mr-1"></span> github
+              </a>
+              <a class="dropdown-item" href="https://gitlab.com/clokep" target="_blank">
+                <span class="fab fa-gitlab mr-1"></span> gitlab
+              </a>
+              <a class="dropdown-item" href="https://bitbucket.org/clokep" target="_blank">
+                <span class="fab fa-bitbucket mr-1"></span> bitbucket
+              </a>
+              <a class="dropdown-item" href="https://mozillians.org/u/clokep/" target="_blank">
+                <span class="fab fa-firefox mr-1"></span> mozillians
+              </a>
+            </div>
+          </li>
+
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="feeds-dropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              Feeds
+            </a>
+
+            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="feeds-dropdown">
+              <a class="dropdown-item" href="https://patrick.cloke.us/feeds/atom.xml" type="application/atom+xml" rel="alternate">atom feed</a>
+              <a class="dropdown-item" href="https://patrick.cloke.us/feeds/rss.xml" type="application/rss+xml" rel="alternate">rss feed</a>
+            </div>
+          </li>
+
+          <form class="form-inline" method="get" action="http://www.google.com/search">
+            <input class="form-control form-control-sm mr-sm-2" type="search" name="q" placeholder="Search" aria-label="Search" />
+            <input type="hidden"  name="sitesearch" value="patrick.cloke.us" />
+
+            <button class="btn btn-sm btn-outline-info d-none d-sm-inline" type="submit">Search</button>
+          </form>
+        </ul>
+      </div>
+    </nav>
+
+<div class="container">
+  <div class="row">
+    <div class="col-md-12 mt-2 mb-2">
+      <h1>
+        <a href="/posts/2020/01/23/using-mysqls-load-data-with-django/" rel="bookmark"
+           title="Permalink to Using MySQLs LOAD DATA with Django">Using MySQLs <tt class="docutils literal"><span class="caps">LOAD</span> <span class="caps">DATA</span></tt> with&nbsp;Django</a>
+      </h1>
+
+      <div class="float-right">
+        <a href="https://twitter.com/intent/tweet?text=Using%20MySQLs%20LOAD%20DATA%20with%C2%A0Django&url=https%3A//patrick.cloke.us/posts/2020/01/23/using-mysqls-load-data-with-django/" target="_blank" class="ml-1 mr-1" title="Share on Twitter">
+          <span class="fab fa-twitter"></span>
+        </a>
+        <a href="http://www.facebook.com/sharer/sharer.php?u=https%3A//patrick.cloke.us/posts/2020/01/23/using-mysqls-load-data-with-django/" target="_blank" class="ml-1 mr-1" title="Share on Facebook">
+          <span class="fab fa-facebook"></span>
+        </a>
+        <a href="mailto:?subject=Using%20MySQLs%20LOAD%20DATA%20with%C2%A0Django&amp;body=https%3A//patrick.cloke.us/posts/2020/01/23/using-mysqls-load-data-with-django/" target="_blank" class="ml-1 mr-1" title="Share via Email">
+          <span class="fas fa-envelope"></span>
+        </a>
+      </div>
+
+      <i>Thursday, January 23, 2020</i>
+
+      <br>
+      <i>
+        Tags:           <a href="/tag/django.html">django</a>      </i>
+
+      <div class="mt-3">
+
+        <p>While attempting to improve performance of bulk inserting data into MySQL
+database my coworker came across the <a class="reference external" href="https://dev.mysql.com/doc/refman/5.6/en/load-data.html"><tt class="docutils literal"><span class="caps">LOAD</span> <span class="caps">DATA</span></tt></a> <span class="caps">SQL</span> statement. It allows you
+to read data from a text file (in a comma separated variable-like format) and
+quickly insert it into a table. There&#8217;s two variations of it, a local remote
+version. We did not experiment with the local version since we were connecting
+to a remote MySQL server and did not have access to the database&#8217;s local&nbsp;disk.</p>
+<p>Since we are using Django we were hoping to match the calling behavior of the
+<a class="reference external" href="https://docs.djangoproject.com/en/1.11/ref/models/querysets/#bulk-create"><tt class="docutils literal">bulk_create()</tt></a> method of a <tt class="docutils literal">QuerySet</tt> to do the&nbsp;following:</p>
+<ol class="arabic simple">
+<li>Write the data to be inserted into a temporary&nbsp;file.</li>
+<li>Execute the <tt class="docutils literal"><span class="caps">LOAD</span> <span class="caps">DATA</span></tt> referencing the&nbsp;file.</li>
+<li>Clean-up the temporary&nbsp;file.</li>
+</ol>
+<p>After a bit of experimentation we were able to come up with a sub-class of
+<tt class="docutils literal">QuerySet</tt> with the desired features. This is heavily based on
+<a class="reference external" href="https://github.com/django/django/blob/7fd1ca3ef63e5e834205a8208f4dc17d80f9a417/django/db/models/query.py#L402-L451">Django&#8217;s implementation</a> of <tt class="docutils literal">bulk_create()</tt>. There were a few details to get
+this to work&nbsp;properly:</p>
+<ul class="simple">
+<li>Dynamically getting the fields to insert into the&nbsp;database.</li>
+<li>Converting the Python value to a proper string value for database&nbsp;insertion.</li>
+<li>Ensuring the proper database was used when using a read-replica with a&nbsp;router.</li>
+</ul>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p>The below code is not fully vetted if the escaping of the database values is&nbsp;safe.</p>
+<p class="last">It is also missing error checking and handling of edge-cases (e.g. an empty
+list of objects; see the start of the <tt class="docutils literal">bulk_create()</tt> implementation).</p>
+</div>
+<p>Without further ado, see the&nbsp;implementation:</p>
+<pre class="code python highlight literal-block">
+<span class="kn">from</span> <span class="nn">__future__</span> <span class="kn">import</span> <span class="n">absolute_import</span><span class="p">,</span> <span class="n">print_function</span><span class="p">,</span> <span class="n">unicode_literals</span>
+
+<span class="kn">import</span> <span class="nn">tempfile</span>
+
+<span class="kn">from</span> <span class="nn">django.db</span> <span class="kn">import</span> <span class="n">connections</span><span class="p">,</span> <span class="n">models</span>
+<span class="kn">from</span> <span class="nn">django.db.models.fields</span> <span class="kn">import</span> <span class="n">AutoField</span>
+
+<span class="kn">import</span> <span class="nn">six</span>
+
+
+<span class="k">class</span> <span class="nc">LoadDataQuerySet</span><span class="p">(</span><span class="n">models</span><span class="o">.</span><span class="n">QuerySet</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;A QuerySet with an additional load_data method which inserts data quickly in bulk.&quot;&quot;&quot;</span>
+
+    <span class="k">def</span> <span class="nf">_convert_instance_to_line</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">fields</span><span class="p">,</span> <span class="n">instance</span><span class="p">,</span> <span class="n">connection</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Convert an object to a single line to be placed in the temporary file.&quot;&quot;&quot;</span>
+        <span class="c1"># Convert each field value to a database value.</span>
+        <span class="c1">#</span>
+        <span class="c1"># Escape the enclosure and escape characters since they are not handled</span>
+        <span class="c1"># automatically.</span>
+        <span class="n">db_prep_values</span> <span class="o">=</span> <span class="p">[</span>
+            <span class="n">six</span><span class="o">.</span><span class="n">text_type</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">model</span><span class="o">.</span><span class="n">_meta</span><span class="o">.</span><span class="n">get_field</span><span class="p">(</span><span class="n">field_name</span><span class="p">)</span><span class="o">.</span><span class="n">get_db_prep_value</span><span class="p">(</span>
+                <span class="nb">getattr</span><span class="p">(</span><span class="n">instance</span><span class="p">,</span> <span class="n">field_name</span><span class="p">),</span> <span class="n">connection</span><span class="p">))</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">'</span><span class="se">\\</span><span class="s1">'</span><span class="p">,</span> <span class="s1">'</span><span class="se">\\\\</span><span class="s1">'</span><span class="p">)</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">'&quot;'</span><span class="p">,</span> <span class="s1">'</span><span class="se">\\</span><span class="s1">&quot;'</span><span class="p">)</span>
+            <span class="k">for</span> <span class="n">field_name</span> <span class="ow">in</span> <span class="n">fields</span>
+        <span class="p">]</span>
+
+        <span class="c1"># Comma separate the wrapped values.</span>
+        <span class="k">return</span> <span class="s1">','</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="nb">map</span><span class="p">(</span><span class="k">lambda</span> <span class="n">v</span><span class="p">:</span> <span class="s1">'&quot;'</span> <span class="o">+</span> <span class="n">v</span> <span class="o">+</span> <span class="s1">'&quot;'</span><span class="p">,</span> <span class="n">db_prep_values</span><span class="p">))</span> <span class="o">+</span> <span class="s1">'</span><span class="se">\n</span><span class="s1">'</span>
+
+    <span class="k">def</span> <span class="nf">load_data</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">objs</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;
+        Inserts each of the instances into the database. This does *not* call
+        save() on each of the instances, does not send any pre/post save
+        signals, and does not set the primary key attribute if it is an
+        autoincrement field. Multi-table models are not supported.
+
+        Write the data to a temporary file, then insert that data into MySQL via a LOAD DATA call.
+
+        :param tuple fields: A tuple of string field names.
+        :param list objs: The list of objects to insert.
+        :returns: The number of inserted records.
+        :rtype int:
+        &quot;&quot;&quot;</span>
+
+        <span class="c1"># This is based on by bulk_create.</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_for_write</span> <span class="o">=</span> <span class="kc">True</span>
+        <span class="n">connection</span> <span class="o">=</span> <span class="n">connections</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">db</span><span class="p">]</span>
+        <span class="n">fields</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">model</span><span class="o">.</span><span class="n">_meta</span><span class="o">.</span><span class="n">concrete_fields</span>
+        <span class="n">fields</span> <span class="o">=</span> <span class="p">[</span><span class="n">f</span><span class="o">.</span><span class="n">name</span> <span class="k">for</span> <span class="n">f</span> <span class="ow">in</span> <span class="n">fields</span> <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="n">AutoField</span><span class="p">)]</span>
+
+        <span class="c1"># The table name and field names cannot be parameterized when executing</span>
+        <span class="c1"># a SQL statement with the Django ORM. The name of the file where data</span>
+        <span class="c1"># is loaded from can be parameterized, however.</span>
+        <span class="c1">#</span>
+        <span class="c1"># The result of this is a partially formatted string to be fed into MySQL.</span>
+        <span class="n">load_data_statement</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;
+            LOAD DATA LOCAL INFILE </span><span class="si">%s</span><span class="s2"> INTO TABLE </span><span class="si">{mysql_table_name}</span><span class="s2"> CHARACTER SET utf8 FIELDS TERMINATED BY ',' ENCLOSED BY '&quot;' LINES TERMINATED BY '</span><span class="se">\\</span><span class="s2">n' (</span><span class="si">{fields}</span><span class="s2">);
+            &quot;&quot;&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>
+                <span class="n">mysql_table_name</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">model</span><span class="o">.</span><span class="n">_meta</span><span class="o">.</span><span class="n">db_table</span><span class="p">,</span>
+                <span class="n">fields</span><span class="o">=</span><span class="s1">', '</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">fields</span><span class="p">)</span>
+            <span class="p">)</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span>
+
+        <span class="c1"># Write each object to their own line in a temporary file and bulk</span>
+        <span class="c1"># insert the data into MySQL using the LOAD DATA statement.</span>
+        <span class="k">with</span> <span class="n">tempfile</span><span class="o">.</span><span class="n">NamedTemporaryFile</span><span class="p">(</span><span class="n">mode</span><span class="o">=</span><span class="s1">'w'</span><span class="p">,</span> <span class="n">suffix</span><span class="o">=</span><span class="s1">'.data'</span><span class="p">,</span> <span class="n">delete</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span> <span class="k">as</span> <span class="n">data_file</span><span class="p">:</span>
+            <span class="n">data_file</span><span class="o">.</span><span class="n">writelines</span><span class="p">(</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">_convert_instance_to_line</span><span class="p">(</span><span class="n">fields</span><span class="p">,</span> <span class="n">obj</span><span class="p">,</span> <span class="n">connection</span><span class="p">)</span> <span class="k">for</span> <span class="n">obj</span> <span class="ow">in</span> <span class="n">objs</span>
+            <span class="p">)</span>
+            <span class="n">data_file</span><span class="o">.</span><span class="n">flush</span><span class="p">()</span>
+
+            <span class="k">with</span> <span class="n">connection</span><span class="o">.</span><span class="n">cursor</span><span class="p">()</span> <span class="k">as</span> <span class="n">cursor</span><span class="p">:</span>
+                <span class="k">return</span> <span class="n">cursor</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="n">load_data_statement</span><span class="p">,</span> <span class="p">[</span><span class="n">data_file</span><span class="o">.</span><span class="n">name</span><span class="p">])</span>
+</pre>
+<p>This can be used by <a class="reference external" href="https://docs.djangoproject.com/en/1.11/topics/db/managers/#custom-managers">using a custom manager</a> to the <tt class="docutils literal">LoadDataQuerySet</tt>
+manager.</p>
+<div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">django.db</span> <span class="kn">import</span> <span class="n">models</span>
+
+<span class="k">class</span> <span class="nc">OpinionPoll</span><span class="p">(</span><span class="n">models</span><span class="o">.</span><span class="n">Model</span><span class="p">):</span>
+    <span class="n">question</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">CharField</span><span class="p">(</span><span class="n">max_length</span><span class="o">=</span><span class="mi">200</span><span class="p">)</span>
+    <span class="n">poll_date</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">DateField</span><span class="p">()</span>
+<span class="hll">    <span class="n">objects</span> <span class="o">=</span> <span class="n">LoadDataQuerySet</span><span class="o">.</span><span class="n">as_manager</span><span class="p">()</span>
+</span></pre></div>
+<p>You can then easily call <tt class="docutils literal">load_data()</tt> just like you would <tt class="docutils literal">bulk_create()</tt>!</p>
+<div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">datetime</span> <span class="kn">import</span> <span class="n">date</span>
+
+<span class="c1"># Ask the same poll on the first of each month.</span>
+<span class="n">polls</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="k">for</span> <span class="n">month</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">12</span><span class="p">):</span>
+    <span class="n">polls</span><span class="o">.</span><span class="n">append</span><span class="p">(</span>
+        <span class="n">OpinionPoll</span><span class="p">(</span>
+            <span class="n">question</span><span class="o">=</span><span class="s2">&quot;What&#39;s your favorite ice cream?&quot;</span><span class="p">,</span>
+            <span class="n">poll_date</span><span class="o">=</span><span class="n">date</span><span class="p">(</span><span class="mi">2020</span><span class="p">,</span> <span class="n">month</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+        <span class="p">)</span>
+    <span class="p">)</span>
+
+<span class="c1"># Insert all the polls at once.</span>
+<span class="hll"><span class="n">OpinionPoll</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">load_data</span><span class="p">(</span><span class="n">polls</span><span class="p">)</span>
+</span></pre></div>
+<p>Although the above code did work (using Django 1.11.x and MySQL 5.6, it should
+work without much work on similar versions) only a small increase in insertion
+rate was observed. In order to avoid complexity (and custom code) it was decided
+that the above code was not worth keeping, but it was a fun journey into
+extending Django&#8217;s <tt class="docutils literal">QuerySet</tt> methods (and investigating obscure MySQL&nbsp;features).</p>
+
+      </div>
+
+<div id="disqus_thread"></div>
+<script>
+/**
+*  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+*  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/
+/*
+var disqus_config = function () {
+this.page.url = '/posts/2020/01/23/using-mysqls-load-data-with-django/';
+this.page.identifier = 'using-mysqls-load-data-with-django';
+};
+*/
+(function() { // DON'T EDIT BELOW THIS LINE
+var d = document, s = d.createElement('script');
+s.src = 'https://clokep.disqus.com/embed.js';
+s.setAttribute('data-timestamp', +new Date());
+(d.head || d.body).appendChild(s);
+})();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    </div>
+  </div>
+</div>
+
+    <nav class="navbar fixed-bottom navbar-light bg-light border-top border-info">
+      <a href="https://getpelican.com/" class="nav-item" target="_blank">Powered by Pelican</a>
+      <a href="https://github.com/clokep/clokep.github.io" class="nav-item" target="_blank">
+        Source available on GitHub <span class="fab fa-github"></span>
+      </a>
+    </nav>
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T" crossorigin="anonymous"></script>
+
+  </body>
+</html>

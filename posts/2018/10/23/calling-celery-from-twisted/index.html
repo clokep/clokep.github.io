@@ -174,12 +174,12 @@ illustrated best by a code example, we would want to do something like the foll
 
 <span class="n">app</span> <span class="o">=</span> <span class="n">Celery</span><span class="p">(</span><span class="n">broker</span><span class="o">=</span><span class="s1">'amqp://guest:guest@127.0.0.1:5672//'</span><span class="p">,</span> <span class="n">backend</span><span class="o">=</span><span class="s1">'rpc'</span><span class="p">)</span>
 
-<span class="nd">@app.task</span>
+<span class="nd">@app</span><span class="o">.</span><span class="n">task</span>
 <span class="k">def</span> <span class="nf">my_task</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">):</span>
     <span class="c1"># Normally you'd do a CPU bound task here.</span>
     <span class="k">return</span> <span class="n">a</span> <span class="o">+</span> <span class="n">b</span>
 
-<span class="nd">@defer.inlineCallbacks</span>
+<span class="nd">@defer</span><span class="o">.</span><span class="n">inlineCallbacks</span>
 <span class="k">def</span> <span class="nf">main</span><span class="p">():</span>
     <span class="c1"># Normally you'd open some listening sockets or some outbound</span>
     <span class="c1"># connections here.</span>
@@ -187,7 +187,7 @@ illustrated best by a code example, we would want to do something like the foll
     <span class="c1"># Call into Celery!</span>
     <span class="n">result</span> <span class="o">=</span> <span class="k">yield</span> <span class="n">my_task</span><span class="o">.</span><span class="n">delay</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
     <span class="c1"># Should print '1 + 2 = 3'.</span>
-    <span class="k">print</span><span class="p">(</span><span class="s2">"{} + {} = {}"</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="n">result</span><span class="p">))</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">"</span><span class="si">{}</span><span class="s2"> + </span><span class="si">{}</span><span class="s2"> = </span><span class="si">{}</span><span class="s2">"</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="n">result</span><span class="p">))</span>
 
 <span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">'__main__'</span><span class="p">:</span>
     <span class="n">task</span><span class="o">.</span><span class="n">react</span><span class="p">(</span><span class="n">main</span><span class="p">)</span>
@@ -285,10 +285,10 @@ all I/O onto a separate thread instead of doing it in the reactor thread):</p>
             <span class="c1"># http://docs.celeryproject.org/en/latest/reference/celery.result.html</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">errback</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">async_result</span><span class="o">.</span><span class="n">result</span><span class="p">)</span>
         <span class="k">elif</span> <span class="n">celery_state</span> <span class="o">==</span> <span class="n">states</span><span class="o">.</span><span class="n">REVOKED</span><span class="p">:</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">errback</span><span class="p">(</span><span class="n">defer</span><span class="o">.</span><span class="n">CancelledError</span><span class="p">(</span><span class="s1">'Task {0}'</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">async_result</span><span class="o">.</span><span class="n">id</span><span class="p">)))</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">errback</span><span class="p">(</span><span class="n">defer</span><span class="o">.</span><span class="n">CancelledError</span><span class="p">(</span><span class="s1">'Task </span><span class="si">{0}</span><span class="s1">'</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">async_result</span><span class="o">.</span><span class="n">id</span><span class="p">)))</span>
         <span class="k">else</span><span class="p">:</span>
             <span class="c1"># An unknown state was returned.</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">errback</span><span class="p">(</span><span class="ne">ValueError</span><span class="p">(</span><span class="s1">'Unknown state: `{}`'</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">celery_state</span><span class="p">)))</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">errback</span><span class="p">(</span><span class="ne">ValueError</span><span class="p">(</span><span class="s1">'Unknown state: `</span><span class="si">{}</span><span class="s1">`'</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">celery_state</span><span class="p">)))</span>
 
     <span class="k">def</span> <span class="nf">_canceller</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="c1"># Revoke the celery task</span>
@@ -303,12 +303,12 @@ pretty close (the modified lines are highlighted):</p>
 </span>
 <span class="n">app</span> <span class="o">=</span> <span class="n">Celery</span><span class="p">(</span><span class="n">broker</span><span class="o">=</span><span class="s1">'amqp://guest:guest@127.0.0.1:5672//'</span><span class="p">,</span> <span class="n">backend</span><span class="o">=</span><span class="s1">'rpc'</span><span class="p">)</span>
 
-<span class="nd">@app.task</span>
+<span class="nd">@app</span><span class="o">.</span><span class="n">task</span>
 <span class="k">def</span> <span class="nf">my_task</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">):</span>
     <span class="c1"># Normally you'd do a CPU bound task here.</span>
     <span class="k">return</span> <span class="n">a</span> <span class="o">+</span> <span class="n">b</span>
 
-<span class="nd">@defer.inlineCallbacks</span>
+<span class="nd">@defer</span><span class="o">.</span><span class="n">inlineCallbacks</span>
 <span class="k">def</span> <span class="nf">main</span><span class="p">():</span>
     <span class="c1"># Normally you'd open some listening sockets or some outbound</span>
     <span class="c1"># connections here.</span>
@@ -316,7 +316,7 @@ pretty close (the modified lines are highlighted):</p>
     <span class="c1"># Call into Celery!</span>
 <span class="hll">    <span class="n">result</span> <span class="o">=</span> <span class="k">yield</span> <span class="n">send_task</span><span class="p">(</span><span class="n">app</span><span class="p">,</span> <span class="s1">'my_task'</span><span class="p">,</span> <span class="n">args</span><span class="o">=</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">))</span>
 </span>    <span class="c1"># Should print '1 + 2 = 3'.</span>
-    <span class="k">print</span><span class="p">(</span><span class="s2">"{} + {} = {}"</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="n">result</span><span class="p">))</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">"</span><span class="si">{}</span><span class="s2"> + </span><span class="si">{}</span><span class="s2"> = </span><span class="si">{}</span><span class="s2">"</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="n">result</span><span class="p">))</span>
 
 <span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">'__main__'</span><span class="p">:</span>
     <span class="n">task</span><span class="o">.</span><span class="n">react</span><span class="p">(</span><span class="n">main</span><span class="p">)</span>
@@ -348,12 +348,12 @@ to, etc.</p>
 </span>
 <span class="n">app</span> <span class="o">=</span> <span class="n">Celery</span><span class="p">(</span><span class="n">broker</span><span class="o">=</span><span class="s1">'amqp://guest:guest@127.0.0.1:5672//'</span><span class="p">,</span> <span class="n">backend</span><span class="o">=</span><span class="s1">'rpc'</span><span class="p">)</span>
 
-<span class="nd">@app.task</span>
+<span class="nd">@app</span><span class="o">.</span><span class="n">task</span>
 <span class="k">def</span> <span class="nf">my_task</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">):</span>
     <span class="c1"># Normally you'd do a CPU bound task here.</span>
     <span class="k">return</span> <span class="n">a</span> <span class="o">+</span> <span class="n">b</span>
 
-<span class="nd">@defer.inlineCallbacks</span>
+<span class="nd">@defer</span><span class="o">.</span><span class="n">inlineCallbacks</span>
 <span class="k">def</span> <span class="nf">main</span><span class="p">():</span>
     <span class="c1"># Normally you'd open some listening sockets or some outbound</span>
     <span class="c1"># connections here.</span>
@@ -365,7 +365,7 @@ to, etc.</p>
     <span class="c1"># Call into Celery!</span>
 <span class="hll">    <span class="n">result</span> <span class="o">=</span> <span class="k">yield</span> <span class="n">tx_app</span><span class="o">.</span><span class="n">send_task</span><span class="p">(</span><span class="s1">'my_task'</span><span class="p">,</span> <span class="n">args</span><span class="o">=</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">))</span>
 </span>    <span class="c1"># Should print '1 + 2 = 3'.</span>
-    <span class="k">print</span><span class="p">(</span><span class="s2">"{} + {} = {}"</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="n">result</span><span class="p">))</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">"</span><span class="si">{}</span><span class="s2"> + </span><span class="si">{}</span><span class="s2"> = </span><span class="si">{}</span><span class="s2">"</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="n">result</span><span class="p">))</span>
 
 <span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">'__main__'</span><span class="p">:</span>
     <span class="n">task</span><span class="o">.</span><span class="n">react</span><span class="p">(</span><span class="n">main</span><span class="p">)</span>
