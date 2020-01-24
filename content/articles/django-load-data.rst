@@ -1,5 +1,5 @@
-Using MySQLs ``LOAD DATA`` with Django
-######################################
+Using MySQL's ``LOAD DATA`` with Django
+#######################################
 :date: 2020-01-23 20:49
 :author: Patrick Cloke
 :tags: django
