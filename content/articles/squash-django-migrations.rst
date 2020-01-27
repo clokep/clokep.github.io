@@ -1,6 +1,6 @@
 Squashing Django Migrations
 ###########################
-:date: 2020-01-24 17:03
+:date: 2020-01-27 16:34
 :author: Patrick Cloke
 :tags: django
 
