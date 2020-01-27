@@ -1,5 +1,185 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>Like bricks in the sky - Patrick Cloke</title><link href="https://patrick.cloke.us/" rel="alternate"></link><link href="https://patrick.cloke.us/feeds/patrick-cloke.atom.xml" rel="self"></link><id>https://patrick.cloke.us/</id><updated>2020-01-23T21:57:00-05:00</updated><entry><title>Cleanly removing a Django app (with models)</title><link href="https://patrick.cloke.us/posts/2020/01/23/cleanly-removing-a-django-app-with-models/" rel="alternate"></link><published>2020-01-23T21:57:00-05:00</published><updated>2020-01-23T21:57:00-05:00</updated><author><name>Patrick Cloke</name></author><id>tag:patrick.cloke.us,2020-01-23:/posts/2020/01/23/cleanly-removing-a-django-app-with-models/</id><summary type="html">&lt;p&gt;While pruning features from our product it was necessary to fully remove some
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Like bricks in the sky - Patrick Cloke</title><link href="https://patrick.cloke.us/" rel="alternate"></link><link href="https://patrick.cloke.us/feeds/patrick-cloke.atom.xml" rel="self"></link><id>https://patrick.cloke.us/</id><updated>2020-01-27T16:34:00-05:00</updated><entry><title>Squashing Django Migrations</title><link href="https://patrick.cloke.us/posts/2020/01/27/squashing-django-migrations/" rel="alternate"></link><published>2020-01-27T16:34:00-05:00</published><updated>2020-01-27T16:34:00-05:00</updated><author><name>Patrick Cloke</name></author><id>tag:patrick.cloke.us,2020-01-27:/posts/2020/01/27/squashing-django-migrations/</id><summary type="html">&lt;p&gt;The &lt;a class="reference external" href="https://docs.djangoproject.com/en/1.11/topics/migrations/"&gt;Django migration system&lt;/a&gt; is great for modifying your database schema after
+a database is live. If you&amp;#8217;re like me, you quickly end up with many 10s or 100s
+of migrations. There&amp;#8217;s nothing inherently wrong with this, but there&amp;#8217;s a few
+cases where it gets tiresome to …&lt;/p&gt;</summary><content type="html">&lt;p&gt;The &lt;a class="reference external" href="https://docs.djangoproject.com/en/1.11/topics/migrations/"&gt;Django migration system&lt;/a&gt; is great for modifying your database schema after
+a database is live. If you&amp;#8217;re like me, you quickly end up with many 10s or 100s
+of migrations. There&amp;#8217;s nothing inherently wrong with this, but there&amp;#8217;s a few
+cases where it gets tiresome to run all these&amp;nbsp;migrations:&lt;/p&gt;
+&lt;ul class="simple"&gt;
+&lt;li&gt;Occasionally I want to reset my database to a pristine state and reload&amp;nbsp;fixtures.&lt;/li&gt;
+&lt;li&gt;We check if there are any missing migrations as part of our continuous integration&amp;nbsp;job.&lt;/li&gt;
+&lt;li&gt;Unit tests must run all&amp;nbsp;migrations.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;I don&amp;#8217;t think running the additional migrations really takes that much longer,
+but I like keeping the number of run migrations down, especially if there are
+multiple data migrations,&amp;nbsp;etc.&lt;/p&gt;
+&lt;p&gt;This articles details the rough steps that I follow when &lt;a class="reference external" href="https://docs.djangoproject.com/en/1.11/topics/migrations/#squashing-migrations"&gt;squashing migrations&lt;/a&gt;.&lt;/p&gt;
+&lt;div class="section" id="pre-squash-steps"&gt;
+&lt;h2&gt;Pre-squash&amp;nbsp;steps&lt;/h2&gt;
+&lt;p&gt;If you&amp;#8217;ve previously squashed migrations do the&amp;nbsp;following:&lt;/p&gt;
+&lt;ol class="arabic simple"&gt;
+&lt;li&gt;Remove the &lt;tt class="docutils literal"&gt;replaces&lt;/tt&gt; property from the previously squashed migration
+(this property gets created as part of squashing&amp;nbsp;migrations).&lt;/li&gt;
+&lt;li&gt;If the &lt;tt class="docutils literal"&gt;dependencies&lt;/tt&gt; properties of any other migrations point to
+migrations that used to be in &lt;tt class="docutils literal"&gt;replaces&lt;/tt&gt;, you&amp;#8217;ll need to update these to
+point to the squashed migration. E.g. if a dependency is
+&lt;tt class="docutils literal"&gt;('my_app', '0001_initial')&lt;/tt&gt;, but you&amp;#8217;ve previously squashed the
+dependencies for &lt;tt class="docutils literal"&gt;my_app&lt;/tt&gt;, you&amp;#8217;ll need to replace this with
+&lt;tt class="docutils literal"&gt;('my_app', '0001_squashed_0010_add_field')&lt;/tt&gt; before squashing migrations
+for &lt;tt class="docutils literal"&gt;my_app&lt;/tt&gt; a second&amp;nbsp;time.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/div&gt;
+&lt;div class="section" id="squashing-steps"&gt;
+&lt;h2&gt;Squashing&amp;nbsp;steps&lt;/h2&gt;
+&lt;p&gt;At this point you should have the migrations in the proper state for squashing
+migrations. I do the&amp;nbsp;following:&lt;/p&gt;
+&lt;ol class="arabic"&gt;
+&lt;li&gt;&lt;p class="first"&gt;Remove any &lt;tt class="docutils literal"&gt;RunPython&lt;/tt&gt; operations that were only needed once (i.e. you
+don&amp;#8217;t need them in the squashed&amp;nbsp;migration).&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p class="first"&gt;Run the &lt;tt class="docutils literal"&gt;squashmigrations&lt;/tt&gt; command for the desired&amp;nbsp;application:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;python manage.py squashmigrations my_app &amp;lt;name-of-last-migration&amp;gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p class="first"&gt;If there are any &lt;tt class="docutils literal"&gt;RunPython&lt;/tt&gt; calls, copy them from the old migration to
+the squashed migration&amp;nbsp;file.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p class="first"&gt;Delete the old migration&amp;nbsp;files.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p class="first"&gt;Run &lt;tt class="docutils literal"&gt;pyclean&lt;/tt&gt; to ensure the byte-code of the old migrations is&amp;nbsp;gone.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p class="first"&gt;Edit the squashed migration file to reduce operations to as few as possible
+(this is usually 1 operation per field), starting at the list of
+&lt;tt class="docutils literal"&gt;operations&lt;/tt&gt; in the file do the&amp;nbsp;following:&lt;/p&gt;
+&lt;ol class="arabic"&gt;
+&lt;li&gt;&lt;p class="first"&gt;Skip calls to &lt;tt class="docutils literal"&gt;CreateModel&lt;/tt&gt;, &lt;tt class="docutils literal"&gt;AlterUniqueTogether&lt;/tt&gt;.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p class="first"&gt;For an &lt;tt class="docutils literal"&gt;AlterField&lt;/tt&gt; call, copy the &lt;tt class="docutils literal"&gt;field&lt;/tt&gt; kwarg to be the second
+tuple entry of where that field is initially created in an earlier
+&lt;tt class="docutils literal"&gt;CreateModel&lt;/tt&gt; call.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p class="first"&gt;For an &lt;tt class="docutils literal"&gt;AddField&lt;/tt&gt; call, create a new tuple in the earlier
+&lt;tt class="docutils literal"&gt;CreateModel&lt;/tt&gt; call with the contents of the &lt;tt class="docutils literal"&gt;name&lt;/tt&gt; and &lt;tt class="docutils literal"&gt;field&lt;/tt&gt;
+kwargs.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p class="first"&gt;For a &lt;tt class="docutils literal"&gt;RemoveField&lt;/tt&gt; call, remove the tuple that matches the &lt;tt class="docutils literal"&gt;name&lt;/tt&gt;
+kwarg from the earlier &lt;tt class="docutils literal"&gt;CreateModel&lt;/tt&gt; call.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p class="first"&gt;For a &lt;tt class="docutils literal"&gt;DeleteModel&lt;/tt&gt; call, remove the earlier &lt;tt class="docutils literal"&gt;CreateModel&lt;/tt&gt; call.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p class="first"&gt;Repeat for the above operations until all the number of operations is
+reduced to essentially the &lt;tt class="docutils literal"&gt;CreateModel&lt;/tt&gt; calls. Note that some calls
+cannot be removed (e.g. you need both models to exist before having a
+foreign key between&amp;nbsp;them).&lt;/p&gt;
+&lt;p&gt;There is also a few other more complicate operations not detail above,
+but the modifications to the &lt;tt class="docutils literal"&gt;CreateModel&lt;/tt&gt; call is usually pretty&amp;nbsp;straightforward.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p class="first"&gt;Check if any migrations need to be created using the&amp;nbsp;following:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;python manage.py makemigrations --dry-run --check
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;If any migraitons would be created then some operations were incorrectly
+squashed in step&amp;nbsp;6!&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;Throughout this process I usually make a commit after each step for easy
+rollback in case I break&amp;nbsp;something.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="section" id="a-brief-example"&gt;
+&lt;h2&gt;A brief&amp;nbsp;example&lt;/h2&gt;
+&lt;p&gt;If we have the following migrations which create a model and then make some&amp;nbsp;operations:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="c1"&gt;# Source of 0001_initial&lt;/span&gt;
+&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;django.db&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;migrations&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;models&lt;/span&gt;
+
+&lt;span class="k"&gt;class&lt;/span&gt; &lt;span class="nc"&gt;Migration&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;migrations&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;Migration&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+    &lt;span class="n"&gt;operations&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;
+        &lt;span class="n"&gt;migrations&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;CreateModel&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;
+            &lt;span class="s2"&gt;&amp;quot;Author&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+            &lt;span class="p"&gt;[&lt;/span&gt;
+                &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;id&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;models&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;AutoField&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;primary_key&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="kc"&gt;True&lt;/span&gt;&lt;span class="p"&gt;)),&lt;/span&gt;
+                &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;first_name&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;models&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;CharField&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;max_length&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="mi"&gt;100&lt;/span&gt;&lt;span class="p"&gt;)),&lt;/span&gt;
+                &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;last_name&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;models&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;CharField&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;max_length&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="mi"&gt;100&lt;/span&gt;&lt;span class="p"&gt;)),&lt;/span&gt;
+            &lt;span class="p"&gt;],&lt;/span&gt;
+        &lt;span class="p"&gt;),&lt;/span&gt;
+    &lt;span class="p"&gt;]&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="c1"&gt;# Source of 0002_second&lt;/span&gt;
+&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;django.db&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;migrations&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;models&lt;/span&gt;
+
+&lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;combine_name&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;apps&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;schema_editor&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+    &lt;span class="sd"&gt;&amp;quot;&amp;quot;&amp;quot;Combine the first and last names with a space between into a new field.&amp;quot;&amp;quot;&amp;quot;&lt;/span&gt;
+    &lt;span class="n"&gt;Author&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;apps&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;get_model&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;my_app&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;Author&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+    &lt;span class="k"&gt;for&lt;/span&gt; &lt;span class="n"&gt;author&lt;/span&gt; &lt;span class="ow"&gt;in&lt;/span&gt; &lt;span class="n"&gt;Author&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;objects&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;iterator&lt;/span&gt;&lt;span class="p"&gt;():&lt;/span&gt;
+        &lt;span class="n"&gt;author&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;name&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;&lt;/span&gt;&lt;span class="si"&gt;{}&lt;/span&gt;&lt;span class="s1"&gt; &lt;/span&gt;&lt;span class="si"&gt;{}&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;format&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;author&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;first_name&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;author&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;last_name&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+        &lt;span class="n"&gt;author&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;save&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;update_fields&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;name&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;])&lt;/span&gt;
+
+&lt;span class="k"&gt;class&lt;/span&gt; &lt;span class="nc"&gt;Migration&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;migrations&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;Migration&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+    &lt;span class="n"&gt;dependencies&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;[(&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;migrations&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;0001_initial&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;)]&lt;/span&gt;
+    &lt;span class="n"&gt;operations&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;
+        &lt;span class="n"&gt;migrations&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;AddField&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;Author&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;name&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;models&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;CharField&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;max_length&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="mi"&gt;255&lt;/span&gt;&lt;span class="p"&gt;)),&lt;/span&gt;
+        &lt;span class="n"&gt;migrations&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;RunPython&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;combine_first_last_name&lt;/span&gt;&lt;span class="p"&gt;),&lt;/span&gt;
+        &lt;span class="n"&gt;migrations&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;RemoveField&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;Author&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;first_name&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;),&lt;/span&gt;
+        &lt;span class="n"&gt;migrations&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;RemoveField&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;Author&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;last_name&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;),&lt;/span&gt;
+    &lt;span class="p"&gt;]&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;After following steps 1 through 5 above you might get something like this for
+the squashed&amp;nbsp;migration:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="c1"&gt;# Source of 0001_squashed_0002_second&lt;/span&gt;
+&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;django.db&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;migrations&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;models&lt;/span&gt;
+
+&lt;span class="k"&gt;class&lt;/span&gt; &lt;span class="nc"&gt;Migration&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;migrations&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;Migration&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+    &lt;span class="n"&gt;replaces&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;
+        &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;migrations&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;0001_initial&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;),&lt;/span&gt;
+        &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;migrations&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;0002_second&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;),&lt;/span&gt;
+    &lt;span class="p"&gt;]&lt;/span&gt;
+
+    &lt;span class="n"&gt;operations&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;
+        &lt;span class="n"&gt;migrations&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;CreateModel&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;
+            &lt;span class="s2"&gt;&amp;quot;Author&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+            &lt;span class="p"&gt;[&lt;/span&gt;
+                &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;id&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;models&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;AutoField&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;primary_key&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="kc"&gt;True&lt;/span&gt;&lt;span class="p"&gt;)),&lt;/span&gt;
+&lt;span class="hll"&gt;                &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;first_name&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;models&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;CharField&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;max_length&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="mi"&gt;100&lt;/span&gt;&lt;span class="p"&gt;)),&lt;/span&gt;
+&lt;/span&gt;&lt;span class="hll"&gt;                &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;last_name&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;models&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;CharField&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;max_length&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="mi"&gt;100&lt;/span&gt;&lt;span class="p"&gt;)),&lt;/span&gt;
+&lt;/span&gt;            &lt;span class="p"&gt;],&lt;/span&gt;
+        &lt;span class="p"&gt;),&lt;/span&gt;
+        &lt;span class="n"&gt;migrations&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;AddField&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;Author&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;name&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;models&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;CharField&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;max_length&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="mi"&gt;255&lt;/span&gt;&lt;span class="p"&gt;)),&lt;/span&gt;
+        &lt;span class="n"&gt;migrations&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;RemoveField&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;Author&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;first_name&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;),&lt;/span&gt;
+        &lt;span class="n"&gt;migrations&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;RemoveField&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;Author&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;last_name&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;),&lt;/span&gt;
+    &lt;span class="p"&gt;]&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;This can be edited down to the&amp;nbsp;following:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="c1"&gt;# Source of 0001_squashed_0002_second&lt;/span&gt;
+&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;django.db&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;migrations&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;models&lt;/span&gt;
+
+&lt;span class="k"&gt;class&lt;/span&gt; &lt;span class="nc"&gt;Migration&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;migrations&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;Migration&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+    &lt;span class="n"&gt;replaces&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;
+        &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;migrations&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;0001_initial&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;),&lt;/span&gt;
+        &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;migrations&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;0002_second&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;),&lt;/span&gt;
+    &lt;span class="p"&gt;]&lt;/span&gt;
+
+    &lt;span class="n"&gt;operations&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;
+        &lt;span class="n"&gt;migrations&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;CreateModel&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;
+            &lt;span class="s2"&gt;&amp;quot;Author&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+            &lt;span class="p"&gt;[&lt;/span&gt;
+                &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;id&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;models&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;AutoField&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;primary_key&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="kc"&gt;True&lt;/span&gt;&lt;span class="p"&gt;)),&lt;/span&gt;
+&lt;span class="hll"&gt;                &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;name&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;models&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;CharField&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;max_length&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="mi"&gt;255&lt;/span&gt;&lt;span class="p"&gt;)),&lt;/span&gt;
+&lt;/span&gt;            &lt;span class="p"&gt;],&lt;/span&gt;
+        &lt;span class="p"&gt;),&lt;/span&gt;
+    &lt;span class="p"&gt;]&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Before squashing the migrations in this app again the &lt;tt class="docutils literal"&gt;replaces&lt;/tt&gt; property
+would need to be&amp;nbsp;removed.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="section" id="final-thoughts"&gt;
+&lt;h2&gt;Final&amp;nbsp;thoughts&lt;/h2&gt;
+&lt;p&gt;You might wonder why Django does not do this automatically, I believe this is
+because Django sometimes reaches operations which it cannot combine without
+knowledge of what is happening (e.g. a &lt;tt class="docutils literal"&gt;RunPython&lt;/tt&gt; or &lt;tt class="docutils literal"&gt;RunSQL&lt;/tt&gt; operation),
+but it can be done manually using the above&amp;nbsp;steps.&lt;/p&gt;
+&lt;/div&gt;
+</content><category term="articles"></category><category term="django"></category></entry><entry><title>Cleanly removing a Django app (with models)</title><link href="https://patrick.cloke.us/posts/2020/01/23/cleanly-removing-a-django-app-with-models/" rel="alternate"></link><published>2020-01-23T21:57:00-05:00</published><updated>2020-01-23T21:57:00-05:00</updated><author><name>Patrick Cloke</name></author><id>tag:patrick.cloke.us,2020-01-23:/posts/2020/01/23/cleanly-removing-a-django-app-with-models/</id><summary type="html">&lt;p&gt;While pruning features from our product it was necessary to fully remove some
 Django apps that had models in them. If the code is just removed than the tables
 (and some other references) will be left in the&amp;nbsp;database.&lt;/p&gt;
 &lt;p&gt;After doing this a few times for work I came up …&lt;/p&gt;</summary><content type="html">&lt;p&gt;While pruning features from our product it was necessary to fully remove some
