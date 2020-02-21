@@ -1,7 +1,5 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*- #
-from __future__ import unicode_literals
-
 import os
 import sys
 
@@ -10,15 +8,15 @@ sys.path.append(os.path.dirname(__file__))
 
 from filters import chunk, paginate
 
-AUTHOR = u'Patrick Cloke'
+AUTHOR = 'Patrick Cloke'
 AUTHOR_EMAIL = 'patrick@cloke.us'
-SITENAME = u'Like bricks in the sky'
+SITENAME = 'Like bricks in the sky'
 GITHUB_URL = 'https://github.com/clokep/clokep.github.io'
 
 TIMEZONE = 'America/New_York'
 DEFAULT_DATE_FORMAT = '%A, %B %-d, %Y'
 
-DEFAULT_LANG = u'en'
+DEFAULT_LANG = 'en'
 
 # Feed generation is usually not desired when developing
 FEED_ALL_ATOM = None
