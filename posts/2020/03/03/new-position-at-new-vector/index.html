@@ -17,7 +17,7 @@
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
 
-    <title>Adding a protocol to Instantbird (Part 2)</title>
+    <title>New Position at New Vector</title>
   </head>
 
   <body class="pb-5">
@@ -99,107 +99,44 @@
   <div class="row">
     <div class="col-md-12 mt-2 mb-2">
       <h1>
-        <a href="/posts/2011/09/03/adding-protocol-to-instantbird-part-2/" rel="bookmark"
-           title="Permalink to Adding a protocol to Instantbird (Part 2)">Adding a protocol to Instantbird (Part&nbsp;2)</a>
+        <a href="/posts/2020/03/03/new-position-at-new-vector/" rel="bookmark"
+           title="Permalink to New Position at New Vector">New Position at New&nbsp;Vector</a>
       </h1>
 
       <div class="float-right">
-        <a href="https://twitter.com/intent/tweet?text=Adding%20a%20protocol%20to%20Instantbird%20%28Part%C2%A02%29&url=https%3A//patrick.cloke.us/posts/2011/09/03/adding-protocol-to-instantbird-part-2/" target="_blank" class="ml-1 mr-1" title="Share on Twitter">
+        <a href="https://twitter.com/intent/tweet?text=New%20Position%20at%20New%C2%A0Vector&url=https%3A//patrick.cloke.us/posts/2020/03/03/new-position-at-new-vector/" target="_blank" class="ml-1 mr-1" title="Share on Twitter">
           <span class="fab fa-twitter"></span>
         </a>
-        <a href="http://www.facebook.com/sharer/sharer.php?u=https%3A//patrick.cloke.us/posts/2011/09/03/adding-protocol-to-instantbird-part-2/" target="_blank" class="ml-1 mr-1" title="Share on Facebook">
+        <a href="http://www.facebook.com/sharer/sharer.php?u=https%3A//patrick.cloke.us/posts/2020/03/03/new-position-at-new-vector/" target="_blank" class="ml-1 mr-1" title="Share on Facebook">
           <span class="fab fa-facebook"></span>
         </a>
-        <a href="mailto:?subject=Adding%20a%20protocol%20to%20Instantbird%20%28Part%C2%A02%29&amp;body=https%3A//patrick.cloke.us/posts/2011/09/03/adding-protocol-to-instantbird-part-2/" target="_blank" class="ml-1 mr-1" title="Share via Email">
+        <a href="mailto:?subject=New%20Position%20at%20New%C2%A0Vector&amp;body=https%3A//patrick.cloke.us/posts/2020/03/03/new-position-at-new-vector/" target="_blank" class="ml-1 mr-1" title="Share via Email">
           <span class="fas fa-envelope"></span>
         </a>
       </div>
 
-      <i>Saturday, September 3, 2011</i>
+      <i>Tuesday, March 3, 2020</i>
 
       <br>
       <i>
-        Tags:           <a href="/tag/instantbird.html">Instantbird</a>,          <a href="/tag/programming.html">programming</a>,          <a href="/tag/sipe.html">SIPE</a>      </i>
+        Tags:           <a href="/tag/personal.html">personal</a>      </i>
 
       <div class="mt-3">
-        <div class="border border-info rounded float-left p-2 mr-2 mb-1">
-          <b>Table of Contents</b>
-          <div class="toc" id="">
-<p class="topic-title">Contents</p>
-<ul class="simple">
-<li><a class="reference internal" href="#purple" id="id1">Purple</a></li>
-<li><a class="reference internal" href="#core" id="id2">Core</a></li>
-<li><a class="reference internal" href="#api" id="id3"><span class="caps">API</span></a></li>
-<li><a class="reference internal" href="#sametime-support" id="id4">Sametime support</a></li>
-</ul>
-</div>
-        </div>
 
-        
-<p>I had <a class="reference external" href="https://patrick.cloke.us/posts/2011/06/18/adding-new-protocol-sipeoffice/">previously talked about adding a protocol to Instantbird</a>,
-that focused on adding <span class="caps">SIPE</span> (Microsoft Office Communicator support).
-Since then I’ve been slowly working on defeating <span class="caps">SIPE</span>.  Fortunately I
-found a few flags that help us compile it easily in Instantbird: we can
-declare that we do <em>not</em> have gmime and the standard libpurple <span class="caps">MIME</span>
-functions will be used (they might not be as good, but it keeps from
-adding &gt;10 <span class="caps">MB</span> of source to Instantbird).</p>
-<p>Some modifications to the <span class="caps">SIPE</span> source were made to compile it in
-Instantbird (note that most of the changes were probably more based on
-using <span class="caps">MSVC</span>, than having to do with Instantbird).  The code is also
-broken up into a few different sections the core, api, and purple are
-ones we care about (they’re working on making a general Office
-Communicator protocol library, so the purple folder contains the
-libpurple bindings that use the api, while the core is private).</p>
-<div class="section" id="purple">
-<h2><a class="toc-backref" href="#id1">Purple</a></h2>
-<p>Changes to purple consisted mostly of ifdefs that remove some header
-files not supported on Windows.  For example, I encountered a few of:</p>
-<div class="highlight"><pre><span></span><span class="cp">#include</span> <span class="cpf">&lt;unistd.h&gt;</span><span class="cp"></span>
-</pre></div>
-<p>Luckily there was already a define <tt class="docutils literal">HAVE_UNISTD_H</tt>, so I just needed
-to add:</p>
-<div class="highlight"><pre><span></span><span class="cp">#ifdef HAVE_UNISTD_H</span>
-<span class="cp">#include</span> <span class="cpf">&lt;unistd.h&gt;</span><span class="cp"></span>
-<span class="cp">#endif</span>
-</pre></div>
-<p>Easy!  There were also a couple other issues, but those were rather trivial.</p>
-</div>
-<div class="section" id="core">
-<h2><a class="toc-backref" href="#id2">Core</a></h2>
-<p>There isn’t a specific issue in the core I’d like to highlight, it did
-use a few glib functions which we didn’t have (we removed the files, as
-they were unused), they were all reimplemented in libpurple though, so
-we were able to just define the function calls to the libpurple variants.</p>
-</div>
-<div class="section" id="api">
-<h2><a class="toc-backref" href="#id3"><span class="caps">API</span></a></h2>
-<p>This had similar issues the core (in particular, there was a function
-which used <tt class="docutils literal">g_usleep</tt>, which is blocking and a definite no-no for a
-protocol plug-in, I’ve removed that…hopefully it doesn’t break
-anything!)  In addition to that, we needed to use the libpurple l10n
-system instead of glib’s gi18n.h, this was easily copied from
-libpurple’s internal <span class="caps">API</span> though.</p>
-<p>So at this point…I have a copy of <span class="caps">SIPE</span> compiled!  Unfortunately
-since I’m using Visual Studio Express I cannot compile on my computer
-and deploy to other computers for testing (a Mozilla issue with how it
-uses some of the header files, etc., I believe).  I’m looking into
-trying to get this to work though, apparently using the exact same copy
-of <span class="caps">MSVC</span> Redistributable might help.  Once this is tested, hopefully
-it’ll land in Instantbird for use!</p>
-</div>
-<div class="section" id="sametime-support">
-<h2><a class="toc-backref" href="#id4">Sametime support</a></h2>
-<p>Unrelated to <span class="caps">SIPE</span>, but recently I landed a patch in Instantbird to add
-back Sametime support (Sametime is Lotus Notes’ equivalent to Office
-Communicator).  You can see the gory details in <a class="reference external" href="https://bugzilla.instantbird.org/show_bug.cgi?id=102">bug 102</a>, but in
-general it’s similar to what I’ve (not gone into great detail about)
-here. Most of getting Sametime to work was rewriting some C code
-that doesn’t compile in <span class="caps">MSVC</span>.  There’s also a <a class="reference external" href="https://bugzilla.instantbird.org/attachment.cgi?id=797&amp;action=diff">diff</a> of all the
-changes I made to the libpurple Sametime plugin and the external library
-(called <a class="reference external" href="http://meanwhile.sourceforge.net/">Meanwhile</a>) to get it to work.  Once I get Monotone (a version
-control system) set up I’ll look into getting these changes pushed back
-to libpurple to avoid diverging code bases.</p>
-</div>
+        <p>I&#8217;m excited to share that a few weeks ago I started a new position at
+<a class="reference external" href="https://vector.im/">New Vector</a>! They&#8217;re the company behind <a class="reference external" href="https://matrix.org/">Matrix</a>, &#8220;an open network for
+secure, decentralized&nbsp;communication&#8221;.</p>
+<p>I&#8217;ll be working on the reference backend server software used in Matrix
+(<a class="reference external" href="https://matrix.org/docs/projects/server/synapse">Synapse</a>). The tech stack overlaps with <a class="reference external" href="https://patrick.cloke.us/posts/2015/05/30/new-position-in-cyber-security-at-percipient-networks/">what I was using</a>: mostly
+<a class="reference external" href="https://www.python.org/">Python</a> code (specifically <a class="reference external" href="https://twistedmatrix.com/">Twisted</a>). Additionally, most of my work will be
+open-sourced (and developed in the open)! I&#8217;ve already
+<a class="reference external" href="https://github.com/matrix-org/synapse/pulls?q=is%3Apr+author%3Aclokep+is%3Aclosed">had a few pull requests</a> merged and a couple of my changes are already in the
+current version of Synapse&nbsp;(v1.11.1).</p>
+<p>So far this has been a great change and I&#8217;m excited to work on a project that
+has an intersection of a bunch of interests of mine (privacy, communications,
+open-source, etc.) Let me know if you have any questions about Matrix! New
+Vector is also <a class="reference external" href="https://vector.im/careers">hiring for a bunch of positions</a> if you&#8217;d like to come work
+with&nbsp;me!</p>
 
       </div>
 
@@ -210,8 +147,8 @@ to libpurple to avoid diverging code bases.</p>
 *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/
 /*
 var disqus_config = function () {
-this.page.url = '/posts/2011/09/03/adding-protocol-to-instantbird-part-2/';
-this.page.identifier = 'adding-protocol-to-instantbird-part-2';
+this.page.url = '/posts/2020/03/03/new-position-at-new-vector/';
+this.page.identifier = 'new-position-at-new-vector';
 };
 */
 (function() { // DON'T EDIT BELOW THIS LINE
