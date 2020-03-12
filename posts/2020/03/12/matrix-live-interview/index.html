@@ -18,7 +18,7 @@
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
 
-    <title>JavaScript IRC in Instantbird</title>
+    <title>Matrix Live Interview</title>
   </head>
 
   <body class="pb-5">
@@ -100,62 +100,41 @@
   <div class="row">
     <div class="col-md-12 mt-2 mb-2">
       <h1>
-        <a href="/posts/2010/12/04/javascript-irc-in-instantbird/" rel="bookmark"
-           title="Permalink to JavaScript IRC in Instantbird">JavaScript <span class="caps">IRC</span> in&nbsp;Instantbird</a>
+        <a href="/posts/2020/03/12/matrix-live-interview/" rel="bookmark"
+           title="Permalink to Matrix Live Interview">Matrix Live&nbsp;Interview</a>
       </h1>
 
       <div class="float-right">
-        <a href="https://twitter.com/intent/tweet?text=JavaScript%20IRC%20in%C2%A0Instantbird&url=https%3A//patrick.cloke.us/posts/2010/12/04/javascript-irc-in-instantbird/" target="_blank" class="ml-1 mr-1" title="Share on Twitter">
+        <a href="https://twitter.com/intent/tweet?text=Matrix%20Live%C2%A0Interview&url=https%3A//patrick.cloke.us/posts/2020/03/12/matrix-live-interview/" target="_blank" class="ml-1 mr-1" title="Share on Twitter">
           <span class="fab fa-twitter"></span>
         </a>
-        <a href="http://www.facebook.com/sharer/sharer.php?u=https%3A//patrick.cloke.us/posts/2010/12/04/javascript-irc-in-instantbird/" target="_blank" class="ml-1 mr-1" title="Share on Facebook">
+        <a href="http://www.facebook.com/sharer/sharer.php?u=https%3A//patrick.cloke.us/posts/2020/03/12/matrix-live-interview/" target="_blank" class="ml-1 mr-1" title="Share on Facebook">
           <span class="fab fa-facebook"></span>
         </a>
-        <a href="mailto:?subject=JavaScript%20IRC%20in%C2%A0Instantbird&amp;body=https%3A//patrick.cloke.us/posts/2010/12/04/javascript-irc-in-instantbird/" target="_blank" class="ml-1 mr-1" title="Share via Email">
+        <a href="mailto:?subject=Matrix%20Live%C2%A0Interview&amp;body=https%3A//patrick.cloke.us/posts/2020/03/12/matrix-live-interview/" target="_blank" class="ml-1 mr-1" title="Share via Email">
           <span class="fas fa-envelope"></span>
         </a>
       </div>
 
-      <i>Saturday, December 4, 2010</i>
+      <i>Thursday, March 12, 2020</i>
 
       <br>
       <i>
-        Tags:           <a href="/tag/instantbird.html">Instantbird</a>,          <a href="/tag/irc.html">IRC</a>,          <a href="/tag/mozilla.html">Mozilla</a>,          <a href="/tag/programming.html">programming</a>      </i>
+        Tags:           <a href="/tag/instantbird.html">instantbird</a>,          <a href="/tag/matrix.html">matrix</a>,          <a href="/tag/mozilla.html">mozilla</a>,          <a href="/tag/thunderbird.html">thunderbird</a>      </i>
 
       <div class="mt-3">
 
-        <p>I&#8217;ve been working on rewriting the <span class="caps">IRC</span> plugin for <a class="reference external" href="http://www.instantbird.com/">Instantbird</a> since
-the summer (sometime in August, I can&#8217;t seem to find the exact date &#8212;
-at least since Sept. 10th&nbsp;though).</p>
-<p>Since <a class="reference external" href="http://developer.pidgin.im/wiki/WhatIsLibpurple">libpurple</a> (used in Pidgin, Adium, etc.) provides the <span class="caps">IRC</span>
-protocol that we currently use, why do this?&nbsp; One reason is to iron out
-(and find) some of the bugs left in implementing protocols in JavaScript
-and part of it is so I can learn to code better.&nbsp; Unfortunately during
-this semester I was not able to get as much done as I had hoped and
-almost everything that had been done was finished in&nbsp;August/September</p>
-<p>Some big milestones I&#8217;ve completed (with dates if I have&nbsp;them):</p>
-<ol class="arabic simple">
-<li>Connected to server via sockets in&nbsp;JavaScript</li>
-<li>Generate a conversation that works as a raw connection to the server
-(i.e. as if you had opened a telnet connection to the&nbsp;server)</li>
-<li>Parsing messages and automatic ponging when the server&nbsp;pings</li>
-<li>Joining a channel (2010/12/04, i.e.&nbsp;today!)</li>
-</ol>
-<p>There had been a bunch of small bugs I had been having in getting this
-to work: one error, (which I found quickly) one of the other developers
-(<a class="reference external" href="http://queze.net/">Florian</a>) was able to help me out with, was that I was not initiating
-a <strong>new</strong> object.&nbsp; And after learning a bit above observers I was able
-to get the <span class="caps">UI</span> to respond.&nbsp; I even threw in support for op/half-op/voice
-After today&#8217;s work I was able to generate the following&nbsp;screenshot:</p>
-<blockquote class="text-center">
-<a class="reference external image-reference" href="https://patrick.cloke.us/images/IRCworking2.png"><img alt="Example conversation using JavaScript IRC." src="https://patrick.cloke.us/images/IRCworking2.png" style="height: 297px;" /></a>
-<p>An initial example of Instantbird communicating using JavaScript <span class="caps">IRC</span>.</p>
-</blockquote>
-<p>This build would be almost fully usable by those who do very little on
-<span class="caps">IRC</span> (i.e. if you just want to go and chat, it&#8217;d work well), but there&#8217;s
-a lot more work to be done.&nbsp; The code can be viewed in the <a class="reference external" href="https://hg.instantbird.org/experiments/file/IRC-JavaScript/">Experiments
-repository</a>.&nbsp; (Check it out, there&#8217;s a 600+ line switch&nbsp;statement.)</p>
-
+        <p>I was interviewed for Matrix Live as part of last week&#8217;s <a class="reference external" href="https://matrix.org/blog/2020/03/06/this-week-in-matrix-2020-03-06">This Week in Matrix</a>.
+I talked a bit about my background and my experiences contributing to Mozilla
+(as part of Instantbird and Thunderbird projects) as well as what I will be
+working on for Synapse, the reference implementation for Matrix&nbsp;servers.</p>
+<p>Check out the video below or alternately you can also listen to this as a podcast&nbsp;via:</p>
+<ul class="simple">
+<li><a class="reference external" href="https://podcasts.apple.com/gb/podcast/matrix-live-s04e28-welcome-patrick/id1498631706?i=1000467688606">Apple&nbsp;Podcasts</a></li>
+<li><a class="reference external" href="https://open.spotify.com/episode/1tDmpPbG5e79tU6GfvHz7o">Spotify</a></li>
+</ul>
+<p>Let me know if you have any&nbsp;questions!</p>
+<div class="youtube youtube-16x9"><iframe src="https://www.youtube.com/embed/iKx-RHS-p4M" allowfullscreen seamless frameBorder="0"></iframe></div>
       </div>
 
 <div id="disqus_thread"></div>
@@ -165,8 +144,8 @@ repository</a>.&nbsp; (Check it out, there&#8217;s a 600+ line switch&nbsp;state
 *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/
 /*
 var disqus_config = function () {
-this.page.url = '/posts/2010/12/04/javascript-irc-in-instantbird/';
-this.page.identifier = 'javascript-irc-in-instantbird';
+this.page.url = '/posts/2020/03/12/matrix-live-interview/';
+this.page.identifier = 'matrix-live-interview';
 };
 */
 (function() { // DON'T EDIT BELOW THIS LINE
