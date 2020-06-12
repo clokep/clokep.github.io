@@ -18,7 +18,7 @@
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
 
-    <title>Like bricks in the sky</title>
+    <title>Raspberry Pi File Server</title>
   </head>
 
   <body class="pb-5">
@@ -96,173 +96,87 @@
       </div>
     </nav>
 
-<div class="container mt-4">
+<div class="container">
   <div class="row">
-    <div class="col-md-12">
+    <div class="col-md-12 mt-2 mb-2">
       <h1>
-        <a href="/posts/2020/06/12/raspberry-pi-file-server/">Raspberry Pi File&nbsp;Server</a>
+        <a href="/posts/2020/06/12/raspberry-pi-file-server/" rel="bookmark"
+           title="Permalink to Raspberry Pi File Server">Raspberry Pi File&nbsp;Server</a>
       </h1>
+
+      <div class="float-right">
+        <a href="https://twitter.com/intent/tweet?text=Raspberry%20Pi%20File%C2%A0Server&url=https%3A//patrick.cloke.us/posts/2020/06/12/raspberry-pi-file-server/" target="_blank" class="ml-1 mr-1" title="Share on Twitter">
+          <span class="fab fa-twitter"></span>
+        </a>
+        <a href="http://www.facebook.com/sharer/sharer.php?u=https%3A//patrick.cloke.us/posts/2020/06/12/raspberry-pi-file-server/" target="_blank" class="ml-1 mr-1" title="Share on Facebook">
+          <span class="fab fa-facebook"></span>
+        </a>
+        <a href="mailto:?subject=Raspberry%20Pi%20File%C2%A0Server&amp;body=https%3A//patrick.cloke.us/posts/2020/06/12/raspberry-pi-file-server/" target="_blank" class="ml-1 mr-1" title="Share via Email">
+          <span class="fas fa-envelope"></span>
+        </a>
+      </div>
 
       <i>Friday, June 12, 2020</i>
 
-      <p>This is just some quick notes (for myself) of how I recently setup my Raspberry
+      <br>
+      <i>
+        Tags:           <a href="/tag/linux.html">linux</a>      </i>
+
+      <div class="mt-3">
+
+        <p>This is just some quick notes (for myself) of how I recently setup my Raspberry
 Pi as a file server. The goal was to have a shared folder so that a Sonos could
 play music from it. The data would be backed via a microSD card plugged into
 <span class="caps">USB</span>.</p>
 <ol class="arabic simple">
-<li>Update …</li></ol>
+<li>Update to the <a class="reference external" href="https://www.raspberrypi.org/downloads/">newest version of Raspberry Pi <span class="caps">OS</span></a>.</li>
+<li>Configure <a class="reference external" href="https://www.raspberrypi.org/documentation/remote-access/ssh/README.md"><span class="caps">SSH</span> (for headless mode)</a>.</li>
+<li>Use the local router to find the <span class="caps">IP</span>&nbsp;address.</li>
+<li>Add a local hostname into the router for the <span class="caps">IP</span>.</li>
+<li><tt class="docutils literal">ssh pi&#64;raspberrypi</tt>:<ol class="arabic">
+<li>Update everything: <tt class="docutils literal">sudo <span class="pre">apt-get</span> update &amp;&amp; sudo <span class="pre">apt-get</span> upgrade</tt></li>
+<li>Clean-up: <tt class="docutils literal">sudo reboot</tt> then
+<tt class="docutils literal">sudo <span class="pre">apt-get</span> autoremove &amp;&amp; sudo <span class="pre">apt-get</span> autoclean</tt></li>
+<li>Use <tt class="docutils literal">sudo <span class="pre">raspi-config</span></tt> to update some configuration (passwords,
+connect to WiFi,&nbsp;etc.)</li>
+<li><a class="reference external" href="https://raspberrytips.com/mount-usb-drive-raspberry-pi/">Mount the <span class="caps">USB</span> drive</a> (look down for the <tt class="docutils literal">fstab</tt> directions). (I also
+had to install <a class="reference external" href="https://www.howtogeek.com/235655/how-to-mount-and-use-an-exfat-drive-on-linux/">support for exFAT</a> at this&nbsp;point.)</li>
+<li>Finally, <a class="reference external" href="https://www.raspberrypi.org/documentation/remote-access/samba.md">install and configure Samba</a>.</li>
+</ol>
+</li>
+</ol>
+<p>After this the drive should be <a class="reference external" href="https://support.sonos.com/s/article/257">findable from the Sonos app</a>.</p>
+<p>We&#8217;ll see how this works after the Raspberry Pi gets rebooted at some point,
+will&nbsp;it:</p>
+<ul class="simple">
+<li>Have the same <span class="caps">IP</span>&nbsp;address?</li>
+<li>Mount the <span class="caps">USB</span> drive&nbsp;properly?</li>
+</ul>
 
-      <div class="float-right">
-        <a href="/posts/2020/06/12/raspberry-pi-file-server/#disqus_thread">comments</a>
       </div>
 
-      <a href="/posts/2020/06/12/raspberry-pi-file-server/">read more &rarr;</a>
-
-      <hr>
+<div id="disqus_thread"></div>
+<script>
+/**
+*  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+*  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/
+/*
+var disqus_config = function () {
+this.page.url = '/posts/2020/06/12/raspberry-pi-file-server/';
+this.page.identifier = 'raspberry-pi-file-server';
+};
+*/
+(function() { // DON'T EDIT BELOW THIS LINE
+var d = document, s = d.createElement('script');
+s.src = 'https://clokep.disqus.com/embed.js';
+s.setAttribute('data-timestamp', +new Date());
+(d.head || d.body).appendChild(s);
+})();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
     </div>
   </div>
 </div>
-<div class="container mt-4">
-  <div class="row">
-    <div class="col-md-12">
-      <h1>
-        <a href="/posts/2020/03/12/matrix-live-interview/">Matrix Live&nbsp;Interview</a>
-      </h1>
-
-      <i>Thursday, March 12, 2020</i>
-
-      <p>I was interviewed for Matrix Live as part of last week&#8217;s <a class="reference external" href="https://matrix.org/blog/2020/03/06/this-week-in-matrix-2020-03-06">This Week in Matrix</a>.
-I talked a bit about my background and my experiences contributing to Mozilla
-(as part of Instantbird and Thunderbird projects) as well as what I will be
-working on for Synapse, the reference implementation …</p>
-
-      <div class="float-right">
-        <a href="/posts/2020/03/12/matrix-live-interview/#disqus_thread">comments</a>
-      </div>
-
-      <a href="/posts/2020/03/12/matrix-live-interview/">read more &rarr;</a>
-
-      <hr>
-    </div>
-  </div>
-</div>
-<div class="container mt-4">
-  <div class="row">
-    <div class="col-md-12">
-      <h1>
-        <a href="/posts/2020/03/03/new-position-at-new-vector/">New Position at New&nbsp;Vector</a>
-      </h1>
-
-      <i>Tuesday, March 3, 2020</i>
-
-      <p>I&#8217;m excited to share that a few weeks ago I started a new position at
-<a class="reference external" href="https://vector.im/">New Vector</a>! They&#8217;re the company behind <a class="reference external" href="https://matrix.org/">Matrix</a>, &#8220;an open network for
-secure, decentralized&nbsp;communication&#8221;.</p>
-<p>I&#8217;ll be working on the reference backend server software used in Matrix
-(<a class="reference external" href="https://matrix.org/docs/projects/server/synapse">Synapse</a>). The tech stack overlaps with …</p>
-
-      <div class="float-right">
-        <a href="/posts/2020/03/03/new-position-at-new-vector/#disqus_thread">comments</a>
-      </div>
-
-      <a href="/posts/2020/03/03/new-position-at-new-vector/">read more &rarr;</a>
-
-      <hr>
-    </div>
-  </div>
-</div>
-<div class="container mt-4">
-  <div class="row">
-    <div class="col-md-12">
-      <h1>
-        <a href="/posts/2020/01/27/squashing-django-migrations/">Squashing Django&nbsp;Migrations</a>
-      </h1>
-
-      <i>Monday, January 27, 2020</i>
-
-      <p>The <a class="reference external" href="https://docs.djangoproject.com/en/1.11/topics/migrations/">Django migration system</a> is great for modifying your database schema after
-a database is live. If you&#8217;re like me, you quickly end up with many 10s or 100s
-of migrations. There&#8217;s nothing inherently wrong with this, but there&#8217;s a few
-cases where it gets tiresome to …</p>
-
-      <div class="float-right">
-        <a href="/posts/2020/01/27/squashing-django-migrations/#disqus_thread">comments</a>
-      </div>
-
-      <a href="/posts/2020/01/27/squashing-django-migrations/">read more &rarr;</a>
-
-      <hr>
-    </div>
-  </div>
-</div>
-<div class="container mt-4">
-  <div class="row">
-    <div class="col-md-12">
-      <h1>
-        <a href="/posts/2020/01/23/cleanly-removing-a-django-app-with-models/">Cleanly removing a Django app (with&nbsp;models)</a>
-      </h1>
-
-      <i>Thursday, January 23, 2020</i>
-
-      <p>While pruning features from our product it was necessary to fully remove some
-Django apps that had models in them. If the code is just removed than the tables
-(and some other references) will be left in the&nbsp;database.</p>
-<p>After doing this a few times for work I came up …</p>
-
-      <div class="float-right">
-        <a href="/posts/2020/01/23/cleanly-removing-a-django-app-with-models/#disqus_thread">comments</a>
-      </div>
-
-      <a href="/posts/2020/01/23/cleanly-removing-a-django-app-with-models/">read more &rarr;</a>
-
-    </div>
-  </div>
-</div>
-
-<div class="container">
-  <div class="row">
-    <div class="col-md-12">
-      <nav aria-label="Page navigation">
-        <ul class="pagination justify-content-center">
-          <li class="page-item disabled">
-            <a class="page-link" href="/index.html" >1</a>
-          </li>
-          <li class="page-item">
-            <a class="page-link" href="/index2.html" >2</a>
-          </li>
-          <li class="page-item">
-            <a class="page-link" href="/index3.html" >3</a>
-          </li>
-          <li class="page-item">
-            <a class="page-link" href="/index4.html" >4</a>
-          </li>
-          <li class="page-item">
-            <a class="page-link" href="/index5.html" >5</a>
-          </li>
-          <li class="page-item">
-            <a class="page-link" href="/index6.html" >6</a>
-          </li>
-          <li class="page-item">
-            <a class="page-link" href="/index7.html" >7</a>
-          </li>
-          <li class="page-item">
-            <a class="page-link" href="/index8.html" >8</a>
-          </li>
-          <li class="page-item">
-            <a class="page-link" href="/index9.html" >9</a>
-          </li>
-          <li class="page-item">
-            <a class="page-link" href="/index10.html" >10</a>
-          </li>
-          <li class="page-item">
-            <a class="page-link" href="/index11.html" >11</a>
-          </li>
-        </ul>
-      </nav>
-    </div>
-  </div>
-</div>
-
 
     <nav class="navbar fixed-bottom navbar-light bg-light border-top border-info">
       <a href="https://getpelican.com/" class="nav-item" target="_blank">Powered by Pelican</a>
@@ -277,6 +191,5 @@ Django apps that had models in them. If the code is just removed than the tables
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T" crossorigin="anonymous"></script>
 
-<script id="dsq-count-scr" src="//clokep.disqus.com/count.js" async></script>
   </body>
 </html>
