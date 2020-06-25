@@ -111,6 +111,7 @@ Python
 * `The End Of Object Inheritance & The Beginning Of A New Modularity`_ by Augie Fackler & Nathaniel Manista
 * `Python internals: Arbitrary-precision integer implementation`_ by Artem Golubin
 * Packaging
+
   * `Sharing Your Labor of Love: PyPI Quick and Dirty`_ by Hynek Schlawack
   * `Packaging a python library`_ by Ionel Cristian Mărieș
 
@@ -159,7 +160,7 @@ Profiling
 Git
 ===
 
-* `Finding a branch point with Git?` on StackOverflow -- this has some neat Git aliases.
+* `Finding a branch point with Git?`_ on StackOverflow -- this has some neat Git aliases.
 
 .. _Finding a branch point with Git?: https://stackoverflow.com/questions/1527234/finding-a-branch-point-with-git
 
