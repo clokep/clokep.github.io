@@ -12,6 +12,3 @@ pelican==4.2.0
 Pillow==7.0.0
 typogrify==2.0.7
 webassets==2.0
-
-# For embedding YouTube videos.
-pelican-youtube==0.2.0

@@ -84,12 +84,13 @@ PLUGINS = [
     'assets',
     'extract_toc',
     'gravatar',
-    'pelican_youtube',
     'share_post',
     'thumbnailer',
 
     # Custom plug-ins to add additional RST directives.
     'directives',
+    # Vendored until https://github.com/kura/pelican_youtube/pull/7 is merged.
+    'youtube',
 ]
 
 # Custom Jinja filters.

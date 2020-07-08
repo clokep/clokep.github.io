@@ -18,6 +18,7 @@ via:
 Let me know if you have any questions!
 
 .. youtube:: iKx-RHS-p4M
+    :nocookie: yes
 
 .. _This Week in Matrix: https://matrix.org/blog/2020/03/06/this-week-in-matrix-2020-03-06
 .. _Apple Podcasts: https://podcasts.apple.com/gb/podcast/matrix-live-s04e28-welcome-patrick/id1498631706?i=1000467688606
