@@ -1,5 +1,95 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>Like bricks in the sky</title><link href="https://patrick.cloke.us/" rel="alternate"></link><link href="https://patrick.cloke.us/feeds/atom.xml" rel="self"></link><id>https://patrick.cloke.us/</id><updated>2020-06-12T16:55:00-04:00</updated><entry><title>Raspberry Pi File Server</title><link href="https://patrick.cloke.us/posts/2020/06/12/raspberry-pi-file-server/" rel="alternate"></link><published>2020-06-12T16:55:00-04:00</published><updated>2020-06-12T16:55:00-04:00</updated><author><name>Patrick Cloke</name></author><id>tag:patrick.cloke.us,2020-06-12:/posts/2020/06/12/raspberry-pi-file-server/</id><summary type="html">&lt;p&gt;This is just some quick notes (for myself) of how I recently setup my Raspberry
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Like bricks in the sky</title><link href="https://patrick.cloke.us/" rel="alternate"></link><link href="https://patrick.cloke.us/feeds/atom.xml" rel="self"></link><id>https://patrick.cloke.us/</id><updated>2020-07-14T17:07:00-04:00</updated><entry><title>Testing WireViz</title><link href="https://patrick.cloke.us/posts/2020/07/14/testing-wireviz/" rel="alternate"></link><published>2020-07-14T17:07:00-04:00</published><updated>2020-07-14T17:07:00-04:00</updated><author><name>Patrick Cloke</name></author><id>tag:patrick.cloke.us,2020-07-14:/posts/2020/07/14/testing-wireviz/</id><summary type="html">&lt;p&gt;I wanted to play with the &lt;a class="reference external" href="https://github.com/formatc1702/WireViz"&gt;WireViz&lt;/a&gt; Python package, which makes pretty wire
+diagrams. Installation was pretty easy, just created a virtualenv and installed
+with&amp;nbsp;pip:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;pip install wireviz
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Documentation is pretty limited, but looking through the &lt;a class="reference external" href="https://github.com/formatc1702/WireViz/tree/fffb354d7c86cc4f85d1e7e0753a07f7b6a65fa7/tutorial"&gt;tutorials&lt;/a&gt; and the
+&lt;a class="reference external" href="https://github.com/formatc1702/WireViz/blob/fffb354d7c86cc4f85d1e7e0753a07f7b6a65fa7/src/wireviz/DataClasses.py"&gt;data models&lt;/a&gt; you get a pretty good idea of what …&lt;/p&gt;</summary><content type="html">&lt;p&gt;I wanted to play with the &lt;a class="reference external" href="https://github.com/formatc1702/WireViz"&gt;WireViz&lt;/a&gt; Python package, which makes pretty wire
+diagrams. Installation was pretty easy, just created a virtualenv and installed
+with&amp;nbsp;pip:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;pip install wireviz
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Documentation is pretty limited, but looking through the &lt;a class="reference external" href="https://github.com/formatc1702/WireViz/tree/fffb354d7c86cc4f85d1e7e0753a07f7b6a65fa7/tutorial"&gt;tutorials&lt;/a&gt; and the
+&lt;a class="reference external" href="https://github.com/formatc1702/WireViz/blob/fffb354d7c86cc4f85d1e7e0753a07f7b6a65fa7/src/wireviz/DataClasses.py"&gt;data models&lt;/a&gt; you get a pretty good idea of what&amp;#8217;s&amp;nbsp;possible.&lt;/p&gt;
+&lt;p&gt;I&amp;#8217;m using the wiring diagrams from my &lt;a class="reference external" href="https://patrick.cloke.us/posts/2014/08/30/adding-an-auxiliary-audio-input-to-a-2005-subaru-outback/"&gt;guide to add an auxiliary audio input to a 2005 Subaru Outback&lt;/a&gt;,
+which is pretty simple, there&amp;#8217;s an audio jack which connects to the Outback&amp;#8217;s
+motherboard and the Outback&amp;#8217;s &lt;span class="caps"&gt;FM&lt;/span&gt; audio module (and&amp;nbsp;ground).&lt;/p&gt;
+&lt;p&gt;The input is a &lt;a class="reference external" href="https://yaml.org/"&gt;&lt;span class="caps"&gt;YAML&lt;/span&gt;&lt;/a&gt; document with three sections:
+* &lt;tt class="docutils literal"&gt;connectors&lt;/tt&gt; - A list of connectors and the information about their port.
+* &lt;tt class="docutils literal"&gt;cables&lt;/tt&gt; - A list of wires (and their information, e.g. gauge).
+* &lt;tt class="docutils literal"&gt;connections&lt;/tt&gt; - A lists of ports that should be connected via each&amp;nbsp;cable.&lt;/p&gt;
+&lt;p&gt;I had a pretty simple example, but it ended up being quite a bit of &lt;span class="caps"&gt;YAML&lt;/span&gt;:&lt;/p&gt;
+&lt;pre class="code yaml highlight literal-block"&gt;
+&lt;span class="nt"&gt;connectors&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
+  &lt;span class="nt"&gt;RADIO&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="nl"&gt;&amp;amp;radio&lt;/span&gt;
+    &lt;span class="nt"&gt;pincount&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="l-Scalar-Plain"&gt;36&lt;/span&gt;
+    &lt;span class="nt"&gt;pinout&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="p-Indicator"&gt;[&lt;/span&gt;
+      &lt;span class="nv"&gt;UNK&lt;/span&gt;&lt;span class="p-Indicator"&gt;,&lt;/span&gt; &lt;span class="nv"&gt;UNK&lt;/span&gt;&lt;span class="p-Indicator"&gt;,&lt;/span&gt; &lt;span class="nv"&gt;UNK&lt;/span&gt;&lt;span class="p-Indicator"&gt;,&lt;/span&gt; &lt;span class="nv"&gt;UNK&lt;/span&gt;&lt;span class="p-Indicator"&gt;,&lt;/span&gt; &lt;span class="nv"&gt;UNK&lt;/span&gt;&lt;span class="p-Indicator"&gt;,&lt;/span&gt; &lt;span class="nv"&gt;UNK&lt;/span&gt;&lt;span class="p-Indicator"&gt;,&lt;/span&gt; &lt;span class="nv"&gt;UNK&lt;/span&gt;&lt;span class="p-Indicator"&gt;,&lt;/span&gt; &lt;span class="nv"&gt;UNK&lt;/span&gt;&lt;span class="p-Indicator"&gt;,&lt;/span&gt;
+      &lt;span class="nv"&gt;UNK&lt;/span&gt;&lt;span class="p-Indicator"&gt;,&lt;/span&gt; &lt;span class="nv"&gt;UNK&lt;/span&gt;&lt;span class="p-Indicator"&gt;,&lt;/span&gt; &lt;span class="nv"&gt;UNK&lt;/span&gt;&lt;span class="p-Indicator"&gt;,&lt;/span&gt; &lt;span class="nv"&gt;UNK&lt;/span&gt;&lt;span class="p-Indicator"&gt;,&lt;/span&gt; &lt;span class="nv"&gt;UNK&lt;/span&gt;&lt;span class="p-Indicator"&gt;,&lt;/span&gt; &lt;span class="nv"&gt;UNK&lt;/span&gt;&lt;span class="p-Indicator"&gt;,&lt;/span&gt; &lt;span class="nv"&gt;UNK&lt;/span&gt;&lt;span class="p-Indicator"&gt;,&lt;/span&gt; &lt;span class="nv"&gt;UNK&lt;/span&gt;&lt;span class="p-Indicator"&gt;,&lt;/span&gt;
+      &lt;span class="nv"&gt;UNK&lt;/span&gt;&lt;span class="p-Indicator"&gt;,&lt;/span&gt; &lt;span class="nv"&gt;UNK&lt;/span&gt;&lt;span class="p-Indicator"&gt;,&lt;/span&gt; &lt;span class="nv"&gt;UNK&lt;/span&gt;&lt;span class="p-Indicator"&gt;,&lt;/span&gt; &lt;span class="nv"&gt;UNK&lt;/span&gt;&lt;span class="p-Indicator"&gt;,&lt;/span&gt; &lt;span class="nv"&gt;UNK&lt;/span&gt;&lt;span class="p-Indicator"&gt;,&lt;/span&gt; &lt;span class="nv"&gt;UNK&lt;/span&gt;&lt;span class="p-Indicator"&gt;,&lt;/span&gt; &lt;span class="nv"&gt;UNK&lt;/span&gt;&lt;span class="p-Indicator"&gt;,&lt;/span&gt; &lt;span class="nv"&gt;UNK&lt;/span&gt;&lt;span class="p-Indicator"&gt;,&lt;/span&gt;
+      &lt;span class="nv"&gt;UNK&lt;/span&gt;&lt;span class="p-Indicator"&gt;,&lt;/span&gt; &lt;span class="nv"&gt;UNK&lt;/span&gt;&lt;span class="p-Indicator"&gt;,&lt;/span&gt; &lt;span class="nv"&gt;UNK&lt;/span&gt;&lt;span class="p-Indicator"&gt;,&lt;/span&gt; &lt;span class="nv"&gt;UNK&lt;/span&gt;&lt;span class="p-Indicator"&gt;,&lt;/span&gt; &lt;span class="nv"&gt;UNK&lt;/span&gt;&lt;span class="p-Indicator"&gt;,&lt;/span&gt; &lt;span class="nv"&gt;UNK&lt;/span&gt;&lt;span class="p-Indicator"&gt;,&lt;/span&gt; &lt;span class="nv"&gt;FM R&lt;/span&gt;&lt;span class="p-Indicator"&gt;,&lt;/span&gt; &lt;span class="nv"&gt;FM L&lt;/span&gt;&lt;span class="p-Indicator"&gt;,&lt;/span&gt;
+      &lt;span class="nv"&gt;UNK&lt;/span&gt;&lt;span class="p-Indicator"&gt;,&lt;/span&gt; &lt;span class="nv"&gt;UNK&lt;/span&gt;&lt;span class="p-Indicator"&gt;,&lt;/span&gt; &lt;span class="nv"&gt;UNK&lt;/span&gt;&lt;span class="p-Indicator"&gt;,&lt;/span&gt; &lt;span class="nv"&gt;UNK&lt;/span&gt;&lt;span class="p-Indicator"&gt;,&lt;/span&gt;
+    &lt;span class="p-Indicator"&gt;]&lt;/span&gt;
+    &lt;span class="nt"&gt;type&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="l-Scalar-Plain"&gt;Outback Radio Module&lt;/span&gt;
+    &lt;span class="nt"&gt;show_name&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="l-Scalar-Plain"&gt;false&lt;/span&gt;
+    &lt;span class="nt"&gt;hide_disconnected_pins&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="l-Scalar-Plain"&gt;true&lt;/span&gt;
+  &lt;span class="nt"&gt;MOTHERBOARD&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
+    &lt;span class="nt"&gt;&amp;lt;&amp;lt;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="nv"&gt;*radio&lt;/span&gt;
+    &lt;span class="nt"&gt;type&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="l-Scalar-Plain"&gt;Outback Radio Motherboard&lt;/span&gt;
+  &lt;span class="nt"&gt;AUDIO&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
+    &lt;span class="nt"&gt;pincount&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="l-Scalar-Plain"&gt;5&lt;/span&gt;
+    &lt;span class="nt"&gt;pinout&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="p-Indicator"&gt;[&lt;/span&gt;&lt;span class="nv"&gt;GND&lt;/span&gt;&lt;span class="p-Indicator"&gt;,&lt;/span&gt; &lt;span class="nv"&gt;L OUT&lt;/span&gt;&lt;span class="p-Indicator"&gt;,&lt;/span&gt; &lt;span class="nv"&gt;L IN&lt;/span&gt;&lt;span class="p-Indicator"&gt;,&lt;/span&gt; &lt;span class="nv"&gt;R IN&lt;/span&gt;&lt;span class="p-Indicator"&gt;,&lt;/span&gt; &lt;span class="nv"&gt;R OUT&lt;/span&gt;&lt;span class="p-Indicator"&gt;]&lt;/span&gt;
+    &lt;span class="nt"&gt;type&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="l-Scalar-Plain"&gt;1/8&amp;quot; Stereo Audio Jack&lt;/span&gt;
+    &lt;span class="nt"&gt;subtype&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;RadioShack&lt;/span&gt;&lt;span class="nv"&gt; &lt;/span&gt;&lt;span class="s"&gt;#274-246&amp;quot;&lt;/span&gt;
+    &lt;span class="nt"&gt;show_name&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="l-Scalar-Plain"&gt;false&lt;/span&gt;
+  &lt;span class="nt"&gt;GROUND&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
+    &lt;span class="nt"&gt;pinout&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="p-Indicator"&gt;[&lt;/span&gt;&lt;span class="nv"&gt;GND&lt;/span&gt;&lt;span class="p-Indicator"&gt;]&lt;/span&gt;
+    &lt;span class="nt"&gt;type&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;Ground&amp;quot;&lt;/span&gt;
+    &lt;span class="nt"&gt;show_name&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="l-Scalar-Plain"&gt;false&lt;/span&gt;
+
+&lt;span class="nt"&gt;cables&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
+  &lt;span class="nt"&gt;W1&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="nl"&gt;&amp;amp;wire&lt;/span&gt;
+    &lt;span class="nt"&gt;wirecount&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="l-Scalar-Plain"&gt;2&lt;/span&gt;
+    &lt;span class="nt"&gt;gauge&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="l-Scalar-Plain"&gt;22 AWG&lt;/span&gt;
+    &lt;span class="nt"&gt;colors&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="p-Indicator"&gt;[&lt;/span&gt;&lt;span class="nv"&gt;RD&lt;/span&gt;&lt;span class="p-Indicator"&gt;,&lt;/span&gt; &lt;span class="nv"&gt;GN&lt;/span&gt;&lt;span class="p-Indicator"&gt;]&lt;/span&gt;
+    &lt;span class="nt"&gt;category&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="l-Scalar-Plain"&gt;bundle&lt;/span&gt;
+    &lt;span class="nt"&gt;show_name&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="l-Scalar-Plain"&gt;false&lt;/span&gt;
+    &lt;span class="nt"&gt;show_wirecount&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="l-Scalar-Plain"&gt;false&lt;/span&gt;
+  &lt;span class="nt"&gt;W2&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
+    &lt;span class="nt"&gt;&amp;lt;&amp;lt;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="nv"&gt;*wire&lt;/span&gt;
+  &lt;span class="nt"&gt;GND&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
+    &lt;span class="nt"&gt;wirecount&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="l-Scalar-Plain"&gt;1&lt;/span&gt;
+    &lt;span class="nt"&gt;gauge&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="l-Scalar-Plain"&gt;22 AWG&lt;/span&gt;
+    &lt;span class="nt"&gt;colors&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="p-Indicator"&gt;[&lt;/span&gt;&lt;span class="nv"&gt;BK&lt;/span&gt;&lt;span class="p-Indicator"&gt;]&lt;/span&gt;
+    &lt;span class="nt"&gt;show_name&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="l-Scalar-Plain"&gt;false&lt;/span&gt;
+    &lt;span class="nt"&gt;show_wirecount&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="l-Scalar-Plain"&gt;false&lt;/span&gt;
+
+&lt;span class="nt"&gt;connections&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
+  &lt;span class="p-Indicator"&gt;-&lt;/span&gt;
+    &lt;span class="p-Indicator"&gt;-&lt;/span&gt; &lt;span class="nt"&gt;RADIO&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="p-Indicator"&gt;[&lt;/span&gt;&lt;span class="nv"&gt;31&lt;/span&gt;&lt;span class="p-Indicator"&gt;,&lt;/span&gt;&lt;span class="nv"&gt;32&lt;/span&gt;&lt;span class="p-Indicator"&gt;]&lt;/span&gt;
+    &lt;span class="p-Indicator"&gt;-&lt;/span&gt; &lt;span class="nt"&gt;W1&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="p-Indicator"&gt;[&lt;/span&gt;&lt;span class="nv"&gt;1-2&lt;/span&gt;&lt;span class="p-Indicator"&gt;]&lt;/span&gt;
+    &lt;span class="p-Indicator"&gt;-&lt;/span&gt; &lt;span class="nt"&gt;AUDIO&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="p-Indicator"&gt;[&lt;/span&gt;&lt;span class="nv"&gt;4&lt;/span&gt;&lt;span class="p-Indicator"&gt;,&lt;/span&gt;&lt;span class="nv"&gt;3&lt;/span&gt;&lt;span class="p-Indicator"&gt;]&lt;/span&gt;
+  &lt;span class="p-Indicator"&gt;-&lt;/span&gt;
+    &lt;span class="p-Indicator"&gt;-&lt;/span&gt; &lt;span class="nt"&gt;MOTHERBOARD&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="p-Indicator"&gt;[&lt;/span&gt;&lt;span class="nv"&gt;31&lt;/span&gt;&lt;span class="p-Indicator"&gt;,&lt;/span&gt;&lt;span class="nv"&gt;32&lt;/span&gt;&lt;span class="p-Indicator"&gt;]&lt;/span&gt;
+    &lt;span class="p-Indicator"&gt;-&lt;/span&gt; &lt;span class="nt"&gt;W2&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="p-Indicator"&gt;[&lt;/span&gt;&lt;span class="nv"&gt;1-2&lt;/span&gt;&lt;span class="p-Indicator"&gt;]&lt;/span&gt;
+    &lt;span class="p-Indicator"&gt;-&lt;/span&gt; &lt;span class="nt"&gt;AUDIO&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="p-Indicator"&gt;[&lt;/span&gt;&lt;span class="nv"&gt;5&lt;/span&gt;&lt;span class="p-Indicator"&gt;,&lt;/span&gt;&lt;span class="nv"&gt;2&lt;/span&gt;&lt;span class="p-Indicator"&gt;]&lt;/span&gt;
+  &lt;span class="p-Indicator"&gt;-&lt;/span&gt;
+    &lt;span class="p-Indicator"&gt;-&lt;/span&gt; &lt;span class="nt"&gt;GROUND&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="p-Indicator"&gt;[&lt;/span&gt;&lt;span class="nv"&gt;1&lt;/span&gt;&lt;span class="p-Indicator"&gt;]&lt;/span&gt;
+    &lt;span class="p-Indicator"&gt;-&lt;/span&gt; &lt;span class="nt"&gt;GND&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="p-Indicator"&gt;[&lt;/span&gt;&lt;span class="nv"&gt;1&lt;/span&gt;&lt;span class="p-Indicator"&gt;]&lt;/span&gt;
+    &lt;span class="p-Indicator"&gt;-&lt;/span&gt; &lt;span class="nt"&gt;AUDIO&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="p-Indicator"&gt;[&lt;/span&gt;&lt;span class="nv"&gt;1&lt;/span&gt;&lt;span class="p-Indicator"&gt;]&lt;/span&gt;
+&lt;/pre&gt;
+&lt;p&gt;The only thing I couldn&amp;#8217;t figure out was how to list two pins with the proper
+names and pins numbers, but ignore all the other ones. Note a huge deal for a
+36-pin&amp;nbsp;connector.&lt;/p&gt;
+&lt;p&gt;It did create a fairly pretty diagram after running &lt;tt class="docutils literal"&gt;wireviz &lt;span class="pre"&gt;subaru-wiring.yaml&lt;/span&gt;&lt;/tt&gt;
+and is certainly easier than directly using &lt;a class="reference external" href="https://graphviz.org/"&gt;graphviz&lt;/a&gt;. It ouputs a &lt;span class="caps"&gt;SVG&lt;/span&gt;, &lt;span class="caps"&gt;PNG&lt;/span&gt;,
+bill of materials, &lt;span class="caps"&gt;HTML&lt;/span&gt; page (with the bill of materials and image on it).
+Overall, I&amp;#8217;d use it again if I had a&amp;nbsp;need!&lt;/p&gt;
+&lt;blockquote class="text-center"&gt;
+&lt;a class="reference external image-reference" href="https://patrick.cloke.us/code/testing-wireviz/subaru-wiring.svg"&gt;&lt;object data="https://patrick.cloke.us/code/testing-wireviz/subaru-wiring.svg" style="width: 100%;" type="image/svg+xml"&gt;&lt;/object&gt;&lt;/a&gt;
+&lt;/blockquote&gt;
+</content><category term="articles"></category><category term="software"></category><category term="hardware"></category><category term="wiring"></category></entry><entry><title>Raspberry Pi File Server</title><link href="https://patrick.cloke.us/posts/2020/06/12/raspberry-pi-file-server/" rel="alternate"></link><published>2020-06-12T16:55:00-04:00</published><updated>2020-06-12T16:55:00-04:00</updated><author><name>Patrick Cloke</name></author><id>tag:patrick.cloke.us,2020-06-12:/posts/2020/06/12/raspberry-pi-file-server/</id><summary type="html">&lt;p&gt;This is just some quick notes (for myself) of how I recently setup my Raspberry
 Pi as a file server. The goal was to have a shared folder so that a Sonos could
 play music from it. The data would be backed via a microSD card plugged into
 &lt;span class="caps"&gt;USB&lt;/span&gt;.&lt;/p&gt;
@@ -2106,7 +2196,7 @@ plugged in, input redirects to the jack. (Pin 1 is ground.) For reference, red
 is right audio and green is left audio (black is&amp;nbsp;ground).&lt;/p&gt;
 &lt;blockquote class="text-center"&gt;
 &lt;a class="reference external image-reference" href="https://patrick.cloke.us/images/subaru-outback-radio/diagrams.jpg"&gt;&lt;img alt="Wiring diagrams of the connections." src="/thumbnails/subaru-outback-radio/diagrams_medium.jpg" /&gt;&lt;/a&gt;
-&lt;p&gt;A few of the diagrams necessary to do this. The top two diagram is simply
+&lt;p&gt;A few of the diagrams necessary to do this. The top two diagrams are simply
 the connector&amp;#8217;s two states: no plug and plug. The bottom two diagrams are a
 normal 1/8&amp;#8221; audio plug and the physical pin-out and measurements of the&amp;nbsp;jack.&lt;/p&gt;
 &lt;p&gt;To reiterate, pins 2 and 5 connect to the &amp;#8220;stereo side&amp;#8221; of the scored pins
