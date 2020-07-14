@@ -1,0 +1,57 @@
+connectors:
+  RADIO: &radio
+    pincount: 36
+    pinout: [
+      UNK, UNK, UNK, UNK, UNK, UNK, UNK, UNK,
+      UNK, UNK, UNK, UNK, UNK, UNK, UNK, UNK,
+      UNK, UNK, UNK, UNK, UNK, UNK, UNK, UNK,
+      UNK, UNK, UNK, UNK, UNK, UNK, FM R, FM L,
+      UNK, UNK, UNK, UNK,
+    ]
+    type: Outback Radio Module
+    show_name: false
+    hide_disconnected_pins: true
+  MOTHERBOARD:
+    <<: *radio
+    type: Outback Radio Motherboard
+  AUDIO:
+    pincount: 5
+    pinout: [GND, L OUT, L IN, R IN, R OUT]
+    type: 1/8" Stereo Audio Jack
+    subtype: "RadioShack #274-246"
+    show_name: false
+  GROUND:
+    pinout: [GND]
+    type: "Ground"
+    show_name: false
+
+cables:
+  W1: &wire
+    wirecount: 2
+    gauge: 22 AWG
+    colors: [RD, GN]
+    category: bundle
+    show_name: false
+    show_wirecount: false
+  W2:
+    <<: *wire
+  GND:
+    wirecount: 1
+    gauge: 22 AWG
+    colors: [BK]
+    show_name: false
+    show_wirecount: false
+
+connections:
+  -
+    - RADIO: [31,32]
+    - W1: [1-2]
+    - AUDIO: [4,3]
+  -
+    - MOTHERBOARD: [31,32]
+    - W2: [1-2]
+    - AUDIO: [5,2]
+  -
+    - GROUND: [1]
+    - GND: [1]
+    - AUDIO: [1]

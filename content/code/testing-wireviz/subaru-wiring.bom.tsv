@@ -1,0 +1,8 @@
+Item	Qty	Unit	Designators
+Connector, 1/8" Stereo Audio Jack, RadioShack #274-246, 5 pins	1		AUDIO
+Connector, Ground, 1 pins	1		GROUND
+Connector, Outback Radio Module, 36 pins	1		RADIO
+Connector, Outback Radio Motherboard, 36 pins	1		MOTHERBOARD
+Cable, 1 x 22 AWG	0	m	GND
+Wire, 22 AWG, GN	0	m	W1, W2
+Wire, 22 AWG, RD	0	m	W1, W2

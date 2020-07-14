@@ -146,7 +146,7 @@ is right audio and green is left audio (black is ground).
         :target: {static}/images/subaru-outback-radio/diagrams.jpg
         :alt: Wiring diagrams of the connections.
 
-    A few of the diagrams necessary to do this. The top two diagram is simply
+    A few of the diagrams necessary to do this. The top two diagrams are simply
     the connector's two states: no plug and plug. The bottom two diagrams are a
     normal 1/8" audio plug and the physical pin-out and measurements of the
     jack.
