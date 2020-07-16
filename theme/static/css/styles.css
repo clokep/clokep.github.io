@@ -71,3 +71,8 @@ p.admonition-title::after {
 img {
     margin-top: 4px;
 }
+
+/* Strikethrough. */
+.strike {
+    text-decoration: line-through;
+}
