@@ -4,10 +4,10 @@ graph {
 	graph [bgcolor=white fontname=arial nodesep=0.33 rankdir=LR ranksep=2]
 	node [fillcolor=white fontname=arial shape=record style=filled]
 	edge [fontname=arial style=bold]
-	RADIO [label="{Outback Radio Module|36-pin}|{{FM R|FM L}|{<p31r>31|<p32r>32}}"]
-	MOTHERBOARD [label="{Outback Radio Motherboard|36-pin}|{{FM R|FM L}|{<p31r>31|<p32r>32}}"]
-	AUDIO [label="{1/8\" Stereo Audio Jack|RadioShack #274-246|5-pin}|{{<p1l>1|<p2l>2|<p3l>3|<p4l>4|<p5l>5}|{GND|L OUT|L IN|R IN|R OUT}}"]
-	GROUND [label="{Ground|1-pin}|{{GND}|{<p1r>1}}"]
+	RADIO [label="{Outback Radio Module}|{{FM R|FM L}|{<p31r>31|<p32r>32}}"]
+	MOTHERBOARD [label="{Outback Radio Motherboard}|{{FM R|FM L}|{<p31r>31|<p32r>32}}"]
+	AUDIO [label="{1/8\" Stereo Audio Jack|RadioShack #274-246}|{{<p1l>1|<p2l>2|<p3l>3|<p4l>4|<p5l>5}|{GND|L OUT|L IN|R IN|R OUT}}"]
+	GROUND [label="{Ground}|{{GND}|{<p1r>1}}"]
 	edge [color="#000000:#ff0000:#000000"]
 	RADIO:p31r:e -- W1:w1:w
 	W1:w1:e -- AUDIO:p4l:w

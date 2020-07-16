@@ -1,6 +1,7 @@
 Testing WireViz
 ###############
 :date: 2020-07-14 17:07
+:modified: 2020-07-16 16:03
 :author: Patrick Cloke
 :tags: software, hardware, wiring
 :slug: testing-wireviz
@@ -31,9 +32,8 @@ I had a pretty simple example, but it ended up being quite a bit of YAML:
     :code: yaml
     :class: highlight
 
-The only thing I couldn't figure out was how to list two pins with the proper
-names and pins numbers, but ignore all the other ones. Note a huge deal for a
-36-pin connector.
+:strike:`The only thing I couldn't figure out was how to list two pins with the proper names and pins numbers, but ignore all the other ones. Note a huge deal for a 36-pin connector.`
+See the comments below, this is doable, although a little awkward!
 
 It did create a fairly pretty diagram after running ``wireviz subaru-wiring.yaml``
 and is certainly easier than directly using `graphviz`_. It ouputs a SVG, PNG,

@@ -1,15 +1,11 @@
 connectors:
   RADIO: &radio
-    pincount: 36
-    pinout: [
-      UNK, UNK, UNK, UNK, UNK, UNK, UNK, UNK,
-      UNK, UNK, UNK, UNK, UNK, UNK, UNK, UNK,
-      UNK, UNK, UNK, UNK, UNK, UNK, UNK, UNK,
-      UNK, UNK, UNK, UNK, UNK, UNK, FM R, FM L,
-      UNK, UNK, UNK, UNK,
-    ]
+    # Since we only care about two of the pins, refer to them directly.
+    pinnumbers: [31, 32]
+    pinout: [FM R, FM L]
     type: Outback Radio Module
     show_name: false
+    show_pincount: false
     hide_disconnected_pins: true
   MOTHERBOARD:
     <<: *radio
@@ -20,10 +16,12 @@ connectors:
     type: 1/8" Stereo Audio Jack
     subtype: "RadioShack #274-246"
     show_name: false
+    show_pincount: false
   GROUND:
     pinout: [GND]
     type: "Ground"
     show_name: false
+    show_pincount: false
 
 cables:
   W1: &wire
