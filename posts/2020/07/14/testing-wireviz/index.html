@@ -142,16 +142,12 @@ motherboard and the Outback&#8217;s <span class="caps">FM</span> audio module (a
 <pre class="code yaml highlight literal-block">
 <span class="nt">connectors</span><span class="p">:</span>
   <span class="nt">RADIO</span><span class="p">:</span> <span class="nl">&amp;radio</span>
-    <span class="nt">pincount</span><span class="p">:</span> <span class="l-Scalar-Plain">36</span>
-    <span class="nt">pinout</span><span class="p">:</span> <span class="p-Indicator">[</span>
-      <span class="nv">UNK</span><span class="p-Indicator">,</span> <span class="nv">UNK</span><span class="p-Indicator">,</span> <span class="nv">UNK</span><span class="p-Indicator">,</span> <span class="nv">UNK</span><span class="p-Indicator">,</span> <span class="nv">UNK</span><span class="p-Indicator">,</span> <span class="nv">UNK</span><span class="p-Indicator">,</span> <span class="nv">UNK</span><span class="p-Indicator">,</span> <span class="nv">UNK</span><span class="p-Indicator">,</span>
-      <span class="nv">UNK</span><span class="p-Indicator">,</span> <span class="nv">UNK</span><span class="p-Indicator">,</span> <span class="nv">UNK</span><span class="p-Indicator">,</span> <span class="nv">UNK</span><span class="p-Indicator">,</span> <span class="nv">UNK</span><span class="p-Indicator">,</span> <span class="nv">UNK</span><span class="p-Indicator">,</span> <span class="nv">UNK</span><span class="p-Indicator">,</span> <span class="nv">UNK</span><span class="p-Indicator">,</span>
-      <span class="nv">UNK</span><span class="p-Indicator">,</span> <span class="nv">UNK</span><span class="p-Indicator">,</span> <span class="nv">UNK</span><span class="p-Indicator">,</span> <span class="nv">UNK</span><span class="p-Indicator">,</span> <span class="nv">UNK</span><span class="p-Indicator">,</span> <span class="nv">UNK</span><span class="p-Indicator">,</span> <span class="nv">UNK</span><span class="p-Indicator">,</span> <span class="nv">UNK</span><span class="p-Indicator">,</span>
-      <span class="nv">UNK</span><span class="p-Indicator">,</span> <span class="nv">UNK</span><span class="p-Indicator">,</span> <span class="nv">UNK</span><span class="p-Indicator">,</span> <span class="nv">UNK</span><span class="p-Indicator">,</span> <span class="nv">UNK</span><span class="p-Indicator">,</span> <span class="nv">UNK</span><span class="p-Indicator">,</span> <span class="nv">FM R</span><span class="p-Indicator">,</span> <span class="nv">FM L</span><span class="p-Indicator">,</span>
-      <span class="nv">UNK</span><span class="p-Indicator">,</span> <span class="nv">UNK</span><span class="p-Indicator">,</span> <span class="nv">UNK</span><span class="p-Indicator">,</span> <span class="nv">UNK</span><span class="p-Indicator">,</span>
-    <span class="p-Indicator">]</span>
+    <span class="c1"># Since we only care about two of the pins, refer to them directly.</span>
+    <span class="nt">pinnumbers</span><span class="p">:</span> <span class="p-Indicator">[</span><span class="nv">31</span><span class="p-Indicator">,</span> <span class="nv">32</span><span class="p-Indicator">]</span>
+    <span class="nt">pinout</span><span class="p">:</span> <span class="p-Indicator">[</span><span class="nv">FM R</span><span class="p-Indicator">,</span> <span class="nv">FM L</span><span class="p-Indicator">]</span>
     <span class="nt">type</span><span class="p">:</span> <span class="l-Scalar-Plain">Outback Radio Module</span>
     <span class="nt">show_name</span><span class="p">:</span> <span class="l-Scalar-Plain">false</span>
+    <span class="nt">show_pincount</span><span class="p">:</span> <span class="l-Scalar-Plain">false</span>
     <span class="nt">hide_disconnected_pins</span><span class="p">:</span> <span class="l-Scalar-Plain">true</span>
   <span class="nt">MOTHERBOARD</span><span class="p">:</span>
     <span class="nt">&lt;&lt;</span><span class="p">:</span> <span class="nv">*radio</span>
@@ -162,10 +158,12 @@ motherboard and the Outback&#8217;s <span class="caps">FM</span> audio module (a
     <span class="nt">type</span><span class="p">:</span> <span class="l-Scalar-Plain">1/8&quot; Stereo Audio Jack</span>
     <span class="nt">subtype</span><span class="p">:</span> <span class="s">&quot;RadioShack</span><span class="nv"> </span><span class="s">#274-246&quot;</span>
     <span class="nt">show_name</span><span class="p">:</span> <span class="l-Scalar-Plain">false</span>
+    <span class="nt">show_pincount</span><span class="p">:</span> <span class="l-Scalar-Plain">false</span>
   <span class="nt">GROUND</span><span class="p">:</span>
     <span class="nt">pinout</span><span class="p">:</span> <span class="p-Indicator">[</span><span class="nv">GND</span><span class="p-Indicator">]</span>
     <span class="nt">type</span><span class="p">:</span> <span class="s">&quot;Ground&quot;</span>
     <span class="nt">show_name</span><span class="p">:</span> <span class="l-Scalar-Plain">false</span>
+    <span class="nt">show_pincount</span><span class="p">:</span> <span class="l-Scalar-Plain">false</span>
 
 <span class="nt">cables</span><span class="p">:</span>
   <span class="nt">W1</span><span class="p">:</span> <span class="nl">&amp;wire</span>
@@ -198,9 +196,8 @@ motherboard and the Outback&#8217;s <span class="caps">FM</span> audio module (a
     <span class="p-Indicator">-</span> <span class="nt">GND</span><span class="p">:</span> <span class="p-Indicator">[</span><span class="nv">1</span><span class="p-Indicator">]</span>
     <span class="p-Indicator">-</span> <span class="nt">AUDIO</span><span class="p">:</span> <span class="p-Indicator">[</span><span class="nv">1</span><span class="p-Indicator">]</span>
 </pre>
-<p>The only thing I couldn&#8217;t figure out was how to list two pins with the proper
-names and pins numbers, but ignore all the other ones. Note a huge deal for a
-36-pin&nbsp;connector.</p>
+<p><span class="strike">The only thing I couldn&#8217;t figure out was how to list two pins with the proper names and pins numbers, but ignore all the other ones. Note a huge deal for a 36-pin connector.</span>
+See the comments below, this is doable, although a little&nbsp;awkward!</p>
 <p>It did create a fairly pretty diagram after running <tt class="docutils literal">wireviz <span class="pre">subaru-wiring.yaml</span></tt>
 and is certainly easier than directly using <a class="reference external" href="https://graphviz.org/">graphviz</a>. It ouputs a <span class="caps">SVG</span>, <span class="caps">PNG</span>,
 bill of materials, <span class="caps">HTML</span> page (with the bill of materials and image on it).
