@@ -84,7 +84,7 @@ PLUGINS = [
     'assets',
     'extract_toc',
     'gravatar',
-    'pelican_youtube',
+    'pelican_youtube.youtube',
     'share_post',
     'thumbnailer',
 
