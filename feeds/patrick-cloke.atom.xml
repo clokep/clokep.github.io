@@ -1546,7 +1546,7 @@ stay within the &lt;span class="caps"&gt;ORM&lt;/span&gt; in order to leverage t
 &lt;p&gt;Our two models have overlapping fields, in this instance both had a &lt;code&gt;name&lt;/code&gt; field
 to search over and a &lt;code&gt;created&lt;/code&gt; field to order on. A naive implementation might
 serialize all the data to memory and come up with implementations&amp;nbsp;like:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="c1"&gt;# Consider ModelA and ModelB to exist somewhere, both have a name (CharField)&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="c1"&gt;# Consider ModelA and ModelB to exist somewhere, both have a name (CharField)&lt;/span&gt;
 &lt;span class="c1"&gt;# and created (DateTimeField).&lt;/span&gt;
 
 &lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;itertools&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;chain&lt;/span&gt;
@@ -1573,7 +1573,7 @@ serialize all the data to memory and come up with implementations&amp;nbsp;like:
 &lt;span class="c1"&gt;# Look at a subset.&lt;/span&gt;
 &lt;span class="n"&gt;subset_data&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nb"&gt;list&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;ModelA&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;objects&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;filter&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;name__contains&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;foo&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt; &lt;span class="o"&gt;+&lt;/span&gt;
                &lt;span class="nb"&gt;list&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;ModelB&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;objects&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;filter&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;name__contains&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;foo&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)))&lt;/span&gt;
-&lt;/pre&gt;&lt;/div&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;p&gt;This has two issues we had to&amp;nbsp;overcome:&lt;/p&gt;
@@ -1592,7 +1592,7 @@ provide the&amp;nbsp;following:&lt;/p&gt;
 &lt;li&gt;Guard against calling untested&amp;nbsp;methods.&lt;/li&gt;
 &lt;/ol&gt;
 &lt;p&gt;This allows much more Django-esque&amp;nbsp;code:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="c1"&gt;# Consider ModelA and ModelB to exist somewhere, both have a name (CharField)&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="c1"&gt;# Consider ModelA and ModelB to exist somewhere, both have a name (CharField)&lt;/span&gt;
 &lt;span class="c1"&gt;# and created (DateTimeField).&lt;/span&gt;
 &lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;django.core.exceptions&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;ObjectDoesNotExist&lt;/span&gt;
 
@@ -1611,7 +1611,7 @@ provide the&amp;nbsp;following:&lt;/p&gt;
 
 &lt;span class="c1"&gt;# Look at a subset.&lt;/span&gt;
 &lt;span class="n"&gt;subset_data&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;queryset&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;filter&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;name__contains&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;foo&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
-&lt;/pre&gt;&lt;/div&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;p&gt;Currently Django QuerySetSequence supports both Django 1.8 and Django 1.9 on
@@ -1619,8 +1619,8 @@ Python 2.7, 3.4 and 3.5. Check out the full set of features or contribute to the
 &lt;a href="https://github.com/percipient/django-querysetsequence"&gt;source repository&lt;/a&gt;. You
 can install &lt;code&gt;django-querysetsequence&lt;/code&gt; package from
 &lt;a href="https://pypi.python.org/pypi/django-querysetsequence"&gt;pypi&lt;/a&gt; using&amp;nbsp;pip:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="err"&gt;pip install django-querysetsequence&lt;/span&gt;
-&lt;/pre&gt;&lt;/div&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="err"&gt;pip install django-querysetsequence&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;p&gt;If you&amp;#8217;re using Django QuerySetSequence we&amp;#8217;d love to

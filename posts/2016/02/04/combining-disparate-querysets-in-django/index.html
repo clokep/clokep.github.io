@@ -105,10 +105,10 @@
       </h1>
 
       <div class="float-right">
-        <a href="https://twitter.com/intent/tweet?text=Combining%20Disparate%20QuerySets%20in%C2%A0Django&url=https%3A//patrick.cloke.us/posts/2016/02/04/combining-disparate-querysets-in-django/" target="_blank" class="ml-1 mr-1" title="Share on Twitter">
+        <a href="https://twitter.com/intent/tweet?text=Combining%20Disparate%20QuerySets%20in%C2%A0Django&url=https%3A//patrick.cloke.us/posts/2016/02/04/combining-disparate-querysets-in-django/&hashtags=django" target="_blank" class="ml-1 mr-1" title="Share on Twitter">
           <span class="fab fa-twitter"></span>
         </a>
-        <a href="http://www.facebook.com/sharer/sharer.php?u=https%3A//patrick.cloke.us/posts/2016/02/04/combining-disparate-querysets-in-django/" target="_blank" class="ml-1 mr-1" title="Share on Facebook">
+        <a href="https://www.facebook.com/sharer/sharer.php?u=https%3A//patrick.cloke.us/posts/2016/02/04/combining-disparate-querysets-in-django/" target="_blank" class="ml-1 mr-1" title="Share on Facebook">
           <span class="fab fa-facebook"></span>
         </a>
         <a href="mailto:?subject=Combining%20Disparate%20QuerySets%20in%C2%A0Django&amp;body=https%3A//patrick.cloke.us/posts/2016/02/04/combining-disparate-querysets-in-django/" target="_blank" class="ml-1 mr-1" title="Share via Email">
@@ -135,7 +135,7 @@ stay within the <span class="caps">ORM</span> in order to leverage third-party&n
 <p>Our two models have overlapping fields, in this instance both had a <code>name</code> field
 to search over and a <code>created</code> field to order on. A naive implementation might
 serialize all the data to memory and come up with implementations&nbsp;like:</p>
-<div class="highlight"><pre><span></span><span class="c1"># Consider ModelA and ModelB to exist somewhere, both have a name (CharField)</span>
+<div class="highlight"><pre><span></span><code><span class="c1"># Consider ModelA and ModelB to exist somewhere, both have a name (CharField)</span>
 <span class="c1"># and created (DateTimeField).</span>
 
 <span class="kn">from</span> <span class="nn">itertools</span> <span class="kn">import</span> <span class="n">chain</span>
@@ -162,7 +162,7 @@ serialize all the data to memory and come up with implementations&nbsp;like:</p>
 <span class="c1"># Look at a subset.</span>
 <span class="n">subset_data</span> <span class="o">=</span> <span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="n">ModelA</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">name__contains</span><span class="o">=</span><span class="s1">&#39;foo&#39;</span><span class="p">))</span> <span class="o">+</span>
                <span class="nb">list</span><span class="p">(</span><span class="n">ModelB</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">name__contains</span><span class="o">=</span><span class="s1">&#39;foo&#39;</span><span class="p">)))</span>
-</pre></div>
+</code></pre></div>
 
 
 <p>This has two issues we had to&nbsp;overcome:</p>
@@ -181,7 +181,7 @@ provide the&nbsp;following:</p>
 <li>Guard against calling untested&nbsp;methods.</li>
 </ol>
 <p>This allows much more Django-esque&nbsp;code:</p>
-<div class="highlight"><pre><span></span><span class="c1"># Consider ModelA and ModelB to exist somewhere, both have a name (CharField)</span>
+<div class="highlight"><pre><span></span><code><span class="c1"># Consider ModelA and ModelB to exist somewhere, both have a name (CharField)</span>
 <span class="c1"># and created (DateTimeField).</span>
 <span class="kn">from</span> <span class="nn">django.core.exceptions</span> <span class="kn">import</span> <span class="n">ObjectDoesNotExist</span>
 
@@ -200,7 +200,7 @@ provide the&nbsp;following:</p>
 
 <span class="c1"># Look at a subset.</span>
 <span class="n">subset_data</span> <span class="o">=</span> <span class="n">queryset</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">name__contains</span><span class="o">=</span><span class="s1">&#39;foo&#39;</span><span class="p">)</span>
-</pre></div>
+</code></pre></div>
 
 
 <p>Currently Django QuerySetSequence supports both Django 1.8 and Django 1.9 on
@@ -208,8 +208,8 @@ Python 2.7, 3.4 and 3.5. Check out the full set of features or contribute to the
 <a href="https://github.com/percipient/django-querysetsequence">source repository</a>. You
 can install <code>django-querysetsequence</code> package from
 <a href="https://pypi.python.org/pypi/django-querysetsequence">pypi</a> using&nbsp;pip:</p>
-<div class="highlight"><pre><span></span><span class="err">pip install django-querysetsequence</span>
-</pre></div>
+<div class="highlight"><pre><span></span><code><span class="err">pip install django-querysetsequence</span>
+</code></pre></div>
 
 
 <p>If you&#8217;re using Django QuerySetSequence we&#8217;d love to
