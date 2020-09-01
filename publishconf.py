@@ -22,3 +22,6 @@ DELETE_OUTPUT_DIRECTORY = True
 
 # Following items are only useful when publishing
 DISQUS_SITENAME = "clokep"
+
+# Enable analytics.
+ANALYTICS_ENABLED = True
