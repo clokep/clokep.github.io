@@ -1,0 +1,261 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Feed configuration. -->
+    <link href="https://patrick.cloke.us/feeds/atom.xml" type="application/atom+xml" rel="alternate" title="Like bricks in the sky Atom Feed" />
+    <link href="https://patrick.cloke.us/feeds/rss.xml" type="application/rss+xml" rel="alternate" title="Like bricks in the sky RSS Feed" />
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
+    <link rel="stylesheet" href="/theme/css/styles.css">
+    <link rel="stylesheet" href="/theme/css/borland.css">
+    <link rel="stylesheet" href="/theme/css/youtube.css">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
+
+    <title>Instantbird Blog: WordPress to Pelican</title>
+
+    <script>var clicky_site_ids = [101275378];</script>
+    <script async src="/theme/js/clicky.js"></script>
+  </head>
+
+  <body class="pb-5">
+    <nav class="navbar navbar-expand-lg sticky-top navbar-light bg-light border-bottom border-info">
+      <a class="navbar-brand" href="/">
+        Like bricks in the sky
+      </a>
+
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-items" aria-controls="navbar-items" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="navbar-items">
+        <ul class="navbar-nav ml-auto">
+
+          <li class="nav-item">
+            <a class="nav-link" href="/pages/about.html">About</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/pages/projects.html">Projects</a>
+          </li>
+
+          <li class="nav-item">
+            <a class="nav-link" href="/archives.html">Archives</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/tags.html">Tags</a>
+          </li>
+
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="social-dropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              Social
+            </a>
+
+            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="social-dropdown">
+              <a class="dropdown-item" href="https://www.twitter.com/clokep" target="_blank">
+                <span class="fab fa-twitter mr-1"></span> twitter
+              </a>
+              <a class="dropdown-item" href="https://mastodon.social/@clokep" target="_blank">
+                <span class="fab fa-mastodon mr-1"></span> mastodon
+              </a>
+              <a class="dropdown-item" href="https://www.github.com/clokep" target="_blank">
+                <span class="fab fa-github mr-1"></span> github
+              </a>
+              <a class="dropdown-item" href="https://gitlab.com/clokep" target="_blank">
+                <span class="fab fa-gitlab mr-1"></span> gitlab
+              </a>
+              <a class="dropdown-item" href="https://bitbucket.org/clokep" target="_blank">
+                <span class="fab fa-bitbucket mr-1"></span> bitbucket
+              </a>
+              <a class="dropdown-item" href="https://mozillians.org/u/clokep/" target="_blank">
+                <span class="fab fa-firefox mr-1"></span> mozillians
+              </a>
+            </div>
+          </li>
+
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="feeds-dropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              Feeds
+            </a>
+
+            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="feeds-dropdown">
+              <a class="dropdown-item" href="https://patrick.cloke.us/feeds/atom.xml" type="application/atom+xml" rel="alternate">atom feed</a>
+              <a class="dropdown-item" href="https://patrick.cloke.us/feeds/rss.xml" type="application/rss+xml" rel="alternate">rss feed</a>
+            </div>
+          </li>
+
+          <form class="form-inline" method="get" action="http://www.google.com/search">
+            <input class="form-control form-control-sm mr-sm-2" type="search" name="q" placeholder="Search" aria-label="Search" />
+            <input type="hidden"  name="sitesearch" value="patrick.cloke.us" />
+
+            <button class="btn btn-sm btn-outline-info d-none d-sm-inline" type="submit">Search</button>
+          </form>
+        </ul>
+      </div>
+    </nav>
+
+<div class="container">
+  <div class="row">
+    <div class="col-md-12 mt-2 mb-2">
+      <h1>
+        <a href="/posts/2020/09/09/instantbird-blog-wordpress-to-pelican/" rel="bookmark"
+           title="Permalink to Instantbird Blog: WordPress to Pelican">Instantbird Blog: WordPress to&nbsp;Pelican</a>
+      </h1>
+
+      <div class="float-right">
+        <a href="https://twitter.com/intent/tweet?text=Instantbird%20Blog%3A%20WordPress%20to%C2%A0Pelican&url=https%3A//patrick.cloke.us/posts/2020/09/09/instantbird-blog-wordpress-to-pelican/&hashtags=instantbird,pelican" target="_blank" class="ml-1 mr-1" title="Share on Twitter">
+          <span class="fab fa-twitter"></span>
+        </a>
+        <a href="https://www.facebook.com/sharer/sharer.php?u=https%3A//patrick.cloke.us/posts/2020/09/09/instantbird-blog-wordpress-to-pelican/" target="_blank" class="ml-1 mr-1" title="Share on Facebook">
+          <span class="fab fa-facebook"></span>
+        </a>
+        <a href="mailto:?subject=Instantbird%20Blog%3A%20WordPress%20to%C2%A0Pelican&amp;body=https%3A//patrick.cloke.us/posts/2020/09/09/instantbird-blog-wordpress-to-pelican/" target="_blank" class="ml-1 mr-1" title="Share via Email">
+          <span class="fas fa-envelope"></span>
+        </a>
+      </div>
+
+      <i>Wednesday, September 9, 2020</i>
+
+      <br>
+      <i>
+        Tags:           <a href="/tag/instantbird.html">Instantbird</a>,          <a href="/tag/pelican.html">pelican</a>      </i>
+
+      <div class="mt-3">
+
+        <p>The <a class="reference external" href="https://blog.instantbird.com">Instantbird blog</a> is now (as of mid-April 2020) hosted on GitHub Pages
+(instead of self-hosted <a class="reference external" href="https://wordpress.com/">WordPress</a>) <a class="footnote-reference" href="#id5" id="id1">[1]</a>. Hopefully it was converted faithfully,
+but feel free to let us know if you see something broken! You can file an issue
+at <a class="reference external" href="https://github.com/instantbird/blog.instantbird.org/">the repo for the blog</a> or just comment&nbsp;below.</p>
+<p>Note that there are some changes due to being a static site instead of being
+backed by a dynamic language. Most of these would be around editing the blog,
+which we don&#8217;t do anymore. The biggest user-facing change was that
+<a class="reference external" href="https://github.com/instantbird/blog.instantbird.org/blob/source/theme/templates/searchform.html">search is now via DuckDuckGo</a> instead of being built into the&nbsp;site.</p>
+<p>This was a bit of an arduous process with some trial and error. See below for
+some of the details. Overall I did this work over 3 years (!!!), starting in
+April of 2017 and getting the site live in April of 2020. It was mostly done in
+5 sprints with some long gaps&nbsp;between.</p>
+<p>As some background, the Instantbird blog was originally (in 2007) served via
+Florian&#8217;s custom blog engine <a class="footnote-reference" href="#id6" id="id2">[2]</a>. In 2011 it was
+<a class="reference external" href="https://blog.instantbird.org/2011/10/weekly-meeting-october-10-2011/">converted to WordPress by an Instantbird contributor</a>. This initial conversion
+was not done perfectly and I attempted to fix some of these issues when
+converting from WordPress to Pelican <a class="footnote-reference" href="#id7" id="id3">[3]</a>. The general steps I was hoping to&nbsp;follow:</p>
+<ol class="arabic simple">
+<li>Setup the project using the <tt class="docutils literal"><span class="pre">pelican-quickstart</span></tt> comment.</li>
+<li>Export the content via WordPress to <span class="caps">XML</span>.</li>
+<li>Use the Pelican <a class="reference external" href="https://docs.getpelican.com/en/3.7.1/importer.html">WordPress importer</a> to convert the content to reStructuredText. <a class="footnote-reference" href="#id8" id="id4">[4]</a></li>
+<li>Go through the conversion by hand and fix any&nbsp;oddities.</li>
+<li>Convert the <span class="caps">PHP</span> theme to <a class="reference external" href="https://jinja.palletsprojects.com/">Jinja2</a>.</li>
+</ol>
+<p>This plan mostly held together through the process, but I ran into some
+roadblocks, most of which were easily&nbsp;overcome:</p>
+<ol class="arabic simple">
+<li>For some reason the WordPress import failed halfway through and didn&#8217;t convert
+every article. I didn&#8217;t investigate why and <a class="reference external" href="https://github.com/instantbird/blog.instantbird.org/commit/d94b2fc4bd8d45d993c080daf215dbdd91298ae3">added the missing files manually</a>.</li>
+<li>A variety of hard-coded <span class="caps">HTML</span> made it through the conversion. This was manually
+converted to&nbsp;reStructuredText.</li>
+<li>Converting the theme was much harder than expected and involved reading
+WordPress documentation to understand various functions the <span class="caps">PHP</span> templates&nbsp;called.</li>
+<li>Wrote a <a class="reference external" href="https://github.com/instantbird/blog.instantbird.org/blob/source/plugins/archives.py">custom archive plugin</a> to be able to articles by year / month /&nbsp;day.</li>
+<li>The alignment of images needed to be fixed (and lots of WordPress styles&nbsp;removed).</li>
+<li>Some of our posts had multiple categories on them, which is not allowed in
+Pelican. Generally these overlapped with tags and I decided the easiest path
+here was to modify the content to have a single category per&nbsp;article.</li>
+</ol>
+<p>A huge piece of work was that comments were not imported. I did not care about
+people being able to write <em>new</em> comments, but I wanted the old content there.
+For this I planned to use the <a class="reference external" href="https://github.com/getpelican/pelican-plugins/tree/master/pelican_comment_system">pelican_comment_system plugin</a>, but I needed to
+get the comments into a format that it understood (from the WordPress <span class="caps">XML</span> export
+discussed&nbsp;above).</p>
+<p>I ended up <a class="reference external" href="https://github.com/instantbird/blog.instantbird.org/blob/source/wp2comments.py">writing a custom script</a> based on the <a class="reference external" href="https://github.com/getpelican/pelican/blob/4.2.0/pelican/tools/pelican_import.py">pelican_import</a> code to
+iterate the comments in the <span class="caps">XML</span> file and write a reStructuredText file for each
+comment. There was quite a bit of trial and error here, but I think the result
+was reasonable. This also needed to handle comment threads and pingbacks, which
+added some&nbsp;wrinkles.</p>
+<p>The final step here was to get gravatars for comments working. The
+pelican_comment_system supports identicons only, but I was able to
+<a class="reference external" href="https://github.com/instantbird/blog.instantbird.org/blob/source/plugins/comments.py">combine it and the gravatar plugin</a>.</p>
+<p>One final piece was generating a reasonable 404 page. The WordPress one some
+features that required two more custom plugins: a <a class="reference external" href="https://github.com/instantbird/blog.instantbird.org/blob/source/plugins/tag_cloud.py">tag cloud</a> and a list of the
+<a class="reference external" href="https://github.com/instantbird/blog.instantbird.org/blob/source/plugins/most_used_categories.py">most used categories</a>.</p>
+<p>There was a few other odds-and-ends that aren&#8217;t really worth mentioning, but
+overall I&#8217;m quite happy with the result! Just to be clear, there&#8217;s no plans to
+restart development of Instantbird, but I wanted the blog content to archived
+and searchable. There&#8217;s some <a class="reference external" href="https://blog.instantbird.org/2011/06/introducing-time-bubbles/">interesting</a> <a class="reference external" href="https://blog.instantbird.org/2013/07/first-milestone-of-the-awesometab-has-landed/">articles</a> on there about <a class="reference external" href="https://blog.instantbird.org/2012/08/tab-completion-in-instantbird-1-2/">design</a>
+<a class="reference external" href="https://blog.instantbird.org/2011/06/introducing-magic-copy/">decisions</a>. Many of which are features I miss&nbsp;today!</p>
+<table class="docutils footnote" frame="void" id="id5" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label"><a class="fn-backref" href="#id1">[1]</a></td><td>Reasons for wanting to do this included reducing the infrastructure we
+were maintaining and that the WordPress version was vulnerable. An
+additional benefit is that it let us easily add <span class="caps">TLS</span>.<!-- See https://bugzilla.mozilla.org/show_bug.cgi?id=1346658 -->
+</td></tr>
+</tbody>
+</table>
+<table class="docutils footnote" frame="void" id="id6" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label"><a class="fn-backref" href="#id2">[2]</a></td><td>I don&#8217;t think there&#8217;s any information about this engine anywhere, nor do
+I think the source was released.</td></tr>
+</tbody>
+</table>
+<table class="docutils footnote" frame="void" id="id7" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label"><a class="fn-backref" href="#id3">[3]</a></td><td>The main issues were images / resources that were not properly moved.
+Luckily I was able to recover them using the <a class="reference external" href="https://archive.org/">Internet Archive</a>.</td></tr>
+</tbody>
+</table>
+<table class="docutils footnote" frame="void" id="id8" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label"><a class="fn-backref" href="#id4">[4]</a></td><td>I started doing this work on Pelican 3.7.1 and switched to 4.2.0, in
+general everything in this article should be valid up through Pelican
+4.2.0, however.</td></tr>
+</tbody>
+</table>
+
+      </div>
+
+<div id="disqus_thread"></div>
+<script>
+/**
+*  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+*  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/
+/*
+var disqus_config = function () {
+this.page.url = '/posts/2020/09/09/instantbird-blog-wordpress-to-pelican/';
+this.page.identifier = 'instantbird-blog-wordpress-to-pelican';
+};
+*/
+(function() { // DON'T EDIT BELOW THIS LINE
+var d = document, s = d.createElement('script');
+s.src = 'https://clokep.disqus.com/embed.js';
+s.setAttribute('data-timestamp', +new Date());
+(d.head || d.body).appendChild(s);
+})();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    </div>
+  </div>
+</div>
+
+    <nav class="navbar fixed-bottom navbar-light bg-light border-top border-info">
+      <a href="https://getpelican.com/" class="nav-item" target="_blank">Powered by Pelican</a>
+      <a href="https://github.com/clokep/clokep.github.io" class="nav-item" target="_blank">
+        Source available on GitHub <span class="fab fa-github"></span>
+      </a>
+    </nav>
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T" crossorigin="anonymous"></script>
+
+  </body>
+</html>

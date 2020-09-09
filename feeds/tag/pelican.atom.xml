@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Like bricks in the sky - pelican</title><link href="https://patrick.cloke.us/" rel="alternate"></link><link href="https://patrick.cloke.us/feeds/tag/pelican.atom.xml" rel="self"></link><id>https://patrick.cloke.us/</id><updated>2020-09-09T17:10:00-04:00</updated><entry><title>Instantbird Blog: WordPress to Pelican</title><link href="https://patrick.cloke.us/posts/2020/09/09/instantbird-blog-wordpress-to-pelican/" rel="alternate"></link><published>2020-09-09T17:10:00-04:00</published><updated>2020-09-09T17:10:00-04:00</updated><author><name>Patrick Cloke</name></author><id>tag:patrick.cloke.us,2020-09-09:/posts/2020/09/09/instantbird-blog-wordpress-to-pelican/</id><summary type="html">&lt;p&gt;The &lt;a class="reference external" href="https://blog.instantbird.com"&gt;Instantbird blog&lt;/a&gt; is now (as of mid-April 2020) hosted on GitHub Pages
+(instead of self-hosted &lt;a class="reference external" href="https://wordpress.com/"&gt;WordPress&lt;/a&gt;) &lt;a class="footnote-reference" href="#id5" id="id1"&gt;[1]&lt;/a&gt;. Hopefully it was converted faithfully,
+but feel free to let us know if you see something broken! You can file an issue
+at &lt;a class="reference external" href="https://github.com/instantbird/blog.instantbird.org/"&gt;the repo for the blog&lt;/a&gt; or just comment&amp;nbsp;below …&lt;/p&gt;</summary><content type="html">&lt;p&gt;The &lt;a class="reference external" href="https://blog.instantbird.com"&gt;Instantbird blog&lt;/a&gt; is now (as of mid-April 2020) hosted on GitHub Pages
+(instead of self-hosted &lt;a class="reference external" href="https://wordpress.com/"&gt;WordPress&lt;/a&gt;) &lt;a class="footnote-reference" href="#id5" id="id1"&gt;[1]&lt;/a&gt;. Hopefully it was converted faithfully,
+but feel free to let us know if you see something broken! You can file an issue
+at &lt;a class="reference external" href="https://github.com/instantbird/blog.instantbird.org/"&gt;the repo for the blog&lt;/a&gt; or just comment&amp;nbsp;below.&lt;/p&gt;
+&lt;p&gt;Note that there are some changes due to being a static site instead of being
+backed by a dynamic language. Most of these would be around editing the blog,
+which we don&amp;#8217;t do anymore. The biggest user-facing change was that
+&lt;a class="reference external" href="https://github.com/instantbird/blog.instantbird.org/blob/source/theme/templates/searchform.html"&gt;search is now via DuckDuckGo&lt;/a&gt; instead of being built into the&amp;nbsp;site.&lt;/p&gt;
+&lt;p&gt;This was a bit of an arduous process with some trial and error. See below for
+some of the details. Overall I did this work over 3 years (!!!), starting in
+April of 2017 and getting the site live in April of 2020. It was mostly done in
+5 sprints with some long gaps&amp;nbsp;between.&lt;/p&gt;
+&lt;p&gt;As some background, the Instantbird blog was originally (in 2007) served via
+Florian&amp;#8217;s custom blog engine &lt;a class="footnote-reference" href="#id6" id="id2"&gt;[2]&lt;/a&gt;. In 2011 it was
+&lt;a class="reference external" href="https://blog.instantbird.org/2011/10/weekly-meeting-october-10-2011/"&gt;converted to WordPress by an Instantbird contributor&lt;/a&gt;. This initial conversion
+was not done perfectly and I attempted to fix some of these issues when
+converting from WordPress to Pelican &lt;a class="footnote-reference" href="#id7" id="id3"&gt;[3]&lt;/a&gt;. The general steps I was hoping to&amp;nbsp;follow:&lt;/p&gt;
+&lt;ol class="arabic simple"&gt;
+&lt;li&gt;Setup the project using the &lt;tt class="docutils literal"&gt;&lt;span class="pre"&gt;pelican-quickstart&lt;/span&gt;&lt;/tt&gt; comment.&lt;/li&gt;
+&lt;li&gt;Export the content via WordPress to &lt;span class="caps"&gt;XML&lt;/span&gt;.&lt;/li&gt;
+&lt;li&gt;Use the Pelican &lt;a class="reference external" href="https://docs.getpelican.com/en/3.7.1/importer.html"&gt;WordPress importer&lt;/a&gt; to convert the content to reStructuredText. &lt;a class="footnote-reference" href="#id8" id="id4"&gt;[4]&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Go through the conversion by hand and fix any&amp;nbsp;oddities.&lt;/li&gt;
+&lt;li&gt;Convert the &lt;span class="caps"&gt;PHP&lt;/span&gt; theme to &lt;a class="reference external" href="https://jinja.palletsprojects.com/"&gt;Jinja2&lt;/a&gt;.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;This plan mostly held together through the process, but I ran into some
+roadblocks, most of which were easily&amp;nbsp;overcome:&lt;/p&gt;
+&lt;ol class="arabic simple"&gt;
+&lt;li&gt;For some reason the WordPress import failed halfway through and didn&amp;#8217;t convert
+every article. I didn&amp;#8217;t investigate why and &lt;a class="reference external" href="https://github.com/instantbird/blog.instantbird.org/commit/d94b2fc4bd8d45d993c080daf215dbdd91298ae3"&gt;added the missing files manually&lt;/a&gt;.&lt;/li&gt;
+&lt;li&gt;A variety of hard-coded &lt;span class="caps"&gt;HTML&lt;/span&gt; made it through the conversion. This was manually
+converted to&amp;nbsp;reStructuredText.&lt;/li&gt;
+&lt;li&gt;Converting the theme was much harder than expected and involved reading
+WordPress documentation to understand various functions the &lt;span class="caps"&gt;PHP&lt;/span&gt; templates&amp;nbsp;called.&lt;/li&gt;
+&lt;li&gt;Wrote a &lt;a class="reference external" href="https://github.com/instantbird/blog.instantbird.org/blob/source/plugins/archives.py"&gt;custom archive plugin&lt;/a&gt; to be able to articles by year / month /&amp;nbsp;day.&lt;/li&gt;
+&lt;li&gt;The alignment of images needed to be fixed (and lots of WordPress styles&amp;nbsp;removed).&lt;/li&gt;
+&lt;li&gt;Some of our posts had multiple categories on them, which is not allowed in
+Pelican. Generally these overlapped with tags and I decided the easiest path
+here was to modify the content to have a single category per&amp;nbsp;article.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;A huge piece of work was that comments were not imported. I did not care about
+people being able to write &lt;em&gt;new&lt;/em&gt; comments, but I wanted the old content there.
+For this I planned to use the &lt;a class="reference external" href="https://github.com/getpelican/pelican-plugins/tree/master/pelican_comment_system"&gt;pelican_comment_system plugin&lt;/a&gt;, but I needed to
+get the comments into a format that it understood (from the WordPress &lt;span class="caps"&gt;XML&lt;/span&gt; export
+discussed&amp;nbsp;above).&lt;/p&gt;
+&lt;p&gt;I ended up &lt;a class="reference external" href="https://github.com/instantbird/blog.instantbird.org/blob/source/wp2comments.py"&gt;writing a custom script&lt;/a&gt; based on the &lt;a class="reference external" href="https://github.com/getpelican/pelican/blob/4.2.0/pelican/tools/pelican_import.py"&gt;pelican_import&lt;/a&gt; code to
+iterate the comments in the &lt;span class="caps"&gt;XML&lt;/span&gt; file and write a reStructuredText file for each
+comment. There was quite a bit of trial and error here, but I think the result
+was reasonable. This also needed to handle comment threads and pingbacks, which
+added some&amp;nbsp;wrinkles.&lt;/p&gt;
+&lt;p&gt;The final step here was to get gravatars for comments working. The
+pelican_comment_system supports identicons only, but I was able to
+&lt;a class="reference external" href="https://github.com/instantbird/blog.instantbird.org/blob/source/plugins/comments.py"&gt;combine it and the gravatar plugin&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;One final piece was generating a reasonable 404 page. The WordPress one some
+features that required two more custom plugins: a &lt;a class="reference external" href="https://github.com/instantbird/blog.instantbird.org/blob/source/plugins/tag_cloud.py"&gt;tag cloud&lt;/a&gt; and a list of the
+&lt;a class="reference external" href="https://github.com/instantbird/blog.instantbird.org/blob/source/plugins/most_used_categories.py"&gt;most used categories&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;There was a few other odds-and-ends that aren&amp;#8217;t really worth mentioning, but
+overall I&amp;#8217;m quite happy with the result! Just to be clear, there&amp;#8217;s no plans to
+restart development of Instantbird, but I wanted the blog content to archived
+and searchable. There&amp;#8217;s some &lt;a class="reference external" href="https://blog.instantbird.org/2011/06/introducing-time-bubbles/"&gt;interesting&lt;/a&gt; &lt;a class="reference external" href="https://blog.instantbird.org/2013/07/first-milestone-of-the-awesometab-has-landed/"&gt;articles&lt;/a&gt; on there about &lt;a class="reference external" href="https://blog.instantbird.org/2012/08/tab-completion-in-instantbird-1-2/"&gt;design&lt;/a&gt;
+&lt;a class="reference external" href="https://blog.instantbird.org/2011/06/introducing-magic-copy/"&gt;decisions&lt;/a&gt;. Many of which are features I miss&amp;nbsp;today!&lt;/p&gt;
+&lt;table class="docutils footnote" frame="void" id="id5" rules="none"&gt;
+&lt;colgroup&gt;&lt;col class="label" /&gt;&lt;col /&gt;&lt;/colgroup&gt;
+&lt;tbody valign="top"&gt;
+&lt;tr&gt;&lt;td class="label"&gt;&lt;a class="fn-backref" href="#id1"&gt;[1]&lt;/a&gt;&lt;/td&gt;&lt;td&gt;Reasons for wanting to do this included reducing the infrastructure we
+were maintaining and that the WordPress version was vulnerable. An
+additional benefit is that it let us easily add &lt;span class="caps"&gt;TLS&lt;/span&gt;.&lt;!-- See https://bugzilla.mozilla.org/show_bug.cgi?id=1346658 --&gt;
+&lt;/td&gt;&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;table class="docutils footnote" frame="void" id="id6" rules="none"&gt;
+&lt;colgroup&gt;&lt;col class="label" /&gt;&lt;col /&gt;&lt;/colgroup&gt;
+&lt;tbody valign="top"&gt;
+&lt;tr&gt;&lt;td class="label"&gt;&lt;a class="fn-backref" href="#id2"&gt;[2]&lt;/a&gt;&lt;/td&gt;&lt;td&gt;I don&amp;#8217;t think there&amp;#8217;s any information about this engine anywhere, nor do
+I think the source was released.&lt;/td&gt;&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;table class="docutils footnote" frame="void" id="id7" rules="none"&gt;
+&lt;colgroup&gt;&lt;col class="label" /&gt;&lt;col /&gt;&lt;/colgroup&gt;
+&lt;tbody valign="top"&gt;
+&lt;tr&gt;&lt;td class="label"&gt;&lt;a class="fn-backref" href="#id3"&gt;[3]&lt;/a&gt;&lt;/td&gt;&lt;td&gt;The main issues were images / resources that were not properly moved.
+Luckily I was able to recover them using the &lt;a class="reference external" href="https://archive.org/"&gt;Internet Archive&lt;/a&gt;.&lt;/td&gt;&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;table class="docutils footnote" frame="void" id="id8" rules="none"&gt;
+&lt;colgroup&gt;&lt;col class="label" /&gt;&lt;col /&gt;&lt;/colgroup&gt;
+&lt;tbody valign="top"&gt;
+&lt;tr&gt;&lt;td class="label"&gt;&lt;a class="fn-backref" href="#id4"&gt;[4]&lt;/a&gt;&lt;/td&gt;&lt;td&gt;I started doing this work on Pelican 3.7.1 and switched to 4.2.0, in
+general everything in this article should be valid up through Pelican
+4.2.0, however.&lt;/td&gt;&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+</content><category term="articles"></category><category term="Instantbird"></category><category term="pelican"></category></entry></feed>
