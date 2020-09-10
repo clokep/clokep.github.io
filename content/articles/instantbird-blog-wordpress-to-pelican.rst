@@ -90,7 +90,7 @@ and searchable. There's some `interesting`_ `articles`_ on there about `design`_
        general everything in this article should be valid up through Pelican
        4.2.0, however.
 
-.. _Instantbird blog: https://blog.instantbird.com
+.. _Instantbird blog: https://blog.instantbird.org
 .. _WordPress: https://wordpress.com/
 .. _the repo for the blog: https://github.com/instantbird/blog.instantbird.org/
 .. _search is now via DuckDuckGo: https://github.com/instantbird/blog.instantbird.org/blob/source/theme/templates/searchform.html
