@@ -62,4 +62,4 @@ def preview(ctx):
 def publish(ctx):
     """Build with the publish config and push to the remote server."""
     preview(ctx)
-    run('ghp-import -p -b master {deploy_path}'.format(**env))
+    run('ghp-import -p -b rendered {deploy_path}'.format(**env))
