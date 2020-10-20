@@ -10,7 +10,7 @@ from filters import chunk, paginate
 
 AUTHOR = 'Patrick Cloke'
 AUTHOR_EMAIL = 'patrick@cloke.us'
-SITENAME = 'Like bricks in the sky'
+SITENAME = 'Patrick Cloke'
 GITHUB_URL = 'https://github.com/clokep/clokep.github.io'
 
 TIMEZONE = 'America/New_York'
