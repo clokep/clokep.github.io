@@ -2,7 +2,7 @@ Mentoring Google Summer of Code 2013
 ####################################
 :date: 2013-06-28 18:05
 :author: Patrick Cloke
-:tags: chat, GSoC, instant messaging, Instantbird, Yahoo
+:tags: chat, GSoC, Instantbird, Yahoo
 :slug: mentoring-google-summer-of-code-2013
 
 I'm officially a mentor this year for `2013's Google Summer of Code`_.

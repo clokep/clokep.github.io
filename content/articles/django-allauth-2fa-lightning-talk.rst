@@ -2,7 +2,7 @@
 #####################################################################################
 :date: 2017-04-06 21:14
 :author: Patrick Cloke
-:tags: django, talks
+:tags: django, django-allauth-2fa, talks
 
 A bit late on this article, but better late than never! Back on October 27th,
 2016 I gave a talk at `Django Boston`_ entitled "Adding Two-Factor

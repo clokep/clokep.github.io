@@ -3,7 +3,7 @@ RSS Feeds for Wikipedia Current Events and NHL News
 :date: 2017-05-26 08:13
 :modified: 2017-09-13 17:15
 :author: Patrick Cloke
-:tags: programming, python, RSS, Atom
+:tags: programming, python, RSS
 
 I subscribe to a fair amount of feeds for news, blogs, articles, etc. I'm
 currently subscribed to 122 feeds, some of which have tens of articles a day

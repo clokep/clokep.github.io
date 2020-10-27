@@ -2,7 +2,7 @@ On Status
 #########
 :date: 2012-10-16 21:33
 :author: Patrick Cloke
-:tags: chat, instant messaging, Instantbird, messaging, status, Thunderbird
+:tags: chat, Instantbird, Thunderbird
 :slug: on-status
 
 Something that comes up often about Instantbird is why we only support

@@ -2,7 +2,7 @@ New Blog
 ########
 :date: 2014-07-03 23:04
 :modified: 2014-07-06 18:24
-:tags: blog
+:tags: blog, pelican
 
 .. contents::
 

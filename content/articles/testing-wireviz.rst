@@ -3,7 +3,7 @@ Testing WireViz
 :date: 2020-07-14 17:07
 :modified: 2020-07-16 16:03
 :author: Patrick Cloke
-:tags: software, hardware, wiring
+:tags: software, hardware
 :slug: testing-wireviz
 
 I wanted to play with the `WireViz`_ Python package, which makes pretty wire

@@ -2,7 +2,7 @@ Google Summer of Code 2017: Matrix protocol for Instantbird and Thunderbird
 ###########################################################################
 :date: 2017-05-05 11:20
 :author: Patrick Cloke
-:tags: chat, GSoC, instant messaging, Instantbird, Matrix
+:tags: chat, GSoC, Instantbird, Matrix
 :slug: google-summer-of-code-2017-matrix-protocol
 
 I'll be mentoring Pavan Karthik on his `project for Google Summer of Code 2017`_

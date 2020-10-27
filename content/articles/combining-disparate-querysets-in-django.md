@@ -1,7 +1,7 @@
 Title: Combining Disparate QuerySets in Django
 Slug: combining-disparate-querysets-in-django
 Date: 2016-2-4 16:00
-Tags: django
+Tags: django, django-querysetsequence, crosspost
 Author: Patrick Cloke
 
 > Note: This was originally posted on the [Strongarm Blog](https://strongarm.io/blog/combining-disparate-querysets-in-django/).
