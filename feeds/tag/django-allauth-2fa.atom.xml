@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Patrick Cloke - django-allauth-2fa</title><link href="https://patrick.cloke.us/" rel="alternate"></link><link href="https://patrick.cloke.us/feeds/tag/django-allauth-2fa.atom.xml" rel="self"></link><id>https://patrick.cloke.us/</id><updated>2017-04-06T21:14:00-04:00</updated><entry><title>“Adding Two-Factor Authentication to Django (with django-allauth)” Lightning Talk</title><link href="https://patrick.cloke.us/posts/2017/04/06/adding-two-factor-authentication-to-django-with-django-allauth-lightning-talk/" rel="alternate"></link><published>2017-04-06T21:14:00-04:00</published><updated>2017-04-06T21:14:00-04:00</updated><author><name>Patrick Cloke</name></author><id>tag:patrick.cloke.us,2017-04-06:/posts/2017/04/06/adding-two-factor-authentication-to-django-with-django-allauth-lightning-talk/</id><summary type="html">&lt;p&gt;A bit late on this article, but better late than never! Back on October 27th,
+2016 I gave a talk at &lt;a class="reference external" href="http://www.meetup.com/djangoboston/"&gt;Django Boston&lt;/a&gt; entitled &amp;#8220;Adding Two-Factor
+Authentication to Django (with &lt;tt class="docutils literal"&gt;&lt;span class="pre"&gt;django-allauth&lt;/span&gt;&lt;/tt&gt;)&amp;#8221;. It was a ~20 minute talk on
+integrating the &lt;a class="reference external" href="https://github.com/percipient/django-allauth-2fa/"&gt;django-allauth-2fa&lt;/a&gt; package into a &lt;a class="reference external" href="https://www.djangoproject.com/"&gt;Django&lt;/a&gt; project. The
+package (which I …&lt;/p&gt;</summary><content type="html">&lt;p&gt;A bit late on this article, but better late than never! Back on October 27th,
+2016 I gave a talk at &lt;a class="reference external" href="http://www.meetup.com/djangoboston/"&gt;Django Boston&lt;/a&gt; entitled &amp;#8220;Adding Two-Factor
+Authentication to Django (with &lt;tt class="docutils literal"&gt;&lt;span class="pre"&gt;django-allauth&lt;/span&gt;&lt;/tt&gt;)&amp;#8221;. It was a ~20 minute talk on
+integrating the &lt;a class="reference external" href="https://github.com/percipient/django-allauth-2fa/"&gt;django-allauth-2fa&lt;/a&gt; package into a &lt;a class="reference external" href="https://www.djangoproject.com/"&gt;Django&lt;/a&gt; project. The
+package (which I should note is maintained by my employer and used in production
+on &lt;a class="reference external" href="https://strongarm.io"&gt;Strongarm&lt;/a&gt;) expands the excellent &lt;a class="reference external" href="http://www.intenct.nl/projects/django-allauth/"&gt;django-allauth&lt;/a&gt; package by adding
+&lt;a class="reference external" href="https://en.wikipedia.org/wiki/Multi-factor_authentication"&gt;two-factor authentication&lt;/a&gt; using &lt;a class="reference external" href="https://en.wikipedia.org/wiki/Time-based_One-time_Password_Algorithm"&gt;&lt;span class="caps"&gt;TOTP&lt;/span&gt;&lt;/a&gt; (and backup&amp;nbsp;codes).&lt;/p&gt;
+&lt;p&gt;Integrating this into your project is (mostly) just some configuration changes
+to your &lt;tt class="docutils literal"&gt;settings.py&lt;/tt&gt;, and &lt;span class="caps"&gt;URL&lt;/span&gt; configuration! It takes advantage of the awesome
+&lt;a class="reference external" href="http://django-allauth.readthedocs.io/en/latest/advanced.html"&gt;adapter&lt;/a&gt; methodology, the &lt;a class="reference external" href="https://bitbucket.org/psagers/django-otp/"&gt;django-otp&lt;/a&gt; package to do all the &lt;span class="caps"&gt;2FA&lt;/span&gt; bits, and
+some custom middleware to enforce &lt;span class="caps"&gt;2FA&lt;/span&gt; during&amp;nbsp;login.&lt;/p&gt;
+&lt;p&gt;You can view a &lt;a class="reference external" href="http://files.patrick.cloke.us/boston-django-20161027/"&gt;rendered version&lt;/a&gt; of the slides online (use the arrow keys to
+navigate) or check out the &lt;a class="reference external" href="https://github.com/percipient/talks/tree/master/boston_django_10_27_2016/adding-two-factor-authentication-to-django"&gt;source&lt;/a&gt;. We&amp;#8217;re always look for more contributors to
+&lt;a class="reference external" href="https://github.com/percipient/django-allauth-2fa/"&gt;django-allauth-2fa&lt;/a&gt;, there&amp;#8217;s plenty to do,&amp;nbsp;including:&lt;/p&gt;
+&lt;ul class="simple"&gt;
+&lt;li&gt;More testing needed (different configurations, interaction with social&amp;nbsp;accounts).&lt;/li&gt;
+&lt;li&gt;Support for more device types (e.g. &lt;span class="caps"&gt;HOTP&lt;/span&gt;, YubiKey, Twilio). (&lt;a class="reference external" href="https://github.com/percipient/django-allauth-2fa/issues/23"&gt;#23&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;Support for multiple devices per user. (&lt;a class="reference external" href="https://github.com/percipient/django-allauth-2fa/issues/36"&gt;#36&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;Improving the documentation (e.g. add a quickstart&amp;nbsp;document).&lt;/li&gt;
+&lt;li&gt;Setting up and adding&amp;nbsp;translations.&lt;/li&gt;
+&lt;li&gt;Any other feedback you might&amp;nbsp;have!&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;You can also check out the open &lt;a class="reference external" href="https://github.com/percipient/django-allauth-2fa/issues"&gt;issues on GitHub&lt;/a&gt; or &lt;a class="reference external" href="https://patrick.cloke.us/pages/about.html"&gt;reach out&lt;/a&gt; directly if
+you&amp;#8217;re&amp;nbsp;interested!&lt;/p&gt;
+</content><category term="articles"></category><category term="django"></category><category term="django-allauth-2fa"></category><category term="talks"></category></entry></feed>

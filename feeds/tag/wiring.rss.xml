@@ -1,8 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<rss version="2.0"><channel><title>Like bricks in the sky - wiring</title><link>https://patrick.cloke.us/</link><description></description><lastBuildDate>Thu, 16 Jul 2020 16:03:00 -0400</lastBuildDate><item><title>Testing WireViz</title><link>https://patrick.cloke.us/posts/2020/07/14/testing-wireviz/</link><description>&lt;p&gt;I wanted to play with the &lt;a class="reference external" href="https://github.com/formatc1702/WireViz"&gt;WireViz&lt;/a&gt; Python package, which makes pretty wire
-diagrams. Installation was pretty easy, just created a virtualenv and installed
-with&amp;nbsp;pip:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;pip install wireviz
-&lt;/pre&gt;&lt;/div&gt;
-&lt;p&gt;Documentation is pretty limited, but looking through the &lt;a class="reference external" href="https://github.com/formatc1702/WireViz/tree/fffb354d7c86cc4f85d1e7e0753a07f7b6a65fa7/tutorial"&gt;tutorials&lt;/a&gt; and the
-&lt;a class="reference external" href="https://github.com/formatc1702/WireViz/blob/fffb354d7c86cc4f85d1e7e0753a07f7b6a65fa7/src/wireviz/DataClasses.py"&gt;data models&lt;/a&gt; you get a pretty good idea of what …&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Patrick Cloke</dc:creator><pubDate>Tue, 14 Jul 2020 17:07:00 -0400</pubDate><guid isPermaLink="false">tag:patrick.cloke.us,2020-07-14:/posts/2020/07/14/testing-wireviz/</guid><category>articles</category><category>software</category><category>hardware</category><category>wiring</category></item></channel></rss>

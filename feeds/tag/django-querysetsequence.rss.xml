@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rss version="2.0"><channel><title>Patrick Cloke - django-querysetsequence</title><link>https://patrick.cloke.us/</link><description></description><lastBuildDate>Thu, 04 Feb 2016 16:00:00 -0500</lastBuildDate><item><title>Combining Disparate QuerySets in Django</title><link>https://patrick.cloke.us/posts/2016/02/04/combining-disparate-querysets-in-django/</link><description>&lt;blockquote&gt;
+&lt;p&gt;Note: This was originally posted on the &lt;a href="https://strongarm.io/blog/combining-disparate-querysets-in-django/"&gt;Strongarm Blog&lt;/a&gt;.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;While refactoring &lt;a href="https://strongarm.io"&gt;strongarm.io&lt;/a&gt; we ran into a problem: we
+had different database tables that we needed to query over as if they were a
+single database table. We use &lt;a href="https://www.djangoproject.com/"&gt;Django&lt;/a&gt; as an
+&lt;a href="https://en.wikipedia.org/wiki/Object-relational_mapping"&gt;&lt;span class="caps"&gt;ORM&lt;/span&gt;&lt;/a&gt; and needed to
+stay within the &lt;span class="caps"&gt;ORM …&lt;/span&gt;&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Patrick Cloke</dc:creator><pubDate>Thu, 04 Feb 2016 16:00:00 -0500</pubDate><guid isPermaLink="false">tag:patrick.cloke.us,2016-02-04:/posts/2016/02/04/combining-disparate-querysets-in-django/</guid><category>articles</category><category>django</category><category>django-querysetsequence</category><category>crosspost</category></item></channel></rss>

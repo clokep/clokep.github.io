@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>Like bricks in the sky - Google</title><link href="https://patrick.cloke.us/" rel="alternate"></link><link href="https://patrick.cloke.us/feeds/tag/google.atom.xml" rel="self"></link><id>https://patrick.cloke.us/</id><updated>2013-10-20T22:18:00-04:00</updated><entry><title>Google Summer of Code Mentor Summit 2013</title><link href="https://patrick.cloke.us/posts/2013/10/20/google-summer-of-code-mentor-summit-2013/" rel="alternate"></link><published>2013-10-20T22:18:00-04:00</published><updated>2013-10-20T22:18:00-04:00</updated><author><name>Patrick Cloke</name></author><id>tag:patrick.cloke.us,2013-10-20:/posts/2013/10/20/google-summer-of-code-mentor-summit-2013/</id><summary type="html">&lt;p&gt;Not only was I lucky enough to mentor a great student for this year&amp;#8217;s
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Patrick Cloke - Google</title><link href="https://patrick.cloke.us/" rel="alternate"></link><link href="https://patrick.cloke.us/feeds/tag/google.atom.xml" rel="self"></link><id>https://patrick.cloke.us/</id><updated>2013-10-20T22:18:00-04:00</updated><entry><title>Google Summer of Code Mentor Summit 2013</title><link href="https://patrick.cloke.us/posts/2013/10/20/google-summer-of-code-mentor-summit-2013/" rel="alternate"></link><published>2013-10-20T22:18:00-04:00</published><updated>2013-10-20T22:18:00-04:00</updated><author><name>Patrick Cloke</name></author><id>tag:patrick.cloke.us,2013-10-20:/posts/2013/10/20/google-summer-of-code-mentor-summit-2013/</id><summary type="html">&lt;p&gt;Not only was I lucky enough to mentor a great student for this year&amp;#8217;s
 Google Summer of Code, but Mozilla asked me to represent them at the
 Google Summer of Code Mentor Summit!&amp;nbsp; This was located at Google&amp;#8217;s
 offices in Mountain View, California this past weekend (Friday, Oct …&lt;/p&gt;</summary><content type="html">&lt;p&gt;Not only was I lucky enough to mentor a great student for this year&amp;#8217;s
@@ -42,21 +42,21 @@ some people were excited by this and hopefully they&amp;#8217;ll try it&amp;nbsp
 was great and I&amp;#8217;d like to thank both Mozilla and Google for giving me
 this opportunity.&amp;nbsp; If I find any really great gems in my notes I&amp;#8217;ll
 write further blog posts about&amp;nbsp;them.&lt;/p&gt;
-</content><category term="articles"></category><category term="Google"></category><category term="GSoC"></category><category term="Mozilla"></category></entry><entry><title>Blogger RSS Feeds for a Label</title><link href="https://patrick.cloke.us/posts/2010/12/08/blogger-rss-feeds-for-label/" rel="alternate"></link><published>2010-12-08T15:25:00-05:00</published><updated>2010-12-08T15:25:00-05:00</updated><author><name>Patrick Cloke</name></author><id>tag:patrick.cloke.us,2010-12-08:/posts/2010/12/08/blogger-rss-feeds-for-label/</id><summary type="html">&lt;p&gt;Blogger has crappy support for &lt;span class="caps"&gt;RSS&lt;/span&gt; apparently.&amp;nbsp; I figured if I clicked
+</content><category term="articles"></category><category term="Google"></category><category term="GSoC"></category><category term="Mozilla"></category></entry><entry><title>Blogger RSS Feeds for a Label</title><link href="https://patrick.cloke.us/posts/2010/12/08/blogger-rss-feeds-for-label/" rel="alternate"></link><published>2010-12-08T15:25:00-05:00</published><updated>2010-12-08T15:25:00-05:00</updated><author><name>Patrick Cloke</name></author><id>tag:patrick.cloke.us,2010-12-08:/posts/2010/12/08/blogger-rss-feeds-for-label/</id><summary type="html">&lt;p&gt;Blogger has crappy support for &lt;span class="caps"&gt;RSS&lt;/span&gt; apparently. I figured if I clicked
 on a label, then found the &lt;span class="caps"&gt;RSS&lt;/span&gt; embedded in the page&amp;#8230;it would give me
 the &lt;span class="caps"&gt;RSS&lt;/span&gt; feed for that label,&amp;nbsp;right?&lt;/p&gt;
 &lt;p&gt;Wrong.&lt;/p&gt;
-&lt;p&gt;Of course there&amp;#8217;s an&amp;nbsp;&lt;a class="reference external" href="http://www.google.com/support/blogger/bin/answer.py?hl=en&amp;amp;answer=97933"&gt;&lt;span class="caps"&gt;FAQ&lt;/span&gt;&lt;/a&gt; page about this, but the syntax it gives
-is …&lt;/p&gt;</summary><content type="html">&lt;p&gt;Blogger has crappy support for &lt;span class="caps"&gt;RSS&lt;/span&gt; apparently.&amp;nbsp; I figured if I clicked
+&lt;p&gt;Of course there&amp;#8217;s an &lt;a class="reference external" href="http://www.google.com/support/blogger/bin/answer.py?hl=en&amp;amp;answer=97933"&gt;&lt;span class="caps"&gt;FAQ&lt;/span&gt;&lt;/a&gt; page about this, but the syntax it gives
+is …&lt;/p&gt;</summary><content type="html">&lt;p&gt;Blogger has crappy support for &lt;span class="caps"&gt;RSS&lt;/span&gt; apparently. I figured if I clicked
 on a label, then found the &lt;span class="caps"&gt;RSS&lt;/span&gt; embedded in the page&amp;#8230;it would give me
 the &lt;span class="caps"&gt;RSS&lt;/span&gt; feed for that label,&amp;nbsp;right?&lt;/p&gt;
 &lt;p&gt;Wrong.&lt;/p&gt;
-&lt;p&gt;Of course there&amp;#8217;s an&amp;nbsp;&lt;a class="reference external" href="http://www.google.com/support/blogger/bin/answer.py?hl=en&amp;amp;answer=97933"&gt;&lt;span class="caps"&gt;FAQ&lt;/span&gt;&lt;/a&gt; page about this, but the syntax it gives
-is broken.&amp;nbsp; For a specific label (I&amp;#8217;m using the label&amp;nbsp;&amp;#8220;Instantbird&amp;#8221;):&lt;/p&gt;
+&lt;p&gt;Of course there&amp;#8217;s an &lt;a class="reference external" href="http://www.google.com/support/blogger/bin/answer.py?hl=en&amp;amp;answer=97933"&gt;&lt;span class="caps"&gt;FAQ&lt;/span&gt;&lt;/a&gt; page about this, but the syntax it gives
+is broken. For a specific label (I&amp;#8217;m using the label&amp;nbsp;&amp;#8220;Instantbird&amp;#8221;):&lt;/p&gt;
 &lt;ul class="simple"&gt;
 &lt;li&gt;&lt;span class="caps"&gt;RSS&lt;/span&gt;:
 &lt;a class="reference external" href="http://clokep.blogspot.com/feeds/posts/default/-/Instantbird?alt=rss"&gt;http://clokep.blogspot.com/feeds/posts/default/-/Instantbird?alt=rss&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;Atom: &lt;a class="reference external" href="http://clokep.blogspot.com/feeds/posts/default/-/Instantbird"&gt;http://clokep.blogspot.com/feeds/posts/default/-/Instantbird&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
-&lt;p&gt;Who knows what versions of &lt;span class="caps"&gt;RSS&lt;/span&gt;/Atom these are.&amp;nbsp; But the feeds do&amp;nbsp;exist.&lt;/p&gt;
-</content><category term="articles"></category><category term="bugs"></category><category term="Google"></category><category term="RSS"></category></entry></feed>
+&lt;p&gt;Who knows what versions of &lt;span class="caps"&gt;RSS&lt;/span&gt;/Atom these are. But the feeds do&amp;nbsp;exist.&lt;/p&gt;
+</content><category term="articles"></category><category term="blog"></category><category term="Google"></category><category term="RSS"></category></entry></feed>

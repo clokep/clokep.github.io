@@ -1,0 +1,226 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Feed configuration. -->
+    <link href="https://patrick.cloke.us/feeds/atom.xml" type="application/atom+xml" rel="alternate" title="Patrick Cloke Atom Feed" />
+    <link href="https://patrick.cloke.us/feeds/rss.xml" type="application/rss+xml" rel="alternate" title="Patrick Cloke RSS Feed" />
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
+    <link rel="stylesheet" href="/theme/css/styles.css">
+    <link rel="stylesheet" href="/theme/css/borland.css">
+    <link rel="stylesheet" href="/theme/css/youtube.css">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
+
+    <title>django-render-block 0.8 (and 0.8.1) released!</title>
+
+    <script>var clicky_site_ids = [101275378];</script>
+    <script async src="/theme/js/clicky.js"></script>
+  </head>
+
+  <body class="pb-5">
+    <nav class="navbar navbar-expand-lg sticky-top navbar-light bg-light border-bottom border-info">
+      <a class="navbar-brand" href="/">
+        Patrick Cloke
+      </a>
+
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-items" aria-controls="navbar-items" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="navbar-items">
+        <ul class="navbar-nav ml-auto">
+
+          <li class="nav-item">
+            <a class="nav-link" href="/pages/about.html">About</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/pages/projects.html">Projects</a>
+          </li>
+
+          <li class="nav-item">
+            <a class="nav-link" href="/archives.html">Archives</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/tags.html">Tags</a>
+          </li>
+
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="social-dropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              Social
+            </a>
+
+            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="social-dropdown">
+              <a class="dropdown-item" href="https://www.twitter.com/clokep" target="_blank">
+                <span class="fab fa-twitter mr-1"></span> twitter
+              </a>
+              <a class="dropdown-item" href="https://mastodon.social/@clokep" target="_blank">
+                <span class="fab fa-mastodon mr-1"></span> mastodon
+              </a>
+              <a class="dropdown-item" href="https://www.github.com/clokep" target="_blank">
+                <span class="fab fa-github mr-1"></span> github
+              </a>
+              <a class="dropdown-item" href="https://gitlab.com/clokep" target="_blank">
+                <span class="fab fa-gitlab mr-1"></span> gitlab
+              </a>
+              <a class="dropdown-item" href="https://bitbucket.org/clokep" target="_blank">
+                <span class="fab fa-bitbucket mr-1"></span> bitbucket
+              </a>
+              <a class="dropdown-item" href="https://mozillians.org/u/clokep/" target="_blank">
+                <span class="fab fa-firefox mr-1"></span> mozillians
+              </a>
+            </div>
+          </li>
+
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="feeds-dropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              Feeds
+            </a>
+
+            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="feeds-dropdown">
+              <a class="dropdown-item" href="https://patrick.cloke.us/feeds/atom.xml" type="application/atom+xml" rel="alternate">atom feed</a>
+              <a class="dropdown-item" href="https://patrick.cloke.us/feeds/rss.xml" type="application/rss+xml" rel="alternate">rss feed</a>
+            </div>
+          </li>
+
+          <form class="form-inline" method="get" action="http://www.google.com/search">
+            <input class="form-control form-control-sm mr-sm-2" type="search" name="q" placeholder="Search" aria-label="Search" />
+            <input type="hidden"  name="sitesearch" value="patrick.cloke.us" />
+
+            <button class="btn btn-sm btn-outline-info d-none d-sm-inline" type="submit">Search</button>
+          </form>
+        </ul>
+      </div>
+    </nav>
+
+<div class="container">
+  <div class="row">
+    <div class="col-md-12 mt-2 mb-2">
+      <h1>
+        <a href="/posts/2020/10/27/django-render-block-0.8-released/" rel="bookmark"
+           title="Permalink to django-render-block 0.8 (and 0.8.1) released!">django-render-block 0.8 (and 0.8.1)&nbsp;released!</a>
+      </h1>
+
+      <div class="float-right">
+        <a href="https://twitter.com/intent/tweet?text=django-render-block%200.8%20%28and%200.8.1%29%C2%A0released%21&url=https%3A//patrick.cloke.us/posts/2020/10/27/django-render-block-0.8-released/&hashtags=django,django-render-block" target="_blank" class="ml-1 mr-1" title="Share on Twitter">
+          <span class="fab fa-twitter"></span>
+        </a>
+        <a href="https://www.facebook.com/sharer/sharer.php?u=https%3A//patrick.cloke.us/posts/2020/10/27/django-render-block-0.8-released/" target="_blank" class="ml-1 mr-1" title="Share on Facebook">
+          <span class="fab fa-facebook"></span>
+        </a>
+        <a href="mailto:?subject=django-render-block%200.8%20%28and%200.8.1%29%C2%A0released%21&amp;body=https%3A//patrick.cloke.us/posts/2020/10/27/django-render-block-0.8-released/" target="_blank" class="ml-1 mr-1" title="Share via Email">
+          <span class="fas fa-envelope"></span>
+        </a>
+      </div>
+
+      <i>Tuesday, October 27, 2020</i>
+
+      <br>
+      <i>
+        Tags:           <a href="/tag/django.html">django</a>,          <a href="/tag/django-render-block.html">django-render-block</a>      </i>
+
+      <div class="mt-3">
+
+        <p>A couple of weeks ago I released version 0.8 of <a class="reference external" href="https://github.com/clokep/django-render-block/">django-render-block</a>, this was
+followed up with a 0.8.1 to fix a&nbsp;regression.</p>
+<p>django-render-block is a small library that allows you render a specific <tt class="docutils literal">block</tt>
+from a Django (or Jinja) template, this is frequently used for emails when you
+want multiple pieces of an email together in a single template (e.g. the subject,
+<span class="caps">HTML</span> body, and text body), but they need to be rendered separately before&nbsp;sending.</p>
+<p>See the example&nbsp;below:</p>
+<div class="highlight"><pre><span></span><span class="cp">{%</span> <span class="k">block</span> <span class="nv">subject</span> <span class="cp">%}</span><span class="x">Hello from django-render-block!</span><span class="cp">{%</span> <span class="k">endblock</span> <span class="cp">%}</span><span class="x"></span>
+
+<span class="cp">{%</span> <span class="k">block</span> <span class="nv">text</span> <span class="cp">%}</span><span class="x"></span>
+<span class="x">Hello!</span>
+
+<span class="x">This is the text email body!</span>
+<span class="cp">{%</span> <span class="k">endblock</span> <span class="cp">%}</span><span class="x"></span>
+
+<span class="cp">{%</span> <span class="k">block</span> <span class="nv">html</span> <span class="cp">%}</span><span class="x"></span>
+<span class="x">&lt;h1&gt;Hello!&lt;/h1&gt;</span>
+
+<span class="x">&lt;p&gt;This is the &lt;b&gt;HTML&lt;/b&gt; email body!&lt;/p&gt;</span>
+<span class="cp">{%</span> <span class="k">endblock</span> <span class="cp">%}</span><span class="x"></span>
+</pre></div>
+<p>Using django-render-block, each <tt class="docutils literal">block</tt> can be rendered separately and then
+passed into Django&#8217;s <a class="reference external" href="https://docs.djangoproject.com/en/3.1/topics/email/">email system</a>:</p>
+<div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">django.core.mail</span> <span class="kn">import</span> <span class="n">send_mail</span>
+<span class="kn">from</span> <span class="nn">render_block</span> <span class="kn">import</span> <span class="n">render_block_to_string</span>
+
+<span class="n">subject</span> <span class="o">=</span> <span class="n">render_block_to_string</span><span class="p">(</span><span class="s1">&#39;email.html&#39;</span><span class="p">,</span> <span class="s1">&#39;subject&#39;</span><span class="p">)</span>
+<span class="n">text_body</span> <span class="o">=</span> <span class="n">render_block_to_string</span><span class="p">(</span><span class="s1">&#39;email.html&#39;</span><span class="p">,</span> <span class="s1">&#39;text&#39;</span><span class="p">)</span>
+<span class="n">html_body</span> <span class="o">=</span> <span class="n">render_block_to_string</span><span class="p">(</span><span class="s1">&#39;email.html&#39;</span><span class="p">,</span> <span class="s1">&#39;html&#39;</span><span class="p">)</span>
+
+<span class="n">send_mail</span><span class="p">(</span>
+    <span class="n">subject</span><span class="p">,</span>
+    <span class="n">text_body</span><span class="p">,</span>
+    <span class="n">html_message</span><span class="o">=</span><span class="n">html_body</span><span class="p">,</span>
+<span class="p">)</span>
+</pre></div>
+<p>This particular release of django-render-block includes support for passing
+a fully instantiated <a class="reference external" href="https://docs.djangoproject.com/en/dev/ref/templates/api/#django.template.Context"><tt class="docutils literal">Context</tt></a> (instead of a simple <tt class="docutils literal">dict</tt>) into
+<tt class="docutils literal">render_block_to_string</tt>. This allows the caller to control whether
+<tt class="docutils literal">autoescape</tt> is enabled and a few other&nbsp;features.</p>
+<p>The full changelog is included&nbsp;below:</p>
+<div class="section" id="october-15-2020">
+<h2>0.8.1 (October 15,&nbsp;2020)</h2>
+<ul class="simple">
+<li>Fixes a regression in v0.8 where a <tt class="docutils literal">Context</tt> could not be re-used. Contributed
+by <a class="reference external" href="https://github.com/evanbrumley">&#64;evanbrumley</a>. (<a class="reference external" href="https://github.com/clokep/django-render-block/pull/25">#25</a>)</li>
+</ul>
+</div>
+<div class="section" id="october-6-2020">
+<h2>0.8 (October 6,&nbsp;2020)</h2>
+<ul class="simple">
+<li><tt class="docutils literal">render_block_to_string</tt> now forwards the <tt class="docutils literal">Context</tt> passed as <tt class="docutils literal">context</tt> parameter.
+Contributed by <a class="reference external" href="https://github.com/bblanchon">&#64;bblanchon</a>. (<a class="reference external" href="https://github.com/clokep/django-render-block/pull/21">#21</a>)</li>
+<li>Drop support for Python 3.5, officially support Python 3.9. (<a class="reference external" href="https://github.com/clokep/django-render-block/pull/22">#22</a>)</li>
+</ul>
+</div>
+
+      </div>
+
+<div id="disqus_thread"></div>
+<script>
+/**
+*  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+*  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/
+/*
+var disqus_config = function () {
+this.page.url = '/posts/2020/10/27/django-render-block-0.8-released/';
+this.page.identifier = 'django-render-block-0.8-released';
+};
+*/
+(function() { // DON'T EDIT BELOW THIS LINE
+var d = document, s = d.createElement('script');
+s.src = 'https://clokep.disqus.com/embed.js';
+s.setAttribute('data-timestamp', +new Date());
+(d.head || d.body).appendChild(s);
+})();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    </div>
+  </div>
+</div>
+
+    <nav class="navbar fixed-bottom navbar-light bg-light border-top border-info">
+      <a href="https://getpelican.com/" class="nav-item" target="_blank">Powered by Pelican</a>
+      <a href="https://github.com/clokep/clokep.github.io" class="nav-item" target="_blank">
+        Source available on GitHub <span class="fab fa-github"></span>
+      </a>
+    </nav>
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T" crossorigin="anonymous"></script>
+
+  </body>
+</html>

@@ -1,5 +1,64 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>Like bricks in the sky - django</title><link href="https://patrick.cloke.us/" rel="alternate"></link><link href="https://patrick.cloke.us/feeds/tag/django.atom.xml" rel="self"></link><id>https://patrick.cloke.us/</id><updated>2020-01-27T16:34:00-05:00</updated><entry><title>Squashing Django Migrations</title><link href="https://patrick.cloke.us/posts/2020/01/27/squashing-django-migrations/" rel="alternate"></link><published>2020-01-27T16:34:00-05:00</published><updated>2020-01-27T16:34:00-05:00</updated><author><name>Patrick Cloke</name></author><id>tag:patrick.cloke.us,2020-01-27:/posts/2020/01/27/squashing-django-migrations/</id><summary type="html">&lt;p&gt;The &lt;a class="reference external" href="https://docs.djangoproject.com/en/1.11/topics/migrations/"&gt;Django migration system&lt;/a&gt; is great for modifying your database schema after
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Patrick Cloke - django</title><link href="https://patrick.cloke.us/" rel="alternate"></link><link href="https://patrick.cloke.us/feeds/tag/django.atom.xml" rel="self"></link><id>https://patrick.cloke.us/</id><updated>2020-10-27T16:57:00-04:00</updated><entry><title>django-render-block 0.8 (and 0.8.1) released!</title><link href="https://patrick.cloke.us/posts/2020/10/27/django-render-block-0.8-released/" rel="alternate"></link><published>2020-10-27T16:57:00-04:00</published><updated>2020-10-27T16:57:00-04:00</updated><author><name>Patrick Cloke</name></author><id>tag:patrick.cloke.us,2020-10-27:/posts/2020/10/27/django-render-block-0.8-released/</id><summary type="html">&lt;p&gt;A couple of weeks ago I released version 0.8 of &lt;a class="reference external" href="https://github.com/clokep/django-render-block/"&gt;django-render-block&lt;/a&gt;, this was
+followed up with a 0.8.1 to fix a&amp;nbsp;regression.&lt;/p&gt;
+&lt;p&gt;django-render-block is a small library that allows you render a specific &lt;tt class="docutils literal"&gt;block&lt;/tt&gt;
+from a Django (or Jinja) template, this is frequently used for emails when …&lt;/p&gt;</summary><content type="html">&lt;p&gt;A couple of weeks ago I released version 0.8 of &lt;a class="reference external" href="https://github.com/clokep/django-render-block/"&gt;django-render-block&lt;/a&gt;, this was
+followed up with a 0.8.1 to fix a&amp;nbsp;regression.&lt;/p&gt;
+&lt;p&gt;django-render-block is a small library that allows you render a specific &lt;tt class="docutils literal"&gt;block&lt;/tt&gt;
+from a Django (or Jinja) template, this is frequently used for emails when you
+want multiple pieces of an email together in a single template (e.g. the subject,
+&lt;span class="caps"&gt;HTML&lt;/span&gt; body, and text body), but they need to be rendered separately before&amp;nbsp;sending.&lt;/p&gt;
+&lt;p&gt;See the example&amp;nbsp;below:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="cp"&gt;{%&lt;/span&gt; &lt;span class="k"&gt;block&lt;/span&gt; &lt;span class="nv"&gt;subject&lt;/span&gt; &lt;span class="cp"&gt;%}&lt;/span&gt;&lt;span class="x"&gt;Hello from django-render-block!&lt;/span&gt;&lt;span class="cp"&gt;{%&lt;/span&gt; &lt;span class="k"&gt;endblock&lt;/span&gt; &lt;span class="cp"&gt;%}&lt;/span&gt;&lt;span class="x"&gt;&lt;/span&gt;
+
+&lt;span class="cp"&gt;{%&lt;/span&gt; &lt;span class="k"&gt;block&lt;/span&gt; &lt;span class="nv"&gt;text&lt;/span&gt; &lt;span class="cp"&gt;%}&lt;/span&gt;&lt;span class="x"&gt;&lt;/span&gt;
+&lt;span class="x"&gt;Hello!&lt;/span&gt;
+
+&lt;span class="x"&gt;This is the text email body!&lt;/span&gt;
+&lt;span class="cp"&gt;{%&lt;/span&gt; &lt;span class="k"&gt;endblock&lt;/span&gt; &lt;span class="cp"&gt;%}&lt;/span&gt;&lt;span class="x"&gt;&lt;/span&gt;
+
+&lt;span class="cp"&gt;{%&lt;/span&gt; &lt;span class="k"&gt;block&lt;/span&gt; &lt;span class="nv"&gt;html&lt;/span&gt; &lt;span class="cp"&gt;%}&lt;/span&gt;&lt;span class="x"&gt;&lt;/span&gt;
+&lt;span class="x"&gt;&amp;lt;h1&amp;gt;Hello!&amp;lt;/h1&amp;gt;&lt;/span&gt;
+
+&lt;span class="x"&gt;&amp;lt;p&amp;gt;This is the &amp;lt;b&amp;gt;HTML&amp;lt;/b&amp;gt; email body!&amp;lt;/p&amp;gt;&lt;/span&gt;
+&lt;span class="cp"&gt;{%&lt;/span&gt; &lt;span class="k"&gt;endblock&lt;/span&gt; &lt;span class="cp"&gt;%}&lt;/span&gt;&lt;span class="x"&gt;&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Using django-render-block, each &lt;tt class="docutils literal"&gt;block&lt;/tt&gt; can be rendered separately and then
+passed into Django&amp;#8217;s &lt;a class="reference external" href="https://docs.djangoproject.com/en/3.1/topics/email/"&gt;email system&lt;/a&gt;:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;django.core.mail&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;send_mail&lt;/span&gt;
+&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;render_block&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;render_block_to_string&lt;/span&gt;
+
+&lt;span class="n"&gt;subject&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;render_block_to_string&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;email.html&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;subject&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="n"&gt;text_body&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;render_block_to_string&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;email.html&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;text&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="n"&gt;html_body&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;render_block_to_string&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;email.html&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;html&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+
+&lt;span class="n"&gt;send_mail&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;
+    &lt;span class="n"&gt;subject&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+    &lt;span class="n"&gt;text_body&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+    &lt;span class="n"&gt;html_message&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;html_body&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;This particular release of django-render-block includes support for passing
+a fully instantiated &lt;a class="reference external" href="https://docs.djangoproject.com/en/dev/ref/templates/api/#django.template.Context"&gt;&lt;tt class="docutils literal"&gt;Context&lt;/tt&gt;&lt;/a&gt; (instead of a simple &lt;tt class="docutils literal"&gt;dict&lt;/tt&gt;) into
+&lt;tt class="docutils literal"&gt;render_block_to_string&lt;/tt&gt;. This allows the caller to control whether
+&lt;tt class="docutils literal"&gt;autoescape&lt;/tt&gt; is enabled and a few other&amp;nbsp;features.&lt;/p&gt;
+&lt;p&gt;The full changelog is included&amp;nbsp;below:&lt;/p&gt;
+&lt;div class="section" id="october-15-2020"&gt;
+&lt;h2&gt;0.8.1 (October 15,&amp;nbsp;2020)&lt;/h2&gt;
+&lt;ul class="simple"&gt;
+&lt;li&gt;Fixes a regression in v0.8 where a &lt;tt class="docutils literal"&gt;Context&lt;/tt&gt; could not be re-used. Contributed
+by &lt;a class="reference external" href="https://github.com/evanbrumley"&gt;&amp;#64;evanbrumley&lt;/a&gt;. (&lt;a class="reference external" href="https://github.com/clokep/django-render-block/pull/25"&gt;#25&lt;/a&gt;)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+&lt;div class="section" id="october-6-2020"&gt;
+&lt;h2&gt;0.8 (October 6,&amp;nbsp;2020)&lt;/h2&gt;
+&lt;ul class="simple"&gt;
+&lt;li&gt;&lt;tt class="docutils literal"&gt;render_block_to_string&lt;/tt&gt; now forwards the &lt;tt class="docutils literal"&gt;Context&lt;/tt&gt; passed as &lt;tt class="docutils literal"&gt;context&lt;/tt&gt; parameter.
+Contributed by &lt;a class="reference external" href="https://github.com/bblanchon"&gt;&amp;#64;bblanchon&lt;/a&gt;. (&lt;a class="reference external" href="https://github.com/clokep/django-render-block/pull/21"&gt;#21&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;Drop support for Python 3.5, officially support Python 3.9. (&lt;a class="reference external" href="https://github.com/clokep/django-render-block/pull/22"&gt;#22&lt;/a&gt;)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+</content><category term="articles"></category><category term="django"></category><category term="django-render-block"></category></entry><entry><title>Squashing Django Migrations</title><link href="https://patrick.cloke.us/posts/2020/01/27/squashing-django-migrations/" rel="alternate"></link><published>2020-01-27T16:34:00-05:00</published><updated>2020-01-27T16:34:00-05:00</updated><author><name>Patrick Cloke</name></author><id>tag:patrick.cloke.us,2020-01-27:/posts/2020/01/27/squashing-django-migrations/</id><summary type="html">&lt;p&gt;The &lt;a class="reference external" href="https://docs.djangoproject.com/en/1.11/topics/migrations/"&gt;Django migration system&lt;/a&gt; is great for modifying your database schema after
 a database is live. If you&amp;#8217;re like me, you quickly end up with many 10s or 100s
 of migrations. There&amp;#8217;s nothing inherently wrong with this, but there&amp;#8217;s a few
 cases where it gets tiresome to …&lt;/p&gt;</summary><content type="html">&lt;p&gt;The &lt;a class="reference external" href="https://docs.djangoproject.com/en/1.11/topics/migrations/"&gt;Django migration system&lt;/a&gt; is great for modifying your database schema after
@@ -388,7 +447,7 @@ navigate) or check out the &lt;a class="reference external" href="https://github
 &lt;/ul&gt;
 &lt;p&gt;You can also check out the open &lt;a class="reference external" href="https://github.com/percipient/django-allauth-2fa/issues"&gt;issues on GitHub&lt;/a&gt; or &lt;a class="reference external" href="https://patrick.cloke.us/pages/about.html"&gt;reach out&lt;/a&gt; directly if
 you&amp;#8217;re&amp;nbsp;interested!&lt;/p&gt;
-</content><category term="articles"></category><category term="django"></category><category term="talks"></category></entry><entry><title>Combining Disparate QuerySets in Django</title><link href="https://patrick.cloke.us/posts/2016/02/04/combining-disparate-querysets-in-django/" rel="alternate"></link><published>2016-02-04T16:00:00-05:00</published><updated>2016-02-04T16:00:00-05:00</updated><author><name>Patrick Cloke</name></author><id>tag:patrick.cloke.us,2016-02-04:/posts/2016/02/04/combining-disparate-querysets-in-django/</id><summary type="html">&lt;blockquote&gt;
+</content><category term="articles"></category><category term="django"></category><category term="django-allauth-2fa"></category><category term="talks"></category></entry><entry><title>Combining Disparate QuerySets in Django</title><link href="https://patrick.cloke.us/posts/2016/02/04/combining-disparate-querysets-in-django/" rel="alternate"></link><published>2016-02-04T16:00:00-05:00</published><updated>2016-02-04T16:00:00-05:00</updated><author><name>Patrick Cloke</name></author><id>tag:patrick.cloke.us,2016-02-04:/posts/2016/02/04/combining-disparate-querysets-in-django/</id><summary type="html">&lt;blockquote&gt;
 &lt;p&gt;Note: This was originally posted on the &lt;a href="https://strongarm.io/blog/combining-disparate-querysets-in-django/"&gt;Strongarm Blog&lt;/a&gt;.&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;p&gt;While refactoring &lt;a href="https://strongarm.io"&gt;strongarm.io&lt;/a&gt; we ran into a problem: we
@@ -484,4 +543,4 @@ can install &lt;code&gt;django-querysetsequence&lt;/code&gt; package from
 
 
 &lt;p&gt;If you&amp;#8217;re using Django QuerySetSequence we&amp;#8217;d love to
-&lt;a href="mailto:support@strongarm.io"&gt;hear about it&lt;/a&gt;!&lt;/p&gt;</content><category term="articles"></category><category term="django"></category></entry></feed>
+&lt;a href="mailto:support@strongarm.io"&gt;hear about it&lt;/a&gt;!&lt;/p&gt;</content><category term="articles"></category><category term="django"></category><category term="django-querysetsequence"></category><category term="crosspost"></category></entry></feed>

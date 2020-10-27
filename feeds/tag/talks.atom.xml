@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>Like bricks in the sky - talks</title><link href="https://patrick.cloke.us/" rel="alternate"></link><link href="https://patrick.cloke.us/feeds/tag/talks.atom.xml" rel="self"></link><id>https://patrick.cloke.us/</id><updated>2017-04-06T21:14:00-04:00</updated><entry><title>“Adding Two-Factor Authentication to Django (with django-allauth)” Lightning Talk</title><link href="https://patrick.cloke.us/posts/2017/04/06/adding-two-factor-authentication-to-django-with-django-allauth-lightning-talk/" rel="alternate"></link><published>2017-04-06T21:14:00-04:00</published><updated>2017-04-06T21:14:00-04:00</updated><author><name>Patrick Cloke</name></author><id>tag:patrick.cloke.us,2017-04-06:/posts/2017/04/06/adding-two-factor-authentication-to-django-with-django-allauth-lightning-talk/</id><summary type="html">&lt;p&gt;A bit late on this article, but better late than never! Back on October 27th,
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Patrick Cloke - talks</title><link href="https://patrick.cloke.us/" rel="alternate"></link><link href="https://patrick.cloke.us/feeds/tag/talks.atom.xml" rel="self"></link><id>https://patrick.cloke.us/</id><updated>2017-04-06T21:14:00-04:00</updated><entry><title>“Adding Two-Factor Authentication to Django (with django-allauth)” Lightning Talk</title><link href="https://patrick.cloke.us/posts/2017/04/06/adding-two-factor-authentication-to-django-with-django-allauth-lightning-talk/" rel="alternate"></link><published>2017-04-06T21:14:00-04:00</published><updated>2017-04-06T21:14:00-04:00</updated><author><name>Patrick Cloke</name></author><id>tag:patrick.cloke.us,2017-04-06:/posts/2017/04/06/adding-two-factor-authentication-to-django-with-django-allauth-lightning-talk/</id><summary type="html">&lt;p&gt;A bit late on this article, but better late than never! Back on October 27th,
 2016 I gave a talk at &lt;a class="reference external" href="http://www.meetup.com/djangoboston/"&gt;Django Boston&lt;/a&gt; entitled &amp;#8220;Adding Two-Factor
 Authentication to Django (with &lt;tt class="docutils literal"&gt;&lt;span class="pre"&gt;django-allauth&lt;/span&gt;&lt;/tt&gt;)&amp;#8221;. It was a ~20 minute talk on
 integrating the &lt;a class="reference external" href="https://github.com/percipient/django-allauth-2fa/"&gt;django-allauth-2fa&lt;/a&gt; package into a &lt;a class="reference external" href="https://www.djangoproject.com/"&gt;Django&lt;/a&gt; project. The
@@ -27,4 +27,31 @@ navigate) or check out the &lt;a class="reference external" href="https://github
 &lt;/ul&gt;
 &lt;p&gt;You can also check out the open &lt;a class="reference external" href="https://github.com/percipient/django-allauth-2fa/issues"&gt;issues on GitHub&lt;/a&gt; or &lt;a class="reference external" href="https://patrick.cloke.us/pages/about.html"&gt;reach out&lt;/a&gt; directly if
 you&amp;#8217;re&amp;nbsp;interested!&lt;/p&gt;
-</content><category term="articles"></category><category term="django"></category><category term="talks"></category></entry></feed>
+</content><category term="articles"></category><category term="django"></category><category term="django-allauth-2fa"></category><category term="talks"></category></entry><entry><title>Boston Python: Twisted async networking framework</title><link href="https://patrick.cloke.us/posts/2015/08/28/boston-python-twisted-async-networking-framework/" rel="alternate"></link><published>2015-08-28T08:42:00-04:00</published><updated>2015-08-28T08:42:00-04:00</updated><author><name>Patrick Cloke</name></author><id>tag:patrick.cloke.us,2015-08-28:/posts/2015/08/28/boston-python-twisted-async-networking-framework/</id><summary type="html">&lt;p&gt;Yesterday, &lt;a class="reference external" href="http://stephendicato.com/"&gt;Stephen DiCato&lt;/a&gt; and I gave a talk for &lt;a class="reference external" href="http://www.meetup.com/bostonpython/"&gt;Boston Python&lt;/a&gt; titled:
+&lt;a class="reference external" href="http://www.meetup.com/bostonpython/events/221406450/"&gt;Twisted async networking framework&lt;/a&gt;. It was an introduction to intermediate
+level talk about using the &lt;a class="reference external" href="https://twistedmatrix.com/"&gt;Twisted networking framework&lt;/a&gt; based on our
+experiences at &lt;a class="reference external" href="https://percipientnetworks.com/"&gt;Percipient Networks&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;The talk, available &lt;a class="reference external" href="https://github.com/percipient/talks/tree/master/boston_python_08_27_2015"&gt;on our GitHub&lt;/a&gt; (&lt;a class="reference external" href="https://github.com/percipient/talks/raw/master/boston_python_08_27_2015/boston_python_08_27_2015.pdf"&gt;&lt;span class="caps"&gt;PDF&lt;/span&gt;&lt;/a&gt;) covered a few basic&amp;nbsp;topics:&lt;/p&gt;
+&lt;ol class="arabic simple"&gt;
+&lt;li&gt;What …&lt;/li&gt;&lt;/ol&gt;</summary><content type="html">&lt;p&gt;Yesterday, &lt;a class="reference external" href="http://stephendicato.com/"&gt;Stephen DiCato&lt;/a&gt; and I gave a talk for &lt;a class="reference external" href="http://www.meetup.com/bostonpython/"&gt;Boston Python&lt;/a&gt; titled:
+&lt;a class="reference external" href="http://www.meetup.com/bostonpython/events/221406450/"&gt;Twisted async networking framework&lt;/a&gt;. It was an introduction to intermediate
+level talk about using the &lt;a class="reference external" href="https://twistedmatrix.com/"&gt;Twisted networking framework&lt;/a&gt; based on our
+experiences at &lt;a class="reference external" href="https://percipientnetworks.com/"&gt;Percipient Networks&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;The talk, available &lt;a class="reference external" href="https://github.com/percipient/talks/tree/master/boston_python_08_27_2015"&gt;on our GitHub&lt;/a&gt; (&lt;a class="reference external" href="https://github.com/percipient/talks/raw/master/boston_python_08_27_2015/boston_python_08_27_2015.pdf"&gt;&lt;span class="caps"&gt;PDF&lt;/span&gt;&lt;/a&gt;) covered a few basic&amp;nbsp;topics:&lt;/p&gt;
+&lt;ol class="arabic simple"&gt;
+&lt;li&gt;What is asynchronous&amp;nbsp;programming?&lt;/li&gt;
+&lt;li&gt;What is &lt;a class="reference external" href="https://twistedmatrix.com/"&gt;Twisted&lt;/a&gt;?&lt;/li&gt;
+&lt;li&gt;When/why to use&amp;nbsp;Twisted?&lt;/li&gt;
+&lt;li&gt;What is the event loop&amp;nbsp;(reactor)?&lt;/li&gt;
+&lt;li&gt;What are &lt;a class="reference external" href="https://twistedmatrix.com/documents/current/core/howto/defer.html"&gt;Deferreds&lt;/a&gt; and how do you use&amp;nbsp;them?&lt;/li&gt;
+&lt;li&gt;What are protocols (and related objects) and how do you use&amp;nbsp;them?&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;Additionally there was a &amp;#8216;bonus&amp;#8217; section: Using Twisted to build systems &lt;span class="amp"&gt;&amp;amp;&lt;/span&gt;&amp;nbsp;services.&lt;/p&gt;
+&lt;p&gt;We used an example of a very simple chat server (NetCatChat: where the official
+client is netcat) to demonstrate these principles. All of our (working!) demo
+code is included in the &lt;a class="reference external" href="https://github.com/percipient/talks/tree/master/boston_python_08_27_2015"&gt;repository&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;There was a great turn out (almost 100 people showed up) and I greatly enjoyed
+the experience. Thanks to everyone who came, the sponsors for the night,
+&lt;a class="reference external" href="http://www.meetup.com/bostonpython/"&gt;Boston Python&lt;/a&gt; for setting this up, and Stephen for co-presenting! Please let
+us know if you have any questions or&amp;nbsp;comments.&lt;/p&gt;
+</content><category term="articles"></category><category term="python"></category><category term="community"></category><category term="programming"></category><category term="twisted"></category><category term="talks"></category></entry></feed>

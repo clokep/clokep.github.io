@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<rss version="2.0"><channel><title>Like bricks in the sky - linux</title><link>https://patrick.cloke.us/</link><description></description><lastBuildDate>Fri, 12 Jun 2020 16:55:00 -0400</lastBuildDate><item><title>Raspberry Pi File Server</title><link>https://patrick.cloke.us/posts/2020/06/12/raspberry-pi-file-server/</link><description>&lt;p&gt;This is just some quick notes (for myself) of how I recently setup my Raspberry
+<rss version="2.0"><channel><title>Patrick Cloke - linux</title><link>https://patrick.cloke.us/</link><description></description><lastBuildDate>Fri, 12 Jun 2020 16:55:00 -0400</lastBuildDate><item><title>Raspberry Pi File Server</title><link>https://patrick.cloke.us/posts/2020/06/12/raspberry-pi-file-server/</link><description>&lt;p&gt;This is just some quick notes (for myself) of how I recently setup my Raspberry
 Pi as a file server. The goal was to have a shared folder so that a Sonos could
 play music from it. The data would be backed via a microSD card plugged into
 &lt;span class="caps"&gt;USB&lt;/span&gt;.&lt;/p&gt;
