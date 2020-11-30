@@ -1,5 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>Patrick Cloke - celery</title><link href="https://patrick.cloke.us/" rel="alternate"></link><link href="https://patrick.cloke.us/feeds/tag/celery.atom.xml" rel="self"></link><id>https://patrick.cloke.us/</id><updated>2019-10-04T08:10:00-04:00</updated><entry><title>Celery AMQP Backends</title><link href="https://patrick.cloke.us/posts/2019/10/04/celery-amqp-backends/" rel="alternate"></link><published>2019-10-04T08:10:00-04:00</published><updated>2019-10-04T08:10:00-04:00</updated><author><name>Patrick Cloke</name></author><id>tag:patrick.cloke.us,2019-10-04:/posts/2019/10/04/celery-amqp-backends/</id><summary type="html">&lt;div class="admonition note"&gt;
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Patrick Cloke - celery</title><link href="https://patrick.cloke.us/" rel="alternate"></link><link href="https://patrick.cloke.us/feeds/tag/celery.atom.xml" rel="self"></link><id>https://patrick.cloke.us/</id><updated>2020-11-30T16:50:00-05:00</updated><entry><title>celery-batches 0.4 released!</title><link href="https://patrick.cloke.us/posts/2020/11/30/celery-batches-0.4-released/" rel="alternate"></link><published>2020-11-30T16:50:00-05:00</published><updated>2020-11-30T16:50:00-05:00</updated><author><name>Patrick Cloke</name></author><id>tag:patrick.cloke.us,2020-11-30:/posts/2020/11/30/celery-batches-0.4-released/</id><summary type="html">&lt;p&gt;Earlier today I released a version &lt;a class="reference external" href="https://pypi.org/project/celery-batches/0.4/"&gt;0.4&lt;/a&gt; of &lt;a class="reference external" href="https://github.com/clokep/celery-batches/"&gt;celery-batches&lt;/a&gt; with support for
+Celery 5.0. As part of this release support for Python &amp;lt; 3.6 was dropped and
+support for Celery &amp;lt; 4.4 was&amp;nbsp;dropped.&lt;/p&gt;
+&lt;p&gt;celery-batches is a small library that allows you process multiple calls to a
+&lt;a class="reference external" href="https://github.com/celery/celery/"&gt;Celery …&lt;/a&gt;&lt;/p&gt;</summary><content type="html">&lt;p&gt;Earlier today I released a version &lt;a class="reference external" href="https://pypi.org/project/celery-batches/0.4/"&gt;0.4&lt;/a&gt; of &lt;a class="reference external" href="https://github.com/clokep/celery-batches/"&gt;celery-batches&lt;/a&gt; with support for
+Celery 5.0. As part of this release support for Python &amp;lt; 3.6 was dropped and
+support for Celery &amp;lt; 4.4 was&amp;nbsp;dropped.&lt;/p&gt;
+&lt;p&gt;celery-batches is a small library that allows you process multiple calls to a
+&lt;a class="reference external" href="https://github.com/celery/celery/"&gt;Celery&lt;/a&gt; task together. The batches can be processed based on a count of task
+calls or a timer. It started as an update of the &lt;tt class="docutils literal"&gt;celery.contrib.batches&lt;/tt&gt;
+code to support Celery 4.0+ and has grown to support some additional&amp;nbsp;features.&lt;/p&gt;
+&lt;p&gt;The project was also transferred on GitHub to my personal namespace (from my
+previous employer). Realistically it was maintained by me already and this is
+just a formality. As part of this release the &lt;a class="reference external" href="https://celery-batches.readthedocs.io/en/v0.4/"&gt;documentation&lt;/a&gt; is now available
+on Read the&amp;nbsp;Docs.&lt;/p&gt;
+</content><category term="articles"></category><category term="celery"></category><category term="celery-batches"></category></entry><entry><title>Celery AMQP Backends</title><link href="https://patrick.cloke.us/posts/2019/10/04/celery-amqp-backends/" rel="alternate"></link><published>2019-10-04T08:10:00-04:00</published><updated>2019-10-04T08:10:00-04:00</updated><author><name>Patrick Cloke</name></author><id>tag:patrick.cloke.us,2019-10-04:/posts/2019/10/04/celery-amqp-backends/</id><summary type="html">&lt;div class="admonition note"&gt;
 &lt;p class="first admonition-title"&gt;Note&lt;/p&gt;
 &lt;p class="last"&gt;This started as notes explaining the internals of how Celery&amp;#8217;s &lt;span class="caps"&gt;AMQP&lt;/span&gt; backends
 operate. This isn&amp;#8217;t meant to be a comparison or prove one is better or that

@@ -1,5 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<rss version="2.0"><channel><title>Patrick Cloke - celery</title><link>https://patrick.cloke.us/</link><description></description><lastBuildDate>Fri, 04 Oct 2019 08:10:00 -0400</lastBuildDate><item><title>Celery AMQP Backends</title><link>https://patrick.cloke.us/posts/2019/10/04/celery-amqp-backends/</link><description>&lt;div class="admonition note"&gt;
+<rss version="2.0"><channel><title>Patrick Cloke - celery</title><link>https://patrick.cloke.us/</link><description></description><lastBuildDate>Mon, 30 Nov 2020 16:50:00 -0500</lastBuildDate><item><title>celery-batches 0.4 released!</title><link>https://patrick.cloke.us/posts/2020/11/30/celery-batches-0.4-released/</link><description>&lt;p&gt;Earlier today I released a version &lt;a class="reference external" href="https://pypi.org/project/celery-batches/0.4/"&gt;0.4&lt;/a&gt; of &lt;a class="reference external" href="https://github.com/clokep/celery-batches/"&gt;celery-batches&lt;/a&gt; with support for
+Celery 5.0. As part of this release support for Python &amp;lt; 3.6 was dropped and
+support for Celery &amp;lt; 4.4 was&amp;nbsp;dropped.&lt;/p&gt;
+&lt;p&gt;celery-batches is a small library that allows you process multiple calls to a
+&lt;a class="reference external" href="https://github.com/celery/celery/"&gt;Celery …&lt;/a&gt;&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Patrick Cloke</dc:creator><pubDate>Mon, 30 Nov 2020 16:50:00 -0500</pubDate><guid isPermaLink="false">tag:patrick.cloke.us,2020-11-30:/posts/2020/11/30/celery-batches-0.4-released/</guid><category>articles</category><category>celery</category><category>celery-batches</category></item><item><title>Celery AMQP Backends</title><link>https://patrick.cloke.us/posts/2019/10/04/celery-amqp-backends/</link><description>&lt;div class="admonition note"&gt;
 &lt;p class="first admonition-title"&gt;Note&lt;/p&gt;
 &lt;p class="last"&gt;This started as notes explaining the internals of how Celery&amp;#8217;s &lt;span class="caps"&gt;AMQP&lt;/span&gt; backends
 operate. This isn&amp;#8217;t meant to be a comparison or prove one is better or that
