@@ -66,4 +66,4 @@ Miscellaneous
 
 .. _django-querysetsequence: https://github.com/clokep/django-querysetsequence/
 .. |treating multiple QuerySet instances as a single QuerySet| replace:: treating multiple ``QuerySet`` instances as a single ``QuerySet``
-.. _treating multiple QuerySet instances as a single QuerySet: {filename}/articles/combining-disparate-querysets-in-django.rst
+.. _treating multiple QuerySet instances as a single QuerySet: {filename}/articles/combining-disparate-querysets-in-django.md
