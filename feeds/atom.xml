@@ -1,5 +1,57 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>Patrick Cloke</title><link href="https://patrick.cloke.us/" rel="alternate"></link><link href="https://patrick.cloke.us/feeds/atom.xml" rel="self"></link><id>https://patrick.cloke.us/</id><updated>2020-11-30T16:50:00-05:00</updated><entry><title>celery-batches 0.4 released!</title><link href="https://patrick.cloke.us/posts/2020/11/30/celery-batches-0.4-released/" rel="alternate"></link><published>2020-11-30T16:50:00-05:00</published><updated>2020-11-30T16:50:00-05:00</updated><author><name>Patrick Cloke</name></author><id>tag:patrick.cloke.us,2020-11-30:/posts/2020/11/30/celery-batches-0.4-released/</id><summary type="html">&lt;p&gt;Earlier today I released a version &lt;a class="reference external" href="https://pypi.org/project/celery-batches/0.4/"&gt;0.4&lt;/a&gt; of &lt;a class="reference external" href="https://github.com/clokep/celery-batches/"&gt;celery-batches&lt;/a&gt; with support for
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Patrick Cloke</title><link href="https://patrick.cloke.us/" rel="alternate"></link><link href="https://patrick.cloke.us/feeds/atom.xml" rel="self"></link><id>https://patrick.cloke.us/</id><updated>2021-02-26T12:31:00-05:00</updated><entry><title>django-querysetsequence 0.14 released!</title><link href="https://patrick.cloke.us/posts/2021/02/26/django-querysetsequence-0-14-released/" rel="alternate"></link><published>2021-02-26T12:31:00-05:00</published><updated>2021-02-26T12:31:00-05:00</updated><author><name>Patrick Cloke</name></author><id>tag:patrick.cloke.us,2021-02-26:/posts/2021/02/26/django-querysetsequence-0-14-released/</id><summary type="html">&lt;p&gt;&lt;a class="reference external" href="https://github.com/clokep/django-querysetsequence/"&gt;django-querysetsequence&lt;/a&gt; 0.14 has been released with support for Django 3.2 (and
+Python 3.9). django-querysetsequence is a Django package for
+&lt;a class="reference external" href="{filename}/articles/combining-disparate-querysets-in-django.rst"&gt;treating multiple &lt;tt class="docutils literal"&gt;QuerySet&lt;/tt&gt; instances as a single &lt;tt class="docutils literal"&gt;QuerySet&lt;/tt&gt;&lt;/a&gt;, this can be useful
+for treating similar models as a single model. The &lt;tt class="docutils literal"&gt;QuerySetSequence&lt;/tt&gt; class
+supports &lt;a class="reference external" href="https://django-querysetsequence.readthedocs.io/en/latest/api.html"&gt;much of the &lt;span class="caps"&gt;API …&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;</summary><content type="html">&lt;p&gt;&lt;a class="reference external" href="https://github.com/clokep/django-querysetsequence/"&gt;django-querysetsequence&lt;/a&gt; 0.14 has been released with support for Django 3.2 (and
+Python 3.9). django-querysetsequence is a Django package for
+&lt;a class="reference external" href="{filename}/articles/combining-disparate-querysets-in-django.rst"&gt;treating multiple &lt;tt class="docutils literal"&gt;QuerySet&lt;/tt&gt; instances as a single &lt;tt class="docutils literal"&gt;QuerySet&lt;/tt&gt;&lt;/a&gt;, this can be useful
+for treating similar models as a single model. The &lt;tt class="docutils literal"&gt;QuerySetSequence&lt;/tt&gt; class
+supports &lt;a class="reference external" href="https://django-querysetsequence.readthedocs.io/en/latest/api.html"&gt;much of the &lt;span class="caps"&gt;API&lt;/span&gt;&lt;/a&gt; available to &lt;tt class="docutils literal"&gt;QuerySet&lt;/tt&gt; instances.&lt;/p&gt;
+&lt;p&gt;The marquee features of this release&amp;nbsp;are:&lt;/p&gt;
+&lt;ul class="simple"&gt;
+&lt;li&gt;Support for &lt;a class="reference external" href="https://docs.djangoproject.com/en/dev/ref/models/querysets/#values"&gt;&lt;tt class="docutils literal"&gt;values()&lt;/tt&gt;&lt;/a&gt; and &lt;a class="reference external" href="https://docs.djangoproject.com/en/dev/ref/models/querysets/#values-list"&gt;&lt;tt class="docutils literal"&gt;values_list()&lt;/tt&gt;&lt;/a&gt; to retrieve the results as
+dictionaries / tuples (instead of &lt;tt class="docutils literal"&gt;Model&lt;/tt&gt; instances).&lt;/li&gt;
+&lt;li&gt;Partial support for &lt;a class="reference external" href="https://docs.djangoproject.com/en/dev/ref/models/querysets/#distinct"&gt;&lt;tt class="docutils literal"&gt;distinct()&lt;/tt&gt;&lt;/a&gt; &amp;#8212; this is only supported when each underlying
+&lt;tt class="docutils literal"&gt;QuerySet&lt;/tt&gt; is a unique &lt;tt class="docutils literal"&gt;Model&lt;/tt&gt;.&lt;/li&gt;
+&lt;li&gt;&lt;a class="reference external" href="https://django-querysetsequence.readthedocs.io/"&gt;Prettier documentation&lt;/a&gt; is&amp;nbsp;available.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;The full changelog is included&amp;nbsp;below:&lt;/p&gt;
+&lt;div class="section" id="features"&gt;
+&lt;h2&gt;Features&lt;/h2&gt;
+&lt;ul class="simple"&gt;
+&lt;li&gt;Support Django 3.2 (&lt;a class="reference external" href="https://github.com/clokep/django-querysetsequence/pull/78"&gt;#78&lt;/a&gt;,
+&lt;a class="reference external" href="https://github.com/clokep/django-querysetsequence/pull/81"&gt;#81&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;Support Python 3.9. (&lt;a class="reference external" href="https://github.com/clokep/django-querysetsequence/pull/78"&gt;#78&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;Support the &lt;tt class="docutils literal"&gt;values()&lt;/tt&gt; and &lt;tt class="docutils literal"&gt;values_list()&lt;/tt&gt; methods.
+(&lt;a class="reference external" href="https://github.com/clokep/django-querysetsequence/pull/73"&gt;#73&lt;/a&gt;,
+&lt;a class="reference external" href="https://github.com/clokep/django-querysetsequence/pull/74"&gt;#74&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;Support the &lt;tt class="docutils literal"&gt;distinct()&lt;/tt&gt; method when each &lt;tt class="docutils literal"&gt;QuerySet&lt;/tt&gt; instance is from a
+unique model. Contributed by
+&lt;a class="reference external" href="https://github.com/jpic"&gt;&amp;#64;jpic&lt;/a&gt;. (&lt;a class="reference external" href="https://github.com/clokep/django-querysetsequence/pull/77"&gt;#77&lt;/a&gt;,
+&lt;a class="reference external" href="https://github.com/clokep/django-querysetsequence/pull/80"&gt;#80&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;Add &lt;a class="reference external" href="https://django-querysetsequence.readthedocs.io/"&gt;Sphinx documentation&lt;/a&gt;
+which is available at Read the&amp;nbsp;Docs.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+&lt;div class="section" id="bugfixes"&gt;
+&lt;h2&gt;Bugfixes&lt;/h2&gt;
+&lt;ul class="simple"&gt;
+&lt;li&gt;Support calling &lt;tt class="docutils literal"&gt;filter()&lt;/tt&gt; with &lt;a class="reference external" href="https://docs.djangoproject.com/en/dev/ref/models/querysets/#q-objects"&gt;&lt;tt class="docutils literal"&gt;Q()&lt;/tt&gt; objects&lt;/a&gt;. Contributed by
+&lt;a class="reference external" href="https://github.com/jpic"&gt;&amp;#64;jpic&lt;/a&gt;. (&lt;a class="reference external" href="https://github.com/clokep/django-querysetsequence/pull/76"&gt;#76&lt;/a&gt;)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+&lt;div class="section" id="miscellaneous"&gt;
+&lt;h2&gt;Miscellaneous&lt;/h2&gt;
+&lt;ul class="simple"&gt;
+&lt;li&gt;Add an additional test for the interaction of &lt;tt class="docutils literal"&gt;order_by()&lt;/tt&gt; and &lt;tt class="docutils literal"&gt;only()&lt;/tt&gt;.
+(&lt;a class="reference external" href="https://github.com/clokep/django-querysetsequence/pull/72"&gt;#72&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;Support Django &lt;span class="caps"&gt;REST&lt;/span&gt; Framework 3.12. (&lt;a class="reference external" href="https://github.com/clokep/django-querysetsequence/pull/75"&gt;#75&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;Switch continuous integration to GitHub Actions. (&lt;a class="reference external" href="https://github.com/clokep/django-querysetsequence/pull/79"&gt;#79&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;Drop support for Python 3.5. (&lt;a class="reference external" href="https://github.com/clokep/django-querysetsequence/pull/82"&gt;#82&lt;/a&gt;)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+</content><category term="articles"></category><category term="django"></category><category term="django-querysetsequence"></category></entry><entry><title>celery-batches 0.4 released!</title><link href="https://patrick.cloke.us/posts/2020/11/30/celery-batches-0.4-released/" rel="alternate"></link><published>2020-11-30T16:50:00-05:00</published><updated>2020-11-30T16:50:00-05:00</updated><author><name>Patrick Cloke</name></author><id>tag:patrick.cloke.us,2020-11-30:/posts/2020/11/30/celery-batches-0.4-released/</id><summary type="html">&lt;p&gt;Earlier today I released a version &lt;a class="reference external" href="https://pypi.org/project/celery-batches/0.4/"&gt;0.4&lt;/a&gt; of &lt;a class="reference external" href="https://github.com/clokep/celery-batches/"&gt;celery-batches&lt;/a&gt; with support for
 Celery 5.0. As part of this release support for Python &amp;lt; 3.6 was dropped and
 support for Celery &amp;lt; 4.4 was&amp;nbsp;dropped.&lt;/p&gt;
 &lt;p&gt;celery-batches is a small library that allows you process multiple calls to a

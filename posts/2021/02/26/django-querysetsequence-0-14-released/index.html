@@ -1,0 +1,218 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Feed configuration. -->
+    <link href="https://patrick.cloke.us/feeds/atom.xml" type="application/atom+xml" rel="alternate" title="Patrick Cloke Atom Feed" />
+    <link href="https://patrick.cloke.us/feeds/rss.xml" type="application/rss+xml" rel="alternate" title="Patrick Cloke RSS Feed" />
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
+    <link rel="stylesheet" href="/theme/css/styles.css">
+    <link rel="stylesheet" href="/theme/css/borland.css">
+    <link rel="stylesheet" href="/theme/css/youtube.css">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
+
+    <title>django-querysetsequence 0.14 released!</title>
+
+    <script>var clicky_site_ids = [101275378];</script>
+    <script async src="/theme/js/clicky.js"></script>
+  </head>
+
+  <body class="pb-5">
+    <nav class="navbar navbar-expand-lg sticky-top navbar-light bg-light border-bottom border-info">
+      <a class="navbar-brand" href="/">
+        Patrick Cloke
+      </a>
+
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-items" aria-controls="navbar-items" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="navbar-items">
+        <ul class="navbar-nav ml-auto">
+
+          <li class="nav-item">
+            <a class="nav-link" href="/pages/about.html">About</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/pages/projects.html">Projects</a>
+          </li>
+
+          <li class="nav-item">
+            <a class="nav-link" href="/archives.html">Archives</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/tags.html">Tags</a>
+          </li>
+
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="social-dropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              Social
+            </a>
+
+            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="social-dropdown">
+              <a class="dropdown-item" href="https://www.twitter.com/clokep" target="_blank">
+                <span class="fab fa-twitter mr-1"></span> twitter
+              </a>
+              <a class="dropdown-item" href="https://mastodon.social/@clokep" target="_blank">
+                <span class="fab fa-mastodon mr-1"></span> mastodon
+              </a>
+              <a class="dropdown-item" href="https://www.github.com/clokep" target="_blank">
+                <span class="fab fa-github mr-1"></span> github
+              </a>
+              <a class="dropdown-item" href="https://gitlab.com/clokep" target="_blank">
+                <span class="fab fa-gitlab mr-1"></span> gitlab
+              </a>
+              <a class="dropdown-item" href="https://bitbucket.org/clokep" target="_blank">
+                <span class="fab fa-bitbucket mr-1"></span> bitbucket
+              </a>
+              <a class="dropdown-item" href="https://mozillians.org/u/clokep/" target="_blank">
+                <span class="fab fa-firefox mr-1"></span> mozillians
+              </a>
+            </div>
+          </li>
+
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="feeds-dropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              Feeds
+            </a>
+
+            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="feeds-dropdown">
+              <a class="dropdown-item" href="https://patrick.cloke.us/feeds/atom.xml" type="application/atom+xml" rel="alternate">atom feed</a>
+              <a class="dropdown-item" href="https://patrick.cloke.us/feeds/rss.xml" type="application/rss+xml" rel="alternate">rss feed</a>
+            </div>
+          </li>
+
+          <form class="form-inline" method="get" action="http://www.google.com/search">
+            <input class="form-control form-control-sm mr-sm-2" type="search" name="q" placeholder="Search" aria-label="Search" />
+            <input type="hidden"  name="sitesearch" value="patrick.cloke.us" />
+
+            <button class="btn btn-sm btn-outline-info d-none d-sm-inline" type="submit">Search</button>
+          </form>
+        </ul>
+      </div>
+    </nav>
+
+<div class="container">
+  <div class="row">
+    <div class="col-md-12 mt-2 mb-2">
+      <h1>
+        <a href="/posts/2021/02/26/django-querysetsequence-0-14-released/" rel="bookmark"
+           title="Permalink to django-querysetsequence 0.14 released!">django-querysetsequence 0.14&nbsp;released!</a>
+      </h1>
+
+      <div class="float-right">
+        <a href="https://twitter.com/intent/tweet?text=django-querysetsequence%200.14%C2%A0released%21&url=https%3A//patrick.cloke.us/posts/2021/02/26/django-querysetsequence-0-14-released/&hashtags=django,django-querysetsequence" target="_blank" class="ml-1 mr-1" title="Share on Twitter">
+          <span class="fab fa-twitter"></span>
+        </a>
+        <a href="https://www.facebook.com/sharer/sharer.php?u=https%3A//patrick.cloke.us/posts/2021/02/26/django-querysetsequence-0-14-released/" target="_blank" class="ml-1 mr-1" title="Share on Facebook">
+          <span class="fab fa-facebook"></span>
+        </a>
+        <a href="mailto:?subject=django-querysetsequence%200.14%C2%A0released%21&amp;body=https%3A//patrick.cloke.us/posts/2021/02/26/django-querysetsequence-0-14-released/" target="_blank" class="ml-1 mr-1" title="Share via Email">
+          <span class="fas fa-envelope"></span>
+        </a>
+      </div>
+
+      <i>Friday, February 26, 2021</i>
+
+      <br>
+      <i>
+        Tags:           <a href="/tag/django.html">django</a>,          <a href="/tag/django-querysetsequence.html">django-querysetsequence</a>      </i>
+
+      <div class="mt-3">
+
+        <p><a class="reference external" href="https://github.com/clokep/django-querysetsequence/">django-querysetsequence</a> 0.14 has been released with support for Django 3.2 (and
+Python 3.9). django-querysetsequence is a Django package for
+<a class="reference external" href="{filename}/articles/combining-disparate-querysets-in-django.rst">treating multiple <tt class="docutils literal">QuerySet</tt> instances as a single <tt class="docutils literal">QuerySet</tt></a>, this can be useful
+for treating similar models as a single model. The <tt class="docutils literal">QuerySetSequence</tt> class
+supports <a class="reference external" href="https://django-querysetsequence.readthedocs.io/en/latest/api.html">much of the <span class="caps">API</span></a> available to <tt class="docutils literal">QuerySet</tt> instances.</p>
+<p>The marquee features of this release&nbsp;are:</p>
+<ul class="simple">
+<li>Support for <a class="reference external" href="https://docs.djangoproject.com/en/dev/ref/models/querysets/#values"><tt class="docutils literal">values()</tt></a> and <a class="reference external" href="https://docs.djangoproject.com/en/dev/ref/models/querysets/#values-list"><tt class="docutils literal">values_list()</tt></a> to retrieve the results as
+dictionaries / tuples (instead of <tt class="docutils literal">Model</tt> instances).</li>
+<li>Partial support for <a class="reference external" href="https://docs.djangoproject.com/en/dev/ref/models/querysets/#distinct"><tt class="docutils literal">distinct()</tt></a> &#8212; this is only supported when each underlying
+<tt class="docutils literal">QuerySet</tt> is a unique <tt class="docutils literal">Model</tt>.</li>
+<li><a class="reference external" href="https://django-querysetsequence.readthedocs.io/">Prettier documentation</a> is&nbsp;available.</li>
+</ul>
+<p>The full changelog is included&nbsp;below:</p>
+<div class="section" id="features">
+<h2>Features</h2>
+<ul class="simple">
+<li>Support Django 3.2 (<a class="reference external" href="https://github.com/clokep/django-querysetsequence/pull/78">#78</a>,
+<a class="reference external" href="https://github.com/clokep/django-querysetsequence/pull/81">#81</a>)</li>
+<li>Support Python 3.9. (<a class="reference external" href="https://github.com/clokep/django-querysetsequence/pull/78">#78</a>)</li>
+<li>Support the <tt class="docutils literal">values()</tt> and <tt class="docutils literal">values_list()</tt> methods.
+(<a class="reference external" href="https://github.com/clokep/django-querysetsequence/pull/73">#73</a>,
+<a class="reference external" href="https://github.com/clokep/django-querysetsequence/pull/74">#74</a>)</li>
+<li>Support the <tt class="docutils literal">distinct()</tt> method when each <tt class="docutils literal">QuerySet</tt> instance is from a
+unique model. Contributed by
+<a class="reference external" href="https://github.com/jpic">&#64;jpic</a>. (<a class="reference external" href="https://github.com/clokep/django-querysetsequence/pull/77">#77</a>,
+<a class="reference external" href="https://github.com/clokep/django-querysetsequence/pull/80">#80</a>)</li>
+<li>Add <a class="reference external" href="https://django-querysetsequence.readthedocs.io/">Sphinx documentation</a>
+which is available at Read the&nbsp;Docs.</li>
+</ul>
+</div>
+<div class="section" id="bugfixes">
+<h2>Bugfixes</h2>
+<ul class="simple">
+<li>Support calling <tt class="docutils literal">filter()</tt> with <a class="reference external" href="https://docs.djangoproject.com/en/dev/ref/models/querysets/#q-objects"><tt class="docutils literal">Q()</tt> objects</a>. Contributed by
+<a class="reference external" href="https://github.com/jpic">&#64;jpic</a>. (<a class="reference external" href="https://github.com/clokep/django-querysetsequence/pull/76">#76</a>)</li>
+</ul>
+</div>
+<div class="section" id="miscellaneous">
+<h2>Miscellaneous</h2>
+<ul class="simple">
+<li>Add an additional test for the interaction of <tt class="docutils literal">order_by()</tt> and <tt class="docutils literal">only()</tt>.
+(<a class="reference external" href="https://github.com/clokep/django-querysetsequence/pull/72">#72</a>)</li>
+<li>Support Django <span class="caps">REST</span> Framework 3.12. (<a class="reference external" href="https://github.com/clokep/django-querysetsequence/pull/75">#75</a>)</li>
+<li>Switch continuous integration to GitHub Actions. (<a class="reference external" href="https://github.com/clokep/django-querysetsequence/pull/79">#79</a>)</li>
+<li>Drop support for Python 3.5. (<a class="reference external" href="https://github.com/clokep/django-querysetsequence/pull/82">#82</a>)</li>
+</ul>
+</div>
+
+      </div>
+
+<div id="disqus_thread"></div>
+<script>
+/**
+*  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+*  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/
+/*
+var disqus_config = function () {
+this.page.url = '/posts/2021/02/26/django-querysetsequence-0-14-released/';
+this.page.identifier = 'django-querysetsequence-0-14-released';
+};
+*/
+(function() { // DON'T EDIT BELOW THIS LINE
+var d = document, s = d.createElement('script');
+s.src = 'https://clokep.disqus.com/embed.js';
+s.setAttribute('data-timestamp', +new Date());
+(d.head || d.body).appendChild(s);
+})();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    </div>
+  </div>
+</div>
+
+    <nav class="navbar fixed-bottom navbar-light bg-light border-top border-info">
+      <a href="https://getpelican.com/" class="nav-item" target="_blank">Powered by Pelican</a>
+      <a href="https://github.com/clokep/clokep.github.io" class="nav-item" target="_blank">
+        Source available on GitHub <span class="fab fa-github"></span>
+      </a>
+    </nav>
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T" crossorigin="anonymous"></script>
+
+  </body>
+</html>
