@@ -190,7 +190,7 @@ connection aspects).
 Where can I see this stuff...?
 ==============================
 
-My work is kept in the "`experiments`_\ " repository on Instantbird's
+My work is kept in the "`experiments`_" repository on Instantbird's
 `Mercurial`_ repository. There's also a variety of bugs open (they're
 listed above, I'm not going to re-list them), although not a ton is
 happening in them.

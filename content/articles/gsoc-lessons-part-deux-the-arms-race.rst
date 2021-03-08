@@ -25,7 +25,7 @@ more patches that were increasingly complex. (Note that this wasn't a in
 response to a challenge from community members, it was a spontaneous
 situation.) Once a single student started to submit extra patches the
 other students felt they must also submit more patches to be considered
-equal/superior (hence my allusion to an "`arms race`_\ ").
+equal/superior (hence my allusion to an "`arms race`_").
 Interestingly, they would also sometimes work on the same bug in a sort
 of race to see who could fix it first.
 

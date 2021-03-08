@@ -14,7 +14,7 @@ by the Yahoo webmail client and served the emails on a local POP
 server. Cool, right? Except it always broke whenever Yahoo changed
 their pages around.
 
-After a bit I moved onto using the \ `WebMail extension`_ for
+After a bit I moved onto using the `WebMail extension`_ for
 Thunderbird. It essentially works the same way, but runs in the
 Thunderbird process as an extension instead of as a separate service.
 It's a little complicated to set up and requires two extensions. The

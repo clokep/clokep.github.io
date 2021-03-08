@@ -26,7 +26,7 @@ wiki that I started with, says I need:
 -  gmime >2.4 (not currently used)
 
 So great, `we have most of the dependencies`_! We just need one more.
-So I go grab, `gmime`_\ from the GNOME website (2.5.7, which is the
+So I go grab, `gmime`_ from the GNOME website (2.5.7, which is the
 newest stable, currently), again as a source bundle and put the
 necessary files in purple/libraries/gmime and edit the makefile so it
 will (attempt) to compile. But great -- it requires `libiconv`_, which

@@ -5,7 +5,7 @@ Instantbird Contact List Hack #2
 :tags: customizing, Instantbird, programming
 :slug: instantbird-contact-list-hack-2
 
-There was a \ `request`_ on the Instantbird Bugzilla to always show
+There was a `request`_ on the Instantbird Bugzilla to always show
 contacts in the contact list as the "big" contact (as shown when a
 contact is selected). Similarly to my `last post`_, this can easily be
 done with userChrome.css. See the post if you don't know what

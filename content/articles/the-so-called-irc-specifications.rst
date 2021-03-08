@@ -46,7 +46,7 @@ in 1993, `DCC Whiteboard`_, and a few other variations of this: RDCC
 summary`_.
 
 Something else to note about the whole DCC/CTCP mess...parts of it
-just *don't* have any documentation. There's *none*\ at all for SED (at
+just *don't* have any documentation. There's *none* at all for SED (at
 least that I've found, I'd love to be proved wrong) and very little
 (really just a mention) for DCC Voice.
 

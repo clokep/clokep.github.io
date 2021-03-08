@@ -27,7 +27,7 @@ will digest all of this in further detail at some point.
 
 I was able to meet lots of great people from different projects, just
 a few of which were: `Pidgin`_, `Debian`_, `Buildbot`_, the `Open
-Lighting Project`_, the \ `Tor Project`_, `phpBB`_, etc. Unfortunately
+Lighting Project`_, the `Tor Project`_, `phpBB`_, etc. Unfortunately
 being from Mozilla, most people already know what you do...or they think
 you do at least! Many people were surprised when I said I work on
 Thunderbird and Instantbird. I heard "Thunderbird is dead" at least

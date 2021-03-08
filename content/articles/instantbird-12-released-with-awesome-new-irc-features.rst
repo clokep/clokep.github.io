@@ -5,7 +5,7 @@ Instantbird 1.2 Released (with awesome new IRC features)!
 :tags: Instantbird, IRC
 :slug: instantbird-12-released-with-awesome
 
-If you haven't seen the announcement...\ `Instantbird 1.2 has been
+If you haven't seen the announcement... `Instantbird 1.2 has been
 released`_! It's got a ton of great new features that I'm excited for:
 `better tab complete`_, a marker showing the last viewed messages,
 support for Bonjour and more. But the most exciting bits to me are our
@@ -22,7 +22,7 @@ next release, once a few `Mozilla bugs`_ are fixed.
 
 Did I also mention that these implementations (including the raw XMPP
 and Twitter, which Instantbird has supported since 1.0) are going to be
-included in `Thunderbird`_\ 15, as part of it's new `chat feature`_?
+included in `Thunderbird`_ 15, as part of it's new `chat feature`_?
 Florian has done a great job of integrating our chat code there and it
 gives quite a different user experience than Instantbird, so don't be
 worried about Instantbird going away!

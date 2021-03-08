@@ -60,7 +60,7 @@ install. I ate dinner while it was installing (pasta, if you're curious
 -- I already had sauce made).
 
 There's a linker error when using VC8 and the Windows 7 SDK, so we'll
-need to install a `hotfix`_\ for that (I tried without it and I ran into
+need to install a `hotfix`_ for that (I tried without it and I ran into
 the issue). I had to download the "VS80sp1-KB949009-IA64-INTL.exe"
 version (there's also an X86 and an X64 version). Choose the one that
 works.
@@ -204,7 +204,7 @@ One last tidbit is to possibly add the option to your .mozconfig:
     --enable-chrome-format=flat
 
 This will not package anything in JARs (which pretty much just get in
-the way while developing). See\ `here`_ for more info.
+the way while developing). See `here`_ for more info.
 
 Edit: Fixed the path to the executable thanks to Florian. And fixed a
 spelling error in the title.
