@@ -11,8 +11,8 @@ the second line) in Instantbird.
 
 There's actually no option to do this in Instantbird, but with a
 little `userChrome`_ tweak, we can easily get this behavior (although
-with a couple caveats).  You should be able to add a new folder `inside
-your profile`_ called chrome.  Inside of this make a new file called
+with a couple caveats). You should be able to add a new folder `inside
+your profile`_ called chrome. Inside of this make a new file called
 userChrome.css and place the following:
 
 .. code-block:: css
@@ -28,7 +28,7 @@ should be on one line, just like your unselected contacts.
 I did mention there was a caveat though! If you want to expand a
 contact (to see all the protocols, etc. that you've merged together)
 you'll need to use the arrow keys: right arrow expands a contact, left
-arrow collapses a contact.  (You need to do this since the chevron icon
+arrow collapses a contact. (You need to do this since the chevron icon
 that lets you expand/collapse isn't shown on a non-selected contact.)
 
 (Some more technical details: we're forcing the standard contact

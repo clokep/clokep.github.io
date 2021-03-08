@@ -8,8 +8,8 @@ Compiling Instantbird
 .. contents::
 
 In the past I've tried to compile a few different programs that use
-the Mozilla toolkit to various levels of success.  I've tried to compile
-Thunderbird, Songbird and Instantbird at various points.  I got
+the Mozilla toolkit to various levels of success. I've tried to compile
+Thunderbird, Songbird and Instantbird at various points. I got
 Thunderbird to compile, but it only worked sporadically (although I
 think that was Firefox moving so fast that Thunderbird couldn't keep
 up), Songbird I gave up on rather quickly and Instantbird I've tried a
@@ -17,18 +17,18 @@ few times.
 
 Last summer I had Instantbird compiling on my old laptop (a Lenovo
 T60), which is >5 years old at this point and has had the heatsink / fan
-replaced twice -- a known issue with that model laptop.  Needless to
+replaced twice -- a known issue with that model laptop. Needless to
 say, that laptop didn't like compiling something on Windows that took
 approximately an hour with a large number of reads and writes to the
-hard drive.  This mixed with it being an old dual core + a 5400 RPM
-meant I'd be waiting a LONG time for my code to compile.  I got a
+hard drive. This mixed with it being an old dual core + a 5400 RPM
+meant I'd be waiting a LONG time for my code to compile. I got a
 Thinkpad X201 this past summer, so I finally got around to setting up a
 development environment on it and was able to get Instantbird to compile
-fully today.  I've outlined the steps I've followed: kind of to mirror
+fully today. I've outlined the steps I've followed: kind of to mirror
 the `Simple Thunderbird Build`_ page on MDC.
 
 I've done this using Microsoft Windows 7 Professional (64-bit) with
-Service Pack 1. (4.00 GB of RAM, Intel Core i7 M620 2.67 GHz). 
+Service Pack 1. (4.00 GB of RAM, Intel Core i7 M620 2.67 GHz).
 Throughout these steps, the defaults locations and options are used in
 the installers.
 
@@ -39,30 +39,30 @@ Visual Studio Express:
 ----------------------
 
 We need to install Visual Studio Express, specifically VC8 (2005) with
-Service Pack 1.  (Mozilla compiles with VC9 and VC10 to various degrees,
+Service Pack 1. (Mozilla compiles with VC9 and VC10 to various degrees,
 but it seems libpurple only compiles with VC8, also this is what's on
-the Instantbird buildbot, so I like having the same version.)  I
+the Instantbird buildbot, so I like having the same version.) I
 couldn't find this on Microsoft's website but I found it on `Softpedia`_
-(which is a legitimate site).  Anyway, download the installer and
+(which is a legitimate site). Anyway, download the installer and
 install it (which will download the actual compiler from Microsoft),
 ensure that you also install the IDE (which is checked by default).
 
-This will only install VC8, the initial release.  We also need to
-install `Service Pack 1`_.  I personally did this using Windows Update,
+This will only install VC8, the initial release. We also need to
+install `Service Pack 1`_. I personally did this using Windows Update,
 but one of the installers from there should also work.
 
 Microsoft Windows SDK:
 ----------------------
 
 Specifically we need the `Windows 7 SDK`_ (for Jumplist, Aero, etc.
-support).  Download and install the SDK, this one took a while for me to
-install.  I ate dinner while it was installing (pasta, if you're curious
+support). Download and install the SDK, this one took a while for me to
+install. I ate dinner while it was installing (pasta, if you're curious
 -- I already had sauce made).
 
 There's a linker error when using VC8 and the Windows 7 SDK, so we'll
 need to install a `hotfix`_\ for that (I tried without it and I ran into
-the issue).  I had to download the "VS80sp1-KB949009-IA64-INTL.exe"
-version (there's also an X86 and an X64 version).  Choose the one that
+the issue). I had to download the "VS80sp1-KB949009-IA64-INTL.exe"
+version (there's also an X86 and an X64 version). Choose the one that
 works.
 
 Microsoft Macro Assembler:
@@ -70,22 +70,22 @@ Microsoft Macro Assembler:
 
 In order to properly assemble the code we need to `install MASM`_
 (which I think will eventually be included in MozillaBuild, but it isn't
-currently).  Again, just install it with the defaults.
+currently). Again, just install it with the defaults.
 
 MozillaBuild:
 -------------
 
-Almost there, I promise.  In order to get a \*nix type shell to run
+Almost there, I promise. In order to get a \*nix type shell to run
 make, etc. in we'll use a package from Mozilla that includes MSYS, make,
-Mercurial, etc.  Download and `install MozillaBuild`_, the latest should
+Mercurial, etc. Download and `install MozillaBuild`_, the latest should
 work fine.
 
 Now, an unknown step: you might require the `Microsoft Visual C++ 2008
-SP1 Redistributable Package`_.  I don't know if you need this or not
+SP1 Redistributable Package`_. I don't know if you need this or not
 since I *already* had it, most likely from a previous program I've
 installed.
 
-We should be ready to build now pretty much.  For some more
+We should be ready to build now pretty much. For some more
 information for this stuff you can check out the Mozilla Developer
 Network pages I used to get this information: `Build Instructions`_,
 `Windows Build Prerequisites`_ and `MSVC8 Build Instructions`_.
@@ -93,24 +93,24 @@ Network pages I used to get this information: `Build Instructions`_,
 Checkout the Code:
 ==================
 
-We need to checkout the code.  I originally checked out the code with
+We need to checkout the code. I originally checked out the code with
 TortoiseHg (which is what I normally use), but the version of Mercurial
 included is significantly greater than the one included in MozillaBuild
-and this caused me issues later on.  Thus, we'll check out the code on
-the command line.  Start by launching the bash shell, which is at
-C:\\mozilla-build\\start-msvc8.bat (don't use the x64 version).  There's
+and this caused me issues later on. Thus, we'll check out the code on
+the command line. Start by launching the bash shell, which is at
+C:\\mozilla-build\\start-msvc8.bat (don't use the x64 version). There's
 a version here which corresponds to each version of VS.
 
 Once this finishes loading you'll be in the home directory (which is
 in the root of your user's documents and settings folder, i.e. for me:
-C:\\Users\\clokep).  You'll want to do the following:
+C:\\Users\\clokep). You'll want to do the following:
 
 .. code-block:: bash
 
     hg clone https://hg.instantbird.org/instantbird
 
 This might take a few minutes depending on how good your internet
-connection is.  (The Instantbird source isn't THAT big though, it
+connection is. (The Instantbird source isn't THAT big though, it
 shouldn't take too long.)
 
 Then we'll need to change into the instantbird directory that was just
@@ -121,16 +121,16 @@ created and download the Mozilla source code:
     cd instantbird
     python client.py checkout
 
-Now this step?  This one is gonna take a while.  It took me like a
-couple of hours.  It pulls the Mozilla source code, which is large and
-has many changesets.  Just let it go, it'll give you progress
+Now this step? This one is gonna take a while. It took me like a
+couple of hours. It pulls the Mozilla source code, which is large and
+has many changesets. Just let it go, it'll give you progress
 occasionally (changes, manifests, files, etc.)
 
 Compiling Instantbird:
 ======================
 
-We need to set up the options we want to build with.  These are
-read from a .mozconfig (don't miss the "." in the front!).  The contents
+We need to set up the options we want to build with. These are
+read from a .mozconfig (don't miss the "." in the front!). The contents
 of the .mozconfig that worked for me are:
 
 .. code-block:: bash
@@ -149,8 +149,8 @@ Finally (back in the bash shell) type:
 
     make -f client.mk build
 
-Now sit back and relax.  My build took about an hour to finish, maybe
-a bit less -- I wasn't fully paying attention.  Once it's done you
+Now sit back and relax. My build took about an hour to finish, maybe
+a bit less -- I wasn't fully paying attention. Once it's done you
 should see something like:
 
 .. code-block:: bash
@@ -194,7 +194,7 @@ second one, if you don't use it...shame on you. Try not to close the
 wrong Instantbird when you're working on stuff).
 
 Hopefully this will help someone else get started on hacking
-Instantbird.  There's other good ways you can hack too if your computer
+Instantbird. There's other good ways you can hack too if your computer
 can't handle compiling, including unpacking omni.jar.
 
 One last tidbit is to possibly add the option to your .mozconfig:
@@ -204,7 +204,7 @@ One last tidbit is to possibly add the option to your .mozconfig:
     --enable-chrome-format=flat
 
 This will not package anything in JARs (which pretty much just get in
-the way while developing).  See \ `here`_ for more info.
+the way while developing). See\ `here`_ for more info.
 
 Edit: Fixed the path to the executable thanks to Florian. And fixed a
 spelling error in the title.

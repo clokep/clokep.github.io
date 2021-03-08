@@ -10,9 +10,9 @@ the summer (sometime in August, I can't seem to find the exact date --
 at least since Sept. 10th though).
 
 Since `libpurple`_ (used in Pidgin, Adium, etc.) provides the IRC
-protocol that we currently use, why do this?  One reason is to iron out
+protocol that we currently use, why do this? One reason is to iron out
 (and find) some of the bugs left in implementing protocols in JavaScript
-and part of it is so I can learn to code better.  Unfortunately during
+and part of it is so I can learn to code better. Unfortunately during
 this semester I was not able to get as much done as I had hoped and
 almost everything that had been done was finished in August/September
 
@@ -27,8 +27,8 @@ Some big milestones I've completed (with dates if I have them):
 There had been a bunch of small bugs I had been having in getting this
 to work: one error, (which I found quickly) one of the other developers
 (`Florian`_) was able to help me out with, was that I was not initiating
-a **new** object.  And after learning a bit above observers I was able
-to get the UI to respond.  I even threw in support for op/half-op/voice 
+a **new** object. And after learning a bit above observers I was able
+to get the UI to respond. I even threw in support for op/half-op/voice
 After today's work I was able to generate the following screenshot:
 
 .. center::
@@ -42,8 +42,8 @@ After today's work I was able to generate the following screenshot:
 
 This build would be almost fully usable by those who do very little on
 IRC (i.e. if you just want to go and chat, it'd work well), but there's
-a lot more work to be done.  The code can be viewed in the `Experiments
-repository`_.  (Check it out, there's a 600+ line switch statement.)
+a lot more work to be done. The code can be viewed in the `Experiments
+repository`_. (Check it out, there's a 600+ line switch statement.)
 
 .. _Instantbird: http://www.instantbird.com/
 .. _libpurple: http://developer.pidgin.im/wiki/WhatIsLibpurple

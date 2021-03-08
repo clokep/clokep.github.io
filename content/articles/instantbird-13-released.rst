@@ -8,7 +8,7 @@ Instantbird 1.3 Released!!!
 Well we finally got our release process down a bit better and were
 able to do a quicker release (from 1.2 to 1.3, compared to our previous
 few releases). This is great news, as it gives incremental changes to
-our users faster!  There's some new features available, which are mostly
+our users faster! There's some new features available, which are mostly
 covered on the `Instantbird blog`_, but quickly:
 
 -  IRC now supports SASL authentication, which is required by Freenode

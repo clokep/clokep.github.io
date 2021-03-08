@@ -9,8 +9,8 @@ The so-called IRC "specifications"
 .. contents::
 
 In a `previous post`_ I had briefly gone over the "history of IRC" as
-I know it.  I'm going to expand on this a bit as I've come to understand
-it a bit more while reading through documentation.  (Hopefully it won't
+I know it. I'm going to expand on this a bit as I've come to understand
+it a bit more while reading through documentation. (Hopefully it won't
 sound too much like a rant, as it is all driving me crazy!)
 
 IRC Specifications
@@ -18,7 +18,7 @@ IRC Specifications
 
 So there's the original specification (`RFC 1459`_) in May 1993; this
 was expanded and replaced by four different specifications (`RFC 2810`_,
-`2811`_, `2812`_, `2813`_) in April 2000.  Seems pretty straightforward,
+`2811`_, `2812`_, `2813`_) in April 2000. Seems pretty straightforward,
 right?
 
 DCC/CTCP
@@ -27,30 +27,30 @@ DCC/CTCP
 Well, kind of...there's also the DCC/CTCP specifications, which is a
 separate protocol embedded/hidden within the IRC protocol (e.g. they're
 sent as IRC messages and parsed specially by clients, the server sees
-them as normal messages).  DCC/CTCP is used to send files as well as
+them as normal messages). DCC/CTCP is used to send files as well as
 other particular messages (ACTION commands for roleplaying, SED for
-encrypting conversations, VERSION to get client information, etc.). 
+encrypting conversations, VERSION to get client information, etc.).
 Anyway, this get's a bit more complicated -- it starts with the `DCC
-specification`_.  This was replaced/updated by the `CTCP specification`_
-(which fully includes the DCC specification) in 1994.  An `"updated"
-CTCP specification`_ was released in February 1997.  There's also a
+specification`_. This was replaced/updated by the `CTCP specification`_
+(which fully includes the DCC specification) in 1994. An `"updated"
+CTCP specification`_ was released in February 1997. There's also a
 `CTCP/2 specification`_ from October 1998, which was meant to
-reformulate a lot of the previous three versions.  And *finally*,
+reformulate a lot of the previous three versions. And *finally*,
 there's the DCC2 specification (two parts: `connection negotiation`_ and
 `file transfers`_) from April 2004.
 
-But wait!  I lied...that's not really the end of DCC/CTCP, there's
+But wait! I lied...that's not really the end of DCC/CTCP, there's
 also a bunch of extensions to it: `Turbo DCC`_, `XDCC (eXtended DCC)`_
 in 1993, `DCC Whiteboard`_, and a few other variations of this: RDCC
-(Reverse DCC), SDD (Secure DCC), DCC Voice, etc.  Wikipedia has a `good
+(Reverse DCC), SDD (Secure DCC), DCC Voice, etc. Wikipedia has a `good
 summary`_.
 
 Something else to note about the whole DCC/CTCP mess...parts of it
-just *don't* have any documentation.  There's *none*\ at all for SED (at
+just *don't* have any documentation. There's *none*\ at all for SED (at
 least that I've found, I'd love to be proved wrong) and very little
 (really just a mention) for DCC Voice.
 
-So, we're about halfway through now.  There's a bunch of extensions to
+So, we're about halfway through now. There's a bunch of extensions to
 the IRC protocol specifications that add new commands to the actual
 protocol.
 
@@ -61,7 +61,7 @@ Originally IRC had no authentication ability except the PASS command,
 which very few servers seem to use, a variety of mechanisms have
 replaced this, including `SASL authentication`_ (both PLAIN and BLOWFISH
 methods, although BLOWFISH isn't documented); and SASL itself is covered
-by at least `four`_ `RFCs`_ `in this`_ `situation`_.  There also seems
+by at least `four`_ `RFCs`_ `in this`_ `situation`_. There also seems
 to be a method called "Auth" which I haven't been able to pin down, as
 well as Ident (which is a more general protocol authentication method I
 haven't looked into yet).
@@ -70,7 +70,7 @@ Extension Support
 =================
 
 This includes a few that generally add a way by which servers are able
-to tell their clients exactly what a server supports.  The first of
+to tell their clients exactly what a server supports. The first of
 these was RPL\_ISUPPORT, which was defined as a `draft specification`_
 in January 2004, and `updated`_ in January of 2005.
 
@@ -94,31 +94,31 @@ Services
 ========
 
 To fill in some of the missing features of IRC, services were created
-(Wikipedia has a good `summary`_ again).  This commonly includes
-ChanServ, NickServ, OperServ, and MemoServ.  Not too hard, but different
+(Wikipedia has a good `summary`_ again). This commonly includes
+ChanServ, NickServ, OperServ, and MemoServ. Not too hard, but different
 server packages include different services (or even the same services
 that behave differently), one of more common ones is `Anope`_, however
 (plus they have awesome documentation, so they get a link).
 
 There was an attempt to standardize how to interact with services
 called IRC+, which included three specifications: `conference control
-protocol`_, `identity protocol`_ and `subscriptions protocol`_.  I don't
+protocol`_, `identity protocol`_ and `subscriptions protocol`_. I don't
 believe this are supported widely (if at all).
 
 IRC URL Scheme
 ==============
 
 Finally this brings us to the IRC URL scheme of which there are a few
-versions.  A draft from August 1996 defines the original `irc: URL
-scheme`_.  This was updated/replaced by `another draft`_ which defines
+versions. A draft from August 1996 defines the original `irc: URL
+scheme`_. This was updated/replaced by `another draft`_ which defines
 irc: and ircs: URL schemes.
 
-As of right now that's all that I've found...an awful lot.  Plus it's
+As of right now that's all that I've found...an awful lot. Plus it's
 not all compatible with each other (and sometimes out right contradicts
-each other).  Often newer specifications say not to support older
+each other). Often newer specifications say not to support older
 specifications, but who knows what servers/clients you'll end up talking
-to!  It's difficult to know what's used in practice, especially since
-there's an awful lot of `IRC servers`_ out there.  Anyway, if someone
+to! It's difficult to know what's used in practice, especially since
+there's an awful lot of `IRC servers`_ out there. Anyway, if someone
 does know of another specification, etc. that I missed please let me
 know!
 

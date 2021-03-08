@@ -7,23 +7,23 @@ JavaScript typed arrays pain
 
 If you've ever tried to deal with binary data in JavaScript you know
 it isn't much fun and you usually resort to using strings lots of
-charCodeAt and related functions.  `Typed arrays`_ are supposed to solve
-this though!  The typed array API consists of creating a buffer of bytes
+charCodeAt and related functions. `Typed arrays`_ are supposed to solve
+this though! The typed array API consists of creating a buffer of bytes
 (called an `ArrayBuffer`_) and then manipulating those bytes via
-different views (`ArrayBufferView`_\ s).  You can have multiple views of
+different views (`ArrayBufferView`_\ s). You can have multiple views of
 the same buffer, starting at different offsets, of different lengths and
 types...which is all neat from a technical point of view, but is it
-really useful?  It is kind of nice working with the views as if they
+really useful? It is kind of nice working with the views as if they
 were normal arrays though.
 
 I've been playing with these ArrayBuffers quite a bit as I'm working
 on an implementation of the `OSCAR protocol`_ (used for `AOL Instant
 Messenger`_ and `ICQ`_) in the chat backend (for Instantbird /
-Thunderbird).  (As an aside, the OSCAR protocol Wikipedia page has
+Thunderbird). (As an aside, the OSCAR protocol Wikipedia page has
 surprisingly good documentation of some of the underlying data
-structures of the protocol...)  I started by writing some test code
+structures of the protocol...) I started by writing some test code
 using ArrayBuffers and views, which have been around a while: since
-Gecko 2.0 in fact!  I quickly ran into some tedious issues with
+Gecko 2.0 in fact! I quickly ran into some tedious issues with
 repetitive code such as:
 
 .. code-block:: javascript
@@ -83,23 +83,23 @@ tested heavily at all, however.)
 OK, so typed arrays seem good, but kind of annoying, right?
 Wrong...the OSCAR protocol is a "network order" protocol (aka it is big
 endian). At this point you're probably thinking "OK, so the ArrayBuffer
-constructor must take an endianess flag!"  Wrong, it does no such
-thing.  "Hmmm...Well do the ArrayBufferViews take an endianess flag?" 
-Nope, wrong again.  The only way to specify the endianess of the data is
+constructor must take an endianess flag!" Wrong, it does no such
+thing. "Hmmm...Well do the ArrayBufferViews take an endianess flag?"
+Nope, wrong again. The only way to specify the endianess of the data is
 to use a `DataView`_, a slightly different interface to the underlying
-bytes.  It offers an API to individually set different data elements via
-their offset and endianess.  (If you're too lazy to read the
+bytes. It offers an API to individually set different data elements via
+their offset and endianess. (If you're too lazy to read the
 documentation all the way through, DataView assumes big endian: makes my
 life easier!)
 
 For the curious, JavaScript typed arrays use the system endianess,
 which in my opinion is pretty much useless (at least if you plan on
 sharing data) since you can never guarantee the endianess to be either
-big or little endian.  (The fun part is that this isn't even documented,
+big or little endian. (The fun part is that this isn't even documented,
 I found it on `Stack Overflow`_ and verified.)
 
 So, in summary...if you plan on networking at all with ArrayBuffers,
-don't use ArrayBufferViews, use DataViews.  (Although Uint8Arrays and
+don't use ArrayBufferViews, use DataViews. (Although Uint8Arrays and
 Int8Arrays should work fine!)
 
 And to not rant the *entire* time, working with typed arrays certainly

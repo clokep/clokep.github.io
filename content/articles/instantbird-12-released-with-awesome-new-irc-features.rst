@@ -6,23 +6,23 @@ Instantbird 1.2 Released (with awesome new IRC features)!
 :slug: instantbird-12-released-with-awesome
 
 If you haven't seen the announcement...\ `Instantbird 1.2 has been
-released`_!  It's got a ton of great new features that I'm excited for:
+released`_! It's got a ton of great new features that I'm excited for:
 `better tab complete`_, a marker showing the last viewed messages,
-support for Bonjour and more.  But the most exciting bits to me are our
+support for Bonjour and more. But the most exciting bits to me are our
 JavaScript implementations of `XMPP`_ (used for `Facebook Chat`_ and
 `GTalk`_, so far) and `IRC`_!
 
-Why am I so excited for them? Mostly because they're extendable! 
+Why am I so excited for them? Mostly because they're extendable!
 (Well...and I guess because I wrote most of the IRC code.) I've
 `written`_ a bit about this before for IRC...but it will let add-ons do
-whatever they want to the IRC protocol.  You should check out the
-implementations (links above), they're very hackable.  Hopefully we can
+whatever they want to the IRC protocol. You should check out the
+implementations (links above), they're very hackable. Hopefully we can
 remove libpurple XMPP and fully switch to Instantbird's XMPP for the
 next release, once a few `Mozilla bugs`_ are fixed.
 
 Did I also mention that these implementations (including the raw XMPP
 and Twitter, which Instantbird has supported since 1.0) are going to be
-included in `Thunderbird`_\ 15, as part of it's new `chat feature`_? 
+included in `Thunderbird`_\ 15, as part of it's new `chat feature`_?
 Florian has done a great job of integrating our chat code there and it
 gives quite a different user experience than Instantbird, so don't be
 worried about Instantbird going away!

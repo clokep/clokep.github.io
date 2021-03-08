@@ -8,13 +8,13 @@ Shared Lightning profile across Linux and Windows
 In `#calendar on Mozilla IRC`_ the past few days a user has been
 asking about using a shared profile on Thunderbird between Linux and
 Windows ("shared" meaning a dual boot system of Linux/Windows, but not
-at the same time, obviously).  Generally this isn't a big deal UNLESS
+at the same time, obviously). Generally this isn't a big deal UNLESS
 you have a binary extension, in which case you'd have to reinstall the
 extension every time! That's awfully lame.
 
 BUT there should be a way to make a unified extension for all
-operating systems.  In fact `ssitter had written an article to do
-that`_.  It needs some updating to account for the Mozilla 2 XPCOM
+operating systems. In fact `ssitter had written an article to do
+that`_. It needs some updating to account for the Mozilla 2 XPCOM
 changes, however.
 
 The steps are mostly the same, with some added.
@@ -35,11 +35,11 @@ The steps are mostly the same, with some added.
 
 In my test I ended up with an XPI that was approximately 10% bigger
 after combining Mac (x86 and x64), Linux (x86 and x64), Win32, Solaris
-Sparc and Solaris x86.  Why is this not done by default?  Probably just
-cause no one has done it...there is a `bug about it`_ though.  One issue
+Sparc and Solaris x86. Why is this not done by default? Probably just
+cause no one has done it...there is a `bug about it`_ though. One issue
 that might be encountered using this method is pre-processing of some
 script files (as is discussed in that big) but hopefully it should
-"mostly" work.  (Note that this is mostly untested.)
+"mostly" work. (Note that this is mostly untested.)
 
 **Edit:** I should also mention that you would need to do something
 similar with the themes folders if they differ dramatically (it seems

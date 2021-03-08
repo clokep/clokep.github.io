@@ -7,7 +7,7 @@ Instantbird 1.4 Released!
 
 After a bunch of l10n build problems, we've finally released
 Instantbird 1.4, which includes updates to libpurple 2.10.7 and Mozilla
-20.  In particular this includes:
+20. In particular this includes:
 
 -  Updated Twitter code that uses v1.1 of their API (v1.0 will be
    disabled on June 11th, 2013).

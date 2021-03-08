@@ -7,10 +7,10 @@ Yahoo Protocol Google Summer of Code Round-up
 
 I have to apologize to my student, `Quentin`_ (aka qheaden on IRC),
 for taking so long to write this...but anyway: Google Summer of Code
-2013 is over!  Quentin has done a great job working at implementing the
+2013 is over! Quentin has done a great job working at implementing the
 Yahoo Protocol for Instantbird (and Thunderbird) in JavaScript
-(henceforth called "JS-Yahoo").  It's at the point where it has mostly
-reached feature-parity with the libpurple plug-in.  Before `turning this
+(henceforth called "JS-Yahoo"). It's at the point where it has mostly
+reached feature-parity with the libpurple plug-in. Before `turning this
 on as default`_ there are a few minor bugs that still need to be fixed,
 but most of them have patches that just need another couple iterations.
 
@@ -35,7 +35,7 @@ You can already easily enable JS-Yahoo in `Instantbird nightly builds`_:
    support `DNS SRV`_, however.)
 #. Restart Instantbird!
 
-You should now be using the JS-Yahoo protocol.  Hopefully you don't
+You should now be using the JS-Yahoo protocol. Hopefully you don't
 notice anything different, but `PLEASE file bugs`_ if you see any
 issues.
 
@@ -43,7 +43,7 @@ How come I can't use this in Thunderbird?!
 ==========================================
 
 Because Instantbird and comm-central development don't happen in the same
-Mercurial repository.  I'm working on `syncing the chat/ folder of these
+Mercurial repository. I'm working on `syncing the chat/ folder of these
 repositories`_ currently and JS-Yahoo should be in Daily soon to be
 included in the next Thunderbird release (i.e. Thunderbird 31).
 

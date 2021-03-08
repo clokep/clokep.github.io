@@ -5,7 +5,7 @@ Status Update - February 17, 2011
 :tags: Instantbird, IRC, programming
 :slug: status-update-february-17-2011
 
-Another month has gone by so it's time for another status update. 
+Another month has gone by so it's time for another status update.
 Unfortunately not as much got done this month as I was hoping, but
 here's a quick update of what I've worked on:
 
@@ -20,7 +20,7 @@ JavaScript protocols:
 
 -  `Bug 649`_ - purple proxies should not be in the way of JavaScript
    protocols
--  `Bug 118`_ - Extensions should be able to register commands. 
+-  `Bug 118`_ - Extensions should be able to register commands.
 
 In addition, Twitter support was added to nightly builds as a
 JavaScript protocol (`bug 598`_).

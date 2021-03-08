@@ -6,7 +6,7 @@ Status Update - January 18, 2011
 :slug: status-update-january-18-2011
 
 I haven't had an update in a few weeks (since early December)
-actually, so I thought I would post a bit about what I've worked on. 
+actually, so I thought I would post a bit about what I've worked on.
 I've fixed a bunch of bugs in the backend of Instantbird that allow work
 on JavaScript IRC protocol to continue:
 
@@ -38,7 +38,7 @@ Also a few other random bugs I've worked on:
 Although none of these are really things that weren't working a few
 weeks ago, there are now real APIs for these for JavaScript protocols,
 allowing other protocols to use them and to *FULLY* implement them
-instead of hard coding values.  In addition, a lot of the purplexpcom
+instead of hard coding values. In addition, a lot of the purplexpcom
 layer is now hidden from JavaScript protocols.
 
 There's a few things left to do for the JavaScript protocol layer:
@@ -54,17 +54,17 @@ There's a few things left to do for the JavaScript protocol layer:
    (hopefully being handled by Florian)
 
 A good summary of this is `the dependency graph of bug 507`_
-(Implement IRC in JavaScript).  Note that the IRC JavaScript work blocks
-*a  lot* of UI work done for IRC.  In particular Mook has been working
+(Implement IRC in JavaScript). Note that the IRC JavaScript work blocks
+*a lot* of UI work done for IRC. In particular Mook has been working
 on implementing notifications (i.e. Invites, and perhaps a few other
-commands), see `Bug 628`_.  For other bugs, see the link above -- and if
+commands), see `Bug 628`_. For other bugs, see the link above -- and if
 there's a strange UI feature that you think should be added, please file
 a bug and let us know about it!
 
 I've also worked a bit on sending outgoing text with rich formatting
 (bold, italics, underline, text size, etc.), this work is being tracked
 in `Bug 634`_. There's a proof on concept, but a lot of work needs to be
-done for it, but it's sort of working right now. 
+done for it, but it's sort of working right now.
 
 As I alluded to in my last blog post, the JavaScript protocols would
 be used to implement Twitter. Work for this is occurring in `Bug 598`_,
