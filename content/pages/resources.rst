@@ -161,8 +161,10 @@ Git
 ===
 
 * `Finding a branch point with Git?`_ on StackOverflow -- this has some neat Git aliases.
+* `Ignoring mass reformatting commits with git blame`_ by Rob Allen
 
 .. _Finding a branch point with Git?: https://stackoverflow.com/questions/1527234/finding-a-branch-point-with-git
+.. _Ignoring mass reformatting commits with git blame: https://akrabat.com/ignoring-revisions-with-git-blame/
 
 Unicode
 =======
