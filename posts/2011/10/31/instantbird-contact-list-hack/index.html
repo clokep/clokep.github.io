@@ -132,8 +132,8 @@ in the contact list <span class="caps">NOT</span> expand to two lines (where the
 the second line) in&nbsp;Instantbird.</p>
 <p>There&#8217;s actually no option to do this in Instantbird, but with a
 little <a class="reference external" href="http://www-archive.mozilla.org/unix/customizing.html">userChrome</a> tweak, we can easily get this behavior (although
-with a couple caveats).&nbsp; You should be able to add a new folder <a class="reference external" href="http://instantbird.com/faq.html#profilefolder">inside
-your profile</a> called chrome.&nbsp; Inside of this make a new file called
+with a couple caveats). You should be able to add a new folder <a class="reference external" href="http://instantbird.com/faq.html#profilefolder">inside
+your profile</a> called chrome. Inside of this make a new file called
 userChrome.css and place the&nbsp;following:</p>
 <div class="highlight"><pre><span></span><span class="p">#</span><span class="nn">buddylistbox</span><span class="p">:</span><span class="nd">focus</span> <span class="o">&gt;</span> <span class="nt">contact</span><span class="o">[</span><span class="nt">selected</span><span class="o">]</span> <span class="p">{</span>
     <span class="kp">-moz-</span><span class="n">binding</span><span class="p">:</span> <span class="nb">url</span><span class="p">(</span><span class="s2">&quot;chrome://instantbird/content/contact.xml#contact&quot;</span><span class="p">)</span> <span class="cp">!important</span><span class="p">;</span>
@@ -145,7 +145,7 @@ should be on one line, just like your unselected&nbsp;contacts.</p>
 <p>I did mention there was a caveat though! If you want to expand a
 contact (to see all the protocols, etc. that you&#8217;ve merged together)
 you&#8217;ll need to use the arrow keys: right arrow expands a contact, left
-arrow collapses a contact.&nbsp; (You need to do this since the chevron icon
+arrow collapses a contact. (You need to do this since the chevron icon
 that lets you expand/collapse isn&#8217;t shown on a non-selected&nbsp;contact.)</p>
 <p>(Some more technical details: we&#8217;re forcing the standard contact
 template to be used instead of the contact-big template, even when the

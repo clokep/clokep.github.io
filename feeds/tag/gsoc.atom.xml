@@ -529,57 +529,57 @@ community one will be very not-GSoC focused and could apply to just
 trying to incorporate new contributors&amp;#8230;but I&amp;#8217;ll include it in this&amp;nbsp;series.&lt;/p&gt;
 </content><category term="articles"></category><category term="community"></category><category term="GSoC"></category><category term="Mozilla"></category></entry><entry><title>Google Summer of Code Mentor Summit 2013</title><link href="https://patrick.cloke.us/posts/2013/10/20/google-summer-of-code-mentor-summit-2013/" rel="alternate"></link><published>2013-10-20T22:18:00-04:00</published><updated>2013-10-20T22:18:00-04:00</updated><author><name>Patrick Cloke</name></author><id>tag:patrick.cloke.us,2013-10-20:/posts/2013/10/20/google-summer-of-code-mentor-summit-2013/</id><summary type="html">&lt;p&gt;Not only was I lucky enough to mentor a great student for this year&amp;#8217;s
 Google Summer of Code, but Mozilla asked me to represent them at the
-Google Summer of Code Mentor Summit!&amp;nbsp; This was located at Google&amp;#8217;s
+Google Summer of Code Mentor Summit! This was located at Google&amp;#8217;s
 offices in Mountain View, California this past weekend (Friday, Oct …&lt;/p&gt;</summary><content type="html">&lt;p&gt;Not only was I lucky enough to mentor a great student for this year&amp;#8217;s
 Google Summer of Code, but Mozilla asked me to represent them at the
-Google Summer of Code Mentor Summit!&amp;nbsp; This was located at Google&amp;#8217;s
+Google Summer of Code Mentor Summit! This was located at Google&amp;#8217;s
 offices in Mountain View, California this past weekend (Friday, Oct.
 18th - Sunday, Oct. 20th,&amp;nbsp;2013).&lt;/p&gt;
 &lt;p&gt;Before actually heading over to the Summit, &lt;a class="reference external" href="http://mykzilla.org/"&gt;Myk Melez&lt;/a&gt; and &lt;a class="reference external" href="http://nickdesaulniers.github.io/"&gt;Nick
 Desaulniers&lt;/a&gt; were kind enough to show me around the Mozilla Mountain
-View office!&amp;nbsp; (Thanks to Daniel Holbert for setting that&amp;nbsp;up!)&lt;/p&gt;
+View office! (Thanks to Daniel Holbert for setting that&amp;nbsp;up!)&lt;/p&gt;
 &lt;p&gt;The GSoC Mentor Summit is run as an &amp;#8220;unconference&amp;#8221;, the open sessions
 were chosen by conference attendees and run as discussions with no
-keynote speakers.&amp;nbsp; This was an interesting experience and how good each
+keynote speakers. This was an interesting experience and how good each
 session was varied quite a bit by who was taking part in the discussion,
 but overall it was great to hear the experiences of other projects with
 their GSoC students, as well as to hear about lots of projects I had
-never heard of before!&amp;nbsp; In general the session I attended were about
+never heard of before! In general the session I attended were about
 community building and managing GSoC students, I took lots of notes and
 will digest all of this in further detail at some&amp;nbsp;point.&lt;/p&gt;
 &lt;p&gt;I was able to meet lots of great people from different projects, just
 a few of which were: &lt;a class="reference external" href="http://pidgin.im/"&gt;Pidgin&lt;/a&gt;, &lt;a class="reference external" href="http://www.debian.org/"&gt;Debian&lt;/a&gt;, &lt;a class="reference external" href="http://buildbot.net/"&gt;Buildbot&lt;/a&gt;, the &lt;a class="reference external" href="http://www.opendmx.net/"&gt;Open
-Lighting Project&lt;/a&gt;, the &lt;a class="reference external" href="https://www.torproject.org/"&gt;Tor Project&lt;/a&gt;, &lt;a class="reference external" href="https://www.phpbb.com/%E2%80%8E"&gt;phpBB&lt;/a&gt;, etc.&amp;nbsp; Unfortunately
+Lighting Project&lt;/a&gt;, the &lt;a class="reference external" href="https://www.torproject.org/"&gt;Tor Project&lt;/a&gt;, &lt;a class="reference external" href="https://www.phpbb.com/%E2%80%8E"&gt;phpBB&lt;/a&gt;, etc. Unfortunately
 being from Mozilla, most people already know what you do&amp;#8230;or they think
-you do at least!&amp;nbsp; Many people were surprised when I said I work on
-Thunderbird and Instantbird.&amp;nbsp; I heard &amp;#8220;Thunderbird is dead&amp;#8221; at least
+you do at least! Many people were surprised when I said I work on
+Thunderbird and Instantbird. I heard &amp;#8220;Thunderbird is dead&amp;#8221; at least
 twenty times, which was quite disappointing that those in the open
 source community don&amp;#8217;t even understand the current status of
-Thunderbird.&amp;nbsp; Many were happy to hear that it is still being maintained
-and developed by the community, however.&amp;nbsp; I even had some people thank
+Thunderbird. Many were happy to hear that it is still being maintained
+and developed by the community, however. I even had some people thank
 me (which I don&amp;#8217;t really deserve) for helping to continue maintain
-Thunderbird!&amp;nbsp; It was great to hear things like this at the Mozilla
+Thunderbird! It was great to hear things like this at the Mozilla
 Summit, but it was really invigorating to hear people outside of the
 Mozilla community excited that their favorite email client was still
 being&amp;nbsp;developed.&lt;/p&gt;
 &lt;p&gt;People were further surprised to hear that Thunderbird now includes
 instant messaging / chat (since Thunderbird 15 or 17) and that there is
-a Gecko based instant messaging client: Instantbird.&amp;nbsp; It seemed like
+a Gecko based instant messaging client: Instantbird. It seemed like
 some people were excited by this and hopefully they&amp;#8217;ll try it&amp;nbsp;out!&lt;/p&gt;
 &lt;p&gt;Anyway, I&amp;#8217;ve gone a little off-topic, but overall the Mentor Summit
 was great and I&amp;#8217;d like to thank both Mozilla and Google for giving me
-this opportunity.&amp;nbsp; If I find any really great gems in my notes I&amp;#8217;ll
+this opportunity. If I find any really great gems in my notes I&amp;#8217;ll
 write further blog posts about&amp;nbsp;them.&lt;/p&gt;
 </content><category term="articles"></category><category term="Google"></category><category term="GSoC"></category><category term="Mozilla"></category></entry><entry><title>Yahoo Protocol Google Summer of Code Round-up</title><link href="https://patrick.cloke.us/posts/2013/10/06/yahoo-protocol-google-summer-of-code/" rel="alternate"></link><published>2013-10-06T09:18:00-04:00</published><updated>2013-10-06T09:18:00-04:00</updated><author><name>Patrick Cloke</name></author><id>tag:patrick.cloke.us,2013-10-06:/posts/2013/10/06/yahoo-protocol-google-summer-of-code/</id><summary type="html">&lt;p&gt;I have to apologize to my student, &lt;a class="reference external" href="http://phaseshiftsoftware.com/blog/"&gt;Quentin&lt;/a&gt; (aka qheaden on &lt;span class="caps"&gt;IRC&lt;/span&gt;),
 for taking so long to write this&amp;#8230;but anyway: Google Summer of Code
-2013 is over!&amp;nbsp; Quentin has done a great job working at implementing the
+2013 is over! Quentin has done a great job working at implementing the
 Yahoo Protocol for Instantbird (and Thunderbird) in JavaScript
 (henceforth called &amp;#8220;&lt;span class="caps"&gt;JS&lt;/span&gt;-Yahoo …&lt;/p&gt;</summary><content type="html">&lt;p&gt;I have to apologize to my student, &lt;a class="reference external" href="http://phaseshiftsoftware.com/blog/"&gt;Quentin&lt;/a&gt; (aka qheaden on &lt;span class="caps"&gt;IRC&lt;/span&gt;),
 for taking so long to write this&amp;#8230;but anyway: Google Summer of Code
-2013 is over!&amp;nbsp; Quentin has done a great job working at implementing the
+2013 is over! Quentin has done a great job working at implementing the
 Yahoo Protocol for Instantbird (and Thunderbird) in JavaScript
-(henceforth called &amp;#8220;&lt;span class="caps"&gt;JS&lt;/span&gt;-Yahoo&amp;#8221;).&amp;nbsp; It&amp;#8217;s at the point where it has mostly
-reached feature-parity with the libpurple plug-in.&amp;nbsp; Before &lt;a class="reference external" href="https://bugzilla.instantbird.org/show_bug.cgi?id=2135"&gt;turning this
+(henceforth called &amp;#8220;&lt;span class="caps"&gt;JS&lt;/span&gt;-Yahoo&amp;#8221;). It&amp;#8217;s at the point where it has mostly
+reached feature-parity with the libpurple plug-in. Before &lt;a class="reference external" href="https://bugzilla.instantbird.org/show_bug.cgi?id=2135"&gt;turning this
 on as default&lt;/a&gt; there are a few minor bugs that still need to be fixed,
 but most of them have patches that just need another couple&amp;nbsp;iterations.&lt;/p&gt;
 &lt;div class="section" id="where-do-we-go-from-here"&gt;
@@ -601,13 +601,13 @@ the &lt;span class="caps"&gt;JS&lt;/span&gt;-&lt;span class="caps"&gt;XMPP&lt;/s
 support &lt;a class="reference external" href="https://bugzilla.mozilla.org/show_bug.cgi?id=14328"&gt;&lt;span class="caps"&gt;DNS&lt;/span&gt; &lt;span class="caps"&gt;SRV&lt;/span&gt;&lt;/a&gt;,&amp;nbsp;however.)&lt;/li&gt;
 &lt;li&gt;Restart&amp;nbsp;Instantbird!&lt;/li&gt;
 &lt;/ol&gt;
-&lt;p&gt;You should now be using the &lt;span class="caps"&gt;JS&lt;/span&gt;-Yahoo protocol.&amp;nbsp; Hopefully you don&amp;#8217;t
+&lt;p&gt;You should now be using the &lt;span class="caps"&gt;JS&lt;/span&gt;-Yahoo protocol. Hopefully you don&amp;#8217;t
 notice anything different, but &lt;a class="reference external" href="https://bugzilla.instantbird.org/"&gt;&lt;span class="caps"&gt;PLEASE&lt;/span&gt; file bugs&lt;/a&gt; if you see any&amp;nbsp;issues.&lt;/p&gt;
 &lt;/div&gt;
 &lt;div class="section" id="how-come-i-can-t-use-this-in-thunderbird"&gt;
 &lt;h2&gt;How come I can&amp;#8217;t use this in&amp;nbsp;Thunderbird?!&lt;/h2&gt;
 &lt;p&gt;Because Instantbird and comm-central development don&amp;#8217;t happen in the same
-Mercurial repository.&amp;nbsp; I&amp;#8217;m working on &lt;a class="reference external" href="https://bugzilla.mozilla.org/show_bug.cgi?id=920801"&gt;syncing the chat/ folder of these
+Mercurial repository. I&amp;#8217;m working on &lt;a class="reference external" href="https://bugzilla.mozilla.org/show_bug.cgi?id=920801"&gt;syncing the chat/ folder of these
 repositories&lt;/a&gt; currently and &lt;span class="caps"&gt;JS&lt;/span&gt;-Yahoo should be in Daily soon to be
 included in the next Thunderbird release (i.e. Thunderbird&amp;nbsp;31).&lt;/p&gt;
 &lt;p&gt;The whole Instantbird community has been super happy with the progress

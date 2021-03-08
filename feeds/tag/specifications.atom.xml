@@ -175,45 +175,45 @@ expected, but they’re uhh…not up anywhere yet though. Oops.&lt;/td&gt;&lt;/t
 &lt;/div&gt;
 </content><category term="articles"></category><category term="Instantbird"></category><category term="programming"></category><category term="specifications"></category><category term="Thunderbird"></category><category term="Wat"></category></entry><entry><title>The so-called IRC “specifications”</title><link href="https://patrick.cloke.us/posts/2011/03/08/so-called-irc-specifications/" rel="alternate"></link><published>2011-03-08T21:20:00-05:00</published><updated>2014-12-20T15:55:00-05:00</updated><author><name>Patrick Cloke</name></author><id>tag:patrick.cloke.us,2011-03-08:/posts/2011/03/08/so-called-irc-specifications/</id><summary type="html">
 &lt;p&gt;In a &lt;a class="reference external" href="https://patrick.cloke.us/posts/2010/12/08/why-rewrite-irc-into-javascript/"&gt;previous post&lt;/a&gt; I had briefly gone over the “history of &lt;span class="caps"&gt;IRC&lt;/span&gt;” as
-I know it.  I’m going to expand on this a bit as I’ve come to understand
-it a bit more while reading through documentation.  (Hopefully it won’t
+I know it. I’m going to expand on this a bit as I’ve come to understand
+it a bit more while reading through documentation. (Hopefully it won’t
 sound too much like a rant …&lt;/p&gt;</summary><content type="html">
 &lt;p&gt;In a &lt;a class="reference external" href="https://patrick.cloke.us/posts/2010/12/08/why-rewrite-irc-into-javascript/"&gt;previous post&lt;/a&gt; I had briefly gone over the “history of &lt;span class="caps"&gt;IRC&lt;/span&gt;” as
-I know it.  I’m going to expand on this a bit as I’ve come to understand
-it a bit more while reading through documentation.  (Hopefully it won’t
+I know it. I’m going to expand on this a bit as I’ve come to understand
+it a bit more while reading through documentation. (Hopefully it won’t
 sound too much like a rant, as it is all driving me crazy!)&lt;/p&gt;
 &lt;div class="section" id="irc-specifications"&gt;
 &lt;h2&gt;&lt;a class="toc-backref" href="#id5"&gt;&lt;span class="caps"&gt;IRC&lt;/span&gt; Specifications&lt;/a&gt;&lt;/h2&gt;
 &lt;p&gt;So there’s the original specification (&lt;a class="reference external" href="http://tools.ietf.org/html/rfc1459"&gt;&lt;span class="caps"&gt;RFC&lt;/span&gt; 1459&lt;/a&gt;) in May 1993; this
 was expanded and replaced by four different specifications (&lt;a class="reference external" href="http://tools.ietf.org/html/rfc2810"&gt;&lt;span class="caps"&gt;RFC&lt;/span&gt; 2810&lt;/a&gt;,
-&lt;a class="reference external" href="http://tools.ietf.org/html/rfc2811"&gt;2811&lt;/a&gt;, &lt;a class="reference external" href="http://tools.ietf.org/html/rfc2812"&gt;2812&lt;/a&gt;, &lt;a class="reference external" href="http://tools.ietf.org/html/rfc2813"&gt;2813&lt;/a&gt;) in April 2000.  Seems pretty straightforward, right?&lt;/p&gt;
+&lt;a class="reference external" href="http://tools.ietf.org/html/rfc2811"&gt;2811&lt;/a&gt;, &lt;a class="reference external" href="http://tools.ietf.org/html/rfc2812"&gt;2812&lt;/a&gt;, &lt;a class="reference external" href="http://tools.ietf.org/html/rfc2813"&gt;2813&lt;/a&gt;) in April 2000. Seems pretty straightforward, right?&lt;/p&gt;
 &lt;/div&gt;
 &lt;div class="section" id="dcc-ctcp"&gt;
 &lt;h2&gt;&lt;a class="toc-backref" href="#id6"&gt;&lt;span class="caps"&gt;DCC&lt;/span&gt;/&lt;span class="caps"&gt;CTCP&lt;/span&gt;&lt;/a&gt;&lt;/h2&gt;
 &lt;p&gt;Well, kind of…there’s also the &lt;span class="caps"&gt;DCC&lt;/span&gt;/&lt;span class="caps"&gt;CTCP&lt;/span&gt; specifications, which is a
 separate protocol embedded/hidden within the &lt;span class="caps"&gt;IRC&lt;/span&gt; protocol (e.g. they’re
 sent as &lt;span class="caps"&gt;IRC&lt;/span&gt; messages and parsed specially by clients, the server sees
-them as normal messages).  &lt;span class="caps"&gt;DCC&lt;/span&gt;/&lt;span class="caps"&gt;CTCP&lt;/span&gt; is used to send files as well as
+them as normal messages). &lt;span class="caps"&gt;DCC&lt;/span&gt;/&lt;span class="caps"&gt;CTCP&lt;/span&gt; is used to send files as well as
 other particular messages (&lt;span class="caps"&gt;ACTION&lt;/span&gt; commands for roleplaying, &lt;span class="caps"&gt;SED&lt;/span&gt; for
 encrypting conversations, &lt;span class="caps"&gt;VERSION&lt;/span&gt; to get client information, etc.).
 Anyway, this get’s a bit more complicated — it starts with the &lt;a class="reference external" href="http://www.irchelp.org/irchelp/rfc/dccspec.html"&gt;&lt;span class="caps"&gt;DCC&lt;/span&gt;
-specification&lt;/a&gt;.  This was replaced/updated by the &lt;a class="reference external" href="http://www.irchelp.org/irchelp/rfc/ctcpspec.html"&gt;&lt;span class="caps"&gt;CTCP&lt;/span&gt; specification&lt;/a&gt;
-(which fully includes the &lt;span class="caps"&gt;DCC&lt;/span&gt; specification) in 1994.  An &lt;a class="reference external" href="https://web.archive.org/web/20101129023108/http://www.invlogic.com/irc/ctcp.html"&gt;“updated”
-&lt;span class="caps"&gt;CTCP&lt;/span&gt; specification&lt;/a&gt; was released in February 1997.  There’s also a
+specification&lt;/a&gt;. This was replaced/updated by the &lt;a class="reference external" href="http://www.irchelp.org/irchelp/rfc/ctcpspec.html"&gt;&lt;span class="caps"&gt;CTCP&lt;/span&gt; specification&lt;/a&gt;
+(which fully includes the &lt;span class="caps"&gt;DCC&lt;/span&gt; specification) in 1994. An &lt;a class="reference external" href="https://web.archive.org/web/20101129023108/http://www.invlogic.com/irc/ctcp.html"&gt;“updated”
+&lt;span class="caps"&gt;CTCP&lt;/span&gt; specification&lt;/a&gt; was released in February 1997. There’s also a
 &lt;a class="reference external" href="https://web.archive.org/web/20080723170128/http://www.invlogic.com/irc/ctcp2_intro.html"&gt;&lt;span class="caps"&gt;CTCP&lt;/span&gt;/2 specification&lt;/a&gt; from October 1998, which was meant to
-reformulate a lot of the previous three versions.  And &lt;em&gt;finally&lt;/em&gt;,
+reformulate a lot of the previous three versions. And &lt;em&gt;finally&lt;/em&gt;,
 there’s the &lt;span class="caps"&gt;DCC2&lt;/span&gt; specification (two parts: &lt;a class="reference external" href="http://tools.ietf.org/html/draft-smith-irc-dcc2-negotiation-00"&gt;connection negotiation&lt;/a&gt; and
 &lt;a class="reference external" href="http://www.dcc2.org/files/dcc2/draft-smith-irc-dcc2-files-00.txt"&gt;file transfers&lt;/a&gt;) from April 2004.&lt;/p&gt;
-&lt;p&gt;But wait!  I lied…that’s not really the end of &lt;span class="caps"&gt;DCC&lt;/span&gt;/&lt;span class="caps"&gt;CTCP&lt;/span&gt;, there’s
+&lt;p&gt;But wait! I lied…that’s not really the end of &lt;span class="caps"&gt;DCC&lt;/span&gt;/&lt;span class="caps"&gt;CTCP&lt;/span&gt;, there’s
 also a bunch of extensions to it: &lt;a class="reference external" href="http://www.visualirc.net/tech-tdcc.php"&gt;Turbo &lt;span class="caps"&gt;DCC&lt;/span&gt;&lt;/a&gt;, &lt;a class="reference external" href="http://xa.bi/files/irc/xdcc.3.3.0b.irc"&gt;&lt;span class="caps"&gt;XDCC&lt;/span&gt; (eXtended &lt;span class="caps"&gt;DCC&lt;/span&gt;)&lt;/a&gt;
 in 1993, &lt;a class="reference external" href="http://www.visualirc.net/tech-wboard.php"&gt;&lt;span class="caps"&gt;DCC&lt;/span&gt; Whiteboard&lt;/a&gt;, and a few other variations of this: &lt;span class="caps"&gt;RDCC&lt;/span&gt;
-(Reverse &lt;span class="caps"&gt;DCC&lt;/span&gt;), &lt;span class="caps"&gt;SDD&lt;/span&gt; (Secure &lt;span class="caps"&gt;DCC&lt;/span&gt;), &lt;span class="caps"&gt;DCC&lt;/span&gt; Voice, etc.  Wikipedia has a &lt;a class="reference external" href="http://en.wikipedia.org/wiki/Direct_Client-to-Client"&gt;good
+(Reverse &lt;span class="caps"&gt;DCC&lt;/span&gt;), &lt;span class="caps"&gt;SDD&lt;/span&gt; (Secure &lt;span class="caps"&gt;DCC&lt;/span&gt;), &lt;span class="caps"&gt;DCC&lt;/span&gt; Voice, etc. Wikipedia has a &lt;a class="reference external" href="http://en.wikipedia.org/wiki/Direct_Client-to-Client"&gt;good
 summary&lt;/a&gt;.&lt;/p&gt;
 &lt;p&gt;Something else to note about the whole &lt;span class="caps"&gt;DCC&lt;/span&gt;/&lt;span class="caps"&gt;CTCP&lt;/span&gt; mess…parts of it
-just &lt;em&gt;don’t&lt;/em&gt; have any documentation.  There’s &lt;em&gt;none&lt;/em&gt;at all for &lt;span class="caps"&gt;SED&lt;/span&gt; (at
+just &lt;em&gt;don’t&lt;/em&gt; have any documentation. There’s &lt;em&gt;none&lt;/em&gt; at all for &lt;span class="caps"&gt;SED&lt;/span&gt; (at
 least that I’ve found, I’d love to be proved wrong) and very little
 (really just a mention) for &lt;span class="caps"&gt;DCC&lt;/span&gt; Voice.&lt;/p&gt;
-&lt;p&gt;So, we’re about halfway through now.  There’s a bunch of extensions to
+&lt;p&gt;So, we’re about halfway through now. There’s a bunch of extensions to
 the &lt;span class="caps"&gt;IRC&lt;/span&gt; protocol specifications that add new commands to the actual protocol.&lt;/p&gt;
 &lt;/div&gt;
 &lt;div class="section" id="authentication"&gt;
@@ -222,7 +222,7 @@ the &lt;span class="caps"&gt;IRC&lt;/span&gt; protocol specifications that add n
 which very few servers seem to use, a variety of mechanisms have
 replaced this, including &lt;a class="reference external" href="https://raw.githubusercontent.com/atheme/charybdis/master/doc/sasl.txt"&gt;&lt;span class="caps"&gt;SASL&lt;/span&gt; authentication&lt;/a&gt; (both &lt;span class="caps"&gt;PLAIN&lt;/span&gt; and &lt;span class="caps"&gt;BLOWFISH&lt;/span&gt;
 methods, although &lt;span class="caps"&gt;BLOWFISH&lt;/span&gt; isn’t documented); and &lt;span class="caps"&gt;SASL&lt;/span&gt; itself is covered
-by at least &lt;a class="reference external" href="http://tools.ietf.org/html/rfc2222"&gt;four&lt;/a&gt; &lt;a class="reference external" href="http://tools.ietf.org/html/rfc4422"&gt;RFCs&lt;/a&gt; &lt;a class="reference external" href="http://tools.ietf.org/html/rfc2595"&gt;in this&lt;/a&gt; &lt;a class="reference external" href="http://tools.ietf.org/html/rfc4616"&gt;situation&lt;/a&gt;.  There also seems
+by at least &lt;a class="reference external" href="http://tools.ietf.org/html/rfc2222"&gt;four&lt;/a&gt; &lt;a class="reference external" href="http://tools.ietf.org/html/rfc4422"&gt;RFCs&lt;/a&gt; &lt;a class="reference external" href="http://tools.ietf.org/html/rfc2595"&gt;in this&lt;/a&gt; &lt;a class="reference external" href="http://tools.ietf.org/html/rfc4616"&gt;situation&lt;/a&gt;. There also seems
 to be a method called “Auth” which I haven’t been able to pin down, as
 well as Ident (which is a more general protocol authentication method I
 haven’t looked into yet).&lt;/p&gt;
@@ -230,7 +230,7 @@ haven’t looked into yet).&lt;/p&gt;
 &lt;div class="section" id="extension-support"&gt;
 &lt;h2&gt;&lt;a class="toc-backref" href="#id8"&gt;Extension Support&lt;/a&gt;&lt;/h2&gt;
 &lt;p&gt;This includes a few that generally add a way by which servers are able
-to tell their clients exactly what a server supports.  The first of
+to tell their clients exactly what a server supports. The first of
 these was RPL_ISUPPORT, which was defined as a &lt;a class="reference external" href="http://tools.ietf.org/html/draft-brocklesby-irc-isupport-03"&gt;draft specification&lt;/a&gt;
 in January 2004, and &lt;a class="reference external" href="http://tools.ietf.org/html/draft-hardy-irc-isupport-00"&gt;updated&lt;/a&gt; in January of 2005.&lt;/p&gt;
 &lt;p&gt;A similar concept was defined as &lt;a class="reference external" href="http://tools.ietf.org/html/draft-mitchell-irc-capabilities-01"&gt;&lt;span class="caps"&gt;IRC&lt;/span&gt; Capabilities&lt;/a&gt; in March 2005.&lt;/p&gt;
@@ -251,28 +251,28 @@ it’s instant messaging products &lt;a class="reference external" href="http://
 &lt;div class="section" id="services"&gt;
 &lt;h2&gt;&lt;a class="toc-backref" href="#id10"&gt;Services&lt;/a&gt;&lt;/h2&gt;
 &lt;p&gt;To fill in some of the missing features of &lt;span class="caps"&gt;IRC&lt;/span&gt;, services were created
-(Wikipedia has a good &lt;a class="reference external" href="http://en.wikipedia.org/wiki/Internet_Relay_Chat_services"&gt;summary&lt;/a&gt; again).  This commonly includes
-ChanServ, NickServ, OperServ, and MemoServ.  Not too hard, but different
+(Wikipedia has a good &lt;a class="reference external" href="http://en.wikipedia.org/wiki/Internet_Relay_Chat_services"&gt;summary&lt;/a&gt; again). This commonly includes
+ChanServ, NickServ, OperServ, and MemoServ. Not too hard, but different
 server packages include different services (or even the same services
 that behave differently), one of more common ones is &lt;a class="reference external" href="http://www.anope.org/docgen/1.8/en_us/"&gt;Anope&lt;/a&gt;, however
 (plus they have awesome documentation, so they get a link).&lt;/p&gt;
 &lt;p&gt;There was an attempt to standardize how to interact with services
 called &lt;span class="caps"&gt;IRC&lt;/span&gt;+, which included three specifications: &lt;a class="reference external" href="http://www.irc-plus.org/specs/confctrl-draft.html"&gt;conference control
-protocol&lt;/a&gt;, &lt;a class="reference external" href="http://www.irc-plus.org/specs/identity-draft.html"&gt;identity protocol&lt;/a&gt; and &lt;a class="reference external" href="http://www.irc-plus.org/specs/subscriptions-draft.html"&gt;subscriptions protocol&lt;/a&gt;.  I don’t
+protocol&lt;/a&gt;, &lt;a class="reference external" href="http://www.irc-plus.org/specs/identity-draft.html"&gt;identity protocol&lt;/a&gt; and &lt;a class="reference external" href="http://www.irc-plus.org/specs/subscriptions-draft.html"&gt;subscriptions protocol&lt;/a&gt;. I don’t
 believe this are supported widely (if at all).&lt;/p&gt;
 &lt;/div&gt;
 &lt;div class="section" id="irc-url-scheme"&gt;
 &lt;h2&gt;&lt;a class="toc-backref" href="#id11"&gt;&lt;span class="caps"&gt;IRC&lt;/span&gt; &lt;span class="caps"&gt;URL&lt;/span&gt; Scheme&lt;/a&gt;&lt;/h2&gt;
 &lt;p&gt;Finally this brings us to the &lt;span class="caps"&gt;IRC&lt;/span&gt; &lt;span class="caps"&gt;URL&lt;/span&gt; scheme of which there are a few
-versions.  A draft from August 1996 defines the original &lt;a class="reference external" href="http://tools.ietf.org/html/draft-mirashi-url-irc-01"&gt;irc: &lt;span class="caps"&gt;URL&lt;/span&gt;
-scheme&lt;/a&gt;.  This was updated/replaced by &lt;a class="reference external" href="http://tools.ietf.org/html/draft-butcher-irc-url-04"&gt;another draft&lt;/a&gt; which defines
+versions. A draft from August 1996 defines the original &lt;a class="reference external" href="http://tools.ietf.org/html/draft-mirashi-url-irc-01"&gt;irc: &lt;span class="caps"&gt;URL&lt;/span&gt;
+scheme&lt;/a&gt;. This was updated/replaced by &lt;a class="reference external" href="http://tools.ietf.org/html/draft-butcher-irc-url-04"&gt;another draft&lt;/a&gt; which defines
 irc: and ircs: &lt;span class="caps"&gt;URL&lt;/span&gt; schemes.&lt;/p&gt;
-&lt;p&gt;As of right now that’s all that I’ve found…an awful lot.  Plus it’s
+&lt;p&gt;As of right now that’s all that I’ve found…an awful lot. Plus it’s
 not all compatible with each other (and sometimes out right contradicts
-each other).  Often newer specifications say not to support older
+each other). Often newer specifications say not to support older
 specifications, but who knows what servers/clients you’ll end up talking
-to!  It’s difficult to know what’s used in practice, especially since
-there’s an awful lot of &lt;a class="reference external" href="http://en.wikipedia.org/wiki/Comparison_of_IRC_daemons"&gt;&lt;span class="caps"&gt;IRC&lt;/span&gt; servers&lt;/a&gt; out there.  Anyway, if someone
+to! It’s difficult to know what’s used in practice, especially since
+there’s an awful lot of &lt;a class="reference external" href="http://en.wikipedia.org/wiki/Comparison_of_IRC_daemons"&gt;&lt;span class="caps"&gt;IRC&lt;/span&gt; servers&lt;/a&gt; out there. Anyway, if someone
 does know of another specification, etc. that I missed please let me know!&lt;/p&gt;
 &lt;dl class="docutils"&gt;
 &lt;dt&gt;Updated [2014-12-20]&lt;/dt&gt;

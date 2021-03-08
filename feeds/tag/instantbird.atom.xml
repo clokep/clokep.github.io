@@ -584,14 +584,14 @@ expected, but they’re uhh…not up anywhere yet though. Oops.&lt;/td&gt;&lt;/t
 &lt;/div&gt;
 </content><category term="articles"></category><category term="Instantbird"></category><category term="programming"></category><category term="specifications"></category><category term="Thunderbird"></category><category term="Wat"></category></entry><entry><title>Yahoo Protocol Google Summer of Code Round-up</title><link href="https://patrick.cloke.us/posts/2013/10/06/yahoo-protocol-google-summer-of-code/" rel="alternate"></link><published>2013-10-06T09:18:00-04:00</published><updated>2013-10-06T09:18:00-04:00</updated><author><name>Patrick Cloke</name></author><id>tag:patrick.cloke.us,2013-10-06:/posts/2013/10/06/yahoo-protocol-google-summer-of-code/</id><summary type="html">&lt;p&gt;I have to apologize to my student, &lt;a class="reference external" href="http://phaseshiftsoftware.com/blog/"&gt;Quentin&lt;/a&gt; (aka qheaden on &lt;span class="caps"&gt;IRC&lt;/span&gt;),
 for taking so long to write this&amp;#8230;but anyway: Google Summer of Code
-2013 is over!&amp;nbsp; Quentin has done a great job working at implementing the
+2013 is over! Quentin has done a great job working at implementing the
 Yahoo Protocol for Instantbird (and Thunderbird) in JavaScript
 (henceforth called &amp;#8220;&lt;span class="caps"&gt;JS&lt;/span&gt;-Yahoo …&lt;/p&gt;</summary><content type="html">&lt;p&gt;I have to apologize to my student, &lt;a class="reference external" href="http://phaseshiftsoftware.com/blog/"&gt;Quentin&lt;/a&gt; (aka qheaden on &lt;span class="caps"&gt;IRC&lt;/span&gt;),
 for taking so long to write this&amp;#8230;but anyway: Google Summer of Code
-2013 is over!&amp;nbsp; Quentin has done a great job working at implementing the
+2013 is over! Quentin has done a great job working at implementing the
 Yahoo Protocol for Instantbird (and Thunderbird) in JavaScript
-(henceforth called &amp;#8220;&lt;span class="caps"&gt;JS&lt;/span&gt;-Yahoo&amp;#8221;).&amp;nbsp; It&amp;#8217;s at the point where it has mostly
-reached feature-parity with the libpurple plug-in.&amp;nbsp; Before &lt;a class="reference external" href="https://bugzilla.instantbird.org/show_bug.cgi?id=2135"&gt;turning this
+(henceforth called &amp;#8220;&lt;span class="caps"&gt;JS&lt;/span&gt;-Yahoo&amp;#8221;). It&amp;#8217;s at the point where it has mostly
+reached feature-parity with the libpurple plug-in. Before &lt;a class="reference external" href="https://bugzilla.instantbird.org/show_bug.cgi?id=2135"&gt;turning this
 on as default&lt;/a&gt; there are a few minor bugs that still need to be fixed,
 but most of them have patches that just need another couple&amp;nbsp;iterations.&lt;/p&gt;
 &lt;div class="section" id="where-do-we-go-from-here"&gt;
@@ -613,13 +613,13 @@ the &lt;span class="caps"&gt;JS&lt;/span&gt;-&lt;span class="caps"&gt;XMPP&lt;/s
 support &lt;a class="reference external" href="https://bugzilla.mozilla.org/show_bug.cgi?id=14328"&gt;&lt;span class="caps"&gt;DNS&lt;/span&gt; &lt;span class="caps"&gt;SRV&lt;/span&gt;&lt;/a&gt;,&amp;nbsp;however.)&lt;/li&gt;
 &lt;li&gt;Restart&amp;nbsp;Instantbird!&lt;/li&gt;
 &lt;/ol&gt;
-&lt;p&gt;You should now be using the &lt;span class="caps"&gt;JS&lt;/span&gt;-Yahoo protocol.&amp;nbsp; Hopefully you don&amp;#8217;t
+&lt;p&gt;You should now be using the &lt;span class="caps"&gt;JS&lt;/span&gt;-Yahoo protocol. Hopefully you don&amp;#8217;t
 notice anything different, but &lt;a class="reference external" href="https://bugzilla.instantbird.org/"&gt;&lt;span class="caps"&gt;PLEASE&lt;/span&gt; file bugs&lt;/a&gt; if you see any&amp;nbsp;issues.&lt;/p&gt;
 &lt;/div&gt;
 &lt;div class="section" id="how-come-i-can-t-use-this-in-thunderbird"&gt;
 &lt;h2&gt;How come I can&amp;#8217;t use this in&amp;nbsp;Thunderbird?!&lt;/h2&gt;
 &lt;p&gt;Because Instantbird and comm-central development don&amp;#8217;t happen in the same
-Mercurial repository.&amp;nbsp; I&amp;#8217;m working on &lt;a class="reference external" href="https://bugzilla.mozilla.org/show_bug.cgi?id=920801"&gt;syncing the chat/ folder of these
+Mercurial repository. I&amp;#8217;m working on &lt;a class="reference external" href="https://bugzilla.mozilla.org/show_bug.cgi?id=920801"&gt;syncing the chat/ folder of these
 repositories&lt;/a&gt; currently and &lt;span class="caps"&gt;JS&lt;/span&gt;-Yahoo should be in Daily soon to be
 included in the next Thunderbird release (i.e. Thunderbird&amp;nbsp;31).&lt;/p&gt;
 &lt;p&gt;The whole Instantbird community has been super happy with the progress
@@ -662,13 +662,13 @@ Summer of Code with them again! You can see all of the accepted projects
 in &lt;a class="reference external" href="http://blog.gerv.net/2013/06/gsoc-2013-project-list/"&gt;Gerv&amp;#8217;s blogpost&lt;/a&gt;.&lt;/p&gt;
 </content><category term="articles"></category><category term="chat"></category><category term="GSoC"></category><category term="Instantbird"></category><category term="Yahoo"></category></entry><entry><title>Instantbird 1.4 Released!</title><link href="https://patrick.cloke.us/posts/2013/05/20/instantbird-14-released/" rel="alternate"></link><published>2013-05-20T16:45:00-04:00</published><updated>2013-05-20T16:45:00-04:00</updated><author><name>Patrick Cloke</name></author><id>tag:patrick.cloke.us,2013-05-20:/posts/2013/05/20/instantbird-14-released/</id><summary type="html">&lt;p&gt;After a bunch of l10n build problems, we&amp;#8217;ve finally released
 Instantbird 1.4, which includes updates to libpurple 2.10.7 and Mozilla
-20.&amp;nbsp; In particular this&amp;nbsp;includes:&lt;/p&gt;
+20. In particular this&amp;nbsp;includes:&lt;/p&gt;
 &lt;ul class="simple"&gt;
 &lt;li&gt;Updated Twitter code that uses v1.1 of their &lt;span class="caps"&gt;API&lt;/span&gt; (v1.0 will be
 disabled on June 11th,&amp;nbsp;2013).&lt;/li&gt;
 &lt;li&gt;Better character …&lt;/li&gt;&lt;/ul&gt;</summary><content type="html">&lt;p&gt;After a bunch of l10n build problems, we&amp;#8217;ve finally released
 Instantbird 1.4, which includes updates to libpurple 2.10.7 and Mozilla
-20.&amp;nbsp; In particular this&amp;nbsp;includes:&lt;/p&gt;
+20. In particular this&amp;nbsp;includes:&lt;/p&gt;
 &lt;ul class="simple"&gt;
 &lt;li&gt;Updated Twitter code that uses v1.1 of their &lt;span class="caps"&gt;API&lt;/span&gt; (v1.0 will be
 disabled on June 11th,&amp;nbsp;2013).&lt;/li&gt;
@@ -688,25 +688,25 @@ let me know what your issue&amp;nbsp;is.)&lt;/p&gt;
 &lt;p&gt;You can download it &lt;a class="reference external" href="http://www.instantbird.com/download-all.html"&gt;here&lt;/a&gt;, or view the full &lt;a class="reference external" href="http://www.instantbird.com/release-notes.html"&gt;release notes&lt;/a&gt;.&lt;/p&gt;
 </content><category term="articles"></category><category term="Instantbird"></category></entry><entry><title>JavaScript typed arrays pain</title><link href="https://patrick.cloke.us/posts/2012/11/28/javascript-typed-arrays-pain/" rel="alternate"></link><published>2012-11-28T23:11:00-05:00</published><updated>2012-11-28T23:11:00-05:00</updated><author><name>Patrick Cloke</name></author><id>tag:patrick.cloke.us,2012-11-28:/posts/2012/11/28/javascript-typed-arrays-pain/</id><summary type="html">&lt;p&gt;If you&amp;#8217;ve ever tried to deal with binary data in JavaScript you know
 it isn&amp;#8217;t much fun and you usually resort to using strings lots of
-charCodeAt and related functions.&amp;nbsp; &lt;a class="reference external" href="https://developer.mozilla.org/en-US/docs/JavaScript_typed_arrays"&gt;Typed arrays&lt;/a&gt; are supposed to solve
-this though!&amp;nbsp; The typed array &lt;span class="caps"&gt;API&lt;/span&gt; consists of creating a buffer of …&lt;/p&gt;</summary><content type="html">&lt;p&gt;If you&amp;#8217;ve ever tried to deal with binary data in JavaScript you know
+charCodeAt and related functions. &lt;a class="reference external" href="https://developer.mozilla.org/en-US/docs/JavaScript_typed_arrays"&gt;Typed arrays&lt;/a&gt; are supposed to solve
+this though! The typed array &lt;span class="caps"&gt;API&lt;/span&gt; consists of creating a buffer of …&lt;/p&gt;</summary><content type="html">&lt;p&gt;If you&amp;#8217;ve ever tried to deal with binary data in JavaScript you know
 it isn&amp;#8217;t much fun and you usually resort to using strings lots of
-charCodeAt and related functions.&amp;nbsp; &lt;a class="reference external" href="https://developer.mozilla.org/en-US/docs/JavaScript_typed_arrays"&gt;Typed arrays&lt;/a&gt; are supposed to solve
-this though!&amp;nbsp; The typed array &lt;span class="caps"&gt;API&lt;/span&gt; consists of creating a buffer of bytes
+charCodeAt and related functions. &lt;a class="reference external" href="https://developer.mozilla.org/en-US/docs/JavaScript_typed_arrays"&gt;Typed arrays&lt;/a&gt; are supposed to solve
+this though! The typed array &lt;span class="caps"&gt;API&lt;/span&gt; consists of creating a buffer of bytes
 (called an &lt;a class="reference external" href="https://developer.mozilla.org/en-US/docs/JavaScript_typed_arrays/ArrayBuffer"&gt;ArrayBuffer&lt;/a&gt;) and then manipulating those bytes via
-different views (&lt;a class="reference external" href="https://developer.mozilla.org/en-US/docs/JavaScript_typed_arrays/ArrayBufferView"&gt;ArrayBufferView&lt;/a&gt;s).&amp;nbsp; You can have multiple views of
+different views (&lt;a class="reference external" href="https://developer.mozilla.org/en-US/docs/JavaScript_typed_arrays/ArrayBufferView"&gt;ArrayBufferView&lt;/a&gt;s). You can have multiple views of
 the same buffer, starting at different offsets, of different lengths and
 types&amp;#8230;which is all neat from a technical point of view, but is it
-really useful?&amp;nbsp; It is kind of nice working with the views as if they
+really useful? It is kind of nice working with the views as if they
 were normal arrays&amp;nbsp;though.&lt;/p&gt;
 &lt;p&gt;I&amp;#8217;ve been playing with these ArrayBuffers quite a bit as I&amp;#8217;m working
 on an implementation of the &lt;a class="reference external" href="http://en.wikipedia.org/wiki/OSCAR_protocol"&gt;&lt;span class="caps"&gt;OSCAR&lt;/span&gt; protocol&lt;/a&gt; (used for &lt;a class="reference external" href="http://en.wikipedia.org/wiki/AOL_Instant_Messenger"&gt;&lt;span class="caps"&gt;AOL&lt;/span&gt; Instant
 Messenger&lt;/a&gt; and &lt;a class="reference external" href="http://en.wikipedia.org/wiki/ICQ"&gt;&lt;span class="caps"&gt;ICQ&lt;/span&gt;&lt;/a&gt;) in the chat backend (for Instantbird /
-Thunderbird).&amp;nbsp; (As an aside, the &lt;span class="caps"&gt;OSCAR&lt;/span&gt; protocol Wikipedia page has
+Thunderbird). (As an aside, the &lt;span class="caps"&gt;OSCAR&lt;/span&gt; protocol Wikipedia page has
 surprisingly good documentation of some of the underlying data
-structures of the protocol&amp;#8230;)&amp;nbsp; I started by writing some test code
+structures of the protocol&amp;#8230;) I started by writing some test code
 using ArrayBuffers and views, which have been around a while: since
-Gecko 2.0 in fact!&amp;nbsp; I quickly ran into some tedious issues with
+Gecko 2.0 in fact! I quickly ran into some tedious issues with
 repetitive code such&amp;nbsp;as:&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="cm"&gt;/*&lt;/span&gt;
 &lt;span class="cm"&gt; * A TLV (Type, Length and Value) data structure:&lt;/span&gt;
@@ -759,31 +759,31 @@ tested heavily at all,&amp;nbsp;however.)&lt;/p&gt;
 &lt;p&gt;&lt;span class="caps"&gt;OK&lt;/span&gt;, so typed arrays seem good, but kind of annoying, right?
 Wrong&amp;#8230;the &lt;span class="caps"&gt;OSCAR&lt;/span&gt; protocol is a &amp;#8220;network order&amp;#8221; protocol (aka it is big
 endian). At this point you&amp;#8217;re probably thinking &amp;#8220;&lt;span class="caps"&gt;OK&lt;/span&gt;, so the ArrayBuffer
-constructor must take an endianess flag!&amp;#8221;&amp;nbsp; Wrong, it does no such
-thing.&amp;nbsp; &amp;#8220;Hmmm&amp;#8230;Well do the ArrayBufferViews take an endianess flag?&amp;#8221;
-Nope, wrong again.&amp;nbsp; The only way to specify the endianess of the data is
+constructor must take an endianess flag!&amp;#8221; Wrong, it does no such
+thing. &amp;#8220;Hmmm&amp;#8230;Well do the ArrayBufferViews take an endianess flag?&amp;#8221;
+Nope, wrong again. The only way to specify the endianess of the data is
 to use a &lt;a class="reference external" href="https://developer.mozilla.org/en-US/docs/JavaScript_typed_arrays/DataView"&gt;DataView&lt;/a&gt;, a slightly different interface to the underlying
-bytes.&amp;nbsp; It offers an &lt;span class="caps"&gt;API&lt;/span&gt; to individually set different data elements via
-their offset and endianess.&amp;nbsp; (If you&amp;#8217;re too lazy to read the
+bytes. It offers an &lt;span class="caps"&gt;API&lt;/span&gt; to individually set different data elements via
+their offset and endianess. (If you&amp;#8217;re too lazy to read the
 documentation all the way through, DataView assumes big endian: makes my
 life&amp;nbsp;easier!)&lt;/p&gt;
 &lt;p&gt;For the curious, JavaScript typed arrays use the system endianess,
 which in my opinion is pretty much useless (at least if you plan on
 sharing data) since you can never guarantee the endianess to be either
-big or little endian.&amp;nbsp; (The fun part is that this isn&amp;#8217;t even documented,
+big or little endian. (The fun part is that this isn&amp;#8217;t even documented,
 I found it on &lt;a class="reference external" href="http://stackoverflow.com/questions/7869752/javascript-typed-arrays-and-endianness"&gt;Stack Overflow&lt;/a&gt; and&amp;nbsp;verified.)&lt;/p&gt;
 &lt;p&gt;So, in summary&amp;#8230;if you plan on networking at all with ArrayBuffers,
-don&amp;#8217;t use ArrayBufferViews, use DataViews.&amp;nbsp; (Although Uint8Arrays and
+don&amp;#8217;t use ArrayBufferViews, use DataViews. (Although Uint8Arrays and
 Int8Arrays should work&amp;nbsp;fine!)&lt;/p&gt;
 &lt;p&gt;And to not rant the &lt;em&gt;entire&lt;/em&gt; time, working with typed arrays certainly
 does beat strings +&amp;nbsp;charCodeAt!&lt;/p&gt;
 </content><category term="articles"></category><category term="Instantbird"></category><category term="Mozilla"></category><category term="OSCAR"></category><category term="Thunderbird"></category><category term="Wat"></category></entry><entry><title>Instantbird 1.3 Released!!!</title><link href="https://patrick.cloke.us/posts/2012/11/16/instantbird-13-released/" rel="alternate"></link><published>2012-11-16T06:42:00-05:00</published><updated>2012-11-16T06:42:00-05:00</updated><author><name>Patrick Cloke</name></author><id>tag:patrick.cloke.us,2012-11-16:/posts/2012/11/16/instantbird-13-released/</id><summary type="html">&lt;p&gt;Well we finally got our release process down a bit better and were
 able to do a quicker release (from 1.2 to 1.3, compared to our previous
 few releases). This is great news, as it gives incremental changes to
-our users faster!&amp;nbsp; There&amp;#8217;s some new features available …&lt;/p&gt;</summary><content type="html">&lt;p&gt;Well we finally got our release process down a bit better and were
+our users faster! There&amp;#8217;s some new features available …&lt;/p&gt;</summary><content type="html">&lt;p&gt;Well we finally got our release process down a bit better and were
 able to do a quicker release (from 1.2 to 1.3, compared to our previous
 few releases). This is great news, as it gives incremental changes to
-our users faster!&amp;nbsp; There&amp;#8217;s some new features available, which are mostly
+our users faster! There&amp;#8217;s some new features available, which are mostly
 covered on the &lt;a class="reference external" href="http://blog.instantbird.org/2012/11/instantbird-1-3-released/"&gt;Instantbird blog&lt;/a&gt;, but&amp;nbsp;quickly:&lt;/p&gt;
 &lt;ul class="simple"&gt;
 &lt;li&gt;&lt;span class="caps"&gt;IRC&lt;/span&gt; now supports &lt;span class="caps"&gt;SASL&lt;/span&gt; authentication, which is required by Freenode
@@ -799,47 +799,47 @@ following multiple&amp;nbsp;conversations).&lt;/li&gt;
 hoping to update to mozilla-central soon in order to benefit from cool
 new technologies, like WebRTC! You should &lt;a class="reference external" href="http://www.instantbird.com/download-all.html"&gt;check out Instantbird&lt;/a&gt;&amp;nbsp;now!&lt;/p&gt;
 </content><category term="articles"></category><category term="Instantbird"></category></entry><entry><title>On Status</title><link href="https://patrick.cloke.us/posts/2012/10/16/on-status/" rel="alternate"></link><published>2012-10-16T21:33:00-04:00</published><updated>2012-10-16T21:33:00-04:00</updated><author><name>Patrick Cloke</name></author><id>tag:patrick.cloke.us,2012-10-16:/posts/2012/10/16/on-status/</id><summary type="html">&lt;p&gt;Something that comes up often about Instantbird is why we only support
-three statuses: Available, Unavailable and Offline.&amp;nbsp; (We do actually
+three statuses: Available, Unavailable and Offline. (We do actually
 support a fourth one too, Idle, but that is set automatically, not
-chosen by the user.)&amp;nbsp; Frequently this discussion is in the context of
+chosen by the user.) Frequently this discussion is in the context of
 wanting an &amp;#8220;Invisible&amp;#8221; status, but …&lt;/p&gt;</summary><content type="html">&lt;p&gt;Something that comes up often about Instantbird is why we only support
-three statuses: Available, Unavailable and Offline.&amp;nbsp; (We do actually
+three statuses: Available, Unavailable and Offline. (We do actually
 support a fourth one too, Idle, but that is set automatically, not
-chosen by the user.)&amp;nbsp; Frequently this discussion is in the context of
+chosen by the user.) Frequently this discussion is in the context of
 wanting an &amp;#8220;Invisible&amp;#8221; status, but I&amp;#8217;ll get to that&amp;nbsp;later&amp;#8230;&lt;/p&gt;
 &lt;p&gt;Many users have talked to us on &lt;span class="caps"&gt;IRC&lt;/span&gt;, email or via bugs and complained
-about wanting an &amp;#8220;Away&amp;#8221; status or a &amp;#8220;Do Not Disturb&amp;#8221; status.&amp;nbsp; There&amp;#8217;s a
+about wanting an &amp;#8220;Away&amp;#8221; status or a &amp;#8220;Do Not Disturb&amp;#8221; status. There&amp;#8217;s a
 few issues with&amp;nbsp;this:&lt;/p&gt;
 &lt;ol class="arabic simple"&gt;
 &lt;li&gt;What&amp;#8217;s really the difference between &amp;#8220;Unavailable&amp;#8221;, &amp;#8220;Away&amp;#8221; and &amp;#8220;Do
-Not Disturb&amp;#8221;?&amp;nbsp; Do you really need to choose them individually?
+Not Disturb&amp;#8221;? Do you really need to choose them individually?
 (Other things that fit into here: &amp;#8220;Not at my desk&amp;#8221;, &amp;#8220;on the phone&amp;#8221;,
-&amp;#8220;busy&amp;#8221;, &amp;#8220;stepped out&amp;#8221;.&amp;nbsp; It is amazing how some protocols have so many
+&amp;#8220;busy&amp;#8221;, &amp;#8220;stepped out&amp;#8221;. It is amazing how some protocols have so many
 ways to describe being&amp;nbsp;unavailable!)&lt;/li&gt;
 &lt;li&gt;A technical issue that we often run into is trying to shoehorn
 different protocol implementations into our abstract protocol
-interface.&amp;nbsp; (We already have some fairly complicated interfaces
+interface. (We already have some fairly complicated interfaces
 around joining chat rooms, creating different account, etc. because
 of&amp;nbsp;this.)&lt;/li&gt;
-&lt;li&gt;Setting yourself as &amp;#8220;Away&amp;#8221; or &amp;#8220;Invisible&amp;#8221; is a lie.&amp;nbsp; Perhaps this is
+&lt;li&gt;Setting yourself as &amp;#8220;Away&amp;#8221; or &amp;#8220;Invisible&amp;#8221; is a lie. Perhaps this is
 me being overly idealistic, but why would you set yourself as
-&amp;#8220;Away&amp;#8221;?&amp;nbsp; It seems that this is something that should be done
-automatically (when you lock your display, perhaps?).&amp;nbsp; You can&amp;#8217;t be
+&amp;#8220;Away&amp;#8221;? It seems that this is something that should be done
+automatically (when you lock your display, perhaps?). You can&amp;#8217;t be
 &amp;#8220;Away&amp;#8221; and using your computer at the same time!
 Again, perhaps being idealistic, but what is the point of the
-&amp;#8220;Invisible&amp;#8221; status?&amp;nbsp; If you wish to be hidden from someone
-(everyone?) why not just block those users.&amp;nbsp; Or ignore them when they
-send you a message.&amp;nbsp; If you are busy, set yourself to &amp;#8220;Unavailable&amp;#8221;
+&amp;#8220;Invisible&amp;#8221; status? If you wish to be hidden from someone
+(everyone?) why not just block those users. Or ignore them when they
+send you a message. If you are busy, set yourself to &amp;#8220;Unavailable&amp;#8221;
 and people should understand that they should not talk to you&amp;#8230;if
-they don&amp;#8217;t, well&amp;#8230;do you really want them talking to you ever?&amp;nbsp; (Are
-they really your friend?&amp;nbsp; I guess you don&amp;#8217;t get to choose your
-co-workers, but still.)&amp;nbsp; Now, perhaps this is just my opinion as
+they don&amp;#8217;t, well&amp;#8230;do you really want them talking to you ever? (Are
+they really your friend? I guess you don&amp;#8217;t get to choose your
+co-workers, but still.) Now, perhaps this is just my opinion as
 being someone who never really hard an &amp;#8220;Invisible&amp;#8221; status (I actually
 remember it being added to the &lt;span class="caps"&gt;AIM&lt;/span&gt; client at some&amp;nbsp;point).&lt;/li&gt;
 &lt;/ol&gt;
 &lt;p&gt;At this point you probably don&amp;#8217;t believe me that there&amp;#8217;s really &lt;em&gt;that&lt;/em&gt;
 many different protocol statuses out there, so I figured I&amp;#8217;d illustrate
-a few protocols in a matrix.&amp;nbsp; Note that this isn&amp;#8217;t meant to be
+a few protocols in a matrix. Note that this isn&amp;#8217;t meant to be
 exhaustive, just to show how complicated of a situation this really is.
 All protocols can obviously be &amp;#8220;offline&amp;#8221; as well, but that&amp;#8217;s not shown
 in the&amp;nbsp;table.&lt;/p&gt;
@@ -915,25 +915,25 @@ in the&amp;nbsp;table.&lt;/p&gt;
 &lt;/tr&gt;
 &lt;/tbody&gt;
 &lt;/table&gt;
-</content><category term="articles"></category><category term="chat"></category><category term="Instantbird"></category><category term="Thunderbird"></category></entry><entry><title>Instantbird 1.2 Released (with awesome new IRC features)!</title><link href="https://patrick.cloke.us/posts/2012/08/08/instantbird-12-released-with-awesome/" rel="alternate"></link><published>2012-08-08T13:08:00-04:00</published><updated>2012-08-08T13:08:00-04:00</updated><author><name>Patrick Cloke</name></author><id>tag:patrick.cloke.us,2012-08-08:/posts/2012/08/08/instantbird-12-released-with-awesome/</id><summary type="html">&lt;p&gt;If you haven&amp;#8217;t seen the announcement&amp;#8230;&lt;a class="reference external" href="http://blog.instantbird.org/2012/08/instantbird-1-2-released/"&gt;Instantbird 1.2 has been
-released&lt;/a&gt;!&amp;nbsp; It&amp;#8217;s got a ton of great new features that I&amp;#8217;m excited for:
+</content><category term="articles"></category><category term="chat"></category><category term="Instantbird"></category><category term="Thunderbird"></category></entry><entry><title>Instantbird 1.2 Released (with awesome new IRC features)!</title><link href="https://patrick.cloke.us/posts/2012/08/08/instantbird-12-released-with-awesome/" rel="alternate"></link><published>2012-08-08T13:08:00-04:00</published><updated>2012-08-08T13:08:00-04:00</updated><author><name>Patrick Cloke</name></author><id>tag:patrick.cloke.us,2012-08-08:/posts/2012/08/08/instantbird-12-released-with-awesome/</id><summary type="html">&lt;p&gt;If you haven&amp;#8217;t seen the announcement&amp;#8230; &lt;a class="reference external" href="http://blog.instantbird.org/2012/08/instantbird-1-2-released/"&gt;Instantbird 1.2 has been
+released&lt;/a&gt;! It&amp;#8217;s got a ton of great new features that I&amp;#8217;m excited for:
 &lt;a class="reference external" href="http://blog.instantbird.org/2012/08/tab-completion-in-instantbird-1-2/"&gt;better tab complete&lt;/a&gt;, a marker showing the last viewed messages,
-support for Bonjour and more.&amp;nbsp; But the most exciting bits to me are …&lt;/p&gt;</summary><content type="html">&lt;p&gt;If you haven&amp;#8217;t seen the announcement&amp;#8230;&lt;a class="reference external" href="http://blog.instantbird.org/2012/08/instantbird-1-2-released/"&gt;Instantbird 1.2 has been
-released&lt;/a&gt;!&amp;nbsp; It&amp;#8217;s got a ton of great new features that I&amp;#8217;m excited for:
+support for Bonjour and more. But the most exciting bits to me are …&lt;/p&gt;</summary><content type="html">&lt;p&gt;If you haven&amp;#8217;t seen the announcement&amp;#8230; &lt;a class="reference external" href="http://blog.instantbird.org/2012/08/instantbird-1-2-released/"&gt;Instantbird 1.2 has been
+released&lt;/a&gt;! It&amp;#8217;s got a ton of great new features that I&amp;#8217;m excited for:
 &lt;a class="reference external" href="http://blog.instantbird.org/2012/08/tab-completion-in-instantbird-1-2/"&gt;better tab complete&lt;/a&gt;, a marker showing the last viewed messages,
-support for Bonjour and more.&amp;nbsp; But the most exciting bits to me are our
+support for Bonjour and more. But the most exciting bits to me are our
 JavaScript implementations of &lt;a class="reference external" href="http://lxr.instantbird.org/instantbird/source/chat/protocols/xmpp/"&gt;&lt;span class="caps"&gt;XMPP&lt;/span&gt;&lt;/a&gt; (used for &lt;a class="reference external" href="http://lxr.instantbird.org/instantbird/source/chat/protocols/facebook/"&gt;Facebook Chat&lt;/a&gt; and
 &lt;a class="reference external" href="http://lxr.instantbird.org/instantbird/source/chat/protocols/gtalk/"&gt;GTalk&lt;/a&gt;, so far) and &lt;a class="reference external" href="http://lxr.instantbird.org/instantbird/source/chat/protocols/irc/"&gt;&lt;span class="caps"&gt;IRC&lt;/span&gt;&lt;/a&gt;!&lt;/p&gt;
 &lt;p&gt;Why am I so excited for them? Mostly because they&amp;#8217;re extendable!
 (Well&amp;#8230;and I guess because I wrote most of the &lt;span class="caps"&gt;IRC&lt;/span&gt; code.) I&amp;#8217;ve
 &lt;a class="reference external" href="https://patrick.cloke.us/posts/2012/06/11/irc-auto-performs/"&gt;written&lt;/a&gt; a bit about this before for &lt;span class="caps"&gt;IRC&lt;/span&gt;&amp;#8230;but it will let add-ons do
-whatever they want to the &lt;span class="caps"&gt;IRC&lt;/span&gt; protocol.&amp;nbsp; You should check out the
-implementations (links above), they&amp;#8217;re very hackable.&amp;nbsp; Hopefully we can
+whatever they want to the &lt;span class="caps"&gt;IRC&lt;/span&gt; protocol. You should check out the
+implementations (links above), they&amp;#8217;re very hackable. Hopefully we can
 remove libpurple &lt;span class="caps"&gt;XMPP&lt;/span&gt; and fully switch to Instantbird&amp;#8217;s &lt;span class="caps"&gt;XMPP&lt;/span&gt; for the
 next release, once a few &lt;a class="reference external" href="https://bugzilla.mozilla.org/show_bug.cgi?id=14328"&gt;Mozilla bugs&lt;/a&gt; are&amp;nbsp;fixed.&lt;/p&gt;
 &lt;p&gt;Did I also mention that these implementations (including the raw &lt;span class="caps"&gt;XMPP&lt;/span&gt;
 and Twitter, which Instantbird has supported since 1.0) are going to be
-included in &lt;a class="reference external" href="http://www.mozilla.org/en-US/thunderbird/"&gt;Thunderbird&lt;/a&gt;15, as part of it&amp;#8217;s new &lt;a class="reference external" href="https://wiki.mozilla.org/Modules/Chat"&gt;chat feature&lt;/a&gt;?
+included in &lt;a class="reference external" href="http://www.mozilla.org/en-US/thunderbird/"&gt;Thunderbird&lt;/a&gt; 15, as part of it&amp;#8217;s new &lt;a class="reference external" href="https://wiki.mozilla.org/Modules/Chat"&gt;chat feature&lt;/a&gt;?
 Florian has done a great job of integrating our chat code there and it
 gives quite a different user experience than Instantbird, so don&amp;#8217;t be
 worried about Instantbird going&amp;nbsp;away!&lt;/p&gt;
@@ -1079,15 +1079,15 @@ command instead of /msg is a huge issue, however.&lt;/p&gt;
 &lt;/div&gt;
 </content><category term="articles"></category><category term="Instantbird"></category><category term="IRC"></category><category term="Mozilla"></category></entry><entry><title>Instantbird Contact List Hack #2</title><link href="https://patrick.cloke.us/posts/2012/01/15/instantbird-contact-list-hack-2/" rel="alternate"></link><published>2012-01-15T10:00:00-05:00</published><updated>2012-01-15T10:00:00-05:00</updated><author><name>Patrick Cloke</name></author><id>tag:patrick.cloke.us,2012-01-15:/posts/2012/01/15/instantbird-contact-list-hack-2/</id><summary type="html">&lt;p&gt;There was a &lt;a class="reference external" href="https://bugzilla.instantbird.org/show_bug.cgi?id=987"&gt;request&lt;/a&gt; on the Instantbird Bugzilla to always show
 contacts in the contact list as the &amp;#8220;big&amp;#8221; contact (as shown when a
-contact is selected).&amp;nbsp; Similarly to my &lt;a class="reference external" href="https://patrick.cloke.us/posts/2011/10/31/instantbird-contact-list-hack/"&gt;last post&lt;/a&gt;, this can easily be
-done with userChrome.css.&amp;nbsp; See the post if you don&amp;#8217;t know what
+contact is selected). Similarly to my &lt;a class="reference external" href="https://patrick.cloke.us/posts/2011/10/31/instantbird-contact-list-hack/"&gt;last post&lt;/a&gt;, this can easily be
+done with userChrome.css. See the post if you don&amp;#8217;t know what
 userChrome …&lt;/p&gt;</summary><content type="html">&lt;p&gt;There was a &lt;a class="reference external" href="https://bugzilla.instantbird.org/show_bug.cgi?id=987"&gt;request&lt;/a&gt; on the Instantbird Bugzilla to always show
 contacts in the contact list as the &amp;#8220;big&amp;#8221; contact (as shown when a
-contact is selected).&amp;nbsp; Similarly to my &lt;a class="reference external" href="https://patrick.cloke.us/posts/2011/10/31/instantbird-contact-list-hack/"&gt;last post&lt;/a&gt;, this can easily be
-done with userChrome.css.&amp;nbsp; See the post if you don&amp;#8217;t know what
+contact is selected). Similarly to my &lt;a class="reference external" href="https://patrick.cloke.us/posts/2011/10/31/instantbird-contact-list-hack/"&gt;last post&lt;/a&gt;, this can easily be
+done with userChrome.css. See the post if you don&amp;#8217;t know what
 userChrome.css&amp;nbsp;is.&lt;/p&gt;
 &lt;p&gt;Again, we&amp;#8217;re simply going to always apply a specific &lt;span class="caps"&gt;CSS&lt;/span&gt; style to the
-contacts, namely we&amp;#8217;ll be modifying the behavior of &lt;a class="reference external" href="http://lxr.instantbird.org/instantbird/source/instantbird/content/blist.css#38"&gt;blist.css&lt;/a&gt;.&amp;nbsp; I&amp;#8217;m
+contacts, namely we&amp;#8217;ll be modifying the behavior of &lt;a class="reference external" href="http://lxr.instantbird.org/instantbird/source/instantbird/content/blist.css#38"&gt;blist.css&lt;/a&gt;. I&amp;#8217;m
 sure you don&amp;#8217;t really care about that and just want the code, well I&amp;#8217;ll&amp;nbsp;oblige:&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="cm"&gt;/* Expand all contacts to the big contact. */&lt;/span&gt;
 &lt;span class="nx"&gt;contact&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
@@ -1096,9 +1096,9 @@ sure you don&amp;#8217;t really care about that and just want the code, well I&a
     &lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="nx"&gt;moz&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="nx"&gt;box&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="nx"&gt;align&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="nx"&gt;stretch&lt;/span&gt; &lt;span class="o"&gt;!&lt;/span&gt;&lt;span class="nx"&gt;important&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
 &lt;span class="p"&gt;}&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
-&lt;p&gt;And that&amp;#8217;s it!&amp;nbsp; Restart Instantbird and you should always have big
-contacts.&amp;nbsp; I haven&amp;#8217;t seen any issues of using this (missing or wrong
-behavior), but of course your mileage might vary.&amp;nbsp; Have&amp;nbsp;fun!&lt;/p&gt;
+&lt;p&gt;And that&amp;#8217;s it! Restart Instantbird and you should always have big
+contacts. I haven&amp;#8217;t seen any issues of using this (missing or wrong
+behavior), but of course your mileage might vary. Have&amp;nbsp;fun!&lt;/p&gt;
 </content><category term="articles"></category><category term="customizing"></category><category term="Instantbird"></category><category term="programming"></category></entry><entry><title>Instantbird Contact List Hack</title><link href="https://patrick.cloke.us/posts/2011/10/31/instantbird-contact-list-hack/" rel="alternate"></link><published>2011-10-31T20:20:00-04:00</published><updated>2011-10-31T20:20:00-04:00</updated><author><name>Patrick Cloke</name></author><id>tag:patrick.cloke.us,2011-10-31:/posts/2011/10/31/instantbird-contact-list-hack/</id><summary type="html">&lt;p&gt;A friend of mine asked me if there was a way to have selected contacts
 in the contact list &lt;span class="caps"&gt;NOT&lt;/span&gt; expand to two lines (where the status goes onto
 the second line) in&amp;nbsp;Instantbird.&lt;/p&gt;
@@ -1108,8 +1108,8 @@ in the contact list &lt;span class="caps"&gt;NOT&lt;/span&gt; expand to two line
 the second line) in&amp;nbsp;Instantbird.&lt;/p&gt;
 &lt;p&gt;There&amp;#8217;s actually no option to do this in Instantbird, but with a
 little &lt;a class="reference external" href="http://www-archive.mozilla.org/unix/customizing.html"&gt;userChrome&lt;/a&gt; tweak, we can easily get this behavior (although
-with a couple caveats).&amp;nbsp; You should be able to add a new folder &lt;a class="reference external" href="http://instantbird.com/faq.html#profilefolder"&gt;inside
-your profile&lt;/a&gt; called chrome.&amp;nbsp; Inside of this make a new file called
+with a couple caveats). You should be able to add a new folder &lt;a class="reference external" href="http://instantbird.com/faq.html#profilefolder"&gt;inside
+your profile&lt;/a&gt; called chrome. Inside of this make a new file called
 userChrome.css and place the&amp;nbsp;following:&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="p"&gt;#&lt;/span&gt;&lt;span class="nn"&gt;buddylistbox&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="nd"&gt;focus&lt;/span&gt; &lt;span class="o"&gt;&amp;gt;&lt;/span&gt; &lt;span class="nt"&gt;contact&lt;/span&gt;&lt;span class="o"&gt;[&lt;/span&gt;&lt;span class="nt"&gt;selected&lt;/span&gt;&lt;span class="o"&gt;]&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
     &lt;span class="kp"&gt;-moz-&lt;/span&gt;&lt;span class="n"&gt;binding&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="nb"&gt;url&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;chrome://instantbird/content/contact.xml#contact&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="cp"&gt;!important&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
@@ -1121,7 +1121,7 @@ should be on one line, just like your unselected&amp;nbsp;contacts.&lt;/p&gt;
 &lt;p&gt;I did mention there was a caveat though! If you want to expand a
 contact (to see all the protocols, etc. that you&amp;#8217;ve merged together)
 you&amp;#8217;ll need to use the arrow keys: right arrow expands a contact, left
-arrow collapses a contact.&amp;nbsp; (You need to do this since the chevron icon
+arrow collapses a contact. (You need to do this since the chevron icon
 that lets you expand/collapse isn&amp;#8217;t shown on a non-selected&amp;nbsp;contact.)&lt;/p&gt;
 &lt;p&gt;(Some more technical details: we&amp;#8217;re forcing the standard contact
 template to be used instead of the contact-big template, even when the
@@ -1130,19 +1130,19 @@ contact is expanded; i.e. we&amp;#8217;re overwriting the command given
 </content><category term="articles"></category><category term="customizing"></category><category term="Instantbird"></category><category term="programming"></category></entry><entry><title>Adding a protocol to Instantbird (Part 2)</title><link href="https://patrick.cloke.us/posts/2011/09/03/adding-protocol-to-instantbird-part-2/" rel="alternate"></link><published>2011-09-03T10:31:00-04:00</published><updated>2011-09-03T10:31:00-04:00</updated><author><name>Patrick Cloke</name></author><id>tag:patrick.cloke.us,2011-09-03:/posts/2011/09/03/adding-protocol-to-instantbird-part-2/</id><summary type="html">
 &lt;p&gt;I had &lt;a class="reference external" href="https://patrick.cloke.us/posts/2011/06/18/adding-new-protocol-sipeoffice/"&gt;previously talked about adding a protocol to Instantbird&lt;/a&gt;,
 that focused on adding &lt;span class="caps"&gt;SIPE&lt;/span&gt; (Microsoft Office Communicator support).
-Since then I’ve been slowly working on defeating &lt;span class="caps"&gt;SIPE&lt;/span&gt;.  Fortunately I
+Since then I’ve been slowly working on defeating &lt;span class="caps"&gt;SIPE&lt;/span&gt;. Fortunately I
 found a few flags that help us compile it easily in Instantbird: we can
 declare that we do &lt;em&gt;not …&lt;/em&gt;&lt;/p&gt;</summary><content type="html">
 &lt;p&gt;I had &lt;a class="reference external" href="https://patrick.cloke.us/posts/2011/06/18/adding-new-protocol-sipeoffice/"&gt;previously talked about adding a protocol to Instantbird&lt;/a&gt;,
 that focused on adding &lt;span class="caps"&gt;SIPE&lt;/span&gt; (Microsoft Office Communicator support).
-Since then I’ve been slowly working on defeating &lt;span class="caps"&gt;SIPE&lt;/span&gt;.  Fortunately I
+Since then I’ve been slowly working on defeating &lt;span class="caps"&gt;SIPE&lt;/span&gt;. Fortunately I
 found a few flags that help us compile it easily in Instantbird: we can
 declare that we do &lt;em&gt;not&lt;/em&gt; have gmime and the standard libpurple &lt;span class="caps"&gt;MIME&lt;/span&gt;
 functions will be used (they might not be as good, but it keeps from
 adding &amp;gt;10 &lt;span class="caps"&gt;MB&lt;/span&gt; of source to Instantbird).&lt;/p&gt;
 &lt;p&gt;Some modifications to the &lt;span class="caps"&gt;SIPE&lt;/span&gt; source were made to compile it in
 Instantbird (note that most of the changes were probably more based on
-using &lt;span class="caps"&gt;MSVC&lt;/span&gt;, than having to do with Instantbird).  The code is also
+using &lt;span class="caps"&gt;MSVC&lt;/span&gt;, than having to do with Instantbird). The code is also
 broken up into a few different sections the core, api, and purple are
 ones we care about (they’re working on making a general Office
 Communicator protocol library, so the purple folder contains the
@@ -1150,7 +1150,7 @@ libpurple bindings that use the api, while the core is private).&lt;/p&gt;
 &lt;div class="section" id="purple"&gt;
 &lt;h2&gt;&lt;a class="toc-backref" href="#id1"&gt;Purple&lt;/a&gt;&lt;/h2&gt;
 &lt;p&gt;Changes to purple consisted mostly of ifdefs that remove some header
-files not supported on Windows.  For example, I encountered a few of:&lt;/p&gt;
+files not supported on Windows. For example, I encountered a few of:&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="cp"&gt;#include&lt;/span&gt; &lt;span class="cpf"&gt;&amp;lt;unistd.h&amp;gt;&lt;/span&gt;&lt;span class="cp"&gt;&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;Luckily there was already a define &lt;tt class="docutils literal"&gt;HAVE_UNISTD_H&lt;/tt&gt;, so I just needed
@@ -1159,7 +1159,7 @@ to add:&lt;/p&gt;
 &lt;span class="cp"&gt;#include&lt;/span&gt; &lt;span class="cpf"&gt;&amp;lt;unistd.h&amp;gt;&lt;/span&gt;&lt;span class="cp"&gt;&lt;/span&gt;
 &lt;span class="cp"&gt;#endif&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
-&lt;p&gt;Easy!  There were also a couple other issues, but those were rather trivial.&lt;/p&gt;
+&lt;p&gt;Easy! There were also a couple other issues, but those were rather trivial.&lt;/p&gt;
 &lt;/div&gt;
 &lt;div class="section" id="core"&gt;
 &lt;h2&gt;&lt;a class="toc-backref" href="#id2"&gt;Core&lt;/a&gt;&lt;/h2&gt;
@@ -1173,45 +1173,45 @@ we were able to just define the function calls to the libpurple variants.&lt;/p
 &lt;p&gt;This had similar issues the core (in particular, there was a function
 which used &lt;tt class="docutils literal"&gt;g_usleep&lt;/tt&gt;, which is blocking and a definite no-no for a
 protocol plug-in, I’ve removed that…hopefully it doesn’t break
-anything!)  In addition to that, we needed to use the libpurple l10n
+anything!) In addition to that, we needed to use the libpurple l10n
 system instead of glib’s gi18n.h, this was easily copied from
 libpurple’s internal &lt;span class="caps"&gt;API&lt;/span&gt; though.&lt;/p&gt;
-&lt;p&gt;So at this point…I have a copy of &lt;span class="caps"&gt;SIPE&lt;/span&gt; compiled!  Unfortunately
+&lt;p&gt;So at this point…I have a copy of &lt;span class="caps"&gt;SIPE&lt;/span&gt; compiled! Unfortunately
 since I’m using Visual Studio Express I cannot compile on my computer
 and deploy to other computers for testing (a Mozilla issue with how it
-uses some of the header files, etc., I believe).  I’m looking into
+uses some of the header files, etc., I believe). I’m looking into
 trying to get this to work though, apparently using the exact same copy
-of &lt;span class="caps"&gt;MSVC&lt;/span&gt; Redistributable might help.  Once this is tested, hopefully
+of &lt;span class="caps"&gt;MSVC&lt;/span&gt; Redistributable might help. Once this is tested, hopefully
 it’ll land in Instantbird for use!&lt;/p&gt;
 &lt;/div&gt;
 &lt;div class="section" id="sametime-support"&gt;
 &lt;h2&gt;&lt;a class="toc-backref" href="#id4"&gt;Sametime support&lt;/a&gt;&lt;/h2&gt;
 &lt;p&gt;Unrelated to &lt;span class="caps"&gt;SIPE&lt;/span&gt;, but recently I landed a patch in Instantbird to add
 back Sametime support (Sametime is Lotus Notes’ equivalent to Office
-Communicator).  You can see the gory details in &lt;a class="reference external" href="https://bugzilla.instantbird.org/show_bug.cgi?id=102"&gt;bug 102&lt;/a&gt;, but in
+Communicator). You can see the gory details in &lt;a class="reference external" href="https://bugzilla.instantbird.org/show_bug.cgi?id=102"&gt;bug 102&lt;/a&gt;, but in
 general it’s similar to what I’ve (not gone into great detail about)
 here. Most of getting Sametime to work was rewriting some C code
-that doesn’t compile in &lt;span class="caps"&gt;MSVC&lt;/span&gt;.  There’s also a &lt;a class="reference external" href="https://bugzilla.instantbird.org/attachment.cgi?id=797&amp;amp;action=diff"&gt;diff&lt;/a&gt; of all the
+that doesn’t compile in &lt;span class="caps"&gt;MSVC&lt;/span&gt;. There’s also a &lt;a class="reference external" href="https://bugzilla.instantbird.org/attachment.cgi?id=797&amp;amp;action=diff"&gt;diff&lt;/a&gt; of all the
 changes I made to the libpurple Sametime plugin and the external library
-(called &lt;a class="reference external" href="http://meanwhile.sourceforge.net/"&gt;Meanwhile&lt;/a&gt;) to get it to work.  Once I get Monotone (a version
+(called &lt;a class="reference external" href="http://meanwhile.sourceforge.net/"&gt;Meanwhile&lt;/a&gt;) to get it to work. Once I get Monotone (a version
 control system) set up I’ll look into getting these changes pushed back
 to libpurple to avoid diverging code bases.&lt;/p&gt;
 &lt;/div&gt;
 </content><category term="articles"></category><category term="Instantbird"></category><category term="programming"></category><category term="SIPE"></category></entry><entry><title>Adding a new protocol (SIPE/Office Communicator) to Instantbird (part 1)</title><link href="https://patrick.cloke.us/posts/2011/06/18/adding-new-protocol-sipeoffice/" rel="alternate"></link><published>2011-06-18T21:53:00-04:00</published><updated>2011-06-18T21:53:00-04:00</updated><author><name>Patrick Cloke</name></author><id>tag:patrick.cloke.us,2011-06-18:/posts/2011/06/18/adding-new-protocol-sipeoffice/</id><summary type="html">&lt;p&gt;&lt;a class="reference external" href="http://en.wikipedia.org/wiki/Office_Communicator"&gt;Microsoft Office Communicator&lt;/a&gt; is an instant messaging client that
 integrates into the &lt;a class="reference external" href="http://en.wikipedia.org/wiki/Microsoft_Exchange_Server"&gt;Exchange Messaging Server&lt;/a&gt; (the protocol behind it
-is an extended version of &lt;span class="caps"&gt;SIP&lt;/span&gt;/&lt;span class="caps"&gt;SIMPLE&lt;/span&gt;).&amp;nbsp; Anyway, there&amp;#8217;s a &lt;a class="reference external" href="http://developer.pidgin.im/wiki/WhatIsLibpurple"&gt;libpurple&lt;/a&gt;
+is an extended version of &lt;span class="caps"&gt;SIP&lt;/span&gt;/&lt;span class="caps"&gt;SIMPLE&lt;/span&gt;). Anyway, there&amp;#8217;s a &lt;a class="reference external" href="http://developer.pidgin.im/wiki/WhatIsLibpurple"&gt;libpurple&lt;/a&gt;
 (i.e. the backend of &lt;a class="reference external" href="http://instantbird.com/"&gt;Instantbird&lt;/a&gt; and &lt;a class="reference external" href="http://pidgin.im/"&gt;Pidgin&lt;/a&gt;) protocol plug-in for
-&lt;span class="caps"&gt;OCS&lt;/span&gt; (Office Communicator Server) called &lt;a class="reference external" href="http://sipe.sourceforge.net/"&gt;&lt;span class="caps"&gt;SIPE&lt;/span&gt;&lt;/a&gt;.&amp;nbsp; (It&amp;#8217;s …&lt;/p&gt;</summary><content type="html">&lt;p&gt;&lt;a class="reference external" href="http://en.wikipedia.org/wiki/Office_Communicator"&gt;Microsoft Office Communicator&lt;/a&gt; is an instant messaging client that
+&lt;span class="caps"&gt;OCS&lt;/span&gt; (Office Communicator Server) called &lt;a class="reference external" href="http://sipe.sourceforge.net/"&gt;&lt;span class="caps"&gt;SIPE&lt;/span&gt;&lt;/a&gt;. (It&amp;#8217;s …&lt;/p&gt;</summary><content type="html">&lt;p&gt;&lt;a class="reference external" href="http://en.wikipedia.org/wiki/Office_Communicator"&gt;Microsoft Office Communicator&lt;/a&gt; is an instant messaging client that
 integrates into the &lt;a class="reference external" href="http://en.wikipedia.org/wiki/Microsoft_Exchange_Server"&gt;Exchange Messaging Server&lt;/a&gt; (the protocol behind it
-is an extended version of &lt;span class="caps"&gt;SIP&lt;/span&gt;/&lt;span class="caps"&gt;SIMPLE&lt;/span&gt;).&amp;nbsp; Anyway, there&amp;#8217;s a &lt;a class="reference external" href="http://developer.pidgin.im/wiki/WhatIsLibpurple"&gt;libpurple&lt;/a&gt;
+is an extended version of &lt;span class="caps"&gt;SIP&lt;/span&gt;/&lt;span class="caps"&gt;SIMPLE&lt;/span&gt;). Anyway, there&amp;#8217;s a &lt;a class="reference external" href="http://developer.pidgin.im/wiki/WhatIsLibpurple"&gt;libpurple&lt;/a&gt;
 (i.e. the backend of &lt;a class="reference external" href="http://instantbird.com/"&gt;Instantbird&lt;/a&gt; and &lt;a class="reference external" href="http://pidgin.im/"&gt;Pidgin&lt;/a&gt;) protocol plug-in for
-&lt;span class="caps"&gt;OCS&lt;/span&gt; (Office Communicator Server) called &lt;a class="reference external" href="http://sipe.sourceforge.net/"&gt;&lt;span class="caps"&gt;SIPE&lt;/span&gt;&lt;/a&gt;.&amp;nbsp; (It&amp;#8217;s also striving
+&lt;span class="caps"&gt;OCS&lt;/span&gt; (Office Communicator Server) called &lt;a class="reference external" href="http://sipe.sourceforge.net/"&gt;&lt;span class="caps"&gt;SIPE&lt;/span&gt;&lt;/a&gt;. (It&amp;#8217;s also striving
 for a generic library to connect to &lt;span class="caps"&gt;OCS&lt;/span&gt;, but that&amp;#8217;s not quite there&amp;nbsp;yet.)&lt;/p&gt;
 &lt;p&gt;I&amp;#8217;ve been interested in getting this to compile in the Instantbird
-framework for a while now, adding a new protocol to Instantbird.&amp;nbsp; First
+framework for a while now, adding a new protocol to Instantbird. First
 of course I need the &lt;span class="caps"&gt;SIPE&lt;/span&gt; source, I chose to grab a release &lt;a class="reference external" href="http://sourceforge.net/projects/sipe/files/sipe/pidgin-sipe-1.11.2/"&gt;source
 bundle&lt;/a&gt; instead of using the &lt;a class="reference external" href="http://sourceforge.net/apps/mediawiki/sipe/index.php?title=Windows_Build"&gt;git repository&lt;/a&gt;, just for ease moving
-files around, etc.&amp;nbsp; There&amp;#8217;s a rather vague &lt;a class="reference external" href="http://sourceforge.net/apps/mediawiki/sipe/index.php?title=Windows_Build"&gt;Windows build&lt;/a&gt; page on the
+files around, etc. There&amp;#8217;s a rather vague &lt;a class="reference external" href="http://sourceforge.net/apps/mediawiki/sipe/index.php?title=Windows_Build"&gt;Windows build&lt;/a&gt; page on the
 wiki that I started with, says I&amp;nbsp;need:&lt;/p&gt;
 &lt;ul class="simple"&gt;
 &lt;li&gt;libpurple &amp;gt;2.4.0 (we have&amp;nbsp;2.7.11)&lt;/li&gt;
@@ -1220,43 +1220,43 @@ wiki that I started with, says I&amp;nbsp;need:&lt;/p&gt;
 &lt;li&gt;gmime &amp;gt;2.4 (not currently&amp;nbsp;used)&lt;/li&gt;
 &lt;/ul&gt;
 &lt;p&gt;So great, &lt;a class="reference external" href="https://wiki.instantbird.org/Instantbird:Third_party_code"&gt;we have most of the dependencies&lt;/a&gt;! We just need one more.
-So I go grab, &lt;a class="reference external" href="http://developer.gnome.org/gmime/"&gt;gmime&lt;/a&gt;from the &lt;span class="caps"&gt;GNOME&lt;/span&gt; website (2.5.7, which is the
+So I go grab, &lt;a class="reference external" href="http://developer.gnome.org/gmime/"&gt;gmime&lt;/a&gt; from the &lt;span class="caps"&gt;GNOME&lt;/span&gt; website (2.5.7, which is the
 newest stable, currently), again as a source bundle and put the
 necessary files in purple/libraries/gmime and edit the makefile so it
-will (attempt) to compile.&amp;nbsp; But great &amp;#8212; it requires &lt;a class="reference external" href="http://www.gnu.org/software/libiconv/"&gt;libiconv&lt;/a&gt;, which
-apparently is very difficult to compile, especially on Windows.&amp;nbsp; Luckily
+will (attempt) to compile. But great &amp;#8212; it requires &lt;a class="reference external" href="http://www.gnu.org/software/libiconv/"&gt;libiconv&lt;/a&gt;, which
+apparently is very difficult to compile, especially on Windows. Luckily
 for me there&amp;#8217;s a Windows version (not a port, but one that uses the
-native Win32 APIs with the same interface): &lt;a class="reference external" href="http://code.google.com/p/win-iconv/"&gt;win-iconv&lt;/a&gt;.&amp;nbsp; This compiled
+native Win32 APIs with the same interface): &lt;a class="reference external" href="http://code.google.com/p/win-iconv/"&gt;win-iconv&lt;/a&gt;. This compiled
 like a champ when added as&amp;nbsp;purple/libraries/iconv.&lt;/p&gt;
 &lt;p&gt;Unfortunately when I went back to compiling gmime, it attempts to
 access parts of glib we&amp;#8217;re not using (gio, in particular) and thus is
-not in our source code.&amp;nbsp; I can grab the &lt;a class="reference external" href="http://developer.gnome.org/glib/"&gt;glib&lt;/a&gt; source (2.28.6 to match,
+not in our source code. I can grab the &lt;a class="reference external" href="http://developer.gnome.org/glib/"&gt;glib&lt;/a&gt; source (2.28.6 to match,
 of course) and add the gio subfolder, but first we should check if this
 part of gmime is even used by &lt;span class="caps"&gt;SIPE&lt;/span&gt;! (My guess is that it is &lt;em&gt;not&lt;/em&gt;, but
-that&amp;#8217;s where I&amp;#8217;m at now.&amp;nbsp; I&amp;#8217;ll post back when I get&amp;nbsp;further.&lt;/p&gt;
+that&amp;#8217;s where I&amp;#8217;m at now. I&amp;#8217;ll post back when I get&amp;nbsp;further.&lt;/p&gt;
 </content><category term="articles"></category><category term="Instantbird"></category><category term="programming"></category><category term="SIPE"></category></entry><entry><title>Compiling Instantbird</title><link href="https://patrick.cloke.us/posts/2011/05/16/compilling-instantbird/" rel="alternate"></link><published>2011-05-16T21:30:00-04:00</published><updated>2011-05-16T21:30:00-04:00</updated><author><name>Patrick Cloke</name></author><id>tag:patrick.cloke.us,2011-05-16:/posts/2011/05/16/compilling-instantbird/</id><summary type="html">
 &lt;p&gt;In the past I’ve tried to compile a few different programs that use
-the Mozilla toolkit to various levels of success.  I’ve tried to compile
-Thunderbird, Songbird and Instantbird at various points.  I got
+the Mozilla toolkit to various levels of success. I’ve tried to compile
+Thunderbird, Songbird and Instantbird at various points. I got
 Thunderbird to compile, but it only worked sporadically (although I
 think that was Firefox …&lt;/p&gt;</summary><content type="html">
 &lt;p&gt;In the past I’ve tried to compile a few different programs that use
-the Mozilla toolkit to various levels of success.  I’ve tried to compile
-Thunderbird, Songbird and Instantbird at various points.  I got
+the Mozilla toolkit to various levels of success. I’ve tried to compile
+Thunderbird, Songbird and Instantbird at various points. I got
 Thunderbird to compile, but it only worked sporadically (although I
 think that was Firefox moving so fast that Thunderbird couldn’t keep
 up), Songbird I gave up on rather quickly and Instantbird I’ve tried a
 few times.&lt;/p&gt;
 &lt;p&gt;Last summer I had Instantbird compiling on my old laptop (a Lenovo
 T60), which is &amp;gt;5 years old at this point and has had the heatsink / fan
-replaced twice — a known issue with that model laptop.  Needless to
+replaced twice — a known issue with that model laptop. Needless to
 say, that laptop didn’t like compiling something on Windows that took
 approximately an hour with a large number of reads and writes to the
-hard drive.  This mixed with it being an old dual core + a 5400 &lt;span class="caps"&gt;RPM&lt;/span&gt;
-meant I’d be waiting a &lt;span class="caps"&gt;LONG&lt;/span&gt; time for my code to compile.  I got a
+hard drive. This mixed with it being an old dual core + a 5400 &lt;span class="caps"&gt;RPM&lt;/span&gt;
+meant I’d be waiting a &lt;span class="caps"&gt;LONG&lt;/span&gt; time for my code to compile. I got a
 Thinkpad X201 this past summer, so I finally got around to setting up a
 development environment on it and was able to get Instantbird to compile
-fully today.  I’ve outlined the steps I’ve followed: kind of to mirror
+fully today. I’ve outlined the steps I’ve followed: kind of to mirror
 the &lt;a class="reference external" href="https://developer.mozilla.org/En/Simple_Thunderbird_build"&gt;Simple Thunderbird Build&lt;/a&gt; page on &lt;span class="caps"&gt;MDC&lt;/span&gt;.&lt;/p&gt;
 &lt;p&gt;I’ve done this using Microsoft Windows 7 Professional (64-bit) with
 Service Pack 1. (4.00 &lt;span class="caps"&gt;GB&lt;/span&gt; of &lt;span class="caps"&gt;RAM&lt;/span&gt;, Intel Core i7 M620 2.67 GHz).
@@ -1267,44 +1267,44 @@ the installers.&lt;/p&gt;
 &lt;div class="section" id="visual-studio-express"&gt;
 &lt;h3&gt;&lt;a class="toc-backref" href="#id3"&gt;Visual Studio Express:&lt;/a&gt;&lt;/h3&gt;
 &lt;p&gt;We need to install Visual Studio Express, specifically &lt;span class="caps"&gt;VC8&lt;/span&gt; (2005) with
-Service Pack 1.  (Mozilla compiles with &lt;span class="caps"&gt;VC9&lt;/span&gt; and &lt;span class="caps"&gt;VC10&lt;/span&gt; to various degrees,
+Service Pack 1. (Mozilla compiles with &lt;span class="caps"&gt;VC9&lt;/span&gt; and &lt;span class="caps"&gt;VC10&lt;/span&gt; to various degrees,
 but it seems libpurple only compiles with &lt;span class="caps"&gt;VC8&lt;/span&gt;, also this is what’s on
-the Instantbird buildbot, so I like having the same version.)  I
+the Instantbird buildbot, so I like having the same version.) I
 couldn’t find this on Microsoft’s website but I found it on &lt;a class="reference external" href="http://www.softpedia.com/get/Programming/Other-Programming-Files/Microsoft-Visual-C-Toolkit.shtml"&gt;Softpedia&lt;/a&gt;
-(which is a legitimate site).  Anyway, download the installer and
+(which is a legitimate site). Anyway, download the installer and
 install it (which will download the actual compiler from Microsoft),
 ensure that you also install the &lt;span class="caps"&gt;IDE&lt;/span&gt; (which is checked by default).&lt;/p&gt;
-&lt;p&gt;This will only install &lt;span class="caps"&gt;VC8&lt;/span&gt;, the initial release.  We also need to
-install &lt;a class="reference external" href="http://www.microsoft.com/downloads/en/details.aspx?FamilyID=7b0b0339-613a-46e6-ab4d-080d4d4a8c4e"&gt;Service Pack 1&lt;/a&gt;.  I personally did this using Windows Update,
+&lt;p&gt;This will only install &lt;span class="caps"&gt;VC8&lt;/span&gt;, the initial release. We also need to
+install &lt;a class="reference external" href="http://www.microsoft.com/downloads/en/details.aspx?FamilyID=7b0b0339-613a-46e6-ab4d-080d4d4a8c4e"&gt;Service Pack 1&lt;/a&gt;. I personally did this using Windows Update,
 but one of the installers from there should also work.&lt;/p&gt;
 &lt;/div&gt;
 &lt;div class="section" id="microsoft-windows-sdk"&gt;
 &lt;h3&gt;&lt;a class="toc-backref" href="#id4"&gt;Microsoft Windows &lt;span class="caps"&gt;SDK&lt;/span&gt;:&lt;/a&gt;&lt;/h3&gt;
 &lt;p&gt;Specifically we need the &lt;a class="reference external" href="http://www.microsoft.com/downloads/en/details.aspx?FamilyID=c17ba869-9671-4330-a63e-1fd44e0e2505&amp;amp;displaylang=en"&gt;Windows 7 &lt;span class="caps"&gt;SDK&lt;/span&gt;&lt;/a&gt; (for Jumplist, Aero, etc.
-support).  Download and install the &lt;span class="caps"&gt;SDK&lt;/span&gt;, this one took a while for me to
-install.  I ate dinner while it was installing (pasta, if you’re curious
+support). Download and install the &lt;span class="caps"&gt;SDK&lt;/span&gt;, this one took a while for me to
+install. I ate dinner while it was installing (pasta, if you’re curious
 — I already had sauce made).&lt;/p&gt;
 &lt;p&gt;There’s a linker error when using &lt;span class="caps"&gt;VC8&lt;/span&gt; and the Windows 7 &lt;span class="caps"&gt;SDK&lt;/span&gt;, so we’ll
-need to install a &lt;a class="reference external" href="http://support.microsoft.com/kb/949009/"&gt;hotfix&lt;/a&gt;for that (I tried without it and I ran into
-the issue).  I had to download the “VS80sp1-&lt;span class="caps"&gt;KB949009&lt;/span&gt;-&lt;span class="caps"&gt;IA64&lt;/span&gt;-&lt;span class="caps"&gt;INTL&lt;/span&gt;.exe”
-version (there’s also an X86 and an X64 version).  Choose the one that works.&lt;/p&gt;
+need to install a &lt;a class="reference external" href="http://support.microsoft.com/kb/949009/"&gt;hotfix&lt;/a&gt; for that (I tried without it and I ran into
+the issue). I had to download the “VS80sp1-&lt;span class="caps"&gt;KB949009&lt;/span&gt;-&lt;span class="caps"&gt;IA64&lt;/span&gt;-&lt;span class="caps"&gt;INTL&lt;/span&gt;.exe”
+version (there’s also an X86 and an X64 version). Choose the one that works.&lt;/p&gt;
 &lt;/div&gt;
 &lt;div class="section" id="microsoft-macro-assembler"&gt;
 &lt;h3&gt;&lt;a class="toc-backref" href="#id5"&gt;Microsoft Macro Assembler:&lt;/a&gt;&lt;/h3&gt;
 &lt;p&gt;In order to properly assemble the code we need to &lt;a class="reference external" href="http://www.microsoft.com/downloads/en/details.aspx?familyid=7A1C9DA0-0510-44A2-B042-7EF370530C64&amp;amp;displaylang=en"&gt;install &lt;span class="caps"&gt;MASM&lt;/span&gt;&lt;/a&gt;
 (which I think will eventually be included in MozillaBuild, but it isn’t
-currently).  Again, just install it with the defaults.&lt;/p&gt;
+currently). Again, just install it with the defaults.&lt;/p&gt;
 &lt;/div&gt;
 &lt;div class="section" id="mozillabuild"&gt;
 &lt;h3&gt;&lt;a class="toc-backref" href="#id6"&gt;MozillaBuild:&lt;/a&gt;&lt;/h3&gt;
-&lt;p&gt;Almost there, I promise.  In order to get a *nix type shell to run
+&lt;p&gt;Almost there, I promise. In order to get a *nix type shell to run
 make, etc. in we’ll use a package from Mozilla that includes &lt;span class="caps"&gt;MSYS&lt;/span&gt;, make,
-Mercurial, etc.  Download and &lt;a class="reference external" href="http://ftp.mozilla.org/pub/mozilla.org/mozilla/libraries/win32/MozillaBuildSetup-Latest.exe"&gt;install MozillaBuild&lt;/a&gt;, the latest should
+Mercurial, etc. Download and &lt;a class="reference external" href="http://ftp.mozilla.org/pub/mozilla.org/mozilla/libraries/win32/MozillaBuildSetup-Latest.exe"&gt;install MozillaBuild&lt;/a&gt;, the latest should
 work fine.&lt;/p&gt;
 &lt;p&gt;Now, an unknown step: you might require the &lt;a class="reference external" href="http://www.microsoft.com/downloads/en/details.aspx?FamilyID=a5c84275-3b97-4ab7-a40d-3802b2af5fc2&amp;amp;displaylang=en"&gt;Microsoft Visual C++ 2008
-&lt;span class="caps"&gt;SP1&lt;/span&gt; Redistributable Package&lt;/a&gt;.  I don’t know if you need this or not
+&lt;span class="caps"&gt;SP1&lt;/span&gt; Redistributable Package&lt;/a&gt;. I don’t know if you need this or not
 since I &lt;em&gt;already&lt;/em&gt; had it, most likely from a previous program I’ve installed.&lt;/p&gt;
-&lt;p&gt;We should be ready to build now pretty much.  For some more
+&lt;p&gt;We should be ready to build now pretty much. For some more
 information for this stuff you can check out the Mozilla Developer
 Network pages I used to get this information: &lt;a class="reference external" href="https://developer.mozilla.org/En/Developer_Guide/Build_Instructions"&gt;Build Instructions&lt;/a&gt;,
 &lt;a class="reference external" href="https://developer.mozilla.org/En/Developer_Guide/Build_Instructions/Windows_Prerequisites"&gt;Windows Build Prerequisites&lt;/a&gt; and &lt;a class="reference external" href="https://developer.mozilla.org/cn/VC8_Build_Instructions"&gt;&lt;span class="caps"&gt;MSVC8&lt;/span&gt; Build Instructions&lt;/a&gt;.&lt;/p&gt;
@@ -1312,35 +1312,35 @@ Network pages I used to get this information: &lt;a class="reference external" h
 &lt;/div&gt;
 &lt;div class="section" id="checkout-the-code"&gt;
 &lt;h2&gt;&lt;a class="toc-backref" href="#id7"&gt;Checkout the Code:&lt;/a&gt;&lt;/h2&gt;
-&lt;p&gt;We need to checkout the code.  I originally checked out the code with
+&lt;p&gt;We need to checkout the code. I originally checked out the code with
 TortoiseHg (which is what I normally use), but the version of Mercurial
 included is significantly greater than the one included in MozillaBuild
-and this caused me issues later on.  Thus, we’ll check out the code on
-the command line.  Start by launching the bash shell, which is at
-C:\mozilla-build\start-msvc8.bat (don’t use the x64 version).  There’s
+and this caused me issues later on. Thus, we’ll check out the code on
+the command line. Start by launching the bash shell, which is at
+C:\mozilla-build\start-msvc8.bat (don’t use the x64 version). There’s
 a version here which corresponds to each version of &lt;span class="caps"&gt;VS&lt;/span&gt;.&lt;/p&gt;
 &lt;p&gt;Once this finishes loading you’ll be in the home directory (which is
 in the root of your user’s documents and settings folder, i.e. for me:
-C:\Users\clokep).  You’ll want to do the following:&lt;/p&gt;
+C:\Users\clokep). You’ll want to do the following:&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;hg clone https://hg.instantbird.org/instantbird
 &lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;This might take a few minutes depending on how good your internet
-connection is.  (The Instantbird source isn’t &lt;span class="caps"&gt;THAT&lt;/span&gt; big though, it
+connection is. (The Instantbird source isn’t &lt;span class="caps"&gt;THAT&lt;/span&gt; big though, it
 shouldn’t take too long.)&lt;/p&gt;
 &lt;p&gt;Then we’ll need to change into the instantbird directory that was just
 created and download the Mozilla source code:&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="nb"&gt;cd&lt;/span&gt; instantbird
 python client.py checkout
 &lt;/pre&gt;&lt;/div&gt;
-&lt;p&gt;Now this step?  This one is gonna take a while.  It took me like a
-couple of hours.  It pulls the Mozilla source code, which is large and
-has many changesets.  Just let it go, it’ll give you progress
+&lt;p&gt;Now this step? This one is gonna take a while. It took me like a
+couple of hours. It pulls the Mozilla source code, which is large and
+has many changesets. Just let it go, it’ll give you progress
 occasionally (changes, manifests, files, etc.)&lt;/p&gt;
 &lt;/div&gt;
 &lt;div class="section" id="id1"&gt;
 &lt;h2&gt;&lt;a class="toc-backref" href="#id8"&gt;Compiling Instantbird:&lt;/a&gt;&lt;/h2&gt;
-&lt;p&gt;We need to set up the options we want to build with.  These are
-read from a .mozconfig (don’t miss the “.” in the front!).  The contents
+&lt;p&gt;We need to set up the options we want to build with. These are
+read from a .mozconfig (don’t miss the “.” in the front!). The contents
 of the .mozconfig that worked for me are:&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;ac_add_options --enable-application&lt;span class="o"&gt;=&lt;/span&gt;instantbird
 mk_add_options &lt;span class="nv"&gt;MOZ_OBJDIR&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;@TOPSRCDIR@/objdir-ib-release
@@ -1352,8 +1352,8 @@ we need to do this, but we’ll get that error at that link otherwise).&lt;/p&g
 &lt;p&gt;Finally (back in the bash shell) type:&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;make -f client.mk build
 &lt;/pre&gt;&lt;/div&gt;
-&lt;p&gt;Now sit back and relax.  My build took about an hour to finish, maybe
-a bit less — I wasn’t fully paying attention.  Once it’s done you
+&lt;p&gt;Now sit back and relax. My build took about an hour to finish, maybe
+a bit less — I wasn’t fully paying attention. Once it’s done you
 should see something like:&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;Processed &lt;span class="m"&gt;1&lt;/span&gt; file, writing output:
 
@@ -1390,35 +1390,35 @@ assume you use Instantbird to &lt;span class="caps"&gt;IM&lt;/span&gt;…you pro
 second one, if you don’t use it…shame on you. Try not to close the
 wrong Instantbird when you’re working on stuff).&lt;/p&gt;
 &lt;p&gt;Hopefully this will help someone else get started on hacking
-Instantbird.  There’s other good ways you can hack too if your computer
+Instantbird. There’s other good ways you can hack too if your computer
 can’t handle compiling, including unpacking omni.jar.&lt;/p&gt;
 &lt;p&gt;One last tidbit is to possibly add the option to your .mozconfig:&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;--enable-chrome-format&lt;span class="o"&gt;=&lt;/span&gt;flat
 &lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;This will not package anything in JARs (which pretty much just get in
-the way while developing).  See &lt;a class="reference external" href="https://developer.mozilla.org/en/JAR_Packaging"&gt;here&lt;/a&gt; for more info.&lt;/p&gt;
+the way while developing). See &lt;a class="reference external" href="https://developer.mozilla.org/en/JAR_Packaging"&gt;here&lt;/a&gt; for more info.&lt;/p&gt;
 &lt;p&gt;Edit: Fixed the path to the executable thanks to Florian. And fixed a
 spelling error in the title.&lt;/p&gt;
 &lt;/div&gt;
 </content><category term="articles"></category><category term="Instantbird"></category><category term="Mozilla"></category><category term="programming"></category></entry><entry><title>Why rewrite the IRC protocol plugin? (Part 2)</title><link href="https://patrick.cloke.us/posts/2011/04/30/why-rewrite-irc-protocol-plugin-part-2/" rel="alternate"></link><published>2011-04-30T13:01:00-04:00</published><updated>2011-04-30T13:01:00-04:00</updated><author><name>Patrick Cloke</name></author><id>tag:patrick.cloke.us,2011-04-30:/posts/2011/04/30/why-rewrite-irc-protocol-plugin-part-2/</id><summary type="html">&lt;p&gt;I &lt;a class="reference external" href="https://patrick.cloke.us/posts/2010/12/08/why-rewrite-irc-into-javascript/"&gt;previously wrote about&lt;/a&gt; why I&amp;#8217;m rewriting the libpurple &lt;span class="caps"&gt;IRC&lt;/span&gt;
-implementation into a JavaScript implementation for Instantbird.&amp;nbsp; This
+implementation into a JavaScript implementation for Instantbird. This
 is kind of a follow up, but more focused on what I hope to accomplish
-feature wise for &lt;span class="caps"&gt;IRC&lt;/span&gt; in Instantbird.&amp;nbsp; A good overview to look at is the
+feature wise for &lt;span class="caps"&gt;IRC&lt;/span&gt; in Instantbird. A good overview to look at is the
 &lt;a class="reference external" href="https://bugzilla.instantbird.org/showdependencygraph.cgi?id=507&amp;amp;display=web&amp;amp;rankdir=LR"&gt;dependencies of …&lt;/a&gt;&lt;/p&gt;</summary><content type="html">&lt;p&gt;I &lt;a class="reference external" href="https://patrick.cloke.us/posts/2010/12/08/why-rewrite-irc-into-javascript/"&gt;previously wrote about&lt;/a&gt; why I&amp;#8217;m rewriting the libpurple &lt;span class="caps"&gt;IRC&lt;/span&gt;
-implementation into a JavaScript implementation for Instantbird.&amp;nbsp; This
+implementation into a JavaScript implementation for Instantbird. This
 is kind of a follow up, but more focused on what I hope to accomplish
-feature wise for &lt;span class="caps"&gt;IRC&lt;/span&gt; in Instantbird.&amp;nbsp; A good overview to look at is the
+feature wise for &lt;span class="caps"&gt;IRC&lt;/span&gt; in Instantbird. A good overview to look at is the
 &lt;a class="reference external" href="https://bugzilla.instantbird.org/showdependencygraph.cgi?id=507&amp;amp;display=web&amp;amp;rankdir=LR"&gt;dependencies of bug 507&lt;/a&gt; (implement &lt;span class="caps"&gt;IRC&lt;/span&gt; in JavaScript) &amp;#8212; you&amp;#8217;ll want
 to look to the left of bug 507, these are the bugs that depend on 507
 (as opposed to blocking&amp;nbsp;507).&lt;/p&gt;
 &lt;p&gt;My overall hope is to make Instantbird the easiest and simplest &lt;span class="caps"&gt;IRC&lt;/span&gt;
-client to use.&amp;nbsp; I&amp;#8217;ve found that most &lt;span class="caps"&gt;IRC&lt;/span&gt; clients tend to depend a great
+client to use. I&amp;#8217;ve found that most &lt;span class="caps"&gt;IRC&lt;/span&gt; clients tend to depend a great
 deal on commands and essentially being a very thin &lt;span class="caps"&gt;GUI&lt;/span&gt; layer on top of
-the protocol.&amp;nbsp; I don&amp;#8217;t really see the reason for this, we should attempt
-to hide the protocol as much as possible from the users.&amp;nbsp; This means
+the protocol. I don&amp;#8217;t really see the reason for this, we should attempt
+to hide the protocol as much as possible from the users. This means
 fitting the &lt;span class="caps"&gt;IRC&lt;/span&gt; command responses into the &lt;span class="caps"&gt;GUI&lt;/span&gt; wherever possible and
 possibly &amp;#8220;losing&amp;#8221; some features compared to other &lt;span class="caps"&gt;IRC&lt;/span&gt; clients, although
-I think that&amp;#8217;s a matter of perspective.&amp;nbsp; (For example, there&amp;#8217;s often an
+I think that&amp;#8217;s a matter of perspective. (For example, there&amp;#8217;s often an
 &lt;span class="caps"&gt;IRC&lt;/span&gt; command to list all the channels available, I &lt;em&gt;do not&lt;/em&gt; think this
 should be implemented as a text command, but it should be available via
 the join chat &lt;span class="caps"&gt;GUI&lt;/span&gt;).&lt;/p&gt;
@@ -1427,19 +1427,19 @@ the join chat &lt;span class="caps"&gt;GUI&lt;/span&gt;).&lt;/p&gt;
 &lt;li&gt;Support for &lt;span class="caps"&gt;IRC&lt;/span&gt; services would be pretty awesome, I&amp;#8217;m not sure
 whether this would be part of the main protocol or as an extension,
 but it should be able to handle NickServ mostly autonomously
-(possibly even automatically registering the nick, etc.).&amp;nbsp; MemoServ
+(possibly even automatically registering the nick, etc.). MemoServ
 could be implemented as a message service once there is &lt;span class="caps"&gt;UI&lt;/span&gt; for that
-in Instantbird.&amp;nbsp; I&amp;#8217;m not sure how ChanServ could be handled in the
-&lt;span class="caps"&gt;UI&lt;/span&gt;, but I&amp;#8217;ll think more about this.&amp;nbsp; See &lt;a class="reference external" href="https://bugzilla.instantbird.org/show_bug.cgi?id=720"&gt;bug 720&lt;/a&gt; for more info.
+in Instantbird. I&amp;#8217;m not sure how ChanServ could be handled in the
+&lt;span class="caps"&gt;UI&lt;/span&gt;, but I&amp;#8217;ll think more about this. See &lt;a class="reference external" href="https://bugzilla.instantbird.org/show_bug.cgi?id=720"&gt;bug 720&lt;/a&gt; for more info.
 (And yes, there are multiple versions of &lt;span class="caps"&gt;IRC&lt;/span&gt; services, but we can
 attempt to support a subset and otherwise just leave it up to the
-user.&amp;nbsp; Ideally servers would have supported this stuff&amp;#8230;but that&amp;#8217;s
+user. Ideally servers would have supported this stuff&amp;#8230;but that&amp;#8217;s
 not how &lt;span class="caps"&gt;IRC&lt;/span&gt;&amp;nbsp;works.)&lt;/li&gt;
 &lt;li&gt;The &lt;span class="caps"&gt;UI&lt;/span&gt; should be more responsive to the modes of the user and to the
-channel.&amp;nbsp; For example, if the user does not have permission to edit
-the topic, it should not be editable in the &lt;span class="caps"&gt;UI&lt;/span&gt; (&lt;a class="reference external" href="https://bugzilla.instantbird.org/show_bug.cgi?id=318"&gt;bug 318&lt;/a&gt;).&amp;nbsp; Also,
+channel. For example, if the user does not have permission to edit
+the topic, it should not be editable in the &lt;span class="caps"&gt;UI&lt;/span&gt; (&lt;a class="reference external" href="https://bugzilla.instantbird.org/show_bug.cgi?id=318"&gt;bug 318&lt;/a&gt;). Also,
 if a user is a (half-)operator, there should be &lt;span class="caps"&gt;UI&lt;/span&gt; to have cause
-other users to be given (h)op (&lt;a class="reference external" href="https://bugzilla.instantbird.org/show_bug.cgi?id=597"&gt;bug 597&lt;/a&gt;).&amp;nbsp; In terms of channel
+other users to be given (h)op (&lt;a class="reference external" href="https://bugzilla.instantbird.org/show_bug.cgi?id=597"&gt;bug 597&lt;/a&gt;). In terms of channel
 modes, there could be &lt;span class="caps"&gt;UI&lt;/span&gt; to show the channel is invite only or that
 it&amp;#8217;s a hidden&amp;nbsp;channel.&lt;/li&gt;
 &lt;/ul&gt;
@@ -1450,19 +1450,19 @@ it&amp;#8217;s a hidden&amp;nbsp;channel.&lt;/li&gt;
 &lt;p&gt;There&amp;#8217;s also a few &amp;#8220;bugs&amp;#8221; in the libpurple implementation that this
 will&amp;nbsp;fix:&lt;/p&gt;
 &lt;ul class="simple"&gt;
-&lt;li&gt;The /msg command doesn&amp;#8217;t show outgoing messages (&lt;a class="reference external" href="https://bugzilla.instantbird.org/show_bug.cgi?id=188"&gt;bug 188&lt;/a&gt;).&amp;nbsp; I
+&lt;li&gt;The /msg command doesn&amp;#8217;t show outgoing messages (&lt;a class="reference external" href="https://bugzilla.instantbird.org/show_bug.cgi?id=188"&gt;bug 188&lt;/a&gt;). I
 believe this is actually already&amp;nbsp;fixed.&lt;/li&gt;
 &lt;li&gt;&lt;span class="caps"&gt;IRC&lt;/span&gt; channels should automatically rejoin on reconnect (&lt;a class="reference external" href="https://bugzilla.instantbird.org/show_bug.cgi?id=385"&gt;bug 385&lt;/a&gt;).&lt;/li&gt;
 &lt;li&gt;Chats with other users should show whether they are available or not
 (&lt;a class="reference external" href="https://bugzilla.instantbird.org/show_bug.cgi?id=613"&gt;bug 613&lt;/a&gt;).&lt;/li&gt;
 &lt;/ul&gt;
 &lt;p&gt;These are just some ideas and it&amp;#8217;s a long ways off for feature parity
-with libpurple even.&amp;nbsp; (Although since Instantbird doesn&amp;#8217;t support all
+with libpurple even. (Although since Instantbird doesn&amp;#8217;t support all
 the features of Pidgin, feature-parity in this case doesn&amp;#8217;t include
 things like &lt;span class="caps"&gt;DCC&lt;/span&gt; transfer, etc. until Instantbird itself supports&amp;nbsp;those.)&lt;/p&gt;
 &lt;p&gt;Right now, the code is mostly usable (and I&amp;#8217;m finally catching any
 exceptions that are thrown so the code shouldn&amp;#8217;t crash anymore), and
-works fine.&amp;nbsp; The one issue I&amp;#8217;m having is sometimes I&amp;#8217;m unable to
+works fine. The one issue I&amp;#8217;m having is sometimes I&amp;#8217;m unable to
 reconnect when the connection is lost, but I think I&amp;#8217;ve finally fixed
 that issue and reconnection should happen&amp;nbsp;automatically!&lt;/p&gt;
 &lt;p&gt;One last quick note, if you happen to have the &lt;a class="reference external" href="https://hg.instantbird.org/experiments"&gt;repository&lt;/a&gt; checked
@@ -1470,45 +1470,45 @@ out, you&amp;#8217;ll want to update on the default branch from now on as I&amp;
 merged the separate branches together under&amp;nbsp;subfolders.&lt;/p&gt;
 </content><category term="articles"></category><category term="Instantbird"></category><category term="IRC"></category></entry><entry><title>The so-called IRC “specifications”</title><link href="https://patrick.cloke.us/posts/2011/03/08/so-called-irc-specifications/" rel="alternate"></link><published>2011-03-08T21:20:00-05:00</published><updated>2014-12-20T15:55:00-05:00</updated><author><name>Patrick Cloke</name></author><id>tag:patrick.cloke.us,2011-03-08:/posts/2011/03/08/so-called-irc-specifications/</id><summary type="html">
 &lt;p&gt;In a &lt;a class="reference external" href="https://patrick.cloke.us/posts/2010/12/08/why-rewrite-irc-into-javascript/"&gt;previous post&lt;/a&gt; I had briefly gone over the “history of &lt;span class="caps"&gt;IRC&lt;/span&gt;” as
-I know it.  I’m going to expand on this a bit as I’ve come to understand
-it a bit more while reading through documentation.  (Hopefully it won’t
+I know it. I’m going to expand on this a bit as I’ve come to understand
+it a bit more while reading through documentation. (Hopefully it won’t
 sound too much like a rant …&lt;/p&gt;</summary><content type="html">
 &lt;p&gt;In a &lt;a class="reference external" href="https://patrick.cloke.us/posts/2010/12/08/why-rewrite-irc-into-javascript/"&gt;previous post&lt;/a&gt; I had briefly gone over the “history of &lt;span class="caps"&gt;IRC&lt;/span&gt;” as
-I know it.  I’m going to expand on this a bit as I’ve come to understand
-it a bit more while reading through documentation.  (Hopefully it won’t
+I know it. I’m going to expand on this a bit as I’ve come to understand
+it a bit more while reading through documentation. (Hopefully it won’t
 sound too much like a rant, as it is all driving me crazy!)&lt;/p&gt;
 &lt;div class="section" id="irc-specifications"&gt;
 &lt;h2&gt;&lt;a class="toc-backref" href="#id5"&gt;&lt;span class="caps"&gt;IRC&lt;/span&gt; Specifications&lt;/a&gt;&lt;/h2&gt;
 &lt;p&gt;So there’s the original specification (&lt;a class="reference external" href="http://tools.ietf.org/html/rfc1459"&gt;&lt;span class="caps"&gt;RFC&lt;/span&gt; 1459&lt;/a&gt;) in May 1993; this
 was expanded and replaced by four different specifications (&lt;a class="reference external" href="http://tools.ietf.org/html/rfc2810"&gt;&lt;span class="caps"&gt;RFC&lt;/span&gt; 2810&lt;/a&gt;,
-&lt;a class="reference external" href="http://tools.ietf.org/html/rfc2811"&gt;2811&lt;/a&gt;, &lt;a class="reference external" href="http://tools.ietf.org/html/rfc2812"&gt;2812&lt;/a&gt;, &lt;a class="reference external" href="http://tools.ietf.org/html/rfc2813"&gt;2813&lt;/a&gt;) in April 2000.  Seems pretty straightforward, right?&lt;/p&gt;
+&lt;a class="reference external" href="http://tools.ietf.org/html/rfc2811"&gt;2811&lt;/a&gt;, &lt;a class="reference external" href="http://tools.ietf.org/html/rfc2812"&gt;2812&lt;/a&gt;, &lt;a class="reference external" href="http://tools.ietf.org/html/rfc2813"&gt;2813&lt;/a&gt;) in April 2000. Seems pretty straightforward, right?&lt;/p&gt;
 &lt;/div&gt;
 &lt;div class="section" id="dcc-ctcp"&gt;
 &lt;h2&gt;&lt;a class="toc-backref" href="#id6"&gt;&lt;span class="caps"&gt;DCC&lt;/span&gt;/&lt;span class="caps"&gt;CTCP&lt;/span&gt;&lt;/a&gt;&lt;/h2&gt;
 &lt;p&gt;Well, kind of…there’s also the &lt;span class="caps"&gt;DCC&lt;/span&gt;/&lt;span class="caps"&gt;CTCP&lt;/span&gt; specifications, which is a
 separate protocol embedded/hidden within the &lt;span class="caps"&gt;IRC&lt;/span&gt; protocol (e.g. they’re
 sent as &lt;span class="caps"&gt;IRC&lt;/span&gt; messages and parsed specially by clients, the server sees
-them as normal messages).  &lt;span class="caps"&gt;DCC&lt;/span&gt;/&lt;span class="caps"&gt;CTCP&lt;/span&gt; is used to send files as well as
+them as normal messages). &lt;span class="caps"&gt;DCC&lt;/span&gt;/&lt;span class="caps"&gt;CTCP&lt;/span&gt; is used to send files as well as
 other particular messages (&lt;span class="caps"&gt;ACTION&lt;/span&gt; commands for roleplaying, &lt;span class="caps"&gt;SED&lt;/span&gt; for
 encrypting conversations, &lt;span class="caps"&gt;VERSION&lt;/span&gt; to get client information, etc.).
 Anyway, this get’s a bit more complicated — it starts with the &lt;a class="reference external" href="http://www.irchelp.org/irchelp/rfc/dccspec.html"&gt;&lt;span class="caps"&gt;DCC&lt;/span&gt;
-specification&lt;/a&gt;.  This was replaced/updated by the &lt;a class="reference external" href="http://www.irchelp.org/irchelp/rfc/ctcpspec.html"&gt;&lt;span class="caps"&gt;CTCP&lt;/span&gt; specification&lt;/a&gt;
-(which fully includes the &lt;span class="caps"&gt;DCC&lt;/span&gt; specification) in 1994.  An &lt;a class="reference external" href="https://web.archive.org/web/20101129023108/http://www.invlogic.com/irc/ctcp.html"&gt;“updated”
-&lt;span class="caps"&gt;CTCP&lt;/span&gt; specification&lt;/a&gt; was released in February 1997.  There’s also a
+specification&lt;/a&gt;. This was replaced/updated by the &lt;a class="reference external" href="http://www.irchelp.org/irchelp/rfc/ctcpspec.html"&gt;&lt;span class="caps"&gt;CTCP&lt;/span&gt; specification&lt;/a&gt;
+(which fully includes the &lt;span class="caps"&gt;DCC&lt;/span&gt; specification) in 1994. An &lt;a class="reference external" href="https://web.archive.org/web/20101129023108/http://www.invlogic.com/irc/ctcp.html"&gt;“updated”
+&lt;span class="caps"&gt;CTCP&lt;/span&gt; specification&lt;/a&gt; was released in February 1997. There’s also a
 &lt;a class="reference external" href="https://web.archive.org/web/20080723170128/http://www.invlogic.com/irc/ctcp2_intro.html"&gt;&lt;span class="caps"&gt;CTCP&lt;/span&gt;/2 specification&lt;/a&gt; from October 1998, which was meant to
-reformulate a lot of the previous three versions.  And &lt;em&gt;finally&lt;/em&gt;,
+reformulate a lot of the previous three versions. And &lt;em&gt;finally&lt;/em&gt;,
 there’s the &lt;span class="caps"&gt;DCC2&lt;/span&gt; specification (two parts: &lt;a class="reference external" href="http://tools.ietf.org/html/draft-smith-irc-dcc2-negotiation-00"&gt;connection negotiation&lt;/a&gt; and
 &lt;a class="reference external" href="http://www.dcc2.org/files/dcc2/draft-smith-irc-dcc2-files-00.txt"&gt;file transfers&lt;/a&gt;) from April 2004.&lt;/p&gt;
-&lt;p&gt;But wait!  I lied…that’s not really the end of &lt;span class="caps"&gt;DCC&lt;/span&gt;/&lt;span class="caps"&gt;CTCP&lt;/span&gt;, there’s
+&lt;p&gt;But wait! I lied…that’s not really the end of &lt;span class="caps"&gt;DCC&lt;/span&gt;/&lt;span class="caps"&gt;CTCP&lt;/span&gt;, there’s
 also a bunch of extensions to it: &lt;a class="reference external" href="http://www.visualirc.net/tech-tdcc.php"&gt;Turbo &lt;span class="caps"&gt;DCC&lt;/span&gt;&lt;/a&gt;, &lt;a class="reference external" href="http://xa.bi/files/irc/xdcc.3.3.0b.irc"&gt;&lt;span class="caps"&gt;XDCC&lt;/span&gt; (eXtended &lt;span class="caps"&gt;DCC&lt;/span&gt;)&lt;/a&gt;
 in 1993, &lt;a class="reference external" href="http://www.visualirc.net/tech-wboard.php"&gt;&lt;span class="caps"&gt;DCC&lt;/span&gt; Whiteboard&lt;/a&gt;, and a few other variations of this: &lt;span class="caps"&gt;RDCC&lt;/span&gt;
-(Reverse &lt;span class="caps"&gt;DCC&lt;/span&gt;), &lt;span class="caps"&gt;SDD&lt;/span&gt; (Secure &lt;span class="caps"&gt;DCC&lt;/span&gt;), &lt;span class="caps"&gt;DCC&lt;/span&gt; Voice, etc.  Wikipedia has a &lt;a class="reference external" href="http://en.wikipedia.org/wiki/Direct_Client-to-Client"&gt;good
+(Reverse &lt;span class="caps"&gt;DCC&lt;/span&gt;), &lt;span class="caps"&gt;SDD&lt;/span&gt; (Secure &lt;span class="caps"&gt;DCC&lt;/span&gt;), &lt;span class="caps"&gt;DCC&lt;/span&gt; Voice, etc. Wikipedia has a &lt;a class="reference external" href="http://en.wikipedia.org/wiki/Direct_Client-to-Client"&gt;good
 summary&lt;/a&gt;.&lt;/p&gt;
 &lt;p&gt;Something else to note about the whole &lt;span class="caps"&gt;DCC&lt;/span&gt;/&lt;span class="caps"&gt;CTCP&lt;/span&gt; mess…parts of it
-just &lt;em&gt;don’t&lt;/em&gt; have any documentation.  There’s &lt;em&gt;none&lt;/em&gt;at all for &lt;span class="caps"&gt;SED&lt;/span&gt; (at
+just &lt;em&gt;don’t&lt;/em&gt; have any documentation. There’s &lt;em&gt;none&lt;/em&gt; at all for &lt;span class="caps"&gt;SED&lt;/span&gt; (at
 least that I’ve found, I’d love to be proved wrong) and very little
 (really just a mention) for &lt;span class="caps"&gt;DCC&lt;/span&gt; Voice.&lt;/p&gt;
-&lt;p&gt;So, we’re about halfway through now.  There’s a bunch of extensions to
+&lt;p&gt;So, we’re about halfway through now. There’s a bunch of extensions to
 the &lt;span class="caps"&gt;IRC&lt;/span&gt; protocol specifications that add new commands to the actual protocol.&lt;/p&gt;
 &lt;/div&gt;
 &lt;div class="section" id="authentication"&gt;
@@ -1517,7 +1517,7 @@ the &lt;span class="caps"&gt;IRC&lt;/span&gt; protocol specifications that add n
 which very few servers seem to use, a variety of mechanisms have
 replaced this, including &lt;a class="reference external" href="https://raw.githubusercontent.com/atheme/charybdis/master/doc/sasl.txt"&gt;&lt;span class="caps"&gt;SASL&lt;/span&gt; authentication&lt;/a&gt; (both &lt;span class="caps"&gt;PLAIN&lt;/span&gt; and &lt;span class="caps"&gt;BLOWFISH&lt;/span&gt;
 methods, although &lt;span class="caps"&gt;BLOWFISH&lt;/span&gt; isn’t documented); and &lt;span class="caps"&gt;SASL&lt;/span&gt; itself is covered
-by at least &lt;a class="reference external" href="http://tools.ietf.org/html/rfc2222"&gt;four&lt;/a&gt; &lt;a class="reference external" href="http://tools.ietf.org/html/rfc4422"&gt;RFCs&lt;/a&gt; &lt;a class="reference external" href="http://tools.ietf.org/html/rfc2595"&gt;in this&lt;/a&gt; &lt;a class="reference external" href="http://tools.ietf.org/html/rfc4616"&gt;situation&lt;/a&gt;.  There also seems
+by at least &lt;a class="reference external" href="http://tools.ietf.org/html/rfc2222"&gt;four&lt;/a&gt; &lt;a class="reference external" href="http://tools.ietf.org/html/rfc4422"&gt;RFCs&lt;/a&gt; &lt;a class="reference external" href="http://tools.ietf.org/html/rfc2595"&gt;in this&lt;/a&gt; &lt;a class="reference external" href="http://tools.ietf.org/html/rfc4616"&gt;situation&lt;/a&gt;. There also seems
 to be a method called “Auth” which I haven’t been able to pin down, as
 well as Ident (which is a more general protocol authentication method I
 haven’t looked into yet).&lt;/p&gt;
@@ -1525,7 +1525,7 @@ haven’t looked into yet).&lt;/p&gt;
 &lt;div class="section" id="extension-support"&gt;
 &lt;h2&gt;&lt;a class="toc-backref" href="#id8"&gt;Extension Support&lt;/a&gt;&lt;/h2&gt;
 &lt;p&gt;This includes a few that generally add a way by which servers are able
-to tell their clients exactly what a server supports.  The first of
+to tell their clients exactly what a server supports. The first of
 these was RPL_ISUPPORT, which was defined as a &lt;a class="reference external" href="http://tools.ietf.org/html/draft-brocklesby-irc-isupport-03"&gt;draft specification&lt;/a&gt;
 in January 2004, and &lt;a class="reference external" href="http://tools.ietf.org/html/draft-hardy-irc-isupport-00"&gt;updated&lt;/a&gt; in January of 2005.&lt;/p&gt;
 &lt;p&gt;A similar concept was defined as &lt;a class="reference external" href="http://tools.ietf.org/html/draft-mitchell-irc-capabilities-01"&gt;&lt;span class="caps"&gt;IRC&lt;/span&gt; Capabilities&lt;/a&gt; in March 2005.&lt;/p&gt;
@@ -1546,28 +1546,28 @@ it’s instant messaging products &lt;a class="reference external" href="http://
 &lt;div class="section" id="services"&gt;
 &lt;h2&gt;&lt;a class="toc-backref" href="#id10"&gt;Services&lt;/a&gt;&lt;/h2&gt;
 &lt;p&gt;To fill in some of the missing features of &lt;span class="caps"&gt;IRC&lt;/span&gt;, services were created
-(Wikipedia has a good &lt;a class="reference external" href="http://en.wikipedia.org/wiki/Internet_Relay_Chat_services"&gt;summary&lt;/a&gt; again).  This commonly includes
-ChanServ, NickServ, OperServ, and MemoServ.  Not too hard, but different
+(Wikipedia has a good &lt;a class="reference external" href="http://en.wikipedia.org/wiki/Internet_Relay_Chat_services"&gt;summary&lt;/a&gt; again). This commonly includes
+ChanServ, NickServ, OperServ, and MemoServ. Not too hard, but different
 server packages include different services (or even the same services
 that behave differently), one of more common ones is &lt;a class="reference external" href="http://www.anope.org/docgen/1.8/en_us/"&gt;Anope&lt;/a&gt;, however
 (plus they have awesome documentation, so they get a link).&lt;/p&gt;
 &lt;p&gt;There was an attempt to standardize how to interact with services
 called &lt;span class="caps"&gt;IRC&lt;/span&gt;+, which included three specifications: &lt;a class="reference external" href="http://www.irc-plus.org/specs/confctrl-draft.html"&gt;conference control
-protocol&lt;/a&gt;, &lt;a class="reference external" href="http://www.irc-plus.org/specs/identity-draft.html"&gt;identity protocol&lt;/a&gt; and &lt;a class="reference external" href="http://www.irc-plus.org/specs/subscriptions-draft.html"&gt;subscriptions protocol&lt;/a&gt;.  I don’t
+protocol&lt;/a&gt;, &lt;a class="reference external" href="http://www.irc-plus.org/specs/identity-draft.html"&gt;identity protocol&lt;/a&gt; and &lt;a class="reference external" href="http://www.irc-plus.org/specs/subscriptions-draft.html"&gt;subscriptions protocol&lt;/a&gt;. I don’t
 believe this are supported widely (if at all).&lt;/p&gt;
 &lt;/div&gt;
 &lt;div class="section" id="irc-url-scheme"&gt;
 &lt;h2&gt;&lt;a class="toc-backref" href="#id11"&gt;&lt;span class="caps"&gt;IRC&lt;/span&gt; &lt;span class="caps"&gt;URL&lt;/span&gt; Scheme&lt;/a&gt;&lt;/h2&gt;
 &lt;p&gt;Finally this brings us to the &lt;span class="caps"&gt;IRC&lt;/span&gt; &lt;span class="caps"&gt;URL&lt;/span&gt; scheme of which there are a few
-versions.  A draft from August 1996 defines the original &lt;a class="reference external" href="http://tools.ietf.org/html/draft-mirashi-url-irc-01"&gt;irc: &lt;span class="caps"&gt;URL&lt;/span&gt;
-scheme&lt;/a&gt;.  This was updated/replaced by &lt;a class="reference external" href="http://tools.ietf.org/html/draft-butcher-irc-url-04"&gt;another draft&lt;/a&gt; which defines
+versions. A draft from August 1996 defines the original &lt;a class="reference external" href="http://tools.ietf.org/html/draft-mirashi-url-irc-01"&gt;irc: &lt;span class="caps"&gt;URL&lt;/span&gt;
+scheme&lt;/a&gt;. This was updated/replaced by &lt;a class="reference external" href="http://tools.ietf.org/html/draft-butcher-irc-url-04"&gt;another draft&lt;/a&gt; which defines
 irc: and ircs: &lt;span class="caps"&gt;URL&lt;/span&gt; schemes.&lt;/p&gt;
-&lt;p&gt;As of right now that’s all that I’ve found…an awful lot.  Plus it’s
+&lt;p&gt;As of right now that’s all that I’ve found…an awful lot. Plus it’s
 not all compatible with each other (and sometimes out right contradicts
-each other).  Often newer specifications say not to support older
+each other). Often newer specifications say not to support older
 specifications, but who knows what servers/clients you’ll end up talking
-to!  It’s difficult to know what’s used in practice, especially since
-there’s an awful lot of &lt;a class="reference external" href="http://en.wikipedia.org/wiki/Comparison_of_IRC_daemons"&gt;&lt;span class="caps"&gt;IRC&lt;/span&gt; servers&lt;/a&gt; out there.  Anyway, if someone
+to! It’s difficult to know what’s used in practice, especially since
+there’s an awful lot of &lt;a class="reference external" href="http://en.wikipedia.org/wiki/Comparison_of_IRC_daemons"&gt;&lt;span class="caps"&gt;IRC&lt;/span&gt; servers&lt;/a&gt; out there. Anyway, if someone
 does know of another specification, etc. that I missed please let me know!&lt;/p&gt;
 &lt;dl class="docutils"&gt;
 &lt;dt&gt;Updated [2014-12-20]&lt;/dt&gt;
@@ -1641,7 +1641,7 @@ all the objects implemented in jsProtoHelper
 &lt;p&gt;Although none of these are really things that weren&amp;#8217;t working a few
 weeks ago, there are now real APIs for these for JavaScript protocols,
 allowing other protocols to use them and to &lt;em&gt;&lt;span class="caps"&gt;FULLY&lt;/span&gt;&lt;/em&gt; implement them
-instead of hard coding values.&amp;nbsp; In addition, a lot of the purplexpcom
+instead of hard coding values. In addition, a lot of the purplexpcom
 layer is now hidden from JavaScript&amp;nbsp;protocols.&lt;/p&gt;
 &lt;p&gt;There&amp;#8217;s a few things left to do for the JavaScript protocol&amp;nbsp;layer:&lt;/p&gt;
 &lt;ul class="simple"&gt;
@@ -1656,10 +1656,10 @@ should be&amp;nbsp;fixed)&lt;/li&gt;
 (hopefully being handled by&amp;nbsp;Florian)&lt;/li&gt;
 &lt;/ul&gt;
 &lt;p&gt;A good summary of this is &lt;a class="reference external" href="https://bugzilla.instantbird.org/showdependencygraph.cgi?id=507&amp;amp;display=web&amp;amp;rankdir=LR"&gt;the dependency graph of bug 507&lt;/a&gt;
-(Implement &lt;span class="caps"&gt;IRC&lt;/span&gt; in JavaScript).&amp;nbsp; Note that the &lt;span class="caps"&gt;IRC&lt;/span&gt; JavaScript work blocks
-&lt;em&gt;a&amp;nbsp; lot&lt;/em&gt; of &lt;span class="caps"&gt;UI&lt;/span&gt; work done for &lt;span class="caps"&gt;IRC&lt;/span&gt;.&amp;nbsp; In particular Mook has been working
+(Implement &lt;span class="caps"&gt;IRC&lt;/span&gt; in JavaScript). Note that the &lt;span class="caps"&gt;IRC&lt;/span&gt; JavaScript work blocks
+&lt;em&gt;a lot&lt;/em&gt; of &lt;span class="caps"&gt;UI&lt;/span&gt; work done for &lt;span class="caps"&gt;IRC&lt;/span&gt;. In particular Mook has been working
 on implementing notifications (i.e. Invites, and perhaps a few other
-commands), see &lt;a class="reference external" href="https://bugzilla.instantbird.org/show_bug.cgi?id=628"&gt;Bug 628&lt;/a&gt;.&amp;nbsp; For other bugs, see the link above &amp;#8212; and if
+commands), see &lt;a class="reference external" href="https://bugzilla.instantbird.org/show_bug.cgi?id=628"&gt;Bug 628&lt;/a&gt;. For other bugs, see the link above &amp;#8212; and if
 there&amp;#8217;s a strange &lt;span class="caps"&gt;UI&lt;/span&gt; feature that you think should be added, please file
 a bug and let us know about&amp;nbsp;it!&lt;/p&gt;
 &lt;p&gt;I&amp;#8217;ve also worked a bit on sending outgoing text with rich formatting
@@ -1700,42 +1700,42 @@ jsProtocol code to test and adding missing pieces?” — &lt;a class="reference
 Internet Relay Chat (&lt;span class="caps"&gt;IRC&lt;/span&gt;) is a form of real-time […] chat […] It
 is mainly designed for group communication […] but also allows
 […for…] private message as well as chat and data transfers.&lt;/blockquote&gt;
-&lt;p&gt;Awesome, what’s that really mean?  It’s an instant messaging protocol
+&lt;p&gt;Awesome, what’s that really mean? It’s an instant messaging protocol
 with an actual specification (i.e. it’s not owned by some large, unnamed
-company), with open-source libraries for clients and servers.  It’s
+company), with open-source libraries for clients and servers. It’s
 usually used by more computer-oriented types of people and centers
-around group conversation.  Personally most of what I use it for is
+around group conversation. Personally most of what I use it for is
 open-source software I use (I’m almost always in &lt;a class="reference external" href="irc://irc.mozilla.org/#instantbird"&gt;#instantbird&lt;/a&gt;,
 &lt;a class="reference external" href="irc://irc.mozilla.org/#maildev"&gt;#maildev&lt;/a&gt;, and &lt;a class="reference external" href="irc://irc.mozilla.org/#songbird"&gt;#songbird&lt;/a&gt; on &lt;a class="reference external" href="http://irc.mozilla.org/"&gt;Mozilla’s &lt;span class="caps"&gt;IRC&lt;/span&gt; servers&lt;/a&gt;.)&lt;/p&gt;
 &lt;/div&gt;
 &lt;div class="section" id="why-it-is-done-what-advantages-are-there-once-this-is-done"&gt;
-&lt;h2&gt;&lt;a class="toc-backref" href="#id4"&gt;Why it is done?  What advantages are there once this is done?&lt;/a&gt;&lt;/h2&gt;
-&lt;p&gt;I touched upon this a little in my &lt;a class="reference external" href="https://patrick.cloke.us/posts/2010/12/04/javascript-irc-in-instantbird/"&gt;last post&lt;/a&gt;.  In terms of
+&lt;h2&gt;&lt;a class="toc-backref" href="#id4"&gt;Why it is done? What advantages are there once this is done?&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;I touched upon this a little in my &lt;a class="reference external" href="https://patrick.cloke.us/posts/2010/12/04/javascript-irc-in-instantbird/"&gt;last post&lt;/a&gt;. In terms of
 Instantbird: there’s an idea of switching some / all of the protocols
 (eventually) to be JavaScript protocols instead of the libpurple
 versions (libpurple is written mostly in C and is cross-platform, but
 recent gains in speed in JavaScript allow this advantage of libpurple to
-not matter as much).  This would unfortunately mean we need to maintain
+not matter as much). This would unfortunately mean we need to maintain
 a lot more code, but it would allow us to integrate protocols in any way
 that we see fit, instead of only using APIs / methods provided by
-libpurple.  Hopefully this would allow us to &lt;a class="reference external" href="https://bugzilla.instantbird.org/showdependencytree.cgi?id=507&amp;amp;maxdepth=2&amp;amp;hide_resolved=1"&gt;enhance our &lt;span class="caps"&gt;IRC&lt;/span&gt;
+libpurple. Hopefully this would allow us to &lt;a class="reference external" href="https://bugzilla.instantbird.org/showdependencytree.cgi?id=507&amp;amp;maxdepth=2&amp;amp;hide_resolved=1"&gt;enhance our &lt;span class="caps"&gt;IRC&lt;/span&gt;
 implementation&lt;/a&gt; a bit.&lt;/p&gt;
 &lt;p&gt;Also, Instantbird (nightlies) currently have limited support for
-generating a protocol plug-in in JavaScript.  A couple of “test”
+generating a protocol plug-in in JavaScript. A couple of “test”
 protocols have be done, but nothing in “real” (in particular, none that
-used a multi-user chat).  This would allow us to iron out &lt;a class="reference external" href="https://bugzilla.instantbird.org/show_bug.cgi?id=519"&gt;some&lt;/a&gt;
+used a multi-user chat). This would allow us to iron out &lt;a class="reference external" href="https://bugzilla.instantbird.org/show_bug.cgi?id=519"&gt;some&lt;/a&gt;
 &lt;a class="reference external" href="https://bugzilla.instantbird.org/show_bug.cgi?id=118"&gt;bugs&lt;/a&gt; in the implementation of JavaScript protocols.&lt;/p&gt;
 &lt;p&gt;&lt;em&gt;[Edit: Florian suggested another question that wasn’t originally
 covered, which some people more familiar with Mozilla code might be wondering.]&lt;/em&gt;&lt;/p&gt;
 &lt;/div&gt;
 &lt;div class="section" id="why-aren-t-you-using-the-code-from-chatzilla"&gt;
 &lt;h2&gt;&lt;a class="toc-backref" href="#id5"&gt;Why aren’t you using the code from ChatZilla?&lt;/a&gt;&lt;/h2&gt;
-&lt;p&gt;This was a tough one.  Honestly when I first wanted a parsing
-algorithm, I looked at the ChatZilla code, I used it.  Then rewrote it
-in a fourth as many lines (&lt;a class="reference external" href="http://hg.mozilla.org/chatzilla/file/tip/js/lib/irc.js#l1250"&gt;93&lt;/a&gt; vs. &lt;a class="reference external" href="https://hg.instantbird.org/experiments/file/IRC-JavaScript/components/ircProtocol.js#l208"&gt;20&lt;/a&gt;).  Simply said, the code in
+&lt;p&gt;This was a tough one. Honestly when I first wanted a parsing
+algorithm, I looked at the ChatZilla code, I used it. Then rewrote it
+in a fourth as many lines (&lt;a class="reference external" href="http://hg.mozilla.org/chatzilla/file/tip/js/lib/irc.js#l1250"&gt;93&lt;/a&gt; vs. &lt;a class="reference external" href="https://hg.instantbird.org/experiments/file/IRC-JavaScript/components/ircProtocol.js#l208"&gt;20&lt;/a&gt;). Simply said, the code in
 ChatZilla is &lt;em&gt;old&lt;/em&gt;, it doesn’t use many of the features available only
-in newer versions of JavaScript.  To that point, the ChatZilla code
-hasn’t been updated in over a year!  The last check-in was: 2009-10-03,
+in newer versions of JavaScript. To that point, the ChatZilla code
+hasn’t been updated in over a year! The last check-in was: 2009-10-03,
 below is a &lt;a class="reference external" href="http://hg.mozilla.org/chatzilla/log/tip/js/lib/irc.js"&gt;quick summary&lt;/a&gt; of the number of check-ins per year:&lt;/p&gt;
 &lt;ul class="simple"&gt;
 &lt;li&gt;2010: 0&lt;/li&gt;
@@ -1744,24 +1744,24 @@ below is a &lt;a class="reference external" href="http://hg.mozilla.org/chatzill
 &lt;li&gt;2007: 11&lt;/li&gt;
 &lt;li&gt;2006: 18&lt;/li&gt;
 &lt;/ul&gt;
-&lt;p&gt;There’s been a pretty steady decline in check-ins.  I could take this
+&lt;p&gt;There’s been a pretty steady decline in check-ins. I could take this
 code and attempt to whip it into shape and make huge sweeping changes
 and commit them back to ChatZilla, but honestly it was easier to start
-over for me.  Regardless of ease, I’m not sure it would work any:
+over for me. Regardless of ease, I’m not sure it would work any:
 especially since the ChatZilla code seems overly complicated and overly
 specific (since it wasn’t really built as a library as far as I can
-see), especially since all the code is meant to deal only with &lt;span class="caps"&gt;IRC&lt;/span&gt;.  The
+see), especially since all the code is meant to deal only with &lt;span class="caps"&gt;IRC&lt;/span&gt;. The
 Instantbird code needs to be protocol agnostic to a degree, while is why
 it interfaces to purplexpcom.&lt;/p&gt;
 &lt;p&gt;A quick example of this is: ChatZilla uses a CIRCUser object, but for
 Instantbird I need to create either an imIContact or a
-purpleIAccountBuddy (depending on the situation).  It’s possible that’s
+purpleIAccountBuddy (depending on the situation). It’s possible that’s
 can be abstracted and code shared — but I’m not sure it would be worth
-the effort.  After all this, I should probably look more into the
+the effort. After all this, I should probably look more into the
 ChatZilla code, perhaps more of it could be used.&lt;/p&gt;
 &lt;p&gt;(If someone familiar with the ChatZilla code base — I don’t know
 who/if there’s a maintainer — is interested in talking with me, please
-get in contact here or on #instantbird.  It’s possible we could align
+get in contact here or on #instantbird. It’s possible we could align
 some of what I’ve been working on, but I’m not sure how much could be
 shared besides the parsing algorithm).&lt;/p&gt;
 &lt;p&gt;&lt;em&gt;[End edit]&lt;/em&gt;&lt;/p&gt;
@@ -1774,26 +1774,26 @@ with automatic account migration, etc. For end-users we can hopefully
 solve &lt;a class="reference external" href="https://bugzilla.instantbird.org/showdependencytree.cgi?id=574&amp;amp;maxdepth=1&amp;amp;hide_resolved=1"&gt;a few annoying &lt;span class="caps"&gt;IRC&lt;/span&gt; &lt;span class="caps"&gt;UI&lt;/span&gt; issues&lt;/a&gt;.&lt;/p&gt;
 &lt;/div&gt;
 &lt;div class="section" id="what-about-for-developers-anything-cool-there"&gt;
-&lt;h2&gt;&lt;a class="toc-backref" href="#id7"&gt;What about for developers?  Anything cool there?&lt;/a&gt;&lt;/h2&gt;
+&lt;h2&gt;&lt;a class="toc-backref" href="#id7"&gt;What about for developers? Anything cool there?&lt;/a&gt;&lt;/h2&gt;
 &lt;p&gt;Well, I’m hoping to be able to test this replacement via an extension
 that replaces the libpurple &lt;span class="caps"&gt;IRC&lt;/span&gt; to dogfood it before eventual inclusion
-in Instantbird.  I’m not sure if that counts as “cool.” though.  If
+in Instantbird. I’m not sure if that counts as “cool.” though. If
 nothing else there will be an example of how to write a protocol in
-JavaScript (using sockets).  So hopefully other people can make some
-other cool protocols off of that example.  You might wonder what else we
+JavaScript (using sockets). So hopefully other people can make some
+other cool protocols off of that example. You might wonder what else we
 have planned for JavaScript protocols; there are plans to make at least
 a Twitter protocol.&lt;/p&gt;
 &lt;/div&gt;
 &lt;div class="section" id="how-is-this-being-done"&gt;
 &lt;h2&gt;&lt;a class="toc-backref" href="#id8"&gt;How is this being done?&lt;/a&gt;&lt;/h2&gt;
-&lt;p&gt;Well I said up above &lt;span class="caps"&gt;IRC&lt;/span&gt; has a specification, right?  Well, yes.
+&lt;p&gt;Well I said up above &lt;span class="caps"&gt;IRC&lt;/span&gt; has a specification, right? Well, yes.
 There’s the &lt;a class="reference external" href="http://tools.ietf.org/html/rfc1459"&gt;original specification&lt;/a&gt;, this was superseded by &lt;a class="reference external" href="http://tools.ietf.org/html/rfc2810"&gt;four&lt;/a&gt;
-&lt;a class="reference external" href="http://tools.ietf.org/html/rfc2811"&gt;different&lt;/a&gt; &lt;a class="reference external" href="http://tools.ietf.org/html/rfc2812"&gt;specification&lt;/a&gt; &lt;a class="reference external" href="http://tools.ietf.org/html/rfc2813"&gt;documents&lt;/a&gt;.  Of which we only really
-care about one: &lt;a class="reference external" href="http://tools.ietf.org/html/rfc2812"&gt;the client protocol&lt;/a&gt;.  So we have this updated
+&lt;a class="reference external" href="http://tools.ietf.org/html/rfc2811"&gt;different&lt;/a&gt; &lt;a class="reference external" href="http://tools.ietf.org/html/rfc2812"&gt;specification&lt;/a&gt; &lt;a class="reference external" href="http://tools.ietf.org/html/rfc2813"&gt;documents&lt;/a&gt;. Of which we only really
+care about one: &lt;a class="reference external" href="http://tools.ietf.org/html/rfc2812"&gt;the client protocol&lt;/a&gt;. So we have this updated
 specification (try reading it, it’s rather painful), which is good.
 It’s relatively straightforward set of commands and responses/errors.
 It’s a bit more confusing than that though since there are a couple of
-extensions, etc.  This is summarized below:&lt;/p&gt;
+extensions, etc. This is summarized below:&lt;/p&gt;
 &lt;ul class="simple"&gt;
 &lt;li&gt;&lt;span class="strike"&gt;&lt;span class="caps"&gt;RFC&lt;/span&gt; 1459&lt;/span&gt;&lt;ul&gt;
 &lt;li&gt;Extended with &lt;a class="reference external" href="http://www.irchelp.org/irchelp/rfc/dccspec.html"&gt;&lt;span class="strike"&gt;&lt;span class="caps"&gt;DCC&lt;/span&gt; specification (“direct client-to-client”)&lt;/span&gt;&lt;/a&gt;&lt;ul&gt;
@@ -1809,12 +1809,12 @@ extensions, etc.  This is summarized below:&lt;/p&gt;
 &lt;/li&gt;
 &lt;/ul&gt;
 &lt;p&gt;A lot of this is being done by reading the specifications and finding
-the proper responses, etc.  I’ve also used &lt;a class="reference external" href="http://www.wireshark.org/download.html"&gt;Wireshark&lt;/a&gt; a bit to see how
+the proper responses, etc. I’ve also used &lt;a class="reference external" href="http://www.wireshark.org/download.html"&gt;Wireshark&lt;/a&gt; a bit to see how
 libpurple sends &lt;span class="caps"&gt;IRC&lt;/span&gt; commands (in particular, in what order it sends them
-in).  A lot of my development is happening on live &lt;span class="caps"&gt;IRC&lt;/span&gt; servers, which
+in). A lot of my development is happening on live &lt;span class="caps"&gt;IRC&lt;/span&gt; servers, which
 isn’t really best practice, but I’m mostly sending commands by hand to
 see the responses since a bunch of non-standard responses and extensions
-have developed beyond the above.  I have been using &lt;a class="reference external" href="http://ircd.bircd.org/"&gt;beware irc&lt;/a&gt; to run
+have developed beyond the above. I have been using &lt;a class="reference external" href="http://ircd.bircd.org/"&gt;beware irc&lt;/a&gt; to run
 a daemon on my own machine, however.&lt;/p&gt;
 &lt;/div&gt;
 &lt;div class="section" id="so-how-far-along-are-you"&gt;
@@ -1822,17 +1822,17 @@ a daemon on my own machine, however.&lt;/p&gt;
 &lt;p&gt;I’ve started implementing &lt;span class="caps"&gt;RFC&lt;/span&gt; 2812 and have a variety of commands done
 (the login sequence occurs automatically, the server connection is kept
 alive, messages can be sent to a channel and are parsed when received, a
-lot of the initial server information is displayed but unparsed).  But
-there’s a lot more to do!  As my last post outlined, I recently was able
+lot of the initial server information is displayed but unparsed). But
+there’s a lot more to do! As my last post outlined, I recently was able
 to successfully get a chat to work in Instantbird from a silly bug I had
 been having.&lt;/p&gt;
 &lt;p&gt;It’s rather slow going since I’ll start to implement something from
 the &lt;span class="caps"&gt;IRC&lt;/span&gt; side, and then realize the &lt;a class="reference external" href="http://hg.instantbird.org/instantbird/file/tip/purple/purplexpcom/src/jsProtoHelper.jsm"&gt;Instantbird layer&lt;/a&gt; (the jsProtocol
-module) is missing a component I need.  One of the major parts of
+module) is missing a component I need. One of the major parts of
 working on this is extending the Instantbird layer to contain the proper
-functions and objects needed to implement chats via JavaScript.  This is
+functions and objects needed to implement chats via JavaScript. This is
 usually the slowest going part of my code, since it involves interfacing
-with Instantbird / &lt;a class="reference external" href="http://hg.instantbird.org/instantbird/file/tip/purple/purplexpcom/public/"&gt;purplexpcom&lt;/a&gt;.  Luckily Florian, the main developer
+with Instantbird / &lt;a class="reference external" href="http://hg.instantbird.org/instantbird/file/tip/purple/purplexpcom/public/"&gt;purplexpcom&lt;/a&gt;. Luckily Florian, the main developer
 of Instantbird, has been a big help with this (as have other
 participants of #instantbird — in particular I know Mic helped track
 down a few syntax type bugs).&lt;/p&gt;
@@ -1841,9 +1841,9 @@ down a few syntax type bugs).&lt;/p&gt;
 &lt;h2&gt;&lt;a class="toc-backref" href="#id10"&gt;What’s next?&lt;/a&gt;&lt;/h2&gt;
 &lt;p&gt;Now that have the basics of chat working, I need to start handling the
 &lt;span class="caps"&gt;QUIT&lt;/span&gt;, &lt;span class="caps"&gt;PART&lt;/span&gt; and &lt;span class="caps"&gt;JOIN&lt;/span&gt; commands for when other users enter &lt;span class="amp"&gt;&amp;amp;&lt;/span&gt; leave chat
-rooms.  Once these are complete it should be quite usable, although the
+rooms. Once these are complete it should be quite usable, although the
 entire preference system still doesn’t exist, including notifying the &lt;span class="caps"&gt;UI&lt;/span&gt;
-of what options are available.  In addition, I need to look into doing
+of what options are available. In addition, I need to look into doing
 &lt;span class="caps"&gt;SSL&lt;/span&gt; sockets.&lt;/p&gt;
 &lt;p&gt;Once the protocol plug-in is done, we plan to abstract sections of it
 that will be useful for other protocols (in particular the socket
@@ -1852,7 +1852,7 @@ connection aspects).&lt;/p&gt;
 &lt;div class="section" id="where-can-i-see-this-stuff"&gt;
 &lt;h2&gt;&lt;a class="toc-backref" href="#id11"&gt;Where can I see this stuff…?&lt;/a&gt;&lt;/h2&gt;
 &lt;p&gt;My work is kept in the “&lt;a class="reference external" href="https://hg.instantbird.org/experiments/file/IRC-JavaScript/"&gt;experiments&lt;/a&gt;” repository on Instantbird’s
-&lt;a class="reference external" href="http://mercurial.selenic.com/"&gt;Mercurial&lt;/a&gt; repository.  There’s also a variety of bugs open (they’re
+&lt;a class="reference external" href="http://mercurial.selenic.com/"&gt;Mercurial&lt;/a&gt; repository. There’s also a variety of bugs open (they’re
 listed above, I’m not going to re-list them), although not a ton is
 happening in them.&lt;/p&gt;
 &lt;/div&gt;
@@ -1860,7 +1860,7 @@ happening in them.&lt;/p&gt;
 &lt;h2&gt;&lt;a class="toc-backref" href="#id12"&gt;How can I help?!&lt;/a&gt;&lt;/h2&gt;
 &lt;p&gt;Well you can of course feel free to download the code and hack on it,
 let me know (via &lt;span class="caps"&gt;IRC&lt;/span&gt; or any of the bugs most likely) if you have a patch
-you’d like me to apply.  Or if you just found something that doesn’t
+you’d like me to apply. Or if you just found something that doesn’t
 work you can feel free to let me know, although I probably just haven’t
 gotten around to fixing it yet.&lt;/p&gt;
 &lt;p&gt;Also, if you’ve ever found something annoying / broken in the &lt;span class="caps"&gt;IRC&lt;/span&gt;
@@ -1879,9 +1879,9 @@ protocol that we currently use, why do this …&lt;/p&gt;</summary><content type
 the summer (sometime in August, I can&amp;#8217;t seem to find the exact date &amp;#8212;
 at least since Sept. 10th&amp;nbsp;though).&lt;/p&gt;
 &lt;p&gt;Since &lt;a class="reference external" href="http://developer.pidgin.im/wiki/WhatIsLibpurple"&gt;libpurple&lt;/a&gt; (used in Pidgin, Adium, etc.) provides the &lt;span class="caps"&gt;IRC&lt;/span&gt;
-protocol that we currently use, why do this?&amp;nbsp; One reason is to iron out
+protocol that we currently use, why do this? One reason is to iron out
 (and find) some of the bugs left in implementing protocols in JavaScript
-and part of it is so I can learn to code better.&amp;nbsp; Unfortunately during
+and part of it is so I can learn to code better. Unfortunately during
 this semester I was not able to get as much done as I had hoped and
 almost everything that had been done was finished in&amp;nbsp;August/September&lt;/p&gt;
 &lt;p&gt;Some big milestones I&amp;#8217;ve completed (with dates if I have&amp;nbsp;them):&lt;/p&gt;
@@ -1895,8 +1895,8 @@ almost everything that had been done was finished in&amp;nbsp;August/September&l
 &lt;p&gt;There had been a bunch of small bugs I had been having in getting this
 to work: one error, (which I found quickly) one of the other developers
 (&lt;a class="reference external" href="http://queze.net/"&gt;Florian&lt;/a&gt;) was able to help me out with, was that I was not initiating
-a &lt;strong&gt;new&lt;/strong&gt; object.&amp;nbsp; And after learning a bit above observers I was able
-to get the &lt;span class="caps"&gt;UI&lt;/span&gt; to respond.&amp;nbsp; I even threw in support for op/half-op/voice
+a &lt;strong&gt;new&lt;/strong&gt; object. And after learning a bit above observers I was able
+to get the &lt;span class="caps"&gt;UI&lt;/span&gt; to respond. I even threw in support for op/half-op/voice
 After today&amp;#8217;s work I was able to generate the following&amp;nbsp;screenshot:&lt;/p&gt;
 &lt;blockquote class="text-center"&gt;
 &lt;a class="reference external image-reference" href="https://patrick.cloke.us/images/IRCworking2.png"&gt;&lt;img alt="Example conversation using JavaScript IRC." src="https://patrick.cloke.us/images/IRCworking2.png" style="height: 297px;" /&gt;&lt;/a&gt;
@@ -1904,6 +1904,6 @@ After today&amp;#8217;s work I was able to generate the following&amp;nbsp;scree
 &lt;/blockquote&gt;
 &lt;p&gt;This build would be almost fully usable by those who do very little on
 &lt;span class="caps"&gt;IRC&lt;/span&gt; (i.e. if you just want to go and chat, it&amp;#8217;d work well), but there&amp;#8217;s
-a lot more work to be done.&amp;nbsp; The code can be viewed in the &lt;a class="reference external" href="https://hg.instantbird.org/experiments/file/IRC-JavaScript/"&gt;Experiments
-repository&lt;/a&gt;.&amp;nbsp; (Check it out, there&amp;#8217;s a 600+ line switch&amp;nbsp;statement.)&lt;/p&gt;
+a lot more work to be done. The code can be viewed in the &lt;a class="reference external" href="https://hg.instantbird.org/experiments/file/IRC-JavaScript/"&gt;Experiments
+repository&lt;/a&gt;. (Check it out, there&amp;#8217;s a 600+ line switch&amp;nbsp;statement.)&lt;/p&gt;
 </content><category term="articles"></category><category term="Instantbird"></category><category term="IRC"></category><category term="Mozilla"></category><category term="programming"></category></entry></feed>

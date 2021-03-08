@@ -129,15 +129,15 @@
 
         <p><a class="reference external" href="http://en.wikipedia.org/wiki/Office_Communicator">Microsoft Office Communicator</a> is an instant messaging client that
 integrates into the <a class="reference external" href="http://en.wikipedia.org/wiki/Microsoft_Exchange_Server">Exchange Messaging Server</a> (the protocol behind it
-is an extended version of <span class="caps">SIP</span>/<span class="caps">SIMPLE</span>).&nbsp; Anyway, there&#8217;s a <a class="reference external" href="http://developer.pidgin.im/wiki/WhatIsLibpurple">libpurple</a>
+is an extended version of <span class="caps">SIP</span>/<span class="caps">SIMPLE</span>). Anyway, there&#8217;s a <a class="reference external" href="http://developer.pidgin.im/wiki/WhatIsLibpurple">libpurple</a>
 (i.e. the backend of <a class="reference external" href="http://instantbird.com/">Instantbird</a> and <a class="reference external" href="http://pidgin.im/">Pidgin</a>) protocol plug-in for
-<span class="caps">OCS</span> (Office Communicator Server) called <a class="reference external" href="http://sipe.sourceforge.net/"><span class="caps">SIPE</span></a>.&nbsp; (It&#8217;s also striving
+<span class="caps">OCS</span> (Office Communicator Server) called <a class="reference external" href="http://sipe.sourceforge.net/"><span class="caps">SIPE</span></a>. (It&#8217;s also striving
 for a generic library to connect to <span class="caps">OCS</span>, but that&#8217;s not quite there&nbsp;yet.)</p>
 <p>I&#8217;ve been interested in getting this to compile in the Instantbird
-framework for a while now, adding a new protocol to Instantbird.&nbsp; First
+framework for a while now, adding a new protocol to Instantbird. First
 of course I need the <span class="caps">SIPE</span> source, I chose to grab a release <a class="reference external" href="http://sourceforge.net/projects/sipe/files/sipe/pidgin-sipe-1.11.2/">source
 bundle</a> instead of using the <a class="reference external" href="http://sourceforge.net/apps/mediawiki/sipe/index.php?title=Windows_Build">git repository</a>, just for ease moving
-files around, etc.&nbsp; There&#8217;s a rather vague <a class="reference external" href="http://sourceforge.net/apps/mediawiki/sipe/index.php?title=Windows_Build">Windows build</a> page on the
+files around, etc. There&#8217;s a rather vague <a class="reference external" href="http://sourceforge.net/apps/mediawiki/sipe/index.php?title=Windows_Build">Windows build</a> page on the
 wiki that I started with, says I&nbsp;need:</p>
 <ul class="simple">
 <li>libpurple &gt;2.4.0 (we have&nbsp;2.7.11)</li>
@@ -146,20 +146,20 @@ wiki that I started with, says I&nbsp;need:</p>
 <li>gmime &gt;2.4 (not currently&nbsp;used)</li>
 </ul>
 <p>So great, <a class="reference external" href="https://wiki.instantbird.org/Instantbird:Third_party_code">we have most of the dependencies</a>! We just need one more.
-So I go grab, <a class="reference external" href="http://developer.gnome.org/gmime/">gmime</a>from the <span class="caps">GNOME</span> website (2.5.7, which is the
+So I go grab, <a class="reference external" href="http://developer.gnome.org/gmime/">gmime</a> from the <span class="caps">GNOME</span> website (2.5.7, which is the
 newest stable, currently), again as a source bundle and put the
 necessary files in purple/libraries/gmime and edit the makefile so it
-will (attempt) to compile.&nbsp; But great &#8212; it requires <a class="reference external" href="http://www.gnu.org/software/libiconv/">libiconv</a>, which
-apparently is very difficult to compile, especially on Windows.&nbsp; Luckily
+will (attempt) to compile. But great &#8212; it requires <a class="reference external" href="http://www.gnu.org/software/libiconv/">libiconv</a>, which
+apparently is very difficult to compile, especially on Windows. Luckily
 for me there&#8217;s a Windows version (not a port, but one that uses the
-native Win32 APIs with the same interface): <a class="reference external" href="http://code.google.com/p/win-iconv/">win-iconv</a>.&nbsp; This compiled
+native Win32 APIs with the same interface): <a class="reference external" href="http://code.google.com/p/win-iconv/">win-iconv</a>. This compiled
 like a champ when added as&nbsp;purple/libraries/iconv.</p>
 <p>Unfortunately when I went back to compiling gmime, it attempts to
 access parts of glib we&#8217;re not using (gio, in particular) and thus is
-not in our source code.&nbsp; I can grab the <a class="reference external" href="http://developer.gnome.org/glib/">glib</a> source (2.28.6 to match,
+not in our source code. I can grab the <a class="reference external" href="http://developer.gnome.org/glib/">glib</a> source (2.28.6 to match,
 of course) and add the gio subfolder, but first we should check if this
 part of gmime is even used by <span class="caps">SIPE</span>! (My guess is that it is <em>not</em>, but
-that&#8217;s where I&#8217;m at now.&nbsp; I&#8217;ll post back when I get&nbsp;further.</p>
+that&#8217;s where I&#8217;m at now. I&#8217;ll post back when I get&nbsp;further.</p>
 
       </div>
 

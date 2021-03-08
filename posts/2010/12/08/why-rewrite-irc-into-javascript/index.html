@@ -132,10 +132,10 @@
 <p class="topic-title">Contents</p>
 <ul class="simple">
 <li><a class="reference internal" href="#wait-a-second-what-is-irc" id="id3">Wait a second, what is <span class="caps">IRC</span>?</a></li>
-<li><a class="reference internal" href="#why-it-is-done-what-advantages-are-there-once-this-is-done" id="id4">Why it is done?  What advantages are there once this is done?</a></li>
+<li><a class="reference internal" href="#why-it-is-done-what-advantages-are-there-once-this-is-done" id="id4">Why it is done? What advantages are there once this is done?</a></li>
 <li><a class="reference internal" href="#why-aren-t-you-using-the-code-from-chatzilla" id="id5">Why aren’t you using the code from ChatZilla?</a></li>
 <li><a class="reference internal" href="#what-are-the-specific-advantages-for-an-end-user" id="id6">What are the specific advantages for an end-user?</a></li>
-<li><a class="reference internal" href="#what-about-for-developers-anything-cool-there" id="id7">What about for developers?  Anything cool there?</a></li>
+<li><a class="reference internal" href="#what-about-for-developers-anything-cool-there" id="id7">What about for developers? Anything cool there?</a></li>
 <li><a class="reference internal" href="#how-is-this-being-done" id="id8">How is this being done?</a></li>
 <li><a class="reference internal" href="#so-how-far-along-are-you" id="id9">So how far along are you?</a></li>
 <li><a class="reference internal" href="#what-s-next" id="id10">What’s next?</a></li>
@@ -160,42 +160,42 @@ jsProtocol code to test and adding missing pieces?” — <a class="reference ex
 Internet Relay Chat (<span class="caps">IRC</span>) is a form of real-time […] chat […] It
 is mainly designed for group communication […] but also allows
 […for…] private message as well as chat and data transfers.</blockquote>
-<p>Awesome, what’s that really mean?  It’s an instant messaging protocol
+<p>Awesome, what’s that really mean? It’s an instant messaging protocol
 with an actual specification (i.e. it’s not owned by some large, unnamed
-company), with open-source libraries for clients and servers.  It’s
+company), with open-source libraries for clients and servers. It’s
 usually used by more computer-oriented types of people and centers
-around group conversation.  Personally most of what I use it for is
+around group conversation. Personally most of what I use it for is
 open-source software I use (I’m almost always in <a class="reference external" href="irc://irc.mozilla.org/#instantbird">#instantbird</a>,
 <a class="reference external" href="irc://irc.mozilla.org/#maildev">#maildev</a>, and <a class="reference external" href="irc://irc.mozilla.org/#songbird">#songbird</a> on <a class="reference external" href="http://irc.mozilla.org/">Mozilla’s <span class="caps">IRC</span> servers</a>.)</p>
 </div>
 <div class="section" id="why-it-is-done-what-advantages-are-there-once-this-is-done">
-<h2><a class="toc-backref" href="#id4">Why it is done?  What advantages are there once this is done?</a></h2>
-<p>I touched upon this a little in my <a class="reference external" href="https://patrick.cloke.us/posts/2010/12/04/javascript-irc-in-instantbird/">last post</a>.  In terms of
+<h2><a class="toc-backref" href="#id4">Why it is done? What advantages are there once this is done?</a></h2>
+<p>I touched upon this a little in my <a class="reference external" href="https://patrick.cloke.us/posts/2010/12/04/javascript-irc-in-instantbird/">last post</a>. In terms of
 Instantbird: there’s an idea of switching some / all of the protocols
 (eventually) to be JavaScript protocols instead of the libpurple
 versions (libpurple is written mostly in C and is cross-platform, but
 recent gains in speed in JavaScript allow this advantage of libpurple to
-not matter as much).  This would unfortunately mean we need to maintain
+not matter as much). This would unfortunately mean we need to maintain
 a lot more code, but it would allow us to integrate protocols in any way
 that we see fit, instead of only using APIs / methods provided by
-libpurple.  Hopefully this would allow us to <a class="reference external" href="https://bugzilla.instantbird.org/showdependencytree.cgi?id=507&amp;maxdepth=2&amp;hide_resolved=1">enhance our <span class="caps">IRC</span>
+libpurple. Hopefully this would allow us to <a class="reference external" href="https://bugzilla.instantbird.org/showdependencytree.cgi?id=507&amp;maxdepth=2&amp;hide_resolved=1">enhance our <span class="caps">IRC</span>
 implementation</a> a bit.</p>
 <p>Also, Instantbird (nightlies) currently have limited support for
-generating a protocol plug-in in JavaScript.  A couple of “test”
+generating a protocol plug-in in JavaScript. A couple of “test”
 protocols have be done, but nothing in “real” (in particular, none that
-used a multi-user chat).  This would allow us to iron out <a class="reference external" href="https://bugzilla.instantbird.org/show_bug.cgi?id=519">some</a>
+used a multi-user chat). This would allow us to iron out <a class="reference external" href="https://bugzilla.instantbird.org/show_bug.cgi?id=519">some</a>
 <a class="reference external" href="https://bugzilla.instantbird.org/show_bug.cgi?id=118">bugs</a> in the implementation of JavaScript protocols.</p>
 <p><em>[Edit: Florian suggested another question that wasn’t originally
 covered, which some people more familiar with Mozilla code might be wondering.]</em></p>
 </div>
 <div class="section" id="why-aren-t-you-using-the-code-from-chatzilla">
 <h2><a class="toc-backref" href="#id5">Why aren’t you using the code from ChatZilla?</a></h2>
-<p>This was a tough one.  Honestly when I first wanted a parsing
-algorithm, I looked at the ChatZilla code, I used it.  Then rewrote it
-in a fourth as many lines (<a class="reference external" href="http://hg.mozilla.org/chatzilla/file/tip/js/lib/irc.js#l1250">93</a> vs. <a class="reference external" href="https://hg.instantbird.org/experiments/file/IRC-JavaScript/components/ircProtocol.js#l208">20</a>).  Simply said, the code in
+<p>This was a tough one. Honestly when I first wanted a parsing
+algorithm, I looked at the ChatZilla code, I used it. Then rewrote it
+in a fourth as many lines (<a class="reference external" href="http://hg.mozilla.org/chatzilla/file/tip/js/lib/irc.js#l1250">93</a> vs. <a class="reference external" href="https://hg.instantbird.org/experiments/file/IRC-JavaScript/components/ircProtocol.js#l208">20</a>). Simply said, the code in
 ChatZilla is <em>old</em>, it doesn’t use many of the features available only
-in newer versions of JavaScript.  To that point, the ChatZilla code
-hasn’t been updated in over a year!  The last check-in was: 2009-10-03,
+in newer versions of JavaScript. To that point, the ChatZilla code
+hasn’t been updated in over a year! The last check-in was: 2009-10-03,
 below is a <a class="reference external" href="http://hg.mozilla.org/chatzilla/log/tip/js/lib/irc.js">quick summary</a> of the number of check-ins per year:</p>
 <ul class="simple">
 <li>2010: 0</li>
@@ -204,24 +204,24 @@ below is a <a class="reference external" href="http://hg.mozilla.org/chatzilla/l
 <li>2007: 11</li>
 <li>2006: 18</li>
 </ul>
-<p>There’s been a pretty steady decline in check-ins.  I could take this
+<p>There’s been a pretty steady decline in check-ins. I could take this
 code and attempt to whip it into shape and make huge sweeping changes
 and commit them back to ChatZilla, but honestly it was easier to start
-over for me.  Regardless of ease, I’m not sure it would work any:
+over for me. Regardless of ease, I’m not sure it would work any:
 especially since the ChatZilla code seems overly complicated and overly
 specific (since it wasn’t really built as a library as far as I can
-see), especially since all the code is meant to deal only with <span class="caps">IRC</span>.  The
+see), especially since all the code is meant to deal only with <span class="caps">IRC</span>. The
 Instantbird code needs to be protocol agnostic to a degree, while is why
 it interfaces to purplexpcom.</p>
 <p>A quick example of this is: ChatZilla uses a CIRCUser object, but for
 Instantbird I need to create either an imIContact or a
-purpleIAccountBuddy (depending on the situation).  It’s possible that’s
+purpleIAccountBuddy (depending on the situation). It’s possible that’s
 can be abstracted and code shared — but I’m not sure it would be worth
-the effort.  After all this, I should probably look more into the
+the effort. After all this, I should probably look more into the
 ChatZilla code, perhaps more of it could be used.</p>
 <p>(If someone familiar with the ChatZilla code base — I don’t know
 who/if there’s a maintainer — is interested in talking with me, please
-get in contact here or on #instantbird.  It’s possible we could align
+get in contact here or on #instantbird. It’s possible we could align
 some of what I’ve been working on, but I’m not sure how much could be
 shared besides the parsing algorithm).</p>
 <p><em>[End edit]</em></p>
@@ -234,26 +234,26 @@ with automatic account migration, etc. For end-users we can hopefully
 solve <a class="reference external" href="https://bugzilla.instantbird.org/showdependencytree.cgi?id=574&amp;maxdepth=1&amp;hide_resolved=1">a few annoying <span class="caps">IRC</span> <span class="caps">UI</span> issues</a>.</p>
 </div>
 <div class="section" id="what-about-for-developers-anything-cool-there">
-<h2><a class="toc-backref" href="#id7">What about for developers?  Anything cool there?</a></h2>
+<h2><a class="toc-backref" href="#id7">What about for developers? Anything cool there?</a></h2>
 <p>Well, I’m hoping to be able to test this replacement via an extension
 that replaces the libpurple <span class="caps">IRC</span> to dogfood it before eventual inclusion
-in Instantbird.  I’m not sure if that counts as “cool.” though.  If
+in Instantbird. I’m not sure if that counts as “cool.” though. If
 nothing else there will be an example of how to write a protocol in
-JavaScript (using sockets).  So hopefully other people can make some
-other cool protocols off of that example.  You might wonder what else we
+JavaScript (using sockets). So hopefully other people can make some
+other cool protocols off of that example. You might wonder what else we
 have planned for JavaScript protocols; there are plans to make at least
 a Twitter protocol.</p>
 </div>
 <div class="section" id="how-is-this-being-done">
 <h2><a class="toc-backref" href="#id8">How is this being done?</a></h2>
-<p>Well I said up above <span class="caps">IRC</span> has a specification, right?  Well, yes.
+<p>Well I said up above <span class="caps">IRC</span> has a specification, right? Well, yes.
 There’s the <a class="reference external" href="http://tools.ietf.org/html/rfc1459">original specification</a>, this was superseded by <a class="reference external" href="http://tools.ietf.org/html/rfc2810">four</a>
-<a class="reference external" href="http://tools.ietf.org/html/rfc2811">different</a> <a class="reference external" href="http://tools.ietf.org/html/rfc2812">specification</a> <a class="reference external" href="http://tools.ietf.org/html/rfc2813">documents</a>.  Of which we only really
-care about one: <a class="reference external" href="http://tools.ietf.org/html/rfc2812">the client protocol</a>.  So we have this updated
+<a class="reference external" href="http://tools.ietf.org/html/rfc2811">different</a> <a class="reference external" href="http://tools.ietf.org/html/rfc2812">specification</a> <a class="reference external" href="http://tools.ietf.org/html/rfc2813">documents</a>. Of which we only really
+care about one: <a class="reference external" href="http://tools.ietf.org/html/rfc2812">the client protocol</a>. So we have this updated
 specification (try reading it, it’s rather painful), which is good.
 It’s relatively straightforward set of commands and responses/errors.
 It’s a bit more confusing than that though since there are a couple of
-extensions, etc.  This is summarized below:</p>
+extensions, etc. This is summarized below:</p>
 <ul class="simple">
 <li><span class="strike"><span class="caps">RFC</span> 1459</span><ul>
 <li>Extended with <a class="reference external" href="http://www.irchelp.org/irchelp/rfc/dccspec.html"><span class="strike"><span class="caps">DCC</span> specification (“direct client-to-client”)</span></a><ul>
@@ -269,12 +269,12 @@ extensions, etc.  This is summarized below:</p>
 </li>
 </ul>
 <p>A lot of this is being done by reading the specifications and finding
-the proper responses, etc.  I’ve also used <a class="reference external" href="http://www.wireshark.org/download.html">Wireshark</a> a bit to see how
+the proper responses, etc. I’ve also used <a class="reference external" href="http://www.wireshark.org/download.html">Wireshark</a> a bit to see how
 libpurple sends <span class="caps">IRC</span> commands (in particular, in what order it sends them
-in).  A lot of my development is happening on live <span class="caps">IRC</span> servers, which
+in). A lot of my development is happening on live <span class="caps">IRC</span> servers, which
 isn’t really best practice, but I’m mostly sending commands by hand to
 see the responses since a bunch of non-standard responses and extensions
-have developed beyond the above.  I have been using <a class="reference external" href="http://ircd.bircd.org/">beware irc</a> to run
+have developed beyond the above. I have been using <a class="reference external" href="http://ircd.bircd.org/">beware irc</a> to run
 a daemon on my own machine, however.</p>
 </div>
 <div class="section" id="so-how-far-along-are-you">
@@ -282,17 +282,17 @@ a daemon on my own machine, however.</p>
 <p>I’ve started implementing <span class="caps">RFC</span> 2812 and have a variety of commands done
 (the login sequence occurs automatically, the server connection is kept
 alive, messages can be sent to a channel and are parsed when received, a
-lot of the initial server information is displayed but unparsed).  But
-there’s a lot more to do!  As my last post outlined, I recently was able
+lot of the initial server information is displayed but unparsed). But
+there’s a lot more to do! As my last post outlined, I recently was able
 to successfully get a chat to work in Instantbird from a silly bug I had
 been having.</p>
 <p>It’s rather slow going since I’ll start to implement something from
 the <span class="caps">IRC</span> side, and then realize the <a class="reference external" href="http://hg.instantbird.org/instantbird/file/tip/purple/purplexpcom/src/jsProtoHelper.jsm">Instantbird layer</a> (the jsProtocol
-module) is missing a component I need.  One of the major parts of
+module) is missing a component I need. One of the major parts of
 working on this is extending the Instantbird layer to contain the proper
-functions and objects needed to implement chats via JavaScript.  This is
+functions and objects needed to implement chats via JavaScript. This is
 usually the slowest going part of my code, since it involves interfacing
-with Instantbird / <a class="reference external" href="http://hg.instantbird.org/instantbird/file/tip/purple/purplexpcom/public/">purplexpcom</a>.  Luckily Florian, the main developer
+with Instantbird / <a class="reference external" href="http://hg.instantbird.org/instantbird/file/tip/purple/purplexpcom/public/">purplexpcom</a>. Luckily Florian, the main developer
 of Instantbird, has been a big help with this (as have other
 participants of #instantbird — in particular I know Mic helped track
 down a few syntax type bugs).</p>
@@ -301,9 +301,9 @@ down a few syntax type bugs).</p>
 <h2><a class="toc-backref" href="#id10">What’s next?</a></h2>
 <p>Now that have the basics of chat working, I need to start handling the
 <span class="caps">QUIT</span>, <span class="caps">PART</span> and <span class="caps">JOIN</span> commands for when other users enter <span class="amp">&amp;</span> leave chat
-rooms.  Once these are complete it should be quite usable, although the
+rooms. Once these are complete it should be quite usable, although the
 entire preference system still doesn’t exist, including notifying the <span class="caps">UI</span>
-of what options are available.  In addition, I need to look into doing
+of what options are available. In addition, I need to look into doing
 <span class="caps">SSL</span> sockets.</p>
 <p>Once the protocol plug-in is done, we plan to abstract sections of it
 that will be useful for other protocols (in particular the socket
@@ -312,7 +312,7 @@ connection aspects).</p>
 <div class="section" id="where-can-i-see-this-stuff">
 <h2><a class="toc-backref" href="#id11">Where can I see this stuff…?</a></h2>
 <p>My work is kept in the “<a class="reference external" href="https://hg.instantbird.org/experiments/file/IRC-JavaScript/">experiments</a>” repository on Instantbird’s
-<a class="reference external" href="http://mercurial.selenic.com/">Mercurial</a> repository.  There’s also a variety of bugs open (they’re
+<a class="reference external" href="http://mercurial.selenic.com/">Mercurial</a> repository. There’s also a variety of bugs open (they’re
 listed above, I’m not going to re-list them), although not a ton is
 happening in them.</p>
 </div>
@@ -320,7 +320,7 @@ happening in them.</p>
 <h2><a class="toc-backref" href="#id12">How can I help?!</a></h2>
 <p>Well you can of course feel free to download the code and hack on it,
 let me know (via <span class="caps">IRC</span> or any of the bugs most likely) if you have a patch
-you’d like me to apply.  Or if you just found something that doesn’t
+you’d like me to apply. Or if you just found something that doesn’t
 work you can feel free to let me know, although I probably just haven’t
 gotten around to fixing it yet.</p>
 <p>Also, if you’ve ever found something annoying / broken in the <span class="caps">IRC</span>

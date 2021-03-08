@@ -129,22 +129,22 @@
 
         <p>If you&#8217;ve ever tried to deal with binary data in JavaScript you know
 it isn&#8217;t much fun and you usually resort to using strings lots of
-charCodeAt and related functions.&nbsp; <a class="reference external" href="https://developer.mozilla.org/en-US/docs/JavaScript_typed_arrays">Typed arrays</a> are supposed to solve
-this though!&nbsp; The typed array <span class="caps">API</span> consists of creating a buffer of bytes
+charCodeAt and related functions. <a class="reference external" href="https://developer.mozilla.org/en-US/docs/JavaScript_typed_arrays">Typed arrays</a> are supposed to solve
+this though! The typed array <span class="caps">API</span> consists of creating a buffer of bytes
 (called an <a class="reference external" href="https://developer.mozilla.org/en-US/docs/JavaScript_typed_arrays/ArrayBuffer">ArrayBuffer</a>) and then manipulating those bytes via
-different views (<a class="reference external" href="https://developer.mozilla.org/en-US/docs/JavaScript_typed_arrays/ArrayBufferView">ArrayBufferView</a>s).&nbsp; You can have multiple views of
+different views (<a class="reference external" href="https://developer.mozilla.org/en-US/docs/JavaScript_typed_arrays/ArrayBufferView">ArrayBufferView</a>s). You can have multiple views of
 the same buffer, starting at different offsets, of different lengths and
 types&#8230;which is all neat from a technical point of view, but is it
-really useful?&nbsp; It is kind of nice working with the views as if they
+really useful? It is kind of nice working with the views as if they
 were normal arrays&nbsp;though.</p>
 <p>I&#8217;ve been playing with these ArrayBuffers quite a bit as I&#8217;m working
 on an implementation of the <a class="reference external" href="http://en.wikipedia.org/wiki/OSCAR_protocol"><span class="caps">OSCAR</span> protocol</a> (used for <a class="reference external" href="http://en.wikipedia.org/wiki/AOL_Instant_Messenger"><span class="caps">AOL</span> Instant
 Messenger</a> and <a class="reference external" href="http://en.wikipedia.org/wiki/ICQ"><span class="caps">ICQ</span></a>) in the chat backend (for Instantbird /
-Thunderbird).&nbsp; (As an aside, the <span class="caps">OSCAR</span> protocol Wikipedia page has
+Thunderbird). (As an aside, the <span class="caps">OSCAR</span> protocol Wikipedia page has
 surprisingly good documentation of some of the underlying data
-structures of the protocol&#8230;)&nbsp; I started by writing some test code
+structures of the protocol&#8230;) I started by writing some test code
 using ArrayBuffers and views, which have been around a while: since
-Gecko 2.0 in fact!&nbsp; I quickly ran into some tedious issues with
+Gecko 2.0 in fact! I quickly ran into some tedious issues with
 repetitive code such&nbsp;as:</p>
 <div class="highlight"><pre><span></span><span class="cm">/*</span>
 <span class="cm"> * A TLV (Type, Length and Value) data structure:</span>
@@ -197,21 +197,21 @@ tested heavily at all,&nbsp;however.)</p>
 <p><span class="caps">OK</span>, so typed arrays seem good, but kind of annoying, right?
 Wrong&#8230;the <span class="caps">OSCAR</span> protocol is a &#8220;network order&#8221; protocol (aka it is big
 endian). At this point you&#8217;re probably thinking &#8220;<span class="caps">OK</span>, so the ArrayBuffer
-constructor must take an endianess flag!&#8221;&nbsp; Wrong, it does no such
-thing.&nbsp; &#8220;Hmmm&#8230;Well do the ArrayBufferViews take an endianess flag?&#8221;
-Nope, wrong again.&nbsp; The only way to specify the endianess of the data is
+constructor must take an endianess flag!&#8221; Wrong, it does no such
+thing. &#8220;Hmmm&#8230;Well do the ArrayBufferViews take an endianess flag?&#8221;
+Nope, wrong again. The only way to specify the endianess of the data is
 to use a <a class="reference external" href="https://developer.mozilla.org/en-US/docs/JavaScript_typed_arrays/DataView">DataView</a>, a slightly different interface to the underlying
-bytes.&nbsp; It offers an <span class="caps">API</span> to individually set different data elements via
-their offset and endianess.&nbsp; (If you&#8217;re too lazy to read the
+bytes. It offers an <span class="caps">API</span> to individually set different data elements via
+their offset and endianess. (If you&#8217;re too lazy to read the
 documentation all the way through, DataView assumes big endian: makes my
 life&nbsp;easier!)</p>
 <p>For the curious, JavaScript typed arrays use the system endianess,
 which in my opinion is pretty much useless (at least if you plan on
 sharing data) since you can never guarantee the endianess to be either
-big or little endian.&nbsp; (The fun part is that this isn&#8217;t even documented,
+big or little endian. (The fun part is that this isn&#8217;t even documented,
 I found it on <a class="reference external" href="http://stackoverflow.com/questions/7869752/javascript-typed-arrays-and-endianness">Stack Overflow</a> and&nbsp;verified.)</p>
 <p>So, in summary&#8230;if you plan on networking at all with ArrayBuffers,
-don&#8217;t use ArrayBufferViews, use DataViews.&nbsp; (Although Uint8Arrays and
+don&#8217;t use ArrayBufferViews, use DataViews. (Although Uint8Arrays and
 Int8Arrays should work&nbsp;fine!)</p>
 <p>And to not rant the <em>entire</em> time, working with typed arrays certainly
 does beat strings +&nbsp;charCodeAt!</p>

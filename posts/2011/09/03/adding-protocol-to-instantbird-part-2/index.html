@@ -142,14 +142,14 @@
         
 <p>I had <a class="reference external" href="https://patrick.cloke.us/posts/2011/06/18/adding-new-protocol-sipeoffice/">previously talked about adding a protocol to Instantbird</a>,
 that focused on adding <span class="caps">SIPE</span> (Microsoft Office Communicator support).
-Since then I’ve been slowly working on defeating <span class="caps">SIPE</span>.  Fortunately I
+Since then I’ve been slowly working on defeating <span class="caps">SIPE</span>. Fortunately I
 found a few flags that help us compile it easily in Instantbird: we can
 declare that we do <em>not</em> have gmime and the standard libpurple <span class="caps">MIME</span>
 functions will be used (they might not be as good, but it keeps from
 adding &gt;10 <span class="caps">MB</span> of source to Instantbird).</p>
 <p>Some modifications to the <span class="caps">SIPE</span> source were made to compile it in
 Instantbird (note that most of the changes were probably more based on
-using <span class="caps">MSVC</span>, than having to do with Instantbird).  The code is also
+using <span class="caps">MSVC</span>, than having to do with Instantbird). The code is also
 broken up into a few different sections the core, api, and purple are
 ones we care about (they’re working on making a general Office
 Communicator protocol library, so the purple folder contains the
@@ -157,7 +157,7 @@ libpurple bindings that use the api, while the core is private).</p>
 <div class="section" id="purple">
 <h2><a class="toc-backref" href="#id1">Purple</a></h2>
 <p>Changes to purple consisted mostly of ifdefs that remove some header
-files not supported on Windows.  For example, I encountered a few of:</p>
+files not supported on Windows. For example, I encountered a few of:</p>
 <div class="highlight"><pre><span></span><span class="cp">#include</span> <span class="cpf">&lt;unistd.h&gt;</span><span class="cp"></span>
 </pre></div>
 <p>Luckily there was already a define <tt class="docutils literal">HAVE_UNISTD_H</tt>, so I just needed
@@ -166,7 +166,7 @@ to add:</p>
 <span class="cp">#include</span> <span class="cpf">&lt;unistd.h&gt;</span><span class="cp"></span>
 <span class="cp">#endif</span>
 </pre></div>
-<p>Easy!  There were also a couple other issues, but those were rather trivial.</p>
+<p>Easy! There were also a couple other issues, but those were rather trivial.</p>
 </div>
 <div class="section" id="core">
 <h2><a class="toc-backref" href="#id2">Core</a></h2>
@@ -180,27 +180,27 @@ we were able to just define the function calls to the libpurple variants.</p>
 <p>This had similar issues the core (in particular, there was a function
 which used <tt class="docutils literal">g_usleep</tt>, which is blocking and a definite no-no for a
 protocol plug-in, I’ve removed that…hopefully it doesn’t break
-anything!)  In addition to that, we needed to use the libpurple l10n
+anything!) In addition to that, we needed to use the libpurple l10n
 system instead of glib’s gi18n.h, this was easily copied from
 libpurple’s internal <span class="caps">API</span> though.</p>
-<p>So at this point…I have a copy of <span class="caps">SIPE</span> compiled!  Unfortunately
+<p>So at this point…I have a copy of <span class="caps">SIPE</span> compiled! Unfortunately
 since I’m using Visual Studio Express I cannot compile on my computer
 and deploy to other computers for testing (a Mozilla issue with how it
-uses some of the header files, etc., I believe).  I’m looking into
+uses some of the header files, etc., I believe). I’m looking into
 trying to get this to work though, apparently using the exact same copy
-of <span class="caps">MSVC</span> Redistributable might help.  Once this is tested, hopefully
+of <span class="caps">MSVC</span> Redistributable might help. Once this is tested, hopefully
 it’ll land in Instantbird for use!</p>
 </div>
 <div class="section" id="sametime-support">
 <h2><a class="toc-backref" href="#id4">Sametime support</a></h2>
 <p>Unrelated to <span class="caps">SIPE</span>, but recently I landed a patch in Instantbird to add
 back Sametime support (Sametime is Lotus Notes’ equivalent to Office
-Communicator).  You can see the gory details in <a class="reference external" href="https://bugzilla.instantbird.org/show_bug.cgi?id=102">bug 102</a>, but in
+Communicator). You can see the gory details in <a class="reference external" href="https://bugzilla.instantbird.org/show_bug.cgi?id=102">bug 102</a>, but in
 general it’s similar to what I’ve (not gone into great detail about)
 here. Most of getting Sametime to work was rewriting some C code
-that doesn’t compile in <span class="caps">MSVC</span>.  There’s also a <a class="reference external" href="https://bugzilla.instantbird.org/attachment.cgi?id=797&amp;action=diff">diff</a> of all the
+that doesn’t compile in <span class="caps">MSVC</span>. There’s also a <a class="reference external" href="https://bugzilla.instantbird.org/attachment.cgi?id=797&amp;action=diff">diff</a> of all the
 changes I made to the libpurple Sametime plugin and the external library
-(called <a class="reference external" href="http://meanwhile.sourceforge.net/">Meanwhile</a>) to get it to work.  Once I get Monotone (a version
+(called <a class="reference external" href="http://meanwhile.sourceforge.net/">Meanwhile</a>) to get it to work. Once I get Monotone (a version
 control system) set up I’ll look into getting these changes pushed back
 to libpurple to avoid diverging code bases.</p>
 </div>

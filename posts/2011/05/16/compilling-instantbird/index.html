@@ -146,22 +146,22 @@
 
         
 <p>In the past I’ve tried to compile a few different programs that use
-the Mozilla toolkit to various levels of success.  I’ve tried to compile
-Thunderbird, Songbird and Instantbird at various points.  I got
+the Mozilla toolkit to various levels of success. I’ve tried to compile
+Thunderbird, Songbird and Instantbird at various points. I got
 Thunderbird to compile, but it only worked sporadically (although I
 think that was Firefox moving so fast that Thunderbird couldn’t keep
 up), Songbird I gave up on rather quickly and Instantbird I’ve tried a
 few times.</p>
 <p>Last summer I had Instantbird compiling on my old laptop (a Lenovo
 T60), which is &gt;5 years old at this point and has had the heatsink / fan
-replaced twice — a known issue with that model laptop.  Needless to
+replaced twice — a known issue with that model laptop. Needless to
 say, that laptop didn’t like compiling something on Windows that took
 approximately an hour with a large number of reads and writes to the
-hard drive.  This mixed with it being an old dual core + a 5400 <span class="caps">RPM</span>
-meant I’d be waiting a <span class="caps">LONG</span> time for my code to compile.  I got a
+hard drive. This mixed with it being an old dual core + a 5400 <span class="caps">RPM</span>
+meant I’d be waiting a <span class="caps">LONG</span> time for my code to compile. I got a
 Thinkpad X201 this past summer, so I finally got around to setting up a
 development environment on it and was able to get Instantbird to compile
-fully today.  I’ve outlined the steps I’ve followed: kind of to mirror
+fully today. I’ve outlined the steps I’ve followed: kind of to mirror
 the <a class="reference external" href="https://developer.mozilla.org/En/Simple_Thunderbird_build">Simple Thunderbird Build</a> page on <span class="caps">MDC</span>.</p>
 <p>I’ve done this using Microsoft Windows 7 Professional (64-bit) with
 Service Pack 1. (4.00 <span class="caps">GB</span> of <span class="caps">RAM</span>, Intel Core i7 M620 2.67 GHz).
@@ -172,44 +172,44 @@ the installers.</p>
 <div class="section" id="visual-studio-express">
 <h3><a class="toc-backref" href="#id3">Visual Studio Express:</a></h3>
 <p>We need to install Visual Studio Express, specifically <span class="caps">VC8</span> (2005) with
-Service Pack 1.  (Mozilla compiles with <span class="caps">VC9</span> and <span class="caps">VC10</span> to various degrees,
+Service Pack 1. (Mozilla compiles with <span class="caps">VC9</span> and <span class="caps">VC10</span> to various degrees,
 but it seems libpurple only compiles with <span class="caps">VC8</span>, also this is what’s on
-the Instantbird buildbot, so I like having the same version.)  I
+the Instantbird buildbot, so I like having the same version.) I
 couldn’t find this on Microsoft’s website but I found it on <a class="reference external" href="http://www.softpedia.com/get/Programming/Other-Programming-Files/Microsoft-Visual-C-Toolkit.shtml">Softpedia</a>
-(which is a legitimate site).  Anyway, download the installer and
+(which is a legitimate site). Anyway, download the installer and
 install it (which will download the actual compiler from Microsoft),
 ensure that you also install the <span class="caps">IDE</span> (which is checked by default).</p>
-<p>This will only install <span class="caps">VC8</span>, the initial release.  We also need to
-install <a class="reference external" href="http://www.microsoft.com/downloads/en/details.aspx?FamilyID=7b0b0339-613a-46e6-ab4d-080d4d4a8c4e">Service Pack 1</a>.  I personally did this using Windows Update,
+<p>This will only install <span class="caps">VC8</span>, the initial release. We also need to
+install <a class="reference external" href="http://www.microsoft.com/downloads/en/details.aspx?FamilyID=7b0b0339-613a-46e6-ab4d-080d4d4a8c4e">Service Pack 1</a>. I personally did this using Windows Update,
 but one of the installers from there should also work.</p>
 </div>
 <div class="section" id="microsoft-windows-sdk">
 <h3><a class="toc-backref" href="#id4">Microsoft Windows <span class="caps">SDK</span>:</a></h3>
 <p>Specifically we need the <a class="reference external" href="http://www.microsoft.com/downloads/en/details.aspx?FamilyID=c17ba869-9671-4330-a63e-1fd44e0e2505&amp;displaylang=en">Windows 7 <span class="caps">SDK</span></a> (for Jumplist, Aero, etc.
-support).  Download and install the <span class="caps">SDK</span>, this one took a while for me to
-install.  I ate dinner while it was installing (pasta, if you’re curious
+support). Download and install the <span class="caps">SDK</span>, this one took a while for me to
+install. I ate dinner while it was installing (pasta, if you’re curious
 — I already had sauce made).</p>
 <p>There’s a linker error when using <span class="caps">VC8</span> and the Windows 7 <span class="caps">SDK</span>, so we’ll
-need to install a <a class="reference external" href="http://support.microsoft.com/kb/949009/">hotfix</a>for that (I tried without it and I ran into
-the issue).  I had to download the “VS80sp1-<span class="caps">KB949009</span>-<span class="caps">IA64</span>-<span class="caps">INTL</span>.exe”
-version (there’s also an X86 and an X64 version).  Choose the one that works.</p>
+need to install a <a class="reference external" href="http://support.microsoft.com/kb/949009/">hotfix</a> for that (I tried without it and I ran into
+the issue). I had to download the “VS80sp1-<span class="caps">KB949009</span>-<span class="caps">IA64</span>-<span class="caps">INTL</span>.exe”
+version (there’s also an X86 and an X64 version). Choose the one that works.</p>
 </div>
 <div class="section" id="microsoft-macro-assembler">
 <h3><a class="toc-backref" href="#id5">Microsoft Macro Assembler:</a></h3>
 <p>In order to properly assemble the code we need to <a class="reference external" href="http://www.microsoft.com/downloads/en/details.aspx?familyid=7A1C9DA0-0510-44A2-B042-7EF370530C64&amp;displaylang=en">install <span class="caps">MASM</span></a>
 (which I think will eventually be included in MozillaBuild, but it isn’t
-currently).  Again, just install it with the defaults.</p>
+currently). Again, just install it with the defaults.</p>
 </div>
 <div class="section" id="mozillabuild">
 <h3><a class="toc-backref" href="#id6">MozillaBuild:</a></h3>
-<p>Almost there, I promise.  In order to get a *nix type shell to run
+<p>Almost there, I promise. In order to get a *nix type shell to run
 make, etc. in we’ll use a package from Mozilla that includes <span class="caps">MSYS</span>, make,
-Mercurial, etc.  Download and <a class="reference external" href="http://ftp.mozilla.org/pub/mozilla.org/mozilla/libraries/win32/MozillaBuildSetup-Latest.exe">install MozillaBuild</a>, the latest should
+Mercurial, etc. Download and <a class="reference external" href="http://ftp.mozilla.org/pub/mozilla.org/mozilla/libraries/win32/MozillaBuildSetup-Latest.exe">install MozillaBuild</a>, the latest should
 work fine.</p>
 <p>Now, an unknown step: you might require the <a class="reference external" href="http://www.microsoft.com/downloads/en/details.aspx?FamilyID=a5c84275-3b97-4ab7-a40d-3802b2af5fc2&amp;displaylang=en">Microsoft Visual C++ 2008
-<span class="caps">SP1</span> Redistributable Package</a>.  I don’t know if you need this or not
+<span class="caps">SP1</span> Redistributable Package</a>. I don’t know if you need this or not
 since I <em>already</em> had it, most likely from a previous program I’ve installed.</p>
-<p>We should be ready to build now pretty much.  For some more
+<p>We should be ready to build now pretty much. For some more
 information for this stuff you can check out the Mozilla Developer
 Network pages I used to get this information: <a class="reference external" href="https://developer.mozilla.org/En/Developer_Guide/Build_Instructions">Build Instructions</a>,
 <a class="reference external" href="https://developer.mozilla.org/En/Developer_Guide/Build_Instructions/Windows_Prerequisites">Windows Build Prerequisites</a> and <a class="reference external" href="https://developer.mozilla.org/cn/VC8_Build_Instructions"><span class="caps">MSVC8</span> Build Instructions</a>.</p>
@@ -217,35 +217,35 @@ Network pages I used to get this information: <a class="reference external" href
 </div>
 <div class="section" id="checkout-the-code">
 <h2><a class="toc-backref" href="#id7">Checkout the Code:</a></h2>
-<p>We need to checkout the code.  I originally checked out the code with
+<p>We need to checkout the code. I originally checked out the code with
 TortoiseHg (which is what I normally use), but the version of Mercurial
 included is significantly greater than the one included in MozillaBuild
-and this caused me issues later on.  Thus, we’ll check out the code on
-the command line.  Start by launching the bash shell, which is at
-C:\mozilla-build\start-msvc8.bat (don’t use the x64 version).  There’s
+and this caused me issues later on. Thus, we’ll check out the code on
+the command line. Start by launching the bash shell, which is at
+C:\mozilla-build\start-msvc8.bat (don’t use the x64 version). There’s
 a version here which corresponds to each version of <span class="caps">VS</span>.</p>
 <p>Once this finishes loading you’ll be in the home directory (which is
 in the root of your user’s documents and settings folder, i.e. for me:
-C:\Users\clokep).  You’ll want to do the following:</p>
+C:\Users\clokep). You’ll want to do the following:</p>
 <div class="highlight"><pre><span></span>hg clone https://hg.instantbird.org/instantbird
 </pre></div>
 <p>This might take a few minutes depending on how good your internet
-connection is.  (The Instantbird source isn’t <span class="caps">THAT</span> big though, it
+connection is. (The Instantbird source isn’t <span class="caps">THAT</span> big though, it
 shouldn’t take too long.)</p>
 <p>Then we’ll need to change into the instantbird directory that was just
 created and download the Mozilla source code:</p>
 <div class="highlight"><pre><span></span><span class="nb">cd</span> instantbird
 python client.py checkout
 </pre></div>
-<p>Now this step?  This one is gonna take a while.  It took me like a
-couple of hours.  It pulls the Mozilla source code, which is large and
-has many changesets.  Just let it go, it’ll give you progress
+<p>Now this step? This one is gonna take a while. It took me like a
+couple of hours. It pulls the Mozilla source code, which is large and
+has many changesets. Just let it go, it’ll give you progress
 occasionally (changes, manifests, files, etc.)</p>
 </div>
 <div class="section" id="id1">
 <h2><a class="toc-backref" href="#id8">Compiling Instantbird:</a></h2>
-<p>We need to set up the options we want to build with.  These are
-read from a .mozconfig (don’t miss the “.” in the front!).  The contents
+<p>We need to set up the options we want to build with. These are
+read from a .mozconfig (don’t miss the “.” in the front!). The contents
 of the .mozconfig that worked for me are:</p>
 <div class="highlight"><pre><span></span>ac_add_options --enable-application<span class="o">=</span>instantbird
 mk_add_options <span class="nv">MOZ_OBJDIR</span><span class="o">=</span>@TOPSRCDIR@/objdir-ib-release
@@ -257,8 +257,8 @@ we need to do this, but we’ll get that error at that link otherwise).</p>
 <p>Finally (back in the bash shell) type:</p>
 <div class="highlight"><pre><span></span>make -f client.mk build
 </pre></div>
-<p>Now sit back and relax.  My build took about an hour to finish, maybe
-a bit less — I wasn’t fully paying attention.  Once it’s done you
+<p>Now sit back and relax. My build took about an hour to finish, maybe
+a bit less — I wasn’t fully paying attention. Once it’s done you
 should see something like:</p>
 <div class="highlight"><pre><span></span>Processed <span class="m">1</span> file, writing output:
 
@@ -295,13 +295,13 @@ assume you use Instantbird to <span class="caps">IM</span>…you probably want t
 second one, if you don’t use it…shame on you. Try not to close the
 wrong Instantbird when you’re working on stuff).</p>
 <p>Hopefully this will help someone else get started on hacking
-Instantbird.  There’s other good ways you can hack too if your computer
+Instantbird. There’s other good ways you can hack too if your computer
 can’t handle compiling, including unpacking omni.jar.</p>
 <p>One last tidbit is to possibly add the option to your .mozconfig:</p>
 <div class="highlight"><pre><span></span>--enable-chrome-format<span class="o">=</span>flat
 </pre></div>
 <p>This will not package anything in JARs (which pretty much just get in
-the way while developing).  See <a class="reference external" href="https://developer.mozilla.org/en/JAR_Packaging">here</a> for more info.</p>
+the way while developing). See <a class="reference external" href="https://developer.mozilla.org/en/JAR_Packaging">here</a> for more info.</p>
 <p>Edit: Fixed the path to the executable thanks to Florian. And fixed a
 spelling error in the title.</p>
 </div>
