@@ -86,8 +86,8 @@ PLUGINS = [
     'extract_toc',
     'gravatar',
     youtube,
-    'share_post',
-    'thumbnailer',
+    'pelican.plugins.share_post',
+    'pelican.plugins.thumbnailer',
 
     # Custom plug-ins to add additional RST directives.
     'directives',
