@@ -3,6 +3,8 @@
 import os
 import sys
 
+from pelican_youtube import youtube
+
 # Ensure that filters are importable.
 sys.path.append(os.path.dirname(__file__))
 
@@ -84,7 +86,7 @@ PLUGINS = [
     'assets',
     'extract_toc',
     'gravatar',
-    'pelican_youtube.youtube',
+    youtube,
     'share_post',
     'thumbnailer',
 
