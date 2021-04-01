@@ -167,7 +167,6 @@ serialize all the data to memory and come up with implementations&nbsp;like:</p>
                <span class="nb">list</span><span class="p">(</span><span class="n">ModelB</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">name__contains</span><span class="o">=</span><span class="s1">&#39;foo&#39;</span><span class="p">)))</span>
 </code></pre></div>
 
-
 <p>This has two issues we had to&nbsp;overcome:</p>
 <ol>
 <li>We had too much data to serialize to&nbsp;memory.</li>
@@ -205,7 +204,6 @@ provide the&nbsp;following:</p>
 <span class="n">subset_data</span> <span class="o">=</span> <span class="n">queryset</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">name__contains</span><span class="o">=</span><span class="s1">&#39;foo&#39;</span><span class="p">)</span>
 </code></pre></div>
 
-
 <p>Currently Django QuerySetSequence supports both Django 1.8 and Django 1.9 on
 Python 2.7, 3.4 and 3.5. Check out the full set of features or contribute to the
 <a href="https://github.com/percipient/django-querysetsequence">source repository</a>. You
@@ -213,7 +211,6 @@ can install <code>django-querysetsequence</code> package from
 <a href="https://pypi.python.org/pypi/django-querysetsequence">pypi</a> using&nbsp;pip:</p>
 <div class="highlight"><pre><span></span><code><span class="err">pip install django-querysetsequence</span>
 </code></pre></div>
-
 
 <p>If you&#8217;re using Django QuerySetSequence we&#8217;d love to
 <a href="mailto:support@strongarm.io">hear about it</a>!</p>

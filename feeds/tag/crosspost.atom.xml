@@ -46,7 +46,6 @@ serialize all the data to memory and come up with implementations&amp;nbsp;like:
                &lt;span class="nb"&gt;list&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;ModelB&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;objects&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;filter&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;name__contains&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;foo&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)))&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
-
 &lt;p&gt;This has two issues we had to&amp;nbsp;overcome:&lt;/p&gt;
 &lt;ol&gt;
 &lt;li&gt;We had too much data to serialize to&amp;nbsp;memory.&lt;/li&gt;
@@ -84,7 +83,6 @@ provide the&amp;nbsp;following:&lt;/p&gt;
 &lt;span class="n"&gt;subset_data&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;queryset&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;filter&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;name__contains&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;foo&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
-
 &lt;p&gt;Currently Django QuerySetSequence supports both Django 1.8 and Django 1.9 on
 Python 2.7, 3.4 and 3.5. Check out the full set of features or contribute to the
 &lt;a href="https://github.com/percipient/django-querysetsequence"&gt;source repository&lt;/a&gt;. You
@@ -92,7 +90,6 @@ can install &lt;code&gt;django-querysetsequence&lt;/code&gt; package from
 &lt;a href="https://pypi.python.org/pypi/django-querysetsequence"&gt;pypi&lt;/a&gt; using&amp;nbsp;pip:&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="err"&gt;pip install django-querysetsequence&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
 
 &lt;p&gt;If you&amp;#8217;re using Django QuerySetSequence we&amp;#8217;d love to
 &lt;a href="mailto:support@strongarm.io"&gt;hear about it&lt;/a&gt;!&lt;/p&gt;</content><category term="articles"></category><category term="django"></category><category term="django-querysetsequence"></category><category term="crosspost"></category></entry><entry><title>Community and Volunteers</title><link href="https://patrick.cloke.us/posts/2014/04/16/community-and-volunteers/" rel="alternate"></link><published>2014-04-16T12:34:00-04:00</published><updated>2014-04-16T12:34:00-04:00</updated><author><name>Patrick Cloke</name></author><id>tag:patrick.cloke.us,2014-04-16:/posts/2014/04/16/community-and-volunteers/</id><summary type="html">&lt;p&gt;It was suggested that I cross-post this from mozilla.dev.planning onto
