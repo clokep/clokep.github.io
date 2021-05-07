@@ -200,5 +200,9 @@ Other
 =====
 
 * `Kids can't use computers... and this is why it should worry you`_ by  Marc Scott
+* `The Impact of Toxic Influencers in Communities`_ by Erin Casali
+* `Difficult People`_ from Producing Open Source Software by Karl Fogel
 
 .. _Kids can't use computers... and this is why it should worry you: http://coding2learn.org/blog/2013/07/29/kids-cant-use-computers/
+.. _The Impact of Toxic Influencers in Communities: https://intenseminimalism.com/2020/the-impact-of-toxic-influencers-on-communities/
+.. _Difficult People: https://producingoss.com/en/difficult-people.html
