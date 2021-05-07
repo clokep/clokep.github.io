@@ -27,5 +27,5 @@ the hands of someone actively using it!
 .. _already contributed: https://github.com/valohai/django-allauth-2fa/pulls?q=is%3Apr+author%3Aakx+is%3Aclosed
 .. _django-allauth: https://www.intenct.nl/projects/django-allauth/
 .. _Víðir Valberg Guðmundsson: https://github.com/valberg
-.. _talk at Django Boston: {filename}/django-allauth-2fa-lightning-talk.rst
+.. _talk at Django Boston: {filename}/articles/django-allauth-2fa-lightning-talk.rst
 .. _Aarni Koskela: https://github.com/akx
