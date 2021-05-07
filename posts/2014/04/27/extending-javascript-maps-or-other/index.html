@@ -200,7 +200,7 @@ call a normalization function.</p>
 <span class="p">};</span>
 
 <span class="kd">let</span> <span class="nx">m</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">NormalizedMap</span><span class="p">();</span>
-<span class="nx">m</span><span class="p">.</span><span class="nx">set</span><span class="p">(</span><span class="s2">"foo"</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span> <span class="c1">// Throws TypeError: set method called on incompatible Object</span>
+<span class="nx">m</span><span class="p">.</span><span class="nx">set</span><span class="p">(</span><span class="s2">"foo"</span><span class="p">,</span> <span class="mf">1</span><span class="p">)</span> <span class="c1">// Throws TypeError: set method called on incompatible Object</span>
 <span class="nx">m</span> <span class="k">instanceof</span> <span class="nx">Map</span><span class="p">;</span> <span class="c1">// true . . . wat . . .</span>
 </pre></div>
 <p>This throws an error and does not work. Apparently there are plans to
@@ -222,7 +222,7 @@ that m is an instance of a Map!</p>
     <span class="nx">set</span><span class="o">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">aStr</span><span class="p">,</span> <span class="nx">aVal</span><span class="p">)</span> <span class="nx">Map</span><span class="p">.</span><span class="nx">prototype</span><span class="p">.</span><span class="nx">set</span><span class="p">.</span><span class="nx">call</span><span class="p">(</span><span class="k">this</span><span class="p">,</span> <span class="k">this</span><span class="p">.</span><span class="nx">_normalize</span><span class="p">(</span><span class="nx">aStr</span><span class="p">),</span> <span class="nx">aVal</span><span class="p">)</span>
 <span class="p">};</span>
 <span class="kd">let</span> <span class="nx">m</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">NormalizedMap</span><span class="p">();</span>
-<span class="nx">m</span><span class="p">.</span><span class="nx">set</span><span class="p">(</span><span class="s2">"foo"</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+<span class="nx">m</span><span class="p">.</span><span class="nx">set</span><span class="p">(</span><span class="s2">"foo"</span><span class="p">,</span> <span class="mf">1</span><span class="p">)</span>
 <span class="nx">m</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s2">"FOO"</span><span class="p">);</span> <span class="c1">// 1</span>
 <span class="nx">m</span> <span class="k">instanceof</span> <span class="nx">Map</span><span class="p">;</span> <span class="c1">// true</span>
 </pre></div>

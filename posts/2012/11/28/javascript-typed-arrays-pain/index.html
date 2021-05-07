@@ -159,14 +159,14 @@ repetitive code such&nbsp;as:</p>
 <span class="cm"> *  aValue   An ArrayBuffer containing the data.</span>
 <span class="cm"> */</span>
 <span class="kd">function</span> <span class="nx">TlvBlock</span><span class="p">(</span><span class="nx">aType</span><span class="p">,</span> <span class="nx">aValue</span><span class="p">)</span> <span class="p">{</span>
-  <span class="kd">let</span> <span class="nx">data</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">ArrayBuffer</span><span class="p">(</span><span class="nx">aValue</span><span class="p">.</span><span class="nx">byteLength</span> <span class="o">+</span> <span class="mi">4</span><span class="p">);</span>
+  <span class="kd">let</span> <span class="nx">data</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">ArrayBuffer</span><span class="p">(</span><span class="nx">aValue</span><span class="p">.</span><span class="nx">byteLength</span> <span class="o">+</span> <span class="mf">4</span><span class="p">);</span>
   <span class="c1">// The first two bytes are unsigned shorts.</span>
-  <span class="kd">let</span> <span class="nx">view</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Uint16Array</span><span class="p">(</span><span class="nx">data</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">);</span>
-  <span class="nx">view</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="nx">aType</span><span class="p">;</span>
-  <span class="nx">view</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="nx">aValue</span><span class="p">.</span><span class="nx">byteLength</span><span class="p">;</span>
+  <span class="kd">let</span> <span class="nx">view</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Uint16Array</span><span class="p">(</span><span class="nx">data</span><span class="p">,</span> <span class="mf">0</span><span class="p">,</span> <span class="mf">2</span><span class="p">);</span>
+  <span class="nx">view</span><span class="p">[</span><span class="mf">0</span><span class="p">]</span> <span class="o">=</span> <span class="nx">aType</span><span class="p">;</span>
+  <span class="nx">view</span><span class="p">[</span><span class="mf">1</span><span class="p">]</span> <span class="o">=</span> <span class="nx">aValue</span><span class="p">.</span><span class="nx">byteLength</span><span class="p">;</span>
 
   <span class="c1">// The rest just gets the data copied into it.</span>
-  <span class="nx">view</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Uint8Array</span><span class="p">(</span><span class="nx">data</span><span class="p">,</span> <span class="mi">4</span><span class="p">);</span>
+  <span class="nx">view</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Uint8Array</span><span class="p">(</span><span class="nx">data</span><span class="p">,</span> <span class="mf">4</span><span class="p">);</span>
   <span class="nx">view</span><span class="p">.</span><span class="nx">set</span><span class="p">(</span><span class="k">new</span> <span class="nx">Uint8Array</span><span class="p">(</span><span class="nx">aValue</span><span class="p">));</span>
 
   <span class="k">return</span> <span class="nx">data</span><span class="p">;</span>
@@ -188,7 +188,7 @@ tested heavily at all,&nbsp;however.)</p>
 <div class="highlight"><pre><span></span><span class="cm">/*</span>
 <span class="cm"> * aTarget / aSource are ArrayBuffers</span>
 <span class="cm"> */</span>
-<span class="kd">function</span> <span class="nx">copyBytes</span><span class="p">(</span><span class="nx">aTarget</span><span class="p">,</span> <span class="nx">aSource</span><span class="p">,</span> <span class="nx">aTargetOffset</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="nx">aSourceOffset</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="nx">aLength</span> <span class="o">=</span> <span class="nx">aSource</span><span class="p">.</span><span class="nx">byteLength</span><span class="p">)</span> <span class="p">{</span>
+<span class="kd">function</span> <span class="nx">copyBytes</span><span class="p">(</span><span class="nx">aTarget</span><span class="p">,</span> <span class="nx">aSource</span><span class="p">,</span> <span class="nx">aTargetOffset</span> <span class="o">=</span> <span class="mf">0</span><span class="p">,</span> <span class="nx">aSourceOffset</span> <span class="o">=</span> <span class="mf">0</span><span class="p">,</span> <span class="nx">aLength</span> <span class="o">=</span> <span class="nx">aSource</span><span class="p">.</span><span class="nx">byteLength</span><span class="p">)</span> <span class="p">{</span>
   <span class="c1">// The rest just gets the data copied into it.</span>
   <span class="kd">let</span> <span class="nx">view</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Uint8Array</span><span class="p">(</span><span class="nx">aTarget</span><span class="p">,</span> <span class="nx">aTargetOffset</span><span class="p">);</span>
   <span class="nx">view</span><span class="p">.</span><span class="nx">set</span><span class="p">(</span><span class="k">new</span> <span class="nx">Uint8Array</span><span class="p">(</span><span class="nx">aSource</span><span class="p">,</span> <span class="nx">aSourceOffset</span><span class="p">,</span> <span class="nx">aLength</span><span class="p">));</span>

@@ -88,7 +88,7 @@ Python 2.7, 3.4 and 3.5. Check out the full set of features or contribute to the
 &lt;a href="https://github.com/percipient/django-querysetsequence"&gt;source repository&lt;/a&gt;. You
 can install &lt;code&gt;django-querysetsequence&lt;/code&gt; package from
 &lt;a href="https://pypi.python.org/pypi/django-querysetsequence"&gt;pypi&lt;/a&gt; using&amp;nbsp;pip:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="err"&gt;pip install django-querysetsequence&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;pip install django-querysetsequence
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 &lt;p&gt;If you&amp;#8217;re using Django QuerySetSequence we&amp;#8217;d love to
