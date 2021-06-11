@@ -1,0 +1,378 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Feed configuration. -->
+    <link href="https://patrick.cloke.us/feeds/atom.xml" type="application/atom+xml" rel="alternate" title="Patrick Cloke Atom Feed" />
+    <link href="https://patrick.cloke.us/feeds/rss.xml" type="application/rss+xml" rel="alternate" title="Patrick Cloke RSS Feed" />
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
+    <link rel="stylesheet" href="/theme/css/styles.css">
+    <link rel="stylesheet" href="/theme/css/borland.css">
+    <link rel="stylesheet" href="/theme/css/youtube.css">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
+
+    <title>Converting Twisted’s inlineCallbacks to async</title>
+
+    <script>var clicky_site_ids = [101275378];</script>
+    <script async src="/theme/js/clicky.js"></script>
+
+    <script async defer data-domain="cloke.us" src="https://plausible.io/js/plausible.js"></script>
+  </head>
+
+  <body class="pb-5">
+    <nav class="navbar navbar-expand-lg sticky-top navbar-light bg-light border-bottom border-info">
+      <a class="navbar-brand" href="/">
+        Patrick Cloke
+      </a>
+
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-items" aria-controls="navbar-items" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="navbar-items">
+        <ul class="navbar-nav ml-auto">
+
+          <li class="nav-item">
+            <a class="nav-link" href="/pages/about.html">About</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/pages/projects.html">Projects</a>
+          </li>
+
+          <li class="nav-item">
+            <a class="nav-link" href="/archives.html">Archives</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/tags.html">Tags</a>
+          </li>
+
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="social-dropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              Social
+            </a>
+
+            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="social-dropdown">
+              <a class="dropdown-item" href="https://www.twitter.com/clokep" target="_blank">
+                <span class="fab fa-twitter mr-1"></span> twitter
+              </a>
+              <a class="dropdown-item" href="https://mastodon.social/@clokep" target="_blank">
+                <span class="fab fa-mastodon mr-1"></span> mastodon
+              </a>
+              <a class="dropdown-item" href="https://www.github.com/clokep" target="_blank">
+                <span class="fab fa-github mr-1"></span> github
+              </a>
+              <a class="dropdown-item" href="https://gitlab.com/clokep" target="_blank">
+                <span class="fab fa-gitlab mr-1"></span> gitlab
+              </a>
+              <a class="dropdown-item" href="https://bitbucket.org/clokep" target="_blank">
+                <span class="fab fa-bitbucket mr-1"></span> bitbucket
+              </a>
+              <a class="dropdown-item" href="https://mozillians.org/u/clokep/" target="_blank">
+                <span class="fab fa-firefox mr-1"></span> mozillians
+              </a>
+            </div>
+          </li>
+
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="feeds-dropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              Feeds
+            </a>
+
+            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="feeds-dropdown">
+              <a class="dropdown-item" href="https://patrick.cloke.us/feeds/atom.xml" type="application/atom+xml" rel="alternate">atom feed</a>
+              <a class="dropdown-item" href="https://patrick.cloke.us/feeds/rss.xml" type="application/rss+xml" rel="alternate">rss feed</a>
+            </div>
+          </li>
+
+          <form class="form-inline" method="get" action="http://www.google.com/search">
+            <input class="form-control form-control-sm mr-sm-2" type="search" name="q" placeholder="Search" aria-label="Search" />
+            <input type="hidden"  name="sitesearch" value="patrick.cloke.us" />
+
+            <button class="btn btn-sm btn-outline-info d-none d-sm-inline" type="submit">Search</button>
+          </form>
+        </ul>
+      </div>
+    </nav>
+
+<div class="container">
+  <div class="row">
+    <div class="col-md-12 mt-2 mb-2">
+      <h1>
+        <a href="/posts/2021/06/11/converting-twisteds-inlinecallbacks-to-async/" rel="bookmark"
+           title="Permalink to Converting Twisted’s inlineCallbacks to async">Converting Twisted&#8217;s <tt class="docutils literal">inlineCallbacks</tt> to <tt class="docutils literal">async</tt></a>
+      </h1>
+
+      <div class="float-right">
+        <a href="https://twitter.com/intent/tweet?text=Converting%20Twisted%E2%80%99s%20inlineCallbacks%20to%20async&url=https%3A//patrick.cloke.us/posts/2021/06/11/converting-twisteds-inlinecallbacks-to-async/&hashtags=twisted" target="_blank" class="ml-1 mr-1" title="Share on Twitter">
+          <span class="fab fa-twitter"></span>
+        </a>
+        <a href="https://www.facebook.com/sharer/sharer.php?u=https%3A//patrick.cloke.us/posts/2021/06/11/converting-twisteds-inlinecallbacks-to-async/" target="_blank" class="ml-1 mr-1" title="Share on Facebook">
+          <span class="fab fa-facebook"></span>
+        </a>
+        <a href="mailto:?subject=Converting%20Twisted%E2%80%99s%20inlineCallbacks%20to%20async&amp;body=https%3A//patrick.cloke.us/posts/2021/06/11/converting-twisteds-inlinecallbacks-to-async/" target="_blank" class="ml-1 mr-1" title="Share via Email">
+          <span class="fas fa-envelope"></span>
+        </a>
+      </div>
+
+      <i>Friday, June 11, 2021</i>
+
+      <br>
+      <i>
+        Tags:           <a href="/tag/twisted.html">twisted</a>      </i>
+
+      <div class="mt-3">
+        <div class="border border-info rounded float-left p-2 mr-2 mb-1">
+          <b>Table of Contents</b>
+          <div class="toc" id="">
+<p class="topic-title">Contents</p>
+<ul class="simple">
+<li><a class="reference internal" href="#why-bother" id="id9">Why bother?</a></li>
+<li><a class="reference internal" href="#example" id="id10">Example</a></li>
+<li><a class="reference internal" href="#rules-for-conversion" id="id11">Rules for conversion</a></li>
+<li><a class="reference internal" href="#methodology-for-conversion" id="id12">Methodology for conversion</a></li>
+<li><a class="reference internal" href="#other-thoughts" id="id13">Other thoughts</a></li>
+<li><a class="reference internal" href="#measuring-progress" id="id14">Measuring progress</a></li>
+</ul>
+</div>
+        </div>
+
+        
+<p>Almost a year ago we had a push at Element to convert the remaining instances of
+Twisted’s <a class="reference external" href="https://twistedmatrix.com/documents/21.2.0/api/twisted.internet.defer.html#inlineCallbacks"><tt class="docutils literal">inlineCallbacks</tt></a> to use native <tt class="docutils literal">async</tt>/<tt class="docutils literal">await</tt> syntax from Python <a class="footnote-reference" href="#id5" id="id1">[1]</a>.
+Eventually this work got covered by <a class="reference external" href="https://github.com/matrix-org/synapse/issues/7988">issue #7988</a> (which is the original basis
+for this blogpost).</p>
+<p>Note that Twisted itself <a class="reference external" href="https://twistedmatrix.com/documents/21.2.0/core/howto/defer-intro.html#coroutines-with-async-await">gained some support</a> for <tt class="docutils literal">async</tt> functions in 16.4.</p>
+<div class="section" id="why-bother">
+<h2><a class="toc-backref" href="#id9">Why bother?</a></h2>
+<p><tt class="docutils literal">inlineCallbacks</tt> are very similar to <tt class="docutils literal">async</tt>/<tt class="docutils literal">await</tt>, they use a generator
+internally to wait for a task to complete and (modern <a class="footnote-reference" href="#id6" id="id2">[2]</a>) versions of Twisted let
+you directly return values. There are some real benefits to switching though:</p>
+<ul class="simple">
+<li><tt class="docutils literal">inlineCallbacks</tt> mangle stack traces, while <tt class="docutils literal">async</tt>/<tt class="docutils literal">await</tt> does not
+(as much). This helps with profiling and understanding exceptions (e.g. in Sentry).</li>
+<li><tt class="docutils literal">async</tt>/<tt class="docutils literal">await</tt> is more modern and standard — there’s a better chance of
+people understanding it who don’t haven’t used Twisted before.</li>
+<li><tt class="docutils literal">async</tt>/<tt class="docutils literal">await</tt> has better support from other packages, static analyzers,
+tools, etc.</li>
+<li><tt class="docutils literal">async</tt> functions can provide better type hints for return values.</li>
+<li>We postulated that there might be a performance benefit, but were never able
+to measure any.</li>
+</ul>
+<p>In fact the <a class="reference external" href="https://twistedmatrix.com/documents/21.2.0/core/howto/defer-intro.html#inline-callbacks-using-yield">Twisted documentation</a> (as of v21.2.0) even suggest some of the above:</p>
+<blockquote>
+Unless your code supports Python 2 (and therefore needs compatibility with older
+versions of Twisted), writing coroutines with the functionality described in
+“Coroutines with async/await” is preferred over <tt class="docutils literal">inlineCallbacks</tt>. Coroutines
+are supported by dedicated Python syntax, are compatible with <tt class="docutils literal">asyncio</tt>, and
+provide higher performance.</blockquote>
+</div>
+<div class="section" id="example">
+<h2><a class="toc-backref" href="#id10">Example</a></h2>
+<p>As an example, consider this function from the <a class="reference external" href="https://twistedmatrix.com/documents/21.2.0/core/howto/defer-intro.html#inline-callbacks-using-yield">Twisted documentation</a>:</p>
+<div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">twisted.internet.defer</span> <span class="kn">import</span> <span class="n">Deferred</span><span class="p">,</span> <span class="n">inlineCallbacks</span>
+
+<span class="nd">@inlineCallbacks</span>
+<span class="k">def</span> <span class="nf">makeRequest</span><span class="p">(</span><span class="n">method</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">url</span><span class="p">:</span> <span class="nb">str</span><span class="p">):</span>
+    <span class="c1"># ... do some HTTP stuff ...</span>
+    <span class="k">return</span> <span class="n">response</span>
+
+<span class="nd">@inlineCallbacks</span>
+<span class="k">def</span> <span class="nf">getUsers</span><span class="p">():</span>
+    <span class="n">responseBody</span> <span class="o">=</span> <span class="k">yield</span> <span class="n">makeRequest</span><span class="p">(</span><span class="s2">"GET"</span><span class="p">,</span> <span class="s2">"/users"</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">json</span><span class="o">.</span><span class="n">loads</span><span class="p">(</span><span class="n">responseBody</span><span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">main</span><span class="p">(</span><span class="n">reactor</span><span class="p">):</span>
+  <span class="k">return</span> <span class="n">getUsers</span><span class="p">()</span>
+</pre></div>
+<p>This could be rewritten to a bit more of modern:</p>
+<div class="highlight"><pre><span></span><span class="k">async</span> <span class="k">def</span> <span class="nf">makeRequest</span><span class="p">(</span><span class="n">method</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">url</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+    <span class="c1"># ... do some HTTP stuff ...</span>
+    <span class="k">return</span> <span class="n">response</span>
+
+<span class="k">async</span> <span class="k">def</span> <span class="nf">getUsers</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="nb">dict</span><span class="p">:</span>
+    <span class="n">responseBody</span> <span class="o">=</span> <span class="k">await</span> <span class="n">makeRequest</span><span class="p">(</span><span class="s2">"GET"</span><span class="p">,</span> <span class="s2">"/users"</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">json</span><span class="o">.</span><span class="n">loads</span><span class="p">(</span><span class="n">responseBody</span><span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">main</span><span class="p">(</span><span class="n">reactor</span><span class="p">):</span>
+  <span class="k">return</span> <span class="n">defer</span><span class="o">.</span><span class="n">ensureDeferred</span><span class="p">(</span><span class="n">getUsers</span><span class="p">())</span>
+</pre></div>
+<p>Not too big of a difference, but definitely a bit nicer. In particular, note:</p>
+<ul class="simple">
+<li>There’s no decorator, so tools like mypy know what <tt class="docutils literal">getUsers</tt> actually returns.</li>
+<li><tt class="docutils literal">main</tt> now includes a call to <a class="reference external" href="https://twistedmatrix.com/documents/21.2.0/api/twisted.internet.defer.html#ensureDeferred"><tt class="docutils literal">defer.ensureDeferred</tt></a> to transition back to
+something that Twisted understands. <a class="footnote-reference" href="#id7" id="id3">[3]</a></li>
+</ul>
+</div>
+<div class="section" id="rules-for-conversion">
+<h2><a class="toc-backref" href="#id11">Rules for conversion</a></h2>
+<p>The result of calling an <tt class="docutils literal">async</tt> function is an <tt class="docutils literal">Awaitable</tt>, the result of
+calling an <tt class="docutils literal">inlineCallbacks</tt> function is a <tt class="docutils literal">Deferred</tt>. <tt class="docutils literal">async</tt> functions
+use <tt class="docutils literal">await</tt> internally to wait for another <tt class="docutils literal">Awaitable</tt>, <tt class="docutils literal">inlineCallbacks</tt>
+use <tt class="docutils literal">yield</tt> internally to wait for another <tt class="docutils literal">Deferred</tt>.</p>
+<p>This results in the following rules:</p>
+<ul class="simple">
+<li>You can <tt class="docutils literal">await</tt> a <tt class="docutils literal">Deferred</tt> (since it is also an <tt class="docutils literal">Awaitable</tt>).</li>
+<li>You cannot <tt class="docutils literal">yield</tt> an <tt class="docutils literal">Awaitable</tt>.</li>
+<li>You can convert an <tt class="docutils literal">Awaitable</tt> into a <tt class="docutils literal">Deferred</tt> via <tt class="docutils literal">defer.ensureDeferred</tt>.</li>
+<li>Calling <tt class="docutils literal">await</tt> on a non-<tt class="docutils literal">Awaitable</tt> is a runtime error (though note that
+you can <tt class="docutils literal">yield</tt> on a non-<tt class="docutils literal">Deferred</tt> and it just immediately continues).</li>
+<li>Twisted APIs still expect <tt class="docutils literal">Deferreds</tt>.</li>
+</ul>
+<p>To convert a single function this turns out to be pretty simple:</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="30%"/>
+<col width="54%"/>
+<col width="16%"/>
+</colgroup>
+<thead valign="bottom">
+<tr><th class="head">What</th>
+<th class="head">Twised</th>
+<th class="head">asyncio</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr><td>Function definition</td>
+<td><tt class="docutils literal">@defer.inlineCallbacks</tt> decorator</td>
+<td><tt class="docutils literal">async</tt></td>
+</tr>
+<tr><td>Wait for result</td>
+<td><tt class="docutils literal">yield</tt></td>
+<td><tt class="docutils literal">await</tt></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="methodology-for-conversion">
+<h2><a class="toc-backref" href="#id12">Methodology for conversion</a></h2>
+<p>The difficult comes when you have a large codebase that you want to convert from
+<tt class="docutils literal">defer.inlineCallbacks</tt> to <tt class="docutils literal">async</tt>/<tt class="docutils literal">await</tt>. Below is how I approached this
+for the Synapse code:</p>
+<p>Since you can <tt class="docutils literal">await</tt> a <tt class="docutils literal">Deferred</tt> the easiest way to do this is to start at
+the outer layers and work inward. By doing this you end up with <tt class="docutils literal">async</tt>
+functions which call into code which return a <tt class="docutils literal">Deferred</tt>, but this is fine.</p>
+<p>For Synapse we converted things via:</p>
+<ol class="arabic simple">
+<li>The <span class="caps">REST</span> layer.</li>
+<li>The handler layer.</li>
+<li>The database layer.</li>
+</ol>
+<p>In order to avoid doing an entire layer at once it is ideal to start with the
+modules which are called into the least (and preferably only via a higher layer).
+If there are other callers which have not yet been converted, the call-site is
+modified to wrap the returned <tt class="docutils literal">Awaitable</tt> with <tt class="docutils literal">defer.ensureDeferred</tt>. Additionally,
+this is used whenever a Twisted <span class="caps">API</span> expects a <tt class="docutils literal">Deferred</tt>.</p>
+<p>The <span class="caps">REST</span> layer in Synapse is built on <tt class="docutils literal">twisted.web</tt> and needed some extra magic,
+see <a class="reference external" href="https://github.com/matrix-org/synapse/blob/4b965c862dc66c0da5d3240add70e9b5f0aa720b/synapse/http/server.py#L228-L309"><tt class="docutils literal">_AsyncResource</tt></a> and sub-classes, in particular it:</p>
+<ol class="arabic simple">
+<li>Overrides the <tt class="docutils literal">render</tt> method (which is a Twisted <span class="caps">API</span> from <tt class="docutils literal">IResource</tt>).<ol class="arabic">
+<li>Calls the async function with <tt class="docutils literal">defer.ensureDeferred</tt> to ensure it gets
+scheduled with the reactor.</li>
+<li>Returns <tt class="docutils literal">NOT_DONE_YET</tt> so that Twisted doesn’t close the connection.</li>
+</ol>
+</li>
+<li>It then searches for a method called <tt class="docutils literal">_async_render_&lt;<span class="caps">HTTP</span> <span class="caps">METHOD</span>&gt;</tt> and calls
+it with the <tt class="docutils literal">Request</tt> object.</li>
+<li>If the result is an <tt class="docutils literal">Awaitable</tt> it calls <tt class="docutils literal">await</tt> to get the “real” result.</li>
+<li>Finally it sends the response using Twisted APIs.</li>
+</ol>
+</div>
+<div class="section" id="other-thoughts">
+<h2><a class="toc-backref" href="#id13">Other thoughts</a></h2>
+<p>The Synapse code had many places which were undecorated functions which called
+return a <tt class="docutils literal">Deferred</tt> via calling something else. While doing this conversion we
+updated these functions to be <tt class="docutils literal">async</tt> and then internally <tt class="docutils literal">await</tt> the called
+function, for clarity. (Originally this was done for performance, but the overhead
+should be minimal when using <tt class="docutils literal">async</tt>/<tt class="docutils literal">await</tt>.)</p>
+<p>This also involved updating the tests to match the type as well (i.e. if a
+function was made <tt class="docutils literal">async</tt> and we mock that function somewhere, the mock should
+also be <tt class="docutils literal">async</tt>).</p>
+<p>While doing this we also fixed up some of the type hints of return values since
+mypy will actually check them once you remove the <tt class="docutils literal">defer.inlineCallbacks</tt> decorator.</p>
+</div>
+<div class="section" id="measuring-progress">
+<h2><a class="toc-backref" href="#id14">Measuring progress</a></h2>
+<p>As part of this I threw together an “<a class="reference external" href="https://patrick.cloke.us/areweasyncyet/">Are We Async Yet?</a>” site. It is pretty
+basic, but tracks the amount of code using <tt class="docutils literal">defer.inlineCallbacks</tt> vs. <tt class="docutils literal">async</tt>.
+As a side-effect you can see how the code has grown over time (with a few instances
+of major shrinking). <a class="footnote-reference" href="#id8" id="id4">[4]</a></p>
+<p>And last, but not least, I definitely did not convert all of Synapse myself! It
+was done incrementally by the entire team over years! My coworkers mostly laid
+the groundwork and I did much of the mechanical changes. And…we’re still not
+<em>quite</em> done, although the remaining places heavily interact with Twisted APIs
+or manually generate a <tt class="docutils literal">Deferred</tt> and use <tt class="docutils literal">addCallback</tt> (so they’re not
+straightforward to convert).</p>
+<table class="docutils footnote" frame="void" id="id5" rules="none">
+<colgroup><col class="label"/><col/></colgroup>
+<tbody valign="top">
+<tr><td class="label"><a class="fn-backref" href="#id1">[1]</a></td><td>Added in Python 3.5 via <a class="reference external" href="https://www.python.org/dev/peps/pep-0492/"><span class="caps">PEP</span> 492</a>.</td></tr>
+</tbody>
+</table>
+<table class="docutils footnote" frame="void" id="id6" rules="none">
+<colgroup><col class="label"/><col/></colgroup>
+<tbody valign="top">
+<tr><td class="label"><a class="fn-backref" href="#id2">[2]</a></td><td>Newer than version 15.0 according to the <a class="reference external" href="https://twistedmatrix.com/documents/21.2.0/core/howto/defer-intro.html#inline-callbacks-using-yield">Twisted documentation</a>.</td></tr>
+</tbody>
+</table>
+<table class="docutils footnote" frame="void" id="id7" rules="none">
+<colgroup><col class="label"/><col/></colgroup>
+<tbody valign="top">
+<tr><td class="label"><a class="fn-backref" href="#id3">[3]</a></td><td>The <a class="reference external" href="https://twistedmatrix.com/documents/21.2.0/core/howto/defer-intro.html#coroutines-with-async-await">documentation for async/await</a> suggests using <a class="reference external" href="https://twistedmatrix.com/documents/21.2.0/api/twisted.internet.defer.Deferred.html#fromCoroutine"><tt class="docutils literal">Deferred.fromCoroutine</tt></a>
+instead, but that is new in Twisted v21.2.0.</td></tr>
+</tbody>
+</table>
+<table class="docutils footnote" frame="void" id="id8" rules="none">
+<colgroup><col class="label"/><col/></colgroup>
+<tbody valign="top">
+<tr><td class="label"><a class="fn-backref" href="#id4">[4]</a></td><td>You can <a class="reference external" href="https://github.com/clokep/areweasyncyet">find the code on GitHub</a>.</td></tr>
+</tbody>
+</table>
+</div>
+
+      </div>
+
+<div id="disqus_thread"></div>
+<script>
+/**
+*  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+*  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/
+/*
+var disqus_config = function () {
+this.page.url = '/posts/2021/06/11/converting-twisteds-inlinecallbacks-to-async/';
+this.page.identifier = 'converting-twisteds-inlinecallbacks-to-async';
+};
+*/
+(function() { // DON'T EDIT BELOW THIS LINE
+var d = document, s = d.createElement('script');
+s.src = 'https://clokep.disqus.com/embed.js';
+s.setAttribute('data-timestamp', +new Date());
+(d.head || d.body).appendChild(s);
+})();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    </div>
+  </div>
+</div>
+
+    <nav class="navbar fixed-bottom navbar-light bg-light border-top border-info">
+      <a href="https://getpelican.com/" class="nav-item" target="_blank">Powered by Pelican</a>
+      <a href="https://github.com/clokep/clokep.github.io" class="nav-item" target="_blank">
+        Source available on GitHub <span class="fab fa-github"></span>
+      </a>
+    </nav>
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T" crossorigin="anonymous"></script>
+
+  </body>
+</html>
