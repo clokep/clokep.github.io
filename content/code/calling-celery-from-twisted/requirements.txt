@@ -3,7 +3,7 @@ celery==4.2.1
 kombu==4.2.1
 
 # Twisted.
-Twisted==18.7.0
+Twisted==22.4.0
 
 # txCelery
 txCelery==1.0.2
