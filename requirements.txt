@@ -1,15 +1,15 @@
 # For the extract_toc and share_post extensions.
-beautifulsoup4==4.9.3
-invoke==1.5.0
-feedparser==6.0.2
-ghp_import==1.0.1
+beautifulsoup4==4.11.1
+invoke==1.7.1
+feedparser==6.0.10
+ghp_import==2.1.0
 
 # Need to install Markdown explicitly so articles written in Markdown get rendered by Pelican.
-Markdown==3.3.4
+Markdown==3.3.7
 
 # Pelican itself.
-pelican==4.7.1
-Pillow==9.0.1
+pelican==4.8.0
+Pillow==9.2.0
 typogrify==2.0.7
 
 # For embedding YouTube videos.
