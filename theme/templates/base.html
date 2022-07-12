@@ -24,6 +24,11 @@
 
     <title>{% block title %}{{ SITENAME }}{%endblock%}</title>
 
+    <meta property="og:site_name" content="{{ SITENAME }}" />
+    {% block meta %}
+    <meta property="og:title" content="{{ SITENAME }}" />
+    {% endblock %}
+
     {% if ANALYTICS_ENABLED %}
     <script async defer data-domain="cloke.us" src="https://plausible.io/js/plausible.js"></script>
     {% endif %}

@@ -1,3 +1,9 @@
 {% extends "index.html" %}
 
-{% block title %}{{ SITENAME }} - {{ tag }}{% endblock %}
+{% block title %}{{ tag.name }}{% endblock %}
+
+{% block meta %}
+<meta property="og:title" content="{{ tag.name }}" />
+<meta property="og:url" content="{{ SITEURL }}/{{ tag.url }}" />
+<meta property="og:description" content="Articles tagged as {{ tag.name }}" />
+{% endblock %}

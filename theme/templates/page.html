@@ -2,6 +2,12 @@
 
 {% block title %}{{ page.title }}{% endblock %}
 
+{% block meta %}
+<meta property="og:title" content="{{ page.title|striptags }}" />
+<meta property="og:url" content="{{ SITEURL }}/{{ page.url }}" />
+<meta property="og:description" content="{{ page.summary|striptags }}" />
+{% endblock %}
+
 {% block content %}
 <div class="container">
   <div class="row">

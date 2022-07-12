@@ -1,5 +1,10 @@
 {% extends "base.html" %}
 
+{% block meta %}
+<meta property="og:url" content="{{ SITEURL }}" />
+<meta property="og:type" content="website" />
+{% endblock %}
+
 {% block content %}
 {% for article in articles_page.object_list %}
 <div class="container mt-4">
