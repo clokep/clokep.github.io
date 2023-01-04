@@ -1,7 +1,6 @@
 # For the extract_toc and share_post extensions.
 beautifulsoup4==4.11.1
 invoke==1.7.1
-feedparser==6.0.10
 ghp_import==2.1.0
 
 # Need to install Markdown explicitly so articles written in Markdown get rendered by Pelican.
