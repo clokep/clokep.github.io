@@ -1,12 +1,18 @@
 Projects
 ########
 
-A lising of some projects I've worked on! . You can see other projects
-`GitHub`_, `BitBucket`_, or `GitLab`_.
+Some projects I have been involved in. You can see other projects
+`GitHub`_ or `GitLab`_.
 
-.. _GitHub: https://github.com/clokep/
-.. _BitBucket: https://bitbucket.org/clokep/
-.. _GitLab: https://gitlab.com/clokep/
+.. _GitHub: https://github.com/clokep
+.. _GitLab: https://gitlab.com/clokep
+
+Matrix related
+==============
+
+* `Synapse`_: A Matrix homeserver written in Python/Twisted
+
+.. _Synapse: https://github.com/matrix-org/synapse
 
 Mozilla related
 ===============
