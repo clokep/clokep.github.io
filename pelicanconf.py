@@ -108,14 +108,17 @@ DEFAULT_PAGINATION = 10
 
 TAG_CLOUD_MAX_ITEMS = 10
 
-# Auto-generated content.
+# Auto-generated content, a list of tuples of:
+#
+# * Name (shown to users)
+# * Link
+# * Font Awesome logo name.
 SOCIAL = (
-    ('twitter', 'https://www.twitter.com/clokep', 'twitter'),
     ('mastodon', 'https://mastodon.social/@clokep', 'mastodon'),
-    ('github', 'https://www.github.com/clokep', 'github'),
+    ('twitter', 'https://www.twitter.com/clokep', 'twitter'),
+    ('matrix', 'https://matrix.to/#/@clokep:matrix.org', None),
+    ('github', 'https://github.com/clokep', 'github'),
     ('gitlab', 'https://gitlab.com/clokep', 'gitlab'),
-    ('bitbucket', 'https://bitbucket.org/clokep', 'bitbucket'),
-    ('mozillians', 'https://mozillians.org/u/clokep/', 'firefox'),
 )
 
 # For thumbnails.

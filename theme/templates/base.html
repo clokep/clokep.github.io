@@ -71,10 +71,15 @@
               Social
             </a>
 
-            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="social-dropdown">
+            <span class="dropdown-menu dropdown-menu-right" aria-labelledby="social-dropdown">
               {% for name, link, icon in SOCIAL %}
               <a class="dropdown-item" href="{{ link }}" target="_blank">
-                <span class="fab fa-{{ icon }} mr-1"></span> {{ name }}
+                {% if icon %}
+                  <span class="fab fa-{{ icon }} mr-1"></span>
+                {% else %}
+                  <span class="pl-3 mr-2"></span>
+                {% endif %}
+                {{ name }}
               </a>
               {% endfor %}
             </div>
