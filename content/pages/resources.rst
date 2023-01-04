@@ -110,6 +110,7 @@ Python
 * `When to use logging`_
 * `The End Of Object Inheritance & The Beginning Of A New Modularity`_ by Augie Fackler & Nathaniel Manista
 * `Python internals: Arbitrary-precision integer implementation`_ by Artem Golubin
+* `PyFormat: Using % and .format() for great good!`_
 * Packaging
 
   * `Sharing Your Labor of Love: PyPI Quick and Dirty`_ by Hynek Schlawack
@@ -119,6 +120,7 @@ Python
 .. _When to use logging: https://docs.python.org/2/howto/logging.html#when-to-use-logging
 .. _The End Of Object Inheritance & The Beginning Of A New Modularity: https://pyvideo.org/pycon-us-2013/the-end-of-object-inheritance-the-beginning-of.html
 .. _Python internals\: Arbitrary-precision integer implementation: https://rushter.com/blog/python-integer-implementation/
+.. _PyFormat\: Using % and .format() for great good!: https://pyformat.info
 .. _Sharing Your Labor of Love\: PyPI Quick and Dirty: https://hynek.me/articles/sharing-your-labor-of-love-pypi-quick-and-dirty/
 .. _Packaging a python library: https://blog.ionelmc.ro/2014/05/25/python-packaging/
 
