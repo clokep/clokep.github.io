@@ -24,7 +24,7 @@ DEFAULT_LANG = 'en'
 FEED_ALL_ATOM = None
 TRANSLATION_FEED_ATOM = None
 
-# Appliy the typogrify improvements.
+# Apply the typogrify improvements.
 TYPOGRIFY = True
 
 # Uncomment following line if you want document-relative URLs when developing
@@ -52,7 +52,6 @@ PATH = 'content'
 ARTICLE_PATHS = ['articles']
 PAGE_PATHS = ['pages']
 
-# This is currently a modified copy of notmyidea, one of the default themes.
 THEME = 'theme'
 
 # Set up static content and output locations.
@@ -105,7 +104,7 @@ ARTICLE_SAVE_AS = ARTICLE_URL + 'index.html'
 
 # Paginate, but have at least three items per page.
 DEFAULT_ORPHANS = 2
-DEFAULT_PAGINATION = 5
+DEFAULT_PAGINATION = 10
 
 TAG_CLOUD_MAX_ITEMS = 10
 
