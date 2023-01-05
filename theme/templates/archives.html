@@ -16,20 +16,15 @@
       {% for year in dates|groupby('date.year')|reverse %}
         <h2>{{ year.grouper }}</h2>
 
-        {# Group by month. #}
-        {% for month in year.list|groupby('date.month')|sort(reverse=True) %}
-          {# List the articles in this month, ordered by day. #}
-          {% for article in month.list %}
-          {# Display the month name! #}
-          {% if loop.first %}
-          <h3>{{ article.date.strftime("%B") }}</h3>
-          <ul>
-          {% endif %}
-            <li><a href="/{{ article.url }}">{{ article.title }}</a></li>
-          {% endfor %}
-          </ul>
-
+        <ul>
+        {# List the articles (in reverse order). #}
+        {% for article in year.list %}
+          <li>
+            <a href="/{{ article.url }}">{{ article.title }}</a>
+            <span class="text-secondary font-weight-light font-italic">{{ article.date|strftime('%B %-d, %Y') }}</span>
+          </li>
         {% endfor %}
+        </ul>
       {% endfor %}
 
     </div>
