@@ -196,7 +196,7 @@ sent as &lt;span class="caps"&gt;IRC&lt;/span&gt; messages and parsed specially 
 them as normal messages). &lt;span class="caps"&gt;DCC&lt;/span&gt;/&lt;span class="caps"&gt;CTCP&lt;/span&gt; is used to send files as well as
 other particular messages (&lt;span class="caps"&gt;ACTION&lt;/span&gt; commands for roleplaying, &lt;span class="caps"&gt;SED&lt;/span&gt; for
 encrypting conversations, &lt;span class="caps"&gt;VERSION&lt;/span&gt; to get client information, etc.).
-Anyway, this get’s a bit more complicated — it starts with the &lt;a class="reference external" href="http://www.irchelp.org/irchelp/rfc/dccspec.html"&gt;&lt;span class="caps"&gt;DCC&lt;/span&gt;
+Anyway, this gets a bit more complicated — it starts with the &lt;a class="reference external" href="http://www.irchelp.org/irchelp/rfc/dccspec.html"&gt;&lt;span class="caps"&gt;DCC&lt;/span&gt;
 specification&lt;/a&gt;. This was replaced/updated by the &lt;a class="reference external" href="http://www.irchelp.org/irchelp/rfc/ctcpspec.html"&gt;&lt;span class="caps"&gt;CTCP&lt;/span&gt; specification&lt;/a&gt;
 (which fully includes the &lt;span class="caps"&gt;DCC&lt;/span&gt; specification) in 1994. An &lt;a class="reference external" href="https://web.archive.org/web/20101129023108/http://www.invlogic.com/irc/ctcp.html"&gt;“updated”
 &lt;span class="caps"&gt;CTCP&lt;/span&gt; specification&lt;/a&gt; was released in February 1997. There’s also a

@@ -64,24 +64,26 @@
               Social
             </a>
 
-            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="social-dropdown">
-              <a class="dropdown-item" href="https://www.twitter.com/clokep" target="_blank">
-                <span class="fab fa-twitter mr-1"></span> twitter
-              </a>
+            <span class="dropdown-menu dropdown-menu-right" aria-labelledby="social-dropdown">
               <a class="dropdown-item" href="https://mastodon.social/@clokep" target="_blank">
-                <span class="fab fa-mastodon mr-1"></span> mastodon
+                  <span class="fab fa-mastodon mr-1"></span>
+                mastodon
               </a>
-              <a class="dropdown-item" href="https://www.github.com/clokep" target="_blank">
-                <span class="fab fa-github mr-1"></span> github
+              <a class="dropdown-item" href="https://www.twitter.com/clokep" target="_blank">
+                  <span class="fab fa-twitter mr-1"></span>
+                twitter
+              </a>
+              <a class="dropdown-item" href="https://matrix.to/#/@clokep:matrix.org" target="_blank">
+                  <span class="pl-3 mr-2"></span>
+                matrix
+              </a>
+              <a class="dropdown-item" href="https://github.com/clokep" target="_blank">
+                  <span class="fab fa-github mr-1"></span>
+                github
               </a>
               <a class="dropdown-item" href="https://gitlab.com/clokep" target="_blank">
-                <span class="fab fa-gitlab mr-1"></span> gitlab
-              </a>
-              <a class="dropdown-item" href="https://bitbucket.org/clokep" target="_blank">
-                <span class="fab fa-bitbucket mr-1"></span> bitbucket
-              </a>
-              <a class="dropdown-item" href="https://mozillians.org/u/clokep/" target="_blank">
-                <span class="fab fa-firefox mr-1"></span> mozillians
+                  <span class="fab fa-gitlab mr-1"></span>
+                gitlab
               </a>
             </div>
           </li>
@@ -115,25 +117,31 @@
            title="Permalink to Squashing Django Migrations">Squashing Django&nbsp;Migrations</a>
       </h1>
 
-      <div class="float-right">
-        <a href="https://twitter.com/intent/tweet?text=Squashing%20Django%C2%A0Migrations&url=https%3A//patrick.cloke.us/posts/2020/01/27/squashing-django-migrations/&hashtags=django" target="_blank" class="ml-1 mr-1" title="Share on Twitter">
-          <span class="fab fa-twitter"></span>
-        </a>
-        <a href="https://www.facebook.com/sharer/sharer.php?u=https%3A//patrick.cloke.us/posts/2020/01/27/squashing-django-migrations/" target="_blank" class="ml-1 mr-1" title="Share on Facebook">
-          <span class="fab fa-facebook"></span>
-        </a>
-        <a href="mailto:?subject=Squashing%20Django%C2%A0Migrations&amp;body=https%3A//patrick.cloke.us/posts/2020/01/27/squashing-django-migrations/" target="_blank" class="ml-1 mr-1" title="Share via Email">
-          <span class="fas fa-envelope"></span>
-        </a>
+      <div class="row">
+        <div class="col-sm">
+          <span class="text-secondary font-weight-light font-italic">Published on Monday, January 27, 2020</span>
+
+          <br>
+          <span class="text-secondary font-weight-light font-italic">
+            Tags:               <a href="/tag/django.html">django</a>          </span>
+        </div>
+
+        <div class="col-sm text-right">
+          <a href="https://twitter.com/intent/tweet?text=Squashing%20Django%C2%A0Migrations&url=https%3A//patrick.cloke.us/posts/2020/01/27/squashing-django-migrations/&hashtags=django" target="_blank" class="ml-1 mr-1" title="Share on Twitter">
+            <span class="fab fa-twitter"></span>
+          </a>
+          <a href="https://www.facebook.com/sharer/sharer.php?u=https%3A//patrick.cloke.us/posts/2020/01/27/squashing-django-migrations/" target="_blank" class="ml-1 mr-1" title="Share on Facebook">
+            <span class="fab fa-facebook"></span>
+          </a>
+          <a href="mailto:?subject=Squashing%20Django%C2%A0Migrations&amp;body=https%3A//patrick.cloke.us/posts/2020/01/27/squashing-django-migrations/" target="_blank" class="ml-1 mr-1" title="Share via Email">
+            <span class="fas fa-envelope"></span>
+          </a>
+        </div>
       </div>
 
-      <i>Monday, January 27, 2020</i>
+      <hr>
 
-      <br>
-      <i>
-        Tags:           <a href="/tag/django.html">django</a>      </i>
-
-      <div class="mt-3">
+      <div>
 
         <p>The <a class="reference external" href="https://docs.djangoproject.com/en/1.11/topics/migrations/">Django migration system</a> is great for modifying your database schema after
 a database is live. If you&#8217;re like me, you quickly end up with many 10s or 100s

@@ -2,10 +2,115 @@
 <rss version="2.0"><channel><title>Patrick Cloke - python</title><link>https://patrick.cloke.us/</link><description></description><lastBuildDate>Wed, 13 Sep 2017 17:15:00 -0400</lastBuildDate><item><title>RSS Feeds for Wikipedia Current Events and NHL News</title><link>https://patrick.cloke.us/posts/2017/05/26/rss-feeds-for-wikipedia-current-events-and-nhl-news/</link><description>&lt;p&gt;I subscribe to a fair amount of feeds for news, blogs, articles, etc. I&amp;#8217;m
 currently subscribed to 122 feeds, some of which have tens of articles a day
 (news sites), some of which are dead. &lt;a class="footnote-reference" href="#id3" id="id1"&gt;[1]&lt;/a&gt; Unfortunately there&amp;#8217;s still a few
-sites that I was visiting manually each …&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Patrick Cloke</dc:creator><pubDate>Fri, 26 May 2017 08:13:00 -0400</pubDate><guid isPermaLink="false">tag:patrick.cloke.us,2017-05-26:/posts/2017/05/26/rss-feeds-for-wikipedia-current-events-and-nhl-news/</guid><category>articles</category><category>programming</category><category>python</category><category>RSS</category></item><item><title>Boston Python: Twisted async networking framework</title><link>https://patrick.cloke.us/posts/2015/08/28/boston-python-twisted-async-networking-framework/</link><description>&lt;p&gt;Yesterday, &lt;a class="reference external" href="http://stephendicato.com/"&gt;Stephen DiCato&lt;/a&gt; and I gave a talk for &lt;a class="reference external" href="http://www.meetup.com/bostonpython/"&gt;Boston Python&lt;/a&gt; titled:
+sites that I was visiting manually each day to get updates from because they
+don&amp;#8217;t offer any feeds. This&amp;nbsp;included:&lt;/p&gt;
+&lt;ul class="simple"&gt;
+&lt;li&gt;The &lt;a class="reference external" href="https://en.wikipedia.org/wiki/Portal:Current_events"&gt;Wikipedia Current Events portal&lt;/a&gt;, which usually has a nice daily summary
+of interesting worldwide stories. &lt;a class="footnote-reference" href="#id4" id="id2"&gt;[2]&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;The &lt;a class="reference external" href="https://www.nhl.com/news"&gt;&lt;span class="caps"&gt;NHL&lt;/span&gt; News&lt;/a&gt; (and specifically the &lt;a class="reference external" href="https://www.nhl.com/islanders/news"&gt;Islanders News&lt;/a&gt;) pages. (I still
+follow a &lt;a class="reference external" href="http://islanders.nhl.com/rss/news.xml"&gt;broken feed&lt;/a&gt; from the older site, but it seems one of the redesigns
+of the &lt;span class="caps"&gt;NHL&lt;/span&gt; team sites broke this&amp;nbsp;feed.)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Having the Wikipedia Current Events as a feed is a pretty specific thing that&amp;#8217;s
+outside of the scope of &lt;a class="reference external" href="https://www.mediawiki.org/"&gt;MediaWiki&lt;/a&gt;, so I can understand why that doesn&amp;#8217;t
+exist. The &lt;span class="caps"&gt;NHL&lt;/span&gt; not having news feeds over &lt;span class="caps"&gt;RSS&lt;/span&gt; or Atom though? That shocks me! I
+hope I&amp;#8217;ve just been unable to find them and that they do exist. Please point me
+to them if they&amp;nbsp;do!&lt;/p&gt;
+&lt;div class="section" id="wikipedia-current-events"&gt;
+&lt;h2&gt;Wikipedia Current&amp;nbsp;Events&lt;/h2&gt;
+&lt;p&gt;The Wikipedia Current Events feed is &lt;a class="reference external" href="https://www.to-rss.xyz/wikipedia/current_events/"&gt;publically available&lt;/a&gt;, code can be found
+in the GitHub repository: &lt;a class="reference external" href="https://github.com/clokep/wp-current-events-rss"&gt;clokep/wp-current-events-rss&lt;/a&gt;. Note that this pulls
+data on demand and thus always serves the most up-to-date versions of the
+articles. This works&amp;nbsp;by:&lt;/p&gt;
+&lt;ol class="arabic simple"&gt;
+&lt;li&gt;Pulling the last 7 days of Wikipedia&amp;#8217;s current event articles (e.g. like
+&lt;a class="reference external" href="https://en.wikipedia.org/wiki/Portal:Current_events/2017_May_8"&gt;this one&lt;/a&gt;) using &lt;a class="reference external" href="http://python-requests.org/"&gt;requests&lt;/a&gt;. Each of these is processed individually as a
+separate article in the &lt;span class="caps"&gt;RSS&lt;/span&gt;&amp;nbsp;feed.&lt;/li&gt;
+&lt;li&gt;The &lt;a class="reference external" href="https://en.wikipedia.org/wiki/Help:Wiki_markup"&gt;wikicode&lt;/a&gt; for each article is converted to an &lt;a class="reference external" href="https://en.wikipedia.org/wiki/Abstract_syntax_tree"&gt;&lt;span class="caps"&gt;AST&lt;/span&gt;&lt;/a&gt; using
+&lt;a class="reference external" href="http://mwparserfromhell.readthedocs.io/"&gt;mwparserfromhell&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Some of the headers and templates are removed from each&amp;nbsp;article.&lt;/li&gt;
+&lt;li&gt;It then converts each article &lt;em&gt;back&lt;/em&gt; to &lt;span class="caps"&gt;HTML&lt;/span&gt;. (This was the surprisingly
+hard part. I couldn&amp;#8217;t find a good library to do this and ended up
+&lt;a class="reference external" href="https://github.com/clokep/wp-current-events-rss/blob/7a6e2eb12d7fbe6efae6659dda65e2ad24e89611/parser.py#L23-L193"&gt;writing this myself&lt;/a&gt;.)&lt;/li&gt;
+&lt;li&gt;The articles are then turned into an &lt;span class="caps"&gt;RSS&lt;/span&gt; feed using &lt;a class="reference external" href="https://github.com/getpelican/feedgenerator/"&gt;feedgenerator&lt;/a&gt;.&lt;/li&gt;
+&lt;li&gt;The feed itself is served via &lt;a class="reference external" href="http://flask.pocoo.org/"&gt;Flask&lt;/a&gt;.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;Feel free to &lt;a class="reference external" href="https://www.to-rss.xyz/wikipedia/"&gt;check it out&lt;/a&gt; and &lt;a class="reference external" href="https://github.com/clokep/wp-current-events-rss/issues/new"&gt;let me know of any issues&lt;/a&gt;!&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="section" id="nhl-news"&gt;
+&lt;h2&gt;&lt;span class="caps"&gt;NHL&lt;/span&gt;&amp;nbsp;News&lt;/h2&gt;
+&lt;p&gt;After building the above, I figured there was no reason not to do the same for
+the &lt;span class="caps"&gt;NHL&lt;/span&gt; News section (and specifically for the Islanders). You can &lt;a class="reference external" href="https://www.to-rss.xyz/nhl/news/"&gt;see the &lt;span class="caps"&gt;NHL&lt;/span&gt;
+feed&lt;/a&gt; or &lt;a class="reference external" href="https://www.to-rss.xyz/nhl/"&gt;pick your favorite team&lt;/a&gt;. Again, the code is available on GitHub:
+&lt;a class="reference external" href="https://github.com/clokep/nhl-news-rss"&gt;clokep/nhl-news-rss&lt;/a&gt;. The stack is pretty similar to the above, it works&amp;nbsp;by:&lt;/p&gt;
+&lt;ol class="arabic simple"&gt;
+&lt;li&gt;Pulling the current &lt;span class="caps"&gt;NHL&lt;/span&gt; News&amp;nbsp;page.&lt;/li&gt;
+&lt;li&gt;Parsing the &lt;span class="caps"&gt;HTML&lt;/span&gt; with &lt;a class="reference external" href="https://www.crummy.com/software/BeautifulSoup/bs4/"&gt;BeautifulSoup4&lt;/a&gt; to pull out each article&amp;#8217;s title,
+date, author, and short summary. (Note that the full article isn&amp;#8217;t
+available, we could get it by loading each article individually, but I
+didn&amp;#8217;t implement&amp;nbsp;that.)&lt;/li&gt;
+&lt;li&gt;The articles are then turned into an &lt;span class="caps"&gt;RSS&lt;/span&gt; feed using &lt;a class="reference external" href="https://github.com/getpelican/feedgenerator/"&gt;feedgenerator&lt;/a&gt;.&lt;/li&gt;
+&lt;li&gt;The feed itself is served via &lt;a class="reference external" href="http://flask.pocoo.org/"&gt;Flask&lt;/a&gt;.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;Luckily the &lt;span class="caps"&gt;NHL&lt;/span&gt; News site and the news page for each team are in the same
+format, so it&amp;#8217;s just loading different URLs to get the different articles. It
+was pretty trivial to get the full list of teams and add support for all of
+them, so that&amp;#8217;s included too! Articles are pulled during page load, so should
+always be up to&amp;nbsp;date.&lt;/p&gt;
+&lt;p&gt;I hope one (or both) of these are useful to people! Again, please
+&lt;a class="reference external" href="https://github.com/clokep/nhl-news-rss/issues/new"&gt;let me know if you have any issues or ideas&lt;/a&gt;!&lt;/p&gt;
+&lt;table class="docutils footnote" frame="void" id="id3" rules="none"&gt;
+&lt;colgroup&gt;&lt;col class="label" /&gt;&lt;col /&gt;&lt;/colgroup&gt;
+&lt;tbody valign="top"&gt;
+&lt;tr&gt;&lt;td class="label"&gt;&lt;a class="fn-backref" href="#id1"&gt;[1]&lt;/a&gt;&lt;/td&gt;&lt;td&gt;&lt;p class="first"&gt;I recently switched from using &lt;a class="reference external" href="http://thunderbird.net"&gt;Thunderbird&lt;/a&gt; to &lt;a class="reference external" href="https://feedly.com"&gt;Feedly&lt;/a&gt; in order to
+get cross device read status syncing on articles, but that&amp;#8217;s not really
+related to the rest of this article. Switching has mostly worked out
+well, but I do miss the filtering capabilities of&amp;nbsp;Thunderbird!&lt;/p&gt;
+&lt;p class="last"&gt;I also tried a few other services (e.g. &lt;a class="reference external" href="https://theoldreader.com"&gt;The Old Reader&lt;/a&gt;), but most had
+too many weird social features. I just wanted to read&amp;nbsp;feeds.&lt;/p&gt;
+&lt;/td&gt;&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;table class="docutils footnote" frame="void" id="id4" rules="none"&gt;
+&lt;colgroup&gt;&lt;col class="label" /&gt;&lt;col /&gt;&lt;/colgroup&gt;
+&lt;tbody valign="top"&gt;
+&lt;tr&gt;&lt;td class="label"&gt;&lt;a class="fn-backref" href="#id2"&gt;[2]&lt;/a&gt;&lt;/td&gt;&lt;td&gt;I do know that Wikipedia page updates can be consumed via &lt;span class="caps"&gt;RSS&lt;/span&gt;, but I
+don&amp;#8217;t want to know every time the article is updated, just the state of
+the article at the end of the day. (It also doesn&amp;#8217;t work for the current
+events article since it&amp;#8217;s dynamically generated from a bunch of
+templates.)&lt;/td&gt;&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;div class="admonition note"&gt;
+&lt;p class="first admonition-title"&gt;Note&lt;/p&gt;
+&lt;p&gt;An update, as of September 13,&amp;nbsp;2017:&lt;/p&gt;
+&lt;ol class="last arabic simple"&gt;
+&lt;li&gt;The links to each &lt;span class="caps"&gt;RSS&lt;/span&gt; feed were&amp;nbsp;updated.&lt;/li&gt;
+&lt;li&gt;These apps are now hosted together on &lt;a class="reference external" href="https://www.to-rss.xyz"&gt;https://www.to-rss.xyz&lt;/a&gt;.&lt;/li&gt;
+&lt;li&gt;These projects are no longer being updated on GitHub. The combined site
+might be open sourced in the&amp;nbsp;future.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Patrick Cloke</dc:creator><pubDate>Fri, 26 May 2017 08:13:00 -0400</pubDate><guid isPermaLink="false">tag:patrick.cloke.us,2017-05-26:/posts/2017/05/26/rss-feeds-for-wikipedia-current-events-and-nhl-news/</guid><category>articles</category><category>programming</category><category>python</category><category>RSS</category></item><item><title>Boston Python: Twisted async networking framework</title><link>https://patrick.cloke.us/posts/2015/08/28/boston-python-twisted-async-networking-framework/</link><description>&lt;p&gt;Yesterday, &lt;a class="reference external" href="http://stephendicato.com/"&gt;Stephen DiCato&lt;/a&gt; and I gave a talk for &lt;a class="reference external" href="http://www.meetup.com/bostonpython/"&gt;Boston Python&lt;/a&gt; titled:
 &lt;a class="reference external" href="http://www.meetup.com/bostonpython/events/221406450/"&gt;Twisted async networking framework&lt;/a&gt;. It was an introduction to intermediate
 level talk about using the &lt;a class="reference external" href="https://twistedmatrix.com/"&gt;Twisted networking framework&lt;/a&gt; based on our
 experiences at &lt;a class="reference external" href="https://percipientnetworks.com/"&gt;Percipient Networks&lt;/a&gt;.&lt;/p&gt;
 &lt;p&gt;The talk, available &lt;a class="reference external" href="https://github.com/percipient/talks/tree/master/boston_python_08_27_2015"&gt;on our GitHub&lt;/a&gt; (&lt;a class="reference external" href="https://github.com/percipient/talks/raw/master/boston_python_08_27_2015/boston_python_08_27_2015.pdf"&gt;&lt;span class="caps"&gt;PDF&lt;/span&gt;&lt;/a&gt;) covered a few basic&amp;nbsp;topics:&lt;/p&gt;
 &lt;ol class="arabic simple"&gt;
-&lt;li&gt;What …&lt;/li&gt;&lt;/ol&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Patrick Cloke</dc:creator><pubDate>Fri, 28 Aug 2015 08:42:00 -0400</pubDate><guid isPermaLink="false">tag:patrick.cloke.us,2015-08-28:/posts/2015/08/28/boston-python-twisted-async-networking-framework/</guid><category>articles</category><category>python</category><category>community</category><category>programming</category><category>twisted</category><category>talks</category></item></channel></rss>
+&lt;li&gt;What is asynchronous&amp;nbsp;programming?&lt;/li&gt;
+&lt;li&gt;What is &lt;a class="reference external" href="https://twistedmatrix.com/"&gt;Twisted&lt;/a&gt;?&lt;/li&gt;
+&lt;li&gt;When/why to use&amp;nbsp;Twisted?&lt;/li&gt;
+&lt;li&gt;What is the event loop&amp;nbsp;(reactor)?&lt;/li&gt;
+&lt;li&gt;What are &lt;a class="reference external" href="https://twistedmatrix.com/documents/current/core/howto/defer.html"&gt;Deferreds&lt;/a&gt; and how do you use&amp;nbsp;them?&lt;/li&gt;
+&lt;li&gt;What are protocols (and related objects) and how do you use&amp;nbsp;them?&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;Additionally there was a &amp;#8216;bonus&amp;#8217; section: Using Twisted to build systems &lt;span class="amp"&gt;&amp;amp;&lt;/span&gt;&amp;nbsp;services.&lt;/p&gt;
+&lt;p&gt;We used an example of a very simple chat server (NetCatChat: where the official
+client is netcat) to demonstrate these principles. All of our (working!) demo
+code is included in the &lt;a class="reference external" href="https://github.com/percipient/talks/tree/master/boston_python_08_27_2015"&gt;repository&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;There was a great turn out (almost 100 people showed up) and I greatly enjoyed
+the experience. Thanks to everyone who came, the sponsors for the night,
+&lt;a class="reference external" href="http://www.meetup.com/bostonpython/"&gt;Boston Python&lt;/a&gt; for setting this up, and Stephen for co-presenting! Please let
+us know if you have any questions or&amp;nbsp;comments.&lt;/p&gt;
+</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Patrick Cloke</dc:creator><pubDate>Fri, 28 Aug 2015 08:42:00 -0400</pubDate><guid isPermaLink="false">tag:patrick.cloke.us,2015-08-28:/posts/2015/08/28/boston-python-twisted-async-networking-framework/</guid><category>articles</category><category>python</category><category>community</category><category>programming</category><category>twisted</category><category>talks</category></item></channel></rss>

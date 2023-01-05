@@ -2,15 +2,206 @@
 <rss version="2.0"><channel><title>Patrick Cloke - chat</title><link>https://patrick.cloke.us/</link><description></description><lastBuildDate>Fri, 05 May 2017 11:20:00 -0400</lastBuildDate><item><title>Google Summer of Code 2017: Matrix protocol for Instantbird and Thunderbird</title><link>https://patrick.cloke.us/posts/2017/05/05/google-summer-of-code-2017-matrix-protocol/</link><description>&lt;p&gt;I&amp;#8217;ll be mentoring Pavan Karthik on his &lt;a class="reference external" href="https://summerofcode.withgoogle.com/projects/#6473832528347136"&gt;project for Google Summer of Code 2017&lt;/a&gt;
 entitled &amp;#8220;Matrix Protocol Support for Instantbird&amp;#8221;. &lt;a class="reference external" href="http://matrix.org/"&gt;Matrix&lt;/a&gt; is a new(er)
 protocol that is an open, decentralized network with some unique features.
-Initial support for this landed in &lt;a class="reference external" href="https://bugzilla.mozilla.org/show_bug.cgi?id=1315926"&gt;bug 1315926&lt;/a&gt;, but it is not feature …&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Patrick Cloke</dc:creator><pubDate>Fri, 05 May 2017 11:20:00 -0400</pubDate><guid isPermaLink="false">tag:patrick.cloke.us,2017-05-05:/posts/2017/05/05/google-summer-of-code-2017-matrix-protocol/</guid><category>articles</category><category>chat</category><category>GSoC</category><category>Instantbird</category><category>Matrix</category></item><item><title>Yahoo Protocol Google Summer of Code Round-up</title><link>https://patrick.cloke.us/posts/2013/10/06/yahoo-protocol-google-summer-of-code/</link><description>&lt;p&gt;I have to apologize to my student, &lt;a class="reference external" href="http://phaseshiftsoftware.com/blog/"&gt;Quentin&lt;/a&gt; (aka qheaden on &lt;span class="caps"&gt;IRC&lt;/span&gt;),
+Initial support for this landed in &lt;a class="reference external" href="https://bugzilla.mozilla.org/show_bug.cgi?id=1315926"&gt;bug 1315926&lt;/a&gt;, but it is not feature
+rich-enough to turn on for users. Pavan will work to finish Matrix support so we
+can enable it for all users! The brief description of his proposal is&amp;nbsp;below:&lt;/p&gt;
+&lt;blockquote&gt;
+Matrix is an open, decentralized protocol for instant messaging (and more!)
+It has bridges to many other networks and protocol, e.g. &lt;span class="caps"&gt;IRC&lt;/span&gt;, Slack, and
+more. Initial support for Matrix was added in bug 1199855, but there&amp;#8217;s a lot
+to do still : Support more features from the Matrix &lt;span class="caps"&gt;SDK&lt;/span&gt; (video/audio calls,
+room topics, typing notifications, read receipts and a lot more.) Support
+one-on-one conversations. Add tests specific to Matrix. Improve the Matrix
+&lt;span class="caps"&gt;JS&lt;/span&gt;-&lt;span class="caps"&gt;SDK&lt;/span&gt; that Instantbird and Thunderbird depend on. Improving and expanding
+shared code and APIs used by all JavaScript protocol plugins (&lt;span class="caps"&gt;IRC&lt;/span&gt;, &lt;span class="caps"&gt;XMPP&lt;/span&gt;,
+Yahoo and Twitter). Improving documentation of the process for adding a
+protocol to Instantbird/Thunderbird. Using the Matrix protocol on a
+day-to-day basis to dog-food the code.&lt;/blockquote&gt;
+&lt;p&gt;I&amp;#8217;m super excited to finalize support for Matrix in both Instantbird and
+Thunderbird! You can also checkout the full 25 projects that
+&lt;a class="reference external" href="https://summerofcode.withgoogle.com/organizations/6421332469219328/"&gt;Mozilla accepted&lt;/a&gt;.&lt;/p&gt;
+</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Patrick Cloke</dc:creator><pubDate>Fri, 05 May 2017 11:20:00 -0400</pubDate><guid isPermaLink="false">tag:patrick.cloke.us,2017-05-05:/posts/2017/05/05/google-summer-of-code-2017-matrix-protocol/</guid><category>articles</category><category>chat</category><category>GSoC</category><category>Instantbird</category><category>Matrix</category></item><item><title>Yahoo Protocol Google Summer of Code Round-up</title><link>https://patrick.cloke.us/posts/2013/10/06/yahoo-protocol-google-summer-of-code/</link><description>&lt;p&gt;I have to apologize to my student, &lt;a class="reference external" href="http://phaseshiftsoftware.com/blog/"&gt;Quentin&lt;/a&gt; (aka qheaden on &lt;span class="caps"&gt;IRC&lt;/span&gt;),
 for taking so long to write this&amp;#8230;but anyway: Google Summer of Code
 2013 is over! Quentin has done a great job working at implementing the
 Yahoo Protocol for Instantbird (and Thunderbird) in JavaScript
-(henceforth called &amp;#8220;&lt;span class="caps"&gt;JS&lt;/span&gt;-Yahoo …&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Patrick Cloke</dc:creator><pubDate>Sun, 06 Oct 2013 09:18:00 -0400</pubDate><guid isPermaLink="false">tag:patrick.cloke.us,2013-10-06:/posts/2013/10/06/yahoo-protocol-google-summer-of-code/</guid><category>articles</category><category>chat</category><category>GSoC</category><category>Instantbird</category><category>Yahoo</category></item><item><title>Mentoring Google Summer of Code 2013</title><link>https://patrick.cloke.us/posts/2013/06/28/mentoring-google-summer-of-code-2013/</link><description>&lt;p&gt;I&amp;#8217;m officially a mentor this year for &lt;a class="reference external" href="http://www.google-melange.com/gsoc/homepage/google/gsoc2013"&gt;2013&amp;#8217;s Google Summer of Code&lt;/a&gt;.
+(henceforth called &amp;#8220;&lt;span class="caps"&gt;JS&lt;/span&gt;-Yahoo&amp;#8221;). It&amp;#8217;s at the point where it has mostly
+reached feature-parity with the libpurple plug-in. Before &lt;a class="reference external" href="https://bugzilla.instantbird.org/show_bug.cgi?id=2135"&gt;turning this
+on as default&lt;/a&gt; there are a few minor bugs that still need to be fixed,
+but most of them have patches that just need another couple&amp;nbsp;iterations.&lt;/p&gt;
+&lt;div class="section" id="where-do-we-go-from-here"&gt;
+&lt;h2&gt;Where do we go from&amp;nbsp;here?&lt;/h2&gt;
+&lt;p&gt;Once the last few bugs are fixed we&amp;#8217;ll enable Yahoo by default in the nightly
+builds and, assuming we have no issues, it will be enabled by default in the
+upcoming Instantbird 1.5. If there are no major issues in 1.5, we&amp;#8217;ll remove the
+libpurple Yahoo implementation for Instantbird&amp;nbsp;1.next.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="section" id="how-do-i-try-this-now"&gt;
+&lt;h2&gt;How do I try this&amp;nbsp;now?!&lt;/h2&gt;
+&lt;p&gt;You can already easily enable &lt;span class="caps"&gt;JS&lt;/span&gt;-Yahoo in &lt;a class="reference external" href="http://nightly.instantbird.im/"&gt;Instantbird nightly builds&lt;/a&gt;:&lt;/p&gt;
+&lt;ol class="arabic simple"&gt;
+&lt;li&gt;Type /about config in a conversation tab&amp;#8217;s&amp;nbsp;textbox&lt;/li&gt;
+&lt;li&gt;Type &amp;#8220;forcePurple&amp;#8221; in the search&amp;nbsp;box&lt;/li&gt;
+&lt;li&gt;Remove &amp;#8220;prpl-yahoo&amp;#8221; and &amp;#8220;prpl-yahoojp&amp;#8221; from this comma separated list
+of values (you can also remove prpl-jabber if you want to always use
+the &lt;span class="caps"&gt;JS&lt;/span&gt;-&lt;span class="caps"&gt;XMPP&lt;/span&gt; implementation from GSoC 2011! Note that this doesn&amp;#8217;t
+support &lt;a class="reference external" href="https://bugzilla.mozilla.org/show_bug.cgi?id=14328"&gt;&lt;span class="caps"&gt;DNS&lt;/span&gt; &lt;span class="caps"&gt;SRV&lt;/span&gt;&lt;/a&gt;,&amp;nbsp;however.)&lt;/li&gt;
+&lt;li&gt;Restart&amp;nbsp;Instantbird!&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;You should now be using the &lt;span class="caps"&gt;JS&lt;/span&gt;-Yahoo protocol. Hopefully you don&amp;#8217;t
+notice anything different, but &lt;a class="reference external" href="https://bugzilla.instantbird.org/"&gt;&lt;span class="caps"&gt;PLEASE&lt;/span&gt; file bugs&lt;/a&gt; if you see any&amp;nbsp;issues.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="section" id="how-come-i-can-t-use-this-in-thunderbird"&gt;
+&lt;h2&gt;How come I can&amp;#8217;t use this in&amp;nbsp;Thunderbird?!&lt;/h2&gt;
+&lt;p&gt;Because Instantbird and comm-central development don&amp;#8217;t happen in the same
+Mercurial repository. I&amp;#8217;m working on &lt;a class="reference external" href="https://bugzilla.mozilla.org/show_bug.cgi?id=920801"&gt;syncing the chat/ folder of these
+repositories&lt;/a&gt; currently and &lt;span class="caps"&gt;JS&lt;/span&gt;-Yahoo should be in Daily soon to be
+included in the next Thunderbird release (i.e. Thunderbird&amp;nbsp;31).&lt;/p&gt;
+&lt;p&gt;The whole Instantbird community has been super happy with the progress
+Quentin made and we hope that Quentin has learned a lot! Thanks for a
+great summer qheaden and hopefully we&amp;#8217;ll see you around&amp;nbsp;still!&lt;/p&gt;
+&lt;/div&gt;
+</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Patrick Cloke</dc:creator><pubDate>Sun, 06 Oct 2013 09:18:00 -0400</pubDate><guid isPermaLink="false">tag:patrick.cloke.us,2013-10-06:/posts/2013/10/06/yahoo-protocol-google-summer-of-code/</guid><category>articles</category><category>chat</category><category>GSoC</category><category>Instantbird</category><category>Yahoo</category></item><item><title>Mentoring Google Summer of Code 2013</title><link>https://patrick.cloke.us/posts/2013/06/28/mentoring-google-summer-of-code-2013/</link><description>&lt;p&gt;I&amp;#8217;m officially a mentor this year for &lt;a class="reference external" href="http://www.google-melange.com/gsoc/homepage/google/gsoc2013"&gt;2013&amp;#8217;s Google Summer of Code&lt;/a&gt;.
 I&amp;#8217;m a bit late on posting this, but oh well! My student this year is
 &lt;a class="reference external" href="http://phaseshiftsoftware.com/"&gt;Quentin Headen&lt;/a&gt; who is &lt;a class="reference external" href="http://www.google-melange.com/gsoc/project/google/gsoc2013/qheaden/26001"&gt;working on&lt;/a&gt; a &lt;a class="reference external" href="http://en.wikipedia.org/wiki/Yahoo!_Messenger_Protocol"&gt;Yahoo! Messenger protocol&lt;/a&gt;
-for the Instantbird chat/ backend (so it&amp;#8217;ll also be …&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Patrick Cloke</dc:creator><pubDate>Fri, 28 Jun 2013 18:05:00 -0400</pubDate><guid isPermaLink="false">tag:patrick.cloke.us,2013-06-28:/posts/2013/06/28/mentoring-google-summer-of-code-2013/</guid><category>articles</category><category>chat</category><category>GSoC</category><category>Instantbird</category><category>Yahoo</category></item><item><title>On Status</title><link>https://patrick.cloke.us/posts/2012/10/16/on-status/</link><description>&lt;p&gt;Something that comes up often about Instantbird is why we only support
+for the Instantbird chat/ backend (so it&amp;#8217;ll also be usable via
+Thunderbird). You can see &lt;a class="reference external" href="http://phaseshiftsoftware.com/blog/category/gsoc-2013-logs/"&gt;an account of his trials, successes and
+trepidations&lt;/a&gt; (&lt;a class="reference external" href="http://phaseshiftsoftware.com/blog/category/gsoc-2013-logs/feed/"&gt;&lt;span class="caps"&gt;RSS&lt;/span&gt;&lt;/a&gt;) or follow his &lt;a class="reference external" href="https://bitbucket.org/qheaden/instantbird-gsoc-2013"&gt;code repository&lt;/a&gt;. He&amp;#8217;s made
+great progress so far and is able to connect, download all the buddies
+and start private conversations! Not too bad for a few weeks of work!
+We&amp;#8217;ve been keeping a &lt;a class="reference external" href="https://etherpad.mozilla.org/ELTNA6O44F"&gt;&lt;span class="caps"&gt;TODO&lt;/span&gt; list&lt;/a&gt; of things to be supported, please
+don&amp;#8217;t edit it without discussing it with us&amp;nbsp;first.&lt;/p&gt;
+&lt;p&gt;Our hope is to get this checked into Instantbird by the end of summer
+and run it in parallel (behind an &lt;a class="reference external" href="about:config"&gt;about:config&lt;/a&gt; preference) with the
+current libpurple Yahoo implementation. Once we&amp;#8217;re satisfied that it
+has feature parity we&amp;#8217;ll remove the libpurple version and enable this by&amp;nbsp;default!&lt;/p&gt;
+&lt;p&gt;Instantbird is also supporting two other&amp;nbsp;projects:&lt;/p&gt;
+&lt;ul class="simple"&gt;
+&lt;li&gt;The &lt;a class="reference external" href="http://www.google-melange.com/gsoc/project/google/gsoc2013/nhnt11/7001"&gt;&amp;#8220;Awesometab&amp;#8221;&lt;/a&gt; is being done by &lt;a class="reference external" href="http://awesometab.blogspot.com/"&gt;Nihanth Subramanya&lt;/a&gt;
+(&lt;a class="reference external" href="http://awesometab.blogspot.com/feeds/posts/default?alt=rss"&gt;&lt;span class="caps"&gt;RSS&lt;/span&gt;&lt;/a&gt;)
+and being mentored by Benedikt Pfeifer, his code is &lt;a class="reference external" href="https://bitbucket.org/nhnt11/instantbird-addons"&gt;available&lt;/a&gt; and
+some has already been &lt;a class="reference external" href="http://hg.instantbird.org/instantbird/rev/55009d68c4ec"&gt;checked&lt;/a&gt; &lt;a class="reference external" href="http://hg.instantbird.org/instantbird/rev/46ee5c836e48"&gt;into&lt;/a&gt; &lt;a class="reference external" href="http://hg.instantbird.org/instantbird/rev/52401d522970"&gt;Instantbird&lt;/a&gt; &lt;a class="reference external" href="http://hg.instantbird.org/instantbird/rev/ea36babac4be"&gt;nightlies&lt;/a&gt;!&lt;/li&gt;
+&lt;li&gt;&lt;a class="reference external" href="http://www.google-melange.com/gsoc/project/google/gsoc2013/atuljangra/68001"&gt;FileLinks in &lt;span class="caps"&gt;IM&lt;/span&gt;&lt;/a&gt; is being worked on by &lt;a class="reference external" href="http://atuljangra.tumblr.com/"&gt;Atul Jangra&lt;/a&gt; (or &lt;a class="reference external" href="http://gsoc-mozilla.tumblr.com/"&gt;maybe&lt;/a&gt;)
+(&lt;a class="reference external" href="http://atuljangra.tumblr.com/rss"&gt;&lt;span class="caps"&gt;RSS&lt;/span&gt;&lt;/a&gt; /
+&lt;a class="reference external" href="http://gsoc-mozilla.tumblr.com/rss"&gt;&lt;span class="caps"&gt;RSS&lt;/span&gt;&lt;/a&gt;) and being mentored by
+Florian Quèze, check out the &lt;a class="reference external" href="https://bitbucket.org/atuljangra/instantbird-gsoc-2013"&gt;repository&lt;/a&gt;.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;You can find any of us in #instantbird on irc.mozilla.org, my nick is
+clokep, Quentin&amp;#8217;s is qheaden, Nihanth&amp;#8217;s: nhnt11, Atul&amp;#8217;s: atuljangra,
+Benedikt goes by Mic and Florian goes by something starting with&amp;nbsp;&amp;#8220;flo&amp;#8221;.&lt;/p&gt;
+&lt;p&gt;Thanks also go out to Mozilla for letting us participate in Google
+Summer of Code with them again! You can see all of the accepted projects
+in &lt;a class="reference external" href="http://blog.gerv.net/2013/06/gsoc-2013-project-list/"&gt;Gerv&amp;#8217;s blogpost&lt;/a&gt;.&lt;/p&gt;
+</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Patrick Cloke</dc:creator><pubDate>Fri, 28 Jun 2013 18:05:00 -0400</pubDate><guid isPermaLink="false">tag:patrick.cloke.us,2013-06-28:/posts/2013/06/28/mentoring-google-summer-of-code-2013/</guid><category>articles</category><category>chat</category><category>GSoC</category><category>Instantbird</category><category>Yahoo</category></item><item><title>On Status</title><link>https://patrick.cloke.us/posts/2012/10/16/on-status/</link><description>&lt;p&gt;Something that comes up often about Instantbird is why we only support
 three statuses: Available, Unavailable and Offline. (We do actually
 support a fourth one too, Idle, but that is set automatically, not
 chosen by the user.) Frequently this discussion is in the context of
-wanting an &amp;#8220;Invisible&amp;#8221; status, but …&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Patrick Cloke</dc:creator><pubDate>Tue, 16 Oct 2012 21:33:00 -0400</pubDate><guid isPermaLink="false">tag:patrick.cloke.us,2012-10-16:/posts/2012/10/16/on-status/</guid><category>articles</category><category>chat</category><category>Instantbird</category><category>Thunderbird</category></item></channel></rss>
+wanting an &amp;#8220;Invisible&amp;#8221; status, but I&amp;#8217;ll get to that&amp;nbsp;later&amp;#8230;&lt;/p&gt;
+&lt;p&gt;Many users have talked to us on &lt;span class="caps"&gt;IRC&lt;/span&gt;, email or via bugs and complained
+about wanting an &amp;#8220;Away&amp;#8221; status or a &amp;#8220;Do Not Disturb&amp;#8221; status. There&amp;#8217;s a
+few issues with&amp;nbsp;this:&lt;/p&gt;
+&lt;ol class="arabic simple"&gt;
+&lt;li&gt;What&amp;#8217;s really the difference between &amp;#8220;Unavailable&amp;#8221;, &amp;#8220;Away&amp;#8221; and &amp;#8220;Do
+Not Disturb&amp;#8221;? Do you really need to choose them individually?
+(Other things that fit into here: &amp;#8220;Not at my desk&amp;#8221;, &amp;#8220;on the phone&amp;#8221;,
+&amp;#8220;busy&amp;#8221;, &amp;#8220;stepped out&amp;#8221;. It is amazing how some protocols have so many
+ways to describe being&amp;nbsp;unavailable!)&lt;/li&gt;
+&lt;li&gt;A technical issue that we often run into is trying to shoehorn
+different protocol implementations into our abstract protocol
+interface. (We already have some fairly complicated interfaces
+around joining chat rooms, creating different account, etc. because
+of&amp;nbsp;this.)&lt;/li&gt;
+&lt;li&gt;Setting yourself as &amp;#8220;Away&amp;#8221; or &amp;#8220;Invisible&amp;#8221; is a lie. Perhaps this is
+me being overly idealistic, but why would you set yourself as
+&amp;#8220;Away&amp;#8221;? It seems that this is something that should be done
+automatically (when you lock your display, perhaps?). You can&amp;#8217;t be
+&amp;#8220;Away&amp;#8221; and using your computer at the same time!
+Again, perhaps being idealistic, but what is the point of the
+&amp;#8220;Invisible&amp;#8221; status? If you wish to be hidden from someone
+(everyone?) why not just block those users. Or ignore them when they
+send you a message. If you are busy, set yourself to &amp;#8220;Unavailable&amp;#8221;
+and people should understand that they should not talk to you&amp;#8230;if
+they don&amp;#8217;t, well&amp;#8230;do you really want them talking to you ever? (Are
+they really your friend? I guess you don&amp;#8217;t get to choose your
+co-workers, but still.) Now, perhaps this is just my opinion as
+being someone who never really hard an &amp;#8220;Invisible&amp;#8221; status (I actually
+remember it being added to the &lt;span class="caps"&gt;AIM&lt;/span&gt; client at some&amp;nbsp;point).&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;At this point you probably don&amp;#8217;t believe me that there&amp;#8217;s really &lt;em&gt;that&lt;/em&gt;
+many different protocol statuses out there, so I figured I&amp;#8217;d illustrate
+a few protocols in a matrix. Note that this isn&amp;#8217;t meant to be
+exhaustive, just to show how complicated of a situation this really is.
+All protocols can obviously be &amp;#8220;offline&amp;#8221; as well, but that&amp;#8217;s not shown
+in the&amp;nbsp;table.&lt;/p&gt;
+&lt;table border="1" class="docutils"&gt;
+&lt;colgroup&gt;
+&lt;col width="30%" /&gt;
+&lt;col width="13%" /&gt;
+&lt;col width="21%" /&gt;
+&lt;col width="17%" /&gt;
+&lt;col width="19%" /&gt;
+&lt;/colgroup&gt;
+&lt;thead valign="bottom"&gt;
+&lt;tr&gt;&lt;th class="head"&gt;&amp;nbsp;&lt;/th&gt;
+&lt;th class="head"&gt;Available&lt;/th&gt;
+&lt;th class="head"&gt;Unavailable&lt;/th&gt;
+&lt;th class="head"&gt;Phone&lt;/th&gt;
+&lt;th class="head"&gt;Invisible&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody valign="top"&gt;
+&lt;tr&gt;&lt;td&gt;Oscar (&lt;span class="caps"&gt;AIM&lt;/span&gt;/&lt;span class="caps"&gt;ICQ&lt;/span&gt;)&lt;/td&gt;
+&lt;td&gt;Online&lt;/td&gt;
+&lt;td&gt;Away&lt;/td&gt;
+&lt;td&gt;&amp;nbsp;&lt;/td&gt;
+&lt;td&gt;Invisible&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;&lt;span class="caps"&gt;IRC&lt;/span&gt;&lt;/td&gt;
+&lt;td&gt;Online&lt;/td&gt;
+&lt;td&gt;Away&lt;/td&gt;
+&lt;td&gt;&amp;nbsp;&lt;/td&gt;
+&lt;td&gt;&amp;nbsp;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Microsoft Lync&lt;/td&gt;
+&lt;td&gt;Online&lt;/td&gt;
+&lt;td&gt;&lt;ul class="first last simple"&gt;
+&lt;li&gt;Busy&lt;/li&gt;
+&lt;li&gt;Away&lt;/li&gt;
+&lt;li&gt;In a&amp;nbsp;meeting&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/td&gt;
+&lt;td&gt;In a call&lt;/td&gt;
+&lt;td&gt;&amp;nbsp;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Yahoo! Messenger&lt;/td&gt;
+&lt;td&gt;Available&lt;/td&gt;
+&lt;td&gt;&lt;ul class="first last simple"&gt;
+&lt;li&gt;Busy&lt;/li&gt;
+&lt;li&gt;Stepped&amp;nbsp;out&lt;/li&gt;
+&lt;li&gt;Be right&amp;nbsp;back&lt;/li&gt;
+&lt;li&gt;Not at my&amp;nbsp;desk&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/td&gt;
+&lt;td&gt;On the phone&lt;/td&gt;
+&lt;td&gt;&amp;nbsp;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Windows Live Messenger&lt;/td&gt;
+&lt;td&gt;Online&lt;/td&gt;
+&lt;td&gt;&lt;ul class="first last simple"&gt;
+&lt;li&gt;Busy&lt;/li&gt;
+&lt;li&gt;Away&lt;/li&gt;
+&lt;li&gt;Be Right&amp;nbsp;Back&lt;/li&gt;
+&lt;li&gt;Out to&amp;nbsp;lunch&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/td&gt;
+&lt;td&gt;On the phone&lt;/td&gt;
+&lt;td&gt;Appear offline&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;&lt;span class="caps"&gt;XMPP&lt;/span&gt; (e.g. Google Talk)&lt;/td&gt;
+&lt;td&gt;Available&lt;/td&gt;
+&lt;td&gt;Busy&lt;/td&gt;
+&lt;td&gt;&amp;nbsp;&lt;/td&gt;
+&lt;td&gt;&amp;nbsp;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Patrick Cloke</dc:creator><pubDate>Tue, 16 Oct 2012 21:33:00 -0400</pubDate><guid isPermaLink="false">tag:patrick.cloke.us,2012-10-16:/posts/2012/10/16/on-status/</guid><category>articles</category><category>chat</category><category>Instantbird</category><category>Thunderbird</category></item></channel></rss>

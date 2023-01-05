@@ -246,17 +246,17 @@ tested heavily at all,&amp;nbsp;however.)&lt;/p&gt;
 &lt;p&gt;&lt;span class="caps"&gt;OK&lt;/span&gt;, so typed arrays seem good, but kind of annoying, right?
 Wrong&amp;#8230;the &lt;span class="caps"&gt;OSCAR&lt;/span&gt; protocol is a &amp;#8220;network order&amp;#8221; protocol (aka it is big
 endian). At this point you&amp;#8217;re probably thinking &amp;#8220;&lt;span class="caps"&gt;OK&lt;/span&gt;, so the ArrayBuffer
-constructor must take an endianess flag!&amp;#8221; Wrong, it does no such
-thing. &amp;#8220;Hmmm&amp;#8230;Well do the ArrayBufferViews take an endianess flag?&amp;#8221;
-Nope, wrong again. The only way to specify the endianess of the data is
+constructor must take an endianness flag!&amp;#8221; Wrong, it does no such
+thing. &amp;#8220;Hmmm&amp;#8230;Well do the ArrayBufferViews take an endianness flag?&amp;#8221;
+Nope, wrong again. The only way to specify the endianness of the data is
 to use a &lt;a class="reference external" href="https://developer.mozilla.org/en-US/docs/JavaScript_typed_arrays/DataView"&gt;DataView&lt;/a&gt;, a slightly different interface to the underlying
 bytes. It offers an &lt;span class="caps"&gt;API&lt;/span&gt; to individually set different data elements via
-their offset and endianess. (If you&amp;#8217;re too lazy to read the
+their offset and endianness. (If you&amp;#8217;re too lazy to read the
 documentation all the way through, DataView assumes big endian: makes my
 life&amp;nbsp;easier!)&lt;/p&gt;
-&lt;p&gt;For the curious, JavaScript typed arrays use the system endianess,
+&lt;p&gt;For the curious, JavaScript typed arrays use the system endianness,
 which in my opinion is pretty much useless (at least if you plan on
-sharing data) since you can never guarantee the endianess to be either
+sharing data) since you can never guarantee the endianness to be either
 big or little endian. (The fun part is that this isn&amp;#8217;t even documented,
 I found it on &lt;a class="reference external" href="http://stackoverflow.com/questions/7869752/javascript-typed-arrays-and-endianness"&gt;Stack Overflow&lt;/a&gt; and&amp;nbsp;verified.)&lt;/p&gt;
 &lt;p&gt;So, in summary&amp;#8230;if you plan on networking at all with ArrayBuffers,

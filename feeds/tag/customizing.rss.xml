@@ -3,8 +3,42 @@
 contacts in the contact list as the &amp;#8220;big&amp;#8221; contact (as shown when a
 contact is selected). Similarly to my &lt;a class="reference external" href="https://patrick.cloke.us/posts/2011/10/31/instantbird-contact-list-hack/"&gt;last post&lt;/a&gt;, this can easily be
 done with userChrome.css. See the post if you don&amp;#8217;t know what
-userChrome …&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Patrick Cloke</dc:creator><pubDate>Sun, 15 Jan 2012 10:00:00 -0500</pubDate><guid isPermaLink="false">tag:patrick.cloke.us,2012-01-15:/posts/2012/01/15/instantbird-contact-list-hack-2/</guid><category>articles</category><category>customizing</category><category>Instantbird</category><category>programming</category></item><item><title>Instantbird Contact List Hack</title><link>https://patrick.cloke.us/posts/2011/10/31/instantbird-contact-list-hack/</link><description>&lt;p&gt;A friend of mine asked me if there was a way to have selected contacts
+userChrome.css&amp;nbsp;is.&lt;/p&gt;
+&lt;p&gt;Again, we&amp;#8217;re simply going to always apply a specific &lt;span class="caps"&gt;CSS&lt;/span&gt; style to the
+contacts, namely we&amp;#8217;ll be modifying the behavior of &lt;a class="reference external" href="http://lxr.instantbird.org/instantbird/source/instantbird/content/blist.css#38"&gt;blist.css&lt;/a&gt;. I&amp;#8217;m
+sure you don&amp;#8217;t really care about that and just want the code, well I&amp;#8217;ll&amp;nbsp;oblige:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="cm"&gt;/* Expand all contacts to the big contact. */&lt;/span&gt;
+&lt;span class="nx"&gt;contact&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+    &lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="nx"&gt;moz&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="nx"&gt;binding&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="nx"&gt;url&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;chrome://instantbird/content/contact.xml#contact-big&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="o"&gt;!&lt;/span&gt;&lt;span class="nx"&gt;important&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+    &lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="nx"&gt;moz&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="nx"&gt;box&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="nx"&gt;orient&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="nx"&gt;vertical&lt;/span&gt; &lt;span class="o"&gt;!&lt;/span&gt;&lt;span class="nx"&gt;important&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+    &lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="nx"&gt;moz&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="nx"&gt;box&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="nx"&gt;align&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="nx"&gt;stretch&lt;/span&gt; &lt;span class="o"&gt;!&lt;/span&gt;&lt;span class="nx"&gt;important&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;span class="p"&gt;}&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;And that&amp;#8217;s it! Restart Instantbird and you should always have big
+contacts. I haven&amp;#8217;t seen any issues of using this (missing or wrong
+behavior), but of course your mileage might vary. Have&amp;nbsp;fun!&lt;/p&gt;
+</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Patrick Cloke</dc:creator><pubDate>Sun, 15 Jan 2012 10:00:00 -0500</pubDate><guid isPermaLink="false">tag:patrick.cloke.us,2012-01-15:/posts/2012/01/15/instantbird-contact-list-hack-2/</guid><category>articles</category><category>customizing</category><category>Instantbird</category><category>programming</category></item><item><title>Instantbird Contact List Hack</title><link>https://patrick.cloke.us/posts/2011/10/31/instantbird-contact-list-hack/</link><description>&lt;p&gt;A friend of mine asked me if there was a way to have selected contacts
 in the contact list &lt;span class="caps"&gt;NOT&lt;/span&gt; expand to two lines (where the status goes onto
 the second line) in&amp;nbsp;Instantbird.&lt;/p&gt;
 &lt;p&gt;There&amp;#8217;s actually no option to do this in Instantbird, but with a
-little &lt;a class="reference external" href="http://www-archive.mozilla.org/unix/customizing.html"&gt;userChrome&lt;/a&gt; tweak …&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Patrick Cloke</dc:creator><pubDate>Mon, 31 Oct 2011 20:20:00 -0400</pubDate><guid isPermaLink="false">tag:patrick.cloke.us,2011-10-31:/posts/2011/10/31/instantbird-contact-list-hack/</guid><category>articles</category><category>customizing</category><category>Instantbird</category><category>programming</category></item></channel></rss>
+little &lt;a class="reference external" href="http://www-archive.mozilla.org/unix/customizing.html"&gt;userChrome&lt;/a&gt; tweak, we can easily get this behavior (although
+with a couple caveats). You should be able to add a new folder &lt;a class="reference external" href="http://instantbird.com/faq.html#profilefolder"&gt;inside
+your profile&lt;/a&gt; called chrome. Inside of this make a new file called
+userChrome.css and place the&amp;nbsp;following:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="p"&gt;#&lt;/span&gt;&lt;span class="nn"&gt;buddylistbox&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="nd"&gt;focus&lt;/span&gt; &lt;span class="o"&gt;&amp;gt;&lt;/span&gt; &lt;span class="nt"&gt;contact&lt;/span&gt;&lt;span class="o"&gt;[&lt;/span&gt;&lt;span class="nt"&gt;selected&lt;/span&gt;&lt;span class="o"&gt;]&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+    &lt;span class="kp"&gt;-moz-&lt;/span&gt;&lt;span class="n"&gt;binding&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="nb"&gt;url&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;chrome://instantbird/content/contact.xml#contact&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="cp"&gt;!important&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+    &lt;span class="kp"&gt;-moz-&lt;/span&gt;&lt;span class="n"&gt;box-orient&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="kc"&gt;horizontal&lt;/span&gt; &lt;span class="cp"&gt;!important&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;span class="p"&gt;}&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Save the file and restart&amp;#8230;and that&amp;#8217;s it! Now your selected contacts
+should be on one line, just like your unselected&amp;nbsp;contacts.&lt;/p&gt;
+&lt;p&gt;I did mention there was a caveat though! If you want to expand a
+contact (to see all the protocols, etc. that you&amp;#8217;ve merged together)
+you&amp;#8217;ll need to use the arrow keys: right arrow expands a contact, left
+arrow collapses a contact. (You need to do this since the chevron icon
+that lets you expand/collapse isn&amp;#8217;t shown on a non-selected&amp;nbsp;contact.)&lt;/p&gt;
+&lt;p&gt;(Some more technical details: we&amp;#8217;re forcing the standard contact
+template to be used instead of the contact-big template, even when the
+contact is expanded; i.e. we&amp;#8217;re overwriting the command given
+&lt;a class="reference external" href="http://lxr.instantbird.org/instantbird/source/instantbird/content/blist.css#44"&gt;blist.css&lt;/a&gt;.)&lt;/p&gt;
+</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Patrick Cloke</dc:creator><pubDate>Mon, 31 Oct 2011 20:20:00 -0400</pubDate><guid isPermaLink="false">tag:patrick.cloke.us,2011-10-31:/posts/2011/10/31/instantbird-contact-list-hack/</guid><category>articles</category><category>customizing</category><category>Instantbird</category><category>programming</category></item></channel></rss>

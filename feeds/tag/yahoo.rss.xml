@@ -3,10 +3,138 @@
 for taking so long to write this&amp;#8230;but anyway: Google Summer of Code
 2013 is over! Quentin has done a great job working at implementing the
 Yahoo Protocol for Instantbird (and Thunderbird) in JavaScript
-(henceforth called &amp;#8220;&lt;span class="caps"&gt;JS&lt;/span&gt;-Yahoo …&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Patrick Cloke</dc:creator><pubDate>Sun, 06 Oct 2013 09:18:00 -0400</pubDate><guid isPermaLink="false">tag:patrick.cloke.us,2013-10-06:/posts/2013/10/06/yahoo-protocol-google-summer-of-code/</guid><category>articles</category><category>chat</category><category>GSoC</category><category>Instantbird</category><category>Yahoo</category></item><item><title>Mentoring Google Summer of Code 2013</title><link>https://patrick.cloke.us/posts/2013/06/28/mentoring-google-summer-of-code-2013/</link><description>&lt;p&gt;I&amp;#8217;m officially a mentor this year for &lt;a class="reference external" href="http://www.google-melange.com/gsoc/homepage/google/gsoc2013"&gt;2013&amp;#8217;s Google Summer of Code&lt;/a&gt;.
+(henceforth called &amp;#8220;&lt;span class="caps"&gt;JS&lt;/span&gt;-Yahoo&amp;#8221;). It&amp;#8217;s at the point where it has mostly
+reached feature-parity with the libpurple plug-in. Before &lt;a class="reference external" href="https://bugzilla.instantbird.org/show_bug.cgi?id=2135"&gt;turning this
+on as default&lt;/a&gt; there are a few minor bugs that still need to be fixed,
+but most of them have patches that just need another couple&amp;nbsp;iterations.&lt;/p&gt;
+&lt;div class="section" id="where-do-we-go-from-here"&gt;
+&lt;h2&gt;Where do we go from&amp;nbsp;here?&lt;/h2&gt;
+&lt;p&gt;Once the last few bugs are fixed we&amp;#8217;ll enable Yahoo by default in the nightly
+builds and, assuming we have no issues, it will be enabled by default in the
+upcoming Instantbird 1.5. If there are no major issues in 1.5, we&amp;#8217;ll remove the
+libpurple Yahoo implementation for Instantbird&amp;nbsp;1.next.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="section" id="how-do-i-try-this-now"&gt;
+&lt;h2&gt;How do I try this&amp;nbsp;now?!&lt;/h2&gt;
+&lt;p&gt;You can already easily enable &lt;span class="caps"&gt;JS&lt;/span&gt;-Yahoo in &lt;a class="reference external" href="http://nightly.instantbird.im/"&gt;Instantbird nightly builds&lt;/a&gt;:&lt;/p&gt;
+&lt;ol class="arabic simple"&gt;
+&lt;li&gt;Type /about config in a conversation tab&amp;#8217;s&amp;nbsp;textbox&lt;/li&gt;
+&lt;li&gt;Type &amp;#8220;forcePurple&amp;#8221; in the search&amp;nbsp;box&lt;/li&gt;
+&lt;li&gt;Remove &amp;#8220;prpl-yahoo&amp;#8221; and &amp;#8220;prpl-yahoojp&amp;#8221; from this comma separated list
+of values (you can also remove prpl-jabber if you want to always use
+the &lt;span class="caps"&gt;JS&lt;/span&gt;-&lt;span class="caps"&gt;XMPP&lt;/span&gt; implementation from GSoC 2011! Note that this doesn&amp;#8217;t
+support &lt;a class="reference external" href="https://bugzilla.mozilla.org/show_bug.cgi?id=14328"&gt;&lt;span class="caps"&gt;DNS&lt;/span&gt; &lt;span class="caps"&gt;SRV&lt;/span&gt;&lt;/a&gt;,&amp;nbsp;however.)&lt;/li&gt;
+&lt;li&gt;Restart&amp;nbsp;Instantbird!&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;You should now be using the &lt;span class="caps"&gt;JS&lt;/span&gt;-Yahoo protocol. Hopefully you don&amp;#8217;t
+notice anything different, but &lt;a class="reference external" href="https://bugzilla.instantbird.org/"&gt;&lt;span class="caps"&gt;PLEASE&lt;/span&gt; file bugs&lt;/a&gt; if you see any&amp;nbsp;issues.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="section" id="how-come-i-can-t-use-this-in-thunderbird"&gt;
+&lt;h2&gt;How come I can&amp;#8217;t use this in&amp;nbsp;Thunderbird?!&lt;/h2&gt;
+&lt;p&gt;Because Instantbird and comm-central development don&amp;#8217;t happen in the same
+Mercurial repository. I&amp;#8217;m working on &lt;a class="reference external" href="https://bugzilla.mozilla.org/show_bug.cgi?id=920801"&gt;syncing the chat/ folder of these
+repositories&lt;/a&gt; currently and &lt;span class="caps"&gt;JS&lt;/span&gt;-Yahoo should be in Daily soon to be
+included in the next Thunderbird release (i.e. Thunderbird&amp;nbsp;31).&lt;/p&gt;
+&lt;p&gt;The whole Instantbird community has been super happy with the progress
+Quentin made and we hope that Quentin has learned a lot! Thanks for a
+great summer qheaden and hopefully we&amp;#8217;ll see you around&amp;nbsp;still!&lt;/p&gt;
+&lt;/div&gt;
+</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Patrick Cloke</dc:creator><pubDate>Sun, 06 Oct 2013 09:18:00 -0400</pubDate><guid isPermaLink="false">tag:patrick.cloke.us,2013-10-06:/posts/2013/10/06/yahoo-protocol-google-summer-of-code/</guid><category>articles</category><category>chat</category><category>GSoC</category><category>Instantbird</category><category>Yahoo</category></item><item><title>Mentoring Google Summer of Code 2013</title><link>https://patrick.cloke.us/posts/2013/06/28/mentoring-google-summer-of-code-2013/</link><description>&lt;p&gt;I&amp;#8217;m officially a mentor this year for &lt;a class="reference external" href="http://www.google-melange.com/gsoc/homepage/google/gsoc2013"&gt;2013&amp;#8217;s Google Summer of Code&lt;/a&gt;.
 I&amp;#8217;m a bit late on posting this, but oh well! My student this year is
 &lt;a class="reference external" href="http://phaseshiftsoftware.com/"&gt;Quentin Headen&lt;/a&gt; who is &lt;a class="reference external" href="http://www.google-melange.com/gsoc/project/google/gsoc2013/qheaden/26001"&gt;working on&lt;/a&gt; a &lt;a class="reference external" href="http://en.wikipedia.org/wiki/Yahoo!_Messenger_Protocol"&gt;Yahoo! Messenger protocol&lt;/a&gt;
-for the Instantbird chat/ backend (so it&amp;#8217;ll also be …&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Patrick Cloke</dc:creator><pubDate>Fri, 28 Jun 2013 18:05:00 -0400</pubDate><guid isPermaLink="false">tag:patrick.cloke.us,2013-06-28:/posts/2013/06/28/mentoring-google-summer-of-code-2013/</guid><category>articles</category><category>chat</category><category>GSoC</category><category>Instantbird</category><category>Yahoo</category></item><item><title>Yahoo &amp; Thunderbird Can Finally Play Nice?</title><link>https://patrick.cloke.us/posts/2010/11/22/yahoo-thunderbird/</link><description>&lt;p&gt;For years I&amp;#8217;ve been dealing with Yahoo&amp;#8217;s lack of support for any sort
+for the Instantbird chat/ backend (so it&amp;#8217;ll also be usable via
+Thunderbird). You can see &lt;a class="reference external" href="http://phaseshiftsoftware.com/blog/category/gsoc-2013-logs/"&gt;an account of his trials, successes and
+trepidations&lt;/a&gt; (&lt;a class="reference external" href="http://phaseshiftsoftware.com/blog/category/gsoc-2013-logs/feed/"&gt;&lt;span class="caps"&gt;RSS&lt;/span&gt;&lt;/a&gt;) or follow his &lt;a class="reference external" href="https://bitbucket.org/qheaden/instantbird-gsoc-2013"&gt;code repository&lt;/a&gt;. He&amp;#8217;s made
+great progress so far and is able to connect, download all the buddies
+and start private conversations! Not too bad for a few weeks of work!
+We&amp;#8217;ve been keeping a &lt;a class="reference external" href="https://etherpad.mozilla.org/ELTNA6O44F"&gt;&lt;span class="caps"&gt;TODO&lt;/span&gt; list&lt;/a&gt; of things to be supported, please
+don&amp;#8217;t edit it without discussing it with us&amp;nbsp;first.&lt;/p&gt;
+&lt;p&gt;Our hope is to get this checked into Instantbird by the end of summer
+and run it in parallel (behind an &lt;a class="reference external" href="about:config"&gt;about:config&lt;/a&gt; preference) with the
+current libpurple Yahoo implementation. Once we&amp;#8217;re satisfied that it
+has feature parity we&amp;#8217;ll remove the libpurple version and enable this by&amp;nbsp;default!&lt;/p&gt;
+&lt;p&gt;Instantbird is also supporting two other&amp;nbsp;projects:&lt;/p&gt;
+&lt;ul class="simple"&gt;
+&lt;li&gt;The &lt;a class="reference external" href="http://www.google-melange.com/gsoc/project/google/gsoc2013/nhnt11/7001"&gt;&amp;#8220;Awesometab&amp;#8221;&lt;/a&gt; is being done by &lt;a class="reference external" href="http://awesometab.blogspot.com/"&gt;Nihanth Subramanya&lt;/a&gt;
+(&lt;a class="reference external" href="http://awesometab.blogspot.com/feeds/posts/default?alt=rss"&gt;&lt;span class="caps"&gt;RSS&lt;/span&gt;&lt;/a&gt;)
+and being mentored by Benedikt Pfeifer, his code is &lt;a class="reference external" href="https://bitbucket.org/nhnt11/instantbird-addons"&gt;available&lt;/a&gt; and
+some has already been &lt;a class="reference external" href="http://hg.instantbird.org/instantbird/rev/55009d68c4ec"&gt;checked&lt;/a&gt; &lt;a class="reference external" href="http://hg.instantbird.org/instantbird/rev/46ee5c836e48"&gt;into&lt;/a&gt; &lt;a class="reference external" href="http://hg.instantbird.org/instantbird/rev/52401d522970"&gt;Instantbird&lt;/a&gt; &lt;a class="reference external" href="http://hg.instantbird.org/instantbird/rev/ea36babac4be"&gt;nightlies&lt;/a&gt;!&lt;/li&gt;
+&lt;li&gt;&lt;a class="reference external" href="http://www.google-melange.com/gsoc/project/google/gsoc2013/atuljangra/68001"&gt;FileLinks in &lt;span class="caps"&gt;IM&lt;/span&gt;&lt;/a&gt; is being worked on by &lt;a class="reference external" href="http://atuljangra.tumblr.com/"&gt;Atul Jangra&lt;/a&gt; (or &lt;a class="reference external" href="http://gsoc-mozilla.tumblr.com/"&gt;maybe&lt;/a&gt;)
+(&lt;a class="reference external" href="http://atuljangra.tumblr.com/rss"&gt;&lt;span class="caps"&gt;RSS&lt;/span&gt;&lt;/a&gt; /
+&lt;a class="reference external" href="http://gsoc-mozilla.tumblr.com/rss"&gt;&lt;span class="caps"&gt;RSS&lt;/span&gt;&lt;/a&gt;) and being mentored by
+Florian Quèze, check out the &lt;a class="reference external" href="https://bitbucket.org/atuljangra/instantbird-gsoc-2013"&gt;repository&lt;/a&gt;.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;You can find any of us in #instantbird on irc.mozilla.org, my nick is
+clokep, Quentin&amp;#8217;s is qheaden, Nihanth&amp;#8217;s: nhnt11, Atul&amp;#8217;s: atuljangra,
+Benedikt goes by Mic and Florian goes by something starting with&amp;nbsp;&amp;#8220;flo&amp;#8221;.&lt;/p&gt;
+&lt;p&gt;Thanks also go out to Mozilla for letting us participate in Google
+Summer of Code with them again! You can see all of the accepted projects
+in &lt;a class="reference external" href="http://blog.gerv.net/2013/06/gsoc-2013-project-list/"&gt;Gerv&amp;#8217;s blogpost&lt;/a&gt;.&lt;/p&gt;
+</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Patrick Cloke</dc:creator><pubDate>Fri, 28 Jun 2013 18:05:00 -0400</pubDate><guid isPermaLink="false">tag:patrick.cloke.us,2013-06-28:/posts/2013/06/28/mentoring-google-summer-of-code-2013/</guid><category>articles</category><category>chat</category><category>GSoC</category><category>Instantbird</category><category>Yahoo</category></item><item><title>Yahoo &amp; Thunderbird Can Finally Play Nice?</title><link>https://patrick.cloke.us/posts/2010/11/22/yahoo-thunderbird/</link><description>&lt;p&gt;For years I&amp;#8217;ve been dealing with Yahoo&amp;#8217;s lack of support for any sort
 of decent (free) &lt;span class="caps"&gt;POP3&lt;/span&gt;/&lt;span class="caps"&gt;IMAP&lt;/span&gt;/&lt;span class="caps"&gt;SMTP&lt;/span&gt; protocol support. Why do I need this?
 So I can check my &lt;a class="reference external" href="http://mail.yahoo.com/"&gt;Yahoo mail&lt;/a&gt; in &lt;a class="reference external" href="http://www.mozillamessaging.com/en-US/thunderbird/"&gt;Mozilla Thunderbird&lt;/a&gt; of&amp;nbsp;course!&lt;/p&gt;
-&lt;p&gt;At first I used &lt;a class="reference external" href="http://ypopsemail.com/"&gt;&lt;span class="caps"&gt;YPOPS&lt;/span&gt;!&lt;/a&gt;, a program that read the …&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Patrick Cloke</dc:creator><pubDate>Mon, 22 Nov 2010 23:03:00 -0500</pubDate><guid isPermaLink="false">tag:patrick.cloke.us,2010-11-22:/posts/2010/11/22/yahoo-thunderbird/</guid><category>articles</category><category>email</category><category>Mozilla</category><category>programming</category><category>Thunderbird</category><category>Yahoo</category></item></channel></rss>
+&lt;p&gt;At first I used &lt;a class="reference external" href="http://ypopsemail.com/"&gt;&lt;span class="caps"&gt;YPOPS&lt;/span&gt;!&lt;/a&gt;, a program that read the &lt;span class="caps"&gt;HTML&lt;/span&gt; pages provided
+by the Yahoo webmail client and served the emails on a local &lt;span class="caps"&gt;POP&lt;/span&gt;
+server. Cool, right? Except it always broke whenever Yahoo changed
+their pages&amp;nbsp;around.&lt;/p&gt;
+&lt;p&gt;After a bit I moved onto using the &lt;a class="reference external" href="http://www.blogger.com/"&gt;WebMail extension&lt;/a&gt; for
+Thunderbird. It essentially works the same way, but runs in the
+Thunderbird process as an extension instead of as a separate service.
+It&amp;#8217;s a little complicated to set up and requires two extensions. The
+general WebMail extension and a Yahoo specific one (there&amp;#8217;s also ones
+available for Hotmail, Gmail, Libero and &lt;span class="caps"&gt;AOL&lt;/span&gt;). You might wonder why
+this exists for some services that have always had &lt;span class="caps"&gt;POP&lt;/span&gt;/&lt;span class="caps"&gt;IMAP&lt;/span&gt; access
+(Gmail)? I was too, apparently some people cannot check those ports
+because of firewall issues so this essentially allows them to check it
+via port 80, over an &lt;span class="caps"&gt;HTTP&lt;/span&gt;&amp;nbsp;connection.&lt;/p&gt;
+&lt;p&gt;A few months ago I came across &lt;a class="reference external" href="http://www.emaildiscussions.com/showthread.php?t=59575"&gt;post&lt;/a&gt; describing how a &lt;a class="reference external" href="http://en.wikipedia.org/w/index.php?title=Yahoo%21_Mail&amp;amp;oldid=396914770#Free_IMAP_and_SMTPs_access"&gt;simple
+(nonstandard) command&lt;/a&gt; could allow access to the Yahoo &lt;span class="caps"&gt;IMAP&lt;/span&gt; server, but
+it required &lt;a class="reference external" href="http://www.crasseux.com/linux/"&gt;patching the Thunderbird source&lt;/a&gt; &amp;#8212; not an option for me
+since I&amp;#8217;ve been running nightlies of either Thunderbird 3.1 or 3.2/3.3
+for a while now. (I mean sure, I could do it&amp;#8230;but WebMail extension was
+working fine.) There was &lt;a class="reference external" href="http://groups.google.com/group/mozilla.dev.apps.thunderbird/browse_thread/thread/546356554c73f8ca"&gt;some discussion&lt;/a&gt; about it and a &lt;a class="reference external" href="https://bugzilla.mozilla.org/show_bug.cgi?id=493064"&gt;bug&lt;/a&gt; was
+filed for&amp;nbsp;Thunderbird.&lt;/p&gt;
+&lt;p&gt;So how did this lead to free &lt;span class="caps"&gt;IMAP&lt;/span&gt; support? I noticed in the &lt;a class="reference external" href="https://wiki.mozilla.org/Thunderbird/StatusMeetings/2010-11-16#Web_Update"&gt;Weekly
+Status Meeting Notes (2010-11-16)&lt;/a&gt; for Thunderbird a mention of &lt;a class="reference external" href="http://trunk.mozillamessaging.com/en-US/thunderbird/features/email_providers.html"&gt;Free
+Email Providers&lt;/a&gt; page. Checking it out it said &amp;#8220;Y! Mail is a free
+email service provided by Yahoo! It offers webmail supported by targeted
+advertising as well as &lt;span class="caps"&gt;IMAP&lt;/span&gt; access.&amp;#8221; Hmm&amp;#8230;but I just said they don&amp;#8217;t
+have support this for free! A quick Bing search brought up a &lt;a class="reference external" href="http://www.theanimail.com/imap_server_settings.html"&gt;page with
+&lt;span class="caps"&gt;IMAP&lt;/span&gt; server settings&lt;/a&gt;. I figured I&amp;#8217;d check if they work, and sure
+enough they did! The settings are copied&amp;nbsp;below:&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;table class="docutils field-list" frame="void" rules="none"&gt;
+&lt;col class="field-name" /&gt;
+&lt;col class="field-body" /&gt;
+&lt;tbody valign="top"&gt;
+&lt;tr class="field"&gt;&lt;th class="field-name"&gt;User name:&lt;/th&gt;&lt;td class="field-body"&gt;&lt;span class="strike"&gt;user&amp;#64;yahoo.com&lt;/span&gt; user&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr class="field"&gt;&lt;th class="field-name"&gt;&lt;span class="caps"&gt;IMAP&lt;/span&gt; server:&lt;/th&gt;&lt;td class="field-body"&gt;&lt;span class="strike"&gt;imap-ssl.mail.yahoo.com&lt;/span&gt; imap.mail.yahoo.com&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr class="field"&gt;&lt;th class="field-name"&gt;Port:&lt;/th&gt;&lt;td class="field-body"&gt;993&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr class="field"&gt;&lt;th class="field-name"&gt;Password:&lt;/th&gt;&lt;td class="field-body"&gt;Cleartext/Normal&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr class="field"&gt;&lt;th class="field-name"&gt;&lt;span class="caps"&gt;SSL&lt;/span&gt;:&lt;/th&gt;&lt;td class="field-body"&gt;yes&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr class="field"&gt;&lt;th class="field-name"&gt;&lt;span class="caps"&gt;SMTP&lt;/span&gt; server:&lt;/th&gt;&lt;td class="field-body"&gt;smtp.mail.yahoo.com&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr class="field"&gt;&lt;th class="field-name"&gt;Port:&lt;/th&gt;&lt;td class="field-body"&gt;465&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr class="field"&gt;&lt;th class="field-name"&gt;Password:&lt;/th&gt;&lt;td class="field-body"&gt;Cleartext/Normal&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr class="field"&gt;&lt;th class="field-name"&gt;&lt;span class="caps"&gt;SSL&lt;/span&gt;:&lt;/th&gt;&lt;td class="field-body"&gt;yes&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;Awesome! Anyway, I replied with this info in the aforementioned bug
+and &lt;a class="reference external" href="https://bugzilla.mozilla.org/attachment.cgi?id=492550&amp;amp;action=diff"&gt;a patch&lt;/a&gt; was quickly added by Mozilla&amp;#8217;s &lt;a class="reference external" href="http://www.bucksch.org/1/projects/mozilla/"&gt;Ben Bucksch&lt;/a&gt; to support
+this in Thunderbird, hopefully it&amp;#8217;ll make it into the next version! It
+was also brought to my attention that imap-ssl.mail.yahoo.com provides
+an &lt;span class="caps"&gt;SSL&lt;/span&gt; certificate that is valid for imap.mail.yahoo.com only, I&amp;#8217;d
+suggest using that&amp;nbsp;former.&lt;/p&gt;
+&lt;p&gt;Note that I&amp;#8217;m currently suffering from &lt;a class="reference external" href="https://bugzilla.mozilla.org/show_bug.cgi?id=610264"&gt;another bug&lt;/a&gt; while using
+Yahoo &lt;span class="caps"&gt;IMAP&lt;/span&gt;. Everything works, there&amp;#8217;s just an annoying pop-up
+occasionally about the error. Hopefully it will be fixed&amp;nbsp;soon.&lt;/p&gt;
+</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Patrick Cloke</dc:creator><pubDate>Mon, 22 Nov 2010 23:03:00 -0500</pubDate><guid isPermaLink="false">tag:patrick.cloke.us,2010-11-22:/posts/2010/11/22/yahoo-thunderbird/</guid><category>articles</category><category>email</category><category>Mozilla</category><category>programming</category><category>Thunderbird</category><category>Yahoo</category></item></channel></rss>

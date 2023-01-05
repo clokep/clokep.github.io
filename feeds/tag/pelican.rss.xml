@@ -2,8 +2,185 @@
 <rss version="2.0"><channel><title>Patrick Cloke - pelican</title><link>https://patrick.cloke.us/</link><description></description><lastBuildDate>Wed, 09 Sep 2020 17:10:00 -0400</lastBuildDate><item><title>Instantbird Blog: WordPress to Pelican</title><link>https://patrick.cloke.us/posts/2020/09/09/instantbird-blog-wordpress-to-pelican/</link><description>&lt;p&gt;The &lt;a class="reference external" href="https://blog.instantbird.org"&gt;Instantbird blog&lt;/a&gt; is now (as of mid-April 2020) hosted on GitHub Pages
 (instead of self-hosted &lt;a class="reference external" href="https://wordpress.com/"&gt;WordPress&lt;/a&gt;) &lt;a class="footnote-reference" href="#id5" id="id1"&gt;[1]&lt;/a&gt;. Hopefully it was converted faithfully,
 but feel free to let us know if you see something broken! You can file an issue
-at &lt;a class="reference external" href="https://github.com/instantbird/blog.instantbird.org/"&gt;the repo for the blog&lt;/a&gt; or just comment&amp;nbsp;below …&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Patrick Cloke</dc:creator><pubDate>Wed, 09 Sep 2020 17:10:00 -0400</pubDate><guid isPermaLink="false">tag:patrick.cloke.us,2020-09-09:/posts/2020/09/09/instantbird-blog-wordpress-to-pelican/</guid><category>articles</category><category>Instantbird</category><category>pelican</category></item><item><title>New Blog</title><link>https://patrick.cloke.us/posts/2014/07/03/new-blog/</link><description>
+at &lt;a class="reference external" href="https://github.com/instantbird/blog.instantbird.org/"&gt;the repo for the blog&lt;/a&gt; or just comment&amp;nbsp;below.&lt;/p&gt;
+&lt;p&gt;Note that there are some changes due to being a static site instead of being
+backed by a dynamic language. Most of these would be around editing the blog,
+which we don&amp;#8217;t do anymore. The biggest user-facing change was that
+&lt;a class="reference external" href="https://github.com/instantbird/blog.instantbird.org/blob/source/theme/templates/searchform.html"&gt;search is now via DuckDuckGo&lt;/a&gt; instead of being built into the&amp;nbsp;site.&lt;/p&gt;
+&lt;p&gt;This was a bit of an arduous process with some trial and error. See below for
+some of the details. Overall I did this work over 3 years (!!!), starting in
+April of 2017 and getting the site live in April of 2020. It was mostly done in
+5 sprints with some long gaps&amp;nbsp;between.&lt;/p&gt;
+&lt;p&gt;As some background, the Instantbird blog was originally (in 2007) served via
+Florian&amp;#8217;s custom blog engine &lt;a class="footnote-reference" href="#id6" id="id2"&gt;[2]&lt;/a&gt;. In 2011 it was
+&lt;a class="reference external" href="https://blog.instantbird.org/2011/10/weekly-meeting-october-10-2011/"&gt;converted to WordPress by an Instantbird contributor&lt;/a&gt;. This initial conversion
+was not done perfectly and I attempted to fix some of these issues when
+converting from WordPress to Pelican &lt;a class="footnote-reference" href="#id7" id="id3"&gt;[3]&lt;/a&gt;. The general steps I was hoping to&amp;nbsp;follow:&lt;/p&gt;
+&lt;ol class="arabic simple"&gt;
+&lt;li&gt;Setup the project using the &lt;tt class="docutils literal"&gt;&lt;span class="pre"&gt;pelican-quickstart&lt;/span&gt;&lt;/tt&gt; comment.&lt;/li&gt;
+&lt;li&gt;Export the content via WordPress to &lt;span class="caps"&gt;XML&lt;/span&gt;.&lt;/li&gt;
+&lt;li&gt;Use the Pelican &lt;a class="reference external" href="https://docs.getpelican.com/en/3.7.1/importer.html"&gt;WordPress importer&lt;/a&gt; to convert the content to reStructuredText. &lt;a class="footnote-reference" href="#id8" id="id4"&gt;[4]&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Go through the conversion by hand and fix any&amp;nbsp;oddities.&lt;/li&gt;
+&lt;li&gt;Convert the &lt;span class="caps"&gt;PHP&lt;/span&gt; theme to &lt;a class="reference external" href="https://jinja.palletsprojects.com/"&gt;Jinja2&lt;/a&gt;.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;This plan mostly held together through the process, but I ran into some
+roadblocks, most of which were easily&amp;nbsp;overcome:&lt;/p&gt;
+&lt;ol class="arabic simple"&gt;
+&lt;li&gt;For some reason the WordPress import failed halfway through and didn&amp;#8217;t convert
+every article. I didn&amp;#8217;t investigate why and &lt;a class="reference external" href="https://github.com/instantbird/blog.instantbird.org/commit/d94b2fc4bd8d45d993c080daf215dbdd91298ae3"&gt;added the missing files manually&lt;/a&gt;.&lt;/li&gt;
+&lt;li&gt;A variety of hard-coded &lt;span class="caps"&gt;HTML&lt;/span&gt; made it through the conversion. This was manually
+converted to&amp;nbsp;reStructuredText.&lt;/li&gt;
+&lt;li&gt;Converting the theme was much harder than expected and involved reading
+WordPress documentation to understand various functions the &lt;span class="caps"&gt;PHP&lt;/span&gt; templates&amp;nbsp;called.&lt;/li&gt;
+&lt;li&gt;Wrote a &lt;a class="reference external" href="https://github.com/instantbird/blog.instantbird.org/blob/source/plugins/archives.py"&gt;custom archive plugin&lt;/a&gt; to be able to articles by year / month /&amp;nbsp;day.&lt;/li&gt;
+&lt;li&gt;The alignment of images needed to be fixed (and lots of WordPress styles&amp;nbsp;removed).&lt;/li&gt;
+&lt;li&gt;Some of our posts had multiple categories on them, which is not allowed in
+Pelican. Generally these overlapped with tags and I decided the easiest path
+here was to modify the content to have a single category per&amp;nbsp;article.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;A huge piece of work was that comments were not imported. I did not care about
+people being able to write &lt;em&gt;new&lt;/em&gt; comments, but I wanted the old content there.
+For this I planned to use the &lt;a class="reference external" href="https://github.com/getpelican/pelican-plugins/tree/master/pelican_comment_system"&gt;pelican_comment_system plugin&lt;/a&gt;, but I needed to
+get the comments into a format that it understood (from the WordPress &lt;span class="caps"&gt;XML&lt;/span&gt; export
+discussed&amp;nbsp;above).&lt;/p&gt;
+&lt;p&gt;I ended up &lt;a class="reference external" href="https://github.com/instantbird/blog.instantbird.org/blob/source/wp2comments.py"&gt;writing a custom script&lt;/a&gt; based on the &lt;a class="reference external" href="https://github.com/getpelican/pelican/blob/4.2.0/pelican/tools/pelican_import.py"&gt;pelican_import&lt;/a&gt; code to
+iterate the comments in the &lt;span class="caps"&gt;XML&lt;/span&gt; file and write a reStructuredText file for each
+comment. There was quite a bit of trial and error here, but I think the result
+was reasonable. This also needed to handle comment threads and pingbacks, which
+added some&amp;nbsp;wrinkles.&lt;/p&gt;
+&lt;p&gt;The final step here was to get gravatars for comments working. The
+pelican_comment_system supports identicons only, but I was able to
+&lt;a class="reference external" href="https://github.com/instantbird/blog.instantbird.org/blob/source/plugins/comments.py"&gt;combine it and the gravatar plugin&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;One final piece was generating a reasonable 404 page. The WordPress one some
+features that required two more custom plugins: a &lt;a class="reference external" href="https://github.com/instantbird/blog.instantbird.org/blob/source/plugins/tag_cloud.py"&gt;tag cloud&lt;/a&gt; and a list of the
+&lt;a class="reference external" href="https://github.com/instantbird/blog.instantbird.org/blob/source/plugins/most_used_categories.py"&gt;most used categories&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;There was a few other odds-and-ends that aren&amp;#8217;t really worth mentioning, but
+overall I&amp;#8217;m quite happy with the result! Just to be clear, there&amp;#8217;s no plans to
+restart development of Instantbird, but I wanted the blog content to archived
+and searchable. There&amp;#8217;s some &lt;a class="reference external" href="https://blog.instantbird.org/2011/06/introducing-time-bubbles/"&gt;interesting&lt;/a&gt; &lt;a class="reference external" href="https://blog.instantbird.org/2013/07/first-milestone-of-the-awesometab-has-landed/"&gt;articles&lt;/a&gt; on there about &lt;a class="reference external" href="https://blog.instantbird.org/2012/08/tab-completion-in-instantbird-1-2/"&gt;design&lt;/a&gt;
+&lt;a class="reference external" href="https://blog.instantbird.org/2011/06/introducing-magic-copy/"&gt;decisions&lt;/a&gt;. Many of which are features I miss&amp;nbsp;today!&lt;/p&gt;
+&lt;table class="docutils footnote" frame="void" id="id5" rules="none"&gt;
+&lt;colgroup&gt;&lt;col class="label" /&gt;&lt;col /&gt;&lt;/colgroup&gt;
+&lt;tbody valign="top"&gt;
+&lt;tr&gt;&lt;td class="label"&gt;&lt;a class="fn-backref" href="#id1"&gt;[1]&lt;/a&gt;&lt;/td&gt;&lt;td&gt;Reasons for wanting to do this included reducing the infrastructure we
+were maintaining and that the WordPress version was vulnerable. An
+additional benefit is that it let us easily add &lt;span class="caps"&gt;TLS&lt;/span&gt;.&lt;!-- See https://bugzilla.mozilla.org/show_bug.cgi?id=1346658 --&gt;
+&lt;/td&gt;&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;table class="docutils footnote" frame="void" id="id6" rules="none"&gt;
+&lt;colgroup&gt;&lt;col class="label" /&gt;&lt;col /&gt;&lt;/colgroup&gt;
+&lt;tbody valign="top"&gt;
+&lt;tr&gt;&lt;td class="label"&gt;&lt;a class="fn-backref" href="#id2"&gt;[2]&lt;/a&gt;&lt;/td&gt;&lt;td&gt;I don&amp;#8217;t think there&amp;#8217;s any information about this engine anywhere, nor do
+I think the source was released.&lt;/td&gt;&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;table class="docutils footnote" frame="void" id="id7" rules="none"&gt;
+&lt;colgroup&gt;&lt;col class="label" /&gt;&lt;col /&gt;&lt;/colgroup&gt;
+&lt;tbody valign="top"&gt;
+&lt;tr&gt;&lt;td class="label"&gt;&lt;a class="fn-backref" href="#id3"&gt;[3]&lt;/a&gt;&lt;/td&gt;&lt;td&gt;The main issues were images / resources that were not properly moved.
+Luckily I was able to recover them using the &lt;a class="reference external" href="https://archive.org/"&gt;Internet Archive&lt;/a&gt;.&lt;/td&gt;&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;table class="docutils footnote" frame="void" id="id8" rules="none"&gt;
+&lt;colgroup&gt;&lt;col class="label" /&gt;&lt;col /&gt;&lt;/colgroup&gt;
+&lt;tbody valign="top"&gt;
+&lt;tr&gt;&lt;td class="label"&gt;&lt;a class="fn-backref" href="#id4"&gt;[4]&lt;/a&gt;&lt;/td&gt;&lt;td&gt;I started doing this work on Pelican 3.7.1 and switched to 4.2.0, in
+general everything in this article should be valid up through Pelican
+4.2.0, however.&lt;/td&gt;&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Patrick Cloke</dc:creator><pubDate>Wed, 09 Sep 2020 17:10:00 -0400</pubDate><guid isPermaLink="false">tag:patrick.cloke.us,2020-09-09:/posts/2020/09/09/instantbird-blog-wordpress-to-pelican/</guid><category>articles</category><category>Instantbird</category><category>pelican</category></item><item><title>New Blog</title><link>https://patrick.cloke.us/posts/2014/07/03/new-blog/</link><description>
 &lt;p&gt;If you’re reading this you might have noticed that I have a shiny new blog! I
 had been pretty disappointed in &lt;a class="reference external" href="https://www.blogger.com/"&gt;Blogger&lt;/a&gt; practically since I started using it.
 But it was free, I was a poor college student, etc. I finally managed to get
-myself a &lt;a class="reference external" href="http://patrick.cloke.us"&gt;domain name&lt;/a&gt; and …&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Patrick Cloke</dc:creator><pubDate>Thu, 03 Jul 2014 23:04:00 -0400</pubDate><guid isPermaLink="false">tag:patrick.cloke.us,2014-07-03:/posts/2014/07/03/new-blog/</guid><category>articles</category><category>blog</category><category>pelican</category></item></channel></rss>
+myself a &lt;a class="reference external" href="http://patrick.cloke.us"&gt;domain name&lt;/a&gt; and set up a more proper blog!&lt;/p&gt;
+&lt;p&gt;I was between a few different pieces of blog software (namely &lt;a class="reference external" href="https://wordpress.com/"&gt;WordPress&lt;/a&gt;,
+&lt;a class="reference external" href="http://dotclear.org/"&gt;DotClear&lt;/a&gt; and &lt;a class="reference external" href="http://jekyllrb.com/"&gt;Jekyll&lt;/a&gt;) and couldn’t really decide. I loved the idea of the
+simplicity of Jekyll, but it’s &lt;a class="reference external" href="http://www.ruby-lang.org/"&gt;Ruby&lt;/a&gt;. (Who’s got time for that?) I wanted
+something I could read the code of and understand if necessary. (And it has
+been necessary!) My main requirements for blog software were:&lt;/p&gt;
+&lt;ul class="simple"&gt;
+&lt;li&gt;Easy to use and set up.&lt;/li&gt;
+&lt;li&gt;Free.&lt;/li&gt;
+&lt;li&gt;Support for syntax highlighted code blocks. (This was the only “hard” one to
+come by.)&lt;/li&gt;
+&lt;li&gt;Support for &lt;a class="reference external" href="https://en.wikipedia.org/wiki/RSS"&gt;&lt;span class="caps"&gt;RSS&lt;/span&gt;&lt;/a&gt; feeds.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;After a quick Google search for “&lt;a class="reference external" href="https://www.google.com/search?q=jekyll+python"&gt;jekyll python&lt;/a&gt;“, I ended up on &lt;a class="reference external" href="https://hyde.github.io/"&gt;Hyde&lt;/a&gt;. It
+seemed alright, but no one seemed to use it. Farther down the page I came across
+&lt;a class="reference external" href="http://arunrocks.com/moving-blogs-to-pelican/"&gt;a blog&lt;/a&gt; talking about moving to &lt;a class="reference external" href="http://getpelican.com/"&gt;Pelican&lt;/a&gt;. I was hooked. (Note that I don’t
+necessarily agree with all the ideas in that post, it just introduced me to Pelican.)&lt;/p&gt;
+&lt;div class="section" id="set-up-pelican"&gt;
+&lt;h2&gt;&lt;a class="toc-backref" href="#id1"&gt;Set up Pelican&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;(Since I dislike writing my own descriptions:)&lt;/p&gt;
+&lt;blockquote&gt;
+“Pelican is a static site generator, written in &lt;a class="reference external" href="http://www.python.org/"&gt;Python&lt;/a&gt;, that requires no
+database or server-side logic.”&lt;/blockquote&gt;
+&lt;p&gt;Cool! Sounds real simple to use! And it was. Mostly.&lt;/p&gt;
+&lt;p&gt;I pretty much followed the &lt;a class="reference external" href="http://docs.getpelican.com/en/3.4.0/quickstart.html"&gt;quickstart&lt;/a&gt;:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;mkdir -p blog/blog &lt;span class="c1"&gt;# The first blog is to store other repos, etc.&lt;/span&gt;
+&lt;span class="nb"&gt;cd&lt;/span&gt; blog/blog
+git init &lt;span class="o"&gt;&amp;amp;&amp;amp;&lt;/span&gt; git checkout -b &lt;span class="nb"&gt;source&lt;/span&gt; &lt;span class="c1"&gt;# Explained later on.&lt;/span&gt;
+brew install pandoc &lt;span class="c1"&gt;# If you're not on Mac you'll need to do something else.&lt;/span&gt;
+mkvirtualenv blog
+pip install pelican markdown Fabric ghp_import feedparser
+pelican-quickstart
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;I’ll let you read the rest of the quickstart guide, but it was super quick to
+get up and running! (I also referenced another &lt;a class="reference external" href="http://terriyu.info/blog/posts/2013/07/pelican-setup/"&gt;blog post&lt;/a&gt; I found that had some
+good information!) I, of course, had no content…but wait I did, it was just
+in Blogger!&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="section" id="importing-content-from-blogger"&gt;
+&lt;h2&gt;&lt;a class="toc-backref" href="#id2"&gt;Importing Content from Blogger&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;Pelican does not directly support importing from Blogger (&lt;em&gt;Edit: Seems someone
+just put up a `pull request`_ to support Blogger natively!&lt;/em&gt;), but it supports
+&lt;a class="reference external" href="http://docs.getpelican.com/en/3.4.0/importer.html"&gt;importing from a &lt;span class="caps"&gt;RSS&lt;/span&gt; feed&lt;/a&gt;. The first time I did this it missed a couple of
+articles (which I didn’t notice right away), so make sure you bump up the max
+amount in the &lt;span class="caps"&gt;URL&lt;/span&gt; like so (this also outputs in the folder “content”):&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;pelican-import --feed http://clokep.blogspot.com/feeds/posts/default&lt;span class="se"&gt;\?&lt;/span&gt;alt&lt;span class="se"&gt;\=&lt;/span&gt;rss&lt;span class="se"&gt;\&amp;amp;&lt;/span&gt;max-results&lt;span class="se"&gt;\=&lt;/span&gt;&lt;span class="m"&gt;240&lt;/span&gt; -o content
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;No import is ever perfect and I had to clean up a bunch of stuff by hand including:&lt;/p&gt;
+&lt;ul class="simple"&gt;
+&lt;li&gt;The slugs did not match the ones from Blogger (this is important later on!)&lt;/li&gt;
+&lt;li&gt;Some of the dates were strangely wrong&lt;/li&gt;
+&lt;li&gt;Some &lt;span class="caps"&gt;HTML&lt;/span&gt; formatting was included (in particular around &amp;lt;code&amp;gt;/&amp;lt;pre&amp;gt; blocks I
+had added).&lt;/li&gt;
+&lt;li&gt;Some formatting was messed up.&lt;/li&gt;
+&lt;li&gt;The (single) image I had on my blog had to be manually downloaded and added.&lt;/li&gt;
+&lt;li&gt;I had bolded things I really wanted to be headers. (This is my fault!)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;I probably spent a couple of hours cleaning all the reStructuredText content up,
+but now I feel that I have a portable set of all of my blog posts, which I’m
+pretty happy about!&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="section" id="customizing-pelican"&gt;
+&lt;h2&gt;&lt;a class="toc-backref" href="#id3"&gt;Customizing Pelican&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;I tried a few different themes for Pelican, but eventually settled on just using
+and modifying the default theme. I, frankly, haven’t tried it on too many
+different systems, so hopefully it doesn’t totally break on small screen sizes
+or something. I’m not &lt;span class="caps"&gt;HTML&lt;/span&gt; expert, so I’d rather talk about the other stuff I
+modified. (Although, if you’re curious, the main elements I &lt;em&gt;did&lt;/em&gt; modify are
+adding the sidebar to the left and the organization of the archives page.)&lt;/p&gt;
+&lt;p&gt;Blogger has a concept of “labels”, Pelican has a concept of “category” and
+“tags”. I &lt;em&gt;hate&lt;/em&gt; this. What’s the difference? Anyway, I wanted to eradicate the
+concept of a “category” (and “authors” since I’m the only one on my blog!), so I
+added a few things to my pelicanconf.py:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="c1"&gt;# Disable categories.&lt;/span&gt;
+&lt;span class="n"&gt;DISPLAY_CATEGORIES_ON_MENU&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="kc"&gt;False&lt;/span&gt;
+&lt;span class="n"&gt;DISPLAY_CATEGORY_ON_ARTICLE&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="kc"&gt;False&lt;/span&gt;
+&lt;span class="n"&gt;CATEGORY_FEED_ATOM&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="kc"&gt;None&lt;/span&gt;
+&lt;span class="n"&gt;CATEGORY_SAVE_AS&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s1"&gt;''&lt;/span&gt;
+&lt;span class="n"&gt;CATEGORIES_SAVE_AS&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s1"&gt;''&lt;/span&gt;
+
+&lt;span class="c1"&gt;# Disable author pages.&lt;/span&gt;
+&lt;span class="n"&gt;AUTHOR_SAVE_AS&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s1"&gt;''&lt;/span&gt;
+&lt;span class="n"&gt;AUTHORS_SAVE_AS&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s1"&gt;''&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Note that &lt;tt class="docutils literal"&gt;DISPLAY_CATEGORY_ON_ARTICLE&lt;/tt&gt; is actually a variable I added and
+used in the template to not show categories above the list of tags on each article.&lt;/p&gt;
+&lt;p&gt;This is getting pretty long so I’ll leave how I’m actually serving this content
+to my next article!&lt;/p&gt;
+&lt;/div&gt;
+</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Patrick Cloke</dc:creator><pubDate>Thu, 03 Jul 2014 23:04:00 -0400</pubDate><guid isPermaLink="false">tag:patrick.cloke.us,2014-07-03:/posts/2014/07/03/new-blog/</guid><category>articles</category><category>blog</category><category>pelican</category></item></channel></rss>

@@ -614,38 +614,4 @@ included in the next Thunderbird release (i.e. Thunderbird&amp;nbsp;31).&lt;/p&g
 Quentin made and we hope that Quentin has learned a lot! Thanks for a
 great summer qheaden and hopefully we&amp;#8217;ll see you around&amp;nbsp;still!&lt;/p&gt;
 &lt;/div&gt;
-</content><category term="articles"></category><category term="chat"></category><category term="GSoC"></category><category term="Instantbird"></category><category term="Yahoo"></category></entry><entry><title>Mentoring Google Summer of Code 2013</title><link href="https://patrick.cloke.us/posts/2013/06/28/mentoring-google-summer-of-code-2013/" rel="alternate"></link><published>2013-06-28T18:05:00-04:00</published><updated>2013-06-28T18:05:00-04:00</updated><author><name>Patrick Cloke</name></author><id>tag:patrick.cloke.us,2013-06-28:/posts/2013/06/28/mentoring-google-summer-of-code-2013/</id><summary type="html">&lt;p&gt;I&amp;#8217;m officially a mentor this year for &lt;a class="reference external" href="http://www.google-melange.com/gsoc/homepage/google/gsoc2013"&gt;2013&amp;#8217;s Google Summer of Code&lt;/a&gt;.
-I&amp;#8217;m a bit late on posting this, but oh well! My student this year is
-&lt;a class="reference external" href="http://phaseshiftsoftware.com/"&gt;Quentin Headen&lt;/a&gt; who is &lt;a class="reference external" href="http://www.google-melange.com/gsoc/project/google/gsoc2013/qheaden/26001"&gt;working on&lt;/a&gt; a &lt;a class="reference external" href="http://en.wikipedia.org/wiki/Yahoo!_Messenger_Protocol"&gt;Yahoo! Messenger protocol&lt;/a&gt;
-for the Instantbird chat/ backend (so it&amp;#8217;ll also be …&lt;/p&gt;</summary><content type="html">&lt;p&gt;I&amp;#8217;m officially a mentor this year for &lt;a class="reference external" href="http://www.google-melange.com/gsoc/homepage/google/gsoc2013"&gt;2013&amp;#8217;s Google Summer of Code&lt;/a&gt;.
-I&amp;#8217;m a bit late on posting this, but oh well! My student this year is
-&lt;a class="reference external" href="http://phaseshiftsoftware.com/"&gt;Quentin Headen&lt;/a&gt; who is &lt;a class="reference external" href="http://www.google-melange.com/gsoc/project/google/gsoc2013/qheaden/26001"&gt;working on&lt;/a&gt; a &lt;a class="reference external" href="http://en.wikipedia.org/wiki/Yahoo!_Messenger_Protocol"&gt;Yahoo! Messenger protocol&lt;/a&gt;
-for the Instantbird chat/ backend (so it&amp;#8217;ll also be usable via
-Thunderbird). You can see &lt;a class="reference external" href="http://phaseshiftsoftware.com/blog/category/gsoc-2013-logs/"&gt;an account of his trials, successes and
-trepidations&lt;/a&gt; (&lt;a class="reference external" href="http://phaseshiftsoftware.com/blog/category/gsoc-2013-logs/feed/"&gt;&lt;span class="caps"&gt;RSS&lt;/span&gt;&lt;/a&gt;) or follow his &lt;a class="reference external" href="https://bitbucket.org/qheaden/instantbird-gsoc-2013"&gt;code repository&lt;/a&gt;. He&amp;#8217;s made
-great progress so far and is able to connect, download all the buddies
-and start private conversations! Not too bad for a few weeks of work!
-We&amp;#8217;ve been keeping a &lt;a class="reference external" href="https://etherpad.mozilla.org/ELTNA6O44F"&gt;&lt;span class="caps"&gt;TODO&lt;/span&gt; list&lt;/a&gt; of things to be supported, please
-don&amp;#8217;t edit it without discussing it with us&amp;nbsp;first.&lt;/p&gt;
-&lt;p&gt;Our hope is to get this checked into Instantbird by the end of summer
-and run it in parallel (behind an &lt;a class="reference external" href="about:config"&gt;about:config&lt;/a&gt; preference) with the
-current libpurple Yahoo implementation. Once we&amp;#8217;re satisified that it
-has feature parity we&amp;#8217;ll remove the libpurple version and enable this by&amp;nbsp;default!&lt;/p&gt;
-&lt;p&gt;Instantbird is also supporting two other&amp;nbsp;projects:&lt;/p&gt;
-&lt;ul class="simple"&gt;
-&lt;li&gt;The &lt;a class="reference external" href="http://www.google-melange.com/gsoc/project/google/gsoc2013/nhnt11/7001"&gt;&amp;#8220;Awesometab&amp;#8221;&lt;/a&gt; is being done by &lt;a class="reference external" href="http://awesometab.blogspot.com/"&gt;Nihanth Subramanya&lt;/a&gt;
-(&lt;a class="reference external" href="http://awesometab.blogspot.com/feeds/posts/default?alt=rss"&gt;&lt;span class="caps"&gt;RSS&lt;/span&gt;&lt;/a&gt;)
-and being mentored by Benedikt Pfeifer, his code is &lt;a class="reference external" href="https://bitbucket.org/nhnt11/instantbird-addons"&gt;available&lt;/a&gt; and
-some has already been &lt;a class="reference external" href="http://hg.instantbird.org/instantbird/rev/55009d68c4ec"&gt;checked&lt;/a&gt; &lt;a class="reference external" href="http://hg.instantbird.org/instantbird/rev/46ee5c836e48"&gt;into&lt;/a&gt; &lt;a class="reference external" href="http://hg.instantbird.org/instantbird/rev/52401d522970"&gt;Instantbird&lt;/a&gt; &lt;a class="reference external" href="http://hg.instantbird.org/instantbird/rev/ea36babac4be"&gt;nightlies&lt;/a&gt;!&lt;/li&gt;
-&lt;li&gt;&lt;a class="reference external" href="http://www.google-melange.com/gsoc/project/google/gsoc2013/atuljangra/68001"&gt;FileLinks in &lt;span class="caps"&gt;IM&lt;/span&gt;&lt;/a&gt; is being worked on by &lt;a class="reference external" href="http://atuljangra.tumblr.com/"&gt;Atul Jangra&lt;/a&gt; (or &lt;a class="reference external" href="http://gsoc-mozilla.tumblr.com/"&gt;maybe&lt;/a&gt;)
-(&lt;a class="reference external" href="http://atuljangra.tumblr.com/rss"&gt;&lt;span class="caps"&gt;RSS&lt;/span&gt;&lt;/a&gt; /
-&lt;a class="reference external" href="http://gsoc-mozilla.tumblr.com/rss"&gt;&lt;span class="caps"&gt;RSS&lt;/span&gt;&lt;/a&gt;) and being mentored by
-Florian Quèze, check out the &lt;a class="reference external" href="https://bitbucket.org/atuljangra/instantbird-gsoc-2013"&gt;repository&lt;/a&gt;.&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;You can find any of us in #instantbird on irc.mozilla.org, my nick is
-clokep, Quentin&amp;#8217;s is qheaden, Nihanth&amp;#8217;s: nhnt11, Atul&amp;#8217;s: atuljangra,
-Benedikt goes by Mic and Florian goes by something starting with&amp;nbsp;&amp;#8220;flo&amp;#8221;.&lt;/p&gt;
-&lt;p&gt;Thanks also go out to Mozilla for letting us participate in Google
-Summer of Code with them again! You can see all of the accepted projects
-in &lt;a class="reference external" href="http://blog.gerv.net/2013/06/gsoc-2013-project-list/"&gt;Gerv&amp;#8217;s blogpost&lt;/a&gt;.&lt;/p&gt;
 </content><category term="articles"></category><category term="chat"></category><category term="GSoC"></category><category term="Instantbird"></category><category term="Yahoo"></category></entry></feed>

@@ -59,24 +59,26 @@
               Social
             </a>
 
-            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="social-dropdown">
-              <a class="dropdown-item" href="https://www.twitter.com/clokep" target="_blank">
-                <span class="fab fa-twitter mr-1"></span> twitter
-              </a>
+            <span class="dropdown-menu dropdown-menu-right" aria-labelledby="social-dropdown">
               <a class="dropdown-item" href="https://mastodon.social/@clokep" target="_blank">
-                <span class="fab fa-mastodon mr-1"></span> mastodon
+                  <span class="fab fa-mastodon mr-1"></span>
+                mastodon
               </a>
-              <a class="dropdown-item" href="https://www.github.com/clokep" target="_blank">
-                <span class="fab fa-github mr-1"></span> github
+              <a class="dropdown-item" href="https://www.twitter.com/clokep" target="_blank">
+                  <span class="fab fa-twitter mr-1"></span>
+                twitter
+              </a>
+              <a class="dropdown-item" href="https://matrix.to/#/@clokep:matrix.org" target="_blank">
+                  <span class="pl-3 mr-2"></span>
+                matrix
+              </a>
+              <a class="dropdown-item" href="https://github.com/clokep" target="_blank">
+                  <span class="fab fa-github mr-1"></span>
+                github
               </a>
               <a class="dropdown-item" href="https://gitlab.com/clokep" target="_blank">
-                <span class="fab fa-gitlab mr-1"></span> gitlab
-              </a>
-              <a class="dropdown-item" href="https://bitbucket.org/clokep" target="_blank">
-                <span class="fab fa-bitbucket mr-1"></span> bitbucket
-              </a>
-              <a class="dropdown-item" href="https://mozillians.org/u/clokep/" target="_blank">
-                <span class="fab fa-firefox mr-1"></span> mozillians
+                  <span class="fab fa-gitlab mr-1"></span>
+                gitlab
               </a>
             </div>
           </li>
@@ -102,14 +104,47 @@
       </div>
     </nav>
 
-<div class="container mt-4">
+<div class="container mt-1">
   <div class="row">
     <div class="col-md-12">
-      <h1>
-        <a href="/posts/2021/06/11/converting-twisteds-inlinecallbacks-to-async/">Converting Twisted&#8217;s <tt class="docutils literal">inlineCallbacks</tt> to <tt class="docutils literal">async</tt></a>
-      </h1>
+      <div class="float-right">
+        <span class="text-secondary font-weight-light font-italic">Thursday, January 5, 2023</span>
+      </div>
 
-      <i>Friday, June 11, 2021</i>
+      <h2>
+        <a href="/posts/2023/01/05/matrix-read-receipts-and-notifications/">Matrix Read Receipts <span class="amp">&amp;</span>&nbsp;Notifications</a>
+      </h2>
+
+      <p>I recently wrapped up a project on improving notifications in threads for Matrix.
+This is adapted from my <a href="https://hackmd.io/bbucQKOLTv66N4B_wjDLFQ">research notes</a>
+to understand the status quote before adapting the Matrix protocol for threads
+(in <a href="https://github.com/matrix-org/matrix-spec-proposals/pull/3771"><span class="caps">MSC3771</span></a> and
+<a href="https://github.com/matrix-org/matrix-spec-proposals/pull/3773"><span class="caps">MSC3773</span></a>).
+Hopefully others find the information&nbsp;useful!</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>These notes are true as of the …</p></div>
+
+      <div class="float-right">
+        <a href="/posts/2023/01/05/matrix-read-receipts-and-notifications/#disqus_thread">comments</a>
+      </div>
+
+      <a href="/posts/2023/01/05/matrix-read-receipts-and-notifications/">read more &rarr;</a>
+
+      <hr>
+    </div>
+  </div>
+</div>
+<div class="container mt-1">
+  <div class="row">
+    <div class="col-md-12">
+      <div class="float-right">
+        <span class="text-secondary font-weight-light font-italic">Friday, June 11, 2021</span>
+      </div>
+
+      <h2>
+        <a href="/posts/2021/06/11/converting-twisteds-inlinecallbacks-to-async/">Converting Twisted&#8217;s <tt class="docutils literal">inlineCallbacks</tt> to <tt class="docutils literal">async</tt></a>
+      </h2>
 
       
 <p>Almost a year ago we had a push at Element to convert the remaining instances of
@@ -128,14 +163,16 @@ for this blogpost).</p>
     </div>
   </div>
 </div>
-<div class="container mt-4">
+<div class="container mt-1">
   <div class="row">
     <div class="col-md-12">
-      <h1>
-        <a href="/posts/2021/05/24/celery-batches-0.5-released/">celery-batches 0.5&nbsp;released!</a>
-      </h1>
+      <div class="float-right">
+        <span class="text-secondary font-weight-light font-italic">Monday, May 24, 2021</span>
+      </div>
 
-      <i>Monday, May 24, 2021</i>
+      <h2>
+        <a href="/posts/2021/05/24/celery-batches-0.5-released/">celery-batches 0.5&nbsp;released!</a>
+      </h2>
 
       <p>A <a class="reference external" href="https://pypi.org/project/celery-batches/0.5/">new version (v0.5)</a> of <a class="reference external" href="https://github.com/clokep/celery-batches/">celery-batches</a> is available which adds support for
 Celery 5.1 and fixes storing of results when using the <a class="reference external" href="https://docs.celeryproject.org/en/v5.1.0/userguide/tasks.html#rpc-result-backend-rabbitmq-qpid"><span class="caps">RPC</span> result backend</a>.</p>
@@ -152,14 +189,16 @@ per client, unfortunately celery-batches was attempting to store the results …
     </div>
   </div>
 </div>
-<div class="container mt-4">
+<div class="container mt-1">
   <div class="row">
     <div class="col-md-12">
-      <h1>
-        <a href="/posts/2021/05/07/django-allauth-2fa-transfer/">A new maintainer for&nbsp;django-allauth-2fa</a>
-      </h1>
+      <div class="float-right">
+        <span class="text-secondary font-weight-light font-italic">Friday, May 7, 2021</span>
+      </div>
 
-      <i>Friday, May 7, 2021</i>
+      <h2>
+        <a href="/posts/2021/05/07/django-allauth-2fa-transfer/">A new maintainer for&nbsp;django-allauth-2fa</a>
+      </h2>
 
       <p>I&#8217;m excited to announce the <a class="reference external" href="https://github.com/valohai/django-allauth-2fa/">django-allauth-2fa</a> project has a new maintainer!
 It can now be found under the <a class="reference external" href="https://github.com/valohai/">valohai</a> organization on GitHub, who have
@@ -178,14 +217,16 @@ using <a class="reference external" href="https://www.intenct.nl/projects/django
     </div>
   </div>
 </div>
-<div class="container mt-4">
+<div class="container mt-1">
   <div class="row">
     <div class="col-md-12">
-      <h1>
-        <a href="/posts/2021/02/26/django-querysetsequence-0-14-released/">django-querysetsequence 0.14&nbsp;released!</a>
-      </h1>
+      <div class="float-right">
+        <span class="text-secondary font-weight-light font-italic">Friday, February 26, 2021</span>
+      </div>
 
-      <i>Friday, February 26, 2021</i>
+      <h2>
+        <a href="/posts/2021/02/26/django-querysetsequence-0-14-released/">django-querysetsequence 0.14&nbsp;released!</a>
+      </h2>
 
       <p><a class="reference external" href="https://github.com/clokep/django-querysetsequence/">django-querysetsequence</a> 0.14 has been released with support for Django 3.2 (and
 Python 3.9). django-querysetsequence is a Django package for
@@ -203,14 +244,16 @@ supports <a class="reference external" href="https://django-querysetsequence.rea
     </div>
   </div>
 </div>
-<div class="container mt-4">
+<div class="container mt-1">
   <div class="row">
     <div class="col-md-12">
-      <h1>
-        <a href="/posts/2020/11/30/celery-batches-0.4-released/">celery-batches 0.4&nbsp;released!</a>
-      </h1>
+      <div class="float-right">
+        <span class="text-secondary font-weight-light font-italic">Monday, November 30, 2020</span>
+      </div>
 
-      <i>Monday, November 30, 2020</i>
+      <h2>
+        <a href="/posts/2020/11/30/celery-batches-0.4-released/">celery-batches 0.4&nbsp;released!</a>
+      </h2>
 
       <p>Earlier today I released a version <a class="reference external" href="https://pypi.org/project/celery-batches/0.4/">0.4</a> of <a class="reference external" href="https://github.com/clokep/celery-batches/">celery-batches</a> with support for
 Celery 5.0. As part of this release support for Python &lt; 3.6 was dropped and
@@ -223,6 +266,115 @@ support for Celery &lt; 4.4 was&nbsp;dropped.</p>
       </div>
 
       <a href="/posts/2020/11/30/celery-batches-0.4-released/">read more &rarr;</a>
+
+      <hr>
+    </div>
+  </div>
+</div>
+<div class="container mt-1">
+  <div class="row">
+    <div class="col-md-12">
+      <div class="float-right">
+        <span class="text-secondary font-weight-light font-italic">Tuesday, October 27, 2020</span>
+      </div>
+
+      <h2>
+        <a href="/posts/2020/10/27/django-render-block-0.8-released/">django-render-block 0.8 (and 0.8.1)&nbsp;released!</a>
+      </h2>
+
+      <p>A couple of weeks ago I released version 0.8 of <a class="reference external" href="https://github.com/clokep/django-render-block/">django-render-block</a>, this was
+followed up with a 0.8.1 to fix a&nbsp;regression.</p>
+<p>django-render-block is a small library that allows you render a specific <tt class="docutils literal">block</tt>
+from a Django (or Jinja) template, this is frequently used for emails when …</p>
+
+      <div class="float-right">
+        <a href="/posts/2020/10/27/django-render-block-0.8-released/#disqus_thread">comments</a>
+      </div>
+
+      <a href="/posts/2020/10/27/django-render-block-0.8-released/">read more &rarr;</a>
+
+      <hr>
+    </div>
+  </div>
+</div>
+<div class="container mt-1">
+  <div class="row">
+    <div class="col-md-12">
+      <div class="float-right">
+        <span class="text-secondary font-weight-light font-italic">Wednesday, September 9, 2020</span>
+      </div>
+
+      <h2>
+        <a href="/posts/2020/09/09/instantbird-blog-wordpress-to-pelican/">Instantbird Blog: WordPress to&nbsp;Pelican</a>
+      </h2>
+
+      <p>The <a class="reference external" href="https://blog.instantbird.org">Instantbird blog</a> is now (as of mid-April 2020) hosted on GitHub Pages
+(instead of self-hosted <a class="reference external" href="https://wordpress.com/">WordPress</a>) <a class="footnote-reference" href="#id5" id="id1">[1]</a>. Hopefully it was converted faithfully,
+but feel free to let us know if you see something broken! You can file an issue
+at <a class="reference external" href="https://github.com/instantbird/blog.instantbird.org/">the repo for the blog</a> or just comment&nbsp;below …</p>
+
+      <div class="float-right">
+        <a href="/posts/2020/09/09/instantbird-blog-wordpress-to-pelican/#disqus_thread">comments</a>
+      </div>
+
+      <a href="/posts/2020/09/09/instantbird-blog-wordpress-to-pelican/">read more &rarr;</a>
+
+      <hr>
+    </div>
+  </div>
+</div>
+<div class="container mt-1">
+  <div class="row">
+    <div class="col-md-12">
+      <div class="float-right">
+        <span class="text-secondary font-weight-light font-italic">Tuesday, July 14, 2020</span>
+      </div>
+
+      <h2>
+        <a href="/posts/2020/07/14/testing-wireviz/">Testing&nbsp;WireViz</a>
+      </h2>
+
+      <p>I wanted to play with the <a class="reference external" href="https://github.com/formatc1702/WireViz">WireViz</a> Python package, which makes pretty wire
+diagrams. Installation was pretty easy, just created a virtualenv and installed
+with&nbsp;pip:</p>
+<div class="highlight"><pre><span></span>pip install wireviz
+</pre></div>
+<p>Documentation is pretty limited, but looking through the <a class="reference external" href="https://github.com/formatc1702/WireViz/tree/fffb354d7c86cc4f85d1e7e0753a07f7b6a65fa7/tutorial">tutorials</a> and the
+<a class="reference external" href="https://github.com/formatc1702/WireViz/blob/fffb354d7c86cc4f85d1e7e0753a07f7b6a65fa7/src/wireviz/DataClasses.py">data models</a> you get a pretty good idea of what …</p>
+
+      <div class="float-right">
+        <a href="/posts/2020/07/14/testing-wireviz/#disqus_thread">comments</a>
+      </div>
+
+      <a href="/posts/2020/07/14/testing-wireviz/">read more &rarr;</a>
+
+      <hr>
+    </div>
+  </div>
+</div>
+<div class="container mt-1">
+  <div class="row">
+    <div class="col-md-12">
+      <div class="float-right">
+        <span class="text-secondary font-weight-light font-italic">Friday, June 12, 2020</span>
+      </div>
+
+      <h2>
+        <a href="/posts/2020/06/12/raspberry-pi-file-server/">Raspberry Pi File&nbsp;Server</a>
+      </h2>
+
+      <p>This is just some quick notes (for myself) of how I recently setup my Raspberry
+Pi as a file server. The goal was to have a shared folder so that a Sonos could
+play music from it. The data would be backed via a microSD card plugged into
+<span class="caps">USB</span>.</p>
+<ol class="arabic simple">
+<li>Update …</li></ol>
+
+      <div class="float-right">
+        <a href="/posts/2020/06/12/raspberry-pi-file-server/#disqus_thread">comments</a>
+      </div>
+
+      <a href="/posts/2020/06/12/raspberry-pi-file-server/">read more &rarr;</a>
 
     </div>
   </div>
@@ -253,24 +405,6 @@ support for Celery &lt; 4.4 was&nbsp;dropped.</p>
           </li>
           <li class="page-item">
             <a class="page-link" href="/index7.html" >7</a>
-          </li>
-          <li class="page-item">
-            <a class="page-link" href="/index8.html" >8</a>
-          </li>
-          <li class="page-item">
-            <a class="page-link" href="/index9.html" >9</a>
-          </li>
-          <li class="page-item">
-            <a class="page-link" href="/index10.html" >10</a>
-          </li>
-          <li class="page-item">
-            <a class="page-link" href="/index11.html" >11</a>
-          </li>
-          <li class="page-item">
-            <a class="page-link" href="/index12.html" >12</a>
-          </li>
-          <li class="page-item">
-            <a class="page-link" href="/index13.html" >13</a>
           </li>
         </ul>
       </nav>

@@ -6,8 +6,155 @@
 had different database tables that we needed to query over as if they were a
 single database table. We use &lt;a href="https://www.djangoproject.com/"&gt;Django&lt;/a&gt; as an
 &lt;a href="https://en.wikipedia.org/wiki/Object-relational_mapping"&gt;&lt;span class="caps"&gt;ORM&lt;/span&gt;&lt;/a&gt; and needed to
-stay within the &lt;span class="caps"&gt;ORM …&lt;/span&gt;&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Patrick Cloke</dc:creator><pubDate>Thu, 04 Feb 2016 16:00:00 -0500</pubDate><guid isPermaLink="false">tag:patrick.cloke.us,2016-02-04:/posts/2016/02/04/combining-disparate-querysets-in-django/</guid><category>articles</category><category>django</category><category>django-querysetsequence</category><category>crosspost</category></item><item><title>Community and Volunteers</title><link>https://patrick.cloke.us/posts/2014/04/16/community-and-volunteers/</link><description>&lt;p&gt;It was suggested that I cross-post this from mozilla.dev.planning onto
+stay within the &lt;span class="caps"&gt;ORM&lt;/span&gt; in order to leverage third-party&amp;nbsp;libraries.&lt;/p&gt;
+&lt;p&gt;Our two models have overlapping fields, in this instance both had a &lt;code&gt;name&lt;/code&gt; field
+to search over and a &lt;code&gt;created&lt;/code&gt; field to order on. A naive implementation might
+serialize all the data to memory and come up with implementations&amp;nbsp;like:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="c1"&gt;# Consider ModelA and ModelB to exist somewhere, both have a name (CharField)&lt;/span&gt;
+&lt;span class="c1"&gt;# and created (DateTimeField).&lt;/span&gt;
+
+&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;itertools&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;chain&lt;/span&gt;
+
+&lt;span class="c1"&gt;# Sorted data.&lt;/span&gt;
+&lt;span class="n"&gt;sorted_data&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="nb"&gt;sorted&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;
+    &lt;span class="n"&gt;chain&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;
+        &lt;span class="n"&gt;ModelA&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;objects&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;order_by&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;-created&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;),&lt;/span&gt;
+        &lt;span class="n"&gt;ModelB&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;objects&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;order_by&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;-created&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;),&lt;/span&gt;
+    &lt;span class="p"&gt;),&lt;/span&gt;
+    &lt;span class="n"&gt;key&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="k"&gt;lambda&lt;/span&gt; &lt;span class="n"&gt;instance&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="n"&gt;instance&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;date&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+    &lt;span class="n"&gt;reverse&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="kc"&gt;True&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+
+&lt;span class="c1"&gt;# Search for a particular result.&lt;/span&gt;
+&lt;span class="n"&gt;result&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="kc"&gt;None&lt;/span&gt;
+&lt;span class="k"&gt;try&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
+    &lt;span class="n"&gt;result&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;ModelA&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;objects&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;get&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;name&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;foo&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="k"&gt;except&lt;/span&gt; &lt;span class="n"&gt;ModelA&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;DoesNotExist&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
+    &lt;span class="k"&gt;try&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
+        &lt;span class="n"&gt;result&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;ModelB&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;objects&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;get&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;name&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;foo&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+    &lt;span class="k"&gt;except&lt;/span&gt; &lt;span class="n"&gt;ModelB&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;DoesNotExist&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
+        &lt;span class="k"&gt;pass&lt;/span&gt;
+
+&lt;span class="c1"&gt;# Look at a subset.&lt;/span&gt;
+&lt;span class="n"&gt;subset_data&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nb"&gt;list&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;ModelA&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;objects&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;filter&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;name__contains&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;foo&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt; &lt;span class="o"&gt;+&lt;/span&gt;
+               &lt;span class="nb"&gt;list&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;ModelB&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;objects&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;filter&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;name__contains&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;foo&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)))&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;This has two issues we had to&amp;nbsp;overcome:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;We had too much data to serialize to&amp;nbsp;memory.&lt;/li&gt;
+&lt;li&gt;We needed to pass the result into Django APIs that expected a &lt;code&gt;QuerySet&lt;/code&gt;.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;Enter &lt;a href="https://github.com/percipient/django-querysetsequence"&gt;Django QuerySetSequence&lt;/a&gt;!
+We built Django QuerySetSequence (based on some previously available code) to
+provide the&amp;nbsp;following:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Provide a &lt;code&gt;QuerySet&lt;/code&gt; &lt;span class="caps"&gt;API&lt;/span&gt; that operates over multiple &lt;code&gt;QuerySets&lt;/code&gt; generated
+    from different &lt;code&gt;Model&lt;/code&gt; classes.&lt;/li&gt;
+&lt;li&gt;Evaluate each &lt;code&gt;QuerySet&lt;/code&gt; lazily (i.e. as late as&amp;nbsp;possible).&lt;/li&gt;
+&lt;li&gt;High quality code with&amp;nbsp;tests.&lt;/li&gt;
+&lt;li&gt;Guard against calling untested&amp;nbsp;methods.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;This allows much more Django-esque&amp;nbsp;code:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="c1"&gt;# Consider ModelA and ModelB to exist somewhere, both have a name (CharField)&lt;/span&gt;
+&lt;span class="c1"&gt;# and created (DateTimeField).&lt;/span&gt;
+&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;django.core.exceptions&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;ObjectDoesNotExist&lt;/span&gt;
+
+&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;queryset_sequence&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;QuerySetSequence&lt;/span&gt;
+
+&lt;span class="n"&gt;queryset&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;QuerySetSequence&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;ModelA&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;objects&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;all&lt;/span&gt;&lt;span class="p"&gt;(),&lt;/span&gt; &lt;span class="n"&gt;ModelB&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;objects&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;all&lt;/span&gt;&lt;span class="p"&gt;())&lt;/span&gt;
+
+&lt;span class="c1"&gt;# Sorted data.&lt;/span&gt;
+&lt;span class="n"&gt;sorted_data&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;queryset&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;order_by&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;-created&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+
+&lt;span class="c1"&gt;# Search for a particular result:&lt;/span&gt;
+&lt;span class="k"&gt;try&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
+    &lt;span class="n"&gt;result&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;queryset&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;get&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;name&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;foo&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="k"&gt;except&lt;/span&gt; &lt;span class="n"&gt;ObjectDoesNotExist&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
+    &lt;span class="n"&gt;result&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="kc"&gt;None&lt;/span&gt;
+
+&lt;span class="c1"&gt;# Look at a subset.&lt;/span&gt;
+&lt;span class="n"&gt;subset_data&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;queryset&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;filter&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;name__contains&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;foo&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;Currently Django QuerySetSequence supports both Django 1.8 and Django 1.9 on
+Python 2.7, 3.4 and 3.5. Check out the full set of features or contribute to the
+&lt;a href="https://github.com/percipient/django-querysetsequence"&gt;source repository&lt;/a&gt;. You
+can install &lt;code&gt;django-querysetsequence&lt;/code&gt; package from
+&lt;a href="https://pypi.python.org/pypi/django-querysetsequence"&gt;pypi&lt;/a&gt; using&amp;nbsp;pip:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;pip install django-querysetsequence
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;If you&amp;#8217;re using Django QuerySetSequence we&amp;#8217;d love to
+&lt;a href="mailto:support@strongarm.io"&gt;hear about it&lt;/a&gt;!&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Patrick Cloke</dc:creator><pubDate>Thu, 04 Feb 2016 16:00:00 -0500</pubDate><guid isPermaLink="false">tag:patrick.cloke.us,2016-02-04:/posts/2016/02/04/combining-disparate-querysets-in-django/</guid><category>articles</category><category>django</category><category>django-querysetsequence</category><category>crosspost</category></item><item><title>Community and Volunteers</title><link>https://patrick.cloke.us/posts/2014/04/16/community-and-volunteers/</link><description>&lt;p&gt;It was suggested that I cross-post this from mozilla.dev.planning onto
 my blog. This is in reply to a thread entitled &amp;#8220;&lt;a class="reference external" href="https://groups.google.com/forum/#%21topic/mozilla.dev.planning/P8oHKTCWSiQ"&gt;Proposal: Move
 Thunderbird and SeaMonkey to mozilla-central&lt;/a&gt;&amp;#8221; about (essentially)
 merging comm-central back into mozilla-central. There have been many
-technical concerns raised in the thread (that I&amp;#8217;m not …&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Patrick Cloke</dc:creator><pubDate>Wed, 16 Apr 2014 12:34:00 -0400</pubDate><guid isPermaLink="false">tag:patrick.cloke.us,2014-04-16:/posts/2014/04/16/community-and-volunteers/</guid><category>articles</category><category>community</category><category>crosspost</category><category>Mozilla</category><category>Thunderbird</category></item></channel></rss>
+technical concerns raised in the thread (that I&amp;#8217;m not going to rehash
+here). What I&amp;#8217;m more interested in is the lack of community feeling
+there. As Nicholas Nethercote said in that&amp;nbsp;thread:&lt;/p&gt;
+&lt;blockquote&gt;
+&amp;#8220;I am surprised [&amp;#8230;] by how heartless the discussion has been.&amp;#8221;&lt;/blockquote&gt;
+&lt;p&gt;I should note that I did have some help editing this down from my
+original post. Turns out I tend to write inflammatory statements that
+don&amp;#8217;t help get me point across. Who knew? Anyway, thanks to all of you
+who helped me out&amp;nbsp;there!&lt;/p&gt;
+&lt;p&gt;My full post is below (with a few links added and plaintext formatting
+converted to &lt;span class="caps"&gt;HTML&lt;/span&gt;&amp;nbsp;formatting):&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;﻿On Monday, April 14, 2014 4:52:53 &lt;span class="caps"&gt;PM&lt;/span&gt; &lt;span class="caps"&gt;UTC&lt;/span&gt;-4, Nicholas Nethercote&amp;nbsp;wrote:&lt;/p&gt;
+&lt;p&gt;&amp;gt; The technical aspects of this decision have been discussed to death,
+&amp;gt; so I won&amp;#8217;t say anything about that. I am surprised, however, by how
+&amp;gt; heartless the discussion has&amp;nbsp;been.&lt;/p&gt;
+&lt;p&gt;I agree, the technical bitshere seem to have solutions suggested by
+Joshua and others, but the non-technical parts of this discussion
+have left mefeeling disheartened and confused with the Mozilla&amp;nbsp;community.&lt;/p&gt;
+&lt;p&gt;I find it ironic/amusing/sad/upsetting that a few threads above this
+is a thread entitled &amp;#8220;&lt;a class="reference external" href="https://groups.google.com/forum/#!topic/mozilla.dev.planning/1kbZsYoQcng"&gt;Contributor pathways, engagement points and
+bug mentoring&lt;/a&gt;&amp;#8221; while in this thread I see community contributors
+being blocked at every&amp;nbsp;turn!&lt;/p&gt;
+&lt;p&gt;Here I don&amp;#8217;t see people attempting to foster a community by putting
+their best foot forward. I see people trying to get their &lt;strong&gt;job&lt;/strong&gt;
+done; with an attitude of &amp;#8220;if this doesn&amp;#8217;t help me, get it outta my
+way!&amp;#8221; I don&amp;#8217;t think this is the right way to grow a community. I
+don&amp;#8217;t think this is how Mozilla &lt;span class="caps"&gt;HAS&lt;/span&gt; grown it&amp;#8217;s community. I don&amp;#8217;t
+think it&amp;#8217;s in line with what Mozilla expects from it&amp;#8217;s community
+members (both employees and&amp;nbsp;volunteers!)&lt;/p&gt;
+&lt;p&gt;Personally, I dislike the amount of Mozilla &lt;strong&gt;Corporation&lt;/strong&gt; goals
+focus in this thread. Can we have a discussion aspart ofa larger
+community? Why must it focus on Corporate goals? I&amp;#8217;m not part of the
+corporation, I don&amp;#8217;t really care what its goals are or are not. I
+care about Mozilla, I care about providing high-quality, free, open
+source softwareto improve the experience of the Internet for
+everyone. And no, I&amp;#8217;m not talking about Firefox. I&amp;#8217;m talking about
+Thunderbird. I understand that Mozilla&amp;#8217;s goals arecurrently Firefox
+and Firefox &lt;span class="caps"&gt;OS&lt;/span&gt;, but these are not my personal&amp;nbsp;goals.&lt;/p&gt;
+&lt;p&gt;At the Summit I had a few conversations with people about
+&amp;#8220;on-boarding&amp;#8221; new employees and getting them to understand how the
+community works and that interacting with the community in a
+positive manner is an important part of Mozilla. I don&amp;#8217;t remember
+the exact context, but part of it wasthat it is important that new
+employees don&amp;#8217;t think of it as &amp;#8220;How can I &lt;em&gt;use&lt;/em&gt; the community?&amp;#8221;, for
+that implies taking advtange of them, but &amp;#8220;How can I work with the&amp;nbsp;community?&amp;#8221;&lt;/p&gt;
+&lt;p&gt;Please don&amp;#8217;t see this as an &amp;#8220;employees vs. volunteers&amp;#8221; argument. I
+believe that I&amp;#8217;m expected to live up to these same goals. If I, as a
+volunteer, can help an employee achieve his goals; I&amp;#8217;m
+&lt;span class="strike"&gt;more than willing&lt;/span&gt;, no&amp;#8230;I&amp;#8217;m &lt;span class="caps"&gt;EXPECTED&lt;/span&gt; to do that. I think
+this is a two-way relationship that must be fostered. It has seemed
+to me that over the past couple of years that I&amp;#8217;ve been hanging
+around here there&amp;#8217;s been less and less focus on the community and
+more and more on the&amp;nbsp;Corporation.&lt;/p&gt;
+&lt;p&gt;I understand Thunderbird and SeaMonkey may not be important to you,
+but it is important tome! (And otherswho contribute
+totheThunderbird/SeaMonkey community, including employees who
+contribute on their spare time.) When Mozilla stopped directly
+supporting development of Thunderbird it was widely announced that
+&amp;#8220;Thunderbird is dead!&amp;#8221;. We, as part of the Mozilla community, have
+been fighting to prove this wrong.Could you please respect our
+efforts? Merging c-c into m-c will help us focus our efforts on
+building a great product instead of spending significant effort on
+keeping a dying one on life-support. (And prove to all that
+&amp;#8220;Thunderbird is dead!&amp;#8221; was just a sensational&amp;nbsp;headline.)&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;I don&amp;#8217;t have much else to say beyond that (besides thanks for reading
+this&amp;nbsp;far!)&lt;/p&gt;
+</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Patrick Cloke</dc:creator><pubDate>Wed, 16 Apr 2014 12:34:00 -0400</pubDate><guid isPermaLink="false">tag:patrick.cloke.us,2014-04-16:/posts/2014/04/16/community-and-volunteers/</guid><category>articles</category><category>community</category><category>crosspost</category><category>Mozilla</category><category>Thunderbird</category></item></channel></rss>

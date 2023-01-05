@@ -1,0 +1,342 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Feed configuration. -->
+    <link href="https://patrick.cloke.us/feeds/atom.xml" type="application/atom+xml" rel="alternate" title="Patrick Cloke Atom Feed" />
+    <link href="https://patrick.cloke.us/feeds/rss.xml" type="application/rss+xml" rel="alternate" title="Patrick Cloke RSS Feed" />
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
+    <link rel="stylesheet" href="/theme/css/styles.css">
+    <link rel="stylesheet" href="/theme/css/borland.css">
+    <link rel="stylesheet" href="/theme/css/youtube.css">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
+
+    <title>Matrix Read Receipts & Notifications</title>
+
+    <meta property="og:site_name" content="Patrick Cloke" />
+<meta property="og:title" content="Matrix Read Receipts & Notifications" />
+<meta property="og:url" content="https://patrick.cloke.us/posts/2023/01/05/matrix-read-receipts-and-notifications/" />
+<meta property="og:description" content="I recently wrapped up a project on improving notifications in threads for Matrix. This is adapted from my research notes to understand the status quote before adapting the Matrix protocol for threads (in MSC3771 and MSC3773). Hopefully others find the information useful! Note These notes are true as of the …" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2023-01-05T12:15:00-05:00" />
+<meta property="article:author" content="Patrick Cloke" />
+<meta property="article:tag" content="matrix" />
+<meta property="article:tag" content="notes" />
+
+    <script async defer data-domain="cloke.us" src="https://plausible.io/js/plausible.js"></script>
+  </head>
+
+  <body class="pb-5">
+    <nav class="navbar navbar-expand-lg sticky-top navbar-light bg-light border-bottom border-info">
+      <a class="navbar-brand" href="/">
+        Patrick Cloke
+      </a>
+
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-items" aria-controls="navbar-items" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="navbar-items">
+        <ul class="navbar-nav ml-auto">
+
+          <li class="nav-item">
+            <a class="nav-link" href="/pages/about.html">About</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/pages/projects.html">Projects</a>
+          </li>
+
+          <li class="nav-item">
+            <a class="nav-link" href="/archives.html">Archives</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/tags.html">Tags</a>
+          </li>
+
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="social-dropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              Social
+            </a>
+
+            <span class="dropdown-menu dropdown-menu-right" aria-labelledby="social-dropdown">
+              <a class="dropdown-item" href="https://mastodon.social/@clokep" target="_blank">
+                  <span class="fab fa-mastodon mr-1"></span>
+                mastodon
+              </a>
+              <a class="dropdown-item" href="https://www.twitter.com/clokep" target="_blank">
+                  <span class="fab fa-twitter mr-1"></span>
+                twitter
+              </a>
+              <a class="dropdown-item" href="https://matrix.to/#/@clokep:matrix.org" target="_blank">
+                  <span class="pl-3 mr-2"></span>
+                matrix
+              </a>
+              <a class="dropdown-item" href="https://github.com/clokep" target="_blank">
+                  <span class="fab fa-github mr-1"></span>
+                github
+              </a>
+              <a class="dropdown-item" href="https://gitlab.com/clokep" target="_blank">
+                  <span class="fab fa-gitlab mr-1"></span>
+                gitlab
+              </a>
+            </div>
+          </li>
+
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="feeds-dropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              Feeds
+            </a>
+
+            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="feeds-dropdown">
+              <a class="dropdown-item" href="https://patrick.cloke.us/feeds/atom.xml" type="application/atom+xml" rel="alternate">atom feed</a>
+              <a class="dropdown-item" href="https://patrick.cloke.us/feeds/rss.xml" type="application/rss+xml" rel="alternate">rss feed</a>
+            </div>
+          </li>
+
+          <form class="form-inline" method="get" action="http://www.google.com/search">
+            <input class="form-control form-control-sm mr-sm-2" type="search" name="q" placeholder="Search" aria-label="Search" />
+            <input type="hidden"  name="sitesearch" value="patrick.cloke.us" />
+
+            <button class="btn btn-sm btn-outline-info d-none d-sm-inline" type="submit">Search</button>
+          </form>
+        </ul>
+      </div>
+    </nav>
+
+<div class="container">
+  <div class="row">
+    <div class="col-md-12 mt-2 mb-2">
+      <h1>
+        <a href="/posts/2023/01/05/matrix-read-receipts-and-notifications/" rel="bookmark"
+           title="Permalink to Matrix Read Receipts & Notifications">Matrix Read Receipts <span class="amp">&amp;</span>&nbsp;Notifications</a>
+      </h1>
+
+      <div class="row">
+        <div class="col-sm">
+          <span class="text-secondary font-weight-light font-italic">Published on Thursday, January 5, 2023</span>
+
+          <br>
+          <span class="text-secondary font-weight-light font-italic">
+            Tags:               <a href="/tag/matrix.html">matrix</a>,              <a href="/tag/notes.html">notes</a>          </span>
+        </div>
+
+        <div class="col-sm text-right">
+          <a href="https://twitter.com/intent/tweet?text=Matrix%20Read%20Receipts%20%26%C2%A0Notifications&url=https%3A//patrick.cloke.us/posts/2023/01/05/matrix-read-receipts-and-notifications/&hashtags=matrix,notes" target="_blank" class="ml-1 mr-1" title="Share on Twitter">
+            <span class="fab fa-twitter"></span>
+          </a>
+          <a href="https://www.facebook.com/sharer/sharer.php?u=https%3A//patrick.cloke.us/posts/2023/01/05/matrix-read-receipts-and-notifications/" target="_blank" class="ml-1 mr-1" title="Share on Facebook">
+            <span class="fab fa-facebook"></span>
+          </a>
+          <a href="mailto:?subject=Matrix%20Read%20Receipts%20%26%C2%A0Notifications&amp;body=https%3A//patrick.cloke.us/posts/2023/01/05/matrix-read-receipts-and-notifications/" target="_blank" class="ml-1 mr-1" title="Share via Email">
+            <span class="fas fa-envelope"></span>
+          </a>
+        </div>
+      </div>
+
+      <hr>
+
+      <div>
+
+        <p>I recently wrapped up a project on improving notifications in threads for Matrix.
+This is adapted from my <a href="https://hackmd.io/bbucQKOLTv66N4B_wjDLFQ">research notes</a>
+to understand the status quote before adapting the Matrix protocol for threads
+(in <a href="https://github.com/matrix-org/matrix-spec-proposals/pull/3771"><span class="caps">MSC3771</span></a> and
+<a href="https://github.com/matrix-org/matrix-spec-proposals/pull/3773"><span class="caps">MSC3773</span></a>).
+Hopefully others find the information&nbsp;useful!</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>These notes are true as of the v1.3 of the Matrix spec and also cover some
+Matrix spec changes which may or may not have been merged since. It is known
+to be out of date with the changes from <a href="https://github.com/matrix-org/matrix-spec-proposals/pull/2285"><span class="caps">MSC2285</span></a>,
+<a href="https://github.com/matrix-org/matrix-spec-proposals/pull/3771"><span class="caps">MSC3771</span></a>, and
+<a href="https://github.com/matrix-org/matrix-spec-proposals/pull/3773"><span class="caps">MSC3773</span></a>.</p>
+</div>
+<hr>
+<h2>Receipts</h2>
+<p>Matrix uses &#8220;receipts&#8221; to note which part of a room has been read by a user.
+It considers the history for a room to be split into three sections<sup id="fnref:1"><a class="footnote-ref" href="#fn:1">1</a></sup>:</p>
+<ol>
+<li>Messages the user has read (or indicated they aren’t interested in&nbsp;them).</li>
+<li>Messages the user might have read some but not&nbsp;others.</li>
+<li>Messages the user hasn’t seen&nbsp;yet.</li>
+</ol>
+<p>The <strong>fully read marker</strong> is between 1 <span class="amp">&amp;</span> 2 while the <strong>read receipt</strong> is between
+2 <span class="amp">&amp;</span> 3. Note that fully read markers are not shared with other users while read receipts&nbsp;are.</p>
+<p>Another way to consider this is<sup id="fnref:2"><a class="footnote-ref" href="#fn:2">2</a></sup>:</p>
+<ol>
+<li><strong>Fully read marker</strong>: a private bookmark to indicate the point which has been
+   processed in the discussion. This allows a user to go back to it&nbsp;later.</li>
+<li><strong>Read receipts</strong>: public indicators of what a user has seen to inform other
+   participants that the user has seen&nbsp;it.</li>
+<li><strong>Hidden read receipts</strong>: a private mechanism to synchronize &#8220;unread messages&#8221;
+   indicators between a user&#8217;s devices (while still retaining the ability from 1
+   as a separate concept). (See <a href="https://github.com/matrix-org/matrix-spec-proposals/pull/2285"><span class="caps">MSC2285</span></a>.)</li>
+</ol>
+<h3><a href="https://spec.matrix.org/v1.3/client-server-api/#fully-read-markers">Fully read&nbsp;markers</a></h3>
+<p>They are stored in the room account data for the user (but modified via a separate <span class="caps">API</span>).</p>
+<p>The <span class="caps">API</span>&nbsp;is:</p>
+<p><code>POST /_matrix/client/v3/rooms/{roomId}/read_markers</code></p>
+<p>The read receipt can optionally be updated at the same&nbsp;time.</p>
+<p>In Element Web your fully read marker is displayed as the green line across the&nbsp;conversation.</p>
+<h3><a href="https://spec.matrix.org/v1.3/client-server-api/#receipts">Read&nbsp;receipts</a></h3>
+<p>Only <code>m.read</code> is defined at the moment, but it is meant to be generic&nbsp;infrastructure.</p>
+<p>Updating a read receipt updates a &#8220;marker&#8221; which causes any notifications prior
+to and including the event to be marked as read.<sup id="fnref:3"><a class="footnote-ref" href="#fn:3">3</a></sup> A user has a single read receipt
+&#8220;marker&#8221; per&nbsp;room.</p>
+<p>Passed to clients as an <code>m.receipt</code> event under the <code>ephemeral</code> array for each
+room in the <code>/sync</code> response. The event includes a map of event <span class="caps">ID</span> -&gt; receipt type
+-&gt; user <span class="caps">ID</span> -&gt; data (currently just a timestamp). Note that the event is a delta
+from previous events. An&nbsp;example:</p>
+<div class="highlight"><pre><span></span><code><span class="p">{</span>
+  <span class="nt">&quot;content&quot;</span><span class="p">:</span> <span class="p">{</span>
+    <span class="nt">&quot;$1435641916114394fHBLK:matrix.org&quot;</span><span class="p">:</span> <span class="p">{</span>
+      <span class="nt">&quot;m.read&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">&quot;@rikj:jki.re&quot;</span><span class="p">:</span> <span class="p">{</span>
+          <span class="nt">&quot;ts&quot;</span><span class="p">:</span> <span class="mi">1436451550453</span>
+        <span class="p">}</span>
+      <span class="p">}</span>
+    <span class="p">}</span>
+  <span class="p">},</span>
+  <span class="nt">&quot;room_id&quot;</span><span class="p">:</span> <span class="s2">&quot;!jEsUZKDJdhlrceRyVU:example.org&quot;</span><span class="p">,</span>
+  <span class="nt">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;m.receipt&quot;</span>
+<span class="p">}</span>
+</code></pre></div>
+
+<p>The <span class="caps">API</span>&nbsp;is:</p>
+<p><code>POST /_matrix/client/v3/rooms/{roomId}/receipt/{receiptType}/{eventId}</code></p>
+<p>In Element Web read receipts are the small avatars on the right hand side of the
+conversation. Note that your own read receipt is not&nbsp;shown.</p>
+<h3><a href="https://github.com/matrix-org/matrix-spec-proposals/pull/2285">Hidden read receipts (<span class="caps">MSC2285</span>)</a></h3>
+<p>A new receipt type (<code>m.read.hidden</code>) to set a read receipt without sharing it with
+other users. It also modifies the <code>/read_markers</code> <span class="caps">API</span> to accept the new receipt type
+and modifies the <code>/receipts</code> <span class="caps">API</span> to accept the fully read&nbsp;marker.</p>
+<p>This is useful to synchronize notifications across devices while keeping read
+status&nbsp;private.</p>
+<h2><a href="https://spec.matrix.org/v1.2/client-server-api/#push-rules">Push&nbsp;rules</a></h2>
+<p>A user&#8217;s push rules determine one or more user-specific actions on each event.
+They are customizable, but the homeserver provides default rules. They can result
+in an action&nbsp;to:</p>
+<ol>
+<li>Do&nbsp;nothing</li>
+<li>Notify the user (<code>notify</code> action), which can have additional actions (&#8220;tweaks&#8221;):<ol>
+<li>Highlight the message (<code>highlight</code> action)</li>
+<li>Play a sound (<code>sound</code> action)</li>
+</ol>
+</li>
+</ol>
+<p>By default, all new <code>m.room.message</code> and <code>m.room.encrypted</code> events generate a
+notification, events with a user&#8217;s display name or username in them or <code>@room</code>
+generate highlights,&nbsp;etc.</p>
+<h3><a href="https://github.com/matrix-org/matrix-spec-proposals/pull/3664">Push rules for relations (<span class="caps">MSC3664</span>)</a></h3>
+<p>Augments push rules to allow applying them to the target of an event relationship
+and defines a default push rule for replies (not using the reply&nbsp;fallback).</p>
+<h3><a href="https://github.com/matrix-org/matrix-spec-proposals/pull/2785">Event notification attributes and actions (<span class="caps">MSC2785</span>)</a></h3>
+<p>A proposed replacement for push rules, the results are essentially the same
+actions (and presumedly would not change the data returned in <code>/sync</code>, see&nbsp;below).</p>
+<h2><a href="https://spec.matrix.org/v1.3/client-server-api/#get_matrixclientv3sync">Notification counts in <code>/sync</code></a></h2>
+<p>The number of notification events and highlight events since the user&#8217;s last read
+receipt are both returned on a per room basis as part of a <code>/sync</code> response (for
+joined&nbsp;room).</p>
+<p>Notification and highlight events are any messages where the push rules resulted
+in an action of <code>notify</code> or <code>highlight</code>, respectively. (Note that a <code>highlight</code>
+action must be a <code>notify</code> action, thus <code>highlight_count &lt;= notification_count</code>.)</p>
+<p>An&nbsp;example:</p>
+<div class="highlight"><pre><span></span><code><span class="p">{</span>
+  <span class="nt">&quot;account_data&quot;</span><span class="p">:</span> <span class="p">[</span><span class="err">...</span><span class="p">],</span>
+  <span class="nt">&quot;ephemeral&quot;</span><span class="p">:</span> <span class="p">[</span><span class="err">...</span><span class="p">],</span>
+  <span class="nt">&quot;state&quot;</span><span class="p">:</span> <span class="p">[</span><span class="err">...</span><span class="p">],</span>
+  <span class="nt">&quot;summary&quot;</span><span class="p">:</span> <span class="p">{</span><span class="err">...</span><span class="p">},</span>
+  <span class="nt">&quot;timeline&quot;</span><span class="p">:</span> <span class="p">{</span><span class="err">...</span><span class="p">},</span>
+  <span class="nt">&quot;unread_notifications&quot;</span><span class="p">:</span> <span class="p">{</span>
+      <span class="nt">&quot;highlight_count&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+      <span class="nt">&quot;notification_count&quot;</span><span class="p">:</span> <span class="mi">0</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+
+<h3><a href="https://github.com/matrix-org/matrix-spec-proposals/pull/2654">Unread messages count (<span class="caps">MSC2654</span>)</a></h3>
+<p>A new field is added under the <code>unread_notifications</code> field (<code>unread_count</code>) which
+is the total number of events matching particular criteria since the user&#8217;s last
+read&nbsp;receipt.</p>
+<p>This replaces <a href="https://github.com/matrix-org/matrix-spec-proposals/pull/2625"><span class="caps">MSC2625</span></a>,
+which adds a new push rule action (<code>mark_unread</code>) to perform the same task. In this
+rendition, <code>notify</code> implies <code>mark_unread</code> and thus
+<code>highlight_count &lt;= notification_count &lt;= unread_count</code>.</p>
+<h2><a href="https://spec.matrix.org/v1.2/push-gateway-api/#post_matrixpushv1notify">Push&nbsp;notifications</a></h2>
+<p>Push notifications receive either the number of unread messages (across all rooms)
+or the number of rooms with unread messages (depending on the value of
+<code>push.group_unread_count_by_room</code> in the Synapse configuration). Unread messages
+are any messages where the push rules resulted in an action of <code>notify</code>.</p>
+<p>This information is sent from the homeserver to the push gateway as part of every&nbsp;notification:</p>
+<div class="highlight"><pre><span></span><code><span class="p">{</span>
+  <span class="nt">&quot;notifications&quot;</span><span class="p">:</span> <span class="p">{</span>
+    <span class="nt">&quot;counts&quot;</span><span class="p">:</span> <span class="p">{</span>
+      <span class="nt">&quot;unread&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+      <span class="err">...</span>
+    <span class="p">},</span>
+    <span class="err">...</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+
+<div class="footnote">
+<hr>
+<ol>
+<li id="fn:1">
+<p>From <a href="https://spec.matrix.org/v1.3/client-server-api/#fully-read-markers">the fully read marker</a> specification.&#160;<a class="footnote-backref" href="#fnref:1" title="Jump back to footnote 1 in the text">&#8617;</a></p>
+</li>
+<li id="fn:2">
+<p>See <a href="https://github.com/matrix-org/matrix-spec-proposals/pull/2285#discussion_r436383889">a discussion on <span class="caps">MSC2285</span></a>.&#160;<a class="footnote-backref" href="#fnref:2" title="Jump back to footnote 2 in the text">&#8617;</a></p>
+</li>
+<li id="fn:3">
+<p><a href="https://spec.matrix.org/v1.3/client-server-api/#receiving-notifications">Spec on receiving notifications</a>&#160;<a class="footnote-backref" href="#fnref:3" title="Jump back to footnote 3 in the text">&#8617;</a></p>
+</li>
+</ol>
+</div>
+      </div>
+
+<div id="disqus_thread"></div>
+<script>
+/**
+*  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+*  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/
+/*
+var disqus_config = function () {
+this.page.url = '/posts/2023/01/05/matrix-read-receipts-and-notifications/';
+this.page.identifier = 'matrix-read-receipts-and-notifications';
+};
+*/
+(function() { // DON'T EDIT BELOW THIS LINE
+var d = document, s = d.createElement('script');
+s.src = 'https://clokep.disqus.com/embed.js';
+s.setAttribute('data-timestamp', +new Date());
+(d.head || d.body).appendChild(s);
+})();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    </div>
+  </div>
+</div>
+
+    <nav class="navbar fixed-bottom navbar-light bg-light border-top border-info">
+      <a href="https://getpelican.com/" class="nav-item" target="_blank">Powered by Pelican</a>
+      <a href="https://github.com/clokep/clokep.github.io" class="nav-item" target="_blank">
+        Source available on GitHub <span class="fab fa-github"></span>
+      </a>
+    </nav>
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T" crossorigin="anonymous"></script>
+
+  </body>
+</html>

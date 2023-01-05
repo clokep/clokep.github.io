@@ -496,7 +496,7 @@ broker.&lt;/td&gt;&lt;/tr&gt;
 &lt;tbody valign="top"&gt;
 &lt;tr&gt;&lt;td class="label"&gt;&lt;a class="fn-backref" href="#id6"&gt;[6]&lt;/a&gt;&lt;/td&gt;&lt;td&gt;Note that there are two different versions of the protocol, they’re
 fairly similar, but version 2 moves some meta data from the body to the
-headers to avoid needing to deserialize the entire mesage multiple
+headers to avoid needing to deserialize the entire message multiple
 times. You can read &lt;a class="reference external" href="http://docs.celeryproject.org/en/latest/history/whatsnew-4.0.html#new-protocol-highlights"&gt;the highlights&lt;/a&gt; of the differences.&lt;/td&gt;&lt;/tr&gt;
 &lt;/tbody&gt;
 &lt;/table&gt;

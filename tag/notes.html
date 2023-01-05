@@ -18,12 +18,12 @@
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
 
-    <title>thunderbird</title>
+    <title>notes</title>
 
     <meta property="og:site_name" content="Patrick Cloke" />
-<meta property="og:title" content="thunderbird" />
-<meta property="og:url" content="https://patrick.cloke.us/tag/thunderbird.html" />
-<meta property="og:description" content="Articles tagged as thunderbird" />
+<meta property="og:title" content="notes" />
+<meta property="og:url" content="https://patrick.cloke.us/tag/notes.html" />
+<meta property="og:description" content="Articles tagged as notes" />
 
     <script async defer data-domain="cloke.us" src="https://plausible.io/js/plausible.js"></script>
   </head>
@@ -60,24 +60,26 @@
               Social
             </a>
 
-            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="social-dropdown">
-              <a class="dropdown-item" href="https://www.twitter.com/clokep" target="_blank">
-                <span class="fab fa-twitter mr-1"></span> twitter
-              </a>
+            <span class="dropdown-menu dropdown-menu-right" aria-labelledby="social-dropdown">
               <a class="dropdown-item" href="https://mastodon.social/@clokep" target="_blank">
-                <span class="fab fa-mastodon mr-1"></span> mastodon
+                  <span class="fab fa-mastodon mr-1"></span>
+                mastodon
               </a>
-              <a class="dropdown-item" href="https://www.github.com/clokep" target="_blank">
-                <span class="fab fa-github mr-1"></span> github
+              <a class="dropdown-item" href="https://www.twitter.com/clokep" target="_blank">
+                  <span class="fab fa-twitter mr-1"></span>
+                twitter
+              </a>
+              <a class="dropdown-item" href="https://matrix.to/#/@clokep:matrix.org" target="_blank">
+                  <span class="pl-3 mr-2"></span>
+                matrix
+              </a>
+              <a class="dropdown-item" href="https://github.com/clokep" target="_blank">
+                  <span class="fab fa-github mr-1"></span>
+                github
               </a>
               <a class="dropdown-item" href="https://gitlab.com/clokep" target="_blank">
-                <span class="fab fa-gitlab mr-1"></span> gitlab
-              </a>
-              <a class="dropdown-item" href="https://bitbucket.org/clokep" target="_blank">
-                <span class="fab fa-bitbucket mr-1"></span> bitbucket
-              </a>
-              <a class="dropdown-item" href="https://mozillians.org/u/clokep/" target="_blank">
-                <span class="fab fa-firefox mr-1"></span> mozillians
+                  <span class="fab fa-gitlab mr-1"></span>
+                gitlab
               </a>
             </div>
           </li>
@@ -103,95 +105,37 @@
       </div>
     </nav>
 
-<div class="container mt-4">
+<div class="container mt-1">
   <div class="row">
     <div class="col-md-12">
-      <h1>
-        <a href="/posts/2012/11/28/javascript-typed-arrays-pain/">JavaScript typed arrays&nbsp;pain</a>
-      </h1>
-
-      <i>Wednesday, November 28, 2012</i>
-
-      <p>If you&#8217;ve ever tried to deal with binary data in JavaScript you know
-it isn&#8217;t much fun and you usually resort to using strings lots of
-charCodeAt and related functions. <a class="reference external" href="https://developer.mozilla.org/en-US/docs/JavaScript_typed_arrays">Typed arrays</a> are supposed to solve
-this though! The typed array <span class="caps">API</span> consists of creating a buffer of …</p>
-
       <div class="float-right">
-        <a href="/posts/2012/11/28/javascript-typed-arrays-pain/#disqus_thread">comments</a>
+        <span class="text-secondary font-weight-light font-italic">Thursday, January 5, 2023</span>
       </div>
 
-      <a href="/posts/2012/11/28/javascript-typed-arrays-pain/">read more &rarr;</a>
+      <h2>
+        <a href="/posts/2023/01/05/matrix-read-receipts-and-notifications/">Matrix Read Receipts <span class="amp">&amp;</span>&nbsp;Notifications</a>
+      </h2>
 
-      <hr>
-    </div>
-  </div>
-</div>
-<div class="container mt-4">
-  <div class="row">
-    <div class="col-md-12">
-      <h1>
-        <a href="/posts/2012/10/16/on-status/">On&nbsp;Status</a>
-      </h1>
-
-      <i>Tuesday, October 16, 2012</i>
-
-      <p>Something that comes up often about Instantbird is why we only support
-three statuses: Available, Unavailable and Offline. (We do actually
-support a fourth one too, Idle, but that is set automatically, not
-chosen by the user.) Frequently this discussion is in the context of
-wanting an &#8220;Invisible&#8221; status, but …</p>
+      <p>I recently wrapped up a project on improving notifications in threads for Matrix.
+This is adapted from my <a href="https://hackmd.io/bbucQKOLTv66N4B_wjDLFQ">research notes</a>
+to understand the status quote before adapting the Matrix protocol for threads
+(in <a href="https://github.com/matrix-org/matrix-spec-proposals/pull/3771"><span class="caps">MSC3771</span></a> and
+<a href="https://github.com/matrix-org/matrix-spec-proposals/pull/3773"><span class="caps">MSC3773</span></a>).
+Hopefully others find the information&nbsp;useful!</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>These notes are true as of the …</p></div>
 
       <div class="float-right">
-        <a href="/posts/2012/10/16/on-status/#disqus_thread">comments</a>
+        <a href="/posts/2023/01/05/matrix-read-receipts-and-notifications/#disqus_thread">comments</a>
       </div>
 
-      <a href="/posts/2012/10/16/on-status/">read more &rarr;</a>
-
-      <hr>
-    </div>
-  </div>
-</div>
-<div class="container mt-4">
-  <div class="row">
-    <div class="col-md-12">
-      <h1>
-        <a href="/posts/2010/11/22/yahoo-thunderbird/">Yahoo <span class="amp">&amp;</span> Thunderbird Can Finally Play&nbsp;Nice?</a>
-      </h1>
-
-      <i>Monday, November 22, 2010</i>
-
-      <p>For years I&#8217;ve been dealing with Yahoo&#8217;s lack of support for any sort
-of decent (free) <span class="caps">POP3</span>/<span class="caps">IMAP</span>/<span class="caps">SMTP</span> protocol support. Why do I need this?
-So I can check my <a class="reference external" href="http://mail.yahoo.com/">Yahoo mail</a> in <a class="reference external" href="http://www.mozillamessaging.com/en-US/thunderbird/">Mozilla Thunderbird</a> of&nbsp;course!</p>
-<p>At first I used <a class="reference external" href="http://ypopsemail.com/"><span class="caps">YPOPS</span>!</a>, a program that read the …</p>
-
-      <div class="float-right">
-        <a href="/posts/2010/11/22/yahoo-thunderbird/#disqus_thread">comments</a>
-      </div>
-
-      <a href="/posts/2010/11/22/yahoo-thunderbird/">read more &rarr;</a>
+      <a href="/posts/2023/01/05/matrix-read-receipts-and-notifications/">read more &rarr;</a>
 
     </div>
   </div>
 </div>
 
-<div class="container">
-  <div class="row">
-    <div class="col-md-12">
-      <nav aria-label="Page navigation">
-        <ul class="pagination justify-content-center">
-          <li class="page-item">
-            <a class="page-link" href="/tag/thunderbird.html" >1</a>
-          </li>
-          <li class="page-item disabled">
-            <a class="page-link" href="/tag/thunderbird2.html" >2</a>
-          </li>
-        </ul>
-      </nav>
-    </div>
-  </div>
-</div>
 
 
     <nav class="navbar fixed-bottom navbar-light bg-light border-top border-info">

@@ -82,7 +82,7 @@ We&amp;#8217;ve been keeping a &lt;a class="reference external" href="https://et
 don&amp;#8217;t edit it without discussing it with us&amp;nbsp;first.&lt;/p&gt;
 &lt;p&gt;Our hope is to get this checked into Instantbird by the end of summer
 and run it in parallel (behind an &lt;a class="reference external" href="about:config"&gt;about:config&lt;/a&gt; preference) with the
-current libpurple Yahoo implementation. Once we&amp;#8217;re satisified that it
+current libpurple Yahoo implementation. Once we&amp;#8217;re satisfied that it
 has feature parity we&amp;#8217;ll remove the libpurple version and enable this by&amp;nbsp;default!&lt;/p&gt;
 &lt;p&gt;Instantbird is also supporting two other&amp;nbsp;projects:&lt;/p&gt;
 &lt;ul class="simple"&gt;

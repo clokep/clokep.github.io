@@ -2,4 +2,57 @@
 <rss version="2.0"><channel><title>Patrick Cloke - django-render-block</title><link>https://patrick.cloke.us/</link><description></description><lastBuildDate>Tue, 27 Oct 2020 16:57:00 -0400</lastBuildDate><item><title>django-render-block 0.8 (and 0.8.1) released!</title><link>https://patrick.cloke.us/posts/2020/10/27/django-render-block-0.8-released/</link><description>&lt;p&gt;A couple of weeks ago I released version 0.8 of &lt;a class="reference external" href="https://github.com/clokep/django-render-block/"&gt;django-render-block&lt;/a&gt;, this was
 followed up with a 0.8.1 to fix a&amp;nbsp;regression.&lt;/p&gt;
 &lt;p&gt;django-render-block is a small library that allows you render a specific &lt;tt class="docutils literal"&gt;block&lt;/tt&gt;
-from a Django (or Jinja) template, this is frequently used for emails when …&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Patrick Cloke</dc:creator><pubDate>Tue, 27 Oct 2020 16:57:00 -0400</pubDate><guid isPermaLink="false">tag:patrick.cloke.us,2020-10-27:/posts/2020/10/27/django-render-block-0.8-released/</guid><category>articles</category><category>django</category><category>django-render-block</category></item></channel></rss>
+from a Django (or Jinja) template, this is frequently used for emails when you
+want multiple pieces of an email together in a single template (e.g. the subject,
+&lt;span class="caps"&gt;HTML&lt;/span&gt; body, and text body), but they need to be rendered separately before&amp;nbsp;sending.&lt;/p&gt;
+&lt;p&gt;See the example&amp;nbsp;below:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="cp"&gt;{%&lt;/span&gt; &lt;span class="k"&gt;block&lt;/span&gt; &lt;span class="nv"&gt;subject&lt;/span&gt; &lt;span class="cp"&gt;%}&lt;/span&gt;&lt;span class="x"&gt;Hello from django-render-block!&lt;/span&gt;&lt;span class="cp"&gt;{%&lt;/span&gt; &lt;span class="k"&gt;endblock&lt;/span&gt; &lt;span class="cp"&gt;%}&lt;/span&gt;&lt;span class="x"&gt;&lt;/span&gt;
+
+&lt;span class="cp"&gt;{%&lt;/span&gt; &lt;span class="k"&gt;block&lt;/span&gt; &lt;span class="nv"&gt;text&lt;/span&gt; &lt;span class="cp"&gt;%}&lt;/span&gt;&lt;span class="x"&gt;&lt;/span&gt;
+&lt;span class="x"&gt;Hello!&lt;/span&gt;
+
+&lt;span class="x"&gt;This is the text email body!&lt;/span&gt;
+&lt;span class="cp"&gt;{%&lt;/span&gt; &lt;span class="k"&gt;endblock&lt;/span&gt; &lt;span class="cp"&gt;%}&lt;/span&gt;&lt;span class="x"&gt;&lt;/span&gt;
+
+&lt;span class="cp"&gt;{%&lt;/span&gt; &lt;span class="k"&gt;block&lt;/span&gt; &lt;span class="nv"&gt;html&lt;/span&gt; &lt;span class="cp"&gt;%}&lt;/span&gt;&lt;span class="x"&gt;&lt;/span&gt;
+&lt;span class="x"&gt;&amp;lt;h1&amp;gt;Hello!&amp;lt;/h1&amp;gt;&lt;/span&gt;
+
+&lt;span class="x"&gt;&amp;lt;p&amp;gt;This is the &amp;lt;b&amp;gt;HTML&amp;lt;/b&amp;gt; email body!&amp;lt;/p&amp;gt;&lt;/span&gt;
+&lt;span class="cp"&gt;{%&lt;/span&gt; &lt;span class="k"&gt;endblock&lt;/span&gt; &lt;span class="cp"&gt;%}&lt;/span&gt;&lt;span class="x"&gt;&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Using django-render-block, each &lt;tt class="docutils literal"&gt;block&lt;/tt&gt; can be rendered separately and then
+passed into Django&amp;#8217;s &lt;a class="reference external" href="https://docs.djangoproject.com/en/3.1/topics/email/"&gt;email system&lt;/a&gt;:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;django.core.mail&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;send_mail&lt;/span&gt;
+&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;render_block&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;render_block_to_string&lt;/span&gt;
+
+&lt;span class="n"&gt;subject&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;render_block_to_string&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;email.html&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;subject&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="n"&gt;text_body&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;render_block_to_string&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;email.html&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;text&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="n"&gt;html_body&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;render_block_to_string&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;email.html&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;html&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+
+&lt;span class="n"&gt;send_mail&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;
+    &lt;span class="n"&gt;subject&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+    &lt;span class="n"&gt;text_body&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+    &lt;span class="n"&gt;html_message&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;html_body&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;This particular release of django-render-block includes support for passing
+a fully instantiated &lt;a class="reference external" href="https://docs.djangoproject.com/en/dev/ref/templates/api/#django.template.Context"&gt;&lt;tt class="docutils literal"&gt;Context&lt;/tt&gt;&lt;/a&gt; (instead of a simple &lt;tt class="docutils literal"&gt;dict&lt;/tt&gt;) into
+&lt;tt class="docutils literal"&gt;render_block_to_string&lt;/tt&gt;. This allows the caller to control whether
+&lt;tt class="docutils literal"&gt;autoescape&lt;/tt&gt; is enabled and a few other&amp;nbsp;features.&lt;/p&gt;
+&lt;p&gt;The full changelog is included&amp;nbsp;below:&lt;/p&gt;
+&lt;div class="section" id="october-15-2020"&gt;
+&lt;h2&gt;0.8.1 (October 15,&amp;nbsp;2020)&lt;/h2&gt;
+&lt;ul class="simple"&gt;
+&lt;li&gt;Fixes a regression in v0.8 where a &lt;tt class="docutils literal"&gt;Context&lt;/tt&gt; could not be re-used. Contributed
+by &lt;a class="reference external" href="https://github.com/evanbrumley"&gt;&amp;#64;evanbrumley&lt;/a&gt;. (&lt;a class="reference external" href="https://github.com/clokep/django-render-block/pull/25"&gt;#25&lt;/a&gt;)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+&lt;div class="section" id="october-6-2020"&gt;
+&lt;h2&gt;0.8 (October 6,&amp;nbsp;2020)&lt;/h2&gt;
+&lt;ul class="simple"&gt;
+&lt;li&gt;&lt;tt class="docutils literal"&gt;render_block_to_string&lt;/tt&gt; now forwards the &lt;tt class="docutils literal"&gt;Context&lt;/tt&gt; passed as &lt;tt class="docutils literal"&gt;context&lt;/tt&gt; parameter.
+Contributed by &lt;a class="reference external" href="https://github.com/bblanchon"&gt;&amp;#64;bblanchon&lt;/a&gt;. (&lt;a class="reference external" href="https://github.com/clokep/django-render-block/pull/21"&gt;#21&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;Drop support for Python 3.5, officially support Python 3.9. (&lt;a class="reference external" href="https://github.com/clokep/django-render-block/pull/22"&gt;#22&lt;/a&gt;)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Patrick Cloke</dc:creator><pubDate>Tue, 27 Oct 2020 16:57:00 -0400</pubDate><guid isPermaLink="false">tag:patrick.cloke.us,2020-10-27:/posts/2020/10/27/django-render-block-0.8-released/</guid><category>articles</category><category>django</category><category>django-render-block</category></item></channel></rss>

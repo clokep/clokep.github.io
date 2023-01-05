@@ -68,24 +68,26 @@
               Social
             </a>
 
-            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="social-dropdown">
-              <a class="dropdown-item" href="https://www.twitter.com/clokep" target="_blank">
-                <span class="fab fa-twitter mr-1"></span> twitter
-              </a>
+            <span class="dropdown-menu dropdown-menu-right" aria-labelledby="social-dropdown">
               <a class="dropdown-item" href="https://mastodon.social/@clokep" target="_blank">
-                <span class="fab fa-mastodon mr-1"></span> mastodon
+                  <span class="fab fa-mastodon mr-1"></span>
+                mastodon
               </a>
-              <a class="dropdown-item" href="https://www.github.com/clokep" target="_blank">
-                <span class="fab fa-github mr-1"></span> github
+              <a class="dropdown-item" href="https://www.twitter.com/clokep" target="_blank">
+                  <span class="fab fa-twitter mr-1"></span>
+                twitter
+              </a>
+              <a class="dropdown-item" href="https://matrix.to/#/@clokep:matrix.org" target="_blank">
+                  <span class="pl-3 mr-2"></span>
+                matrix
+              </a>
+              <a class="dropdown-item" href="https://github.com/clokep" target="_blank">
+                  <span class="fab fa-github mr-1"></span>
+                github
               </a>
               <a class="dropdown-item" href="https://gitlab.com/clokep" target="_blank">
-                <span class="fab fa-gitlab mr-1"></span> gitlab
-              </a>
-              <a class="dropdown-item" href="https://bitbucket.org/clokep" target="_blank">
-                <span class="fab fa-bitbucket mr-1"></span> bitbucket
-              </a>
-              <a class="dropdown-item" href="https://mozillians.org/u/clokep/" target="_blank">
-                <span class="fab fa-firefox mr-1"></span> mozillians
+                  <span class="fab fa-gitlab mr-1"></span>
+                gitlab
               </a>
             </div>
           </li>
@@ -119,25 +121,31 @@
            title="Permalink to JavaScript typed arrays pain">JavaScript typed arrays&nbsp;pain</a>
       </h1>
 
-      <div class="float-right">
-        <a href="https://twitter.com/intent/tweet?text=JavaScript%20typed%20arrays%C2%A0pain&url=https%3A//patrick.cloke.us/posts/2012/11/28/javascript-typed-arrays-pain/&hashtags=instantbird,mozilla,oscar,thunderbird,wat" target="_blank" class="ml-1 mr-1" title="Share on Twitter">
-          <span class="fab fa-twitter"></span>
-        </a>
-        <a href="https://www.facebook.com/sharer/sharer.php?u=https%3A//patrick.cloke.us/posts/2012/11/28/javascript-typed-arrays-pain/" target="_blank" class="ml-1 mr-1" title="Share on Facebook">
-          <span class="fab fa-facebook"></span>
-        </a>
-        <a href="mailto:?subject=JavaScript%20typed%20arrays%C2%A0pain&amp;body=https%3A//patrick.cloke.us/posts/2012/11/28/javascript-typed-arrays-pain/" target="_blank" class="ml-1 mr-1" title="Share via Email">
-          <span class="fas fa-envelope"></span>
-        </a>
+      <div class="row">
+        <div class="col-sm">
+          <span class="text-secondary font-weight-light font-italic">Published on Wednesday, November 28, 2012</span>
+
+          <br>
+          <span class="text-secondary font-weight-light font-italic">
+            Tags:               <a href="/tag/instantbird.html">Instantbird</a>,              <a href="/tag/mozilla.html">Mozilla</a>,              <a href="/tag/oscar.html">OSCAR</a>,              <a href="/tag/thunderbird.html">Thunderbird</a>,              <a href="/tag/wat.html">Wat</a>          </span>
+        </div>
+
+        <div class="col-sm text-right">
+          <a href="https://twitter.com/intent/tweet?text=JavaScript%20typed%20arrays%C2%A0pain&url=https%3A//patrick.cloke.us/posts/2012/11/28/javascript-typed-arrays-pain/&hashtags=instantbird,mozilla,oscar,thunderbird,wat" target="_blank" class="ml-1 mr-1" title="Share on Twitter">
+            <span class="fab fa-twitter"></span>
+          </a>
+          <a href="https://www.facebook.com/sharer/sharer.php?u=https%3A//patrick.cloke.us/posts/2012/11/28/javascript-typed-arrays-pain/" target="_blank" class="ml-1 mr-1" title="Share on Facebook">
+            <span class="fab fa-facebook"></span>
+          </a>
+          <a href="mailto:?subject=JavaScript%20typed%20arrays%C2%A0pain&amp;body=https%3A//patrick.cloke.us/posts/2012/11/28/javascript-typed-arrays-pain/" target="_blank" class="ml-1 mr-1" title="Share via Email">
+            <span class="fas fa-envelope"></span>
+          </a>
+        </div>
       </div>
 
-      <i>Wednesday, November 28, 2012</i>
+      <hr>
 
-      <br>
-      <i>
-        Tags:           <a href="/tag/instantbird.html">Instantbird</a>,          <a href="/tag/mozilla.html">Mozilla</a>,          <a href="/tag/oscar.html">OSCAR</a>,          <a href="/tag/thunderbird.html">Thunderbird</a>,          <a href="/tag/wat.html">Wat</a>      </i>
-
-      <div class="mt-3">
+      <div>
 
         <p>If you&#8217;ve ever tried to deal with binary data in JavaScript you know
 it isn&#8217;t much fun and you usually resort to using strings lots of
@@ -209,17 +217,17 @@ tested heavily at all,&nbsp;however.)</p>
 <p><span class="caps">OK</span>, so typed arrays seem good, but kind of annoying, right?
 Wrong&#8230;the <span class="caps">OSCAR</span> protocol is a &#8220;network order&#8221; protocol (aka it is big
 endian). At this point you&#8217;re probably thinking &#8220;<span class="caps">OK</span>, so the ArrayBuffer
-constructor must take an endianess flag!&#8221; Wrong, it does no such
-thing. &#8220;Hmmm&#8230;Well do the ArrayBufferViews take an endianess flag?&#8221;
-Nope, wrong again. The only way to specify the endianess of the data is
+constructor must take an endianness flag!&#8221; Wrong, it does no such
+thing. &#8220;Hmmm&#8230;Well do the ArrayBufferViews take an endianness flag?&#8221;
+Nope, wrong again. The only way to specify the endianness of the data is
 to use a <a class="reference external" href="https://developer.mozilla.org/en-US/docs/JavaScript_typed_arrays/DataView">DataView</a>, a slightly different interface to the underlying
 bytes. It offers an <span class="caps">API</span> to individually set different data elements via
-their offset and endianess. (If you&#8217;re too lazy to read the
+their offset and endianness. (If you&#8217;re too lazy to read the
 documentation all the way through, DataView assumes big endian: makes my
 life&nbsp;easier!)</p>
-<p>For the curious, JavaScript typed arrays use the system endianess,
+<p>For the curious, JavaScript typed arrays use the system endianness,
 which in my opinion is pretty much useless (at least if you plan on
-sharing data) since you can never guarantee the endianess to be either
+sharing data) since you can never guarantee the endianness to be either
 big or little endian. (The fun part is that this isn&#8217;t even documented,
 I found it on <a class="reference external" href="http://stackoverflow.com/questions/7869752/javascript-typed-arrays-and-endianness">Stack Overflow</a> and&nbsp;verified.)</p>
 <p>So, in summary&#8230;if you plan on networking at all with ArrayBuffers,

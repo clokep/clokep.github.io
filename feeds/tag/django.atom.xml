@@ -14,7 +14,7 @@ The package was then adopted by a previous employer, Strongarm (while there I ga
 &lt;a class="reference external" href="https://patrick.cloke.us/posts/2017/04/06/adding-two-factor-authentication-to-django-with-django-allauth-lightning-talk/"&gt;talk at Django Boston&lt;/a&gt; about it). After acquisition we were phasing out support
 for our own login (which I&amp;#8217;m not actually sure if this has been finished or not),
 but were not really maintaining the package. &lt;a class="reference external" href="https://github.com/akx"&gt;Aarni Koskela&lt;/a&gt; asked about taking
-over maintainance and we gratefully have transferred it to&amp;nbsp;them!&lt;/p&gt;
+over maintenance and we gratefully have transferred it to&amp;nbsp;them!&lt;/p&gt;
 &lt;p&gt;There&amp;#8217;s much more you could do with this package so I&amp;#8217;m quite happy to see it in
 the hands of someone actively using&amp;nbsp;it!&lt;/p&gt;
 </content><category term="articles"></category><category term="django"></category><category term="django-allauth-2fa"></category></entry><entry><title>django-querysetsequence 0.14 released!</title><link href="https://patrick.cloke.us/posts/2021/02/26/django-querysetsequence-0-14-released/" rel="alternate"></link><published>2021-02-26T12:31:00-05:00</published><updated>2021-02-26T12:31:00-05:00</updated><author><name>Patrick Cloke</name></author><id>tag:patrick.cloke.us,2021-02-26:/posts/2021/02/26/django-querysetsequence-0-14-released/</id><summary type="html">&lt;p&gt;&lt;a class="reference external" href="https://github.com/clokep/django-querysetsequence/"&gt;django-querysetsequence&lt;/a&gt; 0.14 has been released with support for Django 3.2 (and

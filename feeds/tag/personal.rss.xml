@@ -3,10 +3,63 @@
 &lt;a class="reference external" href="https://vector.im/"&gt;New Vector&lt;/a&gt;! They&amp;#8217;re the company behind &lt;a class="reference external" href="https://matrix.org/"&gt;Matrix&lt;/a&gt;, &amp;#8220;an open network for
 secure, decentralized&amp;nbsp;communication&amp;#8221;.&lt;/p&gt;
 &lt;p&gt;I&amp;#8217;ll be working on the reference backend server software used in Matrix
-(&lt;a class="reference external" href="https://matrix.org/docs/projects/server/synapse"&gt;Synapse&lt;/a&gt;). The tech stack overlaps with …&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Patrick Cloke</dc:creator><pubDate>Tue, 03 Mar 2020 18:55:00 -0500</pubDate><guid isPermaLink="false">tag:patrick.cloke.us,2020-03-03:/posts/2020/03/03/new-position-at-new-vector/</guid><category>articles</category><category>personal</category></item><item><title>New Position in Cyber Security at Percipient Networks</title><link>https://patrick.cloke.us/posts/2015/05/30/new-position-in-cyber-security-at-percipient-networks/</link><description>&lt;div class="admonition note"&gt;
+(&lt;a class="reference external" href="https://matrix.org/docs/projects/server/synapse"&gt;Synapse&lt;/a&gt;). The tech stack overlaps with &lt;a class="reference external" href="https://patrick.cloke.us/posts/2015/05/30/new-position-in-cyber-security-at-percipient-networks/"&gt;what I was using&lt;/a&gt;: mostly
+&lt;a class="reference external" href="https://www.python.org/"&gt;Python&lt;/a&gt; code (specifically &lt;a class="reference external" href="https://twistedmatrix.com/"&gt;Twisted&lt;/a&gt;). Additionally, most of my work will be
+open-sourced (and developed in the open)! I&amp;#8217;ve already
+&lt;a class="reference external" href="https://github.com/matrix-org/synapse/pulls?q=is%3Apr+author%3Aclokep+is%3Aclosed"&gt;had a few pull requests&lt;/a&gt; merged and a couple of my changes are already in the
+current version of Synapse&amp;nbsp;(v1.11.1).&lt;/p&gt;
+&lt;p&gt;So far this has been a great change and I&amp;#8217;m excited to work on a project that
+has an intersection of a bunch of interests of mine (privacy, communications,
+open-source, etc.) Let me know if you have any questions about Matrix! New
+Vector is also &lt;a class="reference external" href="https://vector.im/careers"&gt;hiring for a bunch of positions&lt;/a&gt; if you&amp;#8217;d like to come work
+with&amp;nbsp;me!&lt;/p&gt;
+</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Patrick Cloke</dc:creator><pubDate>Tue, 03 Mar 2020 18:55:00 -0500</pubDate><guid isPermaLink="false">tag:patrick.cloke.us,2020-03-03:/posts/2020/03/03/new-position-at-new-vector/</guid><category>articles</category><category>personal</category></item><item><title>New Position in Cyber Security at Percipient Networks</title><link>https://patrick.cloke.us/posts/2015/05/30/new-position-in-cyber-security-at-percipient-networks/</link><description>&lt;div class="admonition note"&gt;
 &lt;p class="first admonition-title"&gt;Note&lt;/p&gt;
 &lt;p class="last"&gt;If you&amp;#8217;re hitting this from &lt;a class="reference external" href="http://planet.mozilla.org/"&gt;planet mozilla&lt;/a&gt;, this doesn&amp;#8217;t mean I&amp;#8217;m leaving
 the Mozilla Community since I&amp;#8217;m not (nor was I ever) a Mozilla&amp;nbsp;employee.&lt;/p&gt;
 &lt;/div&gt;
 &lt;p&gt;After working for &lt;a class="reference external" href="https://www.mitre.org"&gt;The &lt;span class="caps"&gt;MITRE&lt;/span&gt; Corporation&lt;/a&gt; for a bit over four years, I left a
-few weeks ago to begin …&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Patrick Cloke</dc:creator><pubDate>Sat, 30 May 2015 13:59:00 -0400</pubDate><guid isPermaLink="false">tag:patrick.cloke.us,2015-05-30:/posts/2015/05/30/new-position-in-cyber-security-at-percipient-networks/</guid><category>articles</category><category>personal</category></item></channel></rss>
+few weeks ago to begin work at a cyber security start-up: &lt;a class="reference external" href="https://percipientnetworks.com/"&gt;Percipient
+Networks&lt;/a&gt;. Currently our main product is &lt;a class="reference external" href="https://strongarm.percipientnetworks.com"&gt;&lt;span class="caps"&gt;STRONGARM&lt;/span&gt;&lt;/a&gt;: an intelligent &lt;span class="caps"&gt;DNS&lt;/span&gt;
+blackhole. Usually &lt;span class="caps"&gt;DNS&lt;/span&gt; blackholes are set-up to block known bad domains by
+sending requests for those domains to a non-routable or localhost. &lt;span class="caps"&gt;STRONGARM&lt;/span&gt;
+redirects that traffic for identification and analysis. You could
+&lt;a class="reference external" href="https://strongarm.percipientnetworks.com"&gt;give it a try&lt;/a&gt; and let us know of any feedback you might have! Much of my
+involvement has been in the &lt;a class="reference external" href="https://strongarm.percipientnetworks.com/help/tech/"&gt;design and creation of the blackhole&lt;/a&gt;, including
+writing protocol parsers for both standard protocols and&amp;nbsp;malware.&lt;/p&gt;
+&lt;p&gt;So far, I&amp;#8217;ve been greatly enjoying my new position. There&amp;#8217;s been a renewed focus
+on technical work, while being in a position to greatly influence both &lt;span class="caps"&gt;STRONGARM&lt;/span&gt;
+and Percipient Networks. My average day involves many more activities now,
+including technical work: reverse engineering, reviewing/writing code, or
+reading RFCs; as well as other work: mentoring &lt;a class="footnote-reference" href="#id4" id="id1"&gt;[1]&lt;/a&gt;, user support, writing
+documentation, and putting desks together &lt;a class="footnote-reference" href="#id5" id="id2"&gt;[2]&lt;/a&gt;. I&amp;#8217;ve been thoroughly enjoying the
+varied&amp;nbsp;activities!&lt;/p&gt;
+&lt;p&gt;Shifting software stacks has also been nice. I&amp;#8217;m now writing mostly Python code,
+instead of mostly &lt;span class="caps"&gt;MATLAB&lt;/span&gt;, Java and C/C++ &lt;a class="footnote-reference" href="#id6" id="id3"&gt;[3]&lt;/a&gt;. It has been great how many ready
+to use packages are available for Python! I&amp;#8217;ve been very impressed with the
+ecosystem, and been encouraged to feed back into the open-source community,
+where&amp;nbsp;appropriate.&lt;/p&gt;
+&lt;table class="docutils footnote" frame="void" id="id4" rules="none"&gt;
+&lt;colgroup&gt;&lt;col class="label" /&gt;&lt;col /&gt;&lt;/colgroup&gt;
+&lt;tbody valign="top"&gt;
+&lt;tr&gt;&lt;td class="label"&gt;&lt;a class="fn-backref" href="#id1"&gt;[1]&lt;/a&gt;&lt;/td&gt;&lt;td&gt;We currently have four interns, so there&amp;#8217;s always some mentoring to do!&lt;/td&gt;&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;table class="docutils footnote" frame="void" id="id5" rules="none"&gt;
+&lt;colgroup&gt;&lt;col class="label" /&gt;&lt;col /&gt;&lt;/colgroup&gt;
+&lt;tbody valign="top"&gt;
+&lt;tr&gt;&lt;td class="label"&gt;&lt;a class="fn-backref" href="#id2"&gt;[2]&lt;/a&gt;&lt;/td&gt;&lt;td&gt;We got a delivery of 10 &lt;a class="reference external" href="http://www.ergodepot.com/Jarvis_Desk_s/566.htm"&gt;desks&lt;/a&gt; a couple of weeks ago and spent the
+evening putting them together.&lt;/td&gt;&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;table class="docutils footnote" frame="void" id="id6" rules="none"&gt;
+&lt;colgroup&gt;&lt;col class="label" /&gt;&lt;col /&gt;&lt;/colgroup&gt;
+&lt;tbody valign="top"&gt;
+&lt;tr&gt;&lt;td class="label"&gt;&lt;a class="fn-backref" href="#id3"&gt;[3]&lt;/a&gt;&lt;/td&gt;&lt;td&gt;I originally titled this post &amp;#8220;xx days since my last semi-colon!&amp;#8221;, since
+that has gone from being a common key press of mine to a rare one.
+Although now I just get confused when switching between Python and
+JavaScript. Since semicolons are optional in both, but encouraged in
+JavaScript and discouraged in Python&amp;#8230;&lt;/td&gt;&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Patrick Cloke</dc:creator><pubDate>Sat, 30 May 2015 13:59:00 -0400</pubDate><guid isPermaLink="false">tag:patrick.cloke.us,2015-05-30:/posts/2015/05/30/new-position-in-cyber-security-at-percipient-networks/</guid><category>articles</category><category>personal</category></item></channel></rss>

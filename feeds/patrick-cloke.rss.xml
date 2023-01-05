@@ -1,277 +1,720 @@
 <?xml version="1.0" encoding="utf-8"?>
-<rss version="2.0"><channel><title>Patrick Cloke - Patrick Cloke</title><link>https://patrick.cloke.us/</link><description></description><lastBuildDate>Fri, 11 Jun 2021 15:11:00 -0400</lastBuildDate><item><title>Converting Twisted’s inlineCallbacks to async</title><link>https://patrick.cloke.us/posts/2021/06/11/converting-twisteds-inlinecallbacks-to-async/</link><description>
+<rss version="2.0"><channel><title>Patrick Cloke - Patrick Cloke</title><link>https://patrick.cloke.us/</link><description></description><lastBuildDate>Thu, 05 Jan 2023 12:15:00 -0500</lastBuildDate><item><title>Matrix Read Receipts &amp; Notifications</title><link>https://patrick.cloke.us/posts/2023/01/05/matrix-read-receipts-and-notifications/</link><description>&lt;p&gt;I recently wrapped up a project on improving notifications in threads for Matrix.
+This is adapted from my &lt;a href="https://hackmd.io/bbucQKOLTv66N4B_wjDLFQ"&gt;research notes&lt;/a&gt;
+to understand the status quote before adapting the Matrix protocol for threads
+(in &lt;a href="https://github.com/matrix-org/matrix-spec-proposals/pull/3771"&gt;&lt;span class="caps"&gt;MSC3771&lt;/span&gt;&lt;/a&gt; and
+&lt;a href="https://github.com/matrix-org/matrix-spec-proposals/pull/3773"&gt;&lt;span class="caps"&gt;MSC3773&lt;/span&gt;&lt;/a&gt;).
+Hopefully others find the information&amp;nbsp;useful!&lt;/p&gt;
+&lt;div class="admonition note"&gt;
+&lt;p class="admonition-title"&gt;Note&lt;/p&gt;
+&lt;p&gt;These notes are true as of the v1.3 of the Matrix spec and also cover some
+Matrix spec changes which may or may not have been merged since. It is known
+to be out of date with the changes from &lt;a href="https://github.com/matrix-org/matrix-spec-proposals/pull/2285"&gt;&lt;span class="caps"&gt;MSC2285&lt;/span&gt;&lt;/a&gt;,
+&lt;a href="https://github.com/matrix-org/matrix-spec-proposals/pull/3771"&gt;&lt;span class="caps"&gt;MSC3771&lt;/span&gt;&lt;/a&gt;, and
+&lt;a href="https://github.com/matrix-org/matrix-spec-proposals/pull/3773"&gt;&lt;span class="caps"&gt;MSC3773&lt;/span&gt;&lt;/a&gt;.&lt;/p&gt;
+&lt;/div&gt;
+&lt;hr&gt;
+&lt;h2&gt;Receipts&lt;/h2&gt;
+&lt;p&gt;Matrix uses &amp;#8220;receipts&amp;#8221; to note which part of a room has been read by a user.
+It considers the history for a room to be split into three sections&lt;sup id="fnref:1"&gt;&lt;a class="footnote-ref" href="#fn:1"&gt;1&lt;/a&gt;&lt;/sup&gt;:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Messages the user has read (or indicated they aren’t interested in&amp;nbsp;them).&lt;/li&gt;
+&lt;li&gt;Messages the user might have read some but not&amp;nbsp;others.&lt;/li&gt;
+&lt;li&gt;Messages the user hasn’t seen&amp;nbsp;yet.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;The &lt;strong&gt;fully read marker&lt;/strong&gt; is between 1 &lt;span class="amp"&gt;&amp;amp;&lt;/span&gt; 2 while the &lt;strong&gt;read receipt&lt;/strong&gt; is between
+2 &lt;span class="amp"&gt;&amp;amp;&lt;/span&gt; 3. Note that fully read markers are not shared with other users while read receipts&amp;nbsp;are.&lt;/p&gt;
+&lt;p&gt;Another way to consider this is&lt;sup id="fnref:2"&gt;&lt;a class="footnote-ref" href="#fn:2"&gt;2&lt;/a&gt;&lt;/sup&gt;:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;strong&gt;Fully read marker&lt;/strong&gt;: a private bookmark to indicate the point which has been
+   processed in the discussion. This allows a user to go back to it&amp;nbsp;later.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Read receipts&lt;/strong&gt;: public indicators of what a user has seen to inform other
+   participants that the user has seen&amp;nbsp;it.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Hidden read receipts&lt;/strong&gt;: a private mechanism to synchronize &amp;#8220;unread messages&amp;#8221;
+   indicators between a user&amp;#8217;s devices (while still retaining the ability from 1
+   as a separate concept). (See &lt;a href="https://github.com/matrix-org/matrix-spec-proposals/pull/2285"&gt;&lt;span class="caps"&gt;MSC2285&lt;/span&gt;&lt;/a&gt;.)&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h3&gt;&lt;a href="https://spec.matrix.org/v1.3/client-server-api/#fully-read-markers"&gt;Fully read&amp;nbsp;markers&lt;/a&gt;&lt;/h3&gt;
+&lt;p&gt;They are stored in the room account data for the user (but modified via a separate &lt;span class="caps"&gt;API&lt;/span&gt;).&lt;/p&gt;
+&lt;p&gt;The &lt;span class="caps"&gt;API&lt;/span&gt;&amp;nbsp;is:&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;POST /_matrix/client/v3/rooms/{roomId}/read_markers&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;The read receipt can optionally be updated at the same&amp;nbsp;time.&lt;/p&gt;
+&lt;p&gt;In Element Web your fully read marker is displayed as the green line across the&amp;nbsp;conversation.&lt;/p&gt;
+&lt;h3&gt;&lt;a href="https://spec.matrix.org/v1.3/client-server-api/#receipts"&gt;Read&amp;nbsp;receipts&lt;/a&gt;&lt;/h3&gt;
+&lt;p&gt;Only &lt;code&gt;m.read&lt;/code&gt; is defined at the moment, but it is meant to be generic&amp;nbsp;infrastructure.&lt;/p&gt;
+&lt;p&gt;Updating a read receipt updates a &amp;#8220;marker&amp;#8221; which causes any notifications prior
+to and including the event to be marked as read.&lt;sup id="fnref:3"&gt;&lt;a class="footnote-ref" href="#fn:3"&gt;3&lt;/a&gt;&lt;/sup&gt; A user has a single read receipt
+&amp;#8220;marker&amp;#8221; per&amp;nbsp;room.&lt;/p&gt;
+&lt;p&gt;Passed to clients as an &lt;code&gt;m.receipt&lt;/code&gt; event under the &lt;code&gt;ephemeral&lt;/code&gt; array for each
+room in the &lt;code&gt;/sync&lt;/code&gt; response. The event includes a map of event &lt;span class="caps"&gt;ID&lt;/span&gt; -&amp;gt; receipt type
+-&amp;gt; user &lt;span class="caps"&gt;ID&lt;/span&gt; -&amp;gt; data (currently just a timestamp). Note that the event is a delta
+from previous events. An&amp;nbsp;example:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="p"&gt;{&lt;/span&gt;
+  &lt;span class="nt"&gt;&amp;quot;content&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+    &lt;span class="nt"&gt;&amp;quot;$1435641916114394fHBLK:matrix.org&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+      &lt;span class="nt"&gt;&amp;quot;m.read&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+        &lt;span class="nt"&gt;&amp;quot;@rikj:jki.re&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+          &lt;span class="nt"&gt;&amp;quot;ts&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="mi"&gt;1436451550453&lt;/span&gt;
+        &lt;span class="p"&gt;}&lt;/span&gt;
+      &lt;span class="p"&gt;}&lt;/span&gt;
+    &lt;span class="p"&gt;}&lt;/span&gt;
+  &lt;span class="p"&gt;},&lt;/span&gt;
+  &lt;span class="nt"&gt;&amp;quot;room_id&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;!jEsUZKDJdhlrceRyVU:example.org&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+  &lt;span class="nt"&gt;&amp;quot;type&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;m.receipt&amp;quot;&lt;/span&gt;
+&lt;span class="p"&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;The &lt;span class="caps"&gt;API&lt;/span&gt;&amp;nbsp;is:&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;POST /_matrix/client/v3/rooms/{roomId}/receipt/{receiptType}/{eventId}&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;In Element Web read receipts are the small avatars on the right hand side of the
+conversation. Note that your own read receipt is not&amp;nbsp;shown.&lt;/p&gt;
+&lt;h3&gt;&lt;a href="https://github.com/matrix-org/matrix-spec-proposals/pull/2285"&gt;Hidden read receipts (&lt;span class="caps"&gt;MSC2285&lt;/span&gt;)&lt;/a&gt;&lt;/h3&gt;
+&lt;p&gt;A new receipt type (&lt;code&gt;m.read.hidden&lt;/code&gt;) to set a read receipt without sharing it with
+other users. It also modifies the &lt;code&gt;/read_markers&lt;/code&gt; &lt;span class="caps"&gt;API&lt;/span&gt; to accept the new receipt type
+and modifies the &lt;code&gt;/receipts&lt;/code&gt; &lt;span class="caps"&gt;API&lt;/span&gt; to accept the fully read&amp;nbsp;marker.&lt;/p&gt;
+&lt;p&gt;This is useful to synchronize notifications across devices while keeping read
+status&amp;nbsp;private.&lt;/p&gt;
+&lt;h2&gt;&lt;a href="https://spec.matrix.org/v1.2/client-server-api/#push-rules"&gt;Push&amp;nbsp;rules&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;A user&amp;#8217;s push rules determine one or more user-specific actions on each event.
+They are customizable, but the homeserver provides default rules. They can result
+in an action&amp;nbsp;to:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Do&amp;nbsp;nothing&lt;/li&gt;
+&lt;li&gt;Notify the user (&lt;code&gt;notify&lt;/code&gt; action), which can have additional actions (&amp;#8220;tweaks&amp;#8221;):&lt;ol&gt;
+&lt;li&gt;Highlight the message (&lt;code&gt;highlight&lt;/code&gt; action)&lt;/li&gt;
+&lt;li&gt;Play a sound (&lt;code&gt;sound&lt;/code&gt; action)&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;By default, all new &lt;code&gt;m.room.message&lt;/code&gt; and &lt;code&gt;m.room.encrypted&lt;/code&gt; events generate a
+notification, events with a user&amp;#8217;s display name or username in them or &lt;code&gt;@room&lt;/code&gt;
+generate highlights,&amp;nbsp;etc.&lt;/p&gt;
+&lt;h3&gt;&lt;a href="https://github.com/matrix-org/matrix-spec-proposals/pull/3664"&gt;Push rules for relations (&lt;span class="caps"&gt;MSC3664&lt;/span&gt;)&lt;/a&gt;&lt;/h3&gt;
+&lt;p&gt;Augments push rules to allow applying them to the target of an event relationship
+and defines a default push rule for replies (not using the reply&amp;nbsp;fallback).&lt;/p&gt;
+&lt;h3&gt;&lt;a href="https://github.com/matrix-org/matrix-spec-proposals/pull/2785"&gt;Event notification attributes and actions (&lt;span class="caps"&gt;MSC2785&lt;/span&gt;)&lt;/a&gt;&lt;/h3&gt;
+&lt;p&gt;A proposed replacement for push rules, the results are essentially the same
+actions (and presumedly would not change the data returned in &lt;code&gt;/sync&lt;/code&gt;, see&amp;nbsp;below).&lt;/p&gt;
+&lt;h2&gt;&lt;a href="https://spec.matrix.org/v1.3/client-server-api/#get_matrixclientv3sync"&gt;Notification counts in &lt;code&gt;/sync&lt;/code&gt;&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;The number of notification events and highlight events since the user&amp;#8217;s last read
+receipt are both returned on a per room basis as part of a &lt;code&gt;/sync&lt;/code&gt; response (for
+joined&amp;nbsp;room).&lt;/p&gt;
+&lt;p&gt;Notification and highlight events are any messages where the push rules resulted
+in an action of &lt;code&gt;notify&lt;/code&gt; or &lt;code&gt;highlight&lt;/code&gt;, respectively. (Note that a &lt;code&gt;highlight&lt;/code&gt;
+action must be a &lt;code&gt;notify&lt;/code&gt; action, thus &lt;code&gt;highlight_count &amp;lt;= notification_count&lt;/code&gt;.)&lt;/p&gt;
+&lt;p&gt;An&amp;nbsp;example:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="p"&gt;{&lt;/span&gt;
+  &lt;span class="nt"&gt;&amp;quot;account_data&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="err"&gt;...&lt;/span&gt;&lt;span class="p"&gt;],&lt;/span&gt;
+  &lt;span class="nt"&gt;&amp;quot;ephemeral&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="err"&gt;...&lt;/span&gt;&lt;span class="p"&gt;],&lt;/span&gt;
+  &lt;span class="nt"&gt;&amp;quot;state&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="err"&gt;...&lt;/span&gt;&lt;span class="p"&gt;],&lt;/span&gt;
+  &lt;span class="nt"&gt;&amp;quot;summary&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;&lt;span class="err"&gt;...&lt;/span&gt;&lt;span class="p"&gt;},&lt;/span&gt;
+  &lt;span class="nt"&gt;&amp;quot;timeline&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;&lt;span class="err"&gt;...&lt;/span&gt;&lt;span class="p"&gt;},&lt;/span&gt;
+  &lt;span class="nt"&gt;&amp;quot;unread_notifications&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+      &lt;span class="nt"&gt;&amp;quot;highlight_count&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+      &lt;span class="nt"&gt;&amp;quot;notification_count&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="mi"&gt;0&lt;/span&gt;
+  &lt;span class="p"&gt;}&lt;/span&gt;
+&lt;span class="p"&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;h3&gt;&lt;a href="https://github.com/matrix-org/matrix-spec-proposals/pull/2654"&gt;Unread messages count (&lt;span class="caps"&gt;MSC2654&lt;/span&gt;)&lt;/a&gt;&lt;/h3&gt;
+&lt;p&gt;A new field is added under the &lt;code&gt;unread_notifications&lt;/code&gt; field (&lt;code&gt;unread_count&lt;/code&gt;) which
+is the total number of events matching particular criteria since the user&amp;#8217;s last
+read&amp;nbsp;receipt.&lt;/p&gt;
+&lt;p&gt;This replaces &lt;a href="https://github.com/matrix-org/matrix-spec-proposals/pull/2625"&gt;&lt;span class="caps"&gt;MSC2625&lt;/span&gt;&lt;/a&gt;,
+which adds a new push rule action (&lt;code&gt;mark_unread&lt;/code&gt;) to perform the same task. In this
+rendition, &lt;code&gt;notify&lt;/code&gt; implies &lt;code&gt;mark_unread&lt;/code&gt; and thus
+&lt;code&gt;highlight_count &amp;lt;= notification_count &amp;lt;= unread_count&lt;/code&gt;.&lt;/p&gt;
+&lt;h2&gt;&lt;a href="https://spec.matrix.org/v1.2/push-gateway-api/#post_matrixpushv1notify"&gt;Push&amp;nbsp;notifications&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;Push notifications receive either the number of unread messages (across all rooms)
+or the number of rooms with unread messages (depending on the value of
+&lt;code&gt;push.group_unread_count_by_room&lt;/code&gt; in the Synapse configuration). Unread messages
+are any messages where the push rules resulted in an action of &lt;code&gt;notify&lt;/code&gt;.&lt;/p&gt;
+&lt;p&gt;This information is sent from the homeserver to the push gateway as part of every&amp;nbsp;notification:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="p"&gt;{&lt;/span&gt;
+  &lt;span class="nt"&gt;&amp;quot;notifications&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+    &lt;span class="nt"&gt;&amp;quot;counts&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+      &lt;span class="nt"&gt;&amp;quot;unread&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+      &lt;span class="err"&gt;...&lt;/span&gt;
+    &lt;span class="p"&gt;},&lt;/span&gt;
+    &lt;span class="err"&gt;...&lt;/span&gt;
+  &lt;span class="p"&gt;}&lt;/span&gt;
+&lt;span class="p"&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;div class="footnote"&gt;
+&lt;hr&gt;
+&lt;ol&gt;
+&lt;li id="fn:1"&gt;
+&lt;p&gt;From &lt;a href="https://spec.matrix.org/v1.3/client-server-api/#fully-read-markers"&gt;the fully read marker&lt;/a&gt; specification.&amp;#160;&lt;a class="footnote-backref" href="#fnref:1" title="Jump back to footnote 1 in the text"&gt;&amp;#8617;&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li id="fn:2"&gt;
+&lt;p&gt;See &lt;a href="https://github.com/matrix-org/matrix-spec-proposals/pull/2285#discussion_r436383889"&gt;a discussion on &lt;span class="caps"&gt;MSC2285&lt;/span&gt;&lt;/a&gt;.&amp;#160;&lt;a class="footnote-backref" href="#fnref:2" title="Jump back to footnote 2 in the text"&gt;&amp;#8617;&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li id="fn:3"&gt;
+&lt;p&gt;&lt;a href="https://spec.matrix.org/v1.3/client-server-api/#receiving-notifications"&gt;Spec on receiving notifications&lt;/a&gt;&amp;#160;&lt;a class="footnote-backref" href="#fnref:3" title="Jump back to footnote 3 in the text"&gt;&amp;#8617;&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/div&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Patrick Cloke</dc:creator><pubDate>Thu, 05 Jan 2023 12:15:00 -0500</pubDate><guid isPermaLink="false">tag:patrick.cloke.us,2023-01-05:/posts/2023/01/05/matrix-read-receipts-and-notifications/</guid><category>articles</category><category>matrix</category><category>notes</category></item><item><title>Converting Twisted’s inlineCallbacks to async</title><link>https://patrick.cloke.us/posts/2021/06/11/converting-twisteds-inlinecallbacks-to-async/</link><description>
 &lt;p&gt;Almost a year ago we had a push at Element to convert the remaining instances of
 Twisted’s &lt;a class="reference external" href="https://twistedmatrix.com/documents/21.2.0/api/twisted.internet.defer.html#inlineCallbacks"&gt;&lt;tt class="docutils literal"&gt;inlineCallbacks&lt;/tt&gt;&lt;/a&gt; to use native &lt;tt class="docutils literal"&gt;async&lt;/tt&gt;/&lt;tt class="docutils literal"&gt;await&lt;/tt&gt; syntax from Python &lt;a class="footnote-reference" href="#id5" id="id1"&gt;[1]&lt;/a&gt;.
 Eventually this work got covered by &lt;a class="reference external" href="https://github.com/matrix-org/synapse/issues/7988"&gt;issue #7988&lt;/a&gt; (which is the original basis
 for this blogpost).&lt;/p&gt;
-&lt;p&gt;Note that Twisted itself &lt;a class="reference external" href="https://twistedmatrix.com/documents/21.2.0/core/howto/defer-intro.html#coroutines-with-async-await"&gt;gained some …&lt;/a&gt;&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Patrick Cloke</dc:creator><pubDate>Fri, 11 Jun 2021 15:11:00 -0400</pubDate><guid isPermaLink="false">tag:patrick.cloke.us,2021-06-11:/posts/2021/06/11/converting-twisteds-inlinecallbacks-to-async/</guid><category>articles</category><category>twisted</category></item><item><title>celery-batches 0.5 released!</title><link>https://patrick.cloke.us/posts/2021/05/24/celery-batches-0.5-released/</link><description>&lt;p&gt;A &lt;a class="reference external" href="https://pypi.org/project/celery-batches/0.5/"&gt;new version (v0.5)&lt;/a&gt; of &lt;a class="reference external" href="https://github.com/clokep/celery-batches/"&gt;celery-batches&lt;/a&gt; is available which adds support for
+&lt;p&gt;Note that Twisted itself &lt;a class="reference external" href="https://twistedmatrix.com/documents/21.2.0/core/howto/defer-intro.html#coroutines-with-async-await"&gt;gained some support&lt;/a&gt; for &lt;tt class="docutils literal"&gt;async&lt;/tt&gt; functions in 16.4.&lt;/p&gt;
+&lt;div class="section" id="why-bother"&gt;
+&lt;h2&gt;&lt;a class="toc-backref" href="#id9"&gt;Why bother?&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;&lt;tt class="docutils literal"&gt;inlineCallbacks&lt;/tt&gt; are very similar to &lt;tt class="docutils literal"&gt;async&lt;/tt&gt;/&lt;tt class="docutils literal"&gt;await&lt;/tt&gt;, they use a generator
+internally to wait for a task to complete and (modern &lt;a class="footnote-reference" href="#id6" id="id2"&gt;[2]&lt;/a&gt;) versions of Twisted let
+you directly return values. There are some real benefits to switching though:&lt;/p&gt;
+&lt;ul class="simple"&gt;
+&lt;li&gt;&lt;tt class="docutils literal"&gt;inlineCallbacks&lt;/tt&gt; mangle stack traces, while &lt;tt class="docutils literal"&gt;async&lt;/tt&gt;/&lt;tt class="docutils literal"&gt;await&lt;/tt&gt; does not
+(as much). This helps with profiling and understanding exceptions (e.g. in Sentry).&lt;/li&gt;
+&lt;li&gt;&lt;tt class="docutils literal"&gt;async&lt;/tt&gt;/&lt;tt class="docutils literal"&gt;await&lt;/tt&gt; is more modern and standard — there’s a better chance of
+people understanding it who don’t haven’t used Twisted before.&lt;/li&gt;
+&lt;li&gt;&lt;tt class="docutils literal"&gt;async&lt;/tt&gt;/&lt;tt class="docutils literal"&gt;await&lt;/tt&gt; has better support from other packages, static analyzers,
+tools, etc.&lt;/li&gt;
+&lt;li&gt;&lt;tt class="docutils literal"&gt;async&lt;/tt&gt; functions can provide better type hints for return values.&lt;/li&gt;
+&lt;li&gt;We postulated that there might be a performance benefit, but were never able
+to measure any.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;In fact the &lt;a class="reference external" href="https://twistedmatrix.com/documents/21.2.0/core/howto/defer-intro.html#inline-callbacks-using-yield"&gt;Twisted documentation&lt;/a&gt; (as of v21.2.0) even suggest some of the above:&lt;/p&gt;
+&lt;blockquote&gt;
+Unless your code supports Python 2 (and therefore needs compatibility with older
+versions of Twisted), writing coroutines with the functionality described in
+“Coroutines with async/await” is preferred over &lt;tt class="docutils literal"&gt;inlineCallbacks&lt;/tt&gt;. Coroutines
+are supported by dedicated Python syntax, are compatible with &lt;tt class="docutils literal"&gt;asyncio&lt;/tt&gt;, and
+provide higher performance.&lt;/blockquote&gt;
+&lt;/div&gt;
+&lt;div class="section" id="example"&gt;
+&lt;h2&gt;&lt;a class="toc-backref" href="#id10"&gt;Example&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;As an example, consider this function from the &lt;a class="reference external" href="https://twistedmatrix.com/documents/21.2.0/core/howto/defer-intro.html#inline-callbacks-using-yield"&gt;Twisted documentation&lt;/a&gt;:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;twisted.internet.defer&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;Deferred&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;inlineCallbacks&lt;/span&gt;
+
+&lt;span class="nd"&gt;@inlineCallbacks&lt;/span&gt;
+&lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;makeRequest&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;method&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="nb"&gt;str&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;url&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="nb"&gt;str&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+    &lt;span class="c1"&gt;# ... do some HTTP stuff ...&lt;/span&gt;
+    &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="n"&gt;response&lt;/span&gt;
+
+&lt;span class="nd"&gt;@inlineCallbacks&lt;/span&gt;
+&lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;getUsers&lt;/span&gt;&lt;span class="p"&gt;():&lt;/span&gt;
+    &lt;span class="n"&gt;responseBody&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="k"&gt;yield&lt;/span&gt; &lt;span class="n"&gt;makeRequest&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;"GET"&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s2"&gt;"/users"&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+    &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="n"&gt;json&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;loads&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;responseBody&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+
+&lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;main&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;reactor&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+  &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="n"&gt;getUsers&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;This could be rewritten to a bit more of modern:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="k"&gt;async&lt;/span&gt; &lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;makeRequest&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;method&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="nb"&gt;str&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;url&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="nb"&gt;str&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="o"&gt;-&amp;gt;&lt;/span&gt; &lt;span class="nb"&gt;str&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
+    &lt;span class="c1"&gt;# ... do some HTTP stuff ...&lt;/span&gt;
+    &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="n"&gt;response&lt;/span&gt;
+
+&lt;span class="k"&gt;async&lt;/span&gt; &lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;getUsers&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt; &lt;span class="o"&gt;-&amp;gt;&lt;/span&gt; &lt;span class="nb"&gt;dict&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
+    &lt;span class="n"&gt;responseBody&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="k"&gt;await&lt;/span&gt; &lt;span class="n"&gt;makeRequest&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;"GET"&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s2"&gt;"/users"&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+    &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="n"&gt;json&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;loads&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;responseBody&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+
+&lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;main&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;reactor&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+  &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="n"&gt;defer&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;ensureDeferred&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;getUsers&lt;/span&gt;&lt;span class="p"&gt;())&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Not too big of a difference, but definitely a bit nicer. In particular, note:&lt;/p&gt;
+&lt;ul class="simple"&gt;
+&lt;li&gt;There’s no decorator, so tools like mypy know what &lt;tt class="docutils literal"&gt;getUsers&lt;/tt&gt; actually returns.&lt;/li&gt;
+&lt;li&gt;&lt;tt class="docutils literal"&gt;main&lt;/tt&gt; now includes a call to &lt;a class="reference external" href="https://twistedmatrix.com/documents/21.2.0/api/twisted.internet.defer.html#ensureDeferred"&gt;&lt;tt class="docutils literal"&gt;defer.ensureDeferred&lt;/tt&gt;&lt;/a&gt; to transition back to
+something that Twisted understands. &lt;a class="footnote-reference" href="#id7" id="id3"&gt;[3]&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+&lt;div class="section" id="rules-for-conversion"&gt;
+&lt;h2&gt;&lt;a class="toc-backref" href="#id11"&gt;Rules for conversion&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;The result of calling an &lt;tt class="docutils literal"&gt;async&lt;/tt&gt; function is an &lt;tt class="docutils literal"&gt;Awaitable&lt;/tt&gt;, the result of
+calling an &lt;tt class="docutils literal"&gt;inlineCallbacks&lt;/tt&gt; function is a &lt;tt class="docutils literal"&gt;Deferred&lt;/tt&gt;. &lt;tt class="docutils literal"&gt;async&lt;/tt&gt; functions
+use &lt;tt class="docutils literal"&gt;await&lt;/tt&gt; internally to wait for another &lt;tt class="docutils literal"&gt;Awaitable&lt;/tt&gt;, &lt;tt class="docutils literal"&gt;inlineCallbacks&lt;/tt&gt;
+use &lt;tt class="docutils literal"&gt;yield&lt;/tt&gt; internally to wait for another &lt;tt class="docutils literal"&gt;Deferred&lt;/tt&gt;.&lt;/p&gt;
+&lt;p&gt;This results in the following rules:&lt;/p&gt;
+&lt;ul class="simple"&gt;
+&lt;li&gt;You can &lt;tt class="docutils literal"&gt;await&lt;/tt&gt; a &lt;tt class="docutils literal"&gt;Deferred&lt;/tt&gt; (since it is also an &lt;tt class="docutils literal"&gt;Awaitable&lt;/tt&gt;).&lt;/li&gt;
+&lt;li&gt;You cannot &lt;tt class="docutils literal"&gt;yield&lt;/tt&gt; an &lt;tt class="docutils literal"&gt;Awaitable&lt;/tt&gt;.&lt;/li&gt;
+&lt;li&gt;You can convert an &lt;tt class="docutils literal"&gt;Awaitable&lt;/tt&gt; into a &lt;tt class="docutils literal"&gt;Deferred&lt;/tt&gt; via &lt;tt class="docutils literal"&gt;defer.ensureDeferred&lt;/tt&gt;.&lt;/li&gt;
+&lt;li&gt;Calling &lt;tt class="docutils literal"&gt;await&lt;/tt&gt; on a non-&lt;tt class="docutils literal"&gt;Awaitable&lt;/tt&gt; is a runtime error (though note that
+you can &lt;tt class="docutils literal"&gt;yield&lt;/tt&gt; on a non-&lt;tt class="docutils literal"&gt;Deferred&lt;/tt&gt; and it just immediately continues).&lt;/li&gt;
+&lt;li&gt;Twisted APIs still expect &lt;tt class="docutils literal"&gt;Deferreds&lt;/tt&gt;.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;To convert a single function this turns out to be pretty simple:&lt;/p&gt;
+&lt;table border="1" class="docutils"&gt;
+&lt;colgroup&gt;
+&lt;col width="30%"/&gt;
+&lt;col width="54%"/&gt;
+&lt;col width="16%"/&gt;
+&lt;/colgroup&gt;
+&lt;thead valign="bottom"&gt;
+&lt;tr&gt;&lt;th class="head"&gt;What&lt;/th&gt;
+&lt;th class="head"&gt;Twised&lt;/th&gt;
+&lt;th class="head"&gt;asyncio&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody valign="top"&gt;
+&lt;tr&gt;&lt;td&gt;Function definition&lt;/td&gt;
+&lt;td&gt;&lt;tt class="docutils literal"&gt;@defer.inlineCallbacks&lt;/tt&gt; decorator&lt;/td&gt;
+&lt;td&gt;&lt;tt class="docutils literal"&gt;async&lt;/tt&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Wait for result&lt;/td&gt;
+&lt;td&gt;&lt;tt class="docutils literal"&gt;yield&lt;/tt&gt;&lt;/td&gt;
+&lt;td&gt;&lt;tt class="docutils literal"&gt;await&lt;/tt&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;/div&gt;
+&lt;div class="section" id="methodology-for-conversion"&gt;
+&lt;h2&gt;&lt;a class="toc-backref" href="#id12"&gt;Methodology for conversion&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;The difficult comes when you have a large codebase that you want to convert from
+&lt;tt class="docutils literal"&gt;defer.inlineCallbacks&lt;/tt&gt; to &lt;tt class="docutils literal"&gt;async&lt;/tt&gt;/&lt;tt class="docutils literal"&gt;await&lt;/tt&gt;. Below is how I approached this
+for the Synapse code:&lt;/p&gt;
+&lt;p&gt;Since you can &lt;tt class="docutils literal"&gt;await&lt;/tt&gt; a &lt;tt class="docutils literal"&gt;Deferred&lt;/tt&gt; the easiest way to do this is to start at
+the outer layers and work inward. By doing this you end up with &lt;tt class="docutils literal"&gt;async&lt;/tt&gt;
+functions which call into code which return a &lt;tt class="docutils literal"&gt;Deferred&lt;/tt&gt;, but this is fine.&lt;/p&gt;
+&lt;p&gt;For Synapse we converted things via:&lt;/p&gt;
+&lt;ol class="arabic simple"&gt;
+&lt;li&gt;The &lt;span class="caps"&gt;REST&lt;/span&gt; layer.&lt;/li&gt;
+&lt;li&gt;The handler layer.&lt;/li&gt;
+&lt;li&gt;The database layer.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;In order to avoid doing an entire layer at once it is ideal to start with the
+modules which are called into the least (and preferably only via a higher layer).
+If there are other callers which have not yet been converted, the call-site is
+modified to wrap the returned &lt;tt class="docutils literal"&gt;Awaitable&lt;/tt&gt; with &lt;tt class="docutils literal"&gt;defer.ensureDeferred&lt;/tt&gt;. Additionally,
+this is used whenever a Twisted &lt;span class="caps"&gt;API&lt;/span&gt; expects a &lt;tt class="docutils literal"&gt;Deferred&lt;/tt&gt;.&lt;/p&gt;
+&lt;p&gt;The &lt;span class="caps"&gt;REST&lt;/span&gt; layer in Synapse is built on &lt;tt class="docutils literal"&gt;twisted.web&lt;/tt&gt; and needed some extra magic,
+see &lt;a class="reference external" href="https://github.com/matrix-org/synapse/blob/4b965c862dc66c0da5d3240add70e9b5f0aa720b/synapse/http/server.py#L228-L309"&gt;&lt;tt class="docutils literal"&gt;_AsyncResource&lt;/tt&gt;&lt;/a&gt; and sub-classes, in particular it:&lt;/p&gt;
+&lt;ol class="arabic simple"&gt;
+&lt;li&gt;Overrides the &lt;tt class="docutils literal"&gt;render&lt;/tt&gt; method (which is a Twisted &lt;span class="caps"&gt;API&lt;/span&gt; from &lt;tt class="docutils literal"&gt;IResource&lt;/tt&gt;).&lt;ol class="arabic"&gt;
+&lt;li&gt;Calls the async function with &lt;tt class="docutils literal"&gt;defer.ensureDeferred&lt;/tt&gt; to ensure it gets
+scheduled with the reactor.&lt;/li&gt;
+&lt;li&gt;Returns &lt;tt class="docutils literal"&gt;NOT_DONE_YET&lt;/tt&gt; so that Twisted doesn’t close the connection.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/li&gt;
+&lt;li&gt;It then searches for a method called &lt;tt class="docutils literal"&gt;_async_render_&amp;lt;&lt;span class="caps"&gt;HTTP&lt;/span&gt; &lt;span class="caps"&gt;METHOD&lt;/span&gt;&amp;gt;&lt;/tt&gt; and calls
+it with the &lt;tt class="docutils literal"&gt;Request&lt;/tt&gt; object.&lt;/li&gt;
+&lt;li&gt;If the result is an &lt;tt class="docutils literal"&gt;Awaitable&lt;/tt&gt; it calls &lt;tt class="docutils literal"&gt;await&lt;/tt&gt; to get the “real” result.&lt;/li&gt;
+&lt;li&gt;Finally it sends the response using Twisted APIs.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/div&gt;
+&lt;div class="section" id="other-thoughts"&gt;
+&lt;h2&gt;&lt;a class="toc-backref" href="#id13"&gt;Other thoughts&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;The Synapse code had many places which were undecorated functions which called
+return a &lt;tt class="docutils literal"&gt;Deferred&lt;/tt&gt; via calling something else. While doing this conversion we
+updated these functions to be &lt;tt class="docutils literal"&gt;async&lt;/tt&gt; and then internally &lt;tt class="docutils literal"&gt;await&lt;/tt&gt; the called
+function, for clarity. (Originally this was done for performance, but the overhead
+should be minimal when using &lt;tt class="docutils literal"&gt;async&lt;/tt&gt;/&lt;tt class="docutils literal"&gt;await&lt;/tt&gt;.)&lt;/p&gt;
+&lt;p&gt;This also involved updating the tests to match the type as well (i.e. if a
+function was made &lt;tt class="docutils literal"&gt;async&lt;/tt&gt; and we mock that function somewhere, the mock should
+also be &lt;tt class="docutils literal"&gt;async&lt;/tt&gt;).&lt;/p&gt;
+&lt;p&gt;While doing this we also fixed up some of the type hints of return values since
+mypy will actually check them once you remove the &lt;tt class="docutils literal"&gt;defer.inlineCallbacks&lt;/tt&gt; decorator.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="section" id="measuring-progress"&gt;
+&lt;h2&gt;&lt;a class="toc-backref" href="#id14"&gt;Measuring progress&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;As part of this I threw together an “&lt;a class="reference external" href="https://patrick.cloke.us/areweasyncyet/"&gt;Are We Async Yet?&lt;/a&gt;” site. It is pretty
+basic, but tracks the amount of code using &lt;tt class="docutils literal"&gt;defer.inlineCallbacks&lt;/tt&gt; vs. &lt;tt class="docutils literal"&gt;async&lt;/tt&gt;.
+As a side-effect you can see how the code has grown over time (with a few instances
+of major shrinking). &lt;a class="footnote-reference" href="#id8" id="id4"&gt;[4]&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;And last, but not least, I definitely did not convert all of Synapse myself! It
+was done incrementally by the entire team over years! My coworkers mostly laid
+the groundwork and I did much of the mechanical changes. And…we’re still not
+&lt;em&gt;quite&lt;/em&gt; done, although the remaining places heavily interact with Twisted APIs
+or manually generate a &lt;tt class="docutils literal"&gt;Deferred&lt;/tt&gt; and use &lt;tt class="docutils literal"&gt;addCallback&lt;/tt&gt; (so they’re not
+straightforward to convert).&lt;/p&gt;
+&lt;table class="docutils footnote" frame="void" id="id5" rules="none"&gt;
+&lt;colgroup&gt;&lt;col class="label"/&gt;&lt;col/&gt;&lt;/colgroup&gt;
+&lt;tbody valign="top"&gt;
+&lt;tr&gt;&lt;td class="label"&gt;&lt;a class="fn-backref" href="#id1"&gt;[1]&lt;/a&gt;&lt;/td&gt;&lt;td&gt;Added in Python 3.5 via &lt;a class="reference external" href="https://www.python.org/dev/peps/pep-0492/"&gt;&lt;span class="caps"&gt;PEP&lt;/span&gt; 492&lt;/a&gt;.&lt;/td&gt;&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;table class="docutils footnote" frame="void" id="id6" rules="none"&gt;
+&lt;colgroup&gt;&lt;col class="label"/&gt;&lt;col/&gt;&lt;/colgroup&gt;
+&lt;tbody valign="top"&gt;
+&lt;tr&gt;&lt;td class="label"&gt;&lt;a class="fn-backref" href="#id2"&gt;[2]&lt;/a&gt;&lt;/td&gt;&lt;td&gt;Newer than version 15.0 according to the &lt;a class="reference external" href="https://twistedmatrix.com/documents/21.2.0/core/howto/defer-intro.html#inline-callbacks-using-yield"&gt;Twisted documentation&lt;/a&gt;.&lt;/td&gt;&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;table class="docutils footnote" frame="void" id="id7" rules="none"&gt;
+&lt;colgroup&gt;&lt;col class="label"/&gt;&lt;col/&gt;&lt;/colgroup&gt;
+&lt;tbody valign="top"&gt;
+&lt;tr&gt;&lt;td class="label"&gt;&lt;a class="fn-backref" href="#id3"&gt;[3]&lt;/a&gt;&lt;/td&gt;&lt;td&gt;The &lt;a class="reference external" href="https://twistedmatrix.com/documents/21.2.0/core/howto/defer-intro.html#coroutines-with-async-await"&gt;documentation for async/await&lt;/a&gt; suggests using &lt;a class="reference external" href="https://twistedmatrix.com/documents/21.2.0/api/twisted.internet.defer.Deferred.html#fromCoroutine"&gt;&lt;tt class="docutils literal"&gt;Deferred.fromCoroutine&lt;/tt&gt;&lt;/a&gt;
+instead, but that is new in Twisted v21.2.0.&lt;/td&gt;&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;table class="docutils footnote" frame="void" id="id8" rules="none"&gt;
+&lt;colgroup&gt;&lt;col class="label"/&gt;&lt;col/&gt;&lt;/colgroup&gt;
+&lt;tbody valign="top"&gt;
+&lt;tr&gt;&lt;td class="label"&gt;&lt;a class="fn-backref" href="#id4"&gt;[4]&lt;/a&gt;&lt;/td&gt;&lt;td&gt;You can &lt;a class="reference external" href="https://github.com/clokep/areweasyncyet"&gt;find the code on GitHub&lt;/a&gt;.&lt;/td&gt;&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;/div&gt;
+</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Patrick Cloke</dc:creator><pubDate>Fri, 11 Jun 2021 15:11:00 -0400</pubDate><guid isPermaLink="false">tag:patrick.cloke.us,2021-06-11:/posts/2021/06/11/converting-twisteds-inlinecallbacks-to-async/</guid><category>articles</category><category>twisted</category></item><item><title>celery-batches 0.5 released!</title><link>https://patrick.cloke.us/posts/2021/05/24/celery-batches-0.5-released/</link><description>&lt;p&gt;A &lt;a class="reference external" href="https://pypi.org/project/celery-batches/0.5/"&gt;new version (v0.5)&lt;/a&gt; of &lt;a class="reference external" href="https://github.com/clokep/celery-batches/"&gt;celery-batches&lt;/a&gt; is available which adds support for
 Celery 5.1 and fixes storing of results when using the &lt;a class="reference external" href="https://docs.celeryproject.org/en/v5.1.0/userguide/tasks.html#rpc-result-backend-rabbitmq-qpid"&gt;&lt;span class="caps"&gt;RPC&lt;/span&gt; result backend&lt;/a&gt;.&lt;/p&gt;
 &lt;p&gt;As &lt;a class="reference external" href="https://patrick.cloke.us/posts/2019/10/04/celery-amqp-backends/"&gt;explored previously&lt;/a&gt;, the &lt;span class="caps"&gt;RPC&lt;/span&gt; result backend works by having a results queue
-per client, unfortunately celery-batches was attempting to store the results …&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Patrick Cloke</dc:creator><pubDate>Mon, 24 May 2021 16:56:00 -0400</pubDate><guid isPermaLink="false">tag:patrick.cloke.us,2021-05-24:/posts/2021/05/24/celery-batches-0.5-released/</guid><category>articles</category><category>celery</category><category>celery-batches</category></item><item><title>A new maintainer for django-allauth-2fa</title><link>https://patrick.cloke.us/posts/2021/05/07/django-allauth-2fa-transfer/</link><description>&lt;p&gt;I&amp;#8217;m excited to announce the &lt;a class="reference external" href="https://github.com/valohai/django-allauth-2fa/"&gt;django-allauth-2fa&lt;/a&gt; project has a new maintainer!
+per client, unfortunately celery-batches was attempting to store the results in
+a queue named after the task &lt;span class="caps"&gt;ID&lt;/span&gt; instead of the client &lt;span class="caps"&gt;ID&lt;/span&gt; (Celery internally calls
+this the &amp;#8220;correlation &lt;span class="caps"&gt;ID&lt;/span&gt;&amp;#8221;) &lt;a class="footnote-reference" href="#id2" id="id1"&gt;[1]&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;This unfortunately requires a change to client code to pass the batched request
+into the &lt;tt class="docutils literal"&gt;mark_as_done&lt;/tt&gt; method, using the example &lt;a class="reference external" href="https://celery-batches.readthedocs.io/en/v0.5/"&gt;from the documnation&lt;/a&gt; with
+the changed line&amp;nbsp;highlighted:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;requests&lt;/span&gt;
+&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;urlparse&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;urlparse&lt;/span&gt;
+
+&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;celery_batches&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;Batches&lt;/span&gt;
+
+&lt;span class="n"&gt;wot_api_target&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;https://api.mywot.com/0.4/public_link_json&amp;#39;&lt;/span&gt;
+
+&lt;span class="nd"&gt;@app&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;task&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;base&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;Batches&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;flush_every&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="mi"&gt;100&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;flush_interval&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="mi"&gt;10&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;wot_api&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;requests&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+    &lt;span class="n"&gt;sig&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="k"&gt;lambda&lt;/span&gt; &lt;span class="n"&gt;url&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="n"&gt;url&lt;/span&gt;
+    &lt;span class="n"&gt;responses&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;wot_api_real&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;
+        &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;sig&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="o"&gt;*&lt;/span&gt;&lt;span class="n"&gt;request&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;args&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="o"&gt;**&lt;/span&gt;&lt;span class="n"&gt;request&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;kwargs&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="k"&gt;for&lt;/span&gt; &lt;span class="n"&gt;request&lt;/span&gt; &lt;span class="ow"&gt;in&lt;/span&gt; &lt;span class="n"&gt;requests&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+    &lt;span class="p"&gt;)&lt;/span&gt;
+    &lt;span class="c1"&gt;# use mark_as_done to manually return response data&lt;/span&gt;
+    &lt;span class="k"&gt;for&lt;/span&gt; &lt;span class="n"&gt;response&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;request&lt;/span&gt; &lt;span class="ow"&gt;in&lt;/span&gt; &lt;span class="nb"&gt;zip&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;responses&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;requests&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+&lt;span class="hll"&gt;        &lt;span class="n"&gt;app&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;backend&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;mark_as_done&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;request&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;id&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;response&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;request&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;request&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;/span&gt;
+
+&lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;wot_api_real&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;urls&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+    &lt;span class="n"&gt;domains&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;urlparse&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;url&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;netloc&lt;/span&gt; &lt;span class="k"&gt;for&lt;/span&gt; &lt;span class="n"&gt;url&lt;/span&gt; &lt;span class="ow"&gt;in&lt;/span&gt; &lt;span class="n"&gt;urls&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;
+    &lt;span class="n"&gt;response&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;requests&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;get&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;
+        &lt;span class="n"&gt;wot_api_target&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+        &lt;span class="n"&gt;params&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="p"&gt;{&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;hosts&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;/&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;join&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nb"&gt;set&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;domains&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt; &lt;span class="o"&gt;+&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;/&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;}&lt;/span&gt;
+    &lt;span class="p"&gt;)&lt;/span&gt;
+    &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;response&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;json&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;domain&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt; &lt;span class="k"&gt;for&lt;/span&gt; &lt;span class="n"&gt;domain&lt;/span&gt; &lt;span class="ow"&gt;in&lt;/span&gt; &lt;span class="n"&gt;domains&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;table class="docutils footnote" frame="void" id="id2" rules="none"&gt;
+&lt;colgroup&gt;&lt;col class="label" /&gt;&lt;col /&gt;&lt;/colgroup&gt;
+&lt;tbody valign="top"&gt;
+&lt;tr&gt;&lt;td class="label"&gt;&lt;a class="fn-backref" href="#id1"&gt;[1]&lt;/a&gt;&lt;/td&gt;&lt;td&gt;The &lt;span class="caps"&gt;RPC&lt;/span&gt; backend has &lt;a class="reference external" href="https://github.com/celery/celery/blob/v5.1.0/celery/backends/rpc.py#L166"&gt;code which pulls out the correlation &lt;span class="caps"&gt;ID&lt;/span&gt;&lt;/a&gt;, but falls
+back to the task &lt;span class="caps"&gt;ID&lt;/span&gt; if not given. This is called via an
+&lt;a class="reference external" href="https://github.com/celery/celery/blob/v5.1.0/celery/backends/rpc.py#L198-L200"&gt;override of the &lt;tt class="docutils literal"&gt;store_result&lt;/tt&gt; method&lt;/a&gt;.&lt;/td&gt;&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Patrick Cloke</dc:creator><pubDate>Mon, 24 May 2021 16:56:00 -0400</pubDate><guid isPermaLink="false">tag:patrick.cloke.us,2021-05-24:/posts/2021/05/24/celery-batches-0.5-released/</guid><category>articles</category><category>celery</category><category>celery-batches</category></item><item><title>A new maintainer for django-allauth-2fa</title><link>https://patrick.cloke.us/posts/2021/05/07/django-allauth-2fa-transfer/</link><description>&lt;p&gt;I&amp;#8217;m excited to announce the &lt;a class="reference external" href="https://github.com/valohai/django-allauth-2fa/"&gt;django-allauth-2fa&lt;/a&gt; project has a new maintainer!
 It can now be found under the &lt;a class="reference external" href="https://github.com/valohai/"&gt;valohai&lt;/a&gt; organization on GitHub, who have
 &lt;a class="reference external" href="https://github.com/valohai/django-allauth-2fa/pulls?q=is%3Apr+author%3Aakx+is%3Aclosed"&gt;already contributed&lt;/a&gt; quite a bit to the&amp;nbsp;package.&lt;/p&gt;
 &lt;p&gt;This project lets you easily add two-factor authentication to a Django project
 using &lt;a class="reference external" href="https://www.intenct.nl/projects/django-allauth/"&gt;django-allauth&lt;/a&gt;.&lt;/p&gt;
-&lt;p&gt;As a bit …&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Patrick Cloke</dc:creator><pubDate>Fri, 07 May 2021 09:39:00 -0400</pubDate><guid isPermaLink="false">tag:patrick.cloke.us,2021-05-07:/posts/2021/05/07/django-allauth-2fa-transfer/</guid><category>articles</category><category>django</category><category>django-allauth-2fa</category></item><item><title>django-querysetsequence 0.14 released!</title><link>https://patrick.cloke.us/posts/2021/02/26/django-querysetsequence-0-14-released/</link><description>&lt;p&gt;&lt;a class="reference external" href="https://github.com/clokep/django-querysetsequence/"&gt;django-querysetsequence&lt;/a&gt; 0.14 has been released with support for Django 3.2 (and
+&lt;p&gt;As a bit of history, this package was originally created by &lt;a class="reference external" href="https://github.com/valberg"&gt;Víðir Valberg Guðmundsson&lt;/a&gt;.
+The package was then adopted by a previous employer, Strongarm (while there I gave a
+&lt;a class="reference external" href="https://patrick.cloke.us/posts/2017/04/06/adding-two-factor-authentication-to-django-with-django-allauth-lightning-talk/"&gt;talk at Django Boston&lt;/a&gt; about it). After acquisition we were phasing out support
+for our own login (which I&amp;#8217;m not actually sure if this has been finished or not),
+but were not really maintaining the package. &lt;a class="reference external" href="https://github.com/akx"&gt;Aarni Koskela&lt;/a&gt; asked about taking
+over maintenance and we gratefully have transferred it to&amp;nbsp;them!&lt;/p&gt;
+&lt;p&gt;There&amp;#8217;s much more you could do with this package so I&amp;#8217;m quite happy to see it in
+the hands of someone actively using&amp;nbsp;it!&lt;/p&gt;
+</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Patrick Cloke</dc:creator><pubDate>Fri, 07 May 2021 09:39:00 -0400</pubDate><guid isPermaLink="false">tag:patrick.cloke.us,2021-05-07:/posts/2021/05/07/django-allauth-2fa-transfer/</guid><category>articles</category><category>django</category><category>django-allauth-2fa</category></item><item><title>django-querysetsequence 0.14 released!</title><link>https://patrick.cloke.us/posts/2021/02/26/django-querysetsequence-0-14-released/</link><description>&lt;p&gt;&lt;a class="reference external" href="https://github.com/clokep/django-querysetsequence/"&gt;django-querysetsequence&lt;/a&gt; 0.14 has been released with support for Django 3.2 (and
 Python 3.9). django-querysetsequence is a Django package for
 &lt;a class="reference external" href="https://patrick.cloke.us/posts/2016/02/04/combining-disparate-querysets-in-django/"&gt;treating multiple &lt;tt class="docutils literal"&gt;QuerySet&lt;/tt&gt; instances as a single &lt;tt class="docutils literal"&gt;QuerySet&lt;/tt&gt;&lt;/a&gt;, this can be useful
 for treating similar models as a single model. The &lt;tt class="docutils literal"&gt;QuerySetSequence&lt;/tt&gt; class
-supports &lt;a class="reference external" href="https://django-querysetsequence.readthedocs.io/en/latest/api.html"&gt;much of the &lt;span class="caps"&gt;API …&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Patrick Cloke</dc:creator><pubDate>Fri, 26 Feb 2021 12:31:00 -0500</pubDate><guid isPermaLink="false">tag:patrick.cloke.us,2021-02-26:/posts/2021/02/26/django-querysetsequence-0-14-released/</guid><category>articles</category><category>django</category><category>django-querysetsequence</category></item><item><title>celery-batches 0.4 released!</title><link>https://patrick.cloke.us/posts/2020/11/30/celery-batches-0.4-released/</link><description>&lt;p&gt;Earlier today I released a version &lt;a class="reference external" href="https://pypi.org/project/celery-batches/0.4/"&gt;0.4&lt;/a&gt; of &lt;a class="reference external" href="https://github.com/clokep/celery-batches/"&gt;celery-batches&lt;/a&gt; with support for
+supports &lt;a class="reference external" href="https://django-querysetsequence.readthedocs.io/en/latest/api.html"&gt;much of the &lt;span class="caps"&gt;API&lt;/span&gt;&lt;/a&gt; available to &lt;tt class="docutils literal"&gt;QuerySet&lt;/tt&gt; instances.&lt;/p&gt;
+&lt;p&gt;The marquee features of this release&amp;nbsp;are:&lt;/p&gt;
+&lt;ul class="simple"&gt;
+&lt;li&gt;Support for &lt;a class="reference external" href="https://docs.djangoproject.com/en/dev/ref/models/querysets/#values"&gt;&lt;tt class="docutils literal"&gt;values()&lt;/tt&gt;&lt;/a&gt; and &lt;a class="reference external" href="https://docs.djangoproject.com/en/dev/ref/models/querysets/#values-list"&gt;&lt;tt class="docutils literal"&gt;values_list()&lt;/tt&gt;&lt;/a&gt; to retrieve the results as
+dictionaries / tuples (instead of &lt;tt class="docutils literal"&gt;Model&lt;/tt&gt; instances).&lt;/li&gt;
+&lt;li&gt;Partial support for &lt;a class="reference external" href="https://docs.djangoproject.com/en/dev/ref/models/querysets/#distinct"&gt;&lt;tt class="docutils literal"&gt;distinct()&lt;/tt&gt;&lt;/a&gt; &amp;#8212; this is only supported when each underlying
+&lt;tt class="docutils literal"&gt;QuerySet&lt;/tt&gt; is a unique &lt;tt class="docutils literal"&gt;Model&lt;/tt&gt;.&lt;/li&gt;
+&lt;li&gt;&lt;a class="reference external" href="https://django-querysetsequence.readthedocs.io/"&gt;Prettier documentation&lt;/a&gt; is&amp;nbsp;available.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;The full changelog is included&amp;nbsp;below:&lt;/p&gt;
+&lt;div class="section" id="features"&gt;
+&lt;h2&gt;Features&lt;/h2&gt;
+&lt;ul class="simple"&gt;
+&lt;li&gt;Support Django 3.2 (&lt;a class="reference external" href="https://github.com/clokep/django-querysetsequence/pull/78"&gt;#78&lt;/a&gt;,
+&lt;a class="reference external" href="https://github.com/clokep/django-querysetsequence/pull/81"&gt;#81&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;Support Python 3.9. (&lt;a class="reference external" href="https://github.com/clokep/django-querysetsequence/pull/78"&gt;#78&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;Support the &lt;tt class="docutils literal"&gt;values()&lt;/tt&gt; and &lt;tt class="docutils literal"&gt;values_list()&lt;/tt&gt; methods.
+(&lt;a class="reference external" href="https://github.com/clokep/django-querysetsequence/pull/73"&gt;#73&lt;/a&gt;,
+&lt;a class="reference external" href="https://github.com/clokep/django-querysetsequence/pull/74"&gt;#74&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;Support the &lt;tt class="docutils literal"&gt;distinct()&lt;/tt&gt; method when each &lt;tt class="docutils literal"&gt;QuerySet&lt;/tt&gt; instance is from a
+unique model. Contributed by
+&lt;a class="reference external" href="https://github.com/jpic"&gt;&amp;#64;jpic&lt;/a&gt;. (&lt;a class="reference external" href="https://github.com/clokep/django-querysetsequence/pull/77"&gt;#77&lt;/a&gt;,
+&lt;a class="reference external" href="https://github.com/clokep/django-querysetsequence/pull/80"&gt;#80&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;Add &lt;a class="reference external" href="https://django-querysetsequence.readthedocs.io/"&gt;Sphinx documentation&lt;/a&gt;
+which is available at Read the&amp;nbsp;Docs.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+&lt;div class="section" id="bugfixes"&gt;
+&lt;h2&gt;Bugfixes&lt;/h2&gt;
+&lt;ul class="simple"&gt;
+&lt;li&gt;Support calling &lt;tt class="docutils literal"&gt;filter()&lt;/tt&gt; with &lt;a class="reference external" href="https://docs.djangoproject.com/en/dev/ref/models/querysets/#q-objects"&gt;&lt;tt class="docutils literal"&gt;Q()&lt;/tt&gt; objects&lt;/a&gt;. Contributed by
+&lt;a class="reference external" href="https://github.com/jpic"&gt;&amp;#64;jpic&lt;/a&gt;. (&lt;a class="reference external" href="https://github.com/clokep/django-querysetsequence/pull/76"&gt;#76&lt;/a&gt;)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+&lt;div class="section" id="miscellaneous"&gt;
+&lt;h2&gt;Miscellaneous&lt;/h2&gt;
+&lt;ul class="simple"&gt;
+&lt;li&gt;Add an additional test for the interaction of &lt;tt class="docutils literal"&gt;order_by()&lt;/tt&gt; and &lt;tt class="docutils literal"&gt;only()&lt;/tt&gt;.
+(&lt;a class="reference external" href="https://github.com/clokep/django-querysetsequence/pull/72"&gt;#72&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;Support Django &lt;span class="caps"&gt;REST&lt;/span&gt; Framework 3.12. (&lt;a class="reference external" href="https://github.com/clokep/django-querysetsequence/pull/75"&gt;#75&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;Switch continuous integration to GitHub Actions. (&lt;a class="reference external" href="https://github.com/clokep/django-querysetsequence/pull/79"&gt;#79&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;Drop support for Python 3.5. (&lt;a class="reference external" href="https://github.com/clokep/django-querysetsequence/pull/82"&gt;#82&lt;/a&gt;)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Patrick Cloke</dc:creator><pubDate>Fri, 26 Feb 2021 12:31:00 -0500</pubDate><guid isPermaLink="false">tag:patrick.cloke.us,2021-02-26:/posts/2021/02/26/django-querysetsequence-0-14-released/</guid><category>articles</category><category>django</category><category>django-querysetsequence</category></item><item><title>celery-batches 0.4 released!</title><link>https://patrick.cloke.us/posts/2020/11/30/celery-batches-0.4-released/</link><description>&lt;p&gt;Earlier today I released a version &lt;a class="reference external" href="https://pypi.org/project/celery-batches/0.4/"&gt;0.4&lt;/a&gt; of &lt;a class="reference external" href="https://github.com/clokep/celery-batches/"&gt;celery-batches&lt;/a&gt; with support for
 Celery 5.0. As part of this release support for Python &amp;lt; 3.6 was dropped and
 support for Celery &amp;lt; 4.4 was&amp;nbsp;dropped.&lt;/p&gt;
 &lt;p&gt;celery-batches is a small library that allows you process multiple calls to a
-&lt;a class="reference external" href="https://github.com/celery/celery/"&gt;Celery …&lt;/a&gt;&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Patrick Cloke</dc:creator><pubDate>Mon, 30 Nov 2020 16:50:00 -0500</pubDate><guid isPermaLink="false">tag:patrick.cloke.us,2020-11-30:/posts/2020/11/30/celery-batches-0.4-released/</guid><category>articles</category><category>celery</category><category>celery-batches</category></item><item><title>django-render-block 0.8 (and 0.8.1) released!</title><link>https://patrick.cloke.us/posts/2020/10/27/django-render-block-0.8-released/</link><description>&lt;p&gt;A couple of weeks ago I released version 0.8 of &lt;a class="reference external" href="https://github.com/clokep/django-render-block/"&gt;django-render-block&lt;/a&gt;, this was
+&lt;a class="reference external" href="https://github.com/celery/celery/"&gt;Celery&lt;/a&gt; task together. The batches can be processed based on a count of task
+calls or a timer. It started as an update of the &lt;tt class="docutils literal"&gt;celery.contrib.batches&lt;/tt&gt;
+code to support Celery 4.0+ and has grown to support some additional&amp;nbsp;features.&lt;/p&gt;
+&lt;p&gt;The project was also transferred on GitHub to my personal namespace (from my
+previous employer). Realistically it was maintained by me already and this is
+just a formality. As part of this release the &lt;a class="reference external" href="https://celery-batches.readthedocs.io/en/v0.4/"&gt;documentation&lt;/a&gt; is now available
+on Read the&amp;nbsp;Docs.&lt;/p&gt;
+</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Patrick Cloke</dc:creator><pubDate>Mon, 30 Nov 2020 16:50:00 -0500</pubDate><guid isPermaLink="false">tag:patrick.cloke.us,2020-11-30:/posts/2020/11/30/celery-batches-0.4-released/</guid><category>articles</category><category>celery</category><category>celery-batches</category></item><item><title>django-render-block 0.8 (and 0.8.1) released!</title><link>https://patrick.cloke.us/posts/2020/10/27/django-render-block-0.8-released/</link><description>&lt;p&gt;A couple of weeks ago I released version 0.8 of &lt;a class="reference external" href="https://github.com/clokep/django-render-block/"&gt;django-render-block&lt;/a&gt;, this was
 followed up with a 0.8.1 to fix a&amp;nbsp;regression.&lt;/p&gt;
 &lt;p&gt;django-render-block is a small library that allows you render a specific &lt;tt class="docutils literal"&gt;block&lt;/tt&gt;
-from a Django (or Jinja) template, this is frequently used for emails when …&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Patrick Cloke</dc:creator><pubDate>Tue, 27 Oct 2020 16:57:00 -0400</pubDate><guid isPermaLink="false">tag:patrick.cloke.us,2020-10-27:/posts/2020/10/27/django-render-block-0.8-released/</guid><category>articles</category><category>django</category><category>django-render-block</category></item><item><title>Instantbird Blog: WordPress to Pelican</title><link>https://patrick.cloke.us/posts/2020/09/09/instantbird-blog-wordpress-to-pelican/</link><description>&lt;p&gt;The &lt;a class="reference external" href="https://blog.instantbird.org"&gt;Instantbird blog&lt;/a&gt; is now (as of mid-April 2020) hosted on GitHub Pages
+from a Django (or Jinja) template, this is frequently used for emails when you
+want multiple pieces of an email together in a single template (e.g. the subject,
+&lt;span class="caps"&gt;HTML&lt;/span&gt; body, and text body), but they need to be rendered separately before&amp;nbsp;sending.&lt;/p&gt;
+&lt;p&gt;See the example&amp;nbsp;below:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="cp"&gt;{%&lt;/span&gt; &lt;span class="k"&gt;block&lt;/span&gt; &lt;span class="nv"&gt;subject&lt;/span&gt; &lt;span class="cp"&gt;%}&lt;/span&gt;&lt;span class="x"&gt;Hello from django-render-block!&lt;/span&gt;&lt;span class="cp"&gt;{%&lt;/span&gt; &lt;span class="k"&gt;endblock&lt;/span&gt; &lt;span class="cp"&gt;%}&lt;/span&gt;&lt;span class="x"&gt;&lt;/span&gt;
+
+&lt;span class="cp"&gt;{%&lt;/span&gt; &lt;span class="k"&gt;block&lt;/span&gt; &lt;span class="nv"&gt;text&lt;/span&gt; &lt;span class="cp"&gt;%}&lt;/span&gt;&lt;span class="x"&gt;&lt;/span&gt;
+&lt;span class="x"&gt;Hello!&lt;/span&gt;
+
+&lt;span class="x"&gt;This is the text email body!&lt;/span&gt;
+&lt;span class="cp"&gt;{%&lt;/span&gt; &lt;span class="k"&gt;endblock&lt;/span&gt; &lt;span class="cp"&gt;%}&lt;/span&gt;&lt;span class="x"&gt;&lt;/span&gt;
+
+&lt;span class="cp"&gt;{%&lt;/span&gt; &lt;span class="k"&gt;block&lt;/span&gt; &lt;span class="nv"&gt;html&lt;/span&gt; &lt;span class="cp"&gt;%}&lt;/span&gt;&lt;span class="x"&gt;&lt;/span&gt;
+&lt;span class="x"&gt;&amp;lt;h1&amp;gt;Hello!&amp;lt;/h1&amp;gt;&lt;/span&gt;
+
+&lt;span class="x"&gt;&amp;lt;p&amp;gt;This is the &amp;lt;b&amp;gt;HTML&amp;lt;/b&amp;gt; email body!&amp;lt;/p&amp;gt;&lt;/span&gt;
+&lt;span class="cp"&gt;{%&lt;/span&gt; &lt;span class="k"&gt;endblock&lt;/span&gt; &lt;span class="cp"&gt;%}&lt;/span&gt;&lt;span class="x"&gt;&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Using django-render-block, each &lt;tt class="docutils literal"&gt;block&lt;/tt&gt; can be rendered separately and then
+passed into Django&amp;#8217;s &lt;a class="reference external" href="https://docs.djangoproject.com/en/3.1/topics/email/"&gt;email system&lt;/a&gt;:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;django.core.mail&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;send_mail&lt;/span&gt;
+&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;render_block&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;render_block_to_string&lt;/span&gt;
+
+&lt;span class="n"&gt;subject&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;render_block_to_string&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;email.html&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;subject&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="n"&gt;text_body&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;render_block_to_string&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;email.html&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;text&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="n"&gt;html_body&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;render_block_to_string&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;email.html&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;html&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+
+&lt;span class="n"&gt;send_mail&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;
+    &lt;span class="n"&gt;subject&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+    &lt;span class="n"&gt;text_body&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+    &lt;span class="n"&gt;html_message&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;html_body&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;This particular release of django-render-block includes support for passing
+a fully instantiated &lt;a class="reference external" href="https://docs.djangoproject.com/en/dev/ref/templates/api/#django.template.Context"&gt;&lt;tt class="docutils literal"&gt;Context&lt;/tt&gt;&lt;/a&gt; (instead of a simple &lt;tt class="docutils literal"&gt;dict&lt;/tt&gt;) into
+&lt;tt class="docutils literal"&gt;render_block_to_string&lt;/tt&gt;. This allows the caller to control whether
+&lt;tt class="docutils literal"&gt;autoescape&lt;/tt&gt; is enabled and a few other&amp;nbsp;features.&lt;/p&gt;
+&lt;p&gt;The full changelog is included&amp;nbsp;below:&lt;/p&gt;
+&lt;div class="section" id="october-15-2020"&gt;
+&lt;h2&gt;0.8.1 (October 15,&amp;nbsp;2020)&lt;/h2&gt;
+&lt;ul class="simple"&gt;
+&lt;li&gt;Fixes a regression in v0.8 where a &lt;tt class="docutils literal"&gt;Context&lt;/tt&gt; could not be re-used. Contributed
+by &lt;a class="reference external" href="https://github.com/evanbrumley"&gt;&amp;#64;evanbrumley&lt;/a&gt;. (&lt;a class="reference external" href="https://github.com/clokep/django-render-block/pull/25"&gt;#25&lt;/a&gt;)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+&lt;div class="section" id="october-6-2020"&gt;
+&lt;h2&gt;0.8 (October 6,&amp;nbsp;2020)&lt;/h2&gt;
+&lt;ul class="simple"&gt;
+&lt;li&gt;&lt;tt class="docutils literal"&gt;render_block_to_string&lt;/tt&gt; now forwards the &lt;tt class="docutils literal"&gt;Context&lt;/tt&gt; passed as &lt;tt class="docutils literal"&gt;context&lt;/tt&gt; parameter.
+Contributed by &lt;a class="reference external" href="https://github.com/bblanchon"&gt;&amp;#64;bblanchon&lt;/a&gt;. (&lt;a class="reference external" href="https://github.com/clokep/django-render-block/pull/21"&gt;#21&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;Drop support for Python 3.5, officially support Python 3.9. (&lt;a class="reference external" href="https://github.com/clokep/django-render-block/pull/22"&gt;#22&lt;/a&gt;)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Patrick Cloke</dc:creator><pubDate>Tue, 27 Oct 2020 16:57:00 -0400</pubDate><guid isPermaLink="false">tag:patrick.cloke.us,2020-10-27:/posts/2020/10/27/django-render-block-0.8-released/</guid><category>articles</category><category>django</category><category>django-render-block</category></item><item><title>Instantbird Blog: WordPress to Pelican</title><link>https://patrick.cloke.us/posts/2020/09/09/instantbird-blog-wordpress-to-pelican/</link><description>&lt;p&gt;The &lt;a class="reference external" href="https://blog.instantbird.org"&gt;Instantbird blog&lt;/a&gt; is now (as of mid-April 2020) hosted on GitHub Pages
 (instead of self-hosted &lt;a class="reference external" href="https://wordpress.com/"&gt;WordPress&lt;/a&gt;) &lt;a class="footnote-reference" href="#id5" id="id1"&gt;[1]&lt;/a&gt;. Hopefully it was converted faithfully,
 but feel free to let us know if you see something broken! You can file an issue
-at &lt;a class="reference external" href="https://github.com/instantbird/blog.instantbird.org/"&gt;the repo for the blog&lt;/a&gt; or just comment&amp;nbsp;below …&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Patrick Cloke</dc:creator><pubDate>Wed, 09 Sep 2020 17:10:00 -0400</pubDate><guid isPermaLink="false">tag:patrick.cloke.us,2020-09-09:/posts/2020/09/09/instantbird-blog-wordpress-to-pelican/</guid><category>articles</category><category>Instantbird</category><category>pelican</category></item><item><title>Testing WireViz</title><link>https://patrick.cloke.us/posts/2020/07/14/testing-wireviz/</link><description>&lt;p&gt;I wanted to play with the &lt;a class="reference external" href="https://github.com/formatc1702/WireViz"&gt;WireViz&lt;/a&gt; Python package, which makes pretty wire
+at &lt;a class="reference external" href="https://github.com/instantbird/blog.instantbird.org/"&gt;the repo for the blog&lt;/a&gt; or just comment&amp;nbsp;below.&lt;/p&gt;
+&lt;p&gt;Note that there are some changes due to being a static site instead of being
+backed by a dynamic language. Most of these would be around editing the blog,
+which we don&amp;#8217;t do anymore. The biggest user-facing change was that
+&lt;a class="reference external" href="https://github.com/instantbird/blog.instantbird.org/blob/source/theme/templates/searchform.html"&gt;search is now via DuckDuckGo&lt;/a&gt; instead of being built into the&amp;nbsp;site.&lt;/p&gt;
+&lt;p&gt;This was a bit of an arduous process with some trial and error. See below for
+some of the details. Overall I did this work over 3 years (!!!), starting in
+April of 2017 and getting the site live in April of 2020. It was mostly done in
+5 sprints with some long gaps&amp;nbsp;between.&lt;/p&gt;
+&lt;p&gt;As some background, the Instantbird blog was originally (in 2007) served via
+Florian&amp;#8217;s custom blog engine &lt;a class="footnote-reference" href="#id6" id="id2"&gt;[2]&lt;/a&gt;. In 2011 it was
+&lt;a class="reference external" href="https://blog.instantbird.org/2011/10/weekly-meeting-october-10-2011/"&gt;converted to WordPress by an Instantbird contributor&lt;/a&gt;. This initial conversion
+was not done perfectly and I attempted to fix some of these issues when
+converting from WordPress to Pelican &lt;a class="footnote-reference" href="#id7" id="id3"&gt;[3]&lt;/a&gt;. The general steps I was hoping to&amp;nbsp;follow:&lt;/p&gt;
+&lt;ol class="arabic simple"&gt;
+&lt;li&gt;Setup the project using the &lt;tt class="docutils literal"&gt;&lt;span class="pre"&gt;pelican-quickstart&lt;/span&gt;&lt;/tt&gt; comment.&lt;/li&gt;
+&lt;li&gt;Export the content via WordPress to &lt;span class="caps"&gt;XML&lt;/span&gt;.&lt;/li&gt;
+&lt;li&gt;Use the Pelican &lt;a class="reference external" href="https://docs.getpelican.com/en/3.7.1/importer.html"&gt;WordPress importer&lt;/a&gt; to convert the content to reStructuredText. &lt;a class="footnote-reference" href="#id8" id="id4"&gt;[4]&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Go through the conversion by hand and fix any&amp;nbsp;oddities.&lt;/li&gt;
+&lt;li&gt;Convert the &lt;span class="caps"&gt;PHP&lt;/span&gt; theme to &lt;a class="reference external" href="https://jinja.palletsprojects.com/"&gt;Jinja2&lt;/a&gt;.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;This plan mostly held together through the process, but I ran into some
+roadblocks, most of which were easily&amp;nbsp;overcome:&lt;/p&gt;
+&lt;ol class="arabic simple"&gt;
+&lt;li&gt;For some reason the WordPress import failed halfway through and didn&amp;#8217;t convert
+every article. I didn&amp;#8217;t investigate why and &lt;a class="reference external" href="https://github.com/instantbird/blog.instantbird.org/commit/d94b2fc4bd8d45d993c080daf215dbdd91298ae3"&gt;added the missing files manually&lt;/a&gt;.&lt;/li&gt;
+&lt;li&gt;A variety of hard-coded &lt;span class="caps"&gt;HTML&lt;/span&gt; made it through the conversion. This was manually
+converted to&amp;nbsp;reStructuredText.&lt;/li&gt;
+&lt;li&gt;Converting the theme was much harder than expected and involved reading
+WordPress documentation to understand various functions the &lt;span class="caps"&gt;PHP&lt;/span&gt; templates&amp;nbsp;called.&lt;/li&gt;
+&lt;li&gt;Wrote a &lt;a class="reference external" href="https://github.com/instantbird/blog.instantbird.org/blob/source/plugins/archives.py"&gt;custom archive plugin&lt;/a&gt; to be able to articles by year / month /&amp;nbsp;day.&lt;/li&gt;
+&lt;li&gt;The alignment of images needed to be fixed (and lots of WordPress styles&amp;nbsp;removed).&lt;/li&gt;
+&lt;li&gt;Some of our posts had multiple categories on them, which is not allowed in
+Pelican. Generally these overlapped with tags and I decided the easiest path
+here was to modify the content to have a single category per&amp;nbsp;article.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;A huge piece of work was that comments were not imported. I did not care about
+people being able to write &lt;em&gt;new&lt;/em&gt; comments, but I wanted the old content there.
+For this I planned to use the &lt;a class="reference external" href="https://github.com/getpelican/pelican-plugins/tree/master/pelican_comment_system"&gt;pelican_comment_system plugin&lt;/a&gt;, but I needed to
+get the comments into a format that it understood (from the WordPress &lt;span class="caps"&gt;XML&lt;/span&gt; export
+discussed&amp;nbsp;above).&lt;/p&gt;
+&lt;p&gt;I ended up &lt;a class="reference external" href="https://github.com/instantbird/blog.instantbird.org/blob/source/wp2comments.py"&gt;writing a custom script&lt;/a&gt; based on the &lt;a class="reference external" href="https://github.com/getpelican/pelican/blob/4.2.0/pelican/tools/pelican_import.py"&gt;pelican_import&lt;/a&gt; code to
+iterate the comments in the &lt;span class="caps"&gt;XML&lt;/span&gt; file and write a reStructuredText file for each
+comment. There was quite a bit of trial and error here, but I think the result
+was reasonable. This also needed to handle comment threads and pingbacks, which
+added some&amp;nbsp;wrinkles.&lt;/p&gt;
+&lt;p&gt;The final step here was to get gravatars for comments working. The
+pelican_comment_system supports identicons only, but I was able to
+&lt;a class="reference external" href="https://github.com/instantbird/blog.instantbird.org/blob/source/plugins/comments.py"&gt;combine it and the gravatar plugin&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;One final piece was generating a reasonable 404 page. The WordPress one some
+features that required two more custom plugins: a &lt;a class="reference external" href="https://github.com/instantbird/blog.instantbird.org/blob/source/plugins/tag_cloud.py"&gt;tag cloud&lt;/a&gt; and a list of the
+&lt;a class="reference external" href="https://github.com/instantbird/blog.instantbird.org/blob/source/plugins/most_used_categories.py"&gt;most used categories&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;There was a few other odds-and-ends that aren&amp;#8217;t really worth mentioning, but
+overall I&amp;#8217;m quite happy with the result! Just to be clear, there&amp;#8217;s no plans to
+restart development of Instantbird, but I wanted the blog content to archived
+and searchable. There&amp;#8217;s some &lt;a class="reference external" href="https://blog.instantbird.org/2011/06/introducing-time-bubbles/"&gt;interesting&lt;/a&gt; &lt;a class="reference external" href="https://blog.instantbird.org/2013/07/first-milestone-of-the-awesometab-has-landed/"&gt;articles&lt;/a&gt; on there about &lt;a class="reference external" href="https://blog.instantbird.org/2012/08/tab-completion-in-instantbird-1-2/"&gt;design&lt;/a&gt;
+&lt;a class="reference external" href="https://blog.instantbird.org/2011/06/introducing-magic-copy/"&gt;decisions&lt;/a&gt;. Many of which are features I miss&amp;nbsp;today!&lt;/p&gt;
+&lt;table class="docutils footnote" frame="void" id="id5" rules="none"&gt;
+&lt;colgroup&gt;&lt;col class="label" /&gt;&lt;col /&gt;&lt;/colgroup&gt;
+&lt;tbody valign="top"&gt;
+&lt;tr&gt;&lt;td class="label"&gt;&lt;a class="fn-backref" href="#id1"&gt;[1]&lt;/a&gt;&lt;/td&gt;&lt;td&gt;Reasons for wanting to do this included reducing the infrastructure we
+were maintaining and that the WordPress version was vulnerable. An
+additional benefit is that it let us easily add &lt;span class="caps"&gt;TLS&lt;/span&gt;.&lt;!-- See https://bugzilla.mozilla.org/show_bug.cgi?id=1346658 --&gt;
+&lt;/td&gt;&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;table class="docutils footnote" frame="void" id="id6" rules="none"&gt;
+&lt;colgroup&gt;&lt;col class="label" /&gt;&lt;col /&gt;&lt;/colgroup&gt;
+&lt;tbody valign="top"&gt;
+&lt;tr&gt;&lt;td class="label"&gt;&lt;a class="fn-backref" href="#id2"&gt;[2]&lt;/a&gt;&lt;/td&gt;&lt;td&gt;I don&amp;#8217;t think there&amp;#8217;s any information about this engine anywhere, nor do
+I think the source was released.&lt;/td&gt;&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;table class="docutils footnote" frame="void" id="id7" rules="none"&gt;
+&lt;colgroup&gt;&lt;col class="label" /&gt;&lt;col /&gt;&lt;/colgroup&gt;
+&lt;tbody valign="top"&gt;
+&lt;tr&gt;&lt;td class="label"&gt;&lt;a class="fn-backref" href="#id3"&gt;[3]&lt;/a&gt;&lt;/td&gt;&lt;td&gt;The main issues were images / resources that were not properly moved.
+Luckily I was able to recover them using the &lt;a class="reference external" href="https://archive.org/"&gt;Internet Archive&lt;/a&gt;.&lt;/td&gt;&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;table class="docutils footnote" frame="void" id="id8" rules="none"&gt;
+&lt;colgroup&gt;&lt;col class="label" /&gt;&lt;col /&gt;&lt;/colgroup&gt;
+&lt;tbody valign="top"&gt;
+&lt;tr&gt;&lt;td class="label"&gt;&lt;a class="fn-backref" href="#id4"&gt;[4]&lt;/a&gt;&lt;/td&gt;&lt;td&gt;I started doing this work on Pelican 3.7.1 and switched to 4.2.0, in
+general everything in this article should be valid up through Pelican
+4.2.0, however.&lt;/td&gt;&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Patrick Cloke</dc:creator><pubDate>Wed, 09 Sep 2020 17:10:00 -0400</pubDate><guid isPermaLink="false">tag:patrick.cloke.us,2020-09-09:/posts/2020/09/09/instantbird-blog-wordpress-to-pelican/</guid><category>articles</category><category>Instantbird</category><category>pelican</category></item><item><title>Testing WireViz</title><link>https://patrick.cloke.us/posts/2020/07/14/testing-wireviz/</link><description>&lt;p&gt;I wanted to play with the &lt;a class="reference external" href="https://github.com/formatc1702/WireViz"&gt;WireViz&lt;/a&gt; Python package, which makes pretty wire
 diagrams. Installation was pretty easy, just created a virtualenv and installed
 with&amp;nbsp;pip:&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;pip install wireviz
 &lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;Documentation is pretty limited, but looking through the &lt;a class="reference external" href="https://github.com/formatc1702/WireViz/tree/fffb354d7c86cc4f85d1e7e0753a07f7b6a65fa7/tutorial"&gt;tutorials&lt;/a&gt; and the
-&lt;a class="reference external" href="https://github.com/formatc1702/WireViz/blob/fffb354d7c86cc4f85d1e7e0753a07f7b6a65fa7/src/wireviz/DataClasses.py"&gt;data models&lt;/a&gt; you get a pretty good idea of what …&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Patrick Cloke</dc:creator><pubDate>Tue, 14 Jul 2020 17:07:00 -0400</pubDate><guid isPermaLink="false">tag:patrick.cloke.us,2020-07-14:/posts/2020/07/14/testing-wireviz/</guid><category>articles</category><category>software</category><category>hardware</category></item><item><title>Raspberry Pi File Server</title><link>https://patrick.cloke.us/posts/2020/06/12/raspberry-pi-file-server/</link><description>&lt;p&gt;This is just some quick notes (for myself) of how I recently setup my Raspberry
+&lt;a class="reference external" href="https://github.com/formatc1702/WireViz/blob/fffb354d7c86cc4f85d1e7e0753a07f7b6a65fa7/src/wireviz/DataClasses.py"&gt;data models&lt;/a&gt; you get a pretty good idea of what&amp;#8217;s&amp;nbsp;possible.&lt;/p&gt;
+&lt;p&gt;I&amp;#8217;m using the wiring diagrams from my &lt;a class="reference external" href="https://patrick.cloke.us/posts/2014/08/30/adding-an-auxiliary-audio-input-to-a-2005-subaru-outback/"&gt;guide to add an auxiliary audio input to a 2005 Subaru Outback&lt;/a&gt;,
+which is pretty simple, there&amp;#8217;s an audio jack which connects to the Outback&amp;#8217;s
+motherboard and the Outback&amp;#8217;s &lt;span class="caps"&gt;FM&lt;/span&gt; audio module (and&amp;nbsp;ground).&lt;/p&gt;
+&lt;p&gt;The input is a &lt;a class="reference external" href="https://yaml.org/"&gt;&lt;span class="caps"&gt;YAML&lt;/span&gt;&lt;/a&gt; document with three sections:
+* &lt;tt class="docutils literal"&gt;connectors&lt;/tt&gt; - A list of connectors and the information about their port.
+* &lt;tt class="docutils literal"&gt;cables&lt;/tt&gt; - A list of wires (and their information, e.g. gauge).
+* &lt;tt class="docutils literal"&gt;connections&lt;/tt&gt; - A lists of ports that should be connected via each&amp;nbsp;cable.&lt;/p&gt;
+&lt;p&gt;I had a pretty simple example, but it ended up being quite a bit of &lt;span class="caps"&gt;YAML&lt;/span&gt;:&lt;/p&gt;
+&lt;pre class="code yaml highlight literal-block"&gt;
+&lt;span class="nt"&gt;connectors&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
+  &lt;span class="nt"&gt;RADIO&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="nl"&gt;&amp;amp;radio&lt;/span&gt;
+    &lt;span class="c1"&gt;# Since we only care about two of the pins, refer to them directly.&lt;/span&gt;
+    &lt;span class="nt"&gt;pinnumbers&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="p-Indicator"&gt;[&lt;/span&gt;&lt;span class="nv"&gt;31&lt;/span&gt;&lt;span class="p-Indicator"&gt;,&lt;/span&gt; &lt;span class="nv"&gt;32&lt;/span&gt;&lt;span class="p-Indicator"&gt;]&lt;/span&gt;
+    &lt;span class="nt"&gt;pinout&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="p-Indicator"&gt;[&lt;/span&gt;&lt;span class="nv"&gt;FM R&lt;/span&gt;&lt;span class="p-Indicator"&gt;,&lt;/span&gt; &lt;span class="nv"&gt;FM L&lt;/span&gt;&lt;span class="p-Indicator"&gt;]&lt;/span&gt;
+    &lt;span class="nt"&gt;type&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="l-Scalar-Plain"&gt;Outback Radio Module&lt;/span&gt;
+    &lt;span class="nt"&gt;show_name&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="l-Scalar-Plain"&gt;false&lt;/span&gt;
+    &lt;span class="nt"&gt;show_pincount&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="l-Scalar-Plain"&gt;false&lt;/span&gt;
+    &lt;span class="nt"&gt;hide_disconnected_pins&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="l-Scalar-Plain"&gt;true&lt;/span&gt;
+  &lt;span class="nt"&gt;MOTHERBOARD&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
+    &lt;span class="nt"&gt;&amp;lt;&amp;lt;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="nv"&gt;*radio&lt;/span&gt;
+    &lt;span class="nt"&gt;type&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="l-Scalar-Plain"&gt;Outback Radio Motherboard&lt;/span&gt;
+  &lt;span class="nt"&gt;AUDIO&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
+    &lt;span class="nt"&gt;pincount&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="l-Scalar-Plain"&gt;5&lt;/span&gt;
+    &lt;span class="nt"&gt;pinout&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="p-Indicator"&gt;[&lt;/span&gt;&lt;span class="nv"&gt;GND&lt;/span&gt;&lt;span class="p-Indicator"&gt;,&lt;/span&gt; &lt;span class="nv"&gt;L OUT&lt;/span&gt;&lt;span class="p-Indicator"&gt;,&lt;/span&gt; &lt;span class="nv"&gt;L IN&lt;/span&gt;&lt;span class="p-Indicator"&gt;,&lt;/span&gt; &lt;span class="nv"&gt;R IN&lt;/span&gt;&lt;span class="p-Indicator"&gt;,&lt;/span&gt; &lt;span class="nv"&gt;R OUT&lt;/span&gt;&lt;span class="p-Indicator"&gt;]&lt;/span&gt;
+    &lt;span class="nt"&gt;type&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="l-Scalar-Plain"&gt;1/8&amp;quot; Stereo Audio Jack&lt;/span&gt;
+    &lt;span class="nt"&gt;subtype&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;RadioShack&lt;/span&gt;&lt;span class="nv"&gt; &lt;/span&gt;&lt;span class="s"&gt;#274-246&amp;quot;&lt;/span&gt;
+    &lt;span class="nt"&gt;show_name&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="l-Scalar-Plain"&gt;false&lt;/span&gt;
+    &lt;span class="nt"&gt;show_pincount&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="l-Scalar-Plain"&gt;false&lt;/span&gt;
+  &lt;span class="nt"&gt;GROUND&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
+    &lt;span class="nt"&gt;pinout&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="p-Indicator"&gt;[&lt;/span&gt;&lt;span class="nv"&gt;GND&lt;/span&gt;&lt;span class="p-Indicator"&gt;]&lt;/span&gt;
+    &lt;span class="nt"&gt;type&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;Ground&amp;quot;&lt;/span&gt;
+    &lt;span class="nt"&gt;show_name&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="l-Scalar-Plain"&gt;false&lt;/span&gt;
+    &lt;span class="nt"&gt;show_pincount&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="l-Scalar-Plain"&gt;false&lt;/span&gt;
+
+&lt;span class="nt"&gt;cables&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
+  &lt;span class="nt"&gt;W1&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="nl"&gt;&amp;amp;wire&lt;/span&gt;
+    &lt;span class="nt"&gt;wirecount&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="l-Scalar-Plain"&gt;2&lt;/span&gt;
+    &lt;span class="nt"&gt;gauge&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="l-Scalar-Plain"&gt;22 AWG&lt;/span&gt;
+    &lt;span class="nt"&gt;colors&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="p-Indicator"&gt;[&lt;/span&gt;&lt;span class="nv"&gt;RD&lt;/span&gt;&lt;span class="p-Indicator"&gt;,&lt;/span&gt; &lt;span class="nv"&gt;GN&lt;/span&gt;&lt;span class="p-Indicator"&gt;]&lt;/span&gt;
+    &lt;span class="nt"&gt;category&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="l-Scalar-Plain"&gt;bundle&lt;/span&gt;
+    &lt;span class="nt"&gt;show_name&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="l-Scalar-Plain"&gt;false&lt;/span&gt;
+    &lt;span class="nt"&gt;show_wirecount&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="l-Scalar-Plain"&gt;false&lt;/span&gt;
+  &lt;span class="nt"&gt;W2&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
+    &lt;span class="nt"&gt;&amp;lt;&amp;lt;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="nv"&gt;*wire&lt;/span&gt;
+  &lt;span class="nt"&gt;GND&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
+    &lt;span class="nt"&gt;wirecount&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="l-Scalar-Plain"&gt;1&lt;/span&gt;
+    &lt;span class="nt"&gt;gauge&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="l-Scalar-Plain"&gt;22 AWG&lt;/span&gt;
+    &lt;span class="nt"&gt;colors&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="p-Indicator"&gt;[&lt;/span&gt;&lt;span class="nv"&gt;BK&lt;/span&gt;&lt;span class="p-Indicator"&gt;]&lt;/span&gt;
+    &lt;span class="nt"&gt;show_name&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="l-Scalar-Plain"&gt;false&lt;/span&gt;
+    &lt;span class="nt"&gt;show_wirecount&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="l-Scalar-Plain"&gt;false&lt;/span&gt;
+
+&lt;span class="nt"&gt;connections&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
+  &lt;span class="p-Indicator"&gt;-&lt;/span&gt;
+    &lt;span class="p-Indicator"&gt;-&lt;/span&gt; &lt;span class="nt"&gt;RADIO&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="p-Indicator"&gt;[&lt;/span&gt;&lt;span class="nv"&gt;31&lt;/span&gt;&lt;span class="p-Indicator"&gt;,&lt;/span&gt;&lt;span class="nv"&gt;32&lt;/span&gt;&lt;span class="p-Indicator"&gt;]&lt;/span&gt;
+    &lt;span class="p-Indicator"&gt;-&lt;/span&gt; &lt;span class="nt"&gt;W1&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="p-Indicator"&gt;[&lt;/span&gt;&lt;span class="nv"&gt;1-2&lt;/span&gt;&lt;span class="p-Indicator"&gt;]&lt;/span&gt;
+    &lt;span class="p-Indicator"&gt;-&lt;/span&gt; &lt;span class="nt"&gt;AUDIO&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="p-Indicator"&gt;[&lt;/span&gt;&lt;span class="nv"&gt;4&lt;/span&gt;&lt;span class="p-Indicator"&gt;,&lt;/span&gt;&lt;span class="nv"&gt;3&lt;/span&gt;&lt;span class="p-Indicator"&gt;]&lt;/span&gt;
+  &lt;span class="p-Indicator"&gt;-&lt;/span&gt;
+    &lt;span class="p-Indicator"&gt;-&lt;/span&gt; &lt;span class="nt"&gt;MOTHERBOARD&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="p-Indicator"&gt;[&lt;/span&gt;&lt;span class="nv"&gt;31&lt;/span&gt;&lt;span class="p-Indicator"&gt;,&lt;/span&gt;&lt;span class="nv"&gt;32&lt;/span&gt;&lt;span class="p-Indicator"&gt;]&lt;/span&gt;
+    &lt;span class="p-Indicator"&gt;-&lt;/span&gt; &lt;span class="nt"&gt;W2&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="p-Indicator"&gt;[&lt;/span&gt;&lt;span class="nv"&gt;1-2&lt;/span&gt;&lt;span class="p-Indicator"&gt;]&lt;/span&gt;
+    &lt;span class="p-Indicator"&gt;-&lt;/span&gt; &lt;span class="nt"&gt;AUDIO&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="p-Indicator"&gt;[&lt;/span&gt;&lt;span class="nv"&gt;5&lt;/span&gt;&lt;span class="p-Indicator"&gt;,&lt;/span&gt;&lt;span class="nv"&gt;2&lt;/span&gt;&lt;span class="p-Indicator"&gt;]&lt;/span&gt;
+  &lt;span class="p-Indicator"&gt;-&lt;/span&gt;
+    &lt;span class="p-Indicator"&gt;-&lt;/span&gt; &lt;span class="nt"&gt;GROUND&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="p-Indicator"&gt;[&lt;/span&gt;&lt;span class="nv"&gt;1&lt;/span&gt;&lt;span class="p-Indicator"&gt;]&lt;/span&gt;
+    &lt;span class="p-Indicator"&gt;-&lt;/span&gt; &lt;span class="nt"&gt;GND&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="p-Indicator"&gt;[&lt;/span&gt;&lt;span class="nv"&gt;1&lt;/span&gt;&lt;span class="p-Indicator"&gt;]&lt;/span&gt;
+    &lt;span class="p-Indicator"&gt;-&lt;/span&gt; &lt;span class="nt"&gt;AUDIO&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="p-Indicator"&gt;[&lt;/span&gt;&lt;span class="nv"&gt;1&lt;/span&gt;&lt;span class="p-Indicator"&gt;]&lt;/span&gt;
+&lt;/pre&gt;
+&lt;p&gt;&lt;span class="strike"&gt;The only thing I couldn&amp;#8217;t figure out was how to list two pins with the proper names and pins numbers, but ignore all the other ones. Note a huge deal for a 36-pin connector.&lt;/span&gt;
+See the comments below, this is doable, although a little&amp;nbsp;awkward!&lt;/p&gt;
+&lt;p&gt;It did create a fairly pretty diagram after running &lt;tt class="docutils literal"&gt;wireviz &lt;span class="pre"&gt;subaru-wiring.yaml&lt;/span&gt;&lt;/tt&gt;
+and is certainly easier than directly using &lt;a class="reference external" href="https://graphviz.org/"&gt;graphviz&lt;/a&gt;. It creates a &lt;span class="caps"&gt;SVG&lt;/span&gt;, &lt;span class="caps"&gt;PNG&lt;/span&gt;,
+bill of materials, and &lt;span class="caps"&gt;HTML&lt;/span&gt; page (with the bill of materials and image on it).
+Overall, I&amp;#8217;d use it again if I had a&amp;nbsp;need!&lt;/p&gt;
+&lt;blockquote class="text-center"&gt;
+&lt;a class="reference external image-reference" href="https://patrick.cloke.us/code/testing-wireviz/subaru-wiring.svg"&gt;&lt;object data="https://patrick.cloke.us/code/testing-wireviz/subaru-wiring.svg" style="width: 100%;" type="image/svg+xml"&gt;&lt;/object&gt;&lt;/a&gt;
+&lt;/blockquote&gt;
+</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Patrick Cloke</dc:creator><pubDate>Tue, 14 Jul 2020 17:07:00 -0400</pubDate><guid isPermaLink="false">tag:patrick.cloke.us,2020-07-14:/posts/2020/07/14/testing-wireviz/</guid><category>articles</category><category>software</category><category>hardware</category></item><item><title>Raspberry Pi File Server</title><link>https://patrick.cloke.us/posts/2020/06/12/raspberry-pi-file-server/</link><description>&lt;p&gt;This is just some quick notes (for myself) of how I recently setup my Raspberry
 Pi as a file server. The goal was to have a shared folder so that a Sonos could
 play music from it. The data would be backed via a microSD card plugged into
 &lt;span class="caps"&gt;USB&lt;/span&gt;.&lt;/p&gt;
 &lt;ol class="arabic simple"&gt;
-&lt;li&gt;Update …&lt;/li&gt;&lt;/ol&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Patrick Cloke</dc:creator><pubDate>Fri, 12 Jun 2020 16:55:00 -0400</pubDate><guid isPermaLink="false">tag:patrick.cloke.us,2020-06-12:/posts/2020/06/12/raspberry-pi-file-server/</guid><category>articles</category><category>linux</category></item><item><title>Matrix Live Interview</title><link>https://patrick.cloke.us/posts/2020/03/12/matrix-live-interview/</link><description>&lt;p&gt;I was interviewed for Matrix Live as part of last week&amp;#8217;s &lt;a class="reference external" href="https://matrix.org/blog/2020/03/06/this-week-in-matrix-2020-03-06"&gt;This Week in Matrix&lt;/a&gt;.
-I talked a bit about my background and my experiences contributing to Mozilla
-(as part of Instantbird and Thunderbird projects) as well as what I will be
-working on for Synapse, the reference implementation …&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Patrick Cloke</dc:creator><pubDate>Thu, 12 Mar 2020 11:49:00 -0400</pubDate><guid isPermaLink="false">tag:patrick.cloke.us,2020-03-12:/posts/2020/03/12/matrix-live-interview/</guid><category>articles</category><category>matrix</category><category>mozilla</category><category>thunderbird</category><category>instantbird</category></item><item><title>New Position at New Vector</title><link>https://patrick.cloke.us/posts/2020/03/03/new-position-at-new-vector/</link><description>&lt;p&gt;I&amp;#8217;m excited to share that a few weeks ago I started a new position at
-&lt;a class="reference external" href="https://vector.im/"&gt;New Vector&lt;/a&gt;! They&amp;#8217;re the company behind &lt;a class="reference external" href="https://matrix.org/"&gt;Matrix&lt;/a&gt;, &amp;#8220;an open network for
-secure, decentralized&amp;nbsp;communication&amp;#8221;.&lt;/p&gt;
-&lt;p&gt;I&amp;#8217;ll be working on the reference backend server software used in Matrix
-(&lt;a class="reference external" href="https://matrix.org/docs/projects/server/synapse"&gt;Synapse&lt;/a&gt;). The tech stack overlaps with …&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Patrick Cloke</dc:creator><pubDate>Tue, 03 Mar 2020 18:55:00 -0500</pubDate><guid isPermaLink="false">tag:patrick.cloke.us,2020-03-03:/posts/2020/03/03/new-position-at-new-vector/</guid><category>articles</category><category>personal</category></item><item><title>Squashing Django Migrations</title><link>https://patrick.cloke.us/posts/2020/01/27/squashing-django-migrations/</link><description>&lt;p&gt;The &lt;a class="reference external" href="https://docs.djangoproject.com/en/1.11/topics/migrations/"&gt;Django migration system&lt;/a&gt; is great for modifying your database schema after
-a database is live. If you&amp;#8217;re like me, you quickly end up with many 10s or 100s
-of migrations. There&amp;#8217;s nothing inherently wrong with this, but there&amp;#8217;s a few
-cases where it gets tiresome to …&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Patrick Cloke</dc:creator><pubDate>Mon, 27 Jan 2020 16:34:00 -0500</pubDate><guid isPermaLink="false">tag:patrick.cloke.us,2020-01-27:/posts/2020/01/27/squashing-django-migrations/</guid><category>articles</category><category>django</category></item><item><title>Cleanly removing a Django app (with models)</title><link>https://patrick.cloke.us/posts/2020/01/23/cleanly-removing-a-django-app-with-models/</link><description>&lt;p&gt;While pruning features from our product it was necessary to fully remove some
-Django apps that had models in them. If the code is just removed than the tables
-(and some other references) will be left in the&amp;nbsp;database.&lt;/p&gt;
-&lt;p&gt;After doing this a few times for work I came up …&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Patrick Cloke</dc:creator><pubDate>Thu, 23 Jan 2020 21:57:00 -0500</pubDate><guid isPermaLink="false">tag:patrick.cloke.us,2020-01-23:/posts/2020/01/23/cleanly-removing-a-django-app-with-models/</guid><category>articles</category><category>django</category></item><item><title>Using MySQL’s LOAD DATA with Django</title><link>https://patrick.cloke.us/posts/2020/01/23/using-mysqls-load-data-with-django/</link><description>&lt;p&gt;While attempting to improve performance of bulk inserting data into MySQL
-database my coworker came across the &lt;a class="reference external" href="https://dev.mysql.com/doc/refman/5.6/en/load-data.html"&gt;&lt;tt class="docutils literal"&gt;&lt;span class="caps"&gt;LOAD&lt;/span&gt; &lt;span class="caps"&gt;DATA&lt;/span&gt;&lt;/tt&gt;&lt;/a&gt; &lt;span class="caps"&gt;SQL&lt;/span&gt; statement. It allows you
-to read data from a text file (in a comma separated variable-like format) and
-quickly insert it into a table. There&amp;#8217;s two variations of it …&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Patrick Cloke</dc:creator><pubDate>Thu, 23 Jan 2020 20:49:00 -0500</pubDate><guid isPermaLink="false">tag:patrick.cloke.us,2020-01-23:/posts/2020/01/23/using-mysqls-load-data-with-django/</guid><category>articles</category><category>django</category></item><item><title>Celery AMQP Backends</title><link>https://patrick.cloke.us/posts/2019/10/04/celery-amqp-backends/</link><description>&lt;div class="admonition note"&gt;
-&lt;p class="first admonition-title"&gt;Note&lt;/p&gt;
-&lt;p class="last"&gt;This started as notes explaining the internals of how Celery&amp;#8217;s &lt;span class="caps"&gt;AMQP&lt;/span&gt; backends
-operate. This isn&amp;#8217;t meant to be a comparison or prove one is better or that
-one is broken. There just seemed to be a lack of documentation about the
-design and limitations of each&amp;nbsp;backend …&lt;/p&gt;&lt;/div&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Patrick Cloke</dc:creator><pubDate>Fri, 04 Oct 2019 08:10:00 -0400</pubDate><guid isPermaLink="false">tag:patrick.cloke.us,2019-10-04:/posts/2019/10/04/celery-amqp-backends/</guid><category>articles</category><category>celery</category></item><item><title>Celery without a Results Backend</title><link>https://patrick.cloke.us/posts/2019/07/17/celery-without-a-results-backend/</link><description>&lt;p&gt;The &lt;a class="reference external" href="http://www.celeryproject.org/"&gt;Celery&lt;/a&gt; &lt;a class="reference external" href="https://docs.celeryproject.org/en/latest/reference/celery.html#celery.Celery.send_task"&gt;&lt;tt class="docutils literal"&gt;send_task&lt;/tt&gt;&lt;/a&gt; method allows you to invoke a task by name without
-importing it. &lt;a class="footnote-reference" href="#id5" id="id1"&gt;[1]&lt;/a&gt; There is an undocumented &lt;a class="footnote-reference" href="#id6" id="id2"&gt;[2]&lt;/a&gt; caveat to using &lt;tt class="docutils literal"&gt;send_task&lt;/tt&gt;:
-it doesn&amp;#8217;t have access to the configuration of the task (from when the task was
-created using the &lt;a class="reference external" href="https://docs.celeryproject.org/en/latest/reference/celery.html#celery.Celery.task"&gt;&lt;tt class="docutils literal"&gt;&amp;#64;task&lt;/tt&gt; decorator&lt;/a&gt;).&lt;/p&gt;
-&lt;p&gt;Much of this configuration …&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Patrick Cloke</dc:creator><pubDate>Wed, 17 Jul 2019 20:35:00 -0400</pubDate><guid isPermaLink="false">tag:patrick.cloke.us,2019-07-17:/posts/2019/07/17/celery-without-a-results-backend/</guid><category>articles</category><category>celery</category></item><item><title>Patching a Mail Slot</title><link>https://patrick.cloke.us/posts/2018/12/28/patching-a-mail-slot/</link><description>&lt;p&gt;The front door of my condo has an unused mail slot in it (we have a mailbox on
-the front of the house to actually get mail). In order to avoid a draft during
-the winter, the previous owner had shoved some insulation in the mail slot and
-covered it …&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Patrick Cloke</dc:creator><pubDate>Fri, 28 Dec 2018 14:38:00 -0500</pubDate><guid isPermaLink="false">tag:patrick.cloke.us,2018-12-28:/posts/2018/12/28/patching-a-mail-slot/</guid><category>articles</category><category>woodworking</category><category>home improvement</category></item><item><title>Calling Celery from Twisted</title><link>https://patrick.cloke.us/posts/2018/10/23/calling-celery-from-twisted/</link><description>
-&lt;div class="section" id="background"&gt;
-&lt;h2&gt;&lt;a class="toc-backref" href="#id13"&gt;Background&lt;/a&gt;&lt;/h2&gt;
-&lt;p&gt;I use &lt;a class="reference external" href="https://twistedmatrix.com/"&gt;Twisted&lt;/a&gt; and &lt;a class="reference external" href="http://www.celeryproject.org/"&gt;Celery&lt;/a&gt; daily at work, both are useful frameworks, both have
-a lot of great information out there, but a particular use (that I haven’t seen
-discussed much online, hence this post) is calling Celery tasks &lt;em&gt;from&lt;/em&gt; Twisted
-(and subsequently using the result).&lt;/p&gt;
-&lt;p&gt;The difference …&lt;/p&gt;&lt;/div&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Patrick Cloke</dc:creator><pubDate>Tue, 23 Oct 2018 19:24:00 -0400</pubDate><guid isPermaLink="false">tag:patrick.cloke.us,2018-10-23:/posts/2018/10/23/calling-celery-from-twisted/</guid><category>articles</category><category>twisted</category><category>celery</category></item><item><title>RSS Feeds for Wikipedia Current Events and NHL News</title><link>https://patrick.cloke.us/posts/2017/05/26/rss-feeds-for-wikipedia-current-events-and-nhl-news/</link><description>&lt;p&gt;I subscribe to a fair amount of feeds for news, blogs, articles, etc. I&amp;#8217;m
-currently subscribed to 122 feeds, some of which have tens of articles a day
-(news sites), some of which are dead. &lt;a class="footnote-reference" href="#id3" id="id1"&gt;[1]&lt;/a&gt; Unfortunately there&amp;#8217;s still a few
-sites that I was visiting manually each …&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Patrick Cloke</dc:creator><pubDate>Fri, 26 May 2017 08:13:00 -0400</pubDate><guid isPermaLink="false">tag:patrick.cloke.us,2017-05-26:/posts/2017/05/26/rss-feeds-for-wikipedia-current-events-and-nhl-news/</guid><category>articles</category><category>programming</category><category>python</category><category>RSS</category></item><item><title>Google Summer of Code 2017: Matrix protocol for Instantbird and Thunderbird</title><link>https://patrick.cloke.us/posts/2017/05/05/google-summer-of-code-2017-matrix-protocol/</link><description>&lt;p&gt;I&amp;#8217;ll be mentoring Pavan Karthik on his &lt;a class="reference external" href="https://summerofcode.withgoogle.com/projects/#6473832528347136"&gt;project for Google Summer of Code 2017&lt;/a&gt;
-entitled &amp;#8220;Matrix Protocol Support for Instantbird&amp;#8221;. &lt;a class="reference external" href="http://matrix.org/"&gt;Matrix&lt;/a&gt; is a new(er)
-protocol that is an open, decentralized network with some unique features.
-Initial support for this landed in &lt;a class="reference external" href="https://bugzilla.mozilla.org/show_bug.cgi?id=1315926"&gt;bug 1315926&lt;/a&gt;, but it is not feature …&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Patrick Cloke</dc:creator><pubDate>Fri, 05 May 2017 11:20:00 -0400</pubDate><guid isPermaLink="false">tag:patrick.cloke.us,2017-05-05:/posts/2017/05/05/google-summer-of-code-2017-matrix-protocol/</guid><category>articles</category><category>chat</category><category>GSoC</category><category>Instantbird</category><category>Matrix</category></item><item><title>“Adding Two-Factor Authentication to Django (with django-allauth)” Lightning Talk</title><link>https://patrick.cloke.us/posts/2017/04/06/adding-two-factor-authentication-to-django-with-django-allauth-lightning-talk/</link><description>&lt;p&gt;A bit late on this article, but better late than never! Back on October 27th,
-2016 I gave a talk at &lt;a class="reference external" href="http://www.meetup.com/djangoboston/"&gt;Django Boston&lt;/a&gt; entitled &amp;#8220;Adding Two-Factor
-Authentication to Django (with &lt;tt class="docutils literal"&gt;&lt;span class="pre"&gt;django-allauth&lt;/span&gt;&lt;/tt&gt;)&amp;#8221;. It was a ~20 minute talk on
-integrating the &lt;a class="reference external" href="https://github.com/percipient/django-allauth-2fa/"&gt;django-allauth-2fa&lt;/a&gt; package into a &lt;a class="reference external" href="https://www.djangoproject.com/"&gt;Django&lt;/a&gt; project. The
-package (which I …&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Patrick Cloke</dc:creator><pubDate>Thu, 06 Apr 2017 21:14:00 -0400</pubDate><guid isPermaLink="false">tag:patrick.cloke.us,2017-04-06:/posts/2017/04/06/adding-two-factor-authentication-to-django-with-django-allauth-lightning-talk/</guid><category>articles</category><category>django</category><category>django-allauth-2fa</category><category>talks</category></item><item><title>Windows Mobile (or Windows Phone) and FastMail</title><link>https://patrick.cloke.us/posts/2016/07/24/windows-mobile-or-windows-phone-and-fastmail/</link><description>
-&lt;p&gt;I’ve been a big fan of Windows Phone (now Windows Mobile) for a while and have
-had a few phones across versions 7, 8, and now 10. A while ago I switched to
-&lt;a class="reference external" href="https://www.fastmail.com/"&gt;FastMail&lt;/a&gt; as my e-mail provider &lt;a class="footnote-reference" href="#id5" id="id1"&gt;[1]&lt;/a&gt;, but had been stuck using Google as my
-calendar provider …&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Patrick Cloke</dc:creator><pubDate>Sun, 24 Jul 2016 13:19:00 -0400</pubDate><guid isPermaLink="false">tag:patrick.cloke.us,2016-07-24:/posts/2016/07/24/windows-mobile-or-windows-phone-and-fastmail/</guid><category>articles</category><category>email</category><category>contacts</category><category>calendar</category><category>FastMail</category><category>Windows Phone</category></item><item><title>Google Summer of Code 2016 projects</title><link>https://patrick.cloke.us/posts/2016/05/20/google-summer-of-code-2016-projects/</link><description>&lt;p&gt;I&amp;#8217;d like to introduce the 13 students that are being mentored by Mozilla this
-year as part of &lt;a class="reference external" href="https://summerofcode.withgoogle.com/"&gt;Google Summer of Code 2016&lt;/a&gt;! Currently the &amp;#8220;community bonding&amp;#8221;
-period is ongoing, but we are on the cusp of the &amp;#8220;coding period&amp;#8221;&amp;nbsp;starting.&lt;/p&gt;
-&lt;p&gt;As part of Google Summer of Code (GSoC …&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Patrick Cloke</dc:creator><pubDate>Fri, 20 May 2016 09:15:00 -0400</pubDate><guid isPermaLink="false">tag:patrick.cloke.us,2016-05-20:/posts/2016/05/20/google-summer-of-code-2016-projects/</guid><category>articles</category><category>community</category><category>GSoC</category><category>Mozilla</category></item><item><title>Thoughts on Applying to Google Summer of Code</title><link>https://patrick.cloke.us/posts/2016/03/07/thoughts-on-applying-to-gsoc/</link><description>
-&lt;!-- --&gt;
-&lt;blockquote&gt;
-&lt;p&gt;Over the past few years I’ve been involved in &lt;a class="reference external" href="https://developers.google.com/open-source/gsoc/"&gt;Google Summer of Code&lt;/a&gt;
-(GSoC), a program that sponsors students to write code for open-source
-projects, as part of Mozilla. I’ve been both a mentor and administrator,
-&lt;a class="reference external" href="http://blog.queze.net/"&gt;Florian Quèze&lt;/a&gt; and I frequently get asked questions about what students
-should …&lt;/p&gt;&lt;/blockquote&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Patrick Cloke</dc:creator><pubDate>Mon, 07 Mar 2016 09:18:00 -0500</pubDate><guid isPermaLink="false">tag:patrick.cloke.us,2016-03-07:/posts/2016/03/07/thoughts-on-applying-to-gsoc/</guid><category>articles</category><category>GSoC</category><category>Mozilla</category></item><item><title>Combining Disparate QuerySets in Django</title><link>https://patrick.cloke.us/posts/2016/02/04/combining-disparate-querysets-in-django/</link><description>&lt;blockquote&gt;
-&lt;p&gt;Note: This was originally posted on the &lt;a href="https://strongarm.io/blog/combining-disparate-querysets-in-django/"&gt;Strongarm Blog&lt;/a&gt;.&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;p&gt;While refactoring &lt;a href="https://strongarm.io"&gt;strongarm.io&lt;/a&gt; we ran into a problem: we
-had different database tables that we needed to query over as if they were a
-single database table. We use &lt;a href="https://www.djangoproject.com/"&gt;Django&lt;/a&gt; as an
-&lt;a href="https://en.wikipedia.org/wiki/Object-relational_mapping"&gt;&lt;span class="caps"&gt;ORM&lt;/span&gt;&lt;/a&gt; and needed to
-stay within the &lt;span class="caps"&gt;ORM …&lt;/span&gt;&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Patrick Cloke</dc:creator><pubDate>Thu, 04 Feb 2016 16:00:00 -0500</pubDate><guid isPermaLink="false">tag:patrick.cloke.us,2016-02-04:/posts/2016/02/04/combining-disparate-querysets-in-django/</guid><category>articles</category><category>django</category><category>django-querysetsequence</category><category>crosspost</category></item><item><title>IRC Client Usage Share on moznet</title><link>https://patrick.cloke.us/posts/2015/09/23/irc-client-usage-share-on-moznet/</link><description>
-&lt;div class="section" id="background"&gt;
-&lt;h2&gt;&lt;a class="toc-backref" href="#id13"&gt;Background&lt;/a&gt;&lt;/h2&gt;
-&lt;p&gt;The usage share of &lt;span class="caps"&gt;IRC&lt;/span&gt; clients has always been something I’m interested in. This
-is partially to see how many people are using &lt;a class="reference external" href="http://instantbird.com/"&gt;Instantbird&lt;/a&gt; or &lt;a class="reference external" href="https://www.mozilla.org/en-US/thunderbird/"&gt;Mozilla
-Thunderbird&lt;/a&gt; for &lt;span class="caps"&gt;IRC&lt;/span&gt; (as I’ve written much of the &lt;span class="caps"&gt;IRC&lt;/span&gt; code for those clients).
-&lt;a class="reference external" href="http://en.wikipedia.org/wiki/Usage_share_of_web_browsers"&gt;Usage share of browsers&lt;/a&gt; is quite a …&lt;/p&gt;&lt;/div&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Patrick Cloke</dc:creator><pubDate>Wed, 23 Sep 2015 17:07:00 -0400</pubDate><guid isPermaLink="false">tag:patrick.cloke.us,2015-09-23:/posts/2015/09/23/irc-client-usage-share-on-moznet/</guid><category>articles</category><category>Mozilla</category><category>Thunderbird</category><category>Instantbird</category><category>IRC</category></item><item><title>Boston Python: Twisted async networking framework</title><link>https://patrick.cloke.us/posts/2015/08/28/boston-python-twisted-async-networking-framework/</link><description>&lt;p&gt;Yesterday, &lt;a class="reference external" href="http://stephendicato.com/"&gt;Stephen DiCato&lt;/a&gt; and I gave a talk for &lt;a class="reference external" href="http://www.meetup.com/bostonpython/"&gt;Boston Python&lt;/a&gt; titled:
-&lt;a class="reference external" href="http://www.meetup.com/bostonpython/events/221406450/"&gt;Twisted async networking framework&lt;/a&gt;. It was an introduction to intermediate
-level talk about using the &lt;a class="reference external" href="https://twistedmatrix.com/"&gt;Twisted networking framework&lt;/a&gt; based on our
-experiences at &lt;a class="reference external" href="https://percipientnetworks.com/"&gt;Percipient Networks&lt;/a&gt;.&lt;/p&gt;
-&lt;p&gt;The talk, available &lt;a class="reference external" href="https://github.com/percipient/talks/tree/master/boston_python_08_27_2015"&gt;on our GitHub&lt;/a&gt; (&lt;a class="reference external" href="https://github.com/percipient/talks/raw/master/boston_python_08_27_2015/boston_python_08_27_2015.pdf"&gt;&lt;span class="caps"&gt;PDF&lt;/span&gt;&lt;/a&gt;) covered a few basic&amp;nbsp;topics:&lt;/p&gt;
-&lt;ol class="arabic simple"&gt;
-&lt;li&gt;What …&lt;/li&gt;&lt;/ol&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Patrick Cloke</dc:creator><pubDate>Fri, 28 Aug 2015 08:42:00 -0400</pubDate><guid isPermaLink="false">tag:patrick.cloke.us,2015-08-28:/posts/2015/08/28/boston-python-twisted-async-networking-framework/</guid><category>articles</category><category>python</category><category>community</category><category>programming</category><category>twisted</category><category>talks</category></item><item><title>New Position in Cyber Security at Percipient Networks</title><link>https://patrick.cloke.us/posts/2015/05/30/new-position-in-cyber-security-at-percipient-networks/</link><description>&lt;div class="admonition note"&gt;
-&lt;p class="first admonition-title"&gt;Note&lt;/p&gt;
-&lt;p class="last"&gt;If you&amp;#8217;re hitting this from &lt;a class="reference external" href="http://planet.mozilla.org/"&gt;planet mozilla&lt;/a&gt;, this doesn&amp;#8217;t mean I&amp;#8217;m leaving
-the Mozilla Community since I&amp;#8217;m not (nor was I ever) a Mozilla&amp;nbsp;employee.&lt;/p&gt;
-&lt;/div&gt;
-&lt;p&gt;After working for &lt;a class="reference external" href="https://www.mitre.org"&gt;The &lt;span class="caps"&gt;MITRE&lt;/span&gt; Corporation&lt;/a&gt; for a bit over four years, I left a
-few weeks ago to begin …&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Patrick Cloke</dc:creator><pubDate>Sat, 30 May 2015 13:59:00 -0400</pubDate><guid isPermaLink="false">tag:patrick.cloke.us,2015-05-30:/posts/2015/05/30/new-position-in-cyber-security-at-percipient-networks/</guid><category>articles</category><category>personal</category></item><item><title>Google Summer of Code 2015 Project Ideas for Mozilla</title><link>https://patrick.cloke.us/posts/2015/01/21/google-summer-of-code-2015-project-ideas-for-mozilla/</link><description>&lt;p&gt;As &lt;a class="reference external" href="http://blog.queze.net/post/2015/01/22/Project-ideas-wanted-for-Summer-of-Code-2015"&gt;Florian announced&lt;/a&gt; last Thursday, &lt;strong&gt;now&lt;/strong&gt; is the time to brainstorm and
-discuss project ideas for &lt;a class="reference external" href="http://google-opensource.blogspot.fr/2014/10/google-summer-of-code-2015-and-google.html"&gt;Google Summer of Code 2015&lt;/a&gt;. Mozilla has
-participated in every previous Google Summer of Code (GSoC), and hopes to
-participate again this year! In order to help ensure we&amp;#8217;re selected, we need
-project …&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Patrick Cloke</dc:creator><pubDate>Wed, 21 Jan 2015 13:18:00 -0500</pubDate><guid isPermaLink="false">tag:patrick.cloke.us,2015-01-21:/posts/2015/01/21/google-summer-of-code-2015-project-ideas-for-mozilla/</guid><category>articles</category><category>mozilla</category><category>GSoC</category></item><item><title>Thunderbird Summit 2014</title><link>https://patrick.cloke.us/posts/2014/11/14/thunderbird-summit-2014/</link><description>&lt;p&gt;Last month (Oct. 15th to Oct. 18th, to be precise), &lt;a class="reference external" href="https://wiki.mozilla.org/Thunderbird:Summit_2014#Invited_Attendees"&gt;twenty volunteers&lt;/a&gt;
-descended on Mozilla&amp;#8217;s Toronto office to discuss &lt;a class="reference external" href="https://www.mozilla.org/en-US/thunderbird/"&gt;Mozilla Thunderbird&lt;/a&gt;. This
-included Mozilla employees, Thunderbird contributors of all sorts (developers,
-user interface designers, add-on reviewers), Lightning contributors, and
-chat/&lt;a class="reference external" href="http://instantbird.com/"&gt;Instantbird&lt;/a&gt;&amp;nbsp;contributors.&lt;/p&gt;
-&lt;blockquote class="text-center"&gt;
-&lt;a class="reference external image-reference" href="https://patrick.cloke.us/images/chat-tb-summit/IMG_6516.jpg"&gt;&lt;img alt="The entire group of volunteers." src="/thumbnails/chat-tb-summit/IMG_6516_small.jpg" /&gt;&lt;/a&gt;
-&lt;/blockquote&gt;
-&lt;p&gt;It was great to spend some quality …&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Patrick Cloke</dc:creator><pubDate>Fri, 14 Nov 2014 18:37:00 -0500</pubDate><guid isPermaLink="false">tag:patrick.cloke.us,2014-11-14:/posts/2014/11/14/thunderbird-summit-2014/</guid><category>articles</category><category>Mozilla</category><category>Thunderbird</category><category>community</category><category>Instantbird</category></item><item><title>How I Got Involved in Mozilla</title><link>https://patrick.cloke.us/posts/2014/10/07/how-i-got-involved-in-mozilla/</link><description>&lt;p&gt;This is discussed very briefly on my &lt;a class="reference external" href="https://patrick.cloke.us/pages/about.html"&gt;about page&lt;/a&gt;, but I figured it could use a
-bit of a longer discussion. I generally consider myself to have joined the
-&lt;a class="reference external" href="https://www.mozilla.org/"&gt;Mozilla&lt;/a&gt; community in ~2006. I know that I was using Mozilla Firefox, Mozilla
-Thunderbird, &lt;em&gt;and&lt;/em&gt; Mozilla Sunbird way before that (probably …&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Patrick Cloke</dc:creator><pubDate>Tue, 07 Oct 2014 09:31:00 -0400</pubDate><guid isPermaLink="false">tag:patrick.cloke.us,2014-10-07:/posts/2014/10/07/how-i-got-involved-in-mozilla/</guid><category>articles</category><category>Mozilla</category></item><item><title>Adding an Auxiliary Audio Input to a 2005 Subaru Outback</title><link>https://patrick.cloke.us/posts/2014/08/30/adding-an-auxiliary-audio-input-to-a-2005-subaru-outback/</link><description>&lt;p&gt;I own a &lt;a class="reference external" href="http://en.wikipedia.org/wiki/Subaru_Legacy#Fourth_generation_.282003.E2.80.932009.29_-_BL.2C_BP"&gt;2005 (fourth generation) Subaru Outback&lt;/a&gt;, I&amp;#8217;ve had it since the fall
-of 2006 and it has been great. I have a little over 100,000 miles and do not
-plan to sell it anytime&amp;nbsp;soon.&lt;/p&gt;
-&lt;p&gt;There is one thing that just &lt;em&gt;kills&lt;/em&gt; me though. You cannot …&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Patrick Cloke</dc:creator><pubDate>Sat, 30 Aug 2014 17:34:00 -0400</pubDate><guid isPermaLink="false">tag:patrick.cloke.us,2014-08-30:/posts/2014/08/30/adding-an-auxiliary-audio-input-to-a-2005-subaru-outback/</guid><category>articles</category><category>hacking</category><category>auto</category><category>hardware</category></item><item><title>Mentoring and Time</title><link>https://patrick.cloke.us/posts/2014/07/09/mentoring-and-time/</link><description>&lt;p&gt;No, this is not about being late places, it&amp;#8217;s about respecting people&amp;#8217;s time. I
-won&amp;#8217;t go deep into why this is important as, &lt;a class="reference external" href="https://plus.google.com/118086293667040637133"&gt;Michael Haggerty&lt;/a&gt; wrote an
-awesome &lt;a class="reference external" href="http://softwareswirl.blogspot.fr/2014/03/my-secret-tip-for-gsoc-success.html"&gt;article&lt;/a&gt; on this. His thoughts boiled down to a single line of&amp;nbsp;advice:&lt;/p&gt;
-&lt;blockquote&gt;
-&lt;strong&gt;&lt;span class="caps"&gt;DON&lt;/span&gt;&amp;#8217;T &lt;span class="caps"&gt;WASTE&lt;/span&gt; &lt;span class="caps"&gt;OTHER&lt;/span&gt; &lt;span class="caps"&gt;PEOPLE&lt;/span&gt;&amp;#8217;S …&lt;/strong&gt;&lt;/blockquote&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Patrick Cloke</dc:creator><pubDate>Wed, 09 Jul 2014 17:32:00 -0400</pubDate><guid isPermaLink="false">tag:patrick.cloke.us,2014-07-09:/posts/2014/07/09/mentoring-and-time/</guid><category>articles</category><category>community</category><category>GSoC</category></item><item><title>New Blog: Serving the Content</title><link>https://patrick.cloke.us/posts/2014/07/06/new-blog-serving-the-content/</link><description>
-&lt;p&gt;In the &lt;a class="reference external" href="https://patrick.cloke.us/posts/2014/07/03/new-blog/"&gt;first part&lt;/a&gt; of this blog post I talked about using Pelican to create a
-blog, this is a bit more about how I got it up and running.&lt;/p&gt;
-&lt;div class="section" id="getting-a-domain"&gt;
-&lt;h2&gt;&lt;a class="toc-backref" href="#id3"&gt;Getting a Domain&lt;/a&gt;&lt;/h2&gt;
-&lt;p&gt;The most exciting part! Getting a domain! I used &lt;a class="reference external" href="https://www.gandi.net/"&gt;gandi.net&lt;/a&gt;, it was
-recommended to me by …&lt;/p&gt;&lt;/div&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Patrick Cloke</dc:creator><pubDate>Sun, 06 Jul 2014 18:36:00 -0400</pubDate><guid isPermaLink="false">tag:patrick.cloke.us,2014-07-06:/posts/2014/07/06/new-blog-serving-the-content/</guid><category>articles</category><category>blog</category></item><item><title>New Blog</title><link>https://patrick.cloke.us/posts/2014/07/03/new-blog/</link><description>
-&lt;p&gt;If you’re reading this you might have noticed that I have a shiny new blog! I
-had been pretty disappointed in &lt;a class="reference external" href="https://www.blogger.com/"&gt;Blogger&lt;/a&gt; practically since I started using it.
-But it was free, I was a poor college student, etc. I finally managed to get
-myself a &lt;a class="reference external" href="http://patrick.cloke.us"&gt;domain name&lt;/a&gt; and …&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Patrick Cloke</dc:creator><pubDate>Thu, 03 Jul 2014 23:04:00 -0400</pubDate><guid isPermaLink="false">tag:patrick.cloke.us,2014-07-03:/posts/2014/07/03/new-blog/</guid><category>articles</category><category>blog</category><category>pelican</category></item><item><title>Google Summer of Code 2014</title><link>https://patrick.cloke.us/posts/2014/07/01/google-summer-of-code-2014-file/</link><description>&lt;p&gt;I&amp;#8217;m again mentoring for &lt;a class="reference external" href="https://www.google-melange.com/gsoc/homepage/google/gsoc2014"&gt;Google Summer of Code&lt;/a&gt; 2014, this year my student is
-&lt;a class="reference external" href="http://sawrubh.tumblr.com/"&gt;Saurabh Anand&lt;/a&gt; (sawrubh), who has been working on a few related&amp;nbsp;things:&lt;/p&gt;
-&lt;ul class="simple"&gt;
-&lt;li&gt;Adding a &lt;a class="reference external" href="https://bugzilla.mozilla.org/show_bug.cgi?id=1024023"&gt;file transfer mechanism for &lt;span class="caps"&gt;XMPP&lt;/span&gt;&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;Hooking up libpurple&amp;#8217;s file transfer code to&amp;nbsp;Instantbird&lt;/li&gt;
-&lt;li&gt;Integrating &lt;a class="reference external" href="https://support.mozilla.org/en-US/kb/filelink-large-attachments"&gt;FileLink&lt;/a&gt; as a fallback to in-protocol …&lt;/li&gt;&lt;/ul&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Patrick Cloke</dc:creator><pubDate>Tue, 01 Jul 2014 08:03:00 -0400</pubDate><guid isPermaLink="false">tag:patrick.cloke.us,2014-07-01:/posts/2014/07/01/google-summer-of-code-2014-file/</guid><category>articles</category><category>community</category><category>GSoC</category></item><item><title>Extending JavaScript Maps (or other built-in objects)</title><link>https://patrick.cloke.us/posts/2014/04/27/extending-javascript-maps-or-other/</link><description>
-&lt;p&gt;Finally another technical post, this one is about my adventures in
-attempting to extend the built-in &lt;a class="reference external" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Map"&gt;Map&lt;/a&gt; object in JavaScript to extend
-the functionality. As background, there are two reasons we’d want this:&lt;/p&gt;
-&lt;ol class="arabic"&gt;
-&lt;li&gt;&lt;p class="first"&gt;In the chat backend we currently use JavaScript &lt;a class="reference external" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object"&gt;objects&lt;/a&gt; (&lt;tt class="docutils literal"&gt;{}&lt;/tt&gt;) as
-hashes/maps to keep track of …&lt;/p&gt;&lt;/li&gt;&lt;/ol&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Patrick Cloke</dc:creator><pubDate>Sun, 27 Apr 2014 13:46:00 -0400</pubDate><guid isPermaLink="false">tag:patrick.cloke.us,2014-04-27:/posts/2014/04/27/extending-javascript-maps-or-other/</guid><category>articles</category><category>Instantbird</category><category>programming</category><category>specifications</category><category>Thunderbird</category><category>Wat</category></item><item><title>Community and Volunteers</title><link>https://patrick.cloke.us/posts/2014/04/16/community-and-volunteers/</link><description>&lt;p&gt;It was suggested that I cross-post this from mozilla.dev.planning onto
-my blog. This is in reply to a thread entitled &amp;#8220;&lt;a class="reference external" href="https://groups.google.com/forum/#%21topic/mozilla.dev.planning/P8oHKTCWSiQ"&gt;Proposal: Move
-Thunderbird and SeaMonkey to mozilla-central&lt;/a&gt;&amp;#8221; about (essentially)
-merging comm-central back into mozilla-central. There have been many
-technical concerns raised in the thread (that I&amp;#8217;m not …&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Patrick Cloke</dc:creator><pubDate>Wed, 16 Apr 2014 12:34:00 -0400</pubDate><guid isPermaLink="false">tag:patrick.cloke.us,2014-04-16:/posts/2014/04/16/community-and-volunteers/</guid><category>articles</category><category>community</category><category>crosspost</category><category>Mozilla</category><category>Thunderbird</category></item><item><title>GSoc Lessons: Part Deux: The Arms Race</title><link>https://patrick.cloke.us/posts/2013/12/04/gsoc-lessons-part-deux-arms-race/</link><description>&lt;p&gt;This post title might be a little excessive, but I&amp;#8217;ll blame &lt;a class="reference external" href="http://en.wikipedia.org/wiki/The_Sum_of_All_Fears_%28film%29"&gt;The Sum
-of All Fears&lt;/a&gt; that I was watching last night. This is the second part
-of a set of posts about ideas I heard at the Google Summer of Code 2013
-Mentor Summit (you can read &lt;a class="reference external" href="https://patrick.cloke.us/posts/2013/12/02/gsoc-lessons-part-1-application-period/"&gt;the …&lt;/a&gt;&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Patrick Cloke</dc:creator><pubDate>Wed, 04 Dec 2013 09:17:00 -0500</pubDate><guid isPermaLink="false">tag:patrick.cloke.us,2013-12-04:/posts/2013/12/04/gsoc-lessons-part-deux-arms-race/</guid><category>articles</category><category>community</category><category>GSoC</category><category>Mozilla</category></item><item><title>GSoC Lessons: Part 1: Application Period</title><link>https://patrick.cloke.us/posts/2013/12/02/gsoc-lessons-part-1-application-period/</link><description>&lt;p&gt;I briefly talked about &lt;a class="reference external" href="https://patrick.cloke.us/posts/2013/10/20/google-summer-of-code-mentor-summit-2013/"&gt;my experiences&lt;/a&gt; at the Google Summer of Code
-2013 Mentor Summit. I&amp;#8217;ve been pretty remiss in sharing what was actually
-discussed there and for that I must apologize! This will hopefully be
-one of a few posts about what I learned and discussed at the …&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Patrick Cloke</dc:creator><pubDate>Mon, 02 Dec 2013 20:55:00 -0500</pubDate><guid isPermaLink="false">tag:patrick.cloke.us,2013-12-02:/posts/2013/12/02/gsoc-lessons-part-1-application-period/</guid><category>articles</category><category>community</category><category>GSoC</category><category>Mozilla</category></item><item><title>Google Summer of Code Mentor Summit 2013</title><link>https://patrick.cloke.us/posts/2013/10/20/google-summer-of-code-mentor-summit-2013/</link><description>&lt;p&gt;Not only was I lucky enough to mentor a great student for this year&amp;#8217;s
-Google Summer of Code, but Mozilla asked me to represent them at the
-Google Summer of Code Mentor Summit! This was located at Google&amp;#8217;s
-offices in Mountain View, California this past weekend (Friday, Oct …&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Patrick Cloke</dc:creator><pubDate>Sun, 20 Oct 2013 22:18:00 -0400</pubDate><guid isPermaLink="false">tag:patrick.cloke.us,2013-10-20:/posts/2013/10/20/google-summer-of-code-mentor-summit-2013/</guid><category>articles</category><category>Google</category><category>GSoC</category><category>Mozilla</category></item><item><title>Yahoo Protocol Google Summer of Code Round-up</title><link>https://patrick.cloke.us/posts/2013/10/06/yahoo-protocol-google-summer-of-code/</link><description>&lt;p&gt;I have to apologize to my student, &lt;a class="reference external" href="http://phaseshiftsoftware.com/blog/"&gt;Quentin&lt;/a&gt; (aka qheaden on &lt;span class="caps"&gt;IRC&lt;/span&gt;),
-for taking so long to write this&amp;#8230;but anyway: Google Summer of Code
-2013 is over! Quentin has done a great job working at implementing the
-Yahoo Protocol for Instantbird (and Thunderbird) in JavaScript
-(henceforth called &amp;#8220;&lt;span class="caps"&gt;JS&lt;/span&gt;-Yahoo …&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Patrick Cloke</dc:creator><pubDate>Sun, 06 Oct 2013 09:18:00 -0400</pubDate><guid isPermaLink="false">tag:patrick.cloke.us,2013-10-06:/posts/2013/10/06/yahoo-protocol-google-summer-of-code/</guid><category>articles</category><category>chat</category><category>GSoC</category><category>Instantbird</category><category>Yahoo</category></item><item><title>Mentoring Google Summer of Code 2013</title><link>https://patrick.cloke.us/posts/2013/06/28/mentoring-google-summer-of-code-2013/</link><description>&lt;p&gt;I&amp;#8217;m officially a mentor this year for &lt;a class="reference external" href="http://www.google-melange.com/gsoc/homepage/google/gsoc2013"&gt;2013&amp;#8217;s Google Summer of Code&lt;/a&gt;.
-I&amp;#8217;m a bit late on posting this, but oh well! My student this year is
-&lt;a class="reference external" href="http://phaseshiftsoftware.com/"&gt;Quentin Headen&lt;/a&gt; who is &lt;a class="reference external" href="http://www.google-melange.com/gsoc/project/google/gsoc2013/qheaden/26001"&gt;working on&lt;/a&gt; a &lt;a class="reference external" href="http://en.wikipedia.org/wiki/Yahoo!_Messenger_Protocol"&gt;Yahoo! Messenger protocol&lt;/a&gt;
-for the Instantbird chat/ backend (so it&amp;#8217;ll also be …&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Patrick Cloke</dc:creator><pubDate>Fri, 28 Jun 2013 18:05:00 -0400</pubDate><guid isPermaLink="false">tag:patrick.cloke.us,2013-06-28:/posts/2013/06/28/mentoring-google-summer-of-code-2013/</guid><category>articles</category><category>chat</category><category>GSoC</category><category>Instantbird</category><category>Yahoo</category></item><item><title>Instantbird 1.4 Released!</title><link>https://patrick.cloke.us/posts/2013/05/20/instantbird-14-released/</link><description>&lt;p&gt;After a bunch of l10n build problems, we&amp;#8217;ve finally released
-Instantbird 1.4, which includes updates to libpurple 2.10.7 and Mozilla
-20. In particular this&amp;nbsp;includes:&lt;/p&gt;
-&lt;ul class="simple"&gt;
-&lt;li&gt;Updated Twitter code that uses v1.1 of their &lt;span class="caps"&gt;API&lt;/span&gt; (v1.0 will be
-disabled on June 11th,&amp;nbsp;2013).&lt;/li&gt;
-&lt;li&gt;Better character …&lt;/li&gt;&lt;/ul&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Patrick Cloke</dc:creator><pubDate>Mon, 20 May 2013 16:45:00 -0400</pubDate><guid isPermaLink="false">tag:patrick.cloke.us,2013-05-20:/posts/2013/05/20/instantbird-14-released/</guid><category>articles</category><category>Instantbird</category></item><item><title>JavaScript typed arrays pain</title><link>https://patrick.cloke.us/posts/2012/11/28/javascript-typed-arrays-pain/</link><description>&lt;p&gt;If you&amp;#8217;ve ever tried to deal with binary data in JavaScript you know
-it isn&amp;#8217;t much fun and you usually resort to using strings lots of
-charCodeAt and related functions. &lt;a class="reference external" href="https://developer.mozilla.org/en-US/docs/JavaScript_typed_arrays"&gt;Typed arrays&lt;/a&gt; are supposed to solve
-this though! The typed array &lt;span class="caps"&gt;API&lt;/span&gt; consists of creating a buffer of …&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Patrick Cloke</dc:creator><pubDate>Wed, 28 Nov 2012 23:11:00 -0500</pubDate><guid isPermaLink="false">tag:patrick.cloke.us,2012-11-28:/posts/2012/11/28/javascript-typed-arrays-pain/</guid><category>articles</category><category>Instantbird</category><category>Mozilla</category><category>OSCAR</category><category>Thunderbird</category><category>Wat</category></item><item><title>Instantbird 1.3 Released!!!</title><link>https://patrick.cloke.us/posts/2012/11/16/instantbird-13-released/</link><description>&lt;p&gt;Well we finally got our release process down a bit better and were
-able to do a quicker release (from 1.2 to 1.3, compared to our previous
-few releases). This is great news, as it gives incremental changes to
-our users faster! There&amp;#8217;s some new features available …&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Patrick Cloke</dc:creator><pubDate>Fri, 16 Nov 2012 06:42:00 -0500</pubDate><guid isPermaLink="false">tag:patrick.cloke.us,2012-11-16:/posts/2012/11/16/instantbird-13-released/</guid><category>articles</category><category>Instantbird</category></item><item><title>On Status</title><link>https://patrick.cloke.us/posts/2012/10/16/on-status/</link><description>&lt;p&gt;Something that comes up often about Instantbird is why we only support
-three statuses: Available, Unavailable and Offline. (We do actually
-support a fourth one too, Idle, but that is set automatically, not
-chosen by the user.) Frequently this discussion is in the context of
-wanting an &amp;#8220;Invisible&amp;#8221; status, but …&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Patrick Cloke</dc:creator><pubDate>Tue, 16 Oct 2012 21:33:00 -0400</pubDate><guid isPermaLink="false">tag:patrick.cloke.us,2012-10-16:/posts/2012/10/16/on-status/</guid><category>articles</category><category>chat</category><category>Instantbird</category><category>Thunderbird</category></item><item><title>Instantbird 1.2 Released (with awesome new IRC features)!</title><link>https://patrick.cloke.us/posts/2012/08/08/instantbird-12-released-with-awesome/</link><description>&lt;p&gt;If you haven&amp;#8217;t seen the announcement&amp;#8230; &lt;a class="reference external" href="http://blog.instantbird.org/2012/08/instantbird-1-2-released/"&gt;Instantbird 1.2 has been
-released&lt;/a&gt;! It&amp;#8217;s got a ton of great new features that I&amp;#8217;m excited for:
-&lt;a class="reference external" href="http://blog.instantbird.org/2012/08/tab-completion-in-instantbird-1-2/"&gt;better tab complete&lt;/a&gt;, a marker showing the last viewed messages,
-support for Bonjour and more. But the most exciting bits to me are …&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Patrick Cloke</dc:creator><pubDate>Wed, 08 Aug 2012 13:08:00 -0400</pubDate><guid isPermaLink="false">tag:patrick.cloke.us,2012-08-08:/posts/2012/08/08/instantbird-12-released-with-awesome/</guid><category>articles</category><category>Instantbird</category><category>IRC</category></item><item><title>IRC Auto-Performs</title><link>https://patrick.cloke.us/posts/2012/06/11/irc-auto-performs/</link><description>
-&lt;p&gt;There have been a &lt;a class="reference external" href="https://bugzilla.mozilla.org/show_bug.cgi?id=742675"&gt;few&lt;/a&gt; &lt;a class="reference external" href="https://bugzilla.instantbird.org/show_bug.cgi?id=1101"&gt;requests&lt;/a&gt; to support “auto-performs”
-(sending commands to the &lt;span class="caps"&gt;IRC&lt;/span&gt; server after connection that the user types
-into a box or whatever). Personally I find this to be:&lt;/p&gt;
-&lt;ol class="arabic simple"&gt;
-&lt;li&gt;A fairly awful user experience.&lt;/li&gt;
-&lt;li&gt;Confusing to new users.&lt;/li&gt;
-&lt;li&gt;Unnecessary.&lt;/li&gt;
+&lt;li&gt;Update to the &lt;a class="reference external" href="https://www.raspberrypi.org/downloads/"&gt;newest version of Raspberry Pi &lt;span class="caps"&gt;OS&lt;/span&gt;&lt;/a&gt;.&lt;/li&gt;
+&lt;li&gt;Configure &lt;a class="reference external" href="https://www.raspberrypi.org/documentation/remote-access/ssh/README.md"&gt;&lt;span class="caps"&gt;SSH&lt;/span&gt; (for headless mode)&lt;/a&gt;.&lt;/li&gt;
+&lt;li&gt;Use the local router to find the &lt;span class="caps"&gt;IP&lt;/span&gt;&amp;nbsp;address.&lt;/li&gt;
+&lt;li&gt;Add a local hostname into the router for the &lt;span class="caps"&gt;IP&lt;/span&gt;.&lt;/li&gt;
+&lt;li&gt;&lt;tt class="docutils literal"&gt;ssh pi&amp;#64;raspberrypi&lt;/tt&gt;:&lt;ol class="arabic"&gt;
+&lt;li&gt;Update everything: &lt;tt class="docutils literal"&gt;sudo &lt;span class="pre"&gt;apt-get&lt;/span&gt; update &amp;amp;&amp;amp; sudo &lt;span class="pre"&gt;apt-get&lt;/span&gt; upgrade&lt;/tt&gt;&lt;/li&gt;
+&lt;li&gt;Clean-up: &lt;tt class="docutils literal"&gt;sudo reboot&lt;/tt&gt; then
+&lt;tt class="docutils literal"&gt;sudo &lt;span class="pre"&gt;apt-get&lt;/span&gt; autoremove &amp;amp;&amp;amp; sudo &lt;span class="pre"&gt;apt-get&lt;/span&gt; autoclean&lt;/tt&gt;&lt;/li&gt;
+&lt;li&gt;Use &lt;tt class="docutils literal"&gt;sudo &lt;span class="pre"&gt;raspi-config&lt;/span&gt;&lt;/tt&gt; to update some configuration (passwords,
+connect to WiFi,&amp;nbsp;etc.)&lt;/li&gt;
+&lt;li&gt;&lt;a class="reference external" href="https://raspberrytips.com/mount-usb-drive-raspberry-pi/"&gt;Mount the &lt;span class="caps"&gt;USB&lt;/span&gt; drive&lt;/a&gt; (look down for the &lt;tt class="docutils literal"&gt;fstab&lt;/tt&gt; directions). (I also
+had to install &lt;a class="reference external" href="https://www.howtogeek.com/235655/how-to-mount-and-use-an-exfat-drive-on-linux/"&gt;support for exFAT&lt;/a&gt; at this&amp;nbsp;point.)&lt;/li&gt;
+&lt;li&gt;Finally, &lt;a class="reference external" href="https://www.raspberrypi.org/documentation/remote-access/samba.md"&gt;install and configure Samba&lt;/a&gt;.&lt;/li&gt;
 &lt;/ol&gt;
-&lt;p&gt;I additionally don’t like this idea since …&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Patrick Cloke</dc:creator><pubDate>Mon, 11 Jun 2012 22:25:00 -0400</pubDate><guid isPermaLink="false">tag:patrick.cloke.us,2012-06-11:/posts/2012/06/11/irc-auto-performs/</guid><category>articles</category><category>Instantbird</category><category>IRC</category><category>Mozilla</category></item><item><title>Instantbird Contact List Hack #2</title><link>https://patrick.cloke.us/posts/2012/01/15/instantbird-contact-list-hack-2/</link><description>&lt;p&gt;There was a &lt;a class="reference external" href="https://bugzilla.instantbird.org/show_bug.cgi?id=987"&gt;request&lt;/a&gt; on the Instantbird Bugzilla to always show
-contacts in the contact list as the &amp;#8220;big&amp;#8221; contact (as shown when a
-contact is selected). Similarly to my &lt;a class="reference external" href="https://patrick.cloke.us/posts/2011/10/31/instantbird-contact-list-hack/"&gt;last post&lt;/a&gt;, this can easily be
-done with userChrome.css. See the post if you don&amp;#8217;t know what
-userChrome …&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Patrick Cloke</dc:creator><pubDate>Sun, 15 Jan 2012 10:00:00 -0500</pubDate><guid isPermaLink="false">tag:patrick.cloke.us,2012-01-15:/posts/2012/01/15/instantbird-contact-list-hack-2/</guid><category>articles</category><category>customizing</category><category>Instantbird</category><category>programming</category></item><item><title>Instantbird Contact List Hack</title><link>https://patrick.cloke.us/posts/2011/10/31/instantbird-contact-list-hack/</link><description>&lt;p&gt;A friend of mine asked me if there was a way to have selected contacts
-in the contact list &lt;span class="caps"&gt;NOT&lt;/span&gt; expand to two lines (where the status goes onto
-the second line) in&amp;nbsp;Instantbird.&lt;/p&gt;
-&lt;p&gt;There&amp;#8217;s actually no option to do this in Instantbird, but with a
-little &lt;a class="reference external" href="http://www-archive.mozilla.org/unix/customizing.html"&gt;userChrome&lt;/a&gt; tweak …&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Patrick Cloke</dc:creator><pubDate>Mon, 31 Oct 2011 20:20:00 -0400</pubDate><guid isPermaLink="false">tag:patrick.cloke.us,2011-10-31:/posts/2011/10/31/instantbird-contact-list-hack/</guid><category>articles</category><category>customizing</category><category>Instantbird</category><category>programming</category></item><item><title>Adding a protocol to Instantbird (Part 2)</title><link>https://patrick.cloke.us/posts/2011/09/03/adding-protocol-to-instantbird-part-2/</link><description>
-&lt;p&gt;I had &lt;a class="reference external" href="https://patrick.cloke.us/posts/2011/06/18/adding-new-protocol-sipeoffice/"&gt;previously talked about adding a protocol to Instantbird&lt;/a&gt;,
-that focused on adding &lt;span class="caps"&gt;SIPE&lt;/span&gt; (Microsoft Office Communicator support).
-Since then I’ve been slowly working on defeating &lt;span class="caps"&gt;SIPE&lt;/span&gt;. Fortunately I
-found a few flags that help us compile it easily in Instantbird: we can
-declare that we do &lt;em&gt;not …&lt;/em&gt;&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Patrick Cloke</dc:creator><pubDate>Sat, 03 Sep 2011 10:31:00 -0400</pubDate><guid isPermaLink="false">tag:patrick.cloke.us,2011-09-03:/posts/2011/09/03/adding-protocol-to-instantbird-part-2/</guid><category>articles</category><category>Instantbird</category><category>programming</category><category>SIPE</category></item><item><title>Shared Lightning profile across Linux and Windows</title><link>https://patrick.cloke.us/posts/2011/07/08/shared-lightning-profile-across-linux/</link><description>&lt;p&gt;In &lt;a class="reference external" href="irc://irc.mozilla.org/calendar"&gt;#calendar on Mozilla &lt;span class="caps"&gt;IRC&lt;/span&gt;&lt;/a&gt; the past few days a user has been
-asking about using a shared profile on Thunderbird between Linux and
-Windows (&amp;#8220;shared&amp;#8221; meaning a dual boot system of Linux/Windows, but not
-at the same time, obviously). Generally this isn&amp;#8217;t a big deal &lt;span class="caps"&gt;UNLESS&lt;/span&gt;
-you …&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Patrick Cloke</dc:creator><pubDate>Fri, 08 Jul 2011 20:46:00 -0400</pubDate><guid isPermaLink="false">tag:patrick.cloke.us,2011-07-08:/posts/2011/07/08/shared-lightning-profile-across-linux/</guid><category>articles</category><category>Lightning</category><category>Mozilla</category></item><item><title>Adding a new protocol (SIPE/Office Communicator) to Instantbird (part 1)</title><link>https://patrick.cloke.us/posts/2011/06/18/adding-new-protocol-sipeoffice/</link><description>&lt;p&gt;&lt;a class="reference external" href="http://en.wikipedia.org/wiki/Office_Communicator"&gt;Microsoft Office Communicator&lt;/a&gt; is an instant messaging client that
-integrates into the &lt;a class="reference external" href="http://en.wikipedia.org/wiki/Microsoft_Exchange_Server"&gt;Exchange Messaging Server&lt;/a&gt; (the protocol behind it
-is an extended version of &lt;span class="caps"&gt;SIP&lt;/span&gt;/&lt;span class="caps"&gt;SIMPLE&lt;/span&gt;). Anyway, there&amp;#8217;s a &lt;a class="reference external" href="http://developer.pidgin.im/wiki/WhatIsLibpurple"&gt;libpurple&lt;/a&gt;
-(i.e. the backend of &lt;a class="reference external" href="http://instantbird.com/"&gt;Instantbird&lt;/a&gt; and &lt;a class="reference external" href="http://pidgin.im/"&gt;Pidgin&lt;/a&gt;) protocol plug-in for
-&lt;span class="caps"&gt;OCS&lt;/span&gt; (Office Communicator Server) called &lt;a class="reference external" href="http://sipe.sourceforge.net/"&gt;&lt;span class="caps"&gt;SIPE&lt;/span&gt;&lt;/a&gt;. (It&amp;#8217;s …&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Patrick Cloke</dc:creator><pubDate>Sat, 18 Jun 2011 21:53:00 -0400</pubDate><guid isPermaLink="false">tag:patrick.cloke.us,2011-06-18:/posts/2011/06/18/adding-new-protocol-sipeoffice/</guid><category>articles</category><category>Instantbird</category><category>programming</category><category>SIPE</category></item><item><title>Compiling Instantbird</title><link>https://patrick.cloke.us/posts/2011/05/16/compilling-instantbird/</link><description>
-&lt;p&gt;In the past I’ve tried to compile a few different programs that use
-the Mozilla toolkit to various levels of success. I’ve tried to compile
-Thunderbird, Songbird and Instantbird at various points. I got
-Thunderbird to compile, but it only worked sporadically (although I
-think that was Firefox …&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Patrick Cloke</dc:creator><pubDate>Mon, 16 May 2011 21:30:00 -0400</pubDate><guid isPermaLink="false">tag:patrick.cloke.us,2011-05-16:/posts/2011/05/16/compilling-instantbird/</guid><category>articles</category><category>Instantbird</category><category>Mozilla</category><category>programming</category></item><item><title>Why rewrite the IRC protocol plugin? (Part 2)</title><link>https://patrick.cloke.us/posts/2011/04/30/why-rewrite-irc-protocol-plugin-part-2/</link><description>&lt;p&gt;I &lt;a class="reference external" href="https://patrick.cloke.us/posts/2010/12/08/why-rewrite-irc-into-javascript/"&gt;previously wrote about&lt;/a&gt; why I&amp;#8217;m rewriting the libpurple &lt;span class="caps"&gt;IRC&lt;/span&gt;
-implementation into a JavaScript implementation for Instantbird. This
-is kind of a follow up, but more focused on what I hope to accomplish
-feature wise for &lt;span class="caps"&gt;IRC&lt;/span&gt; in Instantbird. A good overview to look at is the
-&lt;a class="reference external" href="https://bugzilla.instantbird.org/showdependencygraph.cgi?id=507&amp;amp;display=web&amp;amp;rankdir=LR"&gt;dependencies of …&lt;/a&gt;&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Patrick Cloke</dc:creator><pubDate>Sat, 30 Apr 2011 13:01:00 -0400</pubDate><guid isPermaLink="false">tag:patrick.cloke.us,2011-04-30:/posts/2011/04/30/why-rewrite-irc-protocol-plugin-part-2/</guid><category>articles</category><category>Instantbird</category><category>IRC</category></item><item><title>The so-called IRC “specifications”</title><link>https://patrick.cloke.us/posts/2011/03/08/so-called-irc-specifications/</link><description>
-&lt;p&gt;In a &lt;a class="reference external" href="https://patrick.cloke.us/posts/2010/12/08/why-rewrite-irc-into-javascript/"&gt;previous post&lt;/a&gt; I had briefly gone over the “history of &lt;span class="caps"&gt;IRC&lt;/span&gt;” as
-I know it. I’m going to expand on this a bit as I’ve come to understand
-it a bit more while reading through documentation. (Hopefully it won’t
-sound too much like a rant …&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Patrick Cloke</dc:creator><pubDate>Tue, 08 Mar 2011 21:20:00 -0500</pubDate><guid isPermaLink="false">tag:patrick.cloke.us,2011-03-08:/posts/2011/03/08/so-called-irc-specifications/</guid><category>articles</category><category>Instantbird</category><category>IRC</category><category>programming</category><category>specifications</category></item><item><title>Status Update - February 17, 2011</title><link>https://patrick.cloke.us/posts/2011/02/17/status-update-february-17-2011/</link><description>&lt;p&gt;Another month has gone by so it&amp;#8217;s time for another status update.
-Unfortunately not as much got done this month as I was hoping, but
-here&amp;#8217;s a quick update of what I&amp;#8217;ve worked&amp;nbsp;on:&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;After this the drive should be &lt;a class="reference external" href="https://support.sonos.com/s/article/257"&gt;findable from the Sonos app&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;We&amp;#8217;ll see how this works after the Raspberry Pi gets rebooted at some point,
+will&amp;nbsp;it:&lt;/p&gt;
 &lt;ul class="simple"&gt;
-&lt;li&gt;&lt;a class="reference external" href="https://bugzilla.instantbird.org/show_bug.cgi?id=690"&gt;Bug 690&lt;/a&gt; - jsProtoHelper could help registering&amp;nbsp;commands&lt;/li&gt;
-&lt;li&gt;&lt;a class="reference external" href="https://bugzilla.instantbird.org/show_bug.cgi?id=661"&gt;Bug 661&lt;/a&gt; - JavaScript accounts do not …&lt;/li&gt;&lt;/ul&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Patrick Cloke</dc:creator><pubDate>Thu, 17 Feb 2011 19:21:00 -0500</pubDate><guid isPermaLink="false">tag:patrick.cloke.us,2011-02-17:/posts/2011/02/17/status-update-february-17-2011/</guid><category>articles</category><category>Instantbird</category><category>IRC</category><category>programming</category></item><item><title>Status Update - January 18, 2011</title><link>https://patrick.cloke.us/posts/2011/01/18/status-update-january-18-2011/</link><description>&lt;p&gt;I haven&amp;#8217;t had an update in a few weeks (since early December)
-actually, so I thought I would post a bit about what I&amp;#8217;ve worked on.
-I&amp;#8217;ve fixed a bunch of bugs in the backend of Instantbird that allow work
-on JavaScript &lt;span class="caps"&gt;IRC&lt;/span&gt; protocol to&amp;nbsp;continue:&lt;/p&gt;
-&lt;ul class="simple"&gt;
-&lt;li&gt;&lt;a class="reference external" href="https://bugzilla.instantbird.org/show_bug.cgi?id=519"&gt;Bug …&lt;/a&gt;&lt;/li&gt;&lt;/ul&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Patrick Cloke</dc:creator><pubDate>Tue, 18 Jan 2011 23:17:00 -0500</pubDate><guid isPermaLink="false">tag:patrick.cloke.us,2011-01-18:/posts/2011/01/18/status-update-january-18-2011/</guid><category>articles</category><category>Instantbird</category><category>IRC</category><category>Mozilla</category><category>programming</category></item><item><title>Blogger RSS Feeds for a Label</title><link>https://patrick.cloke.us/posts/2010/12/08/blogger-rss-feeds-for-label/</link><description>&lt;p&gt;Blogger has crappy support for &lt;span class="caps"&gt;RSS&lt;/span&gt; apparently. I figured if I clicked
-on a label, then found the &lt;span class="caps"&gt;RSS&lt;/span&gt; embedded in the page&amp;#8230;it would give me
-the &lt;span class="caps"&gt;RSS&lt;/span&gt; feed for that label,&amp;nbsp;right?&lt;/p&gt;
-&lt;p&gt;Wrong.&lt;/p&gt;
-&lt;p&gt;Of course there&amp;#8217;s an &lt;a class="reference external" href="http://www.google.com/support/blogger/bin/answer.py?hl=en&amp;amp;answer=97933"&gt;&lt;span class="caps"&gt;FAQ&lt;/span&gt;&lt;/a&gt; page about this, but the syntax it gives
-is …&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Patrick Cloke</dc:creator><pubDate>Wed, 08 Dec 2010 15:25:00 -0500</pubDate><guid isPermaLink="false">tag:patrick.cloke.us,2010-12-08:/posts/2010/12/08/blogger-rss-feeds-for-label/</guid><category>articles</category><category>blog</category><category>Google</category><category>RSS</category></item><item><title>Why Rewrite IRC into JavaScript? (vs. libpurple’s vs. ChatZilla’s)</title><link>https://patrick.cloke.us/posts/2010/12/08/why-rewrite-irc-into-javascript/</link><description>
-&lt;p&gt;I had a request on &lt;span class="caps"&gt;IRC&lt;/span&gt; (from Mic) to write an in-depth blog post
-about &lt;a class="reference external" href="https://bugzilla.instantbird.org/show_bug.cgi?id=507"&gt;&lt;span class="caps"&gt;IRC&lt;/span&gt; in JavaScript&lt;/a&gt;:&lt;/p&gt;
-&lt;blockquote&gt;
-“Maybe we could ask clokep if he’d like to write something about
-js-irc? Why it is done, what the advantages are once it’s done, how
-he is working on it …&lt;/blockquote&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Patrick Cloke</dc:creator><pubDate>Wed, 08 Dec 2010 14:29:00 -0500</pubDate><guid isPermaLink="false">tag:patrick.cloke.us,2010-12-08:/posts/2010/12/08/why-rewrite-irc-into-javascript/</guid><category>articles</category><category>Instantbird</category><category>IRC</category><category>Mozilla</category><category>programming</category></item><item><title>JavaScript IRC in Instantbird</title><link>https://patrick.cloke.us/posts/2010/12/04/javascript-irc-in-instantbird/</link><description>&lt;p&gt;I&amp;#8217;ve been working on rewriting the &lt;span class="caps"&gt;IRC&lt;/span&gt; plugin for &lt;a class="reference external" href="http://www.instantbird.com/"&gt;Instantbird&lt;/a&gt; since
-the summer (sometime in August, I can&amp;#8217;t seem to find the exact date &amp;#8212;
-at least since Sept. 10th&amp;nbsp;though).&lt;/p&gt;
-&lt;p&gt;Since &lt;a class="reference external" href="http://developer.pidgin.im/wiki/WhatIsLibpurple"&gt;libpurple&lt;/a&gt; (used in Pidgin, Adium, etc.) provides the &lt;span class="caps"&gt;IRC&lt;/span&gt;
-protocol that we currently use, why do this …&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Patrick Cloke</dc:creator><pubDate>Sat, 04 Dec 2010 17:24:00 -0500</pubDate><guid isPermaLink="false">tag:patrick.cloke.us,2010-12-04:/posts/2010/12/04/javascript-irc-in-instantbird/</guid><category>articles</category><category>Instantbird</category><category>IRC</category><category>Mozilla</category><category>programming</category></item><item><title>Yahoo &amp; Thunderbird Can Finally Play Nice?</title><link>https://patrick.cloke.us/posts/2010/11/22/yahoo-thunderbird/</link><description>&lt;p&gt;For years I&amp;#8217;ve been dealing with Yahoo&amp;#8217;s lack of support for any sort
-of decent (free) &lt;span class="caps"&gt;POP3&lt;/span&gt;/&lt;span class="caps"&gt;IMAP&lt;/span&gt;/&lt;span class="caps"&gt;SMTP&lt;/span&gt; protocol support. Why do I need this?
-So I can check my &lt;a class="reference external" href="http://mail.yahoo.com/"&gt;Yahoo mail&lt;/a&gt; in &lt;a class="reference external" href="http://www.mozillamessaging.com/en-US/thunderbird/"&gt;Mozilla Thunderbird&lt;/a&gt; of&amp;nbsp;course!&lt;/p&gt;
-&lt;p&gt;At first I used &lt;a class="reference external" href="http://ypopsemail.com/"&gt;&lt;span class="caps"&gt;YPOPS&lt;/span&gt;!&lt;/a&gt;, a program that read the …&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Patrick Cloke</dc:creator><pubDate>Mon, 22 Nov 2010 23:03:00 -0500</pubDate><guid isPermaLink="false">tag:patrick.cloke.us,2010-11-22:/posts/2010/11/22/yahoo-thunderbird/</guid><category>articles</category><category>email</category><category>Mozilla</category><category>programming</category><category>Thunderbird</category><category>Yahoo</category></item></channel></rss>
+&lt;li&gt;Have the same &lt;span class="caps"&gt;IP&lt;/span&gt;&amp;nbsp;address?&lt;/li&gt;
+&lt;li&gt;Mount the &lt;span class="caps"&gt;USB&lt;/span&gt; drive&amp;nbsp;properly?&lt;/li&gt;
+&lt;/ul&gt;
+</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Patrick Cloke</dc:creator><pubDate>Fri, 12 Jun 2020 16:55:00 -0400</pubDate><guid isPermaLink="false">tag:patrick.cloke.us,2020-06-12:/posts/2020/06/12/raspberry-pi-file-server/</guid><category>articles</category><category>linux</category></item></channel></rss>

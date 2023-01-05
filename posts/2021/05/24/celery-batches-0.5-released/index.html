@@ -65,24 +65,26 @@
               Social
             </a>
 
-            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="social-dropdown">
-              <a class="dropdown-item" href="https://www.twitter.com/clokep" target="_blank">
-                <span class="fab fa-twitter mr-1"></span> twitter
-              </a>
+            <span class="dropdown-menu dropdown-menu-right" aria-labelledby="social-dropdown">
               <a class="dropdown-item" href="https://mastodon.social/@clokep" target="_blank">
-                <span class="fab fa-mastodon mr-1"></span> mastodon
+                  <span class="fab fa-mastodon mr-1"></span>
+                mastodon
               </a>
-              <a class="dropdown-item" href="https://www.github.com/clokep" target="_blank">
-                <span class="fab fa-github mr-1"></span> github
+              <a class="dropdown-item" href="https://www.twitter.com/clokep" target="_blank">
+                  <span class="fab fa-twitter mr-1"></span>
+                twitter
+              </a>
+              <a class="dropdown-item" href="https://matrix.to/#/@clokep:matrix.org" target="_blank">
+                  <span class="pl-3 mr-2"></span>
+                matrix
+              </a>
+              <a class="dropdown-item" href="https://github.com/clokep" target="_blank">
+                  <span class="fab fa-github mr-1"></span>
+                github
               </a>
               <a class="dropdown-item" href="https://gitlab.com/clokep" target="_blank">
-                <span class="fab fa-gitlab mr-1"></span> gitlab
-              </a>
-              <a class="dropdown-item" href="https://bitbucket.org/clokep" target="_blank">
-                <span class="fab fa-bitbucket mr-1"></span> bitbucket
-              </a>
-              <a class="dropdown-item" href="https://mozillians.org/u/clokep/" target="_blank">
-                <span class="fab fa-firefox mr-1"></span> mozillians
+                  <span class="fab fa-gitlab mr-1"></span>
+                gitlab
               </a>
             </div>
           </li>
@@ -116,25 +118,31 @@
            title="Permalink to celery-batches 0.5 released!">celery-batches 0.5&nbsp;released!</a>
       </h1>
 
-      <div class="float-right">
-        <a href="https://twitter.com/intent/tweet?text=celery-batches%200.5%C2%A0released%21&url=https%3A//patrick.cloke.us/posts/2021/05/24/celery-batches-0.5-released/&hashtags=celery,celery-batches" target="_blank" class="ml-1 mr-1" title="Share on Twitter">
-          <span class="fab fa-twitter"></span>
-        </a>
-        <a href="https://www.facebook.com/sharer/sharer.php?u=https%3A//patrick.cloke.us/posts/2021/05/24/celery-batches-0.5-released/" target="_blank" class="ml-1 mr-1" title="Share on Facebook">
-          <span class="fab fa-facebook"></span>
-        </a>
-        <a href="mailto:?subject=celery-batches%200.5%C2%A0released%21&amp;body=https%3A//patrick.cloke.us/posts/2021/05/24/celery-batches-0.5-released/" target="_blank" class="ml-1 mr-1" title="Share via Email">
-          <span class="fas fa-envelope"></span>
-        </a>
+      <div class="row">
+        <div class="col-sm">
+          <span class="text-secondary font-weight-light font-italic">Published on Monday, May 24, 2021</span>
+
+          <br>
+          <span class="text-secondary font-weight-light font-italic">
+            Tags:               <a href="/tag/celery.html">celery</a>,              <a href="/tag/celery-batches.html">celery-batches</a>          </span>
+        </div>
+
+        <div class="col-sm text-right">
+          <a href="https://twitter.com/intent/tweet?text=celery-batches%200.5%C2%A0released%21&url=https%3A//patrick.cloke.us/posts/2021/05/24/celery-batches-0.5-released/&hashtags=celery,celery-batches" target="_blank" class="ml-1 mr-1" title="Share on Twitter">
+            <span class="fab fa-twitter"></span>
+          </a>
+          <a href="https://www.facebook.com/sharer/sharer.php?u=https%3A//patrick.cloke.us/posts/2021/05/24/celery-batches-0.5-released/" target="_blank" class="ml-1 mr-1" title="Share on Facebook">
+            <span class="fab fa-facebook"></span>
+          </a>
+          <a href="mailto:?subject=celery-batches%200.5%C2%A0released%21&amp;body=https%3A//patrick.cloke.us/posts/2021/05/24/celery-batches-0.5-released/" target="_blank" class="ml-1 mr-1" title="Share via Email">
+            <span class="fas fa-envelope"></span>
+          </a>
+        </div>
       </div>
 
-      <i>Monday, May 24, 2021</i>
+      <hr>
 
-      <br>
-      <i>
-        Tags:           <a href="/tag/celery.html">celery</a>,          <a href="/tag/celery-batches.html">celery-batches</a>      </i>
-
-      <div class="mt-3">
+      <div>
 
         <p>A <a class="reference external" href="https://pypi.org/project/celery-batches/0.5/">new version (v0.5)</a> of <a class="reference external" href="https://github.com/clokep/celery-batches/">celery-batches</a> is available which adds support for
 Celery 5.1 and fixes storing of results when using the <a class="reference external" href="https://docs.celeryproject.org/en/v5.1.0/userguide/tasks.html#rpc-result-backend-rabbitmq-qpid"><span class="caps">RPC</span> result backend</a>.</p>
@@ -155,11 +163,11 @@ the changed line&nbsp;highlighted:</p>
 <span class="nd">@app</span><span class="o">.</span><span class="n">task</span><span class="p">(</span><span class="n">base</span><span class="o">=</span><span class="n">Batches</span><span class="p">,</span> <span class="n">flush_every</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="n">flush_interval</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
 <span class="k">def</span> <span class="nf">wot_api</span><span class="p">(</span><span class="n">requests</span><span class="p">):</span>
     <span class="n">sig</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">url</span><span class="p">:</span> <span class="n">url</span>
-    <span class="n">reponses</span> <span class="o">=</span> <span class="n">wot_api_real</span><span class="p">(</span>
+    <span class="n">responses</span> <span class="o">=</span> <span class="n">wot_api_real</span><span class="p">(</span>
         <span class="p">(</span><span class="n">sig</span><span class="p">(</span><span class="o">*</span><span class="n">request</span><span class="o">.</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">request</span><span class="o">.</span><span class="n">kwargs</span><span class="p">)</span> <span class="k">for</span> <span class="n">request</span> <span class="ow">in</span> <span class="n">requests</span><span class="p">)</span>
     <span class="p">)</span>
     <span class="c1"># use mark_as_done to manually return response data</span>
-    <span class="k">for</span> <span class="n">response</span><span class="p">,</span> <span class="n">request</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">reponses</span><span class="p">,</span> <span class="n">requests</span><span class="p">):</span>
+    <span class="k">for</span> <span class="n">response</span><span class="p">,</span> <span class="n">request</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">responses</span><span class="p">,</span> <span class="n">requests</span><span class="p">):</span>
 <span class="hll">        <span class="n">app</span><span class="o">.</span><span class="n">backend</span><span class="o">.</span><span class="n">mark_as_done</span><span class="p">(</span><span class="n">request</span><span class="o">.</span><span class="n">id</span><span class="p">,</span> <span class="n">response</span><span class="p">,</span> <span class="n">request</span><span class="o">=</span><span class="n">request</span><span class="p">)</span>
 </span>
 

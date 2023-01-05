@@ -3,4 +3,35 @@
 asking about using a shared profile on Thunderbird between Linux and
 Windows (&amp;#8220;shared&amp;#8221; meaning a dual boot system of Linux/Windows, but not
 at the same time, obviously). Generally this isn&amp;#8217;t a big deal &lt;span class="caps"&gt;UNLESS&lt;/span&gt;
-you …&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Patrick Cloke</dc:creator><pubDate>Fri, 08 Jul 2011 20:46:00 -0400</pubDate><guid isPermaLink="false">tag:patrick.cloke.us,2011-07-08:/posts/2011/07/08/shared-lightning-profile-across-linux/</guid><category>articles</category><category>Lightning</category><category>Mozilla</category></item></channel></rss>
+you have a binary extension, in which case you&amp;#8217;d have to reinstall the
+extension every time! That&amp;#8217;s awfully&amp;nbsp;lame.&lt;/p&gt;
+&lt;p&gt;&lt;span class="caps"&gt;BUT&lt;/span&gt; there should be a way to make a unified extension for all
+operating systems. In fact &lt;a class="reference external" href="https://wiki.mozilla.org/User:Ssitter/UnifiedLightning"&gt;ssitter had written an article to do
+that&lt;/a&gt;. It needs some updating to account for the Mozilla 2 &lt;span class="caps"&gt;XPCOM&lt;/span&gt;
+changes,&amp;nbsp;however.&lt;/p&gt;
+&lt;p&gt;The steps are mostly the same, with some&amp;nbsp;added.&lt;/p&gt;
+&lt;ol class="arabic simple"&gt;
+&lt;li&gt;Download whatever versions you want (&lt;a class="reference external" href="http://releases.mozilla.org/pub/mozilla.org/calendar/lightning/releases/1.0b4/"&gt;perhaps 1.0b4&lt;/a&gt;?).&lt;/li&gt;
+&lt;li&gt;Unzip them all and choose which one will be your &amp;#8220;unified&amp;#8221;&amp;nbsp;version.&lt;/li&gt;
+&lt;li&gt;Find the &amp;lt;em:targetPlatform&amp;gt; section in the install.rdfs and include
+all the necessary&amp;nbsp;ones.&lt;/li&gt;
+&lt;li&gt;Find the libcalbasecomps.* (where * is dll, dylib, so, etc. for
+your platform) inside the components&amp;nbsp;directories.&lt;/li&gt;
+&lt;li&gt;Copy the libraries together into one&amp;nbsp;directory.&lt;/li&gt;
+&lt;li&gt;Copy the lines from each components.manifest together into one&amp;nbsp;manifest.&lt;/li&gt;
+&lt;li&gt;For some systems you&amp;#8217;ll need to specify the &lt;span class="caps"&gt;ABI&lt;/span&gt; (and possibly change
+the path), note that the &lt;span class="caps"&gt;ABI&lt;/span&gt; is just what was inside the&amp;nbsp;&amp;lt;em:targetPlatform&amp;gt;.&lt;/li&gt;
+&lt;li&gt;Rezip this up into an &lt;span class="caps"&gt;XPI&lt;/span&gt; and you should be good to&amp;nbsp;go!&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;In my test I ended up with an &lt;span class="caps"&gt;XPI&lt;/span&gt; that was approximately 10% bigger
+after combining Mac (x86 and x64), Linux (x86 and x64), Win32, Solaris
+Sparc and Solaris x86. Why is this not done by default? Probably just
+cause no one has done it&amp;#8230;there is a &lt;a class="reference external" href="https://bugzilla.mozilla.org/show_bug.cgi?id=352543"&gt;bug about it&lt;/a&gt; though. One issue
+that might be encountered using this method is pre-processing of some
+script files (as is discussed in that big) but hopefully it should
+&amp;#8220;mostly&amp;#8221; work. (Note that this is mostly&amp;nbsp;untested.)&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Edit:&lt;/strong&gt; I should also mention that you would need to do something
+similar with the themes folders if they differ dramatically (it seems
+there&amp;#8217;s &lt;a class="reference external" href="http://mxr.mozilla.org/comm-central/source/calendar/lightning/themes/"&gt;just two&lt;/a&gt;: winstripe and pinstripe: i.e. Windows &lt;span class="amp"&gt;&amp;amp;&lt;/span&gt; Mac; Linux
+and Solaris most likely also use&amp;nbsp;winstripe).&lt;/p&gt;
+</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Patrick Cloke</dc:creator><pubDate>Fri, 08 Jul 2011 20:46:00 -0400</pubDate><guid isPermaLink="false">tag:patrick.cloke.us,2011-07-08:/posts/2011/07/08/shared-lightning-profile-across-linux/</guid><category>articles</category><category>Lightning</category><category>Mozilla</category></item></channel></rss>

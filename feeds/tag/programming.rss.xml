@@ -2,65 +2,710 @@
 <rss version="2.0"><channel><title>Patrick Cloke - programming</title><link>https://patrick.cloke.us/</link><description></description><lastBuildDate>Wed, 13 Sep 2017 17:15:00 -0400</lastBuildDate><item><title>RSS Feeds for Wikipedia Current Events and NHL News</title><link>https://patrick.cloke.us/posts/2017/05/26/rss-feeds-for-wikipedia-current-events-and-nhl-news/</link><description>&lt;p&gt;I subscribe to a fair amount of feeds for news, blogs, articles, etc. I&amp;#8217;m
 currently subscribed to 122 feeds, some of which have tens of articles a day
 (news sites), some of which are dead. &lt;a class="footnote-reference" href="#id3" id="id1"&gt;[1]&lt;/a&gt; Unfortunately there&amp;#8217;s still a few
-sites that I was visiting manually each …&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Patrick Cloke</dc:creator><pubDate>Fri, 26 May 2017 08:13:00 -0400</pubDate><guid isPermaLink="false">tag:patrick.cloke.us,2017-05-26:/posts/2017/05/26/rss-feeds-for-wikipedia-current-events-and-nhl-news/</guid><category>articles</category><category>programming</category><category>python</category><category>RSS</category></item><item><title>Boston Python: Twisted async networking framework</title><link>https://patrick.cloke.us/posts/2015/08/28/boston-python-twisted-async-networking-framework/</link><description>&lt;p&gt;Yesterday, &lt;a class="reference external" href="http://stephendicato.com/"&gt;Stephen DiCato&lt;/a&gt; and I gave a talk for &lt;a class="reference external" href="http://www.meetup.com/bostonpython/"&gt;Boston Python&lt;/a&gt; titled:
+sites that I was visiting manually each day to get updates from because they
+don&amp;#8217;t offer any feeds. This&amp;nbsp;included:&lt;/p&gt;
+&lt;ul class="simple"&gt;
+&lt;li&gt;The &lt;a class="reference external" href="https://en.wikipedia.org/wiki/Portal:Current_events"&gt;Wikipedia Current Events portal&lt;/a&gt;, which usually has a nice daily summary
+of interesting worldwide stories. &lt;a class="footnote-reference" href="#id4" id="id2"&gt;[2]&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;The &lt;a class="reference external" href="https://www.nhl.com/news"&gt;&lt;span class="caps"&gt;NHL&lt;/span&gt; News&lt;/a&gt; (and specifically the &lt;a class="reference external" href="https://www.nhl.com/islanders/news"&gt;Islanders News&lt;/a&gt;) pages. (I still
+follow a &lt;a class="reference external" href="http://islanders.nhl.com/rss/news.xml"&gt;broken feed&lt;/a&gt; from the older site, but it seems one of the redesigns
+of the &lt;span class="caps"&gt;NHL&lt;/span&gt; team sites broke this&amp;nbsp;feed.)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Having the Wikipedia Current Events as a feed is a pretty specific thing that&amp;#8217;s
+outside of the scope of &lt;a class="reference external" href="https://www.mediawiki.org/"&gt;MediaWiki&lt;/a&gt;, so I can understand why that doesn&amp;#8217;t
+exist. The &lt;span class="caps"&gt;NHL&lt;/span&gt; not having news feeds over &lt;span class="caps"&gt;RSS&lt;/span&gt; or Atom though? That shocks me! I
+hope I&amp;#8217;ve just been unable to find them and that they do exist. Please point me
+to them if they&amp;nbsp;do!&lt;/p&gt;
+&lt;div class="section" id="wikipedia-current-events"&gt;
+&lt;h2&gt;Wikipedia Current&amp;nbsp;Events&lt;/h2&gt;
+&lt;p&gt;The Wikipedia Current Events feed is &lt;a class="reference external" href="https://www.to-rss.xyz/wikipedia/current_events/"&gt;publically available&lt;/a&gt;, code can be found
+in the GitHub repository: &lt;a class="reference external" href="https://github.com/clokep/wp-current-events-rss"&gt;clokep/wp-current-events-rss&lt;/a&gt;. Note that this pulls
+data on demand and thus always serves the most up-to-date versions of the
+articles. This works&amp;nbsp;by:&lt;/p&gt;
+&lt;ol class="arabic simple"&gt;
+&lt;li&gt;Pulling the last 7 days of Wikipedia&amp;#8217;s current event articles (e.g. like
+&lt;a class="reference external" href="https://en.wikipedia.org/wiki/Portal:Current_events/2017_May_8"&gt;this one&lt;/a&gt;) using &lt;a class="reference external" href="http://python-requests.org/"&gt;requests&lt;/a&gt;. Each of these is processed individually as a
+separate article in the &lt;span class="caps"&gt;RSS&lt;/span&gt;&amp;nbsp;feed.&lt;/li&gt;
+&lt;li&gt;The &lt;a class="reference external" href="https://en.wikipedia.org/wiki/Help:Wiki_markup"&gt;wikicode&lt;/a&gt; for each article is converted to an &lt;a class="reference external" href="https://en.wikipedia.org/wiki/Abstract_syntax_tree"&gt;&lt;span class="caps"&gt;AST&lt;/span&gt;&lt;/a&gt; using
+&lt;a class="reference external" href="http://mwparserfromhell.readthedocs.io/"&gt;mwparserfromhell&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Some of the headers and templates are removed from each&amp;nbsp;article.&lt;/li&gt;
+&lt;li&gt;It then converts each article &lt;em&gt;back&lt;/em&gt; to &lt;span class="caps"&gt;HTML&lt;/span&gt;. (This was the surprisingly
+hard part. I couldn&amp;#8217;t find a good library to do this and ended up
+&lt;a class="reference external" href="https://github.com/clokep/wp-current-events-rss/blob/7a6e2eb12d7fbe6efae6659dda65e2ad24e89611/parser.py#L23-L193"&gt;writing this myself&lt;/a&gt;.)&lt;/li&gt;
+&lt;li&gt;The articles are then turned into an &lt;span class="caps"&gt;RSS&lt;/span&gt; feed using &lt;a class="reference external" href="https://github.com/getpelican/feedgenerator/"&gt;feedgenerator&lt;/a&gt;.&lt;/li&gt;
+&lt;li&gt;The feed itself is served via &lt;a class="reference external" href="http://flask.pocoo.org/"&gt;Flask&lt;/a&gt;.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;Feel free to &lt;a class="reference external" href="https://www.to-rss.xyz/wikipedia/"&gt;check it out&lt;/a&gt; and &lt;a class="reference external" href="https://github.com/clokep/wp-current-events-rss/issues/new"&gt;let me know of any issues&lt;/a&gt;!&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="section" id="nhl-news"&gt;
+&lt;h2&gt;&lt;span class="caps"&gt;NHL&lt;/span&gt;&amp;nbsp;News&lt;/h2&gt;
+&lt;p&gt;After building the above, I figured there was no reason not to do the same for
+the &lt;span class="caps"&gt;NHL&lt;/span&gt; News section (and specifically for the Islanders). You can &lt;a class="reference external" href="https://www.to-rss.xyz/nhl/news/"&gt;see the &lt;span class="caps"&gt;NHL&lt;/span&gt;
+feed&lt;/a&gt; or &lt;a class="reference external" href="https://www.to-rss.xyz/nhl/"&gt;pick your favorite team&lt;/a&gt;. Again, the code is available on GitHub:
+&lt;a class="reference external" href="https://github.com/clokep/nhl-news-rss"&gt;clokep/nhl-news-rss&lt;/a&gt;. The stack is pretty similar to the above, it works&amp;nbsp;by:&lt;/p&gt;
+&lt;ol class="arabic simple"&gt;
+&lt;li&gt;Pulling the current &lt;span class="caps"&gt;NHL&lt;/span&gt; News&amp;nbsp;page.&lt;/li&gt;
+&lt;li&gt;Parsing the &lt;span class="caps"&gt;HTML&lt;/span&gt; with &lt;a class="reference external" href="https://www.crummy.com/software/BeautifulSoup/bs4/"&gt;BeautifulSoup4&lt;/a&gt; to pull out each article&amp;#8217;s title,
+date, author, and short summary. (Note that the full article isn&amp;#8217;t
+available, we could get it by loading each article individually, but I
+didn&amp;#8217;t implement&amp;nbsp;that.)&lt;/li&gt;
+&lt;li&gt;The articles are then turned into an &lt;span class="caps"&gt;RSS&lt;/span&gt; feed using &lt;a class="reference external" href="https://github.com/getpelican/feedgenerator/"&gt;feedgenerator&lt;/a&gt;.&lt;/li&gt;
+&lt;li&gt;The feed itself is served via &lt;a class="reference external" href="http://flask.pocoo.org/"&gt;Flask&lt;/a&gt;.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;Luckily the &lt;span class="caps"&gt;NHL&lt;/span&gt; News site and the news page for each team are in the same
+format, so it&amp;#8217;s just loading different URLs to get the different articles. It
+was pretty trivial to get the full list of teams and add support for all of
+them, so that&amp;#8217;s included too! Articles are pulled during page load, so should
+always be up to&amp;nbsp;date.&lt;/p&gt;
+&lt;p&gt;I hope one (or both) of these are useful to people! Again, please
+&lt;a class="reference external" href="https://github.com/clokep/nhl-news-rss/issues/new"&gt;let me know if you have any issues or ideas&lt;/a&gt;!&lt;/p&gt;
+&lt;table class="docutils footnote" frame="void" id="id3" rules="none"&gt;
+&lt;colgroup&gt;&lt;col class="label" /&gt;&lt;col /&gt;&lt;/colgroup&gt;
+&lt;tbody valign="top"&gt;
+&lt;tr&gt;&lt;td class="label"&gt;&lt;a class="fn-backref" href="#id1"&gt;[1]&lt;/a&gt;&lt;/td&gt;&lt;td&gt;&lt;p class="first"&gt;I recently switched from using &lt;a class="reference external" href="http://thunderbird.net"&gt;Thunderbird&lt;/a&gt; to &lt;a class="reference external" href="https://feedly.com"&gt;Feedly&lt;/a&gt; in order to
+get cross device read status syncing on articles, but that&amp;#8217;s not really
+related to the rest of this article. Switching has mostly worked out
+well, but I do miss the filtering capabilities of&amp;nbsp;Thunderbird!&lt;/p&gt;
+&lt;p class="last"&gt;I also tried a few other services (e.g. &lt;a class="reference external" href="https://theoldreader.com"&gt;The Old Reader&lt;/a&gt;), but most had
+too many weird social features. I just wanted to read&amp;nbsp;feeds.&lt;/p&gt;
+&lt;/td&gt;&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;table class="docutils footnote" frame="void" id="id4" rules="none"&gt;
+&lt;colgroup&gt;&lt;col class="label" /&gt;&lt;col /&gt;&lt;/colgroup&gt;
+&lt;tbody valign="top"&gt;
+&lt;tr&gt;&lt;td class="label"&gt;&lt;a class="fn-backref" href="#id2"&gt;[2]&lt;/a&gt;&lt;/td&gt;&lt;td&gt;I do know that Wikipedia page updates can be consumed via &lt;span class="caps"&gt;RSS&lt;/span&gt;, but I
+don&amp;#8217;t want to know every time the article is updated, just the state of
+the article at the end of the day. (It also doesn&amp;#8217;t work for the current
+events article since it&amp;#8217;s dynamically generated from a bunch of
+templates.)&lt;/td&gt;&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;div class="admonition note"&gt;
+&lt;p class="first admonition-title"&gt;Note&lt;/p&gt;
+&lt;p&gt;An update, as of September 13,&amp;nbsp;2017:&lt;/p&gt;
+&lt;ol class="last arabic simple"&gt;
+&lt;li&gt;The links to each &lt;span class="caps"&gt;RSS&lt;/span&gt; feed were&amp;nbsp;updated.&lt;/li&gt;
+&lt;li&gt;These apps are now hosted together on &lt;a class="reference external" href="https://www.to-rss.xyz"&gt;https://www.to-rss.xyz&lt;/a&gt;.&lt;/li&gt;
+&lt;li&gt;These projects are no longer being updated on GitHub. The combined site
+might be open sourced in the&amp;nbsp;future.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Patrick Cloke</dc:creator><pubDate>Fri, 26 May 2017 08:13:00 -0400</pubDate><guid isPermaLink="false">tag:patrick.cloke.us,2017-05-26:/posts/2017/05/26/rss-feeds-for-wikipedia-current-events-and-nhl-news/</guid><category>articles</category><category>programming</category><category>python</category><category>RSS</category></item><item><title>Boston Python: Twisted async networking framework</title><link>https://patrick.cloke.us/posts/2015/08/28/boston-python-twisted-async-networking-framework/</link><description>&lt;p&gt;Yesterday, &lt;a class="reference external" href="http://stephendicato.com/"&gt;Stephen DiCato&lt;/a&gt; and I gave a talk for &lt;a class="reference external" href="http://www.meetup.com/bostonpython/"&gt;Boston Python&lt;/a&gt; titled:
 &lt;a class="reference external" href="http://www.meetup.com/bostonpython/events/221406450/"&gt;Twisted async networking framework&lt;/a&gt;. It was an introduction to intermediate
 level talk about using the &lt;a class="reference external" href="https://twistedmatrix.com/"&gt;Twisted networking framework&lt;/a&gt; based on our
 experiences at &lt;a class="reference external" href="https://percipientnetworks.com/"&gt;Percipient Networks&lt;/a&gt;.&lt;/p&gt;
 &lt;p&gt;The talk, available &lt;a class="reference external" href="https://github.com/percipient/talks/tree/master/boston_python_08_27_2015"&gt;on our GitHub&lt;/a&gt; (&lt;a class="reference external" href="https://github.com/percipient/talks/raw/master/boston_python_08_27_2015/boston_python_08_27_2015.pdf"&gt;&lt;span class="caps"&gt;PDF&lt;/span&gt;&lt;/a&gt;) covered a few basic&amp;nbsp;topics:&lt;/p&gt;
 &lt;ol class="arabic simple"&gt;
-&lt;li&gt;What …&lt;/li&gt;&lt;/ol&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Patrick Cloke</dc:creator><pubDate>Fri, 28 Aug 2015 08:42:00 -0400</pubDate><guid isPermaLink="false">tag:patrick.cloke.us,2015-08-28:/posts/2015/08/28/boston-python-twisted-async-networking-framework/</guid><category>articles</category><category>python</category><category>community</category><category>programming</category><category>twisted</category><category>talks</category></item><item><title>Extending JavaScript Maps (or other built-in objects)</title><link>https://patrick.cloke.us/posts/2014/04/27/extending-javascript-maps-or-other/</link><description>
+&lt;li&gt;What is asynchronous&amp;nbsp;programming?&lt;/li&gt;
+&lt;li&gt;What is &lt;a class="reference external" href="https://twistedmatrix.com/"&gt;Twisted&lt;/a&gt;?&lt;/li&gt;
+&lt;li&gt;When/why to use&amp;nbsp;Twisted?&lt;/li&gt;
+&lt;li&gt;What is the event loop&amp;nbsp;(reactor)?&lt;/li&gt;
+&lt;li&gt;What are &lt;a class="reference external" href="https://twistedmatrix.com/documents/current/core/howto/defer.html"&gt;Deferreds&lt;/a&gt; and how do you use&amp;nbsp;them?&lt;/li&gt;
+&lt;li&gt;What are protocols (and related objects) and how do you use&amp;nbsp;them?&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;Additionally there was a &amp;#8216;bonus&amp;#8217; section: Using Twisted to build systems &lt;span class="amp"&gt;&amp;amp;&lt;/span&gt;&amp;nbsp;services.&lt;/p&gt;
+&lt;p&gt;We used an example of a very simple chat server (NetCatChat: where the official
+client is netcat) to demonstrate these principles. All of our (working!) demo
+code is included in the &lt;a class="reference external" href="https://github.com/percipient/talks/tree/master/boston_python_08_27_2015"&gt;repository&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;There was a great turn out (almost 100 people showed up) and I greatly enjoyed
+the experience. Thanks to everyone who came, the sponsors for the night,
+&lt;a class="reference external" href="http://www.meetup.com/bostonpython/"&gt;Boston Python&lt;/a&gt; for setting this up, and Stephen for co-presenting! Please let
+us know if you have any questions or&amp;nbsp;comments.&lt;/p&gt;
+</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Patrick Cloke</dc:creator><pubDate>Fri, 28 Aug 2015 08:42:00 -0400</pubDate><guid isPermaLink="false">tag:patrick.cloke.us,2015-08-28:/posts/2015/08/28/boston-python-twisted-async-networking-framework/</guid><category>articles</category><category>python</category><category>community</category><category>programming</category><category>twisted</category><category>talks</category></item><item><title>Extending JavaScript Maps (or other built-in objects)</title><link>https://patrick.cloke.us/posts/2014/04/27/extending-javascript-maps-or-other/</link><description>
 &lt;p&gt;Finally another technical post, this one is about my adventures in
 attempting to extend the built-in &lt;a class="reference external" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Map"&gt;Map&lt;/a&gt; object in JavaScript to extend
 the functionality. As background, there are two reasons we’d want this:&lt;/p&gt;
 &lt;ol class="arabic"&gt;
 &lt;li&gt;&lt;p class="first"&gt;In the chat backend we currently use JavaScript &lt;a class="reference external" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object"&gt;objects&lt;/a&gt; (&lt;tt class="docutils literal"&gt;{}&lt;/tt&gt;) as
-hashes/maps to keep track of …&lt;/p&gt;&lt;/li&gt;&lt;/ol&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Patrick Cloke</dc:creator><pubDate>Sun, 27 Apr 2014 13:46:00 -0400</pubDate><guid isPermaLink="false">tag:patrick.cloke.us,2014-04-27:/posts/2014/04/27/extending-javascript-maps-or-other/</guid><category>articles</category><category>Instantbird</category><category>programming</category><category>specifications</category><category>Thunderbird</category><category>Wat</category></item><item><title>Instantbird Contact List Hack #2</title><link>https://patrick.cloke.us/posts/2012/01/15/instantbird-contact-list-hack-2/</link><description>&lt;p&gt;There was a &lt;a class="reference external" href="https://bugzilla.instantbird.org/show_bug.cgi?id=987"&gt;request&lt;/a&gt; on the Instantbird Bugzilla to always show
+hashes/maps to keep track of various things (i.e. there’s a &lt;a class="reference external" href="https://mxr.mozilla.org/comm-central/source/chat/protocols/irc/irc.js#789"&gt;hash of
+conversations&lt;/a&gt; which map from conversation name to prplIConversation
+objects in the &lt;span class="caps"&gt;IRC&lt;/span&gt; code). Whenever checking to see if something is in
+this map we have to use &lt;a class="reference external" href="https://mxr.mozilla.org/comm-central/source/chat/protocols/irc/irc.js#1509"&gt;hasOwnProperty&lt;/a&gt;. This has to be the
+&lt;a class="reference external" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/hasOwnProperty"&gt;version from Object.prototype&lt;/a&gt; in case the map has a conversation
+named hasOwnProperty. This is &lt;a class="reference external" href="https://mxr.mozilla.org/comm-central/source/chat/modules/imXPCOMUtils.jsm#166"&gt;super simple code&lt;/a&gt;, but annoying:&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="c1"&gt;// Similar to Object.hasOwnProperty, but doesn't fail if the object&lt;/span&gt;
+&lt;span class="c1"&gt;// has a hasOwnProperty property set.&lt;/span&gt;
+&lt;span class="kd"&gt;function&lt;/span&gt; &lt;span class="nx"&gt;hasOwnProperty&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;aObject&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="nx"&gt;aPropertyName&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+  &lt;span class="nb"&gt;Object&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;prototype&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;hasOwnProperty&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;call&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;aObject&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="nx"&gt;aPropertyName&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;&lt;a class="reference external" href="https://bugzilla.mozilla.org/show_bug.cgi?id=955366"&gt;Replacing these custom objects with a Map&lt;/a&gt; would alleviate this
+funky dance.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p class="first"&gt;Frequently in the chat backend we have to “normalize” &lt;a class="footnote-reference" href="#id4" id="id1"&gt;[1]&lt;/a&gt; strings
+(e.g. #INsTanTBIrd and #instantbird are the same on &lt;span class="caps"&gt;IRC&lt;/span&gt; &lt;a class="footnote-reference" href="#id5" id="id2"&gt;[2]&lt;/a&gt;). This is
+almost always done for sane storage of data received from the network
+(or from the user). I figured it’d be great if, instead of having to
+&lt;a class="reference external" href="https://mxr.mozilla.org/comm-central/source/chat/protocols/irc/irc.js#1510"&gt;manually&lt;/a&gt; &lt;a class="reference external" href="https://mxr.mozilla.org/comm-central/source/chat/protocols/irc/irc.js#1514"&gt;handle&lt;/a&gt; &lt;a class="reference external" href="https://mxr.mozilla.org/comm-central/source/chat/protocols/irc/irc.js#1528"&gt;this&lt;/a&gt; normalization each time we tried to
+access data, the keys were magically normalized when accessing the
+data.
+(Note that although normalization is generally more complicated, just
+consider to be &lt;a class="reference external" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/toLowerCase"&gt;String.prototype.toLowerCase()&lt;/a&gt; for the rest of this post!)&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;This has been explored before by &lt;a class="reference external" href="http://perfectionkills.com/how-ecmascript-5-still-does-not-allow-to-subclass-an-array/"&gt;others&lt;/a&gt;, but generally in the
+context of web sites / cross browser compatibility. Which are concerns
+that don’t really limit us for backend code.&lt;/p&gt;
+&lt;div class="section" id="goals"&gt;
+&lt;h2&gt;&lt;a class="toc-backref" href="#id7"&gt;Goals&lt;/a&gt;&lt;/h2&gt;
+&lt;ol class="arabic simple"&gt;
+&lt;li&gt;Replace objects with Maps for safe access. This is pretty easily
+fixed by switching all &lt;tt class="docutils literal"&gt;&lt;span class="pre"&gt;obj["foo"]&lt;/span&gt;&lt;/tt&gt; calls to &lt;tt class="docutils literal"&gt;&lt;span class="pre"&gt;obj.get("foo")&lt;/span&gt;&lt;/tt&gt; (or the
+appropriate other method: set, delete, etc.)&lt;/li&gt;
+&lt;li&gt;Automatically “normalize” keys in the some user defined way, e.g.
+such that &lt;tt class="docutils literal"&gt;&lt;span class="pre"&gt;obj.get("foo")&lt;/span&gt;&lt;/tt&gt; and &lt;tt class="docutils literal"&gt;&lt;span class="pre"&gt;obj.get("FoO")&lt;/span&gt;&lt;/tt&gt; return the same value.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/div&gt;
+&lt;div class="section" id="first-approach-setting-proto-to-map-prototype"&gt;
+&lt;h2&gt;&lt;a class="toc-backref" href="#id8"&gt;First Approach (setting __proto__ to Map.prototype)&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;My first naive approach was to create an object with &lt;tt class="docutils literal"&gt;__proto__&lt;/tt&gt; set
+to Map.prototype and overwrite anything that uses keys to appropriately
+call a normalization function.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="kd"&gt;function&lt;/span&gt; &lt;span class="nx"&gt;NormalizedMap&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt; &lt;span class="p"&gt;}&lt;/span&gt;
+&lt;span class="nx"&gt;NormalizedMap&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;prototype&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+    &lt;span class="nx"&gt;__proto__&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="nx"&gt;Map&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;prototype&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+    &lt;span class="nx"&gt;_normalize&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="kd"&gt;function&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;aStr&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="nx"&gt;aStr&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;toLowerCase&lt;/span&gt;&lt;span class="p"&gt;(),&lt;/span&gt;
+
+    &lt;span class="nx"&gt;get&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="kd"&gt;function&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;aStr&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="nx"&gt;Map&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;prototype&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;get&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;call&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="k"&gt;this&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="k"&gt;this&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;_normalize&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;aStr&lt;/span&gt;&lt;span class="p"&gt;)),&lt;/span&gt;
+    &lt;span class="nx"&gt;set&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="kd"&gt;function&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;aStr&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="nx"&gt;aVal&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="nx"&gt;Map&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;prototype&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;set&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;call&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="k"&gt;this&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="k"&gt;this&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;_normalize&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;aStr&lt;/span&gt;&lt;span class="p"&gt;),&lt;/span&gt; &lt;span class="nx"&gt;aVal&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="p"&gt;};&lt;/span&gt;
+
+&lt;span class="kd"&gt;let&lt;/span&gt; &lt;span class="nx"&gt;m&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="k"&gt;new&lt;/span&gt; &lt;span class="nx"&gt;NormalizedMap&lt;/span&gt;&lt;span class="p"&gt;();&lt;/span&gt;
+&lt;span class="nx"&gt;m&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;set&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;"foo"&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mf"&gt;1&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="c1"&gt;// Throws TypeError: set method called on incompatible Object&lt;/span&gt;
+&lt;span class="nx"&gt;m&lt;/span&gt; &lt;span class="k"&gt;instanceof&lt;/span&gt; &lt;span class="nx"&gt;Map&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt; &lt;span class="c1"&gt;// true . . . wat . . .&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;This throws an error and does not work. Apparently there are plans to
+&lt;a class="reference external" href="https://bugzilla.mozilla.org/show_bug.cgi?id=838540"&gt;support something like this&lt;/a&gt;. The totally fun thing, in my opinion, is
+that m is an instance of a Map!&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="section" id="second-approach-modifying-proto-after-instance-creation"&gt;
+&lt;h2&gt;&lt;a class="toc-backref" href="#id9"&gt;Second Approach (modifying __proto__ after instance creation)&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;My second approach was to generate a real Map and then override the
+&lt;tt class="docutils literal"&gt;__proto__&lt;/tt&gt; to give it the properties I wanted:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="kd"&gt;function&lt;/span&gt; &lt;span class="nx"&gt;NormalizedMap&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+    &lt;span class="kd"&gt;let&lt;/span&gt; &lt;span class="nx"&gt;m&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="k"&gt;new&lt;/span&gt; &lt;span class="nx"&gt;Map&lt;/span&gt;&lt;span class="p"&gt;();&lt;/span&gt;  &lt;span class="nx"&gt;m&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;__proto__&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="nx"&gt;NormalizedMap&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;prototype&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+    &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="nx"&gt;m&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;span class="p"&gt;}&lt;/span&gt;
+&lt;span class="nx"&gt;NormalizedMap&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;prototype&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+    &lt;span class="nx"&gt;__proto__&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="nx"&gt;Map&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;prototype&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+    &lt;span class="nx"&gt;_normalize&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="kd"&gt;function&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;aStr&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="nx"&gt;aStr&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;toLowerCase&lt;/span&gt;&lt;span class="p"&gt;(),&lt;/span&gt;
+    &lt;span class="nx"&gt;get&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="kd"&gt;function&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;aStr&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="nx"&gt;Map&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;prototype&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;get&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;call&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="k"&gt;this&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="k"&gt;this&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;_normalize&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;aStr&lt;/span&gt;&lt;span class="p"&gt;)),&lt;/span&gt;
+    &lt;span class="nx"&gt;set&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="kd"&gt;function&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;aStr&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="nx"&gt;aVal&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="nx"&gt;Map&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;prototype&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;set&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;call&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="k"&gt;this&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="k"&gt;this&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;_normalize&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;aStr&lt;/span&gt;&lt;span class="p"&gt;),&lt;/span&gt; &lt;span class="nx"&gt;aVal&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="p"&gt;};&lt;/span&gt;
+&lt;span class="kd"&gt;let&lt;/span&gt; &lt;span class="nx"&gt;m&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="k"&gt;new&lt;/span&gt; &lt;span class="nx"&gt;NormalizedMap&lt;/span&gt;&lt;span class="p"&gt;();&lt;/span&gt;
+&lt;span class="nx"&gt;m&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;set&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;"foo"&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mf"&gt;1&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="nx"&gt;m&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;get&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;"FOO"&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt; &lt;span class="c1"&gt;// 1&lt;/span&gt;
+&lt;span class="nx"&gt;m&lt;/span&gt; &lt;span class="k"&gt;instanceof&lt;/span&gt; &lt;span class="nx"&gt;Map&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt; &lt;span class="c1"&gt;// true&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;This actually works! But will &lt;a class="reference external" href="https://bugzilla.mozilla.org/show_bug.cgi?id=963519"&gt;throw a warning&lt;/a&gt; each time it is
+created since changing an objects &lt;tt class="docutils literal"&gt;__proto__&lt;/tt&gt; is generally a bad idea.
+I also thought of overriding individual methods, but this seemed
+cumbersome and would increase the time in the constructor calls. (Which
+occur during the start up of each account and is generally a resource
+constrained time. No, I didn’t profile this, it just seemed like bad design.)&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="section" id="solution-wrapping-a-map"&gt;
+&lt;h2&gt;&lt;a class="toc-backref" href="#id10"&gt;Solution (wrapping a Map)&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;Finally I settled on the simple solution of just wrapping the Map in a
+custom object. Initially I thought this would be frustrating to
+re-declare every function (and prone to breakage in the future if new
+methods are added), but there’s a nice magic method
+&lt;a class="reference external" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/noSuchMethod"&gt;__noSuchMethod__&lt;/a&gt; that fixes this! (Note that this is a
+non-standard feature of SpiderMonkey.) &lt;tt class="docutils literal"&gt;__noSuchMethod__&lt;/tt&gt; allows an
+object to intercept a call to a non-existent method (and in this case
+call that same method on the internal Map object).&lt;/p&gt;
+&lt;p&gt;Below is the final version that seems to act magically like a Map when
+necessary (e.g. iterating the map works, all functions and properties
+exist, the constructor works &lt;a class="footnote-reference" href="#id6" id="id3"&gt;[3]&lt;/a&gt;). I need to thank aleth (another chat
+developer) who helped out quite a bit with this (and will ultimately be
+reviewing this code)!&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="c1"&gt;// A Map that automatically normalizes keys before accessing the values.&lt;/span&gt;
+&lt;span class="kd"&gt;function&lt;/span&gt; &lt;span class="nx"&gt;NormalizedMap&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;aNormalizeFunction&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="nx"&gt;aIt&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;[])&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+  &lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="k"&gt;typeof&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;aNormalizeFunction&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="o"&gt;!=&lt;/span&gt; &lt;span class="s2"&gt;"function"&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+    &lt;span class="k"&gt;throw&lt;/span&gt; &lt;span class="s2"&gt;"NormalizedMap must have a normalize function!"&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+  &lt;span class="k"&gt;this&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;_normalize&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="nx"&gt;aNormalizeFunction&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+  &lt;span class="k"&gt;this&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;_map&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="k"&gt;new&lt;/span&gt; &lt;span class="nx"&gt;Map&lt;/span&gt;&lt;span class="p"&gt;([[&lt;/span&gt;&lt;span class="k"&gt;this&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;_normalize&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;key&lt;/span&gt;&lt;span class="p"&gt;),&lt;/span&gt; &lt;span class="nx"&gt;val&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt; &lt;span class="k"&gt;for&lt;/span&gt; &lt;span class="p"&gt;([&lt;/span&gt;&lt;span class="nx"&gt;key&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="nx"&gt;val&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt; &lt;span class="k"&gt;of&lt;/span&gt; &lt;span class="nx"&gt;aIt&lt;/span&gt;&lt;span class="p"&gt;)]);&lt;/span&gt;
+&lt;span class="p"&gt;}&lt;/span&gt;
+&lt;span class="nx"&gt;NormalizedMap&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;prototype&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+  &lt;span class="nx"&gt;_map&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="kc"&gt;null&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+  &lt;span class="c1"&gt;// The function to apply to all keys.&lt;/span&gt;
+  &lt;span class="nx"&gt;_normalize&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="kc"&gt;null&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+
+  &lt;span class="c1"&gt;// Anything that accepts a key as an input needs to be manually overridden.&lt;/span&gt;
+  &lt;span class="k"&gt;delete&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="kd"&gt;function&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;aKey&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="k"&gt;this&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;_map&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="k"&gt;delete&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="k"&gt;this&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;_normalize&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;aKey&lt;/span&gt;&lt;span class="p"&gt;)),&lt;/span&gt;
+  &lt;span class="nx"&gt;get&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="kd"&gt;function&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;aKey&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="k"&gt;this&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;_map&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;get&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="k"&gt;this&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;_normalize&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;aKey&lt;/span&gt;&lt;span class="p"&gt;)),&lt;/span&gt;
+  &lt;span class="nx"&gt;has&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="kd"&gt;function&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;aKey&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="k"&gt;this&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;_map&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;has&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="k"&gt;this&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;_normalize&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;aKey&lt;/span&gt;&lt;span class="p"&gt;)),&lt;/span&gt;
+  &lt;span class="nx"&gt;set&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="kd"&gt;function&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;aKey&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="nx"&gt;aValue&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="k"&gt;this&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;_map&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;set&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="k"&gt;this&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;_normalize&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;aKey&lt;/span&gt;&lt;span class="p"&gt;),&lt;/span&gt; &lt;span class="nx"&gt;aValue&lt;/span&gt;&lt;span class="p"&gt;),&lt;/span&gt;
+
+  &lt;span class="c1"&gt;// Properties must be manually forwarded.&lt;/span&gt;
+  &lt;span class="nx"&gt;get&lt;/span&gt; &lt;span class="nx"&gt;size&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt; &lt;span class="k"&gt;this&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;_map&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;size&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+
+  &lt;span class="c1"&gt;// Here's where the magic happens. If a method is called that isn't defined&lt;/span&gt;
+  &lt;span class="c1"&gt;// here, just pass it to the internal _map object.&lt;/span&gt;
+  &lt;span class="nx"&gt;__noSuchMethod__&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="kd"&gt;function&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;aId&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="nx"&gt;aArgs&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="k"&gt;this&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;_map&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="nx"&gt;aId&lt;/span&gt;&lt;span class="p"&gt;].&lt;/span&gt;&lt;span class="nx"&gt;apply&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="k"&gt;this&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;_map&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="nx"&gt;aArgs&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="p"&gt;}&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;The one downside of see of this is that properties must be declared
+manually to forward to the internal &lt;tt class="docutils literal"&gt;_map&lt;/tt&gt; object. Maybe there is a
+matching &lt;tt class="docutils literal"&gt;__noSuchProperty__&lt;/tt&gt; method I’m missing? Overall, I’m happy
+with this solution, but please leave a comment if you can think of an
+easier / better way to do this! (Or see a glaring way this will break!)&lt;/p&gt;
+&lt;table class="docutils footnote" frame="void" id="id4" rules="none"&gt;
+&lt;colgroup&gt;&lt;col class="label"/&gt;&lt;col/&gt;&lt;/colgroup&gt;
+&lt;tbody valign="top"&gt;
+&lt;tr&gt;&lt;td class="label"&gt;&lt;a class="fn-backref" href="#id1"&gt;[1]&lt;/a&gt;&lt;/td&gt;&lt;td&gt;This is always a little bit of a sore subject in &lt;a class="reference external" href="irc://irc.mozilla.org/#instantbird"&gt;#instantbird&lt;/a&gt;
+since we’ve had a variety of issues with this over the years. I think
+we’ve fixed most of them at this point though!&lt;/td&gt;&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;table class="docutils footnote" frame="void" id="id5" rules="none"&gt;
+&lt;colgroup&gt;&lt;col class="label"/&gt;&lt;col/&gt;&lt;/colgroup&gt;
+&lt;tbody valign="top"&gt;
+&lt;tr&gt;&lt;td class="label"&gt;&lt;a class="fn-backref" href="#id2"&gt;[2]&lt;/a&gt;&lt;/td&gt;&lt;td&gt;As I’ve &lt;a class="reference external" href="https://patrick.cloke.us/posts/2011/03/08/so-called-irc-specifications/"&gt;written before&lt;/a&gt;, &lt;span class="caps"&gt;IRC&lt;/span&gt; tends to have crazy specifications.
+In &lt;span class="caps"&gt;IRC&lt;/span&gt;, &lt;a class="reference external" href="https://tools.ietf.org/html/rfc2812#section-2.2"&gt;the characters of A-Z[]\~ are considered the upper case of a-z{}|^&lt;/a&gt;
+(“because of &lt;span class="caps"&gt;IRC&lt;/span&gt;’s Scandinavian origin”). Oh, also this can
+change based on an &lt;a class="reference external" href="http://tools.ietf.org/html/draft-brocklesby-irc-isupport-03#section-3.1"&gt;&lt;span class="caps"&gt;ISUPPORT&lt;/span&gt; response&lt;/a&gt; from the server to pure &lt;span class="caps"&gt;ASCII&lt;/span&gt; or
+&lt;span class="caps"&gt;RFC&lt;/span&gt; 1459 casemapping (A-Z[]\ map to a-z{}|). It seems like this could
+theoretically change at any point on a live server too, although that
+would be &lt;span class="caps"&gt;INSANE&lt;/span&gt; and I hope no one ever does that.&lt;/td&gt;&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;table class="docutils footnote" frame="void" id="id6" rules="none"&gt;
+&lt;colgroup&gt;&lt;col class="label"/&gt;&lt;col/&gt;&lt;/colgroup&gt;
+&lt;tbody valign="top"&gt;
+&lt;tr&gt;&lt;td class="label"&gt;&lt;a class="fn-backref" href="#id3"&gt;[3]&lt;/a&gt;&lt;/td&gt;&lt;td&gt;I wrote some xpcshell tests to ensure these properties work as
+expected, but they’re uhh…not up anywhere yet though. Oops.&lt;/td&gt;&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;/div&gt;
+</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Patrick Cloke</dc:creator><pubDate>Sun, 27 Apr 2014 13:46:00 -0400</pubDate><guid isPermaLink="false">tag:patrick.cloke.us,2014-04-27:/posts/2014/04/27/extending-javascript-maps-or-other/</guid><category>articles</category><category>Instantbird</category><category>programming</category><category>specifications</category><category>Thunderbird</category><category>Wat</category></item><item><title>Instantbird Contact List Hack #2</title><link>https://patrick.cloke.us/posts/2012/01/15/instantbird-contact-list-hack-2/</link><description>&lt;p&gt;There was a &lt;a class="reference external" href="https://bugzilla.instantbird.org/show_bug.cgi?id=987"&gt;request&lt;/a&gt; on the Instantbird Bugzilla to always show
 contacts in the contact list as the &amp;#8220;big&amp;#8221; contact (as shown when a
 contact is selected). Similarly to my &lt;a class="reference external" href="https://patrick.cloke.us/posts/2011/10/31/instantbird-contact-list-hack/"&gt;last post&lt;/a&gt;, this can easily be
 done with userChrome.css. See the post if you don&amp;#8217;t know what
-userChrome …&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Patrick Cloke</dc:creator><pubDate>Sun, 15 Jan 2012 10:00:00 -0500</pubDate><guid isPermaLink="false">tag:patrick.cloke.us,2012-01-15:/posts/2012/01/15/instantbird-contact-list-hack-2/</guid><category>articles</category><category>customizing</category><category>Instantbird</category><category>programming</category></item><item><title>Instantbird Contact List Hack</title><link>https://patrick.cloke.us/posts/2011/10/31/instantbird-contact-list-hack/</link><description>&lt;p&gt;A friend of mine asked me if there was a way to have selected contacts
+userChrome.css&amp;nbsp;is.&lt;/p&gt;
+&lt;p&gt;Again, we&amp;#8217;re simply going to always apply a specific &lt;span class="caps"&gt;CSS&lt;/span&gt; style to the
+contacts, namely we&amp;#8217;ll be modifying the behavior of &lt;a class="reference external" href="http://lxr.instantbird.org/instantbird/source/instantbird/content/blist.css#38"&gt;blist.css&lt;/a&gt;. I&amp;#8217;m
+sure you don&amp;#8217;t really care about that and just want the code, well I&amp;#8217;ll&amp;nbsp;oblige:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="cm"&gt;/* Expand all contacts to the big contact. */&lt;/span&gt;
+&lt;span class="nx"&gt;contact&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+    &lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="nx"&gt;moz&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="nx"&gt;binding&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="nx"&gt;url&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;chrome://instantbird/content/contact.xml#contact-big&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="o"&gt;!&lt;/span&gt;&lt;span class="nx"&gt;important&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+    &lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="nx"&gt;moz&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="nx"&gt;box&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="nx"&gt;orient&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="nx"&gt;vertical&lt;/span&gt; &lt;span class="o"&gt;!&lt;/span&gt;&lt;span class="nx"&gt;important&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+    &lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="nx"&gt;moz&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="nx"&gt;box&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="nx"&gt;align&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="nx"&gt;stretch&lt;/span&gt; &lt;span class="o"&gt;!&lt;/span&gt;&lt;span class="nx"&gt;important&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;span class="p"&gt;}&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;And that&amp;#8217;s it! Restart Instantbird and you should always have big
+contacts. I haven&amp;#8217;t seen any issues of using this (missing or wrong
+behavior), but of course your mileage might vary. Have&amp;nbsp;fun!&lt;/p&gt;
+</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Patrick Cloke</dc:creator><pubDate>Sun, 15 Jan 2012 10:00:00 -0500</pubDate><guid isPermaLink="false">tag:patrick.cloke.us,2012-01-15:/posts/2012/01/15/instantbird-contact-list-hack-2/</guid><category>articles</category><category>customizing</category><category>Instantbird</category><category>programming</category></item><item><title>Instantbird Contact List Hack</title><link>https://patrick.cloke.us/posts/2011/10/31/instantbird-contact-list-hack/</link><description>&lt;p&gt;A friend of mine asked me if there was a way to have selected contacts
 in the contact list &lt;span class="caps"&gt;NOT&lt;/span&gt; expand to two lines (where the status goes onto
 the second line) in&amp;nbsp;Instantbird.&lt;/p&gt;
 &lt;p&gt;There&amp;#8217;s actually no option to do this in Instantbird, but with a
-little &lt;a class="reference external" href="http://www-archive.mozilla.org/unix/customizing.html"&gt;userChrome&lt;/a&gt; tweak …&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Patrick Cloke</dc:creator><pubDate>Mon, 31 Oct 2011 20:20:00 -0400</pubDate><guid isPermaLink="false">tag:patrick.cloke.us,2011-10-31:/posts/2011/10/31/instantbird-contact-list-hack/</guid><category>articles</category><category>customizing</category><category>Instantbird</category><category>programming</category></item><item><title>Adding a protocol to Instantbird (Part 2)</title><link>https://patrick.cloke.us/posts/2011/09/03/adding-protocol-to-instantbird-part-2/</link><description>
+little &lt;a class="reference external" href="http://www-archive.mozilla.org/unix/customizing.html"&gt;userChrome&lt;/a&gt; tweak, we can easily get this behavior (although
+with a couple caveats). You should be able to add a new folder &lt;a class="reference external" href="http://instantbird.com/faq.html#profilefolder"&gt;inside
+your profile&lt;/a&gt; called chrome. Inside of this make a new file called
+userChrome.css and place the&amp;nbsp;following:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="p"&gt;#&lt;/span&gt;&lt;span class="nn"&gt;buddylistbox&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="nd"&gt;focus&lt;/span&gt; &lt;span class="o"&gt;&amp;gt;&lt;/span&gt; &lt;span class="nt"&gt;contact&lt;/span&gt;&lt;span class="o"&gt;[&lt;/span&gt;&lt;span class="nt"&gt;selected&lt;/span&gt;&lt;span class="o"&gt;]&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+    &lt;span class="kp"&gt;-moz-&lt;/span&gt;&lt;span class="n"&gt;binding&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="nb"&gt;url&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;chrome://instantbird/content/contact.xml#contact&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="cp"&gt;!important&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+    &lt;span class="kp"&gt;-moz-&lt;/span&gt;&lt;span class="n"&gt;box-orient&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="kc"&gt;horizontal&lt;/span&gt; &lt;span class="cp"&gt;!important&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;span class="p"&gt;}&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Save the file and restart&amp;#8230;and that&amp;#8217;s it! Now your selected contacts
+should be on one line, just like your unselected&amp;nbsp;contacts.&lt;/p&gt;
+&lt;p&gt;I did mention there was a caveat though! If you want to expand a
+contact (to see all the protocols, etc. that you&amp;#8217;ve merged together)
+you&amp;#8217;ll need to use the arrow keys: right arrow expands a contact, left
+arrow collapses a contact. (You need to do this since the chevron icon
+that lets you expand/collapse isn&amp;#8217;t shown on a non-selected&amp;nbsp;contact.)&lt;/p&gt;
+&lt;p&gt;(Some more technical details: we&amp;#8217;re forcing the standard contact
+template to be used instead of the contact-big template, even when the
+contact is expanded; i.e. we&amp;#8217;re overwriting the command given
+&lt;a class="reference external" href="http://lxr.instantbird.org/instantbird/source/instantbird/content/blist.css#44"&gt;blist.css&lt;/a&gt;.)&lt;/p&gt;
+</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Patrick Cloke</dc:creator><pubDate>Mon, 31 Oct 2011 20:20:00 -0400</pubDate><guid isPermaLink="false">tag:patrick.cloke.us,2011-10-31:/posts/2011/10/31/instantbird-contact-list-hack/</guid><category>articles</category><category>customizing</category><category>Instantbird</category><category>programming</category></item><item><title>Adding a protocol to Instantbird (Part 2)</title><link>https://patrick.cloke.us/posts/2011/09/03/adding-protocol-to-instantbird-part-2/</link><description>
 &lt;p&gt;I had &lt;a class="reference external" href="https://patrick.cloke.us/posts/2011/06/18/adding-new-protocol-sipeoffice/"&gt;previously talked about adding a protocol to Instantbird&lt;/a&gt;,
 that focused on adding &lt;span class="caps"&gt;SIPE&lt;/span&gt; (Microsoft Office Communicator support).
 Since then I’ve been slowly working on defeating &lt;span class="caps"&gt;SIPE&lt;/span&gt;. Fortunately I
 found a few flags that help us compile it easily in Instantbird: we can
-declare that we do &lt;em&gt;not …&lt;/em&gt;&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Patrick Cloke</dc:creator><pubDate>Sat, 03 Sep 2011 10:31:00 -0400</pubDate><guid isPermaLink="false">tag:patrick.cloke.us,2011-09-03:/posts/2011/09/03/adding-protocol-to-instantbird-part-2/</guid><category>articles</category><category>Instantbird</category><category>programming</category><category>SIPE</category></item><item><title>Adding a new protocol (SIPE/Office Communicator) to Instantbird (part 1)</title><link>https://patrick.cloke.us/posts/2011/06/18/adding-new-protocol-sipeoffice/</link><description>&lt;p&gt;&lt;a class="reference external" href="http://en.wikipedia.org/wiki/Office_Communicator"&gt;Microsoft Office Communicator&lt;/a&gt; is an instant messaging client that
+declare that we do &lt;em&gt;not&lt;/em&gt; have gmime and the standard libpurple &lt;span class="caps"&gt;MIME&lt;/span&gt;
+functions will be used (they might not be as good, but it keeps from
+adding &amp;gt;10 &lt;span class="caps"&gt;MB&lt;/span&gt; of source to Instantbird).&lt;/p&gt;
+&lt;p&gt;Some modifications to the &lt;span class="caps"&gt;SIPE&lt;/span&gt; source were made to compile it in
+Instantbird (note that most of the changes were probably more based on
+using &lt;span class="caps"&gt;MSVC&lt;/span&gt;, than having to do with Instantbird). The code is also
+broken up into a few different sections the core, api, and purple are
+ones we care about (they’re working on making a general Office
+Communicator protocol library, so the purple folder contains the
+libpurple bindings that use the api, while the core is private).&lt;/p&gt;
+&lt;div class="section" id="purple"&gt;
+&lt;h2&gt;&lt;a class="toc-backref" href="#id1"&gt;Purple&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;Changes to purple consisted mostly of ifdefs that remove some header
+files not supported on Windows. For example, I encountered a few of:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="cp"&gt;#include&lt;/span&gt; &lt;span class="cpf"&gt;&amp;lt;unistd.h&amp;gt;&lt;/span&gt;&lt;span class="cp"&gt;&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Luckily there was already a define &lt;tt class="docutils literal"&gt;HAVE_UNISTD_H&lt;/tt&gt;, so I just needed
+to add:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="cp"&gt;#ifdef HAVE_UNISTD_H&lt;/span&gt;
+&lt;span class="cp"&gt;#include&lt;/span&gt; &lt;span class="cpf"&gt;&amp;lt;unistd.h&amp;gt;&lt;/span&gt;&lt;span class="cp"&gt;&lt;/span&gt;
+&lt;span class="cp"&gt;#endif&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Easy! There were also a couple other issues, but those were rather trivial.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="section" id="core"&gt;
+&lt;h2&gt;&lt;a class="toc-backref" href="#id2"&gt;Core&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;There isn’t a specific issue in the core I’d like to highlight, it did
+use a few glib functions which we didn’t have (we removed the files, as
+they were unused), they were all reimplemented in libpurple though, so
+we were able to just define the function calls to the libpurple variants.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="section" id="api"&gt;
+&lt;h2&gt;&lt;a class="toc-backref" href="#id3"&gt;&lt;span class="caps"&gt;API&lt;/span&gt;&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;This had similar issues the core (in particular, there was a function
+which used &lt;tt class="docutils literal"&gt;g_usleep&lt;/tt&gt;, which is blocking and a definite no-no for a
+protocol plug-in, I’ve removed that…hopefully it doesn’t break
+anything!) In addition to that, we needed to use the libpurple l10n
+system instead of glib’s gi18n.h, this was easily copied from
+libpurple’s internal &lt;span class="caps"&gt;API&lt;/span&gt; though.&lt;/p&gt;
+&lt;p&gt;So at this point…I have a copy of &lt;span class="caps"&gt;SIPE&lt;/span&gt; compiled! Unfortunately
+since I’m using Visual Studio Express I cannot compile on my computer
+and deploy to other computers for testing (a Mozilla issue with how it
+uses some of the header files, etc., I believe). I’m looking into
+trying to get this to work though, apparently using the exact same copy
+of &lt;span class="caps"&gt;MSVC&lt;/span&gt; Redistributable might help. Once this is tested, hopefully
+it’ll land in Instantbird for use!&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="section" id="sametime-support"&gt;
+&lt;h2&gt;&lt;a class="toc-backref" href="#id4"&gt;Sametime support&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;Unrelated to &lt;span class="caps"&gt;SIPE&lt;/span&gt;, but recently I landed a patch in Instantbird to add
+back Sametime support (Sametime is Lotus Notes’ equivalent to Office
+Communicator). You can see the gory details in &lt;a class="reference external" href="https://bugzilla.instantbird.org/show_bug.cgi?id=102"&gt;bug 102&lt;/a&gt;, but in
+general it’s similar to what I’ve (not gone into great detail about)
+here. Most of getting Sametime to work was rewriting some C code
+that doesn’t compile in &lt;span class="caps"&gt;MSVC&lt;/span&gt;. There’s also a &lt;a class="reference external" href="https://bugzilla.instantbird.org/attachment.cgi?id=797&amp;amp;action=diff"&gt;diff&lt;/a&gt; of all the
+changes I made to the libpurple Sametime plugin and the external library
+(called &lt;a class="reference external" href="http://meanwhile.sourceforge.net/"&gt;Meanwhile&lt;/a&gt;) to get it to work. Once I get Monotone (a version
+control system) set up I’ll look into getting these changes pushed back
+to libpurple to avoid diverging code bases.&lt;/p&gt;
+&lt;/div&gt;
+</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Patrick Cloke</dc:creator><pubDate>Sat, 03 Sep 2011 10:31:00 -0400</pubDate><guid isPermaLink="false">tag:patrick.cloke.us,2011-09-03:/posts/2011/09/03/adding-protocol-to-instantbird-part-2/</guid><category>articles</category><category>Instantbird</category><category>programming</category><category>SIPE</category></item><item><title>Adding a new protocol (SIPE/Office Communicator) to Instantbird (part 1)</title><link>https://patrick.cloke.us/posts/2011/06/18/adding-new-protocol-sipeoffice/</link><description>&lt;p&gt;&lt;a class="reference external" href="http://en.wikipedia.org/wiki/Office_Communicator"&gt;Microsoft Office Communicator&lt;/a&gt; is an instant messaging client that
 integrates into the &lt;a class="reference external" href="http://en.wikipedia.org/wiki/Microsoft_Exchange_Server"&gt;Exchange Messaging Server&lt;/a&gt; (the protocol behind it
 is an extended version of &lt;span class="caps"&gt;SIP&lt;/span&gt;/&lt;span class="caps"&gt;SIMPLE&lt;/span&gt;). Anyway, there&amp;#8217;s a &lt;a class="reference external" href="http://developer.pidgin.im/wiki/WhatIsLibpurple"&gt;libpurple&lt;/a&gt;
 (i.e. the backend of &lt;a class="reference external" href="http://instantbird.com/"&gt;Instantbird&lt;/a&gt; and &lt;a class="reference external" href="http://pidgin.im/"&gt;Pidgin&lt;/a&gt;) protocol plug-in for
-&lt;span class="caps"&gt;OCS&lt;/span&gt; (Office Communicator Server) called &lt;a class="reference external" href="http://sipe.sourceforge.net/"&gt;&lt;span class="caps"&gt;SIPE&lt;/span&gt;&lt;/a&gt;. (It&amp;#8217;s …&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Patrick Cloke</dc:creator><pubDate>Sat, 18 Jun 2011 21:53:00 -0400</pubDate><guid isPermaLink="false">tag:patrick.cloke.us,2011-06-18:/posts/2011/06/18/adding-new-protocol-sipeoffice/</guid><category>articles</category><category>Instantbird</category><category>programming</category><category>SIPE</category></item><item><title>Compiling Instantbird</title><link>https://patrick.cloke.us/posts/2011/05/16/compilling-instantbird/</link><description>
+&lt;span class="caps"&gt;OCS&lt;/span&gt; (Office Communicator Server) called &lt;a class="reference external" href="http://sipe.sourceforge.net/"&gt;&lt;span class="caps"&gt;SIPE&lt;/span&gt;&lt;/a&gt;. (It&amp;#8217;s also striving
+for a generic library to connect to &lt;span class="caps"&gt;OCS&lt;/span&gt;, but that&amp;#8217;s not quite there&amp;nbsp;yet.)&lt;/p&gt;
+&lt;p&gt;I&amp;#8217;ve been interested in getting this to compile in the Instantbird
+framework for a while now, adding a new protocol to Instantbird. First
+of course I need the &lt;span class="caps"&gt;SIPE&lt;/span&gt; source, I chose to grab a release &lt;a class="reference external" href="http://sourceforge.net/projects/sipe/files/sipe/pidgin-sipe-1.11.2/"&gt;source
+bundle&lt;/a&gt; instead of using the &lt;a class="reference external" href="http://sourceforge.net/apps/mediawiki/sipe/index.php?title=Windows_Build"&gt;git repository&lt;/a&gt;, just for ease moving
+files around, etc. There&amp;#8217;s a rather vague &lt;a class="reference external" href="http://sourceforge.net/apps/mediawiki/sipe/index.php?title=Windows_Build"&gt;Windows build&lt;/a&gt; page on the
+wiki that I started with, says I&amp;nbsp;need:&lt;/p&gt;
+&lt;ul class="simple"&gt;
+&lt;li&gt;libpurple &amp;gt;2.4.0 (we have&amp;nbsp;2.7.11)&lt;/li&gt;
+&lt;li&gt;libglib &amp;gt;2.12.0 (we have&amp;nbsp;2.28.6)&lt;/li&gt;
+&lt;li&gt;libxml2 (we have&amp;nbsp;this)&lt;/li&gt;
+&lt;li&gt;gmime &amp;gt;2.4 (not currently&amp;nbsp;used)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;So great, &lt;a class="reference external" href="https://wiki.instantbird.org/Instantbird:Third_party_code"&gt;we have most of the dependencies&lt;/a&gt;! We just need one more.
+So I go grab, &lt;a class="reference external" href="http://developer.gnome.org/gmime/"&gt;gmime&lt;/a&gt; from the &lt;span class="caps"&gt;GNOME&lt;/span&gt; website (2.5.7, which is the
+newest stable, currently), again as a source bundle and put the
+necessary files in purple/libraries/gmime and edit the makefile so it
+will (attempt) to compile. But great &amp;#8212; it requires &lt;a class="reference external" href="http://www.gnu.org/software/libiconv/"&gt;libiconv&lt;/a&gt;, which
+apparently is very difficult to compile, especially on Windows. Luckily
+for me there&amp;#8217;s a Windows version (not a port, but one that uses the
+native Win32 APIs with the same interface): &lt;a class="reference external" href="http://code.google.com/p/win-iconv/"&gt;win-iconv&lt;/a&gt;. This compiled
+like a champ when added as&amp;nbsp;purple/libraries/iconv.&lt;/p&gt;
+&lt;p&gt;Unfortunately when I went back to compiling gmime, it attempts to
+access parts of glib we&amp;#8217;re not using (gio, in particular) and thus is
+not in our source code. I can grab the &lt;a class="reference external" href="http://developer.gnome.org/glib/"&gt;glib&lt;/a&gt; source (2.28.6 to match,
+of course) and add the gio subfolder, but first we should check if this
+part of gmime is even used by &lt;span class="caps"&gt;SIPE&lt;/span&gt;! (My guess is that it is &lt;em&gt;not&lt;/em&gt;, but
+that&amp;#8217;s where I&amp;#8217;m at now. I&amp;#8217;ll post back when I get&amp;nbsp;further.&lt;/p&gt;
+</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Patrick Cloke</dc:creator><pubDate>Sat, 18 Jun 2011 21:53:00 -0400</pubDate><guid isPermaLink="false">tag:patrick.cloke.us,2011-06-18:/posts/2011/06/18/adding-new-protocol-sipeoffice/</guid><category>articles</category><category>Instantbird</category><category>programming</category><category>SIPE</category></item><item><title>Compiling Instantbird</title><link>https://patrick.cloke.us/posts/2011/05/16/compilling-instantbird/</link><description>
 &lt;p&gt;In the past I’ve tried to compile a few different programs that use
 the Mozilla toolkit to various levels of success. I’ve tried to compile
 Thunderbird, Songbird and Instantbird at various points. I got
 Thunderbird to compile, but it only worked sporadically (although I
-think that was Firefox …&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Patrick Cloke</dc:creator><pubDate>Mon, 16 May 2011 21:30:00 -0400</pubDate><guid isPermaLink="false">tag:patrick.cloke.us,2011-05-16:/posts/2011/05/16/compilling-instantbird/</guid><category>articles</category><category>Instantbird</category><category>Mozilla</category><category>programming</category></item><item><title>The so-called IRC “specifications”</title><link>https://patrick.cloke.us/posts/2011/03/08/so-called-irc-specifications/</link><description>
+think that was Firefox moving so fast that Thunderbird couldn’t keep
+up), Songbird I gave up on rather quickly and Instantbird I’ve tried a
+few times.&lt;/p&gt;
+&lt;p&gt;Last summer I had Instantbird compiling on my old laptop (a Lenovo
+T60), which is &amp;gt;5 years old at this point and has had the heatsink / fan
+replaced twice — a known issue with that model laptop. Needless to
+say, that laptop didn’t like compiling something on Windows that took
+approximately an hour with a large number of reads and writes to the
+hard drive. This mixed with it being an old dual core + a 5400 &lt;span class="caps"&gt;RPM&lt;/span&gt;
+meant I’d be waiting a &lt;span class="caps"&gt;LONG&lt;/span&gt; time for my code to compile. I got a
+Thinkpad X201 this past summer, so I finally got around to setting up a
+development environment on it and was able to get Instantbird to compile
+fully today. I’ve outlined the steps I’ve followed: kind of to mirror
+the &lt;a class="reference external" href="https://developer.mozilla.org/En/Simple_Thunderbird_build"&gt;Simple Thunderbird Build&lt;/a&gt; page on &lt;span class="caps"&gt;MDC&lt;/span&gt;.&lt;/p&gt;
+&lt;p&gt;I’ve done this using Microsoft Windows 7 Professional (64-bit) with
+Service Pack 1. (4.00 &lt;span class="caps"&gt;GB&lt;/span&gt; of &lt;span class="caps"&gt;RAM&lt;/span&gt;, Intel Core i7 M620 2.67 GHz).
+Throughout these steps, the defaults locations and options are used in
+the installers.&lt;/p&gt;
+&lt;div class="section" id="build-requirements"&gt;
+&lt;h2&gt;&lt;a class="toc-backref" href="#id2"&gt;Build Requirements:&lt;/a&gt;&lt;/h2&gt;
+&lt;div class="section" id="visual-studio-express"&gt;
+&lt;h3&gt;&lt;a class="toc-backref" href="#id3"&gt;Visual Studio Express:&lt;/a&gt;&lt;/h3&gt;
+&lt;p&gt;We need to install Visual Studio Express, specifically &lt;span class="caps"&gt;VC8&lt;/span&gt; (2005) with
+Service Pack 1. (Mozilla compiles with &lt;span class="caps"&gt;VC9&lt;/span&gt; and &lt;span class="caps"&gt;VC10&lt;/span&gt; to various degrees,
+but it seems libpurple only compiles with &lt;span class="caps"&gt;VC8&lt;/span&gt;, also this is what’s on
+the Instantbird buildbot, so I like having the same version.) I
+couldn’t find this on Microsoft’s website but I found it on &lt;a class="reference external" href="http://www.softpedia.com/get/Programming/Other-Programming-Files/Microsoft-Visual-C-Toolkit.shtml"&gt;Softpedia&lt;/a&gt;
+(which is a legitimate site). Anyway, download the installer and
+install it (which will download the actual compiler from Microsoft),
+ensure that you also install the &lt;span class="caps"&gt;IDE&lt;/span&gt; (which is checked by default).&lt;/p&gt;
+&lt;p&gt;This will only install &lt;span class="caps"&gt;VC8&lt;/span&gt;, the initial release. We also need to
+install &lt;a class="reference external" href="http://www.microsoft.com/downloads/en/details.aspx?FamilyID=7b0b0339-613a-46e6-ab4d-080d4d4a8c4e"&gt;Service Pack 1&lt;/a&gt;. I personally did this using Windows Update,
+but one of the installers from there should also work.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="section" id="microsoft-windows-sdk"&gt;
+&lt;h3&gt;&lt;a class="toc-backref" href="#id4"&gt;Microsoft Windows &lt;span class="caps"&gt;SDK&lt;/span&gt;:&lt;/a&gt;&lt;/h3&gt;
+&lt;p&gt;Specifically we need the &lt;a class="reference external" href="http://www.microsoft.com/downloads/en/details.aspx?FamilyID=c17ba869-9671-4330-a63e-1fd44e0e2505&amp;amp;displaylang=en"&gt;Windows 7 &lt;span class="caps"&gt;SDK&lt;/span&gt;&lt;/a&gt; (for Jumplist, Aero, etc.
+support). Download and install the &lt;span class="caps"&gt;SDK&lt;/span&gt;, this one took a while for me to
+install. I ate dinner while it was installing (pasta, if you’re curious
+— I already had sauce made).&lt;/p&gt;
+&lt;p&gt;There’s a linker error when using &lt;span class="caps"&gt;VC8&lt;/span&gt; and the Windows 7 &lt;span class="caps"&gt;SDK&lt;/span&gt;, so we’ll
+need to install a &lt;a class="reference external" href="http://support.microsoft.com/kb/949009/"&gt;hotfix&lt;/a&gt; for that (I tried without it and I ran into
+the issue). I had to download the “VS80sp1-&lt;span class="caps"&gt;KB949009&lt;/span&gt;-&lt;span class="caps"&gt;IA64&lt;/span&gt;-&lt;span class="caps"&gt;INTL&lt;/span&gt;.exe”
+version (there’s also an X86 and an X64 version). Choose the one that works.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="section" id="microsoft-macro-assembler"&gt;
+&lt;h3&gt;&lt;a class="toc-backref" href="#id5"&gt;Microsoft Macro Assembler:&lt;/a&gt;&lt;/h3&gt;
+&lt;p&gt;In order to properly assemble the code we need to &lt;a class="reference external" href="http://www.microsoft.com/downloads/en/details.aspx?familyid=7A1C9DA0-0510-44A2-B042-7EF370530C64&amp;amp;displaylang=en"&gt;install &lt;span class="caps"&gt;MASM&lt;/span&gt;&lt;/a&gt;
+(which I think will eventually be included in MozillaBuild, but it isn’t
+currently). Again, just install it with the defaults.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="section" id="mozillabuild"&gt;
+&lt;h3&gt;&lt;a class="toc-backref" href="#id6"&gt;MozillaBuild:&lt;/a&gt;&lt;/h3&gt;
+&lt;p&gt;Almost there, I promise. In order to get a *nix type shell to run
+make, etc. in we’ll use a package from Mozilla that includes &lt;span class="caps"&gt;MSYS&lt;/span&gt;, make,
+Mercurial, etc. Download and &lt;a class="reference external" href="http://ftp.mozilla.org/pub/mozilla.org/mozilla/libraries/win32/MozillaBuildSetup-Latest.exe"&gt;install MozillaBuild&lt;/a&gt;, the latest should
+work fine.&lt;/p&gt;
+&lt;p&gt;Now, an unknown step: you might require the &lt;a class="reference external" href="http://www.microsoft.com/downloads/en/details.aspx?FamilyID=a5c84275-3b97-4ab7-a40d-3802b2af5fc2&amp;amp;displaylang=en"&gt;Microsoft Visual C++ 2008
+&lt;span class="caps"&gt;SP1&lt;/span&gt; Redistributable Package&lt;/a&gt;. I don’t know if you need this or not
+since I &lt;em&gt;already&lt;/em&gt; had it, most likely from a previous program I’ve installed.&lt;/p&gt;
+&lt;p&gt;We should be ready to build now pretty much. For some more
+information for this stuff you can check out the Mozilla Developer
+Network pages I used to get this information: &lt;a class="reference external" href="https://developer.mozilla.org/En/Developer_Guide/Build_Instructions"&gt;Build Instructions&lt;/a&gt;,
+&lt;a class="reference external" href="https://developer.mozilla.org/En/Developer_Guide/Build_Instructions/Windows_Prerequisites"&gt;Windows Build Prerequisites&lt;/a&gt; and &lt;a class="reference external" href="https://developer.mozilla.org/cn/VC8_Build_Instructions"&gt;&lt;span class="caps"&gt;MSVC8&lt;/span&gt; Build Instructions&lt;/a&gt;.&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="section" id="checkout-the-code"&gt;
+&lt;h2&gt;&lt;a class="toc-backref" href="#id7"&gt;Checkout the Code:&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;We need to checkout the code. I originally checked out the code with
+TortoiseHg (which is what I normally use), but the version of Mercurial
+included is significantly greater than the one included in MozillaBuild
+and this caused me issues later on. Thus, we’ll check out the code on
+the command line. Start by launching the bash shell, which is at
+C:\mozilla-build\start-msvc8.bat (don’t use the x64 version). There’s
+a version here which corresponds to each version of &lt;span class="caps"&gt;VS&lt;/span&gt;.&lt;/p&gt;
+&lt;p&gt;Once this finishes loading you’ll be in the home directory (which is
+in the root of your user’s documents and settings folder, i.e. for me:
+C:\Users\clokep). You’ll want to do the following:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;hg clone https://hg.instantbird.org/instantbird
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;This might take a few minutes depending on how good your internet
+connection is. (The Instantbird source isn’t &lt;span class="caps"&gt;THAT&lt;/span&gt; big though, it
+shouldn’t take too long.)&lt;/p&gt;
+&lt;p&gt;Then we’ll need to change into the instantbird directory that was just
+created and download the Mozilla source code:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="nb"&gt;cd&lt;/span&gt; instantbird
+python client.py checkout
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Now this step? This one is gonna take a while. It took me like a
+couple of hours. It pulls the Mozilla source code, which is large and
+has many changesets. Just let it go, it’ll give you progress
+occasionally (changes, manifests, files, etc.)&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="section" id="id1"&gt;
+&lt;h2&gt;&lt;a class="toc-backref" href="#id8"&gt;Compiling Instantbird:&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;We need to set up the options we want to build with. These are
+read from a .mozconfig (don’t miss the “.” in the front!). The contents
+of the .mozconfig that worked for me are:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;ac_add_options --enable-application&lt;span class="o"&gt;=&lt;/span&gt;instantbird
+mk_add_options &lt;span class="nv"&gt;MOZ_OBJDIR&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;@TOPSRCDIR@/objdir-ib-release
+ac_add_options --disable-accessibility
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;The first option says to build Instantbird, the second gives an output
+directory and the third &lt;a class="reference external" href="https://developer.mozilla.org/en/atlbase.h"&gt;disables accessibility&lt;/a&gt; (not really sure why
+we need to do this, but we’ll get that error at that link otherwise).&lt;/p&gt;
+&lt;p&gt;Finally (back in the bash shell) type:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;make -f client.mk build
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Now sit back and relax. My build took about an hour to finish, maybe
+a bit less — I wasn’t fully paying attention. Once it’s done you
+should see something like:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;Processed &lt;span class="m"&gt;1&lt;/span&gt; file, writing output:
+
+Output:
+&lt;span class="s2"&gt;"c:\\Users\\clokep\\instantbird\\objdir-ib-release\\instantbird\\installer\\windows\\instgen\\helper.exe"&lt;/span&gt;
+Install: &lt;span class="m"&gt;2&lt;/span&gt; pages &lt;span class="o"&gt;(&lt;/span&gt;&lt;span class="m"&gt;128&lt;/span&gt; bytes&lt;span class="o"&gt;)&lt;/span&gt;, &lt;span class="m"&gt;1&lt;/span&gt; section &lt;span class="o"&gt;(&lt;/span&gt;&lt;span class="m"&gt;16416&lt;/span&gt; bytes&lt;span class="o"&gt;)&lt;/span&gt;, &lt;span class="m"&gt;2579&lt;/span&gt;
+instructions &lt;span class="o"&gt;(&lt;/span&gt;&lt;span class="m"&gt;72212&lt;/span&gt; bytes&lt;span class="o"&gt;)&lt;/span&gt;, &lt;span class="m"&gt;369&lt;/span&gt; strings &lt;span class="o"&gt;(&lt;/span&gt;&lt;span class="m"&gt;10198&lt;/span&gt; bytes&lt;span class="o"&gt;)&lt;/span&gt;, &lt;span class="m"&gt;1&lt;/span&gt; language table &lt;span class="o"&gt;(&lt;/span&gt;&lt;span class="m"&gt;230&lt;/span&gt; bytes&lt;span class="o"&gt;)&lt;/span&gt;.
+Uninstall: &lt;span class="m"&gt;5&lt;/span&gt; pages &lt;span class="o"&gt;(&lt;/span&gt;&lt;span class="m"&gt;320&lt;/span&gt; bytes&lt;span class="o"&gt;)&lt;/span&gt;,
+&lt;span class="m"&gt;1&lt;/span&gt; section &lt;span class="o"&gt;(&lt;/span&gt;&lt;span class="m"&gt;16416&lt;/span&gt; bytes&lt;span class="o"&gt;)&lt;/span&gt;, &lt;span class="m"&gt;2063&lt;/span&gt; instructions &lt;span class="o"&gt;(&lt;/span&gt;&lt;span class="m"&gt;57764&lt;/span&gt; bytes&lt;span class="o"&gt;)&lt;/span&gt;, &lt;span class="m"&gt;388&lt;/span&gt; strings
+&lt;span class="o"&gt;(&lt;/span&gt;&lt;span class="m"&gt;10828&lt;/span&gt; bytes&lt;span class="o"&gt;)&lt;/span&gt;, &lt;span class="m"&gt;1&lt;/span&gt; language table &lt;span class="o"&gt;(&lt;/span&gt;&lt;span class="m"&gt;314&lt;/span&gt; bytes&lt;span class="o"&gt;)&lt;/span&gt;.
+Datablock optimizer saved &lt;span class="m"&gt;123940&lt;/span&gt; bytes &lt;span class="o"&gt;(&lt;/span&gt;~17.6%&lt;span class="o"&gt;)&lt;/span&gt;.
+Using zlib compression.
+EXE header size:               &lt;span class="m"&gt;63488&lt;/span&gt; / &lt;span class="m"&gt;39424&lt;/span&gt; bytes
+Install code:                  &lt;span class="m"&gt;99564&lt;/span&gt; / &lt;span class="m"&gt;99560&lt;/span&gt; bytes
+Install data:                 &lt;span class="m"&gt;118002&lt;/span&gt; / &lt;span class="m"&gt;241950&lt;/span&gt; bytes
+Uninstall code+data:          &lt;span class="m"&gt;398654&lt;/span&gt; / &lt;span class="m"&gt;398646&lt;/span&gt; bytes
+CRC &lt;span class="o"&gt;(&lt;/span&gt;0x062AF3F5&lt;span class="o"&gt;)&lt;/span&gt;:                  &lt;span class="m"&gt;4&lt;/span&gt; / &lt;span class="m"&gt;4&lt;/span&gt; bytes
+Total size:                   &lt;span class="m"&gt;679712&lt;/span&gt; / &lt;span class="m"&gt;779584&lt;/span&gt; bytes &lt;span class="o"&gt;(&lt;/span&gt;&lt;span class="m"&gt;87&lt;/span&gt;.1%&lt;span class="o"&gt;)&lt;/span&gt;
+c:/Users/clokep/instantbird/objdir-ib-release/mozilla/config/nsinstall.exe -D ../../../mozilla/dist/bin/uninstall
+cp instgen/helper.exe ../../../mozilla/dist/bin/uninstall
+make&lt;span class="o"&gt;[&lt;/span&gt;&lt;span class="m"&gt;5&lt;/span&gt;&lt;span class="o"&gt;]&lt;/span&gt;: Leaving directory &lt;span class="sb"&gt;`&lt;/span&gt;/c/Users/clokep/instantbird/objdir-ib-release/instantbird/installer/windows&lt;span class="s1"&gt;'&lt;/span&gt;
+&lt;span class="s1"&gt;make[4]: Leaving directory `/c/Users/clokep/instantbird/objdir-ib-release/instantbird'&lt;/span&gt;
+make&lt;span class="o"&gt;[&lt;/span&gt;&lt;span class="m"&gt;3&lt;/span&gt;&lt;span class="o"&gt;]&lt;/span&gt;: Leaving directory &lt;span class="sb"&gt;`&lt;/span&gt;/c/Users/clokep/instantbird/objdir-ib-release&lt;span class="s1"&gt;'&lt;/span&gt;
+&lt;span class="s1"&gt;make[2]: Leaving directory `/c/Users/clokep/instantbird/objdir-ib-release'&lt;/span&gt;
+make&lt;span class="o"&gt;[&lt;/span&gt;&lt;span class="m"&gt;1&lt;/span&gt;&lt;span class="o"&gt;]&lt;/span&gt;: Leaving directory &lt;span class="sb"&gt;`&lt;/span&gt;/c/Users/clokep/instantbird/objdir-ib-release&lt;span class="err"&gt;'&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Now, to test that the build actually worked we can browse to the
+compiled executable and run it:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="nb"&gt;cd&lt;/span&gt; objdir-ib-release/mozilla/dist/bin/instantbird.exe -P dev -no-remote
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;The -P option specifies a profile name (dev), the second option
+(-no-remote) allows you to run a second Instantbird instance (since I
+assume you use Instantbird to &lt;span class="caps"&gt;IM&lt;/span&gt;…you probably want to be able to run a
+second one, if you don’t use it…shame on you. Try not to close the
+wrong Instantbird when you’re working on stuff).&lt;/p&gt;
+&lt;p&gt;Hopefully this will help someone else get started on hacking
+Instantbird. There’s other good ways you can hack too if your computer
+can’t handle compiling, including unpacking omni.jar.&lt;/p&gt;
+&lt;p&gt;One last tidbit is to possibly add the option to your .mozconfig:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;--enable-chrome-format&lt;span class="o"&gt;=&lt;/span&gt;flat
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;This will not package anything in JARs (which pretty much just get in
+the way while developing). See &lt;a class="reference external" href="https://developer.mozilla.org/en/JAR_Packaging"&gt;here&lt;/a&gt; for more info.&lt;/p&gt;
+&lt;p&gt;Edit: Fixed the path to the executable thanks to Florian. And fixed a
+spelling error in the title.&lt;/p&gt;
+&lt;/div&gt;
+</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Patrick Cloke</dc:creator><pubDate>Mon, 16 May 2011 21:30:00 -0400</pubDate><guid isPermaLink="false">tag:patrick.cloke.us,2011-05-16:/posts/2011/05/16/compilling-instantbird/</guid><category>articles</category><category>Instantbird</category><category>Mozilla</category><category>programming</category></item><item><title>The so-called IRC “specifications”</title><link>https://patrick.cloke.us/posts/2011/03/08/so-called-irc-specifications/</link><description>
 &lt;p&gt;In a &lt;a class="reference external" href="https://patrick.cloke.us/posts/2010/12/08/why-rewrite-irc-into-javascript/"&gt;previous post&lt;/a&gt; I had briefly gone over the “history of &lt;span class="caps"&gt;IRC&lt;/span&gt;” as
 I know it. I’m going to expand on this a bit as I’ve come to understand
 it a bit more while reading through documentation. (Hopefully it won’t
-sound too much like a rant …&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Patrick Cloke</dc:creator><pubDate>Tue, 08 Mar 2011 21:20:00 -0500</pubDate><guid isPermaLink="false">tag:patrick.cloke.us,2011-03-08:/posts/2011/03/08/so-called-irc-specifications/</guid><category>articles</category><category>Instantbird</category><category>IRC</category><category>programming</category><category>specifications</category></item><item><title>Status Update - February 17, 2011</title><link>https://patrick.cloke.us/posts/2011/02/17/status-update-february-17-2011/</link><description>&lt;p&gt;Another month has gone by so it&amp;#8217;s time for another status update.
+sound too much like a rant, as it is all driving me crazy!)&lt;/p&gt;
+&lt;div class="section" id="irc-specifications"&gt;
+&lt;h2&gt;&lt;a class="toc-backref" href="#id5"&gt;&lt;span class="caps"&gt;IRC&lt;/span&gt; Specifications&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;So there’s the original specification (&lt;a class="reference external" href="http://tools.ietf.org/html/rfc1459"&gt;&lt;span class="caps"&gt;RFC&lt;/span&gt; 1459&lt;/a&gt;) in May 1993; this
+was expanded and replaced by four different specifications (&lt;a class="reference external" href="http://tools.ietf.org/html/rfc2810"&gt;&lt;span class="caps"&gt;RFC&lt;/span&gt; 2810&lt;/a&gt;,
+&lt;a class="reference external" href="http://tools.ietf.org/html/rfc2811"&gt;2811&lt;/a&gt;, &lt;a class="reference external" href="http://tools.ietf.org/html/rfc2812"&gt;2812&lt;/a&gt;, &lt;a class="reference external" href="http://tools.ietf.org/html/rfc2813"&gt;2813&lt;/a&gt;) in April 2000. Seems pretty straightforward, right?&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="section" id="dcc-ctcp"&gt;
+&lt;h2&gt;&lt;a class="toc-backref" href="#id6"&gt;&lt;span class="caps"&gt;DCC&lt;/span&gt;/&lt;span class="caps"&gt;CTCP&lt;/span&gt;&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;Well, kind of…there’s also the &lt;span class="caps"&gt;DCC&lt;/span&gt;/&lt;span class="caps"&gt;CTCP&lt;/span&gt; specifications, which is a
+separate protocol embedded/hidden within the &lt;span class="caps"&gt;IRC&lt;/span&gt; protocol (e.g. they’re
+sent as &lt;span class="caps"&gt;IRC&lt;/span&gt; messages and parsed specially by clients, the server sees
+them as normal messages). &lt;span class="caps"&gt;DCC&lt;/span&gt;/&lt;span class="caps"&gt;CTCP&lt;/span&gt; is used to send files as well as
+other particular messages (&lt;span class="caps"&gt;ACTION&lt;/span&gt; commands for roleplaying, &lt;span class="caps"&gt;SED&lt;/span&gt; for
+encrypting conversations, &lt;span class="caps"&gt;VERSION&lt;/span&gt; to get client information, etc.).
+Anyway, this gets a bit more complicated — it starts with the &lt;a class="reference external" href="http://www.irchelp.org/irchelp/rfc/dccspec.html"&gt;&lt;span class="caps"&gt;DCC&lt;/span&gt;
+specification&lt;/a&gt;. This was replaced/updated by the &lt;a class="reference external" href="http://www.irchelp.org/irchelp/rfc/ctcpspec.html"&gt;&lt;span class="caps"&gt;CTCP&lt;/span&gt; specification&lt;/a&gt;
+(which fully includes the &lt;span class="caps"&gt;DCC&lt;/span&gt; specification) in 1994. An &lt;a class="reference external" href="https://web.archive.org/web/20101129023108/http://www.invlogic.com/irc/ctcp.html"&gt;“updated”
+&lt;span class="caps"&gt;CTCP&lt;/span&gt; specification&lt;/a&gt; was released in February 1997. There’s also a
+&lt;a class="reference external" href="https://web.archive.org/web/20080723170128/http://www.invlogic.com/irc/ctcp2_intro.html"&gt;&lt;span class="caps"&gt;CTCP&lt;/span&gt;/2 specification&lt;/a&gt; from October 1998, which was meant to
+reformulate a lot of the previous three versions. And &lt;em&gt;finally&lt;/em&gt;,
+there’s the &lt;span class="caps"&gt;DCC2&lt;/span&gt; specification (two parts: &lt;a class="reference external" href="http://tools.ietf.org/html/draft-smith-irc-dcc2-negotiation-00"&gt;connection negotiation&lt;/a&gt; and
+&lt;a class="reference external" href="http://www.dcc2.org/files/dcc2/draft-smith-irc-dcc2-files-00.txt"&gt;file transfers&lt;/a&gt;) from April 2004.&lt;/p&gt;
+&lt;p&gt;But wait! I lied…that’s not really the end of &lt;span class="caps"&gt;DCC&lt;/span&gt;/&lt;span class="caps"&gt;CTCP&lt;/span&gt;, there’s
+also a bunch of extensions to it: &lt;a class="reference external" href="http://www.visualirc.net/tech-tdcc.php"&gt;Turbo &lt;span class="caps"&gt;DCC&lt;/span&gt;&lt;/a&gt;, &lt;a class="reference external" href="http://xa.bi/files/irc/xdcc.3.3.0b.irc"&gt;&lt;span class="caps"&gt;XDCC&lt;/span&gt; (eXtended &lt;span class="caps"&gt;DCC&lt;/span&gt;)&lt;/a&gt;
+in 1993, &lt;a class="reference external" href="http://www.visualirc.net/tech-wboard.php"&gt;&lt;span class="caps"&gt;DCC&lt;/span&gt; Whiteboard&lt;/a&gt;, and a few other variations of this: &lt;span class="caps"&gt;RDCC&lt;/span&gt;
+(Reverse &lt;span class="caps"&gt;DCC&lt;/span&gt;), &lt;span class="caps"&gt;SDD&lt;/span&gt; (Secure &lt;span class="caps"&gt;DCC&lt;/span&gt;), &lt;span class="caps"&gt;DCC&lt;/span&gt; Voice, etc. Wikipedia has a &lt;a class="reference external" href="http://en.wikipedia.org/wiki/Direct_Client-to-Client"&gt;good
+summary&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Something else to note about the whole &lt;span class="caps"&gt;DCC&lt;/span&gt;/&lt;span class="caps"&gt;CTCP&lt;/span&gt; mess…parts of it
+just &lt;em&gt;don’t&lt;/em&gt; have any documentation. There’s &lt;em&gt;none&lt;/em&gt; at all for &lt;span class="caps"&gt;SED&lt;/span&gt; (at
+least that I’ve found, I’d love to be proved wrong) and very little
+(really just a mention) for &lt;span class="caps"&gt;DCC&lt;/span&gt; Voice.&lt;/p&gt;
+&lt;p&gt;So, we’re about halfway through now. There’s a bunch of extensions to
+the &lt;span class="caps"&gt;IRC&lt;/span&gt; protocol specifications that add new commands to the actual protocol.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="section" id="authentication"&gt;
+&lt;h2&gt;&lt;a class="toc-backref" href="#id7"&gt;Authentication&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;Originally &lt;span class="caps"&gt;IRC&lt;/span&gt; had no authentication ability except the &lt;span class="caps"&gt;PASS&lt;/span&gt; command,
+which very few servers seem to use, a variety of mechanisms have
+replaced this, including &lt;a class="reference external" href="https://raw.githubusercontent.com/atheme/charybdis/master/doc/sasl.txt"&gt;&lt;span class="caps"&gt;SASL&lt;/span&gt; authentication&lt;/a&gt; (both &lt;span class="caps"&gt;PLAIN&lt;/span&gt; and &lt;span class="caps"&gt;BLOWFISH&lt;/span&gt;
+methods, although &lt;span class="caps"&gt;BLOWFISH&lt;/span&gt; isn’t documented); and &lt;span class="caps"&gt;SASL&lt;/span&gt; itself is covered
+by at least &lt;a class="reference external" href="http://tools.ietf.org/html/rfc2222"&gt;four&lt;/a&gt; &lt;a class="reference external" href="http://tools.ietf.org/html/rfc4422"&gt;RFCs&lt;/a&gt; &lt;a class="reference external" href="http://tools.ietf.org/html/rfc2595"&gt;in this&lt;/a&gt; &lt;a class="reference external" href="http://tools.ietf.org/html/rfc4616"&gt;situation&lt;/a&gt;. There also seems
+to be a method called “Auth” which I haven’t been able to pin down, as
+well as Ident (which is a more general protocol authentication method I
+haven’t looked into yet).&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="section" id="extension-support"&gt;
+&lt;h2&gt;&lt;a class="toc-backref" href="#id8"&gt;Extension Support&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;This includes a few that generally add a way by which servers are able
+to tell their clients exactly what a server supports. The first of
+these was RPL_ISUPPORT, which was defined as a &lt;a class="reference external" href="http://tools.ietf.org/html/draft-brocklesby-irc-isupport-03"&gt;draft specification&lt;/a&gt;
+in January 2004, and &lt;a class="reference external" href="http://tools.ietf.org/html/draft-hardy-irc-isupport-00"&gt;updated&lt;/a&gt; in January of 2005.&lt;/p&gt;
+&lt;p&gt;A similar concept was defined as &lt;a class="reference external" href="http://tools.ietf.org/html/draft-mitchell-irc-capabilities-01"&gt;&lt;span class="caps"&gt;IRC&lt;/span&gt; Capabilities&lt;/a&gt; in March 2005.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="section" id="protocol-extensions"&gt;
+&lt;h2&gt;&lt;a class="toc-backref" href="#id9"&gt;Protocol Extensions&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;&lt;span class="caps"&gt;IRCX&lt;/span&gt;, a Microsoft extension to &lt;span class="caps"&gt;IRC&lt;/span&gt; used (at one point) for some of
+it’s instant messaging products &lt;a class="reference external" href="http://tools.ietf.org/html/draft-pfenning-irc-extensions-04"&gt;exists as a draft&lt;/a&gt; from June 1998.&lt;/p&gt;
+&lt;p&gt;There’s also:&lt;/p&gt;
+&lt;ul class="simple"&gt;
+&lt;li&gt;The &lt;a class="reference external" href="https://github.com/atheme/charybdis/raw/master/doc/monitor.txt"&gt;&lt;span class="caps"&gt;MONITOR&lt;/span&gt;&lt;/a&gt; command.&lt;/li&gt;
+&lt;li&gt;&lt;a class="reference external" href="https://raw.githubusercontent.com/atheme/charybdis/master/doc/modeg.txt"&gt;User mode +g&lt;/a&gt;.&lt;/li&gt;
+&lt;li&gt;&lt;a class="reference external" href="https://raw.githubusercontent.com/atheme/charybdis/master/doc/services.txt"&gt;Services compatibility modes&lt;/a&gt;.&lt;/li&gt;
+&lt;li&gt;&lt;a class="reference external" href="https://raw.githubusercontent.com/atheme/charybdis/master/doc/account-notify.txt"&gt;Account-notify client capability&lt;/a&gt;.&lt;/li&gt;
+&lt;li&gt;&lt;a class="reference external" href="https://raw.githubusercontent.com/atheme/charybdis/master/doc/tgchange.txt"&gt;Target change for messages&lt;/a&gt;.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+&lt;div class="section" id="services"&gt;
+&lt;h2&gt;&lt;a class="toc-backref" href="#id10"&gt;Services&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;To fill in some of the missing features of &lt;span class="caps"&gt;IRC&lt;/span&gt;, services were created
+(Wikipedia has a good &lt;a class="reference external" href="http://en.wikipedia.org/wiki/Internet_Relay_Chat_services"&gt;summary&lt;/a&gt; again). This commonly includes
+ChanServ, NickServ, OperServ, and MemoServ. Not too hard, but different
+server packages include different services (or even the same services
+that behave differently), one of more common ones is &lt;a class="reference external" href="http://www.anope.org/docgen/1.8/en_us/"&gt;Anope&lt;/a&gt;, however
+(plus they have awesome documentation, so they get a link).&lt;/p&gt;
+&lt;p&gt;There was an attempt to standardize how to interact with services
+called &lt;span class="caps"&gt;IRC&lt;/span&gt;+, which included three specifications: &lt;a class="reference external" href="http://www.irc-plus.org/specs/confctrl-draft.html"&gt;conference control
+protocol&lt;/a&gt;, &lt;a class="reference external" href="http://www.irc-plus.org/specs/identity-draft.html"&gt;identity protocol&lt;/a&gt; and &lt;a class="reference external" href="http://www.irc-plus.org/specs/subscriptions-draft.html"&gt;subscriptions protocol&lt;/a&gt;. I don’t
+believe this are supported widely (if at all).&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="section" id="irc-url-scheme"&gt;
+&lt;h2&gt;&lt;a class="toc-backref" href="#id11"&gt;&lt;span class="caps"&gt;IRC&lt;/span&gt; &lt;span class="caps"&gt;URL&lt;/span&gt; Scheme&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;Finally this brings us to the &lt;span class="caps"&gt;IRC&lt;/span&gt; &lt;span class="caps"&gt;URL&lt;/span&gt; scheme of which there are a few
+versions. A draft from August 1996 defines the original &lt;a class="reference external" href="http://tools.ietf.org/html/draft-mirashi-url-irc-01"&gt;irc: &lt;span class="caps"&gt;URL&lt;/span&gt;
+scheme&lt;/a&gt;. This was updated/replaced by &lt;a class="reference external" href="http://tools.ietf.org/html/draft-butcher-irc-url-04"&gt;another draft&lt;/a&gt; which defines
+irc: and ircs: &lt;span class="caps"&gt;URL&lt;/span&gt; schemes.&lt;/p&gt;
+&lt;p&gt;As of right now that’s all that I’ve found…an awful lot. Plus it’s
+not all compatible with each other (and sometimes out right contradicts
+each other). Often newer specifications say not to support older
+specifications, but who knows what servers/clients you’ll end up talking
+to! It’s difficult to know what’s used in practice, especially since
+there’s an awful lot of &lt;a class="reference external" href="http://en.wikipedia.org/wiki/Comparison_of_IRC_daemons"&gt;&lt;span class="caps"&gt;IRC&lt;/span&gt; servers&lt;/a&gt; out there. Anyway, if someone
+does know of another specification, etc. that I missed please let me know!&lt;/p&gt;
+&lt;dl class="docutils"&gt;
+&lt;dt&gt;Updated [2014-12-20]&lt;/dt&gt;
+&lt;dd&gt;Fixed some dead links. Unfortunately some links now point to the &lt;a class="reference external" href="https://archive.org/web/"&gt;Wayback
+Machine&lt;/a&gt;. There are also copies of most, if not all, of these links in my
+&lt;a class="reference external" href="https://bitbucket.org/clokep/irc-docs"&gt;irc-docs repository&lt;/a&gt;. Thanks Ultra Rocks for the heads up!&lt;/dd&gt;
+&lt;/dl&gt;
+&lt;/div&gt;
+</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Patrick Cloke</dc:creator><pubDate>Tue, 08 Mar 2011 21:20:00 -0500</pubDate><guid isPermaLink="false">tag:patrick.cloke.us,2011-03-08:/posts/2011/03/08/so-called-irc-specifications/</guid><category>articles</category><category>Instantbird</category><category>IRC</category><category>programming</category><category>specifications</category></item><item><title>Status Update - February 17, 2011</title><link>https://patrick.cloke.us/posts/2011/02/17/status-update-february-17-2011/</link><description>&lt;p&gt;Another month has gone by so it&amp;#8217;s time for another status update.
 Unfortunately not as much got done this month as I was hoping, but
 here&amp;#8217;s a quick update of what I&amp;#8217;ve worked&amp;nbsp;on:&lt;/p&gt;
 &lt;ul class="simple"&gt;
 &lt;li&gt;&lt;a class="reference external" href="https://bugzilla.instantbird.org/show_bug.cgi?id=690"&gt;Bug 690&lt;/a&gt; - jsProtoHelper could help registering&amp;nbsp;commands&lt;/li&gt;
-&lt;li&gt;&lt;a class="reference external" href="https://bugzilla.instantbird.org/show_bug.cgi?id=661"&gt;Bug 661&lt;/a&gt; - JavaScript accounts do not …&lt;/li&gt;&lt;/ul&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Patrick Cloke</dc:creator><pubDate>Thu, 17 Feb 2011 19:21:00 -0500</pubDate><guid isPermaLink="false">tag:patrick.cloke.us,2011-02-17:/posts/2011/02/17/status-update-february-17-2011/</guid><category>articles</category><category>Instantbird</category><category>IRC</category><category>programming</category></item><item><title>Status Update - January 18, 2011</title><link>https://patrick.cloke.us/posts/2011/01/18/status-update-january-18-2011/</link><description>&lt;p&gt;I haven&amp;#8217;t had an update in a few weeks (since early December)
-actually, so I thought I would post a bit about what I&amp;#8217;ve worked on.
-I&amp;#8217;ve fixed a bunch of bugs in the backend of Instantbird that allow work
-on JavaScript &lt;span class="caps"&gt;IRC&lt;/span&gt; protocol to&amp;nbsp;continue:&lt;/p&gt;
+&lt;li&gt;&lt;a class="reference external" href="https://bugzilla.instantbird.org/show_bug.cgi?id=661"&gt;Bug 661&lt;/a&gt; - JavaScript accounts do not automatically set
+containsNick field on&amp;nbsp;messages&lt;/li&gt;
+&lt;li&gt;&lt;a class="reference external" href="https://bugzilla.instantbird.org/show_bug.cgi?id=686"&gt;Bug 686&lt;/a&gt; - Implement default chat name for
+getChatRoomDefaultFieldValues for&amp;nbsp;js-proto&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Florian also implemented a few things that are really helpful for
+JavaScript&amp;nbsp;protocols:&lt;/p&gt;
 &lt;ul class="simple"&gt;
-&lt;li&gt;&lt;a class="reference external" href="https://bugzilla.instantbird.org/show_bug.cgi?id=519"&gt;Bug …&lt;/a&gt;&lt;/li&gt;&lt;/ul&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Patrick Cloke</dc:creator><pubDate>Tue, 18 Jan 2011 23:17:00 -0500</pubDate><guid isPermaLink="false">tag:patrick.cloke.us,2011-01-18:/posts/2011/01/18/status-update-january-18-2011/</guid><category>articles</category><category>Instantbird</category><category>IRC</category><category>Mozilla</category><category>programming</category></item><item><title>Why Rewrite IRC into JavaScript? (vs. libpurple’s vs. ChatZilla’s)</title><link>https://patrick.cloke.us/posts/2010/12/08/why-rewrite-irc-into-javascript/</link><description>
-&lt;p&gt;I had a request on &lt;span class="caps"&gt;IRC&lt;/span&gt; (from Mic) to write an in-depth blog post
-about &lt;a class="reference external" href="https://bugzilla.instantbird.org/show_bug.cgi?id=507"&gt;&lt;span class="caps"&gt;IRC&lt;/span&gt; in JavaScript&lt;/a&gt;:&lt;/p&gt;
-&lt;blockquote&gt;
-“Maybe we could ask clokep if he’d like to write something about
-js-irc? Why it is done, what the advantages are once it’s done, how
-he is working on it …&lt;/blockquote&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Patrick Cloke</dc:creator><pubDate>Wed, 08 Dec 2010 14:29:00 -0500</pubDate><guid isPermaLink="false">tag:patrick.cloke.us,2010-12-08:/posts/2010/12/08/why-rewrite-irc-into-javascript/</guid><category>articles</category><category>Instantbird</category><category>IRC</category><category>Mozilla</category><category>programming</category></item><item><title>JavaScript IRC in Instantbird</title><link>https://patrick.cloke.us/posts/2010/12/04/javascript-irc-in-instantbird/</link><description>&lt;p&gt;I&amp;#8217;ve been working on rewriting the &lt;span class="caps"&gt;IRC&lt;/span&gt; plugin for &lt;a class="reference external" href="http://www.instantbird.com/"&gt;Instantbird&lt;/a&gt; since
-the summer (sometime in August, I can&amp;#8217;t seem to find the exact date &amp;#8212;
-at least since Sept. 10th&amp;nbsp;though).&lt;/p&gt;
-&lt;p&gt;Since &lt;a class="reference external" href="http://developer.pidgin.im/wiki/WhatIsLibpurple"&gt;libpurple&lt;/a&gt; (used in Pidgin, Adium, etc.) provides the &lt;span class="caps"&gt;IRC&lt;/span&gt;
-protocol that we currently use, why do this …&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Patrick Cloke</dc:creator><pubDate>Sat, 04 Dec 2010 17:24:00 -0500</pubDate><guid isPermaLink="false">tag:patrick.cloke.us,2010-12-04:/posts/2010/12/04/javascript-irc-in-instantbird/</guid><category>articles</category><category>Instantbird</category><category>IRC</category><category>Mozilla</category><category>programming</category></item><item><title>Yahoo &amp; Thunderbird Can Finally Play Nice?</title><link>https://patrick.cloke.us/posts/2010/11/22/yahoo-thunderbird/</link><description>&lt;p&gt;For years I&amp;#8217;ve been dealing with Yahoo&amp;#8217;s lack of support for any sort
-of decent (free) &lt;span class="caps"&gt;POP3&lt;/span&gt;/&lt;span class="caps"&gt;IMAP&lt;/span&gt;/&lt;span class="caps"&gt;SMTP&lt;/span&gt; protocol support. Why do I need this?
-So I can check my &lt;a class="reference external" href="http://mail.yahoo.com/"&gt;Yahoo mail&lt;/a&gt; in &lt;a class="reference external" href="http://www.mozillamessaging.com/en-US/thunderbird/"&gt;Mozilla Thunderbird&lt;/a&gt; of&amp;nbsp;course!&lt;/p&gt;
-&lt;p&gt;At first I used &lt;a class="reference external" href="http://ypopsemail.com/"&gt;&lt;span class="caps"&gt;YPOPS&lt;/span&gt;!&lt;/a&gt;, a program that read the …&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Patrick Cloke</dc:creator><pubDate>Mon, 22 Nov 2010 23:03:00 -0500</pubDate><guid isPermaLink="false">tag:patrick.cloke.us,2010-11-22:/posts/2010/11/22/yahoo-thunderbird/</guid><category>articles</category><category>email</category><category>Mozilla</category><category>programming</category><category>Thunderbird</category><category>Yahoo</category></item></channel></rss>
+&lt;li&gt;&lt;a class="reference external" href="https://bugzilla.instantbird.org/show_bug.cgi?id=649"&gt;Bug 649&lt;/a&gt; - purple proxies should not be in the way of JavaScript&amp;nbsp;protocols&lt;/li&gt;
+&lt;li&gt;&lt;a class="reference external" href="https://bugzilla.instantbird.org/show_bug.cgi?id=118"&gt;Bug 118&lt;/a&gt; - Extensions should be able to register&amp;nbsp;commands.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;In addition, Twitter support was added to nightly builds as a
+JavaScript protocol (&lt;a class="reference external" href="https://bugzilla.instantbird.org/show_bug.cgi?id=598"&gt;bug 598&lt;/a&gt;).&lt;/p&gt;
+&lt;p&gt;Hopefully next I&amp;#8217;ll implement most of the commands for &lt;span class="caps"&gt;IRC&lt;/span&gt; (within the
+next week) at which point I&amp;#8217;ll release a sample extension (which will
+overwrite the libpurple &lt;span class="caps"&gt;IRC&lt;/span&gt; implementation), allowing people to test
+without needing to make a new account,&amp;nbsp;etc.&lt;/p&gt;
+</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Patrick Cloke</dc:creator><pubDate>Thu, 17 Feb 2011 19:21:00 -0500</pubDate><guid isPermaLink="false">tag:patrick.cloke.us,2011-02-17:/posts/2011/02/17/status-update-february-17-2011/</guid><category>articles</category><category>Instantbird</category><category>IRC</category><category>programming</category></item></channel></rss>

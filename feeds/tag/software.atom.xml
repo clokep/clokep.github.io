@@ -80,8 +80,8 @@ motherboard and the Outback&amp;#8217;s &lt;span class="caps"&gt;FM&lt;/span&gt;
 &lt;p&gt;&lt;span class="strike"&gt;The only thing I couldn&amp;#8217;t figure out was how to list two pins with the proper names and pins numbers, but ignore all the other ones. Note a huge deal for a 36-pin connector.&lt;/span&gt;
 See the comments below, this is doable, although a little&amp;nbsp;awkward!&lt;/p&gt;
 &lt;p&gt;It did create a fairly pretty diagram after running &lt;tt class="docutils literal"&gt;wireviz &lt;span class="pre"&gt;subaru-wiring.yaml&lt;/span&gt;&lt;/tt&gt;
-and is certainly easier than directly using &lt;a class="reference external" href="https://graphviz.org/"&gt;graphviz&lt;/a&gt;. It ouputs a &lt;span class="caps"&gt;SVG&lt;/span&gt;, &lt;span class="caps"&gt;PNG&lt;/span&gt;,
-bill of materials, &lt;span class="caps"&gt;HTML&lt;/span&gt; page (with the bill of materials and image on it).
+and is certainly easier than directly using &lt;a class="reference external" href="https://graphviz.org/"&gt;graphviz&lt;/a&gt;. It creates a &lt;span class="caps"&gt;SVG&lt;/span&gt;, &lt;span class="caps"&gt;PNG&lt;/span&gt;,
+bill of materials, and &lt;span class="caps"&gt;HTML&lt;/span&gt; page (with the bill of materials and image on it).
 Overall, I&amp;#8217;d use it again if I had a&amp;nbsp;need!&lt;/p&gt;
 &lt;blockquote class="text-center"&gt;
 &lt;a class="reference external image-reference" href="https://patrick.cloke.us/code/testing-wireviz/subaru-wiring.svg"&gt;&lt;object data="https://patrick.cloke.us/code/testing-wireviz/subaru-wiring.svg" style="width: 100%;" type="image/svg+xml"&gt;&lt;/object&gt;&lt;/a&gt;
