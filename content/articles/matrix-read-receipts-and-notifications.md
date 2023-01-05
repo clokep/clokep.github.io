@@ -6,7 +6,7 @@ Author: Patrick Cloke
 
 I recently wrapped up a project on improving notifications in threads for Matrix.
 This is adapted from my [research notes](https://hackmd.io/bbucQKOLTv66N4B_wjDLFQ)
-to understand the status quote before adapting the Matrix protocol for threads
+to understand the status quo before adapting the Matrix protocol for threads
 (in [MSC3771](https://github.com/matrix-org/matrix-spec-proposals/pull/3771) and
 [MSC3773](https://github.com/matrix-org/matrix-spec-proposals/pull/3773)).
 Hopefully others find the information useful!
