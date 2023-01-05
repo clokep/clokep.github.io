@@ -54,7 +54,7 @@
 
           {% for pg in pages %}
           <li class="nav-item{% if pg == page %} active{% endif %}">
-            <a class="nav-link" href="/{{ pg.url }}">{{ pg.title }}{% if pg == page %} <span class="sr-only">(current){% endif %}</a>
+            <a class="nav-link" href="/{{ pg.url }}">{{ pg.title }}{% if pg == page %} <span class="sr-only">(current)</span>{% endif %}</a>
           </li>
           {% endfor %}
 
