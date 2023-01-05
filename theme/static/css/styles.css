@@ -59,12 +59,12 @@ div.admonition {
     margin-bottom: 1rem;
 }
 /* Display the "Note" on the same line as the content. */
-div.admonition p.first, div.admonition p.first + p {
+div.admonition p.admonition-title, div.admonition p.admonition-title + p {
     display: inline;
 }
 /* The bottom margin of the first two paragraphs gets broken by making them
  * inline, add it as a top-margin for the element below. */
-div.admonition p.first + p + * {
+div.admonition p.admonition-title + p + * {
     margin-top: 16px;
 }
 /* Add a : after "Note". */

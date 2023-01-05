@@ -92,6 +92,19 @@ PLUGINS = [
     'directives',
 ]
 
+# Markdown configuration.
+MARKDOWN = {
+    'extension_configs': {
+        # Pelican's default extensions.
+        'markdown.extensions.codehilite': {'css_class': 'highlight'},
+        'markdown.extensions.extra': {},
+        'markdown.extensions.meta': {},
+        # Extra extensions.
+        'markdown.extensions.admonition': {},
+    },
+    'output_format': 'html5',
+}
+
 # Custom Jinja filters.
 JINJA_FILTERS = {
     'chunk': chunk,

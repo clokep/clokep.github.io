@@ -4,7 +4,7 @@ invoke==1.7.3
 ghp_import==2.1.0
 
 # Need to install Markdown explicitly so articles written in Markdown get rendered by Pelican.
-Markdown==3.3.7
+Markdown==3.4.1
 
 # Pelican itself.
 pelican==4.8.0
