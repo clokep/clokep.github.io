@@ -7,15 +7,17 @@
 
 {% block content %}
 {% for article in articles_page.object_list %}
-<div class="container mt-4">
+<div class="container mt-1">
   <div class="row">
     <div class="col-md-12">
-      <h1>
-        <a href="/{{ article.url }}">{{ article.title }}</a>
-      </h1>
+      {# Publication date. #}
+      <div class="float-right">
+        <span class="text-secondary font-weight-light font-italic">{{ article.locale_date }}</span>
+      </div>
 
-      {# Publish date. #}
-      <i>{{ article.locale_date }}</i>
+      <h2>
+        <a href="/{{ article.url }}">{{ article.title }}</a>
+      </h2>
 
       {{ article.summary }}
 
