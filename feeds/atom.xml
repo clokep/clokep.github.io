@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom"><title>Patrick Cloke</title><link href="https://patrick.cloke.us/" rel="alternate"></link><link href="https://patrick.cloke.us/feeds/atom.xml" rel="self"></link><id>https://patrick.cloke.us/</id><updated>2023-01-05T12:15:00-05:00</updated><entry><title>Matrix Read Receipts &amp; Notifications</title><link href="https://patrick.cloke.us/posts/2023/01/05/matrix-read-receipts-and-notifications/" rel="alternate"></link><published>2023-01-05T12:15:00-05:00</published><updated>2023-01-05T12:15:00-05:00</updated><author><name>Patrick Cloke</name></author><id>tag:patrick.cloke.us,2023-01-05:/posts/2023/01/05/matrix-read-receipts-and-notifications/</id><summary type="html">&lt;p&gt;I recently wrapped up a project on improving notifications in threads for Matrix.
 This is adapted from my &lt;a href="https://hackmd.io/bbucQKOLTv66N4B_wjDLFQ"&gt;research notes&lt;/a&gt;
-to understand the status quote before adapting the Matrix protocol for threads
+to understand the status quo before adapting the Matrix protocol for threads
 (in &lt;a href="https://github.com/matrix-org/matrix-spec-proposals/pull/3771"&gt;&lt;span class="caps"&gt;MSC3771&lt;/span&gt;&lt;/a&gt; and
 &lt;a href="https://github.com/matrix-org/matrix-spec-proposals/pull/3773"&gt;&lt;span class="caps"&gt;MSC3773&lt;/span&gt;&lt;/a&gt;).
 Hopefully others find the information&amp;nbsp;useful!&lt;/p&gt;
@@ -9,7 +9,7 @@ Hopefully others find the information&amp;nbsp;useful!&lt;/p&gt;
 &lt;p class="admonition-title"&gt;Note&lt;/p&gt;
 &lt;p&gt;These notes are true as of the …&lt;/p&gt;&lt;/div&gt;</summary><content type="html">&lt;p&gt;I recently wrapped up a project on improving notifications in threads for Matrix.
 This is adapted from my &lt;a href="https://hackmd.io/bbucQKOLTv66N4B_wjDLFQ"&gt;research notes&lt;/a&gt;
-to understand the status quote before adapting the Matrix protocol for threads
+to understand the status quo before adapting the Matrix protocol for threads
 (in &lt;a href="https://github.com/matrix-org/matrix-spec-proposals/pull/3771"&gt;&lt;span class="caps"&gt;MSC3771&lt;/span&gt;&lt;/a&gt; and
 &lt;a href="https://github.com/matrix-org/matrix-spec-proposals/pull/3773"&gt;&lt;span class="caps"&gt;MSC3773&lt;/span&gt;&lt;/a&gt;).
 Hopefully others find the information&amp;nbsp;useful!&lt;/p&gt;
