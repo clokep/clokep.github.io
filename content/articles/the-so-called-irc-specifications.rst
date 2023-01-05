@@ -30,7 +30,7 @@ sent as IRC messages and parsed specially by clients, the server sees
 them as normal messages). DCC/CTCP is used to send files as well as
 other particular messages (ACTION commands for roleplaying, SED for
 encrypting conversations, VERSION to get client information, etc.).
-Anyway, this get's a bit more complicated -- it starts with the `DCC
+Anyway, this gets a bit more complicated -- it starts with the `DCC
 specification`_. This was replaced/updated by the `CTCP specification`_
 (which fully includes the DCC specification) in 1994. An `"updated"
 CTCP specification`_ was released in February 1997. There's also a

@@ -25,7 +25,7 @@ mail slot, and for the inside of the door to look like a solid piece of wood.
 
 The first step was to remove the metal bracket on the inside. It initially
 seemed that the front and back plates were connected: they weren't, which made
-this much easier. This was achived by simply removing four screws (that were
+this much easier. This was achieved by simply removing four screws (that were
 covered in probably ten layers of paint).
 
 .. center::

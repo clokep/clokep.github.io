@@ -16,6 +16,6 @@ Then run what you want to test, e.g.:
 
 .. code-block:: bash
 
-    python inital.py
+    python initial.py
     python wrapper.py
     python threads.py

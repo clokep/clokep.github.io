@@ -36,8 +36,8 @@ I had a pretty simple example, but it ended up being quite a bit of YAML:
 See the comments below, this is doable, although a little awkward!
 
 It did create a fairly pretty diagram after running ``wireviz subaru-wiring.yaml``
-and is certainly easier than directly using `graphviz`_. It ouputs a SVG, PNG,
-bill of materials, HTML page (with the bill of materials and image on it).
+and is certainly easier than directly using `graphviz`_. It creates a SVG, PNG,
+bill of materials, and HTML page (with the bill of materials and image on it).
 Overall, I'd use it again if I had a need!
 
 .. center::

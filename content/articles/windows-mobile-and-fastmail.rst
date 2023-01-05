@@ -30,7 +30,7 @@ just use the FastMail guide.
 3.  It will complain about being unable to find proper account settings. Click
     "try again".
 4.  It will complain again, but not give you an option for "advanced", click it.
-5.  Choose "Internel email account".
+5.  Choose "Internal email account".
 6.  Enter any "Account name" and "Your name" that you want.
 7.  Choose "IMAP4" as the "Account type".
 8.  Change the incoming mail server to ``mail.messagingengine.com``.

@@ -59,7 +59,7 @@ Messages
 ========
 
 I'm going to go into an aside about messages right now, even though it
-doesn't quite seem relevent yet. It will. IRC has a bunch of
+doesn't quite seem relevant yet. It will. IRC has a bunch of
 sub-protocols embedded within the IRC protocol (see the link above about
 unofficial extensions). We attempt to parse all the string messages and
 make pretty JavaScript objects out of them. I've actually identified
@@ -140,7 +140,7 @@ takes the command to send and an array of parameters to send.)
 
 As this is already a long post, I think I'll cut this off now and
 continue this at another time, but I hope I'm beginning to convince you
-that allowing directy access to the account and protocol implementation
+that allowing direct access to the account and protocol implementation
 is a more powerful (and even simpler in many ways, in my opinion)
 alternative to "auto-performs". The one major downside I see to this, is
 that it requires a bit more understanding of the actual protocol level

@@ -88,7 +88,7 @@ Databases
 .. _Thank You for Your Help NoSQL, but We Got It from Here: https://www.memsql.com/blog/why-nosql-databases-wrong-tool-for-modern-application/
 .. _Why You Should Never Use MongoDB: http://www.sarahmei.com/blog/2013/11/11/why-you-should-never-use-mongodb/
 
-Programming Langauges
+Programming Languages
 =====================
 
 JavaScript

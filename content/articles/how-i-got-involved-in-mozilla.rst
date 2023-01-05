@@ -36,7 +36,7 @@ doing things. I fixed my first bug for Instantbird in 2010_ and haven't stopped
 since! I've since added `IRC support`_ via JavaScript (instead of libpurple) and
 am now one of the lead developers. I've mentored Google Summer of Code students
 twice (2013 and 2014), contribute to Thunderbird and am a peer of the `chat
-code`_ shared between Instantbird and Thunderbird. (I do also occassionally
+code`_ shared between Instantbird and Thunderbird. (I do also occasionally
 contribute to other projects. [#]_)
 
 .. [#] This was my first project to really have other users, I had people filing

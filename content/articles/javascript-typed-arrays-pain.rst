@@ -83,18 +83,18 @@ tested heavily at all, however.)
 OK, so typed arrays seem good, but kind of annoying, right?
 Wrong...the OSCAR protocol is a "network order" protocol (aka it is big
 endian). At this point you're probably thinking "OK, so the ArrayBuffer
-constructor must take an endianess flag!" Wrong, it does no such
-thing. "Hmmm...Well do the ArrayBufferViews take an endianess flag?"
-Nope, wrong again. The only way to specify the endianess of the data is
+constructor must take an endianness flag!" Wrong, it does no such
+thing. "Hmmm...Well do the ArrayBufferViews take an endianness flag?"
+Nope, wrong again. The only way to specify the endianness of the data is
 to use a `DataView`_, a slightly different interface to the underlying
 bytes. It offers an API to individually set different data elements via
-their offset and endianess. (If you're too lazy to read the
+their offset and endianness. (If you're too lazy to read the
 documentation all the way through, DataView assumes big endian: makes my
 life easier!)
 
-For the curious, JavaScript typed arrays use the system endianess,
+For the curious, JavaScript typed arrays use the system endianness,
 which in my opinion is pretty much useless (at least if you plan on
-sharing data) since you can never guarantee the endianess to be either
+sharing data) since you can never guarantee the endianness to be either
 big or little endian. (The fun part is that this isn't even documented,
 I found it on `Stack Overflow`_ and verified.)
 

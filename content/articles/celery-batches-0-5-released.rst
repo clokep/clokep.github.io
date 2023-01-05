@@ -30,11 +30,11 @@ the changed line highlighted:
     @app.task(base=Batches, flush_every=100, flush_interval=10)
     def wot_api(requests):
         sig = lambda url: url
-        reponses = wot_api_real(
+        responses = wot_api_real(
             (sig(*request.args, **request.kwargs) for request in requests)
         )
         # use mark_as_done to manually return response data
-        for response, request in zip(reponses, requests):
+        for response, request in zip(responses, requests):
             app.backend.mark_as_done(request.id, response, request=request)
 
 

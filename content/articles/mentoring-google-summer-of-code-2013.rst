@@ -18,7 +18,7 @@ don't edit it without discussing it with us first.
 
 Our hope is to get this checked into Instantbird by the end of summer
 and run it in parallel (behind an about:config preference) with the
-current libpurple Yahoo implementation. Once we're satisified that it
+current libpurple Yahoo implementation. Once we're satisfied that it
 has feature parity we'll remove the libpurple version and enable this by
 default!
 

@@ -17,7 +17,7 @@ The package was then adopted by a previous employer, Strongarm (while there I ga
 `talk at Django Boston`_ about it). After acquisition we were phasing out support
 for our own login (which I'm not actually sure if this has been finished or not),
 but were not really maintaining the package. `Aarni Koskela`_ asked about taking
-over maintainance and we gratefully have transferred it to them!
+over maintenance and we gratefully have transferred it to them!
 
 There's much more you could do with this package so I'm quite happy to see it in
 the hands of someone actively using it!

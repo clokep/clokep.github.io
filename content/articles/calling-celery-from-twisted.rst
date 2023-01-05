@@ -247,7 +247,7 @@ comment below.
 
 .. [#]  Note that there are two different versions of the protocol, they're
         fairly similar, but version 2 moves some meta data from the body to the
-        headers to avoid needing to deserialize the entire mesage multiple
+        headers to avoid needing to deserialize the entire message multiple
         times. You can read `the highlights`_ of the differences.
 
 .. _Twisted: https://twistedmatrix.com/
