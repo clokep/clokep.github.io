@@ -27,39 +27,44 @@
            title="Permalink to {{ article.title|striptags }}">{{ article.title }}</a>
       </h1>
 
-      {# Share links. #}
-      <div class="float-right">
-        {% if article.share_post and article.status != 'draft' %}
-        <a href="{{ article.share_post['twitter'] }}" target="_blank" class="ml-1 mr-1" title="Share on Twitter">
-          <span class="fab fa-twitter"></span>
-        </a>
-        <a href="{{ article.share_post['facebook'] }}" target="_blank" class="ml-1 mr-1" title="Share on Facebook">
-          <span class="fab fa-facebook"></span>
-        </a>
-        <a href="{{ article.share_post['email'] }}" target="_blank" class="ml-1 mr-1" title="Share via Email">
-          <span class="fas fa-envelope"></span>
-        </a>
-        {% endif %}
+      <div class="row">
+        <div class="col-sm">
+          {# Publish date. #}
+          <span class="text-secondary font-weight-light font-italic">Published on {{ article.locale_date }}</span>
+
+          {# Article tags. #}
+          {% if article.tags %}
+          <br>
+          <span class="text-secondary font-weight-light font-italic">
+            Tags: {% for tag in article.tags|sort %}
+              <a href="/{{ tag.url }}">{{ tag|escape }}</a>{% if loop.nextitem %},{% endif %}
+            {% endfor %}
+          </span>
+          {% endif %}
+        </div>
+
+        <div class="col-sm text-right">
+          {# Share links. #}
+          {% if article.share_post and article.status != 'draft' %}
+          <a href="{{ article.share_post['twitter'] }}" target="_blank" class="ml-1 mr-1" title="Share on Twitter">
+            <span class="fab fa-twitter"></span>
+          </a>
+          <a href="{{ article.share_post['facebook'] }}" target="_blank" class="ml-1 mr-1" title="Share on Facebook">
+            <span class="fab fa-facebook"></span>
+          </a>
+          <a href="{{ article.share_post['email'] }}" target="_blank" class="ml-1 mr-1" title="Share via Email">
+            <span class="fas fa-envelope"></span>
+          </a>
+          {% endif %}
+        </div>
       </div>
 
-      {# Publish date. #}
-      <i>{{ article.locale_date }}</i>
+      <hr>
 
-      {# Article tags. #}
-      {% if article.tags %}
-      <br>
-      <i>
-        Tags: {% for tag in article.tags|sort %}
-          <a href="/{{ tag.url }}">{{ tag|escape }}</a>{% if loop.nextitem %},{% endif %}
-        {% endfor %}
-      </i>
-      {% endif %}
-
-      <div class="mt-3">
+      <div>
         {# Table of contents. #}
         {% if article.toc %}
-        <div class="border border-info rounded float-left p-2 mr-2 mb-1">
-          <b>Table of Contents</b>
+        <div class="border border-info bg-light rounded float-right p-2 ml-2 mb-2">
           {{ article.toc }}
         </div>
         {% endif %}

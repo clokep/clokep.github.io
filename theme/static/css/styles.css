@@ -14,6 +14,11 @@ table.footnote .label {
     text-align: center;  /* .text-center */
 }
 
+/* Bold the "Contents" title. */
+.topic-title {
+    font-weight: bold;
+}
+
 /* Don't actually show the bullets in the table of contents. */
 .toc ul {
     list-style: none;
