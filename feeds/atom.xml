@@ -1,5 +1,110 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>Patrick Cloke</title><link href="https://patrick.cloke.us/" rel="alternate"></link><link href="https://patrick.cloke.us/feeds/atom.xml" rel="self"></link><id>https://patrick.cloke.us/</id><updated>2023-01-05T12:15:00-05:00</updated><entry><title>Matrix Read Receipts &amp; Notifications</title><link href="https://patrick.cloke.us/posts/2023/01/05/matrix-read-receipts-and-notifications/" rel="alternate"></link><published>2023-01-05T12:15:00-05:00</published><updated>2023-01-05T12:15:00-05:00</updated><author><name>Patrick Cloke</name></author><id>tag:patrick.cloke.us,2023-01-05:/posts/2023/01/05/matrix-read-receipts-and-notifications/</id><summary type="html">&lt;p&gt;I recently wrapped up a project on improving notifications in threads for Matrix.
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Patrick Cloke</title><link href="https://patrick.cloke.us/" rel="alternate"></link><link href="https://patrick.cloke.us/feeds/atom.xml" rel="self"></link><id>https://patrick.cloke.us/</id><updated>2023-01-12T15:24:00-05:00</updated><entry><title>Researching for a Matrix Spec Change</title><link href="https://patrick.cloke.us/posts/2023/01/12/researching-for-a-matrix-spec-change/" rel="alternate"></link><published>2023-01-12T15:24:00-05:00</published><updated>2023-01-12T15:24:00-05:00</updated><author><name>Patrick Cloke</name></author><id>tag:patrick.cloke.us,2023-01-12:/posts/2023/01/12/researching-for-a-matrix-spec-change/</id><summary type="html">&lt;p&gt;The &lt;a class="reference external" href="https://spec.matrix.org/"&gt;Matrix protocol&lt;/a&gt; is modified via &lt;a class="reference external" href="https://spec.matrix.org/proposals/"&gt;Matrix Spec Changes&lt;/a&gt; (frequently abbreviated
+to &amp;#8220;MSCs&amp;#8221;). These are short documents describing any technical changes and why they
+are worth making (see &lt;a class="reference external" href="https://github.com/matrix-org/matrix-spec-proposals/pull/2457"&gt;an example&lt;/a&gt;). I&amp;#8217;ve &lt;a class="reference external" href="https://github.com/matrix-org/matrix-spec-proposals/pulls?q=is%3Apr+author%3Aclokep+label%3Aproposal"&gt;written a bunch&lt;/a&gt; and wanted to
+document my research process. &lt;a class="footnote-reference" href="#id5" id="id1"&gt;[1]&lt;/a&gt;&lt;/p&gt;
+&lt;div class="admonition note"&gt;
+&lt;p class="first admonition-title"&gt;Note&lt;/p&gt;
+&lt;p class="last"&gt;I treat my research as a …&lt;/p&gt;&lt;/div&gt;</summary><content type="html">&lt;p&gt;The &lt;a class="reference external" href="https://spec.matrix.org/"&gt;Matrix protocol&lt;/a&gt; is modified via &lt;a class="reference external" href="https://spec.matrix.org/proposals/"&gt;Matrix Spec Changes&lt;/a&gt; (frequently abbreviated
+to &amp;#8220;MSCs&amp;#8221;). These are short documents describing any technical changes and why they
+are worth making (see &lt;a class="reference external" href="https://github.com/matrix-org/matrix-spec-proposals/pull/2457"&gt;an example&lt;/a&gt;). I&amp;#8217;ve &lt;a class="reference external" href="https://github.com/matrix-org/matrix-spec-proposals/pulls?q=is%3Apr+author%3Aclokep+label%3Aproposal"&gt;written a bunch&lt;/a&gt; and wanted to
+document my research process. &lt;a class="footnote-reference" href="#id5" id="id1"&gt;[1]&lt;/a&gt;&lt;/p&gt;
+&lt;div class="admonition note"&gt;
+&lt;p class="first admonition-title"&gt;Note&lt;/p&gt;
+&lt;p class="last"&gt;I treat my research as a &lt;em&gt;living document&lt;/em&gt;, not an &lt;em&gt;artifact&lt;/em&gt;. Thus, I don&amp;#8217;t worry
+much about the format. The important part is to start writing everything down
+to have a single source of truth that can be shared with&amp;nbsp;others.&lt;/p&gt;
+&lt;/div&gt;
+&lt;p&gt;First, I write out a &lt;strong&gt;problem statement&lt;/strong&gt;: what am I trying to solve? (This step
+might seem obvious, but it is useful to frame the technical changes in why
+they matter. Many proposals seem to skip this step.) Most of my work tends to be
+from the point of view of an end-user, but some changes are purely technical. Regardless,
+there is benefit from a shared written context of the issue to be&amp;nbsp;solved.&lt;/p&gt;
+&lt;p&gt;From the above and prior knowledge, I list any &lt;strong&gt;open questions&lt;/strong&gt; (which I update
+through this process). I&amp;#8217;ll augment the questions with answers I find in my research,
+write new ones about things I don&amp;#8217;t understand, or remove them as they become&amp;nbsp;irrelevant.&lt;/p&gt;
+&lt;p&gt;Next, I begin collecting any previous work done in this area,&amp;nbsp;including:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;p class="first"&gt;What is the &lt;strong&gt;current specification&lt;/strong&gt; related to this? I usually pull out blurbs
+(with links back to the source) from &lt;a class="reference external" href="https://spec.matrix.org/v1.5/client-server-api/"&gt;the latest specification&lt;/a&gt;.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p class="first"&gt;Are there any &lt;a class="reference external" href="https://github.com/matrix-org/matrix-spec/issues"&gt;&lt;strong&gt;related known issues&lt;/strong&gt;&lt;/a&gt;? It is also worth checking the issue
+trackers of projects: I start with the &lt;a class="reference external" href="https://github.com/matrix-org/synapse"&gt;Synapse&lt;/a&gt;, &lt;a class="reference external" href="https://github.com/vector-im/element-meta"&gt;Element Meta&lt;/a&gt;, and
+&lt;a class="reference external" href="https://github.com/vector-im/element-web"&gt;Element Web&lt;/a&gt;&amp;nbsp;repositories.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p class="first"&gt;Are there &lt;strong&gt;related outstanding MSCs&lt;/strong&gt; or &lt;strong&gt;previous research&lt;/strong&gt;? I search the
+&lt;a class="reference external" href="https://github.com/matrix-org/matrix-spec-proposals/"&gt;matrix-spec-proposals&lt;/a&gt; repository for keywords, open anything that looks
+vaguely related and then crawl those for mentions of other MSCs. I&amp;#8217;ll document
+the related ones with links and a brief description of the proposed&amp;nbsp;change.&lt;/p&gt;
+&lt;p&gt;I include both proposed and closed MSCs to check for previously rejected&amp;nbsp;ideas.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p class="first"&gt;Are others interested in this? Have others had conversation about it? I roughly
+follow the &lt;a class="reference external" href="https://matrix.to/#/#matrix-spec:matrix.org"&gt;#matrix-spec&lt;/a&gt; room or search for rooms that might be interested in
+the topic. I would recommend joining the &lt;a class="reference external" href="https://matrix.to/#/#matrix-spec:matrix.org"&gt;#matrix-spec&lt;/a&gt; room for brainstorming
+and&amp;nbsp;searching.&lt;/p&gt;
+&lt;p&gt;This step can help uncover any missed known issues and MSCs. I will also ask
+others with a longer history in the project if I am missing&amp;nbsp;anything.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p class="first"&gt;A brief &lt;strong&gt;competitive analysis&lt;/strong&gt; is performed. Information can be gleaned from
+technical blog posts and &lt;span class="caps"&gt;API&lt;/span&gt; documentation. I consider not just competing
+&lt;em&gt;products&lt;/em&gt;, but also investigate if others have solved similar &lt;em&gt;technical&lt;/em&gt;
+problems. Other protocols are worth checking (e.g. &lt;span class="caps"&gt;IRC&lt;/span&gt;, &lt;span class="caps"&gt;XMPP&lt;/span&gt;, &lt;span class="caps"&gt;IMAP&lt;/span&gt;).&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;You can see an example of my research on &lt;a class="reference external" href="https://patrick.cloke.us/posts/2023/01/05/matrix-read-receipts-and-notifications/"&gt;Matrix read receipts &lt;span class="amp"&gt;&amp;amp;&lt;/span&gt; notifications&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Once I have compiled the above information, I jump into the &lt;strong&gt;current implementation&lt;/strong&gt;
+to ensure it roughly matches the specification. &lt;a class="footnote-reference" href="#id6" id="id2"&gt;[2]&lt;/a&gt; I start considering what
+protocol changes would solve the problem and are reasonable to implement. I find
+it useful to write down all of my ideas, not just the one I think is best. &lt;a class="footnote-reference" href="#id7" id="id3"&gt;[3]&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;At this point I&amp;nbsp;have:&lt;/p&gt;
+&lt;ul class="simple"&gt;
+&lt;li&gt;A problem&amp;nbsp;statement&lt;/li&gt;
+&lt;li&gt;A bunch of background about the current protocol, other proposed solutions,&amp;nbsp;etc.&lt;/li&gt;
+&lt;li&gt;A list of open&amp;nbsp;questions&lt;/li&gt;
+&lt;li&gt;Rough ideas for proposed&amp;nbsp;solutions&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;The next step is to iterate with my colleagues: answer any open questions, check
+that our product goals will be met, and seek agreement that we are designing a
+buildable solution. &lt;a class="footnote-reference" href="#id8" id="id4"&gt;[4]&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;Finally&lt;/em&gt;, I take the above and formalize it in into one or more Matrix Spec Changes.
+At this point I&amp;#8217;ll think about error conditions / responses, backwards compatibility,
+security concerns, and any other parts of the full &lt;span class="caps"&gt;MSC&lt;/span&gt;. Once it is documented, I
+make a pull request with the proposal and self-review it for loose ends and clarity.
+I leave comments for any parts I am unsure about or want to open discussion&amp;nbsp;on.&lt;/p&gt;
+&lt;p&gt;Then I ask me colleagues to read through it and wait for feedback from both them and
+any interested community members. It can be useful to be in the &lt;a class="reference external" href="https://matrix.to/#/#matrix-spec:matrix.org"&gt;#matrix-spec&lt;/a&gt; room
+as folks might want to discuss the&amp;nbsp;proposal.&lt;/p&gt;
+&lt;table class="docutils footnote" frame="void" id="id5" rules="none"&gt;
+&lt;colgroup&gt;&lt;col class="label" /&gt;&lt;col /&gt;&lt;/colgroup&gt;
+&lt;tbody valign="top"&gt;
+&lt;tr&gt;&lt;td class="label"&gt;&lt;a class="fn-backref" href="#id1"&gt;[1]&lt;/a&gt;&lt;/td&gt;&lt;td&gt;There&amp;#8217;s a useful &lt;a class="reference external" href="https://github.com/matrix-org/matrix-spec-proposals/blob/9b3f01b0193caa1e1c563cfc861ab021bcddcb2c/proposals/0000-proposal-template.md"&gt;proposal template&lt;/a&gt; that I eventually use, but I do much
+of this process before constraining myself by that.&lt;/td&gt;&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;table class="docutils footnote" frame="void" id="id6" rules="none"&gt;
+&lt;colgroup&gt;&lt;col class="label" /&gt;&lt;col /&gt;&lt;/colgroup&gt;
+&lt;tbody valign="top"&gt;
+&lt;tr&gt;&lt;td class="label"&gt;&lt;a class="fn-backref" href="#id2"&gt;[2]&lt;/a&gt;&lt;/td&gt;&lt;td&gt;This consists of looking through code as well as just trying it out by
+manually making &lt;span class="caps"&gt;API&lt;/span&gt; calls or understanding how APIs power product features.&lt;/td&gt;&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;table class="docutils footnote" frame="void" id="id7" rules="none"&gt;
+&lt;colgroup&gt;&lt;col class="label" /&gt;&lt;col /&gt;&lt;/colgroup&gt;
+&lt;tbody valign="top"&gt;
+&lt;tr&gt;&lt;td class="label"&gt;&lt;a class="fn-backref" href="#id3"&gt;[3]&lt;/a&gt;&lt;/td&gt;&lt;td&gt;Part of the &lt;span class="caps"&gt;MSC&lt;/span&gt; proposal is documenting alternatives (and why you didn&amp;#8217;t
+choose one of those). It is useful to brainstorm early before you&amp;#8217;re set
+in a decision!&lt;/td&gt;&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;table class="docutils footnote" frame="void" id="id8" rules="none"&gt;
+&lt;colgroup&gt;&lt;col class="label" /&gt;&lt;col /&gt;&lt;/colgroup&gt;
+&lt;tbody valign="top"&gt;
+&lt;tr&gt;&lt;td class="label"&gt;&lt;a class="fn-backref" href="#id4"&gt;[4]&lt;/a&gt;&lt;/td&gt;&lt;td&gt;I usually do work with Matrix homeservers and am not as experienced with
+clients. It is useful to bounce ideas off a client developer to understand
+their needs.&lt;/td&gt;&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+</content><category term="articles"></category><category term="matrix"></category></entry><entry><title>Matrix Read Receipts &amp; Notifications</title><link href="https://patrick.cloke.us/posts/2023/01/05/matrix-read-receipts-and-notifications/" rel="alternate"></link><published>2023-01-05T12:15:00-05:00</published><updated>2023-01-05T12:15:00-05:00</updated><author><name>Patrick Cloke</name></author><id>tag:patrick.cloke.us,2023-01-05:/posts/2023/01/05/matrix-read-receipts-and-notifications/</id><summary type="html">&lt;p&gt;I recently wrapped up a project on improving notifications in threads for Matrix.
 This is adapted from my &lt;a href="https://hackmd.io/bbucQKOLTv66N4B_wjDLFQ"&gt;research notes&lt;/a&gt;
 to understand the status quo before adapting the Matrix protocol for threads
 (in &lt;a href="https://github.com/matrix-org/matrix-spec-proposals/pull/3771"&gt;&lt;span class="caps"&gt;MSC3771&lt;/span&gt;&lt;/a&gt; and
@@ -730,37 +835,4 @@ Overall, I&amp;#8217;d use it again if I had a&amp;nbsp;need!&lt;/p&gt;
 &lt;blockquote class="text-center"&gt;
 &lt;a class="reference external image-reference" href="https://patrick.cloke.us/code/testing-wireviz/subaru-wiring.svg"&gt;&lt;object data="https://patrick.cloke.us/code/testing-wireviz/subaru-wiring.svg" style="width: 100%;" type="image/svg+xml"&gt;&lt;/object&gt;&lt;/a&gt;
 &lt;/blockquote&gt;
-</content><category term="articles"></category><category term="software"></category><category term="hardware"></category></entry><entry><title>Raspberry Pi File Server</title><link href="https://patrick.cloke.us/posts/2020/06/12/raspberry-pi-file-server/" rel="alternate"></link><published>2020-06-12T16:55:00-04:00</published><updated>2020-06-12T16:55:00-04:00</updated><author><name>Patrick Cloke</name></author><id>tag:patrick.cloke.us,2020-06-12:/posts/2020/06/12/raspberry-pi-file-server/</id><summary type="html">&lt;p&gt;This is just some quick notes (for myself) of how I recently setup my Raspberry
-Pi as a file server. The goal was to have a shared folder so that a Sonos could
-play music from it. The data would be backed via a microSD card plugged into
-&lt;span class="caps"&gt;USB&lt;/span&gt;.&lt;/p&gt;
-&lt;ol class="arabic simple"&gt;
-&lt;li&gt;Update …&lt;/li&gt;&lt;/ol&gt;</summary><content type="html">&lt;p&gt;This is just some quick notes (for myself) of how I recently setup my Raspberry
-Pi as a file server. The goal was to have a shared folder so that a Sonos could
-play music from it. The data would be backed via a microSD card plugged into
-&lt;span class="caps"&gt;USB&lt;/span&gt;.&lt;/p&gt;
-&lt;ol class="arabic simple"&gt;
-&lt;li&gt;Update to the &lt;a class="reference external" href="https://www.raspberrypi.org/downloads/"&gt;newest version of Raspberry Pi &lt;span class="caps"&gt;OS&lt;/span&gt;&lt;/a&gt;.&lt;/li&gt;
-&lt;li&gt;Configure &lt;a class="reference external" href="https://www.raspberrypi.org/documentation/remote-access/ssh/README.md"&gt;&lt;span class="caps"&gt;SSH&lt;/span&gt; (for headless mode)&lt;/a&gt;.&lt;/li&gt;
-&lt;li&gt;Use the local router to find the &lt;span class="caps"&gt;IP&lt;/span&gt;&amp;nbsp;address.&lt;/li&gt;
-&lt;li&gt;Add a local hostname into the router for the &lt;span class="caps"&gt;IP&lt;/span&gt;.&lt;/li&gt;
-&lt;li&gt;&lt;tt class="docutils literal"&gt;ssh pi&amp;#64;raspberrypi&lt;/tt&gt;:&lt;ol class="arabic"&gt;
-&lt;li&gt;Update everything: &lt;tt class="docutils literal"&gt;sudo &lt;span class="pre"&gt;apt-get&lt;/span&gt; update &amp;amp;&amp;amp; sudo &lt;span class="pre"&gt;apt-get&lt;/span&gt; upgrade&lt;/tt&gt;&lt;/li&gt;
-&lt;li&gt;Clean-up: &lt;tt class="docutils literal"&gt;sudo reboot&lt;/tt&gt; then
-&lt;tt class="docutils literal"&gt;sudo &lt;span class="pre"&gt;apt-get&lt;/span&gt; autoremove &amp;amp;&amp;amp; sudo &lt;span class="pre"&gt;apt-get&lt;/span&gt; autoclean&lt;/tt&gt;&lt;/li&gt;
-&lt;li&gt;Use &lt;tt class="docutils literal"&gt;sudo &lt;span class="pre"&gt;raspi-config&lt;/span&gt;&lt;/tt&gt; to update some configuration (passwords,
-connect to WiFi,&amp;nbsp;etc.)&lt;/li&gt;
-&lt;li&gt;&lt;a class="reference external" href="https://raspberrytips.com/mount-usb-drive-raspberry-pi/"&gt;Mount the &lt;span class="caps"&gt;USB&lt;/span&gt; drive&lt;/a&gt; (look down for the &lt;tt class="docutils literal"&gt;fstab&lt;/tt&gt; directions). (I also
-had to install &lt;a class="reference external" href="https://www.howtogeek.com/235655/how-to-mount-and-use-an-exfat-drive-on-linux/"&gt;support for exFAT&lt;/a&gt; at this&amp;nbsp;point.)&lt;/li&gt;
-&lt;li&gt;Finally, &lt;a class="reference external" href="https://www.raspberrypi.org/documentation/remote-access/samba.md"&gt;install and configure Samba&lt;/a&gt;.&lt;/li&gt;
-&lt;/ol&gt;
-&lt;/li&gt;
-&lt;/ol&gt;
-&lt;p&gt;After this the drive should be &lt;a class="reference external" href="https://support.sonos.com/s/article/257"&gt;findable from the Sonos app&lt;/a&gt;.&lt;/p&gt;
-&lt;p&gt;We&amp;#8217;ll see how this works after the Raspberry Pi gets rebooted at some point,
-will&amp;nbsp;it:&lt;/p&gt;
-&lt;ul class="simple"&gt;
-&lt;li&gt;Have the same &lt;span class="caps"&gt;IP&lt;/span&gt;&amp;nbsp;address?&lt;/li&gt;
-&lt;li&gt;Mount the &lt;span class="caps"&gt;USB&lt;/span&gt; drive&amp;nbsp;properly?&lt;/li&gt;
-&lt;/ul&gt;
-</content><category term="articles"></category><category term="linux"></category></entry></feed>
+</content><category term="articles"></category><category term="software"></category><category term="hardware"></category></entry></feed>

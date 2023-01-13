@@ -1,0 +1,285 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Feed configuration. -->
+    <link href="https://patrick.cloke.us/feeds/atom.xml" type="application/atom+xml" rel="alternate" title="Patrick Cloke Atom Feed" />
+    <link href="https://patrick.cloke.us/feeds/rss.xml" type="application/rss+xml" rel="alternate" title="Patrick Cloke RSS Feed" />
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
+    <link rel="stylesheet" href="/theme/css/styles.css">
+    <link rel="stylesheet" href="/theme/css/borland.css">
+    <link rel="stylesheet" href="/theme/css/youtube.css">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
+
+    <title>Researching for a Matrix Spec Change</title>
+
+    <meta property="og:site_name" content="Patrick Cloke" />
+<meta property="og:title" content="Researching for a Matrix Spec Change" />
+<meta property="og:url" content="https://patrick.cloke.us/posts/2023/01/12/researching-for-a-matrix-spec-change/" />
+<meta property="og:description" content="The Matrix protocol is modified via Matrix Spec Changes (frequently abbreviated to “MSCs”). These are short documents describing any technical changes and why they are worth making (see an example). I’ve written a bunch and wanted to document my research process. [1] Note I treat my research as a …" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2023-01-12T15:24:00-05:00" />
+<meta property="article:author" content="Patrick Cloke" />
+<meta property="article:tag" content="matrix" />
+
+    <script async defer data-domain="cloke.us" src="https://plausible.io/js/plausible.js"></script>
+  </head>
+
+  <body class="pb-5">
+    <nav class="navbar navbar-expand-lg sticky-top navbar-light bg-light border-bottom border-info">
+      <a class="navbar-brand" href="/">
+        Patrick Cloke
+      </a>
+
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-items" aria-controls="navbar-items" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="navbar-items">
+        <ul class="navbar-nav ml-auto">
+
+          <li class="nav-item">
+            <a class="nav-link" href="/pages/about.html">About</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/pages/projects.html">Projects</a>
+          </li>
+
+          <li class="nav-item">
+            <a class="nav-link" href="/archives.html">Archives</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/tags.html">Tags</a>
+          </li>
+
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="social-dropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              Social
+            </a>
+
+            <span class="dropdown-menu dropdown-menu-right" aria-labelledby="social-dropdown">
+              <a class="dropdown-item" href="https://mastodon.social/@clokep" target="_blank">
+                  <span class="fab fa-mastodon mr-1"></span>
+                mastodon
+              </a>
+              <a class="dropdown-item" href="https://www.twitter.com/clokep" target="_blank">
+                  <span class="fab fa-twitter mr-1"></span>
+                twitter
+              </a>
+              <a class="dropdown-item" href="https://matrix.to/#/@clokep:matrix.org" target="_blank">
+                  <span class="pl-3 mr-2"></span>
+                matrix
+              </a>
+              <a class="dropdown-item" href="https://github.com/clokep" target="_blank">
+                  <span class="fab fa-github mr-1"></span>
+                github
+              </a>
+              <a class="dropdown-item" href="https://gitlab.com/clokep" target="_blank">
+                  <span class="fab fa-gitlab mr-1"></span>
+                gitlab
+              </a>
+            </div>
+          </li>
+
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="feeds-dropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              Feeds
+            </a>
+
+            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="feeds-dropdown">
+              <a class="dropdown-item" href="https://patrick.cloke.us/feeds/atom.xml" type="application/atom+xml" rel="alternate">atom feed</a>
+              <a class="dropdown-item" href="https://patrick.cloke.us/feeds/rss.xml" type="application/rss+xml" rel="alternate">rss feed</a>
+            </div>
+          </li>
+
+          <form class="form-inline" method="get" action="http://www.google.com/search">
+            <input class="form-control form-control-sm mr-sm-2" type="search" name="q" placeholder="Search" aria-label="Search" />
+            <input type="hidden"  name="sitesearch" value="patrick.cloke.us" />
+
+            <button class="btn btn-sm btn-outline-info d-none d-sm-inline" type="submit">Search</button>
+          </form>
+        </ul>
+      </div>
+    </nav>
+
+<div class="container">
+  <div class="row">
+    <div class="col-md-12 mt-2 mb-2">
+      <h1>
+        <a href="/posts/2023/01/12/researching-for-a-matrix-spec-change/" rel="bookmark"
+           title="Permalink to Researching for a Matrix Spec Change">Researching for a Matrix Spec&nbsp;Change</a>
+      </h1>
+
+      <div class="row">
+        <div class="col-sm">
+          <span class="text-secondary font-weight-light font-italic">Published on Thursday, January 12, 2023</span>
+
+          <br>
+          <span class="text-secondary font-weight-light font-italic">
+            Tags:               <a href="/tag/matrix.html">matrix</a>          </span>
+        </div>
+
+        <div class="col-sm text-right">
+          <a href="https://twitter.com/intent/tweet?text=Researching%20for%20a%20Matrix%20Spec%C2%A0Change&url=https%3A//patrick.cloke.us/posts/2023/01/12/researching-for-a-matrix-spec-change/&hashtags=matrix" target="_blank" class="ml-1 mr-1" title="Share on Twitter">
+            <span class="fab fa-twitter"></span>
+          </a>
+          <a href="https://www.facebook.com/sharer/sharer.php?u=https%3A//patrick.cloke.us/posts/2023/01/12/researching-for-a-matrix-spec-change/" target="_blank" class="ml-1 mr-1" title="Share on Facebook">
+            <span class="fab fa-facebook"></span>
+          </a>
+          <a href="mailto:?subject=Researching%20for%20a%20Matrix%20Spec%C2%A0Change&amp;body=https%3A//patrick.cloke.us/posts/2023/01/12/researching-for-a-matrix-spec-change/" target="_blank" class="ml-1 mr-1" title="Share via Email">
+            <span class="fas fa-envelope"></span>
+          </a>
+        </div>
+      </div>
+
+      <hr>
+
+      <div>
+
+        <p>The <a class="reference external" href="https://spec.matrix.org/">Matrix protocol</a> is modified via <a class="reference external" href="https://spec.matrix.org/proposals/">Matrix Spec Changes</a> (frequently abbreviated
+to &#8220;MSCs&#8221;). These are short documents describing any technical changes and why they
+are worth making (see <a class="reference external" href="https://github.com/matrix-org/matrix-spec-proposals/pull/2457">an example</a>). I&#8217;ve <a class="reference external" href="https://github.com/matrix-org/matrix-spec-proposals/pulls?q=is%3Apr+author%3Aclokep+label%3Aproposal">written a bunch</a> and wanted to
+document my research process. <a class="footnote-reference" href="#id5" id="id1">[1]</a></p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">I treat my research as a <em>living document</em>, not an <em>artifact</em>. Thus, I don&#8217;t worry
+much about the format. The important part is to start writing everything down
+to have a single source of truth that can be shared with&nbsp;others.</p>
+</div>
+<p>First, I write out a <strong>problem statement</strong>: what am I trying to solve? (This step
+might seem obvious, but it is useful to frame the technical changes in why
+they matter. Many proposals seem to skip this step.) Most of my work tends to be
+from the point of view of an end-user, but some changes are purely technical. Regardless,
+there is benefit from a shared written context of the issue to be&nbsp;solved.</p>
+<p>From the above and prior knowledge, I list any <strong>open questions</strong> (which I update
+through this process). I&#8217;ll augment the questions with answers I find in my research,
+write new ones about things I don&#8217;t understand, or remove them as they become&nbsp;irrelevant.</p>
+<p>Next, I begin collecting any previous work done in this area,&nbsp;including:</p>
+<ul>
+<li><p class="first">What is the <strong>current specification</strong> related to this? I usually pull out blurbs
+(with links back to the source) from <a class="reference external" href="https://spec.matrix.org/v1.5/client-server-api/">the latest specification</a>.</p>
+</li>
+<li><p class="first">Are there any <a class="reference external" href="https://github.com/matrix-org/matrix-spec/issues"><strong>related known issues</strong></a>? It is also worth checking the issue
+trackers of projects: I start with the <a class="reference external" href="https://github.com/matrix-org/synapse">Synapse</a>, <a class="reference external" href="https://github.com/vector-im/element-meta">Element Meta</a>, and
+<a class="reference external" href="https://github.com/vector-im/element-web">Element Web</a>&nbsp;repositories.</p>
+</li>
+<li><p class="first">Are there <strong>related outstanding MSCs</strong> or <strong>previous research</strong>? I search the
+<a class="reference external" href="https://github.com/matrix-org/matrix-spec-proposals/">matrix-spec-proposals</a> repository for keywords, open anything that looks
+vaguely related and then crawl those for mentions of other MSCs. I&#8217;ll document
+the related ones with links and a brief description of the proposed&nbsp;change.</p>
+<p>I include both proposed and closed MSCs to check for previously rejected&nbsp;ideas.</p>
+</li>
+<li><p class="first">Are others interested in this? Have others had conversation about it? I roughly
+follow the <a class="reference external" href="https://matrix.to/#/#matrix-spec:matrix.org">#matrix-spec</a> room or search for rooms that might be interested in
+the topic. I would recommend joining the <a class="reference external" href="https://matrix.to/#/#matrix-spec:matrix.org">#matrix-spec</a> room for brainstorming
+and&nbsp;searching.</p>
+<p>This step can help uncover any missed known issues and MSCs. I will also ask
+others with a longer history in the project if I am missing&nbsp;anything.</p>
+</li>
+<li><p class="first">A brief <strong>competitive analysis</strong> is performed. Information can be gleaned from
+technical blog posts and <span class="caps">API</span> documentation. I consider not just competing
+<em>products</em>, but also investigate if others have solved similar <em>technical</em>
+problems. Other protocols are worth checking (e.g. <span class="caps">IRC</span>, <span class="caps">XMPP</span>, <span class="caps">IMAP</span>).</p>
+</li>
+</ul>
+<p>You can see an example of my research on <a class="reference external" href="https://patrick.cloke.us/posts/2023/01/05/matrix-read-receipts-and-notifications/">Matrix read receipts <span class="amp">&amp;</span> notifications</a>.</p>
+<p>Once I have compiled the above information, I jump into the <strong>current implementation</strong>
+to ensure it roughly matches the specification. <a class="footnote-reference" href="#id6" id="id2">[2]</a> I start considering what
+protocol changes would solve the problem and are reasonable to implement. I find
+it useful to write down all of my ideas, not just the one I think is best. <a class="footnote-reference" href="#id7" id="id3">[3]</a></p>
+<p>At this point I&nbsp;have:</p>
+<ul class="simple">
+<li>A problem&nbsp;statement</li>
+<li>A bunch of background about the current protocol, other proposed solutions,&nbsp;etc.</li>
+<li>A list of open&nbsp;questions</li>
+<li>Rough ideas for proposed&nbsp;solutions</li>
+</ul>
+<p>The next step is to iterate with my colleagues: answer any open questions, check
+that our product goals will be met, and seek agreement that we are designing a
+buildable solution. <a class="footnote-reference" href="#id8" id="id4">[4]</a></p>
+<p><em>Finally</em>, I take the above and formalize it in into one or more Matrix Spec Changes.
+At this point I&#8217;ll think about error conditions / responses, backwards compatibility,
+security concerns, and any other parts of the full <span class="caps">MSC</span>. Once it is documented, I
+make a pull request with the proposal and self-review it for loose ends and clarity.
+I leave comments for any parts I am unsure about or want to open discussion&nbsp;on.</p>
+<p>Then I ask me colleagues to read through it and wait for feedback from both them and
+any interested community members. It can be useful to be in the <a class="reference external" href="https://matrix.to/#/#matrix-spec:matrix.org">#matrix-spec</a> room
+as folks might want to discuss the&nbsp;proposal.</p>
+<table class="docutils footnote" frame="void" id="id5" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label"><a class="fn-backref" href="#id1">[1]</a></td><td>There&#8217;s a useful <a class="reference external" href="https://github.com/matrix-org/matrix-spec-proposals/blob/9b3f01b0193caa1e1c563cfc861ab021bcddcb2c/proposals/0000-proposal-template.md">proposal template</a> that I eventually use, but I do much
+of this process before constraining myself by that.</td></tr>
+</tbody>
+</table>
+<table class="docutils footnote" frame="void" id="id6" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label"><a class="fn-backref" href="#id2">[2]</a></td><td>This consists of looking through code as well as just trying it out by
+manually making <span class="caps">API</span> calls or understanding how APIs power product features.</td></tr>
+</tbody>
+</table>
+<table class="docutils footnote" frame="void" id="id7" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label"><a class="fn-backref" href="#id3">[3]</a></td><td>Part of the <span class="caps">MSC</span> proposal is documenting alternatives (and why you didn&#8217;t
+choose one of those). It is useful to brainstorm early before you&#8217;re set
+in a decision!</td></tr>
+</tbody>
+</table>
+<table class="docutils footnote" frame="void" id="id8" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label"><a class="fn-backref" href="#id4">[4]</a></td><td>I usually do work with Matrix homeservers and am not as experienced with
+clients. It is useful to bounce ideas off a client developer to understand
+their needs.</td></tr>
+</tbody>
+</table>
+
+      </div>
+
+<div id="disqus_thread"></div>
+<script>
+/**
+*  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+*  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/
+/*
+var disqus_config = function () {
+this.page.url = '/posts/2023/01/12/researching-for-a-matrix-spec-change/';
+this.page.identifier = 'researching-for-a-matrix-spec-change';
+};
+*/
+(function() { // DON'T EDIT BELOW THIS LINE
+var d = document, s = d.createElement('script');
+s.src = 'https://clokep.disqus.com/embed.js';
+s.setAttribute('data-timestamp', +new Date());
+(d.head || d.body).appendChild(s);
+})();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    </div>
+  </div>
+</div>
+
+    <nav class="navbar fixed-bottom navbar-light bg-light border-top border-info">
+      <a href="https://getpelican.com/" class="nav-item" target="_blank">Powered by Pelican</a>
+      <a href="https://github.com/clokep/clokep.github.io" class="nav-item" target="_blank">
+        Source available on GitHub <span class="fab fa-github"></span>
+      </a>
+    </nav>
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T" crossorigin="anonymous"></script>
+
+  </body>
+</html>
