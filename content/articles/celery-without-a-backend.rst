@@ -26,7 +26,7 @@ execute as you'd expect:
 Another piece of configuration that matters (which surprised me and had a
 performance impact for us [#]_) is whether to ignore a task result or not.
 Unexpectedly, Celery will attempt to connect to the results backend *on task call*.
-I assumed that the results backend would never be contaced since we never
+I assumed that the results backend would never be contacted since we never
 attempted to **retrieve** a result! This turned out to be untrue.
 
 Once identified, The fix was straightforward! We ensured that every task which
