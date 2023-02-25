@@ -333,120 +333,7 @@ are any messages where the push rules resulted in an action of &lt;code&gt;notif
 &lt;p&gt;&lt;a href="https://spec.matrix.org/v1.3/client-server-api/#receiving-notifications"&gt;Spec on receiving notifications&lt;/a&gt;&amp;#160;&lt;a class="footnote-backref" href="#fnref:3" title="Jump back to footnote 3 in the text"&gt;&amp;#8617;&lt;/a&gt;&lt;/p&gt;
 &lt;/li&gt;
 &lt;/ol&gt;
-&lt;/div&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Patrick Cloke</dc:creator><pubDate>Thu, 05 Jan 2023 12:15:00 -0500</pubDate><guid isPermaLink="false">tag:patrick.cloke.us,2023-01-05:/posts/2023/01/05/matrix-read-receipts-and-notifications/</guid><category>articles</category><category>matrix</category><category>notes</category></item><item><title>Celery architecture deep dive</title><link>https://patrick.cloke.us/posts/2022/02/06/celery-architecture-deep-dive/</link><description>&lt;p&gt;The &lt;a class="reference external" href="https://docs.celeryq.dev/en/v5.2.7/"&gt;Celery project&lt;/a&gt; describes itself&amp;nbsp;as:&lt;/p&gt;
-&lt;blockquote&gt;
-&lt;p&gt;Celery is a simple, flexible, and reliable distributed system to process vast
-amounts of messages , while providing operations with the tools required to
-maintain such a&amp;nbsp;system.&lt;/p&gt;
-&lt;p&gt;It’s a task queue with focus on real-time processing, while also supporting
-task&amp;nbsp;scheduling.&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;p&gt;And the documentation goes into great detail about how to configure Celery with
-its plethora of options, but it does not focus much on the &lt;a class="reference external" href="https://docs.celeryq.dev/en/v5.2.7/getting-started/introduction.html"&gt;high level architecture&lt;/a&gt;
-or how messages pass between the components. Celery is &lt;em&gt;extremely&lt;/em&gt; flexible (almost
-every component can be easily replaced!) but this can make it hard to understand. &lt;a class="footnote-reference" href="#id3" id="id1"&gt;[1]&lt;/a&gt;&lt;/p&gt;
-&lt;blockquote class="text-center"&gt;
-&lt;a class="reference external image-reference" href="https://patrick.cloke.us/images/celery-architecture/celery-overview.png"&gt;&lt;img alt="Celery overview" src="https://patrick.cloke.us/images/celery-architecture/celery-overview.png" style="width: 50%;" /&gt;&lt;/a&gt;
-&lt;p&gt;The traditional simplified view of a Celery&amp;nbsp;application.&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;p&gt;Celery has a few main&amp;nbsp;components:&lt;/p&gt;
-&lt;ol class="arabic simple"&gt;
-&lt;li&gt;Your application code, including any &lt;tt class="docutils literal"&gt;Task&lt;/tt&gt; objects you&amp;#8217;ve&amp;nbsp;defined.&lt;/li&gt;
-&lt;li&gt;A broker or message&amp;nbsp;transport.&lt;/li&gt;
-&lt;li&gt;One or more celery&amp;nbsp;workers.&lt;/li&gt;
-&lt;li&gt;A (results)&amp;nbsp;backend.&lt;/li&gt;
-&lt;/ol&gt;
-&lt;p&gt;Let&amp;#8217;s break this down a bit more and look into how these components&amp;nbsp;communicate.&lt;/p&gt;
-&lt;div class="admonition note"&gt;
-&lt;p class="first admonition-title"&gt;Note&lt;/p&gt;
-&lt;p class="last"&gt;The following assumes you&amp;#8217;re using the
-&lt;a class="reference external" href="https://docs.celeryq.dev/en/v5.2.7/userguide/workers.html#concurrency"&gt;standard &amp;#8220;prefork&amp;#8221; configuration of a celery worker&lt;/a&gt; (although the explanation
-doesn&amp;#8217;t change &lt;em&gt;too&lt;/em&gt; much if you&amp;#8217;re using gevent, eventlet, or&amp;nbsp;threads).&lt;/p&gt;
-&lt;/div&gt;
-&lt;blockquote class="text-center"&gt;
-&lt;a class="reference external image-reference" href="https://patrick.cloke.us/images/celery-architecture/celery-components.png"&gt;&lt;img alt="Celery components" src="https://patrick.cloke.us/images/celery-architecture/celery-components.png" style="width: 50%;" /&gt;&lt;/a&gt;
-&lt;p&gt;The broker and celery worker broken into&amp;nbsp;sub-components&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;div class="section" id="application-code"&gt;
-&lt;h2&gt;Application&amp;nbsp;code&lt;/h2&gt;
-&lt;p&gt;My experience using Celery was mostly in a mixed Django &lt;span class="amp"&gt;&amp;amp;&lt;/span&gt; Twisted application,
-but for this example a simple Python script will be used. You define a Celery
-a Celery &lt;a class="reference external" href="https://docs.celeryq.dev/en/v5.2.7/userguide/application.html"&gt;application&lt;/a&gt; (which includes a bunch of configuration of how to connect
-to the broker and backend) and then use the &lt;tt class="docutils literal"&gt;task&lt;/tt&gt; decorator,&amp;nbsp;e.g.:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;celery&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;Celery&lt;/span&gt;
-
-&lt;span class="n"&gt;app&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;Celery&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;
-    &lt;span class="s2"&gt;&amp;quot;example&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
-    &lt;span class="n"&gt;backend&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;rpc://&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
-    &lt;span class="n"&gt;broker&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;amqp://guest@localhost//&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
-&lt;span class="p"&gt;)&lt;/span&gt;
-
-&lt;span class="nd"&gt;@app&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;task&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
-&lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;add&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;a&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;b&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
-    &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="n"&gt;a&lt;/span&gt; &lt;span class="o"&gt;+&lt;/span&gt; &lt;span class="n"&gt;b&lt;/span&gt;
-&lt;/pre&gt;&lt;/div&gt;
-&lt;p&gt;Your application can then request that the tasks be run and wait for the results: &lt;a class="footnote-reference" href="#id4" id="id2"&gt;[2]&lt;/a&gt;&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;my_app&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;add&lt;/span&gt;
-
-&lt;span class="c1"&gt;# Request that the tasks run and capture their async results.&lt;/span&gt;
-&lt;span class="n"&gt;task_1&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;add&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;delay&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;2&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
-&lt;span class="n"&gt;task_2&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;add&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;delay&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;3&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;4&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
-
-&lt;span class="n"&gt;result_1&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;task_1&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;get&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
-&lt;span class="n"&gt;result_2&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;task_2&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;get&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
-&lt;span class="nb"&gt;print&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="sa"&gt;f&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;Results: &lt;/span&gt;&lt;span class="si"&gt;{&lt;/span&gt;&lt;span class="n"&gt;result_1&lt;/span&gt;&lt;span class="si"&gt;}&lt;/span&gt;&lt;span class="s2"&gt;, &lt;/span&gt;&lt;span class="si"&gt;{&lt;/span&gt;&lt;span class="n"&gt;result_2&lt;/span&gt;&lt;span class="si"&gt;}&lt;/span&gt;&lt;span class="s2"&gt;)&lt;/span&gt;
-&lt;/pre&gt;&lt;/div&gt;
-&lt;/div&gt;
-&lt;div class="section" id="broker"&gt;
-&lt;h2&gt;Broker&lt;/h2&gt;
-&lt;p&gt;The message broker is some other application which takes the task requests and queues
-them until a worker is ready to process them. Common options include RabbitMQ and&amp;nbsp;Redis.&lt;/p&gt;
-&lt;p&gt;As the diagram above shows the broker itself has some sub-components, including an
-exchange and one or more queues. How those interact (and how you might configure
-them) is not what I&amp;#8217;m interested in presenting here. The Celery &lt;a class="reference external" href="https://docs.celeryq.dev/en/v5.2.7/userguide/routing.html"&gt;routing documentation&lt;/a&gt;
-has more&amp;nbsp;information.&lt;/p&gt;
-&lt;/div&gt;
-&lt;div class="section" id="workers"&gt;
-&lt;h2&gt;Workers&lt;/h2&gt;
-&lt;p&gt;Celery workers fetch queued tasks from the message brokers and then run the code
-inside of your &lt;tt class="docutils literal"&gt;task&lt;/tt&gt;, they can optionally return a result to provide to the
-results&amp;nbsp;backend.&lt;/p&gt;
-&lt;p&gt;Celery workers have a &amp;#8220;main&amp;#8221; process which fetches tasks from the broker, by
-default it requests many tasks at once: the &amp;#8220;&lt;a class="reference external" href="https://docs.celeryq.dev/en/v5.2.7/userguide/configuration.html#std-setting-worker_prefetch_multiplier"&gt;prefetch multiplier&lt;/a&gt; x &lt;a class="reference external" href="https://docs.celeryq.dev/en/v5.2.7/userguide/configuration.html#std-setting-worker_concurrency"&gt;concurrency&lt;/a&gt;&amp;#8220;.
-(If your prefetch multiplier is 5 and your concurrency is 4, it attempts to
-fetch up to 20 queued tasks from the broker.) Once it has these in memory it
-deserializes them and runs whatever their &lt;tt class="docutils literal"&gt;Strategy&lt;/tt&gt; is &amp;#8212; for a normal Celery
-&lt;tt class="docutils literal"&gt;Task&lt;/tt&gt; this essentially feeds them to each worker in the processing pool&amp;nbsp;individually.&lt;/p&gt;
-&lt;/div&gt;
-&lt;div class="section" id="backend"&gt;
-&lt;h2&gt;Backend&lt;/h2&gt;
-&lt;p&gt;A key-value storage for the results of running tasks. These can be queried by using
-the &lt;tt class="docutils literal"&gt;AsyncResult&lt;/tt&gt; object which is returned to your application&amp;nbsp;code.&lt;/p&gt;
-&lt;div class="admonition note"&gt;
-&lt;p class="first admonition-title"&gt;Note&lt;/p&gt;
-&lt;p class="last"&gt;The following assumes you&amp;#8217;re using the
-&lt;a class="reference external" href="https://docs.celeryq.dev/en/v5.2.7/userguide/workers.html#concurrency"&gt;standard &amp;#8220;prefork&amp;#8221; configuration of a celery worker&lt;/a&gt; (although the explanation
-doesn&amp;#8217;t change &lt;em&gt;too&lt;/em&gt; much if you&amp;#8217;re using gevent, eventlet, or&amp;nbsp;threads).&lt;/p&gt;
-&lt;/div&gt;
-&lt;blockquote class="text-center"&gt;
-&lt;a class="reference external image-reference" href="https://patrick.cloke.us/images/celery-architecture/celery-messages.png"&gt;&lt;img alt="Celery components" src="https://patrick.cloke.us/images/celery-architecture/celery-messages.png" style="width: 50%;" /&gt;&lt;/a&gt;
-&lt;p&gt;???&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;table class="docutils footnote" frame="void" id="id3" rules="none"&gt;
-&lt;colgroup&gt;&lt;col class="label" /&gt;&lt;col /&gt;&lt;/colgroup&gt;
-&lt;tbody valign="top"&gt;
-&lt;tr&gt;&lt;td class="label"&gt;&lt;a class="fn-backref" href="#id1"&gt;[1]&lt;/a&gt;&lt;/td&gt;&lt;td&gt;Part of this started out as an &lt;a class="reference external" href="https://github.com/clokep/celery-batches/issues/69#issuecomment-1181855643"&gt;explanation of how celery-batches works&lt;/a&gt;.&lt;/td&gt;&lt;/tr&gt;
-&lt;/tbody&gt;
-&lt;/table&gt;
-&lt;table class="docutils footnote" frame="void" id="id4" rules="none"&gt;
-&lt;colgroup&gt;&lt;col class="label" /&gt;&lt;col /&gt;&lt;/colgroup&gt;
-&lt;tbody valign="top"&gt;
-&lt;tr&gt;&lt;td class="label"&gt;&lt;a class="fn-backref" href="#id2"&gt;[2]&lt;/a&gt;&lt;/td&gt;&lt;td&gt;There&amp;#8217;s a bunch of ways to do this, &lt;tt class="docutils literal"&gt;apply_async&lt;/tt&gt; and &lt;tt class="docutils literal"&gt;delay&lt;/tt&gt; are the
-most common, but don&amp;#8217;t impact the contents of this article.&lt;/td&gt;&lt;/tr&gt;
-&lt;/tbody&gt;
-&lt;/table&gt;
-&lt;/div&gt;
-</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Patrick Cloke</dc:creator><pubDate>Sun, 06 Feb 2022 15:47:00 -0500</pubDate><guid isPermaLink="false">tag:patrick.cloke.us,2022-02-06:/posts/2022/02/06/celery-architecture-deep-dive/</guid><category>articles</category><category>celery</category></item><item><title>Converting Twisted’s inlineCallbacks to async</title><link>https://patrick.cloke.us/posts/2021/06/11/converting-twisteds-inlinecallbacks-to-async/</link><description>
+&lt;/div&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Patrick Cloke</dc:creator><pubDate>Thu, 05 Jan 2023 12:15:00 -0500</pubDate><guid isPermaLink="false">tag:patrick.cloke.us,2023-01-05:/posts/2023/01/05/matrix-read-receipts-and-notifications/</guid><category>articles</category><category>matrix</category><category>notes</category></item><item><title>Converting Twisted’s inlineCallbacks to async</title><link>https://patrick.cloke.us/posts/2021/06/11/converting-twisteds-inlinecallbacks-to-async/</link><description>
 &lt;p&gt;Almost a year ago we had a push at Element to convert the remaining instances of
 Twisted’s &lt;a class="reference external" href="https://twistedmatrix.com/documents/21.2.0/api/twisted.internet.defer.html#inlineCallbacks"&gt;&lt;tt class="docutils literal"&gt;inlineCallbacks&lt;/tt&gt;&lt;/a&gt; to use native &lt;tt class="docutils literal"&gt;async&lt;/tt&gt;/&lt;tt class="docutils literal"&gt;await&lt;/tt&gt; syntax from Python &lt;a class="footnote-reference" href="#id5" id="id1"&gt;[1]&lt;/a&gt;.
 Eventually this work got covered by &lt;a class="reference external" href="https://github.com/matrix-org/synapse/issues/7988"&gt;issue #7988&lt;/a&gt; (which is the original basis
@@ -809,4 +696,95 @@ Contributed by &lt;a class="reference external" href="https://github.com/bblanch
 &lt;li&gt;Drop support for Python 3.5, officially support Python 3.9. (&lt;a class="reference external" href="https://github.com/clokep/django-render-block/pull/22"&gt;#22&lt;/a&gt;)&lt;/li&gt;
 &lt;/ul&gt;
 &lt;/div&gt;
-</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Patrick Cloke</dc:creator><pubDate>Tue, 27 Oct 2020 16:57:00 -0400</pubDate><guid isPermaLink="false">tag:patrick.cloke.us,2020-10-27:/posts/2020/10/27/django-render-block-0.8-released/</guid><category>articles</category><category>django</category><category>django-render-block</category></item></channel></rss>
+</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Patrick Cloke</dc:creator><pubDate>Tue, 27 Oct 2020 16:57:00 -0400</pubDate><guid isPermaLink="false">tag:patrick.cloke.us,2020-10-27:/posts/2020/10/27/django-render-block-0.8-released/</guid><category>articles</category><category>django</category><category>django-render-block</category></item><item><title>Instantbird Blog: WordPress to Pelican</title><link>https://patrick.cloke.us/posts/2020/09/09/instantbird-blog-wordpress-to-pelican/</link><description>&lt;p&gt;The &lt;a class="reference external" href="https://blog.instantbird.org"&gt;Instantbird blog&lt;/a&gt; is now (as of mid-April 2020) hosted on GitHub Pages
+(instead of self-hosted &lt;a class="reference external" href="https://wordpress.com/"&gt;WordPress&lt;/a&gt;) &lt;a class="footnote-reference" href="#id5" id="id1"&gt;[1]&lt;/a&gt;. Hopefully it was converted faithfully,
+but feel free to let us know if you see something broken! You can file an issue
+at &lt;a class="reference external" href="https://github.com/instantbird/blog.instantbird.org/"&gt;the repo for the blog&lt;/a&gt; or just comment&amp;nbsp;below.&lt;/p&gt;
+&lt;p&gt;Note that there are some changes due to being a static site instead of being
+backed by a dynamic language. Most of these would be around editing the blog,
+which we don&amp;#8217;t do anymore. The biggest user-facing change was that
+&lt;a class="reference external" href="https://github.com/instantbird/blog.instantbird.org/blob/source/theme/templates/searchform.html"&gt;search is now via DuckDuckGo&lt;/a&gt; instead of being built into the&amp;nbsp;site.&lt;/p&gt;
+&lt;p&gt;This was a bit of an arduous process with some trial and error. See below for
+some of the details. Overall I did this work over 3 years (!!!), starting in
+April of 2017 and getting the site live in April of 2020. It was mostly done in
+5 sprints with some long gaps&amp;nbsp;between.&lt;/p&gt;
+&lt;p&gt;As some background, the Instantbird blog was originally (in 2007) served via
+Florian&amp;#8217;s custom blog engine &lt;a class="footnote-reference" href="#id6" id="id2"&gt;[2]&lt;/a&gt;. In 2011 it was
+&lt;a class="reference external" href="https://blog.instantbird.org/2011/10/weekly-meeting-october-10-2011/"&gt;converted to WordPress by an Instantbird contributor&lt;/a&gt;. This initial conversion
+was not done perfectly and I attempted to fix some of these issues when
+converting from WordPress to Pelican &lt;a class="footnote-reference" href="#id7" id="id3"&gt;[3]&lt;/a&gt;. The general steps I was hoping to&amp;nbsp;follow:&lt;/p&gt;
+&lt;ol class="arabic simple"&gt;
+&lt;li&gt;Setup the project using the &lt;tt class="docutils literal"&gt;&lt;span class="pre"&gt;pelican-quickstart&lt;/span&gt;&lt;/tt&gt; comment.&lt;/li&gt;
+&lt;li&gt;Export the content via WordPress to &lt;span class="caps"&gt;XML&lt;/span&gt;.&lt;/li&gt;
+&lt;li&gt;Use the Pelican &lt;a class="reference external" href="https://docs.getpelican.com/en/3.7.1/importer.html"&gt;WordPress importer&lt;/a&gt; to convert the content to reStructuredText. &lt;a class="footnote-reference" href="#id8" id="id4"&gt;[4]&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Go through the conversion by hand and fix any&amp;nbsp;oddities.&lt;/li&gt;
+&lt;li&gt;Convert the &lt;span class="caps"&gt;PHP&lt;/span&gt; theme to &lt;a class="reference external" href="https://jinja.palletsprojects.com/"&gt;Jinja2&lt;/a&gt;.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;This plan mostly held together through the process, but I ran into some
+roadblocks, most of which were easily&amp;nbsp;overcome:&lt;/p&gt;
+&lt;ol class="arabic simple"&gt;
+&lt;li&gt;For some reason the WordPress import failed halfway through and didn&amp;#8217;t convert
+every article. I didn&amp;#8217;t investigate why and &lt;a class="reference external" href="https://github.com/instantbird/blog.instantbird.org/commit/d94b2fc4bd8d45d993c080daf215dbdd91298ae3"&gt;added the missing files manually&lt;/a&gt;.&lt;/li&gt;
+&lt;li&gt;A variety of hard-coded &lt;span class="caps"&gt;HTML&lt;/span&gt; made it through the conversion. This was manually
+converted to&amp;nbsp;reStructuredText.&lt;/li&gt;
+&lt;li&gt;Converting the theme was much harder than expected and involved reading
+WordPress documentation to understand various functions the &lt;span class="caps"&gt;PHP&lt;/span&gt; templates&amp;nbsp;called.&lt;/li&gt;
+&lt;li&gt;Wrote a &lt;a class="reference external" href="https://github.com/instantbird/blog.instantbird.org/blob/source/plugins/archives.py"&gt;custom archive plugin&lt;/a&gt; to be able to articles by year / month /&amp;nbsp;day.&lt;/li&gt;
+&lt;li&gt;The alignment of images needed to be fixed (and lots of WordPress styles&amp;nbsp;removed).&lt;/li&gt;
+&lt;li&gt;Some of our posts had multiple categories on them, which is not allowed in
+Pelican. Generally these overlapped with tags and I decided the easiest path
+here was to modify the content to have a single category per&amp;nbsp;article.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;A huge piece of work was that comments were not imported. I did not care about
+people being able to write &lt;em&gt;new&lt;/em&gt; comments, but I wanted the old content there.
+For this I planned to use the &lt;a class="reference external" href="https://github.com/getpelican/pelican-plugins/tree/master/pelican_comment_system"&gt;pelican_comment_system plugin&lt;/a&gt;, but I needed to
+get the comments into a format that it understood (from the WordPress &lt;span class="caps"&gt;XML&lt;/span&gt; export
+discussed&amp;nbsp;above).&lt;/p&gt;
+&lt;p&gt;I ended up &lt;a class="reference external" href="https://github.com/instantbird/blog.instantbird.org/blob/source/wp2comments.py"&gt;writing a custom script&lt;/a&gt; based on the &lt;a class="reference external" href="https://github.com/getpelican/pelican/blob/4.2.0/pelican/tools/pelican_import.py"&gt;pelican_import&lt;/a&gt; code to
+iterate the comments in the &lt;span class="caps"&gt;XML&lt;/span&gt; file and write a reStructuredText file for each
+comment. There was quite a bit of trial and error here, but I think the result
+was reasonable. This also needed to handle comment threads and pingbacks, which
+added some&amp;nbsp;wrinkles.&lt;/p&gt;
+&lt;p&gt;The final step here was to get gravatars for comments working. The
+pelican_comment_system supports identicons only, but I was able to
+&lt;a class="reference external" href="https://github.com/instantbird/blog.instantbird.org/blob/source/plugins/comments.py"&gt;combine it and the gravatar plugin&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;One final piece was generating a reasonable 404 page. The WordPress one some
+features that required two more custom plugins: a &lt;a class="reference external" href="https://github.com/instantbird/blog.instantbird.org/blob/source/plugins/tag_cloud.py"&gt;tag cloud&lt;/a&gt; and a list of the
+&lt;a class="reference external" href="https://github.com/instantbird/blog.instantbird.org/blob/source/plugins/most_used_categories.py"&gt;most used categories&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;There was a few other odds-and-ends that aren&amp;#8217;t really worth mentioning, but
+overall I&amp;#8217;m quite happy with the result! Just to be clear, there&amp;#8217;s no plans to
+restart development of Instantbird, but I wanted the blog content to archived
+and searchable. There&amp;#8217;s some &lt;a class="reference external" href="https://blog.instantbird.org/2011/06/introducing-time-bubbles/"&gt;interesting&lt;/a&gt; &lt;a class="reference external" href="https://blog.instantbird.org/2013/07/first-milestone-of-the-awesometab-has-landed/"&gt;articles&lt;/a&gt; on there about &lt;a class="reference external" href="https://blog.instantbird.org/2012/08/tab-completion-in-instantbird-1-2/"&gt;design&lt;/a&gt;
+&lt;a class="reference external" href="https://blog.instantbird.org/2011/06/introducing-magic-copy/"&gt;decisions&lt;/a&gt;. Many of which are features I miss&amp;nbsp;today!&lt;/p&gt;
+&lt;table class="docutils footnote" frame="void" id="id5" rules="none"&gt;
+&lt;colgroup&gt;&lt;col class="label" /&gt;&lt;col /&gt;&lt;/colgroup&gt;
+&lt;tbody valign="top"&gt;
+&lt;tr&gt;&lt;td class="label"&gt;&lt;a class="fn-backref" href="#id1"&gt;[1]&lt;/a&gt;&lt;/td&gt;&lt;td&gt;Reasons for wanting to do this included reducing the infrastructure we
+were maintaining and that the WordPress version was vulnerable. An
+additional benefit is that it let us easily add &lt;span class="caps"&gt;TLS&lt;/span&gt;.&lt;!-- See https://bugzilla.mozilla.org/show_bug.cgi?id=1346658 --&gt;
+&lt;/td&gt;&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;table class="docutils footnote" frame="void" id="id6" rules="none"&gt;
+&lt;colgroup&gt;&lt;col class="label" /&gt;&lt;col /&gt;&lt;/colgroup&gt;
+&lt;tbody valign="top"&gt;
+&lt;tr&gt;&lt;td class="label"&gt;&lt;a class="fn-backref" href="#id2"&gt;[2]&lt;/a&gt;&lt;/td&gt;&lt;td&gt;I don&amp;#8217;t think there&amp;#8217;s any information about this engine anywhere, nor do
+I think the source was released.&lt;/td&gt;&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;table class="docutils footnote" frame="void" id="id7" rules="none"&gt;
+&lt;colgroup&gt;&lt;col class="label" /&gt;&lt;col /&gt;&lt;/colgroup&gt;
+&lt;tbody valign="top"&gt;
+&lt;tr&gt;&lt;td class="label"&gt;&lt;a class="fn-backref" href="#id3"&gt;[3]&lt;/a&gt;&lt;/td&gt;&lt;td&gt;The main issues were images / resources that were not properly moved.
+Luckily I was able to recover them using the &lt;a class="reference external" href="https://archive.org/"&gt;Internet Archive&lt;/a&gt;.&lt;/td&gt;&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;table class="docutils footnote" frame="void" id="id8" rules="none"&gt;
+&lt;colgroup&gt;&lt;col class="label" /&gt;&lt;col /&gt;&lt;/colgroup&gt;
+&lt;tbody valign="top"&gt;
+&lt;tr&gt;&lt;td class="label"&gt;&lt;a class="fn-backref" href="#id4"&gt;[4]&lt;/a&gt;&lt;/td&gt;&lt;td&gt;I started doing this work on Pelican 3.7.1 and switched to 4.2.0, in
+general everything in this article should be valid up through Pelican
+4.2.0, however.&lt;/td&gt;&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Patrick Cloke</dc:creator><pubDate>Wed, 09 Sep 2020 17:10:00 -0400</pubDate><guid isPermaLink="false">tag:patrick.cloke.us,2020-09-09:/posts/2020/09/09/instantbird-blog-wordpress-to-pelican/</guid><category>articles</category><category>Instantbird</category><category>pelican</category></item></channel></rss>
