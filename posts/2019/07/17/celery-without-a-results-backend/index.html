@@ -164,7 +164,7 @@ execute as you&#8217;d&nbsp;expect:</p>
 <p>Another piece of configuration that matters (which surprised me and had a
 performance impact for us <a class="footnote-reference" href="#id7" id="id3">[3]</a>) is whether to ignore a task result or not.
 Unexpectedly, Celery will attempt to connect to the results backend <em>on task call</em>.
-I assumed that the results backend would never be contaced since we never
+I assumed that the results backend would never be contacted since we never
 attempted to <strong>retrieve</strong> a result! This turned out to be&nbsp;untrue.</p>
 <p>Once identified, The fix was straightforward! We ensured that every task which
 had <tt class="docutils literal">ignore_result=True</tt> on task declaration also had <tt class="docutils literal">ignore_result=True</tt>

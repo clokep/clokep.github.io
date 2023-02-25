@@ -1,5 +1,126 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>Patrick Cloke - celery</title><link href="https://patrick.cloke.us/" rel="alternate"></link><link href="https://patrick.cloke.us/feeds/tag/celery.atom.xml" rel="self"></link><id>https://patrick.cloke.us/</id><updated>2021-05-24T16:56:00-04:00</updated><entry><title>celery-batches 0.5 released!</title><link href="https://patrick.cloke.us/posts/2021/05/24/celery-batches-0.5-released/" rel="alternate"></link><published>2021-05-24T16:56:00-04:00</published><updated>2021-05-24T16:56:00-04:00</updated><author><name>Patrick Cloke</name></author><id>tag:patrick.cloke.us,2021-05-24:/posts/2021/05/24/celery-batches-0.5-released/</id><summary type="html">&lt;p&gt;A &lt;a class="reference external" href="https://pypi.org/project/celery-batches/0.5/"&gt;new version (v0.5)&lt;/a&gt; of &lt;a class="reference external" href="https://github.com/clokep/celery-batches/"&gt;celery-batches&lt;/a&gt; is available which adds support for
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Patrick Cloke - celery</title><link href="https://patrick.cloke.us/" rel="alternate"></link><link href="https://patrick.cloke.us/feeds/tag/celery.atom.xml" rel="self"></link><id>https://patrick.cloke.us/</id><updated>2022-02-06T15:47:00-05:00</updated><entry><title>Celery architecture deep dive</title><link href="https://patrick.cloke.us/posts/2022/02/06/celery-architecture-deep-dive/" rel="alternate"></link><published>2022-02-06T15:47:00-05:00</published><updated>2022-02-06T15:47:00-05:00</updated><author><name>Patrick Cloke</name></author><id>tag:patrick.cloke.us,2022-02-06:/posts/2022/02/06/celery-architecture-deep-dive/</id><summary type="html">&lt;p&gt;The &lt;a class="reference external" href="https://docs.celeryq.dev/en/v5.2.7/"&gt;Celery project&lt;/a&gt; describes itself&amp;nbsp;as:&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Celery is a simple, flexible, and reliable distributed system to process vast
+amounts of messages , while providing operations with the tools required to
+maintain such a&amp;nbsp;system.&lt;/p&gt;
+&lt;p&gt;It’s a task queue with focus on real-time processing, while also supporting
+task&amp;nbsp;scheduling.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;And the …&lt;/p&gt;</summary><content type="html">&lt;p&gt;The &lt;a class="reference external" href="https://docs.celeryq.dev/en/v5.2.7/"&gt;Celery project&lt;/a&gt; describes itself&amp;nbsp;as:&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Celery is a simple, flexible, and reliable distributed system to process vast
+amounts of messages , while providing operations with the tools required to
+maintain such a&amp;nbsp;system.&lt;/p&gt;
+&lt;p&gt;It’s a task queue with focus on real-time processing, while also supporting
+task&amp;nbsp;scheduling.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;And the documentation goes into great detail about how to configure Celery with
+its plethora of options, but it does not focus much on the &lt;a class="reference external" href="https://docs.celeryq.dev/en/v5.2.7/getting-started/introduction.html"&gt;high level architecture&lt;/a&gt;
+or how messages pass between the components. Celery is &lt;em&gt;extremely&lt;/em&gt; flexible (almost
+every component can be easily replaced!) but this can make it hard to understand. &lt;a class="footnote-reference" href="#id3" id="id1"&gt;[1]&lt;/a&gt;&lt;/p&gt;
+&lt;blockquote class="text-center"&gt;
+&lt;a class="reference external image-reference" href="https://patrick.cloke.us/images/celery-architecture/celery-overview.png"&gt;&lt;img alt="Celery overview" src="https://patrick.cloke.us/images/celery-architecture/celery-overview.png" style="width: 50%;" /&gt;&lt;/a&gt;
+&lt;p&gt;The traditional simplified view of a Celery&amp;nbsp;application.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;Celery has a few main&amp;nbsp;components:&lt;/p&gt;
+&lt;ol class="arabic simple"&gt;
+&lt;li&gt;Your application code, including any &lt;tt class="docutils literal"&gt;Task&lt;/tt&gt; objects you&amp;#8217;ve&amp;nbsp;defined.&lt;/li&gt;
+&lt;li&gt;A broker or message&amp;nbsp;transport.&lt;/li&gt;
+&lt;li&gt;One or more celery&amp;nbsp;workers.&lt;/li&gt;
+&lt;li&gt;A (results)&amp;nbsp;backend.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;Let&amp;#8217;s break this down a bit more and look into how these components&amp;nbsp;communicate.&lt;/p&gt;
+&lt;div class="admonition note"&gt;
+&lt;p class="first admonition-title"&gt;Note&lt;/p&gt;
+&lt;p class="last"&gt;The following assumes you&amp;#8217;re using the
+&lt;a class="reference external" href="https://docs.celeryq.dev/en/v5.2.7/userguide/workers.html#concurrency"&gt;standard &amp;#8220;prefork&amp;#8221; configuration of a celery worker&lt;/a&gt; (although the explanation
+doesn&amp;#8217;t change &lt;em&gt;too&lt;/em&gt; much if you&amp;#8217;re using gevent, eventlet, or&amp;nbsp;threads).&lt;/p&gt;
+&lt;/div&gt;
+&lt;blockquote class="text-center"&gt;
+&lt;a class="reference external image-reference" href="https://patrick.cloke.us/images/celery-architecture/celery-components.png"&gt;&lt;img alt="Celery components" src="https://patrick.cloke.us/images/celery-architecture/celery-components.png" style="width: 50%;" /&gt;&lt;/a&gt;
+&lt;p&gt;The broker and celery worker broken into&amp;nbsp;sub-components&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;div class="section" id="application-code"&gt;
+&lt;h2&gt;Application&amp;nbsp;code&lt;/h2&gt;
+&lt;p&gt;My experience using Celery was mostly in a mixed Django &lt;span class="amp"&gt;&amp;amp;&lt;/span&gt; Twisted application,
+but for this example a simple Python script will be used. You define a Celery
+a Celery &lt;a class="reference external" href="https://docs.celeryq.dev/en/v5.2.7/userguide/application.html"&gt;application&lt;/a&gt; (which includes a bunch of configuration of how to connect
+to the broker and backend) and then use the &lt;tt class="docutils literal"&gt;task&lt;/tt&gt; decorator,&amp;nbsp;e.g.:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;celery&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;Celery&lt;/span&gt;
+
+&lt;span class="n"&gt;app&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;Celery&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;
+    &lt;span class="s2"&gt;&amp;quot;example&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+    &lt;span class="n"&gt;backend&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;rpc://&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+    &lt;span class="n"&gt;broker&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;amqp://guest@localhost//&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+&lt;span class="p"&gt;)&lt;/span&gt;
+
+&lt;span class="nd"&gt;@app&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;task&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
+&lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;add&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;a&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;b&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+    &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="n"&gt;a&lt;/span&gt; &lt;span class="o"&gt;+&lt;/span&gt; &lt;span class="n"&gt;b&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Your application can then request that the tasks be run and wait for the results: &lt;a class="footnote-reference" href="#id4" id="id2"&gt;[2]&lt;/a&gt;&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;my_app&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;add&lt;/span&gt;
+
+&lt;span class="c1"&gt;# Request that the tasks run and capture their async results.&lt;/span&gt;
+&lt;span class="n"&gt;task_1&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;add&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;delay&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;2&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="n"&gt;task_2&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;add&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;delay&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;3&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;4&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+
+&lt;span class="n"&gt;result_1&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;task_1&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;get&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
+&lt;span class="n"&gt;result_2&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;task_2&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;get&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
+&lt;span class="nb"&gt;print&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="sa"&gt;f&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;Results: &lt;/span&gt;&lt;span class="si"&gt;{&lt;/span&gt;&lt;span class="n"&gt;result_1&lt;/span&gt;&lt;span class="si"&gt;}&lt;/span&gt;&lt;span class="s2"&gt;, &lt;/span&gt;&lt;span class="si"&gt;{&lt;/span&gt;&lt;span class="n"&gt;result_2&lt;/span&gt;&lt;span class="si"&gt;}&lt;/span&gt;&lt;span class="s2"&gt;)&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="section" id="broker"&gt;
+&lt;h2&gt;Broker&lt;/h2&gt;
+&lt;p&gt;The message broker is some other application which takes the task requests and queues
+them until a worker is ready to process them. Common options include RabbitMQ and&amp;nbsp;Redis.&lt;/p&gt;
+&lt;p&gt;As the diagram above shows the broker itself has some sub-components, including an
+exchange and one or more queues. How those interact (and how you might configure
+them) is not what I&amp;#8217;m interested in presenting here. The Celery &lt;a class="reference external" href="https://docs.celeryq.dev/en/v5.2.7/userguide/routing.html"&gt;routing documentation&lt;/a&gt;
+has more&amp;nbsp;information.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="section" id="workers"&gt;
+&lt;h2&gt;Workers&lt;/h2&gt;
+&lt;p&gt;Celery workers fetch queued tasks from the message brokers and then run the code
+inside of your &lt;tt class="docutils literal"&gt;task&lt;/tt&gt;, they can optionally return a result to provide to the
+results&amp;nbsp;backend.&lt;/p&gt;
+&lt;p&gt;Celery workers have a &amp;#8220;main&amp;#8221; process which fetches tasks from the broker, by
+default it requests many tasks at once: the &amp;#8220;&lt;a class="reference external" href="https://docs.celeryq.dev/en/v5.2.7/userguide/configuration.html#std-setting-worker_prefetch_multiplier"&gt;prefetch multiplier&lt;/a&gt; x &lt;a class="reference external" href="https://docs.celeryq.dev/en/v5.2.7/userguide/configuration.html#std-setting-worker_concurrency"&gt;concurrency&lt;/a&gt;&amp;#8220;.
+(If your prefetch multiplier is 5 and your concurrency is 4, it attempts to
+fetch up to 20 queued tasks from the broker.) Once it has these in memory it
+deserializes them and runs whatever their &lt;tt class="docutils literal"&gt;Strategy&lt;/tt&gt; is &amp;#8212; for a normal Celery
+&lt;tt class="docutils literal"&gt;Task&lt;/tt&gt; this essentially feeds them to each worker in the processing pool&amp;nbsp;individually.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="section" id="backend"&gt;
+&lt;h2&gt;Backend&lt;/h2&gt;
+&lt;p&gt;A key-value storage for the results of running tasks. These can be queried by using
+the &lt;tt class="docutils literal"&gt;AsyncResult&lt;/tt&gt; object which is returned to your application&amp;nbsp;code.&lt;/p&gt;
+&lt;div class="admonition note"&gt;
+&lt;p class="first admonition-title"&gt;Note&lt;/p&gt;
+&lt;p class="last"&gt;The following assumes you&amp;#8217;re using the
+&lt;a class="reference external" href="https://docs.celeryq.dev/en/v5.2.7/userguide/workers.html#concurrency"&gt;standard &amp;#8220;prefork&amp;#8221; configuration of a celery worker&lt;/a&gt; (although the explanation
+doesn&amp;#8217;t change &lt;em&gt;too&lt;/em&gt; much if you&amp;#8217;re using gevent, eventlet, or&amp;nbsp;threads).&lt;/p&gt;
+&lt;/div&gt;
+&lt;blockquote class="text-center"&gt;
+&lt;a class="reference external image-reference" href="https://patrick.cloke.us/images/celery-architecture/celery-messages.png"&gt;&lt;img alt="Celery components" src="https://patrick.cloke.us/images/celery-architecture/celery-messages.png" style="width: 50%;" /&gt;&lt;/a&gt;
+&lt;p&gt;???&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;table class="docutils footnote" frame="void" id="id3" rules="none"&gt;
+&lt;colgroup&gt;&lt;col class="label" /&gt;&lt;col /&gt;&lt;/colgroup&gt;
+&lt;tbody valign="top"&gt;
+&lt;tr&gt;&lt;td class="label"&gt;&lt;a class="fn-backref" href="#id1"&gt;[1]&lt;/a&gt;&lt;/td&gt;&lt;td&gt;Part of this started out as an &lt;a class="reference external" href="https://github.com/clokep/celery-batches/issues/69#issuecomment-1181855643"&gt;explanation of how celery-batches works&lt;/a&gt;.&lt;/td&gt;&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;table class="docutils footnote" frame="void" id="id4" rules="none"&gt;
+&lt;colgroup&gt;&lt;col class="label" /&gt;&lt;col /&gt;&lt;/colgroup&gt;
+&lt;tbody valign="top"&gt;
+&lt;tr&gt;&lt;td class="label"&gt;&lt;a class="fn-backref" href="#id2"&gt;[2]&lt;/a&gt;&lt;/td&gt;&lt;td&gt;There&amp;#8217;s a bunch of ways to do this, &lt;tt class="docutils literal"&gt;apply_async&lt;/tt&gt; and &lt;tt class="docutils literal"&gt;delay&lt;/tt&gt; are the
+most common, but don&amp;#8217;t impact the contents of this article.&lt;/td&gt;&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;/div&gt;
+</content><category term="articles"></category><category term="celery"></category></entry><entry><title>celery-batches 0.5 released!</title><link href="https://patrick.cloke.us/posts/2021/05/24/celery-batches-0.5-released/" rel="alternate"></link><published>2021-05-24T16:56:00-04:00</published><updated>2021-05-24T16:56:00-04:00</updated><author><name>Patrick Cloke</name></author><id>tag:patrick.cloke.us,2021-05-24:/posts/2021/05/24/celery-batches-0.5-released/</id><summary type="html">&lt;p&gt;A &lt;a class="reference external" href="https://pypi.org/project/celery-batches/0.5/"&gt;new version (v0.5)&lt;/a&gt; of &lt;a class="reference external" href="https://github.com/clokep/celery-batches/"&gt;celery-batches&lt;/a&gt; is available which adds support for
 Celery 5.1 and fixes storing of results when using the &lt;a class="reference external" href="https://docs.celeryproject.org/en/v5.1.0/userguide/tasks.html#rpc-result-backend-rabbitmq-qpid"&gt;&lt;span class="caps"&gt;RPC&lt;/span&gt; result backend&lt;/a&gt;.&lt;/p&gt;
 &lt;p&gt;As &lt;a class="reference external" href="https://patrick.cloke.us/posts/2019/10/04/celery-amqp-backends/"&gt;explored previously&lt;/a&gt;, the &lt;span class="caps"&gt;RPC&lt;/span&gt; result backend works by having a results queue
 per client, unfortunately celery-batches was attempting to store the results …&lt;/p&gt;</summary><content type="html">&lt;p&gt;A &lt;a class="reference external" href="https://pypi.org/project/celery-batches/0.5/"&gt;new version (v0.5)&lt;/a&gt; of &lt;a class="reference external" href="https://github.com/clokep/celery-batches/"&gt;celery-batches&lt;/a&gt; is available which adds support for
@@ -160,7 +281,7 @@ execute as you&amp;#8217;d&amp;nbsp;expect:&lt;/p&gt;
 &lt;p&gt;Another piece of configuration that matters (which surprised me and had a
 performance impact for us &lt;a class="footnote-reference" href="#id7" id="id3"&gt;[3]&lt;/a&gt;) is whether to ignore a task result or not.
 Unexpectedly, Celery will attempt to connect to the results backend &lt;em&gt;on task call&lt;/em&gt;.
-I assumed that the results backend would never be contaced since we never
+I assumed that the results backend would never be contacted since we never
 attempted to &lt;strong&gt;retrieve&lt;/strong&gt; a result! This turned out to be&amp;nbsp;untrue.&lt;/p&gt;
 &lt;p&gt;Once identified, The fix was straightforward! We ensured that every task which
 had &lt;tt class="docutils literal"&gt;ignore_result=True&lt;/tt&gt; on task declaration also had &lt;tt class="docutils literal"&gt;ignore_result=True&lt;/tt&gt;
