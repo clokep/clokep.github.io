@@ -2,7 +2,7 @@ Matrix Push Rules & Notifications
 #################################
 :date: 2023-05-08 14:56
 :author: Patrick Cloke
-:tags: matrix
+:tags: matrix, notes
 
 In a previous post about `read receipts & notifications in Matrix`_ I briefly
 mentioned that push rules generate notifications, but with little detail. After
