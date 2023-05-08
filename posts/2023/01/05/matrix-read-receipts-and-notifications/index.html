@@ -147,16 +147,12 @@
         <p>I recently wrapped up a project on improving notifications in threads for Matrix.
 This is adapted from my <a href="https://hackmd.io/bbucQKOLTv66N4B_wjDLFQ">research notes</a>
 to understand the status quo before adapting the Matrix protocol for threads
-(in <a href="https://github.com/matrix-org/matrix-spec-proposals/pull/3771"><span class="caps">MSC3771</span></a> and
-<a href="https://github.com/matrix-org/matrix-spec-proposals/pull/3773"><span class="caps">MSC3773</span></a>).
-Hopefully others find the information&nbsp;useful!</p>
+(in <a href="https://github.com/matrix-org/matrix-spec-proposals/pull/3771"><span class="caps">MSC3771</span></a> and <a href="https://github.com/matrix-org/matrix-spec-proposals/pull/3773"><span class="caps">MSC3773</span></a>). Hopefully others find the information&nbsp;useful!</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>These notes are true as of the v1.3 of the Matrix spec and also cover some
 Matrix spec changes which may or may not have been merged since. It is known
-to be out of date with the changes from <a href="https://github.com/matrix-org/matrix-spec-proposals/pull/2285"><span class="caps">MSC2285</span></a>,
-<a href="https://github.com/matrix-org/matrix-spec-proposals/pull/3771"><span class="caps">MSC3771</span></a>, and
-<a href="https://github.com/matrix-org/matrix-spec-proposals/pull/3773"><span class="caps">MSC3773</span></a>.</p>
+to be out of date with the changes from <a href="https://github.com/matrix-org/matrix-spec-proposals/pull/2285"><span class="caps">MSC2285</span></a>, <a href="https://github.com/matrix-org/matrix-spec-proposals/pull/3771"><span class="caps">MSC3771</span></a>, and <a href="https://github.com/matrix-org/matrix-spec-proposals/pull/3773"><span class="caps">MSC3773</span></a>.</p>
 </div>
 <hr>
 <h2>Receipts</h2>
@@ -265,9 +261,8 @@ action must be a <code>notify</code> action, thus <code>highlight_count &lt;= no
 <p>A new field is added under the <code>unread_notifications</code> field (<code>unread_count</code>) which
 is the total number of events matching particular criteria since the user&#8217;s last
 read&nbsp;receipt.</p>
-<p>This replaces <a href="https://github.com/matrix-org/matrix-spec-proposals/pull/2625"><span class="caps">MSC2625</span></a>,
-which adds a new push rule action (<code>mark_unread</code>) to perform the same task. In this
-rendition, <code>notify</code> implies <code>mark_unread</code> and thus
+<p>This replaces <a href="https://github.com/matrix-org/matrix-spec-proposals/pull/2625"><span class="caps">MSC2625</span></a>, which adds a new push rule action (<code>mark_unread</code>) to
+perform the same task. In this rendition, <code>notify</code> implies <code>mark_unread</code> and thus
 <code>highlight_count &lt;= notification_count &lt;= unread_count</code>.</p>
 <h2><a href="https://spec.matrix.org/v1.2/push-gateway-api/#post_matrixpushv1notify">Push&nbsp;notifications</a></h2>
 <p>Push notifications receive either the number of unread messages (across all rooms)

@@ -1,5 +1,308 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>Patrick Cloke - matrix</title><link href="https://patrick.cloke.us/" rel="alternate"></link><link href="https://patrick.cloke.us/feeds/tag/matrix.atom.xml" rel="self"></link><id>https://patrick.cloke.us/</id><updated>2023-01-12T15:24:00-05:00</updated><entry><title>Researching for a Matrix Spec Change</title><link href="https://patrick.cloke.us/posts/2023/01/12/researching-for-a-matrix-spec-change/" rel="alternate"></link><published>2023-01-12T15:24:00-05:00</published><updated>2023-01-12T15:24:00-05:00</updated><author><name>Patrick Cloke</name></author><id>tag:patrick.cloke.us,2023-01-12:/posts/2023/01/12/researching-for-a-matrix-spec-change/</id><summary type="html">&lt;p&gt;The &lt;a class="reference external" href="https://spec.matrix.org/"&gt;Matrix protocol&lt;/a&gt; is modified via &lt;a class="reference external" href="https://spec.matrix.org/proposals/"&gt;Matrix Spec Changes&lt;/a&gt; (frequently abbreviated
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Patrick Cloke - matrix</title><link href="https://patrick.cloke.us/" rel="alternate"></link><link href="https://patrick.cloke.us/feeds/tag/matrix.atom.xml" rel="self"></link><id>https://patrick.cloke.us/</id><updated>2023-05-08T14:56:00-04:00</updated><entry><title>Matrix Push Rules &amp; Notifications</title><link href="https://patrick.cloke.us/posts/2023/05/08/matrix-push-rules-notifications/" rel="alternate"></link><published>2023-05-08T14:56:00-04:00</published><updated>2023-05-08T14:56:00-04:00</updated><author><name>Patrick Cloke</name></author><id>tag:patrick.cloke.us,2023-05-08:/posts/2023/05/08/matrix-push-rules-notifications/</id><summary type="html">&lt;p&gt;In a previous post about &lt;a class="reference external" href="https://patrick.cloke.us/posts/2023/01/05/matrix-read-receipts-and-notifications/"&gt;read receipts &lt;span class="amp"&gt;&amp;amp;&lt;/span&gt; notifications in Matrix&lt;/a&gt; I briefly
+mentioned that push rules generate notifications, but with little detail. After
+completing a rather large project to improve notifications in Matrix I want to
+fill in some of those blanks. &lt;a class="footnote-reference" href="#id9" id="id1"&gt;[1]&lt;/a&gt;&lt;/p&gt;
+&lt;!-- comment:
+
+Adapted from https://docs.google.com/presentation/d/1odrbD5wMwGz_qUtG5U1pFb7p3sFwLApDaYtyHpdI-Oo/edit --&gt;
+
+&lt;div class="admonition note"&gt;
+&lt;p class="first admonition-title"&gt;Note&lt;/p&gt;
+&lt;p class="last"&gt;These notes are true as of …&lt;/p&gt;&lt;/div&gt;</summary><content type="html">&lt;p&gt;In a previous post about &lt;a class="reference external" href="https://patrick.cloke.us/posts/2023/01/05/matrix-read-receipts-and-notifications/"&gt;read receipts &lt;span class="amp"&gt;&amp;amp;&lt;/span&gt; notifications in Matrix&lt;/a&gt; I briefly
+mentioned that push rules generate notifications, but with little detail. After
+completing a rather large project to improve notifications in Matrix I want to
+fill in some of those blanks. &lt;a class="footnote-reference" href="#id9" id="id1"&gt;[1]&lt;/a&gt;&lt;/p&gt;
+&lt;!-- comment:
+
+Adapted from https://docs.google.com/presentation/d/1odrbD5wMwGz_qUtG5U1pFb7p3sFwLApDaYtyHpdI-Oo/edit --&gt;
+
+&lt;div class="admonition note"&gt;
+&lt;p class="first admonition-title"&gt;Note&lt;/p&gt;
+&lt;p class="last"&gt;These notes are true as of the v1.6 of the Matrix spec and also cover some
+Matrix spec changes which may or may not have been merged since.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="section" id="push-notifications-in-matrix"&gt;
+&lt;h2&gt;&lt;a class="toc-backref" href="#id17"&gt;Push notifications in Matrix&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;Matrix includes a &lt;a class="reference external" href="https://spec.matrix.org/v1.6/client-server-api/#push-notifications"&gt;push notifications module&lt;/a&gt; which defines when Matrix events
+are considered an unread &lt;strong&gt;notification&lt;/strong&gt; or &lt;strong&gt;highlight notification&lt;/strong&gt; &lt;a class="footnote-reference" href="#id10" id="id2"&gt;[2]&lt;/a&gt;
+and &lt;em&gt;how&lt;/em&gt; those events are &lt;strong&gt;sent to third-party push notification services&lt;/strong&gt;.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Push rules&lt;/strong&gt; are a set of &lt;em&gt;ordered&lt;/em&gt; rules which clients upload to the homeserver.
+These are shared by all device and are evaluated per event by the homeserver (and
+also by clients). &lt;a class="reference external" href="https://spec.matrix.org/v1.6/client-server-api/#predefined-rules"&gt;Default push rules&lt;/a&gt; are defined in the Matrix spec. Push rules
+power the unread (and highlight) counts for each room, push notifications, and the
+notifications &lt;span class="caps"&gt;API&lt;/span&gt;.&lt;/p&gt;
+&lt;p&gt;Each rule defines &lt;strong&gt;conditions&lt;/strong&gt; which must be met for the rule to match and
+&lt;strong&gt;actions&lt;/strong&gt; to take if the rule matches.&lt;/p&gt;
+&lt;p&gt;Processing of push rules occur until a rule matches or all rules have been evaluated.&lt;/p&gt;
+&lt;div class="section" id="getting-notifications"&gt;
+&lt;h3&gt;&lt;a class="toc-backref" href="#id18"&gt;Getting notifications&lt;/a&gt;&lt;/h3&gt;
+&lt;p&gt;As some background, clients receive notifications in one of two ways, via polling
+&lt;tt class="docutils literal"&gt;/sync&lt;/tt&gt; and/or via push notifications.&lt;/p&gt;
+&lt;p&gt;Web-based clients often receive events via polling:&lt;/p&gt;
+&lt;blockquote class="text-center"&gt;
+&lt;a class="reference external image-reference" href="https://patrick.cloke.us/images/matrix-push-rules-and-notifications/web-push-flow.png"&gt;&lt;img alt="Notification flow for web applications." src="/thumbnails/matrix-push-rules-and-notifications/web-push-flow_medium.png"/&gt;&lt;/a&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;The &lt;a class="reference external" href="https://spec.matrix.org/v1.6/client-server-api/#_matrixclientv3sync_unread-notification-counts"&gt;sync response&lt;/a&gt; (both initial and incremental) include the count of unread
+notifications and unread highlight notifications per room.&lt;/p&gt;
+&lt;p&gt;Mobile applications often &lt;a class="reference external" href="https://spec.matrix.org/v1.6/push-gateway-api/#overview"&gt;receive events via push&lt;/a&gt; &lt;a class="footnote-reference" href="#id11" id="id3"&gt;[3]&lt;/a&gt;:&lt;/p&gt;
+&lt;blockquote class="text-center"&gt;
+&lt;a class="reference external image-reference" href="https://patrick.cloke.us/images/matrix-push-rules-and-notifications/mobile-push-flow.png"&gt;&lt;img alt="Notification flow for mobile applications." src="/thumbnails/matrix-push-rules-and-notifications/mobile-push-flow_medium.png"/&gt;&lt;/a&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;Push notifications include the event information (or just the event &lt;span class="caps"&gt;ID&lt;/span&gt;) and
+whether the event was a highlight notification. (The event being pushed implies
+it increased the notification count.)&lt;/p&gt;
+&lt;div class="admonition note"&gt;
+&lt;p class="first admonition-title"&gt;Note&lt;/p&gt;
+&lt;p class="last"&gt;The deployment of the push gateway must be paired with the application (the
+push keys must be paired). I.e. if you make your own application (or even
+your own build of Element iOS / Android) you cannot re-use the deployment at
+matrix.org and must have your own deployment.&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="section" id="getting-events-which-generated-notifications"&gt;
+&lt;h3&gt;&lt;a class="toc-backref" href="#id19"&gt;Getting events which generated notifications&lt;/a&gt;&lt;/h3&gt;
+&lt;p&gt;There’s &lt;a class="reference external" href="https://spec.matrix.org/v1.6/client-server-api/#listing-notifications"&gt;an &lt;span class="caps"&gt;API&lt;/span&gt; to retrieve a list of events&lt;/a&gt; which the user has been notified
+about. This powers the “notification panel” on Element Web and is meant to help
+users catch-up on missed notifications.&lt;/p&gt;
+&lt;p&gt;It is fairly underspecified and the Synapse implementation has limitations:&lt;/p&gt;
+&lt;ul class="simple"&gt;
+&lt;li&gt;Highlight notifications are only kept for 30 days&lt;/li&gt;
+&lt;li&gt;Non-highlight notifications are only kept for 72 hours&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Additionally it &lt;a class="reference external" href="https://github.com/vector-im/element-web/issues/6874"&gt;works poorly for encrypted rooms&lt;/a&gt;.&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="section" id="push-rules-background"&gt;
+&lt;h2&gt;&lt;a class="toc-backref" href="#id20"&gt;Push rules background&lt;/a&gt;&lt;/h2&gt;
+&lt;div class="section" id="getting-the-configured-push-rules"&gt;
+&lt;h3&gt;&lt;a class="toc-backref" href="#id21"&gt;Getting the configured push rules?&lt;/a&gt;&lt;/h3&gt;
+&lt;p&gt;There’s a &lt;a class="reference external" href="https://spec.matrix.org/v1.6/client-server-api/#push-rules-api"&gt;set of APIs to fetch or modify push rules&lt;/a&gt;, they let you:&lt;/p&gt;
+&lt;ul class="simple"&gt;
+&lt;li&gt;Fetch all push rules&lt;/li&gt;
+&lt;li&gt;Create or delete an individual push rule&lt;/li&gt;
+&lt;li&gt;Fetch or update an individual push rule’s actions&lt;/li&gt;
+&lt;li&gt;Fetch or enable/disable an individual push rule&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;An initial sync includes all of a user’s push rules under the user’s account data.&lt;/p&gt;
+&lt;p&gt;Any changes to push rules are included in incremental syncs. &lt;em&gt;Except&lt;/em&gt; for newly
+added rules to the specification (this is likely a homeserver bug).&lt;/p&gt;
+&lt;p&gt;Note that you cannot use &lt;a class="reference external" href="https://spec.matrix.org/v1.6/client-server-api/#client-config"&gt;the account data APIs&lt;/a&gt; to configure push rules. &lt;a class="footnote-reference" href="#id12" id="id4"&gt;[4]&lt;/a&gt;&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="section" id="what-makes-up-a-push-rule"&gt;
+&lt;h3&gt;&lt;a class="toc-backref" href="#id22"&gt;What makes up a push rule?&lt;/a&gt;&lt;/h3&gt;
+&lt;p&gt;A push rule is a &lt;a class="reference external" href="https://spec.matrix.org/v1.6/client-server-api/#_matrixclientv3pushrules_pushrule"&gt;&lt;span class="caps"&gt;JSON&lt;/span&gt; object with the following fields&lt;/a&gt;:&lt;/p&gt;
+&lt;ul class="simple"&gt;
+&lt;li&gt;&lt;tt class="docutils literal"&gt;rule_id&lt;/tt&gt;: Unique (per-user) &lt;span class="caps"&gt;ID&lt;/span&gt; for the rule.&lt;ul&gt;
+&lt;li&gt;The &lt;tt class="docutils literal"&gt;rule_id&lt;/tt&gt; for default rules have a special form (they start with a
+dot: &lt;tt class="docutils literal"&gt;.&lt;/tt&gt;).&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;tt class="docutils literal"&gt;default&lt;/tt&gt;: Whether the rule is part of the predefined set of rules.&lt;/li&gt;
+&lt;li&gt;&lt;tt class="docutils literal"&gt;enabled&lt;/tt&gt;: Whether the rule is enabled.&lt;/li&gt;
+&lt;li&gt;&lt;tt class="docutils literal"&gt;conditions&lt;/tt&gt;: an array of 0 or more conditions to match.&lt;/li&gt;
+&lt;li&gt;&lt;tt class="docutils literal"&gt;actions&lt;/tt&gt;: 0 or more actions to take if the rule matches.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;All conditions must match for a push rule to match. If there are no conditions,
+then the push rule always matches. Possible conditions include:&lt;/p&gt;
+&lt;ul class="simple"&gt;
+&lt;li&gt;Check event properties against patterns or exact values&lt;ul&gt;
+&lt;li&gt;Strings can be compared via globbing or exact values.&lt;/li&gt;
+&lt;li&gt;The globbing behavior changes if you’re checking the &lt;tt class="docutils literal"&gt;body&lt;/tt&gt; property or not.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;Check against the number of room members&lt;ul&gt;
+&lt;li&gt;Used to (incorrectly) check if a room is a direct message.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;Check if a user can &lt;a class="reference external" href="https://spec.matrix.org/v1.6/client-server-api/#mroompower_levels"&gt;perform an action&lt;/a&gt; via power rules&lt;ul&gt;
+&lt;li&gt;The only defined option is whether a user can send @room.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Push rule actions define &lt;a class="reference external" href="https://spec.matrix.org/v1.6/client-server-api/#actions"&gt;what to do once a push rule&lt;/a&gt; matches an event.&lt;/p&gt;
+&lt;ul class="simple"&gt;
+&lt;li&gt;&lt;tt class="docutils literal"&gt;notify&lt;/tt&gt;: increment the notification count and send a push notification. Uses
+“tweaks” to optionally:&lt;ul&gt;
+&lt;li&gt;Play a sound.&lt;/li&gt;
+&lt;li&gt;Create a highlight notification, this causes the highlight count to be
+incremented (in addition to the notification count).&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;Can be an empty list to do nothing.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;There are other undefined or no-op actions (&lt;tt class="docutils literal"&gt;dont_notify&lt;/tt&gt;, &lt;tt class="docutils literal"&gt;coalesce&lt;/tt&gt;) which will be
+removed in the next version of the spec. &lt;a class="footnote-reference" href="#id13" id="id5"&gt;[5]&lt;/a&gt;&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="section" id="types-of-push-rules"&gt;
+&lt;h3&gt;&lt;a class="toc-backref" href="#id23"&gt;Types of push rules&lt;/a&gt;&lt;/h3&gt;
+&lt;p&gt;Push rules have a type associated with them, these are executed in order:&lt;/p&gt;
+&lt;ul class="simple"&gt;
+&lt;li&gt;Override: generic high priority rules&lt;/li&gt;
+&lt;li&gt;Content-specific: applies to messages which have a &lt;tt class="docutils literal"&gt;body&lt;/tt&gt; that matches a &lt;tt class="docutils literal"&gt;pattern&lt;/tt&gt;&lt;/li&gt;
+&lt;li&gt;Room-specific: applies to messages of a room&lt;/li&gt;
+&lt;li&gt;Sender-specific: applies to messages from a sender&lt;/li&gt;
+&lt;li&gt;Underride: generic low priority rules&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;The previously discussed shape of push rules is not the full story! There are
+special cases which do not accept conditions, but can be mapped to them.&lt;/p&gt;
+&lt;ul class="simple"&gt;
+&lt;li&gt;Content-specific: has a &lt;tt class="docutils literal"&gt;pattern&lt;/tt&gt; field which maps to a pattern against the
+&lt;tt class="docutils literal"&gt;body&lt;/tt&gt; property.&lt;/li&gt;
+&lt;li&gt;Room-specific: the &lt;tt class="docutils literal"&gt;rule_id&lt;/tt&gt; is re-used to match against the room &lt;span class="caps"&gt;ID&lt;/span&gt;.&lt;/li&gt;
+&lt;li&gt;Sender-specific: the &lt;tt class="docutils literal"&gt;rule_id&lt;/tt&gt; is re-used to match against the event &lt;tt class="docutils literal"&gt;sender&lt;/tt&gt;.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="section" id="why-do-clients-care-doesnt-the-homeserver-do-this-all-for-me"&gt;
+&lt;h2&gt;&lt;a class="toc-backref" href="#id24"&gt;Why do clients care? Doesn’t the homeserver do this all for me?&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;Encryption ruins everything! Some of the push rules require the decrypted event
+content to be properly processed. The enable this, the default rules declare
+&lt;strong&gt;all encrypted events as notifications&lt;/strong&gt;. Clients are expected to
+&lt;strong&gt;re-run push rules on the decrypted content&lt;/strong&gt;. &lt;a class="footnote-reference" href="#id14" id="id6"&gt;[6]&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;This can result in one of the following: &lt;a class="footnote-reference" href="#id15" id="id7"&gt;[7]&lt;/a&gt;&lt;/p&gt;
+&lt;ul class="simple"&gt;
+&lt;li&gt;Increment the highlight count (the decrypted event results in a highlight)&lt;/li&gt;
+&lt;li&gt;No change (the decrypted event results in a notification)&lt;/li&gt;
+&lt;li&gt;Decrement notification counts (the decrypted event results in no notification)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Due to gappy syncs clients frequently can only make a best estimate of the true
+unread / highlight count of events in encrypted rooms.&lt;/p&gt;
+&lt;div class="admonition warning"&gt;
+&lt;p class="first admonition-title"&gt;Warning&lt;/p&gt;
+&lt;p class="last"&gt;Element iOS / Android get encrypted events pushed to them, but do not properly
+implement mentions &lt;span class="amp"&gt;&amp;amp;&lt;/span&gt; keywords.&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="section" id="what-happens-by-default"&gt;
+&lt;h2&gt;&lt;a class="toc-backref" href="#id25"&gt;What happens by default?&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;The &lt;a class="reference external" href="https://spec.matrix.org/v1.6/client-server-api/#predefined-rules"&gt;default rules are in the Matrix spec&lt;/a&gt; and include:&lt;/p&gt;
+&lt;ul class="simple"&gt;
+&lt;li&gt;Highlight:&lt;ul&gt;
+&lt;li&gt;Tombstones&lt;/li&gt;
+&lt;li&gt;Room &lt;span class="amp"&gt;&amp;amp;&lt;/span&gt; user mentions&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;Do nothing:&lt;ul&gt;
+&lt;li&gt;Notice messages&lt;/li&gt;
+&lt;li&gt;Other room member events&lt;/li&gt;
+&lt;li&gt;Server &lt;span class="caps"&gt;ACL&lt;/span&gt; updates&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;Notification:&lt;ul&gt;
+&lt;li&gt;Invites to me&lt;/li&gt;
+&lt;li&gt;Messages and encrypted events in non-DMs&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;Notification with sound:&lt;ul&gt;
+&lt;li&gt;Incoming calls&lt;/li&gt;
+&lt;li&gt;Messages and encrypted events in DMs&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Default rules can be disabled or have their actions modified on a per-user basis.
+Some of the above features are handled by multiple push rules.&lt;/p&gt;
+&lt;div class="section" id="other-standard-rules"&gt;
+&lt;h3&gt;&lt;a class="toc-backref" href="#id26"&gt;Other “standard” rules&lt;/a&gt;&lt;/h3&gt;
+&lt;p&gt;Element creates custom push rules based on a known form. &lt;a class="footnote-reference" href="#id16" id="id8"&gt;[8]&lt;/a&gt;&lt;/p&gt;
+&lt;ul class="simple"&gt;
+&lt;li&gt;Keywords (implemented as a content-specific rule with a pattern)&lt;/li&gt;
+&lt;li&gt;Per-room overrides:&lt;ul&gt;
+&lt;li&gt;All messages (implemented as a room-specific rule with a notify action)&lt;/li&gt;
+&lt;li&gt;Mentions &lt;span class="amp"&gt;&amp;amp;&lt;/span&gt; keywords (implemented as a room-specific rule with no actions)&lt;/li&gt;
+&lt;li&gt;Mute (implemented as an override rule to match the room &lt;span class="caps"&gt;ID&lt;/span&gt; with no actions)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Matrix also allows defining arbitrary rules (e.g. to change behavior for particular
+rooms, senders, message types, etc.)&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="section" id="what-about-unread-rooms"&gt;
+&lt;h3&gt;&lt;a class="toc-backref" href="#id27"&gt;What about unread rooms?&lt;/a&gt;&lt;/h3&gt;
+&lt;p&gt;The unread (“bold”) rooms logic in Element Web is completely custom and outside
+of the Matrix specification.&lt;/p&gt;
+&lt;ul class="simple"&gt;
+&lt;li&gt;Will the &lt;a class="reference external" href="https://github.com/matrix-org/matrix-react-sdk/blob/d33e416fc75369d3fec1c1f27ef9d5b2ea0b3703/src/shouldHideEvent.ts#L58-L82"&gt;event be shown&lt;/a&gt; ?&lt;/li&gt;
+&lt;li&gt;Is it &lt;a class="reference external" href="https://github.com/matrix-org/matrix-react-sdk/blob/d33e416fc75369d3fec1c1f27ef9d5b2ea0b3703/src/Unread.ts#L41-L48"&gt;not an ignored event type&lt;/a&gt; ?&lt;/li&gt;
+&lt;li&gt;Is it &lt;a class="reference external" href="https://github.com/matrix-org/matrix-react-sdk/blob/d33e416fc75369d3fec1c1f27ef9d5b2ea0b3703/src/Unread.ts#L52"&gt;not redacted&lt;/a&gt; ?&lt;/li&gt;
+&lt;li&gt;Does a &lt;a class="reference external" href="https://github.com/matrix-org/matrix-react-sdk/blob/d33e416fc75369d3fec1c1f27ef9d5b2ea0b3703/src/Unread.ts#L53"&gt;renderer exist for the event&lt;/a&gt; ?&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Note that if you enable hidden events (or tweak other options to show events)
+then the behavior changes!&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="section" id="putting-it-altogether"&gt;
+&lt;h2&gt;&lt;a class="toc-backref" href="#id28"&gt;Putting it altogether…&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;…it gets complicated trying to figure out whether a message will generate a
+notification or not.&lt;/p&gt;
+&lt;blockquote class="text-center"&gt;
+&lt;a class="reference external image-reference" href="https://patrick.cloke.us/images/matrix-push-rules-and-notifications/default-push-rules.png"&gt;&lt;img alt="Flow chart of the default Matrix push rules when using Element." src="/thumbnails/matrix-push-rules-and-notifications/default-push-rules_medium.png"/&gt;&lt;/a&gt;
+&lt;p&gt;The default Matrix push rules (also showing the options available within Element).&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;table class="docutils footnote" frame="void" id="id9" rules="none"&gt;
+&lt;colgroup&gt;&lt;col class="label"/&gt;&lt;col/&gt;&lt;/colgroup&gt;
+&lt;tbody valign="top"&gt;
+&lt;tr&gt;&lt;td class="label"&gt;&lt;a class="fn-backref" href="#id1"&gt;[1]&lt;/a&gt;&lt;/td&gt;&lt;td&gt;Improving unintentional mentions (&lt;a class="reference external" href="https://github.com/matrix-org/matrix-spec-proposals/pull/3952"&gt;&lt;span class="caps"&gt;MSC3952&lt;/span&gt;&lt;/a&gt;) is the main feature we were
+working on, but this was powered by …&lt;/td&gt;&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;table class="docutils footnote" frame="void" id="id10" rules="none"&gt;
+&lt;colgroup&gt;&lt;col class="label"/&gt;&lt;col/&gt;&lt;/colgroup&gt;
+&lt;tbody valign="top"&gt;
+&lt;tr&gt;&lt;td class="label"&gt;&lt;a class="fn-backref" href="#id2"&gt;[2]&lt;/a&gt;&lt;/td&gt;&lt;td&gt;&lt;p class="first"&gt;Notification count (the grey badge with count in Element Web) is the number
+of unread messages in a room. Highlight count (the red badge with count in
+Element Web) is the number of unread mentions in a room.&lt;/p&gt;
+&lt;div class="admonition warning"&gt;
+&lt;p class="first admonition-title"&gt;Warning&lt;/p&gt;
+&lt;p class="last"&gt;The unread (“bold”) rooms feature in Element Web, which represents a room
+with unread messages (but no notification count) is not powered by push
+rules (and is not specced).&lt;/p&gt;
+&lt;/div&gt;
+&lt;p class="last"&gt;See the &lt;a class="reference external" href="https://github.com/matrix-org/matrix-react-sdk/blob/develop/docs/room-list-store.md#list-ordering-algorithm-importance"&gt;Element Web docs on the room list&lt;/a&gt;.&lt;/p&gt;
+&lt;/td&gt;&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;table class="docutils footnote" frame="void" id="id11" rules="none"&gt;
+&lt;colgroup&gt;&lt;col class="label"/&gt;&lt;col/&gt;&lt;/colgroup&gt;
+&lt;tbody valign="top"&gt;
+&lt;tr&gt;&lt;td class="label"&gt;&lt;a class="fn-backref" href="#id3"&gt;[3]&lt;/a&gt;&lt;/td&gt;&lt;td&gt;This post generally defines “push notifications” as a notification which
+is sent via a push provider to an application. Push providers include Apple,
+Google, Microsoft, or Mozilla.&lt;/td&gt;&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;table class="docutils footnote" frame="void" id="id12" rules="none"&gt;
+&lt;colgroup&gt;&lt;col class="label"/&gt;&lt;col/&gt;&lt;/colgroup&gt;
+&lt;tbody valign="top"&gt;
+&lt;tr&gt;&lt;td class="label"&gt;&lt;a class="fn-backref" href="#id4"&gt;[4]&lt;/a&gt;&lt;/td&gt;&lt;td&gt;&lt;a class="reference external" href="https://github.com/matrix-org/matrix-spec-proposals/pull/4010"&gt;&lt;span class="caps"&gt;MSC4010&lt;/span&gt;&lt;/a&gt; aims to make this explicit.&lt;/td&gt;&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;table class="docutils footnote" frame="void" id="id13" rules="none"&gt;
+&lt;colgroup&gt;&lt;col class="label"/&gt;&lt;col/&gt;&lt;/colgroup&gt;
+&lt;tbody valign="top"&gt;
+&lt;tr&gt;&lt;td class="label"&gt;&lt;a class="fn-backref" href="#id5"&gt;[5]&lt;/a&gt;&lt;/td&gt;&lt;td&gt;See &lt;a class="reference external" href="https://github.com/matrix-org/matrix-spec-proposals/pull/3987"&gt;&lt;span class="caps"&gt;MSC3987&lt;/span&gt;&lt;/a&gt;.&lt;/td&gt;&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;table class="docutils footnote" frame="void" id="id14" rules="none"&gt;
+&lt;colgroup&gt;&lt;col class="label"/&gt;&lt;col/&gt;&lt;/colgroup&gt;
+&lt;tbody valign="top"&gt;
+&lt;tr&gt;&lt;td class="label"&gt;&lt;a class="fn-backref" href="#id6"&gt;[6]&lt;/a&gt;&lt;/td&gt;&lt;td&gt;It was not clear how clients should handle encrypted events &lt;a class="reference external" href="https://github.com/matrix-org/matrix-spec/pull/1461"&gt;until recently&lt;/a&gt;&lt;/td&gt;&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;table class="docutils footnote" frame="void" id="id15" rules="none"&gt;
+&lt;colgroup&gt;&lt;col class="label"/&gt;&lt;col/&gt;&lt;/colgroup&gt;
+&lt;tbody valign="top"&gt;
+&lt;tr&gt;&lt;td class="label"&gt;&lt;a class="fn-backref" href="#id7"&gt;[7]&lt;/a&gt;&lt;/td&gt;&lt;td&gt;Adapted from a &lt;a class="reference external" href="https://gist.github.com/Half-Shot/f9501916363894761a1659250aa25181"&gt;Gist from Half-Shot&lt;/a&gt;.&lt;/td&gt;&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;table class="docutils footnote" frame="void" id="id16" rules="none"&gt;
+&lt;colgroup&gt;&lt;col class="label"/&gt;&lt;col/&gt;&lt;/colgroup&gt;
+&lt;tbody valign="top"&gt;
+&lt;tr&gt;&lt;td class="label"&gt;&lt;a class="fn-backref" href="#id8"&gt;[8]&lt;/a&gt;&lt;/td&gt;&lt;td&gt;These don’t seem to be specced, I’m unsure if other clients create similar
+rules or understand these rules.&lt;/td&gt;&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;/div&gt;
+</content><category term="articles"></category><category term="matrix"></category></entry><entry><title>Researching for a Matrix Spec Change</title><link href="https://patrick.cloke.us/posts/2023/01/12/researching-for-a-matrix-spec-change/" rel="alternate"></link><published>2023-01-12T15:24:00-05:00</published><updated>2023-01-12T15:24:00-05:00</updated><author><name>Patrick Cloke</name></author><id>tag:patrick.cloke.us,2023-01-12:/posts/2023/01/12/researching-for-a-matrix-spec-change/</id><summary type="html">&lt;p&gt;The &lt;a class="reference external" href="https://spec.matrix.org/"&gt;Matrix protocol&lt;/a&gt; is modified via &lt;a class="reference external" href="https://spec.matrix.org/proposals/"&gt;Matrix Spec Changes&lt;/a&gt; (frequently abbreviated
 to &amp;#8220;MSCs&amp;#8221;). These are short documents describing any technical changes and why they
 are worth making (see &lt;a class="reference external" href="https://github.com/matrix-org/matrix-spec-proposals/pull/2457"&gt;an example&lt;/a&gt;). I&amp;#8217;ve &lt;a class="reference external" href="https://github.com/matrix-org/matrix-spec-proposals/pulls?q=is%3Apr+author%3Aclokep+label%3Aproposal"&gt;written a bunch&lt;/a&gt; and wanted to
 document my research process. &lt;a class="footnote-reference" href="#id5" id="id1"&gt;[1]&lt;/a&gt;&lt;/p&gt;
@@ -107,24 +410,18 @@ their needs.&lt;/td&gt;&lt;/tr&gt;
 </content><category term="articles"></category><category term="matrix"></category></entry><entry><title>Matrix Read Receipts &amp; Notifications</title><link href="https://patrick.cloke.us/posts/2023/01/05/matrix-read-receipts-and-notifications/" rel="alternate"></link><published>2023-01-05T12:15:00-05:00</published><updated>2023-01-05T12:15:00-05:00</updated><author><name>Patrick Cloke</name></author><id>tag:patrick.cloke.us,2023-01-05:/posts/2023/01/05/matrix-read-receipts-and-notifications/</id><summary type="html">&lt;p&gt;I recently wrapped up a project on improving notifications in threads for Matrix.
 This is adapted from my &lt;a href="https://hackmd.io/bbucQKOLTv66N4B_wjDLFQ"&gt;research notes&lt;/a&gt;
 to understand the status quo before adapting the Matrix protocol for threads
-(in &lt;a href="https://github.com/matrix-org/matrix-spec-proposals/pull/3771"&gt;&lt;span class="caps"&gt;MSC3771&lt;/span&gt;&lt;/a&gt; and
-&lt;a href="https://github.com/matrix-org/matrix-spec-proposals/pull/3773"&gt;&lt;span class="caps"&gt;MSC3773&lt;/span&gt;&lt;/a&gt;).
-Hopefully others find the information&amp;nbsp;useful!&lt;/p&gt;
+(in &lt;a href="https://github.com/matrix-org/matrix-spec-proposals/pull/3771"&gt;&lt;span class="caps"&gt;MSC3771&lt;/span&gt;&lt;/a&gt; and &lt;a href="https://github.com/matrix-org/matrix-spec-proposals/pull/3773"&gt;&lt;span class="caps"&gt;MSC3773&lt;/span&gt;&lt;/a&gt;). Hopefully others find the information&amp;nbsp;useful!&lt;/p&gt;
 &lt;div class="admonition note"&gt;
 &lt;p class="admonition-title"&gt;Note&lt;/p&gt;
 &lt;p&gt;These notes are true as of the …&lt;/p&gt;&lt;/div&gt;</summary><content type="html">&lt;p&gt;I recently wrapped up a project on improving notifications in threads for Matrix.
 This is adapted from my &lt;a href="https://hackmd.io/bbucQKOLTv66N4B_wjDLFQ"&gt;research notes&lt;/a&gt;
 to understand the status quo before adapting the Matrix protocol for threads
-(in &lt;a href="https://github.com/matrix-org/matrix-spec-proposals/pull/3771"&gt;&lt;span class="caps"&gt;MSC3771&lt;/span&gt;&lt;/a&gt; and
-&lt;a href="https://github.com/matrix-org/matrix-spec-proposals/pull/3773"&gt;&lt;span class="caps"&gt;MSC3773&lt;/span&gt;&lt;/a&gt;).
-Hopefully others find the information&amp;nbsp;useful!&lt;/p&gt;
+(in &lt;a href="https://github.com/matrix-org/matrix-spec-proposals/pull/3771"&gt;&lt;span class="caps"&gt;MSC3771&lt;/span&gt;&lt;/a&gt; and &lt;a href="https://github.com/matrix-org/matrix-spec-proposals/pull/3773"&gt;&lt;span class="caps"&gt;MSC3773&lt;/span&gt;&lt;/a&gt;). Hopefully others find the information&amp;nbsp;useful!&lt;/p&gt;
 &lt;div class="admonition note"&gt;
 &lt;p class="admonition-title"&gt;Note&lt;/p&gt;
 &lt;p&gt;These notes are true as of the v1.3 of the Matrix spec and also cover some
 Matrix spec changes which may or may not have been merged since. It is known
-to be out of date with the changes from &lt;a href="https://github.com/matrix-org/matrix-spec-proposals/pull/2285"&gt;&lt;span class="caps"&gt;MSC2285&lt;/span&gt;&lt;/a&gt;,
-&lt;a href="https://github.com/matrix-org/matrix-spec-proposals/pull/3771"&gt;&lt;span class="caps"&gt;MSC3771&lt;/span&gt;&lt;/a&gt;, and
-&lt;a href="https://github.com/matrix-org/matrix-spec-proposals/pull/3773"&gt;&lt;span class="caps"&gt;MSC3773&lt;/span&gt;&lt;/a&gt;.&lt;/p&gt;
+to be out of date with the changes from &lt;a href="https://github.com/matrix-org/matrix-spec-proposals/pull/2285"&gt;&lt;span class="caps"&gt;MSC2285&lt;/span&gt;&lt;/a&gt;, &lt;a href="https://github.com/matrix-org/matrix-spec-proposals/pull/3771"&gt;&lt;span class="caps"&gt;MSC3771&lt;/span&gt;&lt;/a&gt;, and &lt;a href="https://github.com/matrix-org/matrix-spec-proposals/pull/3773"&gt;&lt;span class="caps"&gt;MSC3773&lt;/span&gt;&lt;/a&gt;.&lt;/p&gt;
 &lt;/div&gt;
 &lt;hr&gt;
 &lt;h2&gt;Receipts&lt;/h2&gt;
@@ -233,9 +530,8 @@ action must be a &lt;code&gt;notify&lt;/code&gt; action, thus &lt;code&gt;highli
 &lt;p&gt;A new field is added under the &lt;code&gt;unread_notifications&lt;/code&gt; field (&lt;code&gt;unread_count&lt;/code&gt;) which
 is the total number of events matching particular criteria since the user&amp;#8217;s last
 read&amp;nbsp;receipt.&lt;/p&gt;
-&lt;p&gt;This replaces &lt;a href="https://github.com/matrix-org/matrix-spec-proposals/pull/2625"&gt;&lt;span class="caps"&gt;MSC2625&lt;/span&gt;&lt;/a&gt;,
-which adds a new push rule action (&lt;code&gt;mark_unread&lt;/code&gt;) to perform the same task. In this
-rendition, &lt;code&gt;notify&lt;/code&gt; implies &lt;code&gt;mark_unread&lt;/code&gt; and thus
+&lt;p&gt;This replaces &lt;a href="https://github.com/matrix-org/matrix-spec-proposals/pull/2625"&gt;&lt;span class="caps"&gt;MSC2625&lt;/span&gt;&lt;/a&gt;, which adds a new push rule action (&lt;code&gt;mark_unread&lt;/code&gt;) to
+perform the same task. In this rendition, &lt;code&gt;notify&lt;/code&gt; implies &lt;code&gt;mark_unread&lt;/code&gt; and thus
 &lt;code&gt;highlight_count &amp;lt;= notification_count &amp;lt;= unread_count&lt;/code&gt;.&lt;/p&gt;
 &lt;h2&gt;&lt;a href="https://spec.matrix.org/v1.2/push-gateway-api/#post_matrixpushv1notify"&gt;Push&amp;nbsp;notifications&lt;/a&gt;&lt;/h2&gt;
 &lt;p&gt;Push notifications receive either the number of unread messages (across all rooms)

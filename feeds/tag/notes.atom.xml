@@ -2,24 +2,18 @@
 <feed xmlns="http://www.w3.org/2005/Atom"><title>Patrick Cloke - notes</title><link href="https://patrick.cloke.us/" rel="alternate"></link><link href="https://patrick.cloke.us/feeds/tag/notes.atom.xml" rel="self"></link><id>https://patrick.cloke.us/</id><updated>2023-01-05T12:15:00-05:00</updated><entry><title>Matrix Read Receipts &amp; Notifications</title><link href="https://patrick.cloke.us/posts/2023/01/05/matrix-read-receipts-and-notifications/" rel="alternate"></link><published>2023-01-05T12:15:00-05:00</published><updated>2023-01-05T12:15:00-05:00</updated><author><name>Patrick Cloke</name></author><id>tag:patrick.cloke.us,2023-01-05:/posts/2023/01/05/matrix-read-receipts-and-notifications/</id><summary type="html">&lt;p&gt;I recently wrapped up a project on improving notifications in threads for Matrix.
 This is adapted from my &lt;a href="https://hackmd.io/bbucQKOLTv66N4B_wjDLFQ"&gt;research notes&lt;/a&gt;
 to understand the status quo before adapting the Matrix protocol for threads
-(in &lt;a href="https://github.com/matrix-org/matrix-spec-proposals/pull/3771"&gt;&lt;span class="caps"&gt;MSC3771&lt;/span&gt;&lt;/a&gt; and
-&lt;a href="https://github.com/matrix-org/matrix-spec-proposals/pull/3773"&gt;&lt;span class="caps"&gt;MSC3773&lt;/span&gt;&lt;/a&gt;).
-Hopefully others find the information&amp;nbsp;useful!&lt;/p&gt;
+(in &lt;a href="https://github.com/matrix-org/matrix-spec-proposals/pull/3771"&gt;&lt;span class="caps"&gt;MSC3771&lt;/span&gt;&lt;/a&gt; and &lt;a href="https://github.com/matrix-org/matrix-spec-proposals/pull/3773"&gt;&lt;span class="caps"&gt;MSC3773&lt;/span&gt;&lt;/a&gt;). Hopefully others find the information&amp;nbsp;useful!&lt;/p&gt;
 &lt;div class="admonition note"&gt;
 &lt;p class="admonition-title"&gt;Note&lt;/p&gt;
 &lt;p&gt;These notes are true as of the …&lt;/p&gt;&lt;/div&gt;</summary><content type="html">&lt;p&gt;I recently wrapped up a project on improving notifications in threads for Matrix.
 This is adapted from my &lt;a href="https://hackmd.io/bbucQKOLTv66N4B_wjDLFQ"&gt;research notes&lt;/a&gt;
 to understand the status quo before adapting the Matrix protocol for threads
-(in &lt;a href="https://github.com/matrix-org/matrix-spec-proposals/pull/3771"&gt;&lt;span class="caps"&gt;MSC3771&lt;/span&gt;&lt;/a&gt; and
-&lt;a href="https://github.com/matrix-org/matrix-spec-proposals/pull/3773"&gt;&lt;span class="caps"&gt;MSC3773&lt;/span&gt;&lt;/a&gt;).
-Hopefully others find the information&amp;nbsp;useful!&lt;/p&gt;
+(in &lt;a href="https://github.com/matrix-org/matrix-spec-proposals/pull/3771"&gt;&lt;span class="caps"&gt;MSC3771&lt;/span&gt;&lt;/a&gt; and &lt;a href="https://github.com/matrix-org/matrix-spec-proposals/pull/3773"&gt;&lt;span class="caps"&gt;MSC3773&lt;/span&gt;&lt;/a&gt;). Hopefully others find the information&amp;nbsp;useful!&lt;/p&gt;
 &lt;div class="admonition note"&gt;
 &lt;p class="admonition-title"&gt;Note&lt;/p&gt;
 &lt;p&gt;These notes are true as of the v1.3 of the Matrix spec and also cover some
 Matrix spec changes which may or may not have been merged since. It is known
-to be out of date with the changes from &lt;a href="https://github.com/matrix-org/matrix-spec-proposals/pull/2285"&gt;&lt;span class="caps"&gt;MSC2285&lt;/span&gt;&lt;/a&gt;,
-&lt;a href="https://github.com/matrix-org/matrix-spec-proposals/pull/3771"&gt;&lt;span class="caps"&gt;MSC3771&lt;/span&gt;&lt;/a&gt;, and
-&lt;a href="https://github.com/matrix-org/matrix-spec-proposals/pull/3773"&gt;&lt;span class="caps"&gt;MSC3773&lt;/span&gt;&lt;/a&gt;.&lt;/p&gt;
+to be out of date with the changes from &lt;a href="https://github.com/matrix-org/matrix-spec-proposals/pull/2285"&gt;&lt;span class="caps"&gt;MSC2285&lt;/span&gt;&lt;/a&gt;, &lt;a href="https://github.com/matrix-org/matrix-spec-proposals/pull/3771"&gt;&lt;span class="caps"&gt;MSC3771&lt;/span&gt;&lt;/a&gt;, and &lt;a href="https://github.com/matrix-org/matrix-spec-proposals/pull/3773"&gt;&lt;span class="caps"&gt;MSC3773&lt;/span&gt;&lt;/a&gt;.&lt;/p&gt;
 &lt;/div&gt;
 &lt;hr&gt;
 &lt;h2&gt;Receipts&lt;/h2&gt;
@@ -128,9 +122,8 @@ action must be a &lt;code&gt;notify&lt;/code&gt; action, thus &lt;code&gt;highli
 &lt;p&gt;A new field is added under the &lt;code&gt;unread_notifications&lt;/code&gt; field (&lt;code&gt;unread_count&lt;/code&gt;) which
 is the total number of events matching particular criteria since the user&amp;#8217;s last
 read&amp;nbsp;receipt.&lt;/p&gt;
-&lt;p&gt;This replaces &lt;a href="https://github.com/matrix-org/matrix-spec-proposals/pull/2625"&gt;&lt;span class="caps"&gt;MSC2625&lt;/span&gt;&lt;/a&gt;,
-which adds a new push rule action (&lt;code&gt;mark_unread&lt;/code&gt;) to perform the same task. In this
-rendition, &lt;code&gt;notify&lt;/code&gt; implies &lt;code&gt;mark_unread&lt;/code&gt; and thus
+&lt;p&gt;This replaces &lt;a href="https://github.com/matrix-org/matrix-spec-proposals/pull/2625"&gt;&lt;span class="caps"&gt;MSC2625&lt;/span&gt;&lt;/a&gt;, which adds a new push rule action (&lt;code&gt;mark_unread&lt;/code&gt;) to
+perform the same task. In this rendition, &lt;code&gt;notify&lt;/code&gt; implies &lt;code&gt;mark_unread&lt;/code&gt; and thus
 &lt;code&gt;highlight_count &amp;lt;= notification_count &amp;lt;= unread_count&lt;/code&gt;.&lt;/p&gt;
 &lt;h2&gt;&lt;a href="https://spec.matrix.org/v1.2/push-gateway-api/#post_matrixpushv1notify"&gt;Push&amp;nbsp;notifications&lt;/a&gt;&lt;/h2&gt;
 &lt;p&gt;Push notifications receive either the number of unread messages (across all rooms)
