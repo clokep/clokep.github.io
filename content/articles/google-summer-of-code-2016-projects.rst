@@ -13,7 +13,7 @@ As part of Google Summer of Code (GSoC), we ask students to provide weekly
 updates of their progress in a public area (usually a blog). If you're
 interested in a particular project, please follow along! Lastly, remember that
 GSoC is a community effort: if a student is working in an area where you
-consider yourself knowledgable, please introduce yourself and offer to provide
+consider yourself knowledgeable, please introduce yourself and offer to provide
 help and/or advice!
 
 Below is a listing of each student's project (linked to their weekly updates),
