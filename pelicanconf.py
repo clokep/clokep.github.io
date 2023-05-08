@@ -1,5 +1,4 @@
 #!/usr/bin/env python
-# -*- coding: utf-8 -*- #
 import os
 import sys
 
@@ -11,15 +10,15 @@ sys.path.append(os.path.dirname(__file__))
 from directives import MscExtension
 from filters import chunk, paginate
 
-AUTHOR = 'Patrick Cloke'
-AUTHOR_EMAIL = 'patrick@cloke.us'
-SITENAME = 'Patrick Cloke'
-GITHUB_URL = 'https://github.com/clokep/clokep.github.io'
+AUTHOR = "Patrick Cloke"
+AUTHOR_EMAIL = "patrick@cloke.us"
+SITENAME = "Patrick Cloke"
+GITHUB_URL = "https://github.com/clokep/clokep.github.io"
 
-TIMEZONE = 'America/New_York'
-DEFAULT_DATE_FORMAT = '%A, %B %-d, %Y'
+TIMEZONE = "America/New_York"
+DEFAULT_DATE_FORMAT = "%A, %B %-d, %Y"
 
-DEFAULT_LANG = 'en'
+DEFAULT_LANG = "en"
 
 # Feed generation is usually not desired when developing
 FEED_ALL_ATOM = None
@@ -33,90 +32,89 @@ RELATIVE_URLS = False
 
 # Disable categories.
 CATEGORY_FEED_ATOM = None
-CATEGORY_SAVE_AS = ''
-CATEGORIES_SAVE_AS = ''
+CATEGORY_SAVE_AS = ""
+CATEGORIES_SAVE_AS = ""
 
 # This is a hack to make the author URLs link to my about page (without
 # modifying the template).
-AUTHOR_URL = 'pages/about.html'
+AUTHOR_URL = "pages/about.html"
 # Disable generating author pages.
-AUTHOR_SAVE_AS = ''
-AUTHORS_SAVE_AS = ''
+AUTHOR_SAVE_AS = ""
+AUTHORS_SAVE_AS = ""
 
 # Disable time based archives.
-YEAR_ARCHIVE_SAVE_AS = ''
-MONTH_ARCHIVE_SAVE_AS = ''
-DAY_ARCHIVE_SAVE_AS = ''
+YEAR_ARCHIVE_SAVE_AS = ""
+MONTH_ARCHIVE_SAVE_AS = ""
+DAY_ARCHIVE_SAVE_AS = ""
 
 # Set up locations of articles, pages and theme.
-PATH = 'content'
-ARTICLE_PATHS = ['articles']
-PAGE_PATHS = ['pages']
+PATH = "content"
+ARTICLE_PATHS = ["articles"]
+PAGE_PATHS = ["pages"]
 
-THEME = 'theme'
+THEME = "theme"
 
 # Set up static content and output locations.
 STATIC_PATHS = [
-    'images',
-    'js',
-    'static',
+    "images",
+    "js",
+    "static",
 ]
 EXTRA_PATH_METADATA = {
     # Disable GitHub's Jekyll parsing, this will allow folders starting with a .
     # to be served:
     # https://help.github.com/articles/files-that-start-with-an-underscore-are-missing/
-    'static/.nojekyll': {'path': '.nojekyll'},
+    "static/.nojekyll": {"path": ".nojekyll"},
     # Tell GitHub the domain name:
     # https://help.github.com/articles/adding-a-cname-file-to-your-repository/
-    'static/CNAME': {'path': 'CNAME'},
+    "static/CNAME": {"path": "CNAME"},
     # Server an Autoconfig entry for email:
     # https://developer.mozilla.org/en-US/docs/Mozilla/Thunderbird/Autoconfiguration
-    'static/mail-config.xml': {'path': '.well-known/autoconfig/mail/config-v1.1.xml'},
+    "static/mail-config.xml": {"path": ".well-known/autoconfig/mail/config-v1.1.xml"},
 }
 TEMPLATE_PAGES = {
     # Custom 404 page for GitHub pages.
-    '404.html': '404.html',
+    "404.html": "404.html",
 }
 
 # Plugin setup.
 PLUGIN_PATHS = [
-    'pelican-plugins/',
+    "pelican-plugins/",
 ]
 PLUGINS = [
-    'extract_toc',
-    'gravatar',
+    "extract_toc",
+    "gravatar",
     youtube,
-    'pelican.plugins.share_post',
-    'pelican.plugins.thumbnailer',
-
+    "pelican.plugins.share_post",
+    "pelican.plugins.thumbnailer",
     # Custom plug-ins to add additional RST directives.
-    'directives',
+    "directives",
 ]
 
 # Markdown configuration.
 MARKDOWN = {
-    'extension_configs': {
+    "extension_configs": {
         # Pelican's default extensions.
-        'markdown.extensions.codehilite': {'css_class': 'highlight'},
-        'markdown.extensions.extra': {},
-        'markdown.extensions.meta': {},
+        "markdown.extensions.codehilite": {"css_class": "highlight"},
+        "markdown.extensions.extra": {},
+        "markdown.extensions.meta": {},
         # Extra extensions.
-        'markdown.extensions.admonition': {},
+        "markdown.extensions.admonition": {},
     },
     # The above get appended to this list.
-    'extensions': [MscExtension()],
-    'output_format': 'html5',
+    "extensions": [MscExtension()],
+    "output_format": "html5",
 }
 
 # Custom Jinja filters.
 JINJA_FILTERS = {
-    'chunk': chunk,
-    'paginate': paginate,
+    "chunk": chunk,
+    "paginate": paginate,
 }
 
 # Change the default URLs.
-ARTICLE_URL = 'posts/{date:%Y}/{date:%m}/{date:%d}/{slug}/'
-ARTICLE_SAVE_AS = ARTICLE_URL + 'index.html'
+ARTICLE_URL = "posts/{date:%Y}/{date:%m}/{date:%d}/{slug}/"
+ARTICLE_SAVE_AS = ARTICLE_URL + "index.html"
 
 # Paginate, but have at least three items per page.
 DEFAULT_ORPHANS = 2
@@ -130,16 +128,16 @@ TAG_CLOUD_MAX_ITEMS = 10
 # * Link
 # * Font Awesome logo name.
 SOCIAL = (
-    ('mastodon', 'https://mastodon.social/@clokep', 'mastodon'),
-    ('twitter', 'https://www.twitter.com/clokep', 'twitter'),
-    ('matrix', 'https://matrix.to/#/@clokep:matrix.org', None),
-    ('github', 'https://github.com/clokep', 'github'),
-    ('gitlab', 'https://gitlab.com/clokep', 'gitlab'),
+    ("mastodon", "https://mastodon.social/@clokep", "mastodon"),
+    ("twitter", "https://www.twitter.com/clokep", "twitter"),
+    ("matrix", "https://matrix.to/#/@clokep:matrix.org", None),
+    ("github", "https://github.com/clokep", "github"),
+    ("gitlab", "https://gitlab.com/clokep", "gitlab"),
 )
 
 # For thumbnails.
-IMAGE_PATH = 'images'
+IMAGE_PATH = "images"
 THUMBNAIL_SIZES = {
-    'small': '?x150',
-    'medium': '?x350',
+    "small": "?x150",
+    "medium": "?x350",
 }
