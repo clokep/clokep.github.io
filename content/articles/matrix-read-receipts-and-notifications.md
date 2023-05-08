@@ -7,16 +7,12 @@ Author: Patrick Cloke
 I recently wrapped up a project on improving notifications in threads for Matrix.
 This is adapted from my [research notes](https://hackmd.io/bbucQKOLTv66N4B_wjDLFQ)
 to understand the status quo before adapting the Matrix protocol for threads
-(in [MSC3771](https://github.com/matrix-org/matrix-spec-proposals/pull/3771) and
-[MSC3773](https://github.com/matrix-org/matrix-spec-proposals/pull/3773)).
-Hopefully others find the information useful!
+(in [MSC3771] and [MSC3773]). Hopefully others find the information useful!
 
 !!! note
     These notes are true as of the v1.3 of the Matrix spec and also cover some
     Matrix spec changes which may or may not have been merged since. It is known
-    to be out of date with the changes from [MSC2285](https://github.com/matrix-org/matrix-spec-proposals/pull/2285),
-    [MSC3771](https://github.com/matrix-org/matrix-spec-proposals/pull/3771), and
-    [MSC3773](https://github.com/matrix-org/matrix-spec-proposals/pull/3773).
+    to be out of date with the changes from [MSC2285], [MSC3771], and [MSC3773].
 
 ----
 
@@ -40,7 +36,7 @@ Another way to consider this is[^2]:
    participants that the user has seen it.
 3. **Hidden read receipts**: a private mechanism to synchronize "unread messages"
    indicators between a user's devices (while still retaining the ability from 1
-   as a separate concept). (See [MSC2285](https://github.com/matrix-org/matrix-spec-proposals/pull/2285).)
+   as a separate concept). (See [MSC2285].)
 
 ### [Fully read markers](https://spec.matrix.org/v1.3/client-server-api/#fully-read-markers)
 
@@ -157,9 +153,8 @@ A new field is added under the `unread_notifications` field (`unread_count`) whi
 is the total number of events matching particular criteria since the user's last
 read receipt.
 
-This replaces [MSC2625](https://github.com/matrix-org/matrix-spec-proposals/pull/2625),
-which adds a new push rule action (`mark_unread`) to perform the same task. In this
-rendition, `notify` implies `mark_unread` and thus
+This replaces [MSC2625], which adds a new push rule action (`mark_unread`) to
+perform the same task. In this rendition, `notify` implies `mark_unread` and thus
 `highlight_count <= notification_count <= unread_count`.
 
 ## [Push notifications](https://spec.matrix.org/v1.2/push-gateway-api/#post_matrixpushv1notify)

@@ -8,6 +8,7 @@ from pelican_youtube import youtube
 # Ensure that filters are importable.
 sys.path.append(os.path.dirname(__file__))
 
+from directives import MscExtension
 from filters import chunk, paginate
 
 AUTHOR = 'Patrick Cloke'
@@ -102,6 +103,8 @@ MARKDOWN = {
         # Extra extensions.
         'markdown.extensions.admonition': {},
     },
+    # The above get appended to this list.
+    'extensions': [MscExtension()],
     'output_format': 'html5',
 }
 

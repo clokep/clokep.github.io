@@ -262,7 +262,7 @@ notification or not.
     The default Matrix push rules (also showing the options available within
     Element).
 
-.. [#] Improving unintentional mentions (`MSC3952`_) is the main feature we were
+.. [#] Improving unintentional mentions (:msc:`3952`) is the main feature we were
        working on, but this was powered by ...
 
 .. [#] Notification count (the grey badge with count in Element Web) is the number
@@ -281,9 +281,9 @@ notification or not.
        is sent via a push provider to an application. Push providers include Apple,
        Google, Microsoft, or Mozilla.
 
-.. [#] `MSC4010`_ aims to make this explicit.
+.. [#] :msc:`4010` aims to make this explicit.
 
-.. [#] See `MSC3987`_.
+.. [#] See :msc:`3987`.
 
 .. [#] It was not clear how clients should handle encrypted events `until recently`_
 
@@ -310,9 +310,6 @@ notification or not.
 .. _not redacted: https://github.com/matrix-org/matrix-react-sdk/blob/d33e416fc75369d3fec1c1f27ef9d5b2ea0b3703/src/Unread.ts#L52
 .. _renderer exist for the event: https://github.com/matrix-org/matrix-react-sdk/blob/d33e416fc75369d3fec1c1f27ef9d5b2ea0b3703/src/Unread.ts#L53
 
-.. _MSC3952: https://github.com/matrix-org/matrix-spec-proposals/pull/3952
 .. _Element Web docs on the room list: https://github.com/matrix-org/matrix-react-sdk/blob/develop/docs/room-list-store.md#list-ordering-algorithm-importance
-.. _MSC4010: https://github.com/matrix-org/matrix-spec-proposals/pull/4010
-.. _MSC3987: https://github.com/matrix-org/matrix-spec-proposals/pull/3987
 .. _until recently: https://github.com/matrix-org/matrix-spec/pull/1461
 .. _Gist from Half-Shot: https://gist.github.com/Half-Shot/f9501916363894761a1659250aa25181
