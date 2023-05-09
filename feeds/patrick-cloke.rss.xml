@@ -233,7 +233,9 @@ notification or not.&lt;/p&gt;
 &lt;colgroup&gt;&lt;col class="label"/&gt;&lt;col/&gt;&lt;/colgroup&gt;
 &lt;tbody valign="top"&gt;
 &lt;tr&gt;&lt;td class="label"&gt;&lt;a class="fn-backref" href="#id1"&gt;[1]&lt;/a&gt;&lt;/td&gt;&lt;td&gt;Improving unintentional mentions (&lt;a class="reference external" href="https://github.com/matrix-org/matrix-spec-proposals/pull/3952"&gt;&lt;span class="caps"&gt;MSC3952&lt;/span&gt;&lt;/a&gt;) is the main feature we were
-working on, but this was powered by …&lt;/td&gt;&lt;/tr&gt;
+working on, but this was powered by &lt;a class="reference external" href="https://github.com/matrix-org/matrix-spec-proposals/pull/3758"&gt;&lt;span class="caps"&gt;MSC3758&lt;/span&gt;&lt;/a&gt; (from &lt;a class="reference external" href="https://www.beeper.com/"&gt;Beeper&lt;/a&gt;),
+&lt;a class="reference external" href="https://github.com/matrix-org/matrix-spec-proposals/pull/3873"&gt;&lt;span class="caps"&gt;MSC3873&lt;/span&gt;&lt;/a&gt; (from a coworker), and &lt;a class="reference external" href="https://github.com/matrix-org/matrix-spec-proposals/pull/3966"&gt;&lt;span class="caps"&gt;MSC3966&lt;/span&gt;&lt;/a&gt;. &lt;a class="reference external" href="https://github.com/matrix-org/matrix-spec-proposals/pull/3980"&gt;&lt;span class="caps"&gt;MSC3980&lt;/span&gt;&lt;/a&gt; was also a
+follow-up for consistency.&lt;/td&gt;&lt;/tr&gt;
 &lt;/tbody&gt;
 &lt;/table&gt;
 &lt;table class="docutils footnote" frame="void" id="id10" rules="none"&gt;
