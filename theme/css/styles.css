@@ -3,6 +3,12 @@
     vertical-align: super;
     font-size: 80%;
 }
+/* Give a slight border to the first footnote as a horizontal rule. */
+table.footnote:first-of-type {
+    border-color: rgb(23, 162, 184);  /* .border .border-info */
+    border-width: 1px 0 0 0;
+    border-style: solid;
+}
 /* Indent the footnotes. */
 table.footnote {
     margin-left: 40px;

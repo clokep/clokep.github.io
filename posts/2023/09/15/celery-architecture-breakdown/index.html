@@ -1,0 +1,464 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Feed configuration. -->
+    <link href="https://patrick.cloke.us/feeds/atom.xml" type="application/atom+xml" rel="alternate" title="Patrick Cloke Atom Feed" />
+    <link href="https://patrick.cloke.us/feeds/rss.xml" type="application/rss+xml" rel="alternate" title="Patrick Cloke RSS Feed" />
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
+    <link rel="stylesheet" href="/theme/css/styles.css">
+    <link rel="stylesheet" href="/theme/css/borland.css">
+    <link rel="stylesheet" href="/theme/css/youtube.css">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
+
+    <title>Celery architecture breakdown</title>
+
+    <meta property="og:site_name" content="Patrick Cloke" />
+<meta property="og:title" content="Celery architecture breakdown" />
+<meta property="og:url" content="https://patrick.cloke.us/posts/2023/09/15/celery-architecture-breakdown/" />
+<meta property="og:description" content="The Celery project, which is often used Python library to run “background tasks” for synchronous web frameworks, describes itself as: Celery is a simple, flexible, and reliable distributed system to process vast amounts of messages , while providing operations with the tools required to maintain such a system. It’s a …" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2023-09-15T15:28:00-04:00" />
+<meta property="article:author" content="Patrick Cloke" />
+<meta property="article:tag" content="celery" />
+
+    <script async defer data-domain="cloke.us" src="https://plausible.io/js/plausible.js"></script>
+  </head>
+
+  <body class="pb-5">
+    <nav class="navbar navbar-expand-lg sticky-top navbar-light bg-light border-bottom border-info">
+      <a class="navbar-brand" href="/">
+        Patrick Cloke
+      </a>
+
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-items" aria-controls="navbar-items" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="navbar-items">
+        <ul class="navbar-nav ml-auto">
+
+          <li class="nav-item">
+            <a class="nav-link" href="/pages/about.html">About</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/pages/projects.html">Projects</a>
+          </li>
+
+          <li class="nav-item">
+            <a class="nav-link" href="/archives.html">Archives</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/tags.html">Tags</a>
+          </li>
+
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="social-dropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              Social
+            </a>
+
+            <span class="dropdown-menu dropdown-menu-right" aria-labelledby="social-dropdown">
+              <a class="dropdown-item" href="https://mastodon.social/@clokep" target="_blank">
+                  <span class="fab fa-mastodon mr-1"></span>
+                mastodon
+              </a>
+              <a class="dropdown-item" href="https://www.twitter.com/clokep" target="_blank">
+                  <span class="fab fa-twitter mr-1"></span>
+                twitter
+              </a>
+              <a class="dropdown-item" href="https://matrix.to/#/@clokep:matrix.org" target="_blank">
+                  <span class="pl-3 mr-2"></span>
+                matrix
+              </a>
+              <a class="dropdown-item" href="https://github.com/clokep" target="_blank">
+                  <span class="fab fa-github mr-1"></span>
+                github
+              </a>
+              <a class="dropdown-item" href="https://gitlab.com/clokep" target="_blank">
+                  <span class="fab fa-gitlab mr-1"></span>
+                gitlab
+              </a>
+            </div>
+          </li>
+
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="feeds-dropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              Feeds
+            </a>
+
+            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="feeds-dropdown">
+              <a class="dropdown-item" href="https://patrick.cloke.us/feeds/atom.xml" type="application/atom+xml" rel="alternate">atom feed</a>
+              <a class="dropdown-item" href="https://patrick.cloke.us/feeds/rss.xml" type="application/rss+xml" rel="alternate">rss feed</a>
+            </div>
+          </li>
+
+          <form class="form-inline" method="get" action="http://www.google.com/search">
+            <input class="form-control form-control-sm mr-sm-2" type="search" name="q" placeholder="Search" aria-label="Search" />
+            <input type="hidden"  name="sitesearch" value="patrick.cloke.us" />
+
+            <button class="btn btn-sm btn-outline-info d-none d-sm-inline" type="submit">Search</button>
+          </form>
+        </ul>
+      </div>
+    </nav>
+
+<div class="container">
+  <div class="row">
+    <div class="col-md-12 mt-2 mb-2">
+      <h1>
+        <a href="/posts/2023/09/15/celery-architecture-breakdown/" rel="bookmark"
+           title="Permalink to Celery architecture breakdown">Celery architecture&nbsp;breakdown</a>
+      </h1>
+
+      <div class="row">
+        <div class="col-sm">
+          <span class="text-secondary font-weight-light font-italic">Published on Friday, September 15, 2023</span>
+
+          <br>
+          <span class="text-secondary font-weight-light font-italic">
+            Tags:               <a href="/tag/celery.html">celery</a>          </span>
+        </div>
+
+        <div class="col-sm text-right">
+          <a href="https://twitter.com/intent/tweet?text=Celery%20architecture%C2%A0breakdown&url=https%3A//patrick.cloke.us/posts/2023/09/15/celery-architecture-breakdown/&hashtags=celery" target="_blank" class="ml-1 mr-1" title="Share on Twitter">
+            <span class="fab fa-twitter"></span>
+          </a>
+          <a href="https://www.facebook.com/sharer/sharer.php?u=https%3A//patrick.cloke.us/posts/2023/09/15/celery-architecture-breakdown/" target="_blank" class="ml-1 mr-1" title="Share on Facebook">
+            <span class="fab fa-facebook"></span>
+          </a>
+          <a href="mailto:?subject=Celery%20architecture%C2%A0breakdown&amp;body=https%3A//patrick.cloke.us/posts/2023/09/15/celery-architecture-breakdown/" target="_blank" class="ml-1 mr-1" title="Share via Email">
+            <span class="fas fa-envelope"></span>
+          </a>
+        </div>
+      </div>
+
+      <hr>
+
+      <div>
+        <div class="border border-info bg-light rounded float-right p-2 ml-2 mb-2">
+          <div class="toc" id="">
+<p class="topic-title">Contents</p>
+<ul class="simple">
+<li><a class="reference internal" href="#high-level-architecture" id="id17">High Level Architecture</a><ul>
+<li><a class="reference internal" href="#broker" id="id18">Broker</a></li>
+<li><a class="reference internal" href="#workers" id="id19">Workers</a></li>
+<li><a class="reference internal" href="#backend" id="id20">Backend</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#dataflow" id="id21">Dataflow</a><ul>
+<li><a class="reference internal" href="#request-serialization" id="id22">Request Serialization</a></li>
+<li><a class="reference internal" href="#result-serialization" id="id23">Result Serialization</a></li>
+<li><a class="reference internal" href="#final-thoughts" id="id24">Final thoughts</a></li>
+</ul>
+</li>
+</ul>
+</div>
+        </div>
+
+        
+<p>The <a class="reference external" href="https://docs.celeryq.dev/en/v5.2.7/">Celery project</a>, which is often used Python library to run “background tasks”
+for synchronous web frameworks, describes itself as:</p>
+<blockquote>
+<p>Celery is a simple, flexible, and reliable distributed system to process vast
+amounts of messages , while providing operations with the tools required to
+maintain such a system.</p>
+<p>It’s a task queue with focus on real-time processing, while also supporting
+task scheduling.</p>
+</blockquote>
+<p>The documentation goes into great detail about how to configure Celery with
+its plethora of options, but it does not focus much on the <a class="reference external" href="https://docs.celeryq.dev/en/v5.2.7/getting-started/introduction.html">high level architecture</a>
+or how messages pass between the components. Celery is <em>extremely</em> flexible (almost
+every component can be easily replaced!) but this can make it hard to understand.
+I attempt to break it down to the best of my understanding below. <a class="footnote-reference" href="#id7" id="id1">[1]</a></p>
+<div class="section" id="high-level-architecture">
+<h2><a class="toc-backref" href="#id17">High Level Architecture</a></h2>
+<p>Celery has a few main components <a class="footnote-reference" href="#id8" id="id2">[2]</a>:</p>
+<ol class="arabic simple">
+<li>Your application code, including any <a class="reference external" href="https://docs.celeryq.dev/en/v5.2.7/userguide/tasks.html"><tt class="docutils literal">Task</tt></a> objects you’ve defined. (Usually
+called the “client” in Celery’s documentation.)</li>
+<li>A <a class="reference external" href="https://docs.celeryq.dev/en/v5.2.7/getting-started/backends-and-brokers/index.html">broker</a> or message transport.</li>
+<li>One or more Celery <a class="reference external" href="https://docs.celeryq.dev/en/v5.2.7/internals/worker.html">workers</a>.</li>
+<li>A (results) <a class="reference external" href="https://docs.celeryq.dev/en/v5.2.7/getting-started/backends-and-brokers/index.html">backend</a>.</li>
+</ol>
+<blockquote class="text-center">
+<a class="reference external image-reference" href="https://patrick.cloke.us/images/celery-architecture/celery-overview.png"><img alt="Celery overview" src="https://patrick.cloke.us/images/celery-architecture/celery-overview.png" style="width: 50%;"/></a>
+<p>A simplified view of Celery components.</p>
+</blockquote>
+<p>In order to use Celery you need to:</p>
+<ol class="arabic simple">
+<li>Instantiate a Celery <tt class="docutils literal">application</tt> (which includes configuration, such as
+which broker and backend to use and how to connect to them) and define one or
+more <tt class="docutils literal">Task</tt> definitions.</li>
+<li>Run a broker.</li>
+<li>Run one or more Celery workers.</li>
+<li>(Maybe) run a backend.</li>
+</ol>
+<p>If you’re unfamiliar with Celery, below is an example. It declares a simple
+<tt class="docutils literal">add</tt> task using the <tt class="docutils literal">@task</tt> decorator and will request the task to be executed
+in the background twice (<tt class="docutils literal"><span class="pre">add.delay(...)</span></tt>). <a class="footnote-reference" href="#id9" id="id3">[3]</a> The results are then fetched
+(<tt class="docutils literal">asyncresult_1.get()</tt>) and printed. Place this in a file named <tt class="docutils literal">my_app.py</tt>:</p>
+<pre class="code python highlight literal-block">
+<span class="kn">from</span> <span class="nn">celery</span> <span class="kn">import</span> <span class="n">Celery</span>
+
+<span class="n">app</span> <span class="o">=</span> <span class="n">Celery</span><span class="p">(</span>
+    <span class="s2">"my_app"</span><span class="p">,</span>
+    <span class="n">backend</span><span class="o">=</span><span class="s2">"rpc://"</span><span class="p">,</span>
+    <span class="n">broker</span><span class="o">=</span><span class="s2">"amqp://guest@localhost//"</span><span class="p">,</span>
+<span class="p">)</span>
+
+
+<span class="nd">@app</span><span class="o">.</span><span class="n">task</span><span class="p">()</span>
+<span class="k">def</span> <span class="nf">add</span><span class="p">(</span><span class="n">a</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">b</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+    <span class="k">return</span> <span class="n">a</span> <span class="o">+</span> <span class="n">b</span>
+
+
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">"__main__"</span><span class="p">:</span>
+    <span class="c1"># Request that the tasks run and capture their async results.</span>
+    <span class="n">asyncresult_1</span> <span class="o">=</span> <span class="n">add</span><span class="o">.</span><span class="n">delay</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+    <span class="n">asyncresult_2</span> <span class="o">=</span> <span class="n">add</span><span class="o">.</span><span class="n">delay</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span>
+
+    <span class="n">result_1</span> <span class="o">=</span> <span class="n">asyncresult_1</span><span class="o">.</span><span class="n">get</span><span class="p">()</span>
+    <span class="n">result_2</span> <span class="o">=</span> <span class="n">asyncresult_2</span><span class="o">.</span><span class="n">get</span><span class="p">()</span>
+    <span class="c1"># Should result in 3, 7.</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Results: </span><span class="si">{</span><span class="n">result_1</span><span class="si">}</span><span class="s2">, </span><span class="si">{</span><span class="n">result_2</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+</pre>
+<p>Usually you don’t care where (which worker) the task runs on it, or how it gets
+there but sometimes you need! We can break down the components more to reveal more detail:</p>
+<blockquote class="text-center">
+<a class="reference external image-reference" href="https://patrick.cloke.us/images/celery-architecture/celery-components.png"><img alt="Celery components" src="https://patrick.cloke.us/images/celery-architecture/celery-components.png" style="width: 50%;"/></a>
+<p>The Celery components broken into sub-components.</p>
+</blockquote>
+<div class="section" id="broker">
+<h3><a class="toc-backref" href="#id18">Broker</a></h3>
+<p>The message broker is a piece of off-the-shelf software which takes task requests
+and queues them until a worker is ready to process them. Common options include
+<a class="reference external" href="https://www.rabbitmq.com/">RabbitMQ</a>, or <a class="reference external" href="https://redis.io">Redis</a>, although your cloud provider might have a custom one.</p>
+<p>The broker may have some sub-components, including an exchange and one or more
+queues. (Note that Celery tends to use <span class="caps">AMQP</span> terminology and sometimes emulates
+features which do not exist on other brokers.)</p>
+<p>Configuring your broker is beyond the scope of this article (and depends heavily
+on workload). The Celery <a class="reference external" href="https://docs.celeryq.dev/en/v5.2.7/userguide/routing.html">routing documentation</a> has more information on how and
+why you might route tasks to different queues.</p>
+</div>
+<div class="section" id="workers">
+<h3><a class="toc-backref" href="#id19">Workers</a></h3>
+<p>Celery workers fetch queued tasks from the broker and then run the code defined in
+your <tt class="docutils literal">task</tt>, they can optionally return a value via the results backend.</p>
+<p>Celery workers have a “consumer” which fetches tasks from the broker: by default
+it requests many tasks at once, equivalent to “<a class="reference external" href="https://docs.celeryq.dev/en/v5.2.7/userguide/configuration.html#std-setting-worker_prefetch_multiplier">prefetch multiplier</a> x <a class="reference external" href="https://docs.celeryq.dev/en/v5.2.7/userguide/configuration.html#std-setting-worker_concurrency">concurrency</a>“.
+(If your prefetch multiplier is 5 and your concurrency is 4, it attempts to
+fetch up to 20 queued tasks from the broker.) Once fetched it places them into
+an in-memory buffer. The task pool then runs each task via its <tt class="docutils literal">Strategy</tt> —
+for a normal Celery <tt class="docutils literal">Task</tt> the task pool essentially executes tasks from the
+consumer’s buffer.</p>
+<p>The worker also handles scheduling tasks to run in future (by queueing them
+in-memory), but we will not go deeper into that here.</p>
+<p>Using the “prefork” pool, the consumer and task pool are separate processes, while
+the “gevent”/”eventlet” pool uses coroutines, and the “threads” pool uses threads.
+There’s also a “solo” pool which can be useful for testing (everything is run in
+the same process: a single task runs at a time and blocks the consumer from
+fetching more tasks.)</p>
+</div>
+<div class="section" id="backend">
+<h3><a class="toc-backref" href="#id20">Backend</a></h3>
+<p>The backend is another piece of off-the-shelf software which is used to store the
+results of your task. It provides a key-value store and is commonly <a class="reference external" href="https://redis.io">Redis</a>,
+although there are many options depending on how durable and large your results
+are. The results backend can be queried by using the <tt class="docutils literal">AsyncResult</tt> object which
+is returned to your application code. <a class="footnote-reference" href="#id10" id="id4">[4]</a></p>
+<p>Much like for brokers, how you configure results backends is beyond the scope of
+this article.</p>
+</div>
+</div>
+<div class="section" id="dataflow">
+<h2><a class="toc-backref" href="#id21">Dataflow</a></h2>
+<p>You might have observed that the above components discussed at least several
+different processes (client, broker, worker, worker pool, backend) which may also
+exist on different computers. How does this all work to pass the task between
+them? Usually this level of detail isn’t necessary to understand what it means
+to “run a task in the background”, but it can be useful for diagnosing performance
+or configuring brokers and backends.</p>
+<p>The main thing to understand is that there’s lots of serialization happening across
+each process boundary:</p>
+<blockquote class="text-center">
+<a class="reference external image-reference" href="https://patrick.cloke.us/images/celery-architecture/celery-dataflow.png"><img alt="Celery dataflow" src="https://patrick.cloke.us/images/celery-architecture/celery-dataflow.png" style="width: 50%;"/></a>
+<p>A task message traversing from application code to the broker to a worker,
+and a result traversing from a worker to a backend to application code.</p>
+</blockquote>
+<div class="section" id="request-serialization">
+<h3><a class="toc-backref" href="#id22">Request Serialization</a></h3>
+<p>When a client requests for a task to be run the information needs to be passed to
+the broker in a form it understands. The necessary data includes:</p>
+<ul class="simple">
+<li>The task identifier (e.g. <tt class="docutils literal">my_app.add</tt>).</li>
+<li>Any arguments (e.g. <tt class="docutils literal">(1, 2)</tt>) and keyword arguments.</li>
+<li>A request <span class="caps">ID</span>.</li>
+<li>Routing information.</li>
+<li>…and a bunch of other metadata.</li>
+</ul>
+<p>Exactly what is included is defined by the <a class="reference external" href="https://docs.celeryq.dev/en/v5.2.7/internals/protocol.html#message-protocol-task-v2">message protocol</a> (of which Celery
+has two, although they’re fairly similar).</p>
+<p>Most of the metadata gets placed in the headers while the task arguments, which
+might be any Python class, need to be serialized into the body. Celery supports
+<a class="reference external" href="https://docs.celeryq.dev/en/v5.2.7/userguide/calling.html#calling-serializers">many serializers</a> and uses <a class="reference external" href="https://docs.python.org/3/library/json.html"><span class="caps">JSON</span></a> by default (<a class="reference external" href="https://docs.python.org/dev/library/pickle.html#module-pickle">pickle</a>, <a class="reference external" href="http://yaml.org/"><span class="caps">YAML</span></a>, and <a class="reference external" href="http://msgpack.org/">msgpack</a>,
+as well as custom schemes can be used as well).</p>
+<p>After serialization, Celery also supports <a class="reference external" href="https://docs.celeryq.dev/en/v5.2.7/userguide/calling.html#compression">compressing the message</a> or
+<a class="reference external" href="https://docs.celeryq.dev/en/v5.2.7/userguide/security.html#message-signing">signing the message</a> for additional security.</p>
+<p>An example <span class="caps">AMQP</span> message containing the details of a task request (from RabbitMQ’s
+<a class="reference external" href="https://www.rabbitmq.com/management.html">management interface</a>) is shown below:</p>
+<blockquote class="text-center">
+<a class="reference external image-reference" href="https://patrick.cloke.us/images/celery-architecture/rabbitmq-task-message.png"><img alt="Celery task wrapped in a RabbitMQ message" src="https://patrick.cloke.us/images/celery-architecture/rabbitmq-task-message.png" style="width: 50%;"/></a>
+<p>The example Celery task wrapped in a RabbitMQ message</p>
+</blockquote>
+<p>When a worker fetches a task from the broker it deserializes it into a <a class="reference external" href="https://docs.celeryq.dev/en/v5.2.7/userguide/tasks.html#task-request">Request</a>
+and executes it (as discussed above). In the case of a “prefork” worker pool the
+<tt class="docutils literal">Request</tt> is serialized <em>again</em> using pickle when passed to task pool <a class="footnote-reference" href="#id11" id="id5">[5]</a>.</p>
+<p>The worker pool then unpickles the request, loads the task code, and executes
+it with the requested arguments. Finally your task code is running! Note that the
+task code itself is not contained in the serialized request, that is loaded
+separately by the worker.</p>
+</div>
+<div class="section" id="result-serialization">
+<h3><a class="toc-backref" href="#id23">Result Serialization</a></h3>
+<p>When a task returns a value it gets stored in the results backend with enough
+information for the original client to find it:</p>
+<ul class="simple">
+<li>The result <span class="caps">ID</span>.</li>
+<li>The result.</li>
+<li>…and some other metadata.</li>
+</ul>
+<p>Similarly to tasks this information must be serialized before being placed in the
+results backend (and gets split between the headers and body). Celery provides
+configuration options to customize this serialization. <a class="footnote-reference" href="#id12" id="id6">[6]</a></p>
+<p>An example <span class="caps">AMQP</span> message containing the details of a result is shown below:</p>
+<blockquote class="text-center">
+<a class="reference external image-reference" href="https://patrick.cloke.us/images/celery-architecture/rabbitmq-result-message.png"><img alt="Celery result wrapped in a RabbitMQ message" src="https://patrick.cloke.us/images/celery-architecture/rabbitmq-result-message.png" style="width: 50%;"/></a>
+<p>The example Celery result wrapped in a RabbitMQ message</p>
+</blockquote>
+<p>Once the result is fetched by the client it can deserialized the true (Python)
+return value and provide it to the application code.</p>
+</div>
+<div class="section" id="final-thoughts">
+<h3><a class="toc-backref" href="#id24">Final thoughts</a></h3>
+<p>Since the Celery protocol is a public, documented <span class="caps">API</span> it allows you to create
+task requests externally to Celery! As long as you can interface to the Celery broker
+(and have some shared configuration) you can use a different application (or programming
+language) to publish and/or consume tasks. This is exactly what others have done:</p>
+<ul class="simple">
+<li>JavaScript / TypeScript<ul>
+<li><a class="reference external" href="https://github.com/mher/node-celery">node-celery</a></li>
+<li><a class="reference external" href="https://github.com/node-celery-ts/node-celery-ts">node-celery-ts</a></li>
+</ul>
+</li>
+<li><span class="caps">PHP</span>:<ul>
+<li><a class="reference external" href="https://github.com/gjedeer/celery-php">celery-php</a></li>
+</ul>
+</li>
+<li>Rust<ul>
+<li><a class="reference external" href="https://github.com/rusty-celery/rusty-celery">rusty-celery</a></li>
+</ul>
+</li>
+<li>Go<ul>
+<li><a class="reference external" href="https://github.com/gocelery/gocelery">gocelery</a></li>
+<li><a class="reference external" href="https://github.com/marselester/gopher-celery">gopher-celery</a></li>
+</ul>
+</li>
+</ul>
+<p>Note that I haven’t used any of the above projects (and can’t vouch for them).</p>
+<table class="docutils footnote" frame="void" id="id7" rules="none">
+<colgroup><col class="label"/><col/></colgroup>
+<tbody valign="top">
+<tr><td class="label"><a class="fn-backref" href="#id1">[1]</a></td><td>Part of this started out as an <a class="reference external" href="https://github.com/clokep/celery-batches/issues/69#issuecomment-1181855643">explanation of how celery-batches works</a>.</td></tr>
+</tbody>
+</table>
+<table class="docutils footnote" frame="void" id="id8" rules="none">
+<colgroup><col class="label"/><col/></colgroup>
+<tbody valign="top">
+<tr><td class="label"><a class="fn-backref" href="#id2">[2]</a></td><td><a class="reference external" href="https://docs.celeryq.dev/en/v5.2.7/userguide/periodic-tasks.html">Celery beat</a> is another common component used to run scheduled or periodic
+tasks. Architecture wise it takes the same place as your application code,
+i.e. it runs forever and requests for tasks to be executed based on the time.</td></tr>
+</tbody>
+</table>
+<table class="docutils footnote" frame="void" id="id9" rules="none">
+<colgroup><col class="label"/><col/></colgroup>
+<tbody valign="top">
+<tr><td class="label"><a class="fn-backref" href="#id3">[3]</a></td><td>There’s a <a class="reference external" href="https://docs.celeryq.dev/en/v5.2.7/userguide/calling.html">bunch of ways</a> to do this, <tt class="docutils literal">apply_async</tt> and <tt class="docutils literal">delay</tt> are the
+most common, but don’t impact the contents of this article.</td></tr>
+</tbody>
+</table>
+<table class="docutils footnote" frame="void" id="id10" rules="none">
+<colgroup><col class="label"/><col/></colgroup>
+<tbody valign="top">
+<tr><td class="label"><a class="fn-backref" href="#id4">[4]</a></td><td>As a quick aside — <tt class="docutils literal">AsyncResult</tt> does not refer to async/await in Python.
+<tt class="docutils literal">AsyncResult.get()</tt> is <strong>synchronous</strong>. A <a class="reference external" href="https://patrick.cloke.us/posts/2018/10/23/calling-celery-from-twisted/">previous article</a> has some more
+information on this.</td></tr>
+</tbody>
+</table>
+<table class="docutils footnote" frame="void" id="id11" rules="none">
+<colgroup><col class="label"/><col/></colgroup>
+<tbody valign="top">
+<tr><td class="label"><a class="fn-backref" href="#id5">[5]</a></td><td>This is not configurable. The Celery <a class="reference external" href="https://docs.celeryq.dev/en/v5.2.7/userguide/security.html#serializers">security guide</a> recommends not using
+pickle for serializers (and it is <a class="reference external" href="https://docs.python.org/dev/library/pickle.html">well known</a> that pickle can be a security
+flaw), but it does not seem documented anywhere that pickle will be used with
+the prefork pool. If you are using <span class="caps">JSON</span> to initially serialize to the broker
+then your task should only be left with “simple” types (strings, integers,
+floats, null, lists, and dictionaries) so this should not be an issue.</td></tr>
+</tbody>
+</table>
+<table class="docutils footnote" frame="void" id="id12" rules="none">
+<colgroup><col class="label"/><col/></colgroup>
+<tbody valign="top">
+<tr><td class="label"><a class="fn-backref" href="#id6">[6]</a></td><td>Tasks and results can be configured to have different serializers (or different
+compression settings) via the <tt class="docutils literal">task_</tt> vs. <tt class="docutils literal">result_</tt> configuration options.</td></tr>
+</tbody>
+</table>
+</div>
+</div>
+
+      </div>
+
+<div id="disqus_thread"></div>
+<script>
+/**
+*  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+*  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/
+/*
+var disqus_config = function () {
+this.page.url = '/posts/2023/09/15/celery-architecture-breakdown/';
+this.page.identifier = 'celery-architecture-breakdown';
+};
+*/
+(function() { // DON'T EDIT BELOW THIS LINE
+var d = document, s = d.createElement('script');
+s.src = 'https://clokep.disqus.com/embed.js';
+s.setAttribute('data-timestamp', +new Date());
+(d.head || d.body).appendChild(s);
+})();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    </div>
+  </div>
+</div>
+
+    <nav class="navbar fixed-bottom navbar-light bg-light border-top border-info">
+      <a href="https://getpelican.com/" class="nav-item" target="_blank">Powered by Pelican</a>
+      <a href="https://github.com/clokep/clokep.github.io" class="nav-item" target="_blank">
+        Source available on GitHub <span class="fab fa-github"></span>
+      </a>
+    </nav>
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T" crossorigin="anonymous"></script>
+
+  </body>
+</html>

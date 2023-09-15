@@ -1,5 +1,264 @@
 <?xml version="1.0" encoding="utf-8"?>
-<rss version="2.0"><channel><title>Patrick Cloke</title><link>https://patrick.cloke.us/</link><description></description><lastBuildDate>Mon, 08 May 2023 14:56:00 -0400</lastBuildDate><item><title>Matrix Push Rules &amp; Notifications</title><link>https://patrick.cloke.us/posts/2023/05/08/matrix-push-rules-notifications/</link><description>&lt;p&gt;In a previous post about &lt;a class="reference external" href="https://patrick.cloke.us/posts/2023/01/05/matrix-read-receipts-and-notifications/"&gt;read receipts &lt;span class="amp"&gt;&amp;amp;&lt;/span&gt; notifications in Matrix&lt;/a&gt; I briefly
+<rss version="2.0"><channel><title>Patrick Cloke</title><link>https://patrick.cloke.us/</link><description></description><lastBuildDate>Fri, 15 Sep 2023 15:28:00 -0400</lastBuildDate><item><title>Celery architecture breakdown</title><link>https://patrick.cloke.us/posts/2023/09/15/celery-architecture-breakdown/</link><description>
+&lt;p&gt;The &lt;a class="reference external" href="https://docs.celeryq.dev/en/v5.2.7/"&gt;Celery project&lt;/a&gt;, which is often used Python library to run “background tasks”
+for synchronous web frameworks, describes itself as:&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Celery is a simple, flexible, and reliable distributed system to process vast
+amounts of messages , while providing operations with the tools required to
+maintain such a system.&lt;/p&gt;
+&lt;p&gt;It’s a task queue with focus on real-time processing, while also supporting
+task scheduling.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;The documentation goes into great detail about how to configure Celery with
+its plethora of options, but it does not focus much on the &lt;a class="reference external" href="https://docs.celeryq.dev/en/v5.2.7/getting-started/introduction.html"&gt;high level architecture&lt;/a&gt;
+or how messages pass between the components. Celery is &lt;em&gt;extremely&lt;/em&gt; flexible (almost
+every component can be easily replaced!) but this can make it hard to understand.
+I attempt to break it down to the best of my understanding below. &lt;a class="footnote-reference" href="#id7" id="id1"&gt;[1]&lt;/a&gt;&lt;/p&gt;
+&lt;div class="section" id="high-level-architecture"&gt;
+&lt;h2&gt;&lt;a class="toc-backref" href="#id17"&gt;High Level Architecture&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;Celery has a few main components &lt;a class="footnote-reference" href="#id8" id="id2"&gt;[2]&lt;/a&gt;:&lt;/p&gt;
+&lt;ol class="arabic simple"&gt;
+&lt;li&gt;Your application code, including any &lt;a class="reference external" href="https://docs.celeryq.dev/en/v5.2.7/userguide/tasks.html"&gt;&lt;tt class="docutils literal"&gt;Task&lt;/tt&gt;&lt;/a&gt; objects you’ve defined. (Usually
+called the “client” in Celery’s documentation.)&lt;/li&gt;
+&lt;li&gt;A &lt;a class="reference external" href="https://docs.celeryq.dev/en/v5.2.7/getting-started/backends-and-brokers/index.html"&gt;broker&lt;/a&gt; or message transport.&lt;/li&gt;
+&lt;li&gt;One or more Celery &lt;a class="reference external" href="https://docs.celeryq.dev/en/v5.2.7/internals/worker.html"&gt;workers&lt;/a&gt;.&lt;/li&gt;
+&lt;li&gt;A (results) &lt;a class="reference external" href="https://docs.celeryq.dev/en/v5.2.7/getting-started/backends-and-brokers/index.html"&gt;backend&lt;/a&gt;.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;blockquote class="text-center"&gt;
+&lt;a class="reference external image-reference" href="https://patrick.cloke.us/images/celery-architecture/celery-overview.png"&gt;&lt;img alt="Celery overview" src="https://patrick.cloke.us/images/celery-architecture/celery-overview.png" style="width: 50%;"/&gt;&lt;/a&gt;
+&lt;p&gt;A simplified view of Celery components.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;In order to use Celery you need to:&lt;/p&gt;
+&lt;ol class="arabic simple"&gt;
+&lt;li&gt;Instantiate a Celery &lt;tt class="docutils literal"&gt;application&lt;/tt&gt; (which includes configuration, such as
+which broker and backend to use and how to connect to them) and define one or
+more &lt;tt class="docutils literal"&gt;Task&lt;/tt&gt; definitions.&lt;/li&gt;
+&lt;li&gt;Run a broker.&lt;/li&gt;
+&lt;li&gt;Run one or more Celery workers.&lt;/li&gt;
+&lt;li&gt;(Maybe) run a backend.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;If you’re unfamiliar with Celery, below is an example. It declares a simple
+&lt;tt class="docutils literal"&gt;add&lt;/tt&gt; task using the &lt;tt class="docutils literal"&gt;@task&lt;/tt&gt; decorator and will request the task to be executed
+in the background twice (&lt;tt class="docutils literal"&gt;&lt;span class="pre"&gt;add.delay(...)&lt;/span&gt;&lt;/tt&gt;). &lt;a class="footnote-reference" href="#id9" id="id3"&gt;[3]&lt;/a&gt; The results are then fetched
+(&lt;tt class="docutils literal"&gt;asyncresult_1.get()&lt;/tt&gt;) and printed. Place this in a file named &lt;tt class="docutils literal"&gt;my_app.py&lt;/tt&gt;:&lt;/p&gt;
+&lt;pre class="code python highlight literal-block"&gt;
+&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;celery&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;Celery&lt;/span&gt;
+
+&lt;span class="n"&gt;app&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;Celery&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;
+    &lt;span class="s2"&gt;"my_app"&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+    &lt;span class="n"&gt;backend&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s2"&gt;"rpc://"&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+    &lt;span class="n"&gt;broker&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s2"&gt;"amqp://guest@localhost//"&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+&lt;span class="p"&gt;)&lt;/span&gt;
+
+
+&lt;span class="nd"&gt;@app&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;task&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
+&lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;add&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;a&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="nb"&gt;int&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;b&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="nb"&gt;int&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="o"&gt;-&amp;gt;&lt;/span&gt; &lt;span class="nb"&gt;int&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
+    &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="n"&gt;a&lt;/span&gt; &lt;span class="o"&gt;+&lt;/span&gt; &lt;span class="n"&gt;b&lt;/span&gt;
+
+
+&lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="vm"&gt;__name__&lt;/span&gt; &lt;span class="o"&gt;==&lt;/span&gt; &lt;span class="s2"&gt;"__main__"&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
+    &lt;span class="c1"&gt;# Request that the tasks run and capture their async results.&lt;/span&gt;
+    &lt;span class="n"&gt;asyncresult_1&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;add&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;delay&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;2&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+    &lt;span class="n"&gt;asyncresult_2&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;add&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;delay&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;3&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;4&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+
+    &lt;span class="n"&gt;result_1&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;asyncresult_1&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;get&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
+    &lt;span class="n"&gt;result_2&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;asyncresult_2&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;get&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
+    &lt;span class="c1"&gt;# Should result in 3, 7.&lt;/span&gt;
+    &lt;span class="nb"&gt;print&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="sa"&gt;f&lt;/span&gt;&lt;span class="s2"&gt;"Results: &lt;/span&gt;&lt;span class="si"&gt;{&lt;/span&gt;&lt;span class="n"&gt;result_1&lt;/span&gt;&lt;span class="si"&gt;}&lt;/span&gt;&lt;span class="s2"&gt;, &lt;/span&gt;&lt;span class="si"&gt;{&lt;/span&gt;&lt;span class="n"&gt;result_2&lt;/span&gt;&lt;span class="si"&gt;}&lt;/span&gt;&lt;span class="s2"&gt;"&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;/pre&gt;
+&lt;p&gt;Usually you don’t care where (which worker) the task runs on it, or how it gets
+there but sometimes you need! We can break down the components more to reveal more detail:&lt;/p&gt;
+&lt;blockquote class="text-center"&gt;
+&lt;a class="reference external image-reference" href="https://patrick.cloke.us/images/celery-architecture/celery-components.png"&gt;&lt;img alt="Celery components" src="https://patrick.cloke.us/images/celery-architecture/celery-components.png" style="width: 50%;"/&gt;&lt;/a&gt;
+&lt;p&gt;The Celery components broken into sub-components.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;div class="section" id="broker"&gt;
+&lt;h3&gt;&lt;a class="toc-backref" href="#id18"&gt;Broker&lt;/a&gt;&lt;/h3&gt;
+&lt;p&gt;The message broker is a piece of off-the-shelf software which takes task requests
+and queues them until a worker is ready to process them. Common options include
+&lt;a class="reference external" href="https://www.rabbitmq.com/"&gt;RabbitMQ&lt;/a&gt;, or &lt;a class="reference external" href="https://redis.io"&gt;Redis&lt;/a&gt;, although your cloud provider might have a custom one.&lt;/p&gt;
+&lt;p&gt;The broker may have some sub-components, including an exchange and one or more
+queues. (Note that Celery tends to use &lt;span class="caps"&gt;AMQP&lt;/span&gt; terminology and sometimes emulates
+features which do not exist on other brokers.)&lt;/p&gt;
+&lt;p&gt;Configuring your broker is beyond the scope of this article (and depends heavily
+on workload). The Celery &lt;a class="reference external" href="https://docs.celeryq.dev/en/v5.2.7/userguide/routing.html"&gt;routing documentation&lt;/a&gt; has more information on how and
+why you might route tasks to different queues.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="section" id="workers"&gt;
+&lt;h3&gt;&lt;a class="toc-backref" href="#id19"&gt;Workers&lt;/a&gt;&lt;/h3&gt;
+&lt;p&gt;Celery workers fetch queued tasks from the broker and then run the code defined in
+your &lt;tt class="docutils literal"&gt;task&lt;/tt&gt;, they can optionally return a value via the results backend.&lt;/p&gt;
+&lt;p&gt;Celery workers have a “consumer” which fetches tasks from the broker: by default
+it requests many tasks at once, equivalent to “&lt;a class="reference external" href="https://docs.celeryq.dev/en/v5.2.7/userguide/configuration.html#std-setting-worker_prefetch_multiplier"&gt;prefetch multiplier&lt;/a&gt; x &lt;a class="reference external" href="https://docs.celeryq.dev/en/v5.2.7/userguide/configuration.html#std-setting-worker_concurrency"&gt;concurrency&lt;/a&gt;“.
+(If your prefetch multiplier is 5 and your concurrency is 4, it attempts to
+fetch up to 20 queued tasks from the broker.) Once fetched it places them into
+an in-memory buffer. The task pool then runs each task via its &lt;tt class="docutils literal"&gt;Strategy&lt;/tt&gt; —
+for a normal Celery &lt;tt class="docutils literal"&gt;Task&lt;/tt&gt; the task pool essentially executes tasks from the
+consumer’s buffer.&lt;/p&gt;
+&lt;p&gt;The worker also handles scheduling tasks to run in future (by queueing them
+in-memory), but we will not go deeper into that here.&lt;/p&gt;
+&lt;p&gt;Using the “prefork” pool, the consumer and task pool are separate processes, while
+the “gevent”/”eventlet” pool uses coroutines, and the “threads” pool uses threads.
+There’s also a “solo” pool which can be useful for testing (everything is run in
+the same process: a single task runs at a time and blocks the consumer from
+fetching more tasks.)&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="section" id="backend"&gt;
+&lt;h3&gt;&lt;a class="toc-backref" href="#id20"&gt;Backend&lt;/a&gt;&lt;/h3&gt;
+&lt;p&gt;The backend is another piece of off-the-shelf software which is used to store the
+results of your task. It provides a key-value store and is commonly &lt;a class="reference external" href="https://redis.io"&gt;Redis&lt;/a&gt;,
+although there are many options depending on how durable and large your results
+are. The results backend can be queried by using the &lt;tt class="docutils literal"&gt;AsyncResult&lt;/tt&gt; object which
+is returned to your application code. &lt;a class="footnote-reference" href="#id10" id="id4"&gt;[4]&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Much like for brokers, how you configure results backends is beyond the scope of
+this article.&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="section" id="dataflow"&gt;
+&lt;h2&gt;&lt;a class="toc-backref" href="#id21"&gt;Dataflow&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;You might have observed that the above components discussed at least several
+different processes (client, broker, worker, worker pool, backend) which may also
+exist on different computers. How does this all work to pass the task between
+them? Usually this level of detail isn’t necessary to understand what it means
+to “run a task in the background”, but it can be useful for diagnosing performance
+or configuring brokers and backends.&lt;/p&gt;
+&lt;p&gt;The main thing to understand is that there’s lots of serialization happening across
+each process boundary:&lt;/p&gt;
+&lt;blockquote class="text-center"&gt;
+&lt;a class="reference external image-reference" href="https://patrick.cloke.us/images/celery-architecture/celery-dataflow.png"&gt;&lt;img alt="Celery dataflow" src="https://patrick.cloke.us/images/celery-architecture/celery-dataflow.png" style="width: 50%;"/&gt;&lt;/a&gt;
+&lt;p&gt;A task message traversing from application code to the broker to a worker,
+and a result traversing from a worker to a backend to application code.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;div class="section" id="request-serialization"&gt;
+&lt;h3&gt;&lt;a class="toc-backref" href="#id22"&gt;Request Serialization&lt;/a&gt;&lt;/h3&gt;
+&lt;p&gt;When a client requests for a task to be run the information needs to be passed to
+the broker in a form it understands. The necessary data includes:&lt;/p&gt;
+&lt;ul class="simple"&gt;
+&lt;li&gt;The task identifier (e.g. &lt;tt class="docutils literal"&gt;my_app.add&lt;/tt&gt;).&lt;/li&gt;
+&lt;li&gt;Any arguments (e.g. &lt;tt class="docutils literal"&gt;(1, 2)&lt;/tt&gt;) and keyword arguments.&lt;/li&gt;
+&lt;li&gt;A request &lt;span class="caps"&gt;ID&lt;/span&gt;.&lt;/li&gt;
+&lt;li&gt;Routing information.&lt;/li&gt;
+&lt;li&gt;…and a bunch of other metadata.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Exactly what is included is defined by the &lt;a class="reference external" href="https://docs.celeryq.dev/en/v5.2.7/internals/protocol.html#message-protocol-task-v2"&gt;message protocol&lt;/a&gt; (of which Celery
+has two, although they’re fairly similar).&lt;/p&gt;
+&lt;p&gt;Most of the metadata gets placed in the headers while the task arguments, which
+might be any Python class, need to be serialized into the body. Celery supports
+&lt;a class="reference external" href="https://docs.celeryq.dev/en/v5.2.7/userguide/calling.html#calling-serializers"&gt;many serializers&lt;/a&gt; and uses &lt;a class="reference external" href="https://docs.python.org/3/library/json.html"&gt;&lt;span class="caps"&gt;JSON&lt;/span&gt;&lt;/a&gt; by default (&lt;a class="reference external" href="https://docs.python.org/dev/library/pickle.html#module-pickle"&gt;pickle&lt;/a&gt;, &lt;a class="reference external" href="http://yaml.org/"&gt;&lt;span class="caps"&gt;YAML&lt;/span&gt;&lt;/a&gt;, and &lt;a class="reference external" href="http://msgpack.org/"&gt;msgpack&lt;/a&gt;,
+as well as custom schemes can be used as well).&lt;/p&gt;
+&lt;p&gt;After serialization, Celery also supports &lt;a class="reference external" href="https://docs.celeryq.dev/en/v5.2.7/userguide/calling.html#compression"&gt;compressing the message&lt;/a&gt; or
+&lt;a class="reference external" href="https://docs.celeryq.dev/en/v5.2.7/userguide/security.html#message-signing"&gt;signing the message&lt;/a&gt; for additional security.&lt;/p&gt;
+&lt;p&gt;An example &lt;span class="caps"&gt;AMQP&lt;/span&gt; message containing the details of a task request (from RabbitMQ’s
+&lt;a class="reference external" href="https://www.rabbitmq.com/management.html"&gt;management interface&lt;/a&gt;) is shown below:&lt;/p&gt;
+&lt;blockquote class="text-center"&gt;
+&lt;a class="reference external image-reference" href="https://patrick.cloke.us/images/celery-architecture/rabbitmq-task-message.png"&gt;&lt;img alt="Celery task wrapped in a RabbitMQ message" src="https://patrick.cloke.us/images/celery-architecture/rabbitmq-task-message.png" style="width: 50%;"/&gt;&lt;/a&gt;
+&lt;p&gt;The example Celery task wrapped in a RabbitMQ message&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;When a worker fetches a task from the broker it deserializes it into a &lt;a class="reference external" href="https://docs.celeryq.dev/en/v5.2.7/userguide/tasks.html#task-request"&gt;Request&lt;/a&gt;
+and executes it (as discussed above). In the case of a “prefork” worker pool the
+&lt;tt class="docutils literal"&gt;Request&lt;/tt&gt; is serialized &lt;em&gt;again&lt;/em&gt; using pickle when passed to task pool &lt;a class="footnote-reference" href="#id11" id="id5"&gt;[5]&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;The worker pool then unpickles the request, loads the task code, and executes
+it with the requested arguments. Finally your task code is running! Note that the
+task code itself is not contained in the serialized request, that is loaded
+separately by the worker.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="section" id="result-serialization"&gt;
+&lt;h3&gt;&lt;a class="toc-backref" href="#id23"&gt;Result Serialization&lt;/a&gt;&lt;/h3&gt;
+&lt;p&gt;When a task returns a value it gets stored in the results backend with enough
+information for the original client to find it:&lt;/p&gt;
+&lt;ul class="simple"&gt;
+&lt;li&gt;The result &lt;span class="caps"&gt;ID&lt;/span&gt;.&lt;/li&gt;
+&lt;li&gt;The result.&lt;/li&gt;
+&lt;li&gt;…and some other metadata.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Similarly to tasks this information must be serialized before being placed in the
+results backend (and gets split between the headers and body). Celery provides
+configuration options to customize this serialization. &lt;a class="footnote-reference" href="#id12" id="id6"&gt;[6]&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;An example &lt;span class="caps"&gt;AMQP&lt;/span&gt; message containing the details of a result is shown below:&lt;/p&gt;
+&lt;blockquote class="text-center"&gt;
+&lt;a class="reference external image-reference" href="https://patrick.cloke.us/images/celery-architecture/rabbitmq-result-message.png"&gt;&lt;img alt="Celery result wrapped in a RabbitMQ message" src="https://patrick.cloke.us/images/celery-architecture/rabbitmq-result-message.png" style="width: 50%;"/&gt;&lt;/a&gt;
+&lt;p&gt;The example Celery result wrapped in a RabbitMQ message&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;Once the result is fetched by the client it can deserialized the true (Python)
+return value and provide it to the application code.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="section" id="final-thoughts"&gt;
+&lt;h3&gt;&lt;a class="toc-backref" href="#id24"&gt;Final thoughts&lt;/a&gt;&lt;/h3&gt;
+&lt;p&gt;Since the Celery protocol is a public, documented &lt;span class="caps"&gt;API&lt;/span&gt; it allows you to create
+task requests externally to Celery! As long as you can interface to the Celery broker
+(and have some shared configuration) you can use a different application (or programming
+language) to publish and/or consume tasks. This is exactly what others have done:&lt;/p&gt;
+&lt;ul class="simple"&gt;
+&lt;li&gt;JavaScript / TypeScript&lt;ul&gt;
+&lt;li&gt;&lt;a class="reference external" href="https://github.com/mher/node-celery"&gt;node-celery&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a class="reference external" href="https://github.com/node-celery-ts/node-celery-ts"&gt;node-celery-ts&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;span class="caps"&gt;PHP&lt;/span&gt;:&lt;ul&gt;
+&lt;li&gt;&lt;a class="reference external" href="https://github.com/gjedeer/celery-php"&gt;celery-php&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;Rust&lt;ul&gt;
+&lt;li&gt;&lt;a class="reference external" href="https://github.com/rusty-celery/rusty-celery"&gt;rusty-celery&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;Go&lt;ul&gt;
+&lt;li&gt;&lt;a class="reference external" href="https://github.com/gocelery/gocelery"&gt;gocelery&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a class="reference external" href="https://github.com/marselester/gopher-celery"&gt;gopher-celery&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Note that I haven’t used any of the above projects (and can’t vouch for them).&lt;/p&gt;
+&lt;table class="docutils footnote" frame="void" id="id7" rules="none"&gt;
+&lt;colgroup&gt;&lt;col class="label"/&gt;&lt;col/&gt;&lt;/colgroup&gt;
+&lt;tbody valign="top"&gt;
+&lt;tr&gt;&lt;td class="label"&gt;&lt;a class="fn-backref" href="#id1"&gt;[1]&lt;/a&gt;&lt;/td&gt;&lt;td&gt;Part of this started out as an &lt;a class="reference external" href="https://github.com/clokep/celery-batches/issues/69#issuecomment-1181855643"&gt;explanation of how celery-batches works&lt;/a&gt;.&lt;/td&gt;&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;table class="docutils footnote" frame="void" id="id8" rules="none"&gt;
+&lt;colgroup&gt;&lt;col class="label"/&gt;&lt;col/&gt;&lt;/colgroup&gt;
+&lt;tbody valign="top"&gt;
+&lt;tr&gt;&lt;td class="label"&gt;&lt;a class="fn-backref" href="#id2"&gt;[2]&lt;/a&gt;&lt;/td&gt;&lt;td&gt;&lt;a class="reference external" href="https://docs.celeryq.dev/en/v5.2.7/userguide/periodic-tasks.html"&gt;Celery beat&lt;/a&gt; is another common component used to run scheduled or periodic
+tasks. Architecture wise it takes the same place as your application code,
+i.e. it runs forever and requests for tasks to be executed based on the time.&lt;/td&gt;&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;table class="docutils footnote" frame="void" id="id9" rules="none"&gt;
+&lt;colgroup&gt;&lt;col class="label"/&gt;&lt;col/&gt;&lt;/colgroup&gt;
+&lt;tbody valign="top"&gt;
+&lt;tr&gt;&lt;td class="label"&gt;&lt;a class="fn-backref" href="#id3"&gt;[3]&lt;/a&gt;&lt;/td&gt;&lt;td&gt;There’s a &lt;a class="reference external" href="https://docs.celeryq.dev/en/v5.2.7/userguide/calling.html"&gt;bunch of ways&lt;/a&gt; to do this, &lt;tt class="docutils literal"&gt;apply_async&lt;/tt&gt; and &lt;tt class="docutils literal"&gt;delay&lt;/tt&gt; are the
+most common, but don’t impact the contents of this article.&lt;/td&gt;&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;table class="docutils footnote" frame="void" id="id10" rules="none"&gt;
+&lt;colgroup&gt;&lt;col class="label"/&gt;&lt;col/&gt;&lt;/colgroup&gt;
+&lt;tbody valign="top"&gt;
+&lt;tr&gt;&lt;td class="label"&gt;&lt;a class="fn-backref" href="#id4"&gt;[4]&lt;/a&gt;&lt;/td&gt;&lt;td&gt;As a quick aside — &lt;tt class="docutils literal"&gt;AsyncResult&lt;/tt&gt; does not refer to async/await in Python.
+&lt;tt class="docutils literal"&gt;AsyncResult.get()&lt;/tt&gt; is &lt;strong&gt;synchronous&lt;/strong&gt;. A &lt;a class="reference external" href="https://patrick.cloke.us/posts/2018/10/23/calling-celery-from-twisted/"&gt;previous article&lt;/a&gt; has some more
+information on this.&lt;/td&gt;&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;table class="docutils footnote" frame="void" id="id11" rules="none"&gt;
+&lt;colgroup&gt;&lt;col class="label"/&gt;&lt;col/&gt;&lt;/colgroup&gt;
+&lt;tbody valign="top"&gt;
+&lt;tr&gt;&lt;td class="label"&gt;&lt;a class="fn-backref" href="#id5"&gt;[5]&lt;/a&gt;&lt;/td&gt;&lt;td&gt;This is not configurable. The Celery &lt;a class="reference external" href="https://docs.celeryq.dev/en/v5.2.7/userguide/security.html#serializers"&gt;security guide&lt;/a&gt; recommends not using
+pickle for serializers (and it is &lt;a class="reference external" href="https://docs.python.org/dev/library/pickle.html"&gt;well known&lt;/a&gt; that pickle can be a security
+flaw), but it does not seem documented anywhere that pickle will be used with
+the prefork pool. If you are using &lt;span class="caps"&gt;JSON&lt;/span&gt; to initially serialize to the broker
+then your task should only be left with “simple” types (strings, integers,
+floats, null, lists, and dictionaries) so this should not be an issue.&lt;/td&gt;&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;table class="docutils footnote" frame="void" id="id12" rules="none"&gt;
+&lt;colgroup&gt;&lt;col class="label"/&gt;&lt;col/&gt;&lt;/colgroup&gt;
+&lt;tbody valign="top"&gt;
+&lt;tr&gt;&lt;td class="label"&gt;&lt;a class="fn-backref" href="#id6"&gt;[6]&lt;/a&gt;&lt;/td&gt;&lt;td&gt;Tasks and results can be configured to have different serializers (or different
+compression settings) via the &lt;tt class="docutils literal"&gt;task_&lt;/tt&gt; vs. &lt;tt class="docutils literal"&gt;result_&lt;/tt&gt; configuration options.&lt;/td&gt;&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Patrick Cloke</dc:creator><pubDate>Fri, 15 Sep 2023 15:28:00 -0400</pubDate><guid isPermaLink="false">tag:patrick.cloke.us,2023-09-15:/posts/2023/09/15/celery-architecture-breakdown/</guid><category>articles</category><category>celery</category></item><item><title>Matrix Push Rules &amp; Notifications</title><link>https://patrick.cloke.us/posts/2023/05/08/matrix-push-rules-notifications/</link><description>&lt;p&gt;In a previous post about &lt;a class="reference external" href="https://patrick.cloke.us/posts/2023/01/05/matrix-read-receipts-and-notifications/"&gt;read receipts &lt;span class="amp"&gt;&amp;amp;&lt;/span&gt; notifications in Matrix&lt;/a&gt; I briefly
 mentioned that push rules generate notifications, but with little detail. After
 completing a rather large project to improve notifications in Matrix I want to
 fill in some of those blanks. &lt;a class="footnote-reference" href="#id9" id="id1"&gt;[1]&lt;/a&gt;&lt;/p&gt;
@@ -930,60 +1189,4 @@ code to support Celery 4.0+ and has grown to support some additional&amp;nbsp;fe
 previous employer). Realistically it was maintained by me already and this is
 just a formality. As part of this release the &lt;a class="reference external" href="https://celery-batches.readthedocs.io/en/v0.4/"&gt;documentation&lt;/a&gt; is now available
 on Read the&amp;nbsp;Docs.&lt;/p&gt;
-</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Patrick Cloke</dc:creator><pubDate>Mon, 30 Nov 2020 16:50:00 -0500</pubDate><guid isPermaLink="false">tag:patrick.cloke.us,2020-11-30:/posts/2020/11/30/celery-batches-0.4-released/</guid><category>articles</category><category>celery</category><category>celery-batches</category></item><item><title>django-render-block 0.8 (and 0.8.1) released!</title><link>https://patrick.cloke.us/posts/2020/10/27/django-render-block-0.8-released/</link><description>&lt;p&gt;A couple of weeks ago I released version 0.8 of &lt;a class="reference external" href="https://github.com/clokep/django-render-block/"&gt;django-render-block&lt;/a&gt;, this was
-followed up with a 0.8.1 to fix a&amp;nbsp;regression.&lt;/p&gt;
-&lt;p&gt;django-render-block is a small library that allows you render a specific &lt;tt class="docutils literal"&gt;block&lt;/tt&gt;
-from a Django (or Jinja) template, this is frequently used for emails when you
-want multiple pieces of an email together in a single template (e.g. the subject,
-&lt;span class="caps"&gt;HTML&lt;/span&gt; body, and text body), but they need to be rendered separately before&amp;nbsp;sending.&lt;/p&gt;
-&lt;p&gt;See the example&amp;nbsp;below:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="cp"&gt;{%&lt;/span&gt; &lt;span class="k"&gt;block&lt;/span&gt; &lt;span class="nv"&gt;subject&lt;/span&gt; &lt;span class="cp"&gt;%}&lt;/span&gt;&lt;span class="x"&gt;Hello from django-render-block!&lt;/span&gt;&lt;span class="cp"&gt;{%&lt;/span&gt; &lt;span class="k"&gt;endblock&lt;/span&gt; &lt;span class="cp"&gt;%}&lt;/span&gt;&lt;span class="x"&gt;&lt;/span&gt;
-
-&lt;span class="cp"&gt;{%&lt;/span&gt; &lt;span class="k"&gt;block&lt;/span&gt; &lt;span class="nv"&gt;text&lt;/span&gt; &lt;span class="cp"&gt;%}&lt;/span&gt;&lt;span class="x"&gt;&lt;/span&gt;
-&lt;span class="x"&gt;Hello!&lt;/span&gt;
-
-&lt;span class="x"&gt;This is the text email body!&lt;/span&gt;
-&lt;span class="cp"&gt;{%&lt;/span&gt; &lt;span class="k"&gt;endblock&lt;/span&gt; &lt;span class="cp"&gt;%}&lt;/span&gt;&lt;span class="x"&gt;&lt;/span&gt;
-
-&lt;span class="cp"&gt;{%&lt;/span&gt; &lt;span class="k"&gt;block&lt;/span&gt; &lt;span class="nv"&gt;html&lt;/span&gt; &lt;span class="cp"&gt;%}&lt;/span&gt;&lt;span class="x"&gt;&lt;/span&gt;
-&lt;span class="x"&gt;&amp;lt;h1&amp;gt;Hello!&amp;lt;/h1&amp;gt;&lt;/span&gt;
-
-&lt;span class="x"&gt;&amp;lt;p&amp;gt;This is the &amp;lt;b&amp;gt;HTML&amp;lt;/b&amp;gt; email body!&amp;lt;/p&amp;gt;&lt;/span&gt;
-&lt;span class="cp"&gt;{%&lt;/span&gt; &lt;span class="k"&gt;endblock&lt;/span&gt; &lt;span class="cp"&gt;%}&lt;/span&gt;&lt;span class="x"&gt;&lt;/span&gt;
-&lt;/pre&gt;&lt;/div&gt;
-&lt;p&gt;Using django-render-block, each &lt;tt class="docutils literal"&gt;block&lt;/tt&gt; can be rendered separately and then
-passed into Django&amp;#8217;s &lt;a class="reference external" href="https://docs.djangoproject.com/en/3.1/topics/email/"&gt;email system&lt;/a&gt;:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;django.core.mail&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;send_mail&lt;/span&gt;
-&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;render_block&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;render_block_to_string&lt;/span&gt;
-
-&lt;span class="n"&gt;subject&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;render_block_to_string&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;email.html&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;subject&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
-&lt;span class="n"&gt;text_body&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;render_block_to_string&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;email.html&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;text&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
-&lt;span class="n"&gt;html_body&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;render_block_to_string&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;email.html&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;html&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
-
-&lt;span class="n"&gt;send_mail&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;
-    &lt;span class="n"&gt;subject&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
-    &lt;span class="n"&gt;text_body&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
-    &lt;span class="n"&gt;html_message&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;html_body&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
-&lt;span class="p"&gt;)&lt;/span&gt;
-&lt;/pre&gt;&lt;/div&gt;
-&lt;p&gt;This particular release of django-render-block includes support for passing
-a fully instantiated &lt;a class="reference external" href="https://docs.djangoproject.com/en/dev/ref/templates/api/#django.template.Context"&gt;&lt;tt class="docutils literal"&gt;Context&lt;/tt&gt;&lt;/a&gt; (instead of a simple &lt;tt class="docutils literal"&gt;dict&lt;/tt&gt;) into
-&lt;tt class="docutils literal"&gt;render_block_to_string&lt;/tt&gt;. This allows the caller to control whether
-&lt;tt class="docutils literal"&gt;autoescape&lt;/tt&gt; is enabled and a few other&amp;nbsp;features.&lt;/p&gt;
-&lt;p&gt;The full changelog is included&amp;nbsp;below:&lt;/p&gt;
-&lt;div class="section" id="october-15-2020"&gt;
-&lt;h2&gt;0.8.1 (October 15,&amp;nbsp;2020)&lt;/h2&gt;
-&lt;ul class="simple"&gt;
-&lt;li&gt;Fixes a regression in v0.8 where a &lt;tt class="docutils literal"&gt;Context&lt;/tt&gt; could not be re-used. Contributed
-by &lt;a class="reference external" href="https://github.com/evanbrumley"&gt;&amp;#64;evanbrumley&lt;/a&gt;. (&lt;a class="reference external" href="https://github.com/clokep/django-render-block/pull/25"&gt;#25&lt;/a&gt;)&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/div&gt;
-&lt;div class="section" id="october-6-2020"&gt;
-&lt;h2&gt;0.8 (October 6,&amp;nbsp;2020)&lt;/h2&gt;
-&lt;ul class="simple"&gt;
-&lt;li&gt;&lt;tt class="docutils literal"&gt;render_block_to_string&lt;/tt&gt; now forwards the &lt;tt class="docutils literal"&gt;Context&lt;/tt&gt; passed as &lt;tt class="docutils literal"&gt;context&lt;/tt&gt; parameter.
-Contributed by &lt;a class="reference external" href="https://github.com/bblanchon"&gt;&amp;#64;bblanchon&lt;/a&gt;. (&lt;a class="reference external" href="https://github.com/clokep/django-render-block/pull/21"&gt;#21&lt;/a&gt;)&lt;/li&gt;
-&lt;li&gt;Drop support for Python 3.5, officially support Python 3.9. (&lt;a class="reference external" href="https://github.com/clokep/django-render-block/pull/22"&gt;#22&lt;/a&gt;)&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/div&gt;
-</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Patrick Cloke</dc:creator><pubDate>Tue, 27 Oct 2020 16:57:00 -0400</pubDate><guid isPermaLink="false">tag:patrick.cloke.us,2020-10-27:/posts/2020/10/27/django-render-block-0.8-released/</guid><category>articles</category><category>django</category><category>django-render-block</category></item></channel></rss>
+</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Patrick Cloke</dc:creator><pubDate>Mon, 30 Nov 2020 16:50:00 -0500</pubDate><guid isPermaLink="false">tag:patrick.cloke.us,2020-11-30:/posts/2020/11/30/celery-batches-0.4-released/</guid><category>articles</category><category>celery</category><category>celery-batches</category></item></channel></rss>
