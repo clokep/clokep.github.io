@@ -2,7 +2,7 @@ New Position at New Vector
 ##########################
 :date: 2020-03-03 18:55
 :author: Patrick Cloke
-:tags: personal
+:tags: personal, matrix
 
 I'm excited to share that a few weeks ago I started a new position at
 `New Vector`_! They're the company behind `Matrix`_, "an open network for
