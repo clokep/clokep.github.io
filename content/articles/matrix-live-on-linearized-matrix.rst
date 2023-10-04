@@ -19,9 +19,7 @@ You can find a bit more about the approach (and the code) on `GitHub`_.
 Check out the video below (my bit starts around the 5:27 mark) and let me know
 if you have any questions!
 
-.. Set start=327
-
-.. youtube:: 1LxkbTku0XQ
+.. youtube:: 1LxkbTku0XQ?start=327
     :nocookie: yes
 
 .. _Element: https://element.io
