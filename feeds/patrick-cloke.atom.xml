@@ -1,5 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>Patrick Cloke - Patrick Cloke</title><link href="https://patrick.cloke.us/" rel="alternate"></link><link href="https://patrick.cloke.us/feeds/patrick-cloke.atom.xml" rel="self"></link><id>https://patrick.cloke.us/</id><updated>2023-09-15T15:28:00-04:00</updated><entry><title>Celery architecture breakdown</title><link href="https://patrick.cloke.us/posts/2023/09/15/celery-architecture-breakdown/" rel="alternate"></link><published>2023-09-15T15:28:00-04:00</published><updated>2023-09-15T15:28:00-04:00</updated><author><name>Patrick Cloke</name></author><id>tag:patrick.cloke.us,2023-09-15:/posts/2023/09/15/celery-architecture-breakdown/</id><summary type="html">
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Patrick Cloke - Patrick Cloke</title><link href="https://patrick.cloke.us/" rel="alternate"></link><link href="https://patrick.cloke.us/feeds/patrick-cloke.atom.xml" rel="self"></link><id>https://patrick.cloke.us/</id><updated>2023-10-04T09:55:00-04:00</updated><entry><title>Matrix Live demo on Linearized Matrix</title><link href="https://patrick.cloke.us/posts/2023/10/04/matrix-live-demo-on-linearized-matrix/" rel="alternate"></link><published>2023-10-04T09:55:00-04:00</published><updated>2023-10-04T09:55:00-04:00</updated><author><name>Patrick Cloke</name></author><id>tag:patrick.cloke.us,2023-10-04:/posts/2023/10/04/matrix-live-demo-on-linearized-matrix/</id><summary type="html">&lt;p&gt;I demoed some of my work at &lt;a class="reference external" href="https://element.io"&gt;Element&lt;/a&gt; on Matrix Live back on August 4th&amp;#8217;s
+&lt;a class="reference external" href="https://matrix.org/blog/2023/08/04/this-week-in-matrix-2023-08-04/"&gt;This Week in Matrix&lt;/a&gt; (and failed to mention it here). I talked a bit about
+what &lt;a class="reference external" href="https://turt2live.github.io/ietf-mimi-linearized-matrix/draft-ralston-mimi-linearized-matrix.html"&gt;Linearized Matrix&lt;/a&gt;, Element&amp;#8217;s effort for the &lt;span class="caps"&gt;IETF&lt;/span&gt;&amp;#8217;s
+&lt;a class="reference external" href="https://datatracker.ietf.org/group/mimi/about/"&gt;&amp;#8220;More Instant Messaging Interoperability&amp;#8221; (&lt;span class="caps"&gt;MIMI&lt;/span&gt;)&lt;/a&gt; working&amp;nbsp;group.&lt;/p&gt;
+&lt;p&gt;I demoed …&lt;/p&gt;</summary><content type="html">&lt;p&gt;I demoed some of my work at &lt;a class="reference external" href="https://element.io"&gt;Element&lt;/a&gt; on Matrix Live back on August 4th&amp;#8217;s
+&lt;a class="reference external" href="https://matrix.org/blog/2023/08/04/this-week-in-matrix-2023-08-04/"&gt;This Week in Matrix&lt;/a&gt; (and failed to mention it here). I talked a bit about
+what &lt;a class="reference external" href="https://turt2live.github.io/ietf-mimi-linearized-matrix/draft-ralston-mimi-linearized-matrix.html"&gt;Linearized Matrix&lt;/a&gt;, Element&amp;#8217;s effort for the &lt;span class="caps"&gt;IETF&lt;/span&gt;&amp;#8217;s
+&lt;a class="reference external" href="https://datatracker.ietf.org/group/mimi/about/"&gt;&amp;#8220;More Instant Messaging Interoperability&amp;#8221; (&lt;span class="caps"&gt;MIMI&lt;/span&gt;)&lt;/a&gt; working&amp;nbsp;group.&lt;/p&gt;
+&lt;p&gt;I demoed two &lt;a class="reference external" href="https://github.com/matrix-org/synapse"&gt;Synapse&lt;/a&gt; instances as a dual-stack Matrix/Linearised Matrix
+homeserver communicating over federation with two &lt;a class="reference external" href="https://github.com/matrix-org/eigen-server"&gt;eigen-server&lt;/a&gt; instances, an
+example greenfield Linearized Matrix server. THis work server as a proof of
+concept for interoperability between Matrix and Linearized&amp;nbsp;Matrix.&lt;/p&gt;
+&lt;p&gt;You can find a bit more about the approach (and the code) on &lt;a class="reference external" href="https://github.com/matrix-org/synapse/issues/15954"&gt;GitHub&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Check out the video below (my bit starts around the 5:27 mark) and let me know
+if you have any&amp;nbsp;questions!&lt;/p&gt;
+&lt;!-- Set start=327 --&gt;
+&lt;div class="youtube youtube-16x9"&gt;&lt;iframe src="https://www.youtube-nocookie.com/embed/1LxkbTku0XQ" allowfullscreen seamless frameBorder="0"&gt;&lt;/iframe&gt;&lt;/div&gt;</content><category term="articles"></category><category term="matrix"></category></entry><entry><title>Celery architecture breakdown</title><link href="https://patrick.cloke.us/posts/2023/09/15/celery-architecture-breakdown/" rel="alternate"></link><published>2023-09-15T15:28:00-04:00</published><updated>2023-09-15T15:28:00-04:00</updated><author><name>Patrick Cloke</name></author><id>tag:patrick.cloke.us,2023-09-15:/posts/2023/09/15/celery-architecture-breakdown/</id><summary type="html">
 &lt;p&gt;The &lt;a class="reference external" href="https://docs.celeryq.dev/en/v5.2.7/"&gt;Celery project&lt;/a&gt;, which is often used Python library to run “background tasks”
 for synchronous web frameworks, describes itself as:&lt;/p&gt;
 &lt;blockquote&gt;
@@ -1227,19 +1243,4 @@ which is available at Read the&amp;nbsp;Docs.&lt;/li&gt;
 &lt;li&gt;Drop support for Python 3.5. (&lt;a class="reference external" href="https://github.com/clokep/django-querysetsequence/pull/82"&gt;#82&lt;/a&gt;)&lt;/li&gt;
 &lt;/ul&gt;
 &lt;/div&gt;
-</content><category term="articles"></category><category term="django"></category><category term="django-querysetsequence"></category></entry><entry><title>celery-batches 0.4 released!</title><link href="https://patrick.cloke.us/posts/2020/11/30/celery-batches-0.4-released/" rel="alternate"></link><published>2020-11-30T16:50:00-05:00</published><updated>2020-11-30T16:50:00-05:00</updated><author><name>Patrick Cloke</name></author><id>tag:patrick.cloke.us,2020-11-30:/posts/2020/11/30/celery-batches-0.4-released/</id><summary type="html">&lt;p&gt;Earlier today I released a version &lt;a class="reference external" href="https://pypi.org/project/celery-batches/0.4/"&gt;0.4&lt;/a&gt; of &lt;a class="reference external" href="https://github.com/clokep/celery-batches/"&gt;celery-batches&lt;/a&gt; with support for
-Celery 5.0. As part of this release support for Python &amp;lt; 3.6 was dropped and
-support for Celery &amp;lt; 4.4 was&amp;nbsp;dropped.&lt;/p&gt;
-&lt;p&gt;celery-batches is a small library that allows you process multiple calls to a
-&lt;a class="reference external" href="https://github.com/celery/celery/"&gt;Celery …&lt;/a&gt;&lt;/p&gt;</summary><content type="html">&lt;p&gt;Earlier today I released a version &lt;a class="reference external" href="https://pypi.org/project/celery-batches/0.4/"&gt;0.4&lt;/a&gt; of &lt;a class="reference external" href="https://github.com/clokep/celery-batches/"&gt;celery-batches&lt;/a&gt; with support for
-Celery 5.0. As part of this release support for Python &amp;lt; 3.6 was dropped and
-support for Celery &amp;lt; 4.4 was&amp;nbsp;dropped.&lt;/p&gt;
-&lt;p&gt;celery-batches is a small library that allows you process multiple calls to a
-&lt;a class="reference external" href="https://github.com/celery/celery/"&gt;Celery&lt;/a&gt; task together. The batches can be processed based on a count of task
-calls or a timer. It started as an update of the &lt;tt class="docutils literal"&gt;celery.contrib.batches&lt;/tt&gt;
-code to support Celery 4.0+ and has grown to support some additional&amp;nbsp;features.&lt;/p&gt;
-&lt;p&gt;The project was also transferred on GitHub to my personal namespace (from my
-previous employer). Realistically it was maintained by me already and this is
-just a formality. As part of this release the &lt;a class="reference external" href="https://celery-batches.readthedocs.io/en/v0.4/"&gt;documentation&lt;/a&gt; is now available
-on Read the&amp;nbsp;Docs.&lt;/p&gt;
-</content><category term="articles"></category><category term="celery"></category><category term="celery-batches"></category></entry></feed>
+</content><category term="articles"></category><category term="django"></category><category term="django-querysetsequence"></category></entry></feed>
