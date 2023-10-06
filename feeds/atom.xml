@@ -1,5 +1,203 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>Patrick Cloke</title><link href="https://patrick.cloke.us/" rel="alternate"></link><link href="https://patrick.cloke.us/feeds/atom.xml" rel="self"></link><id>https://patrick.cloke.us/</id><updated>2023-10-04T09:55:00-04:00</updated><entry><title>Matrix Live demo on Linearized Matrix</title><link href="https://patrick.cloke.us/posts/2023/10/04/matrix-live-demo-on-linearized-matrix/" rel="alternate"></link><published>2023-10-04T09:55:00-04:00</published><updated>2023-10-04T09:55:00-04:00</updated><author><name>Patrick Cloke</name></author><id>tag:patrick.cloke.us,2023-10-04:/posts/2023/10/04/matrix-live-demo-on-linearized-matrix/</id><summary type="html">&lt;p&gt;I demoed some of my work at &lt;a class="reference external" href="https://element.io"&gt;Element&lt;/a&gt; on Matrix Live back on August 4th&amp;#8217;s
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Patrick Cloke</title><link href="https://patrick.cloke.us/" rel="alternate"></link><link href="https://patrick.cloke.us/feeds/atom.xml" rel="self"></link><id>https://patrick.cloke.us/</id><updated>2023-10-06T07:55:00-04:00</updated><entry><title>Handling GitHub Notifications</title><link href="https://patrick.cloke.us/posts/2023/10/06/handling-github-notifications/" rel="alternate"></link><published>2023-10-06T07:55:00-04:00</published><updated>2023-10-06T07:55:00-04:00</updated><author><name>Patrick Cloke</name></author><id>tag:patrick.cloke.us,2023-10-06:/posts/2023/10/06/handling-github-notifications/</id><summary type="html">&lt;div class="admonition note"&gt;
+&lt;p class="first admonition-title"&gt;Note&lt;/p&gt;
+&lt;p class="last"&gt;This was originally written for some coworkers and assumes a mostly GitHub-based
+workflow. It has been lightly edited to be more readable, but if your organization
+doesn&amp;#8217;t use GitHub like we do then it might not apply&amp;nbsp;great.&lt;/p&gt;
+&lt;/div&gt;
+&lt;p&gt;&lt;a class="reference external" href="https://github.com"&gt;GitHub&lt;/a&gt; can generate a lot of notifications which can be …&lt;/p&gt;</summary><content type="html">&lt;div class="admonition note"&gt;
+&lt;p class="first admonition-title"&gt;Note&lt;/p&gt;
+&lt;p class="last"&gt;This was originally written for some coworkers and assumes a mostly GitHub-based
+workflow. It has been lightly edited to be more readable, but if your organization
+doesn&amp;#8217;t use GitHub like we do then it might not apply&amp;nbsp;great.&lt;/p&gt;
+&lt;/div&gt;
+&lt;p&gt;&lt;a class="reference external" href="https://github.com"&gt;GitHub&lt;/a&gt; can generate a lot of notifications which can be difficult to follow,
+this documents some of my process for keeping up with it! For reference, I
+subscribe&amp;nbsp;to:&lt;/p&gt;
+&lt;ol class="arabic simple"&gt;
+&lt;li&gt;All notifications for the repositories I work in somewhat&amp;nbsp;frequently;&lt;/li&gt;
+&lt;li&gt;Only releases and security alerts for repositories which might affect me (e.g.
+upstream&amp;nbsp;repositories);&lt;/li&gt;
+&lt;li&gt;Other issues that might be related to the project I&amp;#8217;m working on (e.g. bugs
+in upstream&amp;nbsp;projects).&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;I also watch a bunch of open source projects and have some of my own projects.
+(These are mostly Twisted or Celery&amp;nbsp;related.)&lt;/p&gt;
+&lt;p&gt;I generally enjoy having some idea of &amp;#8220;everything&amp;#8221; going on in my team (in enough
+detail to know what people are generally working&amp;nbsp;on).&lt;/p&gt;
+&lt;p&gt;To avoid being overwhelmed by notifications I only subscribe to specific issues
+for repositories from other teams or projects. These are&amp;nbsp;usually:&lt;/p&gt;
+&lt;ul class="simple"&gt;
+&lt;li&gt;Things that personally annoy me (and I want to see&amp;nbsp;fixed);&lt;/li&gt;
+&lt;li&gt;Things that are directly related to or blocking my&amp;nbsp;work;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;For reference, I currently &lt;a class="reference external" href="https://github.com/watching"&gt;watch 321 repositories&lt;/a&gt;, although most of my
+notifications probably come from &amp;lt; 20 repositories. I also have 32 repositories
+with custom notification rules &amp;#8212; those are set to only releases &lt;span class="amp"&gt;&amp;amp;&lt;/span&gt; Security alerts.
+(And I have 1 muted repository.) &lt;a class="footnote-reference" href="#id5" id="id1"&gt;[1]&lt;/a&gt;&lt;/p&gt;
+&lt;div class="section" id="when-how"&gt;
+&lt;h2&gt;When /&amp;nbsp;how&lt;/h2&gt;
+&lt;p&gt;I tend to do the following&amp;nbsp;daily:&lt;/p&gt;
+&lt;ul class="simple"&gt;
+&lt;li&gt;Catch-up on notifications in the morning (takes ~15 - 45 minutes for GitHub,
+chat, e-mail,&amp;nbsp;etc.).&lt;/li&gt;
+&lt;li&gt;Check notifications a few times during the day (between meetings, after lunch,
+while tests runs,&amp;nbsp;etc.).&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Each time I check notifications I quickly triage each notification by skimming
+the title to see if I&amp;#8217;m interested (sometimes the title is enough info!). From
+this I do one of several&amp;nbsp;things:&lt;/p&gt;
+&lt;ul class="simple"&gt;
+&lt;li&gt;Open any issue in a separate tab to come back to if I need to read more (or
+potentially take action). I usually skim the update, leaving it open if I need
+to respond, closing the tab if I&amp;nbsp;don&amp;#8217;t.&lt;/li&gt;
+&lt;li&gt;&lt;span class="dquo"&gt;&amp;#8220;&lt;/span&gt;Mark as read&amp;#8221; if I know it does not require anything from me:&lt;ul&gt;
+&lt;li&gt;A review someone else is handling (unless it is a bit of code I&amp;#8217;m keen to
+understand, or know is tricky and feel some ownership&amp;nbsp;over).&lt;/li&gt;
+&lt;li&gt;The title contains enough information I don&amp;#8217;t need to read the issue (e.g.
+a colleague following a follow-up&amp;nbsp;issue).&lt;/li&gt;
+&lt;li&gt;Obvious support requests, unless I&amp;#8217;m the maintainer. &lt;a class="footnote-reference" href="#id6" id="id2"&gt;[2]&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Random MSCs / matrix-doc issues that I don&amp;#8217;t care&amp;nbsp;about.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Unsubscribing&lt;/strong&gt; if I&amp;#8217;m not interested in following the issue (e.g. an open
+source project is re-doing their &lt;span class="caps"&gt;CI&lt;/span&gt;). This was key for me watching other
+projects that I only somewhat care&amp;nbsp;about.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;I use both Thunderbird and the GitHub website (specifically the
+&lt;a class="reference external" href="https://github.com/notifications?query=is%3Aunread"&gt;unread notifications view&lt;/a&gt;) to go through notifications. Note that the website
+has quick buttons on the right which I use frequently: &amp;#8220;Done&amp;#8221; and &amp;#8220;Unsubscribe&amp;#8221;
+(there is also &amp;#8220;Save&amp;#8221; &amp;#8212; which I do not use, I mark as unread if I need to come back).
+It can also be useful to &amp;#8220;Mark as done&amp;#8221; an entire repository for projects I
+follow out of vague interest, but don&amp;#8217;t have time to read at the&amp;nbsp;moment.&lt;/p&gt;
+&lt;p&gt;&lt;span class="dquo"&gt;&amp;#8220;&lt;/span&gt;Open unread&amp;#8221; is useful to get everything into separate tabs for later processing
+(and to avoid waiting for GitHub to load). I usually use it when I have &amp;lt; 10
+notifications left for a particular&amp;nbsp;repository.&lt;/p&gt;
+&lt;p&gt;I usually attempt to go through notifications that I know I won&amp;#8217;t have to respond
+to first, as they can be quickly processed and reduce the overwhelming number of&amp;nbsp;notifications.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="section" id="setup"&gt;
+&lt;h2&gt;Setup&lt;/h2&gt;
+&lt;p&gt;This workflow refers to using GitHub with &lt;a class="reference external" href="https://www.thunderbird.net/"&gt;Mozilla Thunderbird&lt;/a&gt; (via &lt;a class="reference external" href="https://www.fastmail.com/"&gt;Fastmail&lt;/a&gt;)
+and &lt;a class="reference external" href="https://getfirefox.net"&gt;Mozilla Firefox&lt;/a&gt;, none of it is particular to those applications and can be
+adapted to&amp;nbsp;others.&lt;/p&gt;
+&lt;div class="section" id="github"&gt;
+&lt;h3&gt;GitHub&lt;/h3&gt;
+&lt;p&gt;If you use GitHub for both work and other personal / open source projects it can
+be helpful to route your work notifications to a separate email address. (This is
+a good idea regardless for security &lt;span class="amp"&gt;&amp;amp;&lt;/span&gt; intellectual property&amp;nbsp;concerns.)&lt;/p&gt;
+&lt;p&gt;Your default email can be configured on the &lt;a class="reference external" href="https://github.com/settings/notifications"&gt;Notifications page&lt;/a&gt; and
+separation by organization can be configured on the &lt;a class="reference external" href="https://github.com/settings/notifications/custom_routing"&gt;Custom routing page&lt;/a&gt;.
+Under &amp;#8220;Subscriptions&amp;#8221; on the Notification page, I have both &amp;#8220;Watching&amp;#8221; and
+&amp;#8220;Participating, &amp;#64;mentions and custom&amp;#8221; set to notify on both GitHub &lt;span class="amp"&gt;&amp;amp;&lt;/span&gt;&amp;nbsp;email.&lt;/p&gt;
+&lt;p&gt;You may also want to tweak your &amp;#8220;Customize email preferences&amp;#8221;. I have the
+following&amp;nbsp;enabled:&lt;/p&gt;
+&lt;ul class="simple"&gt;
+&lt;li&gt;&lt;span class="dquo"&gt;&amp;#8220;&lt;/span&gt;Pull Request&amp;nbsp;reviews&amp;#8221;&lt;/li&gt;
+&lt;li&gt;&lt;span class="dquo"&gt;&amp;#8220;&lt;/span&gt;Comments on Issues and Pull&amp;nbsp;Requests&amp;#8221;&lt;/li&gt;
+&lt;li&gt;&lt;span class="dquo"&gt;&amp;#8220;&lt;/span&gt;Include your own updates&amp;#8221; &amp;#8212; this sounds weird, but you only need to lose a
+massive comment on GitHub once to want a copy of it in your inbox. (I
+automatically mark them as read, see&amp;nbsp;below.)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;I disable &amp;#8220;Pull Request pushes&amp;#8221; because I don&amp;#8217;t find it useful, although you will
+still get these via the&amp;nbsp;website.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="section" id="fastmail"&gt;
+&lt;h3&gt;Fastmail&lt;/h3&gt;
+&lt;p&gt;I have two mail rules setup in Fastmail to move all GitHub email to a separate
+folder and to mark my own emails as read: &lt;a class="footnote-reference" href="#id7" id="id3"&gt;[3]&lt;/a&gt;&lt;/p&gt;
+&lt;ol class="arabic simple"&gt;
+&lt;li&gt;From: &lt;tt class="docutils literal"&gt;Patrick Cloke &amp;lt;notifications&amp;#64;github.com&amp;gt;&lt;/tt&gt;:
+1. Mark as read
+2. Move to&amp;nbsp;&amp;#8220;GitHub&amp;#8221;&lt;/li&gt;
+&lt;li&gt;From email address: &lt;tt class="docutils literal"&gt;notifications&amp;#64;github.com&lt;/tt&gt;:
+1. Move to&amp;nbsp;&amp;#8220;GitHub&amp;#8221;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;Similar filters can be setup on other mail services, e.g. Google&amp;nbsp;Mail:&lt;/p&gt;
+&lt;ol class="arabic simple"&gt;
+&lt;li&gt;Matches: &lt;tt class="docutils literal"&gt;&lt;span class="pre"&gt;from:(Patrick&lt;/span&gt; Cloke &amp;lt;notifications&amp;#64;github.com&amp;gt;)&lt;/tt&gt;
+1. Skip Inbox
+2. Mark as read
+3. Apply label:&amp;nbsp;&amp;#8220;GitHub&amp;#8221;&lt;/li&gt;
+&lt;li&gt;Matches: &lt;tt class="docutils literal"&gt;&lt;span class="pre"&gt;from:(notifications&amp;#64;github.com)&lt;/span&gt;&lt;/tt&gt;
+1. Skip Inbox
+2. Apply label:&amp;nbsp;&amp;#8220;GitHub&amp;#8221;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;You can also check for &lt;a class="reference external" href="https://docs.github.com/en/account-and-profile/managing-subscriptions-and-notifications-on-github/setting-up-notifications/configuring-notifications#filtering-email-notifications"&gt;more ways to filter GitHub emails&lt;/a&gt;.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="section" id="mozilla-thunderbird"&gt;
+&lt;h3&gt;Mozilla&amp;nbsp;Thunderbird&lt;/h3&gt;
+&lt;p&gt;For all of my folders I use threads (View &amp;gt; Sort By &amp;gt; Threaded) and only view
+threads which have unread messages (View &amp;gt; Threads &amp;gt; Threads with&amp;nbsp;Unread).&lt;/p&gt;
+&lt;p&gt;Other things that are&amp;nbsp;useful:&lt;/p&gt;
+&lt;ul class="simple"&gt;
+&lt;li&gt;Enable &amp;#8220;Automatically mark messages as read&amp;#8221;, but with a short delay (I have
+&amp;#8220;After displaying for&amp;#8221; set to 1 second).  (This lets you move through messages
+quickly using the keyboard or shortcuts without marking them all by&amp;nbsp;mistake.)&lt;/li&gt;
+&lt;li&gt;Add GitHub to the exceptions list in under &amp;#8220;Allow remote content in messages&amp;#8221;
+for either &lt;cite&gt;notifications&amp;#64;github.com&lt;/cite&gt; or the &lt;cite&gt;https://github.com&lt;/cite&gt;: this can
+be added when viewing an email from GitHub. (This will
+&lt;a class="reference external" href="https://docs.github.com/en/account-and-profile/managing-subscriptions-and-notifications-on-github/setting-up-notifications/configuring-notifications#notification-delivery-options"&gt;mark the notification as read&lt;/a&gt; the GitHub website&amp;nbsp;automatically.)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;I sort my threads by date, oldest first so I can just click the &amp;#8220;n&amp;#8221; hotkey to
+move through messages quickly. I also use the message pane to have some context
+on remaining unread messages per thread, but it should work fine without that.
+If you decide you don&amp;#8217;t care about the rest of the thread &amp;#8220;r&amp;#8221; marks it as read.
+Note that reading any messages in a thread will mark the entire issue or pull
+request as done on the website. I find this extremely efficient for going through
+a small number of notifications&amp;nbsp;quickly.&lt;/p&gt;
+&lt;p&gt;I very much wish there was a way to sync back the read status of notifications from
+GitHub back to Thunderbird. Lacking that I tend to mark the entire folder as read
+(Shift+C) if I&amp;#8217;ve caught up on the website. &lt;a class="footnote-reference" href="#id8" id="id4"&gt;[4]&lt;/a&gt;&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="section" id="mozilla-firefox"&gt;
+&lt;h3&gt;Mozilla&amp;nbsp;Firefox&lt;/h3&gt;
+&lt;p&gt;I  use a few GitHub related extensions which can&amp;nbsp;help:&lt;/p&gt;
+&lt;ul class="simple"&gt;
+&lt;li&gt;&lt;a class="reference external" href="https://github.com/sindresorhus/refined-github/"&gt;Refined GitHub&lt;/a&gt;: includes lots of small tweaks to make GitHub&amp;nbsp;&amp;#8220;better&amp;#8221;.&lt;/li&gt;
+&lt;li&gt;&lt;a class="reference external" href="https://github.com/fregante/github-issue-link-status"&gt;GitHub Issue Link Status&lt;/a&gt;: colors the issue / &lt;span class="caps"&gt;PR&lt;/span&gt; links with whether it is
+open / closed / etc and marks it as an issue / &lt;span class="caps"&gt;PR&lt;/span&gt;.&lt;/li&gt;
+&lt;li&gt;&lt;a class="reference external" href="https://github.com/tanmayrajani/notifications-preview-github"&gt;Notifications Preview for GitHub&lt;/a&gt;: makes the notification button a dropdown
+for quick&amp;nbsp;processing.&lt;/li&gt;
+&lt;li&gt;&lt;a class="reference external" href="https://github.com/homerchen19/github-file-icons"&gt;File Icons for GitHub and GitLab&lt;/a&gt;: adds file icons per file type for&amp;nbsp;GitHub&lt;/li&gt;
+&lt;li&gt;&lt;a class="reference external" href="https://github.com/freaktechnik/advanced-github-notifier"&gt;Advanced GitHub Notifier&lt;/a&gt;: adds a Firefox toolbar button with easy access to
+your notifications (including a count of unread&amp;nbsp;notifications)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="section" id="conclusion"&gt;
+&lt;h2&gt;Conclusion&lt;/h2&gt;
+&lt;p&gt;Hopefully some of this is helpful, please let me know if you have any questions
+or&amp;nbsp;thoughts!&lt;/p&gt;
+&lt;table class="docutils footnote" frame="void" id="id5" rules="none"&gt;
+&lt;colgroup&gt;&lt;col class="label" /&gt;&lt;col /&gt;&lt;/colgroup&gt;
+&lt;tbody valign="top"&gt;
+&lt;tr&gt;&lt;td class="label"&gt;&lt;a class="fn-backref" href="#id1"&gt;[1]&lt;/a&gt;&lt;/td&gt;&lt;td&gt;In August 2021 I was watching 263 repositories and had 18 repositories with
+custom notification settings.&lt;/td&gt;&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;table class="docutils footnote" frame="void" id="id6" rules="none"&gt;
+&lt;colgroup&gt;&lt;col class="label" /&gt;&lt;col /&gt;&lt;/colgroup&gt;
+&lt;tbody valign="top"&gt;
+&lt;tr&gt;&lt;td class="label"&gt;&lt;a class="fn-backref" href="#id2"&gt;[2]&lt;/a&gt;&lt;/td&gt;&lt;td&gt;My team rotates through who is the first-line of contacts for incoming
+community requests, releases, etc.&lt;/td&gt;&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;table class="docutils footnote" frame="void" id="id7" rules="none"&gt;
+&lt;colgroup&gt;&lt;col class="label" /&gt;&lt;col /&gt;&lt;/colgroup&gt;
+&lt;tbody valign="top"&gt;
+&lt;tr&gt;&lt;td class="label"&gt;&lt;a class="fn-backref" href="#id3"&gt;[3]&lt;/a&gt;&lt;/td&gt;&lt;td&gt;I have similar filters setup for &lt;a class="reference external" href="https://gitlab.com"&gt;GitLab&lt;/a&gt;, &lt;a class="reference external" href="https://sentry.io"&gt;Sentry&lt;/a&gt;, etc.&lt;/td&gt;&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;table class="docutils footnote" frame="void" id="id8" rules="none"&gt;
+&lt;colgroup&gt;&lt;col class="label" /&gt;&lt;col /&gt;&lt;/colgroup&gt;
+&lt;tbody valign="top"&gt;
+&lt;tr&gt;&lt;td class="label"&gt;&lt;a class="fn-backref" href="#id4"&gt;[4]&lt;/a&gt;&lt;/td&gt;&lt;td&gt;You could probably do this with an Thunderbird extension, but I&amp;#8217;ve failed to
+find time to look into it.&lt;/td&gt;&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;/div&gt;
+</content><category term="articles"></category><category term="thunderbird"></category></entry><entry><title>Matrix Live demo on Linearized Matrix</title><link href="https://patrick.cloke.us/posts/2023/10/04/matrix-live-demo-on-linearized-matrix/" rel="alternate"></link><published>2023-10-04T09:55:00-04:00</published><updated>2023-10-04T09:55:00-04:00</updated><author><name>Patrick Cloke</name></author><id>tag:patrick.cloke.us,2023-10-04:/posts/2023/10/04/matrix-live-demo-on-linearized-matrix/</id><summary type="html">&lt;p&gt;I demoed some of my work at &lt;a class="reference external" href="https://element.io"&gt;Element&lt;/a&gt; on Matrix Live back on August 4th&amp;#8217;s
 &lt;a class="reference external" href="https://matrix.org/blog/2023/08/04/this-week-in-matrix-2023-08-04/"&gt;This Week in Matrix&lt;/a&gt; (and failed to mention it here). I talked a bit about
 what &lt;a class="reference external" href="https://turt2live.github.io/ietf-mimi-linearized-matrix/draft-ralston-mimi-linearized-matrix.html"&gt;Linearized Matrix&lt;/a&gt;, Element&amp;#8217;s effort for the &lt;span class="caps"&gt;IETF&lt;/span&gt;&amp;#8217;s
 &lt;a class="reference external" href="https://datatracker.ietf.org/group/mimi/about/"&gt;&amp;#8220;More Instant Messaging Interoperability&amp;#8221; (&lt;span class="caps"&gt;MIMI&lt;/span&gt;)&lt;/a&gt; working&amp;nbsp;group.&lt;/p&gt;
@@ -1190,56 +1388,4 @@ but were not really maintaining the package. &lt;a class="reference external" hr
 over maintenance and we gratefully have transferred it to&amp;nbsp;them!&lt;/p&gt;
 &lt;p&gt;There&amp;#8217;s much more you could do with this package so I&amp;#8217;m quite happy to see it in
 the hands of someone actively using&amp;nbsp;it!&lt;/p&gt;
-</content><category term="articles"></category><category term="django"></category><category term="django-allauth-2fa"></category></entry><entry><title>django-querysetsequence 0.14 released!</title><link href="https://patrick.cloke.us/posts/2021/02/26/django-querysetsequence-0-14-released/" rel="alternate"></link><published>2021-02-26T12:31:00-05:00</published><updated>2021-02-26T12:31:00-05:00</updated><author><name>Patrick Cloke</name></author><id>tag:patrick.cloke.us,2021-02-26:/posts/2021/02/26/django-querysetsequence-0-14-released/</id><summary type="html">&lt;p&gt;&lt;a class="reference external" href="https://github.com/clokep/django-querysetsequence/"&gt;django-querysetsequence&lt;/a&gt; 0.14 has been released with support for Django 3.2 (and
-Python 3.9). django-querysetsequence is a Django package for
-&lt;a class="reference external" href="https://patrick.cloke.us/posts/2016/02/04/combining-disparate-querysets-in-django/"&gt;treating multiple &lt;tt class="docutils literal"&gt;QuerySet&lt;/tt&gt; instances as a single &lt;tt class="docutils literal"&gt;QuerySet&lt;/tt&gt;&lt;/a&gt;, this can be useful
-for treating similar models as a single model. The &lt;tt class="docutils literal"&gt;QuerySetSequence&lt;/tt&gt; class
-supports &lt;a class="reference external" href="https://django-querysetsequence.readthedocs.io/en/latest/api.html"&gt;much of the &lt;span class="caps"&gt;API …&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;</summary><content type="html">&lt;p&gt;&lt;a class="reference external" href="https://github.com/clokep/django-querysetsequence/"&gt;django-querysetsequence&lt;/a&gt; 0.14 has been released with support for Django 3.2 (and
-Python 3.9). django-querysetsequence is a Django package for
-&lt;a class="reference external" href="https://patrick.cloke.us/posts/2016/02/04/combining-disparate-querysets-in-django/"&gt;treating multiple &lt;tt class="docutils literal"&gt;QuerySet&lt;/tt&gt; instances as a single &lt;tt class="docutils literal"&gt;QuerySet&lt;/tt&gt;&lt;/a&gt;, this can be useful
-for treating similar models as a single model. The &lt;tt class="docutils literal"&gt;QuerySetSequence&lt;/tt&gt; class
-supports &lt;a class="reference external" href="https://django-querysetsequence.readthedocs.io/en/latest/api.html"&gt;much of the &lt;span class="caps"&gt;API&lt;/span&gt;&lt;/a&gt; available to &lt;tt class="docutils literal"&gt;QuerySet&lt;/tt&gt; instances.&lt;/p&gt;
-&lt;p&gt;The marquee features of this release&amp;nbsp;are:&lt;/p&gt;
-&lt;ul class="simple"&gt;
-&lt;li&gt;Support for &lt;a class="reference external" href="https://docs.djangoproject.com/en/dev/ref/models/querysets/#values"&gt;&lt;tt class="docutils literal"&gt;values()&lt;/tt&gt;&lt;/a&gt; and &lt;a class="reference external" href="https://docs.djangoproject.com/en/dev/ref/models/querysets/#values-list"&gt;&lt;tt class="docutils literal"&gt;values_list()&lt;/tt&gt;&lt;/a&gt; to retrieve the results as
-dictionaries / tuples (instead of &lt;tt class="docutils literal"&gt;Model&lt;/tt&gt; instances).&lt;/li&gt;
-&lt;li&gt;Partial support for &lt;a class="reference external" href="https://docs.djangoproject.com/en/dev/ref/models/querysets/#distinct"&gt;&lt;tt class="docutils literal"&gt;distinct()&lt;/tt&gt;&lt;/a&gt; &amp;#8212; this is only supported when each underlying
-&lt;tt class="docutils literal"&gt;QuerySet&lt;/tt&gt; is a unique &lt;tt class="docutils literal"&gt;Model&lt;/tt&gt;.&lt;/li&gt;
-&lt;li&gt;&lt;a class="reference external" href="https://django-querysetsequence.readthedocs.io/"&gt;Prettier documentation&lt;/a&gt; is&amp;nbsp;available.&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;The full changelog is included&amp;nbsp;below:&lt;/p&gt;
-&lt;div class="section" id="features"&gt;
-&lt;h2&gt;Features&lt;/h2&gt;
-&lt;ul class="simple"&gt;
-&lt;li&gt;Support Django 3.2 (&lt;a class="reference external" href="https://github.com/clokep/django-querysetsequence/pull/78"&gt;#78&lt;/a&gt;,
-&lt;a class="reference external" href="https://github.com/clokep/django-querysetsequence/pull/81"&gt;#81&lt;/a&gt;)&lt;/li&gt;
-&lt;li&gt;Support Python 3.9. (&lt;a class="reference external" href="https://github.com/clokep/django-querysetsequence/pull/78"&gt;#78&lt;/a&gt;)&lt;/li&gt;
-&lt;li&gt;Support the &lt;tt class="docutils literal"&gt;values()&lt;/tt&gt; and &lt;tt class="docutils literal"&gt;values_list()&lt;/tt&gt; methods.
-(&lt;a class="reference external" href="https://github.com/clokep/django-querysetsequence/pull/73"&gt;#73&lt;/a&gt;,
-&lt;a class="reference external" href="https://github.com/clokep/django-querysetsequence/pull/74"&gt;#74&lt;/a&gt;)&lt;/li&gt;
-&lt;li&gt;Support the &lt;tt class="docutils literal"&gt;distinct()&lt;/tt&gt; method when each &lt;tt class="docutils literal"&gt;QuerySet&lt;/tt&gt; instance is from a
-unique model. Contributed by
-&lt;a class="reference external" href="https://github.com/jpic"&gt;&amp;#64;jpic&lt;/a&gt;. (&lt;a class="reference external" href="https://github.com/clokep/django-querysetsequence/pull/77"&gt;#77&lt;/a&gt;,
-&lt;a class="reference external" href="https://github.com/clokep/django-querysetsequence/pull/80"&gt;#80&lt;/a&gt;)&lt;/li&gt;
-&lt;li&gt;Add &lt;a class="reference external" href="https://django-querysetsequence.readthedocs.io/"&gt;Sphinx documentation&lt;/a&gt;
-which is available at Read the&amp;nbsp;Docs.&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/div&gt;
-&lt;div class="section" id="bugfixes"&gt;
-&lt;h2&gt;Bugfixes&lt;/h2&gt;
-&lt;ul class="simple"&gt;
-&lt;li&gt;Support calling &lt;tt class="docutils literal"&gt;filter()&lt;/tt&gt; with &lt;a class="reference external" href="https://docs.djangoproject.com/en/dev/ref/models/querysets/#q-objects"&gt;&lt;tt class="docutils literal"&gt;Q()&lt;/tt&gt; objects&lt;/a&gt;. Contributed by
-&lt;a class="reference external" href="https://github.com/jpic"&gt;&amp;#64;jpic&lt;/a&gt;. (&lt;a class="reference external" href="https://github.com/clokep/django-querysetsequence/pull/76"&gt;#76&lt;/a&gt;)&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/div&gt;
-&lt;div class="section" id="miscellaneous"&gt;
-&lt;h2&gt;Miscellaneous&lt;/h2&gt;
-&lt;ul class="simple"&gt;
-&lt;li&gt;Add an additional test for the interaction of &lt;tt class="docutils literal"&gt;order_by()&lt;/tt&gt; and &lt;tt class="docutils literal"&gt;only()&lt;/tt&gt;.
-(&lt;a class="reference external" href="https://github.com/clokep/django-querysetsequence/pull/72"&gt;#72&lt;/a&gt;)&lt;/li&gt;
-&lt;li&gt;Support Django &lt;span class="caps"&gt;REST&lt;/span&gt; Framework 3.12. (&lt;a class="reference external" href="https://github.com/clokep/django-querysetsequence/pull/75"&gt;#75&lt;/a&gt;)&lt;/li&gt;
-&lt;li&gt;Switch continuous integration to GitHub Actions. (&lt;a class="reference external" href="https://github.com/clokep/django-querysetsequence/pull/79"&gt;#79&lt;/a&gt;)&lt;/li&gt;
-&lt;li&gt;Drop support for Python 3.5. (&lt;a class="reference external" href="https://github.com/clokep/django-querysetsequence/pull/82"&gt;#82&lt;/a&gt;)&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/div&gt;
-</content><category term="articles"></category><category term="django"></category><category term="django-querysetsequence"></category></entry></feed>
+</content><category term="articles"></category><category term="django"></category><category term="django-allauth-2fa"></category></entry></feed>

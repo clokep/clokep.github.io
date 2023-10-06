@@ -1,0 +1,378 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Feed configuration. -->
+    <link href="https://patrick.cloke.us/feeds/atom.xml" type="application/atom+xml" rel="alternate" title="Patrick Cloke Atom Feed" />
+    <link href="https://patrick.cloke.us/feeds/rss.xml" type="application/rss+xml" rel="alternate" title="Patrick Cloke RSS Feed" />
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
+    <link rel="stylesheet" href="/theme/css/styles.css">
+    <link rel="stylesheet" href="/theme/css/borland.css">
+    <link rel="stylesheet" href="/theme/css/youtube.css">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
+
+    <title>Handling GitHub Notifications</title>
+
+    <meta property="og:site_name" content="Patrick Cloke" />
+<meta property="og:title" content="Handling GitHub Notifications" />
+<meta property="og:url" content="https://patrick.cloke.us/posts/2023/10/06/handling-github-notifications/" />
+<meta property="og:description" content="Note This was originally written for some coworkers and assumes a mostly GitHub-based workflow. It has been lightly edited to be more readable, but if your organization doesn’t use GitHub like we do then it might not apply great. GitHub can generate a lot of notifications which can be …" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2023-10-06T07:55:00-04:00" />
+<meta property="article:author" content="Patrick Cloke" />
+<meta property="article:tag" content="thunderbird" />
+
+    <script async defer data-domain="cloke.us" src="https://plausible.io/js/plausible.js"></script>
+  </head>
+
+  <body class="pb-5">
+    <nav class="navbar navbar-expand-lg sticky-top navbar-light bg-light border-bottom border-info">
+      <a class="navbar-brand" href="/">
+        Patrick Cloke
+      </a>
+
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-items" aria-controls="navbar-items" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="navbar-items">
+        <ul class="navbar-nav ml-auto">
+
+          <li class="nav-item">
+            <a class="nav-link" href="/pages/about.html">About</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/pages/projects.html">Projects</a>
+          </li>
+
+          <li class="nav-item">
+            <a class="nav-link" href="/archives.html">Archives</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/tags.html">Tags</a>
+          </li>
+
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="social-dropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              Social
+            </a>
+
+            <span class="dropdown-menu dropdown-menu-right" aria-labelledby="social-dropdown">
+              <a class="dropdown-item" href="https://mastodon.social/@clokep" target="_blank">
+                  <span class="fab fa-mastodon mr-1"></span>
+                mastodon
+              </a>
+              <a class="dropdown-item" href="https://www.twitter.com/clokep" target="_blank">
+                  <span class="fab fa-twitter mr-1"></span>
+                twitter
+              </a>
+              <a class="dropdown-item" href="https://matrix.to/#/@clokep:matrix.org" target="_blank">
+                  <span class="pl-3 mr-2"></span>
+                matrix
+              </a>
+              <a class="dropdown-item" href="https://github.com/clokep" target="_blank">
+                  <span class="fab fa-github mr-1"></span>
+                github
+              </a>
+              <a class="dropdown-item" href="https://gitlab.com/clokep" target="_blank">
+                  <span class="fab fa-gitlab mr-1"></span>
+                gitlab
+              </a>
+            </div>
+          </li>
+
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="feeds-dropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              Feeds
+            </a>
+
+            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="feeds-dropdown">
+              <a class="dropdown-item" href="https://patrick.cloke.us/feeds/atom.xml" type="application/atom+xml" rel="alternate">atom feed</a>
+              <a class="dropdown-item" href="https://patrick.cloke.us/feeds/rss.xml" type="application/rss+xml" rel="alternate">rss feed</a>
+            </div>
+          </li>
+
+          <form class="form-inline" method="get" action="http://www.google.com/search">
+            <input class="form-control form-control-sm mr-sm-2" type="search" name="q" placeholder="Search" aria-label="Search" />
+            <input type="hidden"  name="sitesearch" value="patrick.cloke.us" />
+
+            <button class="btn btn-sm btn-outline-info d-none d-sm-inline" type="submit">Search</button>
+          </form>
+        </ul>
+      </div>
+    </nav>
+
+<div class="container">
+  <div class="row">
+    <div class="col-md-12 mt-2 mb-2">
+      <h1>
+        <a href="/posts/2023/10/06/handling-github-notifications/" rel="bookmark"
+           title="Permalink to Handling GitHub Notifications">Handling GitHub&nbsp;Notifications</a>
+      </h1>
+
+      <div class="row">
+        <div class="col-sm">
+          <span class="text-secondary font-weight-light font-italic">Published on Friday, October 6, 2023</span>
+
+          <br>
+          <span class="text-secondary font-weight-light font-italic">
+            Tags:               <a href="/tag/thunderbird.html">thunderbird</a>          </span>
+        </div>
+
+        <div class="col-sm text-right">
+          <a href="https://twitter.com/intent/tweet?text=Handling%20GitHub%C2%A0Notifications&url=https%3A//patrick.cloke.us/posts/2023/10/06/handling-github-notifications/&hashtags=thunderbird" target="_blank" class="ml-1 mr-1" title="Share on Twitter">
+            <span class="fab fa-twitter"></span>
+          </a>
+          <a href="https://www.facebook.com/sharer/sharer.php?u=https%3A//patrick.cloke.us/posts/2023/10/06/handling-github-notifications/" target="_blank" class="ml-1 mr-1" title="Share on Facebook">
+            <span class="fab fa-facebook"></span>
+          </a>
+          <a href="mailto:?subject=Handling%20GitHub%C2%A0Notifications&amp;body=https%3A//patrick.cloke.us/posts/2023/10/06/handling-github-notifications/" target="_blank" class="ml-1 mr-1" title="Share via Email">
+            <span class="fas fa-envelope"></span>
+          </a>
+        </div>
+      </div>
+
+      <hr>
+
+      <div>
+
+        <div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">This was originally written for some coworkers and assumes a mostly GitHub-based
+workflow. It has been lightly edited to be more readable, but if your organization
+doesn&#8217;t use GitHub like we do then it might not apply&nbsp;great.</p>
+</div>
+<p><a class="reference external" href="https://github.com">GitHub</a> can generate a lot of notifications which can be difficult to follow,
+this documents some of my process for keeping up with it! For reference, I
+subscribe&nbsp;to:</p>
+<ol class="arabic simple">
+<li>All notifications for the repositories I work in somewhat&nbsp;frequently;</li>
+<li>Only releases and security alerts for repositories which might affect me (e.g.
+upstream&nbsp;repositories);</li>
+<li>Other issues that might be related to the project I&#8217;m working on (e.g. bugs
+in upstream&nbsp;projects).</li>
+</ol>
+<p>I also watch a bunch of open source projects and have some of my own projects.
+(These are mostly Twisted or Celery&nbsp;related.)</p>
+<p>I generally enjoy having some idea of &#8220;everything&#8221; going on in my team (in enough
+detail to know what people are generally working&nbsp;on).</p>
+<p>To avoid being overwhelmed by notifications I only subscribe to specific issues
+for repositories from other teams or projects. These are&nbsp;usually:</p>
+<ul class="simple">
+<li>Things that personally annoy me (and I want to see&nbsp;fixed);</li>
+<li>Things that are directly related to or blocking my&nbsp;work;</li>
+</ul>
+<p>For reference, I currently <a class="reference external" href="https://github.com/watching">watch 321 repositories</a>, although most of my
+notifications probably come from &lt; 20 repositories. I also have 32 repositories
+with custom notification rules &#8212; those are set to only releases <span class="amp">&amp;</span> Security alerts.
+(And I have 1 muted repository.) <a class="footnote-reference" href="#id5" id="id1">[1]</a></p>
+<div class="section" id="when-how">
+<h2>When /&nbsp;how</h2>
+<p>I tend to do the following&nbsp;daily:</p>
+<ul class="simple">
+<li>Catch-up on notifications in the morning (takes ~15 - 45 minutes for GitHub,
+chat, e-mail,&nbsp;etc.).</li>
+<li>Check notifications a few times during the day (between meetings, after lunch,
+while tests runs,&nbsp;etc.).</li>
+</ul>
+<p>Each time I check notifications I quickly triage each notification by skimming
+the title to see if I&#8217;m interested (sometimes the title is enough info!). From
+this I do one of several&nbsp;things:</p>
+<ul class="simple">
+<li>Open any issue in a separate tab to come back to if I need to read more (or
+potentially take action). I usually skim the update, leaving it open if I need
+to respond, closing the tab if I&nbsp;don&#8217;t.</li>
+<li><span class="dquo">&#8220;</span>Mark as read&#8221; if I know it does not require anything from me:<ul>
+<li>A review someone else is handling (unless it is a bit of code I&#8217;m keen to
+understand, or know is tricky and feel some ownership&nbsp;over).</li>
+<li>The title contains enough information I don&#8217;t need to read the issue (e.g.
+a colleague following a follow-up&nbsp;issue).</li>
+<li>Obvious support requests, unless I&#8217;m the maintainer. <a class="footnote-reference" href="#id6" id="id2">[2]</a></li>
+<li>Random MSCs / matrix-doc issues that I don&#8217;t care&nbsp;about.</li>
+</ul>
+</li>
+<li><strong>Unsubscribing</strong> if I&#8217;m not interested in following the issue (e.g. an open
+source project is re-doing their <span class="caps">CI</span>). This was key for me watching other
+projects that I only somewhat care&nbsp;about.</li>
+</ul>
+<p>I use both Thunderbird and the GitHub website (specifically the
+<a class="reference external" href="https://github.com/notifications?query=is%3Aunread">unread notifications view</a>) to go through notifications. Note that the website
+has quick buttons on the right which I use frequently: &#8220;Done&#8221; and &#8220;Unsubscribe&#8221;
+(there is also &#8220;Save&#8221; &#8212; which I do not use, I mark as unread if I need to come back).
+It can also be useful to &#8220;Mark as done&#8221; an entire repository for projects I
+follow out of vague interest, but don&#8217;t have time to read at the&nbsp;moment.</p>
+<p><span class="dquo">&#8220;</span>Open unread&#8221; is useful to get everything into separate tabs for later processing
+(and to avoid waiting for GitHub to load). I usually use it when I have &lt; 10
+notifications left for a particular&nbsp;repository.</p>
+<p>I usually attempt to go through notifications that I know I won&#8217;t have to respond
+to first, as they can be quickly processed and reduce the overwhelming number of&nbsp;notifications.</p>
+</div>
+<div class="section" id="setup">
+<h2>Setup</h2>
+<p>This workflow refers to using GitHub with <a class="reference external" href="https://www.thunderbird.net/">Mozilla Thunderbird</a> (via <a class="reference external" href="https://www.fastmail.com/">Fastmail</a>)
+and <a class="reference external" href="https://getfirefox.net">Mozilla Firefox</a>, none of it is particular to those applications and can be
+adapted to&nbsp;others.</p>
+<div class="section" id="github">
+<h3>GitHub</h3>
+<p>If you use GitHub for both work and other personal / open source projects it can
+be helpful to route your work notifications to a separate email address. (This is
+a good idea regardless for security <span class="amp">&amp;</span> intellectual property&nbsp;concerns.)</p>
+<p>Your default email can be configured on the <a class="reference external" href="https://github.com/settings/notifications">Notifications page</a> and
+separation by organization can be configured on the <a class="reference external" href="https://github.com/settings/notifications/custom_routing">Custom routing page</a>.
+Under &#8220;Subscriptions&#8221; on the Notification page, I have both &#8220;Watching&#8221; and
+&#8220;Participating, &#64;mentions and custom&#8221; set to notify on both GitHub <span class="amp">&amp;</span>&nbsp;email.</p>
+<p>You may also want to tweak your &#8220;Customize email preferences&#8221;. I have the
+following&nbsp;enabled:</p>
+<ul class="simple">
+<li><span class="dquo">&#8220;</span>Pull Request&nbsp;reviews&#8221;</li>
+<li><span class="dquo">&#8220;</span>Comments on Issues and Pull&nbsp;Requests&#8221;</li>
+<li><span class="dquo">&#8220;</span>Include your own updates&#8221; &#8212; this sounds weird, but you only need to lose a
+massive comment on GitHub once to want a copy of it in your inbox. (I
+automatically mark them as read, see&nbsp;below.)</li>
+</ul>
+<p>I disable &#8220;Pull Request pushes&#8221; because I don&#8217;t find it useful, although you will
+still get these via the&nbsp;website.</p>
+</div>
+<div class="section" id="fastmail">
+<h3>Fastmail</h3>
+<p>I have two mail rules setup in Fastmail to move all GitHub email to a separate
+folder and to mark my own emails as read: <a class="footnote-reference" href="#id7" id="id3">[3]</a></p>
+<ol class="arabic simple">
+<li>From: <tt class="docutils literal">Patrick Cloke &lt;notifications&#64;github.com&gt;</tt>:
+1. Mark as read
+2. Move to&nbsp;&#8220;GitHub&#8221;</li>
+<li>From email address: <tt class="docutils literal">notifications&#64;github.com</tt>:
+1. Move to&nbsp;&#8220;GitHub&#8221;</li>
+</ol>
+<p>Similar filters can be setup on other mail services, e.g. Google&nbsp;Mail:</p>
+<ol class="arabic simple">
+<li>Matches: <tt class="docutils literal"><span class="pre">from:(Patrick</span> Cloke &lt;notifications&#64;github.com&gt;)</tt>
+1. Skip Inbox
+2. Mark as read
+3. Apply label:&nbsp;&#8220;GitHub&#8221;</li>
+<li>Matches: <tt class="docutils literal"><span class="pre">from:(notifications&#64;github.com)</span></tt>
+1. Skip Inbox
+2. Apply label:&nbsp;&#8220;GitHub&#8221;</li>
+</ol>
+<p>You can also check for <a class="reference external" href="https://docs.github.com/en/account-and-profile/managing-subscriptions-and-notifications-on-github/setting-up-notifications/configuring-notifications#filtering-email-notifications">more ways to filter GitHub emails</a>.</p>
+</div>
+<div class="section" id="mozilla-thunderbird">
+<h3>Mozilla&nbsp;Thunderbird</h3>
+<p>For all of my folders I use threads (View &gt; Sort By &gt; Threaded) and only view
+threads which have unread messages (View &gt; Threads &gt; Threads with&nbsp;Unread).</p>
+<p>Other things that are&nbsp;useful:</p>
+<ul class="simple">
+<li>Enable &#8220;Automatically mark messages as read&#8221;, but with a short delay (I have
+&#8220;After displaying for&#8221; set to 1 second).  (This lets you move through messages
+quickly using the keyboard or shortcuts without marking them all by&nbsp;mistake.)</li>
+<li>Add GitHub to the exceptions list in under &#8220;Allow remote content in messages&#8221;
+for either <cite>notifications&#64;github.com</cite> or the <cite>https://github.com</cite>: this can
+be added when viewing an email from GitHub. (This will
+<a class="reference external" href="https://docs.github.com/en/account-and-profile/managing-subscriptions-and-notifications-on-github/setting-up-notifications/configuring-notifications#notification-delivery-options">mark the notification as read</a> the GitHub website&nbsp;automatically.)</li>
+</ul>
+<p>I sort my threads by date, oldest first so I can just click the &#8220;n&#8221; hotkey to
+move through messages quickly. I also use the message pane to have some context
+on remaining unread messages per thread, but it should work fine without that.
+If you decide you don&#8217;t care about the rest of the thread &#8220;r&#8221; marks it as read.
+Note that reading any messages in a thread will mark the entire issue or pull
+request as done on the website. I find this extremely efficient for going through
+a small number of notifications&nbsp;quickly.</p>
+<p>I very much wish there was a way to sync back the read status of notifications from
+GitHub back to Thunderbird. Lacking that I tend to mark the entire folder as read
+(Shift+C) if I&#8217;ve caught up on the website. <a class="footnote-reference" href="#id8" id="id4">[4]</a></p>
+</div>
+<div class="section" id="mozilla-firefox">
+<h3>Mozilla&nbsp;Firefox</h3>
+<p>I  use a few GitHub related extensions which can&nbsp;help:</p>
+<ul class="simple">
+<li><a class="reference external" href="https://github.com/sindresorhus/refined-github/">Refined GitHub</a>: includes lots of small tweaks to make GitHub&nbsp;&#8220;better&#8221;.</li>
+<li><a class="reference external" href="https://github.com/fregante/github-issue-link-status">GitHub Issue Link Status</a>: colors the issue / <span class="caps">PR</span> links with whether it is
+open / closed / etc and marks it as an issue / <span class="caps">PR</span>.</li>
+<li><a class="reference external" href="https://github.com/tanmayrajani/notifications-preview-github">Notifications Preview for GitHub</a>: makes the notification button a dropdown
+for quick&nbsp;processing.</li>
+<li><a class="reference external" href="https://github.com/homerchen19/github-file-icons">File Icons for GitHub and GitLab</a>: adds file icons per file type for&nbsp;GitHub</li>
+<li><a class="reference external" href="https://github.com/freaktechnik/advanced-github-notifier">Advanced GitHub Notifier</a>: adds a Firefox toolbar button with easy access to
+your notifications (including a count of unread&nbsp;notifications)</li>
+</ul>
+</div>
+</div>
+<div class="section" id="conclusion">
+<h2>Conclusion</h2>
+<p>Hopefully some of this is helpful, please let me know if you have any questions
+or&nbsp;thoughts!</p>
+<table class="docutils footnote" frame="void" id="id5" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label"><a class="fn-backref" href="#id1">[1]</a></td><td>In August 2021 I was watching 263 repositories and had 18 repositories with
+custom notification settings.</td></tr>
+</tbody>
+</table>
+<table class="docutils footnote" frame="void" id="id6" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label"><a class="fn-backref" href="#id2">[2]</a></td><td>My team rotates through who is the first-line of contacts for incoming
+community requests, releases, etc.</td></tr>
+</tbody>
+</table>
+<table class="docutils footnote" frame="void" id="id7" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label"><a class="fn-backref" href="#id3">[3]</a></td><td>I have similar filters setup for <a class="reference external" href="https://gitlab.com">GitLab</a>, <a class="reference external" href="https://sentry.io">Sentry</a>, etc.</td></tr>
+</tbody>
+</table>
+<table class="docutils footnote" frame="void" id="id8" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label"><a class="fn-backref" href="#id4">[4]</a></td><td>You could probably do this with an Thunderbird extension, but I&#8217;ve failed to
+find time to look into it.</td></tr>
+</tbody>
+</table>
+</div>
+
+      </div>
+
+<div id="disqus_thread"></div>
+<script>
+/**
+*  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+*  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/
+/*
+var disqus_config = function () {
+this.page.url = '/posts/2023/10/06/handling-github-notifications/';
+this.page.identifier = 'handling-github-notifications';
+};
+*/
+(function() { // DON'T EDIT BELOW THIS LINE
+var d = document, s = d.createElement('script');
+s.src = 'https://clokep.disqus.com/embed.js';
+s.setAttribute('data-timestamp', +new Date());
+(d.head || d.body).appendChild(s);
+})();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    </div>
+  </div>
+</div>
+
+    <nav class="navbar fixed-bottom navbar-light bg-light border-top border-info">
+      <a href="https://getpelican.com/" class="nav-item" target="_blank">Powered by Pelican</a>
+      <a href="https://github.com/clokep/clokep.github.io" class="nav-item" target="_blank">
+        Source available on GitHub <span class="fab fa-github"></span>
+      </a>
+    </nav>
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T" crossorigin="anonymous"></script>
+
+  </body>
+</html>
