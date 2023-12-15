@@ -1,0 +1,296 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Feed configuration. -->
+    <link href="https://patrick.cloke.us/feeds/atom.xml" type="application/atom+xml" rel="alternate" title="Patrick Cloke Atom Feed" />
+    <link href="https://patrick.cloke.us/feeds/rss.xml" type="application/rss+xml" rel="alternate" title="Patrick Cloke RSS Feed" />
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
+    <link rel="stylesheet" href="/theme/css/styles.css">
+    <link rel="stylesheet" href="/theme/css/borland.css">
+    <link rel="stylesheet" href="/theme/css/youtube.css">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
+
+    <title>Matrix Intentional Mentions explained</title>
+
+    <meta property="og:site_name" content="Patrick Cloke" />
+<meta property="og:title" content="Matrix Intentional Mentions explained" />
+<meta property="og:url" content="https://patrick.cloke.us/posts/2023/12/15/matrix-intentional-mentions-explained/" />
+<meta property="og:description" content="Previously I have written about how push rules generate notifications and how read receipts mark notificiations as read in the Matrix protocol. This article is about a change that I instigated to improve when a “mention” (or “ping”) notification is created. (This is a “highlight” notification in the Matrix specification …" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2023-12-15T15:41:00-05:00" />
+<meta property="article:author" content="Patrick Cloke" />
+<meta property="article:tag" content="matrix" />
+<meta property="article:tag" content="notes" />
+
+    <script async defer data-domain="cloke.us" src="https://plausible.io/js/plausible.js"></script>
+  </head>
+
+  <body class="pb-5">
+    <nav class="navbar navbar-expand-lg sticky-top navbar-light bg-light border-bottom border-info">
+      <a class="navbar-brand" href="/">
+        Patrick Cloke
+      </a>
+
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-items" aria-controls="navbar-items" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="navbar-items">
+        <ul class="navbar-nav ml-auto">
+
+          <li class="nav-item">
+            <a class="nav-link" href="/pages/about.html">About</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/pages/projects.html">Projects</a>
+          </li>
+
+          <li class="nav-item">
+            <a class="nav-link" href="/archives.html">Archives</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/tags.html">Tags</a>
+          </li>
+
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="social-dropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              Social
+            </a>
+
+            <span class="dropdown-menu dropdown-menu-right" aria-labelledby="social-dropdown">
+              <a class="dropdown-item" href="https://mastodon.social/@clokep" target="_blank">
+                  <span class="fab fa-mastodon mr-1"></span>
+                mastodon
+              </a>
+              <a class="dropdown-item" href="https://www.twitter.com/clokep" target="_blank">
+                  <span class="fab fa-twitter mr-1"></span>
+                twitter
+              </a>
+              <a class="dropdown-item" href="https://matrix.to/#/@clokep:matrix.org" target="_blank">
+                  <span class="pl-3 mr-2"></span>
+                matrix
+              </a>
+              <a class="dropdown-item" href="https://github.com/clokep" target="_blank">
+                  <span class="fab fa-github mr-1"></span>
+                github
+              </a>
+              <a class="dropdown-item" href="https://gitlab.com/clokep" target="_blank">
+                  <span class="fab fa-gitlab mr-1"></span>
+                gitlab
+              </a>
+            </div>
+          </li>
+
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="feeds-dropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              Feeds
+            </a>
+
+            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="feeds-dropdown">
+              <a class="dropdown-item" href="https://patrick.cloke.us/feeds/atom.xml" type="application/atom+xml" rel="alternate">atom feed</a>
+              <a class="dropdown-item" href="https://patrick.cloke.us/feeds/rss.xml" type="application/rss+xml" rel="alternate">rss feed</a>
+            </div>
+          </li>
+
+          <form class="form-inline" method="get" action="http://www.google.com/search">
+            <input class="form-control form-control-sm mr-sm-2" type="search" name="q" placeholder="Search" aria-label="Search" />
+            <input type="hidden"  name="sitesearch" value="patrick.cloke.us" />
+
+            <button class="btn btn-sm btn-outline-info d-none d-sm-inline" type="submit">Search</button>
+          </form>
+        </ul>
+      </div>
+    </nav>
+
+<div class="container">
+  <div class="row">
+    <div class="col-md-12 mt-2 mb-2">
+      <h1>
+        <a href="/posts/2023/12/15/matrix-intentional-mentions-explained/" rel="bookmark"
+           title="Permalink to Matrix Intentional Mentions explained">Matrix Intentional Mentions&nbsp;explained</a>
+      </h1>
+
+      <div class="row">
+        <div class="col-sm">
+          <span class="text-secondary font-weight-light font-italic">Published on Friday, December 15, 2023</span>
+
+          <br>
+          <span class="text-secondary font-weight-light font-italic">
+            Tags:               <a href="/tag/matrix.html">matrix</a>,              <a href="/tag/notes.html">notes</a>          </span>
+        </div>
+
+        <div class="col-sm text-right">
+          <a href="https://twitter.com/intent/tweet?text=Matrix%20Intentional%20Mentions%C2%A0explained&url=https%3A//patrick.cloke.us/posts/2023/12/15/matrix-intentional-mentions-explained/&hashtags=matrix,notes" target="_blank" class="ml-1 mr-1" title="Share on Twitter">
+            <span class="fab fa-twitter"></span>
+          </a>
+          <a href="https://www.facebook.com/sharer/sharer.php?u=https%3A//patrick.cloke.us/posts/2023/12/15/matrix-intentional-mentions-explained/" target="_blank" class="ml-1 mr-1" title="Share on Facebook">
+            <span class="fab fa-facebook"></span>
+          </a>
+          <a href="mailto:?subject=Matrix%20Intentional%20Mentions%C2%A0explained&amp;body=https%3A//patrick.cloke.us/posts/2023/12/15/matrix-intentional-mentions-explained/" target="_blank" class="ml-1 mr-1" title="Share via Email">
+            <span class="fas fa-envelope"></span>
+          </a>
+        </div>
+      </div>
+
+      <hr>
+
+      <div>
+
+        <p>Previously I have written about how <a class="reference external" href="https://patrick.cloke.us/posts/2023/05/08/matrix-push-rules-notifications/">push rules generate notifications</a> and how
+<a class="reference external" href="https://patrick.cloke.us/posts/2023/01/05/matrix-read-receipts-and-notifications/">read receipts mark notificiations as read</a> in the Matrix protocol. This article
+is about a change that I instigated to improve <em>when</em> a &#8220;mention&#8221; (or &#8220;ping&#8221;)
+notification is created. (This is a &#8220;highlight&#8221; notification in the Matrix&nbsp;specification.)</p>
+<p>This was part of the work I did at Element to reduce <a class="reference external" href="https://github.com/vector-im/element-meta/issues/886">unintentional pings</a>. I
+preferred thinking of it in the positive &#8212; that we should only generate a mention
+on purpose, hence &#8220;intentional&#8221; mentions. <a class="reference external" href="https://github.com/matrix-org/matrix-spec-proposals/pull/3952"><span class="caps">MSC3952</span></a> details the technical protocol
+changes, but this serves as a bit of a higher-level overview (some of this content
+is copied from the <span class="caps">MSC</span>).</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">This blog post assumes that default push rules are enabled, these can be heavily
+modified, disabled, etc. but that is ignored in this&nbsp;post.</p>
+</div>
+<div class="section" id="legacy-mentions">
+<h2>Legacy&nbsp;mentions</h2>
+<p>The legacy mention system searches for the current user&#8217;s display name or the
+localpart of the Matrix <span class="caps">ID</span> <a class="footnote-reference" href="#id4" id="id1">[1]</a> in the text content of an event. For example, an
+event like the following would generate a mention for&nbsp;me:</p>
+<div class="highlight"><pre><span></span><span class="p">{</span>
+  <span class="c1">// Additional fields ignored.</span>
+  <span class="s2">&quot;content&quot;</span><span class="o">:</span> <span class="p">{</span>
+    <span class="s2">&quot;body&quot;</span><span class="o">:</span> <span class="s2">&quot;Hello @clokep:matrix.org!&quot;</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+<p>A <tt class="docutils literal">body</tt> content field <a class="footnote-reference" href="#id5" id="id2">[2]</a> containing <tt class="docutils literal">clokep</tt> or <tt class="docutils literal">Patrick Cloke</tt>
+would cause a &#8220;highlight&#8221; notification (displayed as red in Element). This isn&#8217;t uncommon
+in chat protocols and is how <span class="caps">IRC</span> and <span class="caps">XMPP</span>.</p>
+<p>Some of the issues with this&nbsp;are:</p>
+<ul class="simple">
+<li>Replying to a message will re-issue pings from the initial message due to
+<a class="reference external" href="https://spec.matrix.org/v1.5/client-server-api/#fallbacks-for-rich-replies">fallback replies</a>.</li>
+<li>Each time a message is edited the new version will be re-evaluated for&nbsp;mentions.</li>
+<li>Mentions occurring <a class="reference external" href="https://github.com/matrix-org/matrix-spec/issues/16">in spoiler contents</a> or <a class="reference external" href="https://github.com/matrix-org/matrix-spec/issues/15">code blocks</a> are&nbsp;evaluated.</li>
+<li>If the <a class="reference external" href="https://github.com/matrix-org/matrix-spec-proposals/issues/3011">localpart of your Matrix <span class="caps">ID</span> is a common word</a> then spurious notifications
+might occur (e.g. Travis <span class="caps">CI</span> matching if your Matrix <span class="caps">ID</span> is <tt class="docutils literal">&#64;travis:example.org</tt>).</li>
+<li>If the <a class="reference external" href="https://github.com/matrix-org/matrix-spec-proposals/issues/2735">localpart or display name of your Matrix <span class="caps">ID</span> matches the hostname</a>
+(e.g. <tt class="docutils literal">&#64;example:example.org</tt> receives notifications whenever <tt class="docutils literal">&#64;foo:example.org</tt>
+is replied&nbsp;to).</li>
+</ul>
+<p>There were some <a class="reference external" href="https://github.com/matrix-org/matrix-spec-proposals/blob/main/proposals/3952-intentional-mentions.md#prior-proposals">prior attempts</a> to fix this, but I would summarize them as attempting
+to reduce edge-cases instead of attempting to rethink how mentions are&nbsp;done.</p>
+</div>
+<div class="section" id="intentional-mentions">
+<h2>Intentional&nbsp;mentions</h2>
+<p>I chose to call this &#8220;intentional&#8221; mentions since the protocol now requires
+explicitly referring to the Matrix IDs to mention in a dedicated field, instead
+of implicit references in the text&nbsp;content.</p>
+<p>The overall change is simple: include a list of mentioned users in a new
+content field,&nbsp;e.g.:</p>
+<div class="highlight"><pre><span></span><span class="p">{</span>
+  <span class="c1">// Additional fields ignored.</span>
+  <span class="s2">&quot;content&quot;</span><span class="o">:</span> <span class="p">{</span>
+    <span class="s2">&quot;body&quot;</span><span class="o">:</span> <span class="s2">&quot;Hello @clokep:matrix.org!&quot;</span>
+    <span class="s2">&quot;m.mentions&quot;</span><span class="o">:</span> <span class="p">{</span>
+      <span class="s2">&quot;user_ids&quot;</span><span class="o">:</span> <span class="p">[</span><span class="s2">&quot;@clokep:matrix.org&quot;</span><span class="p">]</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+<p>Only the <tt class="docutils literal">m.mentions</tt> field is used to generate mentions, the <tt class="docutils literal">body</tt> field is
+no longer involved. Not only does this remove a whole class of potential bugs,
+but also allows for &#8220;hidden&#8221; mentions and paves the way for mentions in extensible
+events (see <a class="reference external" href="https://github.com/matrix-org/matrix-spec-proposals/pull/4053"><span class="caps">MSC4053</span></a>).</p>
+<p>That&#8217;s the gist of the change, although the <span class="caps">MSC</span> goes deeper into backwards
+compatibility, and interacting with replies or&nbsp;edits.</p>
+</div>
+<div class="section" id="comparison-to-other-protocols">
+<h2>Comparison to other&nbsp;protocols</h2>
+<p>The <tt class="docutils literal">m.mentions</tt> field is similar to how <a class="reference external" href="https://developer.twitter.com/en/docs/twitter-api/data-dictionary/object-model/tweet">Twitter</a>, <a class="reference external" href="https://docs.joinmastodon.org/entities/Status/#Mention">Mastodon</a>, <a class="reference external" href="https://discord.com/developers/docs/resources/channel#message-object">Discord</a>,
+and <a class="reference external" href="https://learn.microsoft.com/en-us/graph/api/resources/chatmessagemention?view=graph-rest-1.0">Microsoft Teams</a> handle mentioning users. The main downside of this approach
+is that it is not obvious <em>where</em> in the text the user&#8217;s mention is (and allows
+for hidden&nbsp;mentions).</p>
+<p>The other seriously considered approach was searching for &#8220;pills&#8221; in the <span class="caps">HTML</span>
+content of the event. This is similar to how <a class="reference external" href="https://api.slack.com/reference/surfaces/formatting#mentioning-users">Slack</a> handles mentions, where the
+user <span class="caps">ID</span> is encoded with some markup <a class="footnote-reference" href="#id6" id="id3">[3]</a>. This has a major downside of requiring <span class="caps">HTML</span>
+parsing on a hotpath of processing notifications (and it is unclear how this would
+work for non-<span class="caps">HTML</span>&nbsp;clients).</p>
+</div>
+<div class="section" id="can-i-use-this">
+<h2>Can I use&nbsp;this?</h2>
+<p>You can! The <span class="caps">MSC</span> was approved and <a class="reference external" href="https://spec.matrix.org/v1.9/client-server-api/#user-and-room-mentions">included in Matrix 1.7</a>, Synapase has had
+support since v1.86.0; it is pretty much up to clients to implement&nbsp;it!</p>
+<p>Element Web has handled (and sent intentional mentions) since v1.11.37, although
+I&#8217;m not aware of other clients which do (Element X might now). Hopefully it will
+become used throughout the ecosystem since many of the above issues are still
+common complaints I see with&nbsp;Matrix.</p>
+<table class="docutils footnote" frame="void" id="id4" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label"><a class="fn-backref" href="#id1">[1]</a></td><td>This post ignores room-mentions, but they&#8217;re handled very similarly.</td></tr>
+</tbody>
+</table>
+<table class="docutils footnote" frame="void" id="id5" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label"><a class="fn-backref" href="#id2">[2]</a></td><td>Note that the plaintext content of the event is searched <em>not</em> the &#8220;formatted&#8221;
+content (which is <a class="reference external" href="https://spec.matrix.org/v1.9/client-server-api/#mroommessage-msgtypes">usually <span class="caps">HTML</span></a>).</td></tr>
+</tbody>
+</table>
+<table class="docutils footnote" frame="void" id="id6" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label"><a class="fn-backref" href="#id3">[3]</a></td><td>This solution should also reduce the number of unintentional mentions, but
+doesn&#8217;t allow for hidden mentions.</td></tr>
+</tbody>
+</table>
+</div>
+
+      </div>
+
+<div id="disqus_thread"></div>
+<script>
+/**
+*  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+*  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/
+/*
+var disqus_config = function () {
+this.page.url = '/posts/2023/12/15/matrix-intentional-mentions-explained/';
+this.page.identifier = 'matrix-intentional-mentions-explained';
+};
+*/
+(function() { // DON'T EDIT BELOW THIS LINE
+var d = document, s = d.createElement('script');
+s.src = 'https://clokep.disqus.com/embed.js';
+s.setAttribute('data-timestamp', +new Date());
+(d.head || d.body).appendChild(s);
+})();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    </div>
+  </div>
+</div>
+
+    <nav class="navbar fixed-bottom navbar-light bg-light border-top border-info">
+      <a href="https://getpelican.com/" class="nav-item" target="_blank">Powered by Pelican</a>
+      <a href="https://github.com/clokep/clokep.github.io" class="nav-item" target="_blank">
+        Source available on GitHub <span class="fab fa-github"></span>
+      </a>
+    </nav>
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T" crossorigin="anonymous"></script>
+
+  </body>
+</html>

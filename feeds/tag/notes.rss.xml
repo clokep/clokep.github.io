@@ -1,5 +1,114 @@
 <?xml version="1.0" encoding="utf-8"?>
-<rss version="2.0"><channel><title>Patrick Cloke - notes</title><link>https://patrick.cloke.us/</link><description></description><lastBuildDate>Fri, 15 Dec 2023 11:24:00 -0500</lastBuildDate><item><title>Matrix Presence</title><link>https://patrick.cloke.us/posts/2023/12/15/matrix-presence/</link><description>&lt;p&gt;I put together some notes on presence when implementing &lt;a class="reference external" href="https://github.com/matrix-org/synapse/pull/16066"&gt;multi-device support for presence&lt;/a&gt;
+<rss version="2.0"><channel><title>Patrick Cloke - notes</title><link>https://patrick.cloke.us/</link><description></description><lastBuildDate>Fri, 15 Dec 2023 15:41:00 -0500</lastBuildDate><item><title>Matrix Intentional Mentions explained</title><link>https://patrick.cloke.us/posts/2023/12/15/matrix-intentional-mentions-explained/</link><description>&lt;p&gt;Previously I have written about how &lt;a class="reference external" href="https://patrick.cloke.us/posts/2023/05/08/matrix-push-rules-notifications/"&gt;push rules generate notifications&lt;/a&gt; and how
+&lt;a class="reference external" href="https://patrick.cloke.us/posts/2023/01/05/matrix-read-receipts-and-notifications/"&gt;read receipts mark notificiations as read&lt;/a&gt; in the Matrix protocol. This article
+is about a change that I instigated to improve &lt;em&gt;when&lt;/em&gt; a &amp;#8220;mention&amp;#8221; (or &amp;#8220;ping&amp;#8221;)
+notification is created. (This is a &amp;#8220;highlight&amp;#8221; notification in the Matrix&amp;nbsp;specification.)&lt;/p&gt;
+&lt;p&gt;This was part of the work I did at Element to reduce &lt;a class="reference external" href="https://github.com/vector-im/element-meta/issues/886"&gt;unintentional pings&lt;/a&gt;. I
+preferred thinking of it in the positive &amp;#8212; that we should only generate a mention
+on purpose, hence &amp;#8220;intentional&amp;#8221; mentions. &lt;a class="reference external" href="https://github.com/matrix-org/matrix-spec-proposals/pull/3952"&gt;&lt;span class="caps"&gt;MSC3952&lt;/span&gt;&lt;/a&gt; details the technical protocol
+changes, but this serves as a bit of a higher-level overview (some of this content
+is copied from the &lt;span class="caps"&gt;MSC&lt;/span&gt;).&lt;/p&gt;
+&lt;div class="admonition note"&gt;
+&lt;p class="first admonition-title"&gt;Note&lt;/p&gt;
+&lt;p class="last"&gt;This blog post assumes that default push rules are enabled, these can be heavily
+modified, disabled, etc. but that is ignored in this&amp;nbsp;post.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="section" id="legacy-mentions"&gt;
+&lt;h2&gt;Legacy&amp;nbsp;mentions&lt;/h2&gt;
+&lt;p&gt;The legacy mention system searches for the current user&amp;#8217;s display name or the
+localpart of the Matrix &lt;span class="caps"&gt;ID&lt;/span&gt; &lt;a class="footnote-reference" href="#id4" id="id1"&gt;[1]&lt;/a&gt; in the text content of an event. For example, an
+event like the following would generate a mention for&amp;nbsp;me:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="p"&gt;{&lt;/span&gt;
+  &lt;span class="c1"&gt;// Additional fields ignored.&lt;/span&gt;
+  &lt;span class="s2"&gt;&amp;quot;content&amp;quot;&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+    &lt;span class="s2"&gt;&amp;quot;body&amp;quot;&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;Hello @clokep:matrix.org!&amp;quot;&lt;/span&gt;
+  &lt;span class="p"&gt;}&lt;/span&gt;
+&lt;span class="p"&gt;}&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;A &lt;tt class="docutils literal"&gt;body&lt;/tt&gt; content field &lt;a class="footnote-reference" href="#id5" id="id2"&gt;[2]&lt;/a&gt; containing &lt;tt class="docutils literal"&gt;clokep&lt;/tt&gt; or &lt;tt class="docutils literal"&gt;Patrick Cloke&lt;/tt&gt;
+would cause a &amp;#8220;highlight&amp;#8221; notification (displayed as red in Element). This isn&amp;#8217;t uncommon
+in chat protocols and is how &lt;span class="caps"&gt;IRC&lt;/span&gt; and &lt;span class="caps"&gt;XMPP&lt;/span&gt;.&lt;/p&gt;
+&lt;p&gt;Some of the issues with this&amp;nbsp;are:&lt;/p&gt;
+&lt;ul class="simple"&gt;
+&lt;li&gt;Replying to a message will re-issue pings from the initial message due to
+&lt;a class="reference external" href="https://spec.matrix.org/v1.5/client-server-api/#fallbacks-for-rich-replies"&gt;fallback replies&lt;/a&gt;.&lt;/li&gt;
+&lt;li&gt;Each time a message is edited the new version will be re-evaluated for&amp;nbsp;mentions.&lt;/li&gt;
+&lt;li&gt;Mentions occurring &lt;a class="reference external" href="https://github.com/matrix-org/matrix-spec/issues/16"&gt;in spoiler contents&lt;/a&gt; or &lt;a class="reference external" href="https://github.com/matrix-org/matrix-spec/issues/15"&gt;code blocks&lt;/a&gt; are&amp;nbsp;evaluated.&lt;/li&gt;
+&lt;li&gt;If the &lt;a class="reference external" href="https://github.com/matrix-org/matrix-spec-proposals/issues/3011"&gt;localpart of your Matrix &lt;span class="caps"&gt;ID&lt;/span&gt; is a common word&lt;/a&gt; then spurious notifications
+might occur (e.g. Travis &lt;span class="caps"&gt;CI&lt;/span&gt; matching if your Matrix &lt;span class="caps"&gt;ID&lt;/span&gt; is &lt;tt class="docutils literal"&gt;&amp;#64;travis:example.org&lt;/tt&gt;).&lt;/li&gt;
+&lt;li&gt;If the &lt;a class="reference external" href="https://github.com/matrix-org/matrix-spec-proposals/issues/2735"&gt;localpart or display name of your Matrix &lt;span class="caps"&gt;ID&lt;/span&gt; matches the hostname&lt;/a&gt;
+(e.g. &lt;tt class="docutils literal"&gt;&amp;#64;example:example.org&lt;/tt&gt; receives notifications whenever &lt;tt class="docutils literal"&gt;&amp;#64;foo:example.org&lt;/tt&gt;
+is replied&amp;nbsp;to).&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;There were some &lt;a class="reference external" href="https://github.com/matrix-org/matrix-spec-proposals/blob/main/proposals/3952-intentional-mentions.md#prior-proposals"&gt;prior attempts&lt;/a&gt; to fix this, but I would summarize them as attempting
+to reduce edge-cases instead of attempting to rethink how mentions are&amp;nbsp;done.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="section" id="intentional-mentions"&gt;
+&lt;h2&gt;Intentional&amp;nbsp;mentions&lt;/h2&gt;
+&lt;p&gt;I chose to call this &amp;#8220;intentional&amp;#8221; mentions since the protocol now requires
+explicitly referring to the Matrix IDs to mention in a dedicated field, instead
+of implicit references in the text&amp;nbsp;content.&lt;/p&gt;
+&lt;p&gt;The overall change is simple: include a list of mentioned users in a new
+content field,&amp;nbsp;e.g.:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="p"&gt;{&lt;/span&gt;
+  &lt;span class="c1"&gt;// Additional fields ignored.&lt;/span&gt;
+  &lt;span class="s2"&gt;&amp;quot;content&amp;quot;&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+    &lt;span class="s2"&gt;&amp;quot;body&amp;quot;&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;Hello @clokep:matrix.org!&amp;quot;&lt;/span&gt;
+    &lt;span class="s2"&gt;&amp;quot;m.mentions&amp;quot;&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+      &lt;span class="s2"&gt;&amp;quot;user_ids&amp;quot;&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;@clokep:matrix.org&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;
+    &lt;span class="p"&gt;}&lt;/span&gt;
+  &lt;span class="p"&gt;}&lt;/span&gt;
+&lt;span class="p"&gt;}&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Only the &lt;tt class="docutils literal"&gt;m.mentions&lt;/tt&gt; field is used to generate mentions, the &lt;tt class="docutils literal"&gt;body&lt;/tt&gt; field is
+no longer involved. Not only does this remove a whole class of potential bugs,
+but also allows for &amp;#8220;hidden&amp;#8221; mentions and paves the way for mentions in extensible
+events (see &lt;a class="reference external" href="https://github.com/matrix-org/matrix-spec-proposals/pull/4053"&gt;&lt;span class="caps"&gt;MSC4053&lt;/span&gt;&lt;/a&gt;).&lt;/p&gt;
+&lt;p&gt;That&amp;#8217;s the gist of the change, although the &lt;span class="caps"&gt;MSC&lt;/span&gt; goes deeper into backwards
+compatibility, and interacting with replies or&amp;nbsp;edits.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="section" id="comparison-to-other-protocols"&gt;
+&lt;h2&gt;Comparison to other&amp;nbsp;protocols&lt;/h2&gt;
+&lt;p&gt;The &lt;tt class="docutils literal"&gt;m.mentions&lt;/tt&gt; field is similar to how &lt;a class="reference external" href="https://developer.twitter.com/en/docs/twitter-api/data-dictionary/object-model/tweet"&gt;Twitter&lt;/a&gt;, &lt;a class="reference external" href="https://docs.joinmastodon.org/entities/Status/#Mention"&gt;Mastodon&lt;/a&gt;, &lt;a class="reference external" href="https://discord.com/developers/docs/resources/channel#message-object"&gt;Discord&lt;/a&gt;,
+and &lt;a class="reference external" href="https://learn.microsoft.com/en-us/graph/api/resources/chatmessagemention?view=graph-rest-1.0"&gt;Microsoft Teams&lt;/a&gt; handle mentioning users. The main downside of this approach
+is that it is not obvious &lt;em&gt;where&lt;/em&gt; in the text the user&amp;#8217;s mention is (and allows
+for hidden&amp;nbsp;mentions).&lt;/p&gt;
+&lt;p&gt;The other seriously considered approach was searching for &amp;#8220;pills&amp;#8221; in the &lt;span class="caps"&gt;HTML&lt;/span&gt;
+content of the event. This is similar to how &lt;a class="reference external" href="https://api.slack.com/reference/surfaces/formatting#mentioning-users"&gt;Slack&lt;/a&gt; handles mentions, where the
+user &lt;span class="caps"&gt;ID&lt;/span&gt; is encoded with some markup &lt;a class="footnote-reference" href="#id6" id="id3"&gt;[3]&lt;/a&gt;. This has a major downside of requiring &lt;span class="caps"&gt;HTML&lt;/span&gt;
+parsing on a hotpath of processing notifications (and it is unclear how this would
+work for non-&lt;span class="caps"&gt;HTML&lt;/span&gt;&amp;nbsp;clients).&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="section" id="can-i-use-this"&gt;
+&lt;h2&gt;Can I use&amp;nbsp;this?&lt;/h2&gt;
+&lt;p&gt;You can! The &lt;span class="caps"&gt;MSC&lt;/span&gt; was approved and &lt;a class="reference external" href="https://spec.matrix.org/v1.9/client-server-api/#user-and-room-mentions"&gt;included in Matrix 1.7&lt;/a&gt;, Synapase has had
+support since v1.86.0; it is pretty much up to clients to implement&amp;nbsp;it!&lt;/p&gt;
+&lt;p&gt;Element Web has handled (and sent intentional mentions) since v1.11.37, although
+I&amp;#8217;m not aware of other clients which do (Element X might now). Hopefully it will
+become used throughout the ecosystem since many of the above issues are still
+common complaints I see with&amp;nbsp;Matrix.&lt;/p&gt;
+&lt;table class="docutils footnote" frame="void" id="id4" rules="none"&gt;
+&lt;colgroup&gt;&lt;col class="label" /&gt;&lt;col /&gt;&lt;/colgroup&gt;
+&lt;tbody valign="top"&gt;
+&lt;tr&gt;&lt;td class="label"&gt;&lt;a class="fn-backref" href="#id1"&gt;[1]&lt;/a&gt;&lt;/td&gt;&lt;td&gt;This post ignores room-mentions, but they&amp;#8217;re handled very similarly.&lt;/td&gt;&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;table class="docutils footnote" frame="void" id="id5" rules="none"&gt;
+&lt;colgroup&gt;&lt;col class="label" /&gt;&lt;col /&gt;&lt;/colgroup&gt;
+&lt;tbody valign="top"&gt;
+&lt;tr&gt;&lt;td class="label"&gt;&lt;a class="fn-backref" href="#id2"&gt;[2]&lt;/a&gt;&lt;/td&gt;&lt;td&gt;Note that the plaintext content of the event is searched &lt;em&gt;not&lt;/em&gt; the &amp;#8220;formatted&amp;#8221;
+content (which is &lt;a class="reference external" href="https://spec.matrix.org/v1.9/client-server-api/#mroommessage-msgtypes"&gt;usually &lt;span class="caps"&gt;HTML&lt;/span&gt;&lt;/a&gt;).&lt;/td&gt;&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;table class="docutils footnote" frame="void" id="id6" rules="none"&gt;
+&lt;colgroup&gt;&lt;col class="label" /&gt;&lt;col /&gt;&lt;/colgroup&gt;
+&lt;tbody valign="top"&gt;
+&lt;tr&gt;&lt;td class="label"&gt;&lt;a class="fn-backref" href="#id3"&gt;[3]&lt;/a&gt;&lt;/td&gt;&lt;td&gt;This solution should also reduce the number of unintentional mentions, but
+doesn&amp;#8217;t allow for hidden mentions.&lt;/td&gt;&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;/div&gt;
+</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Patrick Cloke</dc:creator><pubDate>Fri, 15 Dec 2023 15:41:00 -0500</pubDate><guid isPermaLink="false">tag:patrick.cloke.us,2023-12-15:/posts/2023/12/15/matrix-intentional-mentions-explained/</guid><category>articles</category><category>matrix</category><category>notes</category></item><item><title>Matrix Presence</title><link>https://patrick.cloke.us/posts/2023/12/15/matrix-presence/</link><description>&lt;p&gt;I put together some notes on presence when implementing &lt;a class="reference external" href="https://github.com/matrix-org/synapse/pull/16066"&gt;multi-device support for presence&lt;/a&gt;
 in Synapse, maybe this is helpful to others! This is a combination of information
 from the specification, as well as some information about how Synapse&amp;nbsp;works.&lt;/p&gt;
 &lt;div class="admonition note"&gt;
