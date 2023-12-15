@@ -31,7 +31,7 @@ attempted to **retrieve** a result! This turned out to be untrue.
 
 Once identified, The fix was straightforward! We ensured that every task which
 had ``ignore_result=True`` on task declaration also had ``ignore_result=True``
-on task call (when using ``send_task``). [#]_ This duplciation is unfortunate,
+on task call (when using ``send_task``). [#]_ This duplication is unfortunate,
 but easy enough.
 
 We figured this out due to a calling process which doesn't use any results, but

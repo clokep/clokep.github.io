@@ -26,7 +26,7 @@ to them if they do!
 Wikipedia Current Events
 ========================
 
-The Wikipedia Current Events feed is `publically available`_, code can be found
+The Wikipedia Current Events feed is `publicly available`_, code can be found
 in the GitHub repository: `clokep/wp-current-events-rss`_. Note that this pulls
 data on demand and thus always serves the most up-to-date versions of the
 articles. This works by:
@@ -97,7 +97,7 @@ I hope one (or both) of these are useful to people! Again, please
 .. _Islanders News: https://www.nhl.com/islanders/news
 .. _broken feed: http://islanders.nhl.com/rss/news.xml
 .. _MediaWiki: https://www.mediawiki.org/
-.. _publically available: https://www.to-rss.xyz/wikipedia/current_events/
+.. _publicly available: https://www.to-rss.xyz/wikipedia/current_events/
 .. _clokep/wp-current-events-rss: https://github.com/clokep/wp-current-events-rss
 .. _this one: https://en.wikipedia.org/wiki/Portal:Current_events/2017_May_8
 .. _requests: http://python-requests.org/
