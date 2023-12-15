@@ -18,7 +18,7 @@ hope I&amp;#8217;ve just been unable to find them and that they do exist. Please
 to them if they&amp;nbsp;do!&lt;/p&gt;
 &lt;div class="section" id="wikipedia-current-events"&gt;
 &lt;h2&gt;Wikipedia Current&amp;nbsp;Events&lt;/h2&gt;
-&lt;p&gt;The Wikipedia Current Events feed is &lt;a class="reference external" href="https://www.to-rss.xyz/wikipedia/current_events/"&gt;publically available&lt;/a&gt;, code can be found
+&lt;p&gt;The Wikipedia Current Events feed is &lt;a class="reference external" href="https://www.to-rss.xyz/wikipedia/current_events/"&gt;publicly available&lt;/a&gt;, code can be found
 in the GitHub repository: &lt;a class="reference external" href="https://github.com/clokep/wp-current-events-rss"&gt;clokep/wp-current-events-rss&lt;/a&gt;. Note that this pulls
 data on demand and thus always serves the most up-to-date versions of the
 articles. This works&amp;nbsp;by:&lt;/p&gt;

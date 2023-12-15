@@ -1,0 +1,392 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Feed configuration. -->
+    <link href="https://patrick.cloke.us/feeds/atom.xml" type="application/atom+xml" rel="alternate" title="Patrick Cloke Atom Feed" />
+    <link href="https://patrick.cloke.us/feeds/rss.xml" type="application/rss+xml" rel="alternate" title="Patrick Cloke RSS Feed" />
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
+    <link rel="stylesheet" href="/theme/css/styles.css">
+    <link rel="stylesheet" href="/theme/css/borland.css">
+    <link rel="stylesheet" href="/theme/css/youtube.css">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
+
+    <title>Matrix Presence</title>
+
+    <meta property="og:site_name" content="Patrick Cloke" />
+<meta property="og:title" content="Matrix Presence" />
+<meta property="og:url" content="https://patrick.cloke.us/posts/2023/12/15/matrix-presence/" />
+<meta property="og:description" content="I put together some notes on presence when implementing multi-device support for presence in Synapse, maybe this is helpful to others! This is a combination of information from the specification, as well as some information about how Synapse works. Note These notes are true as of the v1.9 of …" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2023-12-15T11:24:00-05:00" />
+<meta property="article:author" content="Patrick Cloke" />
+<meta property="article:tag" content="matrix" />
+<meta property="article:tag" content="notes" />
+
+    <script async defer data-domain="cloke.us" src="https://plausible.io/js/plausible.js"></script>
+  </head>
+
+  <body class="pb-5">
+    <nav class="navbar navbar-expand-lg sticky-top navbar-light bg-light border-bottom border-info">
+      <a class="navbar-brand" href="/">
+        Patrick Cloke
+      </a>
+
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-items" aria-controls="navbar-items" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="navbar-items">
+        <ul class="navbar-nav ml-auto">
+
+          <li class="nav-item">
+            <a class="nav-link" href="/pages/about.html">About</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/pages/projects.html">Projects</a>
+          </li>
+
+          <li class="nav-item">
+            <a class="nav-link" href="/archives.html">Archives</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/tags.html">Tags</a>
+          </li>
+
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="social-dropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              Social
+            </a>
+
+            <span class="dropdown-menu dropdown-menu-right" aria-labelledby="social-dropdown">
+              <a class="dropdown-item" href="https://mastodon.social/@clokep" target="_blank">
+                  <span class="fab fa-mastodon mr-1"></span>
+                mastodon
+              </a>
+              <a class="dropdown-item" href="https://www.twitter.com/clokep" target="_blank">
+                  <span class="fab fa-twitter mr-1"></span>
+                twitter
+              </a>
+              <a class="dropdown-item" href="https://matrix.to/#/@clokep:matrix.org" target="_blank">
+                  <span class="pl-3 mr-2"></span>
+                matrix
+              </a>
+              <a class="dropdown-item" href="https://github.com/clokep" target="_blank">
+                  <span class="fab fa-github mr-1"></span>
+                github
+              </a>
+              <a class="dropdown-item" href="https://gitlab.com/clokep" target="_blank">
+                  <span class="fab fa-gitlab mr-1"></span>
+                gitlab
+              </a>
+            </div>
+          </li>
+
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="feeds-dropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              Feeds
+            </a>
+
+            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="feeds-dropdown">
+              <a class="dropdown-item" href="https://patrick.cloke.us/feeds/atom.xml" type="application/atom+xml" rel="alternate">atom feed</a>
+              <a class="dropdown-item" href="https://patrick.cloke.us/feeds/rss.xml" type="application/rss+xml" rel="alternate">rss feed</a>
+            </div>
+          </li>
+
+          <form class="form-inline" method="get" action="http://www.google.com/search">
+            <input class="form-control form-control-sm mr-sm-2" type="search" name="q" placeholder="Search" aria-label="Search" />
+            <input type="hidden"  name="sitesearch" value="patrick.cloke.us" />
+
+            <button class="btn btn-sm btn-outline-info d-none d-sm-inline" type="submit">Search</button>
+          </form>
+        </ul>
+      </div>
+    </nav>
+
+<div class="container">
+  <div class="row">
+    <div class="col-md-12 mt-2 mb-2">
+      <h1>
+        <a href="/posts/2023/12/15/matrix-presence/" rel="bookmark"
+           title="Permalink to Matrix Presence">Matrix&nbsp;Presence</a>
+      </h1>
+
+      <div class="row">
+        <div class="col-sm">
+          <span class="text-secondary font-weight-light font-italic">Published on Friday, December 15, 2023</span>
+
+          <br>
+          <span class="text-secondary font-weight-light font-italic">
+            Tags:               <a href="/tag/matrix.html">matrix</a>,              <a href="/tag/notes.html">notes</a>          </span>
+        </div>
+
+        <div class="col-sm text-right">
+          <a href="https://twitter.com/intent/tweet?text=Matrix%C2%A0Presence&url=https%3A//patrick.cloke.us/posts/2023/12/15/matrix-presence/&hashtags=matrix,notes" target="_blank" class="ml-1 mr-1" title="Share on Twitter">
+            <span class="fab fa-twitter"></span>
+          </a>
+          <a href="https://www.facebook.com/sharer/sharer.php?u=https%3A//patrick.cloke.us/posts/2023/12/15/matrix-presence/" target="_blank" class="ml-1 mr-1" title="Share on Facebook">
+            <span class="fab fa-facebook"></span>
+          </a>
+          <a href="mailto:?subject=Matrix%C2%A0Presence&amp;body=https%3A//patrick.cloke.us/posts/2023/12/15/matrix-presence/" target="_blank" class="ml-1 mr-1" title="Share via Email">
+            <span class="fas fa-envelope"></span>
+          </a>
+        </div>
+      </div>
+
+      <hr>
+
+      <div>
+
+        <p>I put together some notes on presence when implementing <a class="reference external" href="https://github.com/matrix-org/synapse/pull/16066">multi-device support for presence</a>
+in Synapse, maybe this is helpful to others! This is a combination of information
+from the specification, as well as some information about how Synapse&nbsp;works.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">These notes are true as of the v1.9 of the Matrix spec and also cover some
+Matrix spec changes which may or may not have been merged&nbsp;since.</p>
+</div>
+<div class="section" id="presence-in-matrix">
+<h2>Presence in&nbsp;Matrix</h2>
+<p>Matrix includes basic presence support, which is explained decently from <a class="reference external" href="https://spec.matrix.org/v1.7/client-server-api/#presence">the specification</a>:</p>
+<blockquote>
+<p>Each user has the concept of presence information. This&nbsp;encodes:</p>
+<ul class="simple">
+<li>Whether the user is currently&nbsp;online</li>
+<li>How recently the user was last active (as seen by the&nbsp;server)</li>
+<li>Whether a given client considers the user to be currently&nbsp;idle</li>
+<li>Arbitrary information about the user’s current status (e.g. “in a&nbsp;meeting”).</li>
+</ul>
+<p>This information is collated from both per-device (<tt class="docutils literal">online</tt>, <tt class="docutils literal">idle</tt>, <tt class="docutils literal">last_active</tt>)
+and per-user (status) data, aggregated by the user’s homeserver and transmitted
+as an <tt class="docutils literal">m.presence</tt> event. Presence events are sent to interested parties where
+users share a room&nbsp;membership.</p>
+<p>User’s presence state is represented by the presence key, which is an enum of
+one of the&nbsp;following:</p>
+<ul class="simple">
+<li><tt class="docutils literal">online</tt> : The default state when the user is connected to an event&nbsp;stream.</li>
+<li><tt class="docutils literal">unavailable</tt> : The user is not reachable at this time e.g. they are idle. <a class="footnote-reference" href="#id7" id="id1">[1]</a></li>
+<li><tt class="docutils literal">offline</tt> : The user is not connected to an event stream or is explicitly suppressing their profile information from being&nbsp;sent.</li>
+</ul>
+</blockquote>
+<p><a class="reference external" href="https://github.com/matrix-org/matrix-spec-proposals/pull/3026"><span class="caps">MSC3026</span></a> defines a <tt class="docutils literal">busy</tt> presence&nbsp;state:</p>
+<blockquote>
+the user is online and active but is performing an activity that would prevent
+them from giving their full attention to an external solicitation, i.e. the user
+is online and active but not available.</blockquote>
+<p>Presence information is returned to clients in the <tt class="docutils literal">presence</tt> key of the
+<a class="reference external" href="https://spec.matrix.org/v1.7/client-server-api/#_matrixclientv3sync_presence">sync response</a> as a <tt class="docutils literal">m.presence</tt> <span class="caps">EDU</span> which&nbsp;contains:</p>
+<ul class="simple">
+<li><tt class="docutils literal">currently_active</tt>: Whether the user is currently active&nbsp;(boolean)</li>
+<li><tt class="docutils literal">last_active_ago</tt>: The last time since this used performed some action, in&nbsp;milliseconds.</li>
+<li><tt class="docutils literal">presence</tt>: <tt class="docutils literal">online</tt>, <tt class="docutils literal">unavailable</tt>, or <tt class="docutils literal">offline</tt> (or <tt class="docutils literal">busy</tt>)</li>
+<li><tt class="docutils literal">status_msg</tt>: An optional description to accompany the&nbsp;presence.</li>
+</ul>
+<div class="section" id="updating-presence">
+<h3>Updating&nbsp;presence</h3>
+<p>Clients can call <a class="reference external" href="https://spec.matrix.org/v1.8/client-server-api/#put_matrixclientv3presenceuseridstatus"><tt class="docutils literal"><span class="caps">PUT</span> <span class="pre">/_matrix/client/v3/presence/{userId}/status</span></tt></a> to update the presence state <span class="amp">&amp;</span> status message or
+can set the presence state via <a class="reference external" href="https://spec.matrix.org/v1.8/client-server-api/#get_matrixclientv3sync">the <tt class="docutils literal">set_presence</tt> parameter on <tt class="docutils literal">/sync</tt> request</a>.</p>
+<p>Note that when using the <tt class="docutils literal">set_presence</tt> parameter, <tt class="docutils literal">offline</tt> is equivalent to
+&#8220;do not make a&nbsp;change&#8221;.</p>
+</div>
+<div class="section" id="user-activity">
+<h3>User&nbsp;activity</h3>
+<p>From the <a class="reference external" href="https://spec.matrix.org/v1.7/client-server-api/#last-active-ago">Matrix spec on last active ago</a>:</p>
+<blockquote>
+The server maintains a timestamp of the last time it saw a pro-active event from
+the user. A pro-active event may be sending a message to a room or changing presence
+state to <tt class="docutils literal">online</tt>. This timestamp is presented via a key called <tt class="docutils literal">last_active_ago</tt>
+which gives the relative number of milliseconds since the pro-active event.</blockquote>
+<p>If the presence is set to <tt class="docutils literal">online</tt> then <tt class="docutils literal">last_active_ago</tt> is not part of the
+<tt class="docutils literal">/sync</tt> response and <tt class="docutils literal">currently_active</tt> is returned&nbsp;instead.</p>
+</div>
+<div class="section" id="idle-timeout">
+<h3>Idle&nbsp;timeout</h3>
+<p>From the <a class="reference external" href="https://spec.matrix.org/v1.7/client-server-api/#idle-timeout">Matrix spec on automatically idling users</a>:</p>
+<blockquote>
+The server will automatically set a user’s presence to <tt class="docutils literal">unavailable</tt> if their
+last active time was over a threshold value (e.g. 5 minutes). Clients can manually
+set a user’s presence to <tt class="docutils literal">unavailable</tt>. Any activity that bumps the last active
+time on any of the user’s clients will cause the server to automatically set their
+presence to <tt class="docutils literal">online</tt>.</blockquote>
+<p><a class="reference external" href="https://github.com/matrix-org/matrix-spec-proposals/pull/3026"><span class="caps">MSC3026</span></a> also&nbsp;recommends:</p>
+<blockquote>
+If a user&#8217;s presence is set to <tt class="docutils literal">busy</tt>, it is strongly recommended for implementations
+to not implement a timer that would trigger an update to the <tt class="docutils literal">unavailable</tt> state
+(like most implementations do when the user is in the <tt class="docutils literal">online</tt> state).</blockquote>
+</div>
+</div>
+<div class="section" id="presence-in-synapse">
+<h2>Presence in&nbsp;Synapse</h2>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p>This describes Synapse&#8217;s behavior <em>after</em> v1.93.0. Before that version Synapse
+did not account for multiple devices, essentially meaning that the latest device
+update&nbsp;won.</p>
+<p class="last">This also only applies to <em>local</em> users; per-device information for remote users
+is not available, only the combined per-user&nbsp;state.</p>
+</div>
+<p>User&#8217;s devices can set a device&#8217;s presence state and a user&#8217;s status message.
+A user&#8217;s device knows better than the server whether they&#8217;re online and should
+send that state as part of <tt class="docutils literal">/sync</tt> calls (e.g. sending <tt class="docutils literal">online</tt> or <tt class="docutils literal">unavailable</tt>
+or <tt class="docutils literal">offline</tt>).</p>
+<p>Thus a device is only ever able to set the &#8220;minimum&#8221; presence state for the user.
+Presence states are coalesced across devices as
+<tt class="docutils literal">busy</tt> &gt; <tt class="docutils literal">online</tt> &gt; <tt class="docutils literal">unavailable</tt> &gt; <tt class="docutils literal">offline</tt>. You can build simple
+truth tables of how these combine with multiple&nbsp;devices:</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="33%" />
+<col width="33%" />
+<col width="33%" />
+</colgroup>
+<thead valign="bottom">
+<tr><th class="head">Device 1</th>
+<th class="head">Device 2</th>
+<th class="head">User state</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr><td><tt class="docutils literal">online</tt></td>
+<td><tt class="docutils literal">unavailable</tt></td>
+<td><tt class="docutils literal">online</tt></td>
+</tr>
+<tr><td><tt class="docutils literal">busy</tt></td>
+<td><tt class="docutils literal">online</tt></td>
+<td><tt class="docutils literal">busy</tt></td>
+</tr>
+<tr><td><tt class="docutils literal">unavailable</tt></td>
+<td><tt class="docutils literal">offline</tt></td>
+<td><tt class="docutils literal">unavailable</tt></td>
+</tr>
+</tbody>
+</table>
+<p>Additionally, users expect to see the latest activity time across all devices.
+(And therefore if any device is online and the latest activity is recent then
+the user is currently&nbsp;active).</p>
+<p>The status message is global and setting it should always override any previous
+state (and never be cleared&nbsp;automatically).</p>
+<div class="section" id="automatic-state-transitions">
+<h3>Automatic state&nbsp;transitions</h3>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Note that the below only describes the logic for <em>local</em> users. Data received
+over federation is handled&nbsp;differently.</p>
+</div>
+<p>If a device is <tt class="docutils literal">unavailable</tt> or <tt class="docutils literal">offline</tt> it should transition to <tt class="docutils literal">online</tt>
+if a &#8220;pro-active event&#8221; occurs. This includes sending a receipt or event, or syncing
+without <tt class="docutils literal">set_presence</tt> or <tt class="docutils literal">set_presence=online</tt>.</p>
+<p>If a device is <tt class="docutils literal">offline</tt> it should transition to <tt class="docutils literal">unavailable</tt> if it is syncing
+with <tt class="docutils literal">set_presence=unavailable</tt>.</p>
+<p>If a device is <tt class="docutils literal">online</tt> (either directly or implicitly via user actions) it should
+transition to <tt class="docutils literal">unavailable</tt> (idle) after a period of time <a class="footnote-reference" href="#id8" id="id2">[2]</a> if the device is
+continuing to sync. (Note that this implies the sync is occurring with
+<tt class="docutils literal">set_presence=unavailable</tt> as otherwise the device is continuing to report as
+<tt class="docutils literal">online</tt>). <a class="footnote-reference" href="#id9" id="id3">[3]</a></p>
+<p>If a device is <tt class="docutils literal">online</tt> or <tt class="docutils literal">unavailable</tt> it should transition to  <tt class="docutils literal">offline</tt>
+after a period of time if it is not syncing and not making other actions which
+would transition the device to <cite>online</cite>. <a class="footnote-reference" href="#id10" id="id4">[4]</a></p>
+<p>Note if a device is <tt class="docutils literal">busy</tt> it should not transition to other states. <a class="footnote-reference" href="#id11" id="id5">[5]</a></p>
+<p>There&#8217;s a <a class="reference external" href="https://github.com/matrix-org/synapse/blob/be65a8ec0195955c15fdb179c9158b187638e39a/tests/handlers/test_presence.py#L971-L1106">huge testcase</a> which checks all these&nbsp;transitions.</p>
+<div class="section" id="examples">
+<h4>Examples</h4>
+<ol class="arabic simple">
+<li>Two devices continually syncing, one <tt class="docutils literal">online</tt> and one <tt class="docutils literal">unavailable</tt>. The
+end result should be <cite>online</cite>. <a class="footnote-reference" href="#id12" id="id6">[6]</a></li>
+<li>One device syncing with <tt class="docutils literal">set_presence=unavailable</tt> but had a &#8220;pro-active&#8221;
+action, after a period of time the user should be <tt class="docutils literal">unavailable</tt> if no additional
+&#8220;pro-active&#8221; actions&nbsp;occurred.</li>
+<li>One device that stops syncing (and no other &#8220;pro-active&#8221; actions&#8221; are occurring),
+after a period of time the user should be <tt class="docutils literal">offline</tt>.</li>
+<li>Two devices continually syncing, one <tt class="docutils literal">online</tt> and one <tt class="docutils literal">unavailable</tt>. The
+<tt class="docutils literal">online</tt> device stops syncing, after a period of time the user should be
+<tt class="docutils literal">unavailable</tt>.</li>
+</ol>
+<table class="docutils footnote" frame="void" id="id7" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label"><a class="fn-backref" href="#id1">[1]</a></td><td>This should be called <tt class="docutils literal">idle</tt>.</td></tr>
+</tbody>
+</table>
+<table class="docutils footnote" frame="void" id="id8" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label"><a class="fn-backref" href="#id2">[2]</a></td><td>The period of time is implementation specific.</td></tr>
+</tbody>
+</table>
+<table class="docutils footnote" frame="void" id="id9" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label"><a class="fn-backref" href="#id3">[3]</a></td><td>Note that syncing with <tt class="docutils literal">set_presence=offline</tt> does not transition to offline,
+it is equivalent to not syncing. (It is mostly for mobile applications to
+process push notifications.)</td></tr>
+</tbody>
+</table>
+<table class="docutils footnote" frame="void" id="id10" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label"><a class="fn-backref" href="#id4">[4]</a></td><td>The spec doesn&#8217;t seem to ever say that devices can transition to offline.</td></tr>
+</tbody>
+</table>
+<table class="docutils footnote" frame="void" id="id11" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label"><a class="fn-backref" href="#id5">[5]</a></td><td>See the <a class="reference external" href="https://github.com/matrix-org/matrix-spec-proposals/pull/3026/files#r1287453423">open thread on the <span class="caps">MSC3026</span></a>.</td></tr>
+</tbody>
+</table>
+<table class="docutils footnote" frame="void" id="id12" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label"><a class="fn-backref" href="#id6">[6]</a></td><td>This is essentially the <a class="reference external" href="https://github.com/matrix-org/synapse/issues/16057">bug illustrated by the change in Element Web&#8217;s behavior</a>.</td></tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+
+      </div>
+
+<div id="disqus_thread"></div>
+<script>
+/**
+*  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+*  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/
+/*
+var disqus_config = function () {
+this.page.url = '/posts/2023/12/15/matrix-presence/';
+this.page.identifier = 'matrix-presence';
+};
+*/
+(function() { // DON'T EDIT BELOW THIS LINE
+var d = document, s = d.createElement('script');
+s.src = 'https://clokep.disqus.com/embed.js';
+s.setAttribute('data-timestamp', +new Date());
+(d.head || d.body).appendChild(s);
+})();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    </div>
+  </div>
+</div>
+
+    <nav class="navbar fixed-bottom navbar-light bg-light border-top border-info">
+      <a href="https://getpelican.com/" class="nav-item" target="_blank">Powered by Pelican</a>
+      <a href="https://github.com/clokep/clokep.github.io" class="nav-item" target="_blank">
+        Source available on GitHub <span class="fab fa-github"></span>
+      </a>
+    </nav>
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T" crossorigin="anonymous"></script>
+
+  </body>
+</html>

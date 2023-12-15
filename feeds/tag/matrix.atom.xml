@@ -1,5 +1,215 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>Patrick Cloke - matrix</title><link href="https://patrick.cloke.us/" rel="alternate"></link><link href="https://patrick.cloke.us/feeds/tag/matrix.atom.xml" rel="self"></link><id>https://patrick.cloke.us/</id><updated>2023-10-04T09:55:00-04:00</updated><entry><title>Matrix Live demo on Linearized Matrix</title><link href="https://patrick.cloke.us/posts/2023/10/04/matrix-live-demo-on-linearized-matrix/" rel="alternate"></link><published>2023-10-04T09:55:00-04:00</published><updated>2023-10-04T09:55:00-04:00</updated><author><name>Patrick Cloke</name></author><id>tag:patrick.cloke.us,2023-10-04:/posts/2023/10/04/matrix-live-demo-on-linearized-matrix/</id><summary type="html">&lt;p&gt;I demoed some of my work at &lt;a class="reference external" href="https://element.io"&gt;Element&lt;/a&gt; on Matrix Live back on August 4th&amp;#8217;s
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Patrick Cloke - matrix</title><link href="https://patrick.cloke.us/" rel="alternate"></link><link href="https://patrick.cloke.us/feeds/tag/matrix.atom.xml" rel="self"></link><id>https://patrick.cloke.us/</id><updated>2023-12-15T11:24:00-05:00</updated><entry><title>Matrix Presence</title><link href="https://patrick.cloke.us/posts/2023/12/15/matrix-presence/" rel="alternate"></link><published>2023-12-15T11:24:00-05:00</published><updated>2023-12-15T11:24:00-05:00</updated><author><name>Patrick Cloke</name></author><id>tag:patrick.cloke.us,2023-12-15:/posts/2023/12/15/matrix-presence/</id><summary type="html">&lt;p&gt;I put together some notes on presence when implementing &lt;a class="reference external" href="https://github.com/matrix-org/synapse/pull/16066"&gt;multi-device support for presence&lt;/a&gt;
+in Synapse, maybe this is helpful to others! This is a combination of information
+from the specification, as well as some information about how Synapse&amp;nbsp;works.&lt;/p&gt;
+&lt;div class="admonition note"&gt;
+&lt;p class="first admonition-title"&gt;Note&lt;/p&gt;
+&lt;p class="last"&gt;These notes are true as of the v1.9 of …&lt;/p&gt;&lt;/div&gt;</summary><content type="html">&lt;p&gt;I put together some notes on presence when implementing &lt;a class="reference external" href="https://github.com/matrix-org/synapse/pull/16066"&gt;multi-device support for presence&lt;/a&gt;
+in Synapse, maybe this is helpful to others! This is a combination of information
+from the specification, as well as some information about how Synapse&amp;nbsp;works.&lt;/p&gt;
+&lt;div class="admonition note"&gt;
+&lt;p class="first admonition-title"&gt;Note&lt;/p&gt;
+&lt;p class="last"&gt;These notes are true as of the v1.9 of the Matrix spec and also cover some
+Matrix spec changes which may or may not have been merged&amp;nbsp;since.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="section" id="presence-in-matrix"&gt;
+&lt;h2&gt;Presence in&amp;nbsp;Matrix&lt;/h2&gt;
+&lt;p&gt;Matrix includes basic presence support, which is explained decently from &lt;a class="reference external" href="https://spec.matrix.org/v1.7/client-server-api/#presence"&gt;the specification&lt;/a&gt;:&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Each user has the concept of presence information. This&amp;nbsp;encodes:&lt;/p&gt;
+&lt;ul class="simple"&gt;
+&lt;li&gt;Whether the user is currently&amp;nbsp;online&lt;/li&gt;
+&lt;li&gt;How recently the user was last active (as seen by the&amp;nbsp;server)&lt;/li&gt;
+&lt;li&gt;Whether a given client considers the user to be currently&amp;nbsp;idle&lt;/li&gt;
+&lt;li&gt;Arbitrary information about the user’s current status (e.g. “in a&amp;nbsp;meeting”).&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;This information is collated from both per-device (&lt;tt class="docutils literal"&gt;online&lt;/tt&gt;, &lt;tt class="docutils literal"&gt;idle&lt;/tt&gt;, &lt;tt class="docutils literal"&gt;last_active&lt;/tt&gt;)
+and per-user (status) data, aggregated by the user’s homeserver and transmitted
+as an &lt;tt class="docutils literal"&gt;m.presence&lt;/tt&gt; event. Presence events are sent to interested parties where
+users share a room&amp;nbsp;membership.&lt;/p&gt;
+&lt;p&gt;User’s presence state is represented by the presence key, which is an enum of
+one of the&amp;nbsp;following:&lt;/p&gt;
+&lt;ul class="simple"&gt;
+&lt;li&gt;&lt;tt class="docutils literal"&gt;online&lt;/tt&gt; : The default state when the user is connected to an event&amp;nbsp;stream.&lt;/li&gt;
+&lt;li&gt;&lt;tt class="docutils literal"&gt;unavailable&lt;/tt&gt; : The user is not reachable at this time e.g. they are idle. &lt;a class="footnote-reference" href="#id7" id="id1"&gt;[1]&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;tt class="docutils literal"&gt;offline&lt;/tt&gt; : The user is not connected to an event stream or is explicitly suppressing their profile information from being&amp;nbsp;sent.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;&lt;a class="reference external" href="https://github.com/matrix-org/matrix-spec-proposals/pull/3026"&gt;&lt;span class="caps"&gt;MSC3026&lt;/span&gt;&lt;/a&gt; defines a &lt;tt class="docutils literal"&gt;busy&lt;/tt&gt; presence&amp;nbsp;state:&lt;/p&gt;
+&lt;blockquote&gt;
+the user is online and active but is performing an activity that would prevent
+them from giving their full attention to an external solicitation, i.e. the user
+is online and active but not available.&lt;/blockquote&gt;
+&lt;p&gt;Presence information is returned to clients in the &lt;tt class="docutils literal"&gt;presence&lt;/tt&gt; key of the
+&lt;a class="reference external" href="https://spec.matrix.org/v1.7/client-server-api/#_matrixclientv3sync_presence"&gt;sync response&lt;/a&gt; as a &lt;tt class="docutils literal"&gt;m.presence&lt;/tt&gt; &lt;span class="caps"&gt;EDU&lt;/span&gt; which&amp;nbsp;contains:&lt;/p&gt;
+&lt;ul class="simple"&gt;
+&lt;li&gt;&lt;tt class="docutils literal"&gt;currently_active&lt;/tt&gt;: Whether the user is currently active&amp;nbsp;(boolean)&lt;/li&gt;
+&lt;li&gt;&lt;tt class="docutils literal"&gt;last_active_ago&lt;/tt&gt;: The last time since this used performed some action, in&amp;nbsp;milliseconds.&lt;/li&gt;
+&lt;li&gt;&lt;tt class="docutils literal"&gt;presence&lt;/tt&gt;: &lt;tt class="docutils literal"&gt;online&lt;/tt&gt;, &lt;tt class="docutils literal"&gt;unavailable&lt;/tt&gt;, or &lt;tt class="docutils literal"&gt;offline&lt;/tt&gt; (or &lt;tt class="docutils literal"&gt;busy&lt;/tt&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;tt class="docutils literal"&gt;status_msg&lt;/tt&gt;: An optional description to accompany the&amp;nbsp;presence.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class="section" id="updating-presence"&gt;
+&lt;h3&gt;Updating&amp;nbsp;presence&lt;/h3&gt;
+&lt;p&gt;Clients can call &lt;a class="reference external" href="https://spec.matrix.org/v1.8/client-server-api/#put_matrixclientv3presenceuseridstatus"&gt;&lt;tt class="docutils literal"&gt;&lt;span class="caps"&gt;PUT&lt;/span&gt; &lt;span class="pre"&gt;/_matrix/client/v3/presence/{userId}/status&lt;/span&gt;&lt;/tt&gt;&lt;/a&gt; to update the presence state &lt;span class="amp"&gt;&amp;amp;&lt;/span&gt; status message or
+can set the presence state via &lt;a class="reference external" href="https://spec.matrix.org/v1.8/client-server-api/#get_matrixclientv3sync"&gt;the &lt;tt class="docutils literal"&gt;set_presence&lt;/tt&gt; parameter on &lt;tt class="docutils literal"&gt;/sync&lt;/tt&gt; request&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Note that when using the &lt;tt class="docutils literal"&gt;set_presence&lt;/tt&gt; parameter, &lt;tt class="docutils literal"&gt;offline&lt;/tt&gt; is equivalent to
+&amp;#8220;do not make a&amp;nbsp;change&amp;#8221;.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="section" id="user-activity"&gt;
+&lt;h3&gt;User&amp;nbsp;activity&lt;/h3&gt;
+&lt;p&gt;From the &lt;a class="reference external" href="https://spec.matrix.org/v1.7/client-server-api/#last-active-ago"&gt;Matrix spec on last active ago&lt;/a&gt;:&lt;/p&gt;
+&lt;blockquote&gt;
+The server maintains a timestamp of the last time it saw a pro-active event from
+the user. A pro-active event may be sending a message to a room or changing presence
+state to &lt;tt class="docutils literal"&gt;online&lt;/tt&gt;. This timestamp is presented via a key called &lt;tt class="docutils literal"&gt;last_active_ago&lt;/tt&gt;
+which gives the relative number of milliseconds since the pro-active event.&lt;/blockquote&gt;
+&lt;p&gt;If the presence is set to &lt;tt class="docutils literal"&gt;online&lt;/tt&gt; then &lt;tt class="docutils literal"&gt;last_active_ago&lt;/tt&gt; is not part of the
+&lt;tt class="docutils literal"&gt;/sync&lt;/tt&gt; response and &lt;tt class="docutils literal"&gt;currently_active&lt;/tt&gt; is returned&amp;nbsp;instead.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="section" id="idle-timeout"&gt;
+&lt;h3&gt;Idle&amp;nbsp;timeout&lt;/h3&gt;
+&lt;p&gt;From the &lt;a class="reference external" href="https://spec.matrix.org/v1.7/client-server-api/#idle-timeout"&gt;Matrix spec on automatically idling users&lt;/a&gt;:&lt;/p&gt;
+&lt;blockquote&gt;
+The server will automatically set a user’s presence to &lt;tt class="docutils literal"&gt;unavailable&lt;/tt&gt; if their
+last active time was over a threshold value (e.g. 5 minutes). Clients can manually
+set a user’s presence to &lt;tt class="docutils literal"&gt;unavailable&lt;/tt&gt;. Any activity that bumps the last active
+time on any of the user’s clients will cause the server to automatically set their
+presence to &lt;tt class="docutils literal"&gt;online&lt;/tt&gt;.&lt;/blockquote&gt;
+&lt;p&gt;&lt;a class="reference external" href="https://github.com/matrix-org/matrix-spec-proposals/pull/3026"&gt;&lt;span class="caps"&gt;MSC3026&lt;/span&gt;&lt;/a&gt; also&amp;nbsp;recommends:&lt;/p&gt;
+&lt;blockquote&gt;
+If a user&amp;#8217;s presence is set to &lt;tt class="docutils literal"&gt;busy&lt;/tt&gt;, it is strongly recommended for implementations
+to not implement a timer that would trigger an update to the &lt;tt class="docutils literal"&gt;unavailable&lt;/tt&gt; state
+(like most implementations do when the user is in the &lt;tt class="docutils literal"&gt;online&lt;/tt&gt; state).&lt;/blockquote&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="section" id="presence-in-synapse"&gt;
+&lt;h2&gt;Presence in&amp;nbsp;Synapse&lt;/h2&gt;
+&lt;div class="admonition note"&gt;
+&lt;p class="first admonition-title"&gt;Note&lt;/p&gt;
+&lt;p&gt;This describes Synapse&amp;#8217;s behavior &lt;em&gt;after&lt;/em&gt; v1.93.0. Before that version Synapse
+did not account for multiple devices, essentially meaning that the latest device
+update&amp;nbsp;won.&lt;/p&gt;
+&lt;p class="last"&gt;This also only applies to &lt;em&gt;local&lt;/em&gt; users; per-device information for remote users
+is not available, only the combined per-user&amp;nbsp;state.&lt;/p&gt;
+&lt;/div&gt;
+&lt;p&gt;User&amp;#8217;s devices can set a device&amp;#8217;s presence state and a user&amp;#8217;s status message.
+A user&amp;#8217;s device knows better than the server whether they&amp;#8217;re online and should
+send that state as part of &lt;tt class="docutils literal"&gt;/sync&lt;/tt&gt; calls (e.g. sending &lt;tt class="docutils literal"&gt;online&lt;/tt&gt; or &lt;tt class="docutils literal"&gt;unavailable&lt;/tt&gt;
+or &lt;tt class="docutils literal"&gt;offline&lt;/tt&gt;).&lt;/p&gt;
+&lt;p&gt;Thus a device is only ever able to set the &amp;#8220;minimum&amp;#8221; presence state for the user.
+Presence states are coalesced across devices as
+&lt;tt class="docutils literal"&gt;busy&lt;/tt&gt; &amp;gt; &lt;tt class="docutils literal"&gt;online&lt;/tt&gt; &amp;gt; &lt;tt class="docutils literal"&gt;unavailable&lt;/tt&gt; &amp;gt; &lt;tt class="docutils literal"&gt;offline&lt;/tt&gt;. You can build simple
+truth tables of how these combine with multiple&amp;nbsp;devices:&lt;/p&gt;
+&lt;table border="1" class="docutils"&gt;
+&lt;colgroup&gt;
+&lt;col width="33%" /&gt;
+&lt;col width="33%" /&gt;
+&lt;col width="33%" /&gt;
+&lt;/colgroup&gt;
+&lt;thead valign="bottom"&gt;
+&lt;tr&gt;&lt;th class="head"&gt;Device 1&lt;/th&gt;
+&lt;th class="head"&gt;Device 2&lt;/th&gt;
+&lt;th class="head"&gt;User state&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody valign="top"&gt;
+&lt;tr&gt;&lt;td&gt;&lt;tt class="docutils literal"&gt;online&lt;/tt&gt;&lt;/td&gt;
+&lt;td&gt;&lt;tt class="docutils literal"&gt;unavailable&lt;/tt&gt;&lt;/td&gt;
+&lt;td&gt;&lt;tt class="docutils literal"&gt;online&lt;/tt&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;&lt;tt class="docutils literal"&gt;busy&lt;/tt&gt;&lt;/td&gt;
+&lt;td&gt;&lt;tt class="docutils literal"&gt;online&lt;/tt&gt;&lt;/td&gt;
+&lt;td&gt;&lt;tt class="docutils literal"&gt;busy&lt;/tt&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;&lt;tt class="docutils literal"&gt;unavailable&lt;/tt&gt;&lt;/td&gt;
+&lt;td&gt;&lt;tt class="docutils literal"&gt;offline&lt;/tt&gt;&lt;/td&gt;
+&lt;td&gt;&lt;tt class="docutils literal"&gt;unavailable&lt;/tt&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;Additionally, users expect to see the latest activity time across all devices.
+(And therefore if any device is online and the latest activity is recent then
+the user is currently&amp;nbsp;active).&lt;/p&gt;
+&lt;p&gt;The status message is global and setting it should always override any previous
+state (and never be cleared&amp;nbsp;automatically).&lt;/p&gt;
+&lt;div class="section" id="automatic-state-transitions"&gt;
+&lt;h3&gt;Automatic state&amp;nbsp;transitions&lt;/h3&gt;
+&lt;div class="admonition note"&gt;
+&lt;p class="first admonition-title"&gt;Note&lt;/p&gt;
+&lt;p class="last"&gt;Note that the below only describes the logic for &lt;em&gt;local&lt;/em&gt; users. Data received
+over federation is handled&amp;nbsp;differently.&lt;/p&gt;
+&lt;/div&gt;
+&lt;p&gt;If a device is &lt;tt class="docutils literal"&gt;unavailable&lt;/tt&gt; or &lt;tt class="docutils literal"&gt;offline&lt;/tt&gt; it should transition to &lt;tt class="docutils literal"&gt;online&lt;/tt&gt;
+if a &amp;#8220;pro-active event&amp;#8221; occurs. This includes sending a receipt or event, or syncing
+without &lt;tt class="docutils literal"&gt;set_presence&lt;/tt&gt; or &lt;tt class="docutils literal"&gt;set_presence=online&lt;/tt&gt;.&lt;/p&gt;
+&lt;p&gt;If a device is &lt;tt class="docutils literal"&gt;offline&lt;/tt&gt; it should transition to &lt;tt class="docutils literal"&gt;unavailable&lt;/tt&gt; if it is syncing
+with &lt;tt class="docutils literal"&gt;set_presence=unavailable&lt;/tt&gt;.&lt;/p&gt;
+&lt;p&gt;If a device is &lt;tt class="docutils literal"&gt;online&lt;/tt&gt; (either directly or implicitly via user actions) it should
+transition to &lt;tt class="docutils literal"&gt;unavailable&lt;/tt&gt; (idle) after a period of time &lt;a class="footnote-reference" href="#id8" id="id2"&gt;[2]&lt;/a&gt; if the device is
+continuing to sync. (Note that this implies the sync is occurring with
+&lt;tt class="docutils literal"&gt;set_presence=unavailable&lt;/tt&gt; as otherwise the device is continuing to report as
+&lt;tt class="docutils literal"&gt;online&lt;/tt&gt;). &lt;a class="footnote-reference" href="#id9" id="id3"&gt;[3]&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;If a device is &lt;tt class="docutils literal"&gt;online&lt;/tt&gt; or &lt;tt class="docutils literal"&gt;unavailable&lt;/tt&gt; it should transition to  &lt;tt class="docutils literal"&gt;offline&lt;/tt&gt;
+after a period of time if it is not syncing and not making other actions which
+would transition the device to &lt;cite&gt;online&lt;/cite&gt;. &lt;a class="footnote-reference" href="#id10" id="id4"&gt;[4]&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Note if a device is &lt;tt class="docutils literal"&gt;busy&lt;/tt&gt; it should not transition to other states. &lt;a class="footnote-reference" href="#id11" id="id5"&gt;[5]&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;There&amp;#8217;s a &lt;a class="reference external" href="https://github.com/matrix-org/synapse/blob/be65a8ec0195955c15fdb179c9158b187638e39a/tests/handlers/test_presence.py#L971-L1106"&gt;huge testcase&lt;/a&gt; which checks all these&amp;nbsp;transitions.&lt;/p&gt;
+&lt;div class="section" id="examples"&gt;
+&lt;h4&gt;Examples&lt;/h4&gt;
+&lt;ol class="arabic simple"&gt;
+&lt;li&gt;Two devices continually syncing, one &lt;tt class="docutils literal"&gt;online&lt;/tt&gt; and one &lt;tt class="docutils literal"&gt;unavailable&lt;/tt&gt;. The
+end result should be &lt;cite&gt;online&lt;/cite&gt;. &lt;a class="footnote-reference" href="#id12" id="id6"&gt;[6]&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;One device syncing with &lt;tt class="docutils literal"&gt;set_presence=unavailable&lt;/tt&gt; but had a &amp;#8220;pro-active&amp;#8221;
+action, after a period of time the user should be &lt;tt class="docutils literal"&gt;unavailable&lt;/tt&gt; if no additional
+&amp;#8220;pro-active&amp;#8221; actions&amp;nbsp;occurred.&lt;/li&gt;
+&lt;li&gt;One device that stops syncing (and no other &amp;#8220;pro-active&amp;#8221; actions&amp;#8221; are occurring),
+after a period of time the user should be &lt;tt class="docutils literal"&gt;offline&lt;/tt&gt;.&lt;/li&gt;
+&lt;li&gt;Two devices continually syncing, one &lt;tt class="docutils literal"&gt;online&lt;/tt&gt; and one &lt;tt class="docutils literal"&gt;unavailable&lt;/tt&gt;. The
+&lt;tt class="docutils literal"&gt;online&lt;/tt&gt; device stops syncing, after a period of time the user should be
+&lt;tt class="docutils literal"&gt;unavailable&lt;/tt&gt;.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;table class="docutils footnote" frame="void" id="id7" rules="none"&gt;
+&lt;colgroup&gt;&lt;col class="label" /&gt;&lt;col /&gt;&lt;/colgroup&gt;
+&lt;tbody valign="top"&gt;
+&lt;tr&gt;&lt;td class="label"&gt;&lt;a class="fn-backref" href="#id1"&gt;[1]&lt;/a&gt;&lt;/td&gt;&lt;td&gt;This should be called &lt;tt class="docutils literal"&gt;idle&lt;/tt&gt;.&lt;/td&gt;&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;table class="docutils footnote" frame="void" id="id8" rules="none"&gt;
+&lt;colgroup&gt;&lt;col class="label" /&gt;&lt;col /&gt;&lt;/colgroup&gt;
+&lt;tbody valign="top"&gt;
+&lt;tr&gt;&lt;td class="label"&gt;&lt;a class="fn-backref" href="#id2"&gt;[2]&lt;/a&gt;&lt;/td&gt;&lt;td&gt;The period of time is implementation specific.&lt;/td&gt;&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;table class="docutils footnote" frame="void" id="id9" rules="none"&gt;
+&lt;colgroup&gt;&lt;col class="label" /&gt;&lt;col /&gt;&lt;/colgroup&gt;
+&lt;tbody valign="top"&gt;
+&lt;tr&gt;&lt;td class="label"&gt;&lt;a class="fn-backref" href="#id3"&gt;[3]&lt;/a&gt;&lt;/td&gt;&lt;td&gt;Note that syncing with &lt;tt class="docutils literal"&gt;set_presence=offline&lt;/tt&gt; does not transition to offline,
+it is equivalent to not syncing. (It is mostly for mobile applications to
+process push notifications.)&lt;/td&gt;&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;table class="docutils footnote" frame="void" id="id10" rules="none"&gt;
+&lt;colgroup&gt;&lt;col class="label" /&gt;&lt;col /&gt;&lt;/colgroup&gt;
+&lt;tbody valign="top"&gt;
+&lt;tr&gt;&lt;td class="label"&gt;&lt;a class="fn-backref" href="#id4"&gt;[4]&lt;/a&gt;&lt;/td&gt;&lt;td&gt;The spec doesn&amp;#8217;t seem to ever say that devices can transition to offline.&lt;/td&gt;&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;table class="docutils footnote" frame="void" id="id11" rules="none"&gt;
+&lt;colgroup&gt;&lt;col class="label" /&gt;&lt;col /&gt;&lt;/colgroup&gt;
+&lt;tbody valign="top"&gt;
+&lt;tr&gt;&lt;td class="label"&gt;&lt;a class="fn-backref" href="#id5"&gt;[5]&lt;/a&gt;&lt;/td&gt;&lt;td&gt;See the &lt;a class="reference external" href="https://github.com/matrix-org/matrix-spec-proposals/pull/3026/files#r1287453423"&gt;open thread on the &lt;span class="caps"&gt;MSC3026&lt;/span&gt;&lt;/a&gt;.&lt;/td&gt;&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;table class="docutils footnote" frame="void" id="id12" rules="none"&gt;
+&lt;colgroup&gt;&lt;col class="label" /&gt;&lt;col /&gt;&lt;/colgroup&gt;
+&lt;tbody valign="top"&gt;
+&lt;tr&gt;&lt;td class="label"&gt;&lt;a class="fn-backref" href="#id6"&gt;[6]&lt;/a&gt;&lt;/td&gt;&lt;td&gt;This is essentially the &lt;a class="reference external" href="https://github.com/matrix-org/synapse/issues/16057"&gt;bug illustrated by the change in Element Web&amp;#8217;s behavior&lt;/a&gt;.&lt;/td&gt;&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+</content><category term="articles"></category><category term="matrix"></category><category term="notes"></category></entry><entry><title>Matrix Live demo on Linearized Matrix</title><link href="https://patrick.cloke.us/posts/2023/10/04/matrix-live-demo-on-linearized-matrix/" rel="alternate"></link><published>2023-10-04T09:55:00-04:00</published><updated>2023-10-04T09:55:00-04:00</updated><author><name>Patrick Cloke</name></author><id>tag:patrick.cloke.us,2023-10-04:/posts/2023/10/04/matrix-live-demo-on-linearized-matrix/</id><summary type="html">&lt;p&gt;I demoed some of my work at &lt;a class="reference external" href="https://element.io"&gt;Element&lt;/a&gt; on Matrix Live back on August 4th&amp;#8217;s
 &lt;a class="reference external" href="https://matrix.org/blog/2023/08/04/this-week-in-matrix-2023-08-04/"&gt;This Week in Matrix&lt;/a&gt; (and failed to mention it here). I talked a bit about
 what &lt;a class="reference external" href="https://turt2live.github.io/ietf-mimi-linearized-matrix/draft-ralston-mimi-linearized-matrix.html"&gt;Linearized Matrix&lt;/a&gt;, Element&amp;#8217;s effort for the &lt;span class="caps"&gt;IETF&lt;/span&gt;&amp;#8217;s
 &lt;a class="reference external" href="https://datatracker.ietf.org/group/mimi/about/"&gt;&amp;#8220;More Instant Messaging Interoperability&amp;#8221; (&lt;span class="caps"&gt;MIMI&lt;/span&gt;)&lt;/a&gt; working&amp;nbsp;group.&lt;/p&gt;

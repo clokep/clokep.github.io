@@ -168,7 +168,7 @@ I assumed that the results backend would never be contacted since we never
 attempted to <strong>retrieve</strong> a result! This turned out to be&nbsp;untrue.</p>
 <p>Once identified, The fix was straightforward! We ensured that every task which
 had <tt class="docutils literal">ignore_result=True</tt> on task declaration also had <tt class="docutils literal">ignore_result=True</tt>
-on task call (when using <tt class="docutils literal">send_task</tt>). <a class="footnote-reference" href="#id8" id="id4">[4]</a> This duplciation is unfortunate,
+on task call (when using <tt class="docutils literal">send_task</tt>). <a class="footnote-reference" href="#id8" id="id4">[4]</a> This duplication is unfortunate,
 but easy&nbsp;enough.</p>
 <p>We figured this out due to a calling process which doesn&#8217;t use any results, but
 the <tt class="docutils literal">celery.backends</tt> module was appearing in the <a class="reference external" href="https://pyflame.readthedocs.io">pyflame</a> profiles.
