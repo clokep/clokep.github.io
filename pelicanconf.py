@@ -133,6 +133,7 @@ SOCIAL = (
     ("matrix", "https://matrix.to/#/@clokep:matrix.org", None),
     ("github", "https://github.com/clokep", "github"),
     ("gitlab", "https://gitlab.com/clokep", "gitlab"),
+    ("linkedin", "https://www.linkedin.com/in/patrickcloke/", "linkedin"),
 )
 
 # For thumbnails.
