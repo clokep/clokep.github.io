@@ -9,21 +9,21 @@
     <link href="https://patrick.cloke.us/feeds/atom.xml" type="application/atom+xml" rel="alternate" title="Patrick Cloke Atom Feed" />
     <link href="https://patrick.cloke.us/feeds/rss.xml" type="application/rss+xml" rel="alternate" title="Patrick Cloke RSS Feed" />
 
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
     <link rel="stylesheet" href="/theme/css/styles.css">
     <link rel="stylesheet" href="/theme/css/borland.css">
     <link rel="stylesheet" href="/theme/css/youtube.css">
 
-    <!-- Font Awesome -->
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
 
     <title>Extending JavaScript Maps (or other built-in objects)</title>
 
     <meta property="og:site_name" content="Patrick Cloke" />
 <meta property="og:title" content="Extending JavaScript Maps (or other built-in objects)" />
 <meta property="og:url" content="https://patrick.cloke.us/posts/2014/04/27/extending-javascript-maps-or-other/" />
-<meta property="og:description" content="Finally another technical post, this one is about my adventures in attempting to extend the built-in Map object in JavaScript to extend the functionality. As background, there are two reasons we’d want this: In the chat backend we currently use JavaScript objects ({}) as hashes/maps to keep track of …" />
+<meta property="og:description" content="Finally another technical post, this one is about my adventures in attempting to extend the built-in Map object in JavaScript to extend the functionality. As background, there are two reasons we’d want this:  In the chat backend we currently use JavaScript objects ({}) as hashes/maps to keep track of …" />
 <meta property="og:type" content="article" />
 <meta property="article:published_time" content="2014-04-27T13:46:00-04:00" />
 <meta property="article:author" content="Patrick Cloke" />
@@ -70,11 +70,11 @@
 
             <span class="dropdown-menu dropdown-menu-right" aria-labelledby="social-dropdown">
               <a class="dropdown-item" href="https://mastodon.social/@clokep" target="_blank">
-                  <span class="fab fa-mastodon mr-1"></span>
+                  <span class="bi-mastodon mr-1"></span>
                 mastodon
               </a>
               <a class="dropdown-item" href="https://www.twitter.com/clokep" target="_blank">
-                  <span class="fab fa-twitter mr-1"></span>
+                  <span class="bi-twitter mr-1"></span>
                 twitter
               </a>
               <a class="dropdown-item" href="https://matrix.to/#/@clokep:matrix.org" target="_blank">
@@ -82,15 +82,15 @@
                 matrix
               </a>
               <a class="dropdown-item" href="https://github.com/clokep" target="_blank">
-                  <span class="fab fa-github mr-1"></span>
+                  <span class="bi-github mr-1"></span>
                 github
               </a>
               <a class="dropdown-item" href="https://gitlab.com/clokep" target="_blank">
-                  <span class="fab fa-gitlab mr-1"></span>
+                  <span class="bi-gitlab mr-1"></span>
                 gitlab
               </a>
               <a class="dropdown-item" href="https://www.linkedin.com/in/patrickcloke/" target="_blank">
-                  <span class="fab fa-linkedin mr-1"></span>
+                  <span class="bi-linkedin mr-1"></span>
                 linkedin
               </a>
             </span>
@@ -135,14 +135,23 @@
         </div>
 
         <div class="col-sm text-right">
+          <a href="https://toot.kytta.dev/?text=Extending%20JavaScript%20Maps%20%28or%20other%20built-in%C2%A0objects%29%0D%0Ahttps%3A//patrick.cloke.us/posts/2014/04/27/extending-javascript-maps-or-other/%0D%0A%23Instantbird %23programming %23specifications %23Thunderbird %23Wat" target="_blank" class="ml-1 mr-1" title="Share on Mastodon">
+            <span class="bi-mastodon"></span>
+          </a>
           <a href="https://twitter.com/intent/tweet?text=Extending%20JavaScript%20Maps%20%28or%20other%20built-in%C2%A0objects%29&url=https%3A//patrick.cloke.us/posts/2014/04/27/extending-javascript-maps-or-other/&hashtags=instantbird,programming,specifications,thunderbird,wat" target="_blank" class="ml-1 mr-1" title="Share on Twitter">
-            <span class="fab fa-twitter"></span>
+            <span class="bi-twitter"></span>
+          </a>
+          <a href="https://www.reddit.com/submit?url=https%3A//patrick.cloke.us/posts/2014/04/27/extending-javascript-maps-or-other/&title=Extending%20JavaScript%20Maps%20%28or%20other%20built-in%C2%A0objects%29" target="_blank" class="ml-1 mr-1" title="Share on Reddit">
+            <span class="bi-reddit"></span>
           </a>
           <a href="https://www.facebook.com/sharer/sharer.php?u=https%3A//patrick.cloke.us/posts/2014/04/27/extending-javascript-maps-or-other/" target="_blank" class="ml-1 mr-1" title="Share on Facebook">
-            <span class="fab fa-facebook"></span>
+            <span class="bi-facebook"></span>
+          </a>
+          <a href="https://www.linkedin.com/shareArticle?mini=true&url=https%3A//patrick.cloke.us/posts/2014/04/27/extending-javascript-maps-or-other/&title=Extending%20JavaScript%20Maps%20%28or%20other%20built-in%C2%A0objects%29&summary=Finally%20another%20technical%20post%2C%20this%20one%20is%20about%20my%20adventures%20in%0Aattempting%20to%20extend%20the%20built-in%20Map%20object%20in%20JavaScript%20to%20extend%0Athe%20functionality.%20As%20background%2C%20there%20are%20two%20reasons%20we%E2%80%99d%20want%C2%A0this%3A%0A%0AIn%20the%20chat%20backend%20we%20currently%20use%20JavaScript%20objects%20%28%7B%7D%29%20as%0Ahashes/maps%20to%20keep%20track%20of%20%E2%80%A6&source=https%3A//patrick.cloke.us/posts/2014/04/27/extending-javascript-maps-or-other/" target="_blank" class="ml-1 mr-1" title="Share on LinkedIn">
+            <span class="bi-linkedin"></span>
           </a>
           <a href="mailto:?subject=Extending%20JavaScript%20Maps%20%28or%20other%20built-in%C2%A0objects%29&amp;body=https%3A//patrick.cloke.us/posts/2014/04/27/extending-javascript-maps-or-other/" target="_blank" class="ml-1 mr-1" title="Share via Email">
-            <span class="fas fa-envelope"></span>
+            <span class="bi-envelope"></span>
           </a>
         </div>
       </div>
@@ -154,10 +163,10 @@
           <div class="toc" id="">
 <p class="topic-title">Contents</p>
 <ul class="simple">
-<li><a class="reference internal" href="#goals" id="id7">Goals</a></li>
-<li><a class="reference internal" href="#first-approach-setting-proto-to-map-prototype" id="id8">First Approach (setting __proto__ to Map.prototype)</a></li>
-<li><a class="reference internal" href="#second-approach-modifying-proto-after-instance-creation" id="id9">Second Approach (modifying __proto__ after instance creation)</a></li>
-<li><a class="reference internal" href="#solution-wrapping-a-map" id="id10">Solution (wrapping a Map)</a></li>
+<li><a class="reference internal" href="#goals" id="toc-entry-1">Goals</a></li>
+<li><a class="reference internal" href="#first-approach-setting-proto-to-map-prototype" id="toc-entry-2">First Approach (setting __proto__ to Map.prototype)</a></li>
+<li><a class="reference internal" href="#second-approach-modifying-proto-after-instance-creation" id="toc-entry-3">Second Approach (modifying __proto__ after instance creation)</a></li>
+<li><a class="reference internal" href="#solution-wrapping-a-map" id="toc-entry-4">Solution (wrapping a Map)</a></li>
 </ul>
 </div>
         </div>
@@ -177,15 +186,15 @@ named hasOwnProperty. This is <a class="reference external" href="https://mxr.mo
 <blockquote>
 <div class="highlight"><pre><span></span><span class="c1">// Similar to Object.hasOwnProperty, but doesn't fail if the object</span>
 <span class="c1">// has a hasOwnProperty property set.</span>
-<span class="kd">function</span> <span class="nx">hasOwnProperty</span><span class="p">(</span><span class="nx">aObject</span><span class="p">,</span> <span class="nx">aPropertyName</span><span class="p">)</span>
-  <span class="nb">Object</span><span class="p">.</span><span class="nx">prototype</span><span class="p">.</span><span class="nx">hasOwnProperty</span><span class="p">.</span><span class="nx">call</span><span class="p">(</span><span class="nx">aObject</span><span class="p">,</span> <span class="nx">aPropertyName</span><span class="p">)</span>
+<span class="kd">function</span><span class="w"> </span><span class="nx">hasOwnProperty</span><span class="p">(</span><span class="nx">aObject</span><span class="p">,</span><span class="w"> </span><span class="nx">aPropertyName</span><span class="p">)</span>
+<span class="w">  </span><span class="nb">Object</span><span class="p">.</span><span class="nx">prototype</span><span class="p">.</span><span class="nx">hasOwnProperty</span><span class="p">.</span><span class="nx">call</span><span class="p">(</span><span class="nx">aObject</span><span class="p">,</span><span class="w"> </span><span class="nx">aPropertyName</span><span class="p">)</span>
 </pre></div>
 </blockquote>
 <p><a class="reference external" href="https://bugzilla.mozilla.org/show_bug.cgi?id=955366">Replacing these custom objects with a Map</a> would alleviate this
 funky dance.</p>
 </li>
-<li><p class="first">Frequently in the chat backend we have to “normalize” <a class="footnote-reference" href="#id4" id="id1">[1]</a> strings
-(e.g. #INsTanTBIrd and #instantbird are the same on <span class="caps">IRC</span> <a class="footnote-reference" href="#id5" id="id2">[2]</a>). This is
+<li><p class="first">Frequently in the chat backend we have to “normalize” <a class="footnote-reference" href="#footnote-1" id="footnote-reference-1">[1]</a> strings
+(e.g. #INsTanTBIrd and #instantbird are the same on <span class="caps">IRC</span> <a class="footnote-reference" href="#footnote-2" id="footnote-reference-2">[2]</a>). This is
 almost always done for sane storage of data received from the network
 (or from the user). I figured it’d be great if, instead of having to
 <a class="reference external" href="https://mxr.mozilla.org/comm-central/source/chat/protocols/irc/irc.js#1510">manually</a> <a class="reference external" href="https://mxr.mozilla.org/comm-central/source/chat/protocols/irc/irc.js#1514">handle</a> <a class="reference external" href="https://mxr.mozilla.org/comm-central/source/chat/protocols/irc/irc.js#1528">this</a> normalization each time we tried to
@@ -199,7 +208,7 @@ consider to be <a class="reference external" href="https://developer.mozilla.org
 context of web sites / cross browser compatibility. Which are concerns
 that don’t really limit us for backend code.</p>
 <div class="section" id="goals">
-<h2><a class="toc-backref" href="#id7">Goals</a></h2>
+<h2><a class="toc-backref" href="#toc-entry-1">Goals</a></h2>
 <ol class="arabic simple">
 <li>Replace objects with Maps for safe access. This is pretty easily
 fixed by switching all <tt class="docutils literal"><span class="pre">obj["foo"]</span></tt> calls to <tt class="docutils literal"><span class="pre">obj.get("foo")</span></tt> (or the
@@ -209,45 +218,45 @@ such that <tt class="docutils literal"><span class="pre">obj.get("foo")</span></
 </ol>
 </div>
 <div class="section" id="first-approach-setting-proto-to-map-prototype">
-<h2><a class="toc-backref" href="#id8">First Approach (setting __proto__ to Map.prototype)</a></h2>
+<h2><a class="toc-backref" href="#toc-entry-2">First Approach (setting __proto__ to Map.prototype)</a></h2>
 <p>My first naive approach was to create an object with <tt class="docutils literal">__proto__</tt> set
 to Map.prototype and overwrite anything that uses keys to appropriately
 call a normalization function.</p>
-<div class="highlight"><pre><span></span><span class="kd">function</span> <span class="nx">NormalizedMap</span><span class="p">()</span> <span class="p">{</span> <span class="p">}</span>
-<span class="nx">NormalizedMap</span><span class="p">.</span><span class="nx">prototype</span> <span class="o">=</span> <span class="p">{</span>
-    <span class="nx">__proto__</span><span class="o">:</span> <span class="nx">Map</span><span class="p">.</span><span class="nx">prototype</span><span class="p">,</span>
-    <span class="nx">_normalize</span><span class="o">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">aStr</span><span class="p">)</span> <span class="nx">aStr</span><span class="p">.</span><span class="nx">toLowerCase</span><span class="p">(),</span>
+<div class="highlight"><pre><span></span><span class="kd">function</span><span class="w"> </span><span class="nx">NormalizedMap</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="p">}</span>
+<span class="nx">NormalizedMap</span><span class="p">.</span><span class="nx">prototype</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">__proto__</span><span class="o">:</span><span class="w"> </span><span class="nb">Map</span><span class="p">.</span><span class="nx">prototype</span><span class="p">,</span>
+<span class="w">    </span><span class="nx">_normalize</span><span class="o">:</span><span class="w"> </span><span class="kd">function</span><span class="p">(</span><span class="nx">aStr</span><span class="p">)</span><span class="w"> </span><span class="nx">aStr</span><span class="p">.</span><span class="nx">toLowerCase</span><span class="p">(),</span>
 
-    <span class="nx">get</span><span class="o">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">aStr</span><span class="p">)</span> <span class="nx">Map</span><span class="p">.</span><span class="nx">prototype</span><span class="p">.</span><span class="nx">get</span><span class="p">.</span><span class="nx">call</span><span class="p">(</span><span class="k">this</span><span class="p">,</span> <span class="k">this</span><span class="p">.</span><span class="nx">_normalize</span><span class="p">(</span><span class="nx">aStr</span><span class="p">)),</span>
-    <span class="nx">set</span><span class="o">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">aStr</span><span class="p">,</span> <span class="nx">aVal</span><span class="p">)</span> <span class="nx">Map</span><span class="p">.</span><span class="nx">prototype</span><span class="p">.</span><span class="nx">set</span><span class="p">.</span><span class="nx">call</span><span class="p">(</span><span class="k">this</span><span class="p">,</span> <span class="k">this</span><span class="p">.</span><span class="nx">_normalize</span><span class="p">(</span><span class="nx">aStr</span><span class="p">),</span> <span class="nx">aVal</span><span class="p">)</span>
+<span class="w">    </span><span class="nx">get</span><span class="o">:</span><span class="w"> </span><span class="kd">function</span><span class="p">(</span><span class="nx">aStr</span><span class="p">)</span><span class="w"> </span><span class="nb">Map</span><span class="p">.</span><span class="nx">prototype</span><span class="p">.</span><span class="nx">get</span><span class="p">.</span><span class="nx">call</span><span class="p">(</span><span class="k">this</span><span class="p">,</span><span class="w"> </span><span class="k">this</span><span class="p">.</span><span class="nx">_normalize</span><span class="p">(</span><span class="nx">aStr</span><span class="p">)),</span>
+<span class="w">    </span><span class="nx">set</span><span class="o">:</span><span class="w"> </span><span class="kd">function</span><span class="p">(</span><span class="nx">aStr</span><span class="p">,</span><span class="w"> </span><span class="nx">aVal</span><span class="p">)</span><span class="w"> </span><span class="nb">Map</span><span class="p">.</span><span class="nx">prototype</span><span class="p">.</span><span class="nx">set</span><span class="p">.</span><span class="nx">call</span><span class="p">(</span><span class="k">this</span><span class="p">,</span><span class="w"> </span><span class="k">this</span><span class="p">.</span><span class="nx">_normalize</span><span class="p">(</span><span class="nx">aStr</span><span class="p">),</span><span class="w"> </span><span class="nx">aVal</span><span class="p">)</span>
 <span class="p">};</span>
 
-<span class="kd">let</span> <span class="nx">m</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">NormalizedMap</span><span class="p">();</span>
-<span class="nx">m</span><span class="p">.</span><span class="nx">set</span><span class="p">(</span><span class="s2">"foo"</span><span class="p">,</span> <span class="mf">1</span><span class="p">)</span> <span class="c1">// Throws TypeError: set method called on incompatible Object</span>
-<span class="nx">m</span> <span class="k">instanceof</span> <span class="nx">Map</span><span class="p">;</span> <span class="c1">// true . . . wat . . .</span>
+<span class="kd">let</span><span class="w"> </span><span class="nx">m</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">NormalizedMap</span><span class="p">();</span>
+<span class="nx">m</span><span class="p">.</span><span class="nx">set</span><span class="p">(</span><span class="s2">"foo"</span><span class="p">,</span><span class="w"> </span><span class="mf">1</span><span class="p">)</span><span class="w"> </span><span class="c1">// Throws TypeError: set method called on incompatible Object</span>
+<span class="nx">m</span><span class="w"> </span><span class="ow">instanceof</span><span class="w"> </span><span class="nb">Map</span><span class="p">;</span><span class="w"> </span><span class="c1">// true . . . wat . . .</span>
 </pre></div>
 <p>This throws an error and does not work. Apparently there are plans to
 <a class="reference external" href="https://bugzilla.mozilla.org/show_bug.cgi?id=838540">support something like this</a>. The totally fun thing, in my opinion, is
 that m is an instance of a Map!</p>
 </div>
 <div class="section" id="second-approach-modifying-proto-after-instance-creation">
-<h2><a class="toc-backref" href="#id9">Second Approach (modifying __proto__ after instance creation)</a></h2>
+<h2><a class="toc-backref" href="#toc-entry-3">Second Approach (modifying __proto__ after instance creation)</a></h2>
 <p>My second approach was to generate a real Map and then override the
 <tt class="docutils literal">__proto__</tt> to give it the properties I wanted:</p>
-<div class="highlight"><pre><span></span><span class="kd">function</span> <span class="nx">NormalizedMap</span><span class="p">()</span> <span class="p">{</span>
-    <span class="kd">let</span> <span class="nx">m</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Map</span><span class="p">();</span>  <span class="nx">m</span><span class="p">.</span><span class="nx">__proto__</span> <span class="o">=</span> <span class="nx">NormalizedMap</span><span class="p">.</span><span class="nx">prototype</span><span class="p">;</span>
-    <span class="k">return</span> <span class="nx">m</span><span class="p">;</span>
+<div class="highlight"><pre><span></span><span class="kd">function</span><span class="w"> </span><span class="nx">NormalizedMap</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kd">let</span><span class="w"> </span><span class="nx">m</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nb">Map</span><span class="p">();</span><span class="w">  </span><span class="nx">m</span><span class="p">.</span><span class="nx">__proto__</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">NormalizedMap</span><span class="p">.</span><span class="nx">prototype</span><span class="p">;</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="nx">m</span><span class="p">;</span>
 <span class="p">}</span>
-<span class="nx">NormalizedMap</span><span class="p">.</span><span class="nx">prototype</span> <span class="o">=</span> <span class="p">{</span>
-    <span class="nx">__proto__</span><span class="o">:</span> <span class="nx">Map</span><span class="p">.</span><span class="nx">prototype</span><span class="p">,</span>
-    <span class="nx">_normalize</span><span class="o">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">aStr</span><span class="p">)</span> <span class="nx">aStr</span><span class="p">.</span><span class="nx">toLowerCase</span><span class="p">(),</span>
-    <span class="nx">get</span><span class="o">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">aStr</span><span class="p">)</span> <span class="nx">Map</span><span class="p">.</span><span class="nx">prototype</span><span class="p">.</span><span class="nx">get</span><span class="p">.</span><span class="nx">call</span><span class="p">(</span><span class="k">this</span><span class="p">,</span> <span class="k">this</span><span class="p">.</span><span class="nx">_normalize</span><span class="p">(</span><span class="nx">aStr</span><span class="p">)),</span>
-    <span class="nx">set</span><span class="o">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">aStr</span><span class="p">,</span> <span class="nx">aVal</span><span class="p">)</span> <span class="nx">Map</span><span class="p">.</span><span class="nx">prototype</span><span class="p">.</span><span class="nx">set</span><span class="p">.</span><span class="nx">call</span><span class="p">(</span><span class="k">this</span><span class="p">,</span> <span class="k">this</span><span class="p">.</span><span class="nx">_normalize</span><span class="p">(</span><span class="nx">aStr</span><span class="p">),</span> <span class="nx">aVal</span><span class="p">)</span>
+<span class="nx">NormalizedMap</span><span class="p">.</span><span class="nx">prototype</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">__proto__</span><span class="o">:</span><span class="w"> </span><span class="nb">Map</span><span class="p">.</span><span class="nx">prototype</span><span class="p">,</span>
+<span class="w">    </span><span class="nx">_normalize</span><span class="o">:</span><span class="w"> </span><span class="kd">function</span><span class="p">(</span><span class="nx">aStr</span><span class="p">)</span><span class="w"> </span><span class="nx">aStr</span><span class="p">.</span><span class="nx">toLowerCase</span><span class="p">(),</span>
+<span class="w">    </span><span class="nx">get</span><span class="o">:</span><span class="w"> </span><span class="kd">function</span><span class="p">(</span><span class="nx">aStr</span><span class="p">)</span><span class="w"> </span><span class="nb">Map</span><span class="p">.</span><span class="nx">prototype</span><span class="p">.</span><span class="nx">get</span><span class="p">.</span><span class="nx">call</span><span class="p">(</span><span class="k">this</span><span class="p">,</span><span class="w"> </span><span class="k">this</span><span class="p">.</span><span class="nx">_normalize</span><span class="p">(</span><span class="nx">aStr</span><span class="p">)),</span>
+<span class="w">    </span><span class="nx">set</span><span class="o">:</span><span class="w"> </span><span class="kd">function</span><span class="p">(</span><span class="nx">aStr</span><span class="p">,</span><span class="w"> </span><span class="nx">aVal</span><span class="p">)</span><span class="w"> </span><span class="nb">Map</span><span class="p">.</span><span class="nx">prototype</span><span class="p">.</span><span class="nx">set</span><span class="p">.</span><span class="nx">call</span><span class="p">(</span><span class="k">this</span><span class="p">,</span><span class="w"> </span><span class="k">this</span><span class="p">.</span><span class="nx">_normalize</span><span class="p">(</span><span class="nx">aStr</span><span class="p">),</span><span class="w"> </span><span class="nx">aVal</span><span class="p">)</span>
 <span class="p">};</span>
-<span class="kd">let</span> <span class="nx">m</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">NormalizedMap</span><span class="p">();</span>
-<span class="nx">m</span><span class="p">.</span><span class="nx">set</span><span class="p">(</span><span class="s2">"foo"</span><span class="p">,</span> <span class="mf">1</span><span class="p">)</span>
-<span class="nx">m</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s2">"FOO"</span><span class="p">);</span> <span class="c1">// 1</span>
-<span class="nx">m</span> <span class="k">instanceof</span> <span class="nx">Map</span><span class="p">;</span> <span class="c1">// true</span>
+<span class="kd">let</span><span class="w"> </span><span class="nx">m</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">NormalizedMap</span><span class="p">();</span>
+<span class="nx">m</span><span class="p">.</span><span class="nx">set</span><span class="p">(</span><span class="s2">"foo"</span><span class="p">,</span><span class="w"> </span><span class="mf">1</span><span class="p">)</span>
+<span class="nx">m</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s2">"FOO"</span><span class="p">);</span><span class="w"> </span><span class="c1">// 1</span>
+<span class="nx">m</span><span class="w"> </span><span class="ow">instanceof</span><span class="w"> </span><span class="nb">Map</span><span class="p">;</span><span class="w"> </span><span class="c1">// true</span>
 </pre></div>
 <p>This actually works! But will <a class="reference external" href="https://bugzilla.mozilla.org/show_bug.cgi?id=963519">throw a warning</a> each time it is
 created since changing an objects <tt class="docutils literal">__proto__</tt> is generally a bad idea.
@@ -257,7 +266,7 @@ occur during the start up of each account and is generally a resource
 constrained time. No, I didn’t profile this, it just seemed like bad design.)</p>
 </div>
 <div class="section" id="solution-wrapping-a-map">
-<h2><a class="toc-backref" href="#id10">Solution (wrapping a Map)</a></h2>
+<h2><a class="toc-backref" href="#toc-entry-4">Solution (wrapping a Map)</a></h2>
 <p>Finally I settled on the simple solution of just wrapping the Map in a
 custom object. Initially I thought this would be frustrating to
 re-declare every function (and prone to breakage in the future if new
@@ -268,33 +277,33 @@ object to intercept a call to a non-existent method (and in this case
 call that same method on the internal Map object).</p>
 <p>Below is the final version that seems to act magically like a Map when
 necessary (e.g. iterating the map works, all functions and properties
-exist, the constructor works <a class="footnote-reference" href="#id6" id="id3">[3]</a>). I need to thank aleth (another chat
+exist, the constructor works <a class="footnote-reference" href="#footnote-3" id="footnote-reference-3">[3]</a>). I need to thank aleth (another chat
 developer) who helped out quite a bit with this (and will ultimately be
 reviewing this code)!</p>
 <div class="highlight"><pre><span></span><span class="c1">// A Map that automatically normalizes keys before accessing the values.</span>
-<span class="kd">function</span> <span class="nx">NormalizedMap</span><span class="p">(</span><span class="nx">aNormalizeFunction</span><span class="p">,</span> <span class="nx">aIt</span> <span class="o">=</span> <span class="p">[])</span> <span class="p">{</span>
-  <span class="k">if</span> <span class="p">(</span><span class="k">typeof</span><span class="p">(</span><span class="nx">aNormalizeFunction</span><span class="p">)</span> <span class="o">!=</span> <span class="s2">"function"</span><span class="p">)</span>
-    <span class="k">throw</span> <span class="s2">"NormalizedMap must have a normalize function!"</span><span class="p">;</span>
-  <span class="k">this</span><span class="p">.</span><span class="nx">_normalize</span> <span class="o">=</span> <span class="nx">aNormalizeFunction</span><span class="p">;</span>
-  <span class="k">this</span><span class="p">.</span><span class="nx">_map</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Map</span><span class="p">([[</span><span class="k">this</span><span class="p">.</span><span class="nx">_normalize</span><span class="p">(</span><span class="nx">key</span><span class="p">),</span> <span class="nx">val</span><span class="p">]</span> <span class="k">for</span> <span class="p">([</span><span class="nx">key</span><span class="p">,</span> <span class="nx">val</span><span class="p">]</span> <span class="k">of</span> <span class="nx">aIt</span><span class="p">)]);</span>
+<span class="kd">function</span><span class="w"> </span><span class="nx">NormalizedMap</span><span class="p">(</span><span class="nx">aNormalizeFunction</span><span class="p">,</span><span class="w"> </span><span class="nx">aIt</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[])</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="ow">typeof</span><span class="p">(</span><span class="nx">aNormalizeFunction</span><span class="p">)</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="s2">"function"</span><span class="p">)</span>
+<span class="w">    </span><span class="k">throw</span><span class="w"> </span><span class="s2">"NormalizedMap must have a normalize function!"</span><span class="p">;</span>
+<span class="w">  </span><span class="k">this</span><span class="p">.</span><span class="nx">_normalize</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">aNormalizeFunction</span><span class="p">;</span>
+<span class="w">  </span><span class="k">this</span><span class="p">.</span><span class="nx">_map</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nb">Map</span><span class="p">([[</span><span class="k">this</span><span class="p">.</span><span class="nx">_normalize</span><span class="p">(</span><span class="nx">key</span><span class="p">),</span><span class="w"> </span><span class="nx">val</span><span class="p">]</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="p">([</span><span class="nx">key</span><span class="p">,</span><span class="w"> </span><span class="nx">val</span><span class="p">]</span><span class="w"> </span><span class="k">of</span><span class="w"> </span><span class="nx">aIt</span><span class="p">)]);</span>
 <span class="p">}</span>
-<span class="nx">NormalizedMap</span><span class="p">.</span><span class="nx">prototype</span> <span class="o">=</span> <span class="p">{</span>
-  <span class="nx">_map</span><span class="o">:</span> <span class="kc">null</span><span class="p">,</span>
-  <span class="c1">// The function to apply to all keys.</span>
-  <span class="nx">_normalize</span><span class="o">:</span> <span class="kc">null</span><span class="p">,</span>
+<span class="nx">NormalizedMap</span><span class="p">.</span><span class="nx">prototype</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nx">_map</span><span class="o">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span>
+<span class="w">  </span><span class="c1">// The function to apply to all keys.</span>
+<span class="w">  </span><span class="nx">_normalize</span><span class="o">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span>
 
-  <span class="c1">// Anything that accepts a key as an input needs to be manually overridden.</span>
-  <span class="k">delete</span><span class="o">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">aKey</span><span class="p">)</span> <span class="k">this</span><span class="p">.</span><span class="nx">_map</span><span class="p">.</span><span class="k">delete</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">_normalize</span><span class="p">(</span><span class="nx">aKey</span><span class="p">)),</span>
-  <span class="nx">get</span><span class="o">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">aKey</span><span class="p">)</span> <span class="k">this</span><span class="p">.</span><span class="nx">_map</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">_normalize</span><span class="p">(</span><span class="nx">aKey</span><span class="p">)),</span>
-  <span class="nx">has</span><span class="o">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">aKey</span><span class="p">)</span> <span class="k">this</span><span class="p">.</span><span class="nx">_map</span><span class="p">.</span><span class="nx">has</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">_normalize</span><span class="p">(</span><span class="nx">aKey</span><span class="p">)),</span>
-  <span class="nx">set</span><span class="o">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">aKey</span><span class="p">,</span> <span class="nx">aValue</span><span class="p">)</span> <span class="k">this</span><span class="p">.</span><span class="nx">_map</span><span class="p">.</span><span class="nx">set</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">_normalize</span><span class="p">(</span><span class="nx">aKey</span><span class="p">),</span> <span class="nx">aValue</span><span class="p">),</span>
+<span class="w">  </span><span class="c1">// Anything that accepts a key as an input needs to be manually overridden.</span>
+<span class="w">  </span><span class="ow">delete</span><span class="o">:</span><span class="w"> </span><span class="kd">function</span><span class="p">(</span><span class="nx">aKey</span><span class="p">)</span><span class="w"> </span><span class="k">this</span><span class="p">.</span><span class="nx">_map</span><span class="p">.</span><span class="ow">delete</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">_normalize</span><span class="p">(</span><span class="nx">aKey</span><span class="p">)),</span>
+<span class="w">  </span><span class="nx">get</span><span class="o">:</span><span class="w"> </span><span class="kd">function</span><span class="p">(</span><span class="nx">aKey</span><span class="p">)</span><span class="w"> </span><span class="k">this</span><span class="p">.</span><span class="nx">_map</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">_normalize</span><span class="p">(</span><span class="nx">aKey</span><span class="p">)),</span>
+<span class="w">  </span><span class="nx">has</span><span class="o">:</span><span class="w"> </span><span class="kd">function</span><span class="p">(</span><span class="nx">aKey</span><span class="p">)</span><span class="w"> </span><span class="k">this</span><span class="p">.</span><span class="nx">_map</span><span class="p">.</span><span class="nx">has</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">_normalize</span><span class="p">(</span><span class="nx">aKey</span><span class="p">)),</span>
+<span class="w">  </span><span class="nx">set</span><span class="o">:</span><span class="w"> </span><span class="kd">function</span><span class="p">(</span><span class="nx">aKey</span><span class="p">,</span><span class="w"> </span><span class="nx">aValue</span><span class="p">)</span><span class="w"> </span><span class="k">this</span><span class="p">.</span><span class="nx">_map</span><span class="p">.</span><span class="nx">set</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">_normalize</span><span class="p">(</span><span class="nx">aKey</span><span class="p">),</span><span class="w"> </span><span class="nx">aValue</span><span class="p">),</span>
 
-  <span class="c1">// Properties must be manually forwarded.</span>
-  <span class="nx">get</span> <span class="nx">size</span><span class="p">()</span> <span class="k">this</span><span class="p">.</span><span class="nx">_map</span><span class="p">.</span><span class="nx">size</span><span class="p">,</span>
+<span class="w">  </span><span class="c1">// Properties must be manually forwarded.</span>
+<span class="w">  </span><span class="nx">get</span><span class="w"> </span><span class="nx">size</span><span class="p">()</span><span class="w"> </span><span class="k">this</span><span class="p">.</span><span class="nx">_map</span><span class="p">.</span><span class="nx">size</span><span class="p">,</span>
 
-  <span class="c1">// Here's where the magic happens. If a method is called that isn't defined</span>
-  <span class="c1">// here, just pass it to the internal _map object.</span>
-  <span class="nx">__noSuchMethod__</span><span class="o">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">aId</span><span class="p">,</span> <span class="nx">aArgs</span><span class="p">)</span> <span class="k">this</span><span class="p">.</span><span class="nx">_map</span><span class="p">[</span><span class="nx">aId</span><span class="p">].</span><span class="nx">apply</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">_map</span><span class="p">,</span> <span class="nx">aArgs</span><span class="p">)</span>
+<span class="w">  </span><span class="c1">// Here's where the magic happens. If a method is called that isn't defined</span>
+<span class="w">  </span><span class="c1">// here, just pass it to the internal _map object.</span>
+<span class="w">  </span><span class="nx">__noSuchMethod__</span><span class="o">:</span><span class="w"> </span><span class="kd">function</span><span class="p">(</span><span class="nx">aId</span><span class="p">,</span><span class="w"> </span><span class="nx">aArgs</span><span class="p">)</span><span class="w"> </span><span class="k">this</span><span class="p">.</span><span class="nx">_map</span><span class="p">[</span><span class="nx">aId</span><span class="p">].</span><span class="nx">apply</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">_map</span><span class="p">,</span><span class="w"> </span><span class="nx">aArgs</span><span class="p">)</span>
 <span class="p">}</span>
 </pre></div>
 <p>The one downside of see of this is that properties must be declared
@@ -302,18 +311,18 @@ manually to forward to the internal <tt class="docutils literal">_map</tt> objec
 matching <tt class="docutils literal">__noSuchProperty__</tt> method I’m missing? Overall, I’m happy
 with this solution, but please leave a comment if you can think of an
 easier / better way to do this! (Or see a glaring way this will break!)</p>
-<table class="docutils footnote" frame="void" id="id4" rules="none">
+<table class="docutils footnote" frame="void" id="footnote-1" rules="none">
 <colgroup><col class="label"/><col/></colgroup>
 <tbody valign="top">
-<tr><td class="label"><a class="fn-backref" href="#id1">[1]</a></td><td>This is always a little bit of a sore subject in <a class="reference external" href="irc://irc.mozilla.org/#instantbird">#instantbird</a>
+<tr><td class="label"><a class="fn-backref" href="#footnote-reference-1">[1]</a></td><td>This is always a little bit of a sore subject in <a class="reference external" href="irc://irc.mozilla.org/#instantbird">#instantbird</a>
 since we’ve had a variety of issues with this over the years. I think
 we’ve fixed most of them at this point though!</td></tr>
 </tbody>
 </table>
-<table class="docutils footnote" frame="void" id="id5" rules="none">
+<table class="docutils footnote" frame="void" id="footnote-2" rules="none">
 <colgroup><col class="label"/><col/></colgroup>
 <tbody valign="top">
-<tr><td class="label"><a class="fn-backref" href="#id2">[2]</a></td><td>As I’ve <a class="reference external" href="https://patrick.cloke.us/posts/2011/03/08/so-called-irc-specifications/">written before</a>, <span class="caps">IRC</span> tends to have crazy specifications.
+<tr><td class="label"><a class="fn-backref" href="#footnote-reference-2">[2]</a></td><td>As I’ve <a class="reference external" href="https://patrick.cloke.us/posts/2011/03/08/so-called-irc-specifications/">written before</a>, <span class="caps">IRC</span> tends to have crazy specifications.
 In <span class="caps">IRC</span>, <a class="reference external" href="https://tools.ietf.org/html/rfc2812#section-2.2">the characters of A-Z[]\~ are considered the upper case of a-z{}|^</a>
 (“because of <span class="caps">IRC</span>’s Scandinavian origin”). Oh, also this can
 change based on an <a class="reference external" href="http://tools.ietf.org/html/draft-brocklesby-irc-isupport-03#section-3.1"><span class="caps">ISUPPORT</span> response</a> from the server to pure <span class="caps">ASCII</span> or
@@ -322,10 +331,10 @@ theoretically change at any point on a live server too, although that
 would be <span class="caps">INSANE</span> and I hope no one ever does that.</td></tr>
 </tbody>
 </table>
-<table class="docutils footnote" frame="void" id="id6" rules="none">
+<table class="docutils footnote" frame="void" id="footnote-3" rules="none">
 <colgroup><col class="label"/><col/></colgroup>
 <tbody valign="top">
-<tr><td class="label"><a class="fn-backref" href="#id3">[3]</a></td><td>I wrote some xpcshell tests to ensure these properties work as
+<tr><td class="label"><a class="fn-backref" href="#footnote-reference-3">[3]</a></td><td>I wrote some xpcshell tests to ensure these properties work as
 expected, but they’re uhh…not up anywhere yet though. Oops.</td></tr>
 </tbody>
 </table>
@@ -359,7 +368,7 @@ s.setAttribute('data-timestamp', +new Date());
     <nav class="navbar fixed-bottom navbar-light bg-light border-top border-info">
       <a href="https://getpelican.com/" class="nav-item" target="_blank">Powered by Pelican</a>
       <a href="https://github.com/clokep/clokep.github.io" class="nav-item" target="_blank">
-        Source available on GitHub <span class="fab fa-github"></span>
+        Source available on GitHub <span class="bi-github"></span>
       </a>
     </nav>
 

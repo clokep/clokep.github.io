@@ -20,28 +20,28 @@ ones we care about (they’re working on making a general Office
 Communicator protocol library, so the purple folder contains the
 libpurple bindings that use the api, while the core is private).&lt;/p&gt;
 &lt;div class="section" id="purple"&gt;
-&lt;h2&gt;&lt;a class="toc-backref" href="#id1"&gt;Purple&lt;/a&gt;&lt;/h2&gt;
+&lt;h2&gt;&lt;a class="toc-backref" href="#toc-entry-1"&gt;Purple&lt;/a&gt;&lt;/h2&gt;
 &lt;p&gt;Changes to purple consisted mostly of ifdefs that remove some header
 files not supported on Windows. For example, I encountered a few of:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="cp"&gt;#include&lt;/span&gt; &lt;span class="cpf"&gt;&amp;lt;unistd.h&amp;gt;&lt;/span&gt;&lt;span class="cp"&gt;&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="cp"&gt;#include&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="cpf"&gt;&amp;lt;unistd.h&amp;gt;&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;Luckily there was already a define &lt;tt class="docutils literal"&gt;HAVE_UNISTD_H&lt;/tt&gt;, so I just needed
 to add:&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="cp"&gt;#ifdef HAVE_UNISTD_H&lt;/span&gt;
-&lt;span class="cp"&gt;#include&lt;/span&gt; &lt;span class="cpf"&gt;&amp;lt;unistd.h&amp;gt;&lt;/span&gt;&lt;span class="cp"&gt;&lt;/span&gt;
+&lt;span class="cp"&gt;#include&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="cpf"&gt;&amp;lt;unistd.h&amp;gt;&lt;/span&gt;
 &lt;span class="cp"&gt;#endif&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;Easy! There were also a couple other issues, but those were rather trivial.&lt;/p&gt;
 &lt;/div&gt;
 &lt;div class="section" id="core"&gt;
-&lt;h2&gt;&lt;a class="toc-backref" href="#id2"&gt;Core&lt;/a&gt;&lt;/h2&gt;
+&lt;h2&gt;&lt;a class="toc-backref" href="#toc-entry-2"&gt;Core&lt;/a&gt;&lt;/h2&gt;
 &lt;p&gt;There isn’t a specific issue in the core I’d like to highlight, it did
 use a few glib functions which we didn’t have (we removed the files, as
 they were unused), they were all reimplemented in libpurple though, so
 we were able to just define the function calls to the libpurple variants.&lt;/p&gt;
 &lt;/div&gt;
 &lt;div class="section" id="api"&gt;
-&lt;h2&gt;&lt;a class="toc-backref" href="#id3"&gt;&lt;span class="caps"&gt;API&lt;/span&gt;&lt;/a&gt;&lt;/h2&gt;
+&lt;h2&gt;&lt;a class="toc-backref" href="#toc-entry-3"&gt;&lt;span class="caps"&gt;API&lt;/span&gt;&lt;/a&gt;&lt;/h2&gt;
 &lt;p&gt;This had similar issues the core (in particular, there was a function
 which used &lt;tt class="docutils literal"&gt;g_usleep&lt;/tt&gt;, which is blocking and a definite no-no for a
 protocol plug-in, I’ve removed that…hopefully it doesn’t break
@@ -57,7 +57,7 @@ of &lt;span class="caps"&gt;MSVC&lt;/span&gt; Redistributable might help. Once t
 it’ll land in Instantbird for use!&lt;/p&gt;
 &lt;/div&gt;
 &lt;div class="section" id="sametime-support"&gt;
-&lt;h2&gt;&lt;a class="toc-backref" href="#id4"&gt;Sametime support&lt;/a&gt;&lt;/h2&gt;
+&lt;h2&gt;&lt;a class="toc-backref" href="#toc-entry-4"&gt;Sametime support&lt;/a&gt;&lt;/h2&gt;
 &lt;p&gt;Unrelated to &lt;span class="caps"&gt;SIPE&lt;/span&gt;, but recently I landed a patch in Instantbird to add
 back Sametime support (Sametime is Lotus Notes’ equivalent to Office
 Communicator). You can see the gory details in &lt;a class="reference external" href="https://bugzilla.instantbird.org/show_bug.cgi?id=102"&gt;bug 102&lt;/a&gt;, but in

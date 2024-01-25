@@ -3,13 +3,13 @@
 &lt;p&gt;In the &lt;a class="reference external" href="https://patrick.cloke.us/posts/2014/07/03/new-blog/"&gt;first part&lt;/a&gt; of this blog post I talked about using Pelican to create a
 blog, this is a bit more about how I got it up and running.&lt;/p&gt;
 &lt;div class="section" id="getting-a-domain"&gt;
-&lt;h2&gt;&lt;a class="toc-backref" href="#id3"&gt;Getting a Domain&lt;/a&gt;&lt;/h2&gt;
+&lt;h2&gt;&lt;a class="toc-backref" href="#toc-entry-1"&gt;Getting a Domain&lt;/a&gt;&lt;/h2&gt;
 &lt;p&gt;The most exciting part! Getting a domain! I used &lt;a class="reference external" href="https://www.gandi.net/"&gt;gandi.net&lt;/a&gt;, it was
 recommended to me by …&lt;/p&gt;&lt;/div&gt;</summary><content type="html">
 &lt;p&gt;In the &lt;a class="reference external" href="https://patrick.cloke.us/posts/2014/07/03/new-blog/"&gt;first part&lt;/a&gt; of this blog post I talked about using Pelican to create a
 blog, this is a bit more about how I got it up and running.&lt;/p&gt;
 &lt;div class="section" id="getting-a-domain"&gt;
-&lt;h2&gt;&lt;a class="toc-backref" href="#id3"&gt;Getting a Domain&lt;/a&gt;&lt;/h2&gt;
+&lt;h2&gt;&lt;a class="toc-backref" href="#toc-entry-1"&gt;Getting a Domain&lt;/a&gt;&lt;/h2&gt;
 &lt;p&gt;The most exciting part! Getting a domain! I used &lt;a class="reference external" href="https://www.gandi.net/"&gt;gandi.net&lt;/a&gt;, it was
 recommended to me by &lt;a class="reference external" href="http://blog.queze.net/"&gt;Florian&lt;/a&gt; as “awesome, but a bit expensive”. I liked that
 they actually explain &lt;a class="reference external" href="https://www.gandi.net/domain/interface"&gt;exactly&lt;/a&gt; what I was getting by registering a domain
@@ -25,7 +25,7 @@ essentially gives you an &lt;a class="reference external" href="https://en.wikip
 &lt;p&gt;I also created a few email aliases which forward to the email accounts I already own.&lt;/p&gt;
 &lt;/div&gt;
 &lt;div class="section" id="serving-the-content"&gt;
-&lt;h2&gt;&lt;a class="toc-backref" href="#id4"&gt;Serving the Content&lt;/a&gt;&lt;/h2&gt;
+&lt;h2&gt;&lt;a class="toc-backref" href="#toc-entry-2"&gt;Serving the Content&lt;/a&gt;&lt;/h2&gt;
 &lt;p&gt;&lt;span class="caps"&gt;OK&lt;/span&gt;, we have a domain! We have content! How do we actually link them!? I used
 &lt;a class="reference external" href="https://pages.github.com/"&gt;GitHub Pages&lt;/a&gt;, cause I’m cheap and don’t like to pay for things. The quick version:&lt;/p&gt;
 &lt;ul class="simple"&gt;
@@ -33,16 +33,16 @@ essentially gives you an &lt;a class="reference external" href="https://en.wikip
 &lt;li&gt;Push whatever &lt;span class="caps"&gt;HTML&lt;/span&gt; content you want into the master branch&lt;/li&gt;
 &lt;li&gt;Voila it’s available as &amp;lt;your account name&amp;gt;.github.io&lt;/li&gt;
 &lt;/ul&gt;
-&lt;p&gt;Personally, I store my Pelican code in a separate &lt;a class="reference external" href="https://github.com/clokep/clokep.github.io"&gt;source&lt;/a&gt; branch &lt;a class="footnote-reference" href="#id2" id="id1"&gt;[1]&lt;/a&gt; and use
+&lt;p&gt;Personally, I store my Pelican code in a separate &lt;a class="reference external" href="https://github.com/clokep/clokep.github.io"&gt;source&lt;/a&gt; branch &lt;a class="footnote-reference" href="#footnote-1" id="footnote-reference-1"&gt;[1]&lt;/a&gt; and use
 &lt;a class="reference external" href="https://github.com/davisp/ghp-import"&gt;ghp-import&lt;/a&gt; to actually publish my content. I’ve automated a lot of the tasks by
 &lt;a class="reference external" href="https://github.com/clokep/clokep.github.io/blob/source/fabfile.py"&gt;extending&lt;/a&gt; the default &lt;a class="reference external" href="http://www.fabfile.org/"&gt;fabfile.py&lt;/a&gt; that is generated with the quickstart. My
 workflow looks something like:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;komodo content/new-article.rst
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;komodo&lt;span class="w"&gt; &lt;/span&gt;content/new-article.rst
 &lt;span class="c1"&gt;# &amp;lt;edit article&amp;gt;&lt;/span&gt;
 &lt;span class="c1"&gt;# &amp;lt;check it out in a browser using fab build/serve/regenerate&amp;gt;&lt;/span&gt;
-git add content/ &lt;span class="o"&gt;&amp;amp;&amp;amp;&lt;/span&gt; git commit -m &lt;span class="s2"&gt;"Add 'New Article!'."&lt;/span&gt;
-fab publish &lt;span class="c1"&gt;# Which runs "ghp-import -p -b master output" underneath!&lt;/span&gt;
-git push origin &lt;span class="nb"&gt;source&lt;/span&gt;
+git&lt;span class="w"&gt; &lt;/span&gt;add&lt;span class="w"&gt; &lt;/span&gt;content/&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;&amp;amp;&amp;amp;&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;git&lt;span class="w"&gt; &lt;/span&gt;commit&lt;span class="w"&gt; &lt;/span&gt;-m&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s2"&gt;"Add 'New Article!'."&lt;/span&gt;
+fab&lt;span class="w"&gt; &lt;/span&gt;publish&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="c1"&gt;# Which runs "ghp-import -p -b master output" underneath!&lt;/span&gt;
+git&lt;span class="w"&gt; &lt;/span&gt;push&lt;span class="w"&gt; &lt;/span&gt;origin&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nb"&gt;source&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;One other thing you’ll need to do is add a &lt;span class="caps"&gt;CNAME&lt;/span&gt; file that has the domain of
 your host in it (and only the domain). I found the GitHub documents on this
@@ -65,7 +65,7 @@ at content/static/&lt;span class="caps"&gt;CNAME&lt;/span&gt;)&lt;/li&gt;
 404 GitHub page.&lt;/p&gt;
 &lt;/div&gt;
 &lt;div class="section" id="redirect-blogger"&gt;
-&lt;h2&gt;&lt;a class="toc-backref" href="#id5"&gt;Redirect Blogger&lt;/a&gt;&lt;/h2&gt;
+&lt;h2&gt;&lt;a class="toc-backref" href="#toc-entry-3"&gt;Redirect Blogger&lt;/a&gt;&lt;/h2&gt;
 &lt;p&gt;This is the really fun part. How the hell do we redirect blogger links to
 actually go to the new location of each blog post? With some hackery, some luck,
 and some magic.&lt;/p&gt;
@@ -74,57 +74,57 @@ modified the template they had there. On the Blogger dashboard, choose
 “Template”, scroll to the bottom and click “Revert to Classic Template”. Then
 use something like the following template:&lt;/p&gt;
 &lt;pre class="code xml highlight literal-block"&gt;
-&lt;span class="nt"&gt;&amp;lt;html&amp;gt;&lt;/span&gt;
-    &lt;span class="nt"&gt;&amp;lt;head&amp;gt;&lt;/span&gt;
-        &lt;span class="nt"&gt;&amp;lt;title&amp;gt;&lt;/span&gt;&lt;span class="err"&gt;&amp;lt;&lt;/span&gt;$BlogPageTitle$&amp;gt;&lt;span class="nt"&gt;&amp;lt;/title&amp;gt;&lt;/span&gt;
-        &lt;span class="nt"&gt;&amp;lt;script&amp;gt;&lt;/span&gt;
-            &lt;span class="nt"&gt;&amp;lt;MainOrArchivePage&amp;gt;&lt;/span&gt;
-                window.location.href = "http://patrick.cloke.us/";
-            &lt;span class="nt"&gt;&amp;lt;/MainOrArchivePage&amp;gt;&lt;/span&gt;
-            &lt;span class="nt"&gt;&amp;lt;Blogger&amp;gt;&lt;/span&gt;
-                &lt;span class="nt"&gt;&amp;lt;ItemPage&amp;gt;&lt;/span&gt;
-                    // This is the full permalink.
-                    var permalink = "&lt;span class="err"&gt;&amp;lt;&lt;/span&gt;$BlogItemPermalinkURL$&amp;gt;";
-                    // Split up each part by the slash.
-                    var parts = permalink.split("/");
-                    // Take the last part (the page) and strip off the .html.
-                    var slug = parts.slice(-1)[0].slice(0, -5);
+&lt;span class="nt"&gt;&amp;lt;html&amp;gt;&lt;/span&gt;&lt;span class="w"&gt;
+    &lt;/span&gt;&lt;span class="nt"&gt;&amp;lt;head&amp;gt;&lt;/span&gt;&lt;span class="w"&gt;
+        &lt;/span&gt;&lt;span class="nt"&gt;&amp;lt;title&amp;gt;&lt;/span&gt;&lt;span class="err"&gt;&amp;lt;&lt;/span&gt;$BlogPageTitle$&amp;gt;&lt;span class="nt"&gt;&amp;lt;/title&amp;gt;&lt;/span&gt;&lt;span class="w"&gt;
+        &lt;/span&gt;&lt;span class="nt"&gt;&amp;lt;script&amp;gt;&lt;/span&gt;&lt;span class="w"&gt;
+            &lt;/span&gt;&lt;span class="nt"&gt;&amp;lt;MainOrArchivePage&amp;gt;&lt;/span&gt;&lt;span class="w"&gt;
+                &lt;/span&gt;window.location.href&lt;span class="w"&gt; &lt;/span&gt;=&lt;span class="w"&gt; &lt;/span&gt;"http://patrick.cloke.us/";&lt;span class="w"&gt;
+            &lt;/span&gt;&lt;span class="nt"&gt;&amp;lt;/MainOrArchivePage&amp;gt;&lt;/span&gt;&lt;span class="w"&gt;
+            &lt;/span&gt;&lt;span class="nt"&gt;&amp;lt;Blogger&amp;gt;&lt;/span&gt;&lt;span class="w"&gt;
+                &lt;/span&gt;&lt;span class="nt"&gt;&amp;lt;ItemPage&amp;gt;&lt;/span&gt;&lt;span class="w"&gt;
+                    &lt;/span&gt;//&lt;span class="w"&gt; &lt;/span&gt;This&lt;span class="w"&gt; &lt;/span&gt;is&lt;span class="w"&gt; &lt;/span&gt;the&lt;span class="w"&gt; &lt;/span&gt;full&lt;span class="w"&gt; &lt;/span&gt;permalink.&lt;span class="w"&gt;
+                    &lt;/span&gt;var&lt;span class="w"&gt; &lt;/span&gt;permalink&lt;span class="w"&gt; &lt;/span&gt;=&lt;span class="w"&gt; &lt;/span&gt;"&lt;span class="err"&gt;&amp;lt;&lt;/span&gt;$BlogItemPermalinkURL$&amp;gt;";&lt;span class="w"&gt;
+                    &lt;/span&gt;//&lt;span class="w"&gt; &lt;/span&gt;Split&lt;span class="w"&gt; &lt;/span&gt;up&lt;span class="w"&gt; &lt;/span&gt;each&lt;span class="w"&gt; &lt;/span&gt;part&lt;span class="w"&gt; &lt;/span&gt;by&lt;span class="w"&gt; &lt;/span&gt;the&lt;span class="w"&gt; &lt;/span&gt;slash.&lt;span class="w"&gt;
+                    &lt;/span&gt;var&lt;span class="w"&gt; &lt;/span&gt;parts&lt;span class="w"&gt; &lt;/span&gt;=&lt;span class="w"&gt; &lt;/span&gt;permalink.split("/");&lt;span class="w"&gt;
+                    &lt;/span&gt;//&lt;span class="w"&gt; &lt;/span&gt;Take&lt;span class="w"&gt; &lt;/span&gt;the&lt;span class="w"&gt; &lt;/span&gt;last&lt;span class="w"&gt; &lt;/span&gt;part&lt;span class="w"&gt; &lt;/span&gt;(the&lt;span class="w"&gt; &lt;/span&gt;page)&lt;span class="w"&gt; &lt;/span&gt;and&lt;span class="w"&gt; &lt;/span&gt;strip&lt;span class="w"&gt; &lt;/span&gt;off&lt;span class="w"&gt; &lt;/span&gt;the&lt;span class="w"&gt; &lt;/span&gt;.html.&lt;span class="w"&gt;
+                    &lt;/span&gt;var&lt;span class="w"&gt; &lt;/span&gt;slug&lt;span class="w"&gt; &lt;/span&gt;=&lt;span class="w"&gt; &lt;/span&gt;parts.slice(-1)[0].slice(0,&lt;span class="w"&gt; &lt;/span&gt;-5);&lt;span class="w"&gt;
 
-                    var article = "http://patrick.cloke.us/posts/&lt;span class="nt"&gt;&amp;lt;BlogDateHeader&amp;gt;&lt;/span&gt;&lt;span class="err"&gt;&amp;lt;&lt;/span&gt;$BlogDateHeaderDate$&amp;gt;&lt;span class="nt"&gt;&amp;lt;/BlogDateHeader&amp;gt;&lt;/span&gt;/" + slug;
-                    window.location.href = article;
+                    &lt;/span&gt;var&lt;span class="w"&gt; &lt;/span&gt;article&lt;span class="w"&gt; &lt;/span&gt;=&lt;span class="w"&gt; &lt;/span&gt;"http://patrick.cloke.us/posts/&lt;span class="nt"&gt;&amp;lt;BlogDateHeader&amp;gt;&lt;/span&gt;&lt;span class="err"&gt;&amp;lt;&lt;/span&gt;$BlogDateHeaderDate$&amp;gt;&lt;span class="nt"&gt;&amp;lt;/BlogDateHeader&amp;gt;&lt;/span&gt;/"&lt;span class="w"&gt; &lt;/span&gt;+&lt;span class="w"&gt; &lt;/span&gt;slug;&lt;span class="w"&gt;
+                    &lt;/span&gt;window.location.href&lt;span class="w"&gt; &lt;/span&gt;=&lt;span class="w"&gt; &lt;/span&gt;article;&lt;span class="w"&gt;
 
-                    window.onload = function() {
-                        document.getElementById("linkrel").href = article;
-                        document.getElementById("simplelink").href = article;
-                    }
-                &lt;span class="nt"&gt;&amp;lt;/ItemPage&amp;gt;&lt;/span&gt;
-            &lt;span class="nt"&gt;&amp;lt;/Blogger&amp;gt;&lt;/span&gt;
-        &lt;span class="nt"&gt;&amp;lt;/script&amp;gt;&lt;/span&gt;
-        &lt;span class="nt"&gt;&amp;lt;MainPage&amp;gt;&lt;/span&gt;
-            &lt;span class="nt"&gt;&amp;lt;link&lt;/span&gt; &lt;span class="na"&gt;rel=&lt;/span&gt;&lt;span class="s"&gt;"canonical"&lt;/span&gt; &lt;span class="na"&gt;href=&lt;/span&gt;&lt;span class="s"&gt;"http://patrick.cloke.us/"&lt;/span&gt; &lt;span class="nt"&gt;/&amp;gt;&lt;/span&gt;
-        &lt;span class="nt"&gt;&amp;lt;/MainPage&amp;gt;&lt;/span&gt;
-        &lt;span class="nt"&gt;&amp;lt;Blogger&amp;gt;&lt;/span&gt;
-            &lt;span class="nt"&gt;&amp;lt;ItemPage&amp;gt;&lt;/span&gt;
-                &lt;span class="nt"&gt;&amp;lt;link&lt;/span&gt; &lt;span class="na"&gt;id=&lt;/span&gt;&lt;span class="s"&gt;"linkrel"&lt;/span&gt; &lt;span class="na"&gt;rel=&lt;/span&gt;&lt;span class="s"&gt;"canonical"&lt;/span&gt; &lt;span class="nt"&gt;/&amp;gt;&lt;/span&gt;
-            &lt;span class="nt"&gt;&amp;lt;/ItemPage&amp;gt;&lt;/span&gt;
-        &lt;span class="nt"&gt;&amp;lt;/Blogger&amp;gt;&lt;/span&gt;
-    &lt;span class="nt"&gt;&amp;lt;/head&amp;gt;&lt;/span&gt;
-    &lt;span class="nt"&gt;&amp;lt;body&amp;gt;&lt;/span&gt;
-        &lt;span class="nt"&gt;&amp;lt;MainOrArchivePage&amp;gt;&lt;/span&gt;
-        &lt;span class="nt"&gt;&amp;lt;h1&amp;gt;&amp;lt;a&lt;/span&gt; &lt;span class="na"&gt;href=&lt;/span&gt;&lt;span class="s"&gt;"http://patrick.cloke.us"&lt;/span&gt;&lt;span class="nt"&gt;&amp;gt;&lt;/span&gt;&lt;span class="err"&gt;&amp;lt;&lt;/span&gt;$BlogTitle$&amp;gt;&lt;span class="nt"&gt;&amp;lt;/a&amp;gt;&amp;lt;/h1&amp;gt;&lt;/span&gt;
-        &lt;span class="nt"&gt;&amp;lt;/MainOrArchivePage&amp;gt;&lt;/span&gt;
-        &lt;span class="nt"&gt;&amp;lt;Blogger&amp;gt;&lt;/span&gt;
-            &lt;span class="nt"&gt;&amp;lt;ItemPage&amp;gt;&lt;/span&gt;
-                &lt;span class="nt"&gt;&amp;lt;h1&amp;gt;&lt;/span&gt;
-                    &lt;span class="nt"&gt;&amp;lt;a&lt;/span&gt; &lt;span class="na"&gt;id=&lt;/span&gt;&lt;span class="s"&gt;"simplelink"&lt;/span&gt;&lt;span class="nt"&gt;&amp;gt;&lt;/span&gt;
-                        &lt;span class="err"&gt;&amp;lt;&lt;/span&gt;$BlogItemTitle$&amp;gt;
-                    &lt;span class="nt"&gt;&amp;lt;/a&amp;gt;&lt;/span&gt;
-                &lt;span class="nt"&gt;&amp;lt;/h1&amp;gt;&lt;/span&gt;
-                &lt;span class="err"&gt;&amp;lt;&lt;/span&gt;$BlogItemBody$&amp;gt;
-            &lt;span class="nt"&gt;&amp;lt;/ItemPage&amp;gt;&lt;/span&gt;
-        &lt;span class="nt"&gt;&amp;lt;/Blogger&amp;gt;&lt;/span&gt;
-    &lt;span class="nt"&gt;&amp;lt;/body&amp;gt;&lt;/span&gt;
-&lt;span class="nt"&gt;&amp;lt;/html&amp;gt;&lt;/span&gt;
+                    &lt;/span&gt;window.onload&lt;span class="w"&gt; &lt;/span&gt;=&lt;span class="w"&gt; &lt;/span&gt;function()&lt;span class="w"&gt; &lt;/span&gt;{&lt;span class="w"&gt;
+                        &lt;/span&gt;document.getElementById("linkrel").href&lt;span class="w"&gt; &lt;/span&gt;=&lt;span class="w"&gt; &lt;/span&gt;article;&lt;span class="w"&gt;
+                        &lt;/span&gt;document.getElementById("simplelink").href&lt;span class="w"&gt; &lt;/span&gt;=&lt;span class="w"&gt; &lt;/span&gt;article;&lt;span class="w"&gt;
+                    &lt;/span&gt;}&lt;span class="w"&gt;
+                &lt;/span&gt;&lt;span class="nt"&gt;&amp;lt;/ItemPage&amp;gt;&lt;/span&gt;&lt;span class="w"&gt;
+            &lt;/span&gt;&lt;span class="nt"&gt;&amp;lt;/Blogger&amp;gt;&lt;/span&gt;&lt;span class="w"&gt;
+        &lt;/span&gt;&lt;span class="nt"&gt;&amp;lt;/script&amp;gt;&lt;/span&gt;&lt;span class="w"&gt;
+        &lt;/span&gt;&lt;span class="nt"&gt;&amp;lt;MainPage&amp;gt;&lt;/span&gt;&lt;span class="w"&gt;
+            &lt;/span&gt;&lt;span class="nt"&gt;&amp;lt;link&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="na"&gt;rel=&lt;/span&gt;&lt;span class="s"&gt;"canonical"&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="na"&gt;href=&lt;/span&gt;&lt;span class="s"&gt;"http://patrick.cloke.us/"&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nt"&gt;/&amp;gt;&lt;/span&gt;&lt;span class="w"&gt;
+        &lt;/span&gt;&lt;span class="nt"&gt;&amp;lt;/MainPage&amp;gt;&lt;/span&gt;&lt;span class="w"&gt;
+        &lt;/span&gt;&lt;span class="nt"&gt;&amp;lt;Blogger&amp;gt;&lt;/span&gt;&lt;span class="w"&gt;
+            &lt;/span&gt;&lt;span class="nt"&gt;&amp;lt;ItemPage&amp;gt;&lt;/span&gt;&lt;span class="w"&gt;
+                &lt;/span&gt;&lt;span class="nt"&gt;&amp;lt;link&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="na"&gt;id=&lt;/span&gt;&lt;span class="s"&gt;"linkrel"&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="na"&gt;rel=&lt;/span&gt;&lt;span class="s"&gt;"canonical"&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nt"&gt;/&amp;gt;&lt;/span&gt;&lt;span class="w"&gt;
+            &lt;/span&gt;&lt;span class="nt"&gt;&amp;lt;/ItemPage&amp;gt;&lt;/span&gt;&lt;span class="w"&gt;
+        &lt;/span&gt;&lt;span class="nt"&gt;&amp;lt;/Blogger&amp;gt;&lt;/span&gt;&lt;span class="w"&gt;
+    &lt;/span&gt;&lt;span class="nt"&gt;&amp;lt;/head&amp;gt;&lt;/span&gt;&lt;span class="w"&gt;
+    &lt;/span&gt;&lt;span class="nt"&gt;&amp;lt;body&amp;gt;&lt;/span&gt;&lt;span class="w"&gt;
+        &lt;/span&gt;&lt;span class="nt"&gt;&amp;lt;MainOrArchivePage&amp;gt;&lt;/span&gt;&lt;span class="w"&gt;
+        &lt;/span&gt;&lt;span class="nt"&gt;&amp;lt;h1&amp;gt;&amp;lt;a&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="na"&gt;href=&lt;/span&gt;&lt;span class="s"&gt;"http://patrick.cloke.us"&lt;/span&gt;&lt;span class="nt"&gt;&amp;gt;&lt;/span&gt;&lt;span class="err"&gt;&amp;lt;&lt;/span&gt;$BlogTitle$&amp;gt;&lt;span class="nt"&gt;&amp;lt;/a&amp;gt;&amp;lt;/h1&amp;gt;&lt;/span&gt;&lt;span class="w"&gt;
+        &lt;/span&gt;&lt;span class="nt"&gt;&amp;lt;/MainOrArchivePage&amp;gt;&lt;/span&gt;&lt;span class="w"&gt;
+        &lt;/span&gt;&lt;span class="nt"&gt;&amp;lt;Blogger&amp;gt;&lt;/span&gt;&lt;span class="w"&gt;
+            &lt;/span&gt;&lt;span class="nt"&gt;&amp;lt;ItemPage&amp;gt;&lt;/span&gt;&lt;span class="w"&gt;
+                &lt;/span&gt;&lt;span class="nt"&gt;&amp;lt;h1&amp;gt;&lt;/span&gt;&lt;span class="w"&gt;
+                    &lt;/span&gt;&lt;span class="nt"&gt;&amp;lt;a&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="na"&gt;id=&lt;/span&gt;&lt;span class="s"&gt;"simplelink"&lt;/span&gt;&lt;span class="nt"&gt;&amp;gt;&lt;/span&gt;&lt;span class="w"&gt;
+                        &lt;/span&gt;&lt;span class="err"&gt;&amp;lt;&lt;/span&gt;$BlogItemTitle$&amp;gt;&lt;span class="w"&gt;
+                    &lt;/span&gt;&lt;span class="nt"&gt;&amp;lt;/a&amp;gt;&lt;/span&gt;&lt;span class="w"&gt;
+                &lt;/span&gt;&lt;span class="nt"&gt;&amp;lt;/h1&amp;gt;&lt;/span&gt;&lt;span class="w"&gt;
+                &lt;/span&gt;&lt;span class="err"&gt;&amp;lt;&lt;/span&gt;$BlogItemBody$&amp;gt;&lt;span class="w"&gt;
+            &lt;/span&gt;&lt;span class="nt"&gt;&amp;lt;/ItemPage&amp;gt;&lt;/span&gt;&lt;span class="w"&gt;
+        &lt;/span&gt;&lt;span class="nt"&gt;&amp;lt;/Blogger&amp;gt;&lt;/span&gt;&lt;span class="w"&gt;
+    &lt;/span&gt;&lt;span class="nt"&gt;&amp;lt;/body&amp;gt;&lt;/span&gt;&lt;span class="w"&gt;
+&lt;/span&gt;&lt;span class="nt"&gt;&amp;lt;/html&amp;gt;&lt;/span&gt;
 &lt;/pre&gt;
 &lt;p&gt;Obviously you’ll need to change the URLs, but the key parts here are that we’re
 generating a &lt;span class="caps"&gt;URL&lt;/span&gt; based on the date and the full article name. The magic comes in
@@ -138,10 +138,10 @@ messed up in mine (the day was off by one, causing the forwarded location to be�
 &lt;p&gt;The last thing to do is to redirect the Atom/&lt;span class="caps"&gt;RSS&lt;/span&gt; feed (if anyone is using that).
 Go to “Settings” &amp;gt; “Other” &amp;gt; “Post Feed Redirect &lt;span class="caps"&gt;URL&lt;/span&gt;” and set it to your new
 Atom feed &lt;span class="caps"&gt;URL&lt;/span&gt; (wherever that might be).&lt;/p&gt;
-&lt;table class="docutils footnote" frame="void" id="id2" rules="none"&gt;
+&lt;table class="docutils footnote" frame="void" id="footnote-1" rules="none"&gt;
 &lt;colgroup&gt;&lt;col class="label"/&gt;&lt;col/&gt;&lt;/colgroup&gt;
 &lt;tbody valign="top"&gt;
-&lt;tr&gt;&lt;td class="label"&gt;&lt;a class="fn-backref" href="#id1"&gt;[1]&lt;/a&gt;&lt;/td&gt;&lt;td&gt;Pro-tip: You can &lt;a class="reference external" href="https://help.github.com/articles/setting-the-default-branch"&gt;change the “default” branch&lt;/a&gt; of your repository in the
+&lt;tr&gt;&lt;td class="label"&gt;&lt;a class="fn-backref" href="#footnote-reference-1"&gt;[1]&lt;/a&gt;&lt;/td&gt;&lt;td&gt;Pro-tip: You can &lt;a class="reference external" href="https://help.github.com/articles/setting-the-default-branch"&gt;change the “default” branch&lt;/a&gt; of your repository in the
 settings page on GitHub.&lt;/td&gt;&lt;/tr&gt;
 &lt;/tbody&gt;
 &lt;/table&gt;
@@ -172,19 +172,19 @@ seemed alright, but no one seemed to use it. Farther down the page I came across
 &lt;a class="reference external" href="http://arunrocks.com/moving-blogs-to-pelican/"&gt;a blog&lt;/a&gt; talking about moving to &lt;a class="reference external" href="http://getpelican.com/"&gt;Pelican&lt;/a&gt;. I was hooked. (Note that I don’t
 necessarily agree with all the ideas in that post, it just introduced me to Pelican.)&lt;/p&gt;
 &lt;div class="section" id="set-up-pelican"&gt;
-&lt;h2&gt;&lt;a class="toc-backref" href="#id1"&gt;Set up Pelican&lt;/a&gt;&lt;/h2&gt;
+&lt;h2&gt;&lt;a class="toc-backref" href="#toc-entry-1"&gt;Set up Pelican&lt;/a&gt;&lt;/h2&gt;
 &lt;p&gt;(Since I dislike writing my own descriptions:)&lt;/p&gt;
 &lt;blockquote&gt;
 “Pelican is a static site generator, written in &lt;a class="reference external" href="http://www.python.org/"&gt;Python&lt;/a&gt;, that requires no
 database or server-side logic.”&lt;/blockquote&gt;
 &lt;p&gt;Cool! Sounds real simple to use! And it was. Mostly.&lt;/p&gt;
 &lt;p&gt;I pretty much followed the &lt;a class="reference external" href="http://docs.getpelican.com/en/3.4.0/quickstart.html"&gt;quickstart&lt;/a&gt;:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;mkdir -p blog/blog &lt;span class="c1"&gt;# The first blog is to store other repos, etc.&lt;/span&gt;
-&lt;span class="nb"&gt;cd&lt;/span&gt; blog/blog
-git init &lt;span class="o"&gt;&amp;amp;&amp;amp;&lt;/span&gt; git checkout -b &lt;span class="nb"&gt;source&lt;/span&gt; &lt;span class="c1"&gt;# Explained later on.&lt;/span&gt;
-brew install pandoc &lt;span class="c1"&gt;# If you're not on Mac you'll need to do something else.&lt;/span&gt;
-mkvirtualenv blog
-pip install pelican markdown Fabric ghp_import feedparser
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;mkdir&lt;span class="w"&gt; &lt;/span&gt;-p&lt;span class="w"&gt; &lt;/span&gt;blog/blog&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="c1"&gt;# The first blog is to store other repos, etc.&lt;/span&gt;
+&lt;span class="nb"&gt;cd&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;blog/blog
+git&lt;span class="w"&gt; &lt;/span&gt;init&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;&amp;amp;&amp;amp;&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;git&lt;span class="w"&gt; &lt;/span&gt;checkout&lt;span class="w"&gt; &lt;/span&gt;-b&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nb"&gt;source&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="c1"&gt;# Explained later on.&lt;/span&gt;
+brew&lt;span class="w"&gt; &lt;/span&gt;install&lt;span class="w"&gt; &lt;/span&gt;pandoc&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="c1"&gt;# If you're not on Mac you'll need to do something else.&lt;/span&gt;
+mkvirtualenv&lt;span class="w"&gt; &lt;/span&gt;blog
+pip&lt;span class="w"&gt; &lt;/span&gt;install&lt;span class="w"&gt; &lt;/span&gt;pelican&lt;span class="w"&gt; &lt;/span&gt;markdown&lt;span class="w"&gt; &lt;/span&gt;Fabric&lt;span class="w"&gt; &lt;/span&gt;ghp_import&lt;span class="w"&gt; &lt;/span&gt;feedparser
 pelican-quickstart
 &lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;I’ll let you read the rest of the quickstart guide, but it was super quick to
@@ -193,13 +193,13 @@ good information!) I, of course, had no content…but wait I did, it was just
 in Blogger!&lt;/p&gt;
 &lt;/div&gt;
 &lt;div class="section" id="importing-content-from-blogger"&gt;
-&lt;h2&gt;&lt;a class="toc-backref" href="#id2"&gt;Importing Content from Blogger&lt;/a&gt;&lt;/h2&gt;
+&lt;h2&gt;&lt;a class="toc-backref" href="#toc-entry-2"&gt;Importing Content from Blogger&lt;/a&gt;&lt;/h2&gt;
 &lt;p&gt;Pelican does not directly support importing from Blogger (&lt;em&gt;Edit: Seems someone
 just put up a `pull request`_ to support Blogger natively!&lt;/em&gt;), but it supports
 &lt;a class="reference external" href="http://docs.getpelican.com/en/3.4.0/importer.html"&gt;importing from a &lt;span class="caps"&gt;RSS&lt;/span&gt; feed&lt;/a&gt;. The first time I did this it missed a couple of
 articles (which I didn’t notice right away), so make sure you bump up the max
 amount in the &lt;span class="caps"&gt;URL&lt;/span&gt; like so (this also outputs in the folder “content”):&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;pelican-import --feed http://clokep.blogspot.com/feeds/posts/default&lt;span class="se"&gt;\?&lt;/span&gt;alt&lt;span class="se"&gt;\=&lt;/span&gt;rss&lt;span class="se"&gt;\&amp;amp;&lt;/span&gt;max-results&lt;span class="se"&gt;\=&lt;/span&gt;&lt;span class="m"&gt;240&lt;/span&gt; -o content
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;pelican-import&lt;span class="w"&gt; &lt;/span&gt;--feed&lt;span class="w"&gt; &lt;/span&gt;http://clokep.blogspot.com/feeds/posts/default&lt;span class="se"&gt;\?&lt;/span&gt;alt&lt;span class="se"&gt;\=&lt;/span&gt;rss&lt;span class="se"&gt;\&amp;amp;&lt;/span&gt;max-results&lt;span class="se"&gt;\=&lt;/span&gt;&lt;span class="m"&gt;240&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;-o&lt;span class="w"&gt; &lt;/span&gt;content
 &lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;No import is ever perfect and I had to clean up a bunch of stuff by hand including:&lt;/p&gt;
 &lt;ul class="simple"&gt;
@@ -216,7 +216,7 @@ but now I feel that I have a portable set of all of my blog posts, which I’m
 pretty happy about!&lt;/p&gt;
 &lt;/div&gt;
 &lt;div class="section" id="customizing-pelican"&gt;
-&lt;h2&gt;&lt;a class="toc-backref" href="#id3"&gt;Customizing Pelican&lt;/a&gt;&lt;/h2&gt;
+&lt;h2&gt;&lt;a class="toc-backref" href="#toc-entry-3"&gt;Customizing Pelican&lt;/a&gt;&lt;/h2&gt;
 &lt;p&gt;I tried a few different themes for Pelican, but eventually settled on just using
 and modifying the default theme. I, frankly, haven’t tried it on too many
 different systems, so hopefully it doesn’t totally break on small screen sizes

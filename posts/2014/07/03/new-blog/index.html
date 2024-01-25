@@ -9,14 +9,14 @@
     <link href="https://patrick.cloke.us/feeds/atom.xml" type="application/atom+xml" rel="alternate" title="Patrick Cloke Atom Feed" />
     <link href="https://patrick.cloke.us/feeds/rss.xml" type="application/rss+xml" rel="alternate" title="Patrick Cloke RSS Feed" />
 
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
     <link rel="stylesheet" href="/theme/css/styles.css">
     <link rel="stylesheet" href="/theme/css/borland.css">
     <link rel="stylesheet" href="/theme/css/youtube.css">
 
-    <!-- Font Awesome -->
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
 
     <title>New Blog</title>
 
@@ -68,11 +68,11 @@
 
             <span class="dropdown-menu dropdown-menu-right" aria-labelledby="social-dropdown">
               <a class="dropdown-item" href="https://mastodon.social/@clokep" target="_blank">
-                  <span class="fab fa-mastodon mr-1"></span>
+                  <span class="bi-mastodon mr-1"></span>
                 mastodon
               </a>
               <a class="dropdown-item" href="https://www.twitter.com/clokep" target="_blank">
-                  <span class="fab fa-twitter mr-1"></span>
+                  <span class="bi-twitter mr-1"></span>
                 twitter
               </a>
               <a class="dropdown-item" href="https://matrix.to/#/@clokep:matrix.org" target="_blank">
@@ -80,15 +80,15 @@
                 matrix
               </a>
               <a class="dropdown-item" href="https://github.com/clokep" target="_blank">
-                  <span class="fab fa-github mr-1"></span>
+                  <span class="bi-github mr-1"></span>
                 github
               </a>
               <a class="dropdown-item" href="https://gitlab.com/clokep" target="_blank">
-                  <span class="fab fa-gitlab mr-1"></span>
+                  <span class="bi-gitlab mr-1"></span>
                 gitlab
               </a>
               <a class="dropdown-item" href="https://www.linkedin.com/in/patrickcloke/" target="_blank">
-                  <span class="fab fa-linkedin mr-1"></span>
+                  <span class="bi-linkedin mr-1"></span>
                 linkedin
               </a>
             </span>
@@ -133,14 +133,23 @@
         </div>
 
         <div class="col-sm text-right">
+          <a href="https://toot.kytta.dev/?text=New%C2%A0Blog%0D%0Ahttps%3A//patrick.cloke.us/posts/2014/07/03/new-blog/%0D%0A%23blog %23pelican" target="_blank" class="ml-1 mr-1" title="Share on Mastodon">
+            <span class="bi-mastodon"></span>
+          </a>
           <a href="https://twitter.com/intent/tweet?text=New%C2%A0Blog&url=https%3A//patrick.cloke.us/posts/2014/07/03/new-blog/&hashtags=blog,pelican" target="_blank" class="ml-1 mr-1" title="Share on Twitter">
-            <span class="fab fa-twitter"></span>
+            <span class="bi-twitter"></span>
+          </a>
+          <a href="https://www.reddit.com/submit?url=https%3A//patrick.cloke.us/posts/2014/07/03/new-blog/&title=New%C2%A0Blog" target="_blank" class="ml-1 mr-1" title="Share on Reddit">
+            <span class="bi-reddit"></span>
           </a>
           <a href="https://www.facebook.com/sharer/sharer.php?u=https%3A//patrick.cloke.us/posts/2014/07/03/new-blog/" target="_blank" class="ml-1 mr-1" title="Share on Facebook">
-            <span class="fab fa-facebook"></span>
+            <span class="bi-facebook"></span>
+          </a>
+          <a href="https://www.linkedin.com/shareArticle?mini=true&url=https%3A//patrick.cloke.us/posts/2014/07/03/new-blog/&title=New%C2%A0Blog&summary=If%20you%E2%80%99re%20reading%20this%20you%20might%20have%20noticed%20that%20I%20have%20a%20shiny%20new%20blog%21%20I%0Ahad%20been%20pretty%20disappointed%20in%20Blogger%20practically%20since%20I%20started%20using%20it.%0ABut%20it%20was%20free%2C%20I%20was%20a%20poor%20college%20student%2C%20etc.%20I%20finally%20managed%20to%20get%0Amyself%20a%20domain%20name%20and%20%E2%80%A6&source=https%3A//patrick.cloke.us/posts/2014/07/03/new-blog/" target="_blank" class="ml-1 mr-1" title="Share on LinkedIn">
+            <span class="bi-linkedin"></span>
           </a>
           <a href="mailto:?subject=New%C2%A0Blog&amp;body=https%3A//patrick.cloke.us/posts/2014/07/03/new-blog/" target="_blank" class="ml-1 mr-1" title="Share via Email">
-            <span class="fas fa-envelope"></span>
+            <span class="bi-envelope"></span>
           </a>
         </div>
       </div>
@@ -152,9 +161,9 @@
           <div class="toc" id="">
 <p class="topic-title">Contents</p>
 <ul class="simple">
-<li><a class="reference internal" href="#set-up-pelican" id="id1">Set up Pelican</a></li>
-<li><a class="reference internal" href="#importing-content-from-blogger" id="id2">Importing Content from Blogger</a></li>
-<li><a class="reference internal" href="#customizing-pelican" id="id3">Customizing Pelican</a></li>
+<li><a class="reference internal" href="#set-up-pelican" id="toc-entry-1">Set up Pelican</a></li>
+<li><a class="reference internal" href="#importing-content-from-blogger" id="toc-entry-2">Importing Content from Blogger</a></li>
+<li><a class="reference internal" href="#customizing-pelican" id="toc-entry-3">Customizing Pelican</a></li>
 </ul>
 </div>
         </div>
@@ -181,19 +190,19 @@ seemed alright, but no one seemed to use it. Farther down the page I came across
 <a class="reference external" href="http://arunrocks.com/moving-blogs-to-pelican/">a blog</a> talking about moving to <a class="reference external" href="http://getpelican.com/">Pelican</a>. I was hooked. (Note that I don’t
 necessarily agree with all the ideas in that post, it just introduced me to Pelican.)</p>
 <div class="section" id="set-up-pelican">
-<h2><a class="toc-backref" href="#id1">Set up Pelican</a></h2>
+<h2><a class="toc-backref" href="#toc-entry-1">Set up Pelican</a></h2>
 <p>(Since I dislike writing my own descriptions:)</p>
 <blockquote>
 “Pelican is a static site generator, written in <a class="reference external" href="http://www.python.org/">Python</a>, that requires no
 database or server-side logic.”</blockquote>
 <p>Cool! Sounds real simple to use! And it was. Mostly.</p>
 <p>I pretty much followed the <a class="reference external" href="http://docs.getpelican.com/en/3.4.0/quickstart.html">quickstart</a>:</p>
-<div class="highlight"><pre><span></span>mkdir -p blog/blog <span class="c1"># The first blog is to store other repos, etc.</span>
-<span class="nb">cd</span> blog/blog
-git init <span class="o">&amp;&amp;</span> git checkout -b <span class="nb">source</span> <span class="c1"># Explained later on.</span>
-brew install pandoc <span class="c1"># If you're not on Mac you'll need to do something else.</span>
-mkvirtualenv blog
-pip install pelican markdown Fabric ghp_import feedparser
+<div class="highlight"><pre><span></span>mkdir<span class="w"> </span>-p<span class="w"> </span>blog/blog<span class="w"> </span><span class="c1"># The first blog is to store other repos, etc.</span>
+<span class="nb">cd</span><span class="w"> </span>blog/blog
+git<span class="w"> </span>init<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>git<span class="w"> </span>checkout<span class="w"> </span>-b<span class="w"> </span><span class="nb">source</span><span class="w"> </span><span class="c1"># Explained later on.</span>
+brew<span class="w"> </span>install<span class="w"> </span>pandoc<span class="w"> </span><span class="c1"># If you're not on Mac you'll need to do something else.</span>
+mkvirtualenv<span class="w"> </span>blog
+pip<span class="w"> </span>install<span class="w"> </span>pelican<span class="w"> </span>markdown<span class="w"> </span>Fabric<span class="w"> </span>ghp_import<span class="w"> </span>feedparser
 pelican-quickstart
 </pre></div>
 <p>I’ll let you read the rest of the quickstart guide, but it was super quick to
@@ -202,13 +211,13 @@ good information!) I, of course, had no content…but wait I did, it was just
 in Blogger!</p>
 </div>
 <div class="section" id="importing-content-from-blogger">
-<h2><a class="toc-backref" href="#id2">Importing Content from Blogger</a></h2>
+<h2><a class="toc-backref" href="#toc-entry-2">Importing Content from Blogger</a></h2>
 <p>Pelican does not directly support importing from Blogger (<em>Edit: Seems someone
 just put up a `pull request`_ to support Blogger natively!</em>), but it supports
 <a class="reference external" href="http://docs.getpelican.com/en/3.4.0/importer.html">importing from a <span class="caps">RSS</span> feed</a>. The first time I did this it missed a couple of
 articles (which I didn’t notice right away), so make sure you bump up the max
 amount in the <span class="caps">URL</span> like so (this also outputs in the folder “content”):</p>
-<div class="highlight"><pre><span></span>pelican-import --feed http://clokep.blogspot.com/feeds/posts/default<span class="se">\?</span>alt<span class="se">\=</span>rss<span class="se">\&amp;</span>max-results<span class="se">\=</span><span class="m">240</span> -o content
+<div class="highlight"><pre><span></span>pelican-import<span class="w"> </span>--feed<span class="w"> </span>http://clokep.blogspot.com/feeds/posts/default<span class="se">\?</span>alt<span class="se">\=</span>rss<span class="se">\&amp;</span>max-results<span class="se">\=</span><span class="m">240</span><span class="w"> </span>-o<span class="w"> </span>content
 </pre></div>
 <p>No import is ever perfect and I had to clean up a bunch of stuff by hand including:</p>
 <ul class="simple">
@@ -225,7 +234,7 @@ but now I feel that I have a portable set of all of my blog posts, which I’m
 pretty happy about!</p>
 </div>
 <div class="section" id="customizing-pelican">
-<h2><a class="toc-backref" href="#id3">Customizing Pelican</a></h2>
+<h2><a class="toc-backref" href="#toc-entry-3">Customizing Pelican</a></h2>
 <p>I tried a few different themes for Pelican, but eventually settled on just using
 and modifying the default theme. I, frankly, haven’t tried it on too many
 different systems, so hopefully it doesn’t totally break on small screen sizes
@@ -281,7 +290,7 @@ s.setAttribute('data-timestamp', +new Date());
     <nav class="navbar fixed-bottom navbar-light bg-light border-top border-info">
       <a href="https://getpelican.com/" class="nav-item" target="_blank">Powered by Pelican</a>
       <a href="https://github.com/clokep/clokep.github.io" class="nav-item" target="_blank">
-        Source available on GitHub <span class="fab fa-github"></span>
+        Source available on GitHub <span class="bi-github"></span>
       </a>
     </nav>
 

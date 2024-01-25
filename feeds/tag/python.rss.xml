@@ -1,19 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
-<rss version="2.0"><channel><title>Patrick Cloke - python</title><link>https://patrick.cloke.us/</link><description></description><lastBuildDate>Fri, 24 Feb 2023 19:42:00 -0500</lastBuildDate><item><title>Python str Collection Gotchas</title><link>https://patrick.cloke.us/posts/2023/02/24/python-str-collection-gotchas/</link><description>&lt;p&gt;We have been slowly adding Python type hints &lt;a class="footnote-reference" href="#id6" id="id1"&gt;[1]&lt;/a&gt; to &lt;a class="reference external" href="https://github.com/matrix-org/synapse"&gt;Synapse&lt;/a&gt; and have made
+<rss version="2.0"><channel><title>Patrick Cloke - python</title><link>https://patrick.cloke.us/</link><description></description><lastBuildDate>Fri, 24 Feb 2023 19:42:00 -0500</lastBuildDate><item><title>Python str Collection Gotchas</title><link>https://patrick.cloke.us/posts/2023/02/24/python-str-collection-gotchas/</link><description>&lt;p&gt;We have been slowly adding Python type hints &lt;a class="footnote-reference" href="#footnote-1" id="footnote-reference-1"&gt;[1]&lt;/a&gt; to &lt;a class="reference external" href="https://github.com/matrix-org/synapse"&gt;Synapse&lt;/a&gt; and have made
 great progress (see &lt;a class="reference external" href="https://matrix.org/blog/2021/12/03/type-coverage-for-sydent-motivation"&gt;some of our motivation&lt;/a&gt;). Through this process we have
 learned a lot about Python and type hints. One bit that was unexpected is that
 many of the &lt;a class="reference external" href="https://docs.python.org/3/library/collections.abc.html#collections-abstract-base-classes"&gt;abstract base classes&lt;/a&gt; representing groups of &lt;tt class="docutils literal"&gt;str&lt;/tt&gt; instances
 also match an individual &lt;tt class="docutils literal"&gt;str&lt;/tt&gt; instance. This has resulted in more than one
-&lt;em&gt;real&lt;/em&gt; bug for us &lt;a class="footnote-reference" href="#id7" id="id2"&gt;[2]&lt;/a&gt;: a function which has parameter of type &lt;tt class="docutils literal"&gt;Collection[str]&lt;/tt&gt;
-was called with a &lt;tt class="docutils literal"&gt;str&lt;/tt&gt;, for example &lt;a class="footnote-reference" href="#id8" id="id3"&gt;[3]&lt;/a&gt;:&lt;/p&gt;
+&lt;em&gt;real&lt;/em&gt; bug for us &lt;a class="footnote-reference" href="#footnote-2" id="footnote-reference-2"&gt;[2]&lt;/a&gt;: a function which has parameter of type &lt;tt class="docutils literal"&gt;Collection[str]&lt;/tt&gt;
+was called with a &lt;tt class="docutils literal"&gt;str&lt;/tt&gt;, for example &lt;a class="footnote-reference" href="#footnote-3" id="footnote-reference-3"&gt;[3]&lt;/a&gt;:&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;send&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;event&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="n"&gt;Event&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;destinations&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="n"&gt;Collection&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="nb"&gt;str&lt;/span&gt;&lt;span class="p"&gt;])&lt;/span&gt; &lt;span class="o"&gt;-&amp;gt;&lt;/span&gt; &lt;span class="kc"&gt;None&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
-    &lt;span class="sd"&gt;&amp;quot;&amp;quot;&amp;quot;Send an event to a set of destinations.&amp;quot;&amp;quot;&amp;quot;&lt;/span&gt;
+&lt;span class="w"&gt;    &lt;/span&gt;&lt;span class="sd"&gt;&amp;quot;&amp;quot;&amp;quot;Send an event to a set of destinations.&amp;quot;&amp;quot;&amp;quot;&lt;/span&gt;
     &lt;span class="k"&gt;for&lt;/span&gt; &lt;span class="n"&gt;destination&lt;/span&gt; &lt;span class="ow"&gt;in&lt;/span&gt; &lt;span class="n"&gt;destinations&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
         &lt;span class="c1"&gt;# Do some HTTP.&lt;/span&gt;
         &lt;span class="o"&gt;...&lt;/span&gt;
 
 &lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;create_event&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;sender&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="nb"&gt;str&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;content&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="nb"&gt;str&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;room&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="n"&gt;Room&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="o"&gt;-&amp;gt;&lt;/span&gt; &lt;span class="kc"&gt;None&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
-    &lt;span class="sd"&gt;&amp;quot;&amp;quot;&amp;quot;Create &amp;amp; send an event.&amp;quot;&amp;quot;&amp;quot;&lt;/span&gt;
+&lt;span class="w"&gt;    &lt;/span&gt;&lt;span class="sd"&gt;&amp;quot;&amp;quot;&amp;quot;Create &amp;amp; send an event.&amp;quot;&amp;quot;&amp;quot;&lt;/span&gt;
     &lt;span class="n"&gt;event&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;Event&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;sender&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;content&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
     &lt;span class="n"&gt;send&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;event&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;matrix.org&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
@@ -21,9 +21,9 @@ was called with a &lt;tt class="docutils literal"&gt;str&lt;/tt&gt;, for example
 of a single one. The &amp;#8220;s&amp;#8221; at the end of &amp;#8220;destinations&amp;#8221; takes on quite a bit of
 importance! See the&amp;nbsp;fix:&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="gu"&gt;@@ -7,5 +7,5 @@&lt;/span&gt;
-   def create_event(sender: str, content: str, room: Room) -&amp;gt; None:
-       &amp;quot;&amp;quot;&amp;quot;Create &amp;amp; send an event.&amp;quot;&amp;quot;&amp;quot;
-       event = Event(sender, content)
+&lt;span class="w"&gt; &lt;/span&gt;  def create_event(sender: str, content: str, room: Room) -&amp;gt; None:
+&lt;span class="w"&gt; &lt;/span&gt;      &amp;quot;&amp;quot;&amp;quot;Create &amp;amp; send an event.&amp;quot;&amp;quot;&amp;quot;
+&lt;span class="w"&gt; &lt;/span&gt;      event = Event(sender, content)
 &lt;span class="gd"&gt;-      send(event, &amp;quot;matrix.org&amp;quot;)&lt;/span&gt;
 &lt;span class="gi"&gt;+      send(event, [&amp;quot;matrix.org&amp;quot;])&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
@@ -33,7 +33,7 @@ but this forces the caller to convert a &lt;tt class="docutils literal"&gt;set&l
 thus losing some of the protections from type hints). As a team we have a desire
 to keep the type hints of function parameters as broad as&amp;nbsp;possible.&lt;/p&gt;
 &lt;p&gt;Put another way, &lt;tt class="docutils literal"&gt;str&lt;/tt&gt; is an instance of &lt;tt class="docutils literal"&gt;Collection[str]&lt;/tt&gt;, &lt;tt class="docutils literal"&gt;Container[str]&lt;/tt&gt;,
-&lt;tt class="docutils literal"&gt;Iterable[str]&lt;/tt&gt;, and &lt;tt class="docutils literal"&gt;Sequence[str]&lt;/tt&gt;. &lt;a class="footnote-reference" href="#id9" id="id4"&gt;[4]&lt;/a&gt; &lt;a class="footnote-reference" href="#id10" id="id5"&gt;[5]&lt;/a&gt;&lt;/p&gt;
+&lt;tt class="docutils literal"&gt;Iterable[str]&lt;/tt&gt;, and &lt;tt class="docutils literal"&gt;Sequence[str]&lt;/tt&gt;. &lt;a class="footnote-reference" href="#footnote-4" id="footnote-reference-4"&gt;[4]&lt;/a&gt; &lt;a class="footnote-reference" href="#footnote-5" id="footnote-reference-5"&gt;[5]&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;Since our type hints are only used internally we do not need to worry too much
 about accepting exotic types and eventually came up with &lt;a class="reference external" href="https://github.com/matrix-org/synapse/blob/335f52d595c2c32e4b512b97e2851bc98b819ca7/synapse/types/__init__.py#L84-L86"&gt;&lt;tt class="docutils literal"&gt;StrCollection&lt;/tt&gt;&lt;/a&gt;:&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="c1"&gt;# Collection[str] that does not include str itself; str being a Sequence[str]&lt;/span&gt;
@@ -44,36 +44,36 @@ about accepting exotic types and eventually came up with &lt;a class="reference 
 not seem to cover well is if you are using a dictionary as an &lt;tt class="docutils literal"&gt;Iterable[str]&lt;/tt&gt;,
 the easy workaround there is to call &lt;tt class="docutils literal"&gt;keys()&lt;/tt&gt; on it to explicitly convert to a
 &lt;a class="reference external" href="https://docs.python.org/3/library/collections.abc.html#collections.abc.KeysView"&gt;&lt;tt class="docutils literal"&gt;KeysView&lt;/tt&gt;&lt;/a&gt;, which inherits from &lt;tt class="docutils literal"&gt;Set&lt;/tt&gt;.&lt;/p&gt;
-&lt;table class="docutils footnote" frame="void" id="id6" rules="none"&gt;
+&lt;table class="docutils footnote" frame="void" id="footnote-1" rules="none"&gt;
 &lt;colgroup&gt;&lt;col class="label" /&gt;&lt;col /&gt;&lt;/colgroup&gt;
 &lt;tbody valign="top"&gt;
-&lt;tr&gt;&lt;td class="label"&gt;&lt;a class="fn-backref" href="#id1"&gt;[1]&lt;/a&gt;&lt;/td&gt;&lt;td&gt;Looking at the &lt;a class="reference external" href="https://github.com/matrix-org/synapse/commits/develop/mypy.ini"&gt;commits&lt;/a&gt; to &lt;tt class="docutils literal"&gt;mypy.ini&lt;/tt&gt; is probably the best way to see progress.&lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td class="label"&gt;&lt;a class="fn-backref" href="#footnote-reference-1"&gt;[1]&lt;/a&gt;&lt;/td&gt;&lt;td&gt;Looking at the &lt;a class="reference external" href="https://github.com/matrix-org/synapse/commits/develop/mypy.ini"&gt;commits&lt;/a&gt; to &lt;tt class="docutils literal"&gt;mypy.ini&lt;/tt&gt; is probably the best way to see progress.&lt;/td&gt;&lt;/tr&gt;
 &lt;/tbody&gt;
 &lt;/table&gt;
-&lt;table class="docutils footnote" frame="void" id="id7" rules="none"&gt;
+&lt;table class="docutils footnote" frame="void" id="footnote-2" rules="none"&gt;
 &lt;colgroup&gt;&lt;col class="label" /&gt;&lt;col /&gt;&lt;/colgroup&gt;
 &lt;tbody valign="top"&gt;
-&lt;tr&gt;&lt;td class="label"&gt;&lt;a class="fn-backref" href="#id2"&gt;[2]&lt;/a&gt;&lt;/td&gt;&lt;td&gt;&lt;a class="reference external" href="https://github.com/matrix-org/synapse/issues/14809"&gt;matrix-org/synapse#14809&lt;/a&gt; is our tracking issue for fixing this, although
+&lt;tr&gt;&lt;td class="label"&gt;&lt;a class="fn-backref" href="#footnote-reference-2"&gt;[2]&lt;/a&gt;&lt;/td&gt;&lt;td&gt;&lt;a class="reference external" href="https://github.com/matrix-org/synapse/issues/14809"&gt;matrix-org/synapse#14809&lt;/a&gt; is our tracking issue for fixing this, although
 &lt;a class="reference external" href="https://github.com/matrix-org/synapse/pull/14880/files#diff-0b449f6f95672437cf04f0b5512572b4a6a729d2759c438b7c206ea249619885R1161"&gt;matrix-org/synapse#14880&lt;/a&gt; shows a concrete bug fix which occurred.&lt;/td&gt;&lt;/tr&gt;
 &lt;/tbody&gt;
 &lt;/table&gt;
-&lt;table class="docutils footnote" frame="void" id="id8" rules="none"&gt;
+&lt;table class="docutils footnote" frame="void" id="footnote-3" rules="none"&gt;
 &lt;colgroup&gt;&lt;col class="label" /&gt;&lt;col /&gt;&lt;/colgroup&gt;
 &lt;tbody valign="top"&gt;
-&lt;tr&gt;&lt;td class="label"&gt;&lt;a class="fn-backref" href="#id3"&gt;[3]&lt;/a&gt;&lt;/td&gt;&lt;td&gt;This is heavily simplified, but hopefully illustrates the bug!&lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td class="label"&gt;&lt;a class="fn-backref" href="#footnote-reference-3"&gt;[3]&lt;/a&gt;&lt;/td&gt;&lt;td&gt;This is heavily simplified, but hopefully illustrates the bug!&lt;/td&gt;&lt;/tr&gt;
 &lt;/tbody&gt;
 &lt;/table&gt;
-&lt;table class="docutils footnote" frame="void" id="id9" rules="none"&gt;
+&lt;table class="docutils footnote" frame="void" id="footnote-4" rules="none"&gt;
 &lt;colgroup&gt;&lt;col class="label" /&gt;&lt;col /&gt;&lt;/colgroup&gt;
 &lt;tbody valign="top"&gt;
-&lt;tr&gt;&lt;td class="label"&gt;&lt;a class="fn-backref" href="#id4"&gt;[4]&lt;/a&gt;&lt;/td&gt;&lt;td&gt;And &lt;tt class="docutils literal"&gt;Reversible[str]&lt;/tt&gt;, but I don&amp;#8217;t think I have ever seen that used and
+&lt;tr&gt;&lt;td class="label"&gt;&lt;a class="fn-backref" href="#footnote-reference-4"&gt;[4]&lt;/a&gt;&lt;/td&gt;&lt;td&gt;And &lt;tt class="docutils literal"&gt;Reversible[str]&lt;/tt&gt;, but I don&amp;#8217;t think I have ever seen that used and
 I think it less likely to introduce a bug.&lt;/td&gt;&lt;/tr&gt;
 &lt;/tbody&gt;
 &lt;/table&gt;
-&lt;table class="docutils footnote" frame="void" id="id10" rules="none"&gt;
+&lt;table class="docutils footnote" frame="void" id="footnote-5" rules="none"&gt;
 &lt;colgroup&gt;&lt;col class="label" /&gt;&lt;col /&gt;&lt;/colgroup&gt;
 &lt;tbody valign="top"&gt;
-&lt;tr&gt;&lt;td class="label"&gt;&lt;a class="fn-backref" href="#id5"&gt;[5]&lt;/a&gt;&lt;/td&gt;&lt;td&gt;&lt;tt class="docutils literal"&gt;bytes&lt;/tt&gt; doesn&amp;#8217;t have quite the same issue, but it might be surprising
+&lt;tr&gt;&lt;td class="label"&gt;&lt;a class="fn-backref" href="#footnote-reference-5"&gt;[5]&lt;/a&gt;&lt;/td&gt;&lt;td&gt;&lt;tt class="docutils literal"&gt;bytes&lt;/tt&gt; doesn&amp;#8217;t have quite the same issue, but it might be surprising
 that &lt;tt class="docutils literal"&gt;bytes&lt;/tt&gt; is an instance of &lt;tt class="docutils literal"&gt;Collection[int]&lt;/tt&gt;, &lt;tt class="docutils literal"&gt;Container[int]&lt;/tt&gt;,
 &lt;tt class="docutils literal"&gt;Iterable[int]&lt;/tt&gt;, and &lt;tt class="docutils literal"&gt;Sequence[int]&lt;/tt&gt;. I find this less likely to
 introduce a bug.&lt;/td&gt;&lt;/tr&gt;
@@ -81,12 +81,12 @@ introduce a bug.&lt;/td&gt;&lt;/tr&gt;
 &lt;/table&gt;
 </description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Patrick Cloke</dc:creator><pubDate>Fri, 24 Feb 2023 19:42:00 -0500</pubDate><guid isPermaLink="false">tag:patrick.cloke.us,2023-02-24:/posts/2023/02/24/python-str-collection-gotchas/</guid><category>articles</category><category>python</category></item><item><title>RSS Feeds for Wikipedia Current Events and NHL News</title><link>https://patrick.cloke.us/posts/2017/05/26/rss-feeds-for-wikipedia-current-events-and-nhl-news/</link><description>&lt;p&gt;I subscribe to a fair amount of feeds for news, blogs, articles, etc. I&amp;#8217;m
 currently subscribed to 122 feeds, some of which have tens of articles a day
-(news sites), some of which are dead. &lt;a class="footnote-reference" href="#id3" id="id1"&gt;[1]&lt;/a&gt; Unfortunately there&amp;#8217;s still a few
+(news sites), some of which are dead. &lt;a class="footnote-reference" href="#footnote-1" id="footnote-reference-1"&gt;[1]&lt;/a&gt; Unfortunately there&amp;#8217;s still a few
 sites that I was visiting manually each day to get updates from because they
 don&amp;#8217;t offer any feeds. This&amp;nbsp;included:&lt;/p&gt;
 &lt;ul class="simple"&gt;
 &lt;li&gt;The &lt;a class="reference external" href="https://en.wikipedia.org/wiki/Portal:Current_events"&gt;Wikipedia Current Events portal&lt;/a&gt;, which usually has a nice daily summary
-of interesting worldwide stories. &lt;a class="footnote-reference" href="#id4" id="id2"&gt;[2]&lt;/a&gt;&lt;/li&gt;
+of interesting worldwide stories. &lt;a class="footnote-reference" href="#footnote-2" id="footnote-reference-2"&gt;[2]&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;The &lt;a class="reference external" href="https://www.nhl.com/news"&gt;&lt;span class="caps"&gt;NHL&lt;/span&gt; News&lt;/a&gt; (and specifically the &lt;a class="reference external" href="https://www.nhl.com/islanders/news"&gt;Islanders News&lt;/a&gt;) pages. (I still
 follow a &lt;a class="reference external" href="http://islanders.nhl.com/rss/news.xml"&gt;broken feed&lt;/a&gt; from the older site, but it seems one of the redesigns
 of the &lt;span class="caps"&gt;NHL&lt;/span&gt; team sites broke this&amp;nbsp;feed.)&lt;/li&gt;
@@ -139,10 +139,10 @@ them, so that&amp;#8217;s included too! Articles are pulled during page load, so
 always be up to&amp;nbsp;date.&lt;/p&gt;
 &lt;p&gt;I hope one (or both) of these are useful to people! Again, please
 &lt;a class="reference external" href="https://github.com/clokep/nhl-news-rss/issues/new"&gt;let me know if you have any issues or ideas&lt;/a&gt;!&lt;/p&gt;
-&lt;table class="docutils footnote" frame="void" id="id3" rules="none"&gt;
+&lt;table class="docutils footnote" frame="void" id="footnote-1" rules="none"&gt;
 &lt;colgroup&gt;&lt;col class="label" /&gt;&lt;col /&gt;&lt;/colgroup&gt;
 &lt;tbody valign="top"&gt;
-&lt;tr&gt;&lt;td class="label"&gt;&lt;a class="fn-backref" href="#id1"&gt;[1]&lt;/a&gt;&lt;/td&gt;&lt;td&gt;&lt;p class="first"&gt;I recently switched from using &lt;a class="reference external" href="http://thunderbird.net"&gt;Thunderbird&lt;/a&gt; to &lt;a class="reference external" href="https://feedly.com"&gt;Feedly&lt;/a&gt; in order to
+&lt;tr&gt;&lt;td class="label"&gt;&lt;a class="fn-backref" href="#footnote-reference-1"&gt;[1]&lt;/a&gt;&lt;/td&gt;&lt;td&gt;&lt;p class="first"&gt;I recently switched from using &lt;a class="reference external" href="http://thunderbird.net"&gt;Thunderbird&lt;/a&gt; to &lt;a class="reference external" href="https://feedly.com"&gt;Feedly&lt;/a&gt; in order to
 get cross device read status syncing on articles, but that&amp;#8217;s not really
 related to the rest of this article. Switching has mostly worked out
 well, but I do miss the filtering capabilities of&amp;nbsp;Thunderbird!&lt;/p&gt;
@@ -151,10 +151,10 @@ too many weird social features. I just wanted to read&amp;nbsp;feeds.&lt;/p&gt;
 &lt;/td&gt;&lt;/tr&gt;
 &lt;/tbody&gt;
 &lt;/table&gt;
-&lt;table class="docutils footnote" frame="void" id="id4" rules="none"&gt;
+&lt;table class="docutils footnote" frame="void" id="footnote-2" rules="none"&gt;
 &lt;colgroup&gt;&lt;col class="label" /&gt;&lt;col /&gt;&lt;/colgroup&gt;
 &lt;tbody valign="top"&gt;
-&lt;tr&gt;&lt;td class="label"&gt;&lt;a class="fn-backref" href="#id2"&gt;[2]&lt;/a&gt;&lt;/td&gt;&lt;td&gt;I do know that Wikipedia page updates can be consumed via &lt;span class="caps"&gt;RSS&lt;/span&gt;, but I
+&lt;tr&gt;&lt;td class="label"&gt;&lt;a class="fn-backref" href="#footnote-reference-2"&gt;[2]&lt;/a&gt;&lt;/td&gt;&lt;td&gt;I do know that Wikipedia page updates can be consumed via &lt;span class="caps"&gt;RSS&lt;/span&gt;, but I
 don&amp;#8217;t want to know every time the article is updated, just the state of
 the article at the end of the day. (It also doesn&amp;#8217;t work for the current
 events article since it&amp;#8217;s dynamically generated from a bunch of

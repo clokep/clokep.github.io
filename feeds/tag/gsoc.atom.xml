@@ -165,7 +165,7 @@ right for you.&lt;/li&gt;
 &lt;/li&gt;
 &lt;/ol&gt;
 &lt;div class="section" id="picking-an-organization"&gt;
-&lt;h2&gt;&lt;a class="toc-backref" href="#id4"&gt;Picking an Organization&lt;/a&gt;&lt;/h2&gt;
+&lt;h2&gt;&lt;a class="toc-backref" href="#toc-entry-1"&gt;Picking an Organization&lt;/a&gt;&lt;/h2&gt;
 &lt;p&gt;Pick an organization you’re truly interested in helping. I really can’t stress
 this enough. “Truly interested in helping” might mean many things:&lt;/p&gt;
 &lt;ul class="simple"&gt;
@@ -184,7 +184,7 @@ A pet peeve of mine is that a student should use (or at the very least
 to understand the needs and wants of a community without utilizing what
 they’ve poured their time and energy into.&lt;/blockquote&gt;
 &lt;div class="section" id="introductions"&gt;
-&lt;h3&gt;&lt;a class="toc-backref" href="#id5"&gt;Introductions&lt;/a&gt;&lt;/h3&gt;
+&lt;h3&gt;&lt;a class="toc-backref" href="#toc-entry-2"&gt;Introductions&lt;/a&gt;&lt;/h3&gt;
 &lt;p&gt;Different communities interact in different ways (and frequently a single
 community interacts in multiple ways). Common ways include:&lt;/p&gt;
 &lt;ul class="simple"&gt;
@@ -207,7 +207,7 @@ organization administrator is much more likely to respond quickly in that case.
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;div class="section" id="getting-accepted"&gt;
-&lt;h2&gt;&lt;a class="toc-backref" href="#id6"&gt;Getting Accepted&lt;/a&gt;&lt;/h2&gt;
+&lt;h2&gt;&lt;a class="toc-backref" href="#toc-entry-3"&gt;Getting Accepted&lt;/a&gt;&lt;/h2&gt;
 &lt;p&gt;We’re frequently asked how a student can improve their chances of getting
 accepted by an organization. GSoC is a very &lt;strong&gt;self-driven&lt;/strong&gt; program, especially
 if your mentor is a volunteer. Being a self starter can be a boon for being accepted.&lt;/p&gt;
@@ -223,7 +223,7 @@ entirely new piece of code!)&lt;/li&gt;
 &lt;li&gt;Get used to the way the community works and functions.&lt;/li&gt;
 &lt;/ul&gt;
 &lt;div class="section" id="building-an-application"&gt;
-&lt;h3&gt;&lt;a class="toc-backref" href="#id7"&gt;Building an Application&lt;/a&gt;&lt;/h3&gt;
+&lt;h3&gt;&lt;a class="toc-backref" href="#toc-entry-4"&gt;Building an Application&lt;/a&gt;&lt;/h3&gt;
 &lt;p&gt;The above should help feed into your application. In particular, it should help
 to build a realistic schedule for your application. (Scheduling is difficult
 even for seasoned engineers, but the above work should help make a more accurate schedule.)&lt;/p&gt;
@@ -246,7 +246,7 @@ you need to add/update documentation? Add new tests? Keep an old &lt;span class=
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;div class="section" id="summary"&gt;
-&lt;h2&gt;&lt;a class="toc-backref" href="#id8"&gt;Summary&lt;/a&gt;&lt;/h2&gt;
+&lt;h2&gt;&lt;a class="toc-backref" href="#toc-entry-5"&gt;Summary&lt;/a&gt;&lt;/h2&gt;
 &lt;p&gt;This is just a few ideas of what I look for when reviewing a Google Summer of
 Code application. To repeat, try to understand an organization’s members, get
 involved and gain experience, try to build an accurate schedule. An additional

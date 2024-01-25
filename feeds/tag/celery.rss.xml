@@ -13,10 +13,10 @@ task scheduling.&lt;/p&gt;
 its plethora of options, but it does not focus much on the &lt;a class="reference external" href="https://docs.celeryq.dev/en/v5.2.7/getting-started/introduction.html"&gt;high level architecture&lt;/a&gt;
 or how messages pass between the components. Celery is &lt;em&gt;extremely&lt;/em&gt; flexible (almost
 every component can be easily replaced!) but this can make it hard to understand.
-I attempt to break it down to the best of my understanding below. &lt;a class="footnote-reference" href="#id7" id="id1"&gt;[1]&lt;/a&gt;&lt;/p&gt;
+I attempt to break it down to the best of my understanding below. &lt;a class="footnote-reference" href="#footnote-1" id="footnote-reference-1"&gt;[1]&lt;/a&gt;&lt;/p&gt;
 &lt;div class="section" id="high-level-architecture"&gt;
-&lt;h2&gt;&lt;a class="toc-backref" href="#id17"&gt;High Level Architecture&lt;/a&gt;&lt;/h2&gt;
-&lt;p&gt;Celery has a few main components &lt;a class="footnote-reference" href="#id8" id="id2"&gt;[2]&lt;/a&gt;:&lt;/p&gt;
+&lt;h2&gt;&lt;a class="toc-backref" href="#toc-entry-1"&gt;High Level Architecture&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;Celery has a few main components &lt;a class="footnote-reference" href="#footnote-2" id="footnote-reference-2"&gt;[2]&lt;/a&gt;:&lt;/p&gt;
 &lt;ol class="arabic simple"&gt;
 &lt;li&gt;Your application code, including any &lt;a class="reference external" href="https://docs.celeryq.dev/en/v5.2.7/userguide/tasks.html"&gt;&lt;tt class="docutils literal"&gt;Task&lt;/tt&gt;&lt;/a&gt; objects you’ve defined. (Usually
 called the “client” in Celery’s documentation.)&lt;/li&gt;
@@ -39,32 +39,32 @@ more &lt;tt class="docutils literal"&gt;Task&lt;/tt&gt; definitions.&lt;/li&gt;
 &lt;/ol&gt;
 &lt;p&gt;If you’re unfamiliar with Celery, below is an example. It declares a simple
 &lt;tt class="docutils literal"&gt;add&lt;/tt&gt; task using the &lt;tt class="docutils literal"&gt;@task&lt;/tt&gt; decorator and will request the task to be executed
-in the background twice (&lt;tt class="docutils literal"&gt;&lt;span class="pre"&gt;add.delay(...)&lt;/span&gt;&lt;/tt&gt;). &lt;a class="footnote-reference" href="#id9" id="id3"&gt;[3]&lt;/a&gt; The results are then fetched
+in the background twice (&lt;tt class="docutils literal"&gt;&lt;span class="pre"&gt;add.delay(...)&lt;/span&gt;&lt;/tt&gt;). &lt;a class="footnote-reference" href="#footnote-3" id="footnote-reference-3"&gt;[3]&lt;/a&gt; The results are then fetched
 (&lt;tt class="docutils literal"&gt;asyncresult_1.get()&lt;/tt&gt;) and printed. Place this in a file named &lt;tt class="docutils literal"&gt;my_app.py&lt;/tt&gt;:&lt;/p&gt;
 &lt;pre class="code python highlight literal-block"&gt;
-&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;celery&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;Celery&lt;/span&gt;
+&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;celery&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;Celery&lt;/span&gt;&lt;span class="w"&gt;
 
-&lt;span class="n"&gt;app&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;Celery&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;
-    &lt;span class="s2"&gt;"my_app"&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
-    &lt;span class="n"&gt;backend&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s2"&gt;"rpc://"&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
-    &lt;span class="n"&gt;broker&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s2"&gt;"amqp://guest@localhost//"&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
-&lt;span class="p"&gt;)&lt;/span&gt;
-
-
-&lt;span class="nd"&gt;@app&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;task&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
-&lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;add&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;a&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="nb"&gt;int&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;b&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="nb"&gt;int&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="o"&gt;-&amp;gt;&lt;/span&gt; &lt;span class="nb"&gt;int&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
-    &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="n"&gt;a&lt;/span&gt; &lt;span class="o"&gt;+&lt;/span&gt; &lt;span class="n"&gt;b&lt;/span&gt;
+&lt;/span&gt;&lt;span class="n"&gt;app&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;Celery&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="w"&gt;
+&lt;/span&gt;    &lt;span class="s2"&gt;"my_app"&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="w"&gt;
+&lt;/span&gt;    &lt;span class="n"&gt;backend&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s2"&gt;"rpc://"&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="w"&gt;
+&lt;/span&gt;    &lt;span class="n"&gt;broker&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s2"&gt;"amqp://guest@localhost//"&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="w"&gt;
+&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="w"&gt;
 
 
-&lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="vm"&gt;__name__&lt;/span&gt; &lt;span class="o"&gt;==&lt;/span&gt; &lt;span class="s2"&gt;"__main__"&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
-    &lt;span class="c1"&gt;# Request that the tasks run and capture their async results.&lt;/span&gt;
-    &lt;span class="n"&gt;asyncresult_1&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;add&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;delay&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;2&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
-    &lt;span class="n"&gt;asyncresult_2&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;add&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;delay&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;3&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;4&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;span class="nd"&gt;@app&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;task&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;&lt;span class="w"&gt;
+&lt;/span&gt;&lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;add&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;a&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="nb"&gt;int&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;b&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="nb"&gt;int&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="o"&gt;-&amp;gt;&lt;/span&gt; &lt;span class="nb"&gt;int&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="w"&gt;
+&lt;/span&gt;    &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="n"&gt;a&lt;/span&gt; &lt;span class="o"&gt;+&lt;/span&gt; &lt;span class="n"&gt;b&lt;/span&gt;&lt;span class="w"&gt;
 
-    &lt;span class="n"&gt;result_1&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;asyncresult_1&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;get&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
-    &lt;span class="n"&gt;result_2&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;asyncresult_2&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;get&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
-    &lt;span class="c1"&gt;# Should result in 3, 7.&lt;/span&gt;
-    &lt;span class="nb"&gt;print&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="sa"&gt;f&lt;/span&gt;&lt;span class="s2"&gt;"Results: &lt;/span&gt;&lt;span class="si"&gt;{&lt;/span&gt;&lt;span class="n"&gt;result_1&lt;/span&gt;&lt;span class="si"&gt;}&lt;/span&gt;&lt;span class="s2"&gt;, &lt;/span&gt;&lt;span class="si"&gt;{&lt;/span&gt;&lt;span class="n"&gt;result_2&lt;/span&gt;&lt;span class="si"&gt;}&lt;/span&gt;&lt;span class="s2"&gt;"&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+
+&lt;/span&gt;&lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="vm"&gt;__name__&lt;/span&gt; &lt;span class="o"&gt;==&lt;/span&gt; &lt;span class="s2"&gt;"__main__"&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="w"&gt;
+&lt;/span&gt;    &lt;span class="c1"&gt;# Request that the tasks run and capture their async results.&lt;/span&gt;&lt;span class="w"&gt;
+&lt;/span&gt;    &lt;span class="n"&gt;asyncresult_1&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;add&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;delay&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;2&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="w"&gt;
+&lt;/span&gt;    &lt;span class="n"&gt;asyncresult_2&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;add&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;delay&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;3&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;4&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="w"&gt;
+
+&lt;/span&gt;    &lt;span class="n"&gt;result_1&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;asyncresult_1&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;get&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;&lt;span class="w"&gt;
+&lt;/span&gt;    &lt;span class="n"&gt;result_2&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;asyncresult_2&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;get&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;&lt;span class="w"&gt;
+&lt;/span&gt;    &lt;span class="c1"&gt;# Should result in 3, 7.&lt;/span&gt;&lt;span class="w"&gt;
+&lt;/span&gt;    &lt;span class="nb"&gt;print&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="sa"&gt;f&lt;/span&gt;&lt;span class="s2"&gt;"Results: &lt;/span&gt;&lt;span class="si"&gt;{&lt;/span&gt;&lt;span class="n"&gt;result_1&lt;/span&gt;&lt;span class="si"&gt;}&lt;/span&gt;&lt;span class="s2"&gt;, &lt;/span&gt;&lt;span class="si"&gt;{&lt;/span&gt;&lt;span class="n"&gt;result_2&lt;/span&gt;&lt;span class="si"&gt;}&lt;/span&gt;&lt;span class="s2"&gt;"&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
 &lt;/pre&gt;
 &lt;p&gt;Usually you don’t care where (which worker) the task runs on it, or how it gets
 there but sometimes you need! We can break down the components more to reveal more detail:&lt;/p&gt;
@@ -73,7 +73,7 @@ there but sometimes you need! We can break down the components more to reveal mo
 &lt;p&gt;The Celery components broken into sub-components.&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;div class="section" id="broker"&gt;
-&lt;h3&gt;&lt;a class="toc-backref" href="#id18"&gt;Broker&lt;/a&gt;&lt;/h3&gt;
+&lt;h3&gt;&lt;a class="toc-backref" href="#toc-entry-2"&gt;Broker&lt;/a&gt;&lt;/h3&gt;
 &lt;p&gt;The message broker is a piece of off-the-shelf software which takes task requests
 and queues them until a worker is ready to process them. Common options include
 &lt;a class="reference external" href="https://www.rabbitmq.com/"&gt;RabbitMQ&lt;/a&gt;, or &lt;a class="reference external" href="https://redis.io"&gt;Redis&lt;/a&gt;, although your cloud provider might have a custom one.&lt;/p&gt;
@@ -85,7 +85,7 @@ on workload). The Celery &lt;a class="reference external" href="https://docs.cel
 why you might route tasks to different queues.&lt;/p&gt;
 &lt;/div&gt;
 &lt;div class="section" id="workers"&gt;
-&lt;h3&gt;&lt;a class="toc-backref" href="#id19"&gt;Workers&lt;/a&gt;&lt;/h3&gt;
+&lt;h3&gt;&lt;a class="toc-backref" href="#toc-entry-3"&gt;Workers&lt;/a&gt;&lt;/h3&gt;
 &lt;p&gt;Celery workers fetch queued tasks from the broker and then run the code defined in
 your &lt;tt class="docutils literal"&gt;task&lt;/tt&gt;, they can optionally return a value via the results backend.&lt;/p&gt;
 &lt;p&gt;Celery workers have a “consumer” which fetches tasks from the broker: by default
@@ -104,18 +104,18 @@ the same process: a single task runs at a time and blocks the consumer from
 fetching more tasks.)&lt;/p&gt;
 &lt;/div&gt;
 &lt;div class="section" id="backend"&gt;
-&lt;h3&gt;&lt;a class="toc-backref" href="#id20"&gt;Backend&lt;/a&gt;&lt;/h3&gt;
+&lt;h3&gt;&lt;a class="toc-backref" href="#toc-entry-4"&gt;Backend&lt;/a&gt;&lt;/h3&gt;
 &lt;p&gt;The backend is another piece of off-the-shelf software which is used to store the
 results of your task. It provides a key-value store and is commonly &lt;a class="reference external" href="https://redis.io"&gt;Redis&lt;/a&gt;,
 although there are many options depending on how durable and large your results
 are. The results backend can be queried by using the &lt;tt class="docutils literal"&gt;AsyncResult&lt;/tt&gt; object which
-is returned to your application code. &lt;a class="footnote-reference" href="#id10" id="id4"&gt;[4]&lt;/a&gt;&lt;/p&gt;
+is returned to your application code. &lt;a class="footnote-reference" href="#footnote-4" id="footnote-reference-4"&gt;[4]&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;Much like for brokers, how you configure results backends is beyond the scope of
 this article.&lt;/p&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;div class="section" id="dataflow"&gt;
-&lt;h2&gt;&lt;a class="toc-backref" href="#id21"&gt;Dataflow&lt;/a&gt;&lt;/h2&gt;
+&lt;h2&gt;&lt;a class="toc-backref" href="#toc-entry-5"&gt;Dataflow&lt;/a&gt;&lt;/h2&gt;
 &lt;p&gt;You might have observed that the above components discussed at least several
 different processes (client, broker, worker, worker pool, backend) which may also
 exist on different computers. How does this all work to pass the task between
@@ -130,7 +130,7 @@ each process boundary:&lt;/p&gt;
 and a result traversing from a worker to a backend to application code.&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;div class="section" id="request-serialization"&gt;
-&lt;h3&gt;&lt;a class="toc-backref" href="#id22"&gt;Request Serialization&lt;/a&gt;&lt;/h3&gt;
+&lt;h3&gt;&lt;a class="toc-backref" href="#toc-entry-6"&gt;Request Serialization&lt;/a&gt;&lt;/h3&gt;
 &lt;p&gt;When a client requests for a task to be run the information needs to be passed to
 the broker in a form it understands. The necessary data includes:&lt;/p&gt;
 &lt;ul class="simple"&gt;
@@ -156,14 +156,14 @@ as well as custom schemes can be used as well).&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;p&gt;When a worker fetches a task from the broker it deserializes it into a &lt;a class="reference external" href="https://docs.celeryq.dev/en/v5.2.7/userguide/tasks.html#task-request"&gt;Request&lt;/a&gt;
 and executes it (as discussed above). In the case of a “prefork” worker pool the
-&lt;tt class="docutils literal"&gt;Request&lt;/tt&gt; is serialized &lt;em&gt;again&lt;/em&gt; using pickle when passed to task pool &lt;a class="footnote-reference" href="#id11" id="id5"&gt;[5]&lt;/a&gt;.&lt;/p&gt;
+&lt;tt class="docutils literal"&gt;Request&lt;/tt&gt; is serialized &lt;em&gt;again&lt;/em&gt; using pickle when passed to task pool &lt;a class="footnote-reference" href="#footnote-5" id="footnote-reference-5"&gt;[5]&lt;/a&gt;.&lt;/p&gt;
 &lt;p&gt;The worker pool then unpickles the request, loads the task code, and executes
 it with the requested arguments. Finally your task code is running! Note that the
 task code itself is not contained in the serialized request, that is loaded
 separately by the worker.&lt;/p&gt;
 &lt;/div&gt;
 &lt;div class="section" id="result-serialization"&gt;
-&lt;h3&gt;&lt;a class="toc-backref" href="#id23"&gt;Result Serialization&lt;/a&gt;&lt;/h3&gt;
+&lt;h3&gt;&lt;a class="toc-backref" href="#toc-entry-7"&gt;Result Serialization&lt;/a&gt;&lt;/h3&gt;
 &lt;p&gt;When a task returns a value it gets stored in the results backend with enough
 information for the original client to find it:&lt;/p&gt;
 &lt;ul class="simple"&gt;
@@ -173,7 +173,7 @@ information for the original client to find it:&lt;/p&gt;
 &lt;/ul&gt;
 &lt;p&gt;Similarly to tasks this information must be serialized before being placed in the
 results backend (and gets split between the headers and body). Celery provides
-configuration options to customize this serialization. &lt;a class="footnote-reference" href="#id12" id="id6"&gt;[6]&lt;/a&gt;&lt;/p&gt;
+configuration options to customize this serialization. &lt;a class="footnote-reference" href="#footnote-6" id="footnote-reference-6"&gt;[6]&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;An example &lt;span class="caps"&gt;AMQP&lt;/span&gt; message containing the details of a result is shown below:&lt;/p&gt;
 &lt;blockquote class="text-center"&gt;
 &lt;a class="reference external image-reference" href="https://patrick.cloke.us/images/celery-architecture/rabbitmq-result-message.png"&gt;&lt;img alt="Celery result wrapped in a RabbitMQ message" src="https://patrick.cloke.us/images/celery-architecture/rabbitmq-result-message.png" style="width: 50%;"/&gt;&lt;/a&gt;
@@ -183,7 +183,7 @@ configuration options to customize this serialization. &lt;a class="footnote-ref
 return value and provide it to the application code.&lt;/p&gt;
 &lt;/div&gt;
 &lt;div class="section" id="final-thoughts"&gt;
-&lt;h3&gt;&lt;a class="toc-backref" href="#id24"&gt;Final thoughts&lt;/a&gt;&lt;/h3&gt;
+&lt;h3&gt;&lt;a class="toc-backref" href="#toc-entry-8"&gt;Final thoughts&lt;/a&gt;&lt;/h3&gt;
 &lt;p&gt;Since the Celery protocol is a public, documented &lt;span class="caps"&gt;API&lt;/span&gt; it allows you to create
 task requests externally to Celery! As long as you can interface to the Celery broker
 (and have some shared configuration) you can use a different application (or programming
@@ -209,39 +209,39 @@ language) to publish and/or consume tasks. This is exactly what others have don
 &lt;/li&gt;
 &lt;/ul&gt;
 &lt;p&gt;Note that I haven’t used any of the above projects (and can’t vouch for them).&lt;/p&gt;
-&lt;table class="docutils footnote" frame="void" id="id7" rules="none"&gt;
+&lt;table class="docutils footnote" frame="void" id="footnote-1" rules="none"&gt;
 &lt;colgroup&gt;&lt;col class="label"/&gt;&lt;col/&gt;&lt;/colgroup&gt;
 &lt;tbody valign="top"&gt;
-&lt;tr&gt;&lt;td class="label"&gt;&lt;a class="fn-backref" href="#id1"&gt;[1]&lt;/a&gt;&lt;/td&gt;&lt;td&gt;Part of this started out as an &lt;a class="reference external" href="https://github.com/clokep/celery-batches/issues/69#issuecomment-1181855643"&gt;explanation of how celery-batches works&lt;/a&gt;.&lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td class="label"&gt;&lt;a class="fn-backref" href="#footnote-reference-1"&gt;[1]&lt;/a&gt;&lt;/td&gt;&lt;td&gt;Part of this started out as an &lt;a class="reference external" href="https://github.com/clokep/celery-batches/issues/69#issuecomment-1181855643"&gt;explanation of how celery-batches works&lt;/a&gt;.&lt;/td&gt;&lt;/tr&gt;
 &lt;/tbody&gt;
 &lt;/table&gt;
-&lt;table class="docutils footnote" frame="void" id="id8" rules="none"&gt;
+&lt;table class="docutils footnote" frame="void" id="footnote-2" rules="none"&gt;
 &lt;colgroup&gt;&lt;col class="label"/&gt;&lt;col/&gt;&lt;/colgroup&gt;
 &lt;tbody valign="top"&gt;
-&lt;tr&gt;&lt;td class="label"&gt;&lt;a class="fn-backref" href="#id2"&gt;[2]&lt;/a&gt;&lt;/td&gt;&lt;td&gt;&lt;a class="reference external" href="https://docs.celeryq.dev/en/v5.2.7/userguide/periodic-tasks.html"&gt;Celery beat&lt;/a&gt; is another common component used to run scheduled or periodic
+&lt;tr&gt;&lt;td class="label"&gt;&lt;a class="fn-backref" href="#footnote-reference-2"&gt;[2]&lt;/a&gt;&lt;/td&gt;&lt;td&gt;&lt;a class="reference external" href="https://docs.celeryq.dev/en/v5.2.7/userguide/periodic-tasks.html"&gt;Celery beat&lt;/a&gt; is another common component used to run scheduled or periodic
 tasks. Architecture wise it takes the same place as your application code,
 i.e. it runs forever and requests for tasks to be executed based on the time.&lt;/td&gt;&lt;/tr&gt;
 &lt;/tbody&gt;
 &lt;/table&gt;
-&lt;table class="docutils footnote" frame="void" id="id9" rules="none"&gt;
+&lt;table class="docutils footnote" frame="void" id="footnote-3" rules="none"&gt;
 &lt;colgroup&gt;&lt;col class="label"/&gt;&lt;col/&gt;&lt;/colgroup&gt;
 &lt;tbody valign="top"&gt;
-&lt;tr&gt;&lt;td class="label"&gt;&lt;a class="fn-backref" href="#id3"&gt;[3]&lt;/a&gt;&lt;/td&gt;&lt;td&gt;There’s a &lt;a class="reference external" href="https://docs.celeryq.dev/en/v5.2.7/userguide/calling.html"&gt;bunch of ways&lt;/a&gt; to do this, &lt;tt class="docutils literal"&gt;apply_async&lt;/tt&gt; and &lt;tt class="docutils literal"&gt;delay&lt;/tt&gt; are the
+&lt;tr&gt;&lt;td class="label"&gt;&lt;a class="fn-backref" href="#footnote-reference-3"&gt;[3]&lt;/a&gt;&lt;/td&gt;&lt;td&gt;There’s a &lt;a class="reference external" href="https://docs.celeryq.dev/en/v5.2.7/userguide/calling.html"&gt;bunch of ways&lt;/a&gt; to do this, &lt;tt class="docutils literal"&gt;apply_async&lt;/tt&gt; and &lt;tt class="docutils literal"&gt;delay&lt;/tt&gt; are the
 most common, but don’t impact the contents of this article.&lt;/td&gt;&lt;/tr&gt;
 &lt;/tbody&gt;
 &lt;/table&gt;
-&lt;table class="docutils footnote" frame="void" id="id10" rules="none"&gt;
+&lt;table class="docutils footnote" frame="void" id="footnote-4" rules="none"&gt;
 &lt;colgroup&gt;&lt;col class="label"/&gt;&lt;col/&gt;&lt;/colgroup&gt;
 &lt;tbody valign="top"&gt;
-&lt;tr&gt;&lt;td class="label"&gt;&lt;a class="fn-backref" href="#id4"&gt;[4]&lt;/a&gt;&lt;/td&gt;&lt;td&gt;As a quick aside — &lt;tt class="docutils literal"&gt;AsyncResult&lt;/tt&gt; does not refer to async/await in Python.
+&lt;tr&gt;&lt;td class="label"&gt;&lt;a class="fn-backref" href="#footnote-reference-4"&gt;[4]&lt;/a&gt;&lt;/td&gt;&lt;td&gt;As a quick aside — &lt;tt class="docutils literal"&gt;AsyncResult&lt;/tt&gt; does not refer to async/await in Python.
 &lt;tt class="docutils literal"&gt;AsyncResult.get()&lt;/tt&gt; is &lt;strong&gt;synchronous&lt;/strong&gt;. A &lt;a class="reference external" href="https://patrick.cloke.us/posts/2018/10/23/calling-celery-from-twisted/"&gt;previous article&lt;/a&gt; has some more
 information on this.&lt;/td&gt;&lt;/tr&gt;
 &lt;/tbody&gt;
 &lt;/table&gt;
-&lt;table class="docutils footnote" frame="void" id="id11" rules="none"&gt;
+&lt;table class="docutils footnote" frame="void" id="footnote-5" rules="none"&gt;
 &lt;colgroup&gt;&lt;col class="label"/&gt;&lt;col/&gt;&lt;/colgroup&gt;
 &lt;tbody valign="top"&gt;
-&lt;tr&gt;&lt;td class="label"&gt;&lt;a class="fn-backref" href="#id5"&gt;[5]&lt;/a&gt;&lt;/td&gt;&lt;td&gt;This is not configurable. The Celery &lt;a class="reference external" href="https://docs.celeryq.dev/en/v5.2.7/userguide/security.html#serializers"&gt;security guide&lt;/a&gt; recommends not using
+&lt;tr&gt;&lt;td class="label"&gt;&lt;a class="fn-backref" href="#footnote-reference-5"&gt;[5]&lt;/a&gt;&lt;/td&gt;&lt;td&gt;This is not configurable. The Celery &lt;a class="reference external" href="https://docs.celeryq.dev/en/v5.2.7/userguide/security.html#serializers"&gt;security guide&lt;/a&gt; recommends not using
 pickle for serializers (and it is &lt;a class="reference external" href="https://docs.python.org/dev/library/pickle.html"&gt;well known&lt;/a&gt; that pickle can be a security
 flaw), but it does not seem documented anywhere that pickle will be used with
 the prefork pool. If you are using &lt;span class="caps"&gt;JSON&lt;/span&gt; to initially serialize to the broker
@@ -249,10 +249,10 @@ then your task should only be left with “simple” types (strings, integers,
 floats, null, lists, and dictionaries) so this should not be an issue.&lt;/td&gt;&lt;/tr&gt;
 &lt;/tbody&gt;
 &lt;/table&gt;
-&lt;table class="docutils footnote" frame="void" id="id12" rules="none"&gt;
+&lt;table class="docutils footnote" frame="void" id="footnote-6" rules="none"&gt;
 &lt;colgroup&gt;&lt;col class="label"/&gt;&lt;col/&gt;&lt;/colgroup&gt;
 &lt;tbody valign="top"&gt;
-&lt;tr&gt;&lt;td class="label"&gt;&lt;a class="fn-backref" href="#id6"&gt;[6]&lt;/a&gt;&lt;/td&gt;&lt;td&gt;Tasks and results can be configured to have different serializers (or different
+&lt;tr&gt;&lt;td class="label"&gt;&lt;a class="fn-backref" href="#footnote-reference-6"&gt;[6]&lt;/a&gt;&lt;/td&gt;&lt;td&gt;Tasks and results can be configured to have different serializers (or different
 compression settings) via the &lt;tt class="docutils literal"&gt;task_&lt;/tt&gt; vs. &lt;tt class="docutils literal"&gt;result_&lt;/tt&gt; configuration options.&lt;/td&gt;&lt;/tr&gt;
 &lt;/tbody&gt;
 &lt;/table&gt;
@@ -263,7 +263,7 @@ Celery 5.1 and fixes storing of results when using the &lt;a class="reference ex
 &lt;p&gt;As &lt;a class="reference external" href="https://patrick.cloke.us/posts/2019/10/04/celery-amqp-backends/"&gt;explored previously&lt;/a&gt;, the &lt;span class="caps"&gt;RPC&lt;/span&gt; result backend works by having a results queue
 per client, unfortunately celery-batches was attempting to store the results in
 a queue named after the task &lt;span class="caps"&gt;ID&lt;/span&gt; instead of the client &lt;span class="caps"&gt;ID&lt;/span&gt; (Celery internally calls
-this the &amp;#8220;correlation &lt;span class="caps"&gt;ID&lt;/span&gt;&amp;#8221;) &lt;a class="footnote-reference" href="#id2" id="id1"&gt;[1]&lt;/a&gt;.&lt;/p&gt;
+this the &amp;#8220;correlation &lt;span class="caps"&gt;ID&lt;/span&gt;&amp;#8221;) &lt;a class="footnote-reference" href="#footnote-1" id="footnote-reference-1"&gt;[1]&lt;/a&gt;.&lt;/p&gt;
 &lt;p&gt;This unfortunately requires a change to client code to pass the batched request
 into the &lt;tt class="docutils literal"&gt;mark_as_done&lt;/tt&gt; method, using the example &lt;a class="reference external" href="https://celery-batches.readthedocs.io/en/v0.5/"&gt;from the documnation&lt;/a&gt; with
 the changed line&amp;nbsp;highlighted:&lt;/p&gt;
@@ -293,10 +293,10 @@ the changed line&amp;nbsp;highlighted:&lt;/p&gt;
     &lt;span class="p"&gt;)&lt;/span&gt;
     &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;response&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;json&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;domain&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt; &lt;span class="k"&gt;for&lt;/span&gt; &lt;span class="n"&gt;domain&lt;/span&gt; &lt;span class="ow"&gt;in&lt;/span&gt; &lt;span class="n"&gt;domains&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
-&lt;table class="docutils footnote" frame="void" id="id2" rules="none"&gt;
+&lt;table class="docutils footnote" frame="void" id="footnote-1" rules="none"&gt;
 &lt;colgroup&gt;&lt;col class="label" /&gt;&lt;col /&gt;&lt;/colgroup&gt;
 &lt;tbody valign="top"&gt;
-&lt;tr&gt;&lt;td class="label"&gt;&lt;a class="fn-backref" href="#id1"&gt;[1]&lt;/a&gt;&lt;/td&gt;&lt;td&gt;The &lt;span class="caps"&gt;RPC&lt;/span&gt; backend has &lt;a class="reference external" href="https://github.com/celery/celery/blob/v5.1.0/celery/backends/rpc.py#L166"&gt;code which pulls out the correlation &lt;span class="caps"&gt;ID&lt;/span&gt;&lt;/a&gt;, but falls
+&lt;tr&gt;&lt;td class="label"&gt;&lt;a class="fn-backref" href="#footnote-reference-1"&gt;[1]&lt;/a&gt;&lt;/td&gt;&lt;td&gt;The &lt;span class="caps"&gt;RPC&lt;/span&gt; backend has &lt;a class="reference external" href="https://github.com/celery/celery/blob/v5.1.0/celery/backends/rpc.py#L166"&gt;code which pulls out the correlation &lt;span class="caps"&gt;ID&lt;/span&gt;&lt;/a&gt;, but falls
 back to the task &lt;span class="caps"&gt;ID&lt;/span&gt; if not given. This is called via an
 &lt;a class="reference external" href="https://github.com/celery/celery/blob/v5.1.0/celery/backends/rpc.py#L198-L200"&gt;override of the &lt;tt class="docutils literal"&gt;store_result&lt;/tt&gt; method&lt;/a&gt;.&lt;/td&gt;&lt;/tr&gt;
 &lt;/tbody&gt;
@@ -384,7 +384,7 @@ into the &lt;tt class="docutils literal"&gt;BacklogLimitExceeded&lt;/tt&gt; erro
 (meaning lots of&amp;nbsp;I/O).&lt;/p&gt;
 &lt;/div&gt;
 </description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Patrick Cloke</dc:creator><pubDate>Fri, 04 Oct 2019 08:10:00 -0400</pubDate><guid isPermaLink="false">tag:patrick.cloke.us,2019-10-04:/posts/2019/10/04/celery-amqp-backends/</guid><category>articles</category><category>celery</category></item><item><title>Celery without a Results Backend</title><link>https://patrick.cloke.us/posts/2019/07/17/celery-without-a-results-backend/</link><description>&lt;p&gt;The &lt;a class="reference external" href="http://www.celeryproject.org/"&gt;Celery&lt;/a&gt; &lt;a class="reference external" href="https://docs.celeryproject.org/en/latest/reference/celery.html#celery.Celery.send_task"&gt;&lt;tt class="docutils literal"&gt;send_task&lt;/tt&gt;&lt;/a&gt; method allows you to invoke a task by name without
-importing it. &lt;a class="footnote-reference" href="#id5" id="id1"&gt;[1]&lt;/a&gt; There is an undocumented &lt;a class="footnote-reference" href="#id6" id="id2"&gt;[2]&lt;/a&gt; caveat to using &lt;tt class="docutils literal"&gt;send_task&lt;/tt&gt;:
+importing it. &lt;a class="footnote-reference" href="#footnote-1" id="footnote-reference-1"&gt;[1]&lt;/a&gt; There is an undocumented &lt;a class="footnote-reference" href="#footnote-2" id="footnote-reference-2"&gt;[2]&lt;/a&gt; caveat to using &lt;tt class="docutils literal"&gt;send_task&lt;/tt&gt;:
 it doesn&amp;#8217;t have access to the configuration of the task (from when the task was
 created using the &lt;a class="reference external" href="https://docs.celeryproject.org/en/latest/reference/celery.html#celery.Celery.task"&gt;&lt;tt class="docutils literal"&gt;&amp;#64;task&lt;/tt&gt; decorator&lt;/a&gt;).&lt;/p&gt;
 &lt;p&gt;Much of this configuration doesn&amp;#8217;t matter to the caller, for example the caller
@@ -401,52 +401,52 @@ execute as you&amp;#8217;d&amp;nbsp;expect:&lt;/p&gt;
 &lt;li&gt;If a non-default results backend is to be&amp;nbsp;used.&lt;/li&gt;
 &lt;/ul&gt;
 &lt;p&gt;Another piece of configuration that matters (which surprised me and had a
-performance impact for us &lt;a class="footnote-reference" href="#id7" id="id3"&gt;[3]&lt;/a&gt;) is whether to ignore a task result or not.
+performance impact for us &lt;a class="footnote-reference" href="#footnote-3" id="footnote-reference-3"&gt;[3]&lt;/a&gt;) is whether to ignore a task result or not.
 Unexpectedly, Celery will attempt to connect to the results backend &lt;em&gt;on task call&lt;/em&gt;.
 I assumed that the results backend would never be contacted since we never
 attempted to &lt;strong&gt;retrieve&lt;/strong&gt; a result! This turned out to be&amp;nbsp;untrue.&lt;/p&gt;
 &lt;p&gt;Once identified, The fix was straightforward! We ensured that every task which
 had &lt;tt class="docutils literal"&gt;ignore_result=True&lt;/tt&gt; on task declaration also had &lt;tt class="docutils literal"&gt;ignore_result=True&lt;/tt&gt;
-on task call (when using &lt;tt class="docutils literal"&gt;send_task&lt;/tt&gt;). &lt;a class="footnote-reference" href="#id8" id="id4"&gt;[4]&lt;/a&gt; This duplication is unfortunate,
+on task call (when using &lt;tt class="docutils literal"&gt;send_task&lt;/tt&gt;). &lt;a class="footnote-reference" href="#footnote-4" id="footnote-reference-4"&gt;[4]&lt;/a&gt; This duplication is unfortunate,
 but easy&amp;nbsp;enough.&lt;/p&gt;
 &lt;p&gt;We figured this out due to a calling process which doesn&amp;#8217;t use any results, but
 the &lt;tt class="docutils literal"&gt;celery.backends&lt;/tt&gt; module was appearing in the &lt;a class="reference external" href="https://pyflame.readthedocs.io"&gt;pyflame&lt;/a&gt; profiles.
 Another solution (for this particular setup) was to use the (&lt;a class="reference external" href="http://docs.celeryproject.org/en/latest/userguide/configuration.html#task-result-backend-settings"&gt;undocumented&lt;/a&gt;)
 &lt;tt class="docutils literal"&gt;disabled&lt;/tt&gt; results&amp;nbsp;backend.&lt;/p&gt;
-&lt;table class="docutils footnote" frame="void" id="id5" rules="none"&gt;
+&lt;table class="docutils footnote" frame="void" id="footnote-1" rules="none"&gt;
 &lt;colgroup&gt;&lt;col class="label" /&gt;&lt;col /&gt;&lt;/colgroup&gt;
 &lt;tbody valign="top"&gt;
-&lt;tr&gt;&lt;td class="label"&gt;&lt;a class="fn-backref" href="#id1"&gt;[1]&lt;/a&gt;&lt;/td&gt;&lt;td&gt;There are a variety of reasons you might want to do this, but I&amp;#8217;ve
+&lt;tr&gt;&lt;td class="label"&gt;&lt;a class="fn-backref" href="#footnote-reference-1"&gt;[1]&lt;/a&gt;&lt;/td&gt;&lt;td&gt;There are a variety of reasons you might want to do this, but I&amp;#8217;ve
 used it when tasks that use &lt;a class="reference external" href="https://www.djangoproject.com/"&gt;Django&lt;/a&gt; models but the calling process
 does not have Django configured.&lt;/td&gt;&lt;/tr&gt;
 &lt;/tbody&gt;
 &lt;/table&gt;
-&lt;table class="docutils footnote" frame="void" id="id6" rules="none"&gt;
+&lt;table class="docutils footnote" frame="void" id="footnote-2" rules="none"&gt;
 &lt;colgroup&gt;&lt;col class="label" /&gt;&lt;col /&gt;&lt;/colgroup&gt;
 &lt;tbody valign="top"&gt;
-&lt;tr&gt;&lt;td class="label"&gt;&lt;a class="fn-backref" href="#id2"&gt;[2]&lt;/a&gt;&lt;/td&gt;&lt;td&gt;I couldn&amp;#8217;t find any documentation about it at least. Maybe this is meant
+&lt;tr&gt;&lt;td class="label"&gt;&lt;a class="fn-backref" href="#footnote-reference-2"&gt;[2]&lt;/a&gt;&lt;/td&gt;&lt;td&gt;I couldn&amp;#8217;t find any documentation about it at least. Maybe this is meant
 to be obvious, but it didn&amp;#8217;t click for me without deep understanding of
 how Celery works.&lt;/td&gt;&lt;/tr&gt;
 &lt;/tbody&gt;
 &lt;/table&gt;
-&lt;table class="docutils footnote" frame="void" id="id7" rules="none"&gt;
+&lt;table class="docutils footnote" frame="void" id="footnote-3" rules="none"&gt;
 &lt;colgroup&gt;&lt;col class="label" /&gt;&lt;col /&gt;&lt;/colgroup&gt;
 &lt;tbody valign="top"&gt;
-&lt;tr&gt;&lt;td class="label"&gt;&lt;a class="fn-backref" href="#id3"&gt;[3]&lt;/a&gt;&lt;/td&gt;&lt;td&gt;The performance impact we were seeing was due to the &lt;span class="caps"&gt;TCP&lt;/span&gt; negotiation and
+&lt;tr&gt;&lt;td class="label"&gt;&lt;a class="fn-backref" href="#footnote-reference-3"&gt;[3]&lt;/a&gt;&lt;/td&gt;&lt;td&gt;The performance impact we were seeing was due to the &lt;span class="caps"&gt;TCP&lt;/span&gt; negotiation and
 login to the results backend. This got especially bad if the results
 backend was under load or down.&lt;/td&gt;&lt;/tr&gt;
 &lt;/tbody&gt;
 &lt;/table&gt;
-&lt;table class="docutils footnote" frame="void" id="id8" rules="none"&gt;
+&lt;table class="docutils footnote" frame="void" id="footnote-4" rules="none"&gt;
 &lt;colgroup&gt;&lt;col class="label" /&gt;&lt;col /&gt;&lt;/colgroup&gt;
 &lt;tbody valign="top"&gt;
-&lt;tr&gt;&lt;td class="label"&gt;&lt;a class="fn-backref" href="#id4"&gt;[4]&lt;/a&gt;&lt;/td&gt;&lt;td&gt;Note that it is a &lt;a class="reference external" href="https://docs.celeryproject.org/en/latest/userguide/tasks.html?highlight=argsrepr#ignore-results-you-don-t-want"&gt;best practice&lt;/a&gt; to ignore results on tasks where you
+&lt;tr&gt;&lt;td class="label"&gt;&lt;a class="fn-backref" href="#footnote-reference-4"&gt;[4]&lt;/a&gt;&lt;/td&gt;&lt;td&gt;Note that it is a &lt;a class="reference external" href="https://docs.celeryproject.org/en/latest/userguide/tasks.html?highlight=argsrepr#ignore-results-you-don-t-want"&gt;best practice&lt;/a&gt; to ignore results on tasks where you
 don&amp;#8217;t need the result!&lt;/td&gt;&lt;/tr&gt;
 &lt;/tbody&gt;
 &lt;/table&gt;
 </description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Patrick Cloke</dc:creator><pubDate>Wed, 17 Jul 2019 20:35:00 -0400</pubDate><guid isPermaLink="false">tag:patrick.cloke.us,2019-07-17:/posts/2019/07/17/celery-without-a-results-backend/</guid><category>articles</category><category>celery</category></item><item><title>Calling Celery from Twisted</title><link>https://patrick.cloke.us/posts/2018/10/23/calling-celery-from-twisted/</link><description>
 &lt;div class="section" id="background"&gt;
-&lt;h2&gt;&lt;a class="toc-backref" href="#id13"&gt;Background&lt;/a&gt;&lt;/h2&gt;
+&lt;h2&gt;&lt;a class="toc-backref" href="#toc-entry-1"&gt;Background&lt;/a&gt;&lt;/h2&gt;
 &lt;p&gt;I use &lt;a class="reference external" href="https://twistedmatrix.com/"&gt;Twisted&lt;/a&gt; and &lt;a class="reference external" href="http://www.celeryproject.org/"&gt;Celery&lt;/a&gt; daily at work, both are useful frameworks, both have
 a lot of great information out there, but a particular use (that I haven’t seen
 discussed much online, hence this post) is calling Celery tasks &lt;em&gt;from&lt;/em&gt; Twisted
@@ -503,9 +503,9 @@ illustrated best by a code example, we would want to do something like the foll
 &lt;/pre&gt;&lt;/div&gt;
 &lt;/div&gt;
 &lt;div class="section" id="initial-approach"&gt;
-&lt;h2&gt;&lt;a class="toc-backref" href="#id14"&gt;Initial Approach&lt;/a&gt;&lt;/h2&gt;
+&lt;h2&gt;&lt;a class="toc-backref" href="#toc-entry-2"&gt;Initial Approach&lt;/a&gt;&lt;/h2&gt;
 &lt;p&gt;The initial attempt to pair these libraries is to call Celery tasks like you
-would normally (import the Celery task and call &lt;a class="reference external" href="http://docs.celeryproject.org/en/latest/reference/celery.app.task.html#celery.app.task.Task.delay"&gt;&lt;tt class="docutils literal"&gt;delay()&lt;/tt&gt;&lt;/a&gt; on it). &lt;a class="footnote-reference" href="#id7" id="id1"&gt;[1]&lt;/a&gt; There’s
+would normally (import the Celery task and call &lt;a class="reference external" href="http://docs.celeryproject.org/en/latest/reference/celery.app.task.html#celery.app.task.Task.delay"&gt;&lt;tt class="docutils literal"&gt;delay()&lt;/tt&gt;&lt;/a&gt; on it). &lt;a class="footnote-reference" href="#footnote-1" id="footnote-reference-1"&gt;[1]&lt;/a&gt; There’s
 a hint that this won’t work in &lt;a class="reference external" href="http://docs.celeryproject.org/en/latest/reference/celery.app.task.html#celery.app.task.Task.delay"&gt;the documentation&lt;/a&gt; however:&lt;/p&gt;
 &lt;blockquote&gt;
 Apply tasks asynchronously by sending a message.&lt;/blockquote&gt;
@@ -517,11 +517,11 @@ Wait until task is ready, and return its result.&lt;/blockquote&gt;
 separate issues with calling Celery from Twisted:&lt;/p&gt;
 &lt;ol class="arabic simple"&gt;
 &lt;li&gt;In both of these situations, (synchronous) I/O is happening in the
-background when you make this call! &lt;a class="footnote-reference" href="#id8" id="id2"&gt;[2]&lt;/a&gt; I/O happening outside of the
+background when you make this call! &lt;a class="footnote-reference" href="#footnote-2" id="footnote-reference-2"&gt;[2]&lt;/a&gt; I/O happening outside of the
 reactor is a big no-no in a Twisted process since it can block the reactor
-from running. &lt;a class="footnote-reference" href="#id9" id="id3"&gt;[3]&lt;/a&gt;&lt;/li&gt;
+from running. &lt;a class="footnote-reference" href="#footnote-3" id="footnote-reference-3"&gt;[3]&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;Additionally, the &lt;tt class="docutils literal"&gt;AsyncResult.get()&lt;/tt&gt; call blocks until a result is ready,
-this doesn’t fit well into an evented programming paradigm. &lt;a class="footnote-reference" href="#id10" id="id4"&gt;[4]&lt;/a&gt;&lt;/li&gt;
+this doesn’t fit well into an evented programming paradigm. &lt;a class="footnote-reference" href="#footnote-4" id="footnote-reference-4"&gt;[4]&lt;/a&gt;&lt;/li&gt;
 &lt;/ol&gt;
 &lt;p&gt;The second problem is handled well by the &lt;a class="reference external" href="https://github.com/SentimensRG/txCelery"&gt;txCelery&lt;/a&gt; package, it allows you to
 call a task and get a sub-class of &lt;a class="reference external" href="http://twistedmatrix.com/documents/current/api/twisted.internet.defer.Deferred.html"&gt;&lt;tt class="docutils literal"&gt;Deferred&lt;/tt&gt;&lt;/a&gt; which resolves into the result
@@ -531,11 +531,11 @@ just uses the normal mechanisms built into Celery for I/O (which causes I/O in
 the reactor thread).&lt;/p&gt;
 &lt;/div&gt;
 &lt;div class="section" id="threaded-approach"&gt;
-&lt;h2&gt;&lt;a class="toc-backref" href="#id15"&gt;Threaded Approach&lt;/a&gt;&lt;/h2&gt;
+&lt;h2&gt;&lt;a class="toc-backref" href="#toc-entry-3"&gt;Threaded Approach&lt;/a&gt;&lt;/h2&gt;
 &lt;p&gt;Twisted has a thread pool and makes it super easy to ask it to “run this code in
 a non-reactor thread and return the result to me”. It is pretty straightforward
 to cobble together a way to use &lt;a class="reference external" href="https://twistedmatrix.com/documents/current/api/twisted.internet.threads.html#deferToThread"&gt;&lt;tt class="docutils literal"&gt;threads.deferToThread()&lt;/tt&gt;&lt;/a&gt; to call
-&lt;a class="reference external" href="http://docs.celeryproject.org/en/latest/reference/celery.html#celery.Celery.send_task"&gt;&lt;tt class="docutils literal"&gt;Celery.send_task()&lt;/tt&gt;&lt;/a&gt; &lt;a class="footnote-reference" href="#id11" id="id5"&gt;[5]&lt;/a&gt;. You still need an asynchronous way to check if the
+&lt;a class="reference external" href="http://docs.celeryproject.org/en/latest/reference/celery.html#celery.Celery.send_task"&gt;&lt;tt class="docutils literal"&gt;Celery.send_task()&lt;/tt&gt;&lt;/a&gt; &lt;a class="footnote-reference" href="#footnote-5" id="footnote-reference-5"&gt;[5]&lt;/a&gt;. You still need an asynchronous way to check if the
 task result is ready, however. You could just call &lt;tt class="docutils literal"&gt;AsyncResult.get()&lt;/tt&gt; in a
 thread, but you will likely quickly exhaust your thread pool since that blocks
 until a result is ready. Alternately you can check the status of a task using
@@ -545,63 +545,63 @@ accessing a &lt;em&gt;property&lt;/em&gt; of this object causes I/O to happen, b
 following (note that this is heavily inspired by what txCelery does, but pushes
 all I/O onto a separate thread instead of doing it in the reactor thread):&lt;/p&gt;
 &lt;pre class="code python highlight literal-block"&gt;
-&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;celery&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;states&lt;/span&gt;
+&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;celery&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;states&lt;/span&gt;&lt;span class="w"&gt;
 
-&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;twisted.internet&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;defer&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;reactor&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;threads&lt;/span&gt;
-
-
-&lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;send_task&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;app&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="o"&gt;*&lt;/span&gt;&lt;span class="n"&gt;args&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="o"&gt;**&lt;/span&gt;&lt;span class="n"&gt;kwargs&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
-    &lt;span class="c1"&gt;# Call the real function via a background thread.&lt;/span&gt;
-    &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="n"&gt;threads&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;deferToThread&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;app&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;send_task&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="o"&gt;*&lt;/span&gt;&lt;span class="n"&gt;args&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="o"&gt;**&lt;/span&gt;&lt;span class="n"&gt;kwargs&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;addCallback&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;CeleryDeferred&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;twisted.internet&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;defer&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;reactor&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;threads&lt;/span&gt;&lt;span class="w"&gt;
 
 
-&lt;span class="k"&gt;class&lt;/span&gt; &lt;span class="nc"&gt;CeleryDeferred&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;defer&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;Deferred&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="nb"&gt;object&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
-    &lt;span class="sd"&gt;"""
+&lt;/span&gt;&lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;send_task&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;app&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="o"&gt;*&lt;/span&gt;&lt;span class="n"&gt;args&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="o"&gt;**&lt;/span&gt;&lt;span class="n"&gt;kwargs&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;&lt;span class="w"&gt;
+&lt;/span&gt;    &lt;span class="c1"&gt;# Call the real function via a background thread.&lt;/span&gt;&lt;span class="w"&gt;
+&lt;/span&gt;    &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="n"&gt;threads&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;deferToThread&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;app&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;send_task&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="o"&gt;*&lt;/span&gt;&lt;span class="n"&gt;args&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="o"&gt;**&lt;/span&gt;&lt;span class="n"&gt;kwargs&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;addCallback&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;CeleryDeferred&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="w"&gt;
+
+
+&lt;/span&gt;&lt;span class="k"&gt;class&lt;/span&gt; &lt;span class="nc"&gt;CeleryDeferred&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;defer&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;Deferred&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="nb"&gt;object&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;&lt;span class="w"&gt;
+    &lt;/span&gt;&lt;span class="sd"&gt;"""
     Extension of the Twisted Deferred object that wraps a Celery AsyncResult.
 
     This Deferred will occasionally poll the Celery task for its status. When
     complete, the Deferred will resolve and any added callbacks will be run.
 
     Inspired by txCelery: https://github.com/SentimensRG/txCelery/
-    """&lt;/span&gt;
-    &lt;span class="n"&gt;CHECK_INTERVAL&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="mf"&gt;0.25&lt;/span&gt;
+    """&lt;/span&gt;&lt;span class="w"&gt;
+&lt;/span&gt;    &lt;span class="n"&gt;CHECK_INTERVAL&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="mf"&gt;0.25&lt;/span&gt;&lt;span class="w"&gt;
 
-    &lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="fm"&gt;__init__&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;async_result&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
-        &lt;span class="c1"&gt;# Deferred is an old-style class&lt;/span&gt;
-        &lt;span class="n"&gt;defer&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;Deferred&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="fm"&gt;__init__&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;_canceller&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;/span&gt;    &lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="fm"&gt;__init__&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;async_result&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;&lt;span class="w"&gt;
+&lt;/span&gt;        &lt;span class="c1"&gt;# Deferred is an old-style class&lt;/span&gt;&lt;span class="w"&gt;
+&lt;/span&gt;        &lt;span class="n"&gt;defer&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;Deferred&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="fm"&gt;__init__&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;_canceller&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="w"&gt;
 
-        &lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;async_result&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;async_result&lt;/span&gt;
-        &lt;span class="c1"&gt;# Start the monitor loop&lt;/span&gt;
-        &lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;check_state&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
+&lt;/span&gt;        &lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;async_result&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;async_result&lt;/span&gt;&lt;span class="w"&gt;
+&lt;/span&gt;        &lt;span class="c1"&gt;# Start the monitor loop&lt;/span&gt;&lt;span class="w"&gt;
+&lt;/span&gt;        &lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;check_state&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;&lt;span class="w"&gt;
 
-    &lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;check_state&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
-        &lt;span class="sd"&gt;"""Check the status of the celery task on another thread."""&lt;/span&gt;
-        &lt;span class="n"&gt;threads&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;deferToThread&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;get_state&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;addCallbacks&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;state_received&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;errback&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;/span&gt;    &lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;check_state&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;&lt;span class="w"&gt;
+        &lt;/span&gt;&lt;span class="sd"&gt;"""Check the status of the celery task on another thread."""&lt;/span&gt;&lt;span class="w"&gt;
+&lt;/span&gt;        &lt;span class="n"&gt;threads&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;deferToThread&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;get_state&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;addCallbacks&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;state_received&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;errback&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="w"&gt;
 
-    &lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;get_state&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
-        &lt;span class="sd"&gt;"""Check the status of the celery task directly"""&lt;/span&gt;
-        &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;async_result&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;state&lt;/span&gt;
+&lt;/span&gt;    &lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;get_state&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;&lt;span class="w"&gt;
+        &lt;/span&gt;&lt;span class="sd"&gt;"""Check the status of the celery task directly"""&lt;/span&gt;&lt;span class="w"&gt;
+&lt;/span&gt;        &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;async_result&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;state&lt;/span&gt;&lt;span class="w"&gt;
 
-    &lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;state_received&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;celery_state&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
-        &lt;span class="sd"&gt;"""Called when the check_state thread finishes"""&lt;/span&gt;
-        &lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="n"&gt;celery_state&lt;/span&gt; &lt;span class="ow"&gt;in&lt;/span&gt; &lt;span class="n"&gt;states&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;UNREADY_STATES&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
-            &lt;span class="c1"&gt;# Schedule another status check, to be run later.&lt;/span&gt;
-            &lt;span class="n"&gt;reactor&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;callLater&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;CHECK_INTERVAL&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;check_state&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
-        &lt;span class="k"&gt;elif&lt;/span&gt; &lt;span class="n"&gt;celery_state&lt;/span&gt; &lt;span class="o"&gt;==&lt;/span&gt; &lt;span class="n"&gt;states&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;SUCCESS&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
-            &lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;callback&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;async_result&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;result&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
-        &lt;span class="k"&gt;elif&lt;/span&gt; &lt;span class="n"&gt;celery_state&lt;/span&gt; &lt;span class="o"&gt;==&lt;/span&gt; &lt;span class="n"&gt;states&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;FAILURE&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
-            &lt;span class="c1"&gt;# This will contain the Exception instance if the task raised one&lt;/span&gt;
-            &lt;span class="c1"&gt;# http://docs.celeryproject.org/en/latest/reference/celery.result.html&lt;/span&gt;
-            &lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;errback&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;async_result&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;result&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
-        &lt;span class="k"&gt;elif&lt;/span&gt; &lt;span class="n"&gt;celery_state&lt;/span&gt; &lt;span class="o"&gt;==&lt;/span&gt; &lt;span class="n"&gt;states&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;REVOKED&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
-            &lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;errback&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;defer&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;CancelledError&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;'Task &lt;/span&gt;&lt;span class="si"&gt;{0}&lt;/span&gt;&lt;span class="s1"&gt;'&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;format&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;async_result&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;id&lt;/span&gt;&lt;span class="p"&gt;)))&lt;/span&gt;
-        &lt;span class="k"&gt;else&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
-            &lt;span class="c1"&gt;# An unknown state was returned.&lt;/span&gt;
-            &lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;errback&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="ne"&gt;ValueError&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;'Unknown state: `&lt;/span&gt;&lt;span class="si"&gt;{}&lt;/span&gt;&lt;span class="s1"&gt;`'&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;format&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;celery_state&lt;/span&gt;&lt;span class="p"&gt;)))&lt;/span&gt;
+&lt;/span&gt;    &lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;state_received&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;celery_state&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;&lt;span class="w"&gt;
+        &lt;/span&gt;&lt;span class="sd"&gt;"""Called when the check_state thread finishes"""&lt;/span&gt;&lt;span class="w"&gt;
+&lt;/span&gt;        &lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="n"&gt;celery_state&lt;/span&gt; &lt;span class="ow"&gt;in&lt;/span&gt; &lt;span class="n"&gt;states&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;UNREADY_STATES&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="w"&gt;
+&lt;/span&gt;            &lt;span class="c1"&gt;# Schedule another status check, to be run later.&lt;/span&gt;&lt;span class="w"&gt;
+&lt;/span&gt;            &lt;span class="n"&gt;reactor&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;callLater&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;CHECK_INTERVAL&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;check_state&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="w"&gt;
+&lt;/span&gt;        &lt;span class="k"&gt;elif&lt;/span&gt; &lt;span class="n"&gt;celery_state&lt;/span&gt; &lt;span class="o"&gt;==&lt;/span&gt; &lt;span class="n"&gt;states&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;SUCCESS&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="w"&gt;
+&lt;/span&gt;            &lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;callback&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;async_result&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;result&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="w"&gt;
+&lt;/span&gt;        &lt;span class="k"&gt;elif&lt;/span&gt; &lt;span class="n"&gt;celery_state&lt;/span&gt; &lt;span class="o"&gt;==&lt;/span&gt; &lt;span class="n"&gt;states&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;FAILURE&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="w"&gt;
+&lt;/span&gt;            &lt;span class="c1"&gt;# This will contain the Exception instance if the task raised one&lt;/span&gt;&lt;span class="w"&gt;
+&lt;/span&gt;            &lt;span class="c1"&gt;# http://docs.celeryproject.org/en/latest/reference/celery.result.html&lt;/span&gt;&lt;span class="w"&gt;
+&lt;/span&gt;            &lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;errback&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;async_result&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;result&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="w"&gt;
+&lt;/span&gt;        &lt;span class="k"&gt;elif&lt;/span&gt; &lt;span class="n"&gt;celery_state&lt;/span&gt; &lt;span class="o"&gt;==&lt;/span&gt; &lt;span class="n"&gt;states&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;REVOKED&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="w"&gt;
+&lt;/span&gt;            &lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;errback&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;defer&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;CancelledError&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;'Task &lt;/span&gt;&lt;span class="si"&gt;{0}&lt;/span&gt;&lt;span class="s1"&gt;'&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;format&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;async_result&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;id&lt;/span&gt;&lt;span class="p"&gt;)))&lt;/span&gt;&lt;span class="w"&gt;
+&lt;/span&gt;        &lt;span class="k"&gt;else&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="w"&gt;
+&lt;/span&gt;            &lt;span class="c1"&gt;# An unknown state was returned.&lt;/span&gt;&lt;span class="w"&gt;
+&lt;/span&gt;            &lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;errback&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="ne"&gt;ValueError&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;'Unknown state: `&lt;/span&gt;&lt;span class="si"&gt;{}&lt;/span&gt;&lt;span class="s1"&gt;`'&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;format&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;celery_state&lt;/span&gt;&lt;span class="p"&gt;)))&lt;/span&gt;&lt;span class="w"&gt;
 
-    &lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;_canceller&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
-        &lt;span class="c1"&gt;# Revoke the celery task&lt;/span&gt;
-        &lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;async_result&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;revoke&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
+&lt;/span&gt;    &lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;_canceller&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;&lt;span class="w"&gt;
+&lt;/span&gt;        &lt;span class="c1"&gt;# Revoke the celery task&lt;/span&gt;&lt;span class="w"&gt;
+&lt;/span&gt;        &lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;async_result&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;revoke&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
 &lt;/pre&gt;
 &lt;p&gt;The calling syntax of this isn’t as nice as the initial approach, but it is
 pretty close (the modified lines are highlighted):&lt;/p&gt;
@@ -632,14 +632,14 @@ pretty close (the modified lines are highlighted):&lt;/p&gt;
 &lt;/pre&gt;&lt;/div&gt;
 &lt;/div&gt;
 &lt;div class="section" id="twisted-native-approach"&gt;
-&lt;h2&gt;&lt;a class="toc-backref" href="#id16"&gt;Twisted-native Approach&lt;/a&gt;&lt;/h2&gt;
+&lt;h2&gt;&lt;a class="toc-backref" href="#toc-entry-4"&gt;Twisted-native Approach&lt;/a&gt;&lt;/h2&gt;
 &lt;p&gt;I think the above solutions are fundamentally wrong, but are easy-ish to
 implement. They might work &lt;span class="caps"&gt;OK&lt;/span&gt; for small loads, or if increased latency is
 acceptable, but will start to fail when a large number of pending tasks are
 necessary. A better way is to consider:&lt;/p&gt;
 &lt;ol class="arabic simple"&gt;
 &lt;li&gt;Celery is designed to be &lt;a class="reference external" href="http://docs.celeryproject.org/en/latest/faq.html#is-celery-dependent-on-pickle"&gt;language&lt;/a&gt; &lt;a class="reference external" href="http://docs.celeryproject.org/en/latest/faq.html#is-celery-multilingual"&gt;independent&lt;/a&gt;.&lt;/li&gt;
-&lt;li&gt;Celery &lt;a class="reference external" href="http://docs.celeryproject.org/en/latest/internals/protocol.html"&gt;message formats&lt;/a&gt; are part of the public “&lt;span class="caps"&gt;API&lt;/span&gt;”. &lt;a class="footnote-reference" href="#id12" id="id6"&gt;[6]&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Celery &lt;a class="reference external" href="http://docs.celeryproject.org/en/latest/internals/protocol.html"&gt;message formats&lt;/a&gt; are part of the public “&lt;span class="caps"&gt;API&lt;/span&gt;”. &lt;a class="footnote-reference" href="#footnote-6" id="footnote-reference-6"&gt;[6]&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;Celery uses standard networking protocols to enable distributed processing.&lt;/li&gt;
 &lt;li&gt;Twisted is designed to efficiency implement networking protocols.&lt;/li&gt;
 &lt;/ol&gt;
@@ -692,50 +692,50 @@ but the hope is that you can give it a configured Celery app and it “just work
 with Twisted.&lt;/p&gt;
 &lt;p&gt;If you’re interested in helping out, checkout the &lt;a class="reference external" href="https://github.com/clokep/twistedcelery"&gt;GitHub repository&lt;/a&gt; or leave a
 comment below.&lt;/p&gt;
-&lt;table class="docutils footnote" frame="void" id="id7" rules="none"&gt;
+&lt;table class="docutils footnote" frame="void" id="footnote-1" rules="none"&gt;
 &lt;colgroup&gt;&lt;col class="label"/&gt;&lt;col/&gt;&lt;/colgroup&gt;
 &lt;tbody valign="top"&gt;
-&lt;tr&gt;&lt;td class="label"&gt;&lt;a class="fn-backref" href="#id1"&gt;[1]&lt;/a&gt;&lt;/td&gt;&lt;td&gt;If you’re unfamiliar with Celery, briefly it allows a “task” is defined
+&lt;tr&gt;&lt;td class="label"&gt;&lt;a class="fn-backref" href="#footnote-reference-1"&gt;[1]&lt;/a&gt;&lt;/td&gt;&lt;td&gt;If you’re unfamiliar with Celery, briefly it allows a “task” is defined
 in Python code, a “worker” is used to execute those tasks. The code
 which wants to execute those tasks calls &lt;tt class="docutils literal"&gt;delay()&lt;/tt&gt; or
 &lt;tt class="docutils literal"&gt;apply_async()&lt;/tt&gt; on the “task”, which returns an &lt;tt class="docutils literal"&gt;AsyncResult&lt;/tt&gt;, which
 can be used to retrieve the result of that task, once it runs.&lt;/td&gt;&lt;/tr&gt;
 &lt;/tbody&gt;
 &lt;/table&gt;
-&lt;table class="docutils footnote" frame="void" id="id8" rules="none"&gt;
+&lt;table class="docutils footnote" frame="void" id="footnote-2" rules="none"&gt;
 &lt;colgroup&gt;&lt;col class="label"/&gt;&lt;col/&gt;&lt;/colgroup&gt;
 &lt;tbody valign="top"&gt;
-&lt;tr&gt;&lt;td class="label"&gt;&lt;a class="fn-backref" href="#id2"&gt;[2]&lt;/a&gt;&lt;/td&gt;&lt;td&gt;Note that Celery is frequently used with web frameworks that might run
+&lt;tr&gt;&lt;td class="label"&gt;&lt;a class="fn-backref" href="#footnote-reference-2"&gt;[2]&lt;/a&gt;&lt;/td&gt;&lt;td&gt;Note that Celery is frequently used with web frameworks that might run
 on e.g. &lt;a class="reference external" href="https://gunicorn.org/"&gt;gunicorn&lt;/a&gt; with &lt;a class="reference external" href="http://docs.gunicorn.org/en/latest/design.html"&gt;async workers (using greenlets)&lt;/a&gt;, meaning that not
 everything is blocked, but that is somewhat beyond the scope of this
 post.&lt;/td&gt;&lt;/tr&gt;
 &lt;/tbody&gt;
 &lt;/table&gt;
-&lt;table class="docutils footnote" frame="void" id="id9" rules="none"&gt;
+&lt;table class="docutils footnote" frame="void" id="footnote-3" rules="none"&gt;
 &lt;colgroup&gt;&lt;col class="label"/&gt;&lt;col/&gt;&lt;/colgroup&gt;
 &lt;tbody valign="top"&gt;
-&lt;tr&gt;&lt;td class="label"&gt;&lt;a class="fn-backref" href="#id3"&gt;[3]&lt;/a&gt;&lt;/td&gt;&lt;td&gt;Twisted doesn’t &lt;a class="reference external" href="https://twistedmatrix.com/trac/wiki/FrequentlyAskedQuestions#HowdoIuseDeferredstomakemyblockingcodenon-blocking"&gt;magically make your code non-blocking&lt;/a&gt;.&lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td class="label"&gt;&lt;a class="fn-backref" href="#footnote-reference-3"&gt;[3]&lt;/a&gt;&lt;/td&gt;&lt;td&gt;Twisted doesn’t &lt;a class="reference external" href="https://twistedmatrix.com/trac/wiki/FrequentlyAskedQuestions#HowdoIuseDeferredstomakemyblockingcodenon-blocking"&gt;magically make your code non-blocking&lt;/a&gt;.&lt;/td&gt;&lt;/tr&gt;
 &lt;/tbody&gt;
 &lt;/table&gt;
-&lt;table class="docutils footnote" frame="void" id="id10" rules="none"&gt;
+&lt;table class="docutils footnote" frame="void" id="footnote-4" rules="none"&gt;
 &lt;colgroup&gt;&lt;col class="label"/&gt;&lt;col/&gt;&lt;/colgroup&gt;
 &lt;tbody valign="top"&gt;
-&lt;tr&gt;&lt;td class="label"&gt;&lt;a class="fn-backref" href="#id4"&gt;[4]&lt;/a&gt;&lt;/td&gt;&lt;td&gt;Note that txCelery really only takes care of the second issue here.&lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td class="label"&gt;&lt;a class="fn-backref" href="#footnote-reference-4"&gt;[4]&lt;/a&gt;&lt;/td&gt;&lt;td&gt;Note that txCelery really only takes care of the second issue here.&lt;/td&gt;&lt;/tr&gt;
 &lt;/tbody&gt;
 &lt;/table&gt;
-&lt;table class="docutils footnote" frame="void" id="id11" rules="none"&gt;
+&lt;table class="docutils footnote" frame="void" id="footnote-5" rules="none"&gt;
 &lt;colgroup&gt;&lt;col class="label"/&gt;&lt;col/&gt;&lt;/colgroup&gt;
 &lt;tbody valign="top"&gt;
-&lt;tr&gt;&lt;td class="label"&gt;&lt;a class="fn-backref" href="#id5"&gt;[5]&lt;/a&gt;&lt;/td&gt;&lt;td&gt;&lt;tt class="docutils literal"&gt;Celery.send_task()&lt;/tt&gt; is a generic way to call a task by name without
+&lt;tr&gt;&lt;td class="label"&gt;&lt;a class="fn-backref" href="#footnote-reference-5"&gt;[5]&lt;/a&gt;&lt;/td&gt;&lt;td&gt;&lt;tt class="docutils literal"&gt;Celery.send_task()&lt;/tt&gt; is a generic way to call a task by name without
 importing it. It is generally useful, but in this particular case is a
 nice spot to generically interrupt how Celery communicates to the
 broker.&lt;/td&gt;&lt;/tr&gt;
 &lt;/tbody&gt;
 &lt;/table&gt;
-&lt;table class="docutils footnote" frame="void" id="id12" rules="none"&gt;
+&lt;table class="docutils footnote" frame="void" id="footnote-6" rules="none"&gt;
 &lt;colgroup&gt;&lt;col class="label"/&gt;&lt;col/&gt;&lt;/colgroup&gt;
 &lt;tbody valign="top"&gt;
-&lt;tr&gt;&lt;td class="label"&gt;&lt;a class="fn-backref" href="#id6"&gt;[6]&lt;/a&gt;&lt;/td&gt;&lt;td&gt;Note that there are two different versions of the protocol, they’re
+&lt;tr&gt;&lt;td class="label"&gt;&lt;a class="fn-backref" href="#footnote-reference-6"&gt;[6]&lt;/a&gt;&lt;/td&gt;&lt;td&gt;Note that there are two different versions of the protocol, they’re
 fairly similar, but version 2 moves some meta data from the body to the
 headers to avoid needing to deserialize the entire message multiple
 times. You can read &lt;a class="reference external" href="http://docs.celeryproject.org/en/latest/history/whatsnew-4.0.html#new-protocol-highlights"&gt;the highlights&lt;/a&gt; of the differences.&lt;/td&gt;&lt;/tr&gt;

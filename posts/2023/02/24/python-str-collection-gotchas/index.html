@@ -9,14 +9,14 @@
     <link href="https://patrick.cloke.us/feeds/atom.xml" type="application/atom+xml" rel="alternate" title="Patrick Cloke Atom Feed" />
     <link href="https://patrick.cloke.us/feeds/rss.xml" type="application/rss+xml" rel="alternate" title="Patrick Cloke RSS Feed" />
 
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
     <link rel="stylesheet" href="/theme/css/styles.css">
     <link rel="stylesheet" href="/theme/css/borland.css">
     <link rel="stylesheet" href="/theme/css/youtube.css">
 
-    <!-- Font Awesome -->
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
 
     <title>Python str Collection Gotchas</title>
 
@@ -66,11 +66,11 @@
 
             <span class="dropdown-menu dropdown-menu-right" aria-labelledby="social-dropdown">
               <a class="dropdown-item" href="https://mastodon.social/@clokep" target="_blank">
-                  <span class="fab fa-mastodon mr-1"></span>
+                  <span class="bi-mastodon mr-1"></span>
                 mastodon
               </a>
               <a class="dropdown-item" href="https://www.twitter.com/clokep" target="_blank">
-                  <span class="fab fa-twitter mr-1"></span>
+                  <span class="bi-twitter mr-1"></span>
                 twitter
               </a>
               <a class="dropdown-item" href="https://matrix.to/#/@clokep:matrix.org" target="_blank">
@@ -78,15 +78,15 @@
                 matrix
               </a>
               <a class="dropdown-item" href="https://github.com/clokep" target="_blank">
-                  <span class="fab fa-github mr-1"></span>
+                  <span class="bi-github mr-1"></span>
                 github
               </a>
               <a class="dropdown-item" href="https://gitlab.com/clokep" target="_blank">
-                  <span class="fab fa-gitlab mr-1"></span>
+                  <span class="bi-gitlab mr-1"></span>
                 gitlab
               </a>
               <a class="dropdown-item" href="https://www.linkedin.com/in/patrickcloke/" target="_blank">
-                  <span class="fab fa-linkedin mr-1"></span>
+                  <span class="bi-linkedin mr-1"></span>
                 linkedin
               </a>
             </span>
@@ -131,14 +131,23 @@
         </div>
 
         <div class="col-sm text-right">
+          <a href="https://toot.kytta.dev/?text=Python%20str%20Collection%C2%A0Gotchas%0D%0Ahttps%3A//patrick.cloke.us/posts/2023/02/24/python-str-collection-gotchas/%0D%0A%23python" target="_blank" class="ml-1 mr-1" title="Share on Mastodon">
+            <span class="bi-mastodon"></span>
+          </a>
           <a href="https://twitter.com/intent/tweet?text=Python%20str%20Collection%C2%A0Gotchas&url=https%3A//patrick.cloke.us/posts/2023/02/24/python-str-collection-gotchas/&hashtags=python" target="_blank" class="ml-1 mr-1" title="Share on Twitter">
-            <span class="fab fa-twitter"></span>
+            <span class="bi-twitter"></span>
+          </a>
+          <a href="https://www.reddit.com/submit?url=https%3A//patrick.cloke.us/posts/2023/02/24/python-str-collection-gotchas/&title=Python%20str%20Collection%C2%A0Gotchas" target="_blank" class="ml-1 mr-1" title="Share on Reddit">
+            <span class="bi-reddit"></span>
           </a>
           <a href="https://www.facebook.com/sharer/sharer.php?u=https%3A//patrick.cloke.us/posts/2023/02/24/python-str-collection-gotchas/" target="_blank" class="ml-1 mr-1" title="Share on Facebook">
-            <span class="fab fa-facebook"></span>
+            <span class="bi-facebook"></span>
+          </a>
+          <a href="https://www.linkedin.com/shareArticle?mini=true&url=https%3A//patrick.cloke.us/posts/2023/02/24/python-str-collection-gotchas/&title=Python%20str%20Collection%C2%A0Gotchas&summary=We%20have%20been%20slowly%20adding%20Python%20type%20hints%20%5B1%5D%20to%20Synapse%20and%20have%20made%0Agreat%20progress%20%28see%20some%20of%20our%20motivation%29.%20Through%20this%20process%20we%20have%0Alearned%20a%20lot%20about%20Python%20and%20type%20hints.%20One%20bit%20that%20was%20unexpected%20is%20that%0Amany%20of%20the%20abstract%20base%20classes%20representing%20groups%20of%20%E2%80%A6&source=https%3A//patrick.cloke.us/posts/2023/02/24/python-str-collection-gotchas/" target="_blank" class="ml-1 mr-1" title="Share on LinkedIn">
+            <span class="bi-linkedin"></span>
           </a>
           <a href="mailto:?subject=Python%20str%20Collection%C2%A0Gotchas&amp;body=https%3A//patrick.cloke.us/posts/2023/02/24/python-str-collection-gotchas/" target="_blank" class="ml-1 mr-1" title="Share via Email">
-            <span class="fas fa-envelope"></span>
+            <span class="bi-envelope"></span>
           </a>
         </div>
       </div>
@@ -147,21 +156,21 @@
 
       <div>
 
-        <p>We have been slowly adding Python type hints <a class="footnote-reference" href="#id6" id="id1">[1]</a> to <a class="reference external" href="https://github.com/matrix-org/synapse">Synapse</a> and have made
+        <p>We have been slowly adding Python type hints <a class="footnote-reference" href="#footnote-1" id="footnote-reference-1">[1]</a> to <a class="reference external" href="https://github.com/matrix-org/synapse">Synapse</a> and have made
 great progress (see <a class="reference external" href="https://matrix.org/blog/2021/12/03/type-coverage-for-sydent-motivation">some of our motivation</a>). Through this process we have
 learned a lot about Python and type hints. One bit that was unexpected is that
 many of the <a class="reference external" href="https://docs.python.org/3/library/collections.abc.html#collections-abstract-base-classes">abstract base classes</a> representing groups of <tt class="docutils literal">str</tt> instances
 also match an individual <tt class="docutils literal">str</tt> instance. This has resulted in more than one
-<em>real</em> bug for us <a class="footnote-reference" href="#id7" id="id2">[2]</a>: a function which has parameter of type <tt class="docutils literal">Collection[str]</tt>
-was called with a <tt class="docutils literal">str</tt>, for example <a class="footnote-reference" href="#id8" id="id3">[3]</a>:</p>
+<em>real</em> bug for us <a class="footnote-reference" href="#footnote-2" id="footnote-reference-2">[2]</a>: a function which has parameter of type <tt class="docutils literal">Collection[str]</tt>
+was called with a <tt class="docutils literal">str</tt>, for example <a class="footnote-reference" href="#footnote-3" id="footnote-reference-3">[3]</a>:</p>
 <div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">send</span><span class="p">(</span><span class="n">event</span><span class="p">:</span> <span class="n">Event</span><span class="p">,</span> <span class="n">destinations</span><span class="p">:</span> <span class="n">Collection</span><span class="p">[</span><span class="nb">str</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
-    <span class="sd">&quot;&quot;&quot;Send an event to a set of destinations.&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Send an event to a set of destinations.&quot;&quot;&quot;</span>
     <span class="k">for</span> <span class="n">destination</span> <span class="ow">in</span> <span class="n">destinations</span><span class="p">:</span>
         <span class="c1"># Do some HTTP.</span>
         <span class="o">...</span>
 
 <span class="k">def</span> <span class="nf">create_event</span><span class="p">(</span><span class="n">sender</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">content</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">room</span><span class="p">:</span> <span class="n">Room</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
-    <span class="sd">&quot;&quot;&quot;Create &amp; send an event.&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Create &amp; send an event.&quot;&quot;&quot;</span>
     <span class="n">event</span> <span class="o">=</span> <span class="n">Event</span><span class="p">(</span><span class="n">sender</span><span class="p">,</span> <span class="n">content</span><span class="p">)</span>
     <span class="n">send</span><span class="p">(</span><span class="n">event</span><span class="p">,</span> <span class="s2">&quot;matrix.org&quot;</span><span class="p">)</span>
 </pre></div>
@@ -169,9 +178,9 @@ was called with a <tt class="docutils literal">str</tt>, for example <a class="f
 of a single one. The &#8220;s&#8221; at the end of &#8220;destinations&#8221; takes on quite a bit of
 importance! See the&nbsp;fix:</p>
 <div class="highlight"><pre><span></span><span class="gu">@@ -7,5 +7,5 @@</span>
-   def create_event(sender: str, content: str, room: Room) -&gt; None:
-       &quot;&quot;&quot;Create &amp; send an event.&quot;&quot;&quot;
-       event = Event(sender, content)
+<span class="w"> </span>  def create_event(sender: str, content: str, room: Room) -&gt; None:
+<span class="w"> </span>      &quot;&quot;&quot;Create &amp; send an event.&quot;&quot;&quot;
+<span class="w"> </span>      event = Event(sender, content)
 <span class="gd">-      send(event, &quot;matrix.org&quot;)</span>
 <span class="gi">+      send(event, [&quot;matrix.org&quot;])</span>
 </pre></div>
@@ -181,7 +190,7 @@ but this forces the caller to convert a <tt class="docutils literal">set</tt> or
 thus losing some of the protections from type hints). As a team we have a desire
 to keep the type hints of function parameters as broad as&nbsp;possible.</p>
 <p>Put another way, <tt class="docutils literal">str</tt> is an instance of <tt class="docutils literal">Collection[str]</tt>, <tt class="docutils literal">Container[str]</tt>,
-<tt class="docutils literal">Iterable[str]</tt>, and <tt class="docutils literal">Sequence[str]</tt>. <a class="footnote-reference" href="#id9" id="id4">[4]</a> <a class="footnote-reference" href="#id10" id="id5">[5]</a></p>
+<tt class="docutils literal">Iterable[str]</tt>, and <tt class="docutils literal">Sequence[str]</tt>. <a class="footnote-reference" href="#footnote-4" id="footnote-reference-4">[4]</a> <a class="footnote-reference" href="#footnote-5" id="footnote-reference-5">[5]</a></p>
 <p>Since our type hints are only used internally we do not need to worry too much
 about accepting exotic types and eventually came up with <a class="reference external" href="https://github.com/matrix-org/synapse/blob/335f52d595c2c32e4b512b97e2851bc98b819ca7/synapse/types/__init__.py#L84-L86"><tt class="docutils literal">StrCollection</tt></a>:</p>
 <div class="highlight"><pre><span></span><span class="c1"># Collection[str] that does not include str itself; str being a Sequence[str]</span>
@@ -192,36 +201,36 @@ about accepting exotic types and eventually came up with <a class="reference ext
 not seem to cover well is if you are using a dictionary as an <tt class="docutils literal">Iterable[str]</tt>,
 the easy workaround there is to call <tt class="docutils literal">keys()</tt> on it to explicitly convert to a
 <a class="reference external" href="https://docs.python.org/3/library/collections.abc.html#collections.abc.KeysView"><tt class="docutils literal">KeysView</tt></a>, which inherits from <tt class="docutils literal">Set</tt>.</p>
-<table class="docutils footnote" frame="void" id="id6" rules="none">
+<table class="docutils footnote" frame="void" id="footnote-1" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
-<tr><td class="label"><a class="fn-backref" href="#id1">[1]</a></td><td>Looking at the <a class="reference external" href="https://github.com/matrix-org/synapse/commits/develop/mypy.ini">commits</a> to <tt class="docutils literal">mypy.ini</tt> is probably the best way to see progress.</td></tr>
+<tr><td class="label"><a class="fn-backref" href="#footnote-reference-1">[1]</a></td><td>Looking at the <a class="reference external" href="https://github.com/matrix-org/synapse/commits/develop/mypy.ini">commits</a> to <tt class="docutils literal">mypy.ini</tt> is probably the best way to see progress.</td></tr>
 </tbody>
 </table>
-<table class="docutils footnote" frame="void" id="id7" rules="none">
+<table class="docutils footnote" frame="void" id="footnote-2" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
-<tr><td class="label"><a class="fn-backref" href="#id2">[2]</a></td><td><a class="reference external" href="https://github.com/matrix-org/synapse/issues/14809">matrix-org/synapse#14809</a> is our tracking issue for fixing this, although
+<tr><td class="label"><a class="fn-backref" href="#footnote-reference-2">[2]</a></td><td><a class="reference external" href="https://github.com/matrix-org/synapse/issues/14809">matrix-org/synapse#14809</a> is our tracking issue for fixing this, although
 <a class="reference external" href="https://github.com/matrix-org/synapse/pull/14880/files#diff-0b449f6f95672437cf04f0b5512572b4a6a729d2759c438b7c206ea249619885R1161">matrix-org/synapse#14880</a> shows a concrete bug fix which occurred.</td></tr>
 </tbody>
 </table>
-<table class="docutils footnote" frame="void" id="id8" rules="none">
+<table class="docutils footnote" frame="void" id="footnote-3" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
-<tr><td class="label"><a class="fn-backref" href="#id3">[3]</a></td><td>This is heavily simplified, but hopefully illustrates the bug!</td></tr>
+<tr><td class="label"><a class="fn-backref" href="#footnote-reference-3">[3]</a></td><td>This is heavily simplified, but hopefully illustrates the bug!</td></tr>
 </tbody>
 </table>
-<table class="docutils footnote" frame="void" id="id9" rules="none">
+<table class="docutils footnote" frame="void" id="footnote-4" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
-<tr><td class="label"><a class="fn-backref" href="#id4">[4]</a></td><td>And <tt class="docutils literal">Reversible[str]</tt>, but I don&#8217;t think I have ever seen that used and
+<tr><td class="label"><a class="fn-backref" href="#footnote-reference-4">[4]</a></td><td>And <tt class="docutils literal">Reversible[str]</tt>, but I don&#8217;t think I have ever seen that used and
 I think it less likely to introduce a bug.</td></tr>
 </tbody>
 </table>
-<table class="docutils footnote" frame="void" id="id10" rules="none">
+<table class="docutils footnote" frame="void" id="footnote-5" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
-<tr><td class="label"><a class="fn-backref" href="#id5">[5]</a></td><td><tt class="docutils literal">bytes</tt> doesn&#8217;t have quite the same issue, but it might be surprising
+<tr><td class="label"><a class="fn-backref" href="#footnote-reference-5">[5]</a></td><td><tt class="docutils literal">bytes</tt> doesn&#8217;t have quite the same issue, but it might be surprising
 that <tt class="docutils literal">bytes</tt> is an instance of <tt class="docutils literal">Collection[int]</tt>, <tt class="docutils literal">Container[int]</tt>,
 <tt class="docutils literal">Iterable[int]</tt>, and <tt class="docutils literal">Sequence[int]</tt>. I find this less likely to
 introduce a bug.</td></tr>
@@ -256,7 +265,7 @@ s.setAttribute('data-timestamp', +new Date());
     <nav class="navbar fixed-bottom navbar-light bg-light border-top border-info">
       <a href="https://getpelican.com/" class="nav-item" target="_blank">Powered by Pelican</a>
       <a href="https://github.com/clokep/clokep.github.io" class="nav-item" target="_blank">
-        Source available on GitHub <span class="fab fa-github"></span>
+        Source available on GitHub <span class="bi-github"></span>
       </a>
     </nav>
 

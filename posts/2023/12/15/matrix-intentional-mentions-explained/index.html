@@ -9,14 +9,14 @@
     <link href="https://patrick.cloke.us/feeds/atom.xml" type="application/atom+xml" rel="alternate" title="Patrick Cloke Atom Feed" />
     <link href="https://patrick.cloke.us/feeds/rss.xml" type="application/rss+xml" rel="alternate" title="Patrick Cloke RSS Feed" />
 
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
     <link rel="stylesheet" href="/theme/css/styles.css">
     <link rel="stylesheet" href="/theme/css/borland.css">
     <link rel="stylesheet" href="/theme/css/youtube.css">
 
-    <!-- Font Awesome -->
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
 
     <title>Matrix Intentional Mentions explained</title>
 
@@ -67,11 +67,11 @@
 
             <span class="dropdown-menu dropdown-menu-right" aria-labelledby="social-dropdown">
               <a class="dropdown-item" href="https://mastodon.social/@clokep" target="_blank">
-                  <span class="fab fa-mastodon mr-1"></span>
+                  <span class="bi-mastodon mr-1"></span>
                 mastodon
               </a>
               <a class="dropdown-item" href="https://www.twitter.com/clokep" target="_blank">
-                  <span class="fab fa-twitter mr-1"></span>
+                  <span class="bi-twitter mr-1"></span>
                 twitter
               </a>
               <a class="dropdown-item" href="https://matrix.to/#/@clokep:matrix.org" target="_blank">
@@ -79,15 +79,15 @@
                 matrix
               </a>
               <a class="dropdown-item" href="https://github.com/clokep" target="_blank">
-                  <span class="fab fa-github mr-1"></span>
+                  <span class="bi-github mr-1"></span>
                 github
               </a>
               <a class="dropdown-item" href="https://gitlab.com/clokep" target="_blank">
-                  <span class="fab fa-gitlab mr-1"></span>
+                  <span class="bi-gitlab mr-1"></span>
                 gitlab
               </a>
               <a class="dropdown-item" href="https://www.linkedin.com/in/patrickcloke/" target="_blank">
-                  <span class="fab fa-linkedin mr-1"></span>
+                  <span class="bi-linkedin mr-1"></span>
                 linkedin
               </a>
             </span>
@@ -132,14 +132,23 @@
         </div>
 
         <div class="col-sm text-right">
+          <a href="https://toot.kytta.dev/?text=Matrix%20Intentional%20Mentions%C2%A0explained%0D%0Ahttps%3A//patrick.cloke.us/posts/2023/12/15/matrix-intentional-mentions-explained/%0D%0A%23matrix %23notes" target="_blank" class="ml-1 mr-1" title="Share on Mastodon">
+            <span class="bi-mastodon"></span>
+          </a>
           <a href="https://twitter.com/intent/tweet?text=Matrix%20Intentional%20Mentions%C2%A0explained&url=https%3A//patrick.cloke.us/posts/2023/12/15/matrix-intentional-mentions-explained/&hashtags=matrix,notes" target="_blank" class="ml-1 mr-1" title="Share on Twitter">
-            <span class="fab fa-twitter"></span>
+            <span class="bi-twitter"></span>
+          </a>
+          <a href="https://www.reddit.com/submit?url=https%3A//patrick.cloke.us/posts/2023/12/15/matrix-intentional-mentions-explained/&title=Matrix%20Intentional%20Mentions%C2%A0explained" target="_blank" class="ml-1 mr-1" title="Share on Reddit">
+            <span class="bi-reddit"></span>
           </a>
           <a href="https://www.facebook.com/sharer/sharer.php?u=https%3A//patrick.cloke.us/posts/2023/12/15/matrix-intentional-mentions-explained/" target="_blank" class="ml-1 mr-1" title="Share on Facebook">
-            <span class="fab fa-facebook"></span>
+            <span class="bi-facebook"></span>
+          </a>
+          <a href="https://www.linkedin.com/shareArticle?mini=true&url=https%3A//patrick.cloke.us/posts/2023/12/15/matrix-intentional-mentions-explained/&title=Matrix%20Intentional%20Mentions%C2%A0explained&summary=Previously%20I%20have%20written%20about%20how%20push%20rules%20generate%20notifications%20and%20how%0Aread%20receipts%20mark%20notificiations%20as%20read%20in%20the%20Matrix%20protocol.%20This%20article%0Ais%20about%20a%20change%20that%20I%20instigated%20to%20improve%20when%20a%20%E2%80%9Cmention%E2%80%9D%20%28or%20%E2%80%9Cping%E2%80%9D%29%0Anotification%20is%20created.%20%28This%20is%20a%20%E2%80%9Chighlight%E2%80%9D%20notification%20in%20the%20Matrix%C2%A0specification%20%E2%80%A6&source=https%3A//patrick.cloke.us/posts/2023/12/15/matrix-intentional-mentions-explained/" target="_blank" class="ml-1 mr-1" title="Share on LinkedIn">
+            <span class="bi-linkedin"></span>
           </a>
           <a href="mailto:?subject=Matrix%20Intentional%20Mentions%C2%A0explained&amp;body=https%3A//patrick.cloke.us/posts/2023/12/15/matrix-intentional-mentions-explained/" target="_blank" class="ml-1 mr-1" title="Share via Email">
-            <span class="fas fa-envelope"></span>
+            <span class="bi-envelope"></span>
           </a>
         </div>
       </div>
@@ -165,16 +174,16 @@ modified, disabled, etc. but that is ignored in this&nbsp;post.</p>
 <div class="section" id="legacy-mentions">
 <h2>Legacy&nbsp;mentions</h2>
 <p>The legacy mention system searches for the current user&#8217;s display name or the
-localpart of the Matrix <span class="caps">ID</span> <a class="footnote-reference" href="#id4" id="id1">[1]</a> in the text content of an event. For example, an
+localpart of the Matrix <span class="caps">ID</span> <a class="footnote-reference" href="#footnote-1" id="footnote-reference-1">[1]</a> in the text content of an event. For example, an
 event like the following would generate a mention for&nbsp;me:</p>
 <div class="highlight"><pre><span></span><span class="p">{</span>
-  <span class="c1">// Additional fields ignored.</span>
-  <span class="s2">&quot;content&quot;</span><span class="o">:</span> <span class="p">{</span>
-    <span class="s2">&quot;body&quot;</span><span class="o">:</span> <span class="s2">&quot;Hello @clokep:matrix.org!&quot;</span>
-  <span class="p">}</span>
+<span class="w">  </span><span class="c1">// Additional fields ignored.</span>
+<span class="w">  </span><span class="s2">&quot;content&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="s2">&quot;body&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;Hello @clokep:matrix.org!&quot;</span>
+<span class="w">  </span><span class="p">}</span>
 <span class="p">}</span>
 </pre></div>
-<p>A <tt class="docutils literal">body</tt> content field <a class="footnote-reference" href="#id5" id="id2">[2]</a> containing <tt class="docutils literal">clokep</tt> or <tt class="docutils literal">Patrick Cloke</tt>
+<p>A <tt class="docutils literal">body</tt> content field <a class="footnote-reference" href="#footnote-2" id="footnote-reference-2">[2]</a> containing <tt class="docutils literal">clokep</tt> or <tt class="docutils literal">Patrick Cloke</tt>
 would cause a &#8220;highlight&#8221; notification (displayed as red in Element). This isn&#8217;t uncommon
 in chat protocols and is how <span class="caps">IRC</span> and <span class="caps">XMPP</span>.</p>
 <p>Some of the issues with this&nbsp;are:</p>
@@ -200,13 +209,13 @@ of implicit references in the text&nbsp;content.</p>
 <p>The overall change is simple: include a list of mentioned users in a new
 content field,&nbsp;e.g.:</p>
 <div class="highlight"><pre><span></span><span class="p">{</span>
-  <span class="c1">// Additional fields ignored.</span>
-  <span class="s2">&quot;content&quot;</span><span class="o">:</span> <span class="p">{</span>
-    <span class="s2">&quot;body&quot;</span><span class="o">:</span> <span class="s2">&quot;Hello @clokep:matrix.org!&quot;</span>
-    <span class="s2">&quot;m.mentions&quot;</span><span class="o">:</span> <span class="p">{</span>
-      <span class="s2">&quot;user_ids&quot;</span><span class="o">:</span> <span class="p">[</span><span class="s2">&quot;@clokep:matrix.org&quot;</span><span class="p">]</span>
-    <span class="p">}</span>
-  <span class="p">}</span>
+<span class="w">  </span><span class="c1">// Additional fields ignored.</span>
+<span class="w">  </span><span class="s2">&quot;content&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="s2">&quot;body&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;Hello @clokep:matrix.org!&quot;</span>
+<span class="w">    </span><span class="s2">&quot;m.mentions&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="s2">&quot;user_ids&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;@clokep:matrix.org&quot;</span><span class="p">]</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">  </span><span class="p">}</span>
 <span class="p">}</span>
 </pre></div>
 <p>Only the <tt class="docutils literal">m.mentions</tt> field is used to generate mentions, the <tt class="docutils literal">body</tt> field is
@@ -224,7 +233,7 @@ is that it is not obvious <em>where</em> in the text the user&#8217;s mention is
 for hidden&nbsp;mentions).</p>
 <p>The other seriously considered approach was searching for &#8220;pills&#8221; in the <span class="caps">HTML</span>
 content of the event. This is similar to how <a class="reference external" href="https://api.slack.com/reference/surfaces/formatting#mentioning-users">Slack</a> handles mentions, where the
-user <span class="caps">ID</span> is encoded with some markup <a class="footnote-reference" href="#id6" id="id3">[3]</a>. This has a major downside of requiring <span class="caps">HTML</span>
+user <span class="caps">ID</span> is encoded with some markup <a class="footnote-reference" href="#footnote-3" id="footnote-reference-3">[3]</a>. This has a major downside of requiring <span class="caps">HTML</span>
 parsing on a hotpath of processing notifications (and it is unclear how this would
 work for non-<span class="caps">HTML</span>&nbsp;clients).</p>
 </div>
@@ -236,23 +245,23 @@ support since v1.86.0; it is pretty much up to clients to implement&nbsp;it!</p>
 I&#8217;m not aware of other clients which do (Element X might now). Hopefully it will
 become used throughout the ecosystem since many of the above issues are still
 common complaints I see with&nbsp;Matrix.</p>
-<table class="docutils footnote" frame="void" id="id4" rules="none">
+<table class="docutils footnote" frame="void" id="footnote-1" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
-<tr><td class="label"><a class="fn-backref" href="#id1">[1]</a></td><td>This post ignores room-mentions, but they&#8217;re handled very similarly.</td></tr>
+<tr><td class="label"><a class="fn-backref" href="#footnote-reference-1">[1]</a></td><td>This post ignores room-mentions, but they&#8217;re handled very similarly.</td></tr>
 </tbody>
 </table>
-<table class="docutils footnote" frame="void" id="id5" rules="none">
+<table class="docutils footnote" frame="void" id="footnote-2" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
-<tr><td class="label"><a class="fn-backref" href="#id2">[2]</a></td><td>Note that the plaintext content of the event is searched <em>not</em> the &#8220;formatted&#8221;
+<tr><td class="label"><a class="fn-backref" href="#footnote-reference-2">[2]</a></td><td>Note that the plaintext content of the event is searched <em>not</em> the &#8220;formatted&#8221;
 content (which is <a class="reference external" href="https://spec.matrix.org/v1.9/client-server-api/#mroommessage-msgtypes">usually <span class="caps">HTML</span></a>).</td></tr>
 </tbody>
 </table>
-<table class="docutils footnote" frame="void" id="id6" rules="none">
+<table class="docutils footnote" frame="void" id="footnote-3" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
-<tr><td class="label"><a class="fn-backref" href="#id3">[3]</a></td><td>This solution should also reduce the number of unintentional mentions, but
+<tr><td class="label"><a class="fn-backref" href="#footnote-reference-3">[3]</a></td><td>This solution should also reduce the number of unintentional mentions, but
 doesn&#8217;t allow for hidden mentions.</td></tr>
 </tbody>
 </table>
@@ -286,7 +295,7 @@ s.setAttribute('data-timestamp', +new Date());
     <nav class="navbar fixed-bottom navbar-light bg-light border-top border-info">
       <a href="https://getpelican.com/" class="nav-item" target="_blank">Powered by Pelican</a>
       <a href="https://github.com/clokep/clokep.github.io" class="nav-item" target="_blank">
-        Source available on GitHub <span class="fab fa-github"></span>
+        Source available on GitHub <span class="bi-github"></span>
       </a>
     </nav>
 

@@ -9,14 +9,14 @@
     <link href="https://patrick.cloke.us/feeds/atom.xml" type="application/atom+xml" rel="alternate" title="Patrick Cloke Atom Feed" />
     <link href="https://patrick.cloke.us/feeds/rss.xml" type="application/rss+xml" rel="alternate" title="Patrick Cloke RSS Feed" />
 
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
     <link rel="stylesheet" href="/theme/css/styles.css">
     <link rel="stylesheet" href="/theme/css/borland.css">
     <link rel="stylesheet" href="/theme/css/youtube.css">
 
-    <!-- Font Awesome -->
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
 
     <title>Using MySQL’s LOAD DATA with Django</title>
 
@@ -66,11 +66,11 @@
 
             <span class="dropdown-menu dropdown-menu-right" aria-labelledby="social-dropdown">
               <a class="dropdown-item" href="https://mastodon.social/@clokep" target="_blank">
-                  <span class="fab fa-mastodon mr-1"></span>
+                  <span class="bi-mastodon mr-1"></span>
                 mastodon
               </a>
               <a class="dropdown-item" href="https://www.twitter.com/clokep" target="_blank">
-                  <span class="fab fa-twitter mr-1"></span>
+                  <span class="bi-twitter mr-1"></span>
                 twitter
               </a>
               <a class="dropdown-item" href="https://matrix.to/#/@clokep:matrix.org" target="_blank">
@@ -78,15 +78,15 @@
                 matrix
               </a>
               <a class="dropdown-item" href="https://github.com/clokep" target="_blank">
-                  <span class="fab fa-github mr-1"></span>
+                  <span class="bi-github mr-1"></span>
                 github
               </a>
               <a class="dropdown-item" href="https://gitlab.com/clokep" target="_blank">
-                  <span class="fab fa-gitlab mr-1"></span>
+                  <span class="bi-gitlab mr-1"></span>
                 gitlab
               </a>
               <a class="dropdown-item" href="https://www.linkedin.com/in/patrickcloke/" target="_blank">
-                  <span class="fab fa-linkedin mr-1"></span>
+                  <span class="bi-linkedin mr-1"></span>
                 linkedin
               </a>
             </span>
@@ -131,14 +131,23 @@
         </div>
 
         <div class="col-sm text-right">
+          <a href="https://toot.kytta.dev/?text=Using%20MySQL%E2%80%99s%20LOAD%20DATA%20with%C2%A0Django%0D%0Ahttps%3A//patrick.cloke.us/posts/2020/01/23/using-mysqls-load-data-with-django/%0D%0A%23django" target="_blank" class="ml-1 mr-1" title="Share on Mastodon">
+            <span class="bi-mastodon"></span>
+          </a>
           <a href="https://twitter.com/intent/tweet?text=Using%20MySQL%E2%80%99s%20LOAD%20DATA%20with%C2%A0Django&url=https%3A//patrick.cloke.us/posts/2020/01/23/using-mysqls-load-data-with-django/&hashtags=django" target="_blank" class="ml-1 mr-1" title="Share on Twitter">
-            <span class="fab fa-twitter"></span>
+            <span class="bi-twitter"></span>
+          </a>
+          <a href="https://www.reddit.com/submit?url=https%3A//patrick.cloke.us/posts/2020/01/23/using-mysqls-load-data-with-django/&title=Using%20MySQL%E2%80%99s%20LOAD%20DATA%20with%C2%A0Django" target="_blank" class="ml-1 mr-1" title="Share on Reddit">
+            <span class="bi-reddit"></span>
           </a>
           <a href="https://www.facebook.com/sharer/sharer.php?u=https%3A//patrick.cloke.us/posts/2020/01/23/using-mysqls-load-data-with-django/" target="_blank" class="ml-1 mr-1" title="Share on Facebook">
-            <span class="fab fa-facebook"></span>
+            <span class="bi-facebook"></span>
+          </a>
+          <a href="https://www.linkedin.com/shareArticle?mini=true&url=https%3A//patrick.cloke.us/posts/2020/01/23/using-mysqls-load-data-with-django/&title=Using%20MySQL%E2%80%99s%20LOAD%20DATA%20with%C2%A0Django&summary=While%20attempting%20to%20improve%20performance%20of%20bulk%20inserting%20data%20into%20MySQL%0Adatabase%20my%20coworker%20came%20across%20the%20LOAD%20DATA%20SQL%20statement.%20It%20allows%20you%0Ato%20read%20data%20from%20a%20text%20file%20%28in%20a%20comma%20separated%20variable-like%20format%29%20and%0Aquickly%20insert%20it%20into%20a%20table.%20There%E2%80%99s%20two%20variations%20of%20it%20%E2%80%A6&source=https%3A//patrick.cloke.us/posts/2020/01/23/using-mysqls-load-data-with-django/" target="_blank" class="ml-1 mr-1" title="Share on LinkedIn">
+            <span class="bi-linkedin"></span>
           </a>
           <a href="mailto:?subject=Using%20MySQL%E2%80%99s%20LOAD%20DATA%20with%C2%A0Django&amp;body=https%3A//patrick.cloke.us/posts/2020/01/23/using-mysqls-load-data-with-django/" target="_blank" class="ml-1 mr-1" title="Share via Email">
-            <span class="fas fa-envelope"></span>
+            <span class="bi-envelope"></span>
           </a>
         </div>
       </div>
@@ -177,36 +186,36 @@ list of objects; see the start of the <tt class="docutils literal">bulk_create()
 </div>
 <p>Without further ado, see the&nbsp;implementation:</p>
 <pre class="code python highlight literal-block">
-<span class="kn">from</span> <span class="nn">__future__</span> <span class="kn">import</span> <span class="n">absolute_import</span><span class="p">,</span> <span class="n">print_function</span><span class="p">,</span> <span class="n">unicode_literals</span>
+<span class="kn">from</span> <span class="nn">__future__</span> <span class="kn">import</span> <span class="n">absolute_import</span><span class="p">,</span> <span class="n">print_function</span><span class="p">,</span> <span class="n">unicode_literals</span><span class="w">
 
-<span class="kn">import</span> <span class="nn">tempfile</span>
+</span><span class="kn">import</span> <span class="nn">tempfile</span><span class="w">
 
-<span class="kn">from</span> <span class="nn">django.db</span> <span class="kn">import</span> <span class="n">connections</span><span class="p">,</span> <span class="n">models</span>
-<span class="kn">from</span> <span class="nn">django.db.models.fields</span> <span class="kn">import</span> <span class="n">AutoField</span>
+</span><span class="kn">from</span> <span class="nn">django.db</span> <span class="kn">import</span> <span class="n">connections</span><span class="p">,</span> <span class="n">models</span><span class="w">
+</span><span class="kn">from</span> <span class="nn">django.db.models.fields</span> <span class="kn">import</span> <span class="n">AutoField</span><span class="w">
 
-<span class="kn">import</span> <span class="nn">six</span>
+</span><span class="kn">import</span> <span class="nn">six</span><span class="w">
 
 
-<span class="k">class</span> <span class="nc">LoadDataQuerySet</span><span class="p">(</span><span class="n">models</span><span class="o">.</span><span class="n">QuerySet</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;A QuerySet with an additional load_data method which inserts data quickly in bulk.&quot;&quot;&quot;</span>
+</span><span class="k">class</span> <span class="nc">LoadDataQuerySet</span><span class="p">(</span><span class="n">models</span><span class="o">.</span><span class="n">QuerySet</span><span class="p">):</span><span class="w">
+    </span><span class="sd">&quot;&quot;&quot;A QuerySet with an additional load_data method which inserts data quickly in bulk.&quot;&quot;&quot;</span><span class="w">
 
-    <span class="k">def</span> <span class="nf">_convert_instance_to_line</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">fields</span><span class="p">,</span> <span class="n">instance</span><span class="p">,</span> <span class="n">connection</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Convert an object to a single line to be placed in the temporary file.&quot;&quot;&quot;</span>
-        <span class="c1"># Convert each field value to a database value.</span>
-        <span class="c1">#</span>
-        <span class="c1"># Escape the enclosure and escape characters since they are not handled</span>
-        <span class="c1"># automatically.</span>
-        <span class="n">db_prep_values</span> <span class="o">=</span> <span class="p">[</span>
-            <span class="n">six</span><span class="o">.</span><span class="n">text_type</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">model</span><span class="o">.</span><span class="n">_meta</span><span class="o">.</span><span class="n">get_field</span><span class="p">(</span><span class="n">field_name</span><span class="p">)</span><span class="o">.</span><span class="n">get_db_prep_value</span><span class="p">(</span>
-                <span class="nb">getattr</span><span class="p">(</span><span class="n">instance</span><span class="p">,</span> <span class="n">field_name</span><span class="p">),</span> <span class="n">connection</span><span class="p">))</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">'</span><span class="se">\\</span><span class="s1">'</span><span class="p">,</span> <span class="s1">'</span><span class="se">\\\\</span><span class="s1">'</span><span class="p">)</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">'&quot;'</span><span class="p">,</span> <span class="s1">'</span><span class="se">\\</span><span class="s1">&quot;'</span><span class="p">)</span>
-            <span class="k">for</span> <span class="n">field_name</span> <span class="ow">in</span> <span class="n">fields</span>
-        <span class="p">]</span>
+</span>    <span class="k">def</span> <span class="nf">_convert_instance_to_line</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">fields</span><span class="p">,</span> <span class="n">instance</span><span class="p">,</span> <span class="n">connection</span><span class="p">):</span><span class="w">
+        </span><span class="sd">&quot;&quot;&quot;Convert an object to a single line to be placed in the temporary file.&quot;&quot;&quot;</span><span class="w">
+</span>        <span class="c1"># Convert each field value to a database value.</span><span class="w">
+</span>        <span class="c1">#</span><span class="w">
+</span>        <span class="c1"># Escape the enclosure and escape characters since they are not handled</span><span class="w">
+</span>        <span class="c1"># automatically.</span><span class="w">
+</span>        <span class="n">db_prep_values</span> <span class="o">=</span> <span class="p">[</span><span class="w">
+</span>            <span class="n">six</span><span class="o">.</span><span class="n">text_type</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">model</span><span class="o">.</span><span class="n">_meta</span><span class="o">.</span><span class="n">get_field</span><span class="p">(</span><span class="n">field_name</span><span class="p">)</span><span class="o">.</span><span class="n">get_db_prep_value</span><span class="p">(</span><span class="w">
+</span>                <span class="nb">getattr</span><span class="p">(</span><span class="n">instance</span><span class="p">,</span> <span class="n">field_name</span><span class="p">),</span> <span class="n">connection</span><span class="p">))</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">'</span><span class="se">\\</span><span class="s1">'</span><span class="p">,</span> <span class="s1">'</span><span class="se">\\\\</span><span class="s1">'</span><span class="p">)</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">'&quot;'</span><span class="p">,</span> <span class="s1">'</span><span class="se">\\</span><span class="s1">&quot;'</span><span class="p">)</span><span class="w">
+</span>            <span class="k">for</span> <span class="n">field_name</span> <span class="ow">in</span> <span class="n">fields</span><span class="w">
+</span>        <span class="p">]</span><span class="w">
 
-        <span class="c1"># Comma separate the wrapped values.</span>
-        <span class="k">return</span> <span class="s1">','</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="nb">map</span><span class="p">(</span><span class="k">lambda</span> <span class="n">v</span><span class="p">:</span> <span class="s1">'&quot;'</span> <span class="o">+</span> <span class="n">v</span> <span class="o">+</span> <span class="s1">'&quot;'</span><span class="p">,</span> <span class="n">db_prep_values</span><span class="p">))</span> <span class="o">+</span> <span class="s1">'</span><span class="se">\n</span><span class="s1">'</span>
+</span>        <span class="c1"># Comma separate the wrapped values.</span><span class="w">
+</span>        <span class="k">return</span> <span class="s1">','</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="nb">map</span><span class="p">(</span><span class="k">lambda</span> <span class="n">v</span><span class="p">:</span> <span class="s1">'&quot;'</span> <span class="o">+</span> <span class="n">v</span> <span class="o">+</span> <span class="s1">'&quot;'</span><span class="p">,</span> <span class="n">db_prep_values</span><span class="p">))</span> <span class="o">+</span> <span class="s1">'</span><span class="se">\n</span><span class="s1">'</span><span class="w">
 
-    <span class="k">def</span> <span class="nf">load_data</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">objs</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;
+</span>    <span class="k">def</span> <span class="nf">load_data</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">objs</span><span class="p">):</span><span class="w">
+        </span><span class="sd">&quot;&quot;&quot;
         Inserts each of the instances into the database. This does *not* call
         save() on each of the instances, does not send any pre/post save
         signals, and does not set the primary key attribute if it is an
@@ -218,36 +227,36 @@ list of objects; see the start of the <tt class="docutils literal">bulk_create()
         :param list objs: The list of objects to insert.
         :returns: The number of inserted records.
         :rtype int:
-        &quot;&quot;&quot;</span>
+        &quot;&quot;&quot;</span><span class="w">
 
-        <span class="c1"># This is based on by bulk_create.</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">_for_write</span> <span class="o">=</span> <span class="kc">True</span>
-        <span class="n">connection</span> <span class="o">=</span> <span class="n">connections</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">db</span><span class="p">]</span>
-        <span class="n">fields</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">model</span><span class="o">.</span><span class="n">_meta</span><span class="o">.</span><span class="n">concrete_fields</span>
-        <span class="n">fields</span> <span class="o">=</span> <span class="p">[</span><span class="n">f</span><span class="o">.</span><span class="n">name</span> <span class="k">for</span> <span class="n">f</span> <span class="ow">in</span> <span class="n">fields</span> <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="n">AutoField</span><span class="p">)]</span>
+</span>        <span class="c1"># This is based on by bulk_create.</span><span class="w">
+</span>        <span class="bp">self</span><span class="o">.</span><span class="n">_for_write</span> <span class="o">=</span> <span class="kc">True</span><span class="w">
+</span>        <span class="n">connection</span> <span class="o">=</span> <span class="n">connections</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">db</span><span class="p">]</span><span class="w">
+</span>        <span class="n">fields</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">model</span><span class="o">.</span><span class="n">_meta</span><span class="o">.</span><span class="n">concrete_fields</span><span class="w">
+</span>        <span class="n">fields</span> <span class="o">=</span> <span class="p">[</span><span class="n">f</span><span class="o">.</span><span class="n">name</span> <span class="k">for</span> <span class="n">f</span> <span class="ow">in</span> <span class="n">fields</span> <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="n">AutoField</span><span class="p">)]</span><span class="w">
 
-        <span class="c1"># The table name and field names cannot be parameterized when executing</span>
-        <span class="c1"># a SQL statement with the Django ORM. The name of the file where data</span>
-        <span class="c1"># is loaded from can be parameterized, however.</span>
-        <span class="c1">#</span>
-        <span class="c1"># The result of this is a partially formatted string to be fed into MySQL.</span>
-        <span class="n">load_data_statement</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;
+</span>        <span class="c1"># The table name and field names cannot be parameterized when executing</span><span class="w">
+</span>        <span class="c1"># a SQL statement with the Django ORM. The name of the file where data</span><span class="w">
+</span>        <span class="c1"># is loaded from can be parameterized, however.</span><span class="w">
+</span>        <span class="c1">#</span><span class="w">
+</span>        <span class="c1"># The result of this is a partially formatted string to be fed into MySQL.</span><span class="w">
+</span>        <span class="n">load_data_statement</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;
             LOAD DATA LOCAL INFILE </span><span class="si">%s</span><span class="s2"> INTO TABLE </span><span class="si">{mysql_table_name}</span><span class="s2"> CHARACTER SET utf8 FIELDS TERMINATED BY ',' ENCLOSED BY '&quot;' LINES TERMINATED BY '</span><span class="se">\\</span><span class="s2">n' (</span><span class="si">{fields}</span><span class="s2">);
-            &quot;&quot;&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>
-                <span class="n">mysql_table_name</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">model</span><span class="o">.</span><span class="n">_meta</span><span class="o">.</span><span class="n">db_table</span><span class="p">,</span>
-                <span class="n">fields</span><span class="o">=</span><span class="s1">', '</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">fields</span><span class="p">)</span>
-            <span class="p">)</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span>
+            &quot;&quot;&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="w">
+</span>                <span class="n">mysql_table_name</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">model</span><span class="o">.</span><span class="n">_meta</span><span class="o">.</span><span class="n">db_table</span><span class="p">,</span><span class="w">
+</span>                <span class="n">fields</span><span class="o">=</span><span class="s1">', '</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">fields</span><span class="p">)</span><span class="w">
+</span>            <span class="p">)</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span><span class="w">
 
-        <span class="c1"># Write each object to their own line in a temporary file and bulk</span>
-        <span class="c1"># insert the data into MySQL using the LOAD DATA statement.</span>
-        <span class="k">with</span> <span class="n">tempfile</span><span class="o">.</span><span class="n">NamedTemporaryFile</span><span class="p">(</span><span class="n">mode</span><span class="o">=</span><span class="s1">'w'</span><span class="p">,</span> <span class="n">suffix</span><span class="o">=</span><span class="s1">'.data'</span><span class="p">,</span> <span class="n">delete</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span> <span class="k">as</span> <span class="n">data_file</span><span class="p">:</span>
-            <span class="n">data_file</span><span class="o">.</span><span class="n">writelines</span><span class="p">(</span>
-                <span class="bp">self</span><span class="o">.</span><span class="n">_convert_instance_to_line</span><span class="p">(</span><span class="n">fields</span><span class="p">,</span> <span class="n">obj</span><span class="p">,</span> <span class="n">connection</span><span class="p">)</span> <span class="k">for</span> <span class="n">obj</span> <span class="ow">in</span> <span class="n">objs</span>
-            <span class="p">)</span>
-            <span class="n">data_file</span><span class="o">.</span><span class="n">flush</span><span class="p">()</span>
+</span>        <span class="c1"># Write each object to their own line in a temporary file and bulk</span><span class="w">
+</span>        <span class="c1"># insert the data into MySQL using the LOAD DATA statement.</span><span class="w">
+</span>        <span class="k">with</span> <span class="n">tempfile</span><span class="o">.</span><span class="n">NamedTemporaryFile</span><span class="p">(</span><span class="n">mode</span><span class="o">=</span><span class="s1">'w'</span><span class="p">,</span> <span class="n">suffix</span><span class="o">=</span><span class="s1">'.data'</span><span class="p">,</span> <span class="n">delete</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span> <span class="k">as</span> <span class="n">data_file</span><span class="p">:</span><span class="w">
+</span>            <span class="n">data_file</span><span class="o">.</span><span class="n">writelines</span><span class="p">(</span><span class="w">
+</span>                <span class="bp">self</span><span class="o">.</span><span class="n">_convert_instance_to_line</span><span class="p">(</span><span class="n">fields</span><span class="p">,</span> <span class="n">obj</span><span class="p">,</span> <span class="n">connection</span><span class="p">)</span> <span class="k">for</span> <span class="n">obj</span> <span class="ow">in</span> <span class="n">objs</span><span class="w">
+</span>            <span class="p">)</span><span class="w">
+</span>            <span class="n">data_file</span><span class="o">.</span><span class="n">flush</span><span class="p">()</span><span class="w">
 
-            <span class="k">with</span> <span class="n">connection</span><span class="o">.</span><span class="n">cursor</span><span class="p">()</span> <span class="k">as</span> <span class="n">cursor</span><span class="p">:</span>
-                <span class="k">return</span> <span class="n">cursor</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="n">load_data_statement</span><span class="p">,</span> <span class="p">[</span><span class="n">data_file</span><span class="o">.</span><span class="n">name</span><span class="p">])</span>
+</span>            <span class="k">with</span> <span class="n">connection</span><span class="o">.</span><span class="n">cursor</span><span class="p">()</span> <span class="k">as</span> <span class="n">cursor</span><span class="p">:</span><span class="w">
+</span>                <span class="k">return</span> <span class="n">cursor</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="n">load_data_statement</span><span class="p">,</span> <span class="p">[</span><span class="n">data_file</span><span class="o">.</span><span class="n">name</span><span class="p">])</span>
 </pre>
 <p>This can be used by <a class="reference external" href="https://docs.djangoproject.com/en/1.11/topics/db/managers/#custom-managers">using a custom manager</a> to the <tt class="docutils literal">LoadDataQuerySet</tt>
 manager.</p>
@@ -308,7 +317,7 @@ s.setAttribute('data-timestamp', +new Date());
     <nav class="navbar fixed-bottom navbar-light bg-light border-top border-info">
       <a href="https://getpelican.com/" class="nav-item" target="_blank">Powered by Pelican</a>
       <a href="https://github.com/clokep/clokep.github.io" class="nav-item" target="_blank">
-        Source available on GitHub <span class="fab fa-github"></span>
+        Source available on GitHub <span class="bi-github"></span>
       </a>
     </nav>
 

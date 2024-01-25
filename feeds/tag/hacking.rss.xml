@@ -2,8 +2,8 @@
 <rss version="2.0"><channel><title>Patrick Cloke - hacking</title><link>https://patrick.cloke.us/</link><description></description><lastBuildDate>Sat, 30 Aug 2014 17:34:00 -0400</lastBuildDate><item><title>Adding an Auxiliary Audio Input to a 2005 Subaru Outback</title><link>https://patrick.cloke.us/posts/2014/08/30/adding-an-auxiliary-audio-input-to-a-2005-subaru-outback/</link><description>&lt;p&gt;I own a &lt;a class="reference external" href="http://en.wikipedia.org/wiki/Subaru_Legacy#Fourth_generation_.282003.E2.80.932009.29_-_BL.2C_BP"&gt;2005 (fourth generation) Subaru Outback&lt;/a&gt;, I&amp;#8217;ve had it since the fall
 of 2006 and it has been great. I have a little over 100,000 miles and do not
 plan to sell it anytime&amp;nbsp;soon.&lt;/p&gt;
-&lt;p&gt;There is one thing that just &lt;em&gt;kills&lt;/em&gt; me though. You cannot (easily &lt;a class="footnote-reference" href="#id7" id="id1"&gt;[1]&lt;/a&gt;) change
-the radio in it&amp;#8230;and it is &lt;em&gt;just&lt;/em&gt; old enough &lt;a class="footnote-reference" href="#id8" id="id2"&gt;[2]&lt;/a&gt; to have neither BlueTooth nor
+&lt;p&gt;There is one thing that just &lt;em&gt;kills&lt;/em&gt; me though. You cannot (easily &lt;a class="footnote-reference" href="#footnote-1" id="footnote-reference-1"&gt;[1]&lt;/a&gt;) change
+the radio in it&amp;#8230;and it is &lt;em&gt;just&lt;/em&gt; old enough &lt;a class="footnote-reference" href="#footnote-2" id="footnote-reference-2"&gt;[2]&lt;/a&gt; to have neither BlueTooth nor
 an auxiliary audio input. I&amp;#8217;ve been carrying around a book of CDs with me for
 the past 8 years. I decided it was time to change&amp;nbsp;that.&lt;/p&gt;
 &lt;p&gt;I knew that it was possible to &amp;#8220;modify&amp;#8221; the radio to accept an auxiliary input,
@@ -60,7 +60,7 @@ pictures along each step of the way to ensure I could put it back&amp;nbsp;toget
 &lt;a class="reference external image-reference" href="https://patrick.cloke.us/images/subaru-outback-radio/disassembly-top.jpg"&gt;&lt;img alt="The top of the unit with the cover removed showing the CD drive." src="/thumbnails/subaru-outback-radio/disassembly-top_small.jpg" /&gt;&lt;/a&gt;
 &lt;p&gt;The initial steps of disassembly: the front after removing the controls, the
 reverse of the control unit, a top-down view after removing the top of the
-unit &lt;a class="footnote-reference" href="#id9" id="id3"&gt;[3]&lt;/a&gt;.&lt;/p&gt;
+unit &lt;a class="footnote-reference" href="#footnote-3" id="footnote-reference-3"&gt;[3]&lt;/a&gt;.&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;blockquote class="text-center"&gt;
 &lt;a class="reference external image-reference" href="https://patrick.cloke.us/images/subaru-outback-radio/disassembly-motherboard.jpg"&gt;&lt;img alt="The main circuit board of the unit." src="/thumbnails/subaru-outback-radio/disassembly-motherboard_small.jpg" /&gt;&lt;/a&gt;
@@ -71,18 +71,18 @@ the&amp;nbsp;left.&lt;/p&gt;
 &lt;p&gt;The radio module connects to the motherboard with a 36-pin connector. Pin 31 is
 the right audio channel and pin 32 is left audio channel. I verified this by
 connected the disassembled radio to the car and testing with alligator clips
-hooked up to my phones audio output &lt;a class="footnote-reference" href="#id10" id="id4"&gt;[4]&lt;/a&gt;. I already knew these were the pins
+hooked up to my phones audio output &lt;a class="footnote-reference" href="#footnote-4" id="footnote-reference-4"&gt;[4]&lt;/a&gt;. I already knew these were the pins
 from the directions, but I verified by completing the circuit to these pins and
 ensuring I heard mixed audio with my phone and the&amp;nbsp;radio.&lt;/p&gt;
 &lt;p&gt;The direction suggested cutting the pin and bending it up to solder to it. I
 didn&amp;#8217;t have any cutting tool small enough to get in between the pins&amp;#8230;so I
 flipped the board over and did sketchier things. I scored the board to remove
-the traces &lt;a class="footnote-reference" href="#id11" id="id5"&gt;[5]&lt;/a&gt; that connected the radio module to the rest of the board. I then
+the traces &lt;a class="footnote-reference" href="#footnote-5" id="footnote-reference-5"&gt;[5]&lt;/a&gt; that connected the radio module to the rest of the board. I then
 soldered on either side of this connection to put it through the audio&amp;nbsp;connector.&lt;/p&gt;
 &lt;blockquote class="text-center"&gt;
 &lt;a class="reference external image-reference" href="https://patrick.cloke.us/images/subaru-outback-radio/soldered-connections.jpg"&gt;&lt;img alt="Soldered leads to the bottom of the stereo board." src="/thumbnails/subaru-outback-radio/soldered-connections_small.jpg" /&gt;&lt;/a&gt;
 &lt;a class="reference external image-reference" href="https://patrick.cloke.us/images/subaru-outback-radio/soldered-ground.jpg"&gt;&lt;img alt="Soldered ground to the top of the radio unit." src="/thumbnails/subaru-outback-radio/soldered-ground_small.jpg" /&gt;&lt;/a&gt;
-&lt;p&gt;Five soldered connections are required, four to the bottom of the board &lt;a class="footnote-reference" href="#id12" id="id6"&gt;[6]&lt;/a&gt;
+&lt;p&gt;Five soldered connections are required, four to the bottom of the board &lt;a class="footnote-reference" href="#footnote-6" id="footnote-reference-6"&gt;[6]&lt;/a&gt;
 and one to the ground at the top of the&amp;nbsp;unit.&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;p&gt;Now, the way that this works is that the audio connector output (pins 2 and 5)
@@ -157,49 +157,49 @@ pins as suggested or if this is just a fact of doing it this way&amp;#8230;). If
 have an auxiliary input device playing &lt;span class="caps"&gt;AND&lt;/span&gt; play a &lt;span class="caps"&gt;CD&lt;/span&gt;, the audio mixes instead of
 being replaced by the auxiliary device. It works fine on radio though, so just
 remember to set the stereo to &lt;span class="caps"&gt;FM&lt;/span&gt;.&lt;/p&gt;
-&lt;table class="docutils footnote" frame="void" id="id7" rules="none"&gt;
+&lt;table class="docutils footnote" frame="void" id="footnote-1" rules="none"&gt;
 &lt;colgroup&gt;&lt;col class="label" /&gt;&lt;col /&gt;&lt;/colgroup&gt;
 &lt;tbody valign="top"&gt;
-&lt;tr&gt;&lt;td class="label"&gt;&lt;a class="fn-backref" href="#id1"&gt;[1]&lt;/a&gt;&lt;/td&gt;&lt;td&gt;The head unit of the stereo is directly built into the dashboard and
+&lt;tr&gt;&lt;td class="label"&gt;&lt;a class="fn-backref" href="#footnote-reference-1"&gt;[1]&lt;/a&gt;&lt;/td&gt;&lt;td&gt;The head unit of the stereo is directly built into the dashboard and
 includes the heat / air conditioning controls. &lt;a class="reference external" href="http://www.metraonline.com/part/Subaru_Legacy_Dash_kit_99-8901"&gt;People&lt;/a&gt; do sell kits to
 convert the dash into one that can accept an aftermarket radio&amp;#8230;but
 where&amp;#8217;s the fun in that?&lt;/td&gt;&lt;/tr&gt;
 &lt;/tbody&gt;
 &lt;/table&gt;
-&lt;table class="docutils footnote" frame="void" id="id8" rules="none"&gt;
+&lt;table class="docutils footnote" frame="void" id="footnote-2" rules="none"&gt;
 &lt;colgroup&gt;&lt;col class="label" /&gt;&lt;col /&gt;&lt;/colgroup&gt;
 &lt;tbody valign="top"&gt;
-&lt;tr&gt;&lt;td class="label"&gt;&lt;a class="fn-backref" href="#id2"&gt;[2]&lt;/a&gt;&lt;/td&gt;&lt;td&gt;The 2007 edition had an option for a stereo with satellite radio and an
+&lt;tr&gt;&lt;td class="label"&gt;&lt;a class="fn-backref" href="#footnote-reference-2"&gt;[2]&lt;/a&gt;&lt;/td&gt;&lt;td&gt;The 2007 edition had an option for a stereo with satellite radio and an
 &lt;span class="caps"&gt;AUX&lt;/span&gt; input. I probably could have bought this stereo and installed it,
 but I was quoted $285 last time I asked about changing my radio.&lt;/td&gt;&lt;/tr&gt;
 &lt;/tbody&gt;
 &lt;/table&gt;
-&lt;table class="docutils footnote" frame="void" id="id9" rules="none"&gt;
+&lt;table class="docutils footnote" frame="void" id="footnote-3" rules="none"&gt;
 &lt;colgroup&gt;&lt;col class="label" /&gt;&lt;col /&gt;&lt;/colgroup&gt;
 &lt;tbody valign="top"&gt;
-&lt;tr&gt;&lt;td class="label"&gt;&lt;a class="fn-backref" href="#id3"&gt;[3]&lt;/a&gt;&lt;/td&gt;&lt;td&gt;You can see I actually had a &lt;span class="caps"&gt;CD&lt;/span&gt; in the &lt;span class="caps"&gt;CD&lt;/span&gt; player when I removed the
+&lt;tr&gt;&lt;td class="label"&gt;&lt;a class="fn-backref" href="#footnote-reference-3"&gt;[3]&lt;/a&gt;&lt;/td&gt;&lt;td&gt;You can see I actually had a &lt;span class="caps"&gt;CD&lt;/span&gt; in the &lt;span class="caps"&gt;CD&lt;/span&gt; player when I removed the
 radio. Oops! Luckily it was just a copy of one of my CDs (I never take
 originals in my car). I didn&amp;#8217;t end up scratching it or anything either!&lt;/td&gt;&lt;/tr&gt;
 &lt;/tbody&gt;
 &lt;/table&gt;
-&lt;table class="docutils footnote" frame="void" id="id10" rules="none"&gt;
+&lt;table class="docutils footnote" frame="void" id="footnote-4" rules="none"&gt;
 &lt;colgroup&gt;&lt;col class="label" /&gt;&lt;col /&gt;&lt;/colgroup&gt;
 &lt;tbody valign="top"&gt;
-&lt;tr&gt;&lt;td class="label"&gt;&lt;a class="fn-backref" href="#id4"&gt;[4]&lt;/a&gt;&lt;/td&gt;&lt;td&gt;Playing one of my favorite albums: &lt;a class="reference external" href="http://en.wikipedia.org/wiki/No_Control_%28Bad_Religion_album%29"&gt;&lt;em&gt;No Control&lt;/em&gt;&lt;/a&gt; by &lt;a class="reference external" href="http://en.wikipedia.org/wiki/Bad_Religion"&gt;Bad Religion&lt;/a&gt;&lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td class="label"&gt;&lt;a class="fn-backref" href="#footnote-reference-4"&gt;[4]&lt;/a&gt;&lt;/td&gt;&lt;td&gt;Playing one of my favorite albums: &lt;a class="reference external" href="http://en.wikipedia.org/wiki/No_Control_%28Bad_Religion_album%29"&gt;&lt;em&gt;No Control&lt;/em&gt;&lt;/a&gt; by &lt;a class="reference external" href="http://en.wikipedia.org/wiki/Bad_Religion"&gt;Bad Religion&lt;/a&gt;&lt;/td&gt;&lt;/tr&gt;
 &lt;/tbody&gt;
 &lt;/table&gt;
-&lt;table class="docutils footnote" frame="void" id="id11" rules="none"&gt;
+&lt;table class="docutils footnote" frame="void" id="footnote-5" rules="none"&gt;
 &lt;colgroup&gt;&lt;col class="label" /&gt;&lt;col /&gt;&lt;/colgroup&gt;
 &lt;tbody valign="top"&gt;
-&lt;tr&gt;&lt;td class="label"&gt;&lt;a class="fn-backref" href="#id5"&gt;[5]&lt;/a&gt;&lt;/td&gt;&lt;td&gt;This might seem insane, but I was fairly certain I&amp;#8217;d be able to solder a
+&lt;tr&gt;&lt;td class="label"&gt;&lt;a class="fn-backref" href="#footnote-reference-5"&gt;[5]&lt;/a&gt;&lt;/td&gt;&lt;td&gt;This might seem insane, but I was fairly certain I&amp;#8217;d be able to solder a
 jumper back into place if everything didn&amp;#8217;t work, so I actually felt
 more comfortable doing this than cutting the pin.&lt;/td&gt;&lt;/tr&gt;
 &lt;/tbody&gt;
 &lt;/table&gt;
-&lt;table class="docutils footnote" frame="void" id="id12" rules="none"&gt;
+&lt;table class="docutils footnote" frame="void" id="footnote-6" rules="none"&gt;
 &lt;colgroup&gt;&lt;col class="label" /&gt;&lt;col /&gt;&lt;/colgroup&gt;
 &lt;tbody valign="top"&gt;
-&lt;tr&gt;&lt;td class="label"&gt;&lt;a class="fn-backref" href="#id6"&gt;[6]&lt;/a&gt;&lt;/td&gt;&lt;td&gt;Please don&amp;#8217;t judge my soldering! Two of the four connections were a
+&lt;tr&gt;&lt;td class="label"&gt;&lt;a class="fn-backref" href="#footnote-reference-6"&gt;[6]&lt;/a&gt;&lt;/td&gt;&lt;td&gt;Please don&amp;#8217;t judge my soldering! Two of the four connections were a
 little sloppy (I had to add solder to those instead of just tinning the
 wires). I did ensure there were no shorts with a multimeter (and had to
 resolder one connection).&lt;/td&gt;&lt;/tr&gt;

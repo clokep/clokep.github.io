@@ -9,21 +9,21 @@
     <link href="https://patrick.cloke.us/feeds/atom.xml" type="application/atom+xml" rel="alternate" title="Patrick Cloke Atom Feed" />
     <link href="https://patrick.cloke.us/feeds/rss.xml" type="application/rss+xml" rel="alternate" title="Patrick Cloke RSS Feed" />
 
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
     <link rel="stylesheet" href="/theme/css/styles.css">
     <link rel="stylesheet" href="/theme/css/borland.css">
     <link rel="stylesheet" href="/theme/css/youtube.css">
 
-    <!-- Font Awesome -->
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
 
     <title>Matrix Push Rules & Notifications</title>
 
     <meta property="og:site_name" content="Patrick Cloke" />
 <meta property="og:title" content="Matrix Push Rules & Notifications" />
 <meta property="og:url" content="https://patrick.cloke.us/posts/2023/05/08/matrix-push-rules-notifications/" />
-<meta property="og:description" content="In a previous post about read receipts & notifications in Matrix I briefly mentioned that push rules generate notifications, but with little detail. After completing a rather large project to improve notifications in Matrix I want to fill in some of those blanks. [1] Note These notes are true as of …" />
+<meta property="og:description" content="In a previous post about read receipts & notifications in Matrix I briefly mentioned that push rules generate notifications, but with little detail. After completing a rather large project to improve notifications in Matrix I want to fill in some of those blanks. [1]   Note These notes are true as of …" />
 <meta property="og:type" content="article" />
 <meta property="article:published_time" content="2023-05-08T14:56:00-04:00" />
 <meta property="article:author" content="Patrick Cloke" />
@@ -67,11 +67,11 @@
 
             <span class="dropdown-menu dropdown-menu-right" aria-labelledby="social-dropdown">
               <a class="dropdown-item" href="https://mastodon.social/@clokep" target="_blank">
-                  <span class="fab fa-mastodon mr-1"></span>
+                  <span class="bi-mastodon mr-1"></span>
                 mastodon
               </a>
               <a class="dropdown-item" href="https://www.twitter.com/clokep" target="_blank">
-                  <span class="fab fa-twitter mr-1"></span>
+                  <span class="bi-twitter mr-1"></span>
                 twitter
               </a>
               <a class="dropdown-item" href="https://matrix.to/#/@clokep:matrix.org" target="_blank">
@@ -79,15 +79,15 @@
                 matrix
               </a>
               <a class="dropdown-item" href="https://github.com/clokep" target="_blank">
-                  <span class="fab fa-github mr-1"></span>
+                  <span class="bi-github mr-1"></span>
                 github
               </a>
               <a class="dropdown-item" href="https://gitlab.com/clokep" target="_blank">
-                  <span class="fab fa-gitlab mr-1"></span>
+                  <span class="bi-gitlab mr-1"></span>
                 gitlab
               </a>
               <a class="dropdown-item" href="https://www.linkedin.com/in/patrickcloke/" target="_blank">
-                  <span class="fab fa-linkedin mr-1"></span>
+                  <span class="bi-linkedin mr-1"></span>
                 linkedin
               </a>
             </span>
@@ -132,14 +132,23 @@
         </div>
 
         <div class="col-sm text-right">
+          <a href="https://toot.kytta.dev/?text=Matrix%20Push%20Rules%20%26%C2%A0Notifications%0D%0Ahttps%3A//patrick.cloke.us/posts/2023/05/08/matrix-push-rules-notifications/%0D%0A%23matrix %23notes" target="_blank" class="ml-1 mr-1" title="Share on Mastodon">
+            <span class="bi-mastodon"></span>
+          </a>
           <a href="https://twitter.com/intent/tweet?text=Matrix%20Push%20Rules%20%26%C2%A0Notifications&url=https%3A//patrick.cloke.us/posts/2023/05/08/matrix-push-rules-notifications/&hashtags=matrix,notes" target="_blank" class="ml-1 mr-1" title="Share on Twitter">
-            <span class="fab fa-twitter"></span>
+            <span class="bi-twitter"></span>
+          </a>
+          <a href="https://www.reddit.com/submit?url=https%3A//patrick.cloke.us/posts/2023/05/08/matrix-push-rules-notifications/&title=Matrix%20Push%20Rules%20%26%C2%A0Notifications" target="_blank" class="ml-1 mr-1" title="Share on Reddit">
+            <span class="bi-reddit"></span>
           </a>
           <a href="https://www.facebook.com/sharer/sharer.php?u=https%3A//patrick.cloke.us/posts/2023/05/08/matrix-push-rules-notifications/" target="_blank" class="ml-1 mr-1" title="Share on Facebook">
-            <span class="fab fa-facebook"></span>
+            <span class="bi-facebook"></span>
+          </a>
+          <a href="https://www.linkedin.com/shareArticle?mini=true&url=https%3A//patrick.cloke.us/posts/2023/05/08/matrix-push-rules-notifications/&title=Matrix%20Push%20Rules%20%26%C2%A0Notifications&summary=In%20a%20previous%20post%20about%20read%20receipts%20%26%20notifications%20in%20Matrix%20I%20briefly%0Amentioned%20that%20push%20rules%20generate%20notifications%2C%20but%20with%20little%20detail.%20After%0Acompleting%20a%20rather%20large%20project%20to%20improve%20notifications%20in%20Matrix%20I%20want%20to%0Afill%20in%20some%20of%20those%20blanks.%20%5B1%5D%0A%0A%0ANote%0AThese%20notes%20are%20true%20as%20of%20%E2%80%A6&source=https%3A//patrick.cloke.us/posts/2023/05/08/matrix-push-rules-notifications/" target="_blank" class="ml-1 mr-1" title="Share on LinkedIn">
+            <span class="bi-linkedin"></span>
           </a>
           <a href="mailto:?subject=Matrix%20Push%20Rules%20%26%C2%A0Notifications&amp;body=https%3A//patrick.cloke.us/posts/2023/05/08/matrix-push-rules-notifications/" target="_blank" class="ml-1 mr-1" title="Share via Email">
-            <span class="fas fa-envelope"></span>
+            <span class="bi-envelope"></span>
           </a>
         </div>
       </div>
@@ -151,24 +160,24 @@
           <div class="toc" id="">
 <p class="topic-title">Contents</p>
 <ul class="simple">
-<li><a class="reference internal" href="#push-notifications-in-matrix" id="id17">Push notifications in Matrix</a><ul>
-<li><a class="reference internal" href="#getting-notifications" id="id18">Getting notifications</a></li>
-<li><a class="reference internal" href="#getting-events-which-generated-notifications" id="id19">Getting events which generated notifications</a></li>
+<li><a class="reference internal" href="#push-notifications-in-matrix" id="toc-entry-1">Push notifications in Matrix</a><ul>
+<li><a class="reference internal" href="#getting-notifications" id="toc-entry-2">Getting notifications</a></li>
+<li><a class="reference internal" href="#getting-events-which-generated-notifications" id="toc-entry-3">Getting events which generated notifications</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#push-rules-background" id="id20">Push rules background</a><ul>
-<li><a class="reference internal" href="#getting-the-configured-push-rules" id="id21">Getting the configured push rules?</a></li>
-<li><a class="reference internal" href="#what-makes-up-a-push-rule" id="id22">What makes up a push rule?</a></li>
-<li><a class="reference internal" href="#types-of-push-rules" id="id23">Types of push rules</a></li>
+<li><a class="reference internal" href="#push-rules-background" id="toc-entry-4">Push rules background</a><ul>
+<li><a class="reference internal" href="#getting-the-configured-push-rules" id="toc-entry-5">Getting the configured push rules?</a></li>
+<li><a class="reference internal" href="#what-makes-up-a-push-rule" id="toc-entry-6">What makes up a push rule?</a></li>
+<li><a class="reference internal" href="#types-of-push-rules" id="toc-entry-7">Types of push rules</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#why-do-clients-care-doesnt-the-homeserver-do-this-all-for-me" id="id24">Why do clients care? Doesn’t the homeserver do this all for me?</a></li>
-<li><a class="reference internal" href="#what-happens-by-default" id="id25">What happens by default?</a><ul>
-<li><a class="reference internal" href="#other-standard-rules" id="id26">Other “standard” rules</a></li>
-<li><a class="reference internal" href="#what-about-unread-rooms" id="id27">What about unread rooms?</a></li>
+<li><a class="reference internal" href="#why-do-clients-care-doesnt-the-homeserver-do-this-all-for-me" id="toc-entry-8">Why do clients care? Doesn’t the homeserver do this all for me?</a></li>
+<li><a class="reference internal" href="#what-happens-by-default" id="toc-entry-9">What happens by default?</a><ul>
+<li><a class="reference internal" href="#other-standard-rules" id="toc-entry-10">Other “standard” rules</a></li>
+<li><a class="reference internal" href="#what-about-unread-rooms" id="toc-entry-11">What about unread rooms?</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#putting-it-altogether" id="id28">Putting it altogether…</a></li>
+<li><a class="reference internal" href="#putting-it-altogether" id="toc-entry-12">Putting it altogether…</a></li>
 </ul>
 </div>
         </div>
@@ -176,7 +185,7 @@
         <p>In a previous post about <a class="reference external" href="https://patrick.cloke.us/posts/2023/01/05/matrix-read-receipts-and-notifications/">read receipts <span class="amp">&amp;</span> notifications in Matrix</a> I briefly
 mentioned that push rules generate notifications, but with little detail. After
 completing a rather large project to improve notifications in Matrix I want to
-fill in some of those blanks. <a class="footnote-reference" href="#id9" id="id1">[1]</a></p>
+fill in some of those blanks. <a class="footnote-reference" href="#footnote-1" id="footnote-reference-1">[1]</a></p>
 <!-- comment:
 
 Adapted from https://docs.google.com/presentation/d/1odrbD5wMwGz_qUtG5U1pFb7p3sFwLApDaYtyHpdI-Oo/edit -->
@@ -187,9 +196,9 @@ Adapted from https://docs.google.com/presentation/d/1odrbD5wMwGz_qUtG5U1pFb7p3sF
 Matrix spec changes which may or may not have been merged since.</p>
 </div>
 <div class="section" id="push-notifications-in-matrix">
-<h2><a class="toc-backref" href="#id17">Push notifications in Matrix</a></h2>
+<h2><a class="toc-backref" href="#toc-entry-1">Push notifications in Matrix</a></h2>
 <p>Matrix includes a <a class="reference external" href="https://spec.matrix.org/v1.6/client-server-api/#push-notifications">push notifications module</a> which defines when Matrix events
-are considered an unread <strong>notification</strong> or <strong>highlight notification</strong> <a class="footnote-reference" href="#id10" id="id2">[2]</a>
+are considered an unread <strong>notification</strong> or <strong>highlight notification</strong> <a class="footnote-reference" href="#footnote-2" id="footnote-reference-2">[2]</a>
 and <em>how</em> those events are <strong>sent to third-party push notification services</strong>.</p>
 <p><strong>Push rules</strong> are a set of <em>ordered</em> rules which clients upload to the homeserver.
 These are shared by all device and are evaluated per event by the homeserver (and
@@ -200,7 +209,7 @@ notifications <span class="caps">API</span>.</p>
 <strong>actions</strong> to take if the rule matches.</p>
 <p>Processing of push rules occur until a rule matches or all rules have been evaluated.</p>
 <div class="section" id="getting-notifications">
-<h3><a class="toc-backref" href="#id18">Getting notifications</a></h3>
+<h3><a class="toc-backref" href="#toc-entry-2">Getting notifications</a></h3>
 <p>As some background, clients receive notifications in one of two ways, via polling
 <tt class="docutils literal">/sync</tt> and/or via push notifications.</p>
 <p>Web-based clients often receive events via polling:</p>
@@ -209,7 +218,7 @@ notifications <span class="caps">API</span>.</p>
 </blockquote>
 <p>The <a class="reference external" href="https://spec.matrix.org/v1.6/client-server-api/#_matrixclientv3sync_unread-notification-counts">sync response</a> (both initial and incremental) include the count of unread
 notifications and unread highlight notifications per room.</p>
-<p>Mobile applications often <a class="reference external" href="https://spec.matrix.org/v1.6/push-gateway-api/#overview">receive events via push</a> <a class="footnote-reference" href="#id11" id="id3">[3]</a>:</p>
+<p>Mobile applications often <a class="reference external" href="https://spec.matrix.org/v1.6/push-gateway-api/#overview">receive events via push</a> <a class="footnote-reference" href="#footnote-3" id="footnote-reference-3">[3]</a>:</p>
 <blockquote class="text-center">
 <a class="reference external image-reference" href="https://patrick.cloke.us/images/matrix-push-rules-and-notifications/mobile-push-flow.png"><img alt="Notification flow for mobile applications." src="/thumbnails/matrix-push-rules-and-notifications/mobile-push-flow_medium.png"/></a>
 </blockquote>
@@ -225,7 +234,7 @@ matrix.org and must have your own deployment.</p>
 </div>
 </div>
 <div class="section" id="getting-events-which-generated-notifications">
-<h3><a class="toc-backref" href="#id19">Getting events which generated notifications</a></h3>
+<h3><a class="toc-backref" href="#toc-entry-3">Getting events which generated notifications</a></h3>
 <p>There’s <a class="reference external" href="https://spec.matrix.org/v1.6/client-server-api/#listing-notifications">an <span class="caps">API</span> to retrieve a list of events</a> which the user has been notified
 about. This powers the “notification panel” on Element Web and is meant to help
 users catch-up on missed notifications.</p>
@@ -238,9 +247,9 @@ users catch-up on missed notifications.</p>
 </div>
 </div>
 <div class="section" id="push-rules-background">
-<h2><a class="toc-backref" href="#id20">Push rules background</a></h2>
+<h2><a class="toc-backref" href="#toc-entry-4">Push rules background</a></h2>
 <div class="section" id="getting-the-configured-push-rules">
-<h3><a class="toc-backref" href="#id21">Getting the configured push rules?</a></h3>
+<h3><a class="toc-backref" href="#toc-entry-5">Getting the configured push rules?</a></h3>
 <p>There’s a <a class="reference external" href="https://spec.matrix.org/v1.6/client-server-api/#push-rules-api">set of APIs to fetch or modify push rules</a>, they let you:</p>
 <ul class="simple">
 <li>Fetch all push rules</li>
@@ -251,10 +260,10 @@ users catch-up on missed notifications.</p>
 <p>An initial sync includes all of a user’s push rules under the user’s account data.</p>
 <p>Any changes to push rules are included in incremental syncs. <em>Except</em> for newly
 added rules to the specification (this is likely a homeserver bug).</p>
-<p>Note that you cannot use <a class="reference external" href="https://spec.matrix.org/v1.6/client-server-api/#client-config">the account data APIs</a> to configure push rules. <a class="footnote-reference" href="#id12" id="id4">[4]</a></p>
+<p>Note that you cannot use <a class="reference external" href="https://spec.matrix.org/v1.6/client-server-api/#client-config">the account data APIs</a> to configure push rules. <a class="footnote-reference" href="#footnote-4" id="footnote-reference-4">[4]</a></p>
 </div>
 <div class="section" id="what-makes-up-a-push-rule">
-<h3><a class="toc-backref" href="#id22">What makes up a push rule?</a></h3>
+<h3><a class="toc-backref" href="#toc-entry-6">What makes up a push rule?</a></h3>
 <p>A push rule is a <a class="reference external" href="https://spec.matrix.org/v1.6/client-server-api/#_matrixclientv3pushrules_pushrule"><span class="caps">JSON</span> object with the following fields</a>:</p>
 <ul class="simple">
 <li><tt class="docutils literal">rule_id</tt>: Unique (per-user) <span class="caps">ID</span> for the rule.<ul>
@@ -296,10 +305,10 @@ incremented (in addition to the notification count).</li>
 <li>Can be an empty list to do nothing.</li>
 </ul>
 <p>There are other undefined or no-op actions (<tt class="docutils literal">dont_notify</tt>, <tt class="docutils literal">coalesce</tt>) which will be
-removed in the next version of the spec. <a class="footnote-reference" href="#id13" id="id5">[5]</a></p>
+removed in the next version of the spec. <a class="footnote-reference" href="#footnote-5" id="footnote-reference-5">[5]</a></p>
 </div>
 <div class="section" id="types-of-push-rules">
-<h3><a class="toc-backref" href="#id23">Types of push rules</a></h3>
+<h3><a class="toc-backref" href="#toc-entry-7">Types of push rules</a></h3>
 <p>Push rules have a type associated with them, these are executed in order:</p>
 <ul class="simple">
 <li>Override: generic high priority rules</li>
@@ -319,12 +328,12 @@ special cases which do not accept conditions, but can be mapped to them.</p>
 </div>
 </div>
 <div class="section" id="why-do-clients-care-doesnt-the-homeserver-do-this-all-for-me">
-<h2><a class="toc-backref" href="#id24">Why do clients care? Doesn’t the homeserver do this all for me?</a></h2>
+<h2><a class="toc-backref" href="#toc-entry-8">Why do clients care? Doesn’t the homeserver do this all for me?</a></h2>
 <p>Encryption ruins everything! Some of the push rules require the decrypted event
 content to be properly processed. The enable this, the default rules declare
 <strong>all encrypted events as notifications</strong>. Clients are expected to
-<strong>re-run push rules on the decrypted content</strong>. <a class="footnote-reference" href="#id14" id="id6">[6]</a></p>
-<p>This can result in one of the following: <a class="footnote-reference" href="#id15" id="id7">[7]</a></p>
+<strong>re-run push rules on the decrypted content</strong>. <a class="footnote-reference" href="#footnote-6" id="footnote-reference-6">[6]</a></p>
+<p>This can result in one of the following: <a class="footnote-reference" href="#footnote-7" id="footnote-reference-7">[7]</a></p>
 <ul class="simple">
 <li>Increment the highlight count (the decrypted event results in a highlight)</li>
 <li>No change (the decrypted event results in a notification)</li>
@@ -339,7 +348,7 @@ implement mentions <span class="amp">&amp;</span> keywords.</p>
 </div>
 </div>
 <div class="section" id="what-happens-by-default">
-<h2><a class="toc-backref" href="#id25">What happens by default?</a></h2>
+<h2><a class="toc-backref" href="#toc-entry-9">What happens by default?</a></h2>
 <p>The <a class="reference external" href="https://spec.matrix.org/v1.6/client-server-api/#predefined-rules">default rules are in the Matrix spec</a> and include:</p>
 <ul class="simple">
 <li>Highlight:<ul>
@@ -367,8 +376,8 @@ implement mentions <span class="amp">&amp;</span> keywords.</p>
 <p>Default rules can be disabled or have their actions modified on a per-user basis.
 Some of the above features are handled by multiple push rules.</p>
 <div class="section" id="other-standard-rules">
-<h3><a class="toc-backref" href="#id26">Other “standard” rules</a></h3>
-<p>Element creates custom push rules based on a known form. <a class="footnote-reference" href="#id16" id="id8">[8]</a></p>
+<h3><a class="toc-backref" href="#toc-entry-10">Other “standard” rules</a></h3>
+<p>Element creates custom push rules based on a known form. <a class="footnote-reference" href="#footnote-8" id="footnote-reference-8">[8]</a></p>
 <ul class="simple">
 <li>Keywords (implemented as a content-specific rule with a pattern)</li>
 <li>Per-room overrides:<ul>
@@ -382,7 +391,7 @@ Some of the above features are handled by multiple push rules.</p>
 rooms, senders, message types, etc.)</p>
 </div>
 <div class="section" id="what-about-unread-rooms">
-<h3><a class="toc-backref" href="#id27">What about unread rooms?</a></h3>
+<h3><a class="toc-backref" href="#toc-entry-11">What about unread rooms?</a></h3>
 <p>The unread (“bold”) rooms logic in Element Web is completely custom and outside
 of the Matrix specification.</p>
 <ul class="simple">
@@ -396,26 +405,26 @@ then the behavior changes!</p>
 </div>
 </div>
 <div class="section" id="putting-it-altogether">
-<h2><a class="toc-backref" href="#id28">Putting it altogether…</a></h2>
+<h2><a class="toc-backref" href="#toc-entry-12">Putting it altogether…</a></h2>
 <p>…it gets complicated trying to figure out whether a message will generate a
 notification or not.</p>
 <blockquote class="text-center">
 <a class="reference external image-reference" href="https://patrick.cloke.us/images/matrix-push-rules-and-notifications/default-push-rules.png"><img alt="Flow chart of the default Matrix push rules when using Element." src="/thumbnails/matrix-push-rules-and-notifications/default-push-rules_medium.png"/></a>
 <p>The default Matrix push rules (also showing the options available within Element).</p>
 </blockquote>
-<table class="docutils footnote" frame="void" id="id9" rules="none">
+<table class="docutils footnote" frame="void" id="footnote-1" rules="none">
 <colgroup><col class="label"/><col/></colgroup>
 <tbody valign="top">
-<tr><td class="label"><a class="fn-backref" href="#id1">[1]</a></td><td>Improving unintentional mentions (<a class="reference external" href="https://github.com/matrix-org/matrix-spec-proposals/pull/3952"><span class="caps">MSC3952</span></a>) is the main feature we were
+<tr><td class="label"><a class="fn-backref" href="#footnote-reference-1">[1]</a></td><td>Improving unintentional mentions (<a class="reference external" href="https://github.com/matrix-org/matrix-spec-proposals/pull/3952"><span class="caps">MSC3952</span></a>) is the main feature we were
 working on, but this was powered by <a class="reference external" href="https://github.com/matrix-org/matrix-spec-proposals/pull/3758"><span class="caps">MSC3758</span></a> (from <a class="reference external" href="https://www.beeper.com/">Beeper</a>),
 <a class="reference external" href="https://github.com/matrix-org/matrix-spec-proposals/pull/3873"><span class="caps">MSC3873</span></a> (from a coworker), and <a class="reference external" href="https://github.com/matrix-org/matrix-spec-proposals/pull/3966"><span class="caps">MSC3966</span></a>. <a class="reference external" href="https://github.com/matrix-org/matrix-spec-proposals/pull/3980"><span class="caps">MSC3980</span></a> was also a
 follow-up for consistency.</td></tr>
 </tbody>
 </table>
-<table class="docutils footnote" frame="void" id="id10" rules="none">
+<table class="docutils footnote" frame="void" id="footnote-2" rules="none">
 <colgroup><col class="label"/><col/></colgroup>
 <tbody valign="top">
-<tr><td class="label"><a class="fn-backref" href="#id2">[2]</a></td><td><p class="first">Notification count (the grey badge with count in Element Web) is the number
+<tr><td class="label"><a class="fn-backref" href="#footnote-reference-2">[2]</a></td><td><p class="first">Notification count (the grey badge with count in Element Web) is the number
 of unread messages in a room. Highlight count (the red badge with count in
 Element Web) is the number of unread mentions in a room.</p>
 <div class="admonition warning">
@@ -428,42 +437,42 @@ rules (and is not specced).</p>
 </td></tr>
 </tbody>
 </table>
-<table class="docutils footnote" frame="void" id="id11" rules="none">
+<table class="docutils footnote" frame="void" id="footnote-3" rules="none">
 <colgroup><col class="label"/><col/></colgroup>
 <tbody valign="top">
-<tr><td class="label"><a class="fn-backref" href="#id3">[3]</a></td><td>This post generally defines “push notifications” as a notification which
+<tr><td class="label"><a class="fn-backref" href="#footnote-reference-3">[3]</a></td><td>This post generally defines “push notifications” as a notification which
 is sent via a push provider to an application. Push providers include Apple,
 Google, Microsoft, or Mozilla.</td></tr>
 </tbody>
 </table>
-<table class="docutils footnote" frame="void" id="id12" rules="none">
+<table class="docutils footnote" frame="void" id="footnote-4" rules="none">
 <colgroup><col class="label"/><col/></colgroup>
 <tbody valign="top">
-<tr><td class="label"><a class="fn-backref" href="#id4">[4]</a></td><td><a class="reference external" href="https://github.com/matrix-org/matrix-spec-proposals/pull/4010"><span class="caps">MSC4010</span></a> aims to make this explicit.</td></tr>
+<tr><td class="label"><a class="fn-backref" href="#footnote-reference-4">[4]</a></td><td><a class="reference external" href="https://github.com/matrix-org/matrix-spec-proposals/pull/4010"><span class="caps">MSC4010</span></a> aims to make this explicit.</td></tr>
 </tbody>
 </table>
-<table class="docutils footnote" frame="void" id="id13" rules="none">
+<table class="docutils footnote" frame="void" id="footnote-5" rules="none">
 <colgroup><col class="label"/><col/></colgroup>
 <tbody valign="top">
-<tr><td class="label"><a class="fn-backref" href="#id5">[5]</a></td><td>See <a class="reference external" href="https://github.com/matrix-org/matrix-spec-proposals/pull/3987"><span class="caps">MSC3987</span></a>.</td></tr>
+<tr><td class="label"><a class="fn-backref" href="#footnote-reference-5">[5]</a></td><td>See <a class="reference external" href="https://github.com/matrix-org/matrix-spec-proposals/pull/3987"><span class="caps">MSC3987</span></a>.</td></tr>
 </tbody>
 </table>
-<table class="docutils footnote" frame="void" id="id14" rules="none">
+<table class="docutils footnote" frame="void" id="footnote-6" rules="none">
 <colgroup><col class="label"/><col/></colgroup>
 <tbody valign="top">
-<tr><td class="label"><a class="fn-backref" href="#id6">[6]</a></td><td>It was not clear how clients should handle encrypted events <a class="reference external" href="https://github.com/matrix-org/matrix-spec/pull/1461">until recently</a></td></tr>
+<tr><td class="label"><a class="fn-backref" href="#footnote-reference-6">[6]</a></td><td>It was not clear how clients should handle encrypted events <a class="reference external" href="https://github.com/matrix-org/matrix-spec/pull/1461">until recently</a></td></tr>
 </tbody>
 </table>
-<table class="docutils footnote" frame="void" id="id15" rules="none">
+<table class="docutils footnote" frame="void" id="footnote-7" rules="none">
 <colgroup><col class="label"/><col/></colgroup>
 <tbody valign="top">
-<tr><td class="label"><a class="fn-backref" href="#id7">[7]</a></td><td>Adapted from a <a class="reference external" href="https://gist.github.com/Half-Shot/f9501916363894761a1659250aa25181">Gist from Half-Shot</a>.</td></tr>
+<tr><td class="label"><a class="fn-backref" href="#footnote-reference-7">[7]</a></td><td>Adapted from a <a class="reference external" href="https://gist.github.com/Half-Shot/f9501916363894761a1659250aa25181">Gist from Half-Shot</a>.</td></tr>
 </tbody>
 </table>
-<table class="docutils footnote" frame="void" id="id16" rules="none">
+<table class="docutils footnote" frame="void" id="footnote-8" rules="none">
 <colgroup><col class="label"/><col/></colgroup>
 <tbody valign="top">
-<tr><td class="label"><a class="fn-backref" href="#id8">[8]</a></td><td>These don’t seem to be specced, I’m unsure if other clients create similar
+<tr><td class="label"><a class="fn-backref" href="#footnote-reference-8">[8]</a></td><td>These don’t seem to be specced, I’m unsure if other clients create similar
 rules or understand these rules.</td></tr>
 </tbody>
 </table>
@@ -497,7 +506,7 @@ s.setAttribute('data-timestamp', +new Date());
     <nav class="navbar fixed-bottom navbar-light bg-light border-top border-info">
       <a href="https://getpelican.com/" class="nav-item" target="_blank">Powered by Pelican</a>
       <a href="https://github.com/clokep/clokep.github.io" class="nav-item" target="_blank">
-        Source available on GitHub <span class="fab fa-github"></span>
+        Source available on GitHub <span class="bi-github"></span>
       </a>
     </nav>
 

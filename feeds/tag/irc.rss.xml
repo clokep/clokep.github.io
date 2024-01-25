@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <rss version="2.0"><channel><title>Patrick Cloke - IRC</title><link>https://patrick.cloke.us/</link><description></description><lastBuildDate>Thu, 24 Sep 2015 07:18:00 -0400</lastBuildDate><item><title>IRC Client Usage Share on moznet</title><link>https://patrick.cloke.us/posts/2015/09/23/irc-client-usage-share-on-moznet/</link><description>
 &lt;div class="section" id="background"&gt;
-&lt;h2&gt;&lt;a class="toc-backref" href="#id13"&gt;Background&lt;/a&gt;&lt;/h2&gt;
+&lt;h2&gt;&lt;a class="toc-backref" href="#toc-entry-1"&gt;Background&lt;/a&gt;&lt;/h2&gt;
 &lt;p&gt;The usage share of &lt;span class="caps"&gt;IRC&lt;/span&gt; clients has always been something I’m interested in. This
 is partially to see how many people are using &lt;a class="reference external" href="http://instantbird.com/"&gt;Instantbird&lt;/a&gt; or &lt;a class="reference external" href="https://www.mozilla.org/en-US/thunderbird/"&gt;Mozilla
 Thunderbird&lt;/a&gt; for &lt;span class="caps"&gt;IRC&lt;/span&gt; (as I’ve written much of the &lt;span class="caps"&gt;IRC&lt;/span&gt; code for those clients).
 &lt;a class="reference external" href="http://en.wikipedia.org/wiki/Usage_share_of_web_browsers"&gt;Usage share of browsers&lt;/a&gt; is quite a researched topic, but I’ve never come
-across this data for &lt;span class="caps"&gt;IRC&lt;/span&gt;. Most &lt;a class="footnote-reference" href="#id7" id="id1"&gt;[1]&lt;/a&gt; &lt;span class="caps"&gt;IRC&lt;/span&gt; clients implement a part of the &lt;a class="reference external" href="http://www.irchelp.org/irchelp/rfc/ctcpspec.html"&gt;&lt;span class="caps"&gt;CTCP&lt;/span&gt;&lt;/a&gt;
+across this data for &lt;span class="caps"&gt;IRC&lt;/span&gt;. Most &lt;a class="footnote-reference" href="#footnote-1" id="footnote-reference-1"&gt;[1]&lt;/a&gt; &lt;span class="caps"&gt;IRC&lt;/span&gt; clients implement a part of the &lt;a class="reference external" href="http://www.irchelp.org/irchelp/rfc/ctcpspec.html"&gt;&lt;span class="caps"&gt;CTCP&lt;/span&gt;&lt;/a&gt;
 protocol which allows a client to query another client for their version.
 Thinking of this as a &lt;a class="reference external" href="http://en.wikipedia.org/wiki/User_agent"&gt;user agent&lt;/a&gt; is probably a good analogue. I don’t think
 this would imply that there is much of an issue with &lt;a class="reference external" href="http://en.wikipedia.org/wiki/Usage_share_of_web_browsers#User_agent_spoofing"&gt;user agent spoofing&lt;/a&gt;, as
@@ -14,7 +14,7 @@ there would be for web browser statistics since (as far as I know), no one uses
 the version response to do capability negotiation. It also is not used by servers.&lt;/p&gt;
 &lt;/div&gt;
 &lt;div class="section" id="technical-bits"&gt;
-&lt;h2&gt;&lt;a class="toc-backref" href="#id14"&gt;Technical Bits&lt;/a&gt;&lt;/h2&gt;
+&lt;h2&gt;&lt;a class="toc-backref" href="#toc-entry-2"&gt;Technical Bits&lt;/a&gt;&lt;/h2&gt;
 &lt;p&gt;So how’d we do this? I wrote an &lt;a class="reference external" href="https://bitbucket.org/clokep/irc-extras/src/tip/stats/"&gt;extension&lt;/a&gt; for Instantbird which handled both
 the backend and the display of the results. I think that this really showcases
 the extensibility of Instantbird and the effort we’ve put into ensuring their
@@ -30,10 +30,10 @@ made a pretty(-ish) plot of this. (If you’re a network administrator reading
 this and think this is insane, I’d be very curious to hear a better way to do this!)&lt;/p&gt;
 &lt;/div&gt;
 &lt;div class="section" id="results"&gt;
-&lt;h2&gt;&lt;a class="toc-backref" href="#id15"&gt;Results&lt;/a&gt;&lt;/h2&gt;
+&lt;h2&gt;&lt;a class="toc-backref" href="#toc-entry-3"&gt;Results&lt;/a&gt;&lt;/h2&gt;
 &lt;p&gt;In order to get some results I hooked my client up to &lt;a class="reference external" href="https://wiki.mozilla.org/IRC"&gt;moznet&lt;/a&gt; on July 23rd,
 2015 and let it run on many channels (pretty much anything with more than 20
-users) for a few hours &lt;a class="footnote-reference" href="#id8" id="id2"&gt;[2]&lt;/a&gt;. I was in Europe and started early in the morning
+users) for a few hours &lt;a class="footnote-reference" href="#footnote-2" id="footnote-reference-2"&gt;[2]&lt;/a&gt;. I was in Europe and started early in the morning
 and let it run through the evening, so it should encompass some “normal” usage
 by Mozillians. I would expect a bit of skew in these results toward
 Mozilla-esque &lt;span class="caps"&gt;IRC&lt;/span&gt; clients (Instantbird, Thunderbird and &lt;a class="reference external" href="http://chatzilla.hacksrus.com/"&gt;ChatZilla&lt;/a&gt;).&lt;/p&gt;
@@ -41,7 +41,7 @@ Mozilla-esque &lt;span class="caps"&gt;IRC&lt;/span&gt; clients (Instantbird, Th
 variance there is day-to-day or over time, but I found the (un-scientific)
 results to be interesting!&lt;/p&gt;
 &lt;div class="section" id="responses"&gt;
-&lt;h3&gt;&lt;a class="toc-backref" href="#id16"&gt;Responses&lt;/a&gt;&lt;/h3&gt;
+&lt;h3&gt;&lt;a class="toc-backref" href="#toc-entry-4"&gt;Responses&lt;/a&gt;&lt;/h3&gt;
 &lt;p&gt;The first thing I noticed is the large amount of information some version
 responses gave (in no particular order):&lt;/p&gt;
 &lt;ul class="simple"&gt;
@@ -55,20 +55,20 @@ although quite a few also include a &lt;span class="caps"&gt;URL&lt;/span&gt;.&l
 &lt;p&gt;Additionally, some bouncers respond in weird ways which might skew the results:&lt;/p&gt;
 &lt;ul class="simple"&gt;
 &lt;li&gt;&lt;span class="caps"&gt;ZNC&lt;/span&gt; responds only if there are no clients connected &lt;span class="caps"&gt;OR&lt;/span&gt;, depending on the
-version, it appends itself to the client response. &lt;a class="footnote-reference" href="#id9" id="id3"&gt;[3]&lt;/a&gt;&lt;/li&gt;
+version, it appends itself to the client response. &lt;a class="footnote-reference" href="#footnote-3" id="footnote-reference-3"&gt;[3]&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;bip responds with it’s own version if no one is connected &lt;span class="caps"&gt;OR&lt;/span&gt; the version of
-all connected clients. &lt;a class="footnote-reference" href="#id10" id="id4"&gt;[4]&lt;/a&gt;&lt;/li&gt;
+all connected clients. &lt;a class="footnote-reference" href="#footnote-4" id="footnote-reference-4"&gt;[4]&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 &lt;p&gt;Lastly, some clients just don’t respond (or respond with an empty string). The
 results below aren’t really a count of “users”, but a count of “clients” where
 some users might be counted multiple times.&lt;/p&gt;
 &lt;/div&gt;
 &lt;div class="section" id="client-summary"&gt;
-&lt;h3&gt;&lt;a class="toc-backref" href="#id17"&gt;Client Summary&lt;/a&gt;&lt;/h3&gt;
+&lt;h3&gt;&lt;a class="toc-backref" href="#toc-entry-5"&gt;Client Summary&lt;/a&gt;&lt;/h3&gt;
 &lt;p&gt;Initially I visualized the data by plotting it two serparate ways: first by
 showing the count of each version response and then grouping by “client family”.
 The first plot had too many columns to reasonably show in this post: thus I’ve
-only included a plot of the client families &lt;a class="footnote-reference" href="#id11" id="id5"&gt;[5]&lt;/a&gt;. There are two plots, the first
+only included a plot of the client families &lt;a class="footnote-reference" href="#footnote-5" id="footnote-reference-5"&gt;[5]&lt;/a&gt;. There are two plots, the first
 shows a subset of the data by cutting the tail (arbitrarily including families
 with at least 10 users).&lt;/p&gt;
 &lt;div class="admonition note"&gt;
@@ -76,7 +76,7 @@ with at least 10 users).&lt;/p&gt;
 &lt;p&gt;A “client family” is counting all versions of the same client together. This
 was calculated by taking the text up to the first whitespace or digit and
 converting to lowercase:&lt;/p&gt;
-&lt;div class="last"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="nx"&gt;family&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="nx"&gt;version&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;split&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="sr"&gt;/[\s\d]/&lt;/span&gt;&lt;span class="p"&gt;)[&lt;/span&gt;&lt;span class="mf"&gt;0&lt;/span&gt;&lt;span class="p"&gt;].&lt;/span&gt;&lt;span class="nx"&gt;toLowerCase&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
+&lt;div class="last"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="nx"&gt;family&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nx"&gt;version&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;split&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="sr"&gt;/[\s\d]/&lt;/span&gt;&lt;span class="p"&gt;)[&lt;/span&gt;&lt;span class="mf"&gt;0&lt;/span&gt;&lt;span class="p"&gt;].&lt;/span&gt;&lt;span class="nx"&gt;toLowerCase&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 &lt;/div&gt;&lt;/div&gt;
 &lt;style type="text/css"&gt;
@@ -162,9 +162,9 @@ converting to lowercase:&lt;/p&gt;
 &lt;div id="family-count"&gt;&lt;/div&gt;
 &lt;div id="family-all-count"&gt;&lt;/div&gt;&lt;/div&gt;
 &lt;div class="section" id="points-of-note"&gt;
-&lt;h3&gt;&lt;a class="toc-backref" href="#id18"&gt;Points of Note&lt;/a&gt;&lt;/h3&gt;
+&lt;h3&gt;&lt;a class="toc-backref" href="#toc-entry-6"&gt;Points of Note&lt;/a&gt;&lt;/h3&gt;
 &lt;p&gt;I have to admit that I was fairly shocked by the number of IRCCloud users as I
-found it pretty unusable when messing with it &lt;a class="footnote-reference" href="#id12" id="id6"&gt;[6]&lt;/a&gt;. I suspect it being an 'easy'
+found it pretty unusable when messing with it &lt;a class="footnote-reference" href="#footnote-6" id="footnote-reference-6"&gt;[6]&lt;/a&gt;. I suspect it being an 'easy'
 bouncer draws many people to it. The bouncer-like software (IRCCloud, &lt;span class="caps"&gt;ZNC&lt;/span&gt;, bip)
 represents almost half of the users surveyed (692 / 1549 ≈ 45%)!&lt;/p&gt;
 &lt;p&gt;I'm surprised so many people are using &lt;tt class="docutils literal"&gt;purple&lt;/tt&gt; as their &lt;span class="caps"&gt;IRC&lt;/span&gt; client, as the
@@ -177,51 +177,51 @@ and Icedove, come in as part of the top 10 (63 users, right before ChatZilla)!
 There's a lot of great clients out there and I'm happy to say I've helped to
 create one of the more popular ones (on moznet, at least!).&lt;/p&gt;
 &lt;p&gt;Let me know if I missed a great insight!&lt;/p&gt;
-&lt;table class="docutils footnote" frame="void" id="id7" rules="none"&gt;
+&lt;table class="docutils footnote" frame="void" id="footnote-1" rules="none"&gt;
 &lt;colgroup&gt;&lt;col class="label"/&gt;&lt;col/&gt;&lt;/colgroup&gt;
 &lt;tbody valign="top"&gt;
-&lt;tr&gt;&lt;td class="label"&gt;&lt;a class="fn-backref" href="#id1"&gt;[1]&lt;/a&gt;&lt;/td&gt;&lt;td&gt;"Most" is a wild accusation here. But...from the numbers I've seen, it
+&lt;tr&gt;&lt;td class="label"&gt;&lt;a class="fn-backref" href="#footnote-reference-1"&gt;[1]&lt;/a&gt;&lt;/td&gt;&lt;td&gt;"Most" is a wild accusation here. But...from the numbers I've seen, it
 seems like a reasonable statement.&lt;/td&gt;&lt;/tr&gt;
 &lt;/tbody&gt;
 &lt;/table&gt;
-&lt;table class="docutils footnote" frame="void" id="id8" rules="none"&gt;
+&lt;table class="docutils footnote" frame="void" id="footnote-2" rules="none"&gt;
 &lt;colgroup&gt;&lt;col class="label"/&gt;&lt;col/&gt;&lt;/colgroup&gt;
 &lt;tbody valign="top"&gt;
-&lt;tr&gt;&lt;td class="label"&gt;&lt;a class="fn-backref" href="#id2"&gt;[2]&lt;/a&gt;&lt;/td&gt;&lt;td&gt;While running this I had a few users question what I was doing over
+&lt;tr&gt;&lt;td class="label"&gt;&lt;a class="fn-backref" href="#footnote-reference-2"&gt;[2]&lt;/a&gt;&lt;/td&gt;&lt;td&gt;While running this I had a few users question what I was doing over
 private messages or in a channel. I'm &lt;em&gt;shocked&lt;/em&gt; that clients bother
 their users by showing them they received a &lt;tt class="docutils literal"&gt;&lt;span class="caps"&gt;VERSION&lt;/span&gt;&lt;/tt&gt; request. (Most)
 users just won't care! Why show that low-level of the protocol?!&lt;/td&gt;&lt;/tr&gt;
 &lt;/tbody&gt;
 &lt;/table&gt;
-&lt;table class="docutils footnote" frame="void" id="id9" rules="none"&gt;
+&lt;table class="docutils footnote" frame="void" id="footnote-3" rules="none"&gt;
 &lt;colgroup&gt;&lt;col class="label"/&gt;&lt;col/&gt;&lt;/colgroup&gt;
 &lt;tbody valign="top"&gt;
-&lt;tr&gt;&lt;td class="label"&gt;&lt;a class="fn-backref" href="#id3"&gt;[3]&lt;/a&gt;&lt;/td&gt;&lt;td&gt;As corrected by DarthGandalf on &lt;span class="caps"&gt;IRC&lt;/span&gt;: "Before 1.6, &lt;span class="caps"&gt;ZNC&lt;/span&gt; version is
+&lt;tr&gt;&lt;td class="label"&gt;&lt;a class="fn-backref" href="#footnote-reference-3"&gt;[3]&lt;/a&gt;&lt;/td&gt;&lt;td&gt;As corrected by DarthGandalf on &lt;span class="caps"&gt;IRC&lt;/span&gt;: "Before 1.6, &lt;span class="caps"&gt;ZNC&lt;/span&gt; version is
 returned iff no clients are connected. After 1.6, it's also appended to
 the client's response (but still one line per connected client)"&lt;/td&gt;&lt;/tr&gt;
 &lt;/tbody&gt;
 &lt;/table&gt;
-&lt;table class="docutils footnote" frame="void" id="id10" rules="none"&gt;
+&lt;table class="docutils footnote" frame="void" id="footnote-4" rules="none"&gt;
 &lt;colgroup&gt;&lt;col class="label"/&gt;&lt;col/&gt;&lt;/colgroup&gt;
 &lt;tbody valign="top"&gt;
-&lt;tr&gt;&lt;td class="label"&gt;&lt;a class="fn-backref" href="#id4"&gt;[4]&lt;/a&gt;&lt;/td&gt;&lt;td&gt;&lt;a class="reference external" href="https://twitter.com/dioxmat/status/646815252898803712"&gt;Source&lt;/a&gt;, have
+&lt;tr&gt;&lt;td class="label"&gt;&lt;a class="fn-backref" href="#footnote-reference-4"&gt;[4]&lt;/a&gt;&lt;/td&gt;&lt;td&gt;&lt;a class="reference external" href="https://twitter.com/dioxmat/status/646815252898803712"&gt;Source&lt;/a&gt;, have
 I mentioned yet in this article that I hate bouncers?&lt;/td&gt;&lt;/tr&gt;
 &lt;/tbody&gt;
 &lt;/table&gt;
-&lt;table class="docutils footnote" frame="void" id="id11" rules="none"&gt;
+&lt;table class="docutils footnote" frame="void" id="footnote-5" rules="none"&gt;
 &lt;colgroup&gt;&lt;col class="label"/&gt;&lt;col/&gt;&lt;/colgroup&gt;
 &lt;tbody valign="top"&gt;
-&lt;tr&gt;&lt;td class="label"&gt;&lt;a class="fn-backref" href="#id5"&gt;[5]&lt;/a&gt;&lt;/td&gt;&lt;td&gt;I stole the code to plot this from the &lt;a class="reference external" href="https://bitbucket.org/clokep/irc-extras/src/41a9572caf957ab8ae3969a145834bcd5be74abe/stats/content/ircStats.js?at=default#cl-55"&gt;plotting code&lt;/a&gt; in the extension
+&lt;tr&gt;&lt;td class="label"&gt;&lt;a class="fn-backref" href="#footnote-reference-5"&gt;[5]&lt;/a&gt;&lt;/td&gt;&lt;td&gt;I stole the code to plot this from the &lt;a class="reference external" href="https://bitbucket.org/clokep/irc-extras/src/41a9572caf957ab8ae3969a145834bcd5be74abe/stats/content/ircStats.js?at=default#cl-55"&gt;plotting code&lt;/a&gt; in the extension
 I wrote for this. When actually using that extension, something similar
 to this appears as a tab and refreshes as results come in. It uses
 &lt;a class="reference external" href="http://humblesoftware.com/flotr2/"&gt;Flotr2&lt;/a&gt; to do the plotting in JavaScript, I've been pretty happy with
 it.&lt;/td&gt;&lt;/tr&gt;
 &lt;/tbody&gt;
 &lt;/table&gt;
-&lt;table class="docutils footnote" frame="void" id="id12" rules="none"&gt;
+&lt;table class="docutils footnote" frame="void" id="footnote-6" rules="none"&gt;
 &lt;colgroup&gt;&lt;col class="label"/&gt;&lt;col/&gt;&lt;/colgroup&gt;
 &lt;tbody valign="top"&gt;
-&lt;tr&gt;&lt;td class="label"&gt;&lt;a class="fn-backref" href="#id6"&gt;[6]&lt;/a&gt;&lt;/td&gt;&lt;td&gt;Although in retrospect I shouldn't be since Mozilla runs their own
+&lt;tr&gt;&lt;td class="label"&gt;&lt;a class="fn-backref" href="#footnote-reference-6"&gt;[6]&lt;/a&gt;&lt;/td&gt;&lt;td&gt;Although in retrospect I shouldn't be since Mozilla runs their own
 &lt;a class="reference external" href="https://irccloud.mozilla.com/"&gt;IRCCloud instance&lt;/a&gt;.&lt;/td&gt;&lt;/tr&gt;
 &lt;/tbody&gt;
 &lt;/table&gt;
@@ -270,7 +270,7 @@ described is writing our own scripting language…that seems pointless
 with this post (and maybe a series of posts) that auto-performs aren’t
 necessary and a trivial restartless extension can replace them.&lt;/p&gt;
 &lt;div class="section" id="design"&gt;
-&lt;h2&gt;&lt;a class="toc-backref" href="#id1"&gt;Design&lt;/a&gt;&lt;/h2&gt;
+&lt;h2&gt;&lt;a class="toc-backref" href="#toc-entry-1"&gt;Design&lt;/a&gt;&lt;/h2&gt;
 &lt;p&gt;Part of the desire to &lt;a class="reference external" href="https://patrick.cloke.us/posts/2011/04/30/why-rewrite-irc-protocol-plugin-part-2/"&gt;replace the libpurple &lt;span class="caps"&gt;IRC&lt;/span&gt; protocol plugin&lt;/a&gt;
 with a new JavaScript one built specifically for Instantbird (which is
 also now used in Thunderbird!) was to make the protocol fully
@@ -297,7 +297,7 @@ to stop working or do really crazy things, etc. Unfortunately there
 isn’t really a way to avoid that. Hopefully people write good code.&lt;/p&gt;
 &lt;/div&gt;
 &lt;div class="section" id="messages"&gt;
-&lt;h2&gt;&lt;a class="toc-backref" href="#id2"&gt;Messages&lt;/a&gt;&lt;/h2&gt;
+&lt;h2&gt;&lt;a class="toc-backref" href="#toc-entry-2"&gt;Messages&lt;/a&gt;&lt;/h2&gt;
 &lt;p&gt;I’m going to go into an aside about messages right now, even though it
 doesn’t quite seem relevant yet. It will. &lt;span class="caps"&gt;IRC&lt;/span&gt; has a bunch of
 sub-protocols embedded within the &lt;span class="caps"&gt;IRC&lt;/span&gt; protocol (see the link above about
@@ -331,7 +331,7 @@ defined by any “specifications” that exist), we keep extensions from
 having to parse messages over and over again from strings.&lt;/p&gt;
 &lt;/div&gt;
 &lt;div class="section" id="handlers"&gt;
-&lt;h2&gt;&lt;a class="toc-backref" href="#id3"&gt;Handlers&lt;/a&gt;&lt;/h2&gt;
+&lt;h2&gt;&lt;a class="toc-backref" href="#toc-entry-3"&gt;Handlers&lt;/a&gt;&lt;/h2&gt;
 &lt;p&gt;A handler is simply what I call the object that contains the methods
 to deal with an incoming message. Pretty much, you get to say “Only send
 me &lt;span class="caps"&gt;ISUPPORT&lt;/span&gt; messages!” or “Only send me &lt;span class="caps"&gt;CTCP&lt;/span&gt; messages!” and voila, you
@@ -339,28 +339,28 @@ only get that type of message. Each message type has a field that is
 used to choose the method to run (for the &lt;span class="caps"&gt;IRC&lt;/span&gt; messages, the “command”,
 for &lt;span class="caps"&gt;CTCP&lt;/span&gt; the “&lt;span class="caps"&gt;CTCP&lt;/span&gt; command”, &lt;span class="caps"&gt;ISUPPORT&lt;/span&gt; the “parameter”, etc.) This sounds
 a lot more complicated than it is, I think a brief &lt;a class="reference external" href="https://bitbucket.org/clokep/irc-extras/src/6f778f17172a/example/bootstrap.js"&gt;example&lt;/a&gt; is in order:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="kd"&gt;var&lt;/span&gt; &lt;span class="nx"&gt;ircSimpleExample&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
-  &lt;span class="c1"&gt;// The name here is really only used in error messages.&lt;/span&gt;
-  &lt;span class="nx"&gt;name&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="s2"&gt;"IRC Simple Example"&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
-  &lt;span class="c1"&gt;// Slightly above the default priority so we run before the main IRC handler.&lt;/span&gt;
-  &lt;span class="nx"&gt;priority&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="nx"&gt;ircHandlers&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;DEFAULT_PRIORITY&lt;/span&gt; &lt;span class="o"&gt;+&lt;/span&gt; &lt;span class="mf"&gt;10&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
-  &lt;span class="c1"&gt;// Run this for all accounts (note that the 'this' object in this method is&lt;/span&gt;
-  &lt;span class="c1"&gt;// the JavaScript account object.&lt;/span&gt;
-  &lt;span class="nx"&gt;isEnabled&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="kd"&gt;function&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt; &lt;span class="kc"&gt;true&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="kd"&gt;var&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nx"&gt;ircSimpleExample&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="p"&gt;{&lt;/span&gt;
+&lt;span class="w"&gt;  &lt;/span&gt;&lt;span class="c1"&gt;// The name here is really only used in error messages.&lt;/span&gt;
+&lt;span class="w"&gt;  &lt;/span&gt;&lt;span class="nx"&gt;name&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s2"&gt;"IRC Simple Example"&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+&lt;span class="w"&gt;  &lt;/span&gt;&lt;span class="c1"&gt;// Slightly above the default priority so we run before the main IRC handler.&lt;/span&gt;
+&lt;span class="w"&gt;  &lt;/span&gt;&lt;span class="nx"&gt;priority&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nx"&gt;ircHandlers&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;DEFAULT_PRIORITY&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;+&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="mf"&gt;10&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+&lt;span class="w"&gt;  &lt;/span&gt;&lt;span class="c1"&gt;// Run this for all accounts (note that the 'this' object in this method is&lt;/span&gt;
+&lt;span class="w"&gt;  &lt;/span&gt;&lt;span class="c1"&gt;// the JavaScript account object.&lt;/span&gt;
+&lt;span class="w"&gt;  &lt;/span&gt;&lt;span class="nx"&gt;isEnabled&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="kd"&gt;function&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="kc"&gt;true&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
 
-  &lt;span class="c1"&gt;// The commands we want to handle. For each of these, the account object is&lt;/span&gt;
-  &lt;span class="c1"&gt;// bound to 'this' and the single parameter is of the type that you've&lt;/span&gt;
-  &lt;span class="c1"&gt;// registered your handle.&lt;/span&gt;
-  &lt;span class="nx"&gt;commands&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
-    &lt;span class="s2"&gt;"001"&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="kd"&gt;function&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;aMessage&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
-      &lt;span class="c1"&gt;// At the 001 response we've successfully connected to the server.&lt;/span&gt;
-      &lt;span class="c1"&gt;// Send an IDENTIFY command to NickServ.&lt;/span&gt;
-      &lt;span class="k"&gt;this&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;sendMessage&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;"PRIVMSG"&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="s2"&gt;"NickServ"&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s2"&gt;"IDENTIFY &amp;lt;your password&amp;gt;"&lt;/span&gt;&lt;span class="p"&gt;]);&lt;/span&gt;
+&lt;span class="w"&gt;  &lt;/span&gt;&lt;span class="c1"&gt;// The commands we want to handle. For each of these, the account object is&lt;/span&gt;
+&lt;span class="w"&gt;  &lt;/span&gt;&lt;span class="c1"&gt;// bound to 'this' and the single parameter is of the type that you've&lt;/span&gt;
+&lt;span class="w"&gt;  &lt;/span&gt;&lt;span class="c1"&gt;// registered your handle.&lt;/span&gt;
+&lt;span class="w"&gt;  &lt;/span&gt;&lt;span class="nx"&gt;commands&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="p"&gt;{&lt;/span&gt;
+&lt;span class="w"&gt;    &lt;/span&gt;&lt;span class="s2"&gt;"001"&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="kd"&gt;function&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;aMessage&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="p"&gt;{&lt;/span&gt;
+&lt;span class="w"&gt;      &lt;/span&gt;&lt;span class="c1"&gt;// At the 001 response we've successfully connected to the server.&lt;/span&gt;
+&lt;span class="w"&gt;      &lt;/span&gt;&lt;span class="c1"&gt;// Send an IDENTIFY command to NickServ.&lt;/span&gt;
+&lt;span class="w"&gt;      &lt;/span&gt;&lt;span class="k"&gt;this&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;sendMessage&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;"PRIVMSG"&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="s2"&gt;"NickServ"&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s2"&gt;"IDENTIFY &amp;lt;your password&amp;gt;"&lt;/span&gt;&lt;span class="p"&gt;]);&lt;/span&gt;
 
-      &lt;span class="c1"&gt;// Return false so the default handler still runs.&lt;/span&gt;
-      &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="kc"&gt;false&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
-    &lt;span class="p"&gt;}&lt;/span&gt;
-  &lt;span class="p"&gt;}&lt;/span&gt;
+&lt;span class="w"&gt;      &lt;/span&gt;&lt;span class="c1"&gt;// Return false so the default handler still runs.&lt;/span&gt;
+&lt;span class="w"&gt;      &lt;/span&gt;&lt;span class="k"&gt;return&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="kc"&gt;false&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;span class="w"&gt;    &lt;/span&gt;&lt;span class="p"&gt;}&lt;/span&gt;
+&lt;span class="w"&gt;  &lt;/span&gt;&lt;span class="p"&gt;}&lt;/span&gt;
 &lt;span class="p"&gt;}&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;Just like that we’ve designed a handler! Whenever the 001 method is
@@ -447,13 +447,13 @@ I know it. I’m going to expand on this a bit as I’ve come to understand
 it a bit more while reading through documentation. (Hopefully it won’t
 sound too much like a rant, as it is all driving me crazy!)&lt;/p&gt;
 &lt;div class="section" id="irc-specifications"&gt;
-&lt;h2&gt;&lt;a class="toc-backref" href="#id5"&gt;&lt;span class="caps"&gt;IRC&lt;/span&gt; Specifications&lt;/a&gt;&lt;/h2&gt;
+&lt;h2&gt;&lt;a class="toc-backref" href="#toc-entry-1"&gt;&lt;span class="caps"&gt;IRC&lt;/span&gt; Specifications&lt;/a&gt;&lt;/h2&gt;
 &lt;p&gt;So there’s the original specification (&lt;a class="reference external" href="http://tools.ietf.org/html/rfc1459"&gt;&lt;span class="caps"&gt;RFC&lt;/span&gt; 1459&lt;/a&gt;) in May 1993; this
 was expanded and replaced by four different specifications (&lt;a class="reference external" href="http://tools.ietf.org/html/rfc2810"&gt;&lt;span class="caps"&gt;RFC&lt;/span&gt; 2810&lt;/a&gt;,
 &lt;a class="reference external" href="http://tools.ietf.org/html/rfc2811"&gt;2811&lt;/a&gt;, &lt;a class="reference external" href="http://tools.ietf.org/html/rfc2812"&gt;2812&lt;/a&gt;, &lt;a class="reference external" href="http://tools.ietf.org/html/rfc2813"&gt;2813&lt;/a&gt;) in April 2000. Seems pretty straightforward, right?&lt;/p&gt;
 &lt;/div&gt;
 &lt;div class="section" id="dcc-ctcp"&gt;
-&lt;h2&gt;&lt;a class="toc-backref" href="#id6"&gt;&lt;span class="caps"&gt;DCC&lt;/span&gt;/&lt;span class="caps"&gt;CTCP&lt;/span&gt;&lt;/a&gt;&lt;/h2&gt;
+&lt;h2&gt;&lt;a class="toc-backref" href="#toc-entry-2"&gt;&lt;span class="caps"&gt;DCC&lt;/span&gt;/&lt;span class="caps"&gt;CTCP&lt;/span&gt;&lt;/a&gt;&lt;/h2&gt;
 &lt;p&gt;Well, kind of…there’s also the &lt;span class="caps"&gt;DCC&lt;/span&gt;/&lt;span class="caps"&gt;CTCP&lt;/span&gt; specifications, which is a
 separate protocol embedded/hidden within the &lt;span class="caps"&gt;IRC&lt;/span&gt; protocol (e.g. they’re
 sent as &lt;span class="caps"&gt;IRC&lt;/span&gt; messages and parsed specially by clients, the server sees
@@ -481,7 +481,7 @@ least that I’ve found, I’d love to be proved wrong) and very little
 the &lt;span class="caps"&gt;IRC&lt;/span&gt; protocol specifications that add new commands to the actual protocol.&lt;/p&gt;
 &lt;/div&gt;
 &lt;div class="section" id="authentication"&gt;
-&lt;h2&gt;&lt;a class="toc-backref" href="#id7"&gt;Authentication&lt;/a&gt;&lt;/h2&gt;
+&lt;h2&gt;&lt;a class="toc-backref" href="#toc-entry-3"&gt;Authentication&lt;/a&gt;&lt;/h2&gt;
 &lt;p&gt;Originally &lt;span class="caps"&gt;IRC&lt;/span&gt; had no authentication ability except the &lt;span class="caps"&gt;PASS&lt;/span&gt; command,
 which very few servers seem to use, a variety of mechanisms have
 replaced this, including &lt;a class="reference external" href="https://raw.githubusercontent.com/atheme/charybdis/master/doc/sasl.txt"&gt;&lt;span class="caps"&gt;SASL&lt;/span&gt; authentication&lt;/a&gt; (both &lt;span class="caps"&gt;PLAIN&lt;/span&gt; and &lt;span class="caps"&gt;BLOWFISH&lt;/span&gt;
@@ -492,7 +492,7 @@ well as Ident (which is a more general protocol authentication method I
 haven’t looked into yet).&lt;/p&gt;
 &lt;/div&gt;
 &lt;div class="section" id="extension-support"&gt;
-&lt;h2&gt;&lt;a class="toc-backref" href="#id8"&gt;Extension Support&lt;/a&gt;&lt;/h2&gt;
+&lt;h2&gt;&lt;a class="toc-backref" href="#toc-entry-4"&gt;Extension Support&lt;/a&gt;&lt;/h2&gt;
 &lt;p&gt;This includes a few that generally add a way by which servers are able
 to tell their clients exactly what a server supports. The first of
 these was RPL_ISUPPORT, which was defined as a &lt;a class="reference external" href="http://tools.ietf.org/html/draft-brocklesby-irc-isupport-03"&gt;draft specification&lt;/a&gt;
@@ -500,7 +500,7 @@ in January 2004, and &lt;a class="reference external" href="http://tools.ietf.or
 &lt;p&gt;A similar concept was defined as &lt;a class="reference external" href="http://tools.ietf.org/html/draft-mitchell-irc-capabilities-01"&gt;&lt;span class="caps"&gt;IRC&lt;/span&gt; Capabilities&lt;/a&gt; in March 2005.&lt;/p&gt;
 &lt;/div&gt;
 &lt;div class="section" id="protocol-extensions"&gt;
-&lt;h2&gt;&lt;a class="toc-backref" href="#id9"&gt;Protocol Extensions&lt;/a&gt;&lt;/h2&gt;
+&lt;h2&gt;&lt;a class="toc-backref" href="#toc-entry-5"&gt;Protocol Extensions&lt;/a&gt;&lt;/h2&gt;
 &lt;p&gt;&lt;span class="caps"&gt;IRCX&lt;/span&gt;, a Microsoft extension to &lt;span class="caps"&gt;IRC&lt;/span&gt; used (at one point) for some of
 it’s instant messaging products &lt;a class="reference external" href="http://tools.ietf.org/html/draft-pfenning-irc-extensions-04"&gt;exists as a draft&lt;/a&gt; from June 1998.&lt;/p&gt;
 &lt;p&gt;There’s also:&lt;/p&gt;
@@ -513,7 +513,7 @@ it’s instant messaging products &lt;a class="reference external" href="http://
 &lt;/ul&gt;
 &lt;/div&gt;
 &lt;div class="section" id="services"&gt;
-&lt;h2&gt;&lt;a class="toc-backref" href="#id10"&gt;Services&lt;/a&gt;&lt;/h2&gt;
+&lt;h2&gt;&lt;a class="toc-backref" href="#toc-entry-6"&gt;Services&lt;/a&gt;&lt;/h2&gt;
 &lt;p&gt;To fill in some of the missing features of &lt;span class="caps"&gt;IRC&lt;/span&gt;, services were created
 (Wikipedia has a good &lt;a class="reference external" href="http://en.wikipedia.org/wiki/Internet_Relay_Chat_services"&gt;summary&lt;/a&gt; again). This commonly includes
 ChanServ, NickServ, OperServ, and MemoServ. Not too hard, but different
@@ -526,7 +526,7 @@ protocol&lt;/a&gt;, &lt;a class="reference external" href="http://www.irc-plus.o
 believe this are supported widely (if at all).&lt;/p&gt;
 &lt;/div&gt;
 &lt;div class="section" id="irc-url-scheme"&gt;
-&lt;h2&gt;&lt;a class="toc-backref" href="#id11"&gt;&lt;span class="caps"&gt;IRC&lt;/span&gt; &lt;span class="caps"&gt;URL&lt;/span&gt; Scheme&lt;/a&gt;&lt;/h2&gt;
+&lt;h2&gt;&lt;a class="toc-backref" href="#toc-entry-7"&gt;&lt;span class="caps"&gt;IRC&lt;/span&gt; &lt;span class="caps"&gt;URL&lt;/span&gt; Scheme&lt;/a&gt;&lt;/h2&gt;
 &lt;p&gt;Finally this brings us to the &lt;span class="caps"&gt;IRC&lt;/span&gt; &lt;span class="caps"&gt;URL&lt;/span&gt; scheme of which there are a few
 versions. A draft from August 1996 defines the original &lt;a class="reference external" href="http://tools.ietf.org/html/draft-mirashi-url-irc-01"&gt;irc: &lt;span class="caps"&gt;URL&lt;/span&gt;
 scheme&lt;/a&gt;. This was updated/replaced by &lt;a class="reference external" href="http://tools.ietf.org/html/draft-butcher-irc-url-04"&gt;another draft&lt;/a&gt; which defines
@@ -647,7 +647,7 @@ js-irc? Why it is done, what the advantages are once it’s done, how
 he is working on it (going through the specs), putting the
 jsProtocol code to test and adding missing pieces?” — &lt;a class="reference external" href="http://log.bezut.info/instantbird/101208/#m54"&gt;Mic&lt;/a&gt;&lt;/blockquote&gt;
 &lt;div class="section" id="wait-a-second-what-is-irc"&gt;
-&lt;h2&gt;&lt;a class="toc-backref" href="#id3"&gt;Wait a second, what is &lt;span class="caps"&gt;IRC&lt;/span&gt;?&lt;/a&gt;&lt;/h2&gt;
+&lt;h2&gt;&lt;a class="toc-backref" href="#toc-entry-1"&gt;Wait a second, what is &lt;span class="caps"&gt;IRC&lt;/span&gt;?&lt;/a&gt;&lt;/h2&gt;
 &lt;p&gt;I guess this is a good first question, I’ll steal from &lt;a class="reference external" href="http://en.wikipedia.org/wiki/IRC"&gt;Wikipedia&lt;/a&gt;:&lt;/p&gt;
 &lt;blockquote&gt;
 Internet Relay Chat (&lt;span class="caps"&gt;IRC&lt;/span&gt;) is a form of real-time […] chat […] It
@@ -662,7 +662,7 @@ open-source software I use (I’m almost always in &lt;a class="reference extern
 &lt;a class="reference external" href="irc://irc.mozilla.org/#maildev"&gt;#maildev&lt;/a&gt;, and &lt;a class="reference external" href="irc://irc.mozilla.org/#songbird"&gt;#songbird&lt;/a&gt; on &lt;a class="reference external" href="http://irc.mozilla.org/"&gt;Mozilla’s &lt;span class="caps"&gt;IRC&lt;/span&gt; servers&lt;/a&gt;.)&lt;/p&gt;
 &lt;/div&gt;
 &lt;div class="section" id="why-it-is-done-what-advantages-are-there-once-this-is-done"&gt;
-&lt;h2&gt;&lt;a class="toc-backref" href="#id4"&gt;Why it is done? What advantages are there once this is done?&lt;/a&gt;&lt;/h2&gt;
+&lt;h2&gt;&lt;a class="toc-backref" href="#toc-entry-2"&gt;Why it is done? What advantages are there once this is done?&lt;/a&gt;&lt;/h2&gt;
 &lt;p&gt;I touched upon this a little in my &lt;a class="reference external" href="https://patrick.cloke.us/posts/2010/12/04/javascript-irc-in-instantbird/"&gt;last post&lt;/a&gt;. In terms of
 Instantbird: there’s an idea of switching some / all of the protocols
 (eventually) to be JavaScript protocols instead of the libpurple
@@ -682,7 +682,7 @@ used a multi-user chat). This would allow us to iron out &lt;a class="reference 
 covered, which some people more familiar with Mozilla code might be wondering.]&lt;/em&gt;&lt;/p&gt;
 &lt;/div&gt;
 &lt;div class="section" id="why-aren-t-you-using-the-code-from-chatzilla"&gt;
-&lt;h2&gt;&lt;a class="toc-backref" href="#id5"&gt;Why aren’t you using the code from ChatZilla?&lt;/a&gt;&lt;/h2&gt;
+&lt;h2&gt;&lt;a class="toc-backref" href="#toc-entry-3"&gt;Why aren’t you using the code from ChatZilla?&lt;/a&gt;&lt;/h2&gt;
 &lt;p&gt;This was a tough one. Honestly when I first wanted a parsing
 algorithm, I looked at the ChatZilla code, I used it. Then rewrote it
 in a fourth as many lines (&lt;a class="reference external" href="http://hg.mozilla.org/chatzilla/file/tip/js/lib/irc.js#l1250"&gt;93&lt;/a&gt; vs. &lt;a class="reference external" href="https://hg.instantbird.org/experiments/file/IRC-JavaScript/components/ircProtocol.js#l208"&gt;20&lt;/a&gt;). Simply said, the code in
@@ -720,14 +720,14 @@ shared besides the parsing algorithm).&lt;/p&gt;
 &lt;p&gt;&lt;em&gt;[End edit]&lt;/em&gt;&lt;/p&gt;
 &lt;/div&gt;
 &lt;div class="section" id="what-are-the-specific-advantages-for-an-end-user"&gt;
-&lt;h2&gt;&lt;a class="toc-backref" href="#id6"&gt;What are the specific advantages for an end-user?&lt;/a&gt;&lt;/h2&gt;
+&lt;h2&gt;&lt;a class="toc-backref" href="#toc-entry-4"&gt;What are the specific advantages for an end-user?&lt;/a&gt;&lt;/h2&gt;
 &lt;p&gt;In terms of the &lt;span class="caps"&gt;IRC&lt;/span&gt; protocol itself, there shouldn’t be any, my goal
 is for it to be a drop in replacement for the libpurple implementation
 with automatic account migration, etc. For end-users we can hopefully
 solve &lt;a class="reference external" href="https://bugzilla.instantbird.org/showdependencytree.cgi?id=574&amp;amp;maxdepth=1&amp;amp;hide_resolved=1"&gt;a few annoying &lt;span class="caps"&gt;IRC&lt;/span&gt; &lt;span class="caps"&gt;UI&lt;/span&gt; issues&lt;/a&gt;.&lt;/p&gt;
 &lt;/div&gt;
 &lt;div class="section" id="what-about-for-developers-anything-cool-there"&gt;
-&lt;h2&gt;&lt;a class="toc-backref" href="#id7"&gt;What about for developers? Anything cool there?&lt;/a&gt;&lt;/h2&gt;
+&lt;h2&gt;&lt;a class="toc-backref" href="#toc-entry-5"&gt;What about for developers? Anything cool there?&lt;/a&gt;&lt;/h2&gt;
 &lt;p&gt;Well, I’m hoping to be able to test this replacement via an extension
 that replaces the libpurple &lt;span class="caps"&gt;IRC&lt;/span&gt; to dogfood it before eventual inclusion
 in Instantbird. I’m not sure if that counts as “cool.” though. If
@@ -738,7 +738,7 @@ have planned for JavaScript protocols; there are plans to make at least
 a Twitter protocol.&lt;/p&gt;
 &lt;/div&gt;
 &lt;div class="section" id="how-is-this-being-done"&gt;
-&lt;h2&gt;&lt;a class="toc-backref" href="#id8"&gt;How is this being done?&lt;/a&gt;&lt;/h2&gt;
+&lt;h2&gt;&lt;a class="toc-backref" href="#toc-entry-6"&gt;How is this being done?&lt;/a&gt;&lt;/h2&gt;
 &lt;p&gt;Well I said up above &lt;span class="caps"&gt;IRC&lt;/span&gt; has a specification, right? Well, yes.
 There’s the &lt;a class="reference external" href="http://tools.ietf.org/html/rfc1459"&gt;original specification&lt;/a&gt;, this was superseded by &lt;a class="reference external" href="http://tools.ietf.org/html/rfc2810"&gt;four&lt;/a&gt;
 &lt;a class="reference external" href="http://tools.ietf.org/html/rfc2811"&gt;different&lt;/a&gt; &lt;a class="reference external" href="http://tools.ietf.org/html/rfc2812"&gt;specification&lt;/a&gt; &lt;a class="reference external" href="http://tools.ietf.org/html/rfc2813"&gt;documents&lt;/a&gt;. Of which we only really
@@ -771,7 +771,7 @@ have developed beyond the above. I have been using &lt;a class="reference extern
 a daemon on my own machine, however.&lt;/p&gt;
 &lt;/div&gt;
 &lt;div class="section" id="so-how-far-along-are-you"&gt;
-&lt;h2&gt;&lt;a class="toc-backref" href="#id9"&gt;So how far along are you?&lt;/a&gt;&lt;/h2&gt;
+&lt;h2&gt;&lt;a class="toc-backref" href="#toc-entry-7"&gt;So how far along are you?&lt;/a&gt;&lt;/h2&gt;
 &lt;p&gt;I’ve started implementing &lt;span class="caps"&gt;RFC&lt;/span&gt; 2812 and have a variety of commands done
 (the login sequence occurs automatically, the server connection is kept
 alive, messages can be sent to a channel and are parsed when received, a
@@ -791,7 +791,7 @@ participants of #instantbird — in particular I know Mic helped track
 down a few syntax type bugs).&lt;/p&gt;
 &lt;/div&gt;
 &lt;div class="section" id="what-s-next"&gt;
-&lt;h2&gt;&lt;a class="toc-backref" href="#id10"&gt;What’s next?&lt;/a&gt;&lt;/h2&gt;
+&lt;h2&gt;&lt;a class="toc-backref" href="#toc-entry-8"&gt;What’s next?&lt;/a&gt;&lt;/h2&gt;
 &lt;p&gt;Now that have the basics of chat working, I need to start handling the
 &lt;span class="caps"&gt;QUIT&lt;/span&gt;, &lt;span class="caps"&gt;PART&lt;/span&gt; and &lt;span class="caps"&gt;JOIN&lt;/span&gt; commands for when other users enter &lt;span class="amp"&gt;&amp;amp;&lt;/span&gt; leave chat
 rooms. Once these are complete it should be quite usable, although the
@@ -803,14 +803,14 @@ that will be useful for other protocols (in particular the socket
 connection aspects).&lt;/p&gt;
 &lt;/div&gt;
 &lt;div class="section" id="where-can-i-see-this-stuff"&gt;
-&lt;h2&gt;&lt;a class="toc-backref" href="#id11"&gt;Where can I see this stuff…?&lt;/a&gt;&lt;/h2&gt;
+&lt;h2&gt;&lt;a class="toc-backref" href="#toc-entry-9"&gt;Where can I see this stuff…?&lt;/a&gt;&lt;/h2&gt;
 &lt;p&gt;My work is kept in the “&lt;a class="reference external" href="https://hg.instantbird.org/experiments/file/IRC-JavaScript/"&gt;experiments&lt;/a&gt;” repository on Instantbird’s
 &lt;a class="reference external" href="http://mercurial.selenic.com/"&gt;Mercurial&lt;/a&gt; repository. There’s also a variety of bugs open (they’re
 listed above, I’m not going to re-list them), although not a ton is
 happening in them.&lt;/p&gt;
 &lt;/div&gt;
 &lt;div class="section" id="how-can-i-help"&gt;
-&lt;h2&gt;&lt;a class="toc-backref" href="#id12"&gt;How can I help?!&lt;/a&gt;&lt;/h2&gt;
+&lt;h2&gt;&lt;a class="toc-backref" href="#toc-entry-10"&gt;How can I help?!&lt;/a&gt;&lt;/h2&gt;
 &lt;p&gt;Well you can of course feel free to download the code and hack on it,
 let me know (via &lt;span class="caps"&gt;IRC&lt;/span&gt; or any of the bugs most likely) if you have a patch
 you’d like me to apply. Or if you just found something that doesn’t

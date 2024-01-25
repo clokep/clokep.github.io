@@ -9,21 +9,21 @@
     <link href="https://patrick.cloke.us/feeds/atom.xml" type="application/atom+xml" rel="alternate" title="Patrick Cloke Atom Feed" />
     <link href="https://patrick.cloke.us/feeds/rss.xml" type="application/rss+xml" rel="alternate" title="Patrick Cloke RSS Feed" />
 
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
     <link rel="stylesheet" href="/theme/css/styles.css">
     <link rel="stylesheet" href="/theme/css/borland.css">
     <link rel="stylesheet" href="/theme/css/youtube.css">
 
-    <!-- Font Awesome -->
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
 
     <title>Celery AMQP Backends</title>
 
     <meta property="og:site_name" content="Patrick Cloke" />
 <meta property="og:title" content="Celery AMQP Backends" />
 <meta property="og:url" content="https://patrick.cloke.us/posts/2019/10/04/celery-amqp-backends/" />
-<meta property="og:description" content="Note This started as notes explaining the internals of how Celery’s AMQP backends operate. This isn’t meant to be a comparison or prove one is better or that one is broken. There just seemed to be a lack of documentation about the design and limitations of each backend …" />
+<meta property="og:description" content=" Note This started as notes explaining the internals of how Celery’s AMQP backends operate. This isn’t meant to be a comparison or prove one is better or that one is broken. There just seemed to be a lack of documentation about the design and limitations of each backend …" />
 <meta property="og:type" content="article" />
 <meta property="article:published_time" content="2019-10-04T08:10:00-04:00" />
 <meta property="article:author" content="Patrick Cloke" />
@@ -66,11 +66,11 @@
 
             <span class="dropdown-menu dropdown-menu-right" aria-labelledby="social-dropdown">
               <a class="dropdown-item" href="https://mastodon.social/@clokep" target="_blank">
-                  <span class="fab fa-mastodon mr-1"></span>
+                  <span class="bi-mastodon mr-1"></span>
                 mastodon
               </a>
               <a class="dropdown-item" href="https://www.twitter.com/clokep" target="_blank">
-                  <span class="fab fa-twitter mr-1"></span>
+                  <span class="bi-twitter mr-1"></span>
                 twitter
               </a>
               <a class="dropdown-item" href="https://matrix.to/#/@clokep:matrix.org" target="_blank">
@@ -78,15 +78,15 @@
                 matrix
               </a>
               <a class="dropdown-item" href="https://github.com/clokep" target="_blank">
-                  <span class="fab fa-github mr-1"></span>
+                  <span class="bi-github mr-1"></span>
                 github
               </a>
               <a class="dropdown-item" href="https://gitlab.com/clokep" target="_blank">
-                  <span class="fab fa-gitlab mr-1"></span>
+                  <span class="bi-gitlab mr-1"></span>
                 gitlab
               </a>
               <a class="dropdown-item" href="https://www.linkedin.com/in/patrickcloke/" target="_blank">
-                  <span class="fab fa-linkedin mr-1"></span>
+                  <span class="bi-linkedin mr-1"></span>
                 linkedin
               </a>
             </span>
@@ -131,14 +131,23 @@
         </div>
 
         <div class="col-sm text-right">
+          <a href="https://toot.kytta.dev/?text=Celery%20AMQP%C2%A0Backends%0D%0Ahttps%3A//patrick.cloke.us/posts/2019/10/04/celery-amqp-backends/%0D%0A%23celery" target="_blank" class="ml-1 mr-1" title="Share on Mastodon">
+            <span class="bi-mastodon"></span>
+          </a>
           <a href="https://twitter.com/intent/tweet?text=Celery%20AMQP%C2%A0Backends&url=https%3A//patrick.cloke.us/posts/2019/10/04/celery-amqp-backends/&hashtags=celery" target="_blank" class="ml-1 mr-1" title="Share on Twitter">
-            <span class="fab fa-twitter"></span>
+            <span class="bi-twitter"></span>
+          </a>
+          <a href="https://www.reddit.com/submit?url=https%3A//patrick.cloke.us/posts/2019/10/04/celery-amqp-backends/&title=Celery%20AMQP%C2%A0Backends" target="_blank" class="ml-1 mr-1" title="Share on Reddit">
+            <span class="bi-reddit"></span>
           </a>
           <a href="https://www.facebook.com/sharer/sharer.php?u=https%3A//patrick.cloke.us/posts/2019/10/04/celery-amqp-backends/" target="_blank" class="ml-1 mr-1" title="Share on Facebook">
-            <span class="fab fa-facebook"></span>
+            <span class="bi-facebook"></span>
+          </a>
+          <a href="https://www.linkedin.com/shareArticle?mini=true&url=https%3A//patrick.cloke.us/posts/2019/10/04/celery-amqp-backends/&title=Celery%20AMQP%C2%A0Backends&summary=Note%0AThis%20started%20as%20notes%20explaining%20the%20internals%20of%20how%20Celery%E2%80%99s%20AMQP%20backends%0Aoperate.%20This%20isn%E2%80%99t%20meant%20to%20be%20a%20comparison%20or%20prove%20one%20is%20better%20or%20that%0Aone%20is%20broken.%20There%20just%20seemed%20to%20be%20a%20lack%20of%20documentation%20about%20the%0Adesign%20and%20limitations%20of%20each%C2%A0backend%20%E2%80%A6&source=https%3A//patrick.cloke.us/posts/2019/10/04/celery-amqp-backends/" target="_blank" class="ml-1 mr-1" title="Share on LinkedIn">
+            <span class="bi-linkedin"></span>
           </a>
           <a href="mailto:?subject=Celery%20AMQP%C2%A0Backends&amp;body=https%3A//patrick.cloke.us/posts/2019/10/04/celery-amqp-backends/" target="_blank" class="ml-1 mr-1" title="Share via Email">
-            <span class="fas fa-envelope"></span>
+            <span class="bi-envelope"></span>
           </a>
         </div>
       </div>
@@ -247,7 +256,7 @@ s.setAttribute('data-timestamp', +new Date());
     <nav class="navbar fixed-bottom navbar-light bg-light border-top border-info">
       <a href="https://getpelican.com/" class="nav-item" target="_blank">Powered by Pelican</a>
       <a href="https://github.com/clokep/clokep.github.io" class="nav-item" target="_blank">
-        Source available on GitHub <span class="fab fa-github"></span>
+        Source available on GitHub <span class="bi-github"></span>
       </a>
     </nav>
 

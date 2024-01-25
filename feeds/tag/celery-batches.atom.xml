@@ -7,7 +7,7 @@ Celery 5.1 and fixes storing of results when using the &lt;a class="reference ex
 &lt;p&gt;As &lt;a class="reference external" href="https://patrick.cloke.us/posts/2019/10/04/celery-amqp-backends/"&gt;explored previously&lt;/a&gt;, the &lt;span class="caps"&gt;RPC&lt;/span&gt; result backend works by having a results queue
 per client, unfortunately celery-batches was attempting to store the results in
 a queue named after the task &lt;span class="caps"&gt;ID&lt;/span&gt; instead of the client &lt;span class="caps"&gt;ID&lt;/span&gt; (Celery internally calls
-this the &amp;#8220;correlation &lt;span class="caps"&gt;ID&lt;/span&gt;&amp;#8221;) &lt;a class="footnote-reference" href="#id2" id="id1"&gt;[1]&lt;/a&gt;.&lt;/p&gt;
+this the &amp;#8220;correlation &lt;span class="caps"&gt;ID&lt;/span&gt;&amp;#8221;) &lt;a class="footnote-reference" href="#footnote-1" id="footnote-reference-1"&gt;[1]&lt;/a&gt;.&lt;/p&gt;
 &lt;p&gt;This unfortunately requires a change to client code to pass the batched request
 into the &lt;tt class="docutils literal"&gt;mark_as_done&lt;/tt&gt; method, using the example &lt;a class="reference external" href="https://celery-batches.readthedocs.io/en/v0.5/"&gt;from the documnation&lt;/a&gt; with
 the changed line&amp;nbsp;highlighted:&lt;/p&gt;
@@ -37,10 +37,10 @@ the changed line&amp;nbsp;highlighted:&lt;/p&gt;
     &lt;span class="p"&gt;)&lt;/span&gt;
     &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;response&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;json&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;domain&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt; &lt;span class="k"&gt;for&lt;/span&gt; &lt;span class="n"&gt;domain&lt;/span&gt; &lt;span class="ow"&gt;in&lt;/span&gt; &lt;span class="n"&gt;domains&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
-&lt;table class="docutils footnote" frame="void" id="id2" rules="none"&gt;
+&lt;table class="docutils footnote" frame="void" id="footnote-1" rules="none"&gt;
 &lt;colgroup&gt;&lt;col class="label" /&gt;&lt;col /&gt;&lt;/colgroup&gt;
 &lt;tbody valign="top"&gt;
-&lt;tr&gt;&lt;td class="label"&gt;&lt;a class="fn-backref" href="#id1"&gt;[1]&lt;/a&gt;&lt;/td&gt;&lt;td&gt;The &lt;span class="caps"&gt;RPC&lt;/span&gt; backend has &lt;a class="reference external" href="https://github.com/celery/celery/blob/v5.1.0/celery/backends/rpc.py#L166"&gt;code which pulls out the correlation &lt;span class="caps"&gt;ID&lt;/span&gt;&lt;/a&gt;, but falls
+&lt;tr&gt;&lt;td class="label"&gt;&lt;a class="fn-backref" href="#footnote-reference-1"&gt;[1]&lt;/a&gt;&lt;/td&gt;&lt;td&gt;The &lt;span class="caps"&gt;RPC&lt;/span&gt; backend has &lt;a class="reference external" href="https://github.com/celery/celery/blob/v5.1.0/celery/backends/rpc.py#L166"&gt;code which pulls out the correlation &lt;span class="caps"&gt;ID&lt;/span&gt;&lt;/a&gt;, but falls
 back to the task &lt;span class="caps"&gt;ID&lt;/span&gt; if not given. This is called via an
 &lt;a class="reference external" href="https://github.com/celery/celery/blob/v5.1.0/celery/backends/rpc.py#L198-L200"&gt;override of the &lt;tt class="docutils literal"&gt;store_result&lt;/tt&gt; method&lt;/a&gt;.&lt;/td&gt;&lt;/tr&gt;
 &lt;/tbody&gt;

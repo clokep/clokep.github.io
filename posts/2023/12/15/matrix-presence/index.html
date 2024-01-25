@@ -9,21 +9,21 @@
     <link href="https://patrick.cloke.us/feeds/atom.xml" type="application/atom+xml" rel="alternate" title="Patrick Cloke Atom Feed" />
     <link href="https://patrick.cloke.us/feeds/rss.xml" type="application/rss+xml" rel="alternate" title="Patrick Cloke RSS Feed" />
 
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
     <link rel="stylesheet" href="/theme/css/styles.css">
     <link rel="stylesheet" href="/theme/css/borland.css">
     <link rel="stylesheet" href="/theme/css/youtube.css">
 
-    <!-- Font Awesome -->
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
 
     <title>Matrix Presence</title>
 
     <meta property="og:site_name" content="Patrick Cloke" />
 <meta property="og:title" content="Matrix Presence" />
 <meta property="og:url" content="https://patrick.cloke.us/posts/2023/12/15/matrix-presence/" />
-<meta property="og:description" content="I put together some notes on presence when implementing multi-device support for presence in Synapse, maybe this is helpful to others! This is a combination of information from the specification, as well as some information about how Synapse works. Note These notes are true as of the v1.9 of …" />
+<meta property="og:description" content="I put together some notes on presence when implementing multi-device support for presence in Synapse, maybe this is helpful to others! This is a combination of information from the specification, as well as some information about how Synapse works.  Note These notes are true as of the v1.9 of …" />
 <meta property="og:type" content="article" />
 <meta property="article:published_time" content="2023-12-15T11:24:00-05:00" />
 <meta property="article:author" content="Patrick Cloke" />
@@ -67,11 +67,11 @@
 
             <span class="dropdown-menu dropdown-menu-right" aria-labelledby="social-dropdown">
               <a class="dropdown-item" href="https://mastodon.social/@clokep" target="_blank">
-                  <span class="fab fa-mastodon mr-1"></span>
+                  <span class="bi-mastodon mr-1"></span>
                 mastodon
               </a>
               <a class="dropdown-item" href="https://www.twitter.com/clokep" target="_blank">
-                  <span class="fab fa-twitter mr-1"></span>
+                  <span class="bi-twitter mr-1"></span>
                 twitter
               </a>
               <a class="dropdown-item" href="https://matrix.to/#/@clokep:matrix.org" target="_blank">
@@ -79,15 +79,15 @@
                 matrix
               </a>
               <a class="dropdown-item" href="https://github.com/clokep" target="_blank">
-                  <span class="fab fa-github mr-1"></span>
+                  <span class="bi-github mr-1"></span>
                 github
               </a>
               <a class="dropdown-item" href="https://gitlab.com/clokep" target="_blank">
-                  <span class="fab fa-gitlab mr-1"></span>
+                  <span class="bi-gitlab mr-1"></span>
                 gitlab
               </a>
               <a class="dropdown-item" href="https://www.linkedin.com/in/patrickcloke/" target="_blank">
-                  <span class="fab fa-linkedin mr-1"></span>
+                  <span class="bi-linkedin mr-1"></span>
                 linkedin
               </a>
             </span>
@@ -132,14 +132,23 @@
         </div>
 
         <div class="col-sm text-right">
+          <a href="https://toot.kytta.dev/?text=Matrix%C2%A0Presence%0D%0Ahttps%3A//patrick.cloke.us/posts/2023/12/15/matrix-presence/%0D%0A%23matrix %23notes" target="_blank" class="ml-1 mr-1" title="Share on Mastodon">
+            <span class="bi-mastodon"></span>
+          </a>
           <a href="https://twitter.com/intent/tweet?text=Matrix%C2%A0Presence&url=https%3A//patrick.cloke.us/posts/2023/12/15/matrix-presence/&hashtags=matrix,notes" target="_blank" class="ml-1 mr-1" title="Share on Twitter">
-            <span class="fab fa-twitter"></span>
+            <span class="bi-twitter"></span>
+          </a>
+          <a href="https://www.reddit.com/submit?url=https%3A//patrick.cloke.us/posts/2023/12/15/matrix-presence/&title=Matrix%C2%A0Presence" target="_blank" class="ml-1 mr-1" title="Share on Reddit">
+            <span class="bi-reddit"></span>
           </a>
           <a href="https://www.facebook.com/sharer/sharer.php?u=https%3A//patrick.cloke.us/posts/2023/12/15/matrix-presence/" target="_blank" class="ml-1 mr-1" title="Share on Facebook">
-            <span class="fab fa-facebook"></span>
+            <span class="bi-facebook"></span>
+          </a>
+          <a href="https://www.linkedin.com/shareArticle?mini=true&url=https%3A//patrick.cloke.us/posts/2023/12/15/matrix-presence/&title=Matrix%C2%A0Presence&summary=I%20put%20together%20some%20notes%20on%20presence%20when%20implementing%20multi-device%20support%20for%20presence%0Ain%20Synapse%2C%20maybe%20this%20is%20helpful%20to%20others%21%20This%20is%20a%20combination%20of%20information%0Afrom%20the%20specification%2C%20as%20well%20as%20some%20information%20about%20how%20Synapse%C2%A0works.%0A%0ANote%0AThese%20notes%20are%20true%20as%20of%20the%20v1.9%20of%20%E2%80%A6&source=https%3A//patrick.cloke.us/posts/2023/12/15/matrix-presence/" target="_blank" class="ml-1 mr-1" title="Share on LinkedIn">
+            <span class="bi-linkedin"></span>
           </a>
           <a href="mailto:?subject=Matrix%C2%A0Presence&amp;body=https%3A//patrick.cloke.us/posts/2023/12/15/matrix-presence/" target="_blank" class="ml-1 mr-1" title="Share via Email">
-            <span class="fas fa-envelope"></span>
+            <span class="bi-envelope"></span>
           </a>
         </div>
       </div>
@@ -175,7 +184,7 @@ users share a room&nbsp;membership.</p>
 one of the&nbsp;following:</p>
 <ul class="simple">
 <li><tt class="docutils literal">online</tt> : The default state when the user is connected to an event&nbsp;stream.</li>
-<li><tt class="docutils literal">unavailable</tt> : The user is not reachable at this time e.g. they are idle. <a class="footnote-reference" href="#id7" id="id1">[1]</a></li>
+<li><tt class="docutils literal">unavailable</tt> : The user is not reachable at this time e.g. they are idle. <a class="footnote-reference" href="#footnote-1" id="footnote-reference-1">[1]</a></li>
 <li><tt class="docutils literal">offline</tt> : The user is not connected to an event stream or is explicitly suppressing their profile information from being&nbsp;sent.</li>
 </ul>
 </blockquote>
@@ -289,20 +298,20 @@ without <tt class="docutils literal">set_presence</tt> or <tt class="docutils li
 <p>If a device is <tt class="docutils literal">offline</tt> it should transition to <tt class="docutils literal">unavailable</tt> if it is syncing
 with <tt class="docutils literal">set_presence=unavailable</tt>.</p>
 <p>If a device is <tt class="docutils literal">online</tt> (either directly or implicitly via user actions) it should
-transition to <tt class="docutils literal">unavailable</tt> (idle) after a period of time <a class="footnote-reference" href="#id8" id="id2">[2]</a> if the device is
+transition to <tt class="docutils literal">unavailable</tt> (idle) after a period of time <a class="footnote-reference" href="#footnote-2" id="footnote-reference-2">[2]</a> if the device is
 continuing to sync. (Note that this implies the sync is occurring with
 <tt class="docutils literal">set_presence=unavailable</tt> as otherwise the device is continuing to report as
-<tt class="docutils literal">online</tt>). <a class="footnote-reference" href="#id9" id="id3">[3]</a></p>
+<tt class="docutils literal">online</tt>). <a class="footnote-reference" href="#footnote-3" id="footnote-reference-3">[3]</a></p>
 <p>If a device is <tt class="docutils literal">online</tt> or <tt class="docutils literal">unavailable</tt> it should transition to  <tt class="docutils literal">offline</tt>
 after a period of time if it is not syncing and not making other actions which
-would transition the device to <cite>online</cite>. <a class="footnote-reference" href="#id10" id="id4">[4]</a></p>
-<p>Note if a device is <tt class="docutils literal">busy</tt> it should not transition to other states. <a class="footnote-reference" href="#id11" id="id5">[5]</a></p>
+would transition the device to <cite>online</cite>. <a class="footnote-reference" href="#footnote-4" id="footnote-reference-4">[4]</a></p>
+<p>Note if a device is <tt class="docutils literal">busy</tt> it should not transition to other states. <a class="footnote-reference" href="#footnote-5" id="footnote-reference-5">[5]</a></p>
 <p>There&#8217;s a <a class="reference external" href="https://github.com/matrix-org/synapse/blob/be65a8ec0195955c15fdb179c9158b187638e39a/tests/handlers/test_presence.py#L971-L1106">huge testcase</a> which checks all these&nbsp;transitions.</p>
 <div class="section" id="examples">
 <h4>Examples</h4>
 <ol class="arabic simple">
 <li>Two devices continually syncing, one <tt class="docutils literal">online</tt> and one <tt class="docutils literal">unavailable</tt>. The
-end result should be <cite>online</cite>. <a class="footnote-reference" href="#id12" id="id6">[6]</a></li>
+end result should be <cite>online</cite>. <a class="footnote-reference" href="#footnote-6" id="footnote-reference-6">[6]</a></li>
 <li>One device syncing with <tt class="docutils literal">set_presence=unavailable</tt> but had a &#8220;pro-active&#8221;
 action, after a period of time the user should be <tt class="docutils literal">unavailable</tt> if no additional
 &#8220;pro-active&#8221; actions&nbsp;occurred.</li>
@@ -312,42 +321,42 @@ after a period of time the user should be <tt class="docutils literal">offline</
 <tt class="docutils literal">online</tt> device stops syncing, after a period of time the user should be
 <tt class="docutils literal">unavailable</tt>.</li>
 </ol>
-<table class="docutils footnote" frame="void" id="id7" rules="none">
+<table class="docutils footnote" frame="void" id="footnote-1" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
-<tr><td class="label"><a class="fn-backref" href="#id1">[1]</a></td><td>This should be called <tt class="docutils literal">idle</tt>.</td></tr>
+<tr><td class="label"><a class="fn-backref" href="#footnote-reference-1">[1]</a></td><td>This should be called <tt class="docutils literal">idle</tt>.</td></tr>
 </tbody>
 </table>
-<table class="docutils footnote" frame="void" id="id8" rules="none">
+<table class="docutils footnote" frame="void" id="footnote-2" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
-<tr><td class="label"><a class="fn-backref" href="#id2">[2]</a></td><td>The period of time is implementation specific.</td></tr>
+<tr><td class="label"><a class="fn-backref" href="#footnote-reference-2">[2]</a></td><td>The period of time is implementation specific.</td></tr>
 </tbody>
 </table>
-<table class="docutils footnote" frame="void" id="id9" rules="none">
+<table class="docutils footnote" frame="void" id="footnote-3" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
-<tr><td class="label"><a class="fn-backref" href="#id3">[3]</a></td><td>Note that syncing with <tt class="docutils literal">set_presence=offline</tt> does not transition to offline,
+<tr><td class="label"><a class="fn-backref" href="#footnote-reference-3">[3]</a></td><td>Note that syncing with <tt class="docutils literal">set_presence=offline</tt> does not transition to offline,
 it is equivalent to not syncing. (It is mostly for mobile applications to
 process push notifications.)</td></tr>
 </tbody>
 </table>
-<table class="docutils footnote" frame="void" id="id10" rules="none">
+<table class="docutils footnote" frame="void" id="footnote-4" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
-<tr><td class="label"><a class="fn-backref" href="#id4">[4]</a></td><td>The spec doesn&#8217;t seem to ever say that devices can transition to offline.</td></tr>
+<tr><td class="label"><a class="fn-backref" href="#footnote-reference-4">[4]</a></td><td>The spec doesn&#8217;t seem to ever say that devices can transition to offline.</td></tr>
 </tbody>
 </table>
-<table class="docutils footnote" frame="void" id="id11" rules="none">
+<table class="docutils footnote" frame="void" id="footnote-5" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
-<tr><td class="label"><a class="fn-backref" href="#id5">[5]</a></td><td>See the <a class="reference external" href="https://github.com/matrix-org/matrix-spec-proposals/pull/3026/files#r1287453423">open thread on the <span class="caps">MSC3026</span></a>.</td></tr>
+<tr><td class="label"><a class="fn-backref" href="#footnote-reference-5">[5]</a></td><td>See the <a class="reference external" href="https://github.com/matrix-org/matrix-spec-proposals/pull/3026/files#r1287453423">open thread on the <span class="caps">MSC3026</span></a>.</td></tr>
 </tbody>
 </table>
-<table class="docutils footnote" frame="void" id="id12" rules="none">
+<table class="docutils footnote" frame="void" id="footnote-6" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
-<tr><td class="label"><a class="fn-backref" href="#id6">[6]</a></td><td>This is essentially the <a class="reference external" href="https://github.com/matrix-org/synapse/issues/16057">bug illustrated by the change in Element Web&#8217;s behavior</a>.</td></tr>
+<tr><td class="label"><a class="fn-backref" href="#footnote-reference-6">[6]</a></td><td>This is essentially the <a class="reference external" href="https://github.com/matrix-org/synapse/issues/16057">bug illustrated by the change in Element Web&#8217;s behavior</a>.</td></tr>
 </tbody>
 </table>
 </div>
@@ -382,7 +391,7 @@ s.setAttribute('data-timestamp', +new Date());
     <nav class="navbar fixed-bottom navbar-light bg-light border-top border-info">
       <a href="https://getpelican.com/" class="nav-item" target="_blank">Powered by Pelican</a>
       <a href="https://github.com/clokep/clokep.github.io" class="nav-item" target="_blank">
-        Source available on GitHub <span class="fab fa-github"></span>
+        Source available on GitHub <span class="bi-github"></span>
       </a>
     </nav>
 

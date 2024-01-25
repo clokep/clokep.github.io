@@ -9,21 +9,21 @@
     <link href="https://patrick.cloke.us/feeds/atom.xml" type="application/atom+xml" rel="alternate" title="Patrick Cloke Atom Feed" />
     <link href="https://patrick.cloke.us/feeds/rss.xml" type="application/rss+xml" rel="alternate" title="Patrick Cloke RSS Feed" />
 
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
     <link rel="stylesheet" href="/theme/css/styles.css">
     <link rel="stylesheet" href="/theme/css/borland.css">
     <link rel="stylesheet" href="/theme/css/youtube.css">
 
-    <!-- Font Awesome -->
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
 
     <title>IRC Auto-Performs</title>
 
     <meta property="og:site_name" content="Patrick Cloke" />
 <meta property="og:title" content="IRC Auto-Performs" />
 <meta property="og:url" content="https://patrick.cloke.us/posts/2012/06/11/irc-auto-performs/" />
-<meta property="og:description" content="There have been a few requests to support “auto-performs” (sending commands to the IRC server after connection that the user types into a box or whatever). Personally I find this to be: A fairly awful user experience. Confusing to new users. Unnecessary. I additionally don’t like this idea since …" />
+<meta property="og:description" content="There have been a few requests to support “auto-performs” (sending commands to the IRC server after connection that the user types into a box or whatever). Personally I find this to be:  A fairly awful user experience. Confusing to new users. Unnecessary.  I additionally don’t like this idea since …" />
 <meta property="og:type" content="article" />
 <meta property="article:published_time" content="2012-06-11T22:25:00-04:00" />
 <meta property="article:author" content="Patrick Cloke" />
@@ -68,11 +68,11 @@
 
             <span class="dropdown-menu dropdown-menu-right" aria-labelledby="social-dropdown">
               <a class="dropdown-item" href="https://mastodon.social/@clokep" target="_blank">
-                  <span class="fab fa-mastodon mr-1"></span>
+                  <span class="bi-mastodon mr-1"></span>
                 mastodon
               </a>
               <a class="dropdown-item" href="https://www.twitter.com/clokep" target="_blank">
-                  <span class="fab fa-twitter mr-1"></span>
+                  <span class="bi-twitter mr-1"></span>
                 twitter
               </a>
               <a class="dropdown-item" href="https://matrix.to/#/@clokep:matrix.org" target="_blank">
@@ -80,15 +80,15 @@
                 matrix
               </a>
               <a class="dropdown-item" href="https://github.com/clokep" target="_blank">
-                  <span class="fab fa-github mr-1"></span>
+                  <span class="bi-github mr-1"></span>
                 github
               </a>
               <a class="dropdown-item" href="https://gitlab.com/clokep" target="_blank">
-                  <span class="fab fa-gitlab mr-1"></span>
+                  <span class="bi-gitlab mr-1"></span>
                 gitlab
               </a>
               <a class="dropdown-item" href="https://www.linkedin.com/in/patrickcloke/" target="_blank">
-                  <span class="fab fa-linkedin mr-1"></span>
+                  <span class="bi-linkedin mr-1"></span>
                 linkedin
               </a>
             </span>
@@ -133,14 +133,23 @@
         </div>
 
         <div class="col-sm text-right">
+          <a href="https://toot.kytta.dev/?text=IRC%C2%A0Auto-Performs%0D%0Ahttps%3A//patrick.cloke.us/posts/2012/06/11/irc-auto-performs/%0D%0A%23Instantbird %23IRC %23Mozilla" target="_blank" class="ml-1 mr-1" title="Share on Mastodon">
+            <span class="bi-mastodon"></span>
+          </a>
           <a href="https://twitter.com/intent/tweet?text=IRC%C2%A0Auto-Performs&url=https%3A//patrick.cloke.us/posts/2012/06/11/irc-auto-performs/&hashtags=instantbird,irc,mozilla" target="_blank" class="ml-1 mr-1" title="Share on Twitter">
-            <span class="fab fa-twitter"></span>
+            <span class="bi-twitter"></span>
+          </a>
+          <a href="https://www.reddit.com/submit?url=https%3A//patrick.cloke.us/posts/2012/06/11/irc-auto-performs/&title=IRC%C2%A0Auto-Performs" target="_blank" class="ml-1 mr-1" title="Share on Reddit">
+            <span class="bi-reddit"></span>
           </a>
           <a href="https://www.facebook.com/sharer/sharer.php?u=https%3A//patrick.cloke.us/posts/2012/06/11/irc-auto-performs/" target="_blank" class="ml-1 mr-1" title="Share on Facebook">
-            <span class="fab fa-facebook"></span>
+            <span class="bi-facebook"></span>
+          </a>
+          <a href="https://www.linkedin.com/shareArticle?mini=true&url=https%3A//patrick.cloke.us/posts/2012/06/11/irc-auto-performs/&title=IRC%C2%A0Auto-Performs&summary=There%20have%20been%20a%20few%20requests%20to%20support%20%E2%80%9Cauto-performs%E2%80%9D%0A%28sending%20commands%20to%20the%20IRC%20server%20after%20connection%20that%20the%20user%20types%0Ainto%20a%20box%20or%20whatever%29.%20Personally%20I%20find%20this%20to%C2%A0be%3A%0A%0AA%20fairly%20awful%20user%C2%A0experience.%0AConfusing%20to%20new%C2%A0users.%0AUnnecessary.%0A%0AI%20additionally%20don%E2%80%99t%20like%20this%20idea%20since%20%E2%80%A6&source=https%3A//patrick.cloke.us/posts/2012/06/11/irc-auto-performs/" target="_blank" class="ml-1 mr-1" title="Share on LinkedIn">
+            <span class="bi-linkedin"></span>
           </a>
           <a href="mailto:?subject=IRC%C2%A0Auto-Performs&amp;body=https%3A//patrick.cloke.us/posts/2012/06/11/irc-auto-performs/" target="_blank" class="ml-1 mr-1" title="Share via Email">
-            <span class="fas fa-envelope"></span>
+            <span class="bi-envelope"></span>
           </a>
         </div>
       </div>
@@ -152,9 +161,9 @@
           <div class="toc" id="">
 <p class="topic-title">Contents</p>
 <ul class="simple">
-<li><a class="reference internal" href="#design" id="id1">Design</a></li>
-<li><a class="reference internal" href="#messages" id="id2">Messages</a></li>
-<li><a class="reference internal" href="#handlers" id="id3">Handlers</a></li>
+<li><a class="reference internal" href="#design" id="toc-entry-1">Design</a></li>
+<li><a class="reference internal" href="#messages" id="toc-entry-2">Messages</a></li>
+<li><a class="reference internal" href="#handlers" id="toc-entry-3">Handlers</a></li>
 </ul>
 </div>
         </div>
@@ -177,7 +186,7 @@ described is writing our own scripting language…that seems pointless
 with this post (and maybe a series of posts) that auto-performs aren’t
 necessary and a trivial restartless extension can replace them.</p>
 <div class="section" id="design">
-<h2><a class="toc-backref" href="#id1">Design</a></h2>
+<h2><a class="toc-backref" href="#toc-entry-1">Design</a></h2>
 <p>Part of the desire to <a class="reference external" href="https://patrick.cloke.us/posts/2011/04/30/why-rewrite-irc-protocol-plugin-part-2/">replace the libpurple <span class="caps">IRC</span> protocol plugin</a>
 with a new JavaScript one built specifically for Instantbird (which is
 also now used in Thunderbird!) was to make the protocol fully
@@ -204,7 +213,7 @@ to stop working or do really crazy things, etc. Unfortunately there
 isn’t really a way to avoid that. Hopefully people write good code.</p>
 </div>
 <div class="section" id="messages">
-<h2><a class="toc-backref" href="#id2">Messages</a></h2>
+<h2><a class="toc-backref" href="#toc-entry-2">Messages</a></h2>
 <p>I’m going to go into an aside about messages right now, even though it
 doesn’t quite seem relevant yet. It will. <span class="caps">IRC</span> has a bunch of
 sub-protocols embedded within the <span class="caps">IRC</span> protocol (see the link above about
@@ -238,7 +247,7 @@ defined by any “specifications” that exist), we keep extensions from
 having to parse messages over and over again from strings.</p>
 </div>
 <div class="section" id="handlers">
-<h2><a class="toc-backref" href="#id3">Handlers</a></h2>
+<h2><a class="toc-backref" href="#toc-entry-3">Handlers</a></h2>
 <p>A handler is simply what I call the object that contains the methods
 to deal with an incoming message. Pretty much, you get to say “Only send
 me <span class="caps">ISUPPORT</span> messages!” or “Only send me <span class="caps">CTCP</span> messages!” and voila, you
@@ -246,28 +255,28 @@ only get that type of message. Each message type has a field that is
 used to choose the method to run (for the <span class="caps">IRC</span> messages, the “command”,
 for <span class="caps">CTCP</span> the “<span class="caps">CTCP</span> command”, <span class="caps">ISUPPORT</span> the “parameter”, etc.) This sounds
 a lot more complicated than it is, I think a brief <a class="reference external" href="https://bitbucket.org/clokep/irc-extras/src/6f778f17172a/example/bootstrap.js">example</a> is in order:</p>
-<div class="highlight"><pre><span></span><span class="kd">var</span> <span class="nx">ircSimpleExample</span> <span class="o">=</span> <span class="p">{</span>
-  <span class="c1">// The name here is really only used in error messages.</span>
-  <span class="nx">name</span><span class="o">:</span> <span class="s2">"IRC Simple Example"</span><span class="p">,</span>
-  <span class="c1">// Slightly above the default priority so we run before the main IRC handler.</span>
-  <span class="nx">priority</span><span class="o">:</span> <span class="nx">ircHandlers</span><span class="p">.</span><span class="nx">DEFAULT_PRIORITY</span> <span class="o">+</span> <span class="mf">10</span><span class="p">,</span>
-  <span class="c1">// Run this for all accounts (note that the 'this' object in this method is</span>
-  <span class="c1">// the JavaScript account object.</span>
-  <span class="nx">isEnabled</span><span class="o">:</span> <span class="kd">function</span><span class="p">()</span> <span class="kc">true</span><span class="p">,</span>
+<div class="highlight"><pre><span></span><span class="kd">var</span><span class="w"> </span><span class="nx">ircSimpleExample</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="c1">// The name here is really only used in error messages.</span>
+<span class="w">  </span><span class="nx">name</span><span class="o">:</span><span class="w"> </span><span class="s2">"IRC Simple Example"</span><span class="p">,</span>
+<span class="w">  </span><span class="c1">// Slightly above the default priority so we run before the main IRC handler.</span>
+<span class="w">  </span><span class="nx">priority</span><span class="o">:</span><span class="w"> </span><span class="nx">ircHandlers</span><span class="p">.</span><span class="nx">DEFAULT_PRIORITY</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mf">10</span><span class="p">,</span>
+<span class="w">  </span><span class="c1">// Run this for all accounts (note that the 'this' object in this method is</span>
+<span class="w">  </span><span class="c1">// the JavaScript account object.</span>
+<span class="w">  </span><span class="nx">isEnabled</span><span class="o">:</span><span class="w"> </span><span class="kd">function</span><span class="p">()</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
 
-  <span class="c1">// The commands we want to handle. For each of these, the account object is</span>
-  <span class="c1">// bound to 'this' and the single parameter is of the type that you've</span>
-  <span class="c1">// registered your handle.</span>
-  <span class="nx">commands</span><span class="o">:</span> <span class="p">{</span>
-    <span class="s2">"001"</span><span class="o">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">aMessage</span><span class="p">)</span> <span class="p">{</span>
-      <span class="c1">// At the 001 response we've successfully connected to the server.</span>
-      <span class="c1">// Send an IDENTIFY command to NickServ.</span>
-      <span class="k">this</span><span class="p">.</span><span class="nx">sendMessage</span><span class="p">(</span><span class="s2">"PRIVMSG"</span><span class="p">,</span> <span class="p">[</span><span class="s2">"NickServ"</span><span class="p">,</span> <span class="s2">"IDENTIFY &lt;your password&gt;"</span><span class="p">]);</span>
+<span class="w">  </span><span class="c1">// The commands we want to handle. For each of these, the account object is</span>
+<span class="w">  </span><span class="c1">// bound to 'this' and the single parameter is of the type that you've</span>
+<span class="w">  </span><span class="c1">// registered your handle.</span>
+<span class="w">  </span><span class="nx">commands</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="s2">"001"</span><span class="o">:</span><span class="w"> </span><span class="kd">function</span><span class="p">(</span><span class="nx">aMessage</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="c1">// At the 001 response we've successfully connected to the server.</span>
+<span class="w">      </span><span class="c1">// Send an IDENTIFY command to NickServ.</span>
+<span class="w">      </span><span class="k">this</span><span class="p">.</span><span class="nx">sendMessage</span><span class="p">(</span><span class="s2">"PRIVMSG"</span><span class="p">,</span><span class="w"> </span><span class="p">[</span><span class="s2">"NickServ"</span><span class="p">,</span><span class="w"> </span><span class="s2">"IDENTIFY &lt;your password&gt;"</span><span class="p">]);</span>
 
-      <span class="c1">// Return false so the default handler still runs.</span>
-      <span class="k">return</span> <span class="kc">false</span><span class="p">;</span>
-    <span class="p">}</span>
-  <span class="p">}</span>
+<span class="w">      </span><span class="c1">// Return false so the default handler still runs.</span>
+<span class="w">      </span><span class="k">return</span><span class="w"> </span><span class="kc">false</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">  </span><span class="p">}</span>
 <span class="p">}</span>
 </pre></div>
 <p>Just like that we’ve designed a handler! Whenever the 001 method is
@@ -313,7 +322,7 @@ s.setAttribute('data-timestamp', +new Date());
     <nav class="navbar fixed-bottom navbar-light bg-light border-top border-info">
       <a href="https://getpelican.com/" class="nav-item" target="_blank">Powered by Pelican</a>
       <a href="https://github.com/clokep/clokep.github.io" class="nav-item" target="_blank">
-        Source available on GitHub <span class="fab fa-github"></span>
+        Source available on GitHub <span class="bi-github"></span>
       </a>
     </nav>
 

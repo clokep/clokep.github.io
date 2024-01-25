@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom"><title>Patrick Cloke - RSS</title><link href="https://patrick.cloke.us/" rel="alternate"></link><link href="https://patrick.cloke.us/feeds/tag/rss.atom.xml" rel="self"></link><id>https://patrick.cloke.us/</id><updated>2017-09-13T17:15:00-04:00</updated><entry><title>RSS Feeds for Wikipedia Current Events and NHL News</title><link href="https://patrick.cloke.us/posts/2017/05/26/rss-feeds-for-wikipedia-current-events-and-nhl-news/" rel="alternate"></link><published>2017-05-26T08:13:00-04:00</published><updated>2017-09-13T17:15:00-04:00</updated><author><name>Patrick Cloke</name></author><id>tag:patrick.cloke.us,2017-05-26:/posts/2017/05/26/rss-feeds-for-wikipedia-current-events-and-nhl-news/</id><summary type="html">&lt;p&gt;I subscribe to a fair amount of feeds for news, blogs, articles, etc. I&amp;#8217;m
 currently subscribed to 122 feeds, some of which have tens of articles a day
-(news sites), some of which are dead. &lt;a class="footnote-reference" href="#id3" id="id1"&gt;[1]&lt;/a&gt; Unfortunately there&amp;#8217;s still a few
+(news sites), some of which are dead. &lt;a class="footnote-reference" href="#footnote-1" id="footnote-reference-1"&gt;[1]&lt;/a&gt; Unfortunately there&amp;#8217;s still a few
 sites that I was visiting manually each …&lt;/p&gt;</summary><content type="html">&lt;p&gt;I subscribe to a fair amount of feeds for news, blogs, articles, etc. I&amp;#8217;m
 currently subscribed to 122 feeds, some of which have tens of articles a day
-(news sites), some of which are dead. &lt;a class="footnote-reference" href="#id3" id="id1"&gt;[1]&lt;/a&gt; Unfortunately there&amp;#8217;s still a few
+(news sites), some of which are dead. &lt;a class="footnote-reference" href="#footnote-1" id="footnote-reference-1"&gt;[1]&lt;/a&gt; Unfortunately there&amp;#8217;s still a few
 sites that I was visiting manually each day to get updates from because they
 don&amp;#8217;t offer any feeds. This&amp;nbsp;included:&lt;/p&gt;
 &lt;ul class="simple"&gt;
 &lt;li&gt;The &lt;a class="reference external" href="https://en.wikipedia.org/wiki/Portal:Current_events"&gt;Wikipedia Current Events portal&lt;/a&gt;, which usually has a nice daily summary
-of interesting worldwide stories. &lt;a class="footnote-reference" href="#id4" id="id2"&gt;[2]&lt;/a&gt;&lt;/li&gt;
+of interesting worldwide stories. &lt;a class="footnote-reference" href="#footnote-2" id="footnote-reference-2"&gt;[2]&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;The &lt;a class="reference external" href="https://www.nhl.com/news"&gt;&lt;span class="caps"&gt;NHL&lt;/span&gt; News&lt;/a&gt; (and specifically the &lt;a class="reference external" href="https://www.nhl.com/islanders/news"&gt;Islanders News&lt;/a&gt;) pages. (I still
 follow a &lt;a class="reference external" href="http://islanders.nhl.com/rss/news.xml"&gt;broken feed&lt;/a&gt; from the older site, but it seems one of the redesigns
 of the &lt;span class="caps"&gt;NHL&lt;/span&gt; team sites broke this&amp;nbsp;feed.)&lt;/li&gt;
@@ -62,10 +62,10 @@ them, so that&amp;#8217;s included too! Articles are pulled during page load, so
 always be up to&amp;nbsp;date.&lt;/p&gt;
 &lt;p&gt;I hope one (or both) of these are useful to people! Again, please
 &lt;a class="reference external" href="https://github.com/clokep/nhl-news-rss/issues/new"&gt;let me know if you have any issues or ideas&lt;/a&gt;!&lt;/p&gt;
-&lt;table class="docutils footnote" frame="void" id="id3" rules="none"&gt;
+&lt;table class="docutils footnote" frame="void" id="footnote-1" rules="none"&gt;
 &lt;colgroup&gt;&lt;col class="label" /&gt;&lt;col /&gt;&lt;/colgroup&gt;
 &lt;tbody valign="top"&gt;
-&lt;tr&gt;&lt;td class="label"&gt;&lt;a class="fn-backref" href="#id1"&gt;[1]&lt;/a&gt;&lt;/td&gt;&lt;td&gt;&lt;p class="first"&gt;I recently switched from using &lt;a class="reference external" href="http://thunderbird.net"&gt;Thunderbird&lt;/a&gt; to &lt;a class="reference external" href="https://feedly.com"&gt;Feedly&lt;/a&gt; in order to
+&lt;tr&gt;&lt;td class="label"&gt;&lt;a class="fn-backref" href="#footnote-reference-1"&gt;[1]&lt;/a&gt;&lt;/td&gt;&lt;td&gt;&lt;p class="first"&gt;I recently switched from using &lt;a class="reference external" href="http://thunderbird.net"&gt;Thunderbird&lt;/a&gt; to &lt;a class="reference external" href="https://feedly.com"&gt;Feedly&lt;/a&gt; in order to
 get cross device read status syncing on articles, but that&amp;#8217;s not really
 related to the rest of this article. Switching has mostly worked out
 well, but I do miss the filtering capabilities of&amp;nbsp;Thunderbird!&lt;/p&gt;
@@ -74,10 +74,10 @@ too many weird social features. I just wanted to read&amp;nbsp;feeds.&lt;/p&gt;
 &lt;/td&gt;&lt;/tr&gt;
 &lt;/tbody&gt;
 &lt;/table&gt;
-&lt;table class="docutils footnote" frame="void" id="id4" rules="none"&gt;
+&lt;table class="docutils footnote" frame="void" id="footnote-2" rules="none"&gt;
 &lt;colgroup&gt;&lt;col class="label" /&gt;&lt;col /&gt;&lt;/colgroup&gt;
 &lt;tbody valign="top"&gt;
-&lt;tr&gt;&lt;td class="label"&gt;&lt;a class="fn-backref" href="#id2"&gt;[2]&lt;/a&gt;&lt;/td&gt;&lt;td&gt;I do know that Wikipedia page updates can be consumed via &lt;span class="caps"&gt;RSS&lt;/span&gt;, but I
+&lt;tr&gt;&lt;td class="label"&gt;&lt;a class="fn-backref" href="#footnote-reference-2"&gt;[2]&lt;/a&gt;&lt;/td&gt;&lt;td&gt;I do know that Wikipedia page updates can be consumed via &lt;span class="caps"&gt;RSS&lt;/span&gt;, but I
 don&amp;#8217;t want to know every time the article is updated, just the state of
 the article at the end of the day. (It also doesn&amp;#8217;t work for the current
 events article since it&amp;#8217;s dynamically generated from a bunch of

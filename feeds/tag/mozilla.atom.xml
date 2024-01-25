@@ -154,7 +154,7 @@ right for you.&lt;/li&gt;
 &lt;/li&gt;
 &lt;/ol&gt;
 &lt;div class="section" id="picking-an-organization"&gt;
-&lt;h2&gt;&lt;a class="toc-backref" href="#id4"&gt;Picking an Organization&lt;/a&gt;&lt;/h2&gt;
+&lt;h2&gt;&lt;a class="toc-backref" href="#toc-entry-1"&gt;Picking an Organization&lt;/a&gt;&lt;/h2&gt;
 &lt;p&gt;Pick an organization you’re truly interested in helping. I really can’t stress
 this enough. “Truly interested in helping” might mean many things:&lt;/p&gt;
 &lt;ul class="simple"&gt;
@@ -173,7 +173,7 @@ A pet peeve of mine is that a student should use (or at the very least
 to understand the needs and wants of a community without utilizing what
 they’ve poured their time and energy into.&lt;/blockquote&gt;
 &lt;div class="section" id="introductions"&gt;
-&lt;h3&gt;&lt;a class="toc-backref" href="#id5"&gt;Introductions&lt;/a&gt;&lt;/h3&gt;
+&lt;h3&gt;&lt;a class="toc-backref" href="#toc-entry-2"&gt;Introductions&lt;/a&gt;&lt;/h3&gt;
 &lt;p&gt;Different communities interact in different ways (and frequently a single
 community interacts in multiple ways). Common ways include:&lt;/p&gt;
 &lt;ul class="simple"&gt;
@@ -196,7 +196,7 @@ organization administrator is much more likely to respond quickly in that case.
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;div class="section" id="getting-accepted"&gt;
-&lt;h2&gt;&lt;a class="toc-backref" href="#id6"&gt;Getting Accepted&lt;/a&gt;&lt;/h2&gt;
+&lt;h2&gt;&lt;a class="toc-backref" href="#toc-entry-3"&gt;Getting Accepted&lt;/a&gt;&lt;/h2&gt;
 &lt;p&gt;We’re frequently asked how a student can improve their chances of getting
 accepted by an organization. GSoC is a very &lt;strong&gt;self-driven&lt;/strong&gt; program, especially
 if your mentor is a volunteer. Being a self starter can be a boon for being accepted.&lt;/p&gt;
@@ -212,7 +212,7 @@ entirely new piece of code!)&lt;/li&gt;
 &lt;li&gt;Get used to the way the community works and functions.&lt;/li&gt;
 &lt;/ul&gt;
 &lt;div class="section" id="building-an-application"&gt;
-&lt;h3&gt;&lt;a class="toc-backref" href="#id7"&gt;Building an Application&lt;/a&gt;&lt;/h3&gt;
+&lt;h3&gt;&lt;a class="toc-backref" href="#toc-entry-4"&gt;Building an Application&lt;/a&gt;&lt;/h3&gt;
 &lt;p&gt;The above should help feed into your application. In particular, it should help
 to build a realistic schedule for your application. (Scheduling is difficult
 even for seasoned engineers, but the above work should help make a more accurate schedule.)&lt;/p&gt;
@@ -235,7 +235,7 @@ you need to add/update documentation? Add new tests? Keep an old &lt;span class=
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;div class="section" id="summary"&gt;
-&lt;h2&gt;&lt;a class="toc-backref" href="#id8"&gt;Summary&lt;/a&gt;&lt;/h2&gt;
+&lt;h2&gt;&lt;a class="toc-backref" href="#toc-entry-5"&gt;Summary&lt;/a&gt;&lt;/h2&gt;
 &lt;p&gt;This is just a few ideas of what I look for when reviewing a Google Summer of
 Code application. To repeat, try to understand an organization’s members, get
 involved and gain experience, try to build an accurate schedule. An additional
@@ -248,18 +248,18 @@ questions that pertain to your application at Mozilla, please
 &lt;/div&gt;
 </content><category term="articles"></category><category term="GSoC"></category><category term="Mozilla"></category></entry><entry><title>IRC Client Usage Share on moznet</title><link href="https://patrick.cloke.us/posts/2015/09/23/irc-client-usage-share-on-moznet/" rel="alternate"></link><published>2015-09-23T17:07:00-04:00</published><updated>2015-09-24T07:18:00-04:00</updated><author><name>Patrick Cloke</name></author><id>tag:patrick.cloke.us,2015-09-23:/posts/2015/09/23/irc-client-usage-share-on-moznet/</id><summary type="html">
 &lt;div class="section" id="background"&gt;
-&lt;h2&gt;&lt;a class="toc-backref" href="#id13"&gt;Background&lt;/a&gt;&lt;/h2&gt;
+&lt;h2&gt;&lt;a class="toc-backref" href="#toc-entry-1"&gt;Background&lt;/a&gt;&lt;/h2&gt;
 &lt;p&gt;The usage share of &lt;span class="caps"&gt;IRC&lt;/span&gt; clients has always been something I’m interested in. This
 is partially to see how many people are using &lt;a class="reference external" href="http://instantbird.com/"&gt;Instantbird&lt;/a&gt; or &lt;a class="reference external" href="https://www.mozilla.org/en-US/thunderbird/"&gt;Mozilla
 Thunderbird&lt;/a&gt; for &lt;span class="caps"&gt;IRC&lt;/span&gt; (as I’ve written much of the &lt;span class="caps"&gt;IRC&lt;/span&gt; code for those clients).
 &lt;a class="reference external" href="http://en.wikipedia.org/wiki/Usage_share_of_web_browsers"&gt;Usage share of browsers&lt;/a&gt; is quite a …&lt;/p&gt;&lt;/div&gt;</summary><content type="html">
 &lt;div class="section" id="background"&gt;
-&lt;h2&gt;&lt;a class="toc-backref" href="#id13"&gt;Background&lt;/a&gt;&lt;/h2&gt;
+&lt;h2&gt;&lt;a class="toc-backref" href="#toc-entry-1"&gt;Background&lt;/a&gt;&lt;/h2&gt;
 &lt;p&gt;The usage share of &lt;span class="caps"&gt;IRC&lt;/span&gt; clients has always been something I’m interested in. This
 is partially to see how many people are using &lt;a class="reference external" href="http://instantbird.com/"&gt;Instantbird&lt;/a&gt; or &lt;a class="reference external" href="https://www.mozilla.org/en-US/thunderbird/"&gt;Mozilla
 Thunderbird&lt;/a&gt; for &lt;span class="caps"&gt;IRC&lt;/span&gt; (as I’ve written much of the &lt;span class="caps"&gt;IRC&lt;/span&gt; code for those clients).
 &lt;a class="reference external" href="http://en.wikipedia.org/wiki/Usage_share_of_web_browsers"&gt;Usage share of browsers&lt;/a&gt; is quite a researched topic, but I’ve never come
-across this data for &lt;span class="caps"&gt;IRC&lt;/span&gt;. Most &lt;a class="footnote-reference" href="#id7" id="id1"&gt;[1]&lt;/a&gt; &lt;span class="caps"&gt;IRC&lt;/span&gt; clients implement a part of the &lt;a class="reference external" href="http://www.irchelp.org/irchelp/rfc/ctcpspec.html"&gt;&lt;span class="caps"&gt;CTCP&lt;/span&gt;&lt;/a&gt;
+across this data for &lt;span class="caps"&gt;IRC&lt;/span&gt;. Most &lt;a class="footnote-reference" href="#footnote-1" id="footnote-reference-1"&gt;[1]&lt;/a&gt; &lt;span class="caps"&gt;IRC&lt;/span&gt; clients implement a part of the &lt;a class="reference external" href="http://www.irchelp.org/irchelp/rfc/ctcpspec.html"&gt;&lt;span class="caps"&gt;CTCP&lt;/span&gt;&lt;/a&gt;
 protocol which allows a client to query another client for their version.
 Thinking of this as a &lt;a class="reference external" href="http://en.wikipedia.org/wiki/User_agent"&gt;user agent&lt;/a&gt; is probably a good analogue. I don’t think
 this would imply that there is much of an issue with &lt;a class="reference external" href="http://en.wikipedia.org/wiki/Usage_share_of_web_browsers#User_agent_spoofing"&gt;user agent spoofing&lt;/a&gt;, as
@@ -267,7 +267,7 @@ there would be for web browser statistics since (as far as I know), no one uses
 the version response to do capability negotiation. It also is not used by servers.&lt;/p&gt;
 &lt;/div&gt;
 &lt;div class="section" id="technical-bits"&gt;
-&lt;h2&gt;&lt;a class="toc-backref" href="#id14"&gt;Technical Bits&lt;/a&gt;&lt;/h2&gt;
+&lt;h2&gt;&lt;a class="toc-backref" href="#toc-entry-2"&gt;Technical Bits&lt;/a&gt;&lt;/h2&gt;
 &lt;p&gt;So how’d we do this? I wrote an &lt;a class="reference external" href="https://bitbucket.org/clokep/irc-extras/src/tip/stats/"&gt;extension&lt;/a&gt; for Instantbird which handled both
 the backend and the display of the results. I think that this really showcases
 the extensibility of Instantbird and the effort we’ve put into ensuring their
@@ -283,10 +283,10 @@ made a pretty(-ish) plot of this. (If you’re a network administrator reading
 this and think this is insane, I’d be very curious to hear a better way to do this!)&lt;/p&gt;
 &lt;/div&gt;
 &lt;div class="section" id="results"&gt;
-&lt;h2&gt;&lt;a class="toc-backref" href="#id15"&gt;Results&lt;/a&gt;&lt;/h2&gt;
+&lt;h2&gt;&lt;a class="toc-backref" href="#toc-entry-3"&gt;Results&lt;/a&gt;&lt;/h2&gt;
 &lt;p&gt;In order to get some results I hooked my client up to &lt;a class="reference external" href="https://wiki.mozilla.org/IRC"&gt;moznet&lt;/a&gt; on July 23rd,
 2015 and let it run on many channels (pretty much anything with more than 20
-users) for a few hours &lt;a class="footnote-reference" href="#id8" id="id2"&gt;[2]&lt;/a&gt;. I was in Europe and started early in the morning
+users) for a few hours &lt;a class="footnote-reference" href="#footnote-2" id="footnote-reference-2"&gt;[2]&lt;/a&gt;. I was in Europe and started early in the morning
 and let it run through the evening, so it should encompass some “normal” usage
 by Mozillians. I would expect a bit of skew in these results toward
 Mozilla-esque &lt;span class="caps"&gt;IRC&lt;/span&gt; clients (Instantbird, Thunderbird and &lt;a class="reference external" href="http://chatzilla.hacksrus.com/"&gt;ChatZilla&lt;/a&gt;).&lt;/p&gt;
@@ -294,7 +294,7 @@ Mozilla-esque &lt;span class="caps"&gt;IRC&lt;/span&gt; clients (Instantbird, Th
 variance there is day-to-day or over time, but I found the (un-scientific)
 results to be interesting!&lt;/p&gt;
 &lt;div class="section" id="responses"&gt;
-&lt;h3&gt;&lt;a class="toc-backref" href="#id16"&gt;Responses&lt;/a&gt;&lt;/h3&gt;
+&lt;h3&gt;&lt;a class="toc-backref" href="#toc-entry-4"&gt;Responses&lt;/a&gt;&lt;/h3&gt;
 &lt;p&gt;The first thing I noticed is the large amount of information some version
 responses gave (in no particular order):&lt;/p&gt;
 &lt;ul class="simple"&gt;
@@ -308,20 +308,20 @@ although quite a few also include a &lt;span class="caps"&gt;URL&lt;/span&gt;.&l
 &lt;p&gt;Additionally, some bouncers respond in weird ways which might skew the results:&lt;/p&gt;
 &lt;ul class="simple"&gt;
 &lt;li&gt;&lt;span class="caps"&gt;ZNC&lt;/span&gt; responds only if there are no clients connected &lt;span class="caps"&gt;OR&lt;/span&gt;, depending on the
-version, it appends itself to the client response. &lt;a class="footnote-reference" href="#id9" id="id3"&gt;[3]&lt;/a&gt;&lt;/li&gt;
+version, it appends itself to the client response. &lt;a class="footnote-reference" href="#footnote-3" id="footnote-reference-3"&gt;[3]&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;bip responds with it’s own version if no one is connected &lt;span class="caps"&gt;OR&lt;/span&gt; the version of
-all connected clients. &lt;a class="footnote-reference" href="#id10" id="id4"&gt;[4]&lt;/a&gt;&lt;/li&gt;
+all connected clients. &lt;a class="footnote-reference" href="#footnote-4" id="footnote-reference-4"&gt;[4]&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 &lt;p&gt;Lastly, some clients just don’t respond (or respond with an empty string). The
 results below aren’t really a count of “users”, but a count of “clients” where
 some users might be counted multiple times.&lt;/p&gt;
 &lt;/div&gt;
 &lt;div class="section" id="client-summary"&gt;
-&lt;h3&gt;&lt;a class="toc-backref" href="#id17"&gt;Client Summary&lt;/a&gt;&lt;/h3&gt;
+&lt;h3&gt;&lt;a class="toc-backref" href="#toc-entry-5"&gt;Client Summary&lt;/a&gt;&lt;/h3&gt;
 &lt;p&gt;Initially I visualized the data by plotting it two serparate ways: first by
 showing the count of each version response and then grouping by “client family”.
 The first plot had too many columns to reasonably show in this post: thus I’ve
-only included a plot of the client families &lt;a class="footnote-reference" href="#id11" id="id5"&gt;[5]&lt;/a&gt;. There are two plots, the first
+only included a plot of the client families &lt;a class="footnote-reference" href="#footnote-5" id="footnote-reference-5"&gt;[5]&lt;/a&gt;. There are two plots, the first
 shows a subset of the data by cutting the tail (arbitrarily including families
 with at least 10 users).&lt;/p&gt;
 &lt;div class="admonition note"&gt;
@@ -329,7 +329,7 @@ with at least 10 users).&lt;/p&gt;
 &lt;p&gt;A “client family” is counting all versions of the same client together. This
 was calculated by taking the text up to the first whitespace or digit and
 converting to lowercase:&lt;/p&gt;
-&lt;div class="last"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="nx"&gt;family&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="nx"&gt;version&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;split&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="sr"&gt;/[\s\d]/&lt;/span&gt;&lt;span class="p"&gt;)[&lt;/span&gt;&lt;span class="mf"&gt;0&lt;/span&gt;&lt;span class="p"&gt;].&lt;/span&gt;&lt;span class="nx"&gt;toLowerCase&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
+&lt;div class="last"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="nx"&gt;family&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nx"&gt;version&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;split&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="sr"&gt;/[\s\d]/&lt;/span&gt;&lt;span class="p"&gt;)[&lt;/span&gt;&lt;span class="mf"&gt;0&lt;/span&gt;&lt;span class="p"&gt;].&lt;/span&gt;&lt;span class="nx"&gt;toLowerCase&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 &lt;/div&gt;&lt;/div&gt;
 &lt;style type="text/css"&gt;
@@ -415,9 +415,9 @@ converting to lowercase:&lt;/p&gt;
 &lt;div id="family-count"&gt;&lt;/div&gt;
 &lt;div id="family-all-count"&gt;&lt;/div&gt;&lt;/div&gt;
 &lt;div class="section" id="points-of-note"&gt;
-&lt;h3&gt;&lt;a class="toc-backref" href="#id18"&gt;Points of Note&lt;/a&gt;&lt;/h3&gt;
+&lt;h3&gt;&lt;a class="toc-backref" href="#toc-entry-6"&gt;Points of Note&lt;/a&gt;&lt;/h3&gt;
 &lt;p&gt;I have to admit that I was fairly shocked by the number of IRCCloud users as I
-found it pretty unusable when messing with it &lt;a class="footnote-reference" href="#id12" id="id6"&gt;[6]&lt;/a&gt;. I suspect it being an 'easy'
+found it pretty unusable when messing with it &lt;a class="footnote-reference" href="#footnote-6" id="footnote-reference-6"&gt;[6]&lt;/a&gt;. I suspect it being an 'easy'
 bouncer draws many people to it. The bouncer-like software (IRCCloud, &lt;span class="caps"&gt;ZNC&lt;/span&gt;, bip)
 represents almost half of the users surveyed (692 / 1549 ≈ 45%)!&lt;/p&gt;
 &lt;p&gt;I'm surprised so many people are using &lt;tt class="docutils literal"&gt;purple&lt;/tt&gt; as their &lt;span class="caps"&gt;IRC&lt;/span&gt; client, as the
@@ -430,51 +430,51 @@ and Icedove, come in as part of the top 10 (63 users, right before ChatZilla)!
 There's a lot of great clients out there and I'm happy to say I've helped to
 create one of the more popular ones (on moznet, at least!).&lt;/p&gt;
 &lt;p&gt;Let me know if I missed a great insight!&lt;/p&gt;
-&lt;table class="docutils footnote" frame="void" id="id7" rules="none"&gt;
+&lt;table class="docutils footnote" frame="void" id="footnote-1" rules="none"&gt;
 &lt;colgroup&gt;&lt;col class="label"/&gt;&lt;col/&gt;&lt;/colgroup&gt;
 &lt;tbody valign="top"&gt;
-&lt;tr&gt;&lt;td class="label"&gt;&lt;a class="fn-backref" href="#id1"&gt;[1]&lt;/a&gt;&lt;/td&gt;&lt;td&gt;"Most" is a wild accusation here. But...from the numbers I've seen, it
+&lt;tr&gt;&lt;td class="label"&gt;&lt;a class="fn-backref" href="#footnote-reference-1"&gt;[1]&lt;/a&gt;&lt;/td&gt;&lt;td&gt;"Most" is a wild accusation here. But...from the numbers I've seen, it
 seems like a reasonable statement.&lt;/td&gt;&lt;/tr&gt;
 &lt;/tbody&gt;
 &lt;/table&gt;
-&lt;table class="docutils footnote" frame="void" id="id8" rules="none"&gt;
+&lt;table class="docutils footnote" frame="void" id="footnote-2" rules="none"&gt;
 &lt;colgroup&gt;&lt;col class="label"/&gt;&lt;col/&gt;&lt;/colgroup&gt;
 &lt;tbody valign="top"&gt;
-&lt;tr&gt;&lt;td class="label"&gt;&lt;a class="fn-backref" href="#id2"&gt;[2]&lt;/a&gt;&lt;/td&gt;&lt;td&gt;While running this I had a few users question what I was doing over
+&lt;tr&gt;&lt;td class="label"&gt;&lt;a class="fn-backref" href="#footnote-reference-2"&gt;[2]&lt;/a&gt;&lt;/td&gt;&lt;td&gt;While running this I had a few users question what I was doing over
 private messages or in a channel. I'm &lt;em&gt;shocked&lt;/em&gt; that clients bother
 their users by showing them they received a &lt;tt class="docutils literal"&gt;&lt;span class="caps"&gt;VERSION&lt;/span&gt;&lt;/tt&gt; request. (Most)
 users just won't care! Why show that low-level of the protocol?!&lt;/td&gt;&lt;/tr&gt;
 &lt;/tbody&gt;
 &lt;/table&gt;
-&lt;table class="docutils footnote" frame="void" id="id9" rules="none"&gt;
+&lt;table class="docutils footnote" frame="void" id="footnote-3" rules="none"&gt;
 &lt;colgroup&gt;&lt;col class="label"/&gt;&lt;col/&gt;&lt;/colgroup&gt;
 &lt;tbody valign="top"&gt;
-&lt;tr&gt;&lt;td class="label"&gt;&lt;a class="fn-backref" href="#id3"&gt;[3]&lt;/a&gt;&lt;/td&gt;&lt;td&gt;As corrected by DarthGandalf on &lt;span class="caps"&gt;IRC&lt;/span&gt;: "Before 1.6, &lt;span class="caps"&gt;ZNC&lt;/span&gt; version is
+&lt;tr&gt;&lt;td class="label"&gt;&lt;a class="fn-backref" href="#footnote-reference-3"&gt;[3]&lt;/a&gt;&lt;/td&gt;&lt;td&gt;As corrected by DarthGandalf on &lt;span class="caps"&gt;IRC&lt;/span&gt;: "Before 1.6, &lt;span class="caps"&gt;ZNC&lt;/span&gt; version is
 returned iff no clients are connected. After 1.6, it's also appended to
 the client's response (but still one line per connected client)"&lt;/td&gt;&lt;/tr&gt;
 &lt;/tbody&gt;
 &lt;/table&gt;
-&lt;table class="docutils footnote" frame="void" id="id10" rules="none"&gt;
+&lt;table class="docutils footnote" frame="void" id="footnote-4" rules="none"&gt;
 &lt;colgroup&gt;&lt;col class="label"/&gt;&lt;col/&gt;&lt;/colgroup&gt;
 &lt;tbody valign="top"&gt;
-&lt;tr&gt;&lt;td class="label"&gt;&lt;a class="fn-backref" href="#id4"&gt;[4]&lt;/a&gt;&lt;/td&gt;&lt;td&gt;&lt;a class="reference external" href="https://twitter.com/dioxmat/status/646815252898803712"&gt;Source&lt;/a&gt;, have
+&lt;tr&gt;&lt;td class="label"&gt;&lt;a class="fn-backref" href="#footnote-reference-4"&gt;[4]&lt;/a&gt;&lt;/td&gt;&lt;td&gt;&lt;a class="reference external" href="https://twitter.com/dioxmat/status/646815252898803712"&gt;Source&lt;/a&gt;, have
 I mentioned yet in this article that I hate bouncers?&lt;/td&gt;&lt;/tr&gt;
 &lt;/tbody&gt;
 &lt;/table&gt;
-&lt;table class="docutils footnote" frame="void" id="id11" rules="none"&gt;
+&lt;table class="docutils footnote" frame="void" id="footnote-5" rules="none"&gt;
 &lt;colgroup&gt;&lt;col class="label"/&gt;&lt;col/&gt;&lt;/colgroup&gt;
 &lt;tbody valign="top"&gt;
-&lt;tr&gt;&lt;td class="label"&gt;&lt;a class="fn-backref" href="#id5"&gt;[5]&lt;/a&gt;&lt;/td&gt;&lt;td&gt;I stole the code to plot this from the &lt;a class="reference external" href="https://bitbucket.org/clokep/irc-extras/src/41a9572caf957ab8ae3969a145834bcd5be74abe/stats/content/ircStats.js?at=default#cl-55"&gt;plotting code&lt;/a&gt; in the extension
+&lt;tr&gt;&lt;td class="label"&gt;&lt;a class="fn-backref" href="#footnote-reference-5"&gt;[5]&lt;/a&gt;&lt;/td&gt;&lt;td&gt;I stole the code to plot this from the &lt;a class="reference external" href="https://bitbucket.org/clokep/irc-extras/src/41a9572caf957ab8ae3969a145834bcd5be74abe/stats/content/ircStats.js?at=default#cl-55"&gt;plotting code&lt;/a&gt; in the extension
 I wrote for this. When actually using that extension, something similar
 to this appears as a tab and refreshes as results come in. It uses
 &lt;a class="reference external" href="http://humblesoftware.com/flotr2/"&gt;Flotr2&lt;/a&gt; to do the plotting in JavaScript, I've been pretty happy with
 it.&lt;/td&gt;&lt;/tr&gt;
 &lt;/tbody&gt;
 &lt;/table&gt;
-&lt;table class="docutils footnote" frame="void" id="id12" rules="none"&gt;
+&lt;table class="docutils footnote" frame="void" id="footnote-6" rules="none"&gt;
 &lt;colgroup&gt;&lt;col class="label"/&gt;&lt;col/&gt;&lt;/colgroup&gt;
 &lt;tbody valign="top"&gt;
-&lt;tr&gt;&lt;td class="label"&gt;&lt;a class="fn-backref" href="#id6"&gt;[6]&lt;/a&gt;&lt;/td&gt;&lt;td&gt;Although in retrospect I shouldn't be since Mozilla runs their own
+&lt;tr&gt;&lt;td class="label"&gt;&lt;a class="fn-backref" href="#footnote-reference-6"&gt;[6]&lt;/a&gt;&lt;/td&gt;&lt;td&gt;Although in retrospect I shouldn't be since Mozilla runs their own
 &lt;a class="reference external" href="https://irccloud.mozilla.com/"&gt;IRCCloud instance&lt;/a&gt;.&lt;/td&gt;&lt;/tr&gt;
 &lt;/tbody&gt;
 &lt;/table&gt;
@@ -581,11 +581,11 @@ before widespread distributed version control.) Anyway, let&amp;#8217;s just ass
 2006 date is&amp;nbsp;correct.&lt;/p&gt;
 &lt;p&gt;My &lt;a class="reference external" href="https://bugzilla.mozilla.org/show_bug.cgi?id=468020"&gt;first patch&lt;/a&gt; was in 2008 to move a function from the &lt;a class="reference external" href="https://addons.mozilla.org/en-us/thunderbird/addon/provider-for-google-calendar/"&gt;Provider for Google
 Calendar&lt;/a&gt; to the calendar core so that I could use it in &lt;a class="reference external" href="https://bitbucket.org/clokep/thundershows"&gt;Thundershows&lt;/a&gt;: a
-calendar provider for &lt;span class="caps"&gt;TV&lt;/span&gt; shows &lt;a class="footnote-reference" href="#id6" id="id1"&gt;[1]&lt;/a&gt; &lt;a class="footnote-reference" href="#id7" id="id2"&gt;[2]&lt;/a&gt;. (As far as I know, I&amp;#8217;m one of a
+calendar provider for &lt;span class="caps"&gt;TV&lt;/span&gt; shows &lt;a class="footnote-reference" href="#footnote-1" id="footnote-reference-1"&gt;[1]&lt;/a&gt; &lt;a class="footnote-reference" href="#footnote-2" id="footnote-reference-2"&gt;[2]&lt;/a&gt;. (As far as I know, I&amp;#8217;m one of a
 handful of people to actually implement a &lt;a class="reference external" href="https://wiki.mozilla.org/Calendar:Creating_an_Extension#Provider_Extensions"&gt;calendar provider&lt;/a&gt;.) I found the
 calendar project much easier to get involved in than other aspects of Mozilla
 since it was so much smaller. (I also &lt;a class="reference external" href="https://bitbucket.org/clokep/microblog-mailnews"&gt;toyed&lt;/a&gt; with adding an entire new protocol
-to Thunderbird, which &lt;a class="reference external" href="http://mesquilla.com/"&gt;R Kent James&lt;/a&gt; has &lt;a class="reference external" href="https://bitbucket.org/rkentjames/skinkglue"&gt;now done&lt;/a&gt; successfully! &lt;a class="footnote-reference" href="#id8" id="id3"&gt;[3]&lt;/a&gt; &lt;a class="footnote-reference" href="#id9" id="id4"&gt;[4]&lt;/a&gt;)&lt;/p&gt;
+to Thunderbird, which &lt;a class="reference external" href="http://mesquilla.com/"&gt;R Kent James&lt;/a&gt; has &lt;a class="reference external" href="https://bitbucket.org/rkentjames/skinkglue"&gt;now done&lt;/a&gt; successfully! &lt;a class="footnote-reference" href="#footnote-3" id="footnote-reference-3"&gt;[3]&lt;/a&gt; &lt;a class="footnote-reference" href="#footnote-4" id="footnote-reference-4"&gt;[4]&lt;/a&gt;)&lt;/p&gt;
 &lt;p&gt;I then came across &lt;a class="reference external" href="http://www.instantbird.com/"&gt;Instantbird&lt;/a&gt; in ~2008 (sometime in the Instantbird 0.1 era).
 I thought this was great &amp;#8212; Mozilla was finally making an instant messaging
 client! Well, I was kind of right&amp;#8230;Instantbird is not an official Mozilla
@@ -597,42 +597,42 @@ since! I&amp;#8217;ve since added &lt;a class="reference external" href="https:/
 am now one of the lead developers. I&amp;#8217;ve mentored Google Summer of Code students
 twice (2013 and 2014), contribute to Thunderbird and am a peer of the &lt;a class="reference external" href="https://wiki.mozilla.org/Modules/Chat"&gt;chat
 code&lt;/a&gt; shared between Instantbird and Thunderbird. (I do also occasionally
-contribute to other projects. &lt;a class="footnote-reference" href="#id10" id="id5"&gt;[5]&lt;/a&gt;)&lt;/p&gt;
-&lt;table class="docutils footnote" frame="void" id="id6" rules="none"&gt;
+contribute to other projects. &lt;a class="footnote-reference" href="#footnote-5" id="footnote-reference-5"&gt;[5]&lt;/a&gt;)&lt;/p&gt;
+&lt;table class="docutils footnote" frame="void" id="footnote-1" rules="none"&gt;
 &lt;colgroup&gt;&lt;col class="label" /&gt;&lt;col /&gt;&lt;/colgroup&gt;
 &lt;tbody valign="top"&gt;
-&lt;tr&gt;&lt;td class="label"&gt;&lt;a class="fn-backref" href="#id1"&gt;[1]&lt;/a&gt;&lt;/td&gt;&lt;td&gt;This was my first project to really have other users, I had people filing
+&lt;tr&gt;&lt;td class="label"&gt;&lt;a class="fn-backref" href="#footnote-reference-1"&gt;[1]&lt;/a&gt;&lt;/td&gt;&lt;td&gt;This was my first project to really have other users, I had people filing
 bugs, asking for new features, etc. It was great! I even had someone
 (years later) tell me in &lt;a class="reference external" href="irc://irc.mozilla.org/#instantbird"&gt;#instantbird&lt;/a&gt; that they had loved
 Thundershows!&lt;/td&gt;&lt;/tr&gt;
 &lt;/tbody&gt;
 &lt;/table&gt;
-&lt;table class="docutils footnote" frame="void" id="id7" rules="none"&gt;
+&lt;table class="docutils footnote" frame="void" id="footnote-2" rules="none"&gt;
 &lt;colgroup&gt;&lt;col class="label" /&gt;&lt;col /&gt;&lt;/colgroup&gt;
 &lt;tbody valign="top"&gt;
-&lt;tr&gt;&lt;td class="label"&gt;&lt;a class="fn-backref" href="#id2"&gt;[2]&lt;/a&gt;&lt;/td&gt;&lt;td&gt;My &lt;a class="reference external" href="https://bugzilla.mozilla.org/show_bug.cgi?id=469477"&gt;second bug&lt;/a&gt; dealt with the same set of code and had tests committed
+&lt;tr&gt;&lt;td class="label"&gt;&lt;a class="fn-backref" href="#footnote-reference-2"&gt;[2]&lt;/a&gt;&lt;/td&gt;&lt;td&gt;My &lt;a class="reference external" href="https://bugzilla.mozilla.org/show_bug.cgi?id=469477"&gt;second bug&lt;/a&gt; dealt with the same set of code and had tests committed
 (by me) over 5 years after the initial patch. Oops!&lt;/td&gt;&lt;/tr&gt;
 &lt;/tbody&gt;
 &lt;/table&gt;
-&lt;table class="docutils footnote" frame="void" id="id8" rules="none"&gt;
+&lt;table class="docutils footnote" frame="void" id="footnote-3" rules="none"&gt;
 &lt;colgroup&gt;&lt;col class="label" /&gt;&lt;col /&gt;&lt;/colgroup&gt;
 &lt;tbody valign="top"&gt;
-&lt;tr&gt;&lt;td class="label"&gt;&lt;a class="fn-backref" href="#id3"&gt;[3]&lt;/a&gt;&lt;/td&gt;&lt;td&gt;My work was based off of some experiments &lt;a class="reference external" href="http://quetzalcoatal.blogspot.com/"&gt;Joshua Cranmer&lt;/a&gt; did to add
+&lt;tr&gt;&lt;td class="label"&gt;&lt;a class="fn-backref" href="#footnote-reference-3"&gt;[3]&lt;/a&gt;&lt;/td&gt;&lt;td&gt;My work was based off of some experiments &lt;a class="reference external" href="http://quetzalcoatal.blogspot.com/"&gt;Joshua Cranmer&lt;/a&gt; did to add
 support for &lt;a class="reference external" href="http://quetzalcoatal.blogspot.com/2010/01/developing-new-account-types-part-0.html"&gt;web forums&lt;/a&gt; to Thunderbird. After all this time, I still
 want that extension.&lt;/td&gt;&lt;/tr&gt;
 &lt;/tbody&gt;
 &lt;/table&gt;
-&lt;table class="docutils footnote" frame="void" id="id9" rules="none"&gt;
+&lt;table class="docutils footnote" frame="void" id="footnote-4" rules="none"&gt;
 &lt;colgroup&gt;&lt;col class="label" /&gt;&lt;col /&gt;&lt;/colgroup&gt;
 &lt;tbody valign="top"&gt;
-&lt;tr&gt;&lt;td class="label"&gt;&lt;a class="fn-backref" href="#id4"&gt;[4]&lt;/a&gt;&lt;/td&gt;&lt;td&gt;Oh, also rkent did &lt;a class="reference external" href="http://mesquilla.com/extensions/tweequilla/"&gt;&lt;span class="caps"&gt;EXACTLY&lt;/span&gt;&lt;/a&gt; what I wanted years later: which is add
+&lt;tr&gt;&lt;td class="label"&gt;&lt;a class="fn-backref" href="#footnote-reference-4"&gt;[4]&lt;/a&gt;&lt;/td&gt;&lt;td&gt;Oh, also rkent did &lt;a class="reference external" href="http://mesquilla.com/extensions/tweequilla/"&gt;&lt;span class="caps"&gt;EXACTLY&lt;/span&gt;&lt;/a&gt; what I wanted years later: which is add
 Twitter to Thunderbird.&lt;/td&gt;&lt;/tr&gt;
 &lt;/tbody&gt;
 &lt;/table&gt;
-&lt;table class="docutils footnote" frame="void" id="id10" rules="none"&gt;
+&lt;table class="docutils footnote" frame="void" id="footnote-5" rules="none"&gt;
 &lt;colgroup&gt;&lt;col class="label" /&gt;&lt;col /&gt;&lt;/colgroup&gt;
 &lt;tbody valign="top"&gt;
-&lt;tr&gt;&lt;td class="label"&gt;&lt;a class="fn-backref" href="#id5"&gt;[5]&lt;/a&gt;&lt;/td&gt;&lt;td&gt;But not Firefox. After seven years (and over 1800 commits), I&amp;#8217;ve never
+&lt;tr&gt;&lt;td class="label"&gt;&lt;a class="fn-backref" href="#footnote-reference-5"&gt;[5]&lt;/a&gt;&lt;/td&gt;&lt;td&gt;But not Firefox. After seven years (and over 1800 commits), I&amp;#8217;ve never
 fixed a bug in Firefox; although I have had &lt;a class="reference external" href="https://bugzilla.mozilla.org/show_bug.cgi?id=884319"&gt;code&lt;/a&gt; committed to
 &lt;tt class="docutils literal"&gt;&lt;span class="pre"&gt;mozilla-central&lt;/span&gt;&lt;/tt&gt;.&lt;/td&gt;&lt;/tr&gt;
 &lt;/tbody&gt;

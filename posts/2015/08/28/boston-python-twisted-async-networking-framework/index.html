@@ -9,21 +9,21 @@
     <link href="https://patrick.cloke.us/feeds/atom.xml" type="application/atom+xml" rel="alternate" title="Patrick Cloke Atom Feed" />
     <link href="https://patrick.cloke.us/feeds/rss.xml" type="application/rss+xml" rel="alternate" title="Patrick Cloke RSS Feed" />
 
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
     <link rel="stylesheet" href="/theme/css/styles.css">
     <link rel="stylesheet" href="/theme/css/borland.css">
     <link rel="stylesheet" href="/theme/css/youtube.css">
 
-    <!-- Font Awesome -->
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
 
     <title>Boston Python: Twisted async networking framework</title>
 
     <meta property="og:site_name" content="Patrick Cloke" />
 <meta property="og:title" content="Boston Python: Twisted async networking framework" />
 <meta property="og:url" content="https://patrick.cloke.us/posts/2015/08/28/boston-python-twisted-async-networking-framework/" />
-<meta property="og:description" content="Yesterday, Stephen DiCato and I gave a talk for Boston Python titled: Twisted async networking framework. It was an introduction to intermediate level talk about using the Twisted networking framework based on our experiences at Percipient Networks. The talk, available on our GitHub (PDF) covered a few basic topics: What …" />
+<meta property="og:description" content="Yesterday, Stephen DiCato and I gave a talk for Boston Python titled: Twisted async networking framework. It was an introduction to intermediate level talk about using the Twisted networking framework based on our experiences at Percipient Networks. The talk, available on our GitHub (PDF) covered a few basic topics:  What …" />
 <meta property="og:type" content="article" />
 <meta property="article:published_time" content="2015-08-28T08:42:00-04:00" />
 <meta property="article:author" content="Patrick Cloke" />
@@ -70,11 +70,11 @@
 
             <span class="dropdown-menu dropdown-menu-right" aria-labelledby="social-dropdown">
               <a class="dropdown-item" href="https://mastodon.social/@clokep" target="_blank">
-                  <span class="fab fa-mastodon mr-1"></span>
+                  <span class="bi-mastodon mr-1"></span>
                 mastodon
               </a>
               <a class="dropdown-item" href="https://www.twitter.com/clokep" target="_blank">
-                  <span class="fab fa-twitter mr-1"></span>
+                  <span class="bi-twitter mr-1"></span>
                 twitter
               </a>
               <a class="dropdown-item" href="https://matrix.to/#/@clokep:matrix.org" target="_blank">
@@ -82,15 +82,15 @@
                 matrix
               </a>
               <a class="dropdown-item" href="https://github.com/clokep" target="_blank">
-                  <span class="fab fa-github mr-1"></span>
+                  <span class="bi-github mr-1"></span>
                 github
               </a>
               <a class="dropdown-item" href="https://gitlab.com/clokep" target="_blank">
-                  <span class="fab fa-gitlab mr-1"></span>
+                  <span class="bi-gitlab mr-1"></span>
                 gitlab
               </a>
               <a class="dropdown-item" href="https://www.linkedin.com/in/patrickcloke/" target="_blank">
-                  <span class="fab fa-linkedin mr-1"></span>
+                  <span class="bi-linkedin mr-1"></span>
                 linkedin
               </a>
             </span>
@@ -135,14 +135,23 @@
         </div>
 
         <div class="col-sm text-right">
+          <a href="https://toot.kytta.dev/?text=Boston%20Python%3A%20Twisted%20async%20networking%C2%A0framework%0D%0Ahttps%3A//patrick.cloke.us/posts/2015/08/28/boston-python-twisted-async-networking-framework/%0D%0A%23python %23community %23programming %23twisted %23talks" target="_blank" class="ml-1 mr-1" title="Share on Mastodon">
+            <span class="bi-mastodon"></span>
+          </a>
           <a href="https://twitter.com/intent/tweet?text=Boston%20Python%3A%20Twisted%20async%20networking%C2%A0framework&url=https%3A//patrick.cloke.us/posts/2015/08/28/boston-python-twisted-async-networking-framework/&hashtags=python,community,programming,twisted,talks" target="_blank" class="ml-1 mr-1" title="Share on Twitter">
-            <span class="fab fa-twitter"></span>
+            <span class="bi-twitter"></span>
+          </a>
+          <a href="https://www.reddit.com/submit?url=https%3A//patrick.cloke.us/posts/2015/08/28/boston-python-twisted-async-networking-framework/&title=Boston%20Python%3A%20Twisted%20async%20networking%C2%A0framework" target="_blank" class="ml-1 mr-1" title="Share on Reddit">
+            <span class="bi-reddit"></span>
           </a>
           <a href="https://www.facebook.com/sharer/sharer.php?u=https%3A//patrick.cloke.us/posts/2015/08/28/boston-python-twisted-async-networking-framework/" target="_blank" class="ml-1 mr-1" title="Share on Facebook">
-            <span class="fab fa-facebook"></span>
+            <span class="bi-facebook"></span>
+          </a>
+          <a href="https://www.linkedin.com/shareArticle?mini=true&url=https%3A//patrick.cloke.us/posts/2015/08/28/boston-python-twisted-async-networking-framework/&title=Boston%20Python%3A%20Twisted%20async%20networking%C2%A0framework&summary=Yesterday%2C%20Stephen%20DiCato%20and%20I%20gave%20a%20talk%20for%20Boston%20Python%20titled%3A%0ATwisted%20async%20networking%20framework.%20It%20was%20an%20introduction%20to%20intermediate%0Alevel%20talk%20about%20using%20the%20Twisted%20networking%20framework%20based%20on%20our%0Aexperiences%20at%20Percipient%20Networks.%0AThe%20talk%2C%20available%20on%20our%20GitHub%20%28PDF%29%20covered%20a%20few%20basic%C2%A0topics%3A%0A%0AWhat%20%E2%80%A6&source=https%3A//patrick.cloke.us/posts/2015/08/28/boston-python-twisted-async-networking-framework/" target="_blank" class="ml-1 mr-1" title="Share on LinkedIn">
+            <span class="bi-linkedin"></span>
           </a>
           <a href="mailto:?subject=Boston%20Python%3A%20Twisted%20async%20networking%C2%A0framework&amp;body=https%3A//patrick.cloke.us/posts/2015/08/28/boston-python-twisted-async-networking-framework/" target="_blank" class="ml-1 mr-1" title="Share via Email">
-            <span class="fas fa-envelope"></span>
+            <span class="bi-envelope"></span>
           </a>
         </div>
       </div>
@@ -201,7 +210,7 @@ s.setAttribute('data-timestamp', +new Date());
     <nav class="navbar fixed-bottom navbar-light bg-light border-top border-info">
       <a href="https://getpelican.com/" class="nav-item" target="_blank">Powered by Pelican</a>
       <a href="https://github.com/clokep/clokep.github.io" class="nav-item" target="_blank">
-        Source available on GitHub <span class="fab fa-github"></span>
+        Source available on GitHub <span class="bi-github"></span>
       </a>
     </nav>
 

@@ -16,16 +16,16 @@ modified, disabled, etc. but that is ignored in this&amp;nbsp;post.&lt;/p&gt;
 &lt;div class="section" id="legacy-mentions"&gt;
 &lt;h2&gt;Legacy&amp;nbsp;mentions&lt;/h2&gt;
 &lt;p&gt;The legacy mention system searches for the current user&amp;#8217;s display name or the
-localpart of the Matrix &lt;span class="caps"&gt;ID&lt;/span&gt; &lt;a class="footnote-reference" href="#id4" id="id1"&gt;[1]&lt;/a&gt; in the text content of an event. For example, an
+localpart of the Matrix &lt;span class="caps"&gt;ID&lt;/span&gt; &lt;a class="footnote-reference" href="#footnote-1" id="footnote-reference-1"&gt;[1]&lt;/a&gt; in the text content of an event. For example, an
 event like the following would generate a mention for&amp;nbsp;me:&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="p"&gt;{&lt;/span&gt;
-  &lt;span class="c1"&gt;// Additional fields ignored.&lt;/span&gt;
-  &lt;span class="s2"&gt;&amp;quot;content&amp;quot;&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
-    &lt;span class="s2"&gt;&amp;quot;body&amp;quot;&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;Hello @clokep:matrix.org!&amp;quot;&lt;/span&gt;
-  &lt;span class="p"&gt;}&lt;/span&gt;
+&lt;span class="w"&gt;  &lt;/span&gt;&lt;span class="c1"&gt;// Additional fields ignored.&lt;/span&gt;
+&lt;span class="w"&gt;  &lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;content&amp;quot;&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="p"&gt;{&lt;/span&gt;
+&lt;span class="w"&gt;    &lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;body&amp;quot;&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;Hello @clokep:matrix.org!&amp;quot;&lt;/span&gt;
+&lt;span class="w"&gt;  &lt;/span&gt;&lt;span class="p"&gt;}&lt;/span&gt;
 &lt;span class="p"&gt;}&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
-&lt;p&gt;A &lt;tt class="docutils literal"&gt;body&lt;/tt&gt; content field &lt;a class="footnote-reference" href="#id5" id="id2"&gt;[2]&lt;/a&gt; containing &lt;tt class="docutils literal"&gt;clokep&lt;/tt&gt; or &lt;tt class="docutils literal"&gt;Patrick Cloke&lt;/tt&gt;
+&lt;p&gt;A &lt;tt class="docutils literal"&gt;body&lt;/tt&gt; content field &lt;a class="footnote-reference" href="#footnote-2" id="footnote-reference-2"&gt;[2]&lt;/a&gt; containing &lt;tt class="docutils literal"&gt;clokep&lt;/tt&gt; or &lt;tt class="docutils literal"&gt;Patrick Cloke&lt;/tt&gt;
 would cause a &amp;#8220;highlight&amp;#8221; notification (displayed as red in Element). This isn&amp;#8217;t uncommon
 in chat protocols and is how &lt;span class="caps"&gt;IRC&lt;/span&gt; and &lt;span class="caps"&gt;XMPP&lt;/span&gt;.&lt;/p&gt;
 &lt;p&gt;Some of the issues with this&amp;nbsp;are:&lt;/p&gt;
@@ -51,13 +51,13 @@ of implicit references in the text&amp;nbsp;content.&lt;/p&gt;
 &lt;p&gt;The overall change is simple: include a list of mentioned users in a new
 content field,&amp;nbsp;e.g.:&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="p"&gt;{&lt;/span&gt;
-  &lt;span class="c1"&gt;// Additional fields ignored.&lt;/span&gt;
-  &lt;span class="s2"&gt;&amp;quot;content&amp;quot;&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
-    &lt;span class="s2"&gt;&amp;quot;body&amp;quot;&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;Hello @clokep:matrix.org!&amp;quot;&lt;/span&gt;
-    &lt;span class="s2"&gt;&amp;quot;m.mentions&amp;quot;&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
-      &lt;span class="s2"&gt;&amp;quot;user_ids&amp;quot;&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;@clokep:matrix.org&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;
-    &lt;span class="p"&gt;}&lt;/span&gt;
-  &lt;span class="p"&gt;}&lt;/span&gt;
+&lt;span class="w"&gt;  &lt;/span&gt;&lt;span class="c1"&gt;// Additional fields ignored.&lt;/span&gt;
+&lt;span class="w"&gt;  &lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;content&amp;quot;&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="p"&gt;{&lt;/span&gt;
+&lt;span class="w"&gt;    &lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;body&amp;quot;&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;Hello @clokep:matrix.org!&amp;quot;&lt;/span&gt;
+&lt;span class="w"&gt;    &lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;m.mentions&amp;quot;&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="p"&gt;{&lt;/span&gt;
+&lt;span class="w"&gt;      &lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;user_ids&amp;quot;&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;@clokep:matrix.org&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;
+&lt;span class="w"&gt;    &lt;/span&gt;&lt;span class="p"&gt;}&lt;/span&gt;
+&lt;span class="w"&gt;  &lt;/span&gt;&lt;span class="p"&gt;}&lt;/span&gt;
 &lt;span class="p"&gt;}&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;Only the &lt;tt class="docutils literal"&gt;m.mentions&lt;/tt&gt; field is used to generate mentions, the &lt;tt class="docutils literal"&gt;body&lt;/tt&gt; field is
@@ -75,7 +75,7 @@ is that it is not obvious &lt;em&gt;where&lt;/em&gt; in the text the user&amp;#8
 for hidden&amp;nbsp;mentions).&lt;/p&gt;
 &lt;p&gt;The other seriously considered approach was searching for &amp;#8220;pills&amp;#8221; in the &lt;span class="caps"&gt;HTML&lt;/span&gt;
 content of the event. This is similar to how &lt;a class="reference external" href="https://api.slack.com/reference/surfaces/formatting#mentioning-users"&gt;Slack&lt;/a&gt; handles mentions, where the
-user &lt;span class="caps"&gt;ID&lt;/span&gt; is encoded with some markup &lt;a class="footnote-reference" href="#id6" id="id3"&gt;[3]&lt;/a&gt;. This has a major downside of requiring &lt;span class="caps"&gt;HTML&lt;/span&gt;
+user &lt;span class="caps"&gt;ID&lt;/span&gt; is encoded with some markup &lt;a class="footnote-reference" href="#footnote-3" id="footnote-reference-3"&gt;[3]&lt;/a&gt;. This has a major downside of requiring &lt;span class="caps"&gt;HTML&lt;/span&gt;
 parsing on a hotpath of processing notifications (and it is unclear how this would
 work for non-&lt;span class="caps"&gt;HTML&lt;/span&gt;&amp;nbsp;clients).&lt;/p&gt;
 &lt;/div&gt;
@@ -87,23 +87,23 @@ support since v1.86.0; it is pretty much up to clients to implement&amp;nbsp;it!
 I&amp;#8217;m not aware of other clients which do (Element X might now). Hopefully it will
 become used throughout the ecosystem since many of the above issues are still
 common complaints I see with&amp;nbsp;Matrix.&lt;/p&gt;
-&lt;table class="docutils footnote" frame="void" id="id4" rules="none"&gt;
+&lt;table class="docutils footnote" frame="void" id="footnote-1" rules="none"&gt;
 &lt;colgroup&gt;&lt;col class="label" /&gt;&lt;col /&gt;&lt;/colgroup&gt;
 &lt;tbody valign="top"&gt;
-&lt;tr&gt;&lt;td class="label"&gt;&lt;a class="fn-backref" href="#id1"&gt;[1]&lt;/a&gt;&lt;/td&gt;&lt;td&gt;This post ignores room-mentions, but they&amp;#8217;re handled very similarly.&lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td class="label"&gt;&lt;a class="fn-backref" href="#footnote-reference-1"&gt;[1]&lt;/a&gt;&lt;/td&gt;&lt;td&gt;This post ignores room-mentions, but they&amp;#8217;re handled very similarly.&lt;/td&gt;&lt;/tr&gt;
 &lt;/tbody&gt;
 &lt;/table&gt;
-&lt;table class="docutils footnote" frame="void" id="id5" rules="none"&gt;
+&lt;table class="docutils footnote" frame="void" id="footnote-2" rules="none"&gt;
 &lt;colgroup&gt;&lt;col class="label" /&gt;&lt;col /&gt;&lt;/colgroup&gt;
 &lt;tbody valign="top"&gt;
-&lt;tr&gt;&lt;td class="label"&gt;&lt;a class="fn-backref" href="#id2"&gt;[2]&lt;/a&gt;&lt;/td&gt;&lt;td&gt;Note that the plaintext content of the event is searched &lt;em&gt;not&lt;/em&gt; the &amp;#8220;formatted&amp;#8221;
+&lt;tr&gt;&lt;td class="label"&gt;&lt;a class="fn-backref" href="#footnote-reference-2"&gt;[2]&lt;/a&gt;&lt;/td&gt;&lt;td&gt;Note that the plaintext content of the event is searched &lt;em&gt;not&lt;/em&gt; the &amp;#8220;formatted&amp;#8221;
 content (which is &lt;a class="reference external" href="https://spec.matrix.org/v1.9/client-server-api/#mroommessage-msgtypes"&gt;usually &lt;span class="caps"&gt;HTML&lt;/span&gt;&lt;/a&gt;).&lt;/td&gt;&lt;/tr&gt;
 &lt;/tbody&gt;
 &lt;/table&gt;
-&lt;table class="docutils footnote" frame="void" id="id6" rules="none"&gt;
+&lt;table class="docutils footnote" frame="void" id="footnote-3" rules="none"&gt;
 &lt;colgroup&gt;&lt;col class="label" /&gt;&lt;col /&gt;&lt;/colgroup&gt;
 &lt;tbody valign="top"&gt;
-&lt;tr&gt;&lt;td class="label"&gt;&lt;a class="fn-backref" href="#id3"&gt;[3]&lt;/a&gt;&lt;/td&gt;&lt;td&gt;This solution should also reduce the number of unintentional mentions, but
+&lt;tr&gt;&lt;td class="label"&gt;&lt;a class="fn-backref" href="#footnote-reference-3"&gt;[3]&lt;/a&gt;&lt;/td&gt;&lt;td&gt;This solution should also reduce the number of unintentional mentions, but
 doesn&amp;#8217;t allow for hidden mentions.&lt;/td&gt;&lt;/tr&gt;
 &lt;/tbody&gt;
 &lt;/table&gt;
@@ -135,7 +135,7 @@ users share a room&amp;nbsp;membership.&lt;/p&gt;
 one of the&amp;nbsp;following:&lt;/p&gt;
 &lt;ul class="simple"&gt;
 &lt;li&gt;&lt;tt class="docutils literal"&gt;online&lt;/tt&gt; : The default state when the user is connected to an event&amp;nbsp;stream.&lt;/li&gt;
-&lt;li&gt;&lt;tt class="docutils literal"&gt;unavailable&lt;/tt&gt; : The user is not reachable at this time e.g. they are idle. &lt;a class="footnote-reference" href="#id7" id="id1"&gt;[1]&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;tt class="docutils literal"&gt;unavailable&lt;/tt&gt; : The user is not reachable at this time e.g. they are idle. &lt;a class="footnote-reference" href="#footnote-1" id="footnote-reference-1"&gt;[1]&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;tt class="docutils literal"&gt;offline&lt;/tt&gt; : The user is not connected to an event stream or is explicitly suppressing their profile information from being&amp;nbsp;sent.&lt;/li&gt;
 &lt;/ul&gt;
 &lt;/blockquote&gt;
@@ -249,20 +249,20 @@ without &lt;tt class="docutils literal"&gt;set_presence&lt;/tt&gt; or &lt;tt cla
 &lt;p&gt;If a device is &lt;tt class="docutils literal"&gt;offline&lt;/tt&gt; it should transition to &lt;tt class="docutils literal"&gt;unavailable&lt;/tt&gt; if it is syncing
 with &lt;tt class="docutils literal"&gt;set_presence=unavailable&lt;/tt&gt;.&lt;/p&gt;
 &lt;p&gt;If a device is &lt;tt class="docutils literal"&gt;online&lt;/tt&gt; (either directly or implicitly via user actions) it should
-transition to &lt;tt class="docutils literal"&gt;unavailable&lt;/tt&gt; (idle) after a period of time &lt;a class="footnote-reference" href="#id8" id="id2"&gt;[2]&lt;/a&gt; if the device is
+transition to &lt;tt class="docutils literal"&gt;unavailable&lt;/tt&gt; (idle) after a period of time &lt;a class="footnote-reference" href="#footnote-2" id="footnote-reference-2"&gt;[2]&lt;/a&gt; if the device is
 continuing to sync. (Note that this implies the sync is occurring with
 &lt;tt class="docutils literal"&gt;set_presence=unavailable&lt;/tt&gt; as otherwise the device is continuing to report as
-&lt;tt class="docutils literal"&gt;online&lt;/tt&gt;). &lt;a class="footnote-reference" href="#id9" id="id3"&gt;[3]&lt;/a&gt;&lt;/p&gt;
+&lt;tt class="docutils literal"&gt;online&lt;/tt&gt;). &lt;a class="footnote-reference" href="#footnote-3" id="footnote-reference-3"&gt;[3]&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;If a device is &lt;tt class="docutils literal"&gt;online&lt;/tt&gt; or &lt;tt class="docutils literal"&gt;unavailable&lt;/tt&gt; it should transition to  &lt;tt class="docutils literal"&gt;offline&lt;/tt&gt;
 after a period of time if it is not syncing and not making other actions which
-would transition the device to &lt;cite&gt;online&lt;/cite&gt;. &lt;a class="footnote-reference" href="#id10" id="id4"&gt;[4]&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;Note if a device is &lt;tt class="docutils literal"&gt;busy&lt;/tt&gt; it should not transition to other states. &lt;a class="footnote-reference" href="#id11" id="id5"&gt;[5]&lt;/a&gt;&lt;/p&gt;
+would transition the device to &lt;cite&gt;online&lt;/cite&gt;. &lt;a class="footnote-reference" href="#footnote-4" id="footnote-reference-4"&gt;[4]&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Note if a device is &lt;tt class="docutils literal"&gt;busy&lt;/tt&gt; it should not transition to other states. &lt;a class="footnote-reference" href="#footnote-5" id="footnote-reference-5"&gt;[5]&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;There&amp;#8217;s a &lt;a class="reference external" href="https://github.com/matrix-org/synapse/blob/be65a8ec0195955c15fdb179c9158b187638e39a/tests/handlers/test_presence.py#L971-L1106"&gt;huge testcase&lt;/a&gt; which checks all these&amp;nbsp;transitions.&lt;/p&gt;
 &lt;div class="section" id="examples"&gt;
 &lt;h4&gt;Examples&lt;/h4&gt;
 &lt;ol class="arabic simple"&gt;
 &lt;li&gt;Two devices continually syncing, one &lt;tt class="docutils literal"&gt;online&lt;/tt&gt; and one &lt;tt class="docutils literal"&gt;unavailable&lt;/tt&gt;. The
-end result should be &lt;cite&gt;online&lt;/cite&gt;. &lt;a class="footnote-reference" href="#id12" id="id6"&gt;[6]&lt;/a&gt;&lt;/li&gt;
+end result should be &lt;cite&gt;online&lt;/cite&gt;. &lt;a class="footnote-reference" href="#footnote-6" id="footnote-reference-6"&gt;[6]&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;One device syncing with &lt;tt class="docutils literal"&gt;set_presence=unavailable&lt;/tt&gt; but had a &amp;#8220;pro-active&amp;#8221;
 action, after a period of time the user should be &lt;tt class="docutils literal"&gt;unavailable&lt;/tt&gt; if no additional
 &amp;#8220;pro-active&amp;#8221; actions&amp;nbsp;occurred.&lt;/li&gt;
@@ -272,42 +272,42 @@ after a period of time the user should be &lt;tt class="docutils literal"&gt;off
 &lt;tt class="docutils literal"&gt;online&lt;/tt&gt; device stops syncing, after a period of time the user should be
 &lt;tt class="docutils literal"&gt;unavailable&lt;/tt&gt;.&lt;/li&gt;
 &lt;/ol&gt;
-&lt;table class="docutils footnote" frame="void" id="id7" rules="none"&gt;
+&lt;table class="docutils footnote" frame="void" id="footnote-1" rules="none"&gt;
 &lt;colgroup&gt;&lt;col class="label" /&gt;&lt;col /&gt;&lt;/colgroup&gt;
 &lt;tbody valign="top"&gt;
-&lt;tr&gt;&lt;td class="label"&gt;&lt;a class="fn-backref" href="#id1"&gt;[1]&lt;/a&gt;&lt;/td&gt;&lt;td&gt;This should be called &lt;tt class="docutils literal"&gt;idle&lt;/tt&gt;.&lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td class="label"&gt;&lt;a class="fn-backref" href="#footnote-reference-1"&gt;[1]&lt;/a&gt;&lt;/td&gt;&lt;td&gt;This should be called &lt;tt class="docutils literal"&gt;idle&lt;/tt&gt;.&lt;/td&gt;&lt;/tr&gt;
 &lt;/tbody&gt;
 &lt;/table&gt;
-&lt;table class="docutils footnote" frame="void" id="id8" rules="none"&gt;
+&lt;table class="docutils footnote" frame="void" id="footnote-2" rules="none"&gt;
 &lt;colgroup&gt;&lt;col class="label" /&gt;&lt;col /&gt;&lt;/colgroup&gt;
 &lt;tbody valign="top"&gt;
-&lt;tr&gt;&lt;td class="label"&gt;&lt;a class="fn-backref" href="#id2"&gt;[2]&lt;/a&gt;&lt;/td&gt;&lt;td&gt;The period of time is implementation specific.&lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td class="label"&gt;&lt;a class="fn-backref" href="#footnote-reference-2"&gt;[2]&lt;/a&gt;&lt;/td&gt;&lt;td&gt;The period of time is implementation specific.&lt;/td&gt;&lt;/tr&gt;
 &lt;/tbody&gt;
 &lt;/table&gt;
-&lt;table class="docutils footnote" frame="void" id="id9" rules="none"&gt;
+&lt;table class="docutils footnote" frame="void" id="footnote-3" rules="none"&gt;
 &lt;colgroup&gt;&lt;col class="label" /&gt;&lt;col /&gt;&lt;/colgroup&gt;
 &lt;tbody valign="top"&gt;
-&lt;tr&gt;&lt;td class="label"&gt;&lt;a class="fn-backref" href="#id3"&gt;[3]&lt;/a&gt;&lt;/td&gt;&lt;td&gt;Note that syncing with &lt;tt class="docutils literal"&gt;set_presence=offline&lt;/tt&gt; does not transition to offline,
+&lt;tr&gt;&lt;td class="label"&gt;&lt;a class="fn-backref" href="#footnote-reference-3"&gt;[3]&lt;/a&gt;&lt;/td&gt;&lt;td&gt;Note that syncing with &lt;tt class="docutils literal"&gt;set_presence=offline&lt;/tt&gt; does not transition to offline,
 it is equivalent to not syncing. (It is mostly for mobile applications to
 process push notifications.)&lt;/td&gt;&lt;/tr&gt;
 &lt;/tbody&gt;
 &lt;/table&gt;
-&lt;table class="docutils footnote" frame="void" id="id10" rules="none"&gt;
+&lt;table class="docutils footnote" frame="void" id="footnote-4" rules="none"&gt;
 &lt;colgroup&gt;&lt;col class="label" /&gt;&lt;col /&gt;&lt;/colgroup&gt;
 &lt;tbody valign="top"&gt;
-&lt;tr&gt;&lt;td class="label"&gt;&lt;a class="fn-backref" href="#id4"&gt;[4]&lt;/a&gt;&lt;/td&gt;&lt;td&gt;The spec doesn&amp;#8217;t seem to ever say that devices can transition to offline.&lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td class="label"&gt;&lt;a class="fn-backref" href="#footnote-reference-4"&gt;[4]&lt;/a&gt;&lt;/td&gt;&lt;td&gt;The spec doesn&amp;#8217;t seem to ever say that devices can transition to offline.&lt;/td&gt;&lt;/tr&gt;
 &lt;/tbody&gt;
 &lt;/table&gt;
-&lt;table class="docutils footnote" frame="void" id="id11" rules="none"&gt;
+&lt;table class="docutils footnote" frame="void" id="footnote-5" rules="none"&gt;
 &lt;colgroup&gt;&lt;col class="label" /&gt;&lt;col /&gt;&lt;/colgroup&gt;
 &lt;tbody valign="top"&gt;
-&lt;tr&gt;&lt;td class="label"&gt;&lt;a class="fn-backref" href="#id5"&gt;[5]&lt;/a&gt;&lt;/td&gt;&lt;td&gt;See the &lt;a class="reference external" href="https://github.com/matrix-org/matrix-spec-proposals/pull/3026/files#r1287453423"&gt;open thread on the &lt;span class="caps"&gt;MSC3026&lt;/span&gt;&lt;/a&gt;.&lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td class="label"&gt;&lt;a class="fn-backref" href="#footnote-reference-5"&gt;[5]&lt;/a&gt;&lt;/td&gt;&lt;td&gt;See the &lt;a class="reference external" href="https://github.com/matrix-org/matrix-spec-proposals/pull/3026/files#r1287453423"&gt;open thread on the &lt;span class="caps"&gt;MSC3026&lt;/span&gt;&lt;/a&gt;.&lt;/td&gt;&lt;/tr&gt;
 &lt;/tbody&gt;
 &lt;/table&gt;
-&lt;table class="docutils footnote" frame="void" id="id12" rules="none"&gt;
+&lt;table class="docutils footnote" frame="void" id="footnote-6" rules="none"&gt;
 &lt;colgroup&gt;&lt;col class="label" /&gt;&lt;col /&gt;&lt;/colgroup&gt;
 &lt;tbody valign="top"&gt;
-&lt;tr&gt;&lt;td class="label"&gt;&lt;a class="fn-backref" href="#id6"&gt;[6]&lt;/a&gt;&lt;/td&gt;&lt;td&gt;This is essentially the &lt;a class="reference external" href="https://github.com/matrix-org/synapse/issues/16057"&gt;bug illustrated by the change in Element Web&amp;#8217;s behavior&lt;/a&gt;.&lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td class="label"&gt;&lt;a class="fn-backref" href="#footnote-reference-6"&gt;[6]&lt;/a&gt;&lt;/td&gt;&lt;td&gt;This is essentially the &lt;a class="reference external" href="https://github.com/matrix-org/synapse/issues/16057"&gt;bug illustrated by the change in Element Web&amp;#8217;s behavior&lt;/a&gt;.&lt;/td&gt;&lt;/tr&gt;
 &lt;/tbody&gt;
 &lt;/table&gt;
 &lt;/div&gt;
@@ -327,7 +327,7 @@ if you have any&amp;nbsp;questions!&lt;/p&gt;
 &lt;div class="youtube youtube-16x9"&gt;&lt;iframe src="https://www.youtube-nocookie.com/embed/1LxkbTku0XQ?start=327" allowfullscreen seamless frameBorder="0"&gt;&lt;/iframe&gt;&lt;/div&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Patrick Cloke</dc:creator><pubDate>Wed, 04 Oct 2023 09:55:00 -0400</pubDate><guid isPermaLink="false">tag:patrick.cloke.us,2023-10-04:/posts/2023/10/04/matrix-live-demo-on-linearized-matrix/</guid><category>articles</category><category>matrix</category></item><item><title>Matrix Push Rules &amp; Notifications</title><link>https://patrick.cloke.us/posts/2023/05/08/matrix-push-rules-notifications/</link><description>&lt;p&gt;In a previous post about &lt;a class="reference external" href="https://patrick.cloke.us/posts/2023/01/05/matrix-read-receipts-and-notifications/"&gt;read receipts &lt;span class="amp"&gt;&amp;amp;&lt;/span&gt; notifications in Matrix&lt;/a&gt; I briefly
 mentioned that push rules generate notifications, but with little detail. After
 completing a rather large project to improve notifications in Matrix I want to
-fill in some of those blanks. &lt;a class="footnote-reference" href="#id9" id="id1"&gt;[1]&lt;/a&gt;&lt;/p&gt;
+fill in some of those blanks. &lt;a class="footnote-reference" href="#footnote-1" id="footnote-reference-1"&gt;[1]&lt;/a&gt;&lt;/p&gt;
 &lt;!-- comment:
 
 Adapted from https://docs.google.com/presentation/d/1odrbD5wMwGz_qUtG5U1pFb7p3sFwLApDaYtyHpdI-Oo/edit --&gt;
@@ -338,9 +338,9 @@ Adapted from https://docs.google.com/presentation/d/1odrbD5wMwGz_qUtG5U1pFb7p3sF
 Matrix spec changes which may or may not have been merged since.&lt;/p&gt;
 &lt;/div&gt;
 &lt;div class="section" id="push-notifications-in-matrix"&gt;
-&lt;h2&gt;&lt;a class="toc-backref" href="#id17"&gt;Push notifications in Matrix&lt;/a&gt;&lt;/h2&gt;
+&lt;h2&gt;&lt;a class="toc-backref" href="#toc-entry-1"&gt;Push notifications in Matrix&lt;/a&gt;&lt;/h2&gt;
 &lt;p&gt;Matrix includes a &lt;a class="reference external" href="https://spec.matrix.org/v1.6/client-server-api/#push-notifications"&gt;push notifications module&lt;/a&gt; which defines when Matrix events
-are considered an unread &lt;strong&gt;notification&lt;/strong&gt; or &lt;strong&gt;highlight notification&lt;/strong&gt; &lt;a class="footnote-reference" href="#id10" id="id2"&gt;[2]&lt;/a&gt;
+are considered an unread &lt;strong&gt;notification&lt;/strong&gt; or &lt;strong&gt;highlight notification&lt;/strong&gt; &lt;a class="footnote-reference" href="#footnote-2" id="footnote-reference-2"&gt;[2]&lt;/a&gt;
 and &lt;em&gt;how&lt;/em&gt; those events are &lt;strong&gt;sent to third-party push notification services&lt;/strong&gt;.&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;Push rules&lt;/strong&gt; are a set of &lt;em&gt;ordered&lt;/em&gt; rules which clients upload to the homeserver.
 These are shared by all device and are evaluated per event by the homeserver (and
@@ -351,7 +351,7 @@ notifications &lt;span class="caps"&gt;API&lt;/span&gt;.&lt;/p&gt;
 &lt;strong&gt;actions&lt;/strong&gt; to take if the rule matches.&lt;/p&gt;
 &lt;p&gt;Processing of push rules occur until a rule matches or all rules have been evaluated.&lt;/p&gt;
 &lt;div class="section" id="getting-notifications"&gt;
-&lt;h3&gt;&lt;a class="toc-backref" href="#id18"&gt;Getting notifications&lt;/a&gt;&lt;/h3&gt;
+&lt;h3&gt;&lt;a class="toc-backref" href="#toc-entry-2"&gt;Getting notifications&lt;/a&gt;&lt;/h3&gt;
 &lt;p&gt;As some background, clients receive notifications in one of two ways, via polling
 &lt;tt class="docutils literal"&gt;/sync&lt;/tt&gt; and/or via push notifications.&lt;/p&gt;
 &lt;p&gt;Web-based clients often receive events via polling:&lt;/p&gt;
@@ -360,7 +360,7 @@ notifications &lt;span class="caps"&gt;API&lt;/span&gt;.&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;p&gt;The &lt;a class="reference external" href="https://spec.matrix.org/v1.6/client-server-api/#_matrixclientv3sync_unread-notification-counts"&gt;sync response&lt;/a&gt; (both initial and incremental) include the count of unread
 notifications and unread highlight notifications per room.&lt;/p&gt;
-&lt;p&gt;Mobile applications often &lt;a class="reference external" href="https://spec.matrix.org/v1.6/push-gateway-api/#overview"&gt;receive events via push&lt;/a&gt; &lt;a class="footnote-reference" href="#id11" id="id3"&gt;[3]&lt;/a&gt;:&lt;/p&gt;
+&lt;p&gt;Mobile applications often &lt;a class="reference external" href="https://spec.matrix.org/v1.6/push-gateway-api/#overview"&gt;receive events via push&lt;/a&gt; &lt;a class="footnote-reference" href="#footnote-3" id="footnote-reference-3"&gt;[3]&lt;/a&gt;:&lt;/p&gt;
 &lt;blockquote class="text-center"&gt;
 &lt;a class="reference external image-reference" href="https://patrick.cloke.us/images/matrix-push-rules-and-notifications/mobile-push-flow.png"&gt;&lt;img alt="Notification flow for mobile applications." src="/thumbnails/matrix-push-rules-and-notifications/mobile-push-flow_medium.png"/&gt;&lt;/a&gt;
 &lt;/blockquote&gt;
@@ -376,7 +376,7 @@ matrix.org and must have your own deployment.&lt;/p&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;div class="section" id="getting-events-which-generated-notifications"&gt;
-&lt;h3&gt;&lt;a class="toc-backref" href="#id19"&gt;Getting events which generated notifications&lt;/a&gt;&lt;/h3&gt;
+&lt;h3&gt;&lt;a class="toc-backref" href="#toc-entry-3"&gt;Getting events which generated notifications&lt;/a&gt;&lt;/h3&gt;
 &lt;p&gt;There’s &lt;a class="reference external" href="https://spec.matrix.org/v1.6/client-server-api/#listing-notifications"&gt;an &lt;span class="caps"&gt;API&lt;/span&gt; to retrieve a list of events&lt;/a&gt; which the user has been notified
 about. This powers the “notification panel” on Element Web and is meant to help
 users catch-up on missed notifications.&lt;/p&gt;
@@ -389,9 +389,9 @@ users catch-up on missed notifications.&lt;/p&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;div class="section" id="push-rules-background"&gt;
-&lt;h2&gt;&lt;a class="toc-backref" href="#id20"&gt;Push rules background&lt;/a&gt;&lt;/h2&gt;
+&lt;h2&gt;&lt;a class="toc-backref" href="#toc-entry-4"&gt;Push rules background&lt;/a&gt;&lt;/h2&gt;
 &lt;div class="section" id="getting-the-configured-push-rules"&gt;
-&lt;h3&gt;&lt;a class="toc-backref" href="#id21"&gt;Getting the configured push rules?&lt;/a&gt;&lt;/h3&gt;
+&lt;h3&gt;&lt;a class="toc-backref" href="#toc-entry-5"&gt;Getting the configured push rules?&lt;/a&gt;&lt;/h3&gt;
 &lt;p&gt;There’s a &lt;a class="reference external" href="https://spec.matrix.org/v1.6/client-server-api/#push-rules-api"&gt;set of APIs to fetch or modify push rules&lt;/a&gt;, they let you:&lt;/p&gt;
 &lt;ul class="simple"&gt;
 &lt;li&gt;Fetch all push rules&lt;/li&gt;
@@ -402,10 +402,10 @@ users catch-up on missed notifications.&lt;/p&gt;
 &lt;p&gt;An initial sync includes all of a user’s push rules under the user’s account data.&lt;/p&gt;
 &lt;p&gt;Any changes to push rules are included in incremental syncs. &lt;em&gt;Except&lt;/em&gt; for newly
 added rules to the specification (this is likely a homeserver bug).&lt;/p&gt;
-&lt;p&gt;Note that you cannot use &lt;a class="reference external" href="https://spec.matrix.org/v1.6/client-server-api/#client-config"&gt;the account data APIs&lt;/a&gt; to configure push rules. &lt;a class="footnote-reference" href="#id12" id="id4"&gt;[4]&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Note that you cannot use &lt;a class="reference external" href="https://spec.matrix.org/v1.6/client-server-api/#client-config"&gt;the account data APIs&lt;/a&gt; to configure push rules. &lt;a class="footnote-reference" href="#footnote-4" id="footnote-reference-4"&gt;[4]&lt;/a&gt;&lt;/p&gt;
 &lt;/div&gt;
 &lt;div class="section" id="what-makes-up-a-push-rule"&gt;
-&lt;h3&gt;&lt;a class="toc-backref" href="#id22"&gt;What makes up a push rule?&lt;/a&gt;&lt;/h3&gt;
+&lt;h3&gt;&lt;a class="toc-backref" href="#toc-entry-6"&gt;What makes up a push rule?&lt;/a&gt;&lt;/h3&gt;
 &lt;p&gt;A push rule is a &lt;a class="reference external" href="https://spec.matrix.org/v1.6/client-server-api/#_matrixclientv3pushrules_pushrule"&gt;&lt;span class="caps"&gt;JSON&lt;/span&gt; object with the following fields&lt;/a&gt;:&lt;/p&gt;
 &lt;ul class="simple"&gt;
 &lt;li&gt;&lt;tt class="docutils literal"&gt;rule_id&lt;/tt&gt;: Unique (per-user) &lt;span class="caps"&gt;ID&lt;/span&gt; for the rule.&lt;ul&gt;
@@ -447,10 +447,10 @@ incremented (in addition to the notification count).&lt;/li&gt;
 &lt;li&gt;Can be an empty list to do nothing.&lt;/li&gt;
 &lt;/ul&gt;
 &lt;p&gt;There are other undefined or no-op actions (&lt;tt class="docutils literal"&gt;dont_notify&lt;/tt&gt;, &lt;tt class="docutils literal"&gt;coalesce&lt;/tt&gt;) which will be
-removed in the next version of the spec. &lt;a class="footnote-reference" href="#id13" id="id5"&gt;[5]&lt;/a&gt;&lt;/p&gt;
+removed in the next version of the spec. &lt;a class="footnote-reference" href="#footnote-5" id="footnote-reference-5"&gt;[5]&lt;/a&gt;&lt;/p&gt;
 &lt;/div&gt;
 &lt;div class="section" id="types-of-push-rules"&gt;
-&lt;h3&gt;&lt;a class="toc-backref" href="#id23"&gt;Types of push rules&lt;/a&gt;&lt;/h3&gt;
+&lt;h3&gt;&lt;a class="toc-backref" href="#toc-entry-7"&gt;Types of push rules&lt;/a&gt;&lt;/h3&gt;
 &lt;p&gt;Push rules have a type associated with them, these are executed in order:&lt;/p&gt;
 &lt;ul class="simple"&gt;
 &lt;li&gt;Override: generic high priority rules&lt;/li&gt;
@@ -470,12 +470,12 @@ special cases which do not accept conditions, but can be mapped to them.&lt;/p&
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;div class="section" id="why-do-clients-care-doesnt-the-homeserver-do-this-all-for-me"&gt;
-&lt;h2&gt;&lt;a class="toc-backref" href="#id24"&gt;Why do clients care? Doesn’t the homeserver do this all for me?&lt;/a&gt;&lt;/h2&gt;
+&lt;h2&gt;&lt;a class="toc-backref" href="#toc-entry-8"&gt;Why do clients care? Doesn’t the homeserver do this all for me?&lt;/a&gt;&lt;/h2&gt;
 &lt;p&gt;Encryption ruins everything! Some of the push rules require the decrypted event
 content to be properly processed. The enable this, the default rules declare
 &lt;strong&gt;all encrypted events as notifications&lt;/strong&gt;. Clients are expected to
-&lt;strong&gt;re-run push rules on the decrypted content&lt;/strong&gt;. &lt;a class="footnote-reference" href="#id14" id="id6"&gt;[6]&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;This can result in one of the following: &lt;a class="footnote-reference" href="#id15" id="id7"&gt;[7]&lt;/a&gt;&lt;/p&gt;
+&lt;strong&gt;re-run push rules on the decrypted content&lt;/strong&gt;. &lt;a class="footnote-reference" href="#footnote-6" id="footnote-reference-6"&gt;[6]&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;This can result in one of the following: &lt;a class="footnote-reference" href="#footnote-7" id="footnote-reference-7"&gt;[7]&lt;/a&gt;&lt;/p&gt;
 &lt;ul class="simple"&gt;
 &lt;li&gt;Increment the highlight count (the decrypted event results in a highlight)&lt;/li&gt;
 &lt;li&gt;No change (the decrypted event results in a notification)&lt;/li&gt;
@@ -490,7 +490,7 @@ implement mentions &lt;span class="amp"&gt;&amp;amp;&lt;/span&gt; keywords.&lt;
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;div class="section" id="what-happens-by-default"&gt;
-&lt;h2&gt;&lt;a class="toc-backref" href="#id25"&gt;What happens by default?&lt;/a&gt;&lt;/h2&gt;
+&lt;h2&gt;&lt;a class="toc-backref" href="#toc-entry-9"&gt;What happens by default?&lt;/a&gt;&lt;/h2&gt;
 &lt;p&gt;The &lt;a class="reference external" href="https://spec.matrix.org/v1.6/client-server-api/#predefined-rules"&gt;default rules are in the Matrix spec&lt;/a&gt; and include:&lt;/p&gt;
 &lt;ul class="simple"&gt;
 &lt;li&gt;Highlight:&lt;ul&gt;
@@ -518,8 +518,8 @@ implement mentions &lt;span class="amp"&gt;&amp;amp;&lt;/span&gt; keywords.&lt;
 &lt;p&gt;Default rules can be disabled or have their actions modified on a per-user basis.
 Some of the above features are handled by multiple push rules.&lt;/p&gt;
 &lt;div class="section" id="other-standard-rules"&gt;
-&lt;h3&gt;&lt;a class="toc-backref" href="#id26"&gt;Other “standard” rules&lt;/a&gt;&lt;/h3&gt;
-&lt;p&gt;Element creates custom push rules based on a known form. &lt;a class="footnote-reference" href="#id16" id="id8"&gt;[8]&lt;/a&gt;&lt;/p&gt;
+&lt;h3&gt;&lt;a class="toc-backref" href="#toc-entry-10"&gt;Other “standard” rules&lt;/a&gt;&lt;/h3&gt;
+&lt;p&gt;Element creates custom push rules based on a known form. &lt;a class="footnote-reference" href="#footnote-8" id="footnote-reference-8"&gt;[8]&lt;/a&gt;&lt;/p&gt;
 &lt;ul class="simple"&gt;
 &lt;li&gt;Keywords (implemented as a content-specific rule with a pattern)&lt;/li&gt;
 &lt;li&gt;Per-room overrides:&lt;ul&gt;
@@ -533,7 +533,7 @@ Some of the above features are handled by multiple push rules.&lt;/p&gt;
 rooms, senders, message types, etc.)&lt;/p&gt;
 &lt;/div&gt;
 &lt;div class="section" id="what-about-unread-rooms"&gt;
-&lt;h3&gt;&lt;a class="toc-backref" href="#id27"&gt;What about unread rooms?&lt;/a&gt;&lt;/h3&gt;
+&lt;h3&gt;&lt;a class="toc-backref" href="#toc-entry-11"&gt;What about unread rooms?&lt;/a&gt;&lt;/h3&gt;
 &lt;p&gt;The unread (“bold”) rooms logic in Element Web is completely custom and outside
 of the Matrix specification.&lt;/p&gt;
 &lt;ul class="simple"&gt;
@@ -547,26 +547,26 @@ then the behavior changes!&lt;/p&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;div class="section" id="putting-it-altogether"&gt;
-&lt;h2&gt;&lt;a class="toc-backref" href="#id28"&gt;Putting it altogether…&lt;/a&gt;&lt;/h2&gt;
+&lt;h2&gt;&lt;a class="toc-backref" href="#toc-entry-12"&gt;Putting it altogether…&lt;/a&gt;&lt;/h2&gt;
 &lt;p&gt;…it gets complicated trying to figure out whether a message will generate a
 notification or not.&lt;/p&gt;
 &lt;blockquote class="text-center"&gt;
 &lt;a class="reference external image-reference" href="https://patrick.cloke.us/images/matrix-push-rules-and-notifications/default-push-rules.png"&gt;&lt;img alt="Flow chart of the default Matrix push rules when using Element." src="/thumbnails/matrix-push-rules-and-notifications/default-push-rules_medium.png"/&gt;&lt;/a&gt;
 &lt;p&gt;The default Matrix push rules (also showing the options available within Element).&lt;/p&gt;
 &lt;/blockquote&gt;
-&lt;table class="docutils footnote" frame="void" id="id9" rules="none"&gt;
+&lt;table class="docutils footnote" frame="void" id="footnote-1" rules="none"&gt;
 &lt;colgroup&gt;&lt;col class="label"/&gt;&lt;col/&gt;&lt;/colgroup&gt;
 &lt;tbody valign="top"&gt;
-&lt;tr&gt;&lt;td class="label"&gt;&lt;a class="fn-backref" href="#id1"&gt;[1]&lt;/a&gt;&lt;/td&gt;&lt;td&gt;Improving unintentional mentions (&lt;a class="reference external" href="https://github.com/matrix-org/matrix-spec-proposals/pull/3952"&gt;&lt;span class="caps"&gt;MSC3952&lt;/span&gt;&lt;/a&gt;) is the main feature we were
+&lt;tr&gt;&lt;td class="label"&gt;&lt;a class="fn-backref" href="#footnote-reference-1"&gt;[1]&lt;/a&gt;&lt;/td&gt;&lt;td&gt;Improving unintentional mentions (&lt;a class="reference external" href="https://github.com/matrix-org/matrix-spec-proposals/pull/3952"&gt;&lt;span class="caps"&gt;MSC3952&lt;/span&gt;&lt;/a&gt;) is the main feature we were
 working on, but this was powered by &lt;a class="reference external" href="https://github.com/matrix-org/matrix-spec-proposals/pull/3758"&gt;&lt;span class="caps"&gt;MSC3758&lt;/span&gt;&lt;/a&gt; (from &lt;a class="reference external" href="https://www.beeper.com/"&gt;Beeper&lt;/a&gt;),
 &lt;a class="reference external" href="https://github.com/matrix-org/matrix-spec-proposals/pull/3873"&gt;&lt;span class="caps"&gt;MSC3873&lt;/span&gt;&lt;/a&gt; (from a coworker), and &lt;a class="reference external" href="https://github.com/matrix-org/matrix-spec-proposals/pull/3966"&gt;&lt;span class="caps"&gt;MSC3966&lt;/span&gt;&lt;/a&gt;. &lt;a class="reference external" href="https://github.com/matrix-org/matrix-spec-proposals/pull/3980"&gt;&lt;span class="caps"&gt;MSC3980&lt;/span&gt;&lt;/a&gt; was also a
 follow-up for consistency.&lt;/td&gt;&lt;/tr&gt;
 &lt;/tbody&gt;
 &lt;/table&gt;
-&lt;table class="docutils footnote" frame="void" id="id10" rules="none"&gt;
+&lt;table class="docutils footnote" frame="void" id="footnote-2" rules="none"&gt;
 &lt;colgroup&gt;&lt;col class="label"/&gt;&lt;col/&gt;&lt;/colgroup&gt;
 &lt;tbody valign="top"&gt;
-&lt;tr&gt;&lt;td class="label"&gt;&lt;a class="fn-backref" href="#id2"&gt;[2]&lt;/a&gt;&lt;/td&gt;&lt;td&gt;&lt;p class="first"&gt;Notification count (the grey badge with count in Element Web) is the number
+&lt;tr&gt;&lt;td class="label"&gt;&lt;a class="fn-backref" href="#footnote-reference-2"&gt;[2]&lt;/a&gt;&lt;/td&gt;&lt;td&gt;&lt;p class="first"&gt;Notification count (the grey badge with count in Element Web) is the number
 of unread messages in a room. Highlight count (the red badge with count in
 Element Web) is the number of unread mentions in a room.&lt;/p&gt;
 &lt;div class="admonition warning"&gt;
@@ -579,42 +579,42 @@ rules (and is not specced).&lt;/p&gt;
 &lt;/td&gt;&lt;/tr&gt;
 &lt;/tbody&gt;
 &lt;/table&gt;
-&lt;table class="docutils footnote" frame="void" id="id11" rules="none"&gt;
+&lt;table class="docutils footnote" frame="void" id="footnote-3" rules="none"&gt;
 &lt;colgroup&gt;&lt;col class="label"/&gt;&lt;col/&gt;&lt;/colgroup&gt;
 &lt;tbody valign="top"&gt;
-&lt;tr&gt;&lt;td class="label"&gt;&lt;a class="fn-backref" href="#id3"&gt;[3]&lt;/a&gt;&lt;/td&gt;&lt;td&gt;This post generally defines “push notifications” as a notification which
+&lt;tr&gt;&lt;td class="label"&gt;&lt;a class="fn-backref" href="#footnote-reference-3"&gt;[3]&lt;/a&gt;&lt;/td&gt;&lt;td&gt;This post generally defines “push notifications” as a notification which
 is sent via a push provider to an application. Push providers include Apple,
 Google, Microsoft, or Mozilla.&lt;/td&gt;&lt;/tr&gt;
 &lt;/tbody&gt;
 &lt;/table&gt;
-&lt;table class="docutils footnote" frame="void" id="id12" rules="none"&gt;
+&lt;table class="docutils footnote" frame="void" id="footnote-4" rules="none"&gt;
 &lt;colgroup&gt;&lt;col class="label"/&gt;&lt;col/&gt;&lt;/colgroup&gt;
 &lt;tbody valign="top"&gt;
-&lt;tr&gt;&lt;td class="label"&gt;&lt;a class="fn-backref" href="#id4"&gt;[4]&lt;/a&gt;&lt;/td&gt;&lt;td&gt;&lt;a class="reference external" href="https://github.com/matrix-org/matrix-spec-proposals/pull/4010"&gt;&lt;span class="caps"&gt;MSC4010&lt;/span&gt;&lt;/a&gt; aims to make this explicit.&lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td class="label"&gt;&lt;a class="fn-backref" href="#footnote-reference-4"&gt;[4]&lt;/a&gt;&lt;/td&gt;&lt;td&gt;&lt;a class="reference external" href="https://github.com/matrix-org/matrix-spec-proposals/pull/4010"&gt;&lt;span class="caps"&gt;MSC4010&lt;/span&gt;&lt;/a&gt; aims to make this explicit.&lt;/td&gt;&lt;/tr&gt;
 &lt;/tbody&gt;
 &lt;/table&gt;
-&lt;table class="docutils footnote" frame="void" id="id13" rules="none"&gt;
+&lt;table class="docutils footnote" frame="void" id="footnote-5" rules="none"&gt;
 &lt;colgroup&gt;&lt;col class="label"/&gt;&lt;col/&gt;&lt;/colgroup&gt;
 &lt;tbody valign="top"&gt;
-&lt;tr&gt;&lt;td class="label"&gt;&lt;a class="fn-backref" href="#id5"&gt;[5]&lt;/a&gt;&lt;/td&gt;&lt;td&gt;See &lt;a class="reference external" href="https://github.com/matrix-org/matrix-spec-proposals/pull/3987"&gt;&lt;span class="caps"&gt;MSC3987&lt;/span&gt;&lt;/a&gt;.&lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td class="label"&gt;&lt;a class="fn-backref" href="#footnote-reference-5"&gt;[5]&lt;/a&gt;&lt;/td&gt;&lt;td&gt;See &lt;a class="reference external" href="https://github.com/matrix-org/matrix-spec-proposals/pull/3987"&gt;&lt;span class="caps"&gt;MSC3987&lt;/span&gt;&lt;/a&gt;.&lt;/td&gt;&lt;/tr&gt;
 &lt;/tbody&gt;
 &lt;/table&gt;
-&lt;table class="docutils footnote" frame="void" id="id14" rules="none"&gt;
+&lt;table class="docutils footnote" frame="void" id="footnote-6" rules="none"&gt;
 &lt;colgroup&gt;&lt;col class="label"/&gt;&lt;col/&gt;&lt;/colgroup&gt;
 &lt;tbody valign="top"&gt;
-&lt;tr&gt;&lt;td class="label"&gt;&lt;a class="fn-backref" href="#id6"&gt;[6]&lt;/a&gt;&lt;/td&gt;&lt;td&gt;It was not clear how clients should handle encrypted events &lt;a class="reference external" href="https://github.com/matrix-org/matrix-spec/pull/1461"&gt;until recently&lt;/a&gt;&lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td class="label"&gt;&lt;a class="fn-backref" href="#footnote-reference-6"&gt;[6]&lt;/a&gt;&lt;/td&gt;&lt;td&gt;It was not clear how clients should handle encrypted events &lt;a class="reference external" href="https://github.com/matrix-org/matrix-spec/pull/1461"&gt;until recently&lt;/a&gt;&lt;/td&gt;&lt;/tr&gt;
 &lt;/tbody&gt;
 &lt;/table&gt;
-&lt;table class="docutils footnote" frame="void" id="id15" rules="none"&gt;
+&lt;table class="docutils footnote" frame="void" id="footnote-7" rules="none"&gt;
 &lt;colgroup&gt;&lt;col class="label"/&gt;&lt;col/&gt;&lt;/colgroup&gt;
 &lt;tbody valign="top"&gt;
-&lt;tr&gt;&lt;td class="label"&gt;&lt;a class="fn-backref" href="#id7"&gt;[7]&lt;/a&gt;&lt;/td&gt;&lt;td&gt;Adapted from a &lt;a class="reference external" href="https://gist.github.com/Half-Shot/f9501916363894761a1659250aa25181"&gt;Gist from Half-Shot&lt;/a&gt;.&lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td class="label"&gt;&lt;a class="fn-backref" href="#footnote-reference-7"&gt;[7]&lt;/a&gt;&lt;/td&gt;&lt;td&gt;Adapted from a &lt;a class="reference external" href="https://gist.github.com/Half-Shot/f9501916363894761a1659250aa25181"&gt;Gist from Half-Shot&lt;/a&gt;.&lt;/td&gt;&lt;/tr&gt;
 &lt;/tbody&gt;
 &lt;/table&gt;
-&lt;table class="docutils footnote" frame="void" id="id16" rules="none"&gt;
+&lt;table class="docutils footnote" frame="void" id="footnote-8" rules="none"&gt;
 &lt;colgroup&gt;&lt;col class="label"/&gt;&lt;col/&gt;&lt;/colgroup&gt;
 &lt;tbody valign="top"&gt;
-&lt;tr&gt;&lt;td class="label"&gt;&lt;a class="fn-backref" href="#id8"&gt;[8]&lt;/a&gt;&lt;/td&gt;&lt;td&gt;These don’t seem to be specced, I’m unsure if other clients create similar
+&lt;tr&gt;&lt;td class="label"&gt;&lt;a class="fn-backref" href="#footnote-reference-8"&gt;[8]&lt;/a&gt;&lt;/td&gt;&lt;td&gt;These don’t seem to be specced, I’m unsure if other clients create similar
 rules or understand these rules.&lt;/td&gt;&lt;/tr&gt;
 &lt;/tbody&gt;
 &lt;/table&gt;
@@ -622,7 +622,7 @@ rules or understand these rules.&lt;/td&gt;&lt;/tr&gt;
 </description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Patrick Cloke</dc:creator><pubDate>Mon, 08 May 2023 14:56:00 -0400</pubDate><guid isPermaLink="false">tag:patrick.cloke.us,2023-05-08:/posts/2023/05/08/matrix-push-rules-notifications/</guid><category>articles</category><category>matrix</category><category>notes</category></item><item><title>Researching for a Matrix Spec Change</title><link>https://patrick.cloke.us/posts/2023/01/12/researching-for-a-matrix-spec-change/</link><description>&lt;p&gt;The &lt;a class="reference external" href="https://spec.matrix.org/"&gt;Matrix protocol&lt;/a&gt; is modified via &lt;a class="reference external" href="https://spec.matrix.org/proposals/"&gt;Matrix Spec Changes&lt;/a&gt; (frequently abbreviated
 to &amp;#8220;MSCs&amp;#8221;). These are short documents describing any technical changes and why they
 are worth making (see &lt;a class="reference external" href="https://github.com/matrix-org/matrix-spec-proposals/pull/2457"&gt;an example&lt;/a&gt;). I&amp;#8217;ve &lt;a class="reference external" href="https://github.com/matrix-org/matrix-spec-proposals/pulls?q=is%3Apr+author%3Aclokep+label%3Aproposal"&gt;written a bunch&lt;/a&gt; and wanted to
-document my research process. &lt;a class="footnote-reference" href="#id5" id="id1"&gt;[1]&lt;/a&gt;&lt;/p&gt;
+document my research process. &lt;a class="footnote-reference" href="#footnote-1" id="footnote-reference-1"&gt;[1]&lt;/a&gt;&lt;/p&gt;
 &lt;div class="admonition note"&gt;
 &lt;p class="first admonition-title"&gt;Note&lt;/p&gt;
 &lt;p class="last"&gt;I treat my research as a &lt;em&gt;living document&lt;/em&gt;, not an &lt;em&gt;artifact&lt;/em&gt;. Thus, I don&amp;#8217;t worry
@@ -667,9 +667,9 @@ problems. Other protocols are worth checking (e.g. &lt;span class="caps"&gt;IRC&
 &lt;/ul&gt;
 &lt;p&gt;You can see an example of my research on &lt;a class="reference external" href="https://patrick.cloke.us/posts/2023/01/05/matrix-read-receipts-and-notifications/"&gt;Matrix read receipts &lt;span class="amp"&gt;&amp;amp;&lt;/span&gt; notifications&lt;/a&gt;.&lt;/p&gt;
 &lt;p&gt;Once I have compiled the above information, I jump into the &lt;strong&gt;current implementation&lt;/strong&gt;
-to ensure it roughly matches the specification. &lt;a class="footnote-reference" href="#id6" id="id2"&gt;[2]&lt;/a&gt; I start considering what
+to ensure it roughly matches the specification. &lt;a class="footnote-reference" href="#footnote-2" id="footnote-reference-2"&gt;[2]&lt;/a&gt; I start considering what
 protocol changes would solve the problem and are reasonable to implement. I find
-it useful to write down all of my ideas, not just the one I think is best. &lt;a class="footnote-reference" href="#id7" id="id3"&gt;[3]&lt;/a&gt;&lt;/p&gt;
+it useful to write down all of my ideas, not just the one I think is best. &lt;a class="footnote-reference" href="#footnote-3" id="footnote-reference-3"&gt;[3]&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;At this point I&amp;nbsp;have:&lt;/p&gt;
 &lt;ul class="simple"&gt;
 &lt;li&gt;A problem&amp;nbsp;statement&lt;/li&gt;
@@ -679,7 +679,7 @@ it useful to write down all of my ideas, not just the one I think is best. &lt;a
 &lt;/ul&gt;
 &lt;p&gt;The next step is to iterate with my colleagues: answer any open questions, check
 that our product goals will be met, and seek agreement that we are designing a
-buildable solution. &lt;a class="footnote-reference" href="#id8" id="id4"&gt;[4]&lt;/a&gt;&lt;/p&gt;
+buildable solution. &lt;a class="footnote-reference" href="#footnote-4" id="footnote-reference-4"&gt;[4]&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;&lt;em&gt;Finally&lt;/em&gt;, I take the above and formalize it in into one or more Matrix Spec Changes.
 At this point I&amp;#8217;ll think about error conditions / responses, backwards compatibility,
 security concerns, and any other parts of the full &lt;span class="caps"&gt;MSC&lt;/span&gt;. Once it is documented, I
@@ -688,32 +688,32 @@ I leave comments for any parts I am unsure about or want to open discussion&amp;
 &lt;p&gt;Then I ask me colleagues to read through it and wait for feedback from both them and
 any interested community members. It can be useful to be in the &lt;a class="reference external" href="https://matrix.to/#/#matrix-spec:matrix.org"&gt;#matrix-spec&lt;/a&gt; room
 as folks might want to discuss the&amp;nbsp;proposal.&lt;/p&gt;
-&lt;table class="docutils footnote" frame="void" id="id5" rules="none"&gt;
+&lt;table class="docutils footnote" frame="void" id="footnote-1" rules="none"&gt;
 &lt;colgroup&gt;&lt;col class="label" /&gt;&lt;col /&gt;&lt;/colgroup&gt;
 &lt;tbody valign="top"&gt;
-&lt;tr&gt;&lt;td class="label"&gt;&lt;a class="fn-backref" href="#id1"&gt;[1]&lt;/a&gt;&lt;/td&gt;&lt;td&gt;There&amp;#8217;s a useful &lt;a class="reference external" href="https://github.com/matrix-org/matrix-spec-proposals/blob/9b3f01b0193caa1e1c563cfc861ab021bcddcb2c/proposals/0000-proposal-template.md"&gt;proposal template&lt;/a&gt; that I eventually use, but I do much
+&lt;tr&gt;&lt;td class="label"&gt;&lt;a class="fn-backref" href="#footnote-reference-1"&gt;[1]&lt;/a&gt;&lt;/td&gt;&lt;td&gt;There&amp;#8217;s a useful &lt;a class="reference external" href="https://github.com/matrix-org/matrix-spec-proposals/blob/9b3f01b0193caa1e1c563cfc861ab021bcddcb2c/proposals/0000-proposal-template.md"&gt;proposal template&lt;/a&gt; that I eventually use, but I do much
 of this process before constraining myself by that.&lt;/td&gt;&lt;/tr&gt;
 &lt;/tbody&gt;
 &lt;/table&gt;
-&lt;table class="docutils footnote" frame="void" id="id6" rules="none"&gt;
+&lt;table class="docutils footnote" frame="void" id="footnote-2" rules="none"&gt;
 &lt;colgroup&gt;&lt;col class="label" /&gt;&lt;col /&gt;&lt;/colgroup&gt;
 &lt;tbody valign="top"&gt;
-&lt;tr&gt;&lt;td class="label"&gt;&lt;a class="fn-backref" href="#id2"&gt;[2]&lt;/a&gt;&lt;/td&gt;&lt;td&gt;This consists of looking through code as well as just trying it out by
+&lt;tr&gt;&lt;td class="label"&gt;&lt;a class="fn-backref" href="#footnote-reference-2"&gt;[2]&lt;/a&gt;&lt;/td&gt;&lt;td&gt;This consists of looking through code as well as just trying it out by
 manually making &lt;span class="caps"&gt;API&lt;/span&gt; calls or understanding how APIs power product features.&lt;/td&gt;&lt;/tr&gt;
 &lt;/tbody&gt;
 &lt;/table&gt;
-&lt;table class="docutils footnote" frame="void" id="id7" rules="none"&gt;
+&lt;table class="docutils footnote" frame="void" id="footnote-3" rules="none"&gt;
 &lt;colgroup&gt;&lt;col class="label" /&gt;&lt;col /&gt;&lt;/colgroup&gt;
 &lt;tbody valign="top"&gt;
-&lt;tr&gt;&lt;td class="label"&gt;&lt;a class="fn-backref" href="#id3"&gt;[3]&lt;/a&gt;&lt;/td&gt;&lt;td&gt;Part of the &lt;span class="caps"&gt;MSC&lt;/span&gt; proposal is documenting alternatives (and why you didn&amp;#8217;t
+&lt;tr&gt;&lt;td class="label"&gt;&lt;a class="fn-backref" href="#footnote-reference-3"&gt;[3]&lt;/a&gt;&lt;/td&gt;&lt;td&gt;Part of the &lt;span class="caps"&gt;MSC&lt;/span&gt; proposal is documenting alternatives (and why you didn&amp;#8217;t
 choose one of those). It is useful to brainstorm early before you&amp;#8217;re set
 in a decision!&lt;/td&gt;&lt;/tr&gt;
 &lt;/tbody&gt;
 &lt;/table&gt;
-&lt;table class="docutils footnote" frame="void" id="id8" rules="none"&gt;
+&lt;table class="docutils footnote" frame="void" id="footnote-4" rules="none"&gt;
 &lt;colgroup&gt;&lt;col class="label" /&gt;&lt;col /&gt;&lt;/colgroup&gt;
 &lt;tbody valign="top"&gt;
-&lt;tr&gt;&lt;td class="label"&gt;&lt;a class="fn-backref" href="#id4"&gt;[4]&lt;/a&gt;&lt;/td&gt;&lt;td&gt;I usually do work with Matrix homeservers and am not as experienced with
+&lt;tr&gt;&lt;td class="label"&gt;&lt;a class="fn-backref" href="#footnote-reference-4"&gt;[4]&lt;/a&gt;&lt;/td&gt;&lt;td&gt;I usually do work with Matrix homeservers and am not as experienced with
 clients. It is useful to bounce ideas off a client developer to understand
 their needs.&lt;/td&gt;&lt;/tr&gt;
 &lt;/tbody&gt;
@@ -765,17 +765,17 @@ room in the &lt;code&gt;/sync&lt;/code&gt; response. The event includes a map of
 -&amp;gt; user &lt;span class="caps"&gt;ID&lt;/span&gt; -&amp;gt; data (currently just a timestamp). Note that the event is a delta
 from previous events. An&amp;nbsp;example:&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="p"&gt;{&lt;/span&gt;
-  &lt;span class="nt"&gt;&amp;quot;content&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
-    &lt;span class="nt"&gt;&amp;quot;$1435641916114394fHBLK:matrix.org&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
-      &lt;span class="nt"&gt;&amp;quot;m.read&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
-        &lt;span class="nt"&gt;&amp;quot;@rikj:jki.re&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
-          &lt;span class="nt"&gt;&amp;quot;ts&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="mi"&gt;1436451550453&lt;/span&gt;
-        &lt;span class="p"&gt;}&lt;/span&gt;
-      &lt;span class="p"&gt;}&lt;/span&gt;
-    &lt;span class="p"&gt;}&lt;/span&gt;
-  &lt;span class="p"&gt;},&lt;/span&gt;
-  &lt;span class="nt"&gt;&amp;quot;room_id&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;!jEsUZKDJdhlrceRyVU:example.org&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
-  &lt;span class="nt"&gt;&amp;quot;type&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;m.receipt&amp;quot;&lt;/span&gt;
+&lt;span class="w"&gt;  &lt;/span&gt;&lt;span class="nt"&gt;&amp;quot;content&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="p"&gt;{&lt;/span&gt;
+&lt;span class="w"&gt;    &lt;/span&gt;&lt;span class="nt"&gt;&amp;quot;$1435641916114394fHBLK:matrix.org&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="p"&gt;{&lt;/span&gt;
+&lt;span class="w"&gt;      &lt;/span&gt;&lt;span class="nt"&gt;&amp;quot;m.read&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="p"&gt;{&lt;/span&gt;
+&lt;span class="w"&gt;        &lt;/span&gt;&lt;span class="nt"&gt;&amp;quot;@rikj:jki.re&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="p"&gt;{&lt;/span&gt;
+&lt;span class="w"&gt;          &lt;/span&gt;&lt;span class="nt"&gt;&amp;quot;ts&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="mi"&gt;1436451550453&lt;/span&gt;
+&lt;span class="w"&gt;        &lt;/span&gt;&lt;span class="p"&gt;}&lt;/span&gt;
+&lt;span class="w"&gt;      &lt;/span&gt;&lt;span class="p"&gt;}&lt;/span&gt;
+&lt;span class="w"&gt;    &lt;/span&gt;&lt;span class="p"&gt;}&lt;/span&gt;
+&lt;span class="w"&gt;  &lt;/span&gt;&lt;span class="p"&gt;},&lt;/span&gt;
+&lt;span class="w"&gt;  &lt;/span&gt;&lt;span class="nt"&gt;&amp;quot;room_id&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;!jEsUZKDJdhlrceRyVU:example.org&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+&lt;span class="w"&gt;  &lt;/span&gt;&lt;span class="nt"&gt;&amp;quot;type&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;m.receipt&amp;quot;&lt;/span&gt;
 &lt;span class="p"&gt;}&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
@@ -819,15 +819,15 @@ in an action of &lt;code&gt;notify&lt;/code&gt; or &lt;code&gt;highlight&lt;/cod
 action must be a &lt;code&gt;notify&lt;/code&gt; action, thus &lt;code&gt;highlight_count &amp;lt;= notification_count&lt;/code&gt;.)&lt;/p&gt;
 &lt;p&gt;An&amp;nbsp;example:&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="p"&gt;{&lt;/span&gt;
-  &lt;span class="nt"&gt;&amp;quot;account_data&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="err"&gt;...&lt;/span&gt;&lt;span class="p"&gt;],&lt;/span&gt;
-  &lt;span class="nt"&gt;&amp;quot;ephemeral&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="err"&gt;...&lt;/span&gt;&lt;span class="p"&gt;],&lt;/span&gt;
-  &lt;span class="nt"&gt;&amp;quot;state&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="err"&gt;...&lt;/span&gt;&lt;span class="p"&gt;],&lt;/span&gt;
-  &lt;span class="nt"&gt;&amp;quot;summary&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;&lt;span class="err"&gt;...&lt;/span&gt;&lt;span class="p"&gt;},&lt;/span&gt;
-  &lt;span class="nt"&gt;&amp;quot;timeline&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;&lt;span class="err"&gt;...&lt;/span&gt;&lt;span class="p"&gt;},&lt;/span&gt;
-  &lt;span class="nt"&gt;&amp;quot;unread_notifications&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
-      &lt;span class="nt"&gt;&amp;quot;highlight_count&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
-      &lt;span class="nt"&gt;&amp;quot;notification_count&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="mi"&gt;0&lt;/span&gt;
-  &lt;span class="p"&gt;}&lt;/span&gt;
+&lt;span class="w"&gt;  &lt;/span&gt;&lt;span class="nt"&gt;&amp;quot;account_data&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="err"&gt;...&lt;/span&gt;&lt;span class="p"&gt;],&lt;/span&gt;
+&lt;span class="w"&gt;  &lt;/span&gt;&lt;span class="nt"&gt;&amp;quot;ephemeral&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="err"&gt;...&lt;/span&gt;&lt;span class="p"&gt;],&lt;/span&gt;
+&lt;span class="w"&gt;  &lt;/span&gt;&lt;span class="nt"&gt;&amp;quot;state&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="err"&gt;...&lt;/span&gt;&lt;span class="p"&gt;],&lt;/span&gt;
+&lt;span class="w"&gt;  &lt;/span&gt;&lt;span class="nt"&gt;&amp;quot;summary&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="p"&gt;{&lt;/span&gt;&lt;span class="err"&gt;...&lt;/span&gt;&lt;span class="p"&gt;},&lt;/span&gt;
+&lt;span class="w"&gt;  &lt;/span&gt;&lt;span class="nt"&gt;&amp;quot;timeline&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="p"&gt;{&lt;/span&gt;&lt;span class="err"&gt;...&lt;/span&gt;&lt;span class="p"&gt;},&lt;/span&gt;
+&lt;span class="w"&gt;  &lt;/span&gt;&lt;span class="nt"&gt;&amp;quot;unread_notifications&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="p"&gt;{&lt;/span&gt;
+&lt;span class="w"&gt;      &lt;/span&gt;&lt;span class="nt"&gt;&amp;quot;highlight_count&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+&lt;span class="w"&gt;      &lt;/span&gt;&lt;span class="nt"&gt;&amp;quot;notification_count&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="mi"&gt;0&lt;/span&gt;
+&lt;span class="w"&gt;  &lt;/span&gt;&lt;span class="p"&gt;}&lt;/span&gt;
 &lt;span class="p"&gt;}&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
@@ -845,13 +845,13 @@ or the number of rooms with unread messages (depending on the value of
 are any messages where the push rules resulted in an action of &lt;code&gt;notify&lt;/code&gt;.&lt;/p&gt;
 &lt;p&gt;This information is sent from the homeserver to the push gateway as part of every&amp;nbsp;notification:&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="p"&gt;{&lt;/span&gt;
-  &lt;span class="nt"&gt;&amp;quot;notifications&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
-    &lt;span class="nt"&gt;&amp;quot;counts&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
-      &lt;span class="nt"&gt;&amp;quot;unread&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
-      &lt;span class="err"&gt;...&lt;/span&gt;
-    &lt;span class="p"&gt;},&lt;/span&gt;
-    &lt;span class="err"&gt;...&lt;/span&gt;
-  &lt;span class="p"&gt;}&lt;/span&gt;
+&lt;span class="w"&gt;  &lt;/span&gt;&lt;span class="nt"&gt;&amp;quot;notifications&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="p"&gt;{&lt;/span&gt;
+&lt;span class="w"&gt;    &lt;/span&gt;&lt;span class="nt"&gt;&amp;quot;counts&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="p"&gt;{&lt;/span&gt;
+&lt;span class="w"&gt;      &lt;/span&gt;&lt;span class="nt"&gt;&amp;quot;unread&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+&lt;span class="w"&gt;      &lt;/span&gt;&lt;span class="err"&gt;...&lt;/span&gt;
+&lt;span class="w"&gt;    &lt;/span&gt;&lt;span class="p"&gt;},&lt;/span&gt;
+&lt;span class="w"&gt;    &lt;/span&gt;&lt;span class="err"&gt;...&lt;/span&gt;
+&lt;span class="w"&gt;  &lt;/span&gt;&lt;span class="p"&gt;}&lt;/span&gt;
 &lt;span class="p"&gt;}&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 

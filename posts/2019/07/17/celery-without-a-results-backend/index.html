@@ -9,14 +9,14 @@
     <link href="https://patrick.cloke.us/feeds/atom.xml" type="application/atom+xml" rel="alternate" title="Patrick Cloke Atom Feed" />
     <link href="https://patrick.cloke.us/feeds/rss.xml" type="application/rss+xml" rel="alternate" title="Patrick Cloke RSS Feed" />
 
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
     <link rel="stylesheet" href="/theme/css/styles.css">
     <link rel="stylesheet" href="/theme/css/borland.css">
     <link rel="stylesheet" href="/theme/css/youtube.css">
 
-    <!-- Font Awesome -->
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
 
     <title>Celery without a Results Backend</title>
 
@@ -67,11 +67,11 @@
 
             <span class="dropdown-menu dropdown-menu-right" aria-labelledby="social-dropdown">
               <a class="dropdown-item" href="https://mastodon.social/@clokep" target="_blank">
-                  <span class="fab fa-mastodon mr-1"></span>
+                  <span class="bi-mastodon mr-1"></span>
                 mastodon
               </a>
               <a class="dropdown-item" href="https://www.twitter.com/clokep" target="_blank">
-                  <span class="fab fa-twitter mr-1"></span>
+                  <span class="bi-twitter mr-1"></span>
                 twitter
               </a>
               <a class="dropdown-item" href="https://matrix.to/#/@clokep:matrix.org" target="_blank">
@@ -79,15 +79,15 @@
                 matrix
               </a>
               <a class="dropdown-item" href="https://github.com/clokep" target="_blank">
-                  <span class="fab fa-github mr-1"></span>
+                  <span class="bi-github mr-1"></span>
                 github
               </a>
               <a class="dropdown-item" href="https://gitlab.com/clokep" target="_blank">
-                  <span class="fab fa-gitlab mr-1"></span>
+                  <span class="bi-gitlab mr-1"></span>
                 gitlab
               </a>
               <a class="dropdown-item" href="https://www.linkedin.com/in/patrickcloke/" target="_blank">
-                  <span class="fab fa-linkedin mr-1"></span>
+                  <span class="bi-linkedin mr-1"></span>
                 linkedin
               </a>
             </span>
@@ -132,14 +132,23 @@
         </div>
 
         <div class="col-sm text-right">
+          <a href="https://toot.kytta.dev/?text=Celery%20without%20a%20Results%C2%A0Backend%0D%0Ahttps%3A//patrick.cloke.us/posts/2019/07/17/celery-without-a-results-backend/%0D%0A%23celery" target="_blank" class="ml-1 mr-1" title="Share on Mastodon">
+            <span class="bi-mastodon"></span>
+          </a>
           <a href="https://twitter.com/intent/tweet?text=Celery%20without%20a%20Results%C2%A0Backend&url=https%3A//patrick.cloke.us/posts/2019/07/17/celery-without-a-results-backend/&hashtags=celery" target="_blank" class="ml-1 mr-1" title="Share on Twitter">
-            <span class="fab fa-twitter"></span>
+            <span class="bi-twitter"></span>
+          </a>
+          <a href="https://www.reddit.com/submit?url=https%3A//patrick.cloke.us/posts/2019/07/17/celery-without-a-results-backend/&title=Celery%20without%20a%20Results%C2%A0Backend" target="_blank" class="ml-1 mr-1" title="Share on Reddit">
+            <span class="bi-reddit"></span>
           </a>
           <a href="https://www.facebook.com/sharer/sharer.php?u=https%3A//patrick.cloke.us/posts/2019/07/17/celery-without-a-results-backend/" target="_blank" class="ml-1 mr-1" title="Share on Facebook">
-            <span class="fab fa-facebook"></span>
+            <span class="bi-facebook"></span>
+          </a>
+          <a href="https://www.linkedin.com/shareArticle?mini=true&url=https%3A//patrick.cloke.us/posts/2019/07/17/celery-without-a-results-backend/&title=Celery%20without%20a%20Results%C2%A0Backend&summary=The%20Celery%20send_task%20method%20allows%20you%20to%20invoke%20a%20task%20by%20name%20without%0Aimporting%20it.%20%5B1%5D%20There%20is%20an%20undocumented%20%5B2%5D%20caveat%20to%20using%20send_task%3A%0Ait%20doesn%E2%80%99t%20have%20access%20to%20the%20configuration%20of%20the%20task%20%28from%20when%20the%20task%20was%0Acreated%20using%20the%20%40task%20decorator%29.%0AMuch%20of%20this%20configuration%20%E2%80%A6&source=https%3A//patrick.cloke.us/posts/2019/07/17/celery-without-a-results-backend/" target="_blank" class="ml-1 mr-1" title="Share on LinkedIn">
+            <span class="bi-linkedin"></span>
           </a>
           <a href="mailto:?subject=Celery%20without%20a%20Results%C2%A0Backend&amp;body=https%3A//patrick.cloke.us/posts/2019/07/17/celery-without-a-results-backend/" target="_blank" class="ml-1 mr-1" title="Share via Email">
-            <span class="fas fa-envelope"></span>
+            <span class="bi-envelope"></span>
           </a>
         </div>
       </div>
@@ -149,7 +158,7 @@
       <div>
 
         <p>The <a class="reference external" href="http://www.celeryproject.org/">Celery</a> <a class="reference external" href="https://docs.celeryproject.org/en/latest/reference/celery.html#celery.Celery.send_task"><tt class="docutils literal">send_task</tt></a> method allows you to invoke a task by name without
-importing it. <a class="footnote-reference" href="#id5" id="id1">[1]</a> There is an undocumented <a class="footnote-reference" href="#id6" id="id2">[2]</a> caveat to using <tt class="docutils literal">send_task</tt>:
+importing it. <a class="footnote-reference" href="#footnote-1" id="footnote-reference-1">[1]</a> There is an undocumented <a class="footnote-reference" href="#footnote-2" id="footnote-reference-2">[2]</a> caveat to using <tt class="docutils literal">send_task</tt>:
 it doesn&#8217;t have access to the configuration of the task (from when the task was
 created using the <a class="reference external" href="https://docs.celeryproject.org/en/latest/reference/celery.html#celery.Celery.task"><tt class="docutils literal">&#64;task</tt> decorator</a>).</p>
 <p>Much of this configuration doesn&#8217;t matter to the caller, for example the caller
@@ -166,46 +175,46 @@ execute as you&#8217;d&nbsp;expect:</p>
 <li>If a non-default results backend is to be&nbsp;used.</li>
 </ul>
 <p>Another piece of configuration that matters (which surprised me and had a
-performance impact for us <a class="footnote-reference" href="#id7" id="id3">[3]</a>) is whether to ignore a task result or not.
+performance impact for us <a class="footnote-reference" href="#footnote-3" id="footnote-reference-3">[3]</a>) is whether to ignore a task result or not.
 Unexpectedly, Celery will attempt to connect to the results backend <em>on task call</em>.
 I assumed that the results backend would never be contacted since we never
 attempted to <strong>retrieve</strong> a result! This turned out to be&nbsp;untrue.</p>
 <p>Once identified, The fix was straightforward! We ensured that every task which
 had <tt class="docutils literal">ignore_result=True</tt> on task declaration also had <tt class="docutils literal">ignore_result=True</tt>
-on task call (when using <tt class="docutils literal">send_task</tt>). <a class="footnote-reference" href="#id8" id="id4">[4]</a> This duplication is unfortunate,
+on task call (when using <tt class="docutils literal">send_task</tt>). <a class="footnote-reference" href="#footnote-4" id="footnote-reference-4">[4]</a> This duplication is unfortunate,
 but easy&nbsp;enough.</p>
 <p>We figured this out due to a calling process which doesn&#8217;t use any results, but
 the <tt class="docutils literal">celery.backends</tt> module was appearing in the <a class="reference external" href="https://pyflame.readthedocs.io">pyflame</a> profiles.
 Another solution (for this particular setup) was to use the (<a class="reference external" href="http://docs.celeryproject.org/en/latest/userguide/configuration.html#task-result-backend-settings">undocumented</a>)
 <tt class="docutils literal">disabled</tt> results&nbsp;backend.</p>
-<table class="docutils footnote" frame="void" id="id5" rules="none">
+<table class="docutils footnote" frame="void" id="footnote-1" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
-<tr><td class="label"><a class="fn-backref" href="#id1">[1]</a></td><td>There are a variety of reasons you might want to do this, but I&#8217;ve
+<tr><td class="label"><a class="fn-backref" href="#footnote-reference-1">[1]</a></td><td>There are a variety of reasons you might want to do this, but I&#8217;ve
 used it when tasks that use <a class="reference external" href="https://www.djangoproject.com/">Django</a> models but the calling process
 does not have Django configured.</td></tr>
 </tbody>
 </table>
-<table class="docutils footnote" frame="void" id="id6" rules="none">
+<table class="docutils footnote" frame="void" id="footnote-2" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
-<tr><td class="label"><a class="fn-backref" href="#id2">[2]</a></td><td>I couldn&#8217;t find any documentation about it at least. Maybe this is meant
+<tr><td class="label"><a class="fn-backref" href="#footnote-reference-2">[2]</a></td><td>I couldn&#8217;t find any documentation about it at least. Maybe this is meant
 to be obvious, but it didn&#8217;t click for me without deep understanding of
 how Celery works.</td></tr>
 </tbody>
 </table>
-<table class="docutils footnote" frame="void" id="id7" rules="none">
+<table class="docutils footnote" frame="void" id="footnote-3" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
-<tr><td class="label"><a class="fn-backref" href="#id3">[3]</a></td><td>The performance impact we were seeing was due to the <span class="caps">TCP</span> negotiation and
+<tr><td class="label"><a class="fn-backref" href="#footnote-reference-3">[3]</a></td><td>The performance impact we were seeing was due to the <span class="caps">TCP</span> negotiation and
 login to the results backend. This got especially bad if the results
 backend was under load or down.</td></tr>
 </tbody>
 </table>
-<table class="docutils footnote" frame="void" id="id8" rules="none">
+<table class="docutils footnote" frame="void" id="footnote-4" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
-<tr><td class="label"><a class="fn-backref" href="#id4">[4]</a></td><td>Note that it is a <a class="reference external" href="https://docs.celeryproject.org/en/latest/userguide/tasks.html?highlight=argsrepr#ignore-results-you-don-t-want">best practice</a> to ignore results on tasks where you
+<tr><td class="label"><a class="fn-backref" href="#footnote-reference-4">[4]</a></td><td>Note that it is a <a class="reference external" href="https://docs.celeryproject.org/en/latest/userguide/tasks.html?highlight=argsrepr#ignore-results-you-don-t-want">best practice</a> to ignore results on tasks where you
 don&#8217;t need the result!</td></tr>
 </tbody>
 </table>
@@ -238,7 +247,7 @@ s.setAttribute('data-timestamp', +new Date());
     <nav class="navbar fixed-bottom navbar-light bg-light border-top border-info">
       <a href="https://getpelican.com/" class="nav-item" target="_blank">Powered by Pelican</a>
       <a href="https://github.com/clokep/clokep.github.io" class="nav-item" target="_blank">
-        Source available on GitHub <span class="fab fa-github"></span>
+        Source available on GitHub <span class="bi-github"></span>
       </a>
     </nav>
 

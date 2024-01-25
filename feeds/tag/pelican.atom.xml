@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom"><title>Patrick Cloke - pelican</title><link href="https://patrick.cloke.us/" rel="alternate"></link><link href="https://patrick.cloke.us/feeds/tag/pelican.atom.xml" rel="self"></link><id>https://patrick.cloke.us/</id><updated>2020-09-09T17:10:00-04:00</updated><entry><title>Instantbird Blog: WordPress to Pelican</title><link href="https://patrick.cloke.us/posts/2020/09/09/instantbird-blog-wordpress-to-pelican/" rel="alternate"></link><published>2020-09-09T17:10:00-04:00</published><updated>2020-09-09T17:10:00-04:00</updated><author><name>Patrick Cloke</name></author><id>tag:patrick.cloke.us,2020-09-09:/posts/2020/09/09/instantbird-blog-wordpress-to-pelican/</id><summary type="html">&lt;p&gt;The &lt;a class="reference external" href="https://blog.instantbird.org"&gt;Instantbird blog&lt;/a&gt; is now (as of mid-April 2020) hosted on GitHub Pages
-(instead of self-hosted &lt;a class="reference external" href="https://wordpress.com/"&gt;WordPress&lt;/a&gt;) &lt;a class="footnote-reference" href="#id5" id="id1"&gt;[1]&lt;/a&gt;. Hopefully it was converted faithfully,
+(instead of self-hosted &lt;a class="reference external" href="https://wordpress.com/"&gt;WordPress&lt;/a&gt;) &lt;a class="footnote-reference" href="#footnote-1" id="footnote-reference-1"&gt;[1]&lt;/a&gt;. Hopefully it was converted faithfully,
 but feel free to let us know if you see something broken! You can file an issue
 at &lt;a class="reference external" href="https://github.com/instantbird/blog.instantbird.org/"&gt;the repo for the blog&lt;/a&gt; or just comment&amp;nbsp;below …&lt;/p&gt;</summary><content type="html">&lt;p&gt;The &lt;a class="reference external" href="https://blog.instantbird.org"&gt;Instantbird blog&lt;/a&gt; is now (as of mid-April 2020) hosted on GitHub Pages
-(instead of self-hosted &lt;a class="reference external" href="https://wordpress.com/"&gt;WordPress&lt;/a&gt;) &lt;a class="footnote-reference" href="#id5" id="id1"&gt;[1]&lt;/a&gt;. Hopefully it was converted faithfully,
+(instead of self-hosted &lt;a class="reference external" href="https://wordpress.com/"&gt;WordPress&lt;/a&gt;) &lt;a class="footnote-reference" href="#footnote-1" id="footnote-reference-1"&gt;[1]&lt;/a&gt;. Hopefully it was converted faithfully,
 but feel free to let us know if you see something broken! You can file an issue
 at &lt;a class="reference external" href="https://github.com/instantbird/blog.instantbird.org/"&gt;the repo for the blog&lt;/a&gt; or just comment&amp;nbsp;below.&lt;/p&gt;
 &lt;p&gt;Note that there are some changes due to being a static site instead of being
@@ -15,14 +15,14 @@ some of the details. Overall I did this work over 3 years (!!!), starting in
 April of 2017 and getting the site live in April of 2020. It was mostly done in
 5 sprints with some long gaps&amp;nbsp;between.&lt;/p&gt;
 &lt;p&gt;As some background, the Instantbird blog was originally (in 2007) served via
-Florian&amp;#8217;s custom blog engine &lt;a class="footnote-reference" href="#id6" id="id2"&gt;[2]&lt;/a&gt;. In 2011 it was
+Florian&amp;#8217;s custom blog engine &lt;a class="footnote-reference" href="#footnote-2" id="footnote-reference-2"&gt;[2]&lt;/a&gt;. In 2011 it was
 &lt;a class="reference external" href="https://blog.instantbird.org/2011/10/weekly-meeting-october-10-2011/"&gt;converted to WordPress by an Instantbird contributor&lt;/a&gt;. This initial conversion
 was not done perfectly and I attempted to fix some of these issues when
-converting from WordPress to Pelican &lt;a class="footnote-reference" href="#id7" id="id3"&gt;[3]&lt;/a&gt;. The general steps I was hoping to&amp;nbsp;follow:&lt;/p&gt;
+converting from WordPress to Pelican &lt;a class="footnote-reference" href="#footnote-3" id="footnote-reference-3"&gt;[3]&lt;/a&gt;. The general steps I was hoping to&amp;nbsp;follow:&lt;/p&gt;
 &lt;ol class="arabic simple"&gt;
 &lt;li&gt;Setup the project using the &lt;tt class="docutils literal"&gt;&lt;span class="pre"&gt;pelican-quickstart&lt;/span&gt;&lt;/tt&gt; comment.&lt;/li&gt;
 &lt;li&gt;Export the content via WordPress to &lt;span class="caps"&gt;XML&lt;/span&gt;.&lt;/li&gt;
-&lt;li&gt;Use the Pelican &lt;a class="reference external" href="https://docs.getpelican.com/en/3.7.1/importer.html"&gt;WordPress importer&lt;/a&gt; to convert the content to reStructuredText. &lt;a class="footnote-reference" href="#id8" id="id4"&gt;[4]&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Use the Pelican &lt;a class="reference external" href="https://docs.getpelican.com/en/3.7.1/importer.html"&gt;WordPress importer&lt;/a&gt; to convert the content to reStructuredText. &lt;a class="footnote-reference" href="#footnote-4" id="footnote-reference-4"&gt;[4]&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;Go through the conversion by hand and fix any&amp;nbsp;oddities.&lt;/li&gt;
 &lt;li&gt;Convert the &lt;span class="caps"&gt;PHP&lt;/span&gt; theme to &lt;a class="reference external" href="https://jinja.palletsprojects.com/"&gt;Jinja2&lt;/a&gt;.&lt;/li&gt;
 &lt;/ol&gt;
@@ -62,33 +62,33 @@ overall I&amp;#8217;m quite happy with the result! Just to be clear, there&amp;#
 restart development of Instantbird, but I wanted the blog content to archived
 and searchable. There&amp;#8217;s some &lt;a class="reference external" href="https://blog.instantbird.org/2011/06/introducing-time-bubbles/"&gt;interesting&lt;/a&gt; &lt;a class="reference external" href="https://blog.instantbird.org/2013/07/first-milestone-of-the-awesometab-has-landed/"&gt;articles&lt;/a&gt; on there about &lt;a class="reference external" href="https://blog.instantbird.org/2012/08/tab-completion-in-instantbird-1-2/"&gt;design&lt;/a&gt;
 &lt;a class="reference external" href="https://blog.instantbird.org/2011/06/introducing-magic-copy/"&gt;decisions&lt;/a&gt;. Many of which are features I miss&amp;nbsp;today!&lt;/p&gt;
-&lt;table class="docutils footnote" frame="void" id="id5" rules="none"&gt;
+&lt;table class="docutils footnote" frame="void" id="footnote-1" rules="none"&gt;
 &lt;colgroup&gt;&lt;col class="label" /&gt;&lt;col /&gt;&lt;/colgroup&gt;
 &lt;tbody valign="top"&gt;
-&lt;tr&gt;&lt;td class="label"&gt;&lt;a class="fn-backref" href="#id1"&gt;[1]&lt;/a&gt;&lt;/td&gt;&lt;td&gt;Reasons for wanting to do this included reducing the infrastructure we
+&lt;tr&gt;&lt;td class="label"&gt;&lt;a class="fn-backref" href="#footnote-reference-1"&gt;[1]&lt;/a&gt;&lt;/td&gt;&lt;td&gt;Reasons for wanting to do this included reducing the infrastructure we
 were maintaining and that the WordPress version was vulnerable. An
 additional benefit is that it let us easily add &lt;span class="caps"&gt;TLS&lt;/span&gt;.&lt;!-- See https://bugzilla.mozilla.org/show_bug.cgi?id=1346658 --&gt;
 &lt;/td&gt;&lt;/tr&gt;
 &lt;/tbody&gt;
 &lt;/table&gt;
-&lt;table class="docutils footnote" frame="void" id="id6" rules="none"&gt;
+&lt;table class="docutils footnote" frame="void" id="footnote-2" rules="none"&gt;
 &lt;colgroup&gt;&lt;col class="label" /&gt;&lt;col /&gt;&lt;/colgroup&gt;
 &lt;tbody valign="top"&gt;
-&lt;tr&gt;&lt;td class="label"&gt;&lt;a class="fn-backref" href="#id2"&gt;[2]&lt;/a&gt;&lt;/td&gt;&lt;td&gt;I don&amp;#8217;t think there&amp;#8217;s any information about this engine anywhere, nor do
+&lt;tr&gt;&lt;td class="label"&gt;&lt;a class="fn-backref" href="#footnote-reference-2"&gt;[2]&lt;/a&gt;&lt;/td&gt;&lt;td&gt;I don&amp;#8217;t think there&amp;#8217;s any information about this engine anywhere, nor do
 I think the source was released.&lt;/td&gt;&lt;/tr&gt;
 &lt;/tbody&gt;
 &lt;/table&gt;
-&lt;table class="docutils footnote" frame="void" id="id7" rules="none"&gt;
+&lt;table class="docutils footnote" frame="void" id="footnote-3" rules="none"&gt;
 &lt;colgroup&gt;&lt;col class="label" /&gt;&lt;col /&gt;&lt;/colgroup&gt;
 &lt;tbody valign="top"&gt;
-&lt;tr&gt;&lt;td class="label"&gt;&lt;a class="fn-backref" href="#id3"&gt;[3]&lt;/a&gt;&lt;/td&gt;&lt;td&gt;The main issues were images / resources that were not properly moved.
+&lt;tr&gt;&lt;td class="label"&gt;&lt;a class="fn-backref" href="#footnote-reference-3"&gt;[3]&lt;/a&gt;&lt;/td&gt;&lt;td&gt;The main issues were images / resources that were not properly moved.
 Luckily I was able to recover them using the &lt;a class="reference external" href="https://archive.org/"&gt;Internet Archive&lt;/a&gt;.&lt;/td&gt;&lt;/tr&gt;
 &lt;/tbody&gt;
 &lt;/table&gt;
-&lt;table class="docutils footnote" frame="void" id="id8" rules="none"&gt;
+&lt;table class="docutils footnote" frame="void" id="footnote-4" rules="none"&gt;
 &lt;colgroup&gt;&lt;col class="label" /&gt;&lt;col /&gt;&lt;/colgroup&gt;
 &lt;tbody valign="top"&gt;
-&lt;tr&gt;&lt;td class="label"&gt;&lt;a class="fn-backref" href="#id4"&gt;[4]&lt;/a&gt;&lt;/td&gt;&lt;td&gt;I started doing this work on Pelican 3.7.1 and switched to 4.2.0, in
+&lt;tr&gt;&lt;td class="label"&gt;&lt;a class="fn-backref" href="#footnote-reference-4"&gt;[4]&lt;/a&gt;&lt;/td&gt;&lt;td&gt;I started doing this work on Pelican 3.7.1 and switched to 4.2.0, in
 general everything in this article should be valid up through Pelican
 4.2.0, however.&lt;/td&gt;&lt;/tr&gt;
 &lt;/tbody&gt;
@@ -119,19 +119,19 @@ seemed alright, but no one seemed to use it. Farther down the page I came across
 &lt;a class="reference external" href="http://arunrocks.com/moving-blogs-to-pelican/"&gt;a blog&lt;/a&gt; talking about moving to &lt;a class="reference external" href="http://getpelican.com/"&gt;Pelican&lt;/a&gt;. I was hooked. (Note that I don’t
 necessarily agree with all the ideas in that post, it just introduced me to Pelican.)&lt;/p&gt;
 &lt;div class="section" id="set-up-pelican"&gt;
-&lt;h2&gt;&lt;a class="toc-backref" href="#id1"&gt;Set up Pelican&lt;/a&gt;&lt;/h2&gt;
+&lt;h2&gt;&lt;a class="toc-backref" href="#toc-entry-1"&gt;Set up Pelican&lt;/a&gt;&lt;/h2&gt;
 &lt;p&gt;(Since I dislike writing my own descriptions:)&lt;/p&gt;
 &lt;blockquote&gt;
 “Pelican is a static site generator, written in &lt;a class="reference external" href="http://www.python.org/"&gt;Python&lt;/a&gt;, that requires no
 database or server-side logic.”&lt;/blockquote&gt;
 &lt;p&gt;Cool! Sounds real simple to use! And it was. Mostly.&lt;/p&gt;
 &lt;p&gt;I pretty much followed the &lt;a class="reference external" href="http://docs.getpelican.com/en/3.4.0/quickstart.html"&gt;quickstart&lt;/a&gt;:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;mkdir -p blog/blog &lt;span class="c1"&gt;# The first blog is to store other repos, etc.&lt;/span&gt;
-&lt;span class="nb"&gt;cd&lt;/span&gt; blog/blog
-git init &lt;span class="o"&gt;&amp;amp;&amp;amp;&lt;/span&gt; git checkout -b &lt;span class="nb"&gt;source&lt;/span&gt; &lt;span class="c1"&gt;# Explained later on.&lt;/span&gt;
-brew install pandoc &lt;span class="c1"&gt;# If you're not on Mac you'll need to do something else.&lt;/span&gt;
-mkvirtualenv blog
-pip install pelican markdown Fabric ghp_import feedparser
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;mkdir&lt;span class="w"&gt; &lt;/span&gt;-p&lt;span class="w"&gt; &lt;/span&gt;blog/blog&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="c1"&gt;# The first blog is to store other repos, etc.&lt;/span&gt;
+&lt;span class="nb"&gt;cd&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;blog/blog
+git&lt;span class="w"&gt; &lt;/span&gt;init&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;&amp;amp;&amp;amp;&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;git&lt;span class="w"&gt; &lt;/span&gt;checkout&lt;span class="w"&gt; &lt;/span&gt;-b&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nb"&gt;source&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="c1"&gt;# Explained later on.&lt;/span&gt;
+brew&lt;span class="w"&gt; &lt;/span&gt;install&lt;span class="w"&gt; &lt;/span&gt;pandoc&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="c1"&gt;# If you're not on Mac you'll need to do something else.&lt;/span&gt;
+mkvirtualenv&lt;span class="w"&gt; &lt;/span&gt;blog
+pip&lt;span class="w"&gt; &lt;/span&gt;install&lt;span class="w"&gt; &lt;/span&gt;pelican&lt;span class="w"&gt; &lt;/span&gt;markdown&lt;span class="w"&gt; &lt;/span&gt;Fabric&lt;span class="w"&gt; &lt;/span&gt;ghp_import&lt;span class="w"&gt; &lt;/span&gt;feedparser
 pelican-quickstart
 &lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;I’ll let you read the rest of the quickstart guide, but it was super quick to
@@ -140,13 +140,13 @@ good information!) I, of course, had no content…but wait I did, it was just
 in Blogger!&lt;/p&gt;
 &lt;/div&gt;
 &lt;div class="section" id="importing-content-from-blogger"&gt;
-&lt;h2&gt;&lt;a class="toc-backref" href="#id2"&gt;Importing Content from Blogger&lt;/a&gt;&lt;/h2&gt;
+&lt;h2&gt;&lt;a class="toc-backref" href="#toc-entry-2"&gt;Importing Content from Blogger&lt;/a&gt;&lt;/h2&gt;
 &lt;p&gt;Pelican does not directly support importing from Blogger (&lt;em&gt;Edit: Seems someone
 just put up a `pull request`_ to support Blogger natively!&lt;/em&gt;), but it supports
 &lt;a class="reference external" href="http://docs.getpelican.com/en/3.4.0/importer.html"&gt;importing from a &lt;span class="caps"&gt;RSS&lt;/span&gt; feed&lt;/a&gt;. The first time I did this it missed a couple of
 articles (which I didn’t notice right away), so make sure you bump up the max
 amount in the &lt;span class="caps"&gt;URL&lt;/span&gt; like so (this also outputs in the folder “content”):&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;pelican-import --feed http://clokep.blogspot.com/feeds/posts/default&lt;span class="se"&gt;\?&lt;/span&gt;alt&lt;span class="se"&gt;\=&lt;/span&gt;rss&lt;span class="se"&gt;\&amp;amp;&lt;/span&gt;max-results&lt;span class="se"&gt;\=&lt;/span&gt;&lt;span class="m"&gt;240&lt;/span&gt; -o content
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;pelican-import&lt;span class="w"&gt; &lt;/span&gt;--feed&lt;span class="w"&gt; &lt;/span&gt;http://clokep.blogspot.com/feeds/posts/default&lt;span class="se"&gt;\?&lt;/span&gt;alt&lt;span class="se"&gt;\=&lt;/span&gt;rss&lt;span class="se"&gt;\&amp;amp;&lt;/span&gt;max-results&lt;span class="se"&gt;\=&lt;/span&gt;&lt;span class="m"&gt;240&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;-o&lt;span class="w"&gt; &lt;/span&gt;content
 &lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;No import is ever perfect and I had to clean up a bunch of stuff by hand including:&lt;/p&gt;
 &lt;ul class="simple"&gt;
@@ -163,7 +163,7 @@ but now I feel that I have a portable set of all of my blog posts, which I’m
 pretty happy about!&lt;/p&gt;
 &lt;/div&gt;
 &lt;div class="section" id="customizing-pelican"&gt;
-&lt;h2&gt;&lt;a class="toc-backref" href="#id3"&gt;Customizing Pelican&lt;/a&gt;&lt;/h2&gt;
+&lt;h2&gt;&lt;a class="toc-backref" href="#toc-entry-3"&gt;Customizing Pelican&lt;/a&gt;&lt;/h2&gt;
 &lt;p&gt;I tried a few different themes for Pelican, but eventually settled on just using
 and modifying the default theme. I, frankly, haven’t tried it on too many
 different systems, so hopefully it doesn’t totally break on small screen sizes
