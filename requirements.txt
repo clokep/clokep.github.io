@@ -1,13 +1,13 @@
 # For the extract_toc and share_post extensions.
-beautifulsoup4==4.11.1
-invoke==1.7.3
+beautifulsoup4==4.12.3
+invoke==2.2.0
 ghp_import==2.1.0
 
 # Need to install Markdown explicitly so articles written in Markdown get rendered by Pelican.
-Markdown==3.4.1
+Markdown==3.5.2
 
 # Pelican itself.
-pelican==4.8.0
+pelican==4.9.1
 Pillow==10.2.0
 typogrify==2.0.7
 
@@ -15,7 +15,7 @@ typogrify==2.0.7
 pelican-youtube==0.2.1
 
 # Generates image thumbnails.
-pelican-thumbnailer==1.0.0
+pelican-thumbnailer==1.0.2
 
 # Generates links to share a post.
-pelican-share-post==1.0.0
+pelican-share-post==1.1.0
