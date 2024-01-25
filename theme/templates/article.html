@@ -47,25 +47,22 @@
           {# Share links. #}
           {% if article.share_post and article.status != 'draft' %}
           <a href="{{ article.share_post['mastodon'] }}" target="_blank" class="ml-1 mr-1" title="Share on Mastodon">
-            <span class="fab fa-mastodon"></span>
+            <span class="bi-mastodon"></span>
           </a>
           <a href="{{ article.share_post['twitter'] }}" target="_blank" class="ml-1 mr-1" title="Share on Twitter">
-            <span class="fab fa-twitter"></span>
-          </a>
-          <a href="{{ article.share_post['hacker-news'] }}" target="_blank" class="ml-1 mr-1" title="Share on Hacker News">
-            <span class="fab fa-hacker-news"></span>
+            <span class="bi-twitter"></span>
           </a>
           <a href="{{ article.share_post['reddit'] }}" target="_blank" class="ml-1 mr-1" title="Share on Reddit">
-            <span class="fab fa-reddit"></span>
+            <span class="bi-reddit"></span>
           </a>
           <a href="{{ article.share_post['facebook'] }}" target="_blank" class="ml-1 mr-1" title="Share on Facebook">
-            <span class="fab fa-facebook"></span>
+            <span class="bi-facebook"></span>
           </a>
           <a href="{{ article.share_post['linkedin'] }}" target="_blank" class="ml-1 mr-1" title="Share on LinkedIn">
-            <span class="fab fa-linkedin"></span>
+            <span class="bi-linkedin"></span>
           </a>
           <a href="{{ article.share_post['email'] }}" target="_blank" class="ml-1 mr-1" title="Share via Email">
-            <span class="fas fa-envelope"></span>
+            <span class="bi-envelope"></span>
           </a>
           {% endif %}
         </div>

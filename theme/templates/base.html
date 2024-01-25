@@ -19,8 +19,8 @@
     <link rel="stylesheet" href="/theme/css/borland.css">
     <link rel="stylesheet" href="/theme/css/youtube.css">
 
-    <!-- Font Awesome -->
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
 
     <title>{% block title %}{{ SITENAME }}{%endblock%}</title>
 
@@ -75,7 +75,7 @@
               {% for name, link, icon in SOCIAL %}
               <a class="dropdown-item" href="{{ link }}" target="_blank">
                 {% if icon %}
-                  <span class="fab fa-{{ icon }} mr-1"></span>
+                  <span class="bi-{{ icon }} mr-1"></span>
                 {% else %}
                   <span class="pl-3 mr-2"></span>
                 {% endif %}
@@ -121,7 +121,7 @@
       <a href="https://getpelican.com/" class="nav-item" target="_blank">Powered by Pelican</a>
       {% if GITHUB_URL %}
       <a href="{{ GITHUB_URL }}" class="nav-item" target="_blank">
-        Source available on GitHub <span class="fab fa-github"></span>
+        Source available on GitHub <span class="bi-github"></span>
       </a>
       {% endif %}
     </nav>
