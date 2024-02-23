@@ -1,5 +1,182 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>Patrick Cloke</title><link href="https://patrick.cloke.us/" rel="alternate"></link><link href="https://patrick.cloke.us/feeds/atom.xml" rel="self"></link><id>https://patrick.cloke.us/</id><updated>2023-12-15T15:41:00-05:00</updated><entry><title>Matrix Intentional Mentions explained</title><link href="https://patrick.cloke.us/posts/2023/12/15/matrix-intentional-mentions-explained/" rel="alternate"></link><published>2023-12-15T15:41:00-05:00</published><updated>2023-12-15T15:41:00-05:00</updated><author><name>Patrick Cloke</name></author><id>tag:patrick.cloke.us,2023-12-15:/posts/2023/12/15/matrix-intentional-mentions-explained/</id><summary type="html">&lt;p&gt;Previously I have written about how &lt;a class="reference external" href="https://patrick.cloke.us/posts/2023/05/08/matrix-push-rules-notifications/"&gt;push rules generate notifications&lt;/a&gt; and how
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Patrick Cloke</title><link href="https://patrick.cloke.us/" rel="alternate"></link><link href="https://patrick.cloke.us/feeds/atom.xml" rel="self"></link><id>https://patrick.cloke.us/</id><updated>2024-02-23T15:35:00-05:00</updated><entry><title>Synapse URL Previews</title><link href="https://patrick.cloke.us/posts/2024/02/23/synapse-url-previews/" rel="alternate"></link><published>2024-02-23T15:35:00-05:00</published><updated>2024-02-23T15:35:00-05:00</updated><author><name>Patrick Cloke</name></author><id>tag:patrick.cloke.us,2024-02-23:/posts/2024/02/23/synapse-url-previews/</id><summary type="html">&lt;p&gt;Matrix includes the ability for a client to request that the server
+&lt;a class="reference external" href="https://spec.matrix.org/v1.8/client-server-api/#get_matrixmediav3preview_url"&gt;generate a &amp;#8220;preview&amp;#8221; for a &lt;span class="caps"&gt;URL&lt;/span&gt;&lt;/a&gt;. The client provides a &lt;span class="caps"&gt;URL&lt;/span&gt; to the server which
+returns &lt;a class="reference external" href="https://ogp.me/"&gt;Open Graph&lt;/a&gt; data as a &lt;span class="caps"&gt;JSON&lt;/span&gt; response. This leaks any URLs detected in
+the message content to the server, but protects the …&lt;/p&gt;</summary><content type="html">&lt;p&gt;Matrix includes the ability for a client to request that the server
+&lt;a class="reference external" href="https://spec.matrix.org/v1.8/client-server-api/#get_matrixmediav3preview_url"&gt;generate a &amp;#8220;preview&amp;#8221; for a &lt;span class="caps"&gt;URL&lt;/span&gt;&lt;/a&gt;. The client provides a &lt;span class="caps"&gt;URL&lt;/span&gt; to the server which
+returns &lt;a class="reference external" href="https://ogp.me/"&gt;Open Graph&lt;/a&gt; data as a &lt;span class="caps"&gt;JSON&lt;/span&gt; response. This leaks any URLs detected in
+the message content to the server, but protects the end user&amp;#8217;s &lt;span class="caps"&gt;IP&lt;/span&gt; address, etc.
+from the &lt;span class="caps"&gt;URL&lt;/span&gt; being previewed. &lt;a class="footnote-reference" href="#footnote-1" id="footnote-reference-1"&gt;[1]&lt;/a&gt; (Note that clients generally disable &lt;span class="caps"&gt;URL&lt;/span&gt; previews
+for encrypted rooms, but it can be&amp;nbsp;enabled.)&lt;/p&gt;
+&lt;div class="section" id="improvements"&gt;
+&lt;h2&gt;Improvements&lt;/h2&gt;
+&lt;p&gt;Synapse implements the &lt;span class="caps"&gt;URL&lt;/span&gt; preview endpoint, but it was a bit neglected. I was
+one of the few main developers running with &lt;span class="caps"&gt;URL&lt;/span&gt; previews enabled and sunk a bit of
+time into improving &lt;span class="caps"&gt;URL&lt;/span&gt; previews for my on sake. Some highlights of the improvements
+made include (in addition to lots and lots of&amp;nbsp;refactoring):&lt;/p&gt;
+&lt;ul class="simple"&gt;
+&lt;li&gt;Support &lt;a class="reference external" href="https://oembed.com/"&gt;oEmbed&lt;/a&gt; for &lt;span class="caps"&gt;URL&lt;/span&gt; previews:
+&lt;a class="reference external" href="https://github.com/matrix-org/synapse/pull/7920"&gt;#7920&lt;/a&gt;,
+&lt;a class="reference external" href="https://github.com/matrix-org/synapse/pull/10714"&gt;#10714&lt;/a&gt;,
+&lt;a class="reference external" href="https://github.com/matrix-org/synapse/pull/10759"&gt;#10759&lt;/a&gt;,
+&lt;a class="reference external" href="https://github.com/matrix-org/synapse/pull/10814"&gt;#10814&lt;/a&gt;,
+&lt;a class="reference external" href="https://github.com/matrix-org/synapse/pull/10819"&gt;#10819&lt;/a&gt;,
+&lt;a class="reference external" href="https://github.com/matrix-org/synapse/pull/10822"&gt;#10822&lt;/a&gt;,
+&lt;a class="reference external" href="https://github.com/matrix-org/synapse/pull/11065"&gt;#11065&lt;/a&gt;,
+&lt;a class="reference external" href="https://github.com/matrix-org/synapse/pull/11669"&gt;#11669&lt;/a&gt; (combine with &lt;span class="caps"&gt;HTML&lt;/span&gt; results),
+&lt;a class="reference external" href="https://github.com/matrix-org/synapse/pull/14089"&gt;#14089&lt;/a&gt;,
+&lt;a class="reference external" href="https://github.com/matrix-org/synapse/pull/14781"&gt;#14781&lt;/a&gt;.&lt;/li&gt;
+&lt;li&gt;Reduction of 500 errors:
+&lt;a class="reference external" href="https://github.com/matrix-org/synapse/pull/8883"&gt;#8883&lt;/a&gt; (empty media),
+&lt;a class="reference external" href="https://github.com/matrix-org/synapse/pull/9333"&gt;#9333&lt;/a&gt; (unable to parse),
+&lt;a class="reference external" href="https://github.com/matrix-org/synapse/pull/11061"&gt;#11061&lt;/a&gt; (oEmbed&amp;nbsp;errors).&lt;/li&gt;
+&lt;li&gt;Improved support for document encodings:
+&lt;a class="reference external" href="https://github.com/matrix-org/synapse/pull/9164"&gt;#9164&lt;/a&gt;,
+&lt;a class="reference external" href="https://github.com/matrix-org/synapse/pull/9333"&gt;#9333&lt;/a&gt;,
+&lt;a class="reference external" href="https://github.com/matrix-org/synapse/pull/11077"&gt;#11077&lt;/a&gt;,
+&lt;a class="reference external" href="https://github.com/matrix-org/synapse/pull/11089"&gt;#11089&lt;/a&gt;.&lt;/li&gt;
+&lt;li&gt;Support previewing &lt;span class="caps"&gt;XML&lt;/span&gt; documents (&lt;a class="reference external" href="https://github.com/matrix-org/synapse/pull/11196"&gt;#11196&lt;/a&gt;)
+and &lt;tt class="docutils literal"&gt;data:&lt;/tt&gt; URIs (&lt;a class="reference external" href="https://github.com/matrix-org/synapse/pull/11767"&gt;#11767&lt;/a&gt;).&lt;/li&gt;
+&lt;li&gt;Return partial information if images or oEmbed can&amp;#8217;t be fetched:
+&lt;a class="reference external" href="https://github.com/matrix-org/synapse/pull/12950"&gt;#12950&lt;/a&gt;,
+&lt;a class="reference external" href="https://github.com/matrix-org/synapse/pull/15092"&gt;#15092&lt;/a&gt;.&lt;/li&gt;
+&lt;li&gt;Skipping empty Open Graph (&lt;tt class="docutils literal"&gt;og&lt;/tt&gt;) or &lt;tt class="docutils literal"&gt;meta&lt;/tt&gt; tags:
+&lt;a class="reference external" href="https://github.com/matrix-org/synapse/pull/12951"&gt;#12951&lt;/a&gt;.&lt;/li&gt;
+&lt;li&gt;Support previewing from &lt;a class="reference external" href="https://developer.twitter.com/en/docs/twitter-for-websites/cards/guides/getting-started"&gt;Twitter card information&lt;/a&gt;:
+&lt;a class="reference external" href="https://github.com/matrix-org/synapse/pull/13056"&gt;#13056&lt;/a&gt;.&lt;/li&gt;
+&lt;li&gt;Fallback to favicon if no images found:
+&lt;a class="reference external" href="https://github.com/matrix-org/synapse/pull/12951"&gt;#12951&lt;/a&gt;.&lt;/li&gt;
+&lt;li&gt;Ignore navgiation tags: &lt;a class="reference external" href="https://github.com/matrix-org/synapse/pull/12951"&gt;#12951&lt;/a&gt;.&lt;/li&gt;
+&lt;li&gt;Document how Synapse &lt;a class="reference external" href="https://github.com/matrix-org/synapse/blob/be65a8ec0195955c15fdb179c9158b187638e39a/synapse/media/url_previewer.py#L101-L154"&gt;generates &lt;span class="caps"&gt;URL&lt;/span&gt; previews&lt;/a&gt;:
+&lt;a class="reference external" href="https://github.com/matrix-org/synapse/pull/10753"&gt;#10753&lt;/a&gt;,
+&lt;a class="reference external" href="https://github.com/matrix-org/synapse/pull/13261"&gt;#13261&lt;/a&gt;.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;I also helped review many changes by&amp;nbsp;others:&lt;/p&gt;
+&lt;ul class="simple"&gt;
+&lt;li&gt;Improved support for encodings: &lt;a class="reference external" href="https://github.com/matrix-org/synapse/pull/10410"&gt;#10410&lt;/a&gt;.&lt;/li&gt;
+&lt;li&gt;Safer content-type support: &lt;a class="reference external" href="https://github.com/matrix-org/synapse/pull/11936"&gt;#11936&lt;/a&gt;.&lt;/li&gt;
+&lt;li&gt;Attempts to fix Twitter previews: &lt;a class="reference external" href="https://github.com/matrix-org/synapse/pull/11985"&gt;#11985&lt;/a&gt;.&lt;/li&gt;
+&lt;li&gt;Remove useless elements from previews: &lt;a class="reference external" href="https://github.com/matrix-org/synapse/pull/12887"&gt;#12887&lt;/a&gt;.&lt;/li&gt;
+&lt;li&gt;Avoid crashes due to unbounded recursion:
+&lt;a class="reference external" href="https://github.com/matrix-org/synapse/security/advisories/GHSA-22p3-qrh9-cx32"&gt;&lt;span class="caps"&gt;GHSA&lt;/span&gt;-22p3-qrh9-cx32&lt;/a&gt;.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;And also fixed some security&amp;nbsp;issues:&lt;/p&gt;
+&lt;ul class="simple"&gt;
+&lt;li&gt;Apply &lt;tt class="docutils literal"&gt;url_preview_url_blacklist&lt;/tt&gt; to oEmbed and pre-cached images:
+&lt;a class="reference external" href="https://github.com/matrix-org/synapse/pull/15601"&gt;#15601&lt;/a&gt;.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+&lt;div class="section" id="results"&gt;
+&lt;h2&gt;Results&lt;/h2&gt;
+&lt;p&gt;Overall, there was an improved result (from my point of view). A summary of some
+of the improvements. I tested 26 URLs (based on ones that had previously been
+reported or found to give issues). See the table below for testing at a few versions.
+The error reason was also broken out into whether JavaScript was required or some
+other error occurred. &lt;a class="footnote-reference" href="#footnote-2" id="footnote-reference-2"&gt;[2]&lt;/a&gt;&lt;/p&gt;
+&lt;table border="1" class="docutils"&gt;
+&lt;colgroup&gt;
+&lt;col width="9%" /&gt;
+&lt;col width="14%" /&gt;
+&lt;col width="20%" /&gt;
+&lt;col width="28%" /&gt;
+&lt;col width="29%" /&gt;
+&lt;/colgroup&gt;
+&lt;thead valign="bottom"&gt;
+&lt;tr&gt;&lt;th class="head"&gt;Version&lt;/th&gt;
+&lt;th class="head"&gt;Release date&lt;/th&gt;
+&lt;th class="head"&gt;Successful preview&lt;/th&gt;
+&lt;th class="head"&gt;JavaScript required error&lt;/th&gt;
+&lt;th class="head"&gt;Found image &lt;span class="amp"&gt;&amp;amp;&lt;/span&gt; description?&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody valign="top"&gt;
+&lt;tr&gt;&lt;td&gt;1.0.0&lt;/td&gt;
+&lt;td&gt;2019-06-11&lt;/td&gt;
+&lt;td&gt;15&lt;/td&gt;
+&lt;td&gt;4&lt;/td&gt;
+&lt;td&gt;14&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;1.12.0&lt;/td&gt;
+&lt;td&gt;2020-03-23&lt;/td&gt;
+&lt;td&gt;18&lt;/td&gt;
+&lt;td&gt;4&lt;/td&gt;
+&lt;td&gt;17&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;1.24.0&lt;/td&gt;
+&lt;td&gt;2020-12-09&lt;/td&gt;
+&lt;td&gt;20&lt;/td&gt;
+&lt;td&gt;1&lt;/td&gt;
+&lt;td&gt;16&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;1.36.0&lt;/td&gt;
+&lt;td&gt;2021-06-15&lt;/td&gt;
+&lt;td&gt;20&lt;/td&gt;
+&lt;td&gt;1&lt;/td&gt;
+&lt;td&gt;16&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;1.48.0&lt;/td&gt;
+&lt;td&gt;2021-11-30&lt;/td&gt;
+&lt;td&gt;20&lt;/td&gt;
+&lt;td&gt;1&lt;/td&gt;
+&lt;td&gt;11&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;1.60.0&lt;/td&gt;
+&lt;td&gt;2022-05-31&lt;/td&gt;
+&lt;td&gt;21&lt;/td&gt;
+&lt;td&gt;0&lt;/td&gt;
+&lt;td&gt;21&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;1.72.0&lt;/td&gt;
+&lt;td&gt;2022-11-22&lt;/td&gt;
+&lt;td&gt;22&lt;/td&gt;
+&lt;td&gt;0&lt;/td&gt;
+&lt;td&gt;21&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;1.84.0&lt;/td&gt;
+&lt;td&gt;2023-05-23&lt;/td&gt;
+&lt;td&gt;22&lt;/td&gt;
+&lt;td&gt;0&lt;/td&gt;
+&lt;td&gt;21&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;/div&gt;
+&lt;div class="section" id="future-improvements"&gt;
+&lt;h2&gt;Future&amp;nbsp;improvements&lt;/h2&gt;
+&lt;p&gt;I am no longer working on Synapse, but some of the ideas I had for additional improvements&amp;nbsp;included:&lt;/p&gt;
+&lt;ul class="simple"&gt;
+&lt;li&gt;Use &lt;a class="reference external" href="https://www.crummy.com/software/BeautifulSoup/"&gt;BeautifulSoup&lt;/a&gt; instead of a custom parser to handle some edge cases in &lt;span class="caps"&gt;HTML&lt;/span&gt;
+documents better (&lt;span class="caps"&gt;WIP&lt;/span&gt; &amp;#64; &lt;a class="reference external" href="https://github.com/matrix-org/synapse/tree/clokep/bs4"&gt;&lt;tt class="docutils literal"&gt;clokep/bs4&lt;/tt&gt;&lt;/a&gt;).&lt;/li&gt;
+&lt;li&gt;Always request both oEmbed and &lt;span class="caps"&gt;HTML&lt;/span&gt; (&lt;span class="caps"&gt;WIP&lt;/span&gt; &amp;#64; &lt;a class="reference external" href="https://github.com/matrix-org/synapse/tree/clokep/oembed-and-html"&gt;&lt;tt class="docutils literal"&gt;&lt;span class="pre"&gt;clokep/oembed-and-html&lt;/span&gt;&lt;/tt&gt;&lt;/a&gt;).&lt;/li&gt;
+&lt;li&gt;Structured data support (&lt;a class="reference external" href="https://json-ld.org/"&gt;&lt;span class="caps"&gt;JSON&lt;/span&gt;-&lt;span class="caps"&gt;LD&lt;/span&gt;&lt;/a&gt;, &lt;a class="reference external" href="https://html.spec.whatwg.org/multipage/"&gt;Microdata&lt;/a&gt;, &lt;a class="reference external" href="https://rdfa.info/"&gt;RDFa&lt;/a&gt;) (&lt;a class="reference external" href="https://github.com/matrix-org/synapse/issues/11540"&gt;#11540&lt;/a&gt;).&lt;/li&gt;
+&lt;li&gt;Some minimal JavaScript support (&lt;a class="reference external" href="https://github.com/matrix-org/synapse/issues/14118"&gt;#14118&lt;/a&gt;).&lt;/li&gt;
+&lt;li&gt;Fixing any of the other issues with particular URLs (see this &lt;a class="reference external" href="https://github.com/matrix-org/synapse/issues?q=is%3Aissue+is%3Aopen+sort%3Aupdated-desc+label%3AA-URL-Preview+"&gt;GitHub search&lt;/a&gt;).&lt;/li&gt;
+&lt;li&gt;Thumbnailing of &lt;span class="caps"&gt;SVG&lt;/span&gt; images (which sites tend to use for favicons) (&lt;a class="reference external" href="https://github.com/matrix-org/synapse/issues/1309"&gt;#1309&lt;/a&gt;).&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;There&amp;#8217;s also a ton more that could be done here if you wanted, e.g. handling more
+data types (text and &lt;span class="caps"&gt;PDF&lt;/span&gt; are the ones I have frequently come across that would be
+helpful to preview). I&amp;#8217;m sure there are also many other URLs that don&amp;#8217;t work right
+now for some reason. Hopefully the &lt;span class="caps"&gt;URL&lt;/span&gt; preview code continues to&amp;nbsp;improve!&lt;/p&gt;
+&lt;table class="docutils footnote" frame="void" id="footnote-1" rules="none"&gt;
+&lt;colgroup&gt;&lt;col class="label" /&gt;&lt;col /&gt;&lt;/colgroup&gt;
+&lt;tbody valign="top"&gt;
+&lt;tr&gt;&lt;td class="label"&gt;&lt;a class="fn-backref" href="#footnote-reference-1"&gt;[1]&lt;/a&gt;&lt;/td&gt;&lt;td&gt;See some &lt;a class="reference external" href="https://github.com/matrix-org/matrix-spec/blob/main/attic/drafts/url_previews.md"&gt;ancient documentation&lt;/a&gt; on the tradeoffs and design of &lt;span class="caps"&gt;URL&lt;/span&gt; previews.
+&lt;a class="reference external" href="https://github.com/matrix-org/matrix-spec-proposals/pull/4095"&gt;&lt;span class="caps"&gt;MSC4095&lt;/span&gt;&lt;/a&gt; was recently written to bundle the &lt;span class="caps"&gt;URL&lt;/span&gt; preview information into
+evens.&lt;/td&gt;&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;table class="docutils footnote" frame="void" id="footnote-2" rules="none"&gt;
+&lt;colgroup&gt;&lt;col class="label" /&gt;&lt;col /&gt;&lt;/colgroup&gt;
+&lt;tbody valign="top"&gt;
+&lt;tr&gt;&lt;td class="label"&gt;&lt;a class="fn-backref" href="#footnote-reference-2"&gt;[2]&lt;/a&gt;&lt;/td&gt;&lt;td&gt;This was done by instantiating different Synapse versions via Docker and
+asking them to preview URLs. (See &lt;a class="reference external" href="https://github.com/clokep/test-matrix-url-previews/tree/e0e20154ec348fc25d203546ddede0c881b9772a/docker"&gt;the code&lt;/a&gt;.) This is not a super realistic
+test since it assumes that URLs are static over time. In particular some
+sites (e.g. Twitter) like to change what they allow you to access without
+being authenticated.&lt;/td&gt;&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;/div&gt;
+</content><category term="articles"></category><category term="matrix"></category></entry><entry><title>Matrix Intentional Mentions explained</title><link href="https://patrick.cloke.us/posts/2023/12/15/matrix-intentional-mentions-explained/" rel="alternate"></link><published>2023-12-15T15:41:00-05:00</published><updated>2023-12-15T15:41:00-05:00</updated><author><name>Patrick Cloke</name></author><id>tag:patrick.cloke.us,2023-12-15:/posts/2023/12/15/matrix-intentional-mentions-explained/</id><summary type="html">&lt;p&gt;Previously I have written about how &lt;a class="reference external" href="https://patrick.cloke.us/posts/2023/05/08/matrix-push-rules-notifications/"&gt;push rules generate notifications&lt;/a&gt; and how
 &lt;a class="reference external" href="https://patrick.cloke.us/posts/2023/01/05/matrix-read-receipts-and-notifications/"&gt;read receipts mark notificiations as read&lt;/a&gt; in the Matrix protocol. This article
 is about a change that I instigated to improve &lt;em&gt;when&lt;/em&gt; a &amp;#8220;mention&amp;#8221; (or &amp;#8220;ping&amp;#8221;)
 notification is created. (This is a &amp;#8220;highlight&amp;#8221; notification in the Matrix&amp;nbsp;specification …&lt;/p&gt;</summary><content type="html">&lt;p&gt;Previously I have written about how &lt;a class="reference external" href="https://patrick.cloke.us/posts/2023/05/08/matrix-push-rules-notifications/"&gt;push rules generate notifications&lt;/a&gt; and how
@@ -1449,201 +1626,4 @@ are any messages where the push rules resulted in an action of &lt;code&gt;notif
 &lt;p&gt;&lt;a href="https://spec.matrix.org/v1.3/client-server-api/#receiving-notifications"&gt;Spec on receiving notifications&lt;/a&gt;&amp;#160;&lt;a class="footnote-backref" href="#fnref:3" title="Jump back to footnote 3 in the text"&gt;&amp;#8617;&lt;/a&gt;&lt;/p&gt;
 &lt;/li&gt;
 &lt;/ol&gt;
-&lt;/div&gt;</content><category term="articles"></category><category term="matrix"></category><category term="notes"></category></entry><entry><title>Converting Twisted’s inlineCallbacks to async</title><link href="https://patrick.cloke.us/posts/2021/06/11/converting-twisteds-inlinecallbacks-to-async/" rel="alternate"></link><published>2021-06-11T15:11:00-04:00</published><updated>2021-06-11T15:11:00-04:00</updated><author><name>Patrick Cloke</name></author><id>tag:patrick.cloke.us,2021-06-11:/posts/2021/06/11/converting-twisteds-inlinecallbacks-to-async/</id><summary type="html">
-&lt;p&gt;Almost a year ago we had a push at Element to convert the remaining instances of
-Twisted’s &lt;a class="reference external" href="https://twistedmatrix.com/documents/21.2.0/api/twisted.internet.defer.html#inlineCallbacks"&gt;&lt;tt class="docutils literal"&gt;inlineCallbacks&lt;/tt&gt;&lt;/a&gt; to use native &lt;tt class="docutils literal"&gt;async&lt;/tt&gt;/&lt;tt class="docutils literal"&gt;await&lt;/tt&gt; syntax from Python &lt;a class="footnote-reference" href="#footnote-1" id="footnote-reference-1"&gt;[1]&lt;/a&gt;.
-Eventually this work got covered by &lt;a class="reference external" href="https://github.com/matrix-org/synapse/issues/7988"&gt;issue #7988&lt;/a&gt; (which is the original basis
-for this blogpost).&lt;/p&gt;
-&lt;p&gt;Note that Twisted itself &lt;a class="reference external" href="https://twistedmatrix.com/documents/21.2.0/core/howto/defer-intro.html#coroutines-with-async-await"&gt;gained some …&lt;/a&gt;&lt;/p&gt;</summary><content type="html">
-&lt;p&gt;Almost a year ago we had a push at Element to convert the remaining instances of
-Twisted’s &lt;a class="reference external" href="https://twistedmatrix.com/documents/21.2.0/api/twisted.internet.defer.html#inlineCallbacks"&gt;&lt;tt class="docutils literal"&gt;inlineCallbacks&lt;/tt&gt;&lt;/a&gt; to use native &lt;tt class="docutils literal"&gt;async&lt;/tt&gt;/&lt;tt class="docutils literal"&gt;await&lt;/tt&gt; syntax from Python &lt;a class="footnote-reference" href="#footnote-1" id="footnote-reference-1"&gt;[1]&lt;/a&gt;.
-Eventually this work got covered by &lt;a class="reference external" href="https://github.com/matrix-org/synapse/issues/7988"&gt;issue #7988&lt;/a&gt; (which is the original basis
-for this blogpost).&lt;/p&gt;
-&lt;p&gt;Note that Twisted itself &lt;a class="reference external" href="https://twistedmatrix.com/documents/21.2.0/core/howto/defer-intro.html#coroutines-with-async-await"&gt;gained some support&lt;/a&gt; for &lt;tt class="docutils literal"&gt;async&lt;/tt&gt; functions in 16.4.&lt;/p&gt;
-&lt;div class="section" id="why-bother"&gt;
-&lt;h2&gt;&lt;a class="toc-backref" href="#toc-entry-1"&gt;Why bother?&lt;/a&gt;&lt;/h2&gt;
-&lt;p&gt;&lt;tt class="docutils literal"&gt;inlineCallbacks&lt;/tt&gt; are very similar to &lt;tt class="docutils literal"&gt;async&lt;/tt&gt;/&lt;tt class="docutils literal"&gt;await&lt;/tt&gt;, they use a generator
-internally to wait for a task to complete and (modern &lt;a class="footnote-reference" href="#footnote-2" id="footnote-reference-2"&gt;[2]&lt;/a&gt;) versions of Twisted let
-you directly return values. There are some real benefits to switching though:&lt;/p&gt;
-&lt;ul class="simple"&gt;
-&lt;li&gt;&lt;tt class="docutils literal"&gt;inlineCallbacks&lt;/tt&gt; mangle stack traces, while &lt;tt class="docutils literal"&gt;async&lt;/tt&gt;/&lt;tt class="docutils literal"&gt;await&lt;/tt&gt; does not
-(as much). This helps with profiling and understanding exceptions (e.g. in Sentry).&lt;/li&gt;
-&lt;li&gt;&lt;tt class="docutils literal"&gt;async&lt;/tt&gt;/&lt;tt class="docutils literal"&gt;await&lt;/tt&gt; is more modern and standard — there’s a better chance of
-people understanding it who don’t haven’t used Twisted before.&lt;/li&gt;
-&lt;li&gt;&lt;tt class="docutils literal"&gt;async&lt;/tt&gt;/&lt;tt class="docutils literal"&gt;await&lt;/tt&gt; has better support from other packages, static analyzers,
-tools, etc.&lt;/li&gt;
-&lt;li&gt;&lt;tt class="docutils literal"&gt;async&lt;/tt&gt; functions can provide better type hints for return values.&lt;/li&gt;
-&lt;li&gt;We postulated that there might be a performance benefit, but were never able
-to measure any.&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;In fact the &lt;a class="reference external" href="https://twistedmatrix.com/documents/21.2.0/core/howto/defer-intro.html#inline-callbacks-using-yield"&gt;Twisted documentation&lt;/a&gt; (as of v21.2.0) even suggest some of the above:&lt;/p&gt;
-&lt;blockquote&gt;
-Unless your code supports Python 2 (and therefore needs compatibility with older
-versions of Twisted), writing coroutines with the functionality described in
-“Coroutines with async/await” is preferred over &lt;tt class="docutils literal"&gt;inlineCallbacks&lt;/tt&gt;. Coroutines
-are supported by dedicated Python syntax, are compatible with &lt;tt class="docutils literal"&gt;asyncio&lt;/tt&gt;, and
-provide higher performance.&lt;/blockquote&gt;
-&lt;/div&gt;
-&lt;div class="section" id="example"&gt;
-&lt;h2&gt;&lt;a class="toc-backref" href="#toc-entry-2"&gt;Example&lt;/a&gt;&lt;/h2&gt;
-&lt;p&gt;As an example, consider this function from the &lt;a class="reference external" href="https://twistedmatrix.com/documents/21.2.0/core/howto/defer-intro.html#inline-callbacks-using-yield"&gt;Twisted documentation&lt;/a&gt;:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;twisted.internet.defer&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;Deferred&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;inlineCallbacks&lt;/span&gt;
-
-&lt;span class="nd"&gt;@inlineCallbacks&lt;/span&gt;
-&lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;makeRequest&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;method&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="nb"&gt;str&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;url&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="nb"&gt;str&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
-    &lt;span class="c1"&gt;# ... do some HTTP stuff ...&lt;/span&gt;
-    &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="n"&gt;response&lt;/span&gt;
-
-&lt;span class="nd"&gt;@inlineCallbacks&lt;/span&gt;
-&lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;getUsers&lt;/span&gt;&lt;span class="p"&gt;():&lt;/span&gt;
-    &lt;span class="n"&gt;responseBody&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="k"&gt;yield&lt;/span&gt; &lt;span class="n"&gt;makeRequest&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;"GET"&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s2"&gt;"/users"&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
-    &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="n"&gt;json&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;loads&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;responseBody&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
-
-&lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;main&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;reactor&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
-  &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="n"&gt;getUsers&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
-&lt;/pre&gt;&lt;/div&gt;
-&lt;p&gt;This could be rewritten to a bit more of modern:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="k"&gt;async&lt;/span&gt; &lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;makeRequest&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;method&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="nb"&gt;str&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;url&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="nb"&gt;str&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="o"&gt;-&amp;gt;&lt;/span&gt; &lt;span class="nb"&gt;str&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
-    &lt;span class="c1"&gt;# ... do some HTTP stuff ...&lt;/span&gt;
-    &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="n"&gt;response&lt;/span&gt;
-
-&lt;span class="k"&gt;async&lt;/span&gt; &lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;getUsers&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt; &lt;span class="o"&gt;-&amp;gt;&lt;/span&gt; &lt;span class="nb"&gt;dict&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
-    &lt;span class="n"&gt;responseBody&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="k"&gt;await&lt;/span&gt; &lt;span class="n"&gt;makeRequest&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;"GET"&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s2"&gt;"/users"&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
-    &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="n"&gt;json&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;loads&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;responseBody&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
-
-&lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;main&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;reactor&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
-  &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="n"&gt;defer&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;ensureDeferred&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;getUsers&lt;/span&gt;&lt;span class="p"&gt;())&lt;/span&gt;
-&lt;/pre&gt;&lt;/div&gt;
-&lt;p&gt;Not too big of a difference, but definitely a bit nicer. In particular, note:&lt;/p&gt;
-&lt;ul class="simple"&gt;
-&lt;li&gt;There’s no decorator, so tools like mypy know what &lt;tt class="docutils literal"&gt;getUsers&lt;/tt&gt; actually returns.&lt;/li&gt;
-&lt;li&gt;&lt;tt class="docutils literal"&gt;main&lt;/tt&gt; now includes a call to &lt;a class="reference external" href="https://twistedmatrix.com/documents/21.2.0/api/twisted.internet.defer.html#ensureDeferred"&gt;&lt;tt class="docutils literal"&gt;defer.ensureDeferred&lt;/tt&gt;&lt;/a&gt; to transition back to
-something that Twisted understands. &lt;a class="footnote-reference" href="#footnote-3" id="footnote-reference-3"&gt;[3]&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/div&gt;
-&lt;div class="section" id="rules-for-conversion"&gt;
-&lt;h2&gt;&lt;a class="toc-backref" href="#toc-entry-3"&gt;Rules for conversion&lt;/a&gt;&lt;/h2&gt;
-&lt;p&gt;The result of calling an &lt;tt class="docutils literal"&gt;async&lt;/tt&gt; function is an &lt;tt class="docutils literal"&gt;Awaitable&lt;/tt&gt;, the result of
-calling an &lt;tt class="docutils literal"&gt;inlineCallbacks&lt;/tt&gt; function is a &lt;tt class="docutils literal"&gt;Deferred&lt;/tt&gt;. &lt;tt class="docutils literal"&gt;async&lt;/tt&gt; functions
-use &lt;tt class="docutils literal"&gt;await&lt;/tt&gt; internally to wait for another &lt;tt class="docutils literal"&gt;Awaitable&lt;/tt&gt;, &lt;tt class="docutils literal"&gt;inlineCallbacks&lt;/tt&gt;
-use &lt;tt class="docutils literal"&gt;yield&lt;/tt&gt; internally to wait for another &lt;tt class="docutils literal"&gt;Deferred&lt;/tt&gt;.&lt;/p&gt;
-&lt;p&gt;This results in the following rules:&lt;/p&gt;
-&lt;ul class="simple"&gt;
-&lt;li&gt;You can &lt;tt class="docutils literal"&gt;await&lt;/tt&gt; a &lt;tt class="docutils literal"&gt;Deferred&lt;/tt&gt; (since it is also an &lt;tt class="docutils literal"&gt;Awaitable&lt;/tt&gt;).&lt;/li&gt;
-&lt;li&gt;You cannot &lt;tt class="docutils literal"&gt;yield&lt;/tt&gt; an &lt;tt class="docutils literal"&gt;Awaitable&lt;/tt&gt;.&lt;/li&gt;
-&lt;li&gt;You can convert an &lt;tt class="docutils literal"&gt;Awaitable&lt;/tt&gt; into a &lt;tt class="docutils literal"&gt;Deferred&lt;/tt&gt; via &lt;tt class="docutils literal"&gt;defer.ensureDeferred&lt;/tt&gt;.&lt;/li&gt;
-&lt;li&gt;Calling &lt;tt class="docutils literal"&gt;await&lt;/tt&gt; on a non-&lt;tt class="docutils literal"&gt;Awaitable&lt;/tt&gt; is a runtime error (though note that
-you can &lt;tt class="docutils literal"&gt;yield&lt;/tt&gt; on a non-&lt;tt class="docutils literal"&gt;Deferred&lt;/tt&gt; and it just immediately continues).&lt;/li&gt;
-&lt;li&gt;Twisted APIs still expect &lt;tt class="docutils literal"&gt;Deferreds&lt;/tt&gt;.&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;To convert a single function this turns out to be pretty simple:&lt;/p&gt;
-&lt;table border="1" class="docutils"&gt;
-&lt;colgroup&gt;
-&lt;col width="30%"/&gt;
-&lt;col width="54%"/&gt;
-&lt;col width="16%"/&gt;
-&lt;/colgroup&gt;
-&lt;thead valign="bottom"&gt;
-&lt;tr&gt;&lt;th class="head"&gt;What&lt;/th&gt;
-&lt;th class="head"&gt;Twised&lt;/th&gt;
-&lt;th class="head"&gt;asyncio&lt;/th&gt;
-&lt;/tr&gt;
-&lt;/thead&gt;
-&lt;tbody valign="top"&gt;
-&lt;tr&gt;&lt;td&gt;Function definition&lt;/td&gt;
-&lt;td&gt;&lt;tt class="docutils literal"&gt;@defer.inlineCallbacks&lt;/tt&gt; decorator&lt;/td&gt;
-&lt;td&gt;&lt;tt class="docutils literal"&gt;async&lt;/tt&gt;&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;&lt;td&gt;Wait for result&lt;/td&gt;
-&lt;td&gt;&lt;tt class="docutils literal"&gt;yield&lt;/tt&gt;&lt;/td&gt;
-&lt;td&gt;&lt;tt class="docutils literal"&gt;await&lt;/tt&gt;&lt;/td&gt;
-&lt;/tr&gt;
-&lt;/tbody&gt;
-&lt;/table&gt;
-&lt;/div&gt;
-&lt;div class="section" id="methodology-for-conversion"&gt;
-&lt;h2&gt;&lt;a class="toc-backref" href="#toc-entry-4"&gt;Methodology for conversion&lt;/a&gt;&lt;/h2&gt;
-&lt;p&gt;The difficult comes when you have a large codebase that you want to convert from
-&lt;tt class="docutils literal"&gt;defer.inlineCallbacks&lt;/tt&gt; to &lt;tt class="docutils literal"&gt;async&lt;/tt&gt;/&lt;tt class="docutils literal"&gt;await&lt;/tt&gt;. Below is how I approached this
-for the Synapse code:&lt;/p&gt;
-&lt;p&gt;Since you can &lt;tt class="docutils literal"&gt;await&lt;/tt&gt; a &lt;tt class="docutils literal"&gt;Deferred&lt;/tt&gt; the easiest way to do this is to start at
-the outer layers and work inward. By doing this you end up with &lt;tt class="docutils literal"&gt;async&lt;/tt&gt;
-functions which call into code which return a &lt;tt class="docutils literal"&gt;Deferred&lt;/tt&gt;, but this is fine.&lt;/p&gt;
-&lt;p&gt;For Synapse we converted things via:&lt;/p&gt;
-&lt;ol class="arabic simple"&gt;
-&lt;li&gt;The &lt;span class="caps"&gt;REST&lt;/span&gt; layer.&lt;/li&gt;
-&lt;li&gt;The handler layer.&lt;/li&gt;
-&lt;li&gt;The database layer.&lt;/li&gt;
-&lt;/ol&gt;
-&lt;p&gt;In order to avoid doing an entire layer at once it is ideal to start with the
-modules which are called into the least (and preferably only via a higher layer).
-If there are other callers which have not yet been converted, the call-site is
-modified to wrap the returned &lt;tt class="docutils literal"&gt;Awaitable&lt;/tt&gt; with &lt;tt class="docutils literal"&gt;defer.ensureDeferred&lt;/tt&gt;. Additionally,
-this is used whenever a Twisted &lt;span class="caps"&gt;API&lt;/span&gt; expects a &lt;tt class="docutils literal"&gt;Deferred&lt;/tt&gt;.&lt;/p&gt;
-&lt;p&gt;The &lt;span class="caps"&gt;REST&lt;/span&gt; layer in Synapse is built on &lt;tt class="docutils literal"&gt;twisted.web&lt;/tt&gt; and needed some extra magic,
-see &lt;a class="reference external" href="https://github.com/matrix-org/synapse/blob/4b965c862dc66c0da5d3240add70e9b5f0aa720b/synapse/http/server.py#L228-L309"&gt;&lt;tt class="docutils literal"&gt;_AsyncResource&lt;/tt&gt;&lt;/a&gt; and sub-classes, in particular it:&lt;/p&gt;
-&lt;ol class="arabic simple"&gt;
-&lt;li&gt;Overrides the &lt;tt class="docutils literal"&gt;render&lt;/tt&gt; method (which is a Twisted &lt;span class="caps"&gt;API&lt;/span&gt; from &lt;tt class="docutils literal"&gt;IResource&lt;/tt&gt;).&lt;ol class="arabic"&gt;
-&lt;li&gt;Calls the async function with &lt;tt class="docutils literal"&gt;defer.ensureDeferred&lt;/tt&gt; to ensure it gets
-scheduled with the reactor.&lt;/li&gt;
-&lt;li&gt;Returns &lt;tt class="docutils literal"&gt;NOT_DONE_YET&lt;/tt&gt; so that Twisted doesn’t close the connection.&lt;/li&gt;
-&lt;/ol&gt;
-&lt;/li&gt;
-&lt;li&gt;It then searches for a method called &lt;tt class="docutils literal"&gt;_async_render_&amp;lt;&lt;span class="caps"&gt;HTTP&lt;/span&gt; &lt;span class="caps"&gt;METHOD&lt;/span&gt;&amp;gt;&lt;/tt&gt; and calls
-it with the &lt;tt class="docutils literal"&gt;Request&lt;/tt&gt; object.&lt;/li&gt;
-&lt;li&gt;If the result is an &lt;tt class="docutils literal"&gt;Awaitable&lt;/tt&gt; it calls &lt;tt class="docutils literal"&gt;await&lt;/tt&gt; to get the “real” result.&lt;/li&gt;
-&lt;li&gt;Finally it sends the response using Twisted APIs.&lt;/li&gt;
-&lt;/ol&gt;
-&lt;/div&gt;
-&lt;div class="section" id="other-thoughts"&gt;
-&lt;h2&gt;&lt;a class="toc-backref" href="#toc-entry-5"&gt;Other thoughts&lt;/a&gt;&lt;/h2&gt;
-&lt;p&gt;The Synapse code had many places which were undecorated functions which called
-return a &lt;tt class="docutils literal"&gt;Deferred&lt;/tt&gt; via calling something else. While doing this conversion we
-updated these functions to be &lt;tt class="docutils literal"&gt;async&lt;/tt&gt; and then internally &lt;tt class="docutils literal"&gt;await&lt;/tt&gt; the called
-function, for clarity. (Originally this was done for performance, but the overhead
-should be minimal when using &lt;tt class="docutils literal"&gt;async&lt;/tt&gt;/&lt;tt class="docutils literal"&gt;await&lt;/tt&gt;.)&lt;/p&gt;
-&lt;p&gt;This also involved updating the tests to match the type as well (i.e. if a
-function was made &lt;tt class="docutils literal"&gt;async&lt;/tt&gt; and we mock that function somewhere, the mock should
-also be &lt;tt class="docutils literal"&gt;async&lt;/tt&gt;).&lt;/p&gt;
-&lt;p&gt;While doing this we also fixed up some of the type hints of return values since
-mypy will actually check them once you remove the &lt;tt class="docutils literal"&gt;defer.inlineCallbacks&lt;/tt&gt; decorator.&lt;/p&gt;
-&lt;/div&gt;
-&lt;div class="section" id="measuring-progress"&gt;
-&lt;h2&gt;&lt;a class="toc-backref" href="#toc-entry-6"&gt;Measuring progress&lt;/a&gt;&lt;/h2&gt;
-&lt;p&gt;As part of this I threw together an “&lt;a class="reference external" href="https://patrick.cloke.us/areweasyncyet/"&gt;Are We Async Yet?&lt;/a&gt;” site. It is pretty
-basic, but tracks the amount of code using &lt;tt class="docutils literal"&gt;defer.inlineCallbacks&lt;/tt&gt; vs. &lt;tt class="docutils literal"&gt;async&lt;/tt&gt;.
-As a side-effect you can see how the code has grown over time (with a few instances
-of major shrinking). &lt;a class="footnote-reference" href="#footnote-4" id="footnote-reference-4"&gt;[4]&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;And last, but not least, I definitely did not convert all of Synapse myself! It
-was done incrementally by the entire team over years! My coworkers mostly laid
-the groundwork and I did much of the mechanical changes. And…we’re still not
-&lt;em&gt;quite&lt;/em&gt; done, although the remaining places heavily interact with Twisted APIs
-or manually generate a &lt;tt class="docutils literal"&gt;Deferred&lt;/tt&gt; and use &lt;tt class="docutils literal"&gt;addCallback&lt;/tt&gt; (so they’re not
-straightforward to convert).&lt;/p&gt;
-&lt;table class="docutils footnote" frame="void" id="footnote-1" rules="none"&gt;
-&lt;colgroup&gt;&lt;col class="label"/&gt;&lt;col/&gt;&lt;/colgroup&gt;
-&lt;tbody valign="top"&gt;
-&lt;tr&gt;&lt;td class="label"&gt;&lt;a class="fn-backref" href="#footnote-reference-1"&gt;[1]&lt;/a&gt;&lt;/td&gt;&lt;td&gt;Added in Python 3.5 via &lt;a class="reference external" href="https://www.python.org/dev/peps/pep-0492/"&gt;&lt;span class="caps"&gt;PEP&lt;/span&gt; 492&lt;/a&gt;.&lt;/td&gt;&lt;/tr&gt;
-&lt;/tbody&gt;
-&lt;/table&gt;
-&lt;table class="docutils footnote" frame="void" id="footnote-2" rules="none"&gt;
-&lt;colgroup&gt;&lt;col class="label"/&gt;&lt;col/&gt;&lt;/colgroup&gt;
-&lt;tbody valign="top"&gt;
-&lt;tr&gt;&lt;td class="label"&gt;&lt;a class="fn-backref" href="#footnote-reference-2"&gt;[2]&lt;/a&gt;&lt;/td&gt;&lt;td&gt;Newer than version 15.0 according to the &lt;a class="reference external" href="https://twistedmatrix.com/documents/21.2.0/core/howto/defer-intro.html#inline-callbacks-using-yield"&gt;Twisted documentation&lt;/a&gt;.&lt;/td&gt;&lt;/tr&gt;
-&lt;/tbody&gt;
-&lt;/table&gt;
-&lt;table class="docutils footnote" frame="void" id="footnote-3" rules="none"&gt;
-&lt;colgroup&gt;&lt;col class="label"/&gt;&lt;col/&gt;&lt;/colgroup&gt;
-&lt;tbody valign="top"&gt;
-&lt;tr&gt;&lt;td class="label"&gt;&lt;a class="fn-backref" href="#footnote-reference-3"&gt;[3]&lt;/a&gt;&lt;/td&gt;&lt;td&gt;The &lt;a class="reference external" href="https://twistedmatrix.com/documents/21.2.0/core/howto/defer-intro.html#coroutines-with-async-await"&gt;documentation for async/await&lt;/a&gt; suggests using &lt;a class="reference external" href="https://twistedmatrix.com/documents/21.2.0/api/twisted.internet.defer.Deferred.html#fromCoroutine"&gt;&lt;tt class="docutils literal"&gt;Deferred.fromCoroutine&lt;/tt&gt;&lt;/a&gt;
-instead, but that is new in Twisted v21.2.0.&lt;/td&gt;&lt;/tr&gt;
-&lt;/tbody&gt;
-&lt;/table&gt;
-&lt;table class="docutils footnote" frame="void" id="footnote-4" rules="none"&gt;
-&lt;colgroup&gt;&lt;col class="label"/&gt;&lt;col/&gt;&lt;/colgroup&gt;
-&lt;tbody valign="top"&gt;
-&lt;tr&gt;&lt;td class="label"&gt;&lt;a class="fn-backref" href="#footnote-reference-4"&gt;[4]&lt;/a&gt;&lt;/td&gt;&lt;td&gt;You can &lt;a class="reference external" href="https://github.com/clokep/areweasyncyet"&gt;find the code on GitHub&lt;/a&gt;.&lt;/td&gt;&lt;/tr&gt;
-&lt;/tbody&gt;
-&lt;/table&gt;
-&lt;/div&gt;
-</content><category term="articles"></category><category term="twisted"></category></entry></feed>
+&lt;/div&gt;</content><category term="articles"></category><category term="matrix"></category><category term="notes"></category></entry></feed>

@@ -1,0 +1,373 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Feed configuration. -->
+    <link href="https://patrick.cloke.us/feeds/atom.xml" type="application/atom+xml" rel="alternate" title="Patrick Cloke Atom Feed" />
+    <link href="https://patrick.cloke.us/feeds/rss.xml" type="application/rss+xml" rel="alternate" title="Patrick Cloke RSS Feed" />
+
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
+    <link rel="stylesheet" href="/theme/css/styles.css">
+    <link rel="stylesheet" href="/theme/css/borland.css">
+    <link rel="stylesheet" href="/theme/css/youtube.css">
+
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+
+    <title>Synapse URL Previews</title>
+
+    <meta property="og:site_name" content="Patrick Cloke" />
+<meta property="og:title" content="Synapse URL Previews" />
+<meta property="og:url" content="https://patrick.cloke.us/posts/2024/02/23/synapse-url-previews/" />
+<meta property="og:description" content="Matrix includes the ability for a client to request that the server generate a “preview” for a URL. The client provides a URL to the server which returns Open Graph data as a JSON response. This leaks any URLs detected in the message content to the server, but protects the …" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2024-02-23T15:35:00-05:00" />
+<meta property="article:author" content="Patrick Cloke" />
+<meta property="article:tag" content="matrix" />
+
+    <script async defer data-domain="cloke.us" src="https://plausible.io/js/plausible.js"></script>
+  </head>
+
+  <body class="pb-5">
+    <nav class="navbar navbar-expand-lg sticky-top navbar-light bg-light border-bottom border-info">
+      <a class="navbar-brand" href="/">
+        Patrick Cloke
+      </a>
+
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-items" aria-controls="navbar-items" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <span class="collapse navbar-collapse" id="navbar-items">
+        <ul class="navbar-nav ml-auto">
+
+          <li class="nav-item">
+            <a class="nav-link" href="/pages/about.html">About</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/pages/projects.html">Projects</a>
+          </li>
+
+          <li class="nav-item">
+            <a class="nav-link" href="/archives.html">Archives</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/tags.html">Tags</a>
+          </li>
+
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="social-dropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              Social
+            </a>
+
+            <span class="dropdown-menu dropdown-menu-right" aria-labelledby="social-dropdown">
+              <a class="dropdown-item" href="https://mastodon.social/@clokep" target="_blank">
+                  <span class="bi-mastodon mr-1"></span>
+                mastodon
+              </a>
+              <a class="dropdown-item" href="https://www.twitter.com/clokep" target="_blank">
+                  <span class="bi-twitter mr-1"></span>
+                twitter
+              </a>
+              <a class="dropdown-item" href="https://matrix.to/#/@clokep:matrix.org" target="_blank">
+                  <span class="pl-3 mr-2"></span>
+                matrix
+              </a>
+              <a class="dropdown-item" href="https://github.com/clokep" target="_blank">
+                  <span class="bi-github mr-1"></span>
+                github
+              </a>
+              <a class="dropdown-item" href="https://gitlab.com/clokep" target="_blank">
+                  <span class="bi-gitlab mr-1"></span>
+                gitlab
+              </a>
+              <a class="dropdown-item" href="https://www.linkedin.com/in/patrickcloke/" target="_blank">
+                  <span class="bi-linkedin mr-1"></span>
+                linkedin
+              </a>
+            </span>
+          </li>
+
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="feeds-dropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              Feeds
+            </a>
+
+            <span class="dropdown-menu dropdown-menu-right" aria-labelledby="feeds-dropdown">
+              <a class="dropdown-item" href="https://patrick.cloke.us/feeds/atom.xml" type="application/atom+xml" rel="alternate">atom feed</a>
+              <a class="dropdown-item" href="https://patrick.cloke.us/feeds/rss.xml" type="application/rss+xml" rel="alternate">rss feed</a>
+            </span>
+          </li>
+
+          <form class="form-inline" method="get" action="http://www.google.com/search">
+            <input class="form-control form-control-sm mr-sm-2" type="search" name="q" placeholder="Search" aria-label="Search" />
+            <input type="hidden"  name="sitesearch" value="patrick.cloke.us" />
+
+            <button class="btn btn-sm btn-outline-info d-none d-sm-inline" type="submit">Search</button>
+          </form>
+        </ul>
+      </div>
+    </nav>
+
+<div class="container">
+  <div class="row">
+    <div class="col-md-12 mt-2 mb-2">
+      <h1>
+        <a href="/posts/2024/02/23/synapse-url-previews/" rel="bookmark"
+           title="Permalink to Synapse URL Previews">Synapse <span class="caps">URL</span>&nbsp;Previews</a>
+      </h1>
+
+      <div class="row">
+        <div class="col-sm">
+          <span class="text-secondary font-weight-light font-italic">Published on Friday, February 23, 2024</span>
+
+          <br>
+          <span class="text-secondary font-weight-light font-italic">
+            Tags:               <a href="/tag/matrix.html">matrix</a>          </span>
+        </div>
+
+        <div class="col-sm text-right">
+          <a href="https://toot.kytta.dev/?text=Synapse%20URL%C2%A0Previews%0D%0Ahttps%3A//patrick.cloke.us/posts/2024/02/23/synapse-url-previews/%0D%0A%23matrix" target="_blank" class="ml-1 mr-1" title="Share on Mastodon">
+            <span class="bi-mastodon"></span>
+          </a>
+          <a href="https://twitter.com/intent/tweet?text=Synapse%20URL%C2%A0Previews&url=https%3A//patrick.cloke.us/posts/2024/02/23/synapse-url-previews/&hashtags=matrix" target="_blank" class="ml-1 mr-1" title="Share on Twitter">
+            <span class="bi-twitter"></span>
+          </a>
+          <a href="https://www.reddit.com/submit?url=https%3A//patrick.cloke.us/posts/2024/02/23/synapse-url-previews/&title=Synapse%20URL%C2%A0Previews" target="_blank" class="ml-1 mr-1" title="Share on Reddit">
+            <span class="bi-reddit"></span>
+          </a>
+          <a href="https://www.facebook.com/sharer/sharer.php?u=https%3A//patrick.cloke.us/posts/2024/02/23/synapse-url-previews/" target="_blank" class="ml-1 mr-1" title="Share on Facebook">
+            <span class="bi-facebook"></span>
+          </a>
+          <a href="https://www.linkedin.com/shareArticle?mini=true&url=https%3A//patrick.cloke.us/posts/2024/02/23/synapse-url-previews/&title=Synapse%20URL%C2%A0Previews&summary=Matrix%20includes%20the%20ability%20for%20a%20client%20to%20request%20that%20the%20server%0Agenerate%20a%20%E2%80%9Cpreview%E2%80%9D%20for%20a%20URL.%20The%20client%20provides%20a%20URL%20to%20the%20server%20which%0Areturns%20Open%20Graph%20data%20as%20a%20JSON%20response.%20This%20leaks%20any%20URLs%20detected%20in%0Athe%20message%20content%20to%20the%20server%2C%20but%20protects%20the%20%E2%80%A6&source=https%3A//patrick.cloke.us/posts/2024/02/23/synapse-url-previews/" target="_blank" class="ml-1 mr-1" title="Share on LinkedIn">
+            <span class="bi-linkedin"></span>
+          </a>
+          <a href="mailto:?subject=Synapse%20URL%C2%A0Previews&amp;body=https%3A//patrick.cloke.us/posts/2024/02/23/synapse-url-previews/" target="_blank" class="ml-1 mr-1" title="Share via Email">
+            <span class="bi-envelope"></span>
+          </a>
+        </div>
+      </div>
+
+      <hr>
+
+      <div>
+
+        <p>Matrix includes the ability for a client to request that the server
+<a class="reference external" href="https://spec.matrix.org/v1.8/client-server-api/#get_matrixmediav3preview_url">generate a &#8220;preview&#8221; for a <span class="caps">URL</span></a>. The client provides a <span class="caps">URL</span> to the server which
+returns <a class="reference external" href="https://ogp.me/">Open Graph</a> data as a <span class="caps">JSON</span> response. This leaks any URLs detected in
+the message content to the server, but protects the end user&#8217;s <span class="caps">IP</span> address, etc.
+from the <span class="caps">URL</span> being previewed. <a class="footnote-reference" href="#footnote-1" id="footnote-reference-1">[1]</a> (Note that clients generally disable <span class="caps">URL</span> previews
+for encrypted rooms, but it can be&nbsp;enabled.)</p>
+<div class="section" id="improvements">
+<h2>Improvements</h2>
+<p>Synapse implements the <span class="caps">URL</span> preview endpoint, but it was a bit neglected. I was
+one of the few main developers running with <span class="caps">URL</span> previews enabled and sunk a bit of
+time into improving <span class="caps">URL</span> previews for my on sake. Some highlights of the improvements
+made include (in addition to lots and lots of&nbsp;refactoring):</p>
+<ul class="simple">
+<li>Support <a class="reference external" href="https://oembed.com/">oEmbed</a> for <span class="caps">URL</span> previews:
+<a class="reference external" href="https://github.com/matrix-org/synapse/pull/7920">#7920</a>,
+<a class="reference external" href="https://github.com/matrix-org/synapse/pull/10714">#10714</a>,
+<a class="reference external" href="https://github.com/matrix-org/synapse/pull/10759">#10759</a>,
+<a class="reference external" href="https://github.com/matrix-org/synapse/pull/10814">#10814</a>,
+<a class="reference external" href="https://github.com/matrix-org/synapse/pull/10819">#10819</a>,
+<a class="reference external" href="https://github.com/matrix-org/synapse/pull/10822">#10822</a>,
+<a class="reference external" href="https://github.com/matrix-org/synapse/pull/11065">#11065</a>,
+<a class="reference external" href="https://github.com/matrix-org/synapse/pull/11669">#11669</a> (combine with <span class="caps">HTML</span> results),
+<a class="reference external" href="https://github.com/matrix-org/synapse/pull/14089">#14089</a>,
+<a class="reference external" href="https://github.com/matrix-org/synapse/pull/14781">#14781</a>.</li>
+<li>Reduction of 500 errors:
+<a class="reference external" href="https://github.com/matrix-org/synapse/pull/8883">#8883</a> (empty media),
+<a class="reference external" href="https://github.com/matrix-org/synapse/pull/9333">#9333</a> (unable to parse),
+<a class="reference external" href="https://github.com/matrix-org/synapse/pull/11061">#11061</a> (oEmbed&nbsp;errors).</li>
+<li>Improved support for document encodings:
+<a class="reference external" href="https://github.com/matrix-org/synapse/pull/9164">#9164</a>,
+<a class="reference external" href="https://github.com/matrix-org/synapse/pull/9333">#9333</a>,
+<a class="reference external" href="https://github.com/matrix-org/synapse/pull/11077">#11077</a>,
+<a class="reference external" href="https://github.com/matrix-org/synapse/pull/11089">#11089</a>.</li>
+<li>Support previewing <span class="caps">XML</span> documents (<a class="reference external" href="https://github.com/matrix-org/synapse/pull/11196">#11196</a>)
+and <tt class="docutils literal">data:</tt> URIs (<a class="reference external" href="https://github.com/matrix-org/synapse/pull/11767">#11767</a>).</li>
+<li>Return partial information if images or oEmbed can&#8217;t be fetched:
+<a class="reference external" href="https://github.com/matrix-org/synapse/pull/12950">#12950</a>,
+<a class="reference external" href="https://github.com/matrix-org/synapse/pull/15092">#15092</a>.</li>
+<li>Skipping empty Open Graph (<tt class="docutils literal">og</tt>) or <tt class="docutils literal">meta</tt> tags:
+<a class="reference external" href="https://github.com/matrix-org/synapse/pull/12951">#12951</a>.</li>
+<li>Support previewing from <a class="reference external" href="https://developer.twitter.com/en/docs/twitter-for-websites/cards/guides/getting-started">Twitter card information</a>:
+<a class="reference external" href="https://github.com/matrix-org/synapse/pull/13056">#13056</a>.</li>
+<li>Fallback to favicon if no images found:
+<a class="reference external" href="https://github.com/matrix-org/synapse/pull/12951">#12951</a>.</li>
+<li>Ignore navgiation tags: <a class="reference external" href="https://github.com/matrix-org/synapse/pull/12951">#12951</a>.</li>
+<li>Document how Synapse <a class="reference external" href="https://github.com/matrix-org/synapse/blob/be65a8ec0195955c15fdb179c9158b187638e39a/synapse/media/url_previewer.py#L101-L154">generates <span class="caps">URL</span> previews</a>:
+<a class="reference external" href="https://github.com/matrix-org/synapse/pull/10753">#10753</a>,
+<a class="reference external" href="https://github.com/matrix-org/synapse/pull/13261">#13261</a>.</li>
+</ul>
+<p>I also helped review many changes by&nbsp;others:</p>
+<ul class="simple">
+<li>Improved support for encodings: <a class="reference external" href="https://github.com/matrix-org/synapse/pull/10410">#10410</a>.</li>
+<li>Safer content-type support: <a class="reference external" href="https://github.com/matrix-org/synapse/pull/11936">#11936</a>.</li>
+<li>Attempts to fix Twitter previews: <a class="reference external" href="https://github.com/matrix-org/synapse/pull/11985">#11985</a>.</li>
+<li>Remove useless elements from previews: <a class="reference external" href="https://github.com/matrix-org/synapse/pull/12887">#12887</a>.</li>
+<li>Avoid crashes due to unbounded recursion:
+<a class="reference external" href="https://github.com/matrix-org/synapse/security/advisories/GHSA-22p3-qrh9-cx32"><span class="caps">GHSA</span>-22p3-qrh9-cx32</a>.</li>
+</ul>
+<p>And also fixed some security&nbsp;issues:</p>
+<ul class="simple">
+<li>Apply <tt class="docutils literal">url_preview_url_blacklist</tt> to oEmbed and pre-cached images:
+<a class="reference external" href="https://github.com/matrix-org/synapse/pull/15601">#15601</a>.</li>
+</ul>
+</div>
+<div class="section" id="results">
+<h2>Results</h2>
+<p>Overall, there was an improved result (from my point of view). A summary of some
+of the improvements. I tested 26 URLs (based on ones that had previously been
+reported or found to give issues). See the table below for testing at a few versions.
+The error reason was also broken out into whether JavaScript was required or some
+other error occurred. <a class="footnote-reference" href="#footnote-2" id="footnote-reference-2">[2]</a></p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="9%" />
+<col width="14%" />
+<col width="20%" />
+<col width="28%" />
+<col width="29%" />
+</colgroup>
+<thead valign="bottom">
+<tr><th class="head">Version</th>
+<th class="head">Release date</th>
+<th class="head">Successful preview</th>
+<th class="head">JavaScript required error</th>
+<th class="head">Found image <span class="amp">&amp;</span> description?</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr><td>1.0.0</td>
+<td>2019-06-11</td>
+<td>15</td>
+<td>4</td>
+<td>14</td>
+</tr>
+<tr><td>1.12.0</td>
+<td>2020-03-23</td>
+<td>18</td>
+<td>4</td>
+<td>17</td>
+</tr>
+<tr><td>1.24.0</td>
+<td>2020-12-09</td>
+<td>20</td>
+<td>1</td>
+<td>16</td>
+</tr>
+<tr><td>1.36.0</td>
+<td>2021-06-15</td>
+<td>20</td>
+<td>1</td>
+<td>16</td>
+</tr>
+<tr><td>1.48.0</td>
+<td>2021-11-30</td>
+<td>20</td>
+<td>1</td>
+<td>11</td>
+</tr>
+<tr><td>1.60.0</td>
+<td>2022-05-31</td>
+<td>21</td>
+<td>0</td>
+<td>21</td>
+</tr>
+<tr><td>1.72.0</td>
+<td>2022-11-22</td>
+<td>22</td>
+<td>0</td>
+<td>21</td>
+</tr>
+<tr><td>1.84.0</td>
+<td>2023-05-23</td>
+<td>22</td>
+<td>0</td>
+<td>21</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="future-improvements">
+<h2>Future&nbsp;improvements</h2>
+<p>I am no longer working on Synapse, but some of the ideas I had for additional improvements&nbsp;included:</p>
+<ul class="simple">
+<li>Use <a class="reference external" href="https://www.crummy.com/software/BeautifulSoup/">BeautifulSoup</a> instead of a custom parser to handle some edge cases in <span class="caps">HTML</span>
+documents better (<span class="caps">WIP</span> &#64; <a class="reference external" href="https://github.com/matrix-org/synapse/tree/clokep/bs4"><tt class="docutils literal">clokep/bs4</tt></a>).</li>
+<li>Always request both oEmbed and <span class="caps">HTML</span> (<span class="caps">WIP</span> &#64; <a class="reference external" href="https://github.com/matrix-org/synapse/tree/clokep/oembed-and-html"><tt class="docutils literal"><span class="pre">clokep/oembed-and-html</span></tt></a>).</li>
+<li>Structured data support (<a class="reference external" href="https://json-ld.org/"><span class="caps">JSON</span>-<span class="caps">LD</span></a>, <a class="reference external" href="https://html.spec.whatwg.org/multipage/">Microdata</a>, <a class="reference external" href="https://rdfa.info/">RDFa</a>) (<a class="reference external" href="https://github.com/matrix-org/synapse/issues/11540">#11540</a>).</li>
+<li>Some minimal JavaScript support (<a class="reference external" href="https://github.com/matrix-org/synapse/issues/14118">#14118</a>).</li>
+<li>Fixing any of the other issues with particular URLs (see this <a class="reference external" href="https://github.com/matrix-org/synapse/issues?q=is%3Aissue+is%3Aopen+sort%3Aupdated-desc+label%3AA-URL-Preview+">GitHub search</a>).</li>
+<li>Thumbnailing of <span class="caps">SVG</span> images (which sites tend to use for favicons) (<a class="reference external" href="https://github.com/matrix-org/synapse/issues/1309">#1309</a>).</li>
+</ul>
+<p>There&#8217;s also a ton more that could be done here if you wanted, e.g. handling more
+data types (text and <span class="caps">PDF</span> are the ones I have frequently come across that would be
+helpful to preview). I&#8217;m sure there are also many other URLs that don&#8217;t work right
+now for some reason. Hopefully the <span class="caps">URL</span> preview code continues to&nbsp;improve!</p>
+<table class="docutils footnote" frame="void" id="footnote-1" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label"><a class="fn-backref" href="#footnote-reference-1">[1]</a></td><td>See some <a class="reference external" href="https://github.com/matrix-org/matrix-spec/blob/main/attic/drafts/url_previews.md">ancient documentation</a> on the tradeoffs and design of <span class="caps">URL</span> previews.
+<a class="reference external" href="https://github.com/matrix-org/matrix-spec-proposals/pull/4095"><span class="caps">MSC4095</span></a> was recently written to bundle the <span class="caps">URL</span> preview information into
+evens.</td></tr>
+</tbody>
+</table>
+<table class="docutils footnote" frame="void" id="footnote-2" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label"><a class="fn-backref" href="#footnote-reference-2">[2]</a></td><td>This was done by instantiating different Synapse versions via Docker and
+asking them to preview URLs. (See <a class="reference external" href="https://github.com/clokep/test-matrix-url-previews/tree/e0e20154ec348fc25d203546ddede0c881b9772a/docker">the code</a>.) This is not a super realistic
+test since it assumes that URLs are static over time. In particular some
+sites (e.g. Twitter) like to change what they allow you to access without
+being authenticated.</td></tr>
+</tbody>
+</table>
+</div>
+
+      </div>
+
+<div id="disqus_thread"></div>
+<script>
+/**
+*  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+*  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/
+/*
+var disqus_config = function () {
+this.page.url = '/posts/2024/02/23/synapse-url-previews/';
+this.page.identifier = 'synapse-url-previews';
+};
+*/
+(function() { // DON'T EDIT BELOW THIS LINE
+var d = document, s = d.createElement('script');
+s.src = 'https://clokep.disqus.com/embed.js';
+s.setAttribute('data-timestamp', +new Date());
+(d.head || d.body).appendChild(s);
+})();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    </div>
+  </div>
+</div>
+
+    <nav class="navbar fixed-bottom navbar-light bg-light border-top border-info">
+      <a href="https://getpelican.com/" class="nav-item" target="_blank">Powered by Pelican</a>
+      <a href="https://github.com/clokep/clokep.github.io" class="nav-item" target="_blank">
+        Source available on GitHub <span class="bi-github"></span>
+      </a>
+    </nav>
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T" crossorigin="anonymous"></script>
+
+  </body>
+</html>
