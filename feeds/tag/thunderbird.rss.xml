@@ -1,5 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
-<rss version="2.0"><channel><title>Patrick Cloke - thunderbird</title><link>https://patrick.cloke.us/</link><description></description><lastBuildDate>Fri, 06 Oct 2023 07:55:00 -0400</lastBuildDate><item><title>Handling GitHub Notifications</title><link>https://patrick.cloke.us/posts/2023/10/06/handling-github-notifications/</link><description>&lt;div class="admonition note"&gt;
+<rss version="2.0"><channel><title>Patrick Cloke - thunderbird</title><link>https://patrick.cloke.us/</link><description></description><lastBuildDate>Fri, 23 Feb 2024 16:01:00 -0500</lastBuildDate><item><title>Joining the Matrix Spec Core Team</title><link>https://patrick.cloke.us/posts/2024/02/23/joining-the-matrix-spec-core-team/</link><description>&lt;p&gt;I was recently invited to join the Matrix &amp;#8220;Spec Core Team&amp;#8221;, the group who
+steward the Matrix protocol, from their &lt;a class="reference external" href="https://matrix.org/about/"&gt;own documentation&lt;/a&gt;:&lt;/p&gt;
+&lt;blockquote&gt;
+The contents and direction of the Matrix Spec is governed by the Spec Core Team;
+a set of experts from across the whole Matrix community, representing all aspects
+of the Matrix ecosystem. The Spec Core Team acts as a subcommittee of the Foundation.&lt;/blockquote&gt;
+&lt;p&gt;This was the &lt;a class="reference external" href="https://matrix.org/blog/2024/02/09/this-week-in-matrix-2024-02-09/#dept-of-status-of-matrix-face-with-th"&gt;announced a couple of weeks ago&lt;/a&gt; and I&amp;#8217;m just starting to get my feet
+wet! You can see an interview between myself, Tulir (another new member of the Spec
+Core Team), and Matthew (the Spec Core Team lead) in today&amp;#8217;s &lt;a class="reference external" href="https://matrix.org/blog/2024/02/23/this-week-in-matrix-2024-02-23/"&gt;This Week in Matrix&lt;/a&gt;.
+We cover a range of topics including &lt;a class="reference external" href="https://www.thunderbird.net/"&gt;Thunderbird&lt;/a&gt; (and &lt;a class="reference external" href="http://instantbird.com/"&gt;Instantbird&lt;/a&gt;), some
+improvements I hope to make and&amp;nbsp;more.&lt;/p&gt;
+&lt;div class="youtube youtube-16x9"&gt;&lt;iframe src="https://www.youtube-nocookie.com/embed/8vjjwxx7k1w" allowfullscreen seamless frameBorder="0"&gt;&lt;/iframe&gt;&lt;/div&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Patrick Cloke</dc:creator><pubDate>Fri, 23 Feb 2024 16:01:00 -0500</pubDate><guid isPermaLink="false">tag:patrick.cloke.us,2024-02-23:/posts/2024/02/23/joining-the-matrix-spec-core-team/</guid><category>articles</category><category>matrix</category><category>mozilla</category><category>thunderbird</category><category>instantbird</category></item><item><title>Handling GitHub Notifications</title><link>https://patrick.cloke.us/posts/2023/10/06/handling-github-notifications/</link><description>&lt;div class="admonition note"&gt;
 &lt;p class="first admonition-title"&gt;Note&lt;/p&gt;
 &lt;p class="last"&gt;This was originally written for some coworkers and assumes a mostly GitHub-based
 workflow. It has been lightly edited to be more readable, but if your organization

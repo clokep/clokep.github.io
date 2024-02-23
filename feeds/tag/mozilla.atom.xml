@@ -1,5 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>Patrick Cloke - mozilla</title><link href="https://patrick.cloke.us/" rel="alternate"></link><link href="https://patrick.cloke.us/feeds/tag/mozilla.atom.xml" rel="self"></link><id>https://patrick.cloke.us/</id><updated>2020-03-12T11:49:00-04:00</updated><entry><title>Matrix Live Interview</title><link href="https://patrick.cloke.us/posts/2020/03/12/matrix-live-interview/" rel="alternate"></link><published>2020-03-12T11:49:00-04:00</published><updated>2020-03-12T11:49:00-04:00</updated><author><name>Patrick Cloke</name></author><id>tag:patrick.cloke.us,2020-03-12:/posts/2020/03/12/matrix-live-interview/</id><summary type="html">&lt;p&gt;I was interviewed for Matrix Live as part of last week&amp;#8217;s &lt;a class="reference external" href="https://matrix.org/blog/2020/03/06/this-week-in-matrix-2020-03-06"&gt;This Week in Matrix&lt;/a&gt;.
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Patrick Cloke - mozilla</title><link href="https://patrick.cloke.us/" rel="alternate"></link><link href="https://patrick.cloke.us/feeds/tag/mozilla.atom.xml" rel="self"></link><id>https://patrick.cloke.us/</id><updated>2024-02-23T16:01:00-05:00</updated><entry><title>Joining the Matrix Spec Core Team</title><link href="https://patrick.cloke.us/posts/2024/02/23/joining-the-matrix-spec-core-team/" rel="alternate"></link><published>2024-02-23T16:01:00-05:00</published><updated>2024-02-23T16:01:00-05:00</updated><author><name>Patrick Cloke</name></author><id>tag:patrick.cloke.us,2024-02-23:/posts/2024/02/23/joining-the-matrix-spec-core-team/</id><summary type="html">&lt;p&gt;I was recently invited to join the Matrix &amp;#8220;Spec Core Team&amp;#8221;, the group who
+steward the Matrix protocol, from their &lt;a class="reference external" href="https://matrix.org/about/"&gt;own documentation&lt;/a&gt;:&lt;/p&gt;
+&lt;blockquote&gt;
+The contents and direction of the Matrix Spec is governed by the Spec Core Team;
+a set of experts from across the whole Matrix community, representing all aspects …&lt;/blockquote&gt;</summary><content type="html">&lt;p&gt;I was recently invited to join the Matrix &amp;#8220;Spec Core Team&amp;#8221;, the group who
+steward the Matrix protocol, from their &lt;a class="reference external" href="https://matrix.org/about/"&gt;own documentation&lt;/a&gt;:&lt;/p&gt;
+&lt;blockquote&gt;
+The contents and direction of the Matrix Spec is governed by the Spec Core Team;
+a set of experts from across the whole Matrix community, representing all aspects
+of the Matrix ecosystem. The Spec Core Team acts as a subcommittee of the Foundation.&lt;/blockquote&gt;
+&lt;p&gt;This was the &lt;a class="reference external" href="https://matrix.org/blog/2024/02/09/this-week-in-matrix-2024-02-09/#dept-of-status-of-matrix-face-with-th"&gt;announced a couple of weeks ago&lt;/a&gt; and I&amp;#8217;m just starting to get my feet
+wet! You can see an interview between myself, Tulir (another new member of the Spec
+Core Team), and Matthew (the Spec Core Team lead) in today&amp;#8217;s &lt;a class="reference external" href="https://matrix.org/blog/2024/02/23/this-week-in-matrix-2024-02-23/"&gt;This Week in Matrix&lt;/a&gt;.
+We cover a range of topics including &lt;a class="reference external" href="https://www.thunderbird.net/"&gt;Thunderbird&lt;/a&gt; (and &lt;a class="reference external" href="http://instantbird.com/"&gt;Instantbird&lt;/a&gt;), some
+improvements I hope to make and&amp;nbsp;more.&lt;/p&gt;
+&lt;div class="youtube youtube-16x9"&gt;&lt;iframe src="https://www.youtube-nocookie.com/embed/8vjjwxx7k1w" allowfullscreen seamless frameBorder="0"&gt;&lt;/iframe&gt;&lt;/div&gt;</content><category term="articles"></category><category term="matrix"></category><category term="mozilla"></category><category term="thunderbird"></category><category term="instantbird"></category></entry><entry><title>Matrix Live Interview</title><link href="https://patrick.cloke.us/posts/2020/03/12/matrix-live-interview/" rel="alternate"></link><published>2020-03-12T11:49:00-04:00</published><updated>2020-03-12T11:49:00-04:00</updated><author><name>Patrick Cloke</name></author><id>tag:patrick.cloke.us,2020-03-12:/posts/2020/03/12/matrix-live-interview/</id><summary type="html">&lt;p&gt;I was interviewed for Matrix Live as part of last week&amp;#8217;s &lt;a class="reference external" href="https://matrix.org/blog/2020/03/06/this-week-in-matrix-2020-03-06"&gt;This Week in Matrix&lt;/a&gt;.
 I talked a bit about my background and my experiences contributing to Mozilla
 (as part of Instantbird and Thunderbird projects) as well as what I will be
 working on for Synapse, the reference implementation …&lt;/p&gt;</summary><content type="html">&lt;p&gt;I was interviewed for Matrix Live as part of last week&amp;#8217;s &lt;a class="reference external" href="https://matrix.org/blog/2020/03/06/this-week-in-matrix-2020-03-06"&gt;This Week in Matrix&lt;/a&gt;.
@@ -792,76 +807,4 @@ accepted. (And that they&amp;#8217;re used to competing, e.g. homework and exams
 not collaborating!) I don&amp;#8217;t really know whether I feel the above
 situation is good or bad, but it&amp;#8217;s certainly an interesting effect from
 the way the GSoC process&amp;nbsp;works.&lt;/p&gt;
-</content><category term="articles"></category><category term="community"></category><category term="GSoC"></category><category term="Mozilla"></category></entry><entry><title>GSoC Lessons: Part 1: Application Period</title><link href="https://patrick.cloke.us/posts/2013/12/02/gsoc-lessons-part-1-application-period/" rel="alternate"></link><published>2013-12-02T20:55:00-05:00</published><updated>2013-12-02T20:55:00-05:00</updated><author><name>Patrick Cloke</name></author><id>tag:patrick.cloke.us,2013-12-02:/posts/2013/12/02/gsoc-lessons-part-1-application-period/</id><summary type="html">&lt;p&gt;I briefly talked about &lt;a class="reference external" href="https://patrick.cloke.us/posts/2013/10/20/google-summer-of-code-mentor-summit-2013/"&gt;my experiences&lt;/a&gt; at the Google Summer of Code
-2013 Mentor Summit. I&amp;#8217;ve been pretty remiss in sharing what was actually
-discussed there and for that I must apologize! This will hopefully be
-one of a few posts about what I learned and discussed at the …&lt;/p&gt;</summary><content type="html">&lt;p&gt;I briefly talked about &lt;a class="reference external" href="https://patrick.cloke.us/posts/2013/10/20/google-summer-of-code-mentor-summit-2013/"&gt;my experiences&lt;/a&gt; at the Google Summer of Code
-2013 Mentor Summit. I&amp;#8217;ve been pretty remiss in sharing what was actually
-discussed there and for that I must apologize! This will hopefully be
-one of a few posts about what I learned and discussed at the&amp;nbsp;Summit.&lt;/p&gt;
-&lt;p&gt;The first part I&amp;#8217;d like to talk about is the application period:
-welcoming students, requirements for student applications, etc. Much of
-what I say on here is just ideas I&amp;#8217;ve heard other organizations
-implement (with my personal opinion on them, please don&amp;#8217;t think this
-represents what Mozilla is suggesting students do, or even what I&amp;#8217;m
-suggesting Mozilla should ask students to&amp;nbsp;do!)&lt;/p&gt;
-&lt;p&gt;I had many separate conversations about what is required for an
-application to be accepted. It seems that Mozilla is actually on the
-side of one of the easier organizations to apply to. We don&amp;#8217;t (to my
-knowledge) require that students have contributed at all to the
-community beforehand. It is possible that some smaller communities
-inside of Mozilla require more than just an application, but there does
-not seem to be any rule across Mozilla. I said I wouldn&amp;#8217;t offer my
-opinion above&amp;#8230;but I lied: I think Mozilla should make it clearer to
-applicants what is expected of them before the&amp;nbsp;application.&lt;/p&gt;
-&lt;p&gt;There seem to be a variety of things different organizations &amp;#8220;require&amp;#8221;
-before accepting a student application, for&amp;nbsp;example:&lt;/p&gt;
-&lt;ul class="simple"&gt;
-&lt;li&gt;A patch / pull&amp;nbsp;request&lt;/li&gt;
-&lt;li&gt;&lt;span class="caps"&gt;IRC&lt;/span&gt; / email involvement /&amp;nbsp;idling&lt;/li&gt;
-&lt;li&gt;File a bug (I mean this in the &amp;#8220;Mozilla&amp;#8221; sense: an actual bug, a
-feature request,&amp;nbsp;etc.)&lt;/li&gt;
-&lt;li&gt;Fix a bug / make a&amp;nbsp;commit&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;I think all of these have pros and cons and making any a hard and fast
-rule would probably be a bad idea. Personally for Instantbird, we
-greatly encourage students to idle on &lt;span class="caps"&gt;IRC&lt;/span&gt; and get to know us; and to fix
-a minor bug or two or three. What I&amp;#8217;m always looking for is: use,
-passion, and&amp;nbsp;skill.&lt;/p&gt;
-&lt;p&gt;Asking for a &lt;strong&gt;patch / pull request&lt;/strong&gt; (I include these together since
-they really just depend on how an organization accepts changes) can be a
-bit intimidating for a new user. I think this can be a pretty rough
-thing to ask for new contributors that might not want to share their
-work publicly with a large group of people (on a mailing list, public
-bug tracker, etc.) where they might be wrong. Even after being part of
-the community, I find that GSoC students are often very unwilling to
-publicly share code unless it&amp;#8217;s &amp;#8220;perfect&amp;#8221;, but I digress. Anyway, if
-you&amp;#8217;re considering &amp;#8220;requiring&amp;#8221; this, I think it should be pretty clear
-that this changeset doesn&amp;#8217;t need to be &lt;em&gt;perfect&lt;/em&gt;, it just needs to show
-that the student is able to read code, understand a bug report, provide
-a fix and test&amp;nbsp;it.&lt;/p&gt;
-&lt;p&gt;I think it&amp;#8217;s perfect reasonable to ask students to &lt;strong&gt;idle on &lt;span class="caps"&gt;IRC&lt;/span&gt; and
-join mailing lists&lt;/strong&gt;. They should definitely be trying to understand the
-community before attempting to join it. It isn&amp;#8217;t just a matter of if the
-community thinks the student would be a good fit, but also the student
-must ensure they can fit into the&amp;nbsp;community.&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;Filing a bug&lt;/strong&gt; is a great way for a student to show a few different
-things: they&amp;#8217;ve used your software; they&amp;#8217;ve used your software enough to
-find a bug in it (and there most likely is one!); they&amp;#8217;re able to
-express themselves in a clear and concise matter. If you&amp;#8217;re lucky
-they&amp;#8217;ll find something that actually annoys them and fix it&amp;nbsp;themselves!&lt;/p&gt;
-&lt;p&gt;I have &lt;strong&gt;fix a bug&lt;/strong&gt; listed last. You might ask how this differs from
-submitting a patch&amp;#8230;and it does! Fixing a bug requires a patch to go
-through whatever review process your project uses, but builds upon just
-submitting a patch. My thoughts on this are pretty similar to just
-submitting a patch, but it depends on how large the bug&amp;nbsp;is.&lt;/p&gt;
-&lt;p&gt;Something I found interesting is that almost everyone I talked to
-didn&amp;#8217;t treat their GSoC students any differently than they would treat a
-new contributor to their project. They still had to prove they were
-worthy of commit access, etc. Is there anything else you ask of your
-students before they apply to GSoC? I&amp;#8217;d love to hear&amp;nbsp;it!&lt;/p&gt;
-&lt;p&gt;Some other topics I&amp;#8217;ll hopefully find some time to write about
-include: community lessons, and handling a failing student. The
-community one will be very not-GSoC focused and could apply to just
-trying to incorporate new contributors&amp;#8230;but I&amp;#8217;ll include it in this&amp;nbsp;series.&lt;/p&gt;
 </content><category term="articles"></category><category term="community"></category><category term="GSoC"></category><category term="Mozilla"></category></entry></feed>

@@ -1,5 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
-<rss version="2.0"><channel><title>Patrick Cloke - Instantbird</title><link>https://patrick.cloke.us/</link><description></description><lastBuildDate>Wed, 09 Sep 2020 17:10:00 -0400</lastBuildDate><item><title>Instantbird Blog: WordPress to Pelican</title><link>https://patrick.cloke.us/posts/2020/09/09/instantbird-blog-wordpress-to-pelican/</link><description>&lt;p&gt;The &lt;a class="reference external" href="https://blog.instantbird.org"&gt;Instantbird blog&lt;/a&gt; is now (as of mid-April 2020) hosted on GitHub Pages
+<rss version="2.0"><channel><title>Patrick Cloke - instantbird</title><link>https://patrick.cloke.us/</link><description></description><lastBuildDate>Fri, 23 Feb 2024 16:01:00 -0500</lastBuildDate><item><title>Joining the Matrix Spec Core Team</title><link>https://patrick.cloke.us/posts/2024/02/23/joining-the-matrix-spec-core-team/</link><description>&lt;p&gt;I was recently invited to join the Matrix &amp;#8220;Spec Core Team&amp;#8221;, the group who
+steward the Matrix protocol, from their &lt;a class="reference external" href="https://matrix.org/about/"&gt;own documentation&lt;/a&gt;:&lt;/p&gt;
+&lt;blockquote&gt;
+The contents and direction of the Matrix Spec is governed by the Spec Core Team;
+a set of experts from across the whole Matrix community, representing all aspects
+of the Matrix ecosystem. The Spec Core Team acts as a subcommittee of the Foundation.&lt;/blockquote&gt;
+&lt;p&gt;This was the &lt;a class="reference external" href="https://matrix.org/blog/2024/02/09/this-week-in-matrix-2024-02-09/#dept-of-status-of-matrix-face-with-th"&gt;announced a couple of weeks ago&lt;/a&gt; and I&amp;#8217;m just starting to get my feet
+wet! You can see an interview between myself, Tulir (another new member of the Spec
+Core Team), and Matthew (the Spec Core Team lead) in today&amp;#8217;s &lt;a class="reference external" href="https://matrix.org/blog/2024/02/23/this-week-in-matrix-2024-02-23/"&gt;This Week in Matrix&lt;/a&gt;.
+We cover a range of topics including &lt;a class="reference external" href="https://www.thunderbird.net/"&gt;Thunderbird&lt;/a&gt; (and &lt;a class="reference external" href="http://instantbird.com/"&gt;Instantbird&lt;/a&gt;), some
+improvements I hope to make and&amp;nbsp;more.&lt;/p&gt;
+&lt;div class="youtube youtube-16x9"&gt;&lt;iframe src="https://www.youtube-nocookie.com/embed/8vjjwxx7k1w" allowfullscreen seamless frameBorder="0"&gt;&lt;/iframe&gt;&lt;/div&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Patrick Cloke</dc:creator><pubDate>Fri, 23 Feb 2024 16:01:00 -0500</pubDate><guid isPermaLink="false">tag:patrick.cloke.us,2024-02-23:/posts/2024/02/23/joining-the-matrix-spec-core-team/</guid><category>articles</category><category>matrix</category><category>mozilla</category><category>thunderbird</category><category>instantbird</category></item><item><title>Instantbird Blog: WordPress to Pelican</title><link>https://patrick.cloke.us/posts/2020/09/09/instantbird-blog-wordpress-to-pelican/</link><description>&lt;p&gt;The &lt;a class="reference external" href="https://blog.instantbird.org"&gt;Instantbird blog&lt;/a&gt; is now (as of mid-April 2020) hosted on GitHub Pages
 (instead of self-hosted &lt;a class="reference external" href="https://wordpress.com/"&gt;WordPress&lt;/a&gt;) &lt;a class="footnote-reference" href="#footnote-1" id="footnote-reference-1"&gt;[1]&lt;/a&gt;. Hopefully it was converted faithfully,
 but feel free to let us know if you see something broken! You can file an issue
 at &lt;a class="reference external" href="https://github.com/instantbird/blog.instantbird.org/"&gt;the repo for the blog&lt;/a&gt; or just comment&amp;nbsp;below.&lt;/p&gt;
@@ -644,92 +655,4 @@ you also go on &lt;span class="caps"&gt;IRC&lt;/span&gt;. Instantbird has great 
 have issues, feel free to ping me in #instantbird on irc.mozilla.org and
 let me know what your issue&amp;nbsp;is.)&lt;/p&gt;
 &lt;p&gt;You can download it &lt;a class="reference external" href="http://www.instantbird.com/download-all.html"&gt;here&lt;/a&gt;, or view the full &lt;a class="reference external" href="http://www.instantbird.com/release-notes.html"&gt;release notes&lt;/a&gt;.&lt;/p&gt;
-</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Patrick Cloke</dc:creator><pubDate>Mon, 20 May 2013 16:45:00 -0400</pubDate><guid isPermaLink="false">tag:patrick.cloke.us,2013-05-20:/posts/2013/05/20/instantbird-14-released/</guid><category>articles</category><category>Instantbird</category></item><item><title>JavaScript typed arrays pain</title><link>https://patrick.cloke.us/posts/2012/11/28/javascript-typed-arrays-pain/</link><description>&lt;p&gt;If you&amp;#8217;ve ever tried to deal with binary data in JavaScript you know
-it isn&amp;#8217;t much fun and you usually resort to using strings lots of
-charCodeAt and related functions. &lt;a class="reference external" href="https://developer.mozilla.org/en-US/docs/JavaScript_typed_arrays"&gt;Typed arrays&lt;/a&gt; are supposed to solve
-this though! The typed array &lt;span class="caps"&gt;API&lt;/span&gt; consists of creating a buffer of bytes
-(called an &lt;a class="reference external" href="https://developer.mozilla.org/en-US/docs/JavaScript_typed_arrays/ArrayBuffer"&gt;ArrayBuffer&lt;/a&gt;) and then manipulating those bytes via
-different views (&lt;a class="reference external" href="https://developer.mozilla.org/en-US/docs/JavaScript_typed_arrays/ArrayBufferView"&gt;ArrayBufferView&lt;/a&gt;s). You can have multiple views of
-the same buffer, starting at different offsets, of different lengths and
-types&amp;#8230;which is all neat from a technical point of view, but is it
-really useful? It is kind of nice working with the views as if they
-were normal arrays&amp;nbsp;though.&lt;/p&gt;
-&lt;p&gt;I&amp;#8217;ve been playing with these ArrayBuffers quite a bit as I&amp;#8217;m working
-on an implementation of the &lt;a class="reference external" href="http://en.wikipedia.org/wiki/OSCAR_protocol"&gt;&lt;span class="caps"&gt;OSCAR&lt;/span&gt; protocol&lt;/a&gt; (used for &lt;a class="reference external" href="http://en.wikipedia.org/wiki/AOL_Instant_Messenger"&gt;&lt;span class="caps"&gt;AOL&lt;/span&gt; Instant
-Messenger&lt;/a&gt; and &lt;a class="reference external" href="http://en.wikipedia.org/wiki/ICQ"&gt;&lt;span class="caps"&gt;ICQ&lt;/span&gt;&lt;/a&gt;) in the chat backend (for Instantbird /
-Thunderbird). (As an aside, the &lt;span class="caps"&gt;OSCAR&lt;/span&gt; protocol Wikipedia page has
-surprisingly good documentation of some of the underlying data
-structures of the protocol&amp;#8230;) I started by writing some test code
-using ArrayBuffers and views, which have been around a while: since
-Gecko 2.0 in fact! I quickly ran into some tedious issues with
-repetitive code such&amp;nbsp;as:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="cm"&gt;/*&lt;/span&gt;
-&lt;span class="cm"&gt; * A TLV (Type, Length and Value) data structure:&lt;/span&gt;
-&lt;span class="cm"&gt; *  Unsigned Short  type    Describes what the value represents.&lt;/span&gt;
-&lt;span class="cm"&gt; *  Unsigned Short  length  The length of the data block.&lt;/span&gt;
-&lt;span class="cm"&gt; *  Bytes           value   The raw payload.&lt;/span&gt;
-&lt;span class="cm"&gt; *&lt;/span&gt;
-&lt;span class="cm"&gt; * The overall length of a TlvBlock is length + 4.&lt;/span&gt;
-&lt;span class="cm"&gt; *&lt;/span&gt;
-&lt;span class="cm"&gt; * The inputs to this are:&lt;/span&gt;
-&lt;span class="cm"&gt; *  aType    The type of the TLV Block.&lt;/span&gt;
-&lt;span class="cm"&gt; *  aValue   An ArrayBuffer containing the data.&lt;/span&gt;
-&lt;span class="cm"&gt; */&lt;/span&gt;
-&lt;span class="kd"&gt;function&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nx"&gt;TlvBlock&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;aType&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nx"&gt;aValue&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="p"&gt;{&lt;/span&gt;
-&lt;span class="w"&gt;  &lt;/span&gt;&lt;span class="kd"&gt;let&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nx"&gt;data&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="ow"&gt;new&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nb"&gt;ArrayBuffer&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;aValue&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;byteLength&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;+&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="mf"&gt;4&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
-&lt;span class="w"&gt;  &lt;/span&gt;&lt;span class="c1"&gt;// The first two bytes are unsigned shorts.&lt;/span&gt;
-&lt;span class="w"&gt;  &lt;/span&gt;&lt;span class="kd"&gt;let&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nx"&gt;view&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="ow"&gt;new&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nb"&gt;Uint16Array&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;data&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="mf"&gt;0&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="mf"&gt;2&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
-&lt;span class="w"&gt;  &lt;/span&gt;&lt;span class="nx"&gt;view&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="mf"&gt;0&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nx"&gt;aType&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
-&lt;span class="w"&gt;  &lt;/span&gt;&lt;span class="nx"&gt;view&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="mf"&gt;1&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nx"&gt;aValue&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;byteLength&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
-
-&lt;span class="w"&gt;  &lt;/span&gt;&lt;span class="c1"&gt;// The rest just gets the data copied into it.&lt;/span&gt;
-&lt;span class="w"&gt;  &lt;/span&gt;&lt;span class="nx"&gt;view&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="ow"&gt;new&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nb"&gt;Uint8Array&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;data&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="mf"&gt;4&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
-&lt;span class="w"&gt;  &lt;/span&gt;&lt;span class="nx"&gt;view&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;set&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="ow"&gt;new&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nb"&gt;Uint8Array&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;aValue&lt;/span&gt;&lt;span class="p"&gt;));&lt;/span&gt;
-
-&lt;span class="w"&gt;  &lt;/span&gt;&lt;span class="k"&gt;return&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nx"&gt;data&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
-&lt;span class="p"&gt;}&lt;/span&gt;
-&lt;/pre&gt;&lt;/div&gt;
-&lt;p&gt;This actually illustrates two annoying issues I&amp;nbsp;have:&lt;/p&gt;
-&lt;ol class="arabic simple"&gt;
-&lt;li&gt;I end up with extra lines of code defining a new view every time I
-switch data&amp;nbsp;types.&lt;/li&gt;
-&lt;li&gt;There&amp;#8217;s no simple way to copy an ArrayBuffer into a part of an
-ArrayBuffer. In the above example I create a Uint8Array view of the
-target location, a Uint8Array view of the source location and then
-set the source to the target. Seems simple once you figure it out,
-but it took a while to figure&amp;nbsp;out.&lt;/li&gt;
-&lt;/ol&gt;
-&lt;p&gt;(As an aside, some of you might find the following function helpful,
-it is essentially a &lt;a class="reference external" href="http://en.cppreference.com/w/cpp/string/byte/memcpy"&gt;memcpy&lt;/a&gt; for ArrayBuffers&amp;#8230;this isn&amp;#8217;t really
-tested heavily at all,&amp;nbsp;however.)&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="cm"&gt;/*&lt;/span&gt;
-&lt;span class="cm"&gt; * aTarget / aSource are ArrayBuffers&lt;/span&gt;
-&lt;span class="cm"&gt; */&lt;/span&gt;
-&lt;span class="kd"&gt;function&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nx"&gt;copyBytes&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;aTarget&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nx"&gt;aSource&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nx"&gt;aTargetOffset&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="mf"&gt;0&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nx"&gt;aSourceOffset&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="mf"&gt;0&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nx"&gt;aLength&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nx"&gt;aSource&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;byteLength&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="p"&gt;{&lt;/span&gt;
-&lt;span class="w"&gt;  &lt;/span&gt;&lt;span class="c1"&gt;// The rest just gets the data copied into it.&lt;/span&gt;
-&lt;span class="w"&gt;  &lt;/span&gt;&lt;span class="kd"&gt;let&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nx"&gt;view&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="ow"&gt;new&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nb"&gt;Uint8Array&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;aTarget&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nx"&gt;aTargetOffset&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
-&lt;span class="w"&gt;  &lt;/span&gt;&lt;span class="nx"&gt;view&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;set&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="ow"&gt;new&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nb"&gt;Uint8Array&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;aSource&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nx"&gt;aSourceOffset&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nx"&gt;aLength&lt;/span&gt;&lt;span class="p"&gt;));&lt;/span&gt;
-&lt;span class="p"&gt;}&lt;/span&gt;
-&lt;/pre&gt;&lt;/div&gt;
-&lt;p&gt;&lt;span class="caps"&gt;OK&lt;/span&gt;, so typed arrays seem good, but kind of annoying, right?
-Wrong&amp;#8230;the &lt;span class="caps"&gt;OSCAR&lt;/span&gt; protocol is a &amp;#8220;network order&amp;#8221; protocol (aka it is big
-endian). At this point you&amp;#8217;re probably thinking &amp;#8220;&lt;span class="caps"&gt;OK&lt;/span&gt;, so the ArrayBuffer
-constructor must take an endianness flag!&amp;#8221; Wrong, it does no such
-thing. &amp;#8220;Hmmm&amp;#8230;Well do the ArrayBufferViews take an endianness flag?&amp;#8221;
-Nope, wrong again. The only way to specify the endianness of the data is
-to use a &lt;a class="reference external" href="https://developer.mozilla.org/en-US/docs/JavaScript_typed_arrays/DataView"&gt;DataView&lt;/a&gt;, a slightly different interface to the underlying
-bytes. It offers an &lt;span class="caps"&gt;API&lt;/span&gt; to individually set different data elements via
-their offset and endianness. (If you&amp;#8217;re too lazy to read the
-documentation all the way through, DataView assumes big endian: makes my
-life&amp;nbsp;easier!)&lt;/p&gt;
-&lt;p&gt;For the curious, JavaScript typed arrays use the system endianness,
-which in my opinion is pretty much useless (at least if you plan on
-sharing data) since you can never guarantee the endianness to be either
-big or little endian. (The fun part is that this isn&amp;#8217;t even documented,
-I found it on &lt;a class="reference external" href="http://stackoverflow.com/questions/7869752/javascript-typed-arrays-and-endianness"&gt;Stack Overflow&lt;/a&gt; and&amp;nbsp;verified.)&lt;/p&gt;
-&lt;p&gt;So, in summary&amp;#8230;if you plan on networking at all with ArrayBuffers,
-don&amp;#8217;t use ArrayBufferViews, use DataViews. (Although Uint8Arrays and
-Int8Arrays should work&amp;nbsp;fine!)&lt;/p&gt;
-&lt;p&gt;And to not rant the &lt;em&gt;entire&lt;/em&gt; time, working with typed arrays certainly
-does beat strings +&amp;nbsp;charCodeAt!&lt;/p&gt;
-</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Patrick Cloke</dc:creator><pubDate>Wed, 28 Nov 2012 23:11:00 -0500</pubDate><guid isPermaLink="false">tag:patrick.cloke.us,2012-11-28:/posts/2012/11/28/javascript-typed-arrays-pain/</guid><category>articles</category><category>Instantbird</category><category>Mozilla</category><category>OSCAR</category><category>Thunderbird</category><category>Wat</category></item></channel></rss>
+</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Patrick Cloke</dc:creator><pubDate>Mon, 20 May 2013 16:45:00 -0400</pubDate><guid isPermaLink="false">tag:patrick.cloke.us,2013-05-20:/posts/2013/05/20/instantbird-14-released/</guid><category>articles</category><category>Instantbird</category></item></channel></rss>

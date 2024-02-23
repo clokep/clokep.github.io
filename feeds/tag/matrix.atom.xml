@@ -1,5 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>Patrick Cloke - matrix</title><link href="https://patrick.cloke.us/" rel="alternate"></link><link href="https://patrick.cloke.us/feeds/tag/matrix.atom.xml" rel="self"></link><id>https://patrick.cloke.us/</id><updated>2024-02-23T15:35:00-05:00</updated><entry><title>Synapse URL Previews</title><link href="https://patrick.cloke.us/posts/2024/02/23/synapse-url-previews/" rel="alternate"></link><published>2024-02-23T15:35:00-05:00</published><updated>2024-02-23T15:35:00-05:00</updated><author><name>Patrick Cloke</name></author><id>tag:patrick.cloke.us,2024-02-23:/posts/2024/02/23/synapse-url-previews/</id><summary type="html">&lt;p&gt;Matrix includes the ability for a client to request that the server
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Patrick Cloke - matrix</title><link href="https://patrick.cloke.us/" rel="alternate"></link><link href="https://patrick.cloke.us/feeds/tag/matrix.atom.xml" rel="self"></link><id>https://patrick.cloke.us/</id><updated>2024-02-23T16:01:00-05:00</updated><entry><title>Joining the Matrix Spec Core Team</title><link href="https://patrick.cloke.us/posts/2024/02/23/joining-the-matrix-spec-core-team/" rel="alternate"></link><published>2024-02-23T16:01:00-05:00</published><updated>2024-02-23T16:01:00-05:00</updated><author><name>Patrick Cloke</name></author><id>tag:patrick.cloke.us,2024-02-23:/posts/2024/02/23/joining-the-matrix-spec-core-team/</id><summary type="html">&lt;p&gt;I was recently invited to join the Matrix &amp;#8220;Spec Core Team&amp;#8221;, the group who
+steward the Matrix protocol, from their &lt;a class="reference external" href="https://matrix.org/about/"&gt;own documentation&lt;/a&gt;:&lt;/p&gt;
+&lt;blockquote&gt;
+The contents and direction of the Matrix Spec is governed by the Spec Core Team;
+a set of experts from across the whole Matrix community, representing all aspects …&lt;/blockquote&gt;</summary><content type="html">&lt;p&gt;I was recently invited to join the Matrix &amp;#8220;Spec Core Team&amp;#8221;, the group who
+steward the Matrix protocol, from their &lt;a class="reference external" href="https://matrix.org/about/"&gt;own documentation&lt;/a&gt;:&lt;/p&gt;
+&lt;blockquote&gt;
+The contents and direction of the Matrix Spec is governed by the Spec Core Team;
+a set of experts from across the whole Matrix community, representing all aspects
+of the Matrix ecosystem. The Spec Core Team acts as a subcommittee of the Foundation.&lt;/blockquote&gt;
+&lt;p&gt;This was the &lt;a class="reference external" href="https://matrix.org/blog/2024/02/09/this-week-in-matrix-2024-02-09/#dept-of-status-of-matrix-face-with-th"&gt;announced a couple of weeks ago&lt;/a&gt; and I&amp;#8217;m just starting to get my feet
+wet! You can see an interview between myself, Tulir (another new member of the Spec
+Core Team), and Matthew (the Spec Core Team lead) in today&amp;#8217;s &lt;a class="reference external" href="https://matrix.org/blog/2024/02/23/this-week-in-matrix-2024-02-23/"&gt;This Week in Matrix&lt;/a&gt;.
+We cover a range of topics including &lt;a class="reference external" href="https://www.thunderbird.net/"&gt;Thunderbird&lt;/a&gt; (and &lt;a class="reference external" href="http://instantbird.com/"&gt;Instantbird&lt;/a&gt;), some
+improvements I hope to make and&amp;nbsp;more.&lt;/p&gt;
+&lt;div class="youtube youtube-16x9"&gt;&lt;iframe src="https://www.youtube-nocookie.com/embed/8vjjwxx7k1w" allowfullscreen seamless frameBorder="0"&gt;&lt;/iframe&gt;&lt;/div&gt;</content><category term="articles"></category><category term="matrix"></category><category term="mozilla"></category><category term="thunderbird"></category><category term="instantbird"></category></entry><entry><title>Synapse URL Previews</title><link href="https://patrick.cloke.us/posts/2024/02/23/synapse-url-previews/" rel="alternate"></link><published>2024-02-23T15:35:00-05:00</published><updated>2024-02-23T15:35:00-05:00</updated><author><name>Patrick Cloke</name></author><id>tag:patrick.cloke.us,2024-02-23:/posts/2024/02/23/synapse-url-previews/</id><summary type="html">&lt;p&gt;Matrix includes the ability for a client to request that the server
 &lt;a class="reference external" href="https://spec.matrix.org/v1.8/client-server-api/#get_matrixmediav3preview_url"&gt;generate a &amp;#8220;preview&amp;#8221; for a &lt;span class="caps"&gt;URL&lt;/span&gt;&lt;/a&gt;. The client provides a &lt;span class="caps"&gt;URL&lt;/span&gt; to the server which
 returns &lt;a class="reference external" href="https://ogp.me/"&gt;Open Graph&lt;/a&gt; data as a &lt;span class="caps"&gt;JSON&lt;/span&gt; response. This leaks any URLs detected in
 the message content to the server, but protects the …&lt;/p&gt;</summary><content type="html">&lt;p&gt;Matrix includes the ability for a client to request that the server
@@ -1110,28 +1125,4 @@ has an intersection of a bunch of interests of mine (privacy, communications,
 open-source, etc.) Let me know if you have any questions about Matrix! New
 Vector is also &lt;a class="reference external" href="https://vector.im/careers"&gt;hiring for a bunch of positions&lt;/a&gt; if you&amp;#8217;d like to come work
 with&amp;nbsp;me!&lt;/p&gt;
-</content><category term="articles"></category><category term="personal"></category><category term="matrix"></category></entry><entry><title>Google Summer of Code 2017: Matrix protocol for Instantbird and Thunderbird</title><link href="https://patrick.cloke.us/posts/2017/05/05/google-summer-of-code-2017-matrix-protocol/" rel="alternate"></link><published>2017-05-05T11:20:00-04:00</published><updated>2017-05-05T11:20:00-04:00</updated><author><name>Patrick Cloke</name></author><id>tag:patrick.cloke.us,2017-05-05:/posts/2017/05/05/google-summer-of-code-2017-matrix-protocol/</id><summary type="html">&lt;p&gt;I&amp;#8217;ll be mentoring Pavan Karthik on his &lt;a class="reference external" href="https://summerofcode.withgoogle.com/projects/#6473832528347136"&gt;project for Google Summer of Code 2017&lt;/a&gt;
-entitled &amp;#8220;Matrix Protocol Support for Instantbird&amp;#8221;. &lt;a class="reference external" href="http://matrix.org/"&gt;Matrix&lt;/a&gt; is a new(er)
-protocol that is an open, decentralized network with some unique features.
-Initial support for this landed in &lt;a class="reference external" href="https://bugzilla.mozilla.org/show_bug.cgi?id=1315926"&gt;bug 1315926&lt;/a&gt;, but it is not feature …&lt;/p&gt;</summary><content type="html">&lt;p&gt;I&amp;#8217;ll be mentoring Pavan Karthik on his &lt;a class="reference external" href="https://summerofcode.withgoogle.com/projects/#6473832528347136"&gt;project for Google Summer of Code 2017&lt;/a&gt;
-entitled &amp;#8220;Matrix Protocol Support for Instantbird&amp;#8221;. &lt;a class="reference external" href="http://matrix.org/"&gt;Matrix&lt;/a&gt; is a new(er)
-protocol that is an open, decentralized network with some unique features.
-Initial support for this landed in &lt;a class="reference external" href="https://bugzilla.mozilla.org/show_bug.cgi?id=1315926"&gt;bug 1315926&lt;/a&gt;, but it is not feature
-rich-enough to turn on for users. Pavan will work to finish Matrix support so we
-can enable it for all users! The brief description of his proposal is&amp;nbsp;below:&lt;/p&gt;
-&lt;blockquote&gt;
-Matrix is an open, decentralized protocol for instant messaging (and more!)
-It has bridges to many other networks and protocol, e.g. &lt;span class="caps"&gt;IRC&lt;/span&gt;, Slack, and
-more. Initial support for Matrix was added in bug 1199855, but there&amp;#8217;s a lot
-to do still : Support more features from the Matrix &lt;span class="caps"&gt;SDK&lt;/span&gt; (video/audio calls,
-room topics, typing notifications, read receipts and a lot more.) Support
-one-on-one conversations. Add tests specific to Matrix. Improve the Matrix
-&lt;span class="caps"&gt;JS&lt;/span&gt;-&lt;span class="caps"&gt;SDK&lt;/span&gt; that Instantbird and Thunderbird depend on. Improving and expanding
-shared code and APIs used by all JavaScript protocol plugins (&lt;span class="caps"&gt;IRC&lt;/span&gt;, &lt;span class="caps"&gt;XMPP&lt;/span&gt;,
-Yahoo and Twitter). Improving documentation of the process for adding a
-protocol to Instantbird/Thunderbird. Using the Matrix protocol on a
-day-to-day basis to dog-food the code.&lt;/blockquote&gt;
-&lt;p&gt;I&amp;#8217;m super excited to finalize support for Matrix in both Instantbird and
-Thunderbird! You can also checkout the full 25 projects that
-&lt;a class="reference external" href="https://summerofcode.withgoogle.com/organizations/6421332469219328/"&gt;Mozilla accepted&lt;/a&gt;.&lt;/p&gt;
-</content><category term="articles"></category><category term="chat"></category><category term="GSoC"></category><category term="Instantbird"></category><category term="Matrix"></category></entry></feed>
+</content><category term="articles"></category><category term="personal"></category><category term="matrix"></category></entry></feed>
