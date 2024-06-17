@@ -68,7 +68,10 @@ EXTRA_PATH_METADATA = {
     # Tell GitHub the domain name:
     # https://help.github.com/articles/adding-a-cname-file-to-your-repository/
     "static/CNAME": {"path": "CNAME"},
-    # Server an Autoconfig entry for email:
+    # Add a robots.txt to block some user agents.
+    "static/robots.txt": {"path": "robots.txt"},
+    "static/ai.txt": {"path": "ai.txt"},
+    # Serve an Autoconfig entry for email:
     # https://developer.mozilla.org/en-US/docs/Mozilla/Thunderbird/Autoconfiguration
     "static/mail-config.xml": {"path": ".well-known/autoconfig/mail/config-v1.1.xml"},
 }
