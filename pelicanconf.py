@@ -30,6 +30,10 @@ TYPOGRIFY = True
 # Uncomment following line if you want document-relative URLs when developing
 RELATIVE_URLS = False
 
+# Store each article as a separate path.
+ARTICLE_URL = "posts/{date:%Y}/{date:%m}/{date:%d}/{slug}/"
+ARTICLE_SAVE_AS = ARTICLE_URL + "index.html"
+
 # Disable categories.
 CATEGORY_FEED_ATOM = None
 CATEGORY_SAVE_AS = ""
@@ -90,8 +94,10 @@ PLUGINS = [
     youtube,
     "pelican.plugins.share_post",
     "pelican.plugins.thumbnailer",
-    # Custom plug-ins to add additional RST directives.
+    # Custom plug-in to add additional RST directives.
     "directives",
+    # Custom plug-in to add additional article redirects.
+    "redirects",
 ]
 
 # Markdown configuration.
@@ -114,10 +120,6 @@ JINJA_FILTERS = {
     "chunk": chunk,
     "paginate": paginate,
 }
-
-# Change the default URLs.
-ARTICLE_URL = "posts/{date:%Y}/{date:%m}/{date:%d}/{slug}/"
-ARTICLE_SAVE_AS = ARTICLE_URL + "index.html"
 
 # Paginate, but have at least three items per page.
 DEFAULT_ORPHANS = 2

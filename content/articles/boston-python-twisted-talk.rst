@@ -3,6 +3,7 @@ Boston Python: Twisted async networking framework
 :date: 2015-08-28 08:42
 :author: Patrick Cloke
 :tags: python, community, programming, twisted, talks
+:extra-slug: boston-python-twisted-talk
 
 Yesterday, `Stephen DiCato`_ and I gave a talk for `Boston Python`_ titled:
 `Twisted async networking framework`_. It was an introduction to intermediate

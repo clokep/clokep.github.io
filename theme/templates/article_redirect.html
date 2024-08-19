@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+
+{% block title %}Page Redirection to {{ article.title|striptags }}{% endblock %}
+
+{% block meta %}
+<meta http-equiv="refresh" content="0;url=/{{ article.url }}">
+<script type="text/javascript">
+    window.location.href = "/{{ article.url }}"
+</script>
+{% endblock %}
+
+{% block content %}
+<div class="container">
+  <div class="row">
+    <div class="col-md-12 mt-2 mb-2">
+        If you are not redirected automatically, follow the
+        <a href="/{{ article.url }}">link to {{ article.title }}</a>
+    </div>
+  </div>
+</div>
+{% endblock %}
