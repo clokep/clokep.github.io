@@ -8,7 +8,7 @@ engineering); `Strongarm`_ by Percipient Networks, later `WatchGuard Technologie
 (working on cybersecurity solutions for medium-sized businesses).
 
 I have been part of the Mozilla_ community since around 2006, with my first direct
-contribution in 2008_. From ~2008 to ~2016 I was inolved with Instantbird_,
+contribution in 2008_. From ~2008 to ~2016 I was involved with Instantbird_,
 an instant messaging application using the libpurple backend and the Firefox
 frontend. I fixed my first bug for that in 2010_ and eventually rewrote the
 `IRC support`_ for it; eventually the work from Instantbird was merged into
