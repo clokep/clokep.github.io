@@ -167,8 +167,8 @@ had different database tables that we needed to query over as if they were a
 single database table. We use <a href="https://www.djangoproject.com/">Django</a> as an
 <a href="https://en.wikipedia.org/wiki/Object-relational_mapping"><span class="caps">ORM</span></a> and needed to
 stay within the <span class="caps">ORM</span> in order to leverage third-party&nbsp;libraries.</p>
-<p>Our two models have overlapping fields, in this instance both had a <code>name</code> field
-to search over and a <code>created</code> field to order on. A naive implementation might
+<p>Our two models have overlapping fields, in this instance both had&nbsp;a <code>name</code> field
+to search over and&nbsp;a <code>created</code> field to order on. A naive implementation might
 serialize all the data to memory and come up with implementations&nbsp;like:</p>
 <div class="highlight"><pre><span></span><code><span class="c1"># Consider ModelA and ModelB to exist somewhere, both have a name (CharField)</span>
 <span class="c1"># and created (DateTimeField).</span>
@@ -202,15 +202,15 @@ serialize all the data to memory and come up with implementations&nbsp;like:</p>
 <p>This has two issues we had to&nbsp;overcome:</p>
 <ol>
 <li>We had too much data to serialize to&nbsp;memory.</li>
-<li>We needed to pass the result into Django APIs that expected a <code>QuerySet</code>.</li>
+<li>We needed to pass the result into Django APIs that expected&nbsp;a <code>QuerySet</code>.</li>
 </ol>
 <p>Enter <a href="https://github.com/percipient/django-querysetsequence">Django QuerySetSequence</a>!
 We built Django QuerySetSequence (based on some previously available code) to
 provide the&nbsp;following:</p>
 <ol>
-<li>Provide a <code>QuerySet</code> <span class="caps">API</span> that operates over multiple <code>QuerySets</code> generated
-    from different <code>Model</code> classes.</li>
-<li>Evaluate each <code>QuerySet</code> lazily (i.e. as late as&nbsp;possible).</li>
+<li>Provide&nbsp;a <code>QuerySet</code> <span class="caps">API</span> that operates over&nbsp;multiple <code>QuerySets</code> generated
+    from&nbsp;different <code>Model</code> classes.</li>
+<li>Evaluate&nbsp;each <code>QuerySet</code> lazily (i.e. as late as&nbsp;possible).</li>
 <li>High quality code with&nbsp;tests.</li>
 <li>Guard against calling untested&nbsp;methods.</li>
 </ol>
@@ -239,7 +239,7 @@ provide the&nbsp;following:</p>
 <p>Currently Django QuerySetSequence supports both Django 1.8 and Django 1.9 on
 Python 2.7, 3.4 and 3.5. Check out the full set of features or contribute to the
 <a href="https://github.com/percipient/django-querysetsequence">source repository</a>. You
-can install <code>django-querysetsequence</code> package from
+can&nbsp;install <code>django-querysetsequence</code> package from
 <a href="https://pypi.python.org/pypi/django-querysetsequence">pypi</a> using&nbsp;pip:</p>
 <div class="highlight"><pre><span></span><code>pip install django-querysetsequence
 </code></pre></div>

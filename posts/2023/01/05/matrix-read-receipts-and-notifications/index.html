@@ -200,8 +200,8 @@ It considers the history for a room to be split into three sections<sup id="fnre
 <p>Updating a read receipt updates a &#8220;marker&#8221; which causes any notifications prior
 to and including the event to be marked as read.<sup id="fnref:3"><a class="footnote-ref" href="#fn:3">3</a></sup> A user has a single read receipt
 &#8220;marker&#8221; per&nbsp;room.</p>
-<p>Passed to clients as an <code>m.receipt</code> event under the <code>ephemeral</code> array for each
-room in the <code>/sync</code> response. The event includes a map of event <span class="caps">ID</span> -&gt; receipt type
+<p>Passed to clients as&nbsp;an <code>m.receipt</code> event under&nbsp;the <code>ephemeral</code> array for each
+room in&nbsp;the <code>/sync</code> response. The event includes a map of event <span class="caps">ID</span> -&gt; receipt type
 -&gt; user <span class="caps">ID</span> -&gt; data (currently just a timestamp). Note that the event is a delta
 from previous events. An&nbsp;example:</p>
 <div class="highlight"><pre><span></span><code><span class="p">{</span>
@@ -224,9 +224,9 @@ from previous events. An&nbsp;example:</p>
 <p>In Element Web read receipts are the small avatars on the right hand side of the
 conversation. Note that your own read receipt is not&nbsp;shown.</p>
 <h3><a href="https://github.com/matrix-org/matrix-spec-proposals/pull/2285">Hidden read receipts (<span class="caps">MSC2285</span>)</a></h3>
-<p>A new receipt type (<code>m.read.hidden</code>) to set a read receipt without sharing it with
-other users. It also modifies the <code>/read_markers</code> <span class="caps">API</span> to accept the new receipt type
-and modifies the <code>/receipts</code> <span class="caps">API</span> to accept the fully read&nbsp;marker.</p>
+<p>A new receipt type&nbsp;(<code>m.read.hidden</code>) to set a read receipt without sharing it with
+other users. It also modifies&nbsp;the <code>/read_markers</code> <span class="caps">API</span> to accept the new receipt type
+and modifies&nbsp;the <code>/receipts</code> <span class="caps">API</span> to accept the fully read&nbsp;marker.</p>
 <p>This is useful to synchronize notifications across devices while keeping read
 status&nbsp;private.</p>
 <h2><a href="https://spec.matrix.org/v1.2/client-server-api/#push-rules">Push&nbsp;rules</a></h2>
@@ -235,28 +235,28 @@ They are customizable, but the homeserver provides default rules. They can resul
 in an action&nbsp;to:</p>
 <ol>
 <li>Do&nbsp;nothing</li>
-<li>Notify the user (<code>notify</code> action), which can have additional actions (&#8220;tweaks&#8221;):<ol>
-<li>Highlight the message (<code>highlight</code> action)</li>
-<li>Play a sound (<code>sound</code> action)</li>
+<li>Notify the user&nbsp;(<code>notify</code> action), which can have additional actions (&#8220;tweaks&#8221;):<ol>
+<li>Highlight the message&nbsp;(<code>highlight</code> action)</li>
+<li>Play a sound&nbsp;(<code>sound</code> action)</li>
 </ol>
 </li>
 </ol>
-<p>By default, all new <code>m.room.message</code> and <code>m.room.encrypted</code> events generate a
-notification, events with a user&#8217;s display name or username in them or <code>@room</code>
+<p>By default, all&nbsp;new <code>m.room.message</code> and <code>m.room.encrypted</code> events generate a
+notification, events with a user&#8217;s display name or username in them&nbsp;or <code>@room</code>
 generate highlights,&nbsp;etc.</p>
 <h3><a href="https://github.com/matrix-org/matrix-spec-proposals/pull/3664">Push rules for relations (<span class="caps">MSC3664</span>)</a></h3>
 <p>Augments push rules to allow applying them to the target of an event relationship
 and defines a default push rule for replies (not using the reply&nbsp;fallback).</p>
 <h3><a href="https://github.com/matrix-org/matrix-spec-proposals/pull/2785">Event notification attributes and actions (<span class="caps">MSC2785</span>)</a></h3>
 <p>A proposed replacement for push rules, the results are essentially the same
-actions (and presumedly would not change the data returned in <code>/sync</code>, see&nbsp;below).</p>
-<h2><a href="https://spec.matrix.org/v1.3/client-server-api/#get_matrixclientv3sync">Notification counts in <code>/sync</code></a></h2>
+actions (and presumedly would not change the data returned&nbsp;in <code>/sync</code>, see&nbsp;below).</p>
+<h2><a href="https://spec.matrix.org/v1.3/client-server-api/#get_matrixclientv3sync">Notification counts&nbsp;in <code>/sync</code></a></h2>
 <p>The number of notification events and highlight events since the user&#8217;s last read
-receipt are both returned on a per room basis as part of a <code>/sync</code> response (for
+receipt are both returned on a per room basis as part of&nbsp;a <code>/sync</code> response (for
 joined&nbsp;room).</p>
 <p>Notification and highlight events are any messages where the push rules resulted
-in an action of <code>notify</code> or <code>highlight</code>, respectively. (Note that a <code>highlight</code>
-action must be a <code>notify</code> action, thus <code>highlight_count &lt;= notification_count</code>.)</p>
+in an action&nbsp;of <code>notify</code> or <code>highlight</code>, respectively. (Note that&nbsp;a <code>highlight</code>
+action must be&nbsp;a <code>notify</code> action,&nbsp;thus <code>highlight_count &lt;= notification_count</code>.)</p>
 <p>An&nbsp;example:</p>
 <div class="highlight"><pre><span></span><code><span class="p">{</span>
 <span class="w">  </span><span class="nt">&quot;account_data&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="err">...</span><span class="p">],</span>
@@ -272,17 +272,17 @@ action must be a <code>notify</code> action, thus <code>highlight_count &lt;= no
 </code></pre></div>
 
 <h3><a href="https://github.com/matrix-org/matrix-spec-proposals/pull/2654">Unread messages count (<span class="caps">MSC2654</span>)</a></h3>
-<p>A new field is added under the <code>unread_notifications</code> field (<code>unread_count</code>) which
+<p>A new field is added under&nbsp;the <code>unread_notifications</code> field&nbsp;(<code>unread_count</code>) which
 is the total number of events matching particular criteria since the user&#8217;s last
 read&nbsp;receipt.</p>
-<p>This replaces <a href="https://github.com/matrix-org/matrix-spec-proposals/pull/2625"><span class="caps">MSC2625</span></a>, which adds a new push rule action (<code>mark_unread</code>) to
-perform the same task. In this rendition, <code>notify</code> implies <code>mark_unread</code> and thus
+<p>This replaces <a href="https://github.com/matrix-org/matrix-spec-proposals/pull/2625"><span class="caps">MSC2625</span></a>, which adds a new push rule action&nbsp;(<code>mark_unread</code>) to
+perform the same task. In this&nbsp;rendition, <code>notify</code> implies <code>mark_unread</code> and&nbsp;thus
 <code>highlight_count &lt;= notification_count &lt;= unread_count</code>.</p>
 <h2><a href="https://spec.matrix.org/v1.2/push-gateway-api/#post_matrixpushv1notify">Push&nbsp;notifications</a></h2>
 <p>Push notifications receive either the number of unread messages (across all rooms)
-or the number of rooms with unread messages (depending on the value of
+or the number of rooms with unread messages (depending on the value&nbsp;of
 <code>push.group_unread_count_by_room</code> in the Synapse configuration). Unread messages
-are any messages where the push rules resulted in an action of <code>notify</code>.</p>
+are any messages where the push rules resulted in an action&nbsp;of <code>notify</code>.</p>
 <p>This information is sent from the homeserver to the push gateway as part of every&nbsp;notification:</p>
 <div class="highlight"><pre><span></span><code><span class="p">{</span>
 <span class="w">  </span><span class="nt">&quot;notifications&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
