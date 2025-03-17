@@ -4,12 +4,12 @@ invoke==2.2.0
 ghp_import==2.1.0
 
 # Need to install Markdown explicitly so articles written in Markdown get rendered by Pelican.
-Markdown==3.5.2
+Markdown==3.7
 
 # Pelican itself.
-pelican==4.9.1
-Pillow==10.3.0
-typogrify==2.0.7
+pelican==4.11.0
+Pillow==11.1.0
+typogrify==2.1.0
 
 # For embedding YouTube videos.
 pelican-youtube==0.2.1
