@@ -134,6 +134,7 @@ TAG_CLOUD_MAX_ITEMS = 10
 # * Font Awesome logo name.
 SOCIAL = (
     ("mastodon", "https://mastodon.social/@clokep", "mastodon"),
+    ("bluesky", "https://bsky.app/profile/patrick.cloke.us", "bluesky"),
     ("twitter", "https://www.twitter.com/clokep", "twitter"),
     ("matrix", "https://matrix.to/#/@clokep:matrix.org", None),
     ("github", "https://github.com/clokep", "github"),
