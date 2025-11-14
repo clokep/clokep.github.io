@@ -115,7 +115,7 @@ Solution (wrapping a Map)
 
 Finally I settled on the simple solution of just wrapping the Map in a
 custom object. Initially I thought this would be frustrating to
-re-declare every function (and prone to breakage in the future if new
+redeclare every function (and prone to breakage in the future if new
 methods are added), but there's a nice magic method
 `\_\_noSuchMethod\_\_`_ that fixes this! (Note that this is a
 non-standard feature of SpiderMonkey.) ``__noSuchMethod__`` allows an

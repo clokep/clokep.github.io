@@ -94,7 +94,7 @@ community interacts in multiple ways). Common ways include:
 *   Bug trackers (Bugzilla, GitHub, Trac) for technical discussion and reviewing
     code.
 
-Choose whichever way of introducting yourself that you're comfortable with. It
+Choose whichever way of introducing yourself that you're comfortable with. It
 can be useful to "idle" before introducing yourself (i.e.  watch how a community
 interacts).
 

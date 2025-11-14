@@ -5,7 +5,7 @@ Matrix Intentional Mentions explained
 :tags: matrix, notes
 
 Previously I have written about how `push rules generate notifications`_ and how
-`read receipts mark notificiations as read`_ in the Matrix protocol. This article
+`read receipts mark notifications as read`_ in the Matrix protocol. This article
 is about a change that I instigated to improve *when* a "mention" (or "ping")
 notification is created. (This is a "highlight" notification in the Matrix
 specification.)
@@ -120,7 +120,7 @@ common complaints I see with Matrix.
        doesn't allow for hidden mentions.
 
 .. _push rules generate notifications: {filename}/articles/matrix-push-rules-and-notifications.rst
-.. _read receipts mark notificiations as read: {filename}/articles/matrix-read-receipts-and-notifications.md
+.. _read receipts mark notifications as read: {filename}/articles/matrix-read-receipts-and-notifications.md
 .. _unintentional pings: https://github.com/vector-im/element-meta/issues/886
 .. _fallback replies: https://spec.matrix.org/v1.5/client-server-api/#fallbacks-for-rich-replies
 .. _in spoiler contents: https://github.com/matrix-org/matrix-spec/issues/16

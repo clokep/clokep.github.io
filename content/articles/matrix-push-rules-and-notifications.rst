@@ -72,7 +72,7 @@ it increased the notification count.)
 
     The deployment of the push gateway must be paired with the application (the
     push keys must be paired). I.e. if you make your own application (or even
-    your own build of Element iOS / Android) you cannot re-use the deployment at
+    your own build of Element iOS / Android) you cannot reuse the deployment at
     matrix.org and must have your own deployment.
 
 
@@ -167,8 +167,8 @@ special cases which do not accept conditions, but can be mapped to them.
 
 * Content-specific: has a ``pattern`` field which maps to a pattern against the
   ``body`` property.
-* Room-specific: the ``rule_id`` is re-used to match against the room ID.
-* Sender-specific: the ``rule_id`` is re-used to match against the event ``sender``.
+* Room-specific: the ``rule_id`` is reused to match against the room ID.
+* Sender-specific: the ``rule_id`` is reused to match against the event ``sender``.
 
 Why do clients care? Doesn’t the homeserver do this all for me?
 ===============================================================

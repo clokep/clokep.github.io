@@ -59,7 +59,7 @@ The full changelog is included below:
 0.8.1 (October 15, 2020)
 ========================
 
-*   Fixes a regression in v0.8 where a ``Context`` could not be re-used. Contributed
+*   Fixes a regression in v0.8 where a ``Context`` could not be reused. Contributed
     by `@evanbrumley <https://github.com/evanbrumley>`_. (`#25 <https://github.com/clokep/django-render-block/pull/25>`_)
 
 0.8 (October 6, 2020)

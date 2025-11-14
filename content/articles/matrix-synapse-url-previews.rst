@@ -50,7 +50,7 @@ made include (in addition to lots and lots of refactoring):
   `#13056 <https://github.com/matrix-org/synapse/pull/13056>`_.
 * Fallback to favicon if no images found:
   `#12951 <https://github.com/matrix-org/synapse/pull/12951>`_.
-* Ignore navgiation tags: `#12951 <https://github.com/matrix-org/synapse/pull/12951>`_.
+* Ignore navigation tags: `#12951 <https://github.com/matrix-org/synapse/pull/12951>`_.
 * Document how Synapse `generates URL previews`_:
   `#10753 <https://github.com/matrix-org/synapse/pull/10753>`_,
   `#13261 <https://github.com/matrix-org/synapse/pull/13261>`_.
