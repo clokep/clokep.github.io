@@ -8,7 +8,7 @@ Markdown==3.7
 
 # Pelican itself.
 pelican==4.11.0
-Pillow==11.1.0
+Pillow==12.1.1
 typogrify==2.1.0
 
 # For embedding YouTube videos.
