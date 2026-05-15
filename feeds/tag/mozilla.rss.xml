@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<rss version="2.0"><channel><title>Patrick Cloke - mozilla</title><link>https://patrick.cloke.us/</link><description></description><lastBuildDate>Fri, 23 Feb 2024 16:01:00 -0500</lastBuildDate><item><title>Joining the Matrix Spec Core Team</title><link>https://patrick.cloke.us/posts/2024/02/23/joining-the-matrix-spec-core-team/</link><description>&lt;p&gt;I was recently invited to join the Matrix &amp;#8220;Spec Core Team&amp;#8221;, the group who
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Patrick Cloke - mozilla</title><link>https://patrick.cloke.us/</link><description/><atom:link href="https://patrick.cloke.us/feeds/tag/mozilla.rss.xml" rel="self"/><lastBuildDate>Fri, 23 Feb 2024 16:01:00 -0500</lastBuildDate><item><title>Joining the Matrix Spec Core Team</title><link>https://patrick.cloke.us/posts/2024/02/23/joining-the-matrix-spec-core-team/</link><description>&lt;p&gt;I was recently invited to join the Matrix &amp;#8220;Spec Core Team&amp;#8221;, the group who
 steward the Matrix protocol, from their &lt;a class="reference external" href="https://matrix.org/about/"&gt;own documentation&lt;/a&gt;:&lt;/p&gt;
 &lt;blockquote&gt;
 The contents and direction of the Matrix Spec is governed by the Spec Core Team;
@@ -10,7 +10,7 @@ wet! You can see an interview between myself, Tulir (another new member of the S
 Core Team), and Matthew (the Spec Core Team lead) in today&amp;#8217;s &lt;a class="reference external" href="https://matrix.org/blog/2024/02/23/this-week-in-matrix-2024-02-23/"&gt;This Week in Matrix&lt;/a&gt;.
 We cover a range of topics including &lt;a class="reference external" href="https://www.thunderbird.net/"&gt;Thunderbird&lt;/a&gt; (and &lt;a class="reference external" href="http://instantbird.com/"&gt;Instantbird&lt;/a&gt;), some
 improvements I hope to make and&amp;nbsp;more.&lt;/p&gt;
-&lt;div class="youtube youtube-16x9"&gt;&lt;iframe src="https://www.youtube-nocookie.com/embed/8vjjwxx7k1w" allowfullscreen seamless frameBorder="0"&gt;&lt;/iframe&gt;&lt;/div&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Patrick Cloke</dc:creator><pubDate>Fri, 23 Feb 2024 16:01:00 -0500</pubDate><guid isPermaLink="false">tag:patrick.cloke.us,2024-02-23:/posts/2024/02/23/joining-the-matrix-spec-core-team/</guid><category>articles</category><category>matrix</category><category>mozilla</category><category>thunderbird</category><category>instantbird</category></item><item><title>Matrix Live Interview</title><link>https://patrick.cloke.us/posts/2020/03/12/matrix-live-interview/</link><description>&lt;p&gt;I was interviewed for Matrix Live as part of last week&amp;#8217;s &lt;a class="reference external" href="https://matrix.org/blog/2020/03/06/this-week-in-matrix-2020-03-06"&gt;This Week in Matrix&lt;/a&gt;.
+&lt;div class="youtube youtube-16x9"&gt;&lt;iframe src="https://www.youtube-nocookie.com/embed/8vjjwxx7k1w" allowfullscreen seamless frameBorder="0"&gt;&lt;/iframe&gt;&lt;/div&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Patrick Cloke</dc:creator><pubDate>Fri, 23 Feb 2024 16:01:00 -0500</pubDate><guid>tag:patrick.cloke.us,2024-02-23:/posts/2024/02/23/joining-the-matrix-spec-core-team/</guid><category>matrix</category><category>mozilla</category><category>thunderbird</category><category>instantbird</category></item><item><title>Matrix Live Interview</title><link>https://patrick.cloke.us/posts/2020/03/12/matrix-live-interview/</link><description>&lt;p&gt;I was interviewed for Matrix Live as part of last week&amp;#8217;s &lt;a class="reference external" href="https://matrix.org/blog/2020/03/06/this-week-in-matrix-2020-03-06"&gt;This Week in Matrix&lt;/a&gt;.
 I talked a bit about my background and my experiences contributing to Mozilla
 (as part of Instantbird and Thunderbird projects) as well as what I will be
 working on for Synapse, the reference implementation for Matrix&amp;nbsp;servers.&lt;/p&gt;
@@ -20,7 +20,7 @@ working on for Synapse, the reference implementation for Matrix&amp;nbsp;servers
 &lt;li&gt;&lt;a class="reference external" href="https://open.spotify.com/episode/1tDmpPbG5e79tU6GfvHz7o"&gt;Spotify&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 &lt;p&gt;Let me know if you have any&amp;nbsp;questions!&lt;/p&gt;
-&lt;div class="youtube youtube-16x9"&gt;&lt;iframe src="https://www.youtube-nocookie.com/embed/iKx-RHS-p4M" allowfullscreen seamless frameBorder="0"&gt;&lt;/iframe&gt;&lt;/div&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Patrick Cloke</dc:creator><pubDate>Thu, 12 Mar 2020 11:49:00 -0400</pubDate><guid isPermaLink="false">tag:patrick.cloke.us,2020-03-12:/posts/2020/03/12/matrix-live-interview/</guid><category>articles</category><category>matrix</category><category>mozilla</category><category>thunderbird</category><category>instantbird</category></item><item><title>Google Summer of Code 2016 projects</title><link>https://patrick.cloke.us/posts/2016/05/20/google-summer-of-code-2016-projects/</link><description>&lt;p&gt;I&amp;#8217;d like to introduce the 13 students that are being mentored by Mozilla this
+&lt;div class="youtube youtube-16x9"&gt;&lt;iframe src="https://www.youtube-nocookie.com/embed/iKx-RHS-p4M" allowfullscreen seamless frameBorder="0"&gt;&lt;/iframe&gt;&lt;/div&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Patrick Cloke</dc:creator><pubDate>Thu, 12 Mar 2020 11:49:00 -0400</pubDate><guid>tag:patrick.cloke.us,2020-03-12:/posts/2020/03/12/matrix-live-interview/</guid><category>matrix</category><category>mozilla</category><category>thunderbird</category><category>instantbird</category></item><item><title>Google Summer of Code 2016 projects</title><link>https://patrick.cloke.us/posts/2016/05/20/google-summer-of-code-2016-projects/</link><description>&lt;p&gt;I&amp;#8217;d like to introduce the 13 students that are being mentored by Mozilla this
 year as part of &lt;a class="reference external" href="https://summerofcode.withgoogle.com/"&gt;Google Summer of Code 2016&lt;/a&gt;! Currently the &amp;#8220;community bonding&amp;#8221;
 period is ongoing, but we are on the cusp of the &amp;#8220;coding period&amp;#8221;&amp;nbsp;starting.&lt;/p&gt;
 &lt;p&gt;As part of Google Summer of Code (GSoC), we ask students to provide weekly
@@ -98,7 +98,7 @@ the name of each student and the name of their&amp;nbsp;mentor(s).&lt;/p&gt;
 &lt;/tr&gt;
 &lt;/tbody&gt;
 &lt;/table&gt;
-</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Patrick Cloke</dc:creator><pubDate>Fri, 20 May 2016 09:15:00 -0400</pubDate><guid isPermaLink="false">tag:patrick.cloke.us,2016-05-20:/posts/2016/05/20/google-summer-of-code-2016-projects/</guid><category>articles</category><category>community</category><category>GSoC</category><category>Mozilla</category></item><item><title>Thoughts on Applying to Google Summer of Code</title><link>https://patrick.cloke.us/posts/2016/03/07/thoughts-on-applying-to-gsoc/</link><description>
+</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Patrick Cloke</dc:creator><pubDate>Fri, 20 May 2016 09:15:00 -0400</pubDate><guid>tag:patrick.cloke.us,2016-05-20:/posts/2016/05/20/google-summer-of-code-2016-projects/</guid><category>community</category><category>GSoC</category><category>Mozilla</category></item><item><title>Thoughts on Applying to Google Summer of Code</title><link>https://patrick.cloke.us/posts/2016/03/07/thoughts-on-applying-to-gsoc/</link><description>
 &lt;!-- --&gt;
 &lt;blockquote&gt;
 &lt;p&gt;Over the past few years I’ve been involved in &lt;a class="reference external" href="https://developers.google.com/open-source/gsoc/"&gt;Google Summer of Code&lt;/a&gt;
@@ -181,7 +181,7 @@ help, and off-topic banter.&lt;/li&gt;
 announcements, etc.&lt;/li&gt;
 &lt;li&gt;Bug trackers (Bugzilla, GitHub, Trac) for technical discussion and reviewing code.&lt;/li&gt;
 &lt;/ul&gt;
-&lt;p&gt;Choose whichever way of introducting yourself that you’re comfortable with. It
+&lt;p&gt;Choose whichever way of introducing yourself that you’re comfortable with. It
 can be useful to “idle” before introducing yourself (i.e.  watch how a community interacts).&lt;/p&gt;
 &lt;p&gt;This can be important to figuring out a communities culture, e.g. how friendly
 is the community to new-comers? Are they open to helping or do they just expect
@@ -244,7 +244,7 @@ than they do during GSoC!&lt;/p&gt;
 questions that pertain to your application at Mozilla, please
 &lt;a class="reference external" href="https://patrick.cloke.us/pages/about.html"&gt;contact&lt;/a&gt; me individually.&lt;/p&gt;
 &lt;/div&gt;
-</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Patrick Cloke</dc:creator><pubDate>Mon, 07 Mar 2016 09:18:00 -0500</pubDate><guid isPermaLink="false">tag:patrick.cloke.us,2016-03-07:/posts/2016/03/07/thoughts-on-applying-to-gsoc/</guid><category>articles</category><category>GSoC</category><category>Mozilla</category></item><item><title>IRC Client Usage Share on moznet</title><link>https://patrick.cloke.us/posts/2015/09/23/irc-client-usage-share-on-moznet/</link><description>
+</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Patrick Cloke</dc:creator><pubDate>Mon, 07 Mar 2016 09:18:00 -0500</pubDate><guid>tag:patrick.cloke.us,2016-03-07:/posts/2016/03/07/thoughts-on-applying-to-gsoc/</guid><category>GSoC</category><category>Mozilla</category></item><item><title>IRC Client Usage Share on moznet</title><link>https://patrick.cloke.us/posts/2015/09/23/irc-client-usage-share-on-moznet/</link><description>
 &lt;div class="section" id="background"&gt;
 &lt;h2&gt;&lt;a class="toc-backref" href="#toc-entry-1"&gt;Background&lt;/a&gt;&lt;/h2&gt;
 &lt;p&gt;The usage share of &lt;span class="caps"&gt;IRC&lt;/span&gt; clients has always been something I’m interested in. This
@@ -472,7 +472,7 @@ it.&lt;/td&gt;&lt;/tr&gt;
 &lt;/table&gt;
 &lt;/div&gt;
 &lt;/div&gt;
-</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Patrick Cloke</dc:creator><pubDate>Wed, 23 Sep 2015 17:07:00 -0400</pubDate><guid isPermaLink="false">tag:patrick.cloke.us,2015-09-23:/posts/2015/09/23/irc-client-usage-share-on-moznet/</guid><category>articles</category><category>Mozilla</category><category>Thunderbird</category><category>Instantbird</category><category>IRC</category></item><item><title>Google Summer of Code 2015 Project Ideas for Mozilla</title><link>https://patrick.cloke.us/posts/2015/01/21/google-summer-of-code-2015-project-ideas-for-mozilla/</link><description>&lt;p&gt;As &lt;a class="reference external" href="http://blog.queze.net/post/2015/01/22/Project-ideas-wanted-for-Summer-of-Code-2015"&gt;Florian announced&lt;/a&gt; last Thursday, &lt;strong&gt;now&lt;/strong&gt; is the time to brainstorm and
+</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Patrick Cloke</dc:creator><pubDate>Wed, 23 Sep 2015 17:07:00 -0400</pubDate><guid>tag:patrick.cloke.us,2015-09-23:/posts/2015/09/23/irc-client-usage-share-on-moznet/</guid><category>Mozilla</category><category>Thunderbird</category><category>Instantbird</category><category>IRC</category></item><item><title>Google Summer of Code 2015 Project Ideas for Mozilla</title><link>https://patrick.cloke.us/posts/2015/01/21/google-summer-of-code-2015-project-ideas-for-mozilla/</link><description>&lt;p&gt;As &lt;a class="reference external" href="http://blog.queze.net/post/2015/01/22/Project-ideas-wanted-for-Summer-of-Code-2015"&gt;Florian announced&lt;/a&gt; last Thursday, &lt;strong&gt;now&lt;/strong&gt; is the time to brainstorm and
 discuss project ideas for &lt;a class="reference external" href="http://google-opensource.blogspot.fr/2014/10/google-summer-of-code-2015-and-google.html"&gt;Google Summer of Code 2015&lt;/a&gt;. Mozilla has
 participated in every previous Google Summer of Code (GSoC), and hopes to
 participate again this year! In order to help ensure we&amp;#8217;re selected, we need
@@ -508,22 +508,30 @@ however. If you have an idea of what you&amp;#8217;d like to work on, feel free 
 out that area of the community, introduce yourself and maybe find a &lt;a class="reference external" href="http://www.joshmatthews.net/bugsahoy/"&gt;mentored
 bug&lt;/a&gt; to work&amp;nbsp;on.&lt;/p&gt;
 &lt;/div&gt;
-</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Patrick Cloke</dc:creator><pubDate>Wed, 21 Jan 2015 13:18:00 -0500</pubDate><guid isPermaLink="false">tag:patrick.cloke.us,2015-01-21:/posts/2015/01/21/google-summer-of-code-2015-project-ideas-for-mozilla/</guid><category>articles</category><category>mozilla</category><category>GSoC</category></item><item><title>Thunderbird Summit 2014</title><link>https://patrick.cloke.us/posts/2014/11/14/thunderbird-summit-2014/</link><description>&lt;p&gt;Last month (Oct. 15th to Oct. 18th, to be precise), &lt;a class="reference external" href="https://wiki.mozilla.org/Thunderbird:Summit_2014#Invited_Attendees"&gt;twenty volunteers&lt;/a&gt;
+</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Patrick Cloke</dc:creator><pubDate>Wed, 21 Jan 2015 13:18:00 -0500</pubDate><guid>tag:patrick.cloke.us,2015-01-21:/posts/2015/01/21/google-summer-of-code-2015-project-ideas-for-mozilla/</guid><category>mozilla</category><category>GSoC</category></item><item><title>Thunderbird Summit 2014</title><link>https://patrick.cloke.us/posts/2014/11/14/thunderbird-summit-2014/</link><description>&lt;p&gt;Last month (Oct. 15th to Oct. 18th, to be precise), &lt;a class="reference external" href="https://wiki.mozilla.org/Thunderbird:Summit_2014#Invited_Attendees"&gt;twenty volunteers&lt;/a&gt;
 descended on Mozilla&amp;#8217;s Toronto office to discuss &lt;a class="reference external" href="https://www.mozilla.org/en-US/thunderbird/"&gt;Mozilla Thunderbird&lt;/a&gt;. This
 included Mozilla employees, Thunderbird contributors of all sorts (developers,
 user interface designers, add-on reviewers), Lightning contributors, and
 chat/&lt;a class="reference external" href="http://instantbird.com/"&gt;Instantbird&lt;/a&gt;&amp;nbsp;contributors.&lt;/p&gt;
 &lt;blockquote class="text-center"&gt;
-&lt;a class="reference external image-reference" href="https://patrick.cloke.us/images/chat-tb-summit/IMG_6516.jpg"&gt;&lt;img alt="The entire group of volunteers." src="/thumbnails/chat-tb-summit/IMG_6516_small.jpg" /&gt;&lt;/a&gt;
+&lt;a class="reference external image-reference" href="https://patrick.cloke.us/images/chat-tb-summit/IMG_6516.jpg"&gt;
+&lt;img alt="The entire group of volunteers." src="/thumbnails/chat-tb-summit/IMG_6516_small.jpg" /&gt;
+&lt;/a&gt;
 &lt;/blockquote&gt;
 &lt;p&gt;It was great to spend some quality hacking time with &lt;a class="reference external" href="http://blog.queze.net/"&gt;Florian&lt;/a&gt; and to meet
 &lt;a class="reference external" href="http://blog.nhnt11.com/"&gt;Nihanth&lt;/a&gt;, both Instantbird guys who I talk to most days on &lt;span class="caps"&gt;IRC&lt;/span&gt;! I also had the
 pleasure of re-meeting a few people from the Mozilla Summit last year (I
 attended in Toronto) and to meet some brand new&amp;nbsp;people!&lt;/p&gt;
 &lt;blockquote class="text-center"&gt;
-&lt;a class="reference external image-reference" href="https://patrick.cloke.us/images/chat-tb-summit/IMG_6408.jpg"&gt;&lt;img alt="Nihanth hacking." src="/thumbnails/chat-tb-summit/IMG_6408_small.jpg" /&gt;&lt;/a&gt;
-&lt;a class="reference external image-reference" href="https://patrick.cloke.us/images/chat-tb-summit/IMG_6426.jpg"&gt;&lt;img alt="The chat contributors: me, Florian and Nihanth." src="/thumbnails/chat-tb-summit/IMG_6426_small.jpg" /&gt;&lt;/a&gt;
-&lt;a class="reference external image-reference" href="https://patrick.cloke.us/images/chat-tb-summit/IMG_6508.jpg"&gt;&lt;img alt="Daniel joining us over Vidyo." src="/thumbnails/chat-tb-summit/IMG_6508_small.jpg" /&gt;&lt;/a&gt;
+&lt;a class="reference external image-reference" href="https://patrick.cloke.us/images/chat-tb-summit/IMG_6408.jpg"&gt;
+&lt;img alt="Nihanth hacking." src="/thumbnails/chat-tb-summit/IMG_6408_small.jpg" /&gt;
+&lt;/a&gt;
+&lt;a class="reference external image-reference" href="https://patrick.cloke.us/images/chat-tb-summit/IMG_6426.jpg"&gt;
+&lt;img alt="The chat contributors: me, Florian and Nihanth." src="/thumbnails/chat-tb-summit/IMG_6426_small.jpg" /&gt;
+&lt;/a&gt;
+&lt;a class="reference external image-reference" href="https://patrick.cloke.us/images/chat-tb-summit/IMG_6508.jpg"&gt;
+&lt;img alt="Daniel joining us over Vidyo." src="/thumbnails/chat-tb-summit/IMG_6508_small.jpg" /&gt;
+&lt;/a&gt;
 &lt;p&gt;A few pictures of the chat contributors: Nihanth; me, Florian and Nihanth;
 and Daniel (dialing&amp;nbsp;in!)&lt;/p&gt;
 &lt;/blockquote&gt;
@@ -535,16 +543,22 @@ after that, we got some really exciting work done! We started cleaning up and
 finalizing some patches from Google Summer of Code 2014 to add &lt;a class="reference external" href="http://www.webrtc.org/"&gt;WebRTC&lt;/a&gt; support
 to &lt;a class="reference external" href="http://xmpp.org/"&gt;&lt;span class="caps"&gt;XMPP&lt;/span&gt;&lt;/a&gt;! You can check out the progress in &lt;a class="reference external" href="https://bugzilla.mozilla.org/show_bug.cgi?id=1018060"&gt;bug 1018060&lt;/a&gt;.&lt;/p&gt;
 &lt;blockquote class="text-center"&gt;
-&lt;a class="reference external image-reference" href="https://patrick.cloke.us/images/chat-tb-summit/IMG_6394.jpg"&gt;&lt;img alt="First working call over Instantbird WebRTC." src="/thumbnails/chat-tb-summit/IMG_6394_small.jpg" /&gt;&lt;/a&gt;
-&lt;a class="reference external image-reference" href="https://patrick.cloke.us/images/chat-tb-summit/webrtc_preview.jpg"&gt;&lt;img alt="Screenshot of first working call over Instantbird WebRTC." src="/thumbnails/chat-tb-summit/webrtc_preview_small.jpg" /&gt;&lt;/a&gt;
+&lt;a class="reference external image-reference" href="https://patrick.cloke.us/images/chat-tb-summit/IMG_6394.jpg"&gt;
+&lt;img alt="First working call over Instantbird WebRTC." src="/thumbnails/chat-tb-summit/IMG_6394_small.jpg" /&gt;
+&lt;/a&gt;
+&lt;a class="reference external image-reference" href="https://patrick.cloke.us/images/chat-tb-summit/webrtc_preview.jpg"&gt;
+&lt;img alt="Screenshot of first working call over Instantbird WebRTC." src="/thumbnails/chat-tb-summit/webrtc_preview_small.jpg" /&gt;
+&lt;/a&gt;
 &lt;p&gt;First working call over Instantbird&amp;nbsp;WebRTC.&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;blockquote class="text-center"&gt;
-&lt;a class="reference external image-reference" href="https://patrick.cloke.us/images/chat-tb-summit/IMG_6594.jpg"&gt;&lt;img alt="Eating some poutine!" src="/thumbnails/chat-tb-summit/IMG_6594_small.jpg" /&gt;&lt;/a&gt;
+&lt;a class="reference external image-reference" href="https://patrick.cloke.us/images/chat-tb-summit/IMG_6594.jpg"&gt;
+&lt;img alt="Eating some poutine!" src="/thumbnails/chat-tb-summit/IMG_6594_small.jpg" /&gt;
+&lt;/a&gt;
 &lt;p&gt;Other highlights of the trip include eating the &amp;#8220;Canadian delicacy&amp;#8221; of
 poutine (with pulled pork on&amp;nbsp;it)!&lt;/p&gt;
 &lt;/blockquote&gt;
-</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Patrick Cloke</dc:creator><pubDate>Fri, 14 Nov 2014 18:37:00 -0500</pubDate><guid isPermaLink="false">tag:patrick.cloke.us,2014-11-14:/posts/2014/11/14/thunderbird-summit-2014/</guid><category>articles</category><category>Mozilla</category><category>Thunderbird</category><category>community</category><category>Instantbird</category></item><item><title>How I Got Involved in Mozilla</title><link>https://patrick.cloke.us/posts/2014/10/07/how-i-got-involved-in-mozilla/</link><description>&lt;p&gt;This is discussed very briefly on my &lt;a class="reference external" href="https://patrick.cloke.us/pages/about.html"&gt;about page&lt;/a&gt;, but I figured it could use a
+</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Patrick Cloke</dc:creator><pubDate>Fri, 14 Nov 2014 18:37:00 -0500</pubDate><guid>tag:patrick.cloke.us,2014-11-14:/posts/2014/11/14/thunderbird-summit-2014/</guid><category>Mozilla</category><category>Thunderbird</category><category>community</category><category>Instantbird</category></item><item><title>How I Got Involved in Mozilla</title><link>https://patrick.cloke.us/posts/2014/10/07/how-i-got-involved-in-mozilla/</link><description>&lt;p&gt;This is discussed very briefly on my &lt;a class="reference external" href="https://patrick.cloke.us/pages/about.html"&gt;about page&lt;/a&gt;, but I figured it could use a
 bit of a longer discussion. I generally consider myself to have joined the
 &lt;a class="reference external" href="https://www.mozilla.org/"&gt;Mozilla&lt;/a&gt; community in ~2006. I know that I was using Mozilla Firefox, Mozilla
 Thunderbird, &lt;em&gt;and&lt;/em&gt; Mozilla Sunbird way before that (probably since ~2004, which
@@ -614,7 +628,7 @@ fixed a bug in Firefox; although I have had &lt;a class="reference external" hre
 &lt;tt class="docutils literal"&gt;&lt;span class="pre"&gt;mozilla-central&lt;/span&gt;&lt;/tt&gt;.&lt;/td&gt;&lt;/tr&gt;
 &lt;/tbody&gt;
 &lt;/table&gt;
-</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Patrick Cloke</dc:creator><pubDate>Tue, 07 Oct 2014 09:31:00 -0400</pubDate><guid isPermaLink="false">tag:patrick.cloke.us,2014-10-07:/posts/2014/10/07/how-i-got-involved-in-mozilla/</guid><category>articles</category><category>Mozilla</category></item><item><title>Community and Volunteers</title><link>https://patrick.cloke.us/posts/2014/04/16/community-and-volunteers/</link><description>&lt;p&gt;It was suggested that I cross-post this from mozilla.dev.planning onto
+</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Patrick Cloke</dc:creator><pubDate>Tue, 07 Oct 2014 09:31:00 -0400</pubDate><guid>tag:patrick.cloke.us,2014-10-07:/posts/2014/10/07/how-i-got-involved-in-mozilla/</guid><category>Mozilla</category></item><item><title>Community and Volunteers</title><link>https://patrick.cloke.us/posts/2014/04/16/community-and-volunteers/</link><description>&lt;p&gt;It was suggested that I cross-post this from mozilla.dev.planning onto
 my blog. This is in reply to a thread entitled &amp;#8220;&lt;a class="reference external" href="https://groups.google.com/forum/#%21topic/mozilla.dev.planning/P8oHKTCWSiQ"&gt;Proposal: Move
 Thunderbird and SeaMonkey to mozilla-central&lt;/a&gt;&amp;#8221; about (essentially)
 merging comm-central back into mozilla-central. There have been many
@@ -686,7 +700,7 @@ keeping a dying one on life-support. (And prove to all that
 &lt;/blockquote&gt;
 &lt;p&gt;I don&amp;#8217;t have much else to say beyond that (besides thanks for reading
 this&amp;nbsp;far!)&lt;/p&gt;
-</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Patrick Cloke</dc:creator><pubDate>Wed, 16 Apr 2014 12:34:00 -0400</pubDate><guid isPermaLink="false">tag:patrick.cloke.us,2014-04-16:/posts/2014/04/16/community-and-volunteers/</guid><category>articles</category><category>community</category><category>crosspost</category><category>Mozilla</category><category>Thunderbird</category></item><item><title>GSoc Lessons: Part Deux: The Arms Race</title><link>https://patrick.cloke.us/posts/2013/12/04/gsoc-lessons-part-deux-arms-race/</link><description>&lt;p&gt;This post title might be a little excessive, but I&amp;#8217;ll blame &lt;a class="reference external" href="http://en.wikipedia.org/wiki/The_Sum_of_All_Fears_%28film%29"&gt;The Sum
+</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Patrick Cloke</dc:creator><pubDate>Wed, 16 Apr 2014 12:34:00 -0400</pubDate><guid>tag:patrick.cloke.us,2014-04-16:/posts/2014/04/16/community-and-volunteers/</guid><category>community</category><category>crosspost</category><category>Mozilla</category><category>Thunderbird</category></item><item><title>GSoc Lessons: Part Deux: The Arms Race</title><link>https://patrick.cloke.us/posts/2013/12/04/gsoc-lessons-part-deux-arms-race/</link><description>&lt;p&gt;This post title might be a little excessive, but I&amp;#8217;ll blame &lt;a class="reference external" href="http://en.wikipedia.org/wiki/The_Sum_of_All_Fears_%28film%29"&gt;The Sum
 of All Fears&lt;/a&gt; that I was watching last night. This is the second part
 of a set of posts about ideas I heard at the Google Summer of Code 2013
 Mentor Summit (you can read &lt;a class="reference external" href="https://patrick.cloke.us/posts/2013/12/02/gsoc-lessons-part-1-application-period/"&gt;the first part about the application
@@ -704,7 +718,7 @@ more patches that were increasingly complex. (Note that this wasn&amp;#8217;t a 
 response to a challenge from community members, it was a spontaneous
 situation.) Once a single student started to submit extra patches the
 other students felt they must also submit more patches to be considered
-equal/superior (hence my allusion to an &amp;#8220;&lt;a class="reference external" href="http://en.wikipedia.org/wiki/Arms_race#Nuclear_arms_race"&gt;arms race&lt;/a&gt;&amp;#8220;).
+equal/superior (hence my allusion to an &amp;#8220;&lt;a class="reference external" href="http://en.wikipedia.org/wiki/Arms_race#Nuclear_arms_race"&gt;arms race&lt;/a&gt;&amp;#8221;).
 Interestingly, they would also sometimes work on the same bug in a sort
 of race to see who could fix it&amp;nbsp;first.&lt;/p&gt;
 &lt;p&gt;There&amp;#8217;s a couple things I took away from&amp;nbsp;this:&lt;/p&gt;
@@ -762,4 +776,4 @@ accepted. (And that they&amp;#8217;re used to competing, e.g. homework and exams
 not collaborating!) I don&amp;#8217;t really know whether I feel the above
 situation is good or bad, but it&amp;#8217;s certainly an interesting effect from
 the way the GSoC process&amp;nbsp;works.&lt;/p&gt;
-</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Patrick Cloke</dc:creator><pubDate>Wed, 04 Dec 2013 09:17:00 -0500</pubDate><guid isPermaLink="false">tag:patrick.cloke.us,2013-12-04:/posts/2013/12/04/gsoc-lessons-part-deux-arms-race/</guid><category>articles</category><category>community</category><category>GSoC</category><category>Mozilla</category></item></channel></rss>
+</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Patrick Cloke</dc:creator><pubDate>Wed, 04 Dec 2013 09:17:00 -0500</pubDate><guid>tag:patrick.cloke.us,2013-12-04:/posts/2013/12/04/gsoc-lessons-part-deux-arms-race/</guid><category>community</category><category>GSoC</category><category>Mozilla</category></item></channel></rss>

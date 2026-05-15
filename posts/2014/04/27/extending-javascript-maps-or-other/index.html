@@ -24,7 +24,7 @@
     <meta property="og:site_name" content="Patrick Cloke" />
 <meta property="og:title" content="Extending JavaScript Maps (or other built-in objects)" />
 <meta property="og:url" content="https://patrick.cloke.us/posts/2014/04/27/extending-javascript-maps-or-other/" />
-<meta property="og:description" content="Finally another technical post, this one is about my adventures in attempting to extend the built-in Map object in JavaScript to extend the functionality. As background, there are two reasons we’d want this:  In the chat backend we currently use JavaScript objects ({}) as hashes/maps to keep track of …" />
+<meta property="og:description" content="Finally another technical post, this one is about my adventures in attempting to extend the built-in Map object in JavaScript to extend the functionality. As background, there are two reasons we’d want this: In the chat backend we currently use JavaScript objects ({}) as hashes/maps to keep track of …" />
 <meta property="og:type" content="article" />
 <meta property="article:published_time" content="2014-04-27T13:46:00-04:00" />
 <meta property="article:author" content="Patrick Cloke" />
@@ -166,7 +166,7 @@
       <div>
         <div class="border border-info bg-light rounded float-right p-2 ml-2 mb-2">
           <div class="toc" id="">
-<p class="topic-title">Contents</p>
+<p class="topic-title"><a class="reference internal" href="#top">Contents</a></p>
 <ul class="simple">
 <li><a class="reference internal" href="#goals" id="toc-entry-1">Goals</a></li>
 <li><a class="reference internal" href="#first-approach-setting-proto-to-map-prototype" id="toc-entry-2">First Approach (setting __proto__ to Map.prototype)</a></li>
@@ -274,7 +274,7 @@ constrained time. No, I didn’t profile this, it just seemed like bad design.)
 <h2><a class="toc-backref" href="#toc-entry-4">Solution (wrapping a Map)</a></h2>
 <p>Finally I settled on the simple solution of just wrapping the Map in a
 custom object. Initially I thought this would be frustrating to
-re-declare every function (and prone to breakage in the future if new
+redeclare every function (and prone to breakage in the future if new
 methods are added), but there’s a nice magic method
 <a class="reference external" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/noSuchMethod">__noSuchMethod__</a> that fixes this! (Note that this is a
 non-standard feature of SpiderMonkey.) <tt class="docutils literal">__noSuchMethod__</tt> allows an

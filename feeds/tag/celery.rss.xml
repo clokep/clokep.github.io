@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<rss version="2.0"><channel><title>Patrick Cloke - celery</title><link>https://patrick.cloke.us/</link><description></description><lastBuildDate>Fri, 15 Sep 2023 15:28:00 -0400</lastBuildDate><item><title>Celery architecture breakdown</title><link>https://patrick.cloke.us/posts/2023/09/15/celery-architecture-breakdown/</link><description>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Patrick Cloke - celery</title><link>https://patrick.cloke.us/</link><description/><atom:link href="https://patrick.cloke.us/feeds/tag/celery.rss.xml" rel="self"/><lastBuildDate>Fri, 15 Sep 2023 15:28:00 -0400</lastBuildDate><item><title>Celery architecture breakdown</title><link>https://patrick.cloke.us/posts/2023/09/15/celery-architecture-breakdown/</link><description>
 &lt;p&gt;The &lt;a class="reference external" href="https://docs.celeryq.dev/en/v5.2.7/"&gt;Celery project&lt;/a&gt;, which is often used Python library to run “background tasks”
 for synchronous web frameworks, describes itself as:&lt;/p&gt;
 &lt;blockquote&gt;
@@ -25,7 +25,9 @@ called the “client” in Celery’s documentation.)&lt;/li&gt;
 &lt;li&gt;A (results) &lt;a class="reference external" href="https://docs.celeryq.dev/en/v5.2.7/getting-started/backends-and-brokers/index.html"&gt;backend&lt;/a&gt;.&lt;/li&gt;
 &lt;/ol&gt;
 &lt;blockquote class="text-center"&gt;
-&lt;a class="reference external image-reference" href="https://patrick.cloke.us/images/celery-architecture/celery-overview.png"&gt;&lt;img alt="Celery overview" src="https://patrick.cloke.us/images/celery-architecture/celery-overview.png" style="width: 50%;"/&gt;&lt;/a&gt;
+&lt;a class="reference external image-reference" href="https://patrick.cloke.us/images/celery-architecture/celery-overview.png"&gt;
+&lt;img alt="Celery overview" src="https://patrick.cloke.us/images/celery-architecture/celery-overview.png" style="width: 50%;"/&gt;
+&lt;/a&gt;
 &lt;p&gt;A simplified view of Celery components.&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;p&gt;In order to use Celery you need to:&lt;/p&gt;
@@ -69,7 +71,9 @@ in the background twice (&lt;tt class="docutils literal"&gt;&lt;span class="pre"
 &lt;p&gt;Usually you don’t care where (which worker) the task runs on it, or how it gets
 there but sometimes you need! We can break down the components more to reveal more detail:&lt;/p&gt;
 &lt;blockquote class="text-center"&gt;
-&lt;a class="reference external image-reference" href="https://patrick.cloke.us/images/celery-architecture/celery-components.png"&gt;&lt;img alt="Celery components" src="https://patrick.cloke.us/images/celery-architecture/celery-components.png" style="width: 50%;"/&gt;&lt;/a&gt;
+&lt;a class="reference external image-reference" href="https://patrick.cloke.us/images/celery-architecture/celery-components.png"&gt;
+&lt;img alt="Celery components" src="https://patrick.cloke.us/images/celery-architecture/celery-components.png" style="width: 50%;"/&gt;
+&lt;/a&gt;
 &lt;p&gt;The Celery components broken into sub-components.&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;div class="section" id="broker"&gt;
@@ -89,7 +93,7 @@ why you might route tasks to different queues.&lt;/p&gt;
 &lt;p&gt;Celery workers fetch queued tasks from the broker and then run the code defined in
 your &lt;tt class="docutils literal"&gt;task&lt;/tt&gt;, they can optionally return a value via the results backend.&lt;/p&gt;
 &lt;p&gt;Celery workers have a “consumer” which fetches tasks from the broker: by default
-it requests many tasks at once, equivalent to “&lt;a class="reference external" href="https://docs.celeryq.dev/en/v5.2.7/userguide/configuration.html#std-setting-worker_prefetch_multiplier"&gt;prefetch multiplier&lt;/a&gt; x &lt;a class="reference external" href="https://docs.celeryq.dev/en/v5.2.7/userguide/configuration.html#std-setting-worker_concurrency"&gt;concurrency&lt;/a&gt;“.
+it requests many tasks at once, equivalent to “&lt;a class="reference external" href="https://docs.celeryq.dev/en/v5.2.7/userguide/configuration.html#std-setting-worker_prefetch_multiplier"&gt;prefetch multiplier&lt;/a&gt; x &lt;a class="reference external" href="https://docs.celeryq.dev/en/v5.2.7/userguide/configuration.html#std-setting-worker_concurrency"&gt;concurrency&lt;/a&gt;”.
 (If your prefetch multiplier is 5 and your concurrency is 4, it attempts to
 fetch up to 20 queued tasks from the broker.) Once fetched it places them into
 an in-memory buffer. The task pool then runs each task via its &lt;tt class="docutils literal"&gt;Strategy&lt;/tt&gt; —
@@ -125,7 +129,9 @@ or configuring brokers and backends.&lt;/p&gt;
 &lt;p&gt;The main thing to understand is that there’s lots of serialization happening across
 each process boundary:&lt;/p&gt;
 &lt;blockquote class="text-center"&gt;
-&lt;a class="reference external image-reference" href="https://patrick.cloke.us/images/celery-architecture/celery-dataflow.png"&gt;&lt;img alt="Celery dataflow" src="https://patrick.cloke.us/images/celery-architecture/celery-dataflow.png" style="width: 50%;"/&gt;&lt;/a&gt;
+&lt;a class="reference external image-reference" href="https://patrick.cloke.us/images/celery-architecture/celery-dataflow.png"&gt;
+&lt;img alt="Celery dataflow" src="https://patrick.cloke.us/images/celery-architecture/celery-dataflow.png" style="width: 50%;"/&gt;
+&lt;/a&gt;
 &lt;p&gt;A task message traversing from application code to the broker to a worker,
 and a result traversing from a worker to a backend to application code.&lt;/p&gt;
 &lt;/blockquote&gt;
@@ -151,7 +157,9 @@ as well as custom schemes can be used as well).&lt;/p&gt;
 &lt;p&gt;An example &lt;span class="caps"&gt;AMQP&lt;/span&gt; message containing the details of a task request (from RabbitMQ’s
 &lt;a class="reference external" href="https://www.rabbitmq.com/management.html"&gt;management interface&lt;/a&gt;) is shown below:&lt;/p&gt;
 &lt;blockquote class="text-center"&gt;
-&lt;a class="reference external image-reference" href="https://patrick.cloke.us/images/celery-architecture/rabbitmq-task-message.png"&gt;&lt;img alt="Celery task wrapped in a RabbitMQ message" src="https://patrick.cloke.us/images/celery-architecture/rabbitmq-task-message.png" style="width: 50%;"/&gt;&lt;/a&gt;
+&lt;a class="reference external image-reference" href="https://patrick.cloke.us/images/celery-architecture/rabbitmq-task-message.png"&gt;
+&lt;img alt="Celery task wrapped in a RabbitMQ message" src="https://patrick.cloke.us/images/celery-architecture/rabbitmq-task-message.png" style="width: 50%;"/&gt;
+&lt;/a&gt;
 &lt;p&gt;The example Celery task wrapped in a RabbitMQ message&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;p&gt;When a worker fetches a task from the broker it deserializes it into a &lt;a class="reference external" href="https://docs.celeryq.dev/en/v5.2.7/userguide/tasks.html#task-request"&gt;Request&lt;/a&gt;
@@ -176,7 +184,9 @@ results backend (and gets split between the headers and body). Celery provides
 configuration options to customize this serialization. &lt;a class="footnote-reference" href="#footnote-6" id="footnote-reference-6"&gt;[6]&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;An example &lt;span class="caps"&gt;AMQP&lt;/span&gt; message containing the details of a result is shown below:&lt;/p&gt;
 &lt;blockquote class="text-center"&gt;
-&lt;a class="reference external image-reference" href="https://patrick.cloke.us/images/celery-architecture/rabbitmq-result-message.png"&gt;&lt;img alt="Celery result wrapped in a RabbitMQ message" src="https://patrick.cloke.us/images/celery-architecture/rabbitmq-result-message.png" style="width: 50%;"/&gt;&lt;/a&gt;
+&lt;a class="reference external image-reference" href="https://patrick.cloke.us/images/celery-architecture/rabbitmq-result-message.png"&gt;
+&lt;img alt="Celery result wrapped in a RabbitMQ message" src="https://patrick.cloke.us/images/celery-architecture/rabbitmq-result-message.png" style="width: 50%;"/&gt;
+&lt;/a&gt;
 &lt;p&gt;The example Celery result wrapped in a RabbitMQ message&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;p&gt;Once the result is fetched by the client it can deserialized the true (Python)
@@ -258,7 +268,7 @@ compression settings) via the &lt;tt class="docutils literal"&gt;task_&lt;/tt&gt
 &lt;/table&gt;
 &lt;/div&gt;
 &lt;/div&gt;
-</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Patrick Cloke</dc:creator><pubDate>Fri, 15 Sep 2023 15:28:00 -0400</pubDate><guid isPermaLink="false">tag:patrick.cloke.us,2023-09-15:/posts/2023/09/15/celery-architecture-breakdown/</guid><category>articles</category><category>celery</category></item><item><title>celery-batches 0.5 released!</title><link>https://patrick.cloke.us/posts/2021/05/24/celery-batches-0.5-released/</link><description>&lt;p&gt;A &lt;a class="reference external" href="https://pypi.org/project/celery-batches/0.5/"&gt;new version (v0.5)&lt;/a&gt; of &lt;a class="reference external" href="https://github.com/clokep/celery-batches/"&gt;celery-batches&lt;/a&gt; is available which adds support for
+</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Patrick Cloke</dc:creator><pubDate>Fri, 15 Sep 2023 15:28:00 -0400</pubDate><guid>tag:patrick.cloke.us,2023-09-15:/posts/2023/09/15/celery-architecture-breakdown/</guid><category>celery</category></item><item><title>celery-batches 0.5 released!</title><link>https://patrick.cloke.us/posts/2021/05/24/celery-batches-0.5-released/</link><description>&lt;p&gt;A &lt;a class="reference external" href="https://pypi.org/project/celery-batches/0.5/"&gt;new version (v0.5)&lt;/a&gt; of &lt;a class="reference external" href="https://github.com/clokep/celery-batches/"&gt;celery-batches&lt;/a&gt; is available which adds support for
 Celery 5.1 and fixes storing of results when using the &lt;a class="reference external" href="https://docs.celeryproject.org/en/v5.1.0/userguide/tasks.html#rpc-result-backend-rabbitmq-qpid"&gt;&lt;span class="caps"&gt;RPC&lt;/span&gt; result backend&lt;/a&gt;.&lt;/p&gt;
 &lt;p&gt;As &lt;a class="reference external" href="https://patrick.cloke.us/posts/2019/10/04/celery-amqp-backends/"&gt;explored previously&lt;/a&gt;, the &lt;span class="caps"&gt;RPC&lt;/span&gt; result backend works by having a results queue
 per client, unfortunately celery-batches was attempting to store the results in
@@ -301,7 +311,7 @@ back to the task &lt;span class="caps"&gt;ID&lt;/span&gt; if not given. This is 
 &lt;a class="reference external" href="https://github.com/celery/celery/blob/v5.1.0/celery/backends/rpc.py#L198-L200"&gt;override of the &lt;tt class="docutils literal"&gt;store_result&lt;/tt&gt; method&lt;/a&gt;.&lt;/td&gt;&lt;/tr&gt;
 &lt;/tbody&gt;
 &lt;/table&gt;
-</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Patrick Cloke</dc:creator><pubDate>Mon, 24 May 2021 16:56:00 -0400</pubDate><guid isPermaLink="false">tag:patrick.cloke.us,2021-05-24:/posts/2021/05/24/celery-batches-0.5-released/</guid><category>articles</category><category>celery</category><category>celery-batches</category></item><item><title>celery-batches 0.4 released!</title><link>https://patrick.cloke.us/posts/2020/11/30/celery-batches-0.4-released/</link><description>&lt;p&gt;Earlier today I released a version &lt;a class="reference external" href="https://pypi.org/project/celery-batches/0.4/"&gt;0.4&lt;/a&gt; of &lt;a class="reference external" href="https://github.com/clokep/celery-batches/"&gt;celery-batches&lt;/a&gt; with support for
+</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Patrick Cloke</dc:creator><pubDate>Mon, 24 May 2021 16:56:00 -0400</pubDate><guid>tag:patrick.cloke.us,2021-05-24:/posts/2021/05/24/celery-batches-0.5-released/</guid><category>celery</category><category>celery-batches</category></item><item><title>celery-batches 0.4 released!</title><link>https://patrick.cloke.us/posts/2020/11/30/celery-batches-0.4-released/</link><description>&lt;p&gt;Earlier today I released a version &lt;a class="reference external" href="https://pypi.org/project/celery-batches/0.4/"&gt;0.4&lt;/a&gt; of &lt;a class="reference external" href="https://github.com/clokep/celery-batches/"&gt;celery-batches&lt;/a&gt; with support for
 Celery 5.0. As part of this release support for Python &amp;lt; 3.6 was dropped and
 support for Celery &amp;lt; 4.4 was&amp;nbsp;dropped.&lt;/p&gt;
 &lt;p&gt;celery-batches is a small library that allows you process multiple calls to a
@@ -312,7 +322,7 @@ code to support Celery 4.0+ and has grown to support some additional&amp;nbsp;fe
 previous employer). Realistically it was maintained by me already and this is
 just a formality. As part of this release the &lt;a class="reference external" href="https://celery-batches.readthedocs.io/en/v0.4/"&gt;documentation&lt;/a&gt; is now available
 on Read the&amp;nbsp;Docs.&lt;/p&gt;
-</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Patrick Cloke</dc:creator><pubDate>Mon, 30 Nov 2020 16:50:00 -0500</pubDate><guid isPermaLink="false">tag:patrick.cloke.us,2020-11-30:/posts/2020/11/30/celery-batches-0.4-released/</guid><category>articles</category><category>celery</category><category>celery-batches</category></item><item><title>Celery AMQP Backends</title><link>https://patrick.cloke.us/posts/2019/10/04/celery-amqp-backends/</link><description>&lt;div class="admonition note"&gt;
+</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Patrick Cloke</dc:creator><pubDate>Mon, 30 Nov 2020 16:50:00 -0500</pubDate><guid>tag:patrick.cloke.us,2020-11-30:/posts/2020/11/30/celery-batches-0.4-released/</guid><category>celery</category><category>celery-batches</category></item><item><title>Celery AMQP Backends</title><link>https://patrick.cloke.us/posts/2019/10/04/celery-amqp-backends/</link><description>&lt;div class="admonition note"&gt;
 &lt;p class="first admonition-title"&gt;Note&lt;/p&gt;
 &lt;p class="last"&gt;This started as notes explaining the internals of how Celery&amp;#8217;s &lt;span class="caps"&gt;AMQP&lt;/span&gt; backends
 operate. This isn&amp;#8217;t meant to be a comparison or prove one is better or that
@@ -331,7 +341,9 @@ this doesn&amp;#8217;t scale well since there is significant overhead (many queu
 bindings, etc.). That&amp;#8217;s pretty much all I know about it, I&amp;#8217;ve never used&amp;nbsp;it.&lt;/p&gt;
 &lt;p&gt;A system level view is&amp;nbsp;below:&lt;/p&gt;
 &lt;blockquote class="text-center"&gt;
-&lt;a class="reference external image-reference" href="https://patrick.cloke.us/images/celery-amqp-backends/amqp-backend.png"&gt;&lt;img alt="RPC requeueing behavior" src="https://patrick.cloke.us/images/celery-amqp-backends/amqp-backend.png" style="width: 80%;" /&gt;&lt;/a&gt;
+&lt;a class="reference external image-reference" href="https://patrick.cloke.us/images/celery-amqp-backends/amqp-backend.png"&gt;
+&lt;img alt="RPC requeueing behavior" src="https://patrick.cloke.us/images/celery-amqp-backends/amqp-backend.png" style="width: 80%;" /&gt;
+&lt;/a&gt;
 &lt;/blockquote&gt;
 &lt;p&gt;The caller produces a task into the task queue. The worker consumes the task
 from this queue and creates a result, which is added to a separate results queue
@@ -346,7 +358,9 @@ produces the task also consumes the result (hence the &amp;#8220;&lt;span class=
 &lt;a class="reference external" href="https://en.wikipedia.org/wiki/Remote_procedure_call"&gt;remote procedure call&lt;/a&gt;). See the &lt;a class="reference external" href="https://docs.celeryproject.org/en/latest/history/whatsnew-3.1.html#new-rpc-result-backend"&gt;announcement of the &lt;span class="caps"&gt;RPC&lt;/span&gt; backend&lt;/a&gt; for more&amp;nbsp;information.&lt;/p&gt;
 &lt;p&gt;A system level view is&amp;nbsp;below:&lt;/p&gt;
 &lt;blockquote class="text-center"&gt;
-&lt;a class="reference external image-reference" href="https://patrick.cloke.us/images/celery-amqp-backends/rpc-backend.png"&gt;&lt;img alt="RPC requeueing behavior" src="https://patrick.cloke.us/images/celery-amqp-backends/rpc-backend.png" style="width: 80%;" /&gt;&lt;/a&gt;
+&lt;a class="reference external image-reference" href="https://patrick.cloke.us/images/celery-amqp-backends/rpc-backend.png"&gt;
+&lt;img alt="RPC requeueing behavior" src="https://patrick.cloke.us/images/celery-amqp-backends/rpc-backend.png" style="width: 80%;" /&gt;
+&lt;/a&gt;
 &lt;/blockquote&gt;
 &lt;p&gt;The caller produces a task into the task queue. The worker consumes the task
 from this queue and creates a result, which is added to a results queue per
@@ -374,7 +388,9 @@ get the result of task A first&amp;#8230;what happens? The &lt;span class="caps"
 &lt;/ol&gt;
 &lt;p&gt;The requeuing behavior is shown&amp;nbsp;below:&lt;/p&gt;
 &lt;blockquote class="text-center"&gt;
-&lt;a class="reference external image-reference" href="https://patrick.cloke.us/images/celery-amqp-backends/rpc-requeues.png"&gt;&lt;img alt="RPC requeueing behavior" src="https://patrick.cloke.us/images/celery-amqp-backends/rpc-requeues.png" style="width: 50%;" /&gt;&lt;/a&gt;
+&lt;a class="reference external image-reference" href="https://patrick.cloke.us/images/celery-amqp-backends/rpc-requeues.png"&gt;
+&lt;img alt="RPC requeueing behavior" src="https://patrick.cloke.us/images/celery-amqp-backends/rpc-requeues.png" style="width: 50%;" /&gt;
+&lt;/a&gt;
 &lt;/blockquote&gt;
 &lt;p&gt;In the example above, result B was added into the queue before A, but A is
 needed first. The queue is run down until A is received and all other items are
@@ -383,7 +399,7 @@ requeued (onto the back of the&amp;nbsp;queue).&lt;/p&gt;
 into the &lt;tt class="docutils literal"&gt;BacklogLimitExceeded&lt;/tt&gt; error or just lots of churn in the queue
 (meaning lots of&amp;nbsp;I/O).&lt;/p&gt;
 &lt;/div&gt;
-</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Patrick Cloke</dc:creator><pubDate>Fri, 04 Oct 2019 08:10:00 -0400</pubDate><guid isPermaLink="false">tag:patrick.cloke.us,2019-10-04:/posts/2019/10/04/celery-amqp-backends/</guid><category>articles</category><category>celery</category></item><item><title>Celery without a Results Backend</title><link>https://patrick.cloke.us/posts/2019/07/17/celery-without-a-results-backend/</link><description>&lt;p&gt;The &lt;a class="reference external" href="http://www.celeryproject.org/"&gt;Celery&lt;/a&gt; &lt;a class="reference external" href="https://docs.celeryproject.org/en/latest/reference/celery.html#celery.Celery.send_task"&gt;&lt;tt class="docutils literal"&gt;send_task&lt;/tt&gt;&lt;/a&gt; method allows you to invoke a task by name without
+</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Patrick Cloke</dc:creator><pubDate>Fri, 04 Oct 2019 08:10:00 -0400</pubDate><guid>tag:patrick.cloke.us,2019-10-04:/posts/2019/10/04/celery-amqp-backends/</guid><category>celery</category></item><item><title>Celery without a Results Backend</title><link>https://patrick.cloke.us/posts/2019/07/17/celery-without-a-results-backend/</link><description>&lt;p&gt;The &lt;a class="reference external" href="http://www.celeryproject.org/"&gt;Celery&lt;/a&gt; &lt;a class="reference external" href="https://docs.celeryproject.org/en/latest/reference/celery.html#celery.Celery.send_task"&gt;&lt;tt class="docutils literal"&gt;send_task&lt;/tt&gt;&lt;/a&gt; method allows you to invoke a task by name without
 importing it. &lt;a class="footnote-reference" href="#footnote-1" id="footnote-reference-1"&gt;[1]&lt;/a&gt; There is an undocumented &lt;a class="footnote-reference" href="#footnote-2" id="footnote-reference-2"&gt;[2]&lt;/a&gt; caveat to using &lt;tt class="docutils literal"&gt;send_task&lt;/tt&gt;:
 it doesn&amp;#8217;t have access to the configuration of the task (from when the task was
 created using the &lt;a class="reference external" href="https://docs.celeryproject.org/en/latest/reference/celery.html#celery.Celery.task"&gt;&lt;tt class="docutils literal"&gt;&amp;#64;task&lt;/tt&gt; decorator&lt;/a&gt;).&lt;/p&gt;
@@ -444,7 +460,7 @@ backend was under load or down.&lt;/td&gt;&lt;/tr&gt;
 don&amp;#8217;t need the result!&lt;/td&gt;&lt;/tr&gt;
 &lt;/tbody&gt;
 &lt;/table&gt;
-</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Patrick Cloke</dc:creator><pubDate>Wed, 17 Jul 2019 20:35:00 -0400</pubDate><guid isPermaLink="false">tag:patrick.cloke.us,2019-07-17:/posts/2019/07/17/celery-without-a-results-backend/</guid><category>articles</category><category>celery</category></item><item><title>Calling Celery from Twisted</title><link>https://patrick.cloke.us/posts/2018/10/23/calling-celery-from-twisted/</link><description>
+</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Patrick Cloke</dc:creator><pubDate>Wed, 17 Jul 2019 20:35:00 -0400</pubDate><guid>tag:patrick.cloke.us,2019-07-17:/posts/2019/07/17/celery-without-a-results-backend/</guid><category>celery</category></item><item><title>Calling Celery from Twisted</title><link>https://patrick.cloke.us/posts/2018/10/23/calling-celery-from-twisted/</link><description>
 &lt;div class="section" id="background"&gt;
 &lt;h2&gt;&lt;a class="toc-backref" href="#toc-entry-1"&gt;Background&lt;/a&gt;&lt;/h2&gt;
 &lt;p&gt;I use &lt;a class="reference external" href="https://twistedmatrix.com/"&gt;Twisted&lt;/a&gt; and &lt;a class="reference external" href="http://www.celeryproject.org/"&gt;Celery&lt;/a&gt; daily at work, both are useful frameworks, both have
@@ -742,4 +758,4 @@ times. You can read &lt;a class="reference external" href="http://docs.celerypro
 &lt;/tbody&gt;
 &lt;/table&gt;
 &lt;/div&gt;
-</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Patrick Cloke</dc:creator><pubDate>Tue, 23 Oct 2018 19:24:00 -0400</pubDate><guid isPermaLink="false">tag:patrick.cloke.us,2018-10-23:/posts/2018/10/23/calling-celery-from-twisted/</guid><category>articles</category><category>twisted</category><category>celery</category></item></channel></rss>
+</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Patrick Cloke</dc:creator><pubDate>Tue, 23 Oct 2018 19:24:00 -0400</pubDate><guid>tag:patrick.cloke.us,2018-10-23:/posts/2018/10/23/calling-celery-from-twisted/</guid><category>twisted</category><category>celery</category></item></channel></rss>

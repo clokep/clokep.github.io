@@ -1,0 +1,298 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="robots" content="noai, noimageai">
+
+    <!-- Feed configuration. -->
+    <link href="https://patrick.cloke.us/feeds/atom.xml" type="application/atom+xml" rel="alternate" title="Patrick Cloke Atom Feed" />
+    <link href="https://patrick.cloke.us/feeds/rss.xml" type="application/rss+xml" rel="alternate" title="Patrick Cloke RSS Feed" />
+
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
+    <link rel="stylesheet" href="/theme/css/styles.css">
+    <link rel="stylesheet" href="/theme/css/borland.css">
+    <link rel="stylesheet" href="/theme/css/youtube.css">
+
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.12.1/font/bootstrap-icons.min.css">
+
+    <title>Matrix: Time Zones in User Profiles</title>
+
+    <meta property="og:site_name" content="Patrick Cloke" />
+<meta property="og:title" content="Matrix: Time Zones in User Profiles" />
+<meta property="og:url" content="https://patrick.cloke.us/posts/2025/11/15/matrix-time-zones-in-user-profiles/" />
+<meta property="og:description" content="Matrix had very limited user profile information, only: display name and an avatar. [1] Users are able to get/set these fields with a simple CRUD REST API. This is pretty limiting and doesn’t match what users expect from a modern chat platform. In particular, I’ve seen …" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2025-11-15T12:55:00-05:00" />
+<meta property="article:author" content="Patrick Cloke" />
+<meta property="article:tag" content="matrix" />
+
+    <script async defer data-domain="cloke.us" src="https://plausible.io/js/plausible.js"></script>
+  </head>
+
+  <body class="pb-5">
+    <nav class="navbar navbar-expand-lg sticky-top navbar-light bg-light border-bottom border-info">
+      <a class="navbar-brand" href="/">
+        Patrick Cloke
+      </a>
+
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-items" aria-controls="navbar-items" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <span class="collapse navbar-collapse" id="navbar-items">
+        <ul class="navbar-nav ml-auto">
+
+          <li class="nav-item">
+            <a class="nav-link" href="/pages/about.html">About</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/pages/projects.html">Projects</a>
+          </li>
+
+          <li class="nav-item">
+            <a class="nav-link" href="/archives.html">Archives</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/tags.html">Tags</a>
+          </li>
+
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="social-dropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              Social
+            </a>
+
+            <span class="dropdown-menu dropdown-menu-right" aria-labelledby="social-dropdown">
+              <a class="dropdown-item" href="https://mastodon.social/@clokep" target="_blank">
+                  <span class="bi-mastodon mr-1"></span>
+                mastodon
+              </a>
+              <a class="dropdown-item" href="https://bsky.app/profile/patrick.cloke.us" target="_blank">
+                  <span class="bi-bluesky mr-1"></span>
+                bluesky
+              </a>
+              <a class="dropdown-item" href="https://www.twitter.com/clokep" target="_blank">
+                  <span class="bi-twitter mr-1"></span>
+                twitter
+              </a>
+              <a class="dropdown-item" href="https://matrix.to/#/@clokep:matrix.org" target="_blank">
+                  <span class="pl-3 mr-2"></span>
+                matrix
+              </a>
+              <a class="dropdown-item" href="https://github.com/clokep" target="_blank">
+                  <span class="bi-github mr-1"></span>
+                github
+              </a>
+              <a class="dropdown-item" href="https://gitlab.com/clokep" target="_blank">
+                  <span class="bi-gitlab mr-1"></span>
+                gitlab
+              </a>
+              <a class="dropdown-item" href="https://www.linkedin.com/in/patrickcloke/" target="_blank">
+                  <span class="bi-linkedin mr-1"></span>
+                linkedin
+              </a>
+            </span>
+          </li>
+
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="feeds-dropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              Feeds
+            </a>
+
+            <span class="dropdown-menu dropdown-menu-right" aria-labelledby="feeds-dropdown">
+              <a class="dropdown-item" href="https://patrick.cloke.us/feeds/atom.xml" type="application/atom+xml" rel="alternate">atom feed</a>
+              <a class="dropdown-item" href="https://patrick.cloke.us/feeds/rss.xml" type="application/rss+xml" rel="alternate">rss feed</a>
+            </span>
+          </li>
+
+          <form class="form-inline" method="get" action="http://www.google.com/search">
+            <input class="form-control form-control-sm mr-sm-2" type="search" name="q" placeholder="Search" aria-label="Search" />
+            <input type="hidden"  name="sitesearch" value="patrick.cloke.us" />
+
+            <button class="btn btn-sm btn-outline-info d-none d-sm-inline" type="submit">Search</button>
+          </form>
+        </ul>
+      </div>
+    </nav>
+
+<div class="container">
+  <div class="row">
+    <div class="col-md-12 mt-2 mb-2">
+      <h1>
+        <a href="/posts/2025/11/15/matrix-time-zones-in-user-profiles/" rel="bookmark"
+           title="Permalink to Matrix: Time Zones in User Profiles">Matrix: Time Zones in User&nbsp;Profiles</a>
+      </h1>
+
+      <div class="row">
+        <div class="col-sm">
+          <span class="text-secondary font-weight-light font-italic">Published on Saturday, November 15, 2025</span>
+
+          <br>
+          <span class="text-secondary font-weight-light font-italic">
+            Tags:               <a href="/tag/matrix.html">matrix</a>          </span>
+        </div>
+
+        <div class="col-sm text-right">
+          <a href="https://toot.kytta.dev/?text=Matrix%3A%20Time%20Zones%20in%20User%C2%A0Profiles%0D%0Ahttps%3A//patrick.cloke.us/posts/2025/11/15/matrix-time-zones-in-user-profiles/%0D%0A%23matrix" target="_blank" class="ml-1 mr-1" title="Share on Mastodon">
+            <span class="bi-mastodon"></span>
+          </a>
+          <a href="https://twitter.com/intent/tweet?text=Matrix%3A%20Time%20Zones%20in%20User%C2%A0Profiles&url=https%3A//patrick.cloke.us/posts/2025/11/15/matrix-time-zones-in-user-profiles/&hashtags=matrix" target="_blank" class="ml-1 mr-1" title="Share on Twitter">
+            <span class="bi-twitter"></span>
+          </a>
+          <a href="https://www.reddit.com/submit?url=https%3A//patrick.cloke.us/posts/2025/11/15/matrix-time-zones-in-user-profiles/&title=Matrix%3A%20Time%20Zones%20in%20User%C2%A0Profiles" target="_blank" class="ml-1 mr-1" title="Share on Reddit">
+            <span class="bi-reddit"></span>
+          </a>
+          <a href="https://www.facebook.com/sharer/sharer.php?u=https%3A//patrick.cloke.us/posts/2025/11/15/matrix-time-zones-in-user-profiles/" target="_blank" class="ml-1 mr-1" title="Share on Facebook">
+            <span class="bi-facebook"></span>
+          </a>
+          <a href="https://www.linkedin.com/shareArticle?mini=true&url=https%3A//patrick.cloke.us/posts/2025/11/15/matrix-time-zones-in-user-profiles/&title=Matrix%3A%20Time%20Zones%20in%20User%C2%A0Profiles&summary=Matrix%20had%20very%20limited%20user%20profile%20information%2C%20only%3A%20display%20name%20and%20an%20avatar.%20%5B1%5D%0AUsers%20are%20able%20to%20get/set%20these%20fields%20with%20a%20simple%20CRUD%20REST%20API.%0AThis%20is%20pretty%20limiting%20and%20doesn%E2%80%99t%20match%20what%20users%20expect%20from%20a%20modern%20chat%20platform.%0AIn%20particular%2C%20I%E2%80%99ve%20seen%20%E2%80%A6&source=https%3A//patrick.cloke.us/posts/2025/11/15/matrix-time-zones-in-user-profiles/" target="_blank" class="ml-1 mr-1" title="Share on LinkedIn">
+            <span class="bi-linkedin"></span>
+          </a>
+          <a href="mailto:?subject=Matrix%3A%20Time%20Zones%20in%20User%C2%A0Profiles&amp;body=https%3A//patrick.cloke.us/posts/2025/11/15/matrix-time-zones-in-user-profiles/" target="_blank" class="ml-1 mr-1" title="Share via Email">
+            <span class="bi-envelope"></span>
+          </a>
+        </div>
+      </div>
+
+      <hr>
+
+      <div>
+
+        <p>Matrix had very limited user profile information, only: display name and an avatar. <a class="footnote-reference" href="#footnote-1" id="footnote-reference-1">[1]</a>
+Users are able to get/set these fields with a simple <span class="caps">CRU</span><span class="strike">D</span> <span class="caps">REST</span> <span class="caps">API</span>.
+This is pretty limiting and doesn&#8217;t match what users expect from a modern chat platform.
+In particular, I&#8217;ve seen many folks work around the lack of location and time zone support by adding it to their display&nbsp;name.</p>
+<p>This is structured data and should be easy to store directly in a profile! How hard can it be? As an initial target, I decided to look at adding time zone information which resulted in <a class="reference external" href="https://github.com/matrix-org/matrix-spec-proposals/pull/4175"><span class="caps">MSC4175</span></a>.</p>
+<div class="section" id="prior-attempts">
+<h2>Prior&nbsp;Attempts</h2>
+<p>There was an old Matrix Spec Change proposal to store &#8220;profiles as rooms&#8221; (<a class="reference external" href="https://github.com/matrix-org/matrix-spec-proposals/pull/1769"><span class="caps">MSC1769</span></a> <a class="footnote-reference" href="#footnote-2" id="footnote-reference-2">[2]</a>), a brief&nbsp;overview:</p>
+<ul class="simple">
+<li>Each user would have a room with a special name that represents the user&#8217;s metadata (e.g. <tt class="docutils literal">#&#64;clokep:matrix.org</tt>).</li>
+<li>Metadata would be stored in a single state event with a vCard data (represented using jCard from <a class="reference external" href="https://tools.ietf.org/html/rfc7095.html"><span class="caps">RFC</span> 7095</a>).</li>
+<li>It required &#8220;peeking&#8221; (<a class="reference external" href="https://github.com/matrix-org/matrix-spec-proposals/pull/1776"><span class="caps">MSC1776</span></a>) and &#8220;peeking over federation&#8221; (<a class="reference external" href="https://github.com/matrix-org/matrix-spec-proposals/pull/1777"><span class="caps">MSC1777</span></a>), which are both additional (large)&nbsp;MSCs.</li>
+</ul>
+</div>
+<div class="section" id="a-simpler-solution">
+<h2>A Simpler&nbsp;Solution</h2>
+<p>Another Matrix community member (<a class="reference external" href="https://tomfos.tr/">Tom Foster</a>) had written <a class="reference external" href="https://github.com/matrix-org/matrix-spec-proposals/pull/4133"><span class="caps">MSC4133</span></a> to expand the allowed operations to include for arbitrary fields, instead of limiting it to only display name and avatar <a class="footnote-reference" href="#footnote-3" id="footnote-reference-3">[3]</a>. This was a simpler building block to target. A brief&nbsp;overview:</p>
+<ul class="simple">
+<li>Allow arbitrary profile keys to be created and updated. (Arbitrary profile fields already allowed to be&nbsp;fetched!)</li>
+<li>Allow for deleting profile fields (instead of just setting them to&nbsp;null/empty).</li>
+<li>Profile keys should be namespaced (reserving the <cite>m.</cite> prefix for fields in the Matrix&nbsp;specification).</li>
+<li>Defining how a server can declare what keys can be&nbsp;created.</li>
+</ul>
+<p>That is pretty much the gist, although it took ~10 months, &gt; 2400 words, &gt; 50 commits, and hundreds of comments to agree on an&nbsp;approach.</p>
+<p>Earlier versions included several other (controversial) features that were&nbsp;removed:</p>
+<ul class="simple">
+<li>User-defined profile fields (<a class="reference external" href="https://github.com/matrix-org/matrix-spec-proposals/pull/4208"><span class="caps">MSC4208</span></a>).</li>
+<li>Providing a <cite><span class="caps">PATCH</span></cite> for the entire profile (<a class="reference external" href="https://github.com/matrix-org/matrix-spec-proposals/pull/4255"><span class="caps">MSC4255</span></a> is related, but not exactly a&nbsp;replacement).</li>
+</ul>
+<p>This <span class="caps">MSC</span> was missing an actual use-case, however, which <a class="reference external" href="https://github.com/matrix-org/matrix-spec-proposals/pull/4175"><span class="caps">MSC4175</span></a> provided for user time&nbsp;zones.</p>
+<div class="section" id="server-implementation">
+<h3>Server&nbsp;Implementation</h3>
+<p>I worked with Tom to <a class="reference external" href="https://github.com/element-hq/synapse/pull/17488">implement the above in Synapse</a>, it was a bit trickier than initially expected due&nbsp;to:</p>
+<ul class="simple">
+<li>Profile fields can hold arbitrary <span class="caps">JSON</span> (not just&nbsp;strings).</li>
+<li>Needing to track the total profile size and ensure it did not go over a limit (including the display name and&nbsp;avatar).</li>
+<li>Ensuring the behavior of display names and avatars did not&nbsp;change.</li>
+<li><span class="caps">JSON</span> functionality between PostgreSQL and SQLite are similar, but not&nbsp;identical.</li>
+<li>Some trickiness with handling whether a field doesn&#8217;t exist or is set to&nbsp;null.</li>
+</ul>
+<p>The actual implementation is an extra <tt class="docutils literal"><span class="caps">JSONB</span></tt> column on the <tt class="docutils literal">profiles</tt> table to store &#8220;additional&#8221; profile fields as a <span class="caps">JSON</span> blob (additional meaning not the display name or avatar, which are stored in discrete&nbsp;fields).</p>
+<p>Several of the <a class="reference external" href="https://www.postgresql.org/docs/12/functions-json.html">PostgreSQL <span class="caps">JSON</span> functions</a> or <a class="reference external" href="https://www.sqlite.org/json1.html">SQLite <span class="caps">JSON</span> functions</a> are used to update/fetch fields within the <span class="caps">JSON</span> blob and count the expected length to assert the profile is not too&nbsp;large.</p>
+<p>The server itself doesn&#8217;t need to know anything else about the fields being stored in the profile, and <a class="reference external" href="https://github.com/matrix-org/matrix-spec-proposals/pull/4175"><span class="caps">MSC4175</span></a> recommends that servers do _not_ verify the time zone provided, as they might have less accurate information than&nbsp;clients.</p>
+</div>
+<div class="section" id="client-implementation">
+<h3>Client&nbsp;Implementation</h3>
+<p><a class="reference external" href="https://github.com/matrix-org/matrix-spec-proposals/pull/4175"><span class="caps">MSC4175</span></a> defines the standardized field name and format for the time zone profile field, which is simply the <a class="reference external" href="https://www.iana.org/time-zones"><span class="caps">IANA</span> Time Zone Database Zone <span class="caps">ID</span></a>,&nbsp;e.g.:</p>
+<div class="highlight"><pre><span></span><span class="p">{</span>
+<span class="w">  </span><span class="s2">&quot;m.tz&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;America/New_York&quot;</span>
+<span class="p">}</span>
+</pre></div>
+<p>Luckily a couple of other community members quickly implemented this for clients for <a class="reference external" href="https://github.com/element-hq/matrix-react-sdk/pull/20">Element Web</a> an <a class="reference external" href="https://github.com/gomuks/gomuks/pull/574">gomuks</a>. I was not too involved in either of these implementations besides bugging people to implement&nbsp;it!</p>
+</div>
+</div>
+<div class="section" id="conclusion">
+<h2>Conclusion</h2>
+<p>Clients are now free to implement and experiment with arbitrary profile fields! The time zone profile field is specified in <a class="reference external" href="https://spec.matrix.org/v1.16/client-server-api/#get_matrixclientv3profileuserid">Matrix v1.16</a>.</p>
+<p>There are a few limitations with this approach which are yet to be&nbsp;solved:</p>
+<ol class="arabic simple">
+<li>Propagating profile changes across federation (between servers) is completely undefined right now. <a class="reference external" href="https://github.com/matrix-org/matrix-spec-proposals/pull/4259"><span class="caps">MSC4259</span></a> has some ideas, but is not yet&nbsp;implemented.</li>
+<li>Time zone information must be fetched individually for each user, so there is no easy way to show at a glance who may be around in the&nbsp;room.</li>
+</ol>
+</div>
+<div class="section" id="lessons-learned">
+<h2>Lessons&nbsp;learned</h2>
+<p>There was a lot of back and forth between Tom and I on the pieces of this specification (and the implementation), some of my takeaways&nbsp;include:</p>
+<ol class="arabic simple">
+<li>Keep an <span class="caps">MSC</span> as discrete and small as possible to avoid unnecessary&nbsp;bikeshedding.</li>
+<li>It is <span class="caps">OK</span> to _not_ take into account someone&#8217;s feedback (politely) if you&nbsp;disagree.</li>
+<li>Including impact on trust <span class="amp">&amp;</span> safety concerns upfront can&nbsp;help.</li>
+<li><tt class="docutils literal"><span class="caps">JSONB</span></tt> columns in PostgreSQL are super&nbsp;powerful.</li>
+<li>Writing up the changes to the specification are often shorter than writing the <span class="caps">MSC</span>&nbsp;itself.</li>
+<li>Getting a feature specified, merged, and implemented in Matrix can be time consuming and require many different people (but is&nbsp;possible)!</li>
+</ol>
+<p>Thanks to <a class="reference external" href="https://tomfos.tr/">Tom Foster</a> for the bulk of the work of writing <a class="reference external" href="https://github.com/matrix-org/matrix-spec-proposals/pull/4133"><span class="caps">MSC4133</span></a> and <a class="reference external" href="https://half-shot.github.io/">Half-Shot</a> for offering client guidance and the initial implementation of <a class="reference external" href="https://github.com/matrix-org/matrix-spec-proposals/pull/4175"><span class="caps">MSC4175</span></a>.</p>
+<table class="docutils footnote" frame="void" id="footnote-1" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label"><a class="fn-backref" href="#footnote-reference-1">[1]</a></td><td>Although these can be set on a per-room basis, which is handy!</td></tr>
+</tbody>
+</table>
+<table class="docutils footnote" frame="void" id="footnote-2" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label"><a class="fn-backref" href="#footnote-reference-2">[2]</a></td><td>An updated version of <a class="reference external" href="https://github.com/matrix-org/matrix-spec-proposals/pull/1769"><span class="caps">MSC1769</span></a> was published as <a class="reference external" href="https://github.com/matrix-org/matrix-spec-proposals/pull/4201"><span class="caps">MSC4201</span></a>, but it is not dramatically different.</td></tr>
+</tbody>
+</table>
+<table class="docutils footnote" frame="void" id="footnote-3" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label"><a class="fn-backref" href="#footnote-reference-3">[3]</a></td><td>Turns out this was pretty similar to <a class="reference external" href="https://github.com/matrix-org/matrix-spec-proposals/pull/3793"><span class="caps">MSC3793</span></a> which was never merged.</td></tr>
+</tbody>
+</table>
+</div>
+
+      </div>
+
+<div id="disqus_thread"></div>
+<script>
+/**
+*  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+*  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/
+/*
+var disqus_config = function () {
+this.page.url = '/posts/2025/11/15/matrix-time-zones-in-user-profiles/';
+this.page.identifier = 'matrix-time-zones-in-user-profiles';
+};
+*/
+(function() { // DON'T EDIT BELOW THIS LINE
+var d = document, s = d.createElement('script');
+s.src = 'https://clokep.disqus.com/embed.js';
+s.setAttribute('data-timestamp', +new Date());
+(d.head || d.body).appendChild(s);
+})();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    </div>
+  </div>
+</div>
+
+    <nav class="navbar fixed-bottom navbar-light bg-light border-top border-info">
+      <a href="https://getpelican.com/" class="nav-item" target="_blank">Powered by Pelican</a>
+      <a href="https://github.com/clokep/clokep.github.io" class="nav-item" target="_blank">
+        Source available on GitHub <span class="bi-github"></span>
+      </a>
+    </nav>
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T" crossorigin="anonymous"></script>
+
+  </body>
+</html>

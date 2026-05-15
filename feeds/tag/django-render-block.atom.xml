@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>Patrick Cloke - django-render-block</title><link href="https://patrick.cloke.us/" rel="alternate"></link><link href="https://patrick.cloke.us/feeds/tag/django-render-block.atom.xml" rel="self"></link><id>https://patrick.cloke.us/</id><updated>2020-10-27T16:57:00-04:00</updated><entry><title>django-render-block 0.8 (and 0.8.1) released!</title><link href="https://patrick.cloke.us/posts/2020/10/27/django-render-block-0.8-released/" rel="alternate"></link><published>2020-10-27T16:57:00-04:00</published><updated>2020-10-27T16:57:00-04:00</updated><author><name>Patrick Cloke</name></author><id>tag:patrick.cloke.us,2020-10-27:/posts/2020/10/27/django-render-block-0.8-released/</id><summary type="html">&lt;p&gt;A couple of weeks ago I released version 0.8 of &lt;a class="reference external" href="https://github.com/clokep/django-render-block/"&gt;django-render-block&lt;/a&gt;, this was
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Patrick Cloke - django-render-block</title><link href="https://patrick.cloke.us/" rel="alternate"/><link href="https://patrick.cloke.us/feeds/tag/django-render-block.atom.xml" rel="self"/><id>https://patrick.cloke.us/</id><updated>2020-10-27T16:57:00-04:00</updated><entry><title>django-render-block 0.8 (and 0.8.1) released!</title><link href="https://patrick.cloke.us/posts/2020/10/27/django-render-block-0.8-released/" rel="alternate"/><published>2020-10-27T16:57:00-04:00</published><updated>2020-10-27T16:57:00-04:00</updated><author><name>Patrick Cloke</name></author><id>tag:patrick.cloke.us,2020-10-27:/posts/2020/10/27/django-render-block-0.8-released/</id><summary type="html">&lt;p&gt;A couple of weeks ago I released version 0.8 of &lt;a class="reference external" href="https://github.com/clokep/django-render-block/"&gt;django-render-block&lt;/a&gt;, this was
 followed up with a 0.8.1 to fix a&amp;nbsp;regression.&lt;/p&gt;
 &lt;p&gt;django-render-block is a small library that allows you render a specific &lt;tt class="docutils literal"&gt;block&lt;/tt&gt;
 from a Django (or Jinja) template, this is frequently used for emails when …&lt;/p&gt;</summary><content type="html">&lt;p&gt;A couple of weeks ago I released version 0.8 of &lt;a class="reference external" href="https://github.com/clokep/django-render-block/"&gt;django-render-block&lt;/a&gt;, this was
@@ -46,7 +46,7 @@ a fully instantiated &lt;a class="reference external" href="https://docs.djangop
 &lt;div class="section" id="october-15-2020"&gt;
 &lt;h2&gt;0.8.1 (October 15,&amp;nbsp;2020)&lt;/h2&gt;
 &lt;ul class="simple"&gt;
-&lt;li&gt;Fixes a regression in v0.8 where a &lt;tt class="docutils literal"&gt;Context&lt;/tt&gt; could not be re-used. Contributed
+&lt;li&gt;Fixes a regression in v0.8 where a &lt;tt class="docutils literal"&gt;Context&lt;/tt&gt; could not be reused. Contributed
 by &lt;a class="reference external" href="https://github.com/evanbrumley"&gt;&amp;#64;evanbrumley&lt;/a&gt;. (&lt;a class="reference external" href="https://github.com/clokep/django-render-block/pull/25"&gt;#25&lt;/a&gt;)&lt;/li&gt;
 &lt;/ul&gt;
 &lt;/div&gt;
@@ -58,4 +58,4 @@ Contributed by &lt;a class="reference external" href="https://github.com/bblanch
 &lt;li&gt;Drop support for Python 3.5, officially support Python 3.9. (&lt;a class="reference external" href="https://github.com/clokep/django-render-block/pull/22"&gt;#22&lt;/a&gt;)&lt;/li&gt;
 &lt;/ul&gt;
 &lt;/div&gt;
-</content><category term="articles"></category><category term="django"></category><category term="django-render-block"></category></entry></feed>
+</content><category term="django"/><category term="django-render-block"/></entry></feed>

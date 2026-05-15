@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>Patrick Cloke - notes</title><link href="https://patrick.cloke.us/" rel="alternate"></link><link href="https://patrick.cloke.us/feeds/tag/notes.atom.xml" rel="self"></link><id>https://patrick.cloke.us/</id><updated>2023-12-15T15:41:00-05:00</updated><entry><title>Matrix Intentional Mentions explained</title><link href="https://patrick.cloke.us/posts/2023/12/15/matrix-intentional-mentions-explained/" rel="alternate"></link><published>2023-12-15T15:41:00-05:00</published><updated>2023-12-15T15:41:00-05:00</updated><author><name>Patrick Cloke</name></author><id>tag:patrick.cloke.us,2023-12-15:/posts/2023/12/15/matrix-intentional-mentions-explained/</id><summary type="html">&lt;p&gt;Previously I have written about how &lt;a class="reference external" href="https://patrick.cloke.us/posts/2023/05/08/matrix-push-rules-notifications/"&gt;push rules generate notifications&lt;/a&gt; and how
-&lt;a class="reference external" href="https://patrick.cloke.us/posts/2023/01/05/matrix-read-receipts-and-notifications/"&gt;read receipts mark notificiations as read&lt;/a&gt; in the Matrix protocol. This article
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Patrick Cloke - notes</title><link href="https://patrick.cloke.us/" rel="alternate"/><link href="https://patrick.cloke.us/feeds/tag/notes.atom.xml" rel="self"/><id>https://patrick.cloke.us/</id><updated>2023-12-15T15:41:00-05:00</updated><entry><title>Matrix Intentional Mentions explained</title><link href="https://patrick.cloke.us/posts/2023/12/15/matrix-intentional-mentions-explained/" rel="alternate"/><published>2023-12-15T15:41:00-05:00</published><updated>2023-12-15T15:41:00-05:00</updated><author><name>Patrick Cloke</name></author><id>tag:patrick.cloke.us,2023-12-15:/posts/2023/12/15/matrix-intentional-mentions-explained/</id><summary type="html">&lt;p&gt;Previously I have written about how &lt;a class="reference external" href="https://patrick.cloke.us/posts/2023/05/08/matrix-push-rules-notifications/"&gt;push rules generate notifications&lt;/a&gt; and how
+&lt;a class="reference external" href="https://patrick.cloke.us/posts/2023/01/05/matrix-read-receipts-and-notifications/"&gt;read receipts mark notifications as read&lt;/a&gt; in the Matrix protocol. This article
 is about a change that I instigated to improve &lt;em&gt;when&lt;/em&gt; a &amp;#8220;mention&amp;#8221; (or &amp;#8220;ping&amp;#8221;)
 notification is created. (This is a &amp;#8220;highlight&amp;#8221; notification in the Matrix&amp;nbsp;specification …&lt;/p&gt;</summary><content type="html">&lt;p&gt;Previously I have written about how &lt;a class="reference external" href="https://patrick.cloke.us/posts/2023/05/08/matrix-push-rules-notifications/"&gt;push rules generate notifications&lt;/a&gt; and how
-&lt;a class="reference external" href="https://patrick.cloke.us/posts/2023/01/05/matrix-read-receipts-and-notifications/"&gt;read receipts mark notificiations as read&lt;/a&gt; in the Matrix protocol. This article
+&lt;a class="reference external" href="https://patrick.cloke.us/posts/2023/01/05/matrix-read-receipts-and-notifications/"&gt;read receipts mark notifications as read&lt;/a&gt; in the Matrix protocol. This article
 is about a change that I instigated to improve &lt;em&gt;when&lt;/em&gt; a &amp;#8220;mention&amp;#8221; (or &amp;#8220;ping&amp;#8221;)
 notification is created. (This is a &amp;#8220;highlight&amp;#8221; notification in the Matrix&amp;nbsp;specification.)&lt;/p&gt;
 &lt;p&gt;This was part of the work I did at Element to reduce &lt;a class="reference external" href="https://github.com/vector-im/element-meta/issues/886"&gt;unintentional pings&lt;/a&gt;. I
@@ -111,7 +111,7 @@ doesn&amp;#8217;t allow for hidden mentions.&lt;/td&gt;&lt;/tr&gt;
 &lt;/tbody&gt;
 &lt;/table&gt;
 &lt;/div&gt;
-</content><category term="articles"></category><category term="matrix"></category><category term="notes"></category></entry><entry><title>Matrix Presence</title><link href="https://patrick.cloke.us/posts/2023/12/15/matrix-presence/" rel="alternate"></link><published>2023-12-15T11:24:00-05:00</published><updated>2023-12-15T11:24:00-05:00</updated><author><name>Patrick Cloke</name></author><id>tag:patrick.cloke.us,2023-12-15:/posts/2023/12/15/matrix-presence/</id><summary type="html">&lt;p&gt;I put together some notes on presence when implementing &lt;a class="reference external" href="https://github.com/matrix-org/synapse/pull/16066"&gt;multi-device support for presence&lt;/a&gt;
+</content><category term="matrix"/><category term="notes"/></entry><entry><title>Matrix Presence</title><link href="https://patrick.cloke.us/posts/2023/12/15/matrix-presence/" rel="alternate"/><published>2023-12-15T11:24:00-05:00</published><updated>2023-12-15T11:24:00-05:00</updated><author><name>Patrick Cloke</name></author><id>tag:patrick.cloke.us,2023-12-15:/posts/2023/12/15/matrix-presence/</id><summary type="html">&lt;p&gt;I put together some notes on presence when implementing &lt;a class="reference external" href="https://github.com/matrix-org/synapse/pull/16066"&gt;multi-device support for presence&lt;/a&gt;
 in Synapse, maybe this is helpful to others! This is a combination of information
 from the specification, as well as some information about how Synapse&amp;nbsp;works.&lt;/p&gt;
 &lt;div class="admonition note"&gt;
@@ -321,7 +321,7 @@ process push notifications.)&lt;/td&gt;&lt;/tr&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
-</content><category term="articles"></category><category term="matrix"></category><category term="notes"></category></entry><entry><title>Matrix Push Rules &amp; Notifications</title><link href="https://patrick.cloke.us/posts/2023/05/08/matrix-push-rules-notifications/" rel="alternate"></link><published>2023-05-08T14:56:00-04:00</published><updated>2023-05-08T14:56:00-04:00</updated><author><name>Patrick Cloke</name></author><id>tag:patrick.cloke.us,2023-05-08:/posts/2023/05/08/matrix-push-rules-notifications/</id><summary type="html">&lt;p&gt;In a previous post about &lt;a class="reference external" href="https://patrick.cloke.us/posts/2023/01/05/matrix-read-receipts-and-notifications/"&gt;read receipts &lt;span class="amp"&gt;&amp;amp;&lt;/span&gt; notifications in Matrix&lt;/a&gt; I briefly
+</content><category term="matrix"/><category term="notes"/></entry><entry><title>Matrix Push Rules &amp; Notifications</title><link href="https://patrick.cloke.us/posts/2023/05/08/matrix-push-rules-notifications/" rel="alternate"/><published>2023-05-08T14:56:00-04:00</published><updated>2023-05-08T14:56:00-04:00</updated><author><name>Patrick Cloke</name></author><id>tag:patrick.cloke.us,2023-05-08:/posts/2023/05/08/matrix-push-rules-notifications/</id><summary type="html">&lt;p&gt;In a previous post about &lt;a class="reference external" href="https://patrick.cloke.us/posts/2023/01/05/matrix-read-receipts-and-notifications/"&gt;read receipts &lt;span class="amp"&gt;&amp;amp;&lt;/span&gt; notifications in Matrix&lt;/a&gt; I briefly
 mentioned that push rules generate notifications, but with little detail. After
 completing a rather large project to improve notifications in Matrix I want to
 fill in some of those blanks. &lt;a class="footnote-reference" href="#footnote-1" id="footnote-reference-1"&gt;[1]&lt;/a&gt;&lt;/p&gt;
@@ -363,13 +363,17 @@ notifications &lt;span class="caps"&gt;API&lt;/span&gt;.&lt;/p&gt;
 &lt;tt class="docutils literal"&gt;/sync&lt;/tt&gt; and/or via push notifications.&lt;/p&gt;
 &lt;p&gt;Web-based clients often receive events via polling:&lt;/p&gt;
 &lt;blockquote class="text-center"&gt;
-&lt;a class="reference external image-reference" href="https://patrick.cloke.us/images/matrix-push-rules-and-notifications/web-push-flow.png"&gt;&lt;img alt="Notification flow for web applications." src="/thumbnails/matrix-push-rules-and-notifications/web-push-flow_medium.png"/&gt;&lt;/a&gt;
+&lt;a class="reference external image-reference" href="https://patrick.cloke.us/images/matrix-push-rules-and-notifications/web-push-flow.png"&gt;
+&lt;img alt="Notification flow for web applications." src="/thumbnails/matrix-push-rules-and-notifications/web-push-flow_medium.png"/&gt;
+&lt;/a&gt;
 &lt;/blockquote&gt;
 &lt;p&gt;The &lt;a class="reference external" href="https://spec.matrix.org/v1.6/client-server-api/#_matrixclientv3sync_unread-notification-counts"&gt;sync response&lt;/a&gt; (both initial and incremental) include the count of unread
 notifications and unread highlight notifications per room.&lt;/p&gt;
 &lt;p&gt;Mobile applications often &lt;a class="reference external" href="https://spec.matrix.org/v1.6/push-gateway-api/#overview"&gt;receive events via push&lt;/a&gt; &lt;a class="footnote-reference" href="#footnote-3" id="footnote-reference-3"&gt;[3]&lt;/a&gt;:&lt;/p&gt;
 &lt;blockquote class="text-center"&gt;
-&lt;a class="reference external image-reference" href="https://patrick.cloke.us/images/matrix-push-rules-and-notifications/mobile-push-flow.png"&gt;&lt;img alt="Notification flow for mobile applications." src="/thumbnails/matrix-push-rules-and-notifications/mobile-push-flow_medium.png"/&gt;&lt;/a&gt;
+&lt;a class="reference external image-reference" href="https://patrick.cloke.us/images/matrix-push-rules-and-notifications/mobile-push-flow.png"&gt;
+&lt;img alt="Notification flow for mobile applications." src="/thumbnails/matrix-push-rules-and-notifications/mobile-push-flow_medium.png"/&gt;
+&lt;/a&gt;
 &lt;/blockquote&gt;
 &lt;p&gt;Push notifications include the event information (or just the event &lt;span class="caps"&gt;ID&lt;/span&gt;) and
 whether the event was a highlight notification. (The event being pushed implies
@@ -378,7 +382,7 @@ it increased the notification count.)&lt;/p&gt;
 &lt;p class="first admonition-title"&gt;Note&lt;/p&gt;
 &lt;p class="last"&gt;The deployment of the push gateway must be paired with the application (the
 push keys must be paired). I.e. if you make your own application (or even
-your own build of Element iOS / Android) you cannot re-use the deployment at
+your own build of Element iOS / Android) you cannot reuse the deployment at
 matrix.org and must have your own deployment.&lt;/p&gt;
 &lt;/div&gt;
 &lt;/div&gt;
@@ -471,8 +475,8 @@ special cases which do not accept conditions, but can be mapped to them.&lt;/p&
 &lt;ul class="simple"&gt;
 &lt;li&gt;Content-specific: has a &lt;tt class="docutils literal"&gt;pattern&lt;/tt&gt; field which maps to a pattern against the
 &lt;tt class="docutils literal"&gt;body&lt;/tt&gt; property.&lt;/li&gt;
-&lt;li&gt;Room-specific: the &lt;tt class="docutils literal"&gt;rule_id&lt;/tt&gt; is re-used to match against the room &lt;span class="caps"&gt;ID&lt;/span&gt;.&lt;/li&gt;
-&lt;li&gt;Sender-specific: the &lt;tt class="docutils literal"&gt;rule_id&lt;/tt&gt; is re-used to match against the event &lt;tt class="docutils literal"&gt;sender&lt;/tt&gt;.&lt;/li&gt;
+&lt;li&gt;Room-specific: the &lt;tt class="docutils literal"&gt;rule_id&lt;/tt&gt; is reused to match against the room &lt;span class="caps"&gt;ID&lt;/span&gt;.&lt;/li&gt;
+&lt;li&gt;Sender-specific: the &lt;tt class="docutils literal"&gt;rule_id&lt;/tt&gt; is reused to match against the event &lt;tt class="docutils literal"&gt;sender&lt;/tt&gt;.&lt;/li&gt;
 &lt;/ul&gt;
 &lt;/div&gt;
 &lt;/div&gt;
@@ -558,7 +562,9 @@ then the behavior changes!&lt;/p&gt;
 &lt;p&gt;…it gets complicated trying to figure out whether a message will generate a
 notification or not.&lt;/p&gt;
 &lt;blockquote class="text-center"&gt;
-&lt;a class="reference external image-reference" href="https://patrick.cloke.us/images/matrix-push-rules-and-notifications/default-push-rules.png"&gt;&lt;img alt="Flow chart of the default Matrix push rules when using Element." src="/thumbnails/matrix-push-rules-and-notifications/default-push-rules_medium.png"/&gt;&lt;/a&gt;
+&lt;a class="reference external image-reference" href="https://patrick.cloke.us/images/matrix-push-rules-and-notifications/default-push-rules.png"&gt;
+&lt;img alt="Flow chart of the default Matrix push rules when using Element." src="/thumbnails/matrix-push-rules-and-notifications/default-push-rules_medium.png"/&gt;
+&lt;/a&gt;
 &lt;p&gt;The default Matrix push rules (also showing the options available within Element).&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;table class="docutils footnote" frame="void" id="footnote-1" rules="none"&gt;
@@ -626,7 +632,7 @@ rules or understand these rules.&lt;/td&gt;&lt;/tr&gt;
 &lt;/tbody&gt;
 &lt;/table&gt;
 &lt;/div&gt;
-</content><category term="articles"></category><category term="matrix"></category><category term="notes"></category></entry><entry><title>Matrix Read Receipts &amp; Notifications</title><link href="https://patrick.cloke.us/posts/2023/01/05/matrix-read-receipts-and-notifications/" rel="alternate"></link><published>2023-01-05T12:15:00-05:00</published><updated>2023-01-05T12:15:00-05:00</updated><author><name>Patrick Cloke</name></author><id>tag:patrick.cloke.us,2023-01-05:/posts/2023/01/05/matrix-read-receipts-and-notifications/</id><summary type="html">&lt;p&gt;I recently wrapped up a project on improving notifications in threads for Matrix.
+</content><category term="matrix"/><category term="notes"/></entry><entry><title>Matrix Read Receipts &amp; Notifications</title><link href="https://patrick.cloke.us/posts/2023/01/05/matrix-read-receipts-and-notifications/" rel="alternate"/><published>2023-01-05T12:15:00-05:00</published><updated>2023-01-05T12:15:00-05:00</updated><author><name>Patrick Cloke</name></author><id>tag:patrick.cloke.us,2023-01-05:/posts/2023/01/05/matrix-read-receipts-and-notifications/</id><summary type="html">&lt;p&gt;I recently wrapped up a project on improving notifications in threads for Matrix.
 This is adapted from my &lt;a href="https://hackmd.io/bbucQKOLTv66N4B_wjDLFQ"&gt;research notes&lt;/a&gt;
 to understand the status quo before adapting the Matrix protocol for threads
 (in &lt;a href="https://github.com/matrix-org/matrix-spec-proposals/pull/3771"&gt;&lt;span class="caps"&gt;MSC3771&lt;/span&gt;&lt;/a&gt; and &lt;a href="https://github.com/matrix-org/matrix-spec-proposals/pull/3773"&gt;&lt;span class="caps"&gt;MSC3773&lt;/span&gt;&lt;/a&gt;). Hopefully others find the information&amp;nbsp;useful!&lt;/p&gt;
@@ -782,4 +788,4 @@ are any messages where the push rules resulted in an action&amp;nbsp;of &lt;code
 &lt;p&gt;&lt;a href="https://spec.matrix.org/v1.3/client-server-api/#receiving-notifications"&gt;Spec on receiving notifications&lt;/a&gt;&amp;#160;&lt;a class="footnote-backref" href="#fnref:3" title="Jump back to footnote 3 in the text"&gt;&amp;#8617;&lt;/a&gt;&lt;/p&gt;
 &lt;/li&gt;
 &lt;/ol&gt;
-&lt;/div&gt;</content><category term="articles"></category><category term="matrix"></category><category term="notes"></category></entry></feed>
+&lt;/div&gt;</content><category term="matrix"/><category term="notes"/></entry></feed>

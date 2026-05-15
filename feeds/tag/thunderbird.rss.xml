@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<rss version="2.0"><channel><title>Patrick Cloke - thunderbird</title><link>https://patrick.cloke.us/</link><description></description><lastBuildDate>Fri, 23 Feb 2024 16:01:00 -0500</lastBuildDate><item><title>Joining the Matrix Spec Core Team</title><link>https://patrick.cloke.us/posts/2024/02/23/joining-the-matrix-spec-core-team/</link><description>&lt;p&gt;I was recently invited to join the Matrix &amp;#8220;Spec Core Team&amp;#8221;, the group who
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Patrick Cloke - thunderbird</title><link>https://patrick.cloke.us/</link><description/><atom:link href="https://patrick.cloke.us/feeds/tag/thunderbird.rss.xml" rel="self"/><lastBuildDate>Fri, 23 Feb 2024 16:01:00 -0500</lastBuildDate><item><title>Joining the Matrix Spec Core Team</title><link>https://patrick.cloke.us/posts/2024/02/23/joining-the-matrix-spec-core-team/</link><description>&lt;p&gt;I was recently invited to join the Matrix &amp;#8220;Spec Core Team&amp;#8221;, the group who
 steward the Matrix protocol, from their &lt;a class="reference external" href="https://matrix.org/about/"&gt;own documentation&lt;/a&gt;:&lt;/p&gt;
 &lt;blockquote&gt;
 The contents and direction of the Matrix Spec is governed by the Spec Core Team;
@@ -10,7 +10,7 @@ wet! You can see an interview between myself, Tulir (another new member of the S
 Core Team), and Matthew (the Spec Core Team lead) in today&amp;#8217;s &lt;a class="reference external" href="https://matrix.org/blog/2024/02/23/this-week-in-matrix-2024-02-23/"&gt;This Week in Matrix&lt;/a&gt;.
 We cover a range of topics including &lt;a class="reference external" href="https://www.thunderbird.net/"&gt;Thunderbird&lt;/a&gt; (and &lt;a class="reference external" href="http://instantbird.com/"&gt;Instantbird&lt;/a&gt;), some
 improvements I hope to make and&amp;nbsp;more.&lt;/p&gt;
-&lt;div class="youtube youtube-16x9"&gt;&lt;iframe src="https://www.youtube-nocookie.com/embed/8vjjwxx7k1w" allowfullscreen seamless frameBorder="0"&gt;&lt;/iframe&gt;&lt;/div&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Patrick Cloke</dc:creator><pubDate>Fri, 23 Feb 2024 16:01:00 -0500</pubDate><guid isPermaLink="false">tag:patrick.cloke.us,2024-02-23:/posts/2024/02/23/joining-the-matrix-spec-core-team/</guid><category>articles</category><category>matrix</category><category>mozilla</category><category>thunderbird</category><category>instantbird</category></item><item><title>Handling GitHub Notifications</title><link>https://patrick.cloke.us/posts/2023/10/06/handling-github-notifications/</link><description>&lt;div class="admonition note"&gt;
+&lt;div class="youtube youtube-16x9"&gt;&lt;iframe src="https://www.youtube-nocookie.com/embed/8vjjwxx7k1w" allowfullscreen seamless frameBorder="0"&gt;&lt;/iframe&gt;&lt;/div&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Patrick Cloke</dc:creator><pubDate>Fri, 23 Feb 2024 16:01:00 -0500</pubDate><guid>tag:patrick.cloke.us,2024-02-23:/posts/2024/02/23/joining-the-matrix-spec-core-team/</guid><category>matrix</category><category>mozilla</category><category>thunderbird</category><category>instantbird</category></item><item><title>Handling GitHub Notifications</title><link>https://patrick.cloke.us/posts/2023/10/06/handling-github-notifications/</link><description>&lt;div class="admonition note"&gt;
 &lt;p class="first admonition-title"&gt;Note&lt;/p&gt;
 &lt;p class="last"&gt;This was originally written for some coworkers and assumes a mostly GitHub-based
 workflow. It has been lightly edited to be more readable, but if your organization
@@ -202,7 +202,7 @@ find time to look into it.&lt;/td&gt;&lt;/tr&gt;
 &lt;/tbody&gt;
 &lt;/table&gt;
 &lt;/div&gt;
-</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Patrick Cloke</dc:creator><pubDate>Fri, 06 Oct 2023 07:55:00 -0400</pubDate><guid isPermaLink="false">tag:patrick.cloke.us,2023-10-06:/posts/2023/10/06/handling-github-notifications/</guid><category>articles</category><category>thunderbird</category></item><item><title>Matrix Live Interview</title><link>https://patrick.cloke.us/posts/2020/03/12/matrix-live-interview/</link><description>&lt;p&gt;I was interviewed for Matrix Live as part of last week&amp;#8217;s &lt;a class="reference external" href="https://matrix.org/blog/2020/03/06/this-week-in-matrix-2020-03-06"&gt;This Week in Matrix&lt;/a&gt;.
+</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Patrick Cloke</dc:creator><pubDate>Fri, 06 Oct 2023 07:55:00 -0400</pubDate><guid>tag:patrick.cloke.us,2023-10-06:/posts/2023/10/06/handling-github-notifications/</guid><category>thunderbird</category></item><item><title>Matrix Live Interview</title><link>https://patrick.cloke.us/posts/2020/03/12/matrix-live-interview/</link><description>&lt;p&gt;I was interviewed for Matrix Live as part of last week&amp;#8217;s &lt;a class="reference external" href="https://matrix.org/blog/2020/03/06/this-week-in-matrix-2020-03-06"&gt;This Week in Matrix&lt;/a&gt;.
 I talked a bit about my background and my experiences contributing to Mozilla
 (as part of Instantbird and Thunderbird projects) as well as what I will be
 working on for Synapse, the reference implementation for Matrix&amp;nbsp;servers.&lt;/p&gt;
@@ -212,7 +212,7 @@ working on for Synapse, the reference implementation for Matrix&amp;nbsp;servers
 &lt;li&gt;&lt;a class="reference external" href="https://open.spotify.com/episode/1tDmpPbG5e79tU6GfvHz7o"&gt;Spotify&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 &lt;p&gt;Let me know if you have any&amp;nbsp;questions!&lt;/p&gt;
-&lt;div class="youtube youtube-16x9"&gt;&lt;iframe src="https://www.youtube-nocookie.com/embed/iKx-RHS-p4M" allowfullscreen seamless frameBorder="0"&gt;&lt;/iframe&gt;&lt;/div&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Patrick Cloke</dc:creator><pubDate>Thu, 12 Mar 2020 11:49:00 -0400</pubDate><guid isPermaLink="false">tag:patrick.cloke.us,2020-03-12:/posts/2020/03/12/matrix-live-interview/</guid><category>articles</category><category>matrix</category><category>mozilla</category><category>thunderbird</category><category>instantbird</category></item><item><title>IRC Client Usage Share on moznet</title><link>https://patrick.cloke.us/posts/2015/09/23/irc-client-usage-share-on-moznet/</link><description>
+&lt;div class="youtube youtube-16x9"&gt;&lt;iframe src="https://www.youtube-nocookie.com/embed/iKx-RHS-p4M" allowfullscreen seamless frameBorder="0"&gt;&lt;/iframe&gt;&lt;/div&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Patrick Cloke</dc:creator><pubDate>Thu, 12 Mar 2020 11:49:00 -0400</pubDate><guid>tag:patrick.cloke.us,2020-03-12:/posts/2020/03/12/matrix-live-interview/</guid><category>matrix</category><category>mozilla</category><category>thunderbird</category><category>instantbird</category></item><item><title>IRC Client Usage Share on moznet</title><link>https://patrick.cloke.us/posts/2015/09/23/irc-client-usage-share-on-moznet/</link><description>
 &lt;div class="section" id="background"&gt;
 &lt;h2&gt;&lt;a class="toc-backref" href="#toc-entry-1"&gt;Background&lt;/a&gt;&lt;/h2&gt;
 &lt;p&gt;The usage share of &lt;span class="caps"&gt;IRC&lt;/span&gt; clients has always been something I’m interested in. This
@@ -440,22 +440,30 @@ it.&lt;/td&gt;&lt;/tr&gt;
 &lt;/table&gt;
 &lt;/div&gt;
 &lt;/div&gt;
-</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Patrick Cloke</dc:creator><pubDate>Wed, 23 Sep 2015 17:07:00 -0400</pubDate><guid isPermaLink="false">tag:patrick.cloke.us,2015-09-23:/posts/2015/09/23/irc-client-usage-share-on-moznet/</guid><category>articles</category><category>Mozilla</category><category>Thunderbird</category><category>Instantbird</category><category>IRC</category></item><item><title>Thunderbird Summit 2014</title><link>https://patrick.cloke.us/posts/2014/11/14/thunderbird-summit-2014/</link><description>&lt;p&gt;Last month (Oct. 15th to Oct. 18th, to be precise), &lt;a class="reference external" href="https://wiki.mozilla.org/Thunderbird:Summit_2014#Invited_Attendees"&gt;twenty volunteers&lt;/a&gt;
+</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Patrick Cloke</dc:creator><pubDate>Wed, 23 Sep 2015 17:07:00 -0400</pubDate><guid>tag:patrick.cloke.us,2015-09-23:/posts/2015/09/23/irc-client-usage-share-on-moznet/</guid><category>Mozilla</category><category>Thunderbird</category><category>Instantbird</category><category>IRC</category></item><item><title>Thunderbird Summit 2014</title><link>https://patrick.cloke.us/posts/2014/11/14/thunderbird-summit-2014/</link><description>&lt;p&gt;Last month (Oct. 15th to Oct. 18th, to be precise), &lt;a class="reference external" href="https://wiki.mozilla.org/Thunderbird:Summit_2014#Invited_Attendees"&gt;twenty volunteers&lt;/a&gt;
 descended on Mozilla&amp;#8217;s Toronto office to discuss &lt;a class="reference external" href="https://www.mozilla.org/en-US/thunderbird/"&gt;Mozilla Thunderbird&lt;/a&gt;. This
 included Mozilla employees, Thunderbird contributors of all sorts (developers,
 user interface designers, add-on reviewers), Lightning contributors, and
 chat/&lt;a class="reference external" href="http://instantbird.com/"&gt;Instantbird&lt;/a&gt;&amp;nbsp;contributors.&lt;/p&gt;
 &lt;blockquote class="text-center"&gt;
-&lt;a class="reference external image-reference" href="https://patrick.cloke.us/images/chat-tb-summit/IMG_6516.jpg"&gt;&lt;img alt="The entire group of volunteers." src="/thumbnails/chat-tb-summit/IMG_6516_small.jpg" /&gt;&lt;/a&gt;
+&lt;a class="reference external image-reference" href="https://patrick.cloke.us/images/chat-tb-summit/IMG_6516.jpg"&gt;
+&lt;img alt="The entire group of volunteers." src="/thumbnails/chat-tb-summit/IMG_6516_small.jpg" /&gt;
+&lt;/a&gt;
 &lt;/blockquote&gt;
 &lt;p&gt;It was great to spend some quality hacking time with &lt;a class="reference external" href="http://blog.queze.net/"&gt;Florian&lt;/a&gt; and to meet
 &lt;a class="reference external" href="http://blog.nhnt11.com/"&gt;Nihanth&lt;/a&gt;, both Instantbird guys who I talk to most days on &lt;span class="caps"&gt;IRC&lt;/span&gt;! I also had the
 pleasure of re-meeting a few people from the Mozilla Summit last year (I
 attended in Toronto) and to meet some brand new&amp;nbsp;people!&lt;/p&gt;
 &lt;blockquote class="text-center"&gt;
-&lt;a class="reference external image-reference" href="https://patrick.cloke.us/images/chat-tb-summit/IMG_6408.jpg"&gt;&lt;img alt="Nihanth hacking." src="/thumbnails/chat-tb-summit/IMG_6408_small.jpg" /&gt;&lt;/a&gt;
-&lt;a class="reference external image-reference" href="https://patrick.cloke.us/images/chat-tb-summit/IMG_6426.jpg"&gt;&lt;img alt="The chat contributors: me, Florian and Nihanth." src="/thumbnails/chat-tb-summit/IMG_6426_small.jpg" /&gt;&lt;/a&gt;
-&lt;a class="reference external image-reference" href="https://patrick.cloke.us/images/chat-tb-summit/IMG_6508.jpg"&gt;&lt;img alt="Daniel joining us over Vidyo." src="/thumbnails/chat-tb-summit/IMG_6508_small.jpg" /&gt;&lt;/a&gt;
+&lt;a class="reference external image-reference" href="https://patrick.cloke.us/images/chat-tb-summit/IMG_6408.jpg"&gt;
+&lt;img alt="Nihanth hacking." src="/thumbnails/chat-tb-summit/IMG_6408_small.jpg" /&gt;
+&lt;/a&gt;
+&lt;a class="reference external image-reference" href="https://patrick.cloke.us/images/chat-tb-summit/IMG_6426.jpg"&gt;
+&lt;img alt="The chat contributors: me, Florian and Nihanth." src="/thumbnails/chat-tb-summit/IMG_6426_small.jpg" /&gt;
+&lt;/a&gt;
+&lt;a class="reference external image-reference" href="https://patrick.cloke.us/images/chat-tb-summit/IMG_6508.jpg"&gt;
+&lt;img alt="Daniel joining us over Vidyo." src="/thumbnails/chat-tb-summit/IMG_6508_small.jpg" /&gt;
+&lt;/a&gt;
 &lt;p&gt;A few pictures of the chat contributors: Nihanth; me, Florian and Nihanth;
 and Daniel (dialing&amp;nbsp;in!)&lt;/p&gt;
 &lt;/blockquote&gt;
@@ -467,16 +475,22 @@ after that, we got some really exciting work done! We started cleaning up and
 finalizing some patches from Google Summer of Code 2014 to add &lt;a class="reference external" href="http://www.webrtc.org/"&gt;WebRTC&lt;/a&gt; support
 to &lt;a class="reference external" href="http://xmpp.org/"&gt;&lt;span class="caps"&gt;XMPP&lt;/span&gt;&lt;/a&gt;! You can check out the progress in &lt;a class="reference external" href="https://bugzilla.mozilla.org/show_bug.cgi?id=1018060"&gt;bug 1018060&lt;/a&gt;.&lt;/p&gt;
 &lt;blockquote class="text-center"&gt;
-&lt;a class="reference external image-reference" href="https://patrick.cloke.us/images/chat-tb-summit/IMG_6394.jpg"&gt;&lt;img alt="First working call over Instantbird WebRTC." src="/thumbnails/chat-tb-summit/IMG_6394_small.jpg" /&gt;&lt;/a&gt;
-&lt;a class="reference external image-reference" href="https://patrick.cloke.us/images/chat-tb-summit/webrtc_preview.jpg"&gt;&lt;img alt="Screenshot of first working call over Instantbird WebRTC." src="/thumbnails/chat-tb-summit/webrtc_preview_small.jpg" /&gt;&lt;/a&gt;
+&lt;a class="reference external image-reference" href="https://patrick.cloke.us/images/chat-tb-summit/IMG_6394.jpg"&gt;
+&lt;img alt="First working call over Instantbird WebRTC." src="/thumbnails/chat-tb-summit/IMG_6394_small.jpg" /&gt;
+&lt;/a&gt;
+&lt;a class="reference external image-reference" href="https://patrick.cloke.us/images/chat-tb-summit/webrtc_preview.jpg"&gt;
+&lt;img alt="Screenshot of first working call over Instantbird WebRTC." src="/thumbnails/chat-tb-summit/webrtc_preview_small.jpg" /&gt;
+&lt;/a&gt;
 &lt;p&gt;First working call over Instantbird&amp;nbsp;WebRTC.&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;blockquote class="text-center"&gt;
-&lt;a class="reference external image-reference" href="https://patrick.cloke.us/images/chat-tb-summit/IMG_6594.jpg"&gt;&lt;img alt="Eating some poutine!" src="/thumbnails/chat-tb-summit/IMG_6594_small.jpg" /&gt;&lt;/a&gt;
+&lt;a class="reference external image-reference" href="https://patrick.cloke.us/images/chat-tb-summit/IMG_6594.jpg"&gt;
+&lt;img alt="Eating some poutine!" src="/thumbnails/chat-tb-summit/IMG_6594_small.jpg" /&gt;
+&lt;/a&gt;
 &lt;p&gt;Other highlights of the trip include eating the &amp;#8220;Canadian delicacy&amp;#8221; of
 poutine (with pulled pork on&amp;nbsp;it)!&lt;/p&gt;
 &lt;/blockquote&gt;
-</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Patrick Cloke</dc:creator><pubDate>Fri, 14 Nov 2014 18:37:00 -0500</pubDate><guid isPermaLink="false">tag:patrick.cloke.us,2014-11-14:/posts/2014/11/14/thunderbird-summit-2014/</guid><category>articles</category><category>Mozilla</category><category>Thunderbird</category><category>community</category><category>Instantbird</category></item><item><title>Extending JavaScript Maps (or other built-in objects)</title><link>https://patrick.cloke.us/posts/2014/04/27/extending-javascript-maps-or-other/</link><description>
+</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Patrick Cloke</dc:creator><pubDate>Fri, 14 Nov 2014 18:37:00 -0500</pubDate><guid>tag:patrick.cloke.us,2014-11-14:/posts/2014/11/14/thunderbird-summit-2014/</guid><category>Mozilla</category><category>Thunderbird</category><category>community</category><category>Instantbird</category></item><item><title>Extending JavaScript Maps (or other built-in objects)</title><link>https://patrick.cloke.us/posts/2014/04/27/extending-javascript-maps-or-other/</link><description>
 &lt;p&gt;Finally another technical post, this one is about my adventures in
 attempting to extend the built-in &lt;a class="reference external" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Map"&gt;Map&lt;/a&gt; object in JavaScript to extend
 the functionality. As background, there are two reasons we’d want this:&lt;/p&gt;
@@ -574,7 +588,7 @@ constrained time. No, I didn’t profile this, it just seemed like bad design.)
 &lt;h2&gt;&lt;a class="toc-backref" href="#toc-entry-4"&gt;Solution (wrapping a Map)&lt;/a&gt;&lt;/h2&gt;
 &lt;p&gt;Finally I settled on the simple solution of just wrapping the Map in a
 custom object. Initially I thought this would be frustrating to
-re-declare every function (and prone to breakage in the future if new
+redeclare every function (and prone to breakage in the future if new
 methods are added), but there’s a nice magic method
 &lt;a class="reference external" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/noSuchMethod"&gt;__noSuchMethod__&lt;/a&gt; that fixes this! (Note that this is a
 non-standard feature of SpiderMonkey.) &lt;tt class="docutils literal"&gt;__noSuchMethod__&lt;/tt&gt; allows an
@@ -644,7 +658,7 @@ expected, but they’re uhh…not up anywhere yet though. Oops.&lt;/td&gt;&lt;/t
 &lt;/tbody&gt;
 &lt;/table&gt;
 &lt;/div&gt;
-</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Patrick Cloke</dc:creator><pubDate>Sun, 27 Apr 2014 13:46:00 -0400</pubDate><guid isPermaLink="false">tag:patrick.cloke.us,2014-04-27:/posts/2014/04/27/extending-javascript-maps-or-other/</guid><category>articles</category><category>Instantbird</category><category>programming</category><category>specifications</category><category>Thunderbird</category><category>Wat</category></item><item><title>Community and Volunteers</title><link>https://patrick.cloke.us/posts/2014/04/16/community-and-volunteers/</link><description>&lt;p&gt;It was suggested that I cross-post this from mozilla.dev.planning onto
+</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Patrick Cloke</dc:creator><pubDate>Sun, 27 Apr 2014 13:46:00 -0400</pubDate><guid>tag:patrick.cloke.us,2014-04-27:/posts/2014/04/27/extending-javascript-maps-or-other/</guid><category>Instantbird</category><category>programming</category><category>specifications</category><category>Thunderbird</category><category>Wat</category></item><item><title>Community and Volunteers</title><link>https://patrick.cloke.us/posts/2014/04/16/community-and-volunteers/</link><description>&lt;p&gt;It was suggested that I cross-post this from mozilla.dev.planning onto
 my blog. This is in reply to a thread entitled &amp;#8220;&lt;a class="reference external" href="https://groups.google.com/forum/#%21topic/mozilla.dev.planning/P8oHKTCWSiQ"&gt;Proposal: Move
 Thunderbird and SeaMonkey to mozilla-central&lt;/a&gt;&amp;#8221; about (essentially)
 merging comm-central back into mozilla-central. There have been many
@@ -716,7 +730,7 @@ keeping a dying one on life-support. (And prove to all that
 &lt;/blockquote&gt;
 &lt;p&gt;I don&amp;#8217;t have much else to say beyond that (besides thanks for reading
 this&amp;nbsp;far!)&lt;/p&gt;
-</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Patrick Cloke</dc:creator><pubDate>Wed, 16 Apr 2014 12:34:00 -0400</pubDate><guid isPermaLink="false">tag:patrick.cloke.us,2014-04-16:/posts/2014/04/16/community-and-volunteers/</guid><category>articles</category><category>community</category><category>crosspost</category><category>Mozilla</category><category>Thunderbird</category></item><item><title>JavaScript typed arrays pain</title><link>https://patrick.cloke.us/posts/2012/11/28/javascript-typed-arrays-pain/</link><description>&lt;p&gt;If you&amp;#8217;ve ever tried to deal with binary data in JavaScript you know
+</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Patrick Cloke</dc:creator><pubDate>Wed, 16 Apr 2014 12:34:00 -0400</pubDate><guid>tag:patrick.cloke.us,2014-04-16:/posts/2014/04/16/community-and-volunteers/</guid><category>community</category><category>crosspost</category><category>Mozilla</category><category>Thunderbird</category></item><item><title>JavaScript typed arrays pain</title><link>https://patrick.cloke.us/posts/2012/11/28/javascript-typed-arrays-pain/</link><description>&lt;p&gt;If you&amp;#8217;ve ever tried to deal with binary data in JavaScript you know
 it isn&amp;#8217;t much fun and you usually resort to using strings lots of
 charCodeAt and related functions. &lt;a class="reference external" href="https://developer.mozilla.org/en-US/docs/JavaScript_typed_arrays"&gt;Typed arrays&lt;/a&gt; are supposed to solve
 this though! The typed array &lt;span class="caps"&gt;API&lt;/span&gt; consists of creating a buffer of bytes
@@ -804,7 +818,7 @@ don&amp;#8217;t use ArrayBufferViews, use DataViews. (Although Uint8Arrays and
 Int8Arrays should work&amp;nbsp;fine!)&lt;/p&gt;
 &lt;p&gt;And to not rant the &lt;em&gt;entire&lt;/em&gt; time, working with typed arrays certainly
 does beat strings +&amp;nbsp;charCodeAt!&lt;/p&gt;
-</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Patrick Cloke</dc:creator><pubDate>Wed, 28 Nov 2012 23:11:00 -0500</pubDate><guid isPermaLink="false">tag:patrick.cloke.us,2012-11-28:/posts/2012/11/28/javascript-typed-arrays-pain/</guid><category>articles</category><category>Instantbird</category><category>Mozilla</category><category>OSCAR</category><category>Thunderbird</category><category>Wat</category></item><item><title>On Status</title><link>https://patrick.cloke.us/posts/2012/10/16/on-status/</link><description>&lt;p&gt;Something that comes up often about Instantbird is why we only support
+</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Patrick Cloke</dc:creator><pubDate>Wed, 28 Nov 2012 23:11:00 -0500</pubDate><guid>tag:patrick.cloke.us,2012-11-28:/posts/2012/11/28/javascript-typed-arrays-pain/</guid><category>Instantbird</category><category>Mozilla</category><category>OSCAR</category><category>Thunderbird</category><category>Wat</category></item><item><title>On Status</title><link>https://patrick.cloke.us/posts/2012/10/16/on-status/</link><description>&lt;p&gt;Something that comes up often about Instantbird is why we only support
 three statuses: Available, Unavailable and Offline. (We do actually
 support a fourth one too, Idle, but that is set automatically, not
 chosen by the user.) Frequently this discussion is in the context of
@@ -917,7 +931,7 @@ in the&amp;nbsp;table.&lt;/p&gt;
 &lt;/tr&gt;
 &lt;/tbody&gt;
 &lt;/table&gt;
-</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Patrick Cloke</dc:creator><pubDate>Tue, 16 Oct 2012 21:33:00 -0400</pubDate><guid isPermaLink="false">tag:patrick.cloke.us,2012-10-16:/posts/2012/10/16/on-status/</guid><category>articles</category><category>chat</category><category>Instantbird</category><category>Thunderbird</category></item><item><title>Yahoo &amp; Thunderbird Can Finally Play Nice?</title><link>https://patrick.cloke.us/posts/2010/11/22/yahoo-thunderbird/</link><description>&lt;p&gt;For years I&amp;#8217;ve been dealing with Yahoo&amp;#8217;s lack of support for any sort
+</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Patrick Cloke</dc:creator><pubDate>Tue, 16 Oct 2012 21:33:00 -0400</pubDate><guid>tag:patrick.cloke.us,2012-10-16:/posts/2012/10/16/on-status/</guid><category>chat</category><category>Instantbird</category><category>Thunderbird</category></item><item><title>Yahoo &amp; Thunderbird Can Finally Play Nice?</title><link>https://patrick.cloke.us/posts/2010/11/22/yahoo-thunderbird/</link><description>&lt;p&gt;For years I&amp;#8217;ve been dealing with Yahoo&amp;#8217;s lack of support for any sort
 of decent (free) &lt;span class="caps"&gt;POP3&lt;/span&gt;/&lt;span class="caps"&gt;IMAP&lt;/span&gt;/&lt;span class="caps"&gt;SMTP&lt;/span&gt; protocol support. Why do I need this?
 So I can check my &lt;a class="reference external" href="http://mail.yahoo.com/"&gt;Yahoo mail&lt;/a&gt; in &lt;a class="reference external" href="http://www.mozillamessaging.com/en-US/thunderbird/"&gt;Mozilla Thunderbird&lt;/a&gt; of&amp;nbsp;course!&lt;/p&gt;
 &lt;p&gt;At first I used &lt;a class="reference external" href="http://ypopsemail.com/"&gt;&lt;span class="caps"&gt;YPOPS&lt;/span&gt;!&lt;/a&gt;, a program that read the &lt;span class="caps"&gt;HTML&lt;/span&gt; pages provided
@@ -984,4 +998,4 @@ suggest using that&amp;nbsp;former.&lt;/p&gt;
 &lt;p&gt;Note that I&amp;#8217;m currently suffering from &lt;a class="reference external" href="https://bugzilla.mozilla.org/show_bug.cgi?id=610264"&gt;another bug&lt;/a&gt; while using
 Yahoo &lt;span class="caps"&gt;IMAP&lt;/span&gt;. Everything works, there&amp;#8217;s just an annoying pop-up
 occasionally about the error. Hopefully it will be fixed&amp;nbsp;soon.&lt;/p&gt;
-</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Patrick Cloke</dc:creator><pubDate>Mon, 22 Nov 2010 23:03:00 -0500</pubDate><guid isPermaLink="false">tag:patrick.cloke.us,2010-11-22:/posts/2010/11/22/yahoo-thunderbird/</guid><category>articles</category><category>email</category><category>Mozilla</category><category>programming</category><category>Thunderbird</category><category>Yahoo</category></item></channel></rss>
+</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Patrick Cloke</dc:creator><pubDate>Mon, 22 Nov 2010 23:03:00 -0500</pubDate><guid>tag:patrick.cloke.us,2010-11-22:/posts/2010/11/22/yahoo-thunderbird/</guid><category>email</category><category>Mozilla</category><category>programming</category><category>Thunderbird</category><category>Yahoo</category></item></channel></rss>

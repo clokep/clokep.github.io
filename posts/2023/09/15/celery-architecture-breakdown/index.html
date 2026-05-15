@@ -24,7 +24,7 @@
     <meta property="og:site_name" content="Patrick Cloke" />
 <meta property="og:title" content="Celery architecture breakdown" />
 <meta property="og:url" content="https://patrick.cloke.us/posts/2023/09/15/celery-architecture-breakdown/" />
-<meta property="og:description" content="The Celery project, which is often used Python library to run “background tasks” for synchronous web frameworks, describes itself as:  Celery is a simple, flexible, and reliable distributed system to process vast amounts of messages , while providing operations with the tools required to maintain such a system. It’s a …" />
+<meta property="og:description" content="The Celery project, which is often used Python library to run “background tasks” for synchronous web frameworks, describes itself as: Celery is a simple, flexible, and reliable distributed system to process vast amounts of messages , while providing operations with the tools required to maintain such a system. It’s a …" />
 <meta property="og:type" content="article" />
 <meta property="article:published_time" content="2023-09-15T15:28:00-04:00" />
 <meta property="article:author" content="Patrick Cloke" />
@@ -162,7 +162,7 @@
       <div>
         <div class="border border-info bg-light rounded float-right p-2 ml-2 mb-2">
           <div class="toc" id="">
-<p class="topic-title">Contents</p>
+<p class="topic-title"><a class="reference internal" href="#top">Contents</a></p>
 <ul class="simple">
 <li><a class="reference internal" href="#high-level-architecture" id="toc-entry-1">High Level Architecture</a><ul>
 <li><a class="reference internal" href="#broker" id="toc-entry-2">Broker</a></li>
@@ -206,7 +206,9 @@ called the “client” in Celery’s documentation.)</li>
 <li>A (results) <a class="reference external" href="https://docs.celeryq.dev/en/v5.2.7/getting-started/backends-and-brokers/index.html">backend</a>.</li>
 </ol>
 <blockquote class="text-center">
-<a class="reference external image-reference" href="https://patrick.cloke.us/images/celery-architecture/celery-overview.png"><img alt="Celery overview" src="https://patrick.cloke.us/images/celery-architecture/celery-overview.png" style="width: 50%;"/></a>
+<a class="reference external image-reference" href="https://patrick.cloke.us/images/celery-architecture/celery-overview.png">
+<img alt="Celery overview" src="https://patrick.cloke.us/images/celery-architecture/celery-overview.png" style="width: 50%;"/>
+</a>
 <p>A simplified view of Celery components.</p>
 </blockquote>
 <p>In order to use Celery you need to:</p>
@@ -250,7 +252,9 @@ in the background twice (<tt class="docutils literal"><span class="pre">add.dela
 <p>Usually you don’t care where (which worker) the task runs on it, or how it gets
 there but sometimes you need! We can break down the components more to reveal more detail:</p>
 <blockquote class="text-center">
-<a class="reference external image-reference" href="https://patrick.cloke.us/images/celery-architecture/celery-components.png"><img alt="Celery components" src="https://patrick.cloke.us/images/celery-architecture/celery-components.png" style="width: 50%;"/></a>
+<a class="reference external image-reference" href="https://patrick.cloke.us/images/celery-architecture/celery-components.png">
+<img alt="Celery components" src="https://patrick.cloke.us/images/celery-architecture/celery-components.png" style="width: 50%;"/>
+</a>
 <p>The Celery components broken into sub-components.</p>
 </blockquote>
 <div class="section" id="broker">
@@ -270,7 +274,7 @@ why you might route tasks to different queues.</p>
 <p>Celery workers fetch queued tasks from the broker and then run the code defined in
 your <tt class="docutils literal">task</tt>, they can optionally return a value via the results backend.</p>
 <p>Celery workers have a “consumer” which fetches tasks from the broker: by default
-it requests many tasks at once, equivalent to “<a class="reference external" href="https://docs.celeryq.dev/en/v5.2.7/userguide/configuration.html#std-setting-worker_prefetch_multiplier">prefetch multiplier</a> x <a class="reference external" href="https://docs.celeryq.dev/en/v5.2.7/userguide/configuration.html#std-setting-worker_concurrency">concurrency</a>“.
+it requests many tasks at once, equivalent to “<a class="reference external" href="https://docs.celeryq.dev/en/v5.2.7/userguide/configuration.html#std-setting-worker_prefetch_multiplier">prefetch multiplier</a> x <a class="reference external" href="https://docs.celeryq.dev/en/v5.2.7/userguide/configuration.html#std-setting-worker_concurrency">concurrency</a>”.
 (If your prefetch multiplier is 5 and your concurrency is 4, it attempts to
 fetch up to 20 queued tasks from the broker.) Once fetched it places them into
 an in-memory buffer. The task pool then runs each task via its <tt class="docutils literal">Strategy</tt> —
@@ -306,7 +310,9 @@ or configuring brokers and backends.</p>
 <p>The main thing to understand is that there’s lots of serialization happening across
 each process boundary:</p>
 <blockquote class="text-center">
-<a class="reference external image-reference" href="https://patrick.cloke.us/images/celery-architecture/celery-dataflow.png"><img alt="Celery dataflow" src="https://patrick.cloke.us/images/celery-architecture/celery-dataflow.png" style="width: 50%;"/></a>
+<a class="reference external image-reference" href="https://patrick.cloke.us/images/celery-architecture/celery-dataflow.png">
+<img alt="Celery dataflow" src="https://patrick.cloke.us/images/celery-architecture/celery-dataflow.png" style="width: 50%;"/>
+</a>
 <p>A task message traversing from application code to the broker to a worker,
 and a result traversing from a worker to a backend to application code.</p>
 </blockquote>
@@ -332,7 +338,9 @@ as well as custom schemes can be used as well).</p>
 <p>An example <span class="caps">AMQP</span> message containing the details of a task request (from RabbitMQ’s
 <a class="reference external" href="https://www.rabbitmq.com/management.html">management interface</a>) is shown below:</p>
 <blockquote class="text-center">
-<a class="reference external image-reference" href="https://patrick.cloke.us/images/celery-architecture/rabbitmq-task-message.png"><img alt="Celery task wrapped in a RabbitMQ message" src="https://patrick.cloke.us/images/celery-architecture/rabbitmq-task-message.png" style="width: 50%;"/></a>
+<a class="reference external image-reference" href="https://patrick.cloke.us/images/celery-architecture/rabbitmq-task-message.png">
+<img alt="Celery task wrapped in a RabbitMQ message" src="https://patrick.cloke.us/images/celery-architecture/rabbitmq-task-message.png" style="width: 50%;"/>
+</a>
 <p>The example Celery task wrapped in a RabbitMQ message</p>
 </blockquote>
 <p>When a worker fetches a task from the broker it deserializes it into a <a class="reference external" href="https://docs.celeryq.dev/en/v5.2.7/userguide/tasks.html#task-request">Request</a>
@@ -357,7 +365,9 @@ results backend (and gets split between the headers and body). Celery provides
 configuration options to customize this serialization. <a class="footnote-reference" href="#footnote-6" id="footnote-reference-6">[6]</a></p>
 <p>An example <span class="caps">AMQP</span> message containing the details of a result is shown below:</p>
 <blockquote class="text-center">
-<a class="reference external image-reference" href="https://patrick.cloke.us/images/celery-architecture/rabbitmq-result-message.png"><img alt="Celery result wrapped in a RabbitMQ message" src="https://patrick.cloke.us/images/celery-architecture/rabbitmq-result-message.png" style="width: 50%;"/></a>
+<a class="reference external image-reference" href="https://patrick.cloke.us/images/celery-architecture/rabbitmq-result-message.png">
+<img alt="Celery result wrapped in a RabbitMQ message" src="https://patrick.cloke.us/images/celery-architecture/rabbitmq-result-message.png" style="width: 50%;"/>
+</a>
 <p>The example Celery result wrapped in a RabbitMQ message</p>
 </blockquote>
 <p>Once the result is fetched by the client it can deserialized the true (Python)

@@ -1,5 +1,102 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>Patrick Cloke</title><link href="https://patrick.cloke.us/" rel="alternate"></link><link href="https://patrick.cloke.us/feeds/atom.xml" rel="self"></link><id>https://patrick.cloke.us/</id><updated>2024-02-23T16:01:00-05:00</updated><entry><title>Joining the Matrix Spec Core Team</title><link href="https://patrick.cloke.us/posts/2024/02/23/joining-the-matrix-spec-core-team/" rel="alternate"></link><published>2024-02-23T16:01:00-05:00</published><updated>2024-02-23T16:01:00-05:00</updated><author><name>Patrick Cloke</name></author><id>tag:patrick.cloke.us,2024-02-23:/posts/2024/02/23/joining-the-matrix-spec-core-team/</id><summary type="html">&lt;p&gt;I was recently invited to join the Matrix &amp;#8220;Spec Core Team&amp;#8221;, the group who
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Patrick Cloke</title><link href="https://patrick.cloke.us/" rel="alternate"/><link href="https://patrick.cloke.us/feeds/atom.xml" rel="self"/><id>https://patrick.cloke.us/</id><updated>2025-11-15T12:55:00-05:00</updated><entry><title>Matrix: Time Zones in User Profiles</title><link href="https://patrick.cloke.us/posts/2025/11/15/matrix-time-zones-in-user-profiles/" rel="alternate"/><published>2025-11-15T12:55:00-05:00</published><updated>2025-11-15T12:55:00-05:00</updated><author><name>Patrick Cloke</name></author><id>tag:patrick.cloke.us,2025-11-15:/posts/2025/11/15/matrix-time-zones-in-user-profiles/</id><summary type="html">&lt;p&gt;Matrix had very limited user profile information, only: display name and an avatar. &lt;a class="footnote-reference" href="#footnote-1" id="footnote-reference-1"&gt;[1]&lt;/a&gt;
+Users are able to get/set these fields with a simple &lt;span class="caps"&gt;CRU&lt;/span&gt;&lt;span class="strike"&gt;D&lt;/span&gt; &lt;span class="caps"&gt;REST&lt;/span&gt; &lt;span class="caps"&gt;API&lt;/span&gt;.
+This is pretty limiting and doesn&amp;#8217;t match what users expect from a modern chat platform.
+In particular, I&amp;#8217;ve seen …&lt;/p&gt;</summary><content type="html">&lt;p&gt;Matrix had very limited user profile information, only: display name and an avatar. &lt;a class="footnote-reference" href="#footnote-1" id="footnote-reference-1"&gt;[1]&lt;/a&gt;
+Users are able to get/set these fields with a simple &lt;span class="caps"&gt;CRU&lt;/span&gt;&lt;span class="strike"&gt;D&lt;/span&gt; &lt;span class="caps"&gt;REST&lt;/span&gt; &lt;span class="caps"&gt;API&lt;/span&gt;.
+This is pretty limiting and doesn&amp;#8217;t match what users expect from a modern chat platform.
+In particular, I&amp;#8217;ve seen many folks work around the lack of location and time zone support by adding it to their display&amp;nbsp;name.&lt;/p&gt;
+&lt;p&gt;This is structured data and should be easy to store directly in a profile! How hard can it be? As an initial target, I decided to look at adding time zone information which resulted in &lt;a class="reference external" href="https://github.com/matrix-org/matrix-spec-proposals/pull/4175"&gt;&lt;span class="caps"&gt;MSC4175&lt;/span&gt;&lt;/a&gt;.&lt;/p&gt;
+&lt;div class="section" id="prior-attempts"&gt;
+&lt;h2&gt;Prior&amp;nbsp;Attempts&lt;/h2&gt;
+&lt;p&gt;There was an old Matrix Spec Change proposal to store &amp;#8220;profiles as rooms&amp;#8221; (&lt;a class="reference external" href="https://github.com/matrix-org/matrix-spec-proposals/pull/1769"&gt;&lt;span class="caps"&gt;MSC1769&lt;/span&gt;&lt;/a&gt; &lt;a class="footnote-reference" href="#footnote-2" id="footnote-reference-2"&gt;[2]&lt;/a&gt;), a brief&amp;nbsp;overview:&lt;/p&gt;
+&lt;ul class="simple"&gt;
+&lt;li&gt;Each user would have a room with a special name that represents the user&amp;#8217;s metadata (e.g. &lt;tt class="docutils literal"&gt;#&amp;#64;clokep:matrix.org&lt;/tt&gt;).&lt;/li&gt;
+&lt;li&gt;Metadata would be stored in a single state event with a vCard data (represented using jCard from &lt;a class="reference external" href="https://tools.ietf.org/html/rfc7095.html"&gt;&lt;span class="caps"&gt;RFC&lt;/span&gt; 7095&lt;/a&gt;).&lt;/li&gt;
+&lt;li&gt;It required &amp;#8220;peeking&amp;#8221; (&lt;a class="reference external" href="https://github.com/matrix-org/matrix-spec-proposals/pull/1776"&gt;&lt;span class="caps"&gt;MSC1776&lt;/span&gt;&lt;/a&gt;) and &amp;#8220;peeking over federation&amp;#8221; (&lt;a class="reference external" href="https://github.com/matrix-org/matrix-spec-proposals/pull/1777"&gt;&lt;span class="caps"&gt;MSC1777&lt;/span&gt;&lt;/a&gt;), which are both additional (large)&amp;nbsp;MSCs.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+&lt;div class="section" id="a-simpler-solution"&gt;
+&lt;h2&gt;A Simpler&amp;nbsp;Solution&lt;/h2&gt;
+&lt;p&gt;Another Matrix community member (&lt;a class="reference external" href="https://tomfos.tr/"&gt;Tom Foster&lt;/a&gt;) had written &lt;a class="reference external" href="https://github.com/matrix-org/matrix-spec-proposals/pull/4133"&gt;&lt;span class="caps"&gt;MSC4133&lt;/span&gt;&lt;/a&gt; to expand the allowed operations to include for arbitrary fields, instead of limiting it to only display name and avatar &lt;a class="footnote-reference" href="#footnote-3" id="footnote-reference-3"&gt;[3]&lt;/a&gt;. This was a simpler building block to target. A brief&amp;nbsp;overview:&lt;/p&gt;
+&lt;ul class="simple"&gt;
+&lt;li&gt;Allow arbitrary profile keys to be created and updated. (Arbitrary profile fields already allowed to be&amp;nbsp;fetched!)&lt;/li&gt;
+&lt;li&gt;Allow for deleting profile fields (instead of just setting them to&amp;nbsp;null/empty).&lt;/li&gt;
+&lt;li&gt;Profile keys should be namespaced (reserving the &lt;cite&gt;m.&lt;/cite&gt; prefix for fields in the Matrix&amp;nbsp;specification).&lt;/li&gt;
+&lt;li&gt;Defining how a server can declare what keys can be&amp;nbsp;created.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;That is pretty much the gist, although it took ~10 months, &amp;gt; 2400 words, &amp;gt; 50 commits, and hundreds of comments to agree on an&amp;nbsp;approach.&lt;/p&gt;
+&lt;p&gt;Earlier versions included several other (controversial) features that were&amp;nbsp;removed:&lt;/p&gt;
+&lt;ul class="simple"&gt;
+&lt;li&gt;User-defined profile fields (&lt;a class="reference external" href="https://github.com/matrix-org/matrix-spec-proposals/pull/4208"&gt;&lt;span class="caps"&gt;MSC4208&lt;/span&gt;&lt;/a&gt;).&lt;/li&gt;
+&lt;li&gt;Providing a &lt;cite&gt;&lt;span class="caps"&gt;PATCH&lt;/span&gt;&lt;/cite&gt; for the entire profile (&lt;a class="reference external" href="https://github.com/matrix-org/matrix-spec-proposals/pull/4255"&gt;&lt;span class="caps"&gt;MSC4255&lt;/span&gt;&lt;/a&gt; is related, but not exactly a&amp;nbsp;replacement).&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;This &lt;span class="caps"&gt;MSC&lt;/span&gt; was missing an actual use-case, however, which &lt;a class="reference external" href="https://github.com/matrix-org/matrix-spec-proposals/pull/4175"&gt;&lt;span class="caps"&gt;MSC4175&lt;/span&gt;&lt;/a&gt; provided for user time&amp;nbsp;zones.&lt;/p&gt;
+&lt;div class="section" id="server-implementation"&gt;
+&lt;h3&gt;Server&amp;nbsp;Implementation&lt;/h3&gt;
+&lt;p&gt;I worked with Tom to &lt;a class="reference external" href="https://github.com/element-hq/synapse/pull/17488"&gt;implement the above in Synapse&lt;/a&gt;, it was a bit trickier than initially expected due&amp;nbsp;to:&lt;/p&gt;
+&lt;ul class="simple"&gt;
+&lt;li&gt;Profile fields can hold arbitrary &lt;span class="caps"&gt;JSON&lt;/span&gt; (not just&amp;nbsp;strings).&lt;/li&gt;
+&lt;li&gt;Needing to track the total profile size and ensure it did not go over a limit (including the display name and&amp;nbsp;avatar).&lt;/li&gt;
+&lt;li&gt;Ensuring the behavior of display names and avatars did not&amp;nbsp;change.&lt;/li&gt;
+&lt;li&gt;&lt;span class="caps"&gt;JSON&lt;/span&gt; functionality between PostgreSQL and SQLite are similar, but not&amp;nbsp;identical.&lt;/li&gt;
+&lt;li&gt;Some trickiness with handling whether a field doesn&amp;#8217;t exist or is set to&amp;nbsp;null.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;The actual implementation is an extra &lt;tt class="docutils literal"&gt;&lt;span class="caps"&gt;JSONB&lt;/span&gt;&lt;/tt&gt; column on the &lt;tt class="docutils literal"&gt;profiles&lt;/tt&gt; table to store &amp;#8220;additional&amp;#8221; profile fields as a &lt;span class="caps"&gt;JSON&lt;/span&gt; blob (additional meaning not the display name or avatar, which are stored in discrete&amp;nbsp;fields).&lt;/p&gt;
+&lt;p&gt;Several of the &lt;a class="reference external" href="https://www.postgresql.org/docs/12/functions-json.html"&gt;PostgreSQL &lt;span class="caps"&gt;JSON&lt;/span&gt; functions&lt;/a&gt; or &lt;a class="reference external" href="https://www.sqlite.org/json1.html"&gt;SQLite &lt;span class="caps"&gt;JSON&lt;/span&gt; functions&lt;/a&gt; are used to update/fetch fields within the &lt;span class="caps"&gt;JSON&lt;/span&gt; blob and count the expected length to assert the profile is not too&amp;nbsp;large.&lt;/p&gt;
+&lt;p&gt;The server itself doesn&amp;#8217;t need to know anything else about the fields being stored in the profile, and &lt;a class="reference external" href="https://github.com/matrix-org/matrix-spec-proposals/pull/4175"&gt;&lt;span class="caps"&gt;MSC4175&lt;/span&gt;&lt;/a&gt; recommends that servers do _not_ verify the time zone provided, as they might have less accurate information than&amp;nbsp;clients.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="section" id="client-implementation"&gt;
+&lt;h3&gt;Client&amp;nbsp;Implementation&lt;/h3&gt;
+&lt;p&gt;&lt;a class="reference external" href="https://github.com/matrix-org/matrix-spec-proposals/pull/4175"&gt;&lt;span class="caps"&gt;MSC4175&lt;/span&gt;&lt;/a&gt; defines the standardized field name and format for the time zone profile field, which is simply the &lt;a class="reference external" href="https://www.iana.org/time-zones"&gt;&lt;span class="caps"&gt;IANA&lt;/span&gt; Time Zone Database Zone &lt;span class="caps"&gt;ID&lt;/span&gt;&lt;/a&gt;,&amp;nbsp;e.g.:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="p"&gt;{&lt;/span&gt;
+&lt;span class="w"&gt;  &lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;m.tz&amp;quot;&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;America/New_York&amp;quot;&lt;/span&gt;
+&lt;span class="p"&gt;}&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Luckily a couple of other community members quickly implemented this for clients for &lt;a class="reference external" href="https://github.com/element-hq/matrix-react-sdk/pull/20"&gt;Element Web&lt;/a&gt; an &lt;a class="reference external" href="https://github.com/gomuks/gomuks/pull/574"&gt;gomuks&lt;/a&gt;. I was not too involved in either of these implementations besides bugging people to implement&amp;nbsp;it!&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="section" id="conclusion"&gt;
+&lt;h2&gt;Conclusion&lt;/h2&gt;
+&lt;p&gt;Clients are now free to implement and experiment with arbitrary profile fields! The time zone profile field is specified in &lt;a class="reference external" href="https://spec.matrix.org/v1.16/client-server-api/#get_matrixclientv3profileuserid"&gt;Matrix v1.16&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;There are a few limitations with this approach which are yet to be&amp;nbsp;solved:&lt;/p&gt;
+&lt;ol class="arabic simple"&gt;
+&lt;li&gt;Propagating profile changes across federation (between servers) is completely undefined right now. &lt;a class="reference external" href="https://github.com/matrix-org/matrix-spec-proposals/pull/4259"&gt;&lt;span class="caps"&gt;MSC4259&lt;/span&gt;&lt;/a&gt; has some ideas, but is not yet&amp;nbsp;implemented.&lt;/li&gt;
+&lt;li&gt;Time zone information must be fetched individually for each user, so there is no easy way to show at a glance who may be around in the&amp;nbsp;room.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/div&gt;
+&lt;div class="section" id="lessons-learned"&gt;
+&lt;h2&gt;Lessons&amp;nbsp;learned&lt;/h2&gt;
+&lt;p&gt;There was a lot of back and forth between Tom and I on the pieces of this specification (and the implementation), some of my takeaways&amp;nbsp;include:&lt;/p&gt;
+&lt;ol class="arabic simple"&gt;
+&lt;li&gt;Keep an &lt;span class="caps"&gt;MSC&lt;/span&gt; as discrete and small as possible to avoid unnecessary&amp;nbsp;bikeshedding.&lt;/li&gt;
+&lt;li&gt;It is &lt;span class="caps"&gt;OK&lt;/span&gt; to _not_ take into account someone&amp;#8217;s feedback (politely) if you&amp;nbsp;disagree.&lt;/li&gt;
+&lt;li&gt;Including impact on trust &lt;span class="amp"&gt;&amp;amp;&lt;/span&gt; safety concerns upfront can&amp;nbsp;help.&lt;/li&gt;
+&lt;li&gt;&lt;tt class="docutils literal"&gt;&lt;span class="caps"&gt;JSONB&lt;/span&gt;&lt;/tt&gt; columns in PostgreSQL are super&amp;nbsp;powerful.&lt;/li&gt;
+&lt;li&gt;Writing up the changes to the specification are often shorter than writing the &lt;span class="caps"&gt;MSC&lt;/span&gt;&amp;nbsp;itself.&lt;/li&gt;
+&lt;li&gt;Getting a feature specified, merged, and implemented in Matrix can be time consuming and require many different people (but is&amp;nbsp;possible)!&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;Thanks to &lt;a class="reference external" href="https://tomfos.tr/"&gt;Tom Foster&lt;/a&gt; for the bulk of the work of writing &lt;a class="reference external" href="https://github.com/matrix-org/matrix-spec-proposals/pull/4133"&gt;&lt;span class="caps"&gt;MSC4133&lt;/span&gt;&lt;/a&gt; and &lt;a class="reference external" href="https://half-shot.github.io/"&gt;Half-Shot&lt;/a&gt; for offering client guidance and the initial implementation of &lt;a class="reference external" href="https://github.com/matrix-org/matrix-spec-proposals/pull/4175"&gt;&lt;span class="caps"&gt;MSC4175&lt;/span&gt;&lt;/a&gt;.&lt;/p&gt;
+&lt;table class="docutils footnote" frame="void" id="footnote-1" rules="none"&gt;
+&lt;colgroup&gt;&lt;col class="label" /&gt;&lt;col /&gt;&lt;/colgroup&gt;
+&lt;tbody valign="top"&gt;
+&lt;tr&gt;&lt;td class="label"&gt;&lt;a class="fn-backref" href="#footnote-reference-1"&gt;[1]&lt;/a&gt;&lt;/td&gt;&lt;td&gt;Although these can be set on a per-room basis, which is handy!&lt;/td&gt;&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;table class="docutils footnote" frame="void" id="footnote-2" rules="none"&gt;
+&lt;colgroup&gt;&lt;col class="label" /&gt;&lt;col /&gt;&lt;/colgroup&gt;
+&lt;tbody valign="top"&gt;
+&lt;tr&gt;&lt;td class="label"&gt;&lt;a class="fn-backref" href="#footnote-reference-2"&gt;[2]&lt;/a&gt;&lt;/td&gt;&lt;td&gt;An updated version of &lt;a class="reference external" href="https://github.com/matrix-org/matrix-spec-proposals/pull/1769"&gt;&lt;span class="caps"&gt;MSC1769&lt;/span&gt;&lt;/a&gt; was published as &lt;a class="reference external" href="https://github.com/matrix-org/matrix-spec-proposals/pull/4201"&gt;&lt;span class="caps"&gt;MSC4201&lt;/span&gt;&lt;/a&gt;, but it is not dramatically different.&lt;/td&gt;&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;table class="docutils footnote" frame="void" id="footnote-3" rules="none"&gt;
+&lt;colgroup&gt;&lt;col class="label" /&gt;&lt;col /&gt;&lt;/colgroup&gt;
+&lt;tbody valign="top"&gt;
+&lt;tr&gt;&lt;td class="label"&gt;&lt;a class="fn-backref" href="#footnote-reference-3"&gt;[3]&lt;/a&gt;&lt;/td&gt;&lt;td&gt;Turns out this was pretty similar to &lt;a class="reference external" href="https://github.com/matrix-org/matrix-spec-proposals/pull/3793"&gt;&lt;span class="caps"&gt;MSC3793&lt;/span&gt;&lt;/a&gt; which was never merged.&lt;/td&gt;&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;/div&gt;
+</content><category term="matrix"/></entry><entry><title>Joining the Matrix Spec Core Team</title><link href="https://patrick.cloke.us/posts/2024/02/23/joining-the-matrix-spec-core-team/" rel="alternate"/><published>2024-02-23T16:01:00-05:00</published><updated>2024-02-23T16:01:00-05:00</updated><author><name>Patrick Cloke</name></author><id>tag:patrick.cloke.us,2024-02-23:/posts/2024/02/23/joining-the-matrix-spec-core-team/</id><summary type="html">&lt;p&gt;I was recently invited to join the Matrix &amp;#8220;Spec Core Team&amp;#8221;, the group who
 steward the Matrix protocol, from their &lt;a class="reference external" href="https://matrix.org/about/"&gt;own documentation&lt;/a&gt;:&lt;/p&gt;
 &lt;blockquote&gt;
 The contents and direction of the Matrix Spec is governed by the Spec Core Team;
@@ -14,7 +111,7 @@ wet! You can see an interview between myself, Tulir (another new member of the S
 Core Team), and Matthew (the Spec Core Team lead) in today&amp;#8217;s &lt;a class="reference external" href="https://matrix.org/blog/2024/02/23/this-week-in-matrix-2024-02-23/"&gt;This Week in Matrix&lt;/a&gt;.
 We cover a range of topics including &lt;a class="reference external" href="https://www.thunderbird.net/"&gt;Thunderbird&lt;/a&gt; (and &lt;a class="reference external" href="http://instantbird.com/"&gt;Instantbird&lt;/a&gt;), some
 improvements I hope to make and&amp;nbsp;more.&lt;/p&gt;
-&lt;div class="youtube youtube-16x9"&gt;&lt;iframe src="https://www.youtube-nocookie.com/embed/8vjjwxx7k1w" allowfullscreen seamless frameBorder="0"&gt;&lt;/iframe&gt;&lt;/div&gt;</content><category term="articles"></category><category term="matrix"></category><category term="mozilla"></category><category term="thunderbird"></category><category term="instantbird"></category></entry><entry><title>Synapse URL Previews</title><link href="https://patrick.cloke.us/posts/2024/02/23/synapse-url-previews/" rel="alternate"></link><published>2024-02-23T15:35:00-05:00</published><updated>2024-02-23T15:35:00-05:00</updated><author><name>Patrick Cloke</name></author><id>tag:patrick.cloke.us,2024-02-23:/posts/2024/02/23/synapse-url-previews/</id><summary type="html">&lt;p&gt;Matrix includes the ability for a client to request that the server
+&lt;div class="youtube youtube-16x9"&gt;&lt;iframe src="https://www.youtube-nocookie.com/embed/8vjjwxx7k1w" allowfullscreen seamless frameBorder="0"&gt;&lt;/iframe&gt;&lt;/div&gt;</content><category term="matrix"/><category term="mozilla"/><category term="thunderbird"/><category term="instantbird"/></entry><entry><title>Synapse URL Previews</title><link href="https://patrick.cloke.us/posts/2024/02/23/synapse-url-previews/" rel="alternate"/><published>2024-02-23T15:35:00-05:00</published><updated>2024-02-23T15:35:00-05:00</updated><author><name>Patrick Cloke</name></author><id>tag:patrick.cloke.us,2024-02-23:/posts/2024/02/23/synapse-url-previews/</id><summary type="html">&lt;p&gt;Matrix includes the ability for a client to request that the server
 &lt;a class="reference external" href="https://spec.matrix.org/v1.8/client-server-api/#get_matrixmediav3preview_url"&gt;generate a &amp;#8220;preview&amp;#8221; for a &lt;span class="caps"&gt;URL&lt;/span&gt;&lt;/a&gt;. The client provides a &lt;span class="caps"&gt;URL&lt;/span&gt; to the server which
 returns &lt;a class="reference external" href="https://ogp.me/"&gt;Open Graph&lt;/a&gt; data as a &lt;span class="caps"&gt;JSON&lt;/span&gt; response. This leaks any URLs detected in
 the message content to the server, but protects the …&lt;/p&gt;</summary><content type="html">&lt;p&gt;Matrix includes the ability for a client to request that the server
@@ -61,7 +158,7 @@ and &lt;tt class="docutils literal"&gt;data:&lt;/tt&gt; URIs (&lt;a class="refer
 &lt;a class="reference external" href="https://github.com/matrix-org/synapse/pull/13056"&gt;#13056&lt;/a&gt;.&lt;/li&gt;
 &lt;li&gt;Fallback to favicon if no images found:
 &lt;a class="reference external" href="https://github.com/matrix-org/synapse/pull/12951"&gt;#12951&lt;/a&gt;.&lt;/li&gt;
-&lt;li&gt;Ignore navgiation tags: &lt;a class="reference external" href="https://github.com/matrix-org/synapse/pull/12951"&gt;#12951&lt;/a&gt;.&lt;/li&gt;
+&lt;li&gt;Ignore navigation tags: &lt;a class="reference external" href="https://github.com/matrix-org/synapse/pull/12951"&gt;#12951&lt;/a&gt;.&lt;/li&gt;
 &lt;li&gt;Document how Synapse &lt;a class="reference external" href="https://github.com/matrix-org/synapse/blob/be65a8ec0195955c15fdb179c9158b187638e39a/synapse/media/url_previewer.py#L101-L154"&gt;generates &lt;span class="caps"&gt;URL&lt;/span&gt; previews&lt;/a&gt;:
 &lt;a class="reference external" href="https://github.com/matrix-org/synapse/pull/10753"&gt;#10753&lt;/a&gt;,
 &lt;a class="reference external" href="https://github.com/matrix-org/synapse/pull/13261"&gt;#13261&lt;/a&gt;.&lt;/li&gt;
@@ -191,11 +288,11 @@ being authenticated.&lt;/td&gt;&lt;/tr&gt;
 &lt;/tbody&gt;
 &lt;/table&gt;
 &lt;/div&gt;
-</content><category term="articles"></category><category term="matrix"></category></entry><entry><title>Matrix Intentional Mentions explained</title><link href="https://patrick.cloke.us/posts/2023/12/15/matrix-intentional-mentions-explained/" rel="alternate"></link><published>2023-12-15T15:41:00-05:00</published><updated>2023-12-15T15:41:00-05:00</updated><author><name>Patrick Cloke</name></author><id>tag:patrick.cloke.us,2023-12-15:/posts/2023/12/15/matrix-intentional-mentions-explained/</id><summary type="html">&lt;p&gt;Previously I have written about how &lt;a class="reference external" href="https://patrick.cloke.us/posts/2023/05/08/matrix-push-rules-notifications/"&gt;push rules generate notifications&lt;/a&gt; and how
-&lt;a class="reference external" href="https://patrick.cloke.us/posts/2023/01/05/matrix-read-receipts-and-notifications/"&gt;read receipts mark notificiations as read&lt;/a&gt; in the Matrix protocol. This article
+</content><category term="matrix"/></entry><entry><title>Matrix Intentional Mentions explained</title><link href="https://patrick.cloke.us/posts/2023/12/15/matrix-intentional-mentions-explained/" rel="alternate"/><published>2023-12-15T15:41:00-05:00</published><updated>2023-12-15T15:41:00-05:00</updated><author><name>Patrick Cloke</name></author><id>tag:patrick.cloke.us,2023-12-15:/posts/2023/12/15/matrix-intentional-mentions-explained/</id><summary type="html">&lt;p&gt;Previously I have written about how &lt;a class="reference external" href="https://patrick.cloke.us/posts/2023/05/08/matrix-push-rules-notifications/"&gt;push rules generate notifications&lt;/a&gt; and how
+&lt;a class="reference external" href="https://patrick.cloke.us/posts/2023/01/05/matrix-read-receipts-and-notifications/"&gt;read receipts mark notifications as read&lt;/a&gt; in the Matrix protocol. This article
 is about a change that I instigated to improve &lt;em&gt;when&lt;/em&gt; a &amp;#8220;mention&amp;#8221; (or &amp;#8220;ping&amp;#8221;)
 notification is created. (This is a &amp;#8220;highlight&amp;#8221; notification in the Matrix&amp;nbsp;specification …&lt;/p&gt;</summary><content type="html">&lt;p&gt;Previously I have written about how &lt;a class="reference external" href="https://patrick.cloke.us/posts/2023/05/08/matrix-push-rules-notifications/"&gt;push rules generate notifications&lt;/a&gt; and how
-&lt;a class="reference external" href="https://patrick.cloke.us/posts/2023/01/05/matrix-read-receipts-and-notifications/"&gt;read receipts mark notificiations as read&lt;/a&gt; in the Matrix protocol. This article
+&lt;a class="reference external" href="https://patrick.cloke.us/posts/2023/01/05/matrix-read-receipts-and-notifications/"&gt;read receipts mark notifications as read&lt;/a&gt; in the Matrix protocol. This article
 is about a change that I instigated to improve &lt;em&gt;when&lt;/em&gt; a &amp;#8220;mention&amp;#8221; (or &amp;#8220;ping&amp;#8221;)
 notification is created. (This is a &amp;#8220;highlight&amp;#8221; notification in the Matrix&amp;nbsp;specification.)&lt;/p&gt;
 &lt;p&gt;This was part of the work I did at Element to reduce &lt;a class="reference external" href="https://github.com/vector-im/element-meta/issues/886"&gt;unintentional pings&lt;/a&gt;. I
@@ -303,7 +400,7 @@ doesn&amp;#8217;t allow for hidden mentions.&lt;/td&gt;&lt;/tr&gt;
 &lt;/tbody&gt;
 &lt;/table&gt;
 &lt;/div&gt;
-</content><category term="articles"></category><category term="matrix"></category><category term="notes"></category></entry><entry><title>Matrix Presence</title><link href="https://patrick.cloke.us/posts/2023/12/15/matrix-presence/" rel="alternate"></link><published>2023-12-15T11:24:00-05:00</published><updated>2023-12-15T11:24:00-05:00</updated><author><name>Patrick Cloke</name></author><id>tag:patrick.cloke.us,2023-12-15:/posts/2023/12/15/matrix-presence/</id><summary type="html">&lt;p&gt;I put together some notes on presence when implementing &lt;a class="reference external" href="https://github.com/matrix-org/synapse/pull/16066"&gt;multi-device support for presence&lt;/a&gt;
+</content><category term="matrix"/><category term="notes"/></entry><entry><title>Matrix Presence</title><link href="https://patrick.cloke.us/posts/2023/12/15/matrix-presence/" rel="alternate"/><published>2023-12-15T11:24:00-05:00</published><updated>2023-12-15T11:24:00-05:00</updated><author><name>Patrick Cloke</name></author><id>tag:patrick.cloke.us,2023-12-15:/posts/2023/12/15/matrix-presence/</id><summary type="html">&lt;p&gt;I put together some notes on presence when implementing &lt;a class="reference external" href="https://github.com/matrix-org/synapse/pull/16066"&gt;multi-device support for presence&lt;/a&gt;
 in Synapse, maybe this is helpful to others! This is a combination of information
 from the specification, as well as some information about how Synapse&amp;nbsp;works.&lt;/p&gt;
 &lt;div class="admonition note"&gt;
@@ -513,7 +610,7 @@ process push notifications.)&lt;/td&gt;&lt;/tr&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
-</content><category term="articles"></category><category term="matrix"></category><category term="notes"></category></entry><entry><title>Handling GitHub Notifications</title><link href="https://patrick.cloke.us/posts/2023/10/06/handling-github-notifications/" rel="alternate"></link><published>2023-10-06T07:55:00-04:00</published><updated>2023-10-06T07:55:00-04:00</updated><author><name>Patrick Cloke</name></author><id>tag:patrick.cloke.us,2023-10-06:/posts/2023/10/06/handling-github-notifications/</id><summary type="html">&lt;div class="admonition note"&gt;
+</content><category term="matrix"/><category term="notes"/></entry><entry><title>Handling GitHub Notifications</title><link href="https://patrick.cloke.us/posts/2023/10/06/handling-github-notifications/" rel="alternate"/><published>2023-10-06T07:55:00-04:00</published><updated>2023-10-06T07:55:00-04:00</updated><author><name>Patrick Cloke</name></author><id>tag:patrick.cloke.us,2023-10-06:/posts/2023/10/06/handling-github-notifications/</id><summary type="html">&lt;div class="admonition note"&gt;
 &lt;p class="first admonition-title"&gt;Note&lt;/p&gt;
 &lt;p class="last"&gt;This was originally written for some coworkers and assumes a mostly GitHub-based
 workflow. It has been lightly edited to be more readable, but if your organization
@@ -711,7 +808,7 @@ find time to look into it.&lt;/td&gt;&lt;/tr&gt;
 &lt;/tbody&gt;
 &lt;/table&gt;
 &lt;/div&gt;
-</content><category term="articles"></category><category term="thunderbird"></category></entry><entry><title>Matrix Live demo on Linearized Matrix</title><link href="https://patrick.cloke.us/posts/2023/10/04/matrix-live-demo-on-linearized-matrix/" rel="alternate"></link><published>2023-10-04T09:55:00-04:00</published><updated>2023-10-04T09:55:00-04:00</updated><author><name>Patrick Cloke</name></author><id>tag:patrick.cloke.us,2023-10-04:/posts/2023/10/04/matrix-live-demo-on-linearized-matrix/</id><summary type="html">&lt;p&gt;I demoed some of my work at &lt;a class="reference external" href="https://element.io"&gt;Element&lt;/a&gt; on Matrix Live back on August 4th&amp;#8217;s
+</content><category term="thunderbird"/></entry><entry><title>Matrix Live demo on Linearized Matrix</title><link href="https://patrick.cloke.us/posts/2023/10/04/matrix-live-demo-on-linearized-matrix/" rel="alternate"/><published>2023-10-04T09:55:00-04:00</published><updated>2023-10-04T09:55:00-04:00</updated><author><name>Patrick Cloke</name></author><id>tag:patrick.cloke.us,2023-10-04:/posts/2023/10/04/matrix-live-demo-on-linearized-matrix/</id><summary type="html">&lt;p&gt;I demoed some of my work at &lt;a class="reference external" href="https://element.io"&gt;Element&lt;/a&gt; on Matrix Live back on August 4th&amp;#8217;s
 &lt;a class="reference external" href="https://matrix.org/blog/2023/08/04/this-week-in-matrix-2023-08-04/"&gt;This Week in Matrix&lt;/a&gt; (and failed to mention it here). I talked a bit about
 what &lt;a class="reference external" href="https://turt2live.github.io/ietf-mimi-linearized-matrix/draft-ralston-mimi-linearized-matrix.html"&gt;Linearized Matrix&lt;/a&gt;, Element&amp;#8217;s effort for the &lt;span class="caps"&gt;IETF&lt;/span&gt;&amp;#8217;s
 &lt;a class="reference external" href="https://datatracker.ietf.org/group/mimi/about/"&gt;&amp;#8220;More Instant Messaging Interoperability&amp;#8221; (&lt;span class="caps"&gt;MIMI&lt;/span&gt;)&lt;/a&gt; working&amp;nbsp;group.&lt;/p&gt;
@@ -726,7 +823,7 @@ concept for interoperability between Matrix and Linearized&amp;nbsp;Matrix.&lt;/
 &lt;p&gt;You can find a bit more about the approach (and the code) on &lt;a class="reference external" href="https://github.com/matrix-org/synapse/issues/15954"&gt;GitHub&lt;/a&gt;.&lt;/p&gt;
 &lt;p&gt;Check out the video below (my bit starts around the 5:27 mark) and let me know
 if you have any&amp;nbsp;questions!&lt;/p&gt;
-&lt;div class="youtube youtube-16x9"&gt;&lt;iframe src="https://www.youtube-nocookie.com/embed/1LxkbTku0XQ?start=327" allowfullscreen seamless frameBorder="0"&gt;&lt;/iframe&gt;&lt;/div&gt;</content><category term="articles"></category><category term="matrix"></category></entry><entry><title>Celery architecture breakdown</title><link href="https://patrick.cloke.us/posts/2023/09/15/celery-architecture-breakdown/" rel="alternate"></link><published>2023-09-15T15:28:00-04:00</published><updated>2023-09-15T15:28:00-04:00</updated><author><name>Patrick Cloke</name></author><id>tag:patrick.cloke.us,2023-09-15:/posts/2023/09/15/celery-architecture-breakdown/</id><summary type="html">
+&lt;div class="youtube youtube-16x9"&gt;&lt;iframe src="https://www.youtube-nocookie.com/embed/1LxkbTku0XQ?start=327" allowfullscreen seamless frameBorder="0"&gt;&lt;/iframe&gt;&lt;/div&gt;</content><category term="matrix"/></entry><entry><title>Celery architecture breakdown</title><link href="https://patrick.cloke.us/posts/2023/09/15/celery-architecture-breakdown/" rel="alternate"/><published>2023-09-15T15:28:00-04:00</published><updated>2023-09-15T15:28:00-04:00</updated><author><name>Patrick Cloke</name></author><id>tag:patrick.cloke.us,2023-09-15:/posts/2023/09/15/celery-architecture-breakdown/</id><summary type="html">
 &lt;p&gt;The &lt;a class="reference external" href="https://docs.celeryq.dev/en/v5.2.7/"&gt;Celery project&lt;/a&gt;, which is often used Python library to run “background tasks”
 for synchronous web frameworks, describes itself as:&lt;/p&gt;
 &lt;blockquote&gt;
@@ -759,7 +856,9 @@ called the “client” in Celery’s documentation.)&lt;/li&gt;
 &lt;li&gt;A (results) &lt;a class="reference external" href="https://docs.celeryq.dev/en/v5.2.7/getting-started/backends-and-brokers/index.html"&gt;backend&lt;/a&gt;.&lt;/li&gt;
 &lt;/ol&gt;
 &lt;blockquote class="text-center"&gt;
-&lt;a class="reference external image-reference" href="https://patrick.cloke.us/images/celery-architecture/celery-overview.png"&gt;&lt;img alt="Celery overview" src="https://patrick.cloke.us/images/celery-architecture/celery-overview.png" style="width: 50%;"/&gt;&lt;/a&gt;
+&lt;a class="reference external image-reference" href="https://patrick.cloke.us/images/celery-architecture/celery-overview.png"&gt;
+&lt;img alt="Celery overview" src="https://patrick.cloke.us/images/celery-architecture/celery-overview.png" style="width: 50%;"/&gt;
+&lt;/a&gt;
 &lt;p&gt;A simplified view of Celery components.&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;p&gt;In order to use Celery you need to:&lt;/p&gt;
@@ -803,7 +902,9 @@ in the background twice (&lt;tt class="docutils literal"&gt;&lt;span class="pre"
 &lt;p&gt;Usually you don’t care where (which worker) the task runs on it, or how it gets
 there but sometimes you need! We can break down the components more to reveal more detail:&lt;/p&gt;
 &lt;blockquote class="text-center"&gt;
-&lt;a class="reference external image-reference" href="https://patrick.cloke.us/images/celery-architecture/celery-components.png"&gt;&lt;img alt="Celery components" src="https://patrick.cloke.us/images/celery-architecture/celery-components.png" style="width: 50%;"/&gt;&lt;/a&gt;
+&lt;a class="reference external image-reference" href="https://patrick.cloke.us/images/celery-architecture/celery-components.png"&gt;
+&lt;img alt="Celery components" src="https://patrick.cloke.us/images/celery-architecture/celery-components.png" style="width: 50%;"/&gt;
+&lt;/a&gt;
 &lt;p&gt;The Celery components broken into sub-components.&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;div class="section" id="broker"&gt;
@@ -823,7 +924,7 @@ why you might route tasks to different queues.&lt;/p&gt;
 &lt;p&gt;Celery workers fetch queued tasks from the broker and then run the code defined in
 your &lt;tt class="docutils literal"&gt;task&lt;/tt&gt;, they can optionally return a value via the results backend.&lt;/p&gt;
 &lt;p&gt;Celery workers have a “consumer” which fetches tasks from the broker: by default
-it requests many tasks at once, equivalent to “&lt;a class="reference external" href="https://docs.celeryq.dev/en/v5.2.7/userguide/configuration.html#std-setting-worker_prefetch_multiplier"&gt;prefetch multiplier&lt;/a&gt; x &lt;a class="reference external" href="https://docs.celeryq.dev/en/v5.2.7/userguide/configuration.html#std-setting-worker_concurrency"&gt;concurrency&lt;/a&gt;“.
+it requests many tasks at once, equivalent to “&lt;a class="reference external" href="https://docs.celeryq.dev/en/v5.2.7/userguide/configuration.html#std-setting-worker_prefetch_multiplier"&gt;prefetch multiplier&lt;/a&gt; x &lt;a class="reference external" href="https://docs.celeryq.dev/en/v5.2.7/userguide/configuration.html#std-setting-worker_concurrency"&gt;concurrency&lt;/a&gt;”.
 (If your prefetch multiplier is 5 and your concurrency is 4, it attempts to
 fetch up to 20 queued tasks from the broker.) Once fetched it places them into
 an in-memory buffer. The task pool then runs each task via its &lt;tt class="docutils literal"&gt;Strategy&lt;/tt&gt; —
@@ -859,7 +960,9 @@ or configuring brokers and backends.&lt;/p&gt;
 &lt;p&gt;The main thing to understand is that there’s lots of serialization happening across
 each process boundary:&lt;/p&gt;
 &lt;blockquote class="text-center"&gt;
-&lt;a class="reference external image-reference" href="https://patrick.cloke.us/images/celery-architecture/celery-dataflow.png"&gt;&lt;img alt="Celery dataflow" src="https://patrick.cloke.us/images/celery-architecture/celery-dataflow.png" style="width: 50%;"/&gt;&lt;/a&gt;
+&lt;a class="reference external image-reference" href="https://patrick.cloke.us/images/celery-architecture/celery-dataflow.png"&gt;
+&lt;img alt="Celery dataflow" src="https://patrick.cloke.us/images/celery-architecture/celery-dataflow.png" style="width: 50%;"/&gt;
+&lt;/a&gt;
 &lt;p&gt;A task message traversing from application code to the broker to a worker,
 and a result traversing from a worker to a backend to application code.&lt;/p&gt;
 &lt;/blockquote&gt;
@@ -885,7 +988,9 @@ as well as custom schemes can be used as well).&lt;/p&gt;
 &lt;p&gt;An example &lt;span class="caps"&gt;AMQP&lt;/span&gt; message containing the details of a task request (from RabbitMQ’s
 &lt;a class="reference external" href="https://www.rabbitmq.com/management.html"&gt;management interface&lt;/a&gt;) is shown below:&lt;/p&gt;
 &lt;blockquote class="text-center"&gt;
-&lt;a class="reference external image-reference" href="https://patrick.cloke.us/images/celery-architecture/rabbitmq-task-message.png"&gt;&lt;img alt="Celery task wrapped in a RabbitMQ message" src="https://patrick.cloke.us/images/celery-architecture/rabbitmq-task-message.png" style="width: 50%;"/&gt;&lt;/a&gt;
+&lt;a class="reference external image-reference" href="https://patrick.cloke.us/images/celery-architecture/rabbitmq-task-message.png"&gt;
+&lt;img alt="Celery task wrapped in a RabbitMQ message" src="https://patrick.cloke.us/images/celery-architecture/rabbitmq-task-message.png" style="width: 50%;"/&gt;
+&lt;/a&gt;
 &lt;p&gt;The example Celery task wrapped in a RabbitMQ message&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;p&gt;When a worker fetches a task from the broker it deserializes it into a &lt;a class="reference external" href="https://docs.celeryq.dev/en/v5.2.7/userguide/tasks.html#task-request"&gt;Request&lt;/a&gt;
@@ -910,7 +1015,9 @@ results backend (and gets split between the headers and body). Celery provides
 configuration options to customize this serialization. &lt;a class="footnote-reference" href="#footnote-6" id="footnote-reference-6"&gt;[6]&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;An example &lt;span class="caps"&gt;AMQP&lt;/span&gt; message containing the details of a result is shown below:&lt;/p&gt;
 &lt;blockquote class="text-center"&gt;
-&lt;a class="reference external image-reference" href="https://patrick.cloke.us/images/celery-architecture/rabbitmq-result-message.png"&gt;&lt;img alt="Celery result wrapped in a RabbitMQ message" src="https://patrick.cloke.us/images/celery-architecture/rabbitmq-result-message.png" style="width: 50%;"/&gt;&lt;/a&gt;
+&lt;a class="reference external image-reference" href="https://patrick.cloke.us/images/celery-architecture/rabbitmq-result-message.png"&gt;
+&lt;img alt="Celery result wrapped in a RabbitMQ message" src="https://patrick.cloke.us/images/celery-architecture/rabbitmq-result-message.png" style="width: 50%;"/&gt;
+&lt;/a&gt;
 &lt;p&gt;The example Celery result wrapped in a RabbitMQ message&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;p&gt;Once the result is fetched by the client it can deserialized the true (Python)
@@ -992,7 +1099,7 @@ compression settings) via the &lt;tt class="docutils literal"&gt;task_&lt;/tt&gt
 &lt;/table&gt;
 &lt;/div&gt;
 &lt;/div&gt;
-</content><category term="articles"></category><category term="celery"></category></entry><entry><title>Matrix Push Rules &amp; Notifications</title><link href="https://patrick.cloke.us/posts/2023/05/08/matrix-push-rules-notifications/" rel="alternate"></link><published>2023-05-08T14:56:00-04:00</published><updated>2023-05-08T14:56:00-04:00</updated><author><name>Patrick Cloke</name></author><id>tag:patrick.cloke.us,2023-05-08:/posts/2023/05/08/matrix-push-rules-notifications/</id><summary type="html">&lt;p&gt;In a previous post about &lt;a class="reference external" href="https://patrick.cloke.us/posts/2023/01/05/matrix-read-receipts-and-notifications/"&gt;read receipts &lt;span class="amp"&gt;&amp;amp;&lt;/span&gt; notifications in Matrix&lt;/a&gt; I briefly
+</content><category term="celery"/></entry><entry><title>Matrix Push Rules &amp; Notifications</title><link href="https://patrick.cloke.us/posts/2023/05/08/matrix-push-rules-notifications/" rel="alternate"/><published>2023-05-08T14:56:00-04:00</published><updated>2023-05-08T14:56:00-04:00</updated><author><name>Patrick Cloke</name></author><id>tag:patrick.cloke.us,2023-05-08:/posts/2023/05/08/matrix-push-rules-notifications/</id><summary type="html">&lt;p&gt;In a previous post about &lt;a class="reference external" href="https://patrick.cloke.us/posts/2023/01/05/matrix-read-receipts-and-notifications/"&gt;read receipts &lt;span class="amp"&gt;&amp;amp;&lt;/span&gt; notifications in Matrix&lt;/a&gt; I briefly
 mentioned that push rules generate notifications, but with little detail. After
 completing a rather large project to improve notifications in Matrix I want to
 fill in some of those blanks. &lt;a class="footnote-reference" href="#footnote-1" id="footnote-reference-1"&gt;[1]&lt;/a&gt;&lt;/p&gt;
@@ -1034,13 +1141,17 @@ notifications &lt;span class="caps"&gt;API&lt;/span&gt;.&lt;/p&gt;
 &lt;tt class="docutils literal"&gt;/sync&lt;/tt&gt; and/or via push notifications.&lt;/p&gt;
 &lt;p&gt;Web-based clients often receive events via polling:&lt;/p&gt;
 &lt;blockquote class="text-center"&gt;
-&lt;a class="reference external image-reference" href="https://patrick.cloke.us/images/matrix-push-rules-and-notifications/web-push-flow.png"&gt;&lt;img alt="Notification flow for web applications." src="/thumbnails/matrix-push-rules-and-notifications/web-push-flow_medium.png"/&gt;&lt;/a&gt;
+&lt;a class="reference external image-reference" href="https://patrick.cloke.us/images/matrix-push-rules-and-notifications/web-push-flow.png"&gt;
+&lt;img alt="Notification flow for web applications." src="/thumbnails/matrix-push-rules-and-notifications/web-push-flow_medium.png"/&gt;
+&lt;/a&gt;
 &lt;/blockquote&gt;
 &lt;p&gt;The &lt;a class="reference external" href="https://spec.matrix.org/v1.6/client-server-api/#_matrixclientv3sync_unread-notification-counts"&gt;sync response&lt;/a&gt; (both initial and incremental) include the count of unread
 notifications and unread highlight notifications per room.&lt;/p&gt;
 &lt;p&gt;Mobile applications often &lt;a class="reference external" href="https://spec.matrix.org/v1.6/push-gateway-api/#overview"&gt;receive events via push&lt;/a&gt; &lt;a class="footnote-reference" href="#footnote-3" id="footnote-reference-3"&gt;[3]&lt;/a&gt;:&lt;/p&gt;
 &lt;blockquote class="text-center"&gt;
-&lt;a class="reference external image-reference" href="https://patrick.cloke.us/images/matrix-push-rules-and-notifications/mobile-push-flow.png"&gt;&lt;img alt="Notification flow for mobile applications." src="/thumbnails/matrix-push-rules-and-notifications/mobile-push-flow_medium.png"/&gt;&lt;/a&gt;
+&lt;a class="reference external image-reference" href="https://patrick.cloke.us/images/matrix-push-rules-and-notifications/mobile-push-flow.png"&gt;
+&lt;img alt="Notification flow for mobile applications." src="/thumbnails/matrix-push-rules-and-notifications/mobile-push-flow_medium.png"/&gt;
+&lt;/a&gt;
 &lt;/blockquote&gt;
 &lt;p&gt;Push notifications include the event information (or just the event &lt;span class="caps"&gt;ID&lt;/span&gt;) and
 whether the event was a highlight notification. (The event being pushed implies
@@ -1049,7 +1160,7 @@ it increased the notification count.)&lt;/p&gt;
 &lt;p class="first admonition-title"&gt;Note&lt;/p&gt;
 &lt;p class="last"&gt;The deployment of the push gateway must be paired with the application (the
 push keys must be paired). I.e. if you make your own application (or even
-your own build of Element iOS / Android) you cannot re-use the deployment at
+your own build of Element iOS / Android) you cannot reuse the deployment at
 matrix.org and must have your own deployment.&lt;/p&gt;
 &lt;/div&gt;
 &lt;/div&gt;
@@ -1142,8 +1253,8 @@ special cases which do not accept conditions, but can be mapped to them.&lt;/p&
 &lt;ul class="simple"&gt;
 &lt;li&gt;Content-specific: has a &lt;tt class="docutils literal"&gt;pattern&lt;/tt&gt; field which maps to a pattern against the
 &lt;tt class="docutils literal"&gt;body&lt;/tt&gt; property.&lt;/li&gt;
-&lt;li&gt;Room-specific: the &lt;tt class="docutils literal"&gt;rule_id&lt;/tt&gt; is re-used to match against the room &lt;span class="caps"&gt;ID&lt;/span&gt;.&lt;/li&gt;
-&lt;li&gt;Sender-specific: the &lt;tt class="docutils literal"&gt;rule_id&lt;/tt&gt; is re-used to match against the event &lt;tt class="docutils literal"&gt;sender&lt;/tt&gt;.&lt;/li&gt;
+&lt;li&gt;Room-specific: the &lt;tt class="docutils literal"&gt;rule_id&lt;/tt&gt; is reused to match against the room &lt;span class="caps"&gt;ID&lt;/span&gt;.&lt;/li&gt;
+&lt;li&gt;Sender-specific: the &lt;tt class="docutils literal"&gt;rule_id&lt;/tt&gt; is reused to match against the event &lt;tt class="docutils literal"&gt;sender&lt;/tt&gt;.&lt;/li&gt;
 &lt;/ul&gt;
 &lt;/div&gt;
 &lt;/div&gt;
@@ -1229,7 +1340,9 @@ then the behavior changes!&lt;/p&gt;
 &lt;p&gt;…it gets complicated trying to figure out whether a message will generate a
 notification or not.&lt;/p&gt;
 &lt;blockquote class="text-center"&gt;
-&lt;a class="reference external image-reference" href="https://patrick.cloke.us/images/matrix-push-rules-and-notifications/default-push-rules.png"&gt;&lt;img alt="Flow chart of the default Matrix push rules when using Element." src="/thumbnails/matrix-push-rules-and-notifications/default-push-rules_medium.png"/&gt;&lt;/a&gt;
+&lt;a class="reference external image-reference" href="https://patrick.cloke.us/images/matrix-push-rules-and-notifications/default-push-rules.png"&gt;
+&lt;img alt="Flow chart of the default Matrix push rules when using Element." src="/thumbnails/matrix-push-rules-and-notifications/default-push-rules_medium.png"/&gt;
+&lt;/a&gt;
 &lt;p&gt;The default Matrix push rules (also showing the options available within Element).&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;table class="docutils footnote" frame="void" id="footnote-1" rules="none"&gt;
@@ -1297,7 +1410,7 @@ rules or understand these rules.&lt;/td&gt;&lt;/tr&gt;
 &lt;/tbody&gt;
 &lt;/table&gt;
 &lt;/div&gt;
-</content><category term="articles"></category><category term="matrix"></category><category term="notes"></category></entry><entry><title>Python str Collection Gotchas</title><link href="https://patrick.cloke.us/posts/2023/02/24/python-str-collection-gotchas/" rel="alternate"></link><published>2023-02-24T19:42:00-05:00</published><updated>2023-02-24T19:42:00-05:00</updated><author><name>Patrick Cloke</name></author><id>tag:patrick.cloke.us,2023-02-24:/posts/2023/02/24/python-str-collection-gotchas/</id><summary type="html">&lt;p&gt;We have been slowly adding Python type hints &lt;a class="footnote-reference" href="#footnote-1" id="footnote-reference-1"&gt;[1]&lt;/a&gt; to &lt;a class="reference external" href="https://github.com/matrix-org/synapse"&gt;Synapse&lt;/a&gt; and have made
+</content><category term="matrix"/><category term="notes"/></entry><entry><title>Python str Collection Gotchas</title><link href="https://patrick.cloke.us/posts/2023/02/24/python-str-collection-gotchas/" rel="alternate"/><published>2023-02-24T19:42:00-05:00</published><updated>2023-02-24T19:42:00-05:00</updated><author><name>Patrick Cloke</name></author><id>tag:patrick.cloke.us,2023-02-24:/posts/2023/02/24/python-str-collection-gotchas/</id><summary type="html">&lt;p&gt;We have been slowly adding Python type hints &lt;a class="footnote-reference" href="#footnote-1" id="footnote-reference-1"&gt;[1]&lt;/a&gt; to &lt;a class="reference external" href="https://github.com/matrix-org/synapse"&gt;Synapse&lt;/a&gt; and have made
 great progress (see &lt;a class="reference external" href="https://matrix.org/blog/2021/12/03/type-coverage-for-sydent-motivation"&gt;some of our motivation&lt;/a&gt;). Through this process we have
 learned a lot about Python and type hints. One bit that was unexpected is that
 many of the &lt;a class="reference external" href="https://docs.python.org/3/library/collections.abc.html#collections-abstract-base-classes"&gt;abstract base classes&lt;/a&gt; representing groups of …&lt;/p&gt;</summary><content type="html">&lt;p&gt;We have been slowly adding Python type hints &lt;a class="footnote-reference" href="#footnote-1" id="footnote-reference-1"&gt;[1]&lt;/a&gt; to &lt;a class="reference external" href="https://github.com/matrix-org/synapse"&gt;Synapse&lt;/a&gt; and have made
@@ -1380,109 +1493,4 @@ that &lt;tt class="docutils literal"&gt;bytes&lt;/tt&gt; is an instance of &lt;t
 introduce a bug.&lt;/td&gt;&lt;/tr&gt;
 &lt;/tbody&gt;
 &lt;/table&gt;
-</content><category term="articles"></category><category term="python"></category></entry><entry><title>Researching for a Matrix Spec Change</title><link href="https://patrick.cloke.us/posts/2023/01/12/researching-for-a-matrix-spec-change/" rel="alternate"></link><published>2023-01-12T15:24:00-05:00</published><updated>2023-01-12T15:24:00-05:00</updated><author><name>Patrick Cloke</name></author><id>tag:patrick.cloke.us,2023-01-12:/posts/2023/01/12/researching-for-a-matrix-spec-change/</id><summary type="html">&lt;p&gt;The &lt;a class="reference external" href="https://spec.matrix.org/"&gt;Matrix protocol&lt;/a&gt; is modified via &lt;a class="reference external" href="https://spec.matrix.org/proposals/"&gt;Matrix Spec Changes&lt;/a&gt; (frequently abbreviated
-to &amp;#8220;MSCs&amp;#8221;). These are short documents describing any technical changes and why they
-are worth making (see &lt;a class="reference external" href="https://github.com/matrix-org/matrix-spec-proposals/pull/2457"&gt;an example&lt;/a&gt;). I&amp;#8217;ve &lt;a class="reference external" href="https://github.com/matrix-org/matrix-spec-proposals/pulls?q=is%3Apr+author%3Aclokep+label%3Aproposal"&gt;written a bunch&lt;/a&gt; and wanted to
-document my research process. &lt;a class="footnote-reference" href="#footnote-1" id="footnote-reference-1"&gt;[1]&lt;/a&gt;&lt;/p&gt;
-&lt;div class="admonition note"&gt;
-&lt;p class="first admonition-title"&gt;Note&lt;/p&gt;
-&lt;p class="last"&gt;I treat my research as a …&lt;/p&gt;&lt;/div&gt;</summary><content type="html">&lt;p&gt;The &lt;a class="reference external" href="https://spec.matrix.org/"&gt;Matrix protocol&lt;/a&gt; is modified via &lt;a class="reference external" href="https://spec.matrix.org/proposals/"&gt;Matrix Spec Changes&lt;/a&gt; (frequently abbreviated
-to &amp;#8220;MSCs&amp;#8221;). These are short documents describing any technical changes and why they
-are worth making (see &lt;a class="reference external" href="https://github.com/matrix-org/matrix-spec-proposals/pull/2457"&gt;an example&lt;/a&gt;). I&amp;#8217;ve &lt;a class="reference external" href="https://github.com/matrix-org/matrix-spec-proposals/pulls?q=is%3Apr+author%3Aclokep+label%3Aproposal"&gt;written a bunch&lt;/a&gt; and wanted to
-document my research process. &lt;a class="footnote-reference" href="#footnote-1" id="footnote-reference-1"&gt;[1]&lt;/a&gt;&lt;/p&gt;
-&lt;div class="admonition note"&gt;
-&lt;p class="first admonition-title"&gt;Note&lt;/p&gt;
-&lt;p class="last"&gt;I treat my research as a &lt;em&gt;living document&lt;/em&gt;, not an &lt;em&gt;artifact&lt;/em&gt;. Thus, I don&amp;#8217;t worry
-much about the format. The important part is to start writing everything down
-to have a single source of truth that can be shared with&amp;nbsp;others.&lt;/p&gt;
-&lt;/div&gt;
-&lt;p&gt;First, I write out a &lt;strong&gt;problem statement&lt;/strong&gt;: what am I trying to solve? (This step
-might seem obvious, but it is useful to frame the technical changes in why
-they matter. Many proposals seem to skip this step.) Most of my work tends to be
-from the point of view of an end-user, but some changes are purely technical. Regardless,
-there is benefit from a shared written context of the issue to be&amp;nbsp;solved.&lt;/p&gt;
-&lt;p&gt;From the above and prior knowledge, I list any &lt;strong&gt;open questions&lt;/strong&gt; (which I update
-through this process). I&amp;#8217;ll augment the questions with answers I find in my research,
-write new ones about things I don&amp;#8217;t understand, or remove them as they become&amp;nbsp;irrelevant.&lt;/p&gt;
-&lt;p&gt;Next, I begin collecting any previous work done in this area,&amp;nbsp;including:&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;p class="first"&gt;What is the &lt;strong&gt;current specification&lt;/strong&gt; related to this? I usually pull out blurbs
-(with links back to the source) from &lt;a class="reference external" href="https://spec.matrix.org/v1.5/client-server-api/"&gt;the latest specification&lt;/a&gt;.&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;&lt;p class="first"&gt;Are there any &lt;a class="reference external" href="https://github.com/matrix-org/matrix-spec/issues"&gt;&lt;strong&gt;related known issues&lt;/strong&gt;&lt;/a&gt;? It is also worth checking the issue
-trackers of projects: I start with the &lt;a class="reference external" href="https://github.com/matrix-org/synapse"&gt;Synapse&lt;/a&gt;, &lt;a class="reference external" href="https://github.com/vector-im/element-meta"&gt;Element Meta&lt;/a&gt;, and
-&lt;a class="reference external" href="https://github.com/vector-im/element-web"&gt;Element Web&lt;/a&gt;&amp;nbsp;repositories.&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;&lt;p class="first"&gt;Are there &lt;strong&gt;related outstanding MSCs&lt;/strong&gt; or &lt;strong&gt;previous research&lt;/strong&gt;? I search the
-&lt;a class="reference external" href="https://github.com/matrix-org/matrix-spec-proposals/"&gt;matrix-spec-proposals&lt;/a&gt; repository for keywords, open anything that looks
-vaguely related and then crawl those for mentions of other MSCs. I&amp;#8217;ll document
-the related ones with links and a brief description of the proposed&amp;nbsp;change.&lt;/p&gt;
-&lt;p&gt;I include both proposed and closed MSCs to check for previously rejected&amp;nbsp;ideas.&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;&lt;p class="first"&gt;Are others interested in this? Have others had conversation about it? I roughly
-follow the &lt;a class="reference external" href="https://matrix.to/#/#matrix-spec:matrix.org"&gt;#matrix-spec&lt;/a&gt; room or search for rooms that might be interested in
-the topic. I would recommend joining the &lt;a class="reference external" href="https://matrix.to/#/#matrix-spec:matrix.org"&gt;#matrix-spec&lt;/a&gt; room for brainstorming
-and&amp;nbsp;searching.&lt;/p&gt;
-&lt;p&gt;This step can help uncover any missed known issues and MSCs. I will also ask
-others with a longer history in the project if I am missing&amp;nbsp;anything.&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;&lt;p class="first"&gt;A brief &lt;strong&gt;competitive analysis&lt;/strong&gt; is performed. Information can be gleaned from
-technical blog posts and &lt;span class="caps"&gt;API&lt;/span&gt; documentation. I consider not just competing
-&lt;em&gt;products&lt;/em&gt;, but also investigate if others have solved similar &lt;em&gt;technical&lt;/em&gt;
-problems. Other protocols are worth checking (e.g. &lt;span class="caps"&gt;IRC&lt;/span&gt;, &lt;span class="caps"&gt;XMPP&lt;/span&gt;, &lt;span class="caps"&gt;IMAP&lt;/span&gt;).&lt;/p&gt;
-&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;You can see an example of my research on &lt;a class="reference external" href="https://patrick.cloke.us/posts/2023/01/05/matrix-read-receipts-and-notifications/"&gt;Matrix read receipts &lt;span class="amp"&gt;&amp;amp;&lt;/span&gt; notifications&lt;/a&gt;.&lt;/p&gt;
-&lt;p&gt;Once I have compiled the above information, I jump into the &lt;strong&gt;current implementation&lt;/strong&gt;
-to ensure it roughly matches the specification. &lt;a class="footnote-reference" href="#footnote-2" id="footnote-reference-2"&gt;[2]&lt;/a&gt; I start considering what
-protocol changes would solve the problem and are reasonable to implement. I find
-it useful to write down all of my ideas, not just the one I think is best. &lt;a class="footnote-reference" href="#footnote-3" id="footnote-reference-3"&gt;[3]&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;At this point I&amp;nbsp;have:&lt;/p&gt;
-&lt;ul class="simple"&gt;
-&lt;li&gt;A problem&amp;nbsp;statement&lt;/li&gt;
-&lt;li&gt;A bunch of background about the current protocol, other proposed solutions,&amp;nbsp;etc.&lt;/li&gt;
-&lt;li&gt;A list of open&amp;nbsp;questions&lt;/li&gt;
-&lt;li&gt;Rough ideas for proposed&amp;nbsp;solutions&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;The next step is to iterate with my colleagues: answer any open questions, check
-that our product goals will be met, and seek agreement that we are designing a
-buildable solution. &lt;a class="footnote-reference" href="#footnote-4" id="footnote-reference-4"&gt;[4]&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;&lt;em&gt;Finally&lt;/em&gt;, I take the above and formalize it in into one or more Matrix Spec Changes.
-At this point I&amp;#8217;ll think about error conditions / responses, backwards compatibility,
-security concerns, and any other parts of the full &lt;span class="caps"&gt;MSC&lt;/span&gt;. Once it is documented, I
-make a pull request with the proposal and self-review it for loose ends and clarity.
-I leave comments for any parts I am unsure about or want to open discussion&amp;nbsp;on.&lt;/p&gt;
-&lt;p&gt;Then I ask me colleagues to read through it and wait for feedback from both them and
-any interested community members. It can be useful to be in the &lt;a class="reference external" href="https://matrix.to/#/#matrix-spec:matrix.org"&gt;#matrix-spec&lt;/a&gt; room
-as folks might want to discuss the&amp;nbsp;proposal.&lt;/p&gt;
-&lt;table class="docutils footnote" frame="void" id="footnote-1" rules="none"&gt;
-&lt;colgroup&gt;&lt;col class="label" /&gt;&lt;col /&gt;&lt;/colgroup&gt;
-&lt;tbody valign="top"&gt;
-&lt;tr&gt;&lt;td class="label"&gt;&lt;a class="fn-backref" href="#footnote-reference-1"&gt;[1]&lt;/a&gt;&lt;/td&gt;&lt;td&gt;There&amp;#8217;s a useful &lt;a class="reference external" href="https://github.com/matrix-org/matrix-spec-proposals/blob/9b3f01b0193caa1e1c563cfc861ab021bcddcb2c/proposals/0000-proposal-template.md"&gt;proposal template&lt;/a&gt; that I eventually use, but I do much
-of this process before constraining myself by that.&lt;/td&gt;&lt;/tr&gt;
-&lt;/tbody&gt;
-&lt;/table&gt;
-&lt;table class="docutils footnote" frame="void" id="footnote-2" rules="none"&gt;
-&lt;colgroup&gt;&lt;col class="label" /&gt;&lt;col /&gt;&lt;/colgroup&gt;
-&lt;tbody valign="top"&gt;
-&lt;tr&gt;&lt;td class="label"&gt;&lt;a class="fn-backref" href="#footnote-reference-2"&gt;[2]&lt;/a&gt;&lt;/td&gt;&lt;td&gt;This consists of looking through code as well as just trying it out by
-manually making &lt;span class="caps"&gt;API&lt;/span&gt; calls or understanding how APIs power product features.&lt;/td&gt;&lt;/tr&gt;
-&lt;/tbody&gt;
-&lt;/table&gt;
-&lt;table class="docutils footnote" frame="void" id="footnote-3" rules="none"&gt;
-&lt;colgroup&gt;&lt;col class="label" /&gt;&lt;col /&gt;&lt;/colgroup&gt;
-&lt;tbody valign="top"&gt;
-&lt;tr&gt;&lt;td class="label"&gt;&lt;a class="fn-backref" href="#footnote-reference-3"&gt;[3]&lt;/a&gt;&lt;/td&gt;&lt;td&gt;Part of the &lt;span class="caps"&gt;MSC&lt;/span&gt; proposal is documenting alternatives (and why you didn&amp;#8217;t
-choose one of those). It is useful to brainstorm early before you&amp;#8217;re set
-in a decision!&lt;/td&gt;&lt;/tr&gt;
-&lt;/tbody&gt;
-&lt;/table&gt;
-&lt;table class="docutils footnote" frame="void" id="footnote-4" rules="none"&gt;
-&lt;colgroup&gt;&lt;col class="label" /&gt;&lt;col /&gt;&lt;/colgroup&gt;
-&lt;tbody valign="top"&gt;
-&lt;tr&gt;&lt;td class="label"&gt;&lt;a class="fn-backref" href="#footnote-reference-4"&gt;[4]&lt;/a&gt;&lt;/td&gt;&lt;td&gt;I usually do work with Matrix homeservers and am not as experienced with
-clients. It is useful to bounce ideas off a client developer to understand
-their needs.&lt;/td&gt;&lt;/tr&gt;
-&lt;/tbody&gt;
-&lt;/table&gt;
-</content><category term="articles"></category><category term="matrix"></category></entry></feed>
+</content><category term="python"/></entry></feed>
