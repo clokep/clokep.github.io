@@ -45,7 +45,7 @@ class RedirectGenerator(Generator):
                 self.get_template("article_redirect"),
                 self.context,
                 article=article,
-                category=article.category,
+                category=getattr(article, "category", None),
                 override_output=False,
                 url=article.url,
                 blog=True,

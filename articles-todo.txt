@@ -7,3 +7,16 @@ Articles on:
 Projects:
 * Django Template flake8 check
 * PowerDNS Mock code for testing with Lua
+
+
+MSCs:
+
+> The sort of extra stuff I had in mind was kind of "what isn't as important as you think" and "what is more important than you think" and also "what are the boundaries MSCs need to be concerned about versus not concerned about".
+>
+> I'd also like to try to put into words some of the soft skills, like "some people seem really upset, have I messed up?" and "so it's been a week or two without a response, what is the right thing to do?" for example.
+
+"Soft-skills" are often as important as technical skills in getting an MSC merged:
+1.  writing a well-written, clear MSC, not too long
+2. Advocating for it
+3. Getting people to implement it
+ ???
